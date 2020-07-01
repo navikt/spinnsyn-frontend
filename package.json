@@ -1,0 +1,93 @@
+{
+  "name": "spvedtak",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^5.6.4",
+    "@testing-library/jest-dom": "^5.11.0",
+    "@testing-library/react": "^10.4.3",
+    "@testing-library/user-event": "^12.0.11",
+    "@types/amplitude-js": "^5.11.0",
+    "@types/jest": "^26.0.3",
+    "@types/node": "^14.0.14",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.0",
+    "amplitude-js": "^6.2.0",
+    "classnames": "^2.2.6",
+    "constate": "^2.0.0",
+    "craco-less": "^1.17.0",
+    "dayjs": "^1.8.28",
+    "fast-safe-stringify": "^2.0.7",
+    "less-plugin-npm-import": "^2.1.0",
+    "nav-frontend-alertstriper": "^3.0.18",
+    "nav-frontend-alertstriper-style": "^2.0.16",
+    "nav-frontend-core": "^5.0.1",
+    "nav-frontend-ikoner-assets": "^2.0.1",
+    "nav-frontend-knapper": "^2.0.4",
+    "nav-frontend-knapper-style": "^0.3.38",
+    "nav-frontend-lenker": "^1.0.38",
+    "nav-frontend-lenker-style": "^0.2.29",
+    "nav-frontend-lukknapp": "^1.0.28",
+    "nav-frontend-lukknapp-style": "^0.2.24",
+    "nav-frontend-modal": "^1.0.36",
+    "nav-frontend-modal-style": "^0.3.35",
+    "nav-frontend-paneler": "^2.0.5",
+    "nav-frontend-paneler-style": "^0.3.21",
+    "nav-frontend-spinner": "^2.0.2",
+    "nav-frontend-spinner-style": "^0.2.5",
+    "nav-frontend-typografi": "^2.0.21",
+    "nav-frontend-typografi-style": "^1.0.22",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "typescript": "~3.9.5",
+    "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/uuid": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "cypress": "^4.8.0",
+    "eslint": "^6.6.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "jest-environment-jsdom-fifteen": "^1.0.2",
+    "jest-react-hooks-shallow": "^1.4.1",
+    "react-test-renderer": "^16.13.1",
+    "source-map": "^0.7.3",
+    "start-server-and-test": "^1.11.0",
+    "yet-another-fetch-mock": "^3.4.0"
+  },
+  "scripts": {
+    "start-mock": "MOCK_BACKEND=true npm run generate-env-config && REACT_APP_DECORATOR_URL=https://www.nav.no/dekoratoren craco start",
+    "start": "npm run generate-env-config && craco start",
+    "generate-env-config": "chmod +x ./env.sh && ./env.sh && mv env-config.js ./public/",
+    "build": "CI=true PUBLIC_URL=##PUBLIC_URL## REACT_APP_DECORATOR_URL=##DECORATOR_URL## craco build",
+    "test": "MOCK_BACKEND=true craco test",
+    "cy:open": "cypress open",
+    "e2e": "MOCK_BACKEND=true start-test 8080 cy:open",
+    "lint": "eslint --ext=ts,tsx src cypress",
+    "lint:fix": "eslint --ext=ts,tsx src cypress --fix"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

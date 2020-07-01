@@ -1,0 +1,3 @@
+https://${DomainName}/spvedtak/img/*
+https://${DomainName}/spvedtak/resources/*
+
