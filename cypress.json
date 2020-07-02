@@ -1,6 +1,5 @@
 {
     "chromeWebSecurity": false,
     "baseUrl": "http://localhost:8080/",
-    "video": false,
-    "supportFile": "cypress/support/index.ts"
+    "video": false
 }
