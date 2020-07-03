@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom'
 import { Amplitude } from './components/amplitude/amplitudeProvider'
 import { DataFetcher } from './data/data-fetcher'
 import StoreProvider from './data/stores/store-provider'
-import Startside from './pages/startside'
+import Soknader from './pages/soknader/soknader'
 
 const App = (): any => {
 
@@ -19,7 +19,7 @@ const App = (): any => {
                 <Amplitude>
                     <main id="maincontent" role="main" tabIndex={-1}>
                         <Switch>
-                            <Route exact={true} path="/" component={Startside} />
+                            <Route exact={true} path="/" component={Soknader} />
                         </Switch>
                     </main>
                 </Amplitude>

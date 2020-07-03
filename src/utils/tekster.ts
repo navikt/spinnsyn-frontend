@@ -1,8 +1,8 @@
-import VedtakTekster from '../pages/vedtak-tekster'
+import SoknaderTekster from '../pages/soknader/soknader-tekster'
 import { logger } from './logger'
 
 const tekster = {
-    ...VedtakTekster.nb,
+    ...SoknaderTekster.nb,
 }
 
 
