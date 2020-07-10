@@ -18,6 +18,9 @@ export const tekst = (tekst: string): string => {
         logger.error(`Mangler teksten [ ${tekst} ]`)
         return undefined as any
     }
+    if (verdi === undefined) {
+        return tekst
+    }
     return verdi
 }
 

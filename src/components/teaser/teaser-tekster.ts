@@ -1,6 +1,7 @@
 const TeaserTekster = {
     'nb': {
-        'soknad.teaser.tittel': 'Søknad om sykepenger',
+        'spvedtak.teaser.tittel': 'Behandlet søknad',
+        'spvedtak.teaser.sykmeldt': '%PROSENT% sykmeldt fra %ARBEIDSGIVER% i %DAGER%',
     }, 'en': {}
 }
 

@@ -11,15 +11,11 @@ import { getUrlTilSoknad } from '../../utils/url-utils'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
 import { InngangsHeader, Inngangspanel } from '../inngang/inngangspanel'
 import Vis from '../vis'
-import {
-    beregnUndertekst,
-    hentTeaserStatustekst,
-    SykepengesoknadTeaserProps } from './teaser-util'
+import { hentTeaserStatustekst, SykepengesoknadTeaserProps } from './teaser-util'
 
 const Teaser = ({ soknad }: SykepengesoknadTeaserProps) => {
     const { logEvent } = useAmplitudeInstance()
     const stegId = soknad.status === RSSoknadstatus.NY || RSSoknadstatus.UTKAST_TIL_KORRIGERING ? '1' : ''
-    const undertekst = beregnUndertekst(soknad)
 
     return (
         <article aria-labelledby={`soknader-header-${soknad.id}`} onClick={() => {
@@ -29,24 +25,15 @@ const Teaser = ({ soknad }: SykepengesoknadTeaserProps) => {
                 <HoyreChevron />
                 <div className='inngangspanel__innhold'>
                     <InngangsHeader
-                        meta={ getLedetekst(tekst('soknad.teaser.dato'), {
-                            '%DATO%': dayjs(soknad.opprettetDato).format('DD.MM.YYYY'),
-                        })}
-                        tittel={soknad.soknadstype === RSSoknadstype.OPPHOLD_UTLAND
-                            ? tekst('soknad.utland.teaser.tittel')
-                            : tekst('soknad.teaser.tittel')}
+                        meta={dayjs(soknad.fom).format('DD. MMM') + ' - ' + dayjs(soknad.tom).format('DD. MMM YYYY')}
+                        tittel={tekst('spvedtak.teaser.tittel')}
                         status={hentTeaserStatustekst(soknad)}
                     />
                     <Vis hvis={soknad.soknadstype !== RSSoknadstype.OPPHOLD_UTLAND}>
                         <Normaltekst className='inngangspanel__tekst'>
-                            {getLedetekst(tekst('soknad.teaser.tekst'), {
+                            {getLedetekst(tekst('spvedtak.teaser.sykmeldt'), {
                                 '%PERIODE%': tilLesbarPeriodeMedArstall(soknad.fom, soknad.tom),
                             })}
-                        </Normaltekst>
-                    </Vis>
-                    <Vis hvis={undertekst !== undefined}>
-                        <Normaltekst className='inngangspanel__undertekst'>
-                            {undertekst}
                         </Normaltekst>
                     </Vis>
                 </div>

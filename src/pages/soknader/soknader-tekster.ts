@@ -1,6 +1,6 @@
 const SoknaderTekster: any = {
     'nb': {
-        'soknader.sidetittel': 'Søknader om sykepenger',
+        'soknader.sidetittel': 'Behandlede søknader',
     }, 'en': {}
 }
 

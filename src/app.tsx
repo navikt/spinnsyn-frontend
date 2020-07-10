@@ -17,7 +17,7 @@ const App = (): any => {
         <StoreProvider>
             <DataFetcher>
                 <Amplitude>
-                    <main id="maincontent" role="main" tabIndex={-1}>
+                    <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
                         <Switch>
                             <Route exact={true} path="/" component={Soknader} />
                         </Switch>
