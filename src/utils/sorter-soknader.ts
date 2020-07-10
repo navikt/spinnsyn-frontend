@@ -20,11 +20,11 @@ const getTomFraSoknad = (soknad: Soknad): Date => {
         return senesteTom(perioder)
     }
 
-    if (soknad.soknadstype === RSSoknadstype.OPPHOLD_UTLAND && soknad.status === RSSoknadstatus.SENDT) {
+    if (soknad?.soknadstype === RSSoknadstype.OPPHOLD_UTLAND && soknad.status === RSSoknadstatus.SENDT) {
         return getTomForUtland(soknad) || soknad.opprettetDato
     }
 
-    if (soknad.soknadstype === RSSoknadstype.OPPHOLD_UTLAND && soknad.status === RSSoknadstatus.NY) {
+    if (soknad?.soknadstype === RSSoknadstype.OPPHOLD_UTLAND && soknad.status === RSSoknadstatus.NY) {
         return soknad.opprettetDato
     }
     return soknad.tom || soknad.opprettetDato

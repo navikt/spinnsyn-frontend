@@ -28,6 +28,7 @@ const brodsmuler: Brodsmule[] = [ {
 const Soknader = () => {
     const { soknader } = useAppStore()
     const nyeSoknader = filtrerOgSorterNyeSoknader(soknader)
+    // const [ sortering, setSortering ] = useState<any>(sorterEtterPerioder)
 
     const tidligereSoknader = soknader
         .filter((soknad) =>
@@ -55,9 +56,12 @@ const Soknader = () => {
 
                 <Vis hvis={tidligereSoknader.length > 0}>
                     <div className="soknader__sortering">
-                        <Select label={tekst('soknader.sorter.etter')} bredde="l">
+                        <Select bredde="l"
+                            label={tekst('soknader.sorter.etter')}
+                            // onChange={() => setSortering(sorterEtterOpprettetDato)}
+                        >
                             <option value="dato">Dato</option>
-                            <option value="status">Status</option>
+                            <option value="periode">Periode</option>
                         </Select>
                     </div>
                     <Teasere
