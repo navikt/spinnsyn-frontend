@@ -1,6 +1,5 @@
 import './soknader.less'
 
-import { Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
@@ -54,23 +53,15 @@ const Soknader = () => {
                 <Teasere
                     className={'mb_nye_soknader'}
                     soknader={nyeSoknader}
-                    tittel={tekst('soknader.venter-paa-behandling.tittel')}
-                    tomListeTekst={tekst('soknader.venter-paa-behandling.ingen-soknader')}
+                    tittel={tekst('spvedtak.teaser.nye')}
+                    tomListeTekst={tekst('soknader.ingen-soknader')}
                     id='soknader-list-til-behandling'
                 />
-
-                <Vis hvis={fremtidigeSoknader.length > 0}>
-                    <Teasere
-                        soknader={fremtidigeSoknader}
-                        tittel={tekst('soknader.planlagt.tittel')}
-                        id='soknader-planlagt'
-                    />
-                </Vis>
 
                 <Vis hvis={tidligereSoknader.length > 0}>
                     <Teasere
                         soknader={tidligereSoknader}
-                        tittel={tekst('soknader.sendt.tittel')}
+                        tittel={tekst('spvedtak.teaser.tidligere')}
                         id='soknader-sendt'
                     />
                 </Vis>

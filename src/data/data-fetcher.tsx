@@ -14,7 +14,6 @@ import { useAppStore } from './stores/app-store'
 
 export function DataFetcher(props: { children: any }) {
     const { setUnleash, setSoknader, setSykmeldinger } = useAppStore()
-
     const unleash = useFetch<{}>()
     const rssoknader = useFetch<RSSoknad[]>()
     const sykmeldinger = useFetch<Sykmelding[]>()

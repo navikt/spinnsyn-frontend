@@ -1,17 +1,19 @@
 @import '../../../node_modules/nav-frontend-core/less/_variabler';
 
 .inngangspanelerHeader {
-    padding: 1rem 2rem;
+    padding: 2rem 0;
     background-color: @white;
 }
 
 .inngangspanel {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
     border: 1px solid @navMorkGra;
     border-radius: 4px;
     background-color: @white;
-    margin-top: 1px;
+    margin-bottom: 1rem;
     padding: 1.5rem 2rem;
     color: @navMorkGra;
     text-decoration: none;
@@ -22,20 +24,26 @@
         text-align: left;
     }
 
-    .chevronboks {
-        position: absolute;
-        right: 1rem;
-        top: 2.4rem;
-        color: @grayIcon;
+    .inngangspanel__venstre {
+        display: flex;
+        align-items: center;
+    }
+
+    .inngangspanel__hoyre {
+        display: flex;
+        align-items: center;
+    }
+
+    .inngangspanel__status {
+        margin-right: 1rem;
     }
 
     .inngangspanel__ikon {
         display: flex;
-        width: 60px;
+        margin: -8px 1.5rem 0 0;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
-        margin-left: 18px;
     }
 
     .inngangspanel__ikon--hover {
@@ -47,10 +55,6 @@
         z-index: 100;
         box-shadow: #ccc 0 0 4px 2px;
 
-        .chevronboks {
-            color: @navBla;
-        }
-
         .inngangspanel__ikon--hover {
             display: flex;
         }
@@ -58,10 +62,6 @@
         .inngangspanel__ikon--normal {
             display: none;
         }
-    }
-
-    .inngangspanel__status {
-        position: relative;
     }
 
     &.inngangspanel--ekstern {
@@ -100,15 +100,5 @@
     .knapp.knapp--hoved {
         display: block;
         margin: 2rem auto 1rem;
-    }
-}
-
-@media (min-width: @screen-sm) {
-    .inngangspanel {
-        .inngangspanel__status {
-            position: absolute;
-            top: 1.8rem;
-            right: 3rem;
-        }
     }
 }

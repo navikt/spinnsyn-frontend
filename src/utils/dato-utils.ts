@@ -76,7 +76,7 @@ export const tilLesbarPeriodeUtenArstall = (fomArg: any, tomArg: any) => {
 }
 
 export function getDuration(from: Date, to: Date) {
-    return Math.round(Math.floor(to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24)) + 1
+    return Math.round(Math.floor(to?.getTime() - from?.getTime()) / (1000 * 60 * 60 * 24)) + 1
 }
 
 

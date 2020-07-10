@@ -1,6 +1,6 @@
 import './inngangspanel.less'
 
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { Undertekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -48,15 +48,12 @@ interface InngangsHeaderProps {
 export const InngangsHeader = ({ meta, tittel, status }: InngangsHeaderProps) => {
     return (
         <header className='inngangspanel__header'>
-            <Normaltekst className='inngangspanel__meta'>
+            <Undertekst className='inngangspanel__meta'>
                 {meta}
-            </Normaltekst>
-            <Vis hvis={status !== null}>
-                <Normaltekst className='inngangspanel__status'>{status}</Normaltekst>
-            </Vis>
-            <Systemtittel tag='h3' className='inngangspanel__tittel'>
+            </Undertekst>
+            <Undertittel tag='h3' className='inngangspanel__tittel'>
                 {tittel}
-            </Systemtittel>
+            </Undertittel>
         </header>
     )
 }
