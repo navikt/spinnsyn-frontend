@@ -1,7 +1,7 @@
 import './soknader.less'
 
 import React, { useEffect } from 'react'
-
+import { Select } from 'nav-frontend-skjema'
 import Banner from '../../components/banner/banner'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Teasere from '../../components/teaser/teasere'
@@ -46,18 +46,25 @@ const Soknader = () => {
             <div className='limit'>
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <Teasere
-                    className={'mb_nye_soknader'}
+                    className="soknader__teasere"
                     soknader={nyeSoknader}
                     tittel={tekst('spvedtak.teaser.nye')}
                     tomListeTekst={tekst('soknader.ingen-soknader')}
-                    id='soknader-list-til-behandling'
+                    id="soknader-nye"
                 />
 
                 <Vis hvis={tidligereSoknader.length > 0}>
+                    <div className="soknader__sortering">
+                        <Select label={tekst('soknader.sorter.etter')} bredde="l">
+                            <option value="dato">Dato</option>
+                            <option value="status">Status</option>
+                        </Select>
+                    </div>
                     <Teasere
+                        className="soknader__teasere"
                         soknader={tidligereSoknader}
                         tittel={tekst('spvedtak.teaser.tidligere')}
-                        id='soknader-sendt'
+                        id="soknader-tidligere"
                     />
                 </Vis>
             </div>
