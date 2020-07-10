@@ -9,8 +9,8 @@ import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { getUrlTilSoknad } from '../../utils/url-utils'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
-import Vis from '../vis'
 import { InngangsHeader, Inngangspanel } from '../inngang/inngangspanel'
+import Vis from '../vis'
 import {
     beregnUndertekst,
     hentTeaserStatustekst,

@@ -7,13 +7,13 @@ import { RSSoknadstype } from '../../types/rs-types/rs-soknadstype'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
+import { InngangsHeader, Inngangspanel } from '../inngang/inngangspanel'
 import Vis from '../vis'
 import {
     beregnUndertekst,
     hentTeaserStatustekst,
     SykepengesoknadTeaserProps
 } from './teaser-util'
-import { InngangsHeader, Inngangspanel } from '../inngang/inngangspanel'
 
 const TidligereSoknaderTeaser = ({ soknad }: SykepengesoknadTeaserProps) => {
     const { logEvent } = useAmplitudeInstance()

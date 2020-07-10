@@ -1,6 +1,6 @@
 import BannerTekster from '../components/banner/banner-tekster'
-import SoknaderTekster from '../pages/soknader/soknader-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
+import SoknaderTekster from '../pages/soknader/soknader-tekster'
 import { logger } from './logger'
 
 const tekster = {

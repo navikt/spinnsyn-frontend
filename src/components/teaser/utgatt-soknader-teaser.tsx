@@ -10,8 +10,8 @@ import { RSSoknadstype } from '../../types/rs-types/rs-soknadstype'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
-import Vis from '../vis'
 import { InngangsHeader } from '../inngang/inngangspanel'
+import Vis from '../vis'
 import {
     finnArbeidsgivernavn,
     hentTeaserStatustekst,
