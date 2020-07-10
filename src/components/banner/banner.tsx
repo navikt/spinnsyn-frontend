@@ -9,7 +9,7 @@ const Banner = () => {
     return (
         <header className='soknadtopp'>
             <Systemtittel tag='h1' className='soknadtopp__tittel'>
-                {tekst('sykepengesoknad.sidetittel')}
+                {tekst('spvedtak.sidetittel')}
             </Systemtittel>
         </header>
     )

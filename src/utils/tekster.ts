@@ -9,7 +9,6 @@ const tekster = {
     ...TeaserTekster.nb,
 }
 
-
 export const tekst = (tekst: string): string => {
     const verdi = tekster[tekst]
     // Generiskfeilmelding har ingen tekst
