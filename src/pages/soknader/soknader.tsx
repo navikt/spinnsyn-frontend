@@ -2,6 +2,7 @@ import './soknader.less'
 
 import React, { useEffect } from 'react'
 
+import Banner from '../../components/banner/banner'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Teasere from '../../components/teaser/teasere'
 import Vis from '../../components/vis'
@@ -11,7 +12,6 @@ import { Brodsmule, Soknad } from '../../types/types'
 import { sorterEtterOpprettetDato, sorterEtterPerioder } from '../../utils/sorter-soknader'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
-import Banner from '../../components/banner/banner'
 
 export const filtrerOgSorterNyeSoknader = (soknader: Soknad[]) => {
     return soknader.filter(soknad =>
@@ -35,11 +35,6 @@ const Soknader = () => {
             || soknad.status === RSSoknadstatus.AVBRUTT
             || soknad.status === RSSoknadstatus.UTGAATT
         ).sort(sorterEtterPerioder)
-
-    const fremtidigeSoknader = soknader
-        .filter((soknad) => soknad.status === RSSoknadstatus.FREMTIDIG)
-        .sort(sorterEtterPerioder)
-        .reverse()
 
     useEffect(() => {
         setBodyClass('soknader')

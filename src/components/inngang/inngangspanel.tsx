@@ -45,7 +45,7 @@ interface InngangsHeaderProps {
     status: string;
 }
 
-export const InngangsHeader = ({ meta, tittel, status }: InngangsHeaderProps) => {
+export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
     return (
         <header className='inngangspanel__header'>
             <Undertekst className='inngangspanel__meta'>

@@ -3,22 +3,22 @@ import { HoyreChevron } from 'nav-frontend-chevron'
 import { Undertekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { useAppStore } from '../../data/stores/app-store'
 import { RSSoknadstatus } from '../../types/rs-types/rs-soknadstatus'
 import { RSSoknadstype } from '../../types/rs-types/rs-soknadstype'
+import { Sykmelding } from '../../types/types'
 import { getDuration } from '../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { getUrlTilSoknad } from '../../utils/url-utils'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import Vis from '../vis'
-import { hentTeaserStatustekst, SykepengesoknadTeaserProps } from './teaser-util'
-import { useAppStore } from '../../data/stores/app-store'
-import { Sykmelding } from '../../types/types'
-import avkrysset from './avkrysset.svg'
 import avkryssetHover from './avkrysset-hover.svg'
+import avkrysset from './avkrysset.svg'
+import { hentTeaserStatustekst, SykepengesoknadTeaserProps } from './teaser-util'
 
 const Teaser = ({ soknad }: SykepengesoknadTeaserProps) => {
-    const { sykmeldinger } = useAppStore();
+    const { sykmeldinger } = useAppStore()
     const { logEvent } = useAmplitudeInstance()
     const stegId = soknad.status === RSSoknadstatus.NY || RSSoknadstatus.UTKAST_TIL_KORRIGERING ? '1' : ''
     const sykmelding: Sykmelding = sykmeldinger.filter(sykm => sykm.id = soknad.sykmeldingId)[0]
