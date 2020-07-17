@@ -1,7 +1,8 @@
 import './soknader.less'
 
-import React, { useEffect } from 'react'
 import { Select } from 'nav-frontend-skjema'
+import React, { useEffect } from 'react'
+
 import Banner from '../../components/banner/banner'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Teasere from '../../components/teaser/teasere'
