@@ -5,6 +5,7 @@ import IngenData from '../pages/feil/ingen-data'
 import { RSSoknad } from '../types/rs-types/rs-soknad'
 import { Soknad, Sykmelding } from '../types/types'
 import { UnleashToggles } from '../types/types'
+import { Vedtak } from '../types/Vedtak'
 import env from '../utils/environment'
 import { logger } from '../utils/logger'
 import { unleashKeys } from './mock/data/toggles'
@@ -13,10 +14,11 @@ import { FetchState, hasAny401, hasAnyFailed, hasData, isAnyNotStartedOrPending,
 import { useAppStore } from './stores/app-store'
 
 export function DataFetcher(props: { children: any }) {
-    const { setUnleash, setSoknader, setSykmeldinger } = useAppStore()
+    const { setUnleash, setSoknader, setSykmeldinger, setVedtak } = useAppStore()
     const unleash = useFetch<{}>()
     const rssoknader = useFetch<RSSoknad[]>()
     const sykmeldinger = useFetch<Sykmelding[]>()
+    const vedtak = useFetch<Vedtak[]>()
 
     useEffect(() => {
         if (isNotStarted(unleash)) {
@@ -37,6 +39,15 @@ export function DataFetcher(props: { children: any }) {
                     setSoknader(fetchState.data!.map(soknad => {
                         return new Soknad(soknad)
                     }))
+                }
+            })
+        }
+        if (isNotStarted(vedtak)) {
+            vedtak.fetch(env.spinnsynRoot + '/api/v1/vedtak', {
+                credentials: 'include',
+            }, (fetchState: FetchState<Vedtak[]>) => {
+                if (hasData(fetchState)) {
+                    setVedtak(fetchState.data)
                 }
             })
         }

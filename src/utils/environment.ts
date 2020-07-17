@@ -22,6 +22,10 @@ class Environment {
         return this.env.SYFOREST_ROOT
     }
 
+    get spinnsynRoot() {
+        return this.env.SPINNSYN_ROOT
+    }
+
     get unleashUrl() {
         return this.env.UNLEASH_URL
     }

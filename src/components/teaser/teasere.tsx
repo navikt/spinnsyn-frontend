@@ -1,29 +1,29 @@
 import { Element, Systemtittel } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { Soknad } from '../../types/types'
+import { Vedtak } from '../../types/Vedtak'
 import Vis from '../vis'
 import Teaser from './teaser'
 
 interface SoknaderTeasereProps {
-    soknader: Soknad[];
+    vedtak: Vedtak[];
     className?: string;
     tittel: string;
     tomListeTekst?: string;
     id: string;
 }
 
-const Teasere = ({ soknader, className, tittel, tomListeTekst, id }: SoknaderTeasereProps) => {
+const Teasere = ({ vedtak, className, tittel, tomListeTekst, id }: SoknaderTeasereProps) => {
     return (
         <>
             <header className='inngangspanelerHeader'>
                 <Systemtittel className='inngangspanelerHeader__tittel' tag='h2'>{tittel}</Systemtittel>
             </header>
             <div id={id} className={className}>
-                {soknader.map((soknad, idx) => {
-                    return <Teaser key={idx} soknad={soknad} />
+                {vedtak.map((v, idx) => {
+                    return <Teaser key={idx} vedtak={v} />
                 })}
-                <Vis hvis={soknader.length === 0}>
+                <Vis hvis={vedtak.length === 0}>
                     <Element className='inngangspanel inngangspanel--tomListe'>
                         {tomListeTekst}
                     </Element>

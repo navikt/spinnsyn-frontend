@@ -5,6 +5,7 @@ import React from 'react'
 import { RSSoknadstatus } from '../../types/rs-types/rs-soknadstatus'
 import { RSSoknadstype } from '../../types/rs-types/rs-soknadstype'
 import { Soknad } from '../../types/types'
+import { Vedtak } from '../../types/Vedtak'
 import { getRiktigDato, getSendtTilSuffix } from '../../utils/soknad-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 
@@ -85,19 +86,7 @@ export const beregnUndertekst = (soknad: Soknad) => {
     }
 }
 
-export const hentTeaserStatustekst = (soknad: Soknad) => {
-    if (
-        soknad.status !== RSSoknadstatus.NY &&
-        soknad.status !== RSSoknadstatus.SENDT &&
-        soknad.status !== RSSoknadstatus.AVBRUTT
-    ) {
-        return getLedetekst(tekst(`soknad.teaser.status.${soknad.status}`), {
-            '%DATO%': dayjs(getRiktigDato(soknad)).format('DD.MM.YYYY'),
-        })
-    }
-    return ''
-}
 
 export interface SykepengesoknadTeaserProps {
-    soknad: Soknad;
+    vedtak: Vedtak;
 }
