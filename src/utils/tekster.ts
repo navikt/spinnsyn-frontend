@@ -1,12 +1,14 @@
 import BannerTekster from '../components/banner/banner-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
 import SoknaderTekster from '../pages/soknader/soknader-tekster'
+import VedtakTekster from '../pages/vedtak/vedtak-tekster'
 import { logger } from './logger'
 
 const tekster = {
     ...BannerTekster.nb,
     ...SoknaderTekster.nb,
     ...TeaserTekster.nb,
+    ...VedtakTekster.nb,
 }
 
 export const tekst = (tekst: string): string => {

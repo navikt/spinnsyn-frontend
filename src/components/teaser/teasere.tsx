@@ -1,7 +1,7 @@
 import { Element, Systemtittel } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { Vedtak } from '../../types/Vedtak'
+import { Vedtak } from '../../types/vedtak'
 import Vis from '../vis'
 import Teaser from './teaser'
 

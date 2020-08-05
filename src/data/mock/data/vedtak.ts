@@ -1,4 +1,4 @@
-import { Vedtak } from '../../../types/Vedtak'
+import { Vedtak } from '../../../types/vedtak'
 
 export const vedtakTestdata: Vedtak[] = [ {
     'id': '57896853-d5c3-4599-a77f-aff1f2cbc411',
