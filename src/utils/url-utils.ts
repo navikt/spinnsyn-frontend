@@ -1,6 +1,5 @@
-import { Vedtak } from '../types/Vedtak'
+import { Vedtak } from '../types/vedtak'
 
-export const getUrlTilSoknad = (soknad: Vedtak) => {
-    return `/soknader/${soknad.id}`
-
+export const getUrlTilVedtak = (vedtak: Vedtak) => {
+    return `/vedtak/${vedtak.id}`
 }

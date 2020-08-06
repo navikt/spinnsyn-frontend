@@ -5,7 +5,7 @@ import React from 'react'
 import { RSSoknadstatus } from '../../types/rs-types/rs-soknadstatus'
 import { RSSoknadstype } from '../../types/rs-types/rs-soknadstype'
 import { Soknad } from '../../types/types'
-import { Vedtak } from '../../types/Vedtak'
+import { Vedtak } from '../../types/vedtak'
 import { getRiktigDato, getSendtTilSuffix } from '../../utils/soknad-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 
