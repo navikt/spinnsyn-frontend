@@ -6,12 +6,13 @@ import { useParams } from 'react-router'
 import Banner from '../../components/banner/banner'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Klage from '../../components/klage/klage'
+import Oppsummering from '../../components/oppsummering/oppsummering'
 import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
 import Utbetalinger from '../../components/utebetalinger/utbetalinger'
 import Utbetalingsoversikt from '../../components/utebetalingesoversikt/utbetalingsoversikt'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
-import { Brodsmule, Sykmelding } from '../../types/types'
+import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 
@@ -23,7 +24,7 @@ const brodsmuler: Brodsmule[] = [ {
 
 const Vedtak = () => {
     const { id } = useParams()
-    const { setValgtVedtak, valgtVedtak, vedtak, sykmeldinger } = useAppStore()
+    const { setValgtVedtak, valgtVedtak, vedtak, sykmeldinger, soknader } = useAppStore()
 
     useEffect(() => {
         setValgtVedtak(vedtak.find(a => a.id === id))
@@ -37,6 +38,13 @@ const Vedtak = () => {
         return sykmeldinger.filter(syk => sykmeldingIder?.includes(syk.id) )
     }
 
+    const hentSoknader = (): Soknad[] => {
+        const soknadIder = valgtVedtak?.vedtak.dokumenter
+            .filter(dok => dok.type === 'Søknad')
+            .map(dok => dok.dokumentId)
+        return soknader.filter(sok => soknadIder?.includes(sok.id) )
+    }
+
     return (
         <>
             <Banner />
@@ -47,6 +55,7 @@ const Vedtak = () => {
                 <p> Begrunnelse... </p>
                 <Utbetalinger />
                 <Utbetalingsoversikt />
+                {hentSoknader().map((sok, idx) => <Oppsummering ekspandert={false} soknad={sok} key={idx} />)}
                 <Klage />
             </div>
         </>

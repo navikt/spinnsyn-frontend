@@ -1,5 +1,5 @@
-import { Soknad, Sykmelding, SykmeldingPeriode, TidsPeriode } from '../types/types'
-import { dayjsToDate } from './dato-utils'
+import { Soknad, Sporsmal, Sykmelding, SykmeldingPeriode, TidsPeriode } from '../types/types'
+import { dayjsToDate, fraBackendTilDate } from './dato-utils'
 
 export const tidligsteFom = (perioder: TidsPeriode[]) => {
     if (perioder.length === 0) {
@@ -50,4 +50,14 @@ export const erOppdelt = (soknad: Soknad, sykmelding: Sykmelding) => {
 
     return !(soknad.fom!.getTime() === fomSykmelding.getTime()
         && soknad.tom!.getTime() === tomSykmelding.getTime())
+}
+
+export const hentPeriode = (sporsmal: Sporsmal, index: number) => {
+    const svar = sporsmal.svarliste.svar[index]
+    const periode: Date[] = []
+    if (svar === undefined) {
+        return periode
+    }
+    const datoer = JSON.parse(svar.verdi)
+    return [ fraBackendTilDate(datoer.fom), fraBackendTilDate(datoer.tom) ]
 }

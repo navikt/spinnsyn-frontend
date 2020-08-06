@@ -50,7 +50,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "~3.9.5",
-    "uuid": "^8.2.0"
+    "uuid": "^8.2.0",
+    "html-react-parser": "^0.13.0"
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
@@ -59,7 +60,7 @@
     "@types/uuid": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
-    "cypress": "^4.8.0",
+    "cypress": "^4.12.1",
     "eslint": "^6.6.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-cypress": "^2.11.1",
