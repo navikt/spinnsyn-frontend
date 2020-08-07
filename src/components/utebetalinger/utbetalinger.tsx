@@ -1,6 +1,6 @@
 import './utbetalinger.less'
 
-import { Undertittel, Element, Normaltekst } from 'nav-frontend-typografi'
+import { Element, Normaltekst,Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { useAppStore } from '../../data/stores/app-store'
