@@ -1,0 +1,39 @@
+@import '../../../node_modules/nav-frontend-core/less/_variabler';
+
+.vedtak__utbetaling {
+    margin: 2rem 0;
+
+    .vedtak__utbetaling--tittel {
+        margin: 1rem 0;
+    }
+
+    .vedtak__utbetaling--tekst {
+        margin: 0.5rem 0 1rem;
+    }
+
+    .utbetaling__tabell {
+        margin-top: 0.5rem;
+        width: 100%;
+        border-collapse: collapse;
+
+        th, td {
+            text-align: left;
+            line-height: 1.8;
+            font-weight: normal;
+        }
+
+        .utbetaling__tabell--underlinje {
+            th, td {
+                font-weight: bold;
+                border-top: 1px solid @navGra40;
+                border-bottom: 1px solid @navGra40;
+            }
+        }
+
+        .utbetaling__tabell--sum {
+            th, td {
+                font-weight: bold;
+            }
+        }
+    }
+}

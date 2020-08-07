@@ -14,13 +14,13 @@ const Klage = () => {
 
     return (
         <>
-            <Element tag='h2' className='klage-tittel'>{tekst('klage.tittel')}</Element>
-            <Normaltekst tag='span'>{tekst('klage.behandlingstid')} </Normaltekst>
-            <Normaltekst tag='span'>{tekst('klage.frist')} </Normaltekst>
+            <Element tag="h2" className="klage-tittel">{tekst('klage.tittel')}</Element>
+            <Normaltekst tag="span">{tekst('klage.behandlingstid')} </Normaltekst>
+            <Normaltekst tag="span">{tekst('klage.frist')} </Normaltekst>
             <Lenke target="blank" href={tekst('klage.klagerettigheter.url')}>
                 <Normaltekst tag="span">{tekst('klage.klagerettigheter.tekst')}</Normaltekst>
             </Lenke>
-            <Knapp mini type='standard' onClick={() => klageKnappTrykk()}>{tekst('klage.knapp.uenig')}</Knapp>
+            <Knapp mini type="standard" onClick={() => klageKnappTrykk()}>{tekst('klage.knapp.uenig')}</Knapp>
         </>
     )
 }
