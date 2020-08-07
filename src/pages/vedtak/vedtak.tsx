@@ -1,10 +1,10 @@
 import './vedtak.less'
 
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
 import Banner from '../../components/banner/banner'
+import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Klage from '../../components/klage/klage'
 import Oppsummering from '../../components/oppsummering/oppsummering'
@@ -62,12 +62,7 @@ const Vedtak = () => {
                 {hentSykmeldinger().map((syk, idx) =>
                     <SykmeldingOpplysninger ekspandert={false} sykmelding={syk} key={idx} />
                 )}
-                <section className="vedtak__begrunnelse">
-                    <Undertittel tag="h2">Begrunnelse</Undertittel>
-                    <Normaltekst className="vedtak__begrunnelse--tekst">
-                        {tekst('vedtak.begrunnelse')}
-                    </Normaltekst>
-                </section>
+                <Begrunnelse />
                 <Utbetalinger />
                 <Utbetalingsoversikt />
                 {hentSoknader().map((sok, idx) =>
