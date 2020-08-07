@@ -20,7 +20,6 @@ const brodsmuler: Brodsmule[] = [ {
 const Soknader = () => {
     const { vedtak } = useAppStore()
 
-
     useEffect(() => {
         setBodyClass('soknader')
     }, [])
@@ -28,14 +27,13 @@ const Soknader = () => {
     return (
         <>
             <Banner />
-            <div className='limit'>
+            <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <Teasere
-                    className="soknader__teasere"
+                    className="soknader__teasere soknader--nye"
                     vedtak={vedtak}
                     tittel={tekst('spvedtak.teaser.nye')}
                     tomListeTekst={tekst('soknader.ingen-soknader')}
-                    id="soknader-nye"
                 />
 
             </div>

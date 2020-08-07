@@ -14,7 +14,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
                 <div className="inngangspanel__venstre">
                     <InngangsIkon ikon={avkrysset} ikonHover={avkryssetHover} />
-                    <div className='inngangspanel__innhold'>
+                    <div className="inngangspanel__innhold">
                         <InngangsHeader
                             meta={dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')}
                             tittel={tekst('spvedtak.teaser.tittel')}
