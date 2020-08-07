@@ -9,7 +9,7 @@ interface UtbetalingProps {
 }
 
 const Utbetaling = ({ utbetaling }: UtbetalingProps) => {
-    const trekk = 20        // TODO: Er denne alltid 20?
+    const trekk = 0.2        // TODO: Er denne alltid 20?
     const Nummer = Intl.NumberFormat('nb-NO', { style: 'currency', currency: 'NOK' })
 
     const dagsats = () => {
@@ -25,11 +25,11 @@ const Utbetaling = ({ utbetaling }: UtbetalingProps) => {
 
     const forskuddstrekk = () => {
         const trekkes = utbetaling.beløp * trekk
-        return `${Nummer.format(trekkes)} (${trekk} %)`
+        return `${Nummer.format(trekkes)} (${trekk * 100} %)`
     }
 
     const sum = () => {
-        const sum = utbetaling.beløp * (100 - trekk)
+        const sum = utbetaling.beløp * (1 - trekk)
         return `${Nummer.format(sum)}`
     }
 
