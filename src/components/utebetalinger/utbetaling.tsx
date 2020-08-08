@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { UtbetalingslinjeDto } from '../../types/vedtak'
@@ -48,10 +48,10 @@ const Utbetaling = ({ utbetaling }: UtbetalingProps) => {
                     <th> {tekst('utbetaling.forskuddstrekk')} </th>
                     <td> {forskuddstrekk()} </td>
                 </Normaltekst>
-                <Normaltekst tag="tr" className="utbetaling__tabell--sum">
+                <Undertittel tag="tr" className="utbetaling__tabell--sum">
                     <th> {tekst('utbetaling.sum')} </th>
                     <td> {sum()} </td>
-                </Normaltekst>
+                </Undertittel>
             </tbody>
         </table>
     )
