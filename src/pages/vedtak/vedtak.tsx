@@ -1,10 +1,10 @@
 import './vedtak.less'
 
+import { Undertittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
 import Banner from '../../components/banner/banner'
-import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Klage from '../../components/klage/klage'
 import Oppsummering from '../../components/oppsummering/oppsummering'
@@ -17,6 +17,7 @@ import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
+import Begrunnelse from '../../components/begrunnelse/begrunnelse';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -30,9 +31,15 @@ const brodsmuler: Brodsmule[] = [
     }
 ]
 
+export const infoStyle = {
+    border: '1px solid gray',
+    padding: '1rem 1.4rem',
+    margin: '2rem 0',
+}
+
 const Vedtak = () => {
     const { id } = useParams()
-    const { setValgtVedtak, valgtVedtak, vedtak, sykmeldinger, soknader } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, sykmeldinger, soknader } = useAppStore()
 
     useEffect(() => {
         setValgtVedtak(vedtak.find(a => a.id === id))
@@ -58,16 +65,32 @@ const Vedtak = () => {
             <Banner />
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
+
                 <VedtakStatus />
                 {hentSykmeldinger().map((syk, idx) =>
                     <SykmeldingOpplysninger ekspandert={false} sykmelding={syk} key={idx} />
                 )}
-                <Begrunnelse />
+
+                <div style={infoStyle}>
+                    <em>Her kommer: </em>
+                    <Undertittel tag="span">Opplysninger fra sykmeldingen</Undertittel>
+                </div>
+
                 <Utbetalinger />
+
+                <Begrunnelse />
+
                 <Utbetalingsoversikt />
+
+                <div style={infoStyle}>
+                    <em>Her kommer: </em>
+                    <Undertittel tag="span">Oppsummering fra søknaden</Undertittel>
+                </div>
+
                 {hentSoknader().map((sok, idx) =>
                     <Oppsummering ekspandert={false} soknad={sok} key={idx} />
                 )}
+
                 <Klage />
             </div>
         </>
