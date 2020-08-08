@@ -1,6 +1,7 @@
+import { Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
-import { Undertittel } from 'nav-frontend-typografi';
-import { infoStyle } from '../../pages/vedtak/vedtak';
+
+import { infoStyle } from '../../pages/vedtak/vedtak'
 
 const Utbetalingsoversikt = () => {
     return (

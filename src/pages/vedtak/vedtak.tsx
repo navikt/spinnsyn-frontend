@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
 import Banner from '../../components/banner/banner'
+import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Klage from '../../components/klage/klage'
 import Oppsummering from '../../components/oppsummering/oppsummering'
@@ -17,7 +18,6 @@ import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
-import Begrunnelse from '../../components/begrunnelse/begrunnelse';
 
 const brodsmuler: Brodsmule[] = [
     {
