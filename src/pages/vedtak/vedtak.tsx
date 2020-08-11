@@ -1,6 +1,8 @@
 import './vedtak.less'
 
-import { Undertittel } from 'nav-frontend-typografi'
+import { VenstreChevron } from 'nav-frontend-chevron'
+import Lenke from 'nav-frontend-lenker'
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
@@ -16,6 +18,7 @@ import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
+import env from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 
@@ -92,6 +95,11 @@ const Vedtak = () => {
                 )}
 
                 <Klage />
+
+                <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
+                    <VenstreChevron />
+                    <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
+                </Lenke>
             </div>
         </>
     )
