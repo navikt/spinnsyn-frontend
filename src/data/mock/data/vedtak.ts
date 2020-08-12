@@ -51,13 +51,16 @@ export const vedtakTestdata: Vedtak[] = [ {
     'vedtak': {
         'fom': '2020-04-01',
         'tom': '2020-04-24',
-        'dokumenter': [ {
-            'dokumentId': arbeidstaker100.id,
-            'type': 'Sykmelding'
-        }, {
-            'dokumentId': arbeidstaker.id,
-            'type': 'Søknad'
-        } ],
+        'dokumenter': [
+            {
+                'dokumentId': arbeidstaker100.id,
+                'type': 'Sykmelding'
+            },
+            {
+                'dokumentId': arbeidstaker.id,
+                'type': 'Søknad'
+            }
+        ],
         'utbetalinger': [ {
             'mottaker': 'Bruker',
             'fagområde': 'Sykepenger',
@@ -78,7 +81,7 @@ export const vedtakTestdata: Vedtak[] = [ {
                 'sykedager': 5
             } ]
         } ],
-        'forbrukteSykedager':18,
+        'forbrukteSykedager': 18,
         'gjenståendeSykedager': 177
     }
 } ]

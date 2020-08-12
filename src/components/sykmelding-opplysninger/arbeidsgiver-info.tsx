@@ -1,14 +1,10 @@
 import { EtikettLiten, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { Sykmelding } from '../../types/types'
 import { tekst } from '../../utils/tekster'
+import { OpplysningerProps } from './sykmelding-opplysninger'
 
-interface ArbeidsgiverInfoProps {
-    sykmelding: Sykmelding;
-}
-
-const ArbeidsgiverInfo = ({ sykmelding }: ArbeidsgiverInfoProps) => {
+const ArbeidsgiverInfo = ({ sykmelding }: OpplysningerProps) => {
 
     if (sykmelding?.mottakendeArbeidsgiver?.navn) {
         return (
@@ -23,6 +19,5 @@ const ArbeidsgiverInfo = ({ sykmelding }: ArbeidsgiverInfoProps) => {
 
     return null
 }
-
 
 export default ArbeidsgiverInfo

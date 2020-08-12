@@ -17,7 +17,7 @@ const Klage = () => {
             <Undertittel tag="h2" className="klage__tittel">{tekst('klage.tittel')}</Undertittel>
             <Normaltekst>{tekst('klage.behandlingstid')}</Normaltekst>
             <Normaltekst>{tekst('klage.frist')}</Normaltekst>
-            <Lenke className="vedtak__klage--lenke" target="_blank" href={tekst('klage.klagerettigheter.url')}>
+            <Lenke className="vedtak__klage--uenig" target="_blank" href={tekst('klage.klagerettigheter.url')}>
                 <Normaltekst tag="span">{tekst('klage.klagerettigheter.tekst')}</Normaltekst>
             </Lenke>
             <Knapp mini type="standard" onClick={() => klageKnappTrykk()}>

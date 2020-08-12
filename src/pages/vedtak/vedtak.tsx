@@ -2,18 +2,17 @@ import './vedtak.less'
 
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
 import Banner from '../../components/banner/banner'
 import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
-import Klage from '../../components/klage/klage'
 import Oppsummering from '../../components/oppsummering/oppsummering'
 import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
-import Utbetalinger from '../../components/utebetalinger/utbetalinger'
-import Utbetalingsoversikt from '../../components/utebetalingesoversikt/utbetalingsoversikt'
+import Utbetalinger from '../../components/utbetalinger/utbetalinger'
+import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
@@ -74,27 +73,17 @@ const Vedtak = () => {
                     <SykmeldingOpplysninger ekspandert={false} sykmelding={syk} key={idx} />
                 )}
 
-                <div style={infoStyle}>
-                    <em>Her kommer: </em>
-                    <Undertittel tag="span">Opplysninger fra sykmeldingen</Undertittel>
-                </div>
-
                 <Utbetalinger />
 
                 <Begrunnelse />
 
                 <Utbetalingsoversikt />
 
-                <div style={infoStyle}>
-                    <em>Her kommer: </em>
-                    <Undertittel tag="span">Oppsummering fra søknaden</Undertittel>
-                </div>
-
                 {hentSoknader().map((sok, idx) =>
                     <Oppsummering ekspandert={false} soknad={sok} key={idx} />
                 )}
 
-                <Klage />
+                {/* <Klage /> */}
 
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />

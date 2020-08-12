@@ -73,7 +73,11 @@
     "start-server-and-test": "^1.11.0",
     "yet-another-fetch-mock": "^3.4.0"
   },
+  "resolutions": {
+    "serialize-javascript": "3.1.0"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start-mock": "MOCK_BACKEND=true npm run generate-env-config && REACT_APP_DECORATOR_URL=https://www.nav.no/dekoratoren craco start",
     "start": "npm run generate-env-config && craco start",
     "generate-env-config": "chmod +x ./env.sh && ./env.sh && mv env-config.js ./public/",

@@ -1,9 +1,7 @@
-
 export interface Vedtak {
     id: string;
     vedtak: VedtakDto;
 }
-
 
 export interface VedtakDto {
     fom: string;
@@ -14,14 +12,12 @@ export interface VedtakDto {
     dokumenter: Dokument[];
 }
 
-
 export interface UtbetalingDto {
     mottaker: string;
     fagområde: string;
     totalbeløp: number;
     utbetalingslinjer: UtbetalingslinjeDto[];
 }
-
 
 export interface UtbetalingslinjeDto {
     fom: string;

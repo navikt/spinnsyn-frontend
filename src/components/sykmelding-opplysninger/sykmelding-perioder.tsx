@@ -2,14 +2,11 @@ import dayjs from 'dayjs'
 import { EtikettLiten, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { Sykmelding, SykmeldingPeriode } from '../../types/types'
+import { SykmeldingPeriode } from '../../types/types'
 import { getDuration } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 import Vis from '../vis'
-
-interface SykmeldingPerioderProps {
-    sykmelding: Sykmelding;
-}
+import { OpplysningerProps } from './sykmelding-opplysninger'
 
 // TODO: Hentet fra sykepengesok, endre å legg inn i util fil
 const sorterPerioderEldsteFoerst = (perioder: SykmeldingPeriode[]) => {
@@ -26,22 +23,25 @@ const s2d = (datostreng: any) => {
     return dato
 }
 
-const SykmeldingPerioder = ({ sykmelding }: SykmeldingPerioderProps) => {
+const SykmeldingPerioder = ({ sykmelding }: OpplysningerProps) => {
     if (!sykmelding) {
         return null
     }
 
+    const eldsteFoerst = sorterPerioderEldsteFoerst(sykmelding.mulighetForArbeid.perioder)
+
     return (
         <div className="sykmelding-perioder">
-            {sorterPerioderEldsteFoerst(sykmelding.mulighetForArbeid.perioder).map((periode: SykmeldingPeriode, index: number) => {
+            {eldsteFoerst.map((periode: SykmeldingPeriode, index: number) => {
                 const fom = dayjs(periode.fom).format('D. MMM')
                 const tom = dayjs(periode.tom).format('D. MMM YYYY')
                 const dager = getDuration(new Date(periode.fom), new Date(periode.tom)) + ' dager'
 
                 return (
                     <div className="avsnitt" key={index}>
-                        <EtikettLiten tag="h3"
-                            className="avsnitt-hode">{tekst('din-sykmelding.periode.tittel')}</EtikettLiten>
+                        <EtikettLiten tag="h3" className="avsnitt-hode">
+                            {tekst('din-sykmelding.periode.tittel')}
+                        </EtikettLiten>
                         <Normaltekst><strong>{fom} - {tom}</strong> &bull; {dager}</Normaltekst>
                         <Vis hvis={periode.grad}>
                             <Normaltekst>
