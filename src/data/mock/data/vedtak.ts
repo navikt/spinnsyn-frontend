@@ -4,6 +4,7 @@ import { arbeidstaker100 } from './sykmeldinger'
 
 export const vedtakTestdata: Vedtak[] = [ {
     'id': '57896853-d5c3-4599-a77f-aff1f2cbc411',
+    'lest': true,
     'vedtak': {
         'fom': '2020-04-03',
         'tom': '2020-06-19',
@@ -26,6 +27,7 @@ export const vedtakTestdata: Vedtak[] = [ {
     }
 }, {
     'id': '85f1273f-497e-4f25-97ba-a913614d1d9a',
+    'lest': true,
     'vedtak': {
         'fom': '2020-07-03',
         'tom': '2020-07-15',
@@ -48,6 +50,7 @@ export const vedtakTestdata: Vedtak[] = [ {
     }
 }, {
     'id': '85f1273f-497e-4f25-97ba-abc123',
+    'lest': false,
     'vedtak': {
         'fom': '2020-04-01',
         'tom': '2020-04-24',
