@@ -1,4 +1,5 @@
 import 'nav-frontend-tabell-style'
+import './utbetalingsoversikt.less'
 
 import dayjs from 'dayjs'
 import React from 'react'
@@ -53,7 +54,7 @@ const Utbetalingsoversikt = ({ ekspandert }: UtbetalingerProps) => {
             erApen={ekspandert} ikon={calendar} ikonHover={calendarHover}
             tittel={tekst('vedtak.utbetalingsoversikt.tittel')}
             ikonAltTekst="">
-            <table className="tabell">
+            <table className="tabell utbetalingsoversikt-tabell">
                 <thead>
                     <tr>
                         <th>Sykmeldingsdato</th>

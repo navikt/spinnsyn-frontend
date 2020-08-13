@@ -5,15 +5,15 @@ import OppsummeringTekster from '../components/oppsummering/oppsummering-tekster
 import OpplysningerTekster from '../components/sykmelding-opplysninger/opplysninger-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
 import UtbetalingTekster from '../components/utbetalinger/utbetaling-tekster'
-import UtbetalingsoversiktTekster from '../components/utebetalingsoversikt/utbetalingsoversikt-tekster'
+import UtbetalingsoversiktTekster from '../components/utbetalingsoversikt/utbetalingsoversikt-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
-import SoknaderTekster from '../pages/soknader/soknader-tekster'
+import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
 import VedtakTekster from '../pages/vedtak/vedtak-tekster'
 import { logger } from './logger'
 
 const tekster = {
     ...BannerTekster.nb,
-    ...SoknaderTekster.nb,
+    ...VedtakListeTekster.nb,
     ...TeaserTekster.nb,
     ...VedtakTekster.nb,
     ...KlageTekster.nb,

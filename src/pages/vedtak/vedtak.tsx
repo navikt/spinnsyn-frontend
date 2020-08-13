@@ -12,7 +12,7 @@ import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Oppsummering from '../../components/oppsummering/oppsummering'
 import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
 import Utbetalinger from '../../components/utbetalinger/utbetalinger'
-import Utbetalingsoversikt from '../../components/utebetalingsoversikt/utbetalingsoversikt'
+import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
@@ -23,7 +23,7 @@ import { setBodyClass } from '../../utils/utils'
 
 const brodsmuler: Brodsmule[] = [
     {
-        tittel: tekst('soknader.sidetittel'),
+        tittel: tekst('vedtak-liste.sidetittel'),
         sti: SEPARATOR,
         erKlikkbar: true
     }, {
