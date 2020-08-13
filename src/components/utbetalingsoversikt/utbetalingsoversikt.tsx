@@ -18,7 +18,7 @@ interface UtbetalingerProps {
 
 interface Utbetalingslinje {
     dato: string;
-    dagsats: number;
+    belop: number;
     grad: number;
 }
 
@@ -34,19 +34,18 @@ const Utbetalingsoversikt = ({ ekspandert }: UtbetalingerProps) => {
         return null
     }
     const alleBetalinger: Utbetalingslinje[] = []
-    let totaltUtbetalt = 0
+    const totaltUtbetalt = valgtVedtak?.vedtak.utbetalinger.reduce((sum, val) => sum + val.totalbeløp, 0)
 
     utbetalingslinjer.forEach(linje => {
         const varighet = getDuration(new Date(linje!.fom), new Date(linje!.tom))
         for (let i = 0; i < varighet; i++) {
             const betaling: Utbetalingslinje = {
                 dato: (dayjs(linje!.fom).add(i, 'day').format('MM.DD.YYYY')),
-                dagsats: linje!.dagsats,
+                belop: linje!.beløp,
                 grad: linje!.grad
             }
             alleBetalinger.push(betaling!)
         }
-        totaltUtbetalt += linje!.beløp
     })
 
     return (
@@ -65,7 +64,7 @@ const Utbetalingsoversikt = ({ ekspandert }: UtbetalingerProps) => {
                 </thead>
                 <tbody>
                     {alleBetalinger.map((utbetaling, i) => {
-                        const utbetalingsgradIProsent = (Math.ceil((utbetaling.grad * 100) * 10)) / 10
+                        const utbetalingsgradIProsent = Math.floor(utbetaling.grad)
 
                         return <tr key={i}>
                             <td>{dayjs(utbetaling!.dato).format('DD.MM.YYYY')}</td>
@@ -77,7 +76,7 @@ const Utbetalingsoversikt = ({ ekspandert }: UtbetalingerProps) => {
                             <Vis hvis={!erHelg(utbetaling!.dato)}>
                                 <td>{''}</td>
                                 <td>{utbetalingsgradIProsent}%</td>
-                                <td>{utbetaling!.dagsats} kr</td>
+                                <td>{utbetaling!.belop} kr</td>
                             </Vis>
                         </tr>
                     })

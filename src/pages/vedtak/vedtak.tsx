@@ -69,21 +69,22 @@ const Vedtak = () => {
                 <Brodsmuler brodsmuler={brodsmuler} />
 
                 <VedtakStatus />
+
                 {hentSykmeldinger().map((syk, idx) =>
                     <SykmeldingOpplysninger ekspandert={false} sykmelding={syk} key={idx} />
                 )}
-
-                <Utbetalinger />
-
-                <Begrunnelse />
 
                 {hentSoknader().map((sok, idx) =>
                     <Oppsummering ekspandert={false} soknad={sok} key={idx} />
                 )}
 
+                <Begrunnelse />
+
+                <Utbetalinger />
+
+                <Utbetalingsoversikt ekspandert={ false } />
+
                 {/* <Klage /> */}
-                <Utbetalingsoversikt ekspandert={ true } />
-                {hentSoknader().map((sok, idx) => <Oppsummering ekspandert={false} soknad={sok} key={idx} />)}
 
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />

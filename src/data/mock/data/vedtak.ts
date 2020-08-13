@@ -54,6 +54,8 @@ export const vedtakTestdata: Vedtak[] = [ {
     'vedtak': {
         'fom': '2020-04-01',
         'tom': '2020-04-24',
+        'forbrukteSykedager': 18,
+        'gjenståendeSykedager': 177,
         'dokumenter': [
             {
                 'dokumentId': arbeidstaker100.id,
@@ -65,26 +67,29 @@ export const vedtakTestdata: Vedtak[] = [ {
             }
         ],
         'utbetalinger': [ {
-            'mottaker': 'Bruker',
-            'fagområde': 'Sykepenger',
-            'totalbeløp': 1800,
+            'mottaker': arbeidstaker.arbeidsgiver!.orgnummer,
+            'fagområde': 'SPREF',
+            'totalbeløp': 15500,
             'utbetalingslinjer': [ {
                 'fom': '2020-04-01',
                 'tom': '2020-04-19',
-                'grad': 1.00,
-                'beløp': 1300,
-                'dagsats': 100,
+                'dagsats': 1000,
+                'beløp': 1000,
+                'grad': 100.0,
                 'sykedager': 13
             }, {
                 'fom': '2020-04-20',
                 'tom': '2020-04-24',
-                'grad': 1.00,
+                'dagsats': 1000,
                 'beløp': 500,
-                'dagsats': 100,
+                'grad': 50.0,
                 'sykedager': 5
             } ]
-        } ],
-        'forbrukteSykedager': 18,
-        'gjenståendeSykedager': 177
+        }, {
+            'mottaker': 'fnr',
+            'fagområde': 'SP',
+            'totalbeløp': 0,
+            'utbetalingslinjer': []
+        } ]
     }
 } ]
