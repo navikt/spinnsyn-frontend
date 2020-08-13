@@ -1,4 +1,4 @@
-import './soknader.less'
+import './vedtak-liste.less'
 
 import React, { useEffect } from 'react'
 
@@ -12,16 +12,18 @@ import { setBodyClass } from '../../utils/utils'
 
 
 const brodsmuler: Brodsmule[] = [ {
-    tittel: tekst('soknader.sidetittel'),
+    tittel: tekst('vedtak-liste.sidetittel'),
     sti: '/soknader',
     erKlikkbar: false
 } ]
 
-const Soknader = () => {
+const VedtakListe = () => {
     const { vedtak } = useAppStore()
+    const uleste = vedtak.filter(v => v.lest === false)
+    const leste = vedtak.filter(v => v.lest === true)
 
     useEffect(() => {
-        setBodyClass('soknader')
+        setBodyClass('vedtak-liste')
     }, [])
 
     return (
@@ -30,15 +32,20 @@ const Soknader = () => {
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <Teasere
-                    className="soknader__teasere soknader--nye"
-                    vedtak={vedtak}
-                    tittel={tekst('spvedtak.teaser.nye')}
-                    tomListeTekst={tekst('soknader.ingen-soknader')}
+                    className="vedtak__teasere vedtak--uleste"
+                    vedtak={uleste}
+                    tittel={tekst('spvedtak.teaser.uleste')}
+                    tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
                 />
-
+                <Teasere
+                    className="vedtak__teasere vedtak--leste"
+                    vedtak={leste}
+                    tittel={tekst('spvedtak.teaser.leste')}
+                    tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
+                />
             </div>
         </>
     )
 }
 
-export default Soknader
+export default VedtakListe

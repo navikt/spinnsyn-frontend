@@ -16,7 +16,10 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
                     <InngangsIkon ikon={avkrysset} ikonHover={avkryssetHover} />
                     <div className="inngangspanel__innhold">
                         <InngangsHeader
-                            meta={dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')}
+                            meta={
+                                dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
+                                dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
+                            }
                             tittel={tekst('spvedtak.teaser.tittel')}
                             status={'??'}
                         />

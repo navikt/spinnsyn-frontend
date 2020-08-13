@@ -14,21 +14,19 @@ interface SoknaderTeasereProps {
 
 const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeasereProps) => {
     return (
-        <>
+        <div className={className}>
             <header className="inngangspanelerHeader">
                 <Systemtittel className="inngangspanelerHeader__tittel" tag="h2">{tittel}</Systemtittel>
             </header>
-            <div className={className}>
-                {vedtak.map((v, idx) => {
-                    return <Teaser key={idx} vedtak={v} />
-                })}
-                <Vis hvis={vedtak.length === 0}>
-                    <Element className="inngangspanel inngangspanel--tomListe">
-                        {tomListeTekst}
-                    </Element>
-                </Vis>
-            </div>
-        </>
+            {vedtak.map((v, idx) => {
+                return <Teaser key={idx} vedtak={v} />
+            })}
+            <Vis hvis={vedtak.length === 0}>
+                <Element className="inngangspanel inngangspanel--tomListe">
+                    {tomListeTekst}
+                </Element>
+            </Vis>
+        </div>
     )
 }
 
