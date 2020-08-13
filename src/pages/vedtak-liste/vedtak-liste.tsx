@@ -6,7 +6,7 @@ import Banner from '../../components/banner/banner'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Teasere from '../../components/teaser/teasere'
 import { useAppStore } from '../../data/stores/app-store'
-import { Brodsmule  } from '../../types/types'
+import { Brodsmule } from '../../types/types'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 
@@ -18,13 +18,17 @@ const brodsmuler: Brodsmule[] = [ {
 } ]
 
 const VedtakListe = () => {
-    const { vedtak } = useAppStore()
+    const { vedtak, setValgtVedtak } = useAppStore()
     const uleste = vedtak.filter(v => v.lest === false)
     const leste = vedtak.filter(v => v.lest === true)
 
     useEffect(() => {
         setBodyClass('vedtak-liste')
     }, [])
+
+    useEffect(() => {
+        setValgtVedtak(undefined)
+    }, [ setValgtVedtak ])
 
     return (
         <>
