@@ -1,5 +1,6 @@
 export interface Vedtak {
     id: string;
+    lest: boolean;
     vedtak: VedtakDto;
 }
 
