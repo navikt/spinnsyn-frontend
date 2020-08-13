@@ -94,6 +94,11 @@ export const dayjsToDate = (dato: string) => {
     return dato !== null ? dayjs(dato).toDate() : null
 }
 
+export const erHelg = (dato: string) => {
+    const date = new Date(dayjs(dato).format('MM.DD.YYYY'))
+    return date.getDay() === 6 || date.getDay() === 0
+}
+
 export const sendtForMerEnn30DagerSiden = (sendtTilArbeidsgiverDato?: Date, sendtTilNAVDato?: Date) => {
     let dagerSidenArb = true
     let dagerSidenNav = true

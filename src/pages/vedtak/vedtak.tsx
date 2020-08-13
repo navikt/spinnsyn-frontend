@@ -12,7 +12,7 @@ import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import Oppsummering from '../../components/oppsummering/oppsummering'
 import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
 import Utbetalinger from '../../components/utbetalinger/utbetalinger'
-import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
+import Utbetalingsoversikt from '../../components/utebetalingsoversikt/utbetalingsoversikt'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
@@ -77,13 +77,13 @@ const Vedtak = () => {
 
                 <Begrunnelse />
 
-                <Utbetalingsoversikt />
-
                 {hentSoknader().map((sok, idx) =>
                     <Oppsummering ekspandert={false} soknad={sok} key={idx} />
                 )}
 
                 {/* <Klage /> */}
+                <Utbetalingsoversikt ekspandert={ true } />
+                {hentSoknader().map((sok, idx) => <Oppsummering ekspandert={false} soknad={sok} key={idx} />)}
 
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />
