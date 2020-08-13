@@ -18,8 +18,9 @@ import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import env from '../../utils/environment'
+import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
-import { setBodyClass } from '../../utils/utils'
+import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -33,20 +34,39 @@ const brodsmuler: Brodsmule[] = [
     }
 ]
 
-export const infoStyle = {
-    border: '1px solid gray',
-    padding: '1rem 1.4rem',
-    margin: '2rem 0',
-}
-
 const Vedtak = () => {
     const { id } = useParams()
-    const { valgtVedtak, setValgtVedtak, vedtak, sykmeldinger, soknader } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, sykmeldinger, soknader, setVedtak } = useAppStore()
 
     useEffect(() => {
         setValgtVedtak(vedtak.find(a => a.id === id))
         setBodyClass('vedtak')
     }, [ id, setValgtVedtak, vedtak ])
+
+    useEffect(() => {
+        if (valgtVedtak && !valgtVedtak.lest) {
+            const merkVedtakSomLest = async() => {
+                const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${valgtVedtak.id}/les`, {
+                    method: 'POST',
+                    credentials: 'include',
+                })
+                const status = res.status
+                if (redirectTilLoginHvis401(res)) {
+                    return
+                } else if (status === 200) {
+                    valgtVedtak.lest = true
+                    setValgtVedtak(valgtVedtak)
+                    vedtak.find(a => a.id === id)!.lest= true
+                    setVedtak(vedtak)
+
+                } else {
+                    logger.error('Feil ved markering av vedtak som lest. Ikke status 200', res)
+                }
+
+            }
+            merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
+        }
+    } )
 
     const hentSykmeldinger = (): Sykmelding[] => {
         const sykmeldingIder = valgtVedtak?.vedtak.dokumenter
@@ -82,7 +102,7 @@ const Vedtak = () => {
 
                 <Utbetalinger />
 
-                <Utbetalingsoversikt ekspandert={ false } />
+                <Utbetalingsoversikt ekspandert={false} />
 
                 {/* <Klage /> */}
 
