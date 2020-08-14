@@ -1,15 +1,23 @@
 import { Vedtak } from '../../../types/vedtak'
-import { arbeidstaker } from './soknader-opplaering'
-import { arbeidstaker100 } from './sykmeldinger'
+import { arbeidstaker, arbeidstakerNr2 } from './soknader-opplaering'
+import { arbeidstaker100, arbeidstaker100nr2 } from './sykmeldinger'
 
-export const vedtakTestdata: Vedtak[] = [ {
+const lestMedEnSykmeldingOgSoknad: Vedtak = {
     'id': '57896853-d5c3-4599-a77f-aff1f2cbc411',
     'lest': true,
     'vedtak': {
         'fom': '2020-04-03',
         'tom': '2020-06-19',
-        'dokumenter': [],
-        'utbetalinger': [ {
+        'dokumenter': [
+            {
+                'dokumentId': arbeidstaker100.id,
+                'type': 'Sykmelding'
+            },
+            {
+                'dokumentId': arbeidstaker.id,
+                'type': 'Søknad'
+            }
+        ], 'utbetalinger': [ {
             'mottaker': 'Bruker',
             'fagområde': 'Sykepenger',
             'totalbeløp': 13317,
@@ -25,14 +33,31 @@ export const vedtakTestdata: Vedtak[] = [ {
         'forbrukteSykedager': 4,
         'gjenståendeSykedager': 12
     }
-}, {
+}
+const lestMedToSykmeldingerOgSoknader: Vedtak = {
     'id': '85f1273f-497e-4f25-97ba-a913614d1d9a',
     'lest': true,
     'vedtak': {
         'fom': '2020-07-03',
         'tom': '2020-07-15',
-        'dokumenter': [],
-        'utbetalinger': [ {
+        'dokumenter': [
+            {
+                'dokumentId': arbeidstaker100.id,
+                'type': 'Sykmelding'
+            },
+            {
+                'dokumentId': arbeidstaker.id,
+                'type': 'Søknad'
+            },
+            {
+                'dokumentId': arbeidstaker100nr2.id,
+                'type': 'Sykmelding'
+            },
+            {
+                'dokumentId': arbeidstakerNr2.id,
+                'type': 'Søknad'
+            }
+        ], 'utbetalinger': [ {
             'mottaker': 'Bruker',
             'fagområde': 'Sykepenger',
             'totalbeløp': 3854,
@@ -48,7 +73,9 @@ export const vedtakTestdata: Vedtak[] = [ {
         'forbrukteSykedager': 4,
         'gjenståendeSykedager': 12
     }
-}, {
+}
+
+export const ulestMedEnSykmeldingOgSoknad: Vedtak = {
     'id': '85f1273f-497e-4f25-97ba-abc123',
     'lest': false,
     'vedtak': {
@@ -92,4 +119,5 @@ export const vedtakTestdata: Vedtak[] = [ {
             'utbetalingslinjer': []
         } ]
     }
-} ]
+}
+export const vedtakTestdata: Vedtak[] = [ lestMedEnSykmeldingOgSoknad, lestMedToSykmeldingerOgSoknader, ulestMedEnSykmeldingOgSoknad ]
