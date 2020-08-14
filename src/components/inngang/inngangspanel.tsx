@@ -1,5 +1,6 @@
 import './inngangspanel.less'
 
+import parser from 'html-react-parser'
 import { Undertekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -45,7 +46,7 @@ interface InngangsHeaderProps {
     status: string;
 }
 
-export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
+export const InngangsHeader = ({ meta, tittel, status }: InngangsHeaderProps) => {
     return (
         <header className="inngangspanel__header">
             <Undertekst className="inngangspanel__meta">
@@ -54,6 +55,9 @@ export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
             <Undertittel tag="h3" className="inngangspanel__tittel">
                 {tittel}
             </Undertittel>
+            <Undertekst className="inngangspanel__status">
+                {parser(status)}
+            </Undertekst>
         </header>
     )
 }

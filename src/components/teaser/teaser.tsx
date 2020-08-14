@@ -1,14 +1,40 @@
 import dayjs from 'dayjs'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { tekst } from '../../utils/tekster'
+import { getLedetekst, tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import avkryssetHover from './avkrysset-hover.svg'
 import avkrysset from './avkrysset.svg'
 import { SykepengesoknadTeaserProps } from './teaser-util'
+import { useAppStore } from '../../data/stores/app-store';
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
+    const { sykmeldinger } = useAppStore()
+    const [ undertekst, setUndertekst ] = useState('')
+    const sykmeldingIder = vedtak?.vedtak.dokumenter.filter(dok => dok.type === 'Sykmelding').map(dok => dok.dokumentId)
+    const hentsm = sykmeldinger.filter(syk => sykmeldingIder?.includes(syk.id))
+
+    useEffect(() => {
+        setUndertekst(lagUndertekst())
+        // eslint-disable-next-line
+    }, [])
+
+    const lagUndertekst = () => {
+        let txt = '';
+        hentsm.forEach(sm => {
+            const linje = getLedetekst(tekst('spvedtak.teaser.sykmeldt'),
+                {
+                    '%PROSENT%': sm.stillingsprosent,
+                    '%ARBEIDSGIVER%': sm.arbeidsgiver,
+                    '%DAGER%': vedtak.vedtak.forbrukteSykedager
+                }
+            )
+            txt += hentsm.length > 1 ? '<li>' + linje + '</li>' : linje
+        })
+        return hentsm.length > 1 ? '<ul>' + txt + '</ul>' : txt;
+    }
+
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
@@ -21,7 +47,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
                                 dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
                             }
                             tittel={tekst('spvedtak.teaser.tittel')}
-                            status={'??'}
+                            status={undertekst}
                         />
                     </div>
                 </div>
