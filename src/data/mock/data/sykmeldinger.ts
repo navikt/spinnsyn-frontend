@@ -1,4 +1,5 @@
 import { Sykmelding } from '../../../types/types'
+import { jsonDeepCopy } from '../../../utils/json-deep-copy'
 
 export const arbeidstaker100: Sykmelding = {
     'id': '7e90121c-b64b-4a1c-b7a5-93c9d95aba47',
@@ -132,6 +133,10 @@ export const arbeidstaker100: Sykmelding = {
         'sykmelderTlf': '94431152'
     }
 }
+
+export const arbeidstaker100nr2 = jsonDeepCopy(arbeidstaker100)
+arbeidstaker100nr2.id = '7e90121c-b64b-4a1c-b7a5-93c9d95aba48'
+
 export const sykmeldinger: Sykmelding[] = [
-    arbeidstaker100,
+    arbeidstaker100, arbeidstaker100nr2
 ]

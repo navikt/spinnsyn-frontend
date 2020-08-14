@@ -1,5 +1,6 @@
 import { RSSoknad } from '../../../types/rs-types/rs-soknad'
-import { arbeidstaker100 } from './sykmeldinger'
+import { jsonDeepCopy } from '../../../utils/json-deep-copy'
+import { arbeidstaker100, arbeidstaker100nr2 } from './sykmeldinger'
 
 export const arbeidstaker: RSSoknad = {
     'id': 'faba11f5-c4f2-4647-8c8a-58b28ce2f3ef',
@@ -553,6 +554,11 @@ export const arbeidstaker: RSSoknad = {
     ],
     'egenmeldtSykmelding': false
 }
+
+export const arbeidstakerNr2 = jsonDeepCopy(arbeidstaker)
+arbeidstakerNr2.id = '7e90121c-b64b-4a1c-b7a5-93c9d95aba00'
+arbeidstakerNr2.sykmeldingId = arbeidstaker100nr2.id
+
 export const soknaderOpplaering = [
-    arbeidstaker,
+    arbeidstaker, arbeidstakerNr2
 ] as RSSoknad[]
