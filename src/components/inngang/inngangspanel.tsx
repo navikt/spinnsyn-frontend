@@ -55,7 +55,7 @@ export const InngangsHeader = ({ meta, tittel, status }: InngangsHeaderProps) =>
             <Undertittel tag="h3" className="inngangspanel__tittel">
                 {tittel}
             </Undertittel>
-            <Undertekst className="inngangspanel__status">
+            <Undertekst tag="div" className="inngangspanel__status">
                 {parser(status)}
             </Undertekst>
         </header>
