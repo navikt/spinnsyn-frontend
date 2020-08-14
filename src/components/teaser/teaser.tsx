@@ -1,13 +1,13 @@
 import dayjs from 'dayjs'
 import React, { useEffect, useState } from 'react'
 
+import { useAppStore } from '../../data/stores/app-store'
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import avkryssetHover from './avkrysset-hover.svg'
 import avkrysset from './avkrysset.svg'
 import { SykepengesoknadTeaserProps } from './teaser-util'
-import { useAppStore } from '../../data/stores/app-store';
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     const { sykmeldinger } = useAppStore()
@@ -21,7 +21,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     }, [])
 
     const lagUndertekst = () => {
-        let txt = '';
+        let txt = ''
         hentsm.forEach(sm => {
             const linje = getLedetekst(tekst('spvedtak.teaser.sykmeldt'),
                 {
@@ -32,7 +32,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
             )
             txt += hentsm.length > 1 ? '<li>' + linje + '</li>' : linje
         })
-        return hentsm.length > 1 ? '<ul>' + txt + '</ul>' : txt;
+        return hentsm.length > 1 ? '<ul>' + txt + '</ul>' : txt
     }
 
     return (
