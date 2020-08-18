@@ -51,7 +51,7 @@ export const tilLesbarDatoUtenAarstall = (datoArg: any): string => {
 export const tilLesbarDatoMedArstall = (datoArg: any) => {
     return datoArg
         ? `${tilLesbarDatoUtenAarstall(new Date(datoArg))} ${new Date(datoArg).getFullYear()}`
-        : null
+        : undefined
 }
 
 export const tilLesbarPeriodeMedArstall = (fomArg: any, tomArg: any) => {
