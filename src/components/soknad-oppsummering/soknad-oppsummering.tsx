@@ -22,6 +22,7 @@ import sjekkbokser from './sjekkbokser.svg';
 import sjekkbokserHover from './sjekkbokser-hover.svg';
 import { useAppStore } from '../../data/stores/app-store';
 import Vis from '../vis';
+import dayjs from 'dayjs';
 
 export interface OppsummeringProps {
     sporsmal: Sporsmal;
@@ -57,7 +58,11 @@ const SoknadOppsummering = () => {
                 {vedtakSoknader.map((soknad, idx) => {
                     return (
                         <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
-                            tittel={tekst('sykepengesoknad.oppsummering.tittel') + ' ' + soknad.sykmeldingId}
+                            tittel={
+                                tekst('din-sykmelding.periode.tittel') + ' ' +
+                                dayjs(soknad.fom).format('DD.MM.YYYY') + ' - ' +
+                                dayjs(soknad.tom).format('DD.MM.YYYY')
+                            }
                             ikonAltTekst="" type="intern" erApen={apen}
                         >
                             <SporsmalVisning soknad={soknad} key={idx} />

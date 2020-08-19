@@ -15,6 +15,7 @@ import { useAppStore } from '../../data/stores/app-store';
 import sjekkbokser from '../soknad-oppsummering/sjekkbokser.svg';
 import sjekkbokserHover from '../soknad-oppsummering/sjekkbokser-hover.svg';
 import Vis from '../vis';
+import { sorterPerioderEldsteFoerst } from '../../utils/sykmelding-utils';
 
 export interface OpplysningerProps {
     sykmelding: Sykmelding;
@@ -46,14 +47,21 @@ const SykmeldingOpplysninger = () => {
             </Vis>
 
             <Vis hvis={vedtakSykmeldinger.length > 1}>
-                {vedtakSykmeldinger.map((syk, idx) =>
-                    <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
-                        tittel={tekst('din-sykmelding.periode.tittel') + ' ' + syk.id}
-                        ikonAltTekst="" type="intern" erApen={apen}
-                    >
-                        <DetaljVisning sykmelding={syk} key={idx} />
-                    </Utvidbar>
-                )}
+                {vedtakSykmeldinger.map((syk, idx) => {
+                    const perioder = sorterPerioderEldsteFoerst(syk.mulighetForArbeid.perioder);
+                    return (
+                        <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
+                            tittel={
+                                tekst('din-sykmelding.periode.tittel') + ' ' +
+                                perioder[perioder.length - 1].fom + ' - ' +
+                                perioder[0].tom
+                            }
+                            ikonAltTekst="" type="intern" erApen={apen}
+                        >
+                            <DetaljVisning sykmelding={syk} key={idx} />
+                        </Utvidbar>
+                    )
+                })}
             </Vis>
         </Utvidbar>
     )

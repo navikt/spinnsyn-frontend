@@ -3,7 +3,7 @@ import './vedtak.less'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst } from 'nav-frontend-typografi'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
 import Banner from '../../components/banner/banner'
@@ -15,15 +15,12 @@ import Utbetalinger from '../../components/utbetalinger/utbetalinger'
 import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
-import { Brodsmule, Sykmelding } from '../../types/types'
+import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
-import Utvidbar from '../../components/utvidbar/utvidbar';
-import sjekkbokser from '../../components/soknad-oppsummering/sjekkbokser.svg';
-import sjekkbokserHover from '../../components/soknad-oppsummering/sjekkbokser-hover.svg';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -39,8 +36,7 @@ const brodsmuler: Brodsmule[] = [
 
 const Vedtak = () => {
     const { id } = useParams()
-    const { valgtVedtak, setValgtVedtak, vedtak, sykmeldinger, setVedtak } = useAppStore()
-    const [ apenSyk ] = useState<boolean>(false)
+    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
 
     useEffect(() => {
         setValgtVedtak(vedtak.find(a => a.id === id))
@@ -75,17 +71,11 @@ const Vedtak = () => {
             <Banner />
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
-
                 <VedtakStatus />
-
                 <SykmeldingOpplysninger />
-
                 <SoknadOppsummering />
-
                 <Begrunnelse />
-
                 <Utbetalinger />
-
                 <Utbetalingsoversikt ekspandert={false} />
 
                 {/* <Klage /> */}
