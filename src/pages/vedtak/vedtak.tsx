@@ -3,24 +3,27 @@ import './vedtak.less'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst } from 'nav-frontend-typografi'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 
 import Banner from '../../components/banner/banner'
 import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
-import Oppsummering from '../../components/oppsummering/oppsummering'
+import SoknadOppsummering from '../../components/oppsummering/soknad-oppsummering'
 import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
 import Utbetalinger from '../../components/utbetalinger/utbetalinger'
 import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
-import { Brodsmule, Soknad, Sykmelding } from '../../types/types'
+import { Brodsmule, Sykmelding } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
+import Utvidbar from '../../components/utvidbar/utvidbar';
+import sjekkbokser from '../../components/oppsummering/sjekkbokser.svg';
+import sjekkbokserHover from '../../components/oppsummering/sjekkbokser-hover.svg';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -36,7 +39,8 @@ const brodsmuler: Brodsmule[] = [
 
 const Vedtak = () => {
     const { id } = useParams()
-    const { valgtVedtak, setValgtVedtak, vedtak, sykmeldinger, soknader, setVedtak } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, sykmeldinger, setVedtak } = useAppStore()
+    const [ apenSyk ] = useState<boolean>(false)
 
     useEffect(() => {
         setValgtVedtak(vedtak.find(a => a.id === id))
@@ -45,7 +49,7 @@ const Vedtak = () => {
 
     useEffect(() => {
         if (valgtVedtak && !valgtVedtak.lest) {
-            const merkVedtakSomLest = async() => {
+            const merkVedtakSomLest = async () => {
                 const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${valgtVedtak.id}/les`, {
                     method: 'POST',
                     credentials: 'include',
@@ -56,17 +60,15 @@ const Vedtak = () => {
                 } else if (status === 200) {
                     valgtVedtak.lest = true
                     setValgtVedtak(valgtVedtak)
-                    vedtak.find(a => a.id === id)!.lest= true
+                    vedtak.find(a => a.id === id)!.lest = true
                     setVedtak(vedtak)
-
                 } else {
                     logger.error('Feil ved markering av vedtak som lest. Ikke status 200', res)
                 }
-
             }
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
-    } )
+    })
 
     const hentSykmeldinger = (): Sykmelding[] => {
         const sykmeldingIder = valgtVedtak?.vedtak.dokumenter
@@ -75,28 +77,25 @@ const Vedtak = () => {
         return sykmeldinger.filter(syk => sykmeldingIder?.includes(syk.id))
     }
 
-    const hentSoknader = (): Soknad[] => {
-        const soknadIder = valgtVedtak?.vedtak.dokumenter
-            .filter(dok => dok.type === 'Søknad')
-            .map(dok => dok.dokumentId)
-        return soknader.filter(sok => soknadIder?.includes(sok.id))
-    }
-
     return (
-        <>
+        <div>
             <Banner />
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
 
                 <VedtakStatus />
 
-                {hentSykmeldinger().map((syk, idx) =>
-                    <SykmeldingOpplysninger ekspandert={false} sykmelding={syk} key={idx} />
-                )}
+                <Utvidbar className={'oppsummering ekspander lilla' + (apenSyk ? ' apen' : '')}
+                    ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={apenSyk}
+                    tittel={tekst('sykepengesoknad.sykmelding-utdrag.tittel')}
+                    ikonAltTekst="" fixedHeight={true}
+                >
+                    {hentSykmeldinger().map((syk, idx) =>
+                        <SykmeldingOpplysninger sykmelding={syk} key={idx} />
+                    )}
+                </Utvidbar>
 
-                {hentSoknader().map((sok, idx) =>
-                    <Oppsummering ekspandert={false} soknad={sok} key={idx} />
-                )}
+                <SoknadOppsummering />
 
                 <Begrunnelse />
 
@@ -111,7 +110,7 @@ const Vedtak = () => {
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
                 </Lenke>
             </div>
-        </>
+        </div>
     )
 }
 

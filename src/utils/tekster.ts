@@ -1,7 +1,7 @@
 import BannerTekster from '../components/banner/banner-tekster'
 import BegrunnelseTekster from '../components/begrunnelse/begrunnelse-tekster'
 import KlageTekster from '../components/klage/klage-tekster'
-import OppsummeringTekster from '../components/oppsummering/oppsummering-tekster'
+import SoknadOppsummeringTekster from '../components/oppsummering/soknad-oppsummering-tekster'
 import OpplysningerTekster from '../components/sykmelding-opplysninger/opplysninger-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
 import UtbetalingTekster from '../components/utbetalinger/utbetaling-tekster'
@@ -21,7 +21,7 @@ const tekster = {
     ...UtbetalingsoversiktTekster.nb,
     ...UtbetalingTekster.nb,
     ...OpplysningerTekster.nb,
-    ...OppsummeringTekster.nb,
+    ...SoknadOppsummeringTekster.nb,
     ...BegrunnelseTekster.nb,
 }
 

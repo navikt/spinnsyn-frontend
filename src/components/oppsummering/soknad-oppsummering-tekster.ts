@@ -1,4 +1,4 @@
-const OppsummeringTekster: any = {
+const SoknadOppsummeringTekster: any = {
     'nb': {
         'sykepengesoknad.oppsummering.tittel': 'Oppsummering fra søknaden',
         'soknad.ja': 'Ja',
@@ -6,4 +6,4 @@ const OppsummeringTekster: any = {
     }, 'en': {}
 }
 
-export default OppsummeringTekster
+export default SoknadOppsummeringTekster

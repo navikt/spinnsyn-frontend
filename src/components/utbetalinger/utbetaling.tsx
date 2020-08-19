@@ -15,8 +15,8 @@ const Utbetaling = ({ utbetaling, fra }: UtbetalingProps) => {
     const Nummer = Intl.NumberFormat('nb-NO', { style: 'currency', currency: 'NOK' })
 
     const hvemBetaler = () => {
-        if (fra === 'SPREF')    return 'arbeidsgiver'
-        if (fra === 'SP')        return 'NAV'
+        if (fra === 'SPREF') return 'arbeidsgiver'
+        if (fra === 'SP') return 'NAV'
         return 'NAV'
     }
 
@@ -45,12 +45,12 @@ const Utbetaling = ({ utbetaling, fra }: UtbetalingProps) => {
 
     return (
         <table className="utbetaling__tabell">
+            <Element tag="caption">
+                {tekst('utbetaling.gjelder') + tilLesbarPeriodeMedArstall(utbetaling.fom, utbetaling.tom)}
+            </Element>
             <thead>
-                <Normaltekst tag="tr">
-                    { `Gjelder perioden: ${tilLesbarPeriodeMedArstall(utbetaling.fom, utbetaling.tom)}` }
-                </Normaltekst>
                 <Element tag="tr">
-                    { `Utbetales av: ${hvemBetaler()}` }
+                    {tekst('utbetaling.utbetales') + hvemBetaler()}
                 </Element>
             </thead>
             <tbody>

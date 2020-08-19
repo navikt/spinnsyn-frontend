@@ -1,6 +1,8 @@
 const UtbetalingTekster = {
     'nb': {
         'utbetaling.tittel': 'Utbetaling',
+        'utbetaling.gjelder': 'Gjelder perioden: ',
+        'utbetaling.utbetales': 'Utbetales av: ',
         'utbetaling.dagsats': 'Sykepenger dagsats:',
         'utbetaling.total': 'Sykepenger totalt:',
         'utbetaling.forskuddstrekk': 'Forskuddstrekk:',

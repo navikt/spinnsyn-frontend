@@ -5,7 +5,7 @@ import { SvarEnums } from '../../../types/enums'
 import { RSSvartype } from '../../../types/rs-types/rs-svartype'
 import { Sporsmal } from '../../../types/types'
 import Vis from '../../vis'
-import { OppsummeringProps } from '../oppsummering'
+import { OppsummeringProps } from '../soknad-oppsummering'
 import Avkrysset from './avkrysset'
 import UndersporsmalSum from './undersporsmal-sum'
 

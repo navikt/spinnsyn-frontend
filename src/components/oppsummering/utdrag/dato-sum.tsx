@@ -3,7 +3,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import Vis from '../../vis'
-import { OppsummeringProps } from '../oppsummering'
+import { OppsummeringProps } from '../soknad-oppsummering'
 
 const DatoSum = ({ sporsmal }: OppsummeringProps) => {
     return (

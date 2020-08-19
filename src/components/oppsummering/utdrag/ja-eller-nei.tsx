@@ -4,7 +4,7 @@ import React from 'react'
 import { Sporsmal } from '../../../types/types'
 import { tekst } from '../../../utils/tekster'
 import Vis from '../../vis'
-import { OppsummeringProps } from '../oppsummering'
+import { OppsummeringProps } from '../soknad-oppsummering'
 import Avkrysset from './avkrysset'
 import UndersporsmalSum from './undersporsmal-sum'
 
