@@ -1,6 +1,6 @@
 import './soknad-oppsummering.less'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { TagTyper } from '../../types/enums'
 import { RSSvartype } from '../../types/rs-types/rs-svartype'
@@ -29,66 +29,66 @@ export interface OppsummeringProps {
 
 const SoknadOppsummering = () => {
     const { valgtVedtak, soknader } = useAppStore()
+    const [ vedtakSoknader, setVedtakSoknader ] = useState<Soknad[]>([])
     const [ apen ] = useState<boolean>(false)
 
-    const hentSoknader = (): Soknad[] => {
-        const soknadIder = valgtVedtak?.vedtak.dokumenter
-            .filter(dok => dok.type === 'Søknad')
-            .map(dok => dok.dokumentId)
-        return soknader.filter(sok => soknadIder?.includes(sok.id))
-    }
+    useEffect(() => {
+        const hentSoknader = (): Soknad[] => {
+            const soknadIder = valgtVedtak?.vedtak.dokumenter
+                .filter(dok => dok.type === 'Søknad')
+                .map(dok => dok.dokumentId)
+            return soknader.filter(sok => soknadIder?.includes(sok.id))
+        }
+        setVedtakSoknader(hentSoknader())
+    }, [ soknader, valgtVedtak ])
 
     return (
-        <>
-            <Vis hvis={hentSoknader().length === 1}>
-                <Utvidbar className={'oppsummering ekspander lilla' + (apen ? ' apen' : '')}
-                    ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={apen}
-                    tittel={tekst('sykepengesoknad.oppsummering.tittel')}
-                    ikonAltTekst="" fixedHeight={true}
-                >
-                    {hentSoknader()[0]!.sporsmal
-                        .filter((sporsmal: Sporsmal) => {
-                            return skalVisesIOppsummering(sporsmal)
-                        })
-                        .map((sporsmal: Sporsmal, index: number) => {
-                            return (
-                                <div className="oppsummering__seksjon" key={index}>
-                                    <SporsmalVarianter sporsmal={sporsmal} />
-                                </div>
-                            )
-                        })
-                    }
-                </Utvidbar>
+        <Utvidbar className={'oppsummering ekspander lilla' + (apen ? ' apen' : '')}
+            ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={apen}
+            tittel={tekst('sykepengesoknad.oppsummering.tittel')}
+            ikonAltTekst="" fixedHeight={true}
+        >
+
+            <Vis hvis={vedtakSoknader.length === 1}>
+                <SporsmalVisning soknad={vedtakSoknader[0]} />
             </Vis>
 
-            <Vis hvis={hentSoknader().length > 1}>
-                {hentSoknader().map(soknad => {
+            <Vis hvis={vedtakSoknader.length > 1}>
+                {vedtakSoknader.map(soknad => {
                     return (
                         <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
                             tittel={tekst('din-sykmelding.periode.tittel') + ' ' + soknad.sykmeldingId}
                             ikonAltTekst="" type="intern" erApen={apen}
                         >
-                            {soknad!.sporsmal
-                                .filter((sporsmal) => {
-                                    return skalVisesIOppsummering(sporsmal)
-                                })
-                                .map((sporsmal, index) => {
-                                    return (
-                                        <div className="oppsummering__seksjon" key={index}>
-                                            <SporsmalVarianter sporsmal={sporsmal} />
-                                        </div>
-                                    )
-                                })
-                            }
+                            <SporsmalVisning soknad={soknad} />
                         </Utvidbar>
                     )
                 })}
             </Vis>
-        </>
+        </Utvidbar>
     )
 }
 
 export default SoknadOppsummering
+
+interface VisningsProps {
+    soknad: Soknad;
+}
+
+const SporsmalVisning = ({ soknad }: VisningsProps) => {
+    const visning = soknad!.sporsmal
+        .filter((sporsmal) => {
+            return skalVisesIOppsummering(sporsmal)
+        })
+        .map((sporsmal, index) => {
+            return (
+                <div className="oppsummering__seksjon" key={index}>
+                    <SporsmalVarianter sporsmal={sporsmal} />
+                </div>
+            )
+        })
+    return <>{visning}</>;
+}
 
 export const SporsmalVarianter = ({ sporsmal }: OppsummeringProps) => {
     switch (sporsmal.svartype) {
