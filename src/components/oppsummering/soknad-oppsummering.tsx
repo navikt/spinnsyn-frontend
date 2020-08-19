@@ -54,13 +54,13 @@ const SoknadOppsummering = () => {
             </Vis>
 
             <Vis hvis={vedtakSoknader.length > 1}>
-                {vedtakSoknader.map(soknad => {
+                {vedtakSoknader.map((soknad, idx) => {
                     return (
                         <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
-                            tittel={tekst('din-sykmelding.periode.tittel') + ' ' + soknad.sykmeldingId}
+                            tittel={tekst('sykepengesoknad.oppsummering.tittel') + ' ' + soknad.sykmeldingId}
                             ikonAltTekst="" type="intern" erApen={apen}
                         >
-                            <SporsmalVisning soknad={soknad} />
+                            <SporsmalVisning soknad={soknad} key={idx} />
                         </Utvidbar>
                     )
                 })}

@@ -1,6 +1,6 @@
 import './opplysninger.less'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Sykmelding } from '../../types/types'
 import { tekst } from '../../utils/tekster'
@@ -11,30 +11,69 @@ import SykmeldingDato from './sykmelding-dato'
 import ForsikringInfo from './sykmelding-forsikring'
 import FravaersperioderInfo from './sykmelding-fravaersperioder'
 import SykmeldingPerioder from './sykmelding-perioder'
+import { useAppStore } from '../../data/stores/app-store';
+import sjekkbokser from '../oppsummering/sjekkbokser.svg';
+import sjekkbokserHover from '../oppsummering/sjekkbokser-hover.svg';
+import Vis from '../vis';
 
 export interface OpplysningerProps {
     sykmelding: Sykmelding;
 }
 
-const SykmeldingOpplysninger = ({ sykmelding }: OpplysningerProps) => {
+const SykmeldingOpplysninger = () => {
+    const { valgtVedtak, sykmeldinger } = useAppStore()
+    const [ vedtakSykmeldinger, setVedtakSykmeldinger ] = useState<Sykmelding[]>([])
     const [ apen ] = useState<boolean>(false)
 
+    useEffect(() => {
+        const hentSykmeldinger = (): Sykmelding[] => {
+            const sykmeldingIder = valgtVedtak?.vedtak.dokumenter
+                .filter(dok => dok.type === 'Sykmelding')
+                .map(dok => dok.dokumentId)
+            return sykmeldinger.filter(syk => sykmeldingIder?.includes(syk.id))
+        }
+        setVedtakSykmeldinger(hentSykmeldinger())
+    }, [ sykmeldinger, valgtVedtak ])
+
     return (
-        <Utvidbar className={'ekspander hvit' + (apen ? ' apen' : '')}
-            tittel={tekst('din-sykmelding.periode.tittel') + ' ' + sykmelding.identdato}
-            type="intern" erApen={apen}
+        <Utvidbar className={'oppsummering ekspander lilla' + (apen ? ' apen' : '')}
+            ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={apen}
+            tittel={tekst('sykepengesoknad.sykmelding-utdrag.tittel')}
+            ikonAltTekst="" fixedHeight={true}
         >
-            <div className="opplysninger">
-                {apen}
-                <SykmeldingPerioder sykmelding={sykmelding} />
-                <ArbeidsgiverInfo sykmelding={sykmelding} />
-                <SykmeldingDato sykmelding={sykmelding} />
-                <ArbeidssituasjonInfo sykmelding={sykmelding} />
-                <FravaersperioderInfo sykmelding={sykmelding} />
-                <ForsikringInfo sykmelding={sykmelding} />
-            </div>
+            <Vis hvis={vedtakSykmeldinger.length === 1}>
+                <DetaljVisning sykmelding={vedtakSykmeldinger[0]} />
+            </Vis>
+
+            <Vis hvis={vedtakSykmeldinger.length > 1}>
+                {vedtakSykmeldinger.map((syk, idx) =>
+                    <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
+                        tittel={tekst('din-sykmelding.periode.tittel') + ' ' + syk.id}
+                        ikonAltTekst="" type="intern" erApen={apen}
+                    >
+                        <DetaljVisning sykmelding={syk} key={idx} />
+                    </Utvidbar>
+                )}
+            </Vis>
         </Utvidbar>
     )
 }
 
 export default SykmeldingOpplysninger
+
+interface DetaljProps {
+    sykmelding: Sykmelding;
+}
+
+const DetaljVisning = ({ sykmelding }: DetaljProps) => {
+    return (
+        <div className="opplysninger">
+            <SykmeldingPerioder sykmelding={sykmelding} />
+            <ArbeidsgiverInfo sykmelding={sykmelding} />
+            <SykmeldingDato sykmelding={sykmelding} />
+            <ArbeidssituasjonInfo sykmelding={sykmelding} />
+            <FravaersperioderInfo sykmelding={sykmelding} />
+            <ForsikringInfo sykmelding={sykmelding} />
+        </div>
+    )
+}

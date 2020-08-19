@@ -70,13 +70,6 @@ const Vedtak = () => {
         }
     })
 
-    const hentSykmeldinger = (): Sykmelding[] => {
-        const sykmeldingIder = valgtVedtak?.vedtak.dokumenter
-            .filter(dok => dok.type === 'Sykmelding')
-            .map(dok => dok.dokumentId)
-        return sykmeldinger.filter(syk => sykmeldingIder?.includes(syk.id))
-    }
-
     return (
         <div>
             <Banner />
@@ -85,15 +78,7 @@ const Vedtak = () => {
 
                 <VedtakStatus />
 
-                <Utvidbar className={'oppsummering ekspander lilla' + (apenSyk ? ' apen' : '')}
-                    ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={apenSyk}
-                    tittel={tekst('sykepengesoknad.sykmelding-utdrag.tittel')}
-                    ikonAltTekst="" fixedHeight={true}
-                >
-                    {hentSykmeldinger().map((syk, idx) =>
-                        <SykmeldingOpplysninger sykmelding={syk} key={idx} />
-                    )}
-                </Utvidbar>
+                <SykmeldingOpplysninger />
 
                 <SoknadOppsummering />
 

@@ -2,7 +2,7 @@ import { EtikettLiten, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { tekst } from '../../utils/tekster'
-import { OpplysningerProps } from './sykmelding-opplysninger'
+import { OpplysningerProps } from './sykmelding-opplysninger';
 
 const ArbeidsgiverInfo = ({ sykmelding }: OpplysningerProps) => {
 
