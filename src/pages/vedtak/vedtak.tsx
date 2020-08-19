@@ -9,7 +9,7 @@ import { useParams } from 'react-router'
 import Banner from '../../components/banner/banner'
 import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
-import SoknadOppsummering from '../../components/oppsummering/soknad-oppsummering'
+import SoknadOppsummering from '../../components/soknad-oppsummering/soknad-oppsummering'
 import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
 import Utbetalinger from '../../components/utbetalinger/utbetalinger'
 import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
@@ -22,8 +22,8 @@ import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
 import Utvidbar from '../../components/utvidbar/utvidbar';
-import sjekkbokser from '../../components/oppsummering/sjekkbokser.svg';
-import sjekkbokserHover from '../../components/oppsummering/sjekkbokser-hover.svg';
+import sjekkbokser from '../../components/soknad-oppsummering/sjekkbokser.svg';
+import sjekkbokserHover from '../../components/soknad-oppsummering/sjekkbokser-hover.svg';
 
 const brodsmuler: Brodsmule[] = [
     {

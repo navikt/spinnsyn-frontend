@@ -12,8 +12,8 @@ import ForsikringInfo from './sykmelding-forsikring'
 import FravaersperioderInfo from './sykmelding-fravaersperioder'
 import SykmeldingPerioder from './sykmelding-perioder'
 import { useAppStore } from '../../data/stores/app-store';
-import sjekkbokser from '../oppsummering/sjekkbokser.svg';
-import sjekkbokserHover from '../oppsummering/sjekkbokser-hover.svg';
+import sjekkbokser from '../soknad-oppsummering/sjekkbokser.svg';
+import sjekkbokserHover from '../soknad-oppsummering/sjekkbokser-hover.svg';
 import Vis from '../vis';
 
 export interface OpplysningerProps {
