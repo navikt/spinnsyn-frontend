@@ -1,12 +1,17 @@
 import './soknad-oppsummering.less'
 
+import dayjs from 'dayjs'
 import React, { useEffect, useState } from 'react'
 
+import { useAppStore } from '../../data/stores/app-store'
 import { TagTyper } from '../../types/enums'
 import { RSSvartype } from '../../types/rs-types/rs-svartype'
 import { Soknad, Sporsmal } from '../../types/types'
 import { tekst } from '../../utils/tekster'
 import Utvidbar from '../utvidbar/utvidbar'
+import Vis from '../vis'
+import sjekkbokserHover from './sjekkbokser-hover.svg'
+import sjekkbokser from './sjekkbokser.svg'
 import Behandlingsdager from './utdrag/behandlingsdager'
 import CheckboxGruppe from './utdrag/checkbox-gruppe'
 import CheckboxSum from './utdrag/checkbox-sum'
@@ -18,11 +23,6 @@ import PerioderSum from './utdrag/perioder-sum'
 import RadioGruppe from './utdrag/radio-gruppe'
 import TallSum from './utdrag/tall-sum'
 import UndertekstSum from './utdrag/undertekst-sum'
-import sjekkbokser from './sjekkbokser.svg';
-import sjekkbokserHover from './sjekkbokser-hover.svg';
-import { useAppStore } from '../../data/stores/app-store';
-import Vis from '../vis';
-import dayjs from 'dayjs';
 
 export interface OppsummeringProps {
     sporsmal: Sporsmal;
@@ -64,8 +64,9 @@ const SoknadOppsummering = () => {
                                 dayjs(soknad.tom).format('DD.MM.YYYY')
                             }
                             ikonAltTekst="" type="intern" erApen={apen}
+                            key={idx}
                         >
-                            <SporsmalVisning soknad={soknad} key={idx} />
+                            <SporsmalVisning soknad={soknad} />
                         </Utvidbar>
                     )
                 })}
@@ -92,7 +93,7 @@ const SporsmalVisning = ({ soknad }: VisningsProps) => {
                 </div>
             )
         })
-    return <>{visning}</>;
+    return <>{visning}</>
 }
 
 export const SporsmalVarianter = ({ sporsmal }: OppsummeringProps) => {

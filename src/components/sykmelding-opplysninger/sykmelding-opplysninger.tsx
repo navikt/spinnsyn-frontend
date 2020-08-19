@@ -2,20 +2,20 @@ import './opplysninger.less'
 
 import React, { useEffect, useState } from 'react'
 
+import { useAppStore } from '../../data/stores/app-store'
 import { Sykmelding } from '../../types/types'
+import { sorterPerioderEldsteFoerst } from '../../utils/sykmelding-utils'
 import { tekst } from '../../utils/tekster'
+import sjekkbokserHover from '../soknad-oppsummering/sjekkbokser-hover.svg'
+import sjekkbokser from '../soknad-oppsummering/sjekkbokser.svg'
 import Utvidbar from '../utvidbar/utvidbar'
+import Vis from '../vis'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import ArbeidssituasjonInfo from './arbeidssituasjon-info'
 import SykmeldingDato from './sykmelding-dato'
 import ForsikringInfo from './sykmelding-forsikring'
 import FravaersperioderInfo from './sykmelding-fravaersperioder'
 import SykmeldingPerioder from './sykmelding-perioder'
-import { useAppStore } from '../../data/stores/app-store';
-import sjekkbokser from '../soknad-oppsummering/sjekkbokser.svg';
-import sjekkbokserHover from '../soknad-oppsummering/sjekkbokser-hover.svg';
-import Vis from '../vis';
-import { sorterPerioderEldsteFoerst } from '../../utils/sykmelding-utils';
 
 export interface OpplysningerProps {
     sykmelding: Sykmelding;
@@ -48,7 +48,7 @@ const SykmeldingOpplysninger = () => {
 
             <Vis hvis={vedtakSykmeldinger.length > 1}>
                 {vedtakSykmeldinger.map((syk, idx) => {
-                    const perioder = sorterPerioderEldsteFoerst(syk.mulighetForArbeid.perioder);
+                    const perioder = sorterPerioderEldsteFoerst(syk.mulighetForArbeid.perioder)
                     return (
                         <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
                             tittel={
@@ -57,8 +57,9 @@ const SykmeldingOpplysninger = () => {
                                 perioder[0].tom
                             }
                             ikonAltTekst="" type="intern" erApen={apen}
+                            key={idx}
                         >
-                            <DetaljVisning sykmelding={syk} key={idx} />
+                            <DetaljVisning sykmelding={syk} />
                         </Utvidbar>
                     )
                 })}

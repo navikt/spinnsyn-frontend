@@ -45,7 +45,7 @@ const Vedtak = () => {
 
     useEffect(() => {
         if (valgtVedtak && !valgtVedtak.lest) {
-            const merkVedtakSomLest = async () => {
+            const merkVedtakSomLest = async() => {
                 const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${valgtVedtak.id}/les`, {
                     method: 'POST',
                     credentials: 'include',
