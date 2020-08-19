@@ -5,6 +5,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import { Amplitude } from './components/amplitude/amplitudeProvider'
+import { HotjarTrigger } from './components/hotjar-trigger'
 import { DataFetcher } from './data/data-fetcher'
 import StoreProvider from './data/stores/store-provider'
 import VedtakListe from './pages/vedtak-liste/vedtak-liste'
@@ -18,12 +19,14 @@ const App = (): any => {
         <StoreProvider>
             <DataFetcher>
                 <Amplitude>
-                    <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                        <Switch>
-                            <Route exact={true} path="/" component={VedtakListe} />
-                            <Route path={'/vedtak/:id'} component={Vedtak} />
-                        </Switch>
-                    </main>
+                    <HotjarTrigger>
+                        <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+                            <Switch>
+                                <Route exact={true} path="/" component={VedtakListe} />
+                                <Route path={'/vedtak/:id'} component={Vedtak} />
+                            </Switch>
+                        </main>
+                    </HotjarTrigger>
                 </Amplitude>
             </DataFetcher>
         </StoreProvider>
