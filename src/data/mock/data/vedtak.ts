@@ -5,6 +5,7 @@ import { arbeidstaker100, arbeidstaker100nr2 } from './sykmeldinger'
 const lestMedEnSykmeldingOgSoknad: Vedtak = {
     'id': '57896853-d5c3-4599-a77f-aff1f2cbc411',
     'lest': true,
+    'opprettet': '2020-06-19',
     'vedtak': {
         'fom': '2020-04-03',
         'tom': '2020-06-19',
@@ -37,6 +38,7 @@ const lestMedEnSykmeldingOgSoknad: Vedtak = {
 const lestMedToSykmeldingerOgSoknader: Vedtak = {
     'id': '85f1273f-497e-4f25-97ba-a913614d1d9a',
     'lest': true,
+    'opprettet': '2020-07-15',
     'vedtak': {
         'fom': '2020-07-03',
         'tom': '2020-07-15',
@@ -78,6 +80,7 @@ const lestMedToSykmeldingerOgSoknader: Vedtak = {
 export const ulestMedEnSykmeldingOgSoknad: Vedtak = {
     'id': '85f1273f-497e-4f25-97ba-abc123',
     'lest': false,
+    'opprettet': '2020-04-24',
     'vedtak': {
         'fom': '2020-04-01',
         'tom': '2020-04-24',
