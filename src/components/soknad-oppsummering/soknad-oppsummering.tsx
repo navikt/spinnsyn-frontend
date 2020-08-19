@@ -1,12 +1,15 @@
-import './oppsummering.less'
+import './soknad-oppsummering.less'
 
-import React from 'react'
+import dayjs from 'dayjs'
+import React, { useEffect, useState } from 'react'
 
+import { useAppStore } from '../../data/stores/app-store'
 import { TagTyper } from '../../types/enums'
 import { RSSvartype } from '../../types/rs-types/rs-svartype'
 import { Soknad, Sporsmal } from '../../types/types'
 import { tekst } from '../../utils/tekster'
 import Utvidbar from '../utvidbar/utvidbar'
+import Vis from '../vis'
 import sjekkbokserHover from './sjekkbokser-hover.svg'
 import sjekkbokser from './sjekkbokser.svg'
 import Behandlingsdager from './utdrag/behandlingsdager'
@@ -25,35 +28,73 @@ export interface OppsummeringProps {
     sporsmal: Sporsmal;
 }
 
-interface EkspanderProps {
-    ekspandert: boolean;
-    soknad: Soknad;         // TODO: Hvis vedtak kun gjelder en søknad, så kan denne legges til i AppStore sånn som sykepengesok
-}
+const SoknadOppsummering = () => {
+    const { valgtVedtak, soknader } = useAppStore()
+    const [ vedtakSoknader, setVedtakSoknader ] = useState<Soknad[]>([])
+    const [ apen ] = useState<boolean>(false)
 
-const Oppsummering = ({ ekspandert, soknad }: EkspanderProps) => {
+    useEffect(() => {
+        const hentSoknader = (): Soknad[] => {
+            const soknadIder = valgtVedtak?.vedtak.dokumenter
+                .filter(dok => dok.type === 'Søknad')
+                .map(dok => dok.dokumentId)
+            return soknader.filter(sok => soknadIder?.includes(sok.id))
+        }
+        setVedtakSoknader(hentSoknader())
+    }, [ soknader, valgtVedtak ])
+
     return (
-        <Utvidbar className={'oppsummering ekspander lilla' + (ekspandert ? ' apen' : '')}
-            ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={ekspandert}
+        <Utvidbar className={'oppsummering ekspander lilla' + (apen ? ' apen' : '')}
+            ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={apen}
             tittel={tekst('sykepengesoknad.oppsummering.tittel')}
-            ikonAltTekst=""
+            ikonAltTekst="" fixedHeight={true}
         >
-            {soknad!.sporsmal
-                .filter((sporsmal) => {
-                    return skalVisesIOppsummering(sporsmal)
-                })
-                .map((sporsmal, index) => {
+
+            <Vis hvis={vedtakSoknader.length === 1}>
+                <SporsmalVisning soknad={vedtakSoknader[0]} />
+            </Vis>
+
+            <Vis hvis={vedtakSoknader.length > 1}>
+                {vedtakSoknader.map((soknad, idx) => {
                     return (
-                        <div className="oppsummering__seksjon" key={index}>
-                            <SporsmalVarianter sporsmal={sporsmal} />
-                        </div>
+                        <Utvidbar className={'oppsummering ekspander hvit' + (apen ? ' apen' : '')}
+                            tittel={
+                                tekst('din-sykmelding.periode.tittel') + ' ' +
+                                dayjs(soknad.fom).format('DD.MM.YYYY') + ' - ' +
+                                dayjs(soknad.tom).format('DD.MM.YYYY')
+                            }
+                            ikonAltTekst="" type="intern" erApen={apen}
+                            key={idx}
+                        >
+                            <SporsmalVisning soknad={soknad} />
+                        </Utvidbar>
                     )
-                })
-            }
+                })}
+            </Vis>
         </Utvidbar>
     )
 }
 
-export default Oppsummering
+export default SoknadOppsummering
+
+interface VisningsProps {
+    soknad: Soknad;
+}
+
+const SporsmalVisning = ({ soknad }: VisningsProps) => {
+    const visning = soknad!.sporsmal
+        .filter((sporsmal) => {
+            return skalVisesIOppsummering(sporsmal)
+        })
+        .map((sporsmal, index) => {
+            return (
+                <div className="oppsummering__seksjon" key={index}>
+                    <SporsmalVarianter sporsmal={sporsmal} />
+                </div>
+            )
+        })
+    return <>{visning}</>
+}
 
 export const SporsmalVarianter = ({ sporsmal }: OppsummeringProps) => {
     switch (sporsmal.svartype) {

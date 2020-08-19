@@ -7,7 +7,7 @@ import {
     tilLesbarPeriodeUtenArstall
 } from '../../../utils/dato-utils'
 import Vis from '../../vis'
-import { OppsummeringProps } from '../oppsummering'
+import { OppsummeringProps } from '../soknad-oppsummering'
 import Avkrysset from './avkrysset'
 
 const datoEllerIkkeTilBehandling = (svar: RSSvar): string => {

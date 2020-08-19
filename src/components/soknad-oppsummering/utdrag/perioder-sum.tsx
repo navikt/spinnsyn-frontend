@@ -4,7 +4,7 @@ import React from 'react'
 import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { hentPeriode } from '../../../utils/periode-utils'
 import Vis from '../../vis'
-import { OppsummeringProps } from '../oppsummering'
+import { OppsummeringProps } from '../soknad-oppsummering'
 
 const PerioderSum = ({ sporsmal }: OppsummeringProps) => {
     return (

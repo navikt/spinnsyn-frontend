@@ -4,7 +4,7 @@ import React from 'react'
 import { RSSvartype } from '../../../types/rs-types/rs-svartype'
 import { tekst } from '../../../utils/tekster'
 import Vis from '../../vis'
-import { OppsummeringProps } from '../oppsummering'
+import { OppsummeringProps } from '../soknad-oppsummering'
 
 const TallSum = ({ sporsmal }: OppsummeringProps) => {
     const labelnokkel = sporsmal.svartype === RSSvartype.TIMER ? 'soknad.timer-totalt' : 'soknad.prosent'
