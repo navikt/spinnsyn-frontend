@@ -49,9 +49,13 @@ const Utbetaling = ({ utbetaling, fra }: UtbetalingProps) => {
                 {tekst('utbetaling.gjelder') + tilLesbarPeriodeMedArstall(utbetaling.fom, utbetaling.tom)}
             </Element>
             <thead>
-                <Element tag="tr">
-                    {tekst('utbetaling.utbetales') + hvemBetaler()}
-                </Element>
+                <tr>
+                    <td colSpan={2}>
+                        <Element tag="span">
+                            {tekst('utbetaling.utbetales') + hvemBetaler()}
+                        </Element>
+                    </td>
+                </tr>
             </thead>
             <tbody>
                 <Normaltekst tag="tr">
