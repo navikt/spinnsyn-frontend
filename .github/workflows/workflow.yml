@@ -87,7 +87,7 @@ jobs:
           path: .
       - run: echo "::set-env name=VERSION::"`cat VERSION.txt`""
       - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-root:$VERSION""
-      - name: Deploy to labs-gcp
+      - name: Deploy to dev-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
