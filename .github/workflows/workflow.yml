@@ -70,10 +70,6 @@ jobs:
         run: |
             docker build . -f Dockerfile.root -t ${IMAGE_ROOT}
             docker push ${IMAGE_ROOT}
-      - name: Bygg og push Docker image hvor appen serves på /spvedtak
-        run: |
-          docker build . -f Dockerfile.spvedtak -t ${IMAGE_SPVEDTAK}
-          docker push ${IMAGE_SPVEDTAK}
 
   deploy-to-dev-gcp:
     name: Deploy to dev-gcp
