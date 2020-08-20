@@ -41,10 +41,10 @@ spec:
     - name: MOCK_BACKEND
       value: "false"
     - name: DECORATOR_URL
-      value: "https://www-q1.nav.no/dekoratoren"
+      value: "https://dekoratoren.dev.nav.no"
     - name: ENVIRONMENT
       value: "q1"
     - name: SYKEFRAVAER_URL
-      value: "https://sykefravaer.labs.nais.io"
+      value: "https://sykefravaer.er.ikke.tilgjengelig.fra.naisdevice.ennå.no"
     - name: OPPLAERING
       value: "false"
