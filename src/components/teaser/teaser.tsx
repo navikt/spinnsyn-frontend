@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import React, { useEffect, useState } from 'react'
 
 import { useAppStore } from '../../data/stores/app-store'
+import { getDuration } from '../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
@@ -23,14 +24,16 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     const lagUndertekst = () => {
         let txt = ''
         hentsm.forEach(sm => {
-            const linje = getLedetekst(tekst('spvedtak.teaser.sykmeldt'),
-                {
-                    '%PROSENT%': sm.stillingsprosent,
-                    '%ARBEIDSGIVER%': sm.arbeidsgiver,
-                    '%DAGER%': vedtak.vedtak.forbrukteSykedager
-                }
-            )
-            txt += hentsm.length > 1 ? '<li>' + linje + '</li>' : linje
+            sm.mulighetForArbeid.perioder.forEach( periode => {
+                const linje = getLedetekst(tekst('spvedtak.teaser.sykmeldt'),
+                    {
+                        '%PROSENT%': periode.grad,
+                        '%ARBEIDSGIVER%': sm.arbeidsgiver,
+                        '%DAGER%': getDuration(new Date(periode.fom), new Date(periode.tom))
+                    }
+                )
+                txt += hentsm.length > 1 ? '<li>' + linje + '</li>' : linje
+            })
         })
         return hentsm.length > 1 ? '<ul>' + txt + '</ul>' : txt
     }

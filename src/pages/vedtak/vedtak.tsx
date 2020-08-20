@@ -10,6 +10,7 @@ import Banner from '../../components/banner/banner'
 import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import SoknadOppsummering from '../../components/soknad-oppsummering/soknad-oppsummering'
+import Sykedager from '../../components/sykedager/sykedager'
 import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
 import Utbetalinger from '../../components/utbetalinger/utbetalinger'
 import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
@@ -77,6 +78,7 @@ const Vedtak = () => {
                 <Begrunnelse />
                 <Utbetalinger />
                 <Utbetalingsoversikt ekspandert={false} />
+                <Sykedager />
 
                 {/* <Klage /> */}
 
