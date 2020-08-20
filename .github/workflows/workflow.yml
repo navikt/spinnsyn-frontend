@@ -75,6 +75,26 @@ jobs:
           docker build . -f Dockerfile.spvedtak -t ${IMAGE_SPVEDTAK}
           docker push ${IMAGE_SPVEDTAK}
 
+  deploy-to-dev-gcp:
+    name: Deploy to dev-gcp
+    needs: build-and-publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/download-artifact@v1
+        with:
+          name: VERSION.txt
+          path: .
+      - run: echo "::set-env name=VERSION::"`cat VERSION.txt`""
+      - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-root:$VERSION""
+      - name: Deploy to labs-gcp
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: nais-dev.yaml
+
+
   deploy-to-labs-gcp:
     if: github.ref == 'refs/heads/master'
     name: Deploy to labs-gcp (Demo)
@@ -88,12 +108,12 @@ jobs:
           path: .
       - run: echo "::set-env name=VERSION::"`cat VERSION.txt`""
       - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-root:$VERSION""
-      - name: Deploy to dev-gcp
+      - name: Deploy to labs-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: labs-gcp
-          RESOURCE: nais-gcp.yaml
+          RESOURCE: nais-labs.yaml
 
   tag-image-as-latest:
     if: github.ref == 'refs/heads/master'

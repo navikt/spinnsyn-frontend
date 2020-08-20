@@ -2,25 +2,14 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: spvedtak
-  namespace: default
+  namespace: flex
   labels:
     team: flex
 spec:
   image: {{ image }}
   port: 8080
   ingresses:
-    - "https://tjenester-q1.nav.no/spvedtak"
-  replicas:
-    min: 2
-    max: 2
-    cpuThresholdPercentage: 50
-  resources:
-    limits:
-      cpu: 500m
-      memory: 256Mi
-    requests:
-      cpu: 200m
-      memory: 256Mi
+    - "https://spvedtak.labs.nais.io/"
   liveness:
     path: internal/isAlive
   readiness:
@@ -32,17 +21,17 @@ spec:
       value: "https://tjenester-q1.nav.no/syforest"
     - name: LOGINSERVICE_URL
       value: "https://loginservice-q.nav.no/login"
-    - name: LOGINSERVICE_REDIRECT_URL
-      value: "https://tjenester-q1.nav.no/spvedtak"
     - name: UNLEASH_URL
       value: "https://tjenester-q1.nav.no/syfounleash"
-    - name: AMPLITUDE_KEY
-      value: "7a887ba3e5a07c755526c6591810101a"
     - name: AMPLITUDE_ENABLED
+      value: "false"
+    - name: MOCK_BACKEND
       value: "true"
     - name: DECORATOR_URL
-      value: "https://www-q1.nav.no/dekoratoren"
+      value: "https://www.nav.no/dekoratoren"
     - name: ENVIRONMENT
-      value: "q1"
+      value: "labs"
     - name: SYKEFRAVAER_URL
-      value: "https://tjenester-q1.nav.no/sykefravaer"
+      value: "https://sykefravaer.labs.nais.io"
+    - name: OPPLAERING
+      value: "true"
