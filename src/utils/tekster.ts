@@ -8,6 +8,7 @@ import TeaserTekster from '../components/teaser/teaser-tekster'
 import UtbetalingTekster from '../components/utbetalinger/utbetaling-tekster'
 import UtbetalingsoversiktTekster from '../components/utbetalingsoversikt/utbetalingsoversikt-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
+import RefreshHvisFeilStateTekster from '../pages/feil/refresh-hvis-feil-state-tekster'
 import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
 import VedtakTekster from '../pages/vedtak/vedtak-tekster'
 import { logger } from './logger'
@@ -25,6 +26,7 @@ const tekster = {
     ...SoknadOppsummeringTekster.nb,
     ...BegrunnelseTekster.nb,
     ...SykedagerTekster.nb,
+    ...RefreshHvisFeilStateTekster.nb,
 }
 
 export const tekst = (tekst: string): string => {

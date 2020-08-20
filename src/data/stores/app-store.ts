@@ -12,6 +12,7 @@ export const [ AppStoreProvider, useAppStore ] = constate(() => {
     const [ valgtSykmelding, setValgtSykmelding ] = useState<Sykmelding>()
     const [ vedtak, setVedtak ] = useState<Vedtak[]>([])
     const [ valgtVedtak, setValgtVedtak ] = useState<Vedtak>()
+    const [ feilState, setFeilState ] = useState<boolean>(false)
 
     return {
         unleash, setUnleash,
@@ -19,6 +20,7 @@ export const [ AppStoreProvider, useAppStore ] = constate(() => {
         sykmeldinger, setSykmeldinger,
         valgtSoknad, setValgtSoknad,
         valgtSykmelding, setValgtSykmelding,
+        feilState, setFeilState,
         vedtak, setVedtak,
         valgtVedtak, setValgtVedtak,
     }

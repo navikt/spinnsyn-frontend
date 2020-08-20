@@ -8,6 +8,8 @@ import { Amplitude } from './components/amplitude/amplitudeProvider'
 import { HotjarTrigger } from './components/hotjar-trigger'
 import { DataFetcher } from './data/data-fetcher'
 import StoreProvider from './data/stores/store-provider'
+import RedirectTilOversikt from './pages/feil/redirect-til-oversikt'
+import { RefreshHvisFeilState } from './pages/feil/refresh-hvis-feil-state'
 import VedtakListe from './pages/vedtak-liste/vedtak-liste'
 import Vedtak from './pages/vedtak/vedtak'
 
@@ -21,10 +23,13 @@ const App = (): any => {
                 <Amplitude>
                     <HotjarTrigger>
                         <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                            <Switch>
-                                <Route exact={true} path="/" component={VedtakListe} />
-                                <Route path={'/vedtak/:id'} component={Vedtak} />
-                            </Switch>
+                            <RefreshHvisFeilState>
+                                <Switch>
+                                    <Route exact={true} path="/" component={VedtakListe} />
+                                    <Route path={'/vedtak/:id'} component={Vedtak} />
+                                    <Route path={'/vedtak/'} component={RedirectTilOversikt} />
+                                </Switch>
+                            </RefreshHvisFeilState>
                         </main>
                     </HotjarTrigger>
                 </Amplitude>

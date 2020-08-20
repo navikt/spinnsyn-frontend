@@ -63,14 +63,14 @@ export function DataFetcher(props: { children: any }) {
         // eslint-disable-next-line
     }, [rssoknader]);
 
-    if (isAnyNotStartedOrPending([ unleash, rssoknader, sykmeldinger ])) {
+    if (isAnyNotStartedOrPending([ unleash, rssoknader, sykmeldinger, vedtak ])) {
         return <Spinner type={'XXL'} />
 
-    } else if (hasAny401([ unleash, rssoknader, sykmeldinger ])) {
+    } else if (hasAny401([ unleash, rssoknader, sykmeldinger, vedtak ])) {
         window.location.href = hentLoginUrl()
 
-    } else if (hasAnyFailed([ unleash, rssoknader, sykmeldinger ])) {
-        logger.error('Klarer ikke hente en av disse [ unleash, rssoknader, sykmeldinger ]')
+    } else if (hasAnyFailed([ unleash, rssoknader, sykmeldinger, vedtak ])) {
+        logger.error('Klarer ikke hente en av disse [ unleash, rssoknader, sykmeldinger, vedtak ]')
         return <IngenData />
     }
 
