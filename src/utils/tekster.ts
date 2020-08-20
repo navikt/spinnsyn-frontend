@@ -2,6 +2,7 @@ import BannerTekster from '../components/banner/banner-tekster'
 import BegrunnelseTekster from '../components/begrunnelse/begrunnelse-tekster'
 import KlageTekster from '../components/klage/klage-tekster'
 import SoknadOppsummeringTekster from '../components/soknad-oppsummering/soknad-oppsummering-tekster'
+import SykedagerTekster from '../components/sykedager/sykedager-tekster'
 import OpplysningerTekster from '../components/sykmelding-opplysninger/opplysninger-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
 import UtbetalingTekster from '../components/utbetalinger/utbetaling-tekster'
@@ -23,6 +24,7 @@ const tekster = {
     ...OpplysningerTekster.nb,
     ...SoknadOppsummeringTekster.nb,
     ...BegrunnelseTekster.nb,
+    ...SykedagerTekster.nb,
 }
 
 export const tekst = (tekst: string): string => {
