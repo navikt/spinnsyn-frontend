@@ -45,4 +45,4 @@ spec:
     - name: OPPLAERING
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
-      value: "https://spvedtak.dev.nav.no/"
+      value: "https://spvedtak.dev.nav.no"
