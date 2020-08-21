@@ -4,33 +4,20 @@ import React, { useEffect } from 'react'
 import IngenData from '../pages/feil/ingen-data'
 import { RSSoknad } from '../types/rs-types/rs-soknad'
 import { Soknad, Sykmelding } from '../types/types'
-import { UnleashToggles } from '../types/types'
 import { Vedtak } from '../types/vedtak'
 import env from '../utils/environment'
 import { logger } from '../utils/logger'
-import { unleashKeys } from './mock/data/toggles'
 import useFetch from './rest/use-fetch'
 import { FetchState, hasAny401, hasAnyFailed, hasData, isAnyNotStartedOrPending, isNotStarted } from './rest/utils'
 import { useAppStore } from './stores/app-store'
 
 export function DataFetcher(props: { children: any }) {
-    const { setUnleash, setSoknader, setSykmeldinger, setVedtak } = useAppStore()
-    const unleash = useFetch<{}>()
+    const { setSoknader, setSykmeldinger, setVedtak } = useAppStore()
     const rssoknader = useFetch<RSSoknad[]>()
     const sykmeldinger = useFetch<Sykmelding[]>()
     const vedtak = useFetch<Vedtak[]>()
 
     useEffect(() => {
-        if (isNotStarted(unleash)) {
-            unleash.fetch(env.unleashUrl, {
-                method: 'POST',
-                credentials: 'include',
-                body: JSON.stringify(unleashKeys),
-                headers: { 'Content-Type': 'application/json' }
-            }, (fetchState: FetchState<UnleashToggles>) => {
-                setUnleash(fetchState.data as any)
-            })
-        }
         if (isNotStarted(rssoknader)) {
             rssoknader.fetch(env.syfoapiRoot + '/syfosoknad/api/soknader', {
                 credentials: 'include',
@@ -63,14 +50,14 @@ export function DataFetcher(props: { children: any }) {
         // eslint-disable-next-line
     }, [rssoknader]);
 
-    if (isAnyNotStartedOrPending([ unleash, rssoknader, sykmeldinger, vedtak ])) {
+    if (isAnyNotStartedOrPending([ rssoknader, sykmeldinger, vedtak ])) {
         return <Spinner type={'XXL'} />
 
-    } else if (hasAny401([ unleash, rssoknader, sykmeldinger, vedtak ])) {
+    } else if (hasAny401([ rssoknader, sykmeldinger, vedtak ])) {
         window.location.href = hentLoginUrl()
 
-    } else if (hasAnyFailed([ unleash, rssoknader, sykmeldinger, vedtak ])) {
-        logger.error('Klarer ikke hente en av disse [ unleash, rssoknader, sykmeldinger, vedtak ]')
+    } else if (hasAnyFailed([ rssoknader, sykmeldinger, vedtak ])) {
+        logger.error('Klarer ikke hente en av disse [ rssoknader, sykmeldinger, vedtak ]')
         return <IngenData />
     }
 

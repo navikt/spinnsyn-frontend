@@ -26,10 +26,6 @@ class Environment {
         return this.env.SPINNSYN_ROOT
     }
 
-    get unleashUrl() {
-        return this.env.UNLEASH_URL
-    }
-
     get isMockBackend() {
         return this.env.MOCK_BACKEND === 'true'
     }
@@ -44,14 +40,6 @@ class Environment {
 
     get loginServiceRedirectUrl() {
         return this.env.LOGINSERVICE_REDIRECT_URL
-    }
-
-    get amplitudeKey() {
-        return this.env.AMPLITUDE_KEY
-    }
-
-    get amplitudeEnabled() {
-        return this.env.AMPLITUDE_ENABLED === 'true'
     }
 
     get baseName() {
