@@ -7,6 +7,7 @@ import React from 'react'
 import { useAppStore } from '../../data/stores/app-store'
 import { erHelg, getDuration } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
+import { ValutaFormat } from '../../utils/valuta-utils'
 import Utvidbar from '../utvidbar/utvidbar'
 import Vis from '../vis'
 import calendarHover from './calendar-hover.svg'
@@ -76,7 +77,7 @@ const Utbetalingsoversikt = ({ ekspandert }: UtbetalingerProps) => {
                             <Vis hvis={!erHelg(utbetaling!.dato)}>
                                 <td>{''}</td>
                                 <td>{utbetalingsgradIProsent}%</td>
-                                <td>{utbetaling!.belop} kr</td>
+                                <td>{ValutaFormat.format(utbetaling!.belop)}</td>
                             </Vis>
                         </tr>
                     })
@@ -87,7 +88,7 @@ const Utbetalingsoversikt = ({ ekspandert }: UtbetalingerProps) => {
                         <td><h3>SUM</h3></td>
                         <td>{''}</td>
                         <td>{''}</td>
-                        <td><h3>{totaltUtbetalt}</h3></td>
+                        <td><h3>{`${ValutaFormat.format(totaltUtbetalt!)}`}</h3></td>
                     </tr>
                 </tfoot>
             </table>

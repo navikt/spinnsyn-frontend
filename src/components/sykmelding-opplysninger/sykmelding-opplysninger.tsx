@@ -6,12 +6,12 @@ import { useAppStore } from '../../data/stores/app-store'
 import { Sykmelding } from '../../types/types'
 import { sorterPerioderEldsteFoerst } from '../../utils/sykmelding-utils'
 import { tekst } from '../../utils/tekster'
-import sjekkbokserHover from '../soknad-oppsummering/sjekkbokser-hover.svg'
-import sjekkbokser from '../soknad-oppsummering/sjekkbokser.svg'
 import Utvidbar from '../utvidbar/utvidbar'
 import Vis from '../vis'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import ArbeidssituasjonInfo from './arbeidssituasjon-info'
+import plasterHover from './plaster-hover.svg'
+import plaster from './plaster.svg'
 import SykmeldingDato from './sykmelding-dato'
 import ForsikringInfo from './sykmelding-forsikring'
 import FravaersperioderInfo from './sykmelding-fravaersperioder'
@@ -37,8 +37,8 @@ const SykmeldingOpplysninger = () => {
     }, [ sykmeldinger, valgtVedtak ])
 
     return (
-        <Utvidbar className={'oppsummering ekspander lilla' + (apen ? ' apen' : '')}
-            ikon={sjekkbokser} ikonHover={sjekkbokserHover} erApen={apen}
+        <Utvidbar className={'oppsummering ekspander' + (apen ? ' apen' : '')}
+            ikon={plaster} ikonHover={plasterHover} erApen={apen}
             tittel={tekst('sykepengesoknad.sykmelding-utdrag.tittel')}
             ikonAltTekst="" fixedHeight={true}
         >
