@@ -21,8 +21,7 @@ jobs:
           TIME=$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M)
           COMMIT=$(git rev-parse --short=8 HEAD)
           VERSION=$TIME-$COMMIT
-          echo "::set-env name=IMAGE_ROOT::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-root:$VERSION""
-          echo "::set-env name=IMAGE_SPVEDTAK::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-spvedtak:$VERSION""
+          echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP:$VERSION""
           echo "::set-env name=VERSION::"$VERSION""
       - run: echo $VERSION > VERSION.txt
       - name: Last opp VERSION til neste job
@@ -66,10 +65,10 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-      - name: Bygg og push Docker image hvor appen serves på /
+      - name: Bygg og push Docker image
         run: |
-            docker build . -f Dockerfile.root -t ${IMAGE_ROOT}
-            docker push ${IMAGE_ROOT}
+            docker build . -f Dockerfile -t ${IMAGE}
+            docker push ${IMAGE}
 
   deploy-to-dev-gcp:
     name: Deploy to dev-gcp
@@ -82,7 +81,7 @@ jobs:
           name: VERSION.txt
           path: .
       - run: echo "::set-env name=VERSION::"`cat VERSION.txt`""
-      - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-root:$VERSION""
+      - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP:$VERSION""
       - name: Deploy to dev-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
@@ -103,7 +102,7 @@ jobs:
           name: VERSION.txt
           path: .
       - run: echo "::set-env name=VERSION::"`cat VERSION.txt`""
-      - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-root:$VERSION""
+      - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP:$VERSION""
       - name: Deploy to labs-gcp
         uses: nais/deploy/actions/deploy@v1
         env:
@@ -123,7 +122,7 @@ jobs:
           name: VERSION.txt
           path: .
       - run: echo "::set-env name=VERSION::"`cat VERSION.txt`""
-      - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP-root:$VERSION""
+      - run: echo "::set-env name=IMAGE::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP:$VERSION""
       - run: echo "::set-env name=LATEST::"docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP:latest""
       - name: Tag and push docker image
         env:
