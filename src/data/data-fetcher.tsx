@@ -50,11 +50,11 @@ export function DataFetcher(props: { children: any }) {
         // eslint-disable-next-line
     }, [rssoknader]);
 
-    if (isAnyNotStartedOrPending([ rssoknader, sykmeldinger, vedtak ])) {
-        return <Spinner type={'XXL'} />
-
-    } else if (hasAny401([ rssoknader, sykmeldinger, vedtak ])) {
+    if (hasAny401([ rssoknader, sykmeldinger, vedtak ])) {
         window.location.href = hentLoginUrl()
+
+    } else if (isAnyNotStartedOrPending([ rssoknader, sykmeldinger, vedtak ])) {
+        return <Spinner type={'XXL'} />
 
     } else if (hasAnyFailed([ rssoknader, sykmeldinger, vedtak ])) {
         logger.error('Klarer ikke hente en av disse [ rssoknader, sykmeldinger, vedtak ]')
