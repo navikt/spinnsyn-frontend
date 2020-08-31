@@ -20,6 +20,5 @@ RUN chmod +x process-index-html.sh
 EXPOSE 8080
 
 ENV BASE_NAME=/
-ENV PUBLIC_URL=
 
 CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && /usr/share/nginx/html/process-index-html.sh && nginx -g \"daemon off;\""]
