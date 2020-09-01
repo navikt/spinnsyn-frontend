@@ -22,6 +22,7 @@ import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
+import { RouteParams } from '../../app';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -36,7 +37,7 @@ const brodsmuler: Brodsmule[] = [
 ]
 
 const Vedtak = () => {
-    const { id } = useParams()
+    const { id } = useParams<RouteParams>()
     const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
 
     useEffect(() => {
