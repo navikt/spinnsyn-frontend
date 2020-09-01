@@ -12,6 +12,10 @@ import { RefreshHvisFeilState } from './pages/feil/refresh-hvis-feil-state'
 import VedtakListe from './pages/vedtak-liste/vedtak-liste'
 import Vedtak from './pages/vedtak/vedtak'
 
+export interface RouteParams {
+    id: string;
+}
+
 const App = (): any => {
 
     ModalWrapper.setAppElement('#root')

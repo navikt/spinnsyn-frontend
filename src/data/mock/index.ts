@@ -19,8 +19,13 @@ if (!env.isOpplaering) {
     soknader.push(...jsonDeepCopy(soknaderIntegration))
 }
 
+mock.get(`${env.syfoapiRoot}/syfosoknad/api/soknader`,
+    (req, res, ctx) => res(ctx.json(soknader)))
 
-mock.get(`${env.syfoapiRoot}/syfosoknad/api/soknader`, soknader as any)
-mock.get(`${env.syforestRoot}/sykmeldinger`, sykmeldinger as any)
-mock.get(`${env.spinnsynRoot}/api/v1/vedtak`, vedtakTestdata as any)
-mock.post(`${env.spinnsynRoot}/api/v1/vedtak/:id/les`, {})
+mock.get(`${env.syforestRoot}/sykmeldinger`,
+    (req, res, ctx) => res(ctx.json(sykmeldinger)))
+
+mock.get(`${env.spinnsynRoot}/api/v1/vedtak`,
+    (req, res, ctx) => res(ctx.json(vedtakTestdata)))
+
+mock.post(`${env.spinnsynRoot}/api/v1/vedtak/:id/les`, () => Promise.resolve({ status: 200 }))

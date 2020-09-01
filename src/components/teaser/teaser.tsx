@@ -6,8 +6,7 @@ import { getDuration } from '../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
-import avkryssetHover from './avkrysset-hover.svg'
-import avkrysset from './avkrysset.svg'
+import hand from './hand.svg'
 import { SykepengesoknadTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
@@ -42,7 +41,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
                 <div className="inngangspanel__venstre">
-                    <InngangsIkon ikon={avkrysset} ikonHover={avkryssetHover} />
+                    <InngangsIkon ikon={hand} ikonHover={hand} />
                     <div className="inngangspanel__innhold">
                         <InngangsHeader
                             meta={

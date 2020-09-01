@@ -1,8 +1,21 @@
 @import '../../../node_modules/nav-frontend-core/less/_variabler';
 
 .inngangspanelerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     padding: 2rem 0;
     background-color: @white;
+
+    &__tittel {
+        display: inline-block;
+    }
+
+    .inngangspanel__sortering {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
 }
 
 .inngangspanel {
@@ -44,7 +57,7 @@
 
     .inngangspanel__ikon {
         display: flex;
-        margin: -8px 1.5rem 0 0;
+        margin-right: 1.5rem;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;

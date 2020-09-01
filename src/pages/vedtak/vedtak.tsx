@@ -6,6 +6,7 @@ import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
+import { RouteParams } from '../../app'
 import Banner from '../../components/banner/banner'
 import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
@@ -36,7 +37,7 @@ const brodsmuler: Brodsmule[] = [
 ]
 
 const Vedtak = () => {
-    const { id } = useParams()
+    const { id } = useParams<RouteParams>()
     const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
 
     useEffect(() => {

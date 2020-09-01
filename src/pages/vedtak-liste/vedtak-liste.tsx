@@ -46,6 +46,7 @@ const VedtakListe = () => {
                     vedtak={leste}
                     tittel={tekst('spvedtak.teaser.leste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
+                    kanSorteres={false}
                 />
             </div>
         </>
