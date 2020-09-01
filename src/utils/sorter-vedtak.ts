@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-import { Vedtak } from '../types/vedtak';
+import { Vedtak } from '../types/vedtak'
 
 export const sorterEtterPeriodeTom = (vedtak1: Vedtak, vedtak2: Vedtak) => {
     const dato1 = dayjs(vedtak1.vedtak.tom).toDate()

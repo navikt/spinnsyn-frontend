@@ -6,6 +6,7 @@ import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
+import { RouteParams } from '../../app'
 import Banner from '../../components/banner/banner'
 import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
@@ -22,7 +23,6 @@ import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
-import { RouteParams } from '../../app';
 
 const brodsmuler: Brodsmule[] = [
     {

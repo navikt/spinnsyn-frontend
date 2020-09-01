@@ -1,11 +1,11 @@
+import { Select } from 'nav-frontend-skjema'
 import { Element, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
 import { Vedtak } from '../../types/vedtak'
+import { sorterEtterPeriodeTom } from '../../utils/sorter-vedtak'
 import Vis from '../vis'
 import Teaser from './teaser'
-import { Select } from 'nav-frontend-skjema';
-import { sorterEtterPeriodeTom } from '../../utils/sorter-vedtak';
 
 interface SoknaderTeasereProps {
     vedtak: Vedtak[];
@@ -19,7 +19,7 @@ type Sortering = 'Dato'
 
 const Teasere = ({ vedtak, className, tittel, tomListeTekst, kanSorteres }: SoknaderTeasereProps) => {
     const [ sortering, setSortering ] = useState<Sortering>('Dato')
-    const [ sorterteVedtak, setSorterteVedtak ] = useState<Vedtak[]>([]);
+    const [ sorterteVedtak, setSorterteVedtak ] = useState<Vedtak[]>([])
 
     useEffect(() => {
         if (sortering === 'Dato') {
