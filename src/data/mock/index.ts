@@ -22,7 +22,7 @@ if (!env.isOpplaering) {
 mock.get(`${env.syfoapiRoot}/syfosoknad/api/soknader`,
     (req, res, ctx) => res(ctx.json(soknader)))
 
-mock.get(`${env.syforestRoot}/sykmeldinger`,
+mock.get(`${env.sykmeldingerBackendProxyRoot}/api/v1/syforest/sykmeldinger`,
     (req, res, ctx) => res(ctx.json(sykmeldinger)))
 
 mock.get(`${env.spinnsynRoot}/api/v1/vedtak`,

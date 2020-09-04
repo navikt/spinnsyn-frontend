@@ -18,8 +18,8 @@ class Environment {
         return this.env.SYFOAPI_ROOT
     }
 
-    get syforestRoot() {
-        return this.env.SYFOREST_ROOT
+    get sykmeldingerBackendProxyRoot() {
+        return this.env.SYKMELDINGER_BACKEND_PROXY_ROOT
     }
 
     get spinnsynRoot() {
