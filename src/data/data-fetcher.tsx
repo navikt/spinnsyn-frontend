@@ -2,6 +2,7 @@ import Spinner from 'nav-frontend-spinner'
 import React, { useEffect } from 'react'
 
 import IngenData from '../pages/feil/ingen-data'
+import { Inntektsmelding } from '../types/inntektsmelding'
 import { RSSoknad } from '../types/rs-types/rs-soknad'
 import { Soknad, Sykmelding } from '../types/types'
 import { Vedtak } from '../types/vedtak'
@@ -12,10 +13,11 @@ import { FetchState, hasAny401, hasAnyFailed, hasData, isAnyNotStartedOrPending,
 import { useAppStore } from './stores/app-store'
 
 export function DataFetcher(props: { children: any }) {
-    const { setSoknader, setSykmeldinger, setVedtak } = useAppStore()
+    const { setSoknader, setSykmeldinger, setVedtak, setInntektsmeldinger } = useAppStore()
     const rssoknader = useFetch<RSSoknad[]>()
     const sykmeldinger = useFetch<Sykmelding[]>()
     const vedtak = useFetch<Vedtak[]>()
+    const inntektsmeldinger = useFetch<Inntektsmelding[]>()
 
     useEffect(() => {
         if (isNotStarted(rssoknader)) {
@@ -44,6 +46,15 @@ export function DataFetcher(props: { children: any }) {
             }, (fetchState: FetchState<Sykmelding[]>) => {
                 if (hasData(fetchState)) {
                     setSykmeldinger(fetchState.data)
+                }
+            })
+        }
+        if (isNotStarted(inntektsmeldinger)) {
+            inntektsmeldinger.fetch(env.flexinntektsmeldingRoot + '/api/v1/inntektsmeldinger', {
+                credentials: 'include',
+            }, (fetchState: FetchState<Inntektsmelding[]>) => {
+                if (hasData(fetchState)) {
+                    setInntektsmeldinger(fetchState.data)
                 }
             })
         }

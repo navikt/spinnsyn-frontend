@@ -26,6 +26,10 @@ class Environment {
         return this.env.SPINNSYN_ROOT
     }
 
+    get flexinntektsmeldingRoot() {
+        return this.env.FLEXINNTEKTSMELDING_ROOT
+    }
+
     get isMockBackend() {
         return this.env.MOCK_BACKEND === 'true'
     }
