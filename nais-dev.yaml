@@ -28,8 +28,8 @@ spec:
   env:
     - name: SYFOAPI_ROOT
       value: "https://syfoapi.dev.nav.no"
-    - name: SYFOREST_ROOT
-      value: "https://tjenester-q1.nav.no/syforest"
+    - name: SYKMELDINGER_BACKEND_PROXY_ROOT
+      value: "https://sykmeldinger-backend-proxy.dev.nav.no"
     - name: SPINNSYN_ROOT
       value: "https://spinnsynbackend-proxy.dev.nav.no"
     - name: LOGINSERVICE_URL

@@ -15,10 +15,6 @@ spec:
   readiness:
     path: internal/isReady
   env:
-    - name: SYFOAPI_ROOT
-      value: "https://syfoapi-q.nav.no"
-    - name: SYFOREST_ROOT
-      value: "https://tjenester-q1.nav.no/syforest"
     - name: LOGINSERVICE_URL
       value: "https://loginservice-q.nav.no/login"
     - name: MOCK_BACKEND
