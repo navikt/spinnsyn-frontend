@@ -2,6 +2,7 @@ import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock'
 
 import env from '../../utils/environment'
 import { jsonDeepCopy } from '../../utils/json-deep-copy'
+import { inntektsmeldinger } from './data/inntektsmeldinger'
 import { soknaderIntegration } from './data/soknader-integration'
 import { soknaderOpplaering } from './data/soknader-opplaering'
 import { sykmeldinger } from './data/sykmeldinger'
@@ -29,3 +30,6 @@ mock.get(`${env.spinnsynRoot}/api/v1/vedtak`,
     (req, res, ctx) => res(ctx.json(vedtakTestdata)))
 
 mock.post(`${env.spinnsynRoot}/api/v1/vedtak/:id/les`, () => Promise.resolve({ status: 200 }))
+
+mock.get(`${env.flexinntektsmeldingRoot}/api/v1/inntektsmeldinger`,
+    (req, res, ctx) => res(ctx.json(inntektsmeldinger)))

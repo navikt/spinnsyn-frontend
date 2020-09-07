@@ -1,4 +1,5 @@
 import { Vedtak } from '../../../types/vedtak'
+import { inntektsmelding } from './inntektsmeldinger'
 import { arbeidstaker, arbeidstakerNr2 } from './soknader-opplaering'
 import { arbeidstaker100, arbeidstaker100nr2 } from './sykmeldinger'
 
@@ -17,6 +18,10 @@ const lestMedEnSykmeldingOgSoknad: Vedtak = {
             {
                 'dokumentId': arbeidstaker.id,
                 'type': 'Søknad'
+            },
+            {
+                'dokumentId': inntektsmelding.id,
+                'type': 'Inntektsmelding'
             }
         ], 'utbetalinger': [ {
             'mottaker': 'Bruker',
