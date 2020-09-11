@@ -31,7 +31,7 @@ spec:
     - name: SYKMELDINGER_BACKEND_PROXY_ROOT
       value: "https://sykmeldinger-backend-proxy.dev.nav.no"
     - name: SPINNSYN_ROOT
-      value: "https://spinnsynbackend-proxy.dev.nav.no"
+      value: "https://spinnsyn-backend-proxy.dev.nav.no"
     - name: FLEXINNTEKTSMELDING_ROOT
       value: "https://flexinntektsmelding-proxy.dev.nav.no"
     - name: LOGINSERVICE_URL
@@ -47,4 +47,4 @@ spec:
     - name: OPPLAERING
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
-      value: "https://spinnsyn-frontend.dev.nav.no"
+      value: "https://sykepenger.dev.nav.no"
