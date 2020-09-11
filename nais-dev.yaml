@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: spvedtak
+  name: spinnsyn-frontend
   namespace: flex
   labels:
     team: flex
@@ -9,9 +9,9 @@ spec:
   image: {{ image }}
   port: 8080
   ingresses:
-    - "https://spvedtak.dev.nav.no/"
+    - "https://sykepenger.dev.nav.no/"
   replicas:
-    min: 2
+    min: 1
     max: 2
     cpuThresholdPercentage: 50
   resources:
@@ -47,4 +47,4 @@ spec:
     - name: OPPLAERING
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
-      value: "https://spvedtak.dev.nav.no"
+      value: "https://spinnsyn-frontend.dev.nav.no"

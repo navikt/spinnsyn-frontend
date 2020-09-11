@@ -1,6 +1,6 @@
 const BannerTekster: any = {
     'nb': {
-        'spvedtak.sidetittel': 'Behandlede søknader',
+        'spinnsyn.sidetittel': 'Behandlede søknader',
     }, 'en': {}
 }
 

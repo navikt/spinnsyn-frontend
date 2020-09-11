@@ -38,13 +38,13 @@ const VedtakListe = () => {
                 <Teasere
                     className="vedtak__teasere vedtak--uleste"
                     vedtak={uleste}
-                    tittel={tekst('spvedtak.teaser.uleste')}
+                    tittel={tekst('spinnsyn.teaser.uleste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
                 />
                 <Teasere
                     className="vedtak__teasere vedtak--leste"
                     vedtak={leste}
-                    tittel={tekst('spvedtak.teaser.leste')}
+                    tittel={tekst('spinnsyn.teaser.leste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
                     kanSorteres={false}
                 />

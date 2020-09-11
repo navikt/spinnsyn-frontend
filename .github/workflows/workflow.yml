@@ -1,7 +1,7 @@
 name: Push
 on: push
 env:
-  APP: spvedtak
+  APP: spinnsyn-frontend
 jobs:
   build-and-publish:
     name: Bygg, test og push Docker image

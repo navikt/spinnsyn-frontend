@@ -24,7 +24,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
         let txt = ''
         hentsm.forEach(sm => {
             sm.mulighetForArbeid.perioder.forEach( periode => {
-                const linje = getLedetekst(tekst('spvedtak.teaser.sykmeldt'),
+                const linje = getLedetekst(tekst('spinnsyn.teaser.sykmeldt'),
                     {
                         '%PROSENT%': periode.grad,
                         '%ARBEIDSGIVER%': sm.arbeidsgiver,
@@ -48,7 +48,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
                                 dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
                                 dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
                             }
-                            tittel={tekst('spvedtak.teaser.tittel')}
+                            tittel={tekst('spinnsyn.teaser.tittel')}
                             status={undertekst}
                         />
                     </div>
