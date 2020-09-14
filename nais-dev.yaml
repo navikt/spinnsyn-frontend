@@ -9,7 +9,7 @@ spec:
   image: {{ image }}
   port: 8080
   ingresses:
-    - "https://sykepenger.dev.nav.no/"
+    - "https://www-q1.dev.nav.no/syk/sykepenger"
   replicas:
     min: 1
     max: 2
@@ -43,10 +43,10 @@ spec:
     - name: ENVIRONMENT
       value: "q1"
     - name: SYKEFRAVAER_URL
-      value: "https://sykefravaer.er.ikke.tilgjengelig.fra.naisdevice.ennå.no"
+      value: "https://tjenester-q1.nav.no/sykefravaer"
     - name: OPPLAERING
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
-      value: "https://sykepenger.dev.nav.no"
+      value: "https://www-q1.dev.nav.no/syk/sykepenger"
     - name: FRONTENDLOGGER_ROOT
       value: "https://tjenester-q1.nav.no"
