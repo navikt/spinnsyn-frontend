@@ -22,7 +22,7 @@ ReactDOM.render(
 )
 
 if (env.isQ1 || env.isProd) {
-    const src = '/frontendlogger/logger.js'
+    const src = `${env.frontendloggerRoot}/frontendlogger/logger.js`
     const script = document.createElement('script')
     script.src = src
     script.async = true

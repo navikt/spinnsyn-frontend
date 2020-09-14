@@ -48,3 +48,5 @@ spec:
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
       value: "https://sykepenger.dev.nav.no"
+    - name: FRONTENDLOGGER_ROOT
+      value: "https://tjenester-q1.nav.no"
