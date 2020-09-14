@@ -53,6 +53,10 @@ class Environment {
     get sykefravaerUrl() {
         return this.env.SYKEFRAVAER_URL
     }
+
+    get frontendloggerRoot() {
+        return this.env.FRONTENDLOGGER_ROOT
+    }
 }
 
 const env = new Environment()
