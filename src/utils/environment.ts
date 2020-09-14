@@ -46,10 +46,6 @@ class Environment {
         return this.env.LOGINSERVICE_REDIRECT_URL
     }
 
-    get baseName() {
-        return this.env.BASE_NAME
-    }
-
     get sykefravaerUrl() {
         return this.env.SYKEFRAVAER_URL
     }

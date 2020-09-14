@@ -15,7 +15,7 @@ if (env.isMockBackend) {
 }
 
 ReactDOM.render(
-    <BrowserRouter basename={env.baseName}>
+    <BrowserRouter basename="/syk/sykepenger">
         <App />
     </BrowserRouter>
     , document.getElementById('root') as HTMLElement
