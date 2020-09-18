@@ -21,8 +21,8 @@ export const [ AppStoreProvider, useAppStore ] = constate(() => {
         inntektsmeldinger, setInntektsmeldinger,
         valgtSoknad, setValgtSoknad,
         valgtSykmelding, setValgtSykmelding,
-        feilState, setFeilState,
         vedtak, setVedtak,
         valgtVedtak, setValgtVedtak,
+        feilState, setFeilState,
     }
 })

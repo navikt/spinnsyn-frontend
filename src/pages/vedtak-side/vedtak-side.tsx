@@ -2,7 +2,7 @@ import './vedtak.less'
 
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 
@@ -36,16 +36,16 @@ const brodsmuler: Brodsmule[] = [
     }
 ]
 
-const Vedtak = () => {
+const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
     const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
 
     useEffect(() => {
-        setValgtVedtak(vedtak.find(a => a.id === id))
+        const aktivtVedtak = vedtak.find(a => a.id === id)
+        setValgtVedtak(aktivtVedtak)
         setBodyClass('vedtak')
-    }, [ id, setValgtVedtak, vedtak ])
 
-    useEffect(() => {
+        console.log('valgtVedtak', valgtVedtak); // eslint-disable-line
         if (valgtVedtak && !valgtVedtak.lest) {
             const merkVedtakSomLest = async() => {
                 const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${valgtVedtak.id}/les`, {
@@ -56,6 +56,7 @@ const Vedtak = () => {
                 if (redirectTilLoginHvis401(res)) {
                     return
                 } else if (status === 200) {
+                    console.log('200'); // eslint-disable-line
                     valgtVedtak.lest = true
                     setValgtVedtak(valgtVedtak)
                     vedtak.find(a => a.id === id)!.lest = true
@@ -66,11 +67,25 @@ const Vedtak = () => {
             }
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
-    })
+        // eslint-disable-next-line
+    }, [ valgtVedtak ])
 
     return (
-        <div>
-            <Banner />
+        <>
+            <Banner>
+                <>
+                    <Sidetittel>{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
+                    {
+                        console.log('valgtVedtak 2', valgtVedtak) // eslint-disable-line
+                    }
+                    {/*
+                    <Undertittel>
+                        for {tilLesbarPeriodeMedArstall(valgtVedtak!.vedtak.fom, valgtVedtak!.vedtak.tom)}
+                    </Undertittel>
+                    */}
+                </>
+            </Banner>
+
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <VedtakStatus />
@@ -80,16 +95,13 @@ const Vedtak = () => {
                 <Utbetalinger />
                 <Utbetalingsoversikt ekspandert={false} />
                 <Sykedager />
-
-                {/* <Klage /> */}
-
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
                 </Lenke>
             </div>
-        </div>
+        </>
     )
 }
 
-export default Vedtak
+export default VedtakSide

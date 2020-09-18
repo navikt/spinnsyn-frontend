@@ -10,7 +10,7 @@ import UtbetalingsoversiktTekster from '../components/utbetalingsoversikt/utbeta
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
 import RefreshHvisFeilStateTekster from '../pages/feil/refresh-hvis-feil-state-tekster'
 import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
-import VedtakTekster from '../pages/vedtak/vedtak-tekster'
+import VedtakTekster from '../pages/vedtak-side/vedtak-tekster'
 import { logger } from './logger'
 
 const tekster = {

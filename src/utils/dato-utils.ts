@@ -55,7 +55,17 @@ export const tilLesbarDatoMedArstall = (datoArg: any) => {
 }
 
 export const tilLesbarPeriodeMedArstall = (fomArg: any, tomArg: any) => {
-    const fom = new Date(fomArg)
+    return fomArg.toString() + ' ' + tomArg.toString()
+}
+
+export const tilLesbarPeriodeMedArstall1 = (fomArg: any, tomArg: any) => {
+    console.log('fomArg', fomArg); // eslint-disable-line
+    console.log('tomArg', tomArg); // eslint-disable-line
+    return 'fom-tom'
+}
+
+/*
+*     const fom = new Date(fomArg)
     const tom = new Date(tomArg)
     const erSammeAar = fom.getFullYear() === tom.getFullYear()
     const erSammeMaaned = fom.getMonth() === tom.getMonth()
@@ -64,7 +74,7 @@ export const tilLesbarPeriodeMedArstall = (fomArg: any, tomArg: any) => {
         : erSammeAar
             ? `${tilLesbarDatoUtenAarstall(fom)} ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
             : `${tilLesbarDatoMedArstall(fom)} ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
-}
+*/
 
 export const tilLesbarPeriodeUtenArstall = (fomArg: any, tomArg: any) => {
     const fom = new Date(fomArg)

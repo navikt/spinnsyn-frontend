@@ -10,7 +10,6 @@ import { Brodsmule } from '../../types/types'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 
-
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel'),
     sti: '/soknader',
@@ -32,7 +31,9 @@ const VedtakListe = () => {
 
     return (
         <>
-            <Banner />
+            <Banner>
+                <>{tekst('spinnsyn.sidetittel.liste')}</>
+            </Banner>
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <Teasere

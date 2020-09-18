@@ -15,16 +15,13 @@ export function FeilView() {
     const history = useHistory()
     history.replace(oversiktside)
 
-
     useEffect(() => {
         setBodyClass('feil-state')
     }, [])
 
-
     return (
         <>
             <div className="limit">
-
                 <div aria-live="polite">
                     <Alertstripe type="feil">{tekst('feilstate.alert')}</Alertstripe>
                 </div>
@@ -34,7 +31,6 @@ export function FeilView() {
             </div>
         </>)
 }
-
 
 export function RefreshHvisFeilState(props: { children: React.ReactNode }) {
     const { feilState } = useAppStore()

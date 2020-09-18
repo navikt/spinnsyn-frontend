@@ -1,7 +1,7 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
+import { tilLesbarPeriodeMedArstall1 } from '../../../utils/dato-utils'
 import { hentPeriode } from '../../../utils/periode-utils'
 import Vis from '../../vis'
 import { OppsummeringProps } from '../soknad-oppsummering'
@@ -16,7 +16,7 @@ const PerioderSum = ({ sporsmal }: OppsummeringProps) => {
                     return (
                         <Vis hvis={p.verdi !== undefined} key={i}>
                             <Normaltekst className="oppsummering__dato">
-                                { tilLesbarPeriodeMedArstall(periode[0], periode[1]) }
+                                { tilLesbarPeriodeMedArstall1(periode[0], periode[1]) }
                             </Normaltekst>
                         </Vis>
                     )

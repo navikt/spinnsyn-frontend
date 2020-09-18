@@ -1,16 +1,15 @@
 import './banner.less'
 
-import { Sidetittel } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { tekst } from '../../utils/tekster'
+interface BannerProps {
+    children: React.ReactElement;
+}
 
-const Banner = () => {
+const Banner = ({ children }: BannerProps) => {
     return (
         <header className="sidebanner">
-            <Sidetittel tag="h1" className="sidebanner__tittel">
-                {tekst('spinnsyn.sidetittel')}
-            </Sidetittel>
+            {children}
         </header>
     )
 }

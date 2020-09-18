@@ -2,7 +2,7 @@ import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { UtbetalingslinjeDto } from '../../types/vedtak'
-import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
+import { tilLesbarPeriodeMedArstall1 } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 import { ValutaFormat } from '../../utils/valuta-utils'
 
@@ -46,7 +46,7 @@ const Utbetaling = ({ utbetaling, fra }: UtbetalingProps) => {
     return (
         <table className="utbetaling__tabell">
             <Element tag="caption">
-                {tekst('utbetaling.gjelder') + tilLesbarPeriodeMedArstall(utbetaling.fom, utbetaling.tom)}
+                {tekst('utbetaling.gjelder') + tilLesbarPeriodeMedArstall1(utbetaling.fom, utbetaling.tom)}
             </Element>
             <thead>
                 <tr>

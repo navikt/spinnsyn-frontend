@@ -1,7 +1,7 @@
 import { EtikettLiten, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { tilLesbarDatoMedArstall, tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
+import { tilLesbarDatoMedArstall, tilLesbarPeriodeMedArstall1 } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 import Vis from '../vis'
 import { OpplysningerProps } from './sykmelding-opplysninger'
@@ -29,7 +29,7 @@ const FravaersperioderInfo = ({ sykmelding }: OpplysningerProps) => {
                             .map((p) => {
                                 return (
                                     <li key={tilLesbarDatoMedArstall(p.fom)!}>
-                                        <Normaltekst>{tilLesbarPeriodeMedArstall(p.fom, p.tom)}</Normaltekst>
+                                        <Normaltekst>{tilLesbarPeriodeMedArstall1(p.fom, p.tom)}</Normaltekst>
                                     </li>
                                 )
                             })
