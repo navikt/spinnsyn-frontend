@@ -1,6 +1,6 @@
 const TeaserTekster = {
     'nb': {
-        'spinnsyn.teaser.tittel': 'Behandlet søknad',
+        'spinnsyn.teaser.tittel': 'Utbetaling',
         'spinnsyn.teaser.sykmeldt': '%PROSENT%% sykmeldt fra %ARBEIDSGIVER% i %DAGER% dager',
         'spinnsyn.teaser.uleste': 'Svar fra NAV – ikke lest av deg',
         'spinnsyn.teaser.leste': 'Tidligere svar – lest av deg',

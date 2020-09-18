@@ -9,6 +9,7 @@ import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
+import { Sidetittel } from 'nav-frontend-typografi';
 
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel'),
@@ -32,7 +33,9 @@ const VedtakListe = () => {
     return (
         <>
             <Banner>
-                <>{tekst('spinnsyn.sidetittel.liste')}</>
+                <Sidetittel className="sidebanner__tittel">
+                    {tekst('spinnsyn.sidetittel.liste')}
+                </Sidetittel>
             </Banner>
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />

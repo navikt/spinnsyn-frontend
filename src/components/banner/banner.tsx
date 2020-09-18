@@ -3,7 +3,7 @@ import './banner.less'
 import React from 'react'
 
 interface BannerProps {
-    children: React.ReactElement;
+    children: React.ReactNode;
 }
 
 const Banner = ({ children }: BannerProps) => {

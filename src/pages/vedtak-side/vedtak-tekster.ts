@@ -1,6 +1,6 @@
 const VedtakTekster: any = {
     'nb': {
-        'vedtak.sidetittel': 'Behandlet søknad',
+        'vedtak.sidetittel': 'Utbetaling',
         'vedtak.tilbake': 'Til hovedsiden ditt sykefravær',
     }, 'en': {}
 }
