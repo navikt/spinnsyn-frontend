@@ -1,11 +1,11 @@
 import dayjs from 'dayjs'
 import React from 'react'
 
+import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import hand from './hand.svg'
 import { SykepengesoknadTeaserProps } from './teaser-util'
-import { tekst } from '../../utils/tekster';
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     return (

@@ -2,10 +2,10 @@ import './sykefravaer.less'
 
 import React from 'react'
 
+import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
-import HandImg from '../../../components/teaser/hand.svg'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
