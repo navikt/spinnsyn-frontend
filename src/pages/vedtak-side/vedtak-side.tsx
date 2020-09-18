@@ -1,28 +1,29 @@
-import './vedtak.less'
+import './vedtak-side.less'
 
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 
 import { RouteParams } from '../../app'
 import Banner from '../../components/banner/banner'
-import Begrunnelse from '../../components/begrunnelse/begrunnelse'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
-import SoknadOppsummering from '../../components/soknad-oppsummering/soknad-oppsummering'
-import Sykedager from '../../components/sykedager/sykedager'
-import SykmeldingOpplysninger from '../../components/sykmelding-opplysninger/sykmelding-opplysninger'
-import Utbetalinger from '../../components/utbetalinger/utbetalinger'
-import Utbetalingsoversikt from '../../components/utbetalingsoversikt/utbetalingsoversikt'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
+import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
+import Behandling from './behandling/behandling'
+import LokaleLenker from './lokale-lenker/lokale-lenker'
+import Sykefravaer from './sykefravaer/sykefravaer'
+import Sykmeldt from './sykmeldt/sykmeldt'
+import Uenig from './uenig/uenig'
+import Utbetaling from './utbetaling/utbetaling'
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -36,16 +37,18 @@ const brodsmuler: Brodsmule[] = [
     }
 ]
 
-const Vedtak = () => {
+const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
-    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak, apenUtbetaling } = useAppStore()
 
     useEffect(() => {
-        setValgtVedtak(vedtak.find(a => a.id === id))
-        setBodyClass('vedtak')
-    }, [ id, setValgtVedtak, vedtak ])
+        setBodyClass('vedtak-side')
+    }, [])
 
     useEffect(() => {
+        const aktivtVedtak = vedtak.find(a => a.id === id)
+        setValgtVedtak(aktivtVedtak)
+
         if (valgtVedtak && !valgtVedtak.lest) {
             const merkVedtakSomLest = async() => {
                 const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${valgtVedtak.id}/les`, {
@@ -56,6 +59,7 @@ const Vedtak = () => {
                 if (redirectTilLoginHvis401(res)) {
                     return
                 } else if (status === 200) {
+                    console.log('200'); // eslint-disable-line
                     valgtVedtak.lest = true
                     setValgtVedtak(valgtVedtak)
                     vedtak.find(a => a.id === id)!.lest = true
@@ -66,22 +70,31 @@ const Vedtak = () => {
             }
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
-    })
+        // eslint-disable-next-line
+    }, [ valgtVedtak ])
+
+    if (valgtVedtak === undefined) return null
 
     return (
         <div>
-            <Banner />
+            <Banner>
+                <Sidetittel className="sidebanner__tittel">{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
+                <Undertittel>
+                    for {tilLesbarPeriodeMedArstall(valgtVedtak!.vedtak.fom, valgtVedtak!.vedtak.tom)}
+                </Undertittel>
+            </Banner>
+
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <VedtakStatus />
-                <SykmeldingOpplysninger />
-                <SoknadOppsummering />
-                <Begrunnelse />
-                <Utbetalinger />
-                <Utbetalingsoversikt ekspandert={false} />
-                <Sykedager />
+                <LokaleLenker />
 
-                {/* <Klage /> */}
+                <Sykmeldt ekspandert={false} />
+                <Utbetaling ekspandert={apenUtbetaling} />
+                <Sykefravaer ekspandert={false} />
+
+                <Uenig />
+                <Behandling />
 
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />
@@ -92,4 +105,4 @@ const Vedtak = () => {
     )
 }
 
-export default Vedtak
+export default VedtakSide

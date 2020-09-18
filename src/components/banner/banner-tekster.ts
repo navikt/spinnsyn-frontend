@@ -1,6 +1,7 @@
 const BannerTekster: any = {
     'nb': {
-        'spinnsyn.sidetittel': 'Behandlede søknader',
+        'spinnsyn.sidetittel.liste': 'Utbetalinger',
+        'spinnsyn.sidetittel.vedtak': 'Utbetaling av sykepenger',
     }, 'en': {}
 }
 

@@ -1,16 +1,16 @@
 import BannerTekster from '../components/banner/banner-tekster'
-import BegrunnelseTekster from '../components/begrunnelse/begrunnelse-tekster'
 import KlageTekster from '../components/klage/klage-tekster'
 import SoknadOppsummeringTekster from '../components/soknad-oppsummering/soknad-oppsummering-tekster'
-import SykedagerTekster from '../components/sykedager/sykedager-tekster'
-import OpplysningerTekster from '../components/sykmelding-opplysninger/opplysninger-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
-import UtbetalingTekster from '../components/utbetalinger/utbetaling-tekster'
-import UtbetalingsoversiktTekster from '../components/utbetalingsoversikt/utbetalingsoversikt-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
 import RefreshHvisFeilStateTekster from '../pages/feil/refresh-hvis-feil-state-tekster'
 import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
-import VedtakTekster from '../pages/vedtak/vedtak-tekster'
+import BehandlingTekster from '../pages/vedtak-side/behandling/behandling-tekster'
+import SykefravaerTekster from '../pages/vedtak-side/sykefravaer/sykefravaer-tekster'
+import SykmeldtTekster from '../pages/vedtak-side/sykmeldt/sykmeldt-tekster'
+import UenigTekster from '../pages/vedtak-side/uenig/uenig-tekster'
+import UtbetalingTekster from '../pages/vedtak-side/utbetaling/utbetaling-tekster'
+import VedtakTekster from '../pages/vedtak-side/vedtak-tekster'
 import { logger } from './logger'
 
 const tekster = {
@@ -20,13 +20,13 @@ const tekster = {
     ...VedtakTekster.nb,
     ...KlageTekster.nb,
     ...VedtakStatusTekster.nb,
-    ...UtbetalingsoversiktTekster.nb,
     ...UtbetalingTekster.nb,
-    ...OpplysningerTekster.nb,
     ...SoknadOppsummeringTekster.nb,
-    ...BegrunnelseTekster.nb,
-    ...SykedagerTekster.nb,
     ...RefreshHvisFeilStateTekster.nb,
+    ...UenigTekster.nb,
+    ...BehandlingTekster.nb,
+    ...SykefravaerTekster.nb,
+    ...SykmeldtTekster.nb,
 }
 
 export const tekst = (tekst: string): string => {

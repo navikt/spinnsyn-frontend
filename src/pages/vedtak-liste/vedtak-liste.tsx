@@ -1,5 +1,6 @@
 import './vedtak-liste.less'
 
+import { Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 
 import Banner from '../../components/banner/banner'
@@ -9,7 +10,6 @@ import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
-
 
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel'),
@@ -32,7 +32,11 @@ const VedtakListe = () => {
 
     return (
         <>
-            <Banner />
+            <Banner>
+                <Sidetittel className="sidebanner__tittel">
+                    {tekst('spinnsyn.sidetittel.liste')}
+                </Sidetittel>
+            </Banner>
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <Teasere

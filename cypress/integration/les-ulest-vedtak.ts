@@ -21,11 +21,11 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--uleste > article > .inngangspanel').click()
 
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${ulestMedEnSykmeldingOgSoknad.id}`)
-        cy.contains('Godkjent søknad om sykepenger')
+        cy.contains('Godkjent krav om sykepenger')
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Behandlede søknader').click()
+        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
     it('Det er ingen uleste vedtak og tre lest', () => {

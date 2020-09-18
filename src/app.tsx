@@ -10,7 +10,7 @@ import StoreProvider from './data/stores/store-provider'
 import RedirectTilOversikt from './pages/feil/redirect-til-oversikt'
 import { RefreshHvisFeilState } from './pages/feil/refresh-hvis-feil-state'
 import VedtakListe from './pages/vedtak-liste/vedtak-liste'
-import Vedtak from './pages/vedtak/vedtak'
+import VedtakSide from './pages/vedtak-side/vedtak-side'
 
 export interface RouteParams {
     id: string;
@@ -28,7 +28,7 @@ const App = (): any => {
                         <RefreshHvisFeilState>
                             <Switch>
                                 <Route exact={true} path="/" component={VedtakListe} />
-                                <Route path={'/vedtak/:id'} component={Vedtak} />
+                                <Route path={'/vedtak/:id'} component={VedtakSide} />
                                 <Route path={'/vedtak/'} component={RedirectTilOversikt} />
                             </Switch>
                         </RefreshHvisFeilState>
