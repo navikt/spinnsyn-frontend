@@ -3,8 +3,8 @@
 
 .utvidbar {
     border: 1px solid @navGra40;
-    border-radius: 2px;
-    margin: 2rem 0;
+    border-radius: 4px;
+    margin: .5rem 0;
 
     &.intern {
         border: 0;
@@ -13,8 +13,7 @@
         .utvidbar__toggle {
             width: auto;
             padding: 0;
-            background-color: @white;
-            color: @navBla;
+            background-color: inherit;
 
             &:hover {
                 text-decoration: underline;
@@ -24,11 +23,6 @@
         .utvidbar__handling {
             display: inline-flex;
             align-items: center;
-
-            em {
-                visibility: hidden;
-                font-size: 0;
-            }
         }
 
         .utvidbar__innhold {
@@ -51,25 +45,19 @@
         padding: 0.7rem 1rem;
         border: 0;
         cursor: pointer;
-        background-color: @navDypBlaLighten80;
-        color: @navMorkGra;
+        background-color: inherit;
     }
 
-    &.lilla {
-        .utvidbar__toggle {
-            background-color: @navLillaLighten80;
-        }
+    &.bla {
+        background-color: @navBlaLighten80;
     }
 
-    &.hvit {
-        .utvidbar__toggle {
-            background-color: @white;
-        }
+    &.gronn {
+        background-color: @navGronnLighten80;
     }
 
     .utvidbar__toggle:focus {
         outline: 0;
-        box-shadow: 0 0 0 3px @fokusFarge;
         z-index: 1;
         position: relative;
     }
@@ -88,15 +76,14 @@
         padding-top: 2px;
     }
 
+    .utvidbar__undertittel {
+        display: block;
+        padding-top: 2px;
+    }
+
     .utvidbar__handling {
-        color: @navBla;
         margin-top: 4px;
         margin-left: auto;
-
-        em {
-            font-style: normal;
-            margin-right: 0.5rem;
-        }
     }
 
     .utvidbar__innholdContainer {
@@ -106,7 +93,6 @@
 
     .utvidbar__innhold {
         padding: 1.5rem;
-        background-color: @white;
     }
 
     .lenkerad {
@@ -122,7 +108,7 @@
 @media (min-width: @screen-sm) {
     .utvidbar {
         .utvidbar__innhold {
-            padding: 1.5rem 2.5rem 2.5rem;
+            padding: 1rem 4rem 2rem;
         }
     }
 }

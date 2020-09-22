@@ -17,12 +17,15 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
     if (valgtVedtak === undefined) return null
 
     return (
-        <Utvidbar className={'oppsummering ekspander hvit' + (ekspandert ? ' apen' : '')}
-            erApen={ekspandert} ikon={HandImg} ikonHover={HandImg}
-            tittel={tekst('vedtak.utbetaling.tittel')}
+        <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
+            erApen={ekspandert}
+            ikon={HandImg}
+            ikonHover={HandImg}
+            tittel="12 580 kroner"
+            undertittel={tekst('vedtak.utbetaling.undertittel')}
             ikonAltTekst="">
-            <div className="utbetaling__innhold">
-                {valgtVedtak.vedtak.fom}
+            <div>
+                Her kommer mer info
             </div>
         </Utvidbar>
     )

@@ -1,6 +1,6 @@
 const UtbetalingTekster: any = {
     'nb': {
-        'vedtak.utbetaling.tittel': 'Beløp og utbetaling',
+        'vedtak.utbetaling.undertittel': 'Beregnet sykepengebeløp',
     }, 'en': {}
 }
 
