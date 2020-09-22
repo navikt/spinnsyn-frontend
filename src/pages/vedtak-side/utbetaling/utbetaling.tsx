@@ -13,6 +13,9 @@ interface UtbetalingerProps {
 
 const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
     const { valgtVedtak } = useAppStore()
+    const finnBelop = () => {
+        return '12 580'
+    }
 
     if (valgtVedtak === undefined) return null
 
@@ -21,7 +24,7 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
             erApen={ekspandert}
             ikon={HandImg}
             ikonHover={HandImg}
-            tittel="12 580 kroner"
+            tittel={finnBelop() + ' kroner'}
             undertittel={tekst('vedtak.utbetaling.undertittel')}
             ikonAltTekst="">
             <div>

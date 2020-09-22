@@ -6,38 +6,6 @@
     border-radius: 4px;
     margin: .5rem 0;
 
-    &.intern {
-        border: 0;
-        margin: 1rem 0;
-
-        .utvidbar__toggle {
-            width: auto;
-            padding: 0;
-            background-color: inherit;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        .utvidbar__handling {
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .utvidbar__innhold {
-            padding: 1rem 0;
-
-            .alertstripe__ikon {
-                display: none;
-            }
-        }
-
-        .lenkerad {
-            display: none;
-        }
-    }
-
     .utvidbar__toggle {
         display: flex;
         text-align: left;
@@ -67,8 +35,8 @@
     }
 
     .utvidbar__ikon {
-        margin: 0 1.5rem 0 0.75rem;
-        min-width: 30px;
+        margin: auto 1.5rem auto 0.75rem;
+        min-width: 40px;
     }
 
     .utvidbar__tittel {
@@ -76,14 +44,8 @@
         padding-top: 2px;
     }
 
-    .utvidbar__undertittel {
-        display: block;
-        padding-top: 2px;
-    }
-
     .utvidbar__handling {
-        margin-top: 4px;
-        margin-left: auto;
+        margin: auto 0 auto auto;
     }
 
     .utvidbar__innholdContainer {
@@ -107,8 +69,12 @@
 
 @media (min-width: @screen-sm) {
     .utvidbar {
+        .utvidbar__toggle {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
         .utvidbar__innhold {
-            padding: 1rem 4rem 2rem;
+            padding: 0 6rem 1.5rem;
         }
     }
 }
@@ -118,18 +84,6 @@
         .utvidbar__toggle {
             border-bottom: 1px solid @navGra40;
             text-decoration: none;
-        }
-
-        &.intern {
-            .utvidbar__toggle {
-                border: 0;
-            }
-
-            .utvidbar__innhold {
-                .alertstripe__ikon {
-                    display: inline;
-                }
-            }
         }
     }
 }
