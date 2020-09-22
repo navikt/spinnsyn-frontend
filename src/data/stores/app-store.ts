@@ -11,9 +11,6 @@ export const [ AppStoreProvider, useAppStore ] = constate(() => {
     const [ vedtak, setVedtak ] = useState<Vedtak[]>([])
     const [ valgtVedtak, setValgtVedtak ] = useState<Vedtak>()
     const [ feilState, setFeilState ] = useState<boolean>(false)
-    const [ apenUtbetaling, setApenUtbetaling ] = useState<boolean>(false)
-    const [ apenSykmeldt, setApenSykmeldt ] = useState<boolean>(false)
-    const [ apenSykefravaer, setApenSykefravaer ] = useState<boolean>(false)
 
     return {
         soknader, setSoknader,
@@ -22,8 +19,5 @@ export const [ AppStoreProvider, useAppStore ] = constate(() => {
         vedtak, setVedtak,
         valgtVedtak, setValgtVedtak,
         feilState, setFeilState,
-        apenUtbetaling, setApenUtbetaling,
-        apenSykmeldt, setApenSykmeldt,
-        apenSykefravaer, setApenSykefravaer,
     }
 })

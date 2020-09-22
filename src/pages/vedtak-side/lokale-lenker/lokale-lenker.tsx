@@ -6,30 +6,21 @@ import React, { SyntheticEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import HandImg from '../../../components/teaser/hand.svg'
-import { useAppStore } from '../../../data/stores/app-store'
 import LedningImg from './ledning.svg'
 
 const LokaleLenker = () => {
-    const {
-        apenUtbetaling, setApenUtbetaling,
-        apenSykefravaer, setApenSykefravaer,
-        apenSykmeldt, setApenSykmeldt
-    } = useAppStore()
     const location = useLocation()
 
     const klikkUtbetaling = (e: SyntheticEvent) => {
         e.preventDefault()
-        setApenUtbetaling(!apenUtbetaling)
     }
 
     const klikkSykmeldt = (e: SyntheticEvent) => {
         e.preventDefault()
-        setApenSykmeldt(!apenSykmeldt)
     }
 
     const klikkSykefravaer = (e: SyntheticEvent) => {
         e.preventDefault()
-        setApenSykefravaer(!apenSykefravaer)
     }
 
     return (

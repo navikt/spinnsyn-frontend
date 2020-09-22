@@ -29,6 +29,7 @@ const VedtakStatus = () => {
     return (
         <Vis hvis={status}>
             <section className="vedtak-status">
+                {/* TODO: Må få riktig illustrasjon fra Bendik */}
                 <Veilederpanel kompakt svg={
                     <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d)">

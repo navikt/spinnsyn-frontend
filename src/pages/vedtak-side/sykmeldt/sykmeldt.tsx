@@ -12,13 +12,13 @@ interface UtbetalingerProps {
 }
 
 const Sykmeldt = ({ ekspandert }: UtbetalingerProps) => {
-    const { valgtVedtak, apenSykmeldt } = useAppStore()
+    const { valgtVedtak } = useAppStore()
 
     if (valgtVedtak === undefined) return null
 
     return (
         <Utvidbar className={'oppsummering ekspander hvit' + (ekspandert ? ' apen' : '')}
-            erApen={apenSykmeldt} ikon={LedningImg} ikonHover={LedningImg}
+            erApen={ekspandert} ikon={LedningImg} ikonHover={LedningImg}
             tittel={tekst('vedtak.sykmeldt.tittel')} ikonAltTekst=""
         >
             <div className="utbetaling__innhold">

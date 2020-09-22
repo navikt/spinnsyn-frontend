@@ -19,7 +19,6 @@ import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
 import Behandling from './behandling/behandling'
-import LokaleLenker from './lokale-lenker/lokale-lenker'
 import Sykefravaer from './sykefravaer/sykefravaer'
 import Sykmeldt from './sykmeldt/sykmeldt'
 import Uenig from './uenig/uenig'
@@ -39,7 +38,7 @@ const brodsmuler: Brodsmule[] = [
 
 const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
-    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak, apenUtbetaling } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -87,10 +86,10 @@ const VedtakSide = () => {
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <VedtakStatus />
-                <LokaleLenker />
 
+                {/* TODO: Se i lokale-lenker for illustrasjon og ev. styling av boksene under */}
                 <Sykmeldt ekspandert={false} />
-                <Utbetaling ekspandert={apenUtbetaling} />
+                <Utbetaling ekspandert={false} />
                 <Sykefravaer ekspandert={false} />
 
                 <Uenig />
