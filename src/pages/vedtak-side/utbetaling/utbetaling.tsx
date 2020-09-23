@@ -17,13 +17,14 @@ interface UtbetalingerProps {
 }
 
 const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
-    const { valgtVedtak } = useAppStore()
+    const { valgtVedtak, soknader } = useAppStore()
 
     if (valgtVedtak === undefined) return null
 
-    const org = valgtVedtak.vedtak.utbetalinger.find(u => u.fagområde === 'SPREF')?.mottaker.match(/\d{3}/g)?.join(' ')
+    const org = valgtVedtak.vedtak.utbetalinger.find(u => u.fagområde === 'SPREF')?.mottaker
     const periode = tilLesbarPeriodeMedArstall(valgtVedtak.vedtak.fom, valgtVedtak.vedtak.tom)
     const belop = ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak))
+    const arbeidsgiver = soknader.find(s => s.arbeidsgiver?.orgnummer === org)?.arbeidsgiver?.navn
 
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
@@ -57,7 +58,7 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
                         Refunderes til
                     </Element>
                     <Normaltekst>
-                        Arbeidsgiver { /* Denne kan vi ikke finne uten søknadene */ }
+                        {arbeidsgiver}
                     </Normaltekst>
                 </section>
                 <section>
@@ -65,7 +66,7 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
                         Organisasjonsnummer
                     </Element>
                     <Normaltekst>
-                        {org}
+                        {org?.match(/\d{3}/g)?.join(' ')}
                     </Normaltekst>
                 </section>
             </div>
