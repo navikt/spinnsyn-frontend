@@ -10,6 +10,7 @@ import Vis from '../vis'
 interface UtvidbarProps {
     erApen: boolean;
     tittel: React.ReactNode | string;
+    undertittel?: React.ReactNode | string;
     children: React.ReactNode;
     ikon?: string;
     ikonHover?: string;
@@ -69,15 +70,15 @@ const Utvidbar = (props: UtvidbarProps) => {
                     />
                 </Vis>
                 <Vis hvis={props.type === undefined}>
-                    <Undertittel tag="h3" className="utvidbar__tittel">{props.tittel}</Undertittel>
+                    <div className="utvidbar__tittel">
+                        <Undertittel tag="h3">{props.tittel}</Undertittel>
+                        <Normaltekst>{props.undertittel}</Normaltekst>
+                    </div>
                 </Vis>
                 <Vis hvis={props.type === 'intern'}>
                     <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
                 </Vis>
                 <span className="utvidbar__handling">
-                    <Normaltekst tag="em">
-                        {erApen ? 'Lukk' : 'Åpne'}
-                    </Normaltekst>
                     <Chevron type={erApen ? 'opp' : 'ned'} />
                 </span>
             </button>

@@ -3,36 +3,35 @@
 
 .utvidbar {
     border: 1px solid @navGra40;
-    border-radius: 2px;
-    margin: 2rem 0;
+    border-radius: 4px;
+    margin: .5rem 0;
 
     &.intern {
         border: 0;
         margin: 1rem 0;
 
+
+
         .utvidbar__toggle {
             width: auto;
             padding: 0;
-            background-color: @white;
+            background-color: inherit;
+            text-decoration: underline;
             color: @navBla;
 
             &:hover {
-                text-decoration: underline;
+                text-decoration: none;
             }
         }
 
         .utvidbar__handling {
             display: inline-flex;
-            align-items: center;
-
-            em {
-                visibility: hidden;
-                font-size: 0;
-            }
+            align-items: flex-end;
+            margin-left: 0.5rem;
         }
 
         .utvidbar__innhold {
-            padding: 1rem 0;
+            padding: 0;
 
             .alertstripe__ikon {
                 display: none;
@@ -44,6 +43,7 @@
         }
     }
 
+
     .utvidbar__toggle {
         display: flex;
         text-align: left;
@@ -51,25 +51,24 @@
         padding: 0.7rem 1rem;
         border: 0;
         cursor: pointer;
-        background-color: @navDypBlaLighten80;
-        color: @navMorkGra;
+        background-color: inherit;
+
+        &:focus {
+            box-shadow: 0 0 0 3px @fokusFarge;
+        }
+
     }
 
-    &.lilla {
-        .utvidbar__toggle {
-            background-color: @navLillaLighten80;
-        }
+    &.bla {
+        background-color: @navBlaLighten80;
     }
 
-    &.hvit {
-        .utvidbar__toggle {
-            background-color: @white;
-        }
+    &.gronn {
+        background-color: @navGronnLighten80;
     }
 
     .utvidbar__toggle:focus {
         outline: 0;
-        box-shadow: 0 0 0 3px @fokusFarge;
         z-index: 1;
         position: relative;
     }
@@ -79,24 +78,21 @@
     }
 
     .utvidbar__ikon {
-        margin: 0 1.5rem 0 0.75rem;
-        min-width: 30px;
+        margin: auto 1.5rem auto 0.75rem;
+        min-width: 40px;
     }
 
     .utvidbar__tittel {
         display: inline-block;
         padding-top: 2px;
+
+        .typo-undertittel {
+            font-size: 1.5rem;
+        }
     }
 
     .utvidbar__handling {
-        color: @navBla;
-        margin-top: 4px;
-        margin-left: auto;
-
-        em {
-            font-style: normal;
-            margin-right: 0.5rem;
-        }
+        margin: auto 0 auto auto;
     }
 
     .utvidbar__innholdContainer {
@@ -106,7 +102,6 @@
 
     .utvidbar__innhold {
         padding: 1.5rem;
-        background-color: @white;
     }
 
     .lenkerad {
@@ -121,8 +116,12 @@
 
 @media (min-width: @screen-sm) {
     .utvidbar {
+        .utvidbar__toggle {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
         .utvidbar__innhold {
-            padding: 1.5rem 2.5rem 2.5rem;
+            padding: 0 6rem 1.5rem;
         }
     }
 }
@@ -133,16 +132,16 @@
             border-bottom: 1px solid @navGra40;
             text-decoration: none;
         }
+    }
 
-        &.intern {
-            .utvidbar__toggle {
-                border: 0;
-            }
+    &.intern {
+        .utvidbar__toggle {
+            border: 0;
+        }
 
-            .utvidbar__innhold {
-                .alertstripe__ikon {
-                    display: inline;
-                }
+        .utvidbar__innhold {
+            .alertstripe__ikon {
+                display: inline;
             }
         }
     }
