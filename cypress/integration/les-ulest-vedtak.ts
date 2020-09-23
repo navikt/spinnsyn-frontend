@@ -28,7 +28,7 @@ describe('Tester at appen starter', () => {
             .and('contain', '1. – 24. april 2020')
 
         cy.get('.utvidbar__innholdContainer')
-            .should('not.not.have.class', 'apen')
+            .should('not.have.class', 'apen')
             .and('not.be.visible')
 
         cy.contains('Beregnet sykepengebeløp').click()
