@@ -1,7 +1,22 @@
+@import '../../../node_modules/nav-frontend-core/less/_variabler';
+@import '../../basic';
+
 .vedtak-status {
     padding-bottom: 2rem;
 
     &__tittel {
         margin-bottom: 0.5rem;
+    }
+
+    .nav-veileder__frame svg, .nav-veileder__frame img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media (min-width: @screen-sm) {
+    .vedtak-status {
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
 }

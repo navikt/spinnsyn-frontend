@@ -12,13 +12,12 @@ import { tekst } from '../../../utils/tekster'
 const Uenig = () => {
     const { valgtVedtak } = useAppStore()
 
-    const klagefrist = tilLesbarDatoMedArstall(     // TODO: Er dette godt nok? burde komme fra backend?
+    const klagefrist = tilLesbarDatoMedArstall(
         dayjs(valgtVedtak?.opprettet)
             .add(30, 'day')
             .toDate()
     )
 
-    // TODO: Sjekk om lenkene stemmer
     return (
         <div className="uenig">
             <Undertittel className="uenig__tittel">
@@ -26,9 +25,9 @@ const Uenig = () => {
             </Undertittel>
             <Normaltekst>
                 Hvis du ikke er enig i resultatet, kan du klage.
-                Les om <Lenke href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter">retten
+                Les om <Lenke href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter" target="_blank">retten
                 til å klage</Lenke>,
-                eller gå rett til <Lenke href="https://www.nav.no/sosialhjelp/klage">klageveilederen</Lenke>
+                eller gå rett til <Lenke href="https://www.nav.no/soknader/nb/person/helse/sykepenger/NAV%2000-03.00/klage/brev" target="_blank">klageveilederen</Lenke>
             </Normaltekst>
             <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist}</Element>
         </div>
