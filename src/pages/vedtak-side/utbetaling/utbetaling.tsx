@@ -1,15 +1,15 @@
 import './utbetaling.less'
 
+import parser from 'html-react-parser'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
-import parser from 'html-react-parser'
 
 import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
-import { ValutaFormat } from '../../../utils/valuta-utils'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
+import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverBeløp } from '../../../utils/vedtak-utils'
 
 interface UtbetalingerProps {
