@@ -10,23 +10,28 @@
         border: 0;
         margin: 1rem 0;
 
+
+
         .utvidbar__toggle {
             width: auto;
             padding: 0;
             background-color: inherit;
+            text-decoration: underline;
+            color: @navBla;
 
             &:hover {
-                text-decoration: underline;
+                text-decoration: none;
             }
         }
 
         .utvidbar__handling {
             display: inline-flex;
-            align-items: center;
+            align-items: flex-end;
+            margin-left: 0.5rem;
         }
 
         .utvidbar__innhold {
-            padding: 1rem 0;
+            padding: 0;
 
             .alertstripe__ikon {
                 display: none;
@@ -38,6 +43,7 @@
         }
     }
 
+
     .utvidbar__toggle {
         display: flex;
         text-align: left;
@@ -46,6 +52,11 @@
         border: 0;
         cursor: pointer;
         background-color: inherit;
+
+        &:focus {
+            box-shadow: 0 0 0 3px @fokusFarge;
+        }
+
     }
 
     &.bla {
@@ -74,6 +85,10 @@
     .utvidbar__tittel {
         display: inline-block;
         padding-top: 2px;
+
+        .typo-undertittel {
+            font-size: 1.5rem;
+        }
     }
 
     .utvidbar__handling {

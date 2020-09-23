@@ -2,9 +2,11 @@ import './utbetaling.less'
 
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
+import parser from 'html-react-parser'
 
 import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
+import { ValutaFormat } from '../../../utils/valuta-utils'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
@@ -19,9 +21,9 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
 
     if (valgtVedtak === undefined) return null
 
-    const org = valgtVedtak.vedtak.utbetalinger[0].mottaker
+    const org = valgtVedtak.vedtak.utbetalinger.find(u => u.fagområde === 'SPREF')?.mottaker.match(/\d{3}/g)?.join(' ')
     const periode = tilLesbarPeriodeMedArstall(valgtVedtak.vedtak.fom, valgtVedtak.vedtak.tom)
-    const belop = refusjonTilArbeidsgiverBeløp(valgtVedtak) // TODO: Hvor mange desimaler, bruke ValutaFormat?
+    const belop = ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak))
 
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
@@ -38,11 +40,9 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
                     </Normaltekst>
                 </section>
                 <section>
-                    <Normaltekst>
-                        <Utvidbar erApen={false} tittel="Hvordan beregnes beløpet?" type="intern">
-                            innhold
-                        </Utvidbar>
-                    </Normaltekst>
+                    <Utvidbar erApen={false} tittel="Hvordan beregnes beløpet?" type="intern" className="typo-normal">
+                        {parser(tekst('vedtak.utbetaling.hvordan'))}
+                    </Utvidbar>
                 </section>
                 <section>
                     <Element tag="h2">
@@ -57,7 +57,7 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
                         Refunderes til
                     </Element>
                     <Normaltekst>
-                        ARB - Denne kan vi ikke finne uten søknadene
+                        Arbeidsgiver { /* Denne kan vi ikke finne uten søknadene */ }
                     </Normaltekst>
                 </section>
                 <section>
