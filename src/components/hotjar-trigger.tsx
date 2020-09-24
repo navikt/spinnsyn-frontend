@@ -23,7 +23,7 @@ export const HotjarTrigger = ({ children }: HotjarTriggerProps) => {
                 if (typeof hotJarWindow.hj !== 'function') {
                     warn('Hotjar ble ikke lastet inn...')
                 } else {
-                    hotJarWindow.hj('trigger', 'SP_VEDTAK')
+                    hotJarWindow.hj('trigger', 'SP_INNSYN')
                 }
             }, 2000)
         }
