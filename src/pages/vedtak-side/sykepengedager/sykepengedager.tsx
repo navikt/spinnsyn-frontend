@@ -1,25 +1,29 @@
-import './sykefravaer.less'
+import './sykepengedager.less'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
+import LedningImg from '../lokale-lenker/ledning.svg'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
 }
 
-const Sykefravaer = ({ ekspandert }: UtbetalingerProps) => {
+const Sykepengedager = ({ ekspandert }: UtbetalingerProps) => {
     const { valgtVedtak } = useAppStore()
+
+    useEffect(() => {
+        // console.log('hei'); // eslint-disable-line
+    }, [])
 
     if (valgtVedtak === undefined) return null
 
     return (
         <Utvidbar className={'oppsummering ekspander hvit' + (ekspandert ? ' apen' : '')}
-            erApen={ekspandert} ikon={HandImg} ikonHover={HandImg}
-            tittel={tekst('vedtak.sykefravaer.tittel')} ikonAltTekst=""
+            erApen={ekspandert} ikon={LedningImg} ikonHover={LedningImg}
+            tittel={tekst('vedtak.sykmeldt.tittel')} ikonAltTekst=""
         >
             <div className="utbetaling__innhold">
                 {valgtVedtak.vedtak.fom}
@@ -28,4 +32,4 @@ const Sykefravaer = ({ ekspandert }: UtbetalingerProps) => {
     )
 }
 
-export default Sykefravaer
+export default Sykepengedager

@@ -6,8 +6,7 @@ import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekst
 import RefreshHvisFeilStateTekster from '../pages/feil/refresh-hvis-feil-state-tekster'
 import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
 import BehandlingTekster from '../pages/vedtak-side/behandling/behandling-tekster'
-import SykefravaerTekster from '../pages/vedtak-side/sykefravaer/sykefravaer-tekster'
-import SykmeldtTekster from '../pages/vedtak-side/sykmeldt/sykmeldt-tekster'
+import SykepengedagerTekster from '../pages/vedtak-side/sykepengedager/sykepengedager-tekster'
 import UenigTekster from '../pages/vedtak-side/uenig/uenig-tekster'
 import UtbetalingTekster from '../pages/vedtak-side/utbetaling/utbetaling-tekster'
 import VedtakTekster from '../pages/vedtak-side/vedtak-tekster'
@@ -25,8 +24,7 @@ const tekster = {
     ...RefreshHvisFeilStateTekster.nb,
     ...UenigTekster.nb,
     ...BehandlingTekster.nb,
-    ...SykefravaerTekster.nb,
-    ...SykmeldtTekster.nb,
+    ...SykepengedagerTekster.nb,
 }
 
 export const tekst = (tekst: string): string => {

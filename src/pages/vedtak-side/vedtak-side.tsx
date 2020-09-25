@@ -19,8 +19,7 @@ import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
 import Behandling from './behandling/behandling'
-import Sykefravaer from './sykefravaer/sykefravaer'
-import Sykmeldt from './sykmeldt/sykmeldt'
+import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import Utbetaling from './utbetaling/utbetaling'
 
@@ -42,6 +41,7 @@ const VedtakSide = () => {
 
     useEffect(() => {
         setBodyClass('vedtak-side')
+        // console.log('hei'); // eslint-disable-line
     }, [])
 
     useEffect(() => {
@@ -87,10 +87,8 @@ const VedtakSide = () => {
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <VedtakStatus />
 
-                {/* TODO: Se i lokale-lenker for illustrasjon og ev. styling av boksene under */}
-                <Sykmeldt ekspandert={false} />
+                <Sykepengedager ekspandert={false} />
                 <Utbetaling ekspandert={false} />
-                <Sykefravaer ekspandert={false} />
 
                 <Uenig />
                 <Behandling />
