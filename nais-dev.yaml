@@ -9,7 +9,7 @@ spec:
   image: {{ image }}
   port: 8080
   ingresses:
-    - "https://www-q1.dev.nav.no/syk/sykepenger"
+    - "https://www-gcp.dev.nav.no/syk/sykepenger"
   replicas:
     min: 1
     max: 2
@@ -47,6 +47,6 @@ spec:
     - name: OPPLAERING
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
-      value: "https://www-q1.dev.nav.no/syk/sykepenger"
+      value: "https://www-gcp.dev.nav.no/syk/sykepenger"
     - name: FRONTENDLOGGER_ROOT
       value: "https://tjenester-q1.nav.no"

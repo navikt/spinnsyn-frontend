@@ -41,7 +41,6 @@ const VedtakSide = () => {
 
     useEffect(() => {
         setBodyClass('vedtak-side')
-        // console.log('hei'); // eslint-disable-line
     }, [])
 
     useEffect(() => {
@@ -103,3 +102,4 @@ const VedtakSide = () => {
 }
 
 export default VedtakSide
+

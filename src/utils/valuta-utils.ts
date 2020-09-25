@@ -1,4 +1,3 @@
-
-export const ValutaFormat = Intl.NumberFormat('nb-NO', { style: 'currency', currency: 'NOK' })
+export const ValutaFormat = Intl.NumberFormat('nb-NO', { maximumFractionDigits: 0 })
 
 
