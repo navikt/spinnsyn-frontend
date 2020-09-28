@@ -4,5 +4,5 @@ import { tekst } from '../../utils/tekster'
 
 it('Returns text from bundle', () => {
     const text = tekst('spinnsyn.sidetittel.liste')
-    expect(text).toEqual('Utbetalinger')
+    expect(text).toEqual('Utbetaling av sykepenger')
 })
