@@ -6,6 +6,7 @@ import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import LedningImg from '../lokale-lenker/ledning.svg'
+import { Normaltekst } from 'nav-frontend-typografi';
 
 interface UtbetalingerProps {
     ekspandert: boolean;
@@ -13,6 +14,10 @@ interface UtbetalingerProps {
 
 const Sykepengedager = ({ ekspandert }: UtbetalingerProps) => {
     const { valgtVedtak } = useAppStore()
+
+    const calculateSickDays = () => {
+        return 258;
+    }
 
     useEffect(() => {
         // console.log('hei'); // eslint-disable-line
@@ -23,11 +28,12 @@ const Sykepengedager = ({ ekspandert }: UtbetalingerProps) => {
     return (
         <Utvidbar className={'oppsummering ekspander hvit' + (ekspandert ? ' apen' : '')}
             erApen={ekspandert} ikon={LedningImg} ikonHover={LedningImg}
-            tittel={tekst('vedtak.sykmeldt.tittel')} ikonAltTekst=""
+            tittel={calculateSickDays()} ikonAltTekst=""
         >
-            <div className="utbetaling__innhold">
-                {valgtVedtak.vedtak.fom}
-            </div>
+            <Normaltekst className="utbetaling__innhold">
+                Hei på deg
+                {tekst('vedtak.sykmeldt.undertittel')}
+            </Normaltekst>
         </Utvidbar>
     )
 }
