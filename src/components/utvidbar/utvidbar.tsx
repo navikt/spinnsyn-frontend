@@ -1,7 +1,7 @@
 import './utvidbar.less'
 
 import Chevron from 'nav-frontend-chevron'
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { erSynligIViewport } from '../../utils/browser-utils'
@@ -10,7 +10,7 @@ import Vis from '../vis'
 interface UtvidbarProps {
     erApen: boolean;
     tittel: React.ReactNode | string;
-    undertittel?: React.ReactNode | string;
+    systemtittel?: React.ReactNode | string;
     children: React.ReactNode;
     ikon?: string;
     ikonHover?: string;
@@ -52,7 +52,7 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     return (
         <div ref={utvidbar}
-            className={`utvidbar ${props.className ? props.className : ''} ${props.type ? props.type : ''}`}
+            className={`utvidbar ${props.className} ${props.type} ${erApen ? 'apen' : ''}`}
         >
             <button aria-expanded={erApen}
                 ref={jsToggle}
@@ -71,8 +71,8 @@ const Utvidbar = (props: UtvidbarProps) => {
                 </Vis>
                 <Vis hvis={props.type === undefined}>
                     <div className="utvidbar__tittel">
-                        <Undertittel tag="h3">{props.tittel}</Undertittel>
-                        <Normaltekst>{props.undertittel}</Normaltekst>
+                        <Systemtittel tag="h3">{props.tittel}</Systemtittel>
+                        <Normaltekst>{props.systemtittel}</Normaltekst>
                     </div>
                 </Vis>
                 <Vis hvis={props.type === 'intern'}>

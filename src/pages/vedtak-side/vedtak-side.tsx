@@ -2,7 +2,7 @@ import './vedtak-side.less'
 
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi'
+import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -13,7 +13,6 @@ import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
-import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
@@ -77,17 +76,14 @@ const VedtakSide = () => {
         <div>
             <Banner>
                 <Sidetittel className="sidebanner__tittel">{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
-                <Undertittel>
-                    for {tilLesbarPeriodeMedArstall(valgtVedtak!.vedtak.fom, valgtVedtak!.vedtak.tom)}
-                </Undertittel>
             </Banner>
+            <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
-                <Brodsmuler brodsmuler={brodsmuler} />
                 <VedtakStatus />
 
-                <Sykepengedager ekspandert={false} />
                 <Utbetaling ekspandert={false} />
+                <Sykepengedager />
 
                 <Uenig />
                 <Behandling />
