@@ -15,10 +15,6 @@ const Sykepengedager = () => {
     const { valgtVedtak } = useAppStore()
     const [ apen ] = useState<boolean>(false)
 
-    const kalkulerSykedager = () => {
-        return 258
-    }
-
     const kalkulerSluttdato = () => {
         let slutt = dayjs(valgtVedtak!.vedtak.tom)
         let x = 0
@@ -41,12 +37,12 @@ const Sykepengedager = () => {
     return (
         <Utvidbar className={'bla' + (apen ? ' apen' : '')}
             erApen={apen} ikon={LedningImg} ikonHover={LedningImg}
-            tittel={kalkulerSykedager()} ikonAltTekst=""
+            tittel={valgtVedtak.vedtak.gjenståendeSykedager} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.systemtittel')}
         >
             <div className="avsnitt hittil">
                 <Systemtittel tag="h3">
-                    {14}
+                    {valgtVedtak.vedtak.forbrukteSykedager}
                 </Systemtittel>
                 <Normaltekst className="utbetaling__innhold">
                     {tekst('sykepengedager.hittil')}
