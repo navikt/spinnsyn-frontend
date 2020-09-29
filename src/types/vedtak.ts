@@ -8,26 +8,26 @@ export interface Vedtak {
 export interface VedtakDto {
     fom: string;
     tom: string;
-    forbrukteSykedager: number;
+    forbrukteSykedager: number;     // Dager brukt minus helg
     gjenståendeSykedager: number;
     utbetalinger: UtbetalingDto[];
     dokumenter: Dokument[];
 }
 
 export interface UtbetalingDto {
-    mottaker: string;
-    fagområde: string;
-    totalbeløp: number;
-    utbetalingslinjer: UtbetalingslinjeDto[];
+    mottaker: string;   // fnr eller org
+    fagområde: string;  // SP eller SPREF
+    totalbeløp: number; // Totalen for en av de over
+    utbetalingslinjer: UtbetalingslinjeDto[];   // Alle utbetalinger, fordelt over mindre perioder
 }
 
 export interface UtbetalingslinjeDto {
     fom: string;
     tom: string;
-    dagsats: number;
-    beløp: number;
-    grad: number;
-    sykedager: number;
+    dagsats: number;    // Det inntektsmeldingen sier man tjener
+    beløp: number;      // Det som dekkes, basert på sykegrad og 6G
+    grad: number;       // Sykegrad 20, 40, 60, 80, 100
+    sykedager: number;  // Sykedager brukt, minus helg
 }
 
 interface Dokument {
