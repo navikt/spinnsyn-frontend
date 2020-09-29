@@ -1,30 +1,32 @@
 import './utbetaling.less'
 
-import parser from 'html-react-parser'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
-import React from 'react'
+import { Normaltekst } from 'nav-frontend-typografi'
+import React, { useEffect, useState } from 'react'
 
 import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
-import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverBeløp } from '../../../utils/vedtak-utils'
+import BeregningInfo from './beregningInfo/beregningInfo'
+import FeilOpplysningerInfo from './feilOpplysningerInfo/feilOpplysningerInfo'
+import InntektsmeldingOppsummering from './inntektsmeldingOppsummering/inntektsmeldingOppsummering'
+import RefusjonInfo from './refusjonInfo/refusjonInfo'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
 }
 
 const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
-    const { valgtVedtak, soknader } = useAppStore()
+    const { valgtVedtak } = useAppStore()
+    const [ belop, setBelop ] = useState<string>('-')
+
+    useEffect(() => {
+        setBelop(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)))
+    }, [ valgtVedtak ])
 
     if (valgtVedtak === undefined) return null
-
-    const org = valgtVedtak.vedtak.utbetalinger.find(u => u.fagområde === 'SPREF')?.mottaker
-    const periode = tilLesbarPeriodeMedArstall(valgtVedtak.vedtak.fom, valgtVedtak.vedtak.tom)
-    const belop = ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak))
-    const arbeidsgiver = soknader.find(s => s.arbeidsgiver?.orgnummer === org)?.arbeidsgiver?.navn
 
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
@@ -35,40 +37,15 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
             undertittel={tekst('vedtak.utbetaling.undertittel')}
             ikonAltTekst="">
             <div className="utbetaling__innhold">
+                <InntektsmeldingOppsummering />
                 <section>
                     <Normaltekst>
-                        Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.
+                        {tekst('vedtak.utbetaling.trekk')}
                     </Normaltekst>
                 </section>
-                <section>
-                    <Utvidbar erApen={false} tittel="Hvordan beregnes beløpet?" type="intern" className="typo-normal">
-                        {parser(tekst('vedtak.utbetaling.hvordan'))}
-                    </Utvidbar>
-                </section>
-                <section>
-                    <Element tag="h2">
-                        Periode
-                    </Element>
-                    <Normaltekst>
-                        {periode}
-                    </Normaltekst>
-                </section>
-                <section>
-                    <Element tag="h2">
-                        Refunderes til
-                    </Element>
-                    <Normaltekst>
-                        {arbeidsgiver}
-                    </Normaltekst>
-                </section>
-                <section>
-                    <Element tag="h2">
-                        Organisasjonsnummer
-                    </Element>
-                    <Normaltekst>
-                        {org?.match(/\d{3}/g)?.join(' ')}
-                    </Normaltekst>
-                </section>
+                <BeregningInfo />
+                <FeilOpplysningerInfo />
+                <RefusjonInfo />
             </div>
         </Utvidbar>
     )

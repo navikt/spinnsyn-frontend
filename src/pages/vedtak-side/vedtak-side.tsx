@@ -51,9 +51,9 @@ const VedtakSide = () => {
             )
         )))
 
-        if (valgtVedtak && !valgtVedtak.lest) {
+        if (aktivtVedtak && !aktivtVedtak.lest) {
             const merkVedtakSomLest = async() => {
-                const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${valgtVedtak.id}/les`, {
+                const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${aktivtVedtak.id}/les`, {
                     method: 'POST',
                     credentials: 'include',
                 })
@@ -61,9 +61,8 @@ const VedtakSide = () => {
                 if (redirectTilLoginHvis401(res)) {
                     return
                 } else if (status === 200) {
-                    console.log('200'); // eslint-disable-line
-                    valgtVedtak.lest = true
-                    setValgtVedtak(valgtVedtak)
+                    aktivtVedtak.lest = true
+                    setValgtVedtak(aktivtVedtak)
                     vedtak.find(a => a.id === id)!.lest = true
                     setVedtak(vedtak)
                 } else {
@@ -72,7 +71,8 @@ const VedtakSide = () => {
             }
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
-    }, [ valgtVedtak, id, vedtak, setValgtVedtak, setValgtInntektsmelding, inntektsmeldinger, setVedtak ])
+    // eslint-disable-next-line
+    }, [ vedtak, inntektsmeldinger ])
 
     if (valgtVedtak === undefined) return null
 
