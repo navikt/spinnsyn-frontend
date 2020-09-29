@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+import weekday from 'dayjs/plugin/weekday'
 import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
@@ -7,12 +9,27 @@ import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import LedningImg from './ikon-sykefravaersoversikt.svg'
 
+dayjs.extend(weekday)
+
 const Sykepengedager = () => {
     const { valgtVedtak } = useAppStore()
     const [ apen ] = useState<boolean>(false)
 
-    const calculateSickDays = () => {
+    const kalkulerSykedager = () => {
         return 258
+    }
+
+    const kalkulerSluttdato = () => {
+        let slutt = dayjs(valgtVedtak!.vedtak.tom)
+        let x = 0
+        while (x < valgtVedtak!.vedtak.gjenståendeSykedager) {
+            slutt = slutt.add(1,'day')
+            while (slutt.weekday() > 0 && slutt.weekday() < 6) {
+                slutt = slutt.add(1, 'day')
+            }
+            x++
+        }
+        return slutt.format('D. MMM YYYY')
     }
 
     useEffect(() => {
@@ -24,7 +41,7 @@ const Sykepengedager = () => {
     return (
         <Utvidbar className={'bla' + (apen ? ' apen' : '')}
             erApen={apen} ikon={LedningImg} ikonHover={LedningImg}
-            tittel={calculateSickDays()} ikonAltTekst=""
+            tittel={kalkulerSykedager()} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.systemtittel')}
         >
             <div className="avsnitt hittil">
@@ -37,7 +54,7 @@ const Sykepengedager = () => {
             </div>
             <div className="avsnitt sluttdato">
                 <Systemtittel tag="h3">
-                    {'15.mai.2020'}
+                    {kalkulerSluttdato()}
                 </Systemtittel>
                 <Normaltekst className="utbetaling__innhold">
                     {tekst('sykepengedager.sluttdato')}
