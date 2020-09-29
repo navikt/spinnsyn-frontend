@@ -42,7 +42,7 @@ const VedtakListe = () => {
             <div className="limit">
                 <Brodsmuler brodsmuler={brodsmuler} />
                 <Teasere
-                    className="vedtak__teasere vedtak--uleste"
+                    className="vedtak--uleste vedtak--teasere"
                     vedtak={uleste}
                     tittel={tekst('spinnsyn.teaser.uleste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
@@ -51,7 +51,6 @@ const VedtakListe = () => {
                 <SaksbehandlingstidOgUtbetaling />
 
                 <Teasere
-                    className="vedtak__teasere vedtak--leste"
                     vedtak={leste}
                     tittel={tekst('spinnsyn.teaser.leste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}

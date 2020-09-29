@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { HoyreChevron } from 'nav-frontend-chevron'
 import React from 'react'
 
 import { tekst } from '../../utils/tekster'
@@ -22,6 +23,9 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
                             tittel={tekst('spinnsyn.teaser.tittel')}
                         />
                     </div>
+                </div>
+                <div className="inngangspanel__del2">
+                    <HoyreChevron />
                 </div>
             </Inngangspanel>
         </article>
