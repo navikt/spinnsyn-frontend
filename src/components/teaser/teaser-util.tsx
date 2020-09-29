@@ -1,18 +1,10 @@
-import dayjs from 'dayjs'
-import { Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { RSSoknadstatus } from '../../types/rs-types/rs-soknadstatus'
 import { RSSoknadstype } from '../../types/rs-types/rs-soknadstype'
 import { Soknad } from '../../types/types'
 import { Vedtak } from '../../types/vedtak'
-import { getRiktigDato, getSendtTilSuffix } from '../../utils/soknad-utils'
 import { getLedetekst, tekst } from '../../utils/tekster'
-
-export const erSendtTilBeggeMenIkkeSamtidig = (soknad: Soknad) => {
-    return soknad.sendtTilNAVDato && soknad.sendtTilArbeidsgiverDato
-        && soknad.sendtTilNAVDato.toDateString() !== soknad.sendtTilArbeidsgiverDato.toDateString()
-}
 
 export const finnArbeidsgivernavn = (soknad: Soknad) => {
     return soknad.arbeidsgiver && soknad.arbeidsgiver.navn ? soknad.arbeidsgiver.navn : ''
