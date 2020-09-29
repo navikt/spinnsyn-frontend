@@ -2,6 +2,7 @@ import Spinner from 'nav-frontend-spinner'
 import React, { useEffect } from 'react'
 
 import IngenData from '../pages/feil/ingen-data'
+import { Inntektsmelding } from '../types/inntektsmelding'
 import { RSSoknad } from '../types/rs-types/rs-soknad'
 import { Soknad } from '../types/types'
 import { Vedtak } from '../types/vedtak'
@@ -12,9 +13,10 @@ import { FetchState, hasAny401, hasAnyFailed, hasData, isAnyNotStartedOrPending,
 import { useAppStore } from './stores/app-store'
 
 export function DataFetcher(props: { children: any }) {
-    const { setSoknader, setVedtak } = useAppStore()
+    const { setSoknader, setVedtak, setInntektsmeldinger } = useAppStore()
     const rssoknader = useFetch<RSSoknad[]>()
     const vedtak = useFetch<Vedtak[]>()
+    const inntektsmeldinger = useFetch<Inntektsmelding[]>()
 
     useEffect(() => {
         if (isNotStarted(rssoknader)) {
@@ -38,16 +40,26 @@ export function DataFetcher(props: { children: any }) {
                 }
             })
         }
-        // eslint-disable-next-line
-    }, [rssoknader, vedtak]);
 
-    if (hasAny401([ rssoknader, vedtak ])) {
+        if (isNotStarted(inntektsmeldinger)) {
+            inntektsmeldinger.fetch(env.flexinntektsmeldingRoot + '/api/v1/inntektsmeldinger', {
+                credentials: 'include',
+            }, (fetchState: FetchState<Inntektsmelding[]>) => {
+                if (hasData(fetchState)) {
+                    setInntektsmeldinger(fetchState.data)
+                }
+            })
+        }
+        // eslint-disable-next-line
+    }, [rssoknader, vedtak, inntektsmeldinger]);
+
+    if (hasAny401([ rssoknader, vedtak, inntektsmeldinger ])) {
         window.location.href = hentLoginUrl()
 
-    } else if (isAnyNotStartedOrPending([ rssoknader, vedtak ])) {
+    } else if (isAnyNotStartedOrPending([ vedtak ])) {
         return <Spinner type={'XXL'} />
 
-    } else if (hasAnyFailed([ rssoknader, vedtak ])) {
+    } else if (hasAnyFailed([ rssoknader, vedtak, inntektsmeldinger ])) {
         logger.error('Klarer ikke hente en av disse [ rssoknader, vedtak ]')
         return <IngenData />
     }

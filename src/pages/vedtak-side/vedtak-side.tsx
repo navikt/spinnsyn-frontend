@@ -36,7 +36,7 @@ const brodsmuler: Brodsmule[] = [
 
 const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
-    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak, inntektsmeldinger, setValgtInntektsmelding } = useAppStore()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -45,6 +45,11 @@ const VedtakSide = () => {
     useEffect(() => {
         const aktivtVedtak = vedtak.find(a => a.id === id)
         setValgtVedtak(aktivtVedtak)
+        setValgtInntektsmelding(inntektsmeldinger.find((i =>
+            aktivtVedtak?.vedtak.dokumenter.find(d =>
+                d.type === 'Inntektsmelding' && i.id === d.dokumentId
+            )
+        )))
 
         if (valgtVedtak && !valgtVedtak.lest) {
             const merkVedtakSomLest = async() => {
@@ -67,8 +72,7 @@ const VedtakSide = () => {
             }
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
-        // eslint-disable-next-line
-    }, [ valgtVedtak ])
+    }, [ valgtVedtak, id, vedtak, setValgtVedtak, setValgtInntektsmelding, inntektsmeldinger, setVedtak ])
 
     if (valgtVedtak === undefined) return null
 
