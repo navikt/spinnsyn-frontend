@@ -1,6 +1,7 @@
 import 'dayjs/locale/nb'
 
 import dayjs from 'dayjs'
+import nb from 'dayjs/locale/nb'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
@@ -8,7 +9,10 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './app'
 import env from './utils/environment'
 
-dayjs.locale('nb')
+dayjs.locale({
+    ...nb,
+    weekStart: 1,
+})
 
 if (env.isMockBackend) {
     require('./data/mock')

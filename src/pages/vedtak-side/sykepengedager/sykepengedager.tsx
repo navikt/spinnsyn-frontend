@@ -1,15 +1,13 @@
 import dayjs from 'dayjs'
-import weekday from 'dayjs/plugin/weekday'
 import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
+import { erHelg } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
 import LedningImg from './ikon-sykefravaersoversikt.svg'
-
-dayjs.extend(weekday)
 
 const Sykepengedager = () => {
     const { valgtVedtak } = useAppStore()
@@ -19,18 +17,14 @@ const Sykepengedager = () => {
         let slutt = dayjs(valgtVedtak!.vedtak.tom)
         let x = 0
         while (x < valgtVedtak!.vedtak.gjenståendeSykedager) {
-            slutt = slutt.add(1,'day')
-            while (slutt.weekday() > 0 && slutt.weekday() < 6) {
-                slutt = slutt.add(1, 'day')
+            slutt = slutt.add(-1, 'day')
+            while (erHelg(slutt.toDate())) {
+                slutt = slutt.add(-1, 'day')
             }
             x++
         }
         return slutt.format('D. MMM YYYY')
     }
-
-    useEffect(() => {
-        // console.log('hei'); // eslint-disable-line
-    }, [])
 
     if (valgtVedtak === undefined) return null
 
