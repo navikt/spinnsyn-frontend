@@ -1,4 +1,4 @@
-import { ulestMedEnSykmeldingOgSoknad, lestMedEnSykmeldingOgSoknad } from '../../src/data/mock/data/vedtak'
+import { lestMedEnSykmeldingOgSoknad,ulestMedEnSykmeldingOgSoknad } from '../../src/data/mock/data/vedtak'
 
 describe('Tester at appen starter', () => {
 
