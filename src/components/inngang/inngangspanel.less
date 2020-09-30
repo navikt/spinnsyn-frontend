@@ -1,4 +1,5 @@
 @import '../../../node_modules/nav-frontend-core/less/_variabler';
+@import '../../../src/basic';
 
 .inngangspanelerHeader {
     display: flex;
@@ -97,6 +98,12 @@
     .inngangspanel__meta, .inngangspanel__tekst {
         margin: 0.35rem 0;
     }
+
+    .inngangspanel__del1, .inngangspanel__del2 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
 }
 
 .inngangspanel--inaktivt {
@@ -116,5 +123,44 @@
     .knapp.knapp--hoved {
         display: block;
         margin: 2rem auto 1rem;
+    }
+}
+
+@media (min-width: @skjermMedium) {
+    .inngangspanel {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 2rem;
+
+        &:hover {
+            .inngangspanel__del2 {
+                .chevronboks {
+                    color: @navBla;
+                }
+            }
+        }
+
+        .inngangspanel__tittel {
+            margin-bottom: 0;
+        }
+
+        .inngangspanel__del2 {
+            margin: 0;
+
+            .inngangspanel__status {
+                margin: 0;
+            }
+
+            .chevronboks {
+                display: inline-block;
+                margin: 0 -1rem 0 1rem;
+                color: @grayIcon;
+            }
+        }
+
+        .inngangspanel__innhold {
+            padding-right: 0.5rem;
+        }
     }
 }
