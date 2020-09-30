@@ -1,30 +1,18 @@
-import dayjs from 'dayjs'
 import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
-import { erHelg } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
+import { estimertSluttdato } from '../../../utils/vedtak-utils'
 import LedningImg from './ikon-sykefravaersoversikt.svg'
 
 const Sykepengedager = () => {
     const { valgtVedtak } = useAppStore()
     const [ apen ] = useState<boolean>(false)
 
-    const kalkulerSluttdato = () => {
-        let slutt = dayjs(valgtVedtak!.vedtak.tom)
-        let x = 0
-        while (x < valgtVedtak!.vedtak.gjenståendeSykedager) {
-            slutt = slutt.add(-1, 'day')
-            while (erHelg(slutt.toDate())) {
-                slutt = slutt.add(-1, 'day')
-            }
-            x++
-        }
-        return slutt.format('D. MMM YYYY')
-    }
+    const sluttdato = estimertSluttdato(valgtVedtak)
 
     if (valgtVedtak === undefined) return null
 
@@ -44,7 +32,7 @@ const Sykepengedager = () => {
             </div>
             <div className="avsnitt sluttdato">
                 <Systemtittel tag="h3">
-                    {kalkulerSluttdato()}
+                    {sluttdato}
                 </Systemtittel>
                 <Normaltekst className="utbetaling__innhold">
                     {tekst('sykepengedager.sluttdato')}

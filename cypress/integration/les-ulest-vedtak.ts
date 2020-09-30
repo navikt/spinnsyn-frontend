@@ -65,7 +65,7 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi sjekker at sluttdato for sykepenger beregnes riktig', () => {
-        cy.get('.sluttdato > .typo-systemtittel').contains('3. juni 2020')
+        cy.get('.sluttdato > .typo-systemtittel').contains('7. juli 2020')
     })
 })
 
