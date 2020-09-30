@@ -1,7 +1,6 @@
-import { ulestMedEnSykmeldingOgSoknad } from '../../src/data/mock/data/vedtak'
+import { ulestMedEnSykmeldingOgSoknad, lestMedEnSykmeldingOgSoknad } from '../../src/data/mock/data/vedtak'
 
 describe('Tester at appen starter', () => {
-
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
@@ -57,6 +56,16 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
         cy.contains('Ingen behandlede søknader')
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
+    })
+
+    it('Vi åpner det første tidligere leste vedtaket', () => {
+        cy.get('.vedtak--leste > article > .inngangspanel[href="/syk/sykepenger/vedtak/57896853-d5c3-4599-a77f-aff1f2cbc411"]').click({ force: true })
+        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${lestMedEnSykmeldingOgSoknad.id}`)
+        cy.get('.utvidbar.bla > button.utvidbar__toggle').contains('Sykepengedager gjenstår').click({ force: true })
+    })
+
+    it('Vi sjekker at sluttdato for sykepenger beregnes riktig', () => {
+        cy.get('.sluttdato > .typo-systemtittel').contains('3. juni 2020')
     })
 })
 

@@ -3,7 +3,7 @@ import { inntektsmelding } from './inntektsmeldinger'
 import { arbeidstaker, arbeidstakerNr2 } from './soknader-opplaering'
 import { arbeidstaker100, arbeidstaker100nr2 } from './sykmeldinger'
 
-const lestMedEnSykmeldingOgSoknad: Vedtak = {
+export const lestMedEnSykmeldingOgSoknad: Vedtak = {
     'id': '57896853-d5c3-4599-a77f-aff1f2cbc411',
     'lest': true,
     'opprettet': '2020-06-19',
