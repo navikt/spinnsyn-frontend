@@ -51,6 +51,7 @@ const VedtakListe = () => {
                 <SaksbehandlingstidOgUtbetaling />
 
                 <Teasere
+                    className="vedtak--leste"
                     vedtak={leste}
                     tittel={tekst('spinnsyn.teaser.leste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
