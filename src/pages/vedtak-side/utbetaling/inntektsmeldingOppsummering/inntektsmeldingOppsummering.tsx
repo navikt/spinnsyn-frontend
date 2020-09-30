@@ -18,8 +18,6 @@ const InntektsmeldingOppsummering = () => {
     useEffect(() => {
         setMnd(ValutaFormat.format(valgtInntektsmelding?.månedsinntekt || 0) + ' kr')
         setAr(ValutaFormat.format(valgtInntektsmelding?.årsinntekt || 0) + ' kr')
-
-        // TODO: Vi ønsker at dette er daglig beløp som dekkes, ikke daglig hva man tjener?
         setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverDagsats(valgtVedtak)) + ' kr')
         setDager(valgtVedtak?.vedtak.forbrukteSykedager + ' dager')
         setSum(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
