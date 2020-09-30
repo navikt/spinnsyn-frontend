@@ -2,13 +2,16 @@ import dayjs from 'dayjs'
 import { HoyreChevron } from 'nav-frontend-chevron'
 import React from 'react'
 
+import { useAppStore } from '../../data/stores/app-store'
 import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import hand from './hand.svg'
-import { SykepengesoknadTeaserProps } from './teaser-util'
+import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
+    const { soknader } = useAppStore()
+
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
@@ -22,6 +25,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
                             }
                             tittel={tekst('spinnsyn.teaser.tittel')}
                         />
+                        {arbeidsgiverListevisning(vedtak, soknader)}
                     </div>
                 </div>
                 <div className="inngangspanel__del2">
