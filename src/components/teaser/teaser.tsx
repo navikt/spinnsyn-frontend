@@ -6,6 +6,7 @@ import { useAppStore } from '../../data/stores/app-store'
 import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
+import handHover from './hand-hover.svg'
 import hand from './hand.svg'
 import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
 
@@ -16,8 +17,8 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
                 <div className="inngangspanel__venstre">
-                    <InngangsIkon ikon={hand} ikonHover={hand} />
-                    <div className="inngangspanel__innhold">
+                    <InngangsIkon ikon={hand} ikonHover={handHover} />
+                    <div className="inngangspanel__innhold utvidbar__toggle">
                         <InngangsHeader
                             meta={
                                 dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
