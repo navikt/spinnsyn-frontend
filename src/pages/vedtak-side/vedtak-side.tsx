@@ -36,7 +36,7 @@ const brodsmuler: Brodsmule[] = [
 
 const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
-    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak, inntektsmeldinger, setValgtInntektsmelding } = useAppStore()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -45,10 +45,15 @@ const VedtakSide = () => {
     useEffect(() => {
         const aktivtVedtak = vedtak.find(a => a.id === id)
         setValgtVedtak(aktivtVedtak)
+        setValgtInntektsmelding(inntektsmeldinger.find((i =>
+            aktivtVedtak?.vedtak.dokumenter.find(d =>
+                d.type === 'Inntektsmelding' && i.id === d.dokumentId
+            )
+        )))
 
-        if (valgtVedtak && !valgtVedtak.lest) {
+        if (aktivtVedtak && !aktivtVedtak.lest) {
             const merkVedtakSomLest = async() => {
-                const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${valgtVedtak.id}/les`, {
+                const res = await fetch(`${env.spinnsynRoot}/api/v1/vedtak/${aktivtVedtak.id}/les`, {
                     method: 'POST',
                     credentials: 'include',
                 })
@@ -56,9 +61,8 @@ const VedtakSide = () => {
                 if (redirectTilLoginHvis401(res)) {
                     return
                 } else if (status === 200) {
-                    console.log('200'); // eslint-disable-line
-                    valgtVedtak.lest = true
-                    setValgtVedtak(valgtVedtak)
+                    aktivtVedtak.lest = true
+                    setValgtVedtak(aktivtVedtak)
                     vedtak.find(a => a.id === id)!.lest = true
                     setVedtak(vedtak)
                 } else {
@@ -67,8 +71,8 @@ const VedtakSide = () => {
             }
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
-        // eslint-disable-next-line
-    }, [ valgtVedtak ])
+    // eslint-disable-next-line
+    }, [ vedtak, inntektsmeldinger ])
 
     if (valgtVedtak === undefined) return null
 
