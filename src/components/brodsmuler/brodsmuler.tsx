@@ -61,41 +61,39 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
     const synligeBrodsmuler = getSynligeBrodsmuler()
 
     return (
-        <>
-            <nav className="brodsmuler" aria-label="Du er her: ">
-                <div className="limit">
-                    <img src={personIkon} alt="Du" className="brodsmuler__ikon" />
-                    <Normaltekst tag="ul" className="brodsmuler__smuler">
-                        <li className="smule">
-                            <Lenke href="/dittnav">Ditt NAV</Lenke>
-                        </li>
-                        <li className="smule">
-                            <Lenke href={env.sykefravaerUrl}>Ditt Sykefravær</Lenke>
-                        </li>
+        <nav className="brodsmuler" aria-label="Du er her: ">
+            <div className="limit">
+                <img src={personIkon} alt="Du" className="brodsmuler__ikon" />
+                <Normaltekst tag="ul" className="brodsmuler__smuler">
+                    <li className="smule">
+                        <Lenke href="/dittnav">Ditt NAV</Lenke>
+                    </li>
+                    <li className="smule">
+                        <Lenke href={env.sykefravaerUrl}>Ditt Sykefravær</Lenke>
+                    </li>
 
-                        {getVisCollapsed() &&
-                        <li className="smule">
-                            <button aria-label="Vis hele brødsmulestien"
-                                className="js-toggle"
-                                onClick={() => setVisCollapsed(false)}>
-                                ...
-                            </button>
-                        </li>}
+                    {getVisCollapsed() &&
+                    <li className="smule">
+                        <button aria-label="Vis hele brødsmulestien"
+                            className="js-toggle"
+                            onClick={() => setVisCollapsed(false)}>
+                            ...
+                        </button>
+                    </li>}
 
-                        {synligeBrodsmuler
-                            .map((smule, index) => {
-                                return {
-                                    ...smule,
-                                    sisteSmule: synligeBrodsmuler.length === index + 1,
-                                }
-                            })
-                            .map((smule, index) => {
-                                return <BrodsmuleBit key={index} {...smule} />
-                            })}
-                    </Normaltekst>
-                </div>
-            </nav>
-        </>
+                    {synligeBrodsmuler
+                        .map((smule, index) => {
+                            return {
+                                ...smule,
+                                sisteSmule: synligeBrodsmuler.length === index + 1,
+                            }
+                        })
+                        .map((smule, index) => {
+                            return <BrodsmuleBit key={index} {...smule} />
+                        })}
+                </Normaltekst>
+            </div>
+        </nav>
     )
 }
 

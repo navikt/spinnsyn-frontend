@@ -37,8 +37,9 @@ const VedtakListe = () => {
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Sidetittel>
             </Banner>
+            <Brodsmuler brodsmuler={brodsmuler} />
+
             <div className="limit">
-                <Brodsmuler brodsmuler={brodsmuler} />
                 <Teasere
                     className="vedtak__teasere vedtak--uleste"
                     vedtak={uleste}
