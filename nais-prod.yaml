@@ -33,7 +33,7 @@ spec:
     - name: SPINNSYN_ROOT
       value: "https://spinnsyn-backend-proxy.nav.no"
     - name: FLEXINNTEKTSMELDING_ROOT
-      value: "https://flexinntektsmelding-proxy.nav.no"
+      value: "https://flex-inntektsmelding-proxy.nav.no"
     - name: LOGINSERVICE_URL
       value: "https://loginservice.nav.no/login"
     - name: MOCK_BACKEND
