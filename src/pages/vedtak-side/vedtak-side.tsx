@@ -18,7 +18,7 @@ import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
 import Behandling from './behandling/behandling'
-import Sykefravaer from './sykefravaer/sykefravaer'
+import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import Utbetaling from './utbetaling/utbetaling'
 
@@ -72,7 +72,7 @@ const VedtakSide = () => {
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
     // eslint-disable-next-line
-    }, [ vedtak, inntektsmeldinger ])
+    }, [ valgtVedtak, inntektsmeldinger ])
 
     if (valgtVedtak === undefined) return null
 
@@ -81,14 +81,13 @@ const VedtakSide = () => {
             <Banner>
                 <Sidetittel className="sidebanner__tittel">{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
             </Banner>
+            <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
-                <Brodsmuler brodsmuler={brodsmuler} />
                 <VedtakStatus />
 
-                {/* TODO: Se i lokale-lenker for illustrasjon og ev. styling av boksene under */}
                 <Utbetaling ekspandert={false} />
-                <Sykefravaer ekspandert={false} />
+                <Sykepengedager />
 
                 <Uenig />
                 <Behandling />

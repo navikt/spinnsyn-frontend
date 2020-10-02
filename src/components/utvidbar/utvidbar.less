@@ -10,18 +10,11 @@
         border: 0;
         margin: 1rem 0;
 
-
-
         .utvidbar__toggle {
             width: auto;
             padding: 0;
             background-color: inherit;
             text-decoration: underline;
-            color: @navBla;
-
-            &:hover {
-                text-decoration: none;
-            }
         }
 
         .utvidbar__handling {
@@ -43,7 +36,6 @@
         }
     }
 
-
     .utvidbar__toggle {
         display: flex;
         text-align: left;
@@ -56,7 +48,6 @@
         &:focus {
             box-shadow: 0 0 0 3px @fokusFarge;
         }
-
     }
 
     &.bla {
@@ -73,22 +64,21 @@
         position: relative;
     }
 
-    .utvidbar__toggle:hover {
-        color: @navBla;
-    }
-
     .utvidbar__ikon {
         margin: auto 1.5rem auto 0.75rem;
         min-width: 40px;
+        max-width: 36px;
+    }
+
+    &.apen {
+        .utvidbar__ikon {
+            display: none;
+        }
     }
 
     .utvidbar__tittel {
         display: inline-block;
         padding-top: 2px;
-
-        .typo-undertittel {
-            font-size: 1.5rem;
-        }
     }
 
     .utvidbar__handling {
@@ -101,7 +91,7 @@
     }
 
     .utvidbar__innhold {
-        padding: 1.5rem;
+        padding: 0 1rem 1rem;
     }
 
     .lenkerad {
@@ -112,6 +102,10 @@
             border: 0;
         }
     }
+
+    .avsnitt {
+        margin: 0 0 1rem;
+    }
 }
 
 @media (min-width: @screen-sm) {
@@ -119,9 +113,20 @@
         .utvidbar__toggle {
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
+
+            &:hover {
+                color: @navBla;
+            }
         }
+
         .utvidbar__innhold {
             padding: 0 6rem 1.5rem;
+        }
+
+        &.apen {
+            .utvidbar__ikon {
+                display: block;
+            }
         }
     }
 }

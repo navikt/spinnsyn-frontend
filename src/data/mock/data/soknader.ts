@@ -13,7 +13,10 @@ export const arbeidstaker100: RSSoknad = {
     'avbruttDato': null,
     'startSykeforlop': '2020-09-12',
     'sykmeldingUtskrevet': '2020-09-12',
-    'arbeidsgiver': { 'navn': '995816598 sitt orgnavn :)', 'orgnummer': '995816598' },
+    'arbeidsgiver': {
+        'navn': 'POSTEN NORGE AS, BÆRUM',
+        'orgnummer': '995816598'
+    },
     'korrigerer': null,
     'korrigertAv': null,
     'arbeidssituasjon': 'ARBEIDSTAKER',
@@ -158,7 +161,7 @@ export const arbeidstaker100: RSSoknad = {
     }, {
         'id': '12',
         'tag': 'TILBAKE_I_ARBEID',
-        'sporsmalstekst': 'Var du tilbake i fullt arbeid hos 995816598 sitt orgnavn :) i løpet av perioden 12. - 27. september 2020?',
+        'sporsmalstekst': 'Var du tilbake i fullt arbeid hos POSTEN NORGE AS, BÆRUM i løpet av perioden 12. - 27. september 2020?',
         'undertekst': null,
         'svartype': 'JA_NEI',
         'min': null,
@@ -266,7 +269,7 @@ export const arbeidstaker100: RSSoknad = {
     }, {
         'id': '21',
         'tag': 'JOBBET_DU_100_PROSENT_0',
-        'sporsmalstekst': 'I perioden 12. - 27. september 2020 var du 100 % sykmeldt fra 995816598 sitt orgnavn :). Jobbet du noe i denne perioden?',
+        'sporsmalstekst': 'I perioden 12. - 27. september 2020 var du 100 % sykmeldt fra POSTEN NORGE AS, BÆRUM. Jobbet du noe i denne perioden?',
         'undertekst': null,
         'svartype': 'JA_NEI',
         'min': null,
@@ -289,7 +292,7 @@ export const arbeidstaker100: RSSoknad = {
         }, {
             'id': '23',
             'tag': 'HVOR_MYE_HAR_DU_JOBBET_0',
-            'sporsmalstekst': 'Hvor mye jobbet du totalt 12. - 27. september 2020 hos 995816598 sitt orgnavn :)?',
+            'sporsmalstekst': 'Hvor mye jobbet du totalt 12. - 27. september 2020 hos POSTEN NORGE AS, BÆRUM?',
             'undertekst': null,
             'svartype': 'RADIO_GRUPPE_TIMER_PROSENT',
             'min': null,
@@ -350,7 +353,7 @@ export const arbeidstaker100: RSSoknad = {
     }, {
         'id': '28',
         'tag': 'ANDRE_INNTEKTSKILDER',
-        'sporsmalstekst': 'Har du andre inntektskilder enn 995816598 sitt orgnavn :)?',
+        'sporsmalstekst': 'Har du andre inntektskilder enn POSTEN NORGE AS, BÆRUM?',
         'undertekst': null,
         'svartype': 'JA_NEI',
         'min': null,

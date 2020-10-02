@@ -16,7 +16,6 @@ interface UtbetalingerProps {
     ekspandert: boolean;
 }
 
-// TODO: Denne er basert på gamle skisser, må oppdateres
 const UtbetalingUtenInntektsmelding = ({ ekspandert }: UtbetalingerProps) => {
     const { valgtVedtak } = useAppStore()
     const [ belop, setBelop ] = useState<string>('-')
@@ -33,7 +32,7 @@ const UtbetalingUtenInntektsmelding = ({ ekspandert }: UtbetalingerProps) => {
             ikon={HandImg}
             ikonHover={HandImg}
             tittel={belop + ' kroner'}
-            undertittel={tekst('vedtak.utbetaling.undertittel')}
+            systemtittel={tekst('vedtak.utbetaling.undertittel')}
             ikonAltTekst="">
             <div className="utbetaling__innhold">
                 <section>

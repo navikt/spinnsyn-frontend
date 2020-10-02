@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 
 import { Vedtak } from '../types/vedtak'
-import { tilLesbarDatoMedArstall } from './dato-utils'
+import { erHelg, tilLesbarDatoMedArstall } from './dato-utils'
 
 export const refusjonTilArbeidsgiverOrgnummer = (vedtak?: Vedtak) => {
     return vedtak?.vedtak.utbetalinger
@@ -28,4 +28,17 @@ export const klagefrist = (vedtak?: Vedtak) => {
             .add(30, 'day')
             .toDate()
     )
+}
+
+export const estimertSluttdato = (vedtak?: Vedtak) => {
+    let slutt = dayjs(vedtak!.vedtak.tom)
+    let x = 0
+    while (x < vedtak!.vedtak.gjenståendeSykedager) {
+        slutt = slutt.add(1, 'day')
+        while (erHelg(slutt.toDate())) {
+            slutt = slutt.add(1, 'day')
+        }
+        x++
+    }
+    return slutt.format('D. MMM YYYY')
 }

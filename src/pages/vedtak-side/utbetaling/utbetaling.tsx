@@ -13,7 +13,7 @@ import BeregningInfo from './beregningInfo/beregningInfo'
 import FeilOpplysningerInfo from './feilOpplysningerInfo/feilOpplysningerInfo'
 import InntektsmeldingOppsummering from './inntektsmeldingOppsummering/inntektsmeldingOppsummering'
 import RefusjonInfo from './refusjonInfo/refusjonInfo'
-import UtbetalingUtenInntektsmelding from './utbetalingUtenInntektsmelding'
+import UtbetalingUtenInntektsmelding from './utbetaling-uten-inntektsmelding'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
@@ -36,7 +36,7 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
             ikon={HandImg}
             ikonHover={HandImg}
             tittel={belop + ' kroner'}
-            undertittel={tekst('vedtak.utbetaling.undertittel')}
+            systemtittel={tekst('vedtak.utbetaling.systemtittel')}
             ikonAltTekst="">
             <div className="utbetaling__innhold">
                 <InntektsmeldingOppsummering />

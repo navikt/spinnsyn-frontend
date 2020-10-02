@@ -22,7 +22,7 @@ export const ulestRefusjonTilArbeidsgiver: Vedtak = {
         ],
         'utbetalinger': [
             {
-                'mottaker': '995816598',
+                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
                 'fagområde': 'SPREF',
                 'totalbeløp': 15000,
                 'utbetalingslinjer': [ {
@@ -70,7 +70,7 @@ export const lestRefusjonTilArbeidsgiverUtenInntektsmelding: Vedtak = {
         ],
         'utbetalinger': [
             {
-                'mottaker': '995816598',
+                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
                 'fagområde': 'SPREF',
                 'totalbeløp': 15000,
                 'utbetalingslinjer': [ {

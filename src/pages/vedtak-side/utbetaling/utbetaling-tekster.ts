@@ -1,8 +1,8 @@
 const UtbetalingTekster: any = {
     'nb': {
-        'vedtak.utbetaling.undertittel': 'Beregnet sykepengebeløp',
-        'vedtak.utbetaling.trekk': 'Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.',
+        'vedtak.utbetaling.systemtittel': 'Beregnet sykepengebeløp',
         'vedtak.utbetaling.hvordan': '<p>Arbeidsgiveren din oppgir månedslønnen din før skatt i inntektsmeldingen. Hvis opplysningene er feil, skal vi beregne beløpet på nytt. Da må arbeidsgiveren din sende oss ny inntektsmelding.</p><p>Når vi beregner sykepengene dine, bruker vi gjennomsnittet av inntekten din de siste tre kalendermånedene du ble syk.</p><p>I <a href="https://lovdata.no/lov/1997-02-28-19/§8-28" target="_blank">folketrygdloven § 8-28 til 30</a> ser du hvordan sykepengene beregnes.</p>',
+        'vedtak.utbetaling.trekk': 'Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.',
         'vedtak.utbetaling.mndlonn.tittel': 'Månedslønnen',
         'vedtak.utbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk.',
         'vedtak.utbetaling.arslonn.tittel': 'Årslønn',
