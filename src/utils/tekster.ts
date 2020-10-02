@@ -1,6 +1,8 @@
 import BannerTekster from '../components/banner/banner-tekster'
 import KlageTekster from '../components/klage/klage-tekster'
 import SoknadOppsummeringTekster from '../components/soknad-oppsummering/soknad-oppsummering-tekster'
+import SaksbehandlingstidOgUtbetalingTekster
+    from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
 import RefreshHvisFeilStateTekster from '../pages/feil/refresh-hvis-feil-state-tekster'
@@ -25,6 +27,7 @@ const tekster = {
     ...UenigTekster.nb,
     ...BehandlingTekster.nb,
     ...SykepengedagerTekster.nb,
+    ...SaksbehandlingstidOgUtbetalingTekster.nb
 }
 
 export const tekst = (tekst: string): string => {

@@ -34,7 +34,7 @@ const Utvidbar = (props: UtvidbarProps) => {
         setErApen(props.erApen)
         setInnholdHeight(
             props.fixedHeight
-                ? 2000
+                ? 3000
                 : innhold.current!.offsetHeight
         )
     }, [ props.erApen, props.fixedHeight ])

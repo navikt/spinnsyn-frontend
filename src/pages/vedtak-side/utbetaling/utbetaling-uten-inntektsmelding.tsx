@@ -1,5 +1,6 @@
 import './utbetaling.less'
 
+import parser from 'html-react-parser'
 import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
@@ -9,18 +10,14 @@ import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverBeløp } from '../../../utils/vedtak-utils'
-import BeregningInfo from './beregningInfo/beregningInfo'
-import FeilOpplysningerInfo from './feilOpplysningerInfo/feilOpplysningerInfo'
-import InntektsmeldingOppsummering from './inntektsmeldingOppsummering/inntektsmeldingOppsummering'
 import RefusjonInfo from './refusjonInfo/refusjonInfo'
-import UtbetalingUtenInntektsmelding from './utbetaling-uten-inntektsmelding'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
 }
 
-const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
-    const { valgtVedtak, valgtInntektsmelding } = useAppStore()
+const UtbetalingUtenInntektsmelding = ({ ekspandert }: UtbetalingerProps) => {
+    const { valgtVedtak } = useAppStore()
     const [ belop, setBelop ] = useState<string>('-')
 
     useEffect(() => {
@@ -28,7 +25,6 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
     }, [ valgtVedtak ])
 
     if (valgtVedtak === undefined) return null
-    if (valgtInntektsmelding === undefined) return <UtbetalingUtenInntektsmelding ekspandert={ekspandert} />
 
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
@@ -36,21 +32,23 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
             ikon={HandImg}
             ikonHover={HandImg}
             tittel={belop + ' kroner'}
-            systemtittel={tekst('vedtak.utbetaling.systemtittel')}
+            systemtittel={tekst('vedtak.utbetaling.undertittel')}
             ikonAltTekst="">
             <div className="utbetaling__innhold">
-                <InntektsmeldingOppsummering />
                 <section>
                     <Normaltekst>
                         {tekst('vedtak.utbetaling.trekk')}
                     </Normaltekst>
                 </section>
-                <BeregningInfo />
-                <FeilOpplysningerInfo />
+                <section>
+                    <Utvidbar erApen={false} tittel="Hvordan beregnes beløpet?" type="intern" className="typo-normal">
+                        {parser(tekst('vedtak.utbetaling.hvordan'))}
+                    </Utvidbar>
+                </section>
                 <RefusjonInfo />
             </div>
         </Utvidbar>
     )
 }
 
-export default Utbetaling
+export default UtbetalingUtenInntektsmelding

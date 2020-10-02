@@ -1,22 +1,15 @@
 import './uenig.less'
 
-import dayjs from 'dayjs'
 import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { useAppStore } from '../../../data/stores/app-store'
-import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
+import { klagefrist } from '../../../utils/vedtak-utils'
 
 const Uenig = () => {
     const { valgtVedtak } = useAppStore()
-
-    const klagefrist = tilLesbarDatoMedArstall(
-        dayjs(valgtVedtak?.opprettet)
-            .add(30, 'day')
-            .toDate()
-    )
 
     return (
         <div className="uenig">
@@ -29,7 +22,7 @@ const Uenig = () => {
                 til å klage</Lenke>,
                 eller gå rett til <Lenke href="https://www.nav.no/soknader/nb/person/helse/sykepenger/NAV%2000-03.00/klage/brev" target="_blank">klageveilederen</Lenke>
             </Normaltekst>
-            <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist}</Element>
+            <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(valgtVedtak)}</Element>
         </div>
     )
 }

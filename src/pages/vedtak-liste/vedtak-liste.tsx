@@ -5,6 +5,8 @@ import React, { useEffect } from 'react'
 
 import Banner from '../../components/banner/banner'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
+import SaksbehandlingstidOgUtbetaling
+    from '../../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling'
 import Teasere from '../../components/teaser/teasere'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
@@ -41,13 +43,16 @@ const VedtakListe = () => {
 
             <div className="limit">
                 <Teasere
-                    className="vedtak__teasere vedtak--uleste"
+                    className="vedtak--uleste vedtak--teasere"
                     vedtak={uleste}
                     tittel={tekst('spinnsyn.teaser.uleste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
                 />
+
+                <SaksbehandlingstidOgUtbetaling />
+
                 <Teasere
-                    className="vedtak__teasere vedtak--leste"
+                    className="vedtak--leste"
                     vedtak={leste}
                     tittel={tekst('spinnsyn.teaser.leste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}

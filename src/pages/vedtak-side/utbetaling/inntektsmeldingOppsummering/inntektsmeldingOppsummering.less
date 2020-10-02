@@ -1,0 +1,32 @@
+@import 'node_modules/nav-frontend-core/less/_variabler';
+
+.inntektsmelding__oppsummering {
+    .typo-element {
+        padding-bottom: 1rem;
+    }
+
+    span {
+        display: flex;
+        width: 100%;
+
+        .typo-element {
+            padding-bottom: 1rem;
+        }
+
+        :last-child {
+            margin-left: auto;
+        }
+
+        &.gra__underline {
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid @navGra40;
+            margin-bottom: 0.5rem;
+        }
+
+        &.svart__underline {
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid black;
+            margin-bottom: 0.5rem;
+        }
+    }
+}
