@@ -16,7 +16,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
-                <div className="inngangspanel__venstre">
+                <div className="inngangspanel__del1">
                     <InngangsIkon ikon={hand} ikonHover={handHover} />
                     <div className="inngangspanel__innhold utvidbar__toggle">
                         <InngangsHeader
