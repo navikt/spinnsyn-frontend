@@ -71,7 +71,7 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Utbetaling').click()
+        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
     it('Det er ingen uleste vedtak og tre lest', () => {
