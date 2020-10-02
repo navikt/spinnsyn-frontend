@@ -1,10 +1,10 @@
 import dayjs from 'dayjs'
 
-import { lestMedEnSykmeldingOgSoknad } from '../data/mock/data/vedtak'
+import { ulestRefusjonTilArbeidsgiver } from '../data/mock/data/vedtak'
 import { estimertSluttdato } from './vedtak-utils'
 
 describe('Tester estimering av sluttdato', () => {
-    const testVedtak = lestMedEnSykmeldingOgSoknad
+    const testVedtak = ulestRefusjonTilArbeidsgiver
 
     it('Numrene på ukedager er de samme', () => {
         expect(dayjs('2020-06-08').day()).toEqual(1)    // mandag

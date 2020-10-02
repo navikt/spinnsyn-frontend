@@ -53,7 +53,7 @@ describe('Tester at appen starter', () => {
             .should('have.class', 'apen')
             .and('contain', 'Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.')
             .and('contain', '12. – 27. september 2020')
-            .and('contain', '995816598 sitt orgnavn :)')
+            .and('contain', 'POSTEN NORGE AS, BÆRUM')
             .and('contain', '995 816 598')
 
         cy.contains('Mer om beregningen').click()

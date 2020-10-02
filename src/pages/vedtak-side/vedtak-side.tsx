@@ -72,7 +72,7 @@ const VedtakSide = () => {
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
     // eslint-disable-next-line
-    }, [ vedtak, inntektsmeldinger ])
+    }, [ valgtVedtak, inntektsmeldinger ])
 
     if (valgtVedtak === undefined) return null
 
