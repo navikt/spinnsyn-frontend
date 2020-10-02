@@ -70,12 +70,12 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Utbetaling').click()
+        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
     it('Det er ingen uleste vedtak og tre lest', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
-        cy.contains('Ingen behandlede søknader')
+        cy.contains('Du har ingen nye behandlede søknader fra NAV.')
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
     })
 })

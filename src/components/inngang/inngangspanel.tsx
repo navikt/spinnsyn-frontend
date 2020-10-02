@@ -46,12 +46,12 @@ interface InngangsHeaderProps {
 
 export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
     return (
-        <header className="inngangspanel__header">
+        <header>
             <Undertekst className="inngangspanel__meta">
                 {meta}
             </Undertekst>
-            <Undertittel tag="h3" className="inngangspanel__tittel">
-                {tittel}
+            <Undertittel className="inngangspanel__tittel">
+                <span className="txtlink"> {tittel} </span>
             </Undertittel>
         </header>
     )
