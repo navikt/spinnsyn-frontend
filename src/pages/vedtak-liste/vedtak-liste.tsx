@@ -1,6 +1,8 @@
 import './vedtak-liste.less'
 
-import { Sidetittel } from 'nav-frontend-typografi'
+import { VenstreChevron } from 'nav-frontend-chevron'
+import Lenke from 'nav-frontend-lenker'
+import { Normaltekst,Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 
 import Banner from '../../components/banner/banner'
@@ -10,6 +12,7 @@ import SaksbehandlingstidOgUtbetaling
 import Teasere from '../../components/teaser/teasere'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
+import env from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 
@@ -57,6 +60,11 @@ const VedtakListe = () => {
                     tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
                     kanSorteres={false}
                 />
+
+                <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
+                    <VenstreChevron />
+                    <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
+                </Lenke>
             </div>
         </>
     )
