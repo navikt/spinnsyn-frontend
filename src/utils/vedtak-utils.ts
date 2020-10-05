@@ -16,11 +16,10 @@ export const refusjonTilArbeidsgiverBeløp = (vedtak?: Vedtak) => {
 }
 
 export const refusjonTilArbeidsgiverDagsats = (vedtak?: Vedtak) => {
-    return vedtak?.vedtak.utbetalinger
+    const belop = vedtak?.vedtak.utbetalinger
         .find(u => u.fagområde === 'SPREF')
-        ?.utbetalingslinjer?.reduce(function(prevBelop, currentBelop) {
-            return (prevBelop.beløp > currentBelop.beløp) ? prevBelop : currentBelop
-        }).beløp || 0
+        ?.utbetalingslinjer?.map(l => Math.abs(l.beløp))
+    return Math.max(...belop!) || 0
 }
 
 export const klagefrist = (vedtak?: Vedtak) => {
