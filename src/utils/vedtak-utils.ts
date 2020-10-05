@@ -16,10 +16,10 @@ export const refusjonTilArbeidsgiverBeløp = (vedtak?: Vedtak) => {
 }
 
 export const refusjonTilArbeidsgiverDagsats = (vedtak?: Vedtak) => {
-    // TODO: Hva hvis det er flere utbetalingslinjer med forskjellig beløp?
-    return vedtak?.vedtak.utbetalinger
+    const belop = vedtak?.vedtak.utbetalinger
         .find(u => u.fagområde === 'SPREF')
-        ?.utbetalingslinjer[0].beløp || 0
+        ?.utbetalingslinjer?.map(l => Math.abs(l.beløp))
+    return Math.max(...belop!) || 0
 }
 
 export const klagefrist = (vedtak?: Vedtak) => {
