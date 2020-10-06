@@ -1,6 +1,6 @@
 import './utbetaling.less'
 
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
 import HandImg from '../../../components/teaser/hand.svg'
@@ -9,6 +9,7 @@ import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverBeløp } from '../../../utils/vedtak-utils'
+import BeregningInfo from './beregning-info/beregning-info'
 import FeilOpplysninger from './feil-opplysninger/feil-opplysninger'
 import RefusjonInfo from './refusjon-info/refusjon-info'
 
@@ -40,38 +41,7 @@ const UtbetalingUtenInntekt = ({ ekspandert }: UtbetalingerProps) => {
                 <Normaltekst>
                     {tekst('utbetaling.trekk')}
                 </Normaltekst>
-                <Utvidbar erApen={false} tittel="Slik beregner vi sykepengene?" type="intern" className="tekstinfo">
-                    <Element className="tekstinfo__avsnitt">
-                        {tekst('utbetaling.beregning.manedslonn.overskrift')}
-                    </Element>
-                    <Normaltekst>
-                        {tekst('utbetaling.beregning.manedslonn.tekst')}
-                    </Normaltekst>
-                    <Element className="tekstinfo__avsnitt">
-                        {tekst('utbetaling.beregning.arslonn.overskrift')}
-                    </Element>
-                    <Normaltekst>
-                        {tekst('utbetaling.beregning.arslonn.tekst')}
-                    </Normaltekst>
-                    <Element className="tekstinfo__avsnitt">
-                        {tekst('utbetaling.beregning.daglig.overskrift')}
-                    </Element>
-                    <Normaltekst>
-                        {tekst('utbetaling.beregning.daglig.tekst')}
-                    </Normaltekst>
-                    <Element className="tekstinfo__avsnitt">
-                        {tekst('utbetaling.beregning.total.overskrift')}
-                    </Element>
-                    <Normaltekst>
-                        {tekst('utbetaling.beregning.total.tekst')}
-                    </Normaltekst>
-                    <Element className="tekstinfo__avsnitt">
-                        {tekst('utbetaling.beregning.delvis.overskrift')}
-                    </Element>
-                    <Normaltekst>
-                        {tekst('utbetaling.beregning.delvis.tekst')}
-                    </Normaltekst>
-                </Utvidbar>
+                <BeregningInfo />
                 <FeilOpplysninger />
                 <RefusjonInfo />
             </div>

@@ -32,6 +32,12 @@ const BeregningInfo = () => {
             <Normaltekst>
                 {tekst('utbetaling.totalbelop.innhold')}
             </Normaltekst>
+            <Element tag="h2" className="tekstinfo__avsnitt">
+                {tekst('utbetaling.delvis.tittel')}
+            </Element>
+            <Normaltekst>
+                {tekst('utbetaling.delvis.innhold')}
+            </Normaltekst>
             <Normaltekst>
                 {tekst('utbetaling.beregning.lese.mer')}
                 <Lenke href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
