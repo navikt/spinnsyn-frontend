@@ -41,7 +41,7 @@ export function DataFetcher(props: { children: any }) {
             })
         }
 
-        if (!env.isProd && isNotStarted(inntektsmeldinger)) {
+        if (isNotStarted(inntektsmeldinger)) {
             inntektsmeldinger.fetch(env.flexinntektsmeldingRoot + '/api/v1/inntektsmeldinger', {
                 credentials: 'include',
             }, (fetchState: FetchState<Inntektsmelding[]>) => {
@@ -51,15 +51,15 @@ export function DataFetcher(props: { children: any }) {
             })
         }
         // eslint-disable-next-line
-    }, [rssoknader, vedtak]);
+    }, [rssoknader, vedtak, inntektsmeldinger]);
 
-    if (hasAny401([ rssoknader, vedtak ])) {
+    if (hasAny401([ rssoknader, vedtak, inntektsmeldinger ])) {
         window.location.href = hentLoginUrl()
 
     } else if (isAnyNotStartedOrPending([ vedtak ])) {
         return <Spinner type={'XXL'} />
 
-    } else if (hasAnyFailed([ rssoknader, vedtak ])) {
+    } else if (hasAnyFailed([ rssoknader, vedtak, inntektsmeldinger ])) {
         logger.error('Klarer ikke hente en av disse [ rssoknader, vedtak ]')
         return <IngenData />
     }
