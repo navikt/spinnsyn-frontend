@@ -25,6 +25,10 @@ const BeregningInfo = () => {
                 <Normaltekst>{tekst('vedtak.utbetaling.totalbelop.innhold')}</Normaltekst>
             </section>
             <section>
+                <Element>{tekst('vedtak.utbetaling.gradering.tittel')}</Element>
+                <Normaltekst>{tekst('vedtak.utbetaling.gradering.innhold')}</Normaltekst>
+            </section>
+            <section>
                 <Normaltekst>
                     {'Du kan lese mer om hvordan sykepengene beregnes i '}
                     <Lenke href="https://lovdata.no/lov/1997-02-28-19/§8-28" target="_blank">

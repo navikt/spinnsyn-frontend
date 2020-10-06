@@ -32,7 +32,7 @@ const UtbetalingUtenInntektsmelding = ({ ekspandert }: UtbetalingerProps) => {
             ikon={HandImg}
             ikonHover={HandImg}
             tittel={belop + ' kroner'}
-            systemtittel={tekst('vedtak.utbetaling.undertittel')}
+            systemtittel={tekst('vedtak.utbetaling.systemtittel')}
             ikonAltTekst="">
             <div className="utbetaling__innhold">
                 <section>
