@@ -9,18 +9,16 @@ import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverBeløp } from '../../../utils/vedtak-utils'
-import BeregningInfo from './beregningInfo/beregningInfo'
-import FeilOpplysningerInfo from './feilOpplysningerInfo/feilOpplysningerInfo'
-import InntektsmeldingOppsummering from './inntektsmeldingOppsummering/inntektsmeldingOppsummering'
-import RefusjonInfo from './refusjonInfo/refusjonInfo'
-import UtbetalingUtenInntektsmelding from './utbetaling-uten-inntektsmelding'
+import BeregningInfo from './beregning-info/beregning-info'
+import FeilOpplysninger from './feil-opplysninger/feil-opplysninger'
+import RefusjonInfo from './refusjon-info/refusjon-info'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
 }
 
-const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
-    const { valgtVedtak, valgtInntektsmelding } = useAppStore()
+const UtbetalingUtenInntekt = ({ ekspandert }: UtbetalingerProps) => {
+    const { valgtVedtak } = useAppStore()
     const [ belop, setBelop ] = useState<string>('-')
 
     useEffect(() => {
@@ -28,7 +26,6 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
     }, [ valgtVedtak ])
 
     if (valgtVedtak === undefined) return null
-    if (valgtInntektsmelding === undefined) return <UtbetalingUtenInntektsmelding ekspandert={ekspandert} />
 
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
@@ -36,21 +33,20 @@ const Utbetaling = ({ ekspandert }: UtbetalingerProps) => {
             ikon={HandImg}
             ikonHover={HandImg}
             tittel={belop + ' kroner'}
-            systemtittel={tekst('vedtak.utbetaling.systemtittel')}
-            ikonAltTekst="">
+            systemtittel={tekst('utbetaling.systemtittel')}
+            ikonAltTekst=""
+            fixedHeight={true}
+        >
             <div className="utbetaling__innhold">
-                <InntektsmeldingOppsummering />
-                <section>
-                    <Normaltekst>
-                        {tekst('vedtak.utbetaling.trekk')}
-                    </Normaltekst>
-                </section>
+                <Normaltekst>
+                    {tekst('utbetaling.trekk')}
+                </Normaltekst>
                 <BeregningInfo />
-                <FeilOpplysningerInfo />
+                <FeilOpplysninger />
                 <RefusjonInfo />
             </div>
         </Utvidbar>
     )
 }
 
-export default Utbetaling
+export default UtbetalingUtenInntekt

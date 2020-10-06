@@ -1,15 +1,15 @@
 @import 'node_modules/nav-frontend-core/less/_variabler';
 
-.inntektsmelding__oppsummering {
-    .typo-element {
+.inntekt__info {
+    .inntekt__info__tittel {
         padding-bottom: 1rem;
     }
 
-    span {
+    .inntekt__info__linje {
         display: flex;
         width: 100%;
 
-        .typo-element {
+        .inntekt__info__uthevet {
             padding-bottom: 1rem;
         }
 
@@ -17,15 +17,15 @@
             margin-left: auto;
         }
 
-        &.gra__underline {
+        &.gra__understrek {
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid @navGra40;
+            border-bottom: 0.5px solid rgba(89, 81, 75, 0.5); // 50% av @navGra80
             margin-bottom: 0.5rem;
         }
 
-        &.svart__underline {
+        &.svart__understrek {
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid @navGra80;
             margin-bottom: 0.5rem;
         }
     }
