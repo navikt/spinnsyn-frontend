@@ -22,6 +22,14 @@ export const refusjonTilArbeidsgiverDagsats = (vedtak?: Vedtak) => {
     return Math.max(...belop!) || 0
 }
 
+export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtak?: Vedtak) => {
+    return vedtak?.vedtak.utbetalinger
+        .find(u => u.fagområde === 'SPREF')
+        ?.utbetalingslinjer
+        ?.map(l => l.sykedager)
+        ?.reduce((a, b) => a + b, 0) || 0
+}
+
 export const klagefrist = (vedtak?: Vedtak) => {
     return tilLesbarDatoMedArstall(
         dayjs(vedtak?.opprettet)

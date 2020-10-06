@@ -2,7 +2,12 @@ import dayjs from 'dayjs'
 
 import { arbeidstaker100 } from '../data/mock/data/soknader'
 import { ulestRefusjonTilArbeidsgiver } from '../data/mock/data/vedtak'
-import { estimertSluttdato, refusjonTilArbeidsgiverDagsats } from './vedtak-utils'
+import { jsonDeepCopy } from './json-deep-copy'
+import {
+    estimertSluttdato,
+    refusjonTilArbeidsgiverDagsats,
+    refusjonTilArbeidsgiverUtbetalingsdager
+} from './vedtak-utils'
 
 describe('Tester estimering av sluttdato', () => {
     const testVedtak = ulestRefusjonTilArbeidsgiver
@@ -15,56 +20,60 @@ describe('Tester estimering av sluttdato', () => {
     })
 
     it('Neste uke på en fredag', () => {
-        const mandagsVedtak = testVedtak
+        const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
         mandagsVedtak.vedtak.gjenståendeSykedager = 5 + 4   // Slutt neste fredag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('12. Jun 2020')
     })
 
     it('Neste mandag', () => {
-        const mandagsVedtak = testVedtak
+        const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
         mandagsVedtak.vedtak.gjenståendeSykedager = 5       // Neste mandag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('8. Jun 2020')
     })
 
     it('Fredag til mandag', () => {
-        const fredagsVedtak = testVedtak
+        const fredagsVedtak = jsonDeepCopy(testVedtak)
         fredagsVedtak.vedtak.tom = '2020-06-05'             // Fredag
         fredagsVedtak.vedtak.gjenståendeSykedager = 1       // Neste mandag
         expect(estimertSluttdato(fredagsVedtak)).toEqual('8. Jun 2020')
     })
 
     it('Går over til neste måned', () => {
-        const mandagsVedtak = testVedtak
+        const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
         mandagsVedtak.vedtak.gjenståendeSykedager = 24      // Neste måneds fredag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('3. Jul 2020')
     })
 
     it('Ingen sykedager igjen på mandag', () => {
-        const mandagsVedtak = testVedtak
+        const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
         mandagsVedtak.vedtak.gjenståendeSykedager = 0       // Samme dag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('1. Jun 2020')
     })
 
     it('Ingen sykedager igjen på fredag', () => {
-        const fredagsVedtak = testVedtak
+        const fredagsVedtak = jsonDeepCopy(testVedtak)
         fredagsVedtak.vedtak.tom = '2020-06-05'             // Fredag
         fredagsVedtak.vedtak.gjenståendeSykedager = 0       // Samme dag
         expect(estimertSluttdato(fredagsVedtak)).toEqual('5. Jun 2020')
     })
 
     it('Siste dag var fredag, men tom er lørdag', () => {
-        const lørdagsVedtak = testVedtak
+        const lørdagsVedtak = jsonDeepCopy(testVedtak)
         lørdagsVedtak.vedtak.tom = '2020-06-06'             // Lørdag
         lørdagsVedtak.vedtak.gjenståendeSykedager = 0       // Samme dag
         expect(estimertSluttdato(lørdagsVedtak)).toEqual('6. Jun 2020')
     })
 
+})
+
+
+describe('Tester henting av refusjon til arbeidsgiver dagsats', () => {
     it('Høyeste beløpet i betalingslinjer blir returnert', () => {
-        const vedtak = testVedtak
+        const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
         vedtak.vedtak.utbetalinger = [
             {
                 'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
@@ -87,6 +96,15 @@ describe('Tester estimering av sluttdato', () => {
                 } ]
             }
         ]
-        expect(refusjonTilArbeidsgiverDagsats(testVedtak)).toEqual(3000)
+        expect(refusjonTilArbeidsgiverDagsats(vedtak)).toEqual(3000)
+    })
+})
+
+
+describe('Tester summering av sykedager', () => {
+    const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
+
+    it('Summerer riktig', () => {
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(30)
     })
 })
