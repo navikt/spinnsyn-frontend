@@ -46,7 +46,7 @@ describe('Tester at appen starter', () => {
             .should('contain', 'Beregnet månedslønn').and('contain', '10\u00a0000 kr')
             .should('contain', 'Omregnet til årslønn').and('contain', '120\u00a0000 kr')
             .should('contain', 'Daglig utbetalingsbeløp').and('contain', '3\u00a0000 kr')
-            .should('contain', 'Utbetalingsdager').and('contain', '10 dager')
+            .should('contain', 'Utbetalingsdager').and('contain', '30 dager')
             .should('contain', 'Sykepengebeløp').and('contain', '15\u00a0000 kr')
 
         cy.get('.utvidbar__innholdContainer')

@@ -6,7 +6,11 @@ import React, { useEffect, useState } from 'react'
 import { useAppStore } from '../../../../data/stores/app-store'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
-import { refusjonTilArbeidsgiverBeløp, refusjonTilArbeidsgiverDagsats } from '../../../../utils/vedtak-utils'
+import {
+    refusjonTilArbeidsgiverBeløp,
+    refusjonTilArbeidsgiverDagsats,
+    refusjonTilArbeidsgiverUtbetalingsdager
+} from '../../../../utils/vedtak-utils'
 
 const InntektInfo = () => {
     const { valgtInntektsmelding, valgtVedtak } = useAppStore()
@@ -20,7 +24,7 @@ const InntektInfo = () => {
         setMnd(ValutaFormat.format(valgtInntektsmelding?.månedsinntekt || 0) + ' kr')
         setAr(ValutaFormat.format(valgtInntektsmelding?.årsinntekt || 0) + ' kr')
         setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverDagsats(valgtVedtak)) + ' kr')
-        setDager(valgtVedtak?.vedtak.forbrukteSykedager + ' dager')
+        setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak) + ' dager')
         setSum(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
     }, [ valgtVedtak, valgtInntektsmelding ])
 
