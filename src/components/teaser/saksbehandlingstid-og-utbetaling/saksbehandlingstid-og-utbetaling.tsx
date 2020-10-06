@@ -8,10 +8,11 @@ import React from 'react'
 import { tekst } from '../../../utils/tekster'
 
 const SaksbehandlingstidOgUtbetaling = () => {
-    const url = 'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap'
-
     return (
-        <Lenke href={url} target="_blank" rel="noreferrer noopener" className="utbetalinger-lenke">
+        <Lenke className="utbetalinger-lenke"
+            href={tekst('saksbehandlingstid.utbetaling.lenke.url')}
+            target="_blank" rel="noreferrer noopener"
+        >
             <Systemtittel tag="h3" className="txtlink">
                 {tekst('saksbehandlingstid.utbetaling.tittel')}
             </Systemtittel>

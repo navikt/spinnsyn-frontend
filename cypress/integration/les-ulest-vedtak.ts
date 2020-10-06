@@ -78,6 +78,20 @@ describe('Tester at appen starter', () => {
         cy.contains('Du har ingen nye behandlede søknader fra NAV.')
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
     })
+
+    it('Vi åpner et vedtak uten inntektsmelding', () => {
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3).last()
+            .click({ force: true })
+        cy.contains('15 000 kroner').click()
+        cy.contains('Mer om beregningen').click({ force: true })
+        cy.get('.utvidbar__innhold')
+            .should('contain', 'Månedslønnen')
+            .and('contain', 'Årslønn')
+            .and('contain', 'Daglig beløp')
+            .and('contain', 'Totalbeløp')
+            .and('contain', 'Hvis du er delvis sykmeldt')
+    })
+
 })
 
 
