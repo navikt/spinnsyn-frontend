@@ -30,8 +30,6 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
     if (valgtVedtak === undefined) return null
     if (valgtInntektsmelding === undefined) return <UtbetalingUtenInntekt ekspandert={ekspandert} />
 
-    if (valgtInntektsmelding) return <UtbetalingUtenInntekt ekspandert={ekspandert} />
-
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
             erApen={ekspandert}
