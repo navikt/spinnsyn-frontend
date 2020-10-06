@@ -11,6 +11,8 @@ const UtbetalingTekster: any = {
         'vedtak.utbetaling.dagligbelop.innhold': 'Deretter deler vi årslønnen på 260, da får vi dagsatsen. Årslønnen blir redusert til 6 ganger folketrygdens grunnbeløp hvis du tjener mer enn det.',
         'vedtak.utbetaling.totalbelop.tittel': 'Totalbeløp',
         'vedtak.utbetaling.totalbelop.innhold': 'Til slutt ganger vi dagsatsen med antallet arbeidsdager du har vært syk. Sykepenger betales for dagene mandag til fredag, også hvis det er helligdager i løpet av disse dagene, og uavhengig av om du jobber lørdag og søndag.',
+        'vedtak.utbetaling.gradering.tittel': 'Hvis du er delvis sykmeldt',
+        'vedtak.utbetaling.gradering.innhold': 'Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
         'vedtak.utbetaling.opplysninger.inntektsmelding': 'Når vi beregner sykepengene dine, bruker vi månedsinntekten som arbeidsgiveren din oppgir i inntektsmeldingen. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
         'vedtak.utbetaling.opplysninger.beslutning': 'Vil du klage på NAVs beslutning, be arbeidsgiveren din om å sende inntektsmeldingen i god tid før klagefristen går ut.',
     }, 'en': {}
