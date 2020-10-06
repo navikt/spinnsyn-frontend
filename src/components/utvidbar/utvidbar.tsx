@@ -40,11 +40,12 @@ const Utvidbar = (props: UtvidbarProps) => {
     }, [ props.erApen, props.fixedHeight ])
 
     function onTransitionEnd() {
+        if (props.type === 'intern') return
         if (erApen) {
-            window.scrollTo({ top: utvidbar.current!.offsetTop, left: 0, behavior: 'smooth' })
+            utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'center' })
         } else {
             if (!erSynligIViewport(utvidbar.current!)) {
-                window.scrollTo({ top: utvidbar.current!.offsetTop, left: 0, behavior: 'smooth' })
+                utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'center' })
             }
             jsToggle.current!.focus()
         }
@@ -94,11 +95,13 @@ const Utvidbar = (props: UtvidbarProps) => {
             >
                 <div ref={innhold} className="utvidbar__innhold">
                     {props.children}
-                    <div className="lenkerad ikke-print">
+                    <div className="lenkerad">
                         <button type="button" className="lenke" aria-pressed={!erApen}
                             tabIndex={(erApen ? null : -1) as any} onClick={() => setErApen(!erApen)}
                         >
-                            <Normaltekst tag="span">Lukk</Normaltekst>
+                            <Normaltekst tag="span">
+                                {props.type === 'intern' ? 'Skjul' : 'Lukk'}
+                            </Normaltekst>
                         </button>
                     </div>
                 </div>

@@ -14,7 +14,8 @@
             width: auto;
             padding: 0;
             background-color: inherit;
-            text-decoration: underline;
+            color: @navBla;
+            text-decoration: none;
         }
 
         .utvidbar__handling {
@@ -32,7 +33,8 @@
         }
 
         .lenkerad {
-            display: none;
+            margin-bottom: 1rem;
+            text-align: left;
         }
     }
 
@@ -46,7 +48,10 @@
         background-color: inherit;
 
         &:focus {
+            position: relative;
             box-shadow: 0 0 0 3px @fokusFarge;
+            outline: 0;
+            z-index: 1;
         }
     }
 
@@ -56,12 +61,6 @@
 
     &.gronn {
         background-color: @navGronnLighten80;
-    }
-
-    .utvidbar__toggle:focus {
-        outline: 0;
-        z-index: 1;
-        position: relative;
     }
 
     .utvidbar__ikon {
@@ -100,6 +99,7 @@
 
         .lenke {
             border: 0;
+            padding: 0;
         }
     }
 
