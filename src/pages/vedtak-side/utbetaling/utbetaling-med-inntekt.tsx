@@ -38,6 +38,7 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
             tittel={belop + ' kroner'}
             systemtittel={tekst('utbetaling.systemtittel')}
             ikonAltTekst=""
+            fixedHeight={true}
         >
             <div className="utbetaling__innhold">
                 <InntektInfo />
