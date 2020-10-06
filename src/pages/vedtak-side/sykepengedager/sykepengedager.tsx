@@ -38,6 +38,11 @@ const Sykepengedager = () => {
                     {tekst('sykepengedager.sluttdato')}
                 </Normaltekst>
             </div>
+            <div>
+                <Normaltekst>
+                    {tekst('sykepengedager.sluttdato.tekst')}
+                </Normaltekst>
+            </div>
             <Utvidbar erApen={false} type="intern"
                 tittel={tekst('sykepengedager.ekspanderbar')}
             >
