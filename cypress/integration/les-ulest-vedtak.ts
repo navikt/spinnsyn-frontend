@@ -41,7 +41,7 @@ describe('Tester at appen starter', () => {
             .and('contain', 'Beregnet sykepengebeløp')
             .click()
 
-        cy.get('.inntektsmelding__oppsummering')
+        cy.get('.inntekt__info')
             .should('contain', 'Slik beregner vi sykepengene')
             .should('contain', 'Beregnet månedslønn').and('contain', '10\u00a0000 kr')
             .should('contain', 'Omregnet til årslønn').and('contain', '120\u00a0000 kr')
