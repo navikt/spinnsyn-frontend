@@ -29,7 +29,21 @@ export const ulestRefusjonTilArbeidsgiver: Vedtak = {
                     'fom': '2020-09-12',
                     'tom': '2020-09-27',
                     'grad': 100,
+                    'beløp': 2000,
+                    'dagsats': 1500,
+                    'sykedager': 10
+                }, {
+                    'fom': '2020-09-12',
+                    'tom': '2020-09-27',
+                    'grad': 100,
                     'beløp': 1500,
+                    'dagsats': 1500,
+                    'sykedager': 10
+                }, {
+                    'fom': '2020-09-12',
+                    'tom': '2020-09-27',
+                    'grad': 100,
+                    'beløp': 3000,
                     'dagsats': 1500,
                     'sykedager': 10
                 } ]

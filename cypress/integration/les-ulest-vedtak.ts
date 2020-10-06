@@ -45,7 +45,7 @@ describe('Tester at appen starter', () => {
             .should('contain', 'Slik beregner vi sykepengene')
             .should('contain', 'Beregnet månedslønn').and('contain', '10\u00a0000 kr')
             .should('contain', 'Omregnet til årslønn').and('contain', '120\u00a0000 kr')
-            .should('contain', 'Daglig utbetalingsbeløp').and('contain', '1\u00a0500 kr')
+            .should('contain', 'Daglig utbetalingsbeløp').and('contain', '3\u00a0000 kr')
             .should('contain', 'Utbetalingsdager').and('contain', '10 dager')
             .should('contain', 'Sykepengebeløp').and('contain', '15\u00a0000 kr')
 
@@ -70,12 +70,12 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Utbetaling').click()
+        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
     it('Det er ingen uleste vedtak og tre lest', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
-        cy.contains('Ingen behandlede søknader')
+        cy.contains('Du har ingen nye behandlede søknader fra NAV.')
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
     })
 })

@@ -1,7 +1,8 @@
 import dayjs from 'dayjs'
 
+import { arbeidstaker100 } from '../data/mock/data/soknader'
 import { ulestRefusjonTilArbeidsgiver } from '../data/mock/data/vedtak'
-import { estimertSluttdato } from './vedtak-utils'
+import { estimertSluttdato, refusjonTilArbeidsgiverDagsats } from './vedtak-utils'
 
 describe('Tester estimering av sluttdato', () => {
     const testVedtak = ulestRefusjonTilArbeidsgiver
@@ -60,5 +61,32 @@ describe('Tester estimering av sluttdato', () => {
         lørdagsVedtak.vedtak.tom = '2020-06-06'             // Lørdag
         lørdagsVedtak.vedtak.gjenståendeSykedager = 0       // Samme dag
         expect(estimertSluttdato(lørdagsVedtak)).toEqual('6. Jun 2020')
+    })
+
+    it('Høyeste beløpet i betalingslinjer blir returnert', () => {
+        const vedtak = testVedtak
+        vedtak.vedtak.utbetalinger = [
+            {
+                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
+                'fagområde': 'SPREF',
+                'totalbeløp': 15000,
+                'utbetalingslinjer': [ {
+                    'fom': '2020-09-12',
+                    'tom': '2020-09-27',
+                    'grad': 100,
+                    'beløp': 2000,
+                    'dagsats': 2000,
+                    'sykedager': 10
+                }, {
+                    'fom': '2020-09-12',
+                    'tom': '2020-09-27',
+                    'grad': 100,
+                    'beløp': 3000,
+                    'dagsats': 3000,
+                    'sykedager': 10
+                } ]
+            }
+        ]
+        expect(refusjonTilArbeidsgiverDagsats(testVedtak)).toEqual(3000)
     })
 })

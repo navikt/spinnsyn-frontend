@@ -12,7 +12,7 @@ const SaksbehandlingstidOgUtbetaling = () => {
 
     return (
         <Lenke href={url} target="_blank" rel="noreferrer noopener" className="utbetalinger-lenke">
-            <Systemtittel tag="h3">
+            <Systemtittel tag="h3" className="txtlink">
                 {tekst('saksbehandlingstid.utbetaling.tittel')}
             </Systemtittel>
             <HoyreChevron />
