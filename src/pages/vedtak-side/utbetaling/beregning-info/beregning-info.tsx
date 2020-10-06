@@ -39,7 +39,7 @@ const BeregningInfo = () => {
                 {tekst('utbetaling.delvis.innhold')}
             </Normaltekst>
             <Normaltekst>
-                {tekst('utbetaling.beregning.lese.mer')}
+                {tekst('utbetaling.beregning.les.mer')}
                 <Lenke href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                     {tekst('utbetaling.beregning.lenke.tekst')}
                 </Lenke>
