@@ -20,7 +20,7 @@ import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
 import Behandling from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
-import Utbetaling from './utbetaling/utbetaling'
+import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -77,7 +77,7 @@ const VedtakSide = () => {
     if (valgtVedtak === undefined) return null
 
     return (
-        <div>
+        <>
             <Banner>
                 <Sidetittel className="sidebanner__tittel">{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
             </Banner>
@@ -86,7 +86,7 @@ const VedtakSide = () => {
             <div className="limit">
                 <VedtakStatus />
 
-                <Utbetaling ekspandert={false} />
+                <UtbetalingMedInntekt ekspandert={false} />
                 <Sykepengedager />
 
                 <Uenig />
@@ -97,7 +97,7 @@ const VedtakSide = () => {
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
                 </Lenke>
             </div>
-        </div>
+        </>
     )
 }
 

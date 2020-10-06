@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useAppStore } from '../../../../data/stores/app-store'
 import { tilLesbarPeriodeMedArstall } from '../../../../utils/dato-utils'
+import { tekst } from '../../../../utils/tekster'
 import { refusjonTilArbeidsgiverOrgnummer } from '../../../../utils/vedtak-utils'
 
 const RefusjonInfo = () => {
@@ -20,33 +21,26 @@ const RefusjonInfo = () => {
     if (valgtVedtak === undefined || soknader === undefined) return null
 
     return (
-        <div>
-            <section>
-                <Element tag="h2">
-                    Periode
-                </Element>
-                <Normaltekst>
-                    {periode}
-                </Normaltekst>
-            </section>
-            <section>
-                <Element tag="h2">
-                    Refunderes til
-                </Element>
-                <Normaltekst>
-                    {arbeidsgiver}
-                </Normaltekst>
-            </section>
-            <section>
-                <Element tag="h2">
-                    Organisasjonsnummer
-                </Element>
-                <Normaltekst>
-                    {org?.match(/\d{3}/g)?.join(' ')}
-                </Normaltekst>
-            </section>
-        </div>
-
+        <section className="tekstinfo">
+            <Element tag="h2" className="tekstinfo__avsnitt">
+                {tekst('utbetaling.refusjon.periode')}
+            </Element>
+            <Normaltekst>
+                {periode}
+            </Normaltekst>
+            <Element tag="h2" className="tekstinfo__avsnitt">
+                {tekst('utbetaling.refusjon.refunderes')}
+            </Element>
+            <Normaltekst>
+                {arbeidsgiver}
+            </Normaltekst>
+            <Element tag="h2" className="tekstinfo__avsnitt">
+                {tekst('utbetaling.refusjon.orgnr')}
+            </Element>
+            <Normaltekst>
+                {org?.match(/\d{3}/g)?.join(' ')}
+            </Normaltekst>
+        </section>
     )
 }
 

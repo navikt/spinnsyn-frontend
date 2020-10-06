@@ -52,7 +52,12 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     return (
         <div ref={utvidbar}
-            className={`utvidbar ${props.className} ${props.type} ${erApen ? 'apen' : ''}`}
+            className={
+                'utvidbar' +
+                (props.className ? ' ' + props.className : '') +
+                (props.type ? ' ' + props.type : '') +
+                (erApen ? ' apen' : '')
+            }
         >
             <button aria-expanded={erApen}
                 ref={jsToggle}
