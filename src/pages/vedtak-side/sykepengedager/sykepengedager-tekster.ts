@@ -7,8 +7,8 @@ const SykepengedagerTekster = {
     'sykepengedager.ekspanderbar.tekst1': 'Du kan maksimalt få sykepenger i 248 dager (52 uker).',
     'sykepengedager.ekspanderbar.tekst2': 'Om du fortsatt ikke kan jobbe på grunn av sykdom eller skade etter 52 uker, ' +
         'kan du ha rett til annen støtte som ' +
-        '<a href="">arbeidsavklarings&shy;penger</a> eller ' +
-        '<a href="">uføretrygd</a>',
+        '<a href="https://nav.no/aap" target="_blank">arbeidsavklarings&shy;penger</a> eller ' +
+        '<a href="https://nav.no/uføretrygd" target="_blank">uføretrygd</a>',
 }
 
 
