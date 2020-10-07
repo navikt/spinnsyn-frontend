@@ -2,7 +2,7 @@ import './saksbehandlingstid-og-utbetaling.less'
 
 import { HoyreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Systemtittel } from 'nav-frontend-typografi'
+import { Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
@@ -13,9 +13,9 @@ const SaksbehandlingstidOgUtbetaling = () => {
             href={tekst('saksbehandlingstid.utbetaling.lenke.url')}
             target="_blank" rel="noreferrer noopener"
         >
-            <Systemtittel tag="h3" className="txtlink">
+            <Undertittel tag="h3" className="txtlink">
                 {tekst('saksbehandlingstid.utbetaling.tittel')}
-            </Systemtittel>
+            </Undertittel>
             <HoyreChevron />
         </Lenke>
     )
