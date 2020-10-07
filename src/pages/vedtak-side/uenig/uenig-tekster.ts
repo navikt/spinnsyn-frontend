@@ -1,7 +1,6 @@
-const UenigTekster: any = {
-    'nb': {
-        'uenig.tittel': 'Uenig?',
-    }, 'en': {}
+const UenigTekster = {
+    'uenig.tittel': 'Uenig?',
 }
+
 
 export default UenigTekster

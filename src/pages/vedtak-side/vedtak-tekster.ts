@@ -1,8 +1,7 @@
-const VedtakTekster: any = {
-    'nb': {
-        'vedtak.sidetittel': 'Utbetaling',
-        'vedtak.tilbake': 'Til hovedsiden ditt sykefravær',
-    }, 'en': {}
+const VedtakTekster = {
+    'vedtak.sidetittel': 'Utbetaling',
+    'vedtak.tilbake': 'Til hovedsiden ditt sykefravær',
+
 }
 
 export default VedtakTekster

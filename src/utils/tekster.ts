@@ -1,6 +1,5 @@
 import BannerTekster from '../components/banner/banner-tekster'
 import KlageTekster from '../components/klage/klage-tekster'
-import SoknadOppsummeringTekster from '../components/soknad-oppsummering/soknad-oppsummering-tekster'
 import SaksbehandlingstidOgUtbetalingTekster
     from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
@@ -15,22 +14,36 @@ import VedtakTekster from '../pages/vedtak-side/vedtak-tekster'
 import { logger } from './logger'
 
 const tekster = {
-    ...BannerTekster.nb,
-    ...VedtakListeTekster.nb,
-    ...TeaserTekster.nb,
-    ...VedtakTekster.nb,
-    ...KlageTekster.nb,
-    ...VedtakStatusTekster.nb,
-    ...UtbetalingTekster.nb,
-    ...SoknadOppsummeringTekster.nb,
-    ...RefreshHvisFeilStateTekster.nb,
-    ...UenigTekster.nb,
-    ...BehandlingTekster.nb,
-    ...SykepengedagerTekster.nb,
-    ...SaksbehandlingstidOgUtbetalingTekster.nb
+    ...BannerTekster,
+    ...VedtakListeTekster,
+    ...TeaserTekster,
+    ...VedtakTekster,
+    ...KlageTekster,
+    ...VedtakStatusTekster,
+    ...UtbetalingTekster,
+    ...RefreshHvisFeilStateTekster,
+    ...UenigTekster,
+    ...BehandlingTekster,
+    ...SykepengedagerTekster,
+    ...SaksbehandlingstidOgUtbetalingTekster
 }
 
-export const tekst = (tekst: string): string => {
+
+type TekstKeys =
+    keyof typeof BannerTekster
+    | keyof typeof VedtakListeTekster
+    | keyof typeof TeaserTekster
+    | keyof typeof VedtakTekster
+    | keyof typeof KlageTekster
+    | keyof typeof VedtakStatusTekster
+    | keyof typeof UtbetalingTekster
+    | keyof typeof RefreshHvisFeilStateTekster
+    | keyof typeof UenigTekster
+    | keyof typeof BehandlingTekster
+    | keyof typeof SykepengedagerTekster
+    | keyof typeof SaksbehandlingstidOgUtbetalingTekster;
+
+export const tekst = (tekst: TekstKeys): string => {
     const verdi = tekster[tekst]
     // Generiskfeilmelding har ingen tekst
     if (!verdi === undefined && !tekst.includes('soknad.feilmelding')) {
