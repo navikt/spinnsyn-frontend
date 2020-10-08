@@ -51,8 +51,8 @@ const Utvidbar = (props: UtvidbarProps) => {
         }
     }
 
-    function onButtonClick(e: any) {
-        e.target.parentElement.focus()
+    const onButtonClick = () => {
+        utvidbar.current!.focus()
         setErApen(!erApen)
     }
 
@@ -69,7 +69,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                 ref={jsToggle}
                 onMouseEnter={props.ikon !== undefined ? () => btnImage.current!.src = props.ikonHover! : undefined}
                 onMouseLeave={props.ikon !== undefined ? () => btnImage.current!.src = props.ikon! : undefined}
-                onClick={(e) => onButtonClick(e)}
+                onClick={onButtonClick}
                 type={'button'}
                 className="utvidbar__toggle"
             >
