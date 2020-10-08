@@ -9,9 +9,10 @@ import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverBeløp } from '../../../utils/vedtak-utils'
-import BeregningInfo from './beregning-info/beregning-info'
-import FeilOpplysninger from './feil-opplysninger/feil-opplysninger'
-import RefusjonInfo from './refusjon-info/refusjon-info'
+import ArbeidsgiverInfo from './arbeidsgiver-info'
+import BeregningInfo from './beregning-info'
+import FeilOpplysninger from './feil-opplysninger'
+import InntektInfoUtenInntekt from './inntekt-info/inntekt-info-uten-inntekt'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
@@ -38,12 +39,15 @@ const UtbetalingUtenInntekt = ({ ekspandert }: UtbetalingerProps) => {
             fixedHeight={true}
         >
             <div className="utbetaling__innhold">
+                <ArbeidsgiverInfo />
+
+                <InntektInfoUtenInntekt />
+
                 <Normaltekst>
                     {tekst('utbetaling.trekk')}
                 </Normaltekst>
                 <BeregningInfo />
                 <FeilOpplysninger />
-                <RefusjonInfo />
             </div>
         </Utvidbar>
     )

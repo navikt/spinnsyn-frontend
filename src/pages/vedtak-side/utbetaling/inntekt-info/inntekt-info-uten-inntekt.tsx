@@ -14,15 +14,11 @@ import {
 
 const InntektInfo = () => {
     const { valgtInntektsmelding, valgtVedtak } = useAppStore()
-    const [ mnd, setMnd ] = useState<string>('-')
-    const [ ar, setAr ] = useState<string>('-')
     const [ daglig, setDaglig ] = useState<string>('-')
     const [ dager, setDager ] = useState<string>('-')
     const [ sum, setSum ] = useState<string>('-')
 
     useEffect(() => {
-        setMnd(ValutaFormat.format(valgtInntektsmelding?.månedsinntekt || 0) + ' kr')
-        setAr(ValutaFormat.format(valgtInntektsmelding?.årsinntekt || 0) + ' kr')
         setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverDagsats(valgtVedtak)) + ' kr')
         setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak) + ' dager')
         setSum(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
@@ -35,23 +31,11 @@ const InntektInfo = () => {
             </Element>
             <div className="inntekt__info__linje">
                 <Normaltekst tag="span">
-                    {tekst('utbetaling.inntekt.info.beregnet')}
-                </Normaltekst>
-                <Normaltekst tag="span">{mnd}</Normaltekst>
-            </div>
-            <div className="inntekt__info__linje gra__understrek">
-                <Normaltekst tag="span">
-                    {tekst('utbetaling.inntekt.info.omregnet')}
-                </Normaltekst>
-                <Normaltekst tag="span">{ar}</Normaltekst>
-            </div>
-            <div className="inntekt__info__linje">
-                <Element tag="span" className="inntekt__info__uthevet">
                     {tekst('utbetaling.inntekt.info.daglig')}
-                </Element>
-                <Element tag="span" className="inntekt__info__uthevet">
+                </Normaltekst>
+                <Normaltekst tag="span">
                     {daglig}
-                </Element>
+                </Normaltekst>
             </div>
             <div className="inntekt__info__linje svart__understrek">
                 <Normaltekst tag="span">

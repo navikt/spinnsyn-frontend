@@ -6,7 +6,7 @@ import React, { SyntheticEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import HandImg from '../../../components/teaser/hand.svg'
-import LedningImg from './ledning.svg'
+import HodeTelefonImg from './ikon-hodetelefon.svg'
 
 const LokaleLenker = () => {
     const location = useLocation()
@@ -41,7 +41,7 @@ const LokaleLenker = () => {
                 onClick={klikkSykmeldt}
                 className="dager-sykmeldt" border role="button"
             >
-                <img src={LedningImg} alt="" className="lokale-lenker__ikon" />
+                <img src={HodeTelefonImg} alt="" className="lokale-lenker__ikon" />
                 <Element tag="h2">
                     Dager sykmeldt
                 </Element>
@@ -53,7 +53,7 @@ const LokaleLenker = () => {
                 onClick={klikkSykefravaer}
                 className="sykedager" border role="button"
             >
-                <img src={LedningImg} alt="" className="lokale-lenker__ikon" />
+                <img src={HodeTelefonImg} alt="" className="lokale-lenker__ikon" />
                 <Element tag="h2">
                     Gjenstående sykedager
                 </Element>

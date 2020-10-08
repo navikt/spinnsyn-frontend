@@ -21,6 +21,7 @@ import Behandling from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
+import AlertStripe from 'nav-frontend-alertstriper';
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -46,9 +47,9 @@ const VedtakSide = () => {
         const aktivtVedtak = vedtak.find(a => a.id === id)
         setValgtVedtak(aktivtVedtak)
         setValgtInntektsmelding(inntektsmeldinger.find((i =>
-            aktivtVedtak?.vedtak.dokumenter.find(d =>
-                d.type === 'Inntektsmelding' && i.id === d.dokumentId
-            )
+                aktivtVedtak?.vedtak.dokumenter.find(d =>
+                    d.type === 'Inntektsmelding' && i.id === d.dokumentId
+                )
         )))
 
         if (aktivtVedtak && !aktivtVedtak.lest) {
@@ -71,7 +72,7 @@ const VedtakSide = () => {
             }
             merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
         }
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [ valgtVedtak, inntektsmeldinger ])
 
     if (valgtVedtak === undefined) return null
@@ -84,6 +85,10 @@ const VedtakSide = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
+                <AlertStripe type="info" style={{ marginBottom: '2rem' }}>
+                    Du er kommet til en side som er en betaversjon. Mangler og feil kan forekomme.
+                </AlertStripe>
+
                 <VedtakStatus />
 
                 <UtbetalingMedInntekt ekspandert={false} />

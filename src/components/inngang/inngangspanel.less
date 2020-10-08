@@ -84,7 +84,12 @@
     }
 
     &.inngangspanel--tomListe {
-        padding: 1rem 2rem 1rem;
+        display: inline;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        width: auto;
         font-weight: 400;
     }
 
@@ -168,6 +173,13 @@
                 .chevronboks {
                     color: @navBla;
                 }
+            }
+        }
+
+        &.inngangspanel--tomListe {
+            &:hover {
+                box-shadow: none;
+                cursor: default;
             }
         }
 

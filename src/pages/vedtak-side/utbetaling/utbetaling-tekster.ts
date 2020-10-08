@@ -1,12 +1,14 @@
 const UtbetalingTekster = {
-    'utbetaling.systemtittel': 'Beregnet sykepengebeløp',
-    'utbetaling.trekk': 'Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.',
+    'utbetaling.systemtittel': 'Utbetales til arbeidsgiveren',
+    'utbetaling.trekk': '* Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.',
     'utbetaling.mndlonn.tittel': 'Månedslønnen',
     'utbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk.',
     'utbetaling.arslonn.tittel': 'Årslønn',
     'utbetaling.arslonn.innhold': 'Så blir månedslønnen omregnet til årslønn ved å gange den med 12.',
     'utbetaling.dagligbelop.tittel': 'Daglig beløp',
     'utbetaling.dagligbelop.innhold': 'Deretter deler vi årslønnen på 260, da får vi dagsatsen. Årslønnen blir redusert til 6 ganger folketrygdens grunnbeløp hvis du tjener mer enn det.',
+    'utbetaling.utbetalingsdager.tittel': 'Utbetalingsdager',
+    'utbetaling.utbetalingsdager.innhold': 'Når NAV utbetaler sykepenger, betales det alltid for dagene mandag til fredag. Dette gjør vi selv om det er helligdager i løpet av disse dagene, og uavhengig av om du eventuelt jobber lørdag og søndag.',
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
     'utbetaling.totalbelop.innhold': 'Til slutt ganger vi dagsatsen med antallet arbeidsdager du har vært syk. Sykepenger betales for dagene mandag til fredag, også hvis det er helligdager i løpet av disse dagene, og uavhengig av om du jobber lørdag og søndag.',
     'utbetaling.delvis.tittel': 'Hvis du er delvis sykmeldt',
@@ -21,10 +23,12 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årslønn',
     'utbetaling.inntekt.info.daglig': 'Daglig utbetalingsbeløp',
     'utbetaling.inntekt.info.utbetalingsdager': 'Utbetalingsdager',
-    'utbetaling.inntekt.info.sykepengebelop': 'Sykepengebeløp',
+    'utbetaling.inntekt.info.sykepengebelop': 'Sykepengebeløp *',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
+    'utbetaling.arbeidsgiver.tittel': 'Beløpet går til arbeidsgiveren din',
+    'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV.',
 }
 
 export default UtbetalingTekster

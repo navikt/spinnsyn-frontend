@@ -4,6 +4,7 @@ import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
+import Lenke from 'nav-frontend-lenker';
 
 const Behandling = () => {
     return (
@@ -12,7 +13,11 @@ const Behandling = () => {
                 {tekst('behandling.tittel')}
             </Undertittel>
             <Normaltekst>
-                {tekst('behandling.tekst')}
+                {tekst('behandling.tekst1')}
+                <Lenke href={tekst('behandling.lenke.url')} target="_blank">
+                    {tekst('behandling.lenke')}
+                </Lenke>
+                {tekst('behandling.tekst2')}
             </Normaltekst>
         </div>
     )

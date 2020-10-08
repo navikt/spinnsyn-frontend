@@ -6,6 +6,11 @@
     border-radius: 4px;
     margin: .5rem 0;
 
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px @fokusFarge;
+    }
+
     &.intern {
         border: 0;
         margin: 1rem 0;
@@ -25,7 +30,7 @@
         }
 
         .utvidbar__innhold {
-            padding: 0;
+            padding: 0 0 2rem;
 
             .alertstripe__ikon {
                 display: none;
@@ -42,7 +47,7 @@
         display: flex;
         text-align: left;
         width: 100%;
-        padding: 0.7rem 1rem;
+        padding: 1.5rem 1rem;
         border: 0;
         cursor: pointer;
         background-color: inherit;
@@ -56,11 +61,11 @@
     }
 
     &.bla {
-        background-color: @navBlaLighten80;
+        background-color: @navLysBlaLighten80;
     }
 
     &.gronn {
-        background-color: @navGronnLighten80;
+        background-color: @alternativLysGronn;
     }
 
     .utvidbar__ikon {
@@ -78,6 +83,10 @@
     .utvidbar__tittel {
         display: inline-block;
         padding-top: 2px;
+    }
+
+    .utvidbar__tekst {
+        margin-top: 4px;
     }
 
     .utvidbar__handling {
@@ -102,17 +111,12 @@
             padding: 0;
         }
     }
-
-    .avsnitt {
-        margin: 0 0 1rem;
-    }
 }
 
 @media (min-width: @screen-sm) {
     .utvidbar {
         .utvidbar__toggle {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
+            padding: 1.5rem 1rem;
 
             &:hover {
                 color: @navBla;

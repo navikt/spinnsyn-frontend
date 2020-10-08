@@ -15,6 +15,7 @@ import { Brodsmule } from '../../types/types'
 import env from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
+import AlertStripe from 'nav-frontend-alertstriper';
 
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel'),
@@ -45,6 +46,10 @@ const VedtakListe = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
+                <AlertStripe type="info">
+                    Vi tester nå en betaversjon. Mangler og feil kan forekomme.
+                </AlertStripe>
+
                 <Teasere
                     className="vedtak--uleste vedtak--teasere"
                     vedtak={uleste}

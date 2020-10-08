@@ -17,8 +17,7 @@ export const arbeidsgiverListevisning = (vedtak: Vedtak, soknader: Soknad[]) => 
         <Normaltekst className="inngangspanel__tekst">
             {getLedetekst(tekst('spinnsyn.teaser.sykmeldt-fra'), {
                 '%ARBEIDSGIVER%': soknad?.arbeidsgiver?.navn
-            })
-            }
+            })}
         </Normaltekst>
     )
 }
