@@ -1,5 +1,6 @@
 import './vedtak-liste.less'
 
+import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst,Sidetittel } from 'nav-frontend-typografi'
@@ -15,7 +16,6 @@ import { Brodsmule } from '../../types/types'
 import env from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
-import AlertStripe from 'nav-frontend-alertstriper';
 
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel'),

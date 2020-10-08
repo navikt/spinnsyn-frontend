@@ -1,3 +1,4 @@
+import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
@@ -5,7 +6,6 @@ import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
-import Lenke from 'nav-frontend-lenker';
 
 const FeilOpplysninger = () => {
     const { valgtVedtak } = useAppStore()

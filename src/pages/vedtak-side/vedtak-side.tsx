@@ -1,5 +1,6 @@
 import './vedtak-side.less'
 
+import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
@@ -21,7 +22,6 @@ import Behandling from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
-import AlertStripe from 'nav-frontend-alertstriper';
 
 const brodsmuler: Brodsmule[] = [
     {

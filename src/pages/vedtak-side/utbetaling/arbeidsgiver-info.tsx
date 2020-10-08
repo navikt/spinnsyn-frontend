@@ -1,7 +1,8 @@
-import React from 'react'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
+import React from 'react'
+
+import { useAppStore } from '../../../data/stores/app-store'
 import { getLedetekst, tekst } from '../../../utils/tekster'
-import { useAppStore } from '../../../data/stores/app-store';
 
 const ArbeidsgiverInfo = () => {
     const { valgtVedtak, soknader } = useAppStore()
@@ -26,4 +27,4 @@ const ArbeidsgiverInfo = () => {
     )
 }
 
-export default ArbeidsgiverInfo;
+export default ArbeidsgiverInfo
