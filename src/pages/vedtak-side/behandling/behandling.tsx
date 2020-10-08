@@ -1,5 +1,6 @@
 import './behandling.less'
 
+import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
@@ -12,7 +13,11 @@ const Behandling = () => {
                 {tekst('behandling.tittel')}
             </Undertittel>
             <Normaltekst>
-                {tekst('behandling.tekst')}
+                {tekst('behandling.tekst1')}
+                <Lenke href={tekst('behandling.lenke.url')} target="_blank">
+                    {tekst('behandling.lenke')}
+                </Lenke>
+                {tekst('behandling.tekst2')}
             </Normaltekst>
         </div>
     )

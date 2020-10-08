@@ -51,8 +51,13 @@ const Utvidbar = (props: UtvidbarProps) => {
         }
     }
 
+    const onButtonClick = () => {
+        utvidbar.current!.focus()
+        setErApen(!erApen)
+    }
+
     return (
-        <div ref={utvidbar}
+        <div ref={utvidbar} tabIndex={-1}
             className={
                 'utvidbar' +
                 (props.className ? ' ' + props.className : '') +
@@ -64,7 +69,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                 ref={jsToggle}
                 onMouseEnter={props.ikon !== undefined ? () => btnImage.current!.src = props.ikonHover! : undefined}
                 onMouseLeave={props.ikon !== undefined ? () => btnImage.current!.src = props.ikon! : undefined}
-                onClick={() => setErApen(!erApen)}
+                onClick={onButtonClick}
                 type={'button'}
                 className="utvidbar__toggle"
             >
@@ -78,7 +83,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                 <Vis hvis={props.type === undefined}>
                     <div className="utvidbar__tittel">
                         <Systemtittel tag="h3">{props.tittel}</Systemtittel>
-                        <Normaltekst>{props.systemtittel}</Normaltekst>
+                        <Normaltekst className="utvidbar__tekst">{props.systemtittel}</Normaltekst>
                     </div>
                 </Vis>
                 <Vis hvis={props.type === 'intern'}>
@@ -95,15 +100,17 @@ const Utvidbar = (props: UtvidbarProps) => {
             >
                 <div ref={innhold} className="utvidbar__innhold">
                     {props.children}
-                    <div className="lenkerad">
-                        <button type="button" className="lenke" aria-pressed={!erApen}
-                            tabIndex={(erApen ? null : -1) as any} onClick={() => setErApen(!erApen)}
-                        >
-                            <Normaltekst tag="span">
-                                {props.type === 'intern' ? 'Skjul' : 'Lukk'}
-                            </Normaltekst>
-                        </button>
-                    </div>
+                    <Vis hvis={props.type !== 'intern'}>
+                        <div className="lenkerad">
+                            <button type="button" className="lenke" aria-pressed={!erApen}
+                                tabIndex={(erApen ? null : -1) as any} onClick={() => setErApen(!erApen)}
+                            >
+                                <Normaltekst tag="span">
+                                    {props.type === 'intern' ? 'Skjul' : 'Lukk'}
+                                </Normaltekst>
+                            </button>
+                        </div>
+                    </Vis>
                 </div>
             </div>
         </div>

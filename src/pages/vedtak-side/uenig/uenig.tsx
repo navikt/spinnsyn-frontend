@@ -17,10 +17,15 @@ const Uenig = () => {
                 {tekst('uenig.tittel')}
             </Undertittel>
             <Normaltekst>
-                Hvis du ikke er enig i resultatet, kan du klage.
-                Les om <Lenke href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter" target="_blank">retten
-                til å klage</Lenke>,
-                eller gå rett til <Lenke href="https://www.nav.no/soknader/nb/person/helse/sykepenger/NAV%2000-03.00/klage/brev" target="_blank">klageveilederen</Lenke>
+                {tekst('uenig.tekst1')}
+                {tekst('uenig.tekst2')}
+                <Lenke href={tekst('uenig.lenke1.url')} target="_blank">
+                    {tekst('uenig.lenke1')}
+                </Lenke>,
+                {tekst('uenig.tekst3')}
+                <Lenke href={tekst('uenig.lenke2.url')} target="_blank">
+                    {tekst('uenig.lenke2')}
+                </Lenke>.
             </Normaltekst>
             <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(valgtVedtak)}</Element>
         </div>

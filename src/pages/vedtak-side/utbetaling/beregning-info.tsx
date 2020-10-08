@@ -2,8 +2,8 @@ import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import Utvidbar from '../../../../components/utvidbar/utvidbar'
-import { tekst } from '../../../../utils/tekster'
+import Utvidbar from '../../../components/utvidbar/utvidbar'
+import { tekst } from '../../../utils/tekster'
 
 const BeregningInfo = () => {
     return (
@@ -26,6 +26,14 @@ const BeregningInfo = () => {
             <Normaltekst>
                 {tekst('utbetaling.dagligbelop.innhold')}
             </Normaltekst>
+
+            <Element tag="h2" className="tekstinfo__avsnitt">
+                {tekst('utbetaling.utbetalingsdager.tittel')}
+            </Element>
+            <Normaltekst>
+                {tekst('utbetaling.utbetalingsdager.innhold')}
+            </Normaltekst>
+
             <Element tag="h2" className="tekstinfo__avsnitt">
                 {tekst('utbetaling.totalbelop.tittel')}
             </Element>
@@ -38,7 +46,7 @@ const BeregningInfo = () => {
             <Normaltekst>
                 {tekst('utbetaling.delvis.innhold')}
             </Normaltekst>
-            <Normaltekst>
+            <Normaltekst className="tekstinfo__avsnitt">
                 {tekst('utbetaling.beregning.les.mer')}
                 <Lenke href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                     {tekst('utbetaling.beregning.lenke.tekst')}

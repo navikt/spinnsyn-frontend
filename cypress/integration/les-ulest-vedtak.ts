@@ -29,7 +29,7 @@ describe('Tester at appen starter', () => {
         cy.contains('Klagefrist: 28. oktober 2020')
 
         cy.contains('Automatisk behandling')
-        cy.contains('Søknaden er behandlet automatisk. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingene fra arbeidsgiveren din. Du kan be om å få se opplysningene.')
+        cy.contains('Søknaden din er behandlet automatisk. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')
     })
 
     it('Den grønne boksen har riktig innhold', () => {
@@ -38,7 +38,7 @@ describe('Tester at appen starter', () => {
             .and('not.be.visible')
 
         cy.contains('15 000 kroner')
-            .and('contain', 'Beregnet sykepengebeløp')
+            .and('contain', 'Utbetales til arbeidsgiveren')
             .click()
 
         cy.get('.inntekt__info')
@@ -52,9 +52,6 @@ describe('Tester at appen starter', () => {
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
             .and('contain', 'Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.')
-            .and('contain', '12. – 27. september 2020')
-            .and('contain', 'POSTEN NORGE AS, BÆRUM')
-            .and('contain', '995 816 598')
 
         cy.contains('Mer om beregningen').click()
         cy.contains('folketrygdloven § 8-28')

@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     background-color: @white;
 
     &__tittel {
@@ -28,7 +28,7 @@
     border-radius: 4px;
     background-color: @white;
     margin-bottom: 1rem;
-    padding: 1rem 2rem 1.4rem;
+    padding: 28px 30px 30px 20px;
     color: @navMorkGra;
     text-decoration: none;
 
@@ -84,7 +84,12 @@
     }
 
     &.inngangspanel--tomListe {
-        padding: 1rem 2rem 1rem;
+        display: inline;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        width: auto;
         font-weight: 400;
     }
 
@@ -106,8 +111,6 @@
         .chevronboks {
             display: inline-block;
             margin: 0 -1rem 0 1rem;
-            color: @grayIcon;
-
         }
     }
 }
@@ -173,6 +176,13 @@
             }
         }
 
+        &.inngangspanel--tomListe {
+            &:hover {
+                box-shadow: none;
+                cursor: default;
+            }
+        }
+
         .inngangspanel__tittel {
             margin-bottom: 0;
         }
@@ -194,7 +204,6 @@
             .chevronboks {
                 display: inline-block;
                 margin: 0 -1rem 0 1rem;
-                color: @grayIcon;
             }
         }
 

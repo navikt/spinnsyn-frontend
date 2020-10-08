@@ -1,5 +1,6 @@
 import './vedtak-liste.less'
 
+import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst,Sidetittel } from 'nav-frontend-typografi'
@@ -45,6 +46,10 @@ const VedtakListe = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
+                <AlertStripe type="info">
+                    Vi tester nå en betaversjon. Mangler og feil kan forekomme.
+                </AlertStripe>
+
                 <Teasere
                     className="vedtak--uleste vedtak--teasere"
                     vedtak={uleste}
