@@ -16,10 +16,8 @@ const VedtakStatus = () => {
     const [ veileder, setVeileder ] = useState<string>()
 
     useEffect(() => {
-        const min = 1, max = 2
-        const tall = Math.floor(Math.random() * (max - min + 1) + min)
-        tall === 1 ? setVeileder(Dame) : setVeileder(Mann)
-    }, [])
+        (valgtVedtak!.id.charCodeAt(0) % 2) === 1 ? setVeileder(Dame) : setVeileder(Mann)
+    }, [ valgtVedtak ])
 
     return (
         <div className="vedtak-status">
