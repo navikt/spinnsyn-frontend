@@ -2,15 +2,32 @@
 @import '../../../src/basic';
 
 .brodsmuler {
-    display: flex;
-    align-items: center;
+    max-height: 40px;
     background-color: @alternativBakgrunn;
     padding: 8px 0 8px 1rem;
     margin-bottom: 1em;
 
     .limit {
+        display: flex;
+        align-items: center;
         background-color: transparent;
         padding: 0;
+    }
+
+    .chevron--opp {
+        display: none;
+    }
+
+    &.apen {
+        max-height: 100px;
+        overflow: hidden;
+        transition: max-height 500ms ease;
+
+        .chevron--opp {
+            display: block;
+            margin-right: 0.5rem;
+            color: @navBla;
+        }
     }
 
     .brodsmuler__smuler {
@@ -34,6 +51,17 @@
 
         .lenke {
             white-space: nowrap;
+        }
+    }
+
+    .js-toggle {
+        border: 0;
+        padding: 0;
+        color: @navBla;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
         }
     }
 

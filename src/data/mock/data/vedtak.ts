@@ -59,13 +59,13 @@ export const ulestRefusjonTilArbeidsgiver: Vedtak = {
 
 export const lestRefusjonTilArbeidsgiver: Vedtak = {
     ...ulestRefusjonTilArbeidsgiver, ...{
-        'id': 'c7763203-e20a-34b2-b035-2752d6a1e7c7',
+        'id': 'b7763203-e20a-34b2-b035-2752d6a1e7c7',
         'lest': true
     }
 }
 
 export const lestRefusjonTilArbeidsgiverUtenInntektsmelding: Vedtak = {
-    'id': 'c7763203-e20a-34b2-b035-2752d6a1e7c8',
+    'id': 'a7763203-e20a-34b2-b035-2752d6a1e7c8',
     'lest': true,
     'opprettet': '2020-09-28',
     'vedtak': {

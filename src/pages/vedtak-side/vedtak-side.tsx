@@ -86,7 +86,7 @@ const VedtakSide = () => {
 
             <div className="limit">
                 <AlertStripe type="info" style={{ marginBottom: '2rem' }}>
-                    Du er kommet til en side som er en betaversjon. Mangler og feil kan forekomme.
+                    Du er kommet til en side som er under utvikling. Mangler og feil kan forekomme. Etter hvert vil siden få mer innhold.
                 </AlertStripe>
 
                 <VedtakStatus />
