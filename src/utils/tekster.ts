@@ -1,4 +1,5 @@
 import BannerTekster from '../components/banner/banner-tekster'
+import BetaTekster from '../components/beta-tekster'
 import KlageTekster from '../components/klage/klage-tekster'
 import SaksbehandlingstidOgUtbetalingTekster
     from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
@@ -25,7 +26,8 @@ const tekster = {
     ...UenigTekster,
     ...BehandlingTekster,
     ...SykepengedagerTekster,
-    ...SaksbehandlingstidOgUtbetalingTekster
+    ...SaksbehandlingstidOgUtbetalingTekster,
+    ...BetaTekster
 }
 
 
@@ -41,6 +43,7 @@ type TekstKeys =
     | keyof typeof UenigTekster
     | keyof typeof BehandlingTekster
     | keyof typeof SykepengedagerTekster
+    | keyof typeof BetaTekster
     | keyof typeof SaksbehandlingstidOgUtbetalingTekster;
 
 export const tekst = (tekst: TekstKeys): string => {

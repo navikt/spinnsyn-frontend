@@ -1,5 +1,6 @@
 import './vedtak-liste.less'
 
+import parser from 'html-react-parser'
 import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
@@ -47,7 +48,7 @@ const VedtakListe = () => {
 
             <div className="limit">
                 <AlertStripe type="info">
-                    Vi tester nå en betaversjon. Mangler og feil kan forekomme.
+                    {parser(tekst('beta.infostripe'))}
                 </AlertStripe>
 
                 <Teasere

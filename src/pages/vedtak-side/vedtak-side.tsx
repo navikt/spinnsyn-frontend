@@ -1,5 +1,6 @@
 import './vedtak-side.less'
 
+import parser from 'html-react-parser'
 import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
@@ -86,7 +87,7 @@ const VedtakSide = () => {
 
             <div className="limit">
                 <AlertStripe type="info" style={{ marginBottom: '2rem' }}>
-                    Du er kommet til en side som er en betaversjon. Mangler og feil kan forekomme.
+                    {parser(tekst('beta.infostripe'))}
                 </AlertStripe>
 
                 <VedtakStatus />
