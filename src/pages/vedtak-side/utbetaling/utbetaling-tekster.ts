@@ -10,7 +10,7 @@ const UtbetalingTekster = {
     'utbetaling.utbetalingsdager.tittel': 'Utbetalingsdager',
     'utbetaling.utbetalingsdager.innhold': 'Når NAV utbetaler sykepenger, betales det alltid for dagene mandag til fredag. Dette gjør vi selv om det er helligdager i løpet av disse dagene, og uavhengig av om du eventuelt jobber lørdag og søndag.',
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
-    'utbetaling.totalbelop.innhold': 'Til slutt ganger vi dagsatsen med antallet arbeidsdager du har vært syk. Sykepenger betales for dagene mandag til fredag, også hvis det er helligdager i løpet av disse dagene, og uavhengig av om du jobber lørdag og søndag.',
+    'utbetaling.totalbelop.innhold': 'Til slutt ganger vi daglig beløp med antallet utbetalingsdager.',
     'utbetaling.delvis.tittel': 'Hvis du er delvis sykmeldt',
     'utbetaling.delvis.innhold': 'Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',

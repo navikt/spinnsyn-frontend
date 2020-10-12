@@ -47,7 +47,7 @@ const VedtakListe = () => {
 
             <div className="limit">
                 <AlertStripe type="info">
-                    Vi tester nå en betaversjon. Mangler og feil kan forekomme.
+                    Du er kommet til en side som er under utvikling. Mangler og feil kan forekomme. Etter hvert vil siden få mer innhold.
                 </AlertStripe>
 
                 <Teasere
