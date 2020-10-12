@@ -53,17 +53,33 @@ describe('Tester at appen starter', () => {
             .should('have.class', 'apen')
             .and('contain', 'Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.')
 
-        cy.contains('Mer om beregningen').click()
+        cy.contains('Mer om beregningen').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
-        cy.contains('Ved feil opplysninger').click()
+        cy.contains('Ved feil opplysninger').click({ force: true })
         cy.get('.utvidbar__innholdContainer')
             .should('contain', 'Klagefrist: 28. oktober 2020')
+        cy.get('.utvidbar__innholdContainer').contains('Lukk').click({ force: true })
     })
 
     it('Den blå boksen har riktig innhold', () => {
-        // TODO: Sett opp
+
+        cy.contains('185')
+            .and('contain', 'Sykepengedager gjenstår')
+            .click({ force: true })
+
+        cy.get('.utvidbar__innholdContainer')
+            .should('have.class', 'apen')
+
+        cy.should('contain', '10').and('contain', 'Sykepengedager brukt hittil')
+        cy.should('contain', '11. juni 2021').and('contain', 'Beregnet slutt på sykepenger')
+        cy.should('contain', '* Datoen gjelder hvis du er sykmeldt uten pauser.')
+
+        cy.contains('Når sykepengene tar slutt').click()
+        cy.get('.utvidbar__innholdContainer')
+            .should('contain', 'Om du fortsatt ikke kan arbeide på grunn av sykdom eller skade etter 52 uker')
+
     })
 
     it('Vi går tilbake til oversikten', () => {
