@@ -14,12 +14,12 @@ import personIkon from './person.svg'
 const LITEN = 768
 
 const faste: Brodsmule[] = [
-    { tittel: 'Ditt NAV', sti: '/dittnav', erKlikkbar: true },
+    { tittel: 'Ditt NAV', sti: env.dittNavUrl, erKlikkbar: true },
     { tittel: 'Ditt sykefravær', sti: env.sykefravaerUrl, erKlikkbar: true }
 ]
 
 const BrodsmuleBit = ({ sti, tittel, erKlikkbar }: Brodsmule) => {
-    const erEkstern = sti && sti.includes(process.env.REACT_APP_SYKEFRAVAER_CONTEXT_ROOT!)
+    const erEkstern = sti && (sti.startsWith('https://') || sti.startsWith('http://'))
 
     const link = erEkstern
         ? <Lenke href={sti}>{tittel}</Lenke>
@@ -63,7 +63,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         })
         setSynlige(skjerm <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler)
         // eslint-disable-next-line
-    }, [ skjerm ])
+    }, [skjerm])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
