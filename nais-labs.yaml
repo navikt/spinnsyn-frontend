@@ -25,5 +25,7 @@ spec:
       value: "labs"
     - name: SYKEFRAVAER_URL
       value: "https://sykefravaer.labs.nais.io"
+    - name: DITTNAV_URL
+      value: "https://www.nav.no/person/dittnav"
     - name: OPPLAERING
       value: "true"
