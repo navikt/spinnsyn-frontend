@@ -45,6 +45,10 @@
             margin-left: 0.5rem;
         }
 
+        &:first-child:after {
+            margin-left: 0;
+        }
+
         &:last-child:after {
             content: '';
         }
@@ -56,7 +60,7 @@
 
     .js-toggle {
         border: 0;
-        padding: 0;
+        padding: 0 0.5rem;
         color: @navBla;
         cursor: pointer;
 
@@ -86,19 +90,17 @@
         display: flex;
         position: relative;
 
+        .smule {
+            &:first-child:after {
+                margin-left: 0.5rem;
+            }
+        }
+
         .brodsmuler__ikon {
             width: 2em;
             height: 2em;
             display: inline-block;
             margin-right: 1em;
-        }
-    }
-}
-
-@media (min-width: @skjermMedium) {
-    .brodsmuler {
-        .limit {
-            padding: 0 5rem;
         }
     }
 }

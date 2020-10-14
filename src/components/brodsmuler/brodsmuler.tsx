@@ -63,7 +63,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         })
         setSynlige(skjerm <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler)
         // eslint-disable-next-line
-    }, [skjerm])
+    }, [ skjerm ])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
@@ -99,7 +99,11 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                         return (
                             <BrodsmuleBit key={index}
                                 sti={smule.sti}
-                                tittel={smule.tittel}
+                                tittel={
+                                    skjerm <= LITEN && smule.mobilTittel && !smulesti.current!.classList.contains('apen')
+                                        ? smule.mobilTittel
+                                        : smule.tittel
+                                }
                                 erKlikkbar={smule.erKlikkbar}
                             />
                         )
