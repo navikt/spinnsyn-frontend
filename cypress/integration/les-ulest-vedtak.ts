@@ -51,7 +51,7 @@ describe('Tester at appen starter', () => {
 
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
-            .and('contain', 'Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.')
+            .and('contain', 'Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.')
 
         cy.contains('Mer om beregningen').click({ force: true })
         cy.contains('folketrygdloven § 8-28')

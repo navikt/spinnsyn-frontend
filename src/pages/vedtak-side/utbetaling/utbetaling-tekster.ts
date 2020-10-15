@@ -1,6 +1,6 @@
 const UtbetalingTekster = {
     'utbetaling.systemtittel': 'Utbetales til arbeidsgiveren',
-    'utbetaling.trekk': '* Fra dette beløpet blir det trukket skatt og eventuelt andre trekk før utbetalingen.',
+    'utbetaling.trekk': '* Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
     'utbetaling.mndlonn.tittel': 'Månedslønnen',
     'utbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk.',
     'utbetaling.arslonn.tittel': 'Årslønn',
