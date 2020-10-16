@@ -17,7 +17,6 @@ const UtbetalingTekster = {
     'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
     'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',
     'utbetaling.opplysninger.inntektsmelding': 'Når vi beregner sykepengene dine, bruker vi månedsinntekten som arbeidsgiveren din oppgir i inntektsmeldingen. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
-    'utbetaling.opplysninger.beslutning': 'Vil du klage på NAVs beslutning, be arbeidsgiveren din om å sende inntektsmeldingen i god tid før klagefristen går ut.',
     'utbetaling.inntekt.info.tittel': 'Slik beregner vi sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årslønn',

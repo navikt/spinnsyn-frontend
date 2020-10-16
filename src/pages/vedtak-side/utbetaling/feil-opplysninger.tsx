@@ -15,9 +15,6 @@ const FeilOpplysninger = () => {
             <Normaltekst className="tekstinfo__avsnitt">
                 {tekst('utbetaling.opplysninger.inntektsmelding')}
             </Normaltekst>
-            <Normaltekst className="tekstinfo__avsnitt">
-                {tekst('utbetaling.opplysninger.beslutning')}
-            </Normaltekst>
 
             <Normaltekst className="tekstinfo__avsnitt">
                 {tekst('uenig.tekst2')}
