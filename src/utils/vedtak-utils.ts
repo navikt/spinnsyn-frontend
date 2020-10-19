@@ -33,7 +33,7 @@ export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtak?: Vedtak) => {
 export const klagefrist = (vedtak?: Vedtak) => {
     return tilLesbarDatoMedArstall(
         dayjs(vedtak?.opprettet)
-            .add(30, 'day')
+            .add(42, 'day')
             .toDate()
     )
 }
