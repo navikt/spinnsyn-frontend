@@ -26,7 +26,7 @@ describe('Tester at appen starter', () => {
             .and('contain', 'Gjelder sykefravær fra')
             .and('contain', '12. – 27. september 2020')
 
-        cy.contains('Klagefrist: 28. oktober 2020')
+        cy.contains('Klagefrist: 9. november 2020')
 
         cy.contains('Automatisk behandling')
         cy.contains('Søknaden din er behandlet automatisk. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')
@@ -59,7 +59,7 @@ describe('Tester at appen starter', () => {
 
         cy.contains('Ved feil opplysninger').click({ force: true })
         cy.get('.utvidbar__innholdContainer')
-            .should('contain', 'Klagefrist: 28. oktober 2020')
+            .should('contain', 'Klagefrist: 9. november 2020')
         cy.get('.utvidbar__innholdContainer').contains('Lukk').click({ force: true })
     })
 
