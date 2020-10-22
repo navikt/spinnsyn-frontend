@@ -1,18 +1,16 @@
 import './vedtak-side.less'
 
-import parser from 'html-react-parser'
-import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Element,Normaltekst, Sidetittel } from 'nav-frontend-typografi'
+import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { RouteParams } from '../../app'
 import Banner from '../../components/banner/banner'
+import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
-import Vis from '../../components/vis'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
@@ -87,15 +85,7 @@ const VedtakSide = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
-                <AlertStripe type="info" style={{ marginBottom: '2rem' }}>
-                    <Element tag="h2" className="beta__tittel">
-                        Du er kommet til en side som er under utvikling.
-                    </Element>
-                    <Vis hvis={!valgtVedtak!.lest}>
-                        <Normaltekst>{tekst('vedtak.betatekst')}</Normaltekst>
-                        <Normaltekst>{parser(tekst('vedtak.betalenke'))}</Normaltekst>
-                    </Vis>
-                </AlertStripe>
+                <BetaAlertstripe />
 
                 <VedtakStatus />
 

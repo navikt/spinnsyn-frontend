@@ -1,4 +1,5 @@
 import BannerTekster from '../components/banner/banner-tekster'
+import BetaTekster from '../components/beta-alertstripe/beta-tekster'
 import KlageTekster from '../components/klage/klage-tekster'
 import SaksbehandlingstidOgUtbetalingTekster
     from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
@@ -25,7 +26,8 @@ const tekster = {
     ...UenigTekster,
     ...BehandlingTekster,
     ...SykepengedagerTekster,
-    ...SaksbehandlingstidOgUtbetalingTekster
+    ...SaksbehandlingstidOgUtbetalingTekster,
+    ...BetaTekster
 }
 
 
@@ -34,6 +36,7 @@ type TekstKeys =
     | keyof typeof VedtakListeTekster
     | keyof typeof TeaserTekster
     | keyof typeof VedtakTekster
+    | keyof typeof BetaTekster
     | keyof typeof KlageTekster
     | keyof typeof VedtakStatusTekster
     | keyof typeof UtbetalingTekster
