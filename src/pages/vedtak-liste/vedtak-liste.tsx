@@ -1,9 +1,10 @@
 import './vedtak-liste.less'
 
+import parser from 'html-react-parser'
 import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Normaltekst,Sidetittel } from 'nav-frontend-typografi'
+import { Element,Normaltekst, Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 
 import Banner from '../../components/banner/banner'
@@ -46,8 +47,12 @@ const VedtakListe = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
-                <AlertStripe type="info">
-                    Du er kommet til en side som er under utvikling. Mangler og feil kan forekomme. Etter hvert vil siden få mer innhold.
+                <AlertStripe type="info" style={{ marginBottom: '2rem' }}>
+                    <Element tag="h2" className="beta__tittel">
+                        Du er kommet til en side som er under utvikling.
+                    </Element>
+                    <Normaltekst>{tekst('vedtak.betatekst')}</Normaltekst>
+                    <Normaltekst>{parser(tekst('vedtak.betalenke'))}</Normaltekst>
                 </AlertStripe>
 
                 <Teasere
