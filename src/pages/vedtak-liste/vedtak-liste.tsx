@@ -1,12 +1,12 @@
 import './vedtak-liste.less'
 
-import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Normaltekst,Sidetittel } from 'nav-frontend-typografi'
+import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 
 import Banner from '../../components/banner/banner'
+import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import SaksbehandlingstidOgUtbetaling
     from '../../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling'
@@ -46,9 +46,7 @@ const VedtakListe = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
-                <AlertStripe type="info">
-                    Du er kommet til en side som er under utvikling. Mangler og feil kan forekomme. Etter hvert vil siden få mer innhold.
-                </AlertStripe>
+                <BetaAlertstripe />
 
                 <Teasere
                     className="vedtak--uleste vedtak--teasere"

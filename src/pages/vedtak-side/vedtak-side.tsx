@@ -1,6 +1,5 @@
 import './vedtak-side.less'
 
-import AlertStripe from 'nav-frontend-alertstriper'
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
@@ -9,6 +8,7 @@ import { useParams } from 'react-router-dom'
 
 import { RouteParams } from '../../app'
 import Banner from '../../components/banner/banner'
+import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import { useAppStore } from '../../data/stores/app-store'
@@ -85,9 +85,7 @@ const VedtakSide = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
-                <AlertStripe type="info" style={{ marginBottom: '2rem' }}>
-                    Du er kommet til en side som er under utvikling. Mangler og feil kan forekomme. Etter hvert vil siden få mer innhold.
-                </AlertStripe>
+                <BetaAlertstripe />
 
                 <VedtakStatus />
 
