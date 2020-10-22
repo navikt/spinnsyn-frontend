@@ -8,7 +8,7 @@ import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
 import {
     refusjonTilArbeidsgiverBeløp,
-    refusjonTilArbeidsgiverDagsats,
+    refusjonTilArbeidsgiverTotalBeløp,
     refusjonTilArbeidsgiverUtbetalingsdager
 } from '../../../../utils/vedtak-utils'
 
@@ -19,9 +19,9 @@ const InntektInfo = () => {
     const [ sum, setSum ] = useState<string>('-')
 
     useEffect(() => {
-        setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverDagsats(valgtVedtak)) + ' kr')
+        setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
         setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak) + ' dager')
-        setSum(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
+        setSum(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)) + ' kr')
     }, [ valgtVedtak, valgtInntektsmelding ])
 
     return (

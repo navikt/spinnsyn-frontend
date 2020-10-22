@@ -80,7 +80,8 @@
     "yet-another-fetch-mock": "^4.1.0"
   },
   "resolutions": {
-    "serialize-javascript": "3.1.0"
+    "serialize-javascript": "3.1.0",
+    "object-path": "^0.11.5"
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",

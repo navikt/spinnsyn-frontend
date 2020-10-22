@@ -24,9 +24,9 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak-status')
             .should('contain', 'Godkjent søknad om sykepenger')
             .and('contain', 'Gjelder sykefravær fra')
-            .and('contain', '12. – 27. september 2020')
+            .and('contain', '9. – 15. oktober 2020')
 
-        cy.contains('Klagefrist: 9. november 2020')
+        cy.contains('Klagefrist: 27. november 2020')
 
         cy.contains('Automatisk behandling')
         cy.contains('Søknaden din er behandlet automatisk. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')
@@ -37,17 +37,17 @@ describe('Tester at appen starter', () => {
             .should('not.have.class', 'apen')
             .and('not.be.visible')
 
-        cy.contains('15 000 kroner')
+        cy.contains('5 250 kroner')
             .and('contain', 'Utbetales til arbeidsgiveren')
             .click()
 
         cy.get('.inntekt__info')
             .should('contain', 'Slik beregner vi sykepengene')
-            .should('contain', 'Beregnet månedslønn').and('contain', '10\u00a0000 kr')
-            .should('contain', 'Omregnet til årslønn').and('contain', '120\u00a0000 kr')
-            .should('contain', 'Daglig utbetalingsbeløp').and('contain', '3\u00a0000 kr')
-            .should('contain', 'Utbetalingsdager').and('contain', '30 dager')
-            .should('contain', 'Sykepengebeløp').and('contain', '15\u00a0000 kr')
+            .should('contain', 'Beregnet månedslønn').and('contain', '22\u00a0750 kr')
+            .should('contain', 'Omregnet til årslønn').and('contain', '273\u00a0000 kr')
+            .should('contain', 'Daglig utbetalingsbeløp').and('contain', '1\u00a0050 kr')
+            .should('contain', 'Utbetalingsdager').and('contain', '5 dager')
+            .should('contain', 'Sykepengebeløp').and('contain', '5\u00a0250 kr')
 
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
@@ -59,21 +59,21 @@ describe('Tester at appen starter', () => {
 
         cy.contains('Ved feil opplysninger').click({ force: true })
         cy.get('.utvidbar__innholdContainer')
-            .should('contain', 'Klagefrist: 9. november 2020')
+            .should('contain', 'Klagefrist: 27. november 2020')
         cy.get('.utvidbar__innholdContainer').contains('Lukk').click({ force: true })
     })
 
     it('Den blå boksen har riktig innhold', () => {
 
-        cy.contains('185')
+        cy.contains('229')
             .and('contain', 'Sykepengedager gjenstår')
             .click({ force: true })
 
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
 
-        cy.should('contain', '10').and('contain', 'Sykepengedager brukt hittil')
-        cy.should('contain', '11. juni 2021').and('contain', 'Beregnet slutt på sykepenger')
+        cy.should('contain', '19').and('contain', 'Sykepengedager brukt hittil')
+        cy.should('contain', '1. sep. 2021').and('contain', 'Beregnet slutt på sykepenger')
         cy.should('contain', '* Datoen gjelder hvis du er sykmeldt uten pauser.')
 
         cy.contains('Når sykepengene tar slutt').click()

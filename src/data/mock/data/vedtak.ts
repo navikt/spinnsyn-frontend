@@ -5,12 +5,12 @@ import { arbeidstaker100 } from './soknader'
 export const ulestRefusjonTilArbeidsgiver: Vedtak = {
     'id': 'c7763203-e20a-34b2-b035-2752d6a1e7c6',
     'lest': false,
-    'opprettet': '2020-09-28',
+    'opprettet': '2020-10-16',
     'vedtak': {
-        'fom': '2020-09-12',
-        'tom': '2020-09-27',
-        'forbrukteSykedager': 10,
-        'gjenståendeSykedager': 185,
+        'fom': '2020-10-09',
+        'tom': '2020-10-15',
+        'forbrukteSykedager': 19,
+        'gjenståendeSykedager': 229,
         'dokumenter': [
             {
                 'type': 'Søknad',
@@ -24,31 +24,19 @@ export const ulestRefusjonTilArbeidsgiver: Vedtak = {
             {
                 'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
                 'fagområde': 'SPREF',
-                'totalbeløp': 15000,
-                'utbetalingslinjer': [ {
-                    'fom': '2020-09-12',
-                    'tom': '2020-09-27',
-                    'grad': 100,
-                    'beløp': 2000,
-                    'dagsats': 1500,
-                    'sykedager': 10
-                }, {
-                    'fom': '2020-09-12',
-                    'tom': '2020-09-27',
-                    'grad': 100,
-                    'beløp': 1500,
-                    'dagsats': 1500,
-                    'sykedager': 10
-                }, {
-                    'fom': '2020-09-12',
-                    'tom': '2020-09-27',
-                    'grad': 100,
-                    'beløp': 3000,
-                    'dagsats': 1500,
-                    'sykedager': 10
-                } ]
+                'totalbeløp': 19950,
+                'utbetalingslinjer': [
+                    {
+                        'fom': '2020-09-21',
+                        'tom': '2020-10-15',
+                        'grad': 100.0,
+                        'beløp': 1050,
+                        'dagsats': 1050,
+                        'sykedager': 19
+                    }
+                ]
             }, {
-                'mottaker': '01010112345',
+                'mottaker': inntektsmelding.fnr,
                 'fagområde': 'SP',
                 'totalbeløp': 0,
                 'utbetalingslinjer': []

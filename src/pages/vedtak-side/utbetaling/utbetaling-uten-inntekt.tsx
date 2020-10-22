@@ -8,7 +8,7 @@ import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import { refusjonTilArbeidsgiverBeløp } from '../../../utils/vedtak-utils'
+import { refusjonTilArbeidsgiverTotalBeløp } from '../../../utils/vedtak-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 import FeilOpplysninger from './feil-opplysninger'
@@ -23,7 +23,7 @@ const UtbetalingUtenInntekt = ({ ekspandert }: UtbetalingerProps) => {
     const [ belop, setBelop ] = useState<string>('-')
 
     useEffect(() => {
-        setBelop(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)))
+        setBelop(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)))
     }, [ valgtVedtak ])
 
     if (valgtVedtak === undefined) return null
