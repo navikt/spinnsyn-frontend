@@ -9,9 +9,8 @@ import { tekst } from '../../utils/tekster'
 const BetaAlertstripe = () => {
     return (
         <AlertStripe type="info" style={{ marginBottom: '2rem' }}>
-            <Element style={{ marginBottom: 5 }}>Du er kommet til en side som er under utvikling.</Element>
-            <Normaltekst>{tekst('vedtak.betatekst')}</Normaltekst>
-            <Normaltekst>{parser(tekst('vedtak.betalenke'))}</Normaltekst>
+            <Element style={{ marginBottom: 5 }}>{tekst('vedtak.betatittel')}</Element>
+            <Normaltekst>{parser(tekst('vedtak.betatekst'))}</Normaltekst>
         </AlertStripe>
     )
 }
