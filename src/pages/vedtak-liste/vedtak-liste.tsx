@@ -52,7 +52,7 @@ const VedtakListe = () => {
                     className="vedtak--uleste vedtak--teasere"
                     vedtak={uleste}
                     tittel={tekst('spinnsyn.teaser.uleste')}
-                    tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
+                    tomListeTekst={tekst('vedtak-liste.ingen-nye-soknader')}
                 />
 
                 <SaksbehandlingstidOgUtbetaling />
@@ -61,7 +61,7 @@ const VedtakListe = () => {
                     className="vedtak--leste"
                     vedtak={leste}
                     tittel={tekst('spinnsyn.teaser.leste')}
-                    tomListeTekst={tekst('vedtak-liste.ingen-soknader')}
+                    tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                     kanSorteres={false}
                 />
 
