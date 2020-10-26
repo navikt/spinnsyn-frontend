@@ -103,6 +103,7 @@ describe('Tester at appen starter', () => {
             .and('contain', 'Daglig beløp')
             .and('contain', 'Totalbeløp')
             .and('contain', 'Hvis du er delvis sykmeldt')
+        cy.should('not.contain', 'Automatisk behandling')
     })
 
 })
