@@ -6,6 +6,7 @@ export interface Vedtak {
 }
 
 export interface VedtakDto {
+    automatiskBehandling: boolean,
     fom: string;
     tom: string;
     forbrukteSykedager: number;     // Dager brukt minus helg

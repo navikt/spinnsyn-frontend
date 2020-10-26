@@ -11,6 +11,7 @@ import Banner from '../../components/banner/banner'
 import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
+import Vis from '../../components/vis'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
@@ -18,7 +19,7 @@ import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
-import Behandling from './behandling/behandling'
+import AutomatiskBehandling from './behandling/automatiskBehandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
@@ -93,8 +94,9 @@ const VedtakSide = () => {
                 <Sykepengedager />
 
                 <Uenig />
-                <Behandling />
-
+                <Vis hvis={valgtVedtak.vedtak.automatiskBehandling}>
+                    <AutomatiskBehandling />
+                </Vis>
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>

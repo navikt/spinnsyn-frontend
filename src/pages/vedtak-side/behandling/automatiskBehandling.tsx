@@ -6,7 +6,7 @@ import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
 
-const Behandling = () => {
+const AutomatiskBehandling = () => {
     return (
         <div className="behandling">
             <Undertittel className="behandling__tittel">
@@ -23,4 +23,4 @@ const Behandling = () => {
     )
 }
 
-export default Behandling
+export default AutomatiskBehandling
