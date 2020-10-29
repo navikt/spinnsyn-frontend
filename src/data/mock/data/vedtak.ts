@@ -1,5 +1,4 @@
 import { Vedtak } from '../../../types/vedtak'
-import { inntektsmelding } from './inntektsmeldinger'
 import { arbeidstaker100 } from './soknader'
 
 export const ulestRefusjonTilArbeidsgiver: Vedtak = {
@@ -11,14 +10,12 @@ export const ulestRefusjonTilArbeidsgiver: Vedtak = {
         'fom': '2020-10-09',
         'tom': '2020-10-15',
         'forbrukteSykedager': 19,
+        'månedsinntekt': 22750,
         'gjenståendeSykedager': 229,
         'dokumenter': [
             {
                 'type': 'Søknad',
                 'dokumentId': arbeidstaker100.id
-            }, {
-                'type': 'Inntektsmelding',
-                'dokumentId': inntektsmelding.id
             }
         ],
         'utbetalinger': [
@@ -37,7 +34,7 @@ export const ulestRefusjonTilArbeidsgiver: Vedtak = {
                     }
                 ]
             }, {
-                'mottaker': inntektsmelding.fnr,
+                'mottaker': '01010112345',
                 'fagområde': 'SP',
                 'totalbeløp': 0,
                 'utbetalingslinjer': []

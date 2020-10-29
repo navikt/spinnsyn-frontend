@@ -1,7 +1,6 @@
 import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock'
 
 import env from '../../utils/environment'
-import { inntektsmeldinger } from './data/inntektsmeldinger'
 import { soknader } from './data/soknader'
 import { vedtakTestdata } from './data/vedtak'
 
@@ -20,5 +19,3 @@ mock.get(`${env.spinnsynRoot}/api/v1/vedtak`,
 
 mock.post(`${env.spinnsynRoot}/api/v1/vedtak/:id/les`, () => Promise.resolve({ status: 200 }))
 
-mock.get(`${env.flexinntektsmeldingRoot}/api/v1/inntektsmeldinger`,
-    (req, res, ctx) => res(ctx.json(inntektsmeldinger)))

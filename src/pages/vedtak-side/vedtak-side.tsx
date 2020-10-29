@@ -38,7 +38,7 @@ const brodsmuler: Brodsmule[] = [
 
 const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
-    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak, inntektsmeldinger, setValgtInntektsmelding } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak  } = useAppStore()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -47,11 +47,6 @@ const VedtakSide = () => {
     useEffect(() => {
         const aktivtVedtak = vedtak.find(a => a.id === id)
         setValgtVedtak(aktivtVedtak)
-        setValgtInntektsmelding(inntektsmeldinger.find((i =>
-                aktivtVedtak?.vedtak.dokumenter.find(d =>
-                    d.type === 'Inntektsmelding' && i.id === d.dokumentId
-                )
-        )))
 
         if (aktivtVedtak && !aktivtVedtak.lest) {
             const merkVedtakSomLest = async() => {
