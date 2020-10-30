@@ -9,6 +9,8 @@ export interface VedtakDto {
     automatiskBehandling: boolean,
     fom: string;
     tom: string;
+    månedsinntekt?: number;
+    sykepengegrunnlag?: number;
     forbrukteSykedager: number;     // Dager brukt minus helg
     gjenståendeSykedager: number;
     utbetalinger: UtbetalingDto[];

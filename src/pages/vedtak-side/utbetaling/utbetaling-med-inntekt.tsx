@@ -13,14 +13,13 @@ import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 import FeilOpplysninger from './feil-opplysninger'
 import InntektInfo from './inntekt-info/inntekt-info'
-import UtbetalingUtenInntekt from './utbetaling-uten-inntekt'
 
 interface UtbetalingerProps {
     ekspandert: boolean;
 }
 
 const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
-    const { valgtVedtak, valgtInntektsmelding } = useAppStore()
+    const { valgtVedtak } = useAppStore()
     const [ belop, setBelop ] = useState<string>('-')
 
     useEffect(() => {
@@ -28,7 +27,6 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
     }, [ valgtVedtak ])
 
     if (valgtVedtak === undefined) return null
-    if (valgtInntektsmelding === undefined) return <UtbetalingUtenInntekt ekspandert={ekspandert} />
 
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}

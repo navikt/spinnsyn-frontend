@@ -1,6 +1,5 @@
 import dayjs from 'dayjs'
 
-import { inntektsmelding } from '../data/mock/data/inntektsmeldinger'
 import { arbeidstaker100 } from '../data/mock/data/soknader'
 import { ulestRefusjonTilArbeidsgiver } from '../data/mock/data/vedtak'
 import { jsonDeepCopy } from './json-deep-copy'
@@ -144,7 +143,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
                     'sykedager': 10
                 } ]
             }, {
-                'mottaker': inntektsmelding.fnr,
+                'mottaker': '01010112345',
                 'fagområde': 'SP',
                 'totalbeløp': 0,
                 'utbetalingslinjer': []
@@ -180,7 +179,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
                     'sykedager': 51
                 } ]
             }, {
-                'mottaker': inntektsmelding.fnr,
+                'mottaker': '01010112345',
                 'fagområde': 'SP',
                 'totalbeløp': 0,
                 'utbetalingslinjer': []
@@ -209,7 +208,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
                     'sykedager': 35
                 } ]
             }, {
-                'mottaker': inntektsmelding.fnr,
+                'mottaker': '01010112345',
                 'fagområde': 'SP',
                 'totalbeløp': 0,
                 'utbetalingslinjer': []
@@ -238,7 +237,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
                     'sykedager': 6
                 } ]
             }, {
-                'mottaker': inntektsmelding.fnr,
+                'mottaker': '01010112345',
                 'fagområde': 'SP',
                 'totalbeløp': 0,
                 'utbetalingslinjer': []
