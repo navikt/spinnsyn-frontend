@@ -27,7 +27,7 @@ spec:
     path: internal/isReady
   env:
     - name: SYFOSOKNAD_PROXY_ROOT
-      value: "https://syfosoknad-proxy.dev.nav.no/"
+      value: "https://syfosoknad-proxy.dev.nav.no"
     - name: SYKMELDINGER_BACKEND_PROXY_ROOT
       value: "https://sykmeldinger-backend-proxy.dev.nav.no"
     - name: SPINNSYN_ROOT

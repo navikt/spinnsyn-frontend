@@ -11,7 +11,7 @@ const mock = FetchMock.configure({
     )
 })
 
-mock.get(`${env.syfosoknadProxyRoot}/syfosoknad/api/soknader`,
+mock.get(`${env.syfosoknadProxyRoot}/api/soknader`,
     (req, res, ctx) => res(ctx.json(soknader)))
 
 mock.get(`${env.spinnsynRoot}/api/v1/vedtak`,
