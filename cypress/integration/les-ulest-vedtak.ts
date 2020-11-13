@@ -65,14 +65,14 @@ describe('Tester at appen starter', () => {
 
     it('Den blå boksen har riktig innhold', () => {
 
-        cy.contains('229')
-            .and('contain', 'Sykepengedager gjenstår')
+        cy.contains('19')
+            .and('contain', 'Sykepengedager brukt hittil')
             .click({ force: true })
 
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
 
-        cy.should('contain', '19').and('contain', 'Sykepengedager brukt hittil')
+        cy.should('contain', '229').and('contain', 'Sykepengedager gjenstår')
         cy.should('contain', '1. sep. 2021').and('contain', 'Beregnet slutt på sykepenger')
         cy.should('contain', '* Datoen gjelder hvis du er sykmeldt uten pauser.')
 
