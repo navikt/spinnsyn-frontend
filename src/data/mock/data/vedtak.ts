@@ -57,7 +57,7 @@ export const lestRefusjonTilArbeidsgiverUtenInntektsmelding: Vedtak = {
     'opprettet': '2020-09-28',
     'annullert': false,
     'vedtak': {
-        'automatiskBehandling': true,
+        'automatiskBehandling': false,
         'fom': '2020-09-12',
         'tom': '2020-09-27',
         'forbrukteSykedager': 10,
