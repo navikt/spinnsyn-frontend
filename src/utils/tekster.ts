@@ -7,6 +7,7 @@ import TeaserTekster from '../components/teaser/teaser-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
 import RefreshHvisFeilStateTekster from '../pages/feil/refresh-hvis-feil-state-tekster'
 import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
+import AnnulleringTekster from '../pages/vedtak-side/annullering/annullering-tekster'
 import BehandlingTekster from '../pages/vedtak-side/behandling/behandling-tekster'
 import SykepengedagerTekster from '../pages/vedtak-side/sykepengedager/sykepengedager-tekster'
 import UenigTekster from '../pages/vedtak-side/uenig/uenig-tekster'
@@ -27,7 +28,8 @@ const tekster = {
     ...BehandlingTekster,
     ...SykepengedagerTekster,
     ...SaksbehandlingstidOgUtbetalingTekster,
-    ...BetaTekster
+    ...BetaTekster,
+    ...AnnulleringTekster
 }
 
 
@@ -44,7 +46,8 @@ type TekstKeys =
     | keyof typeof UenigTekster
     | keyof typeof BehandlingTekster
     | keyof typeof SykepengedagerTekster
-    | keyof typeof SaksbehandlingstidOgUtbetalingTekster;
+    | keyof typeof SaksbehandlingstidOgUtbetalingTekster
+    | keyof typeof AnnulleringTekster;
 
 export const tekst = (tekst: TekstKeys): string => {
     const verdi = tekster[tekst]

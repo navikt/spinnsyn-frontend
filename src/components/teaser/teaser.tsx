@@ -6,6 +6,7 @@ import { useAppStore } from '../../data/stores/app-store'
 import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
+import Vis from '../vis'
 import handHover from './hand-hover.svg'
 import hand from './hand.svg'
 import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
@@ -30,6 +31,11 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
                     </div>
                 </div>
                 <div className="inngangspanel__del2">
+                    <Vis hvis={vedtak.annullert}>
+                        <span className="inngangspanel__annullert">
+                            {tekst('spinnsyn.teaser.annullert')}
+                        </span>
+                    </Vis>
                     <HoyreChevron />
                 </div>
             </Inngangspanel>

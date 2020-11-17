@@ -23,7 +23,9 @@ const VedtakStatus = () => {
         <div className="vedtak-status">
             <Veilederpanel kompakt svg={<img src={veileder} alt="" />}>
                 <Undertittel tag="h3" className="vedtak-status__tittel">
-                    {tekst('vedtak.status.tittel')}
+                    {valgtVedtak!.annullert
+                        ? tekst('vedtak.status.annullert.tittel')
+                        : tekst('vedtak.status.tittel')}
                 </Undertittel>
                 <Element>
                     {tekst('vedtak.status.gjelder')}

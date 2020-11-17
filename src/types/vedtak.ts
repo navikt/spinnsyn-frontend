@@ -3,6 +3,7 @@ export interface Vedtak {
     lest: boolean;
     opprettet: string;
     vedtak: VedtakDto;
+    annullert: boolean;
 }
 
 export interface VedtakDto {

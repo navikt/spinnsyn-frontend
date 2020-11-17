@@ -19,6 +19,7 @@ import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
+import AnnulleringsInfo from './annullering/annullering'
 import AutomatiskBehandling from './behandling/automatiskBehandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
@@ -84,6 +85,9 @@ const VedtakSide = () => {
                 <BetaAlertstripe />
 
                 <VedtakStatus />
+                <Vis hvis={valgtVedtak.annullert}>
+                    <AnnulleringsInfo />
+                </Vis>
 
                 <UtbetalingMedInntekt ekspandert={false} />
                 <Sykepengedager />
