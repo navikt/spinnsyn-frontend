@@ -55,9 +55,9 @@ export const lestRefusjonTilArbeidsgiverUtenInntektsmelding: Vedtak = {
     'id': 'a7763203-e20a-34b2-b035-2752d6a1e7c8',
     'lest': true,
     'opprettet': '2020-09-28',
-    'annullert': true,
+    'annullert': false,
     'vedtak': {
-        'automatiskBehandling': false,
+        'automatiskBehandling': true,
         'fom': '2020-09-12',
         'tom': '2020-09-27',
         'forbrukteSykedager': 10,
@@ -94,4 +94,12 @@ export const lestRefusjonTilArbeidsgiverUtenInntektsmelding: Vedtak = {
     }
 }
 
-export const vedtakTestdata: Vedtak[] = [ ulestRefusjonTilArbeidsgiver, lestRefusjonTilArbeidsgiver, lestRefusjonTilArbeidsgiverUtenInntektsmelding ]
+export const annullertRefusjonTilArbeidsgiver: Vedtak = {
+    ...lestRefusjonTilArbeidsgiver, ...{
+        id: 'b7763203-e20a-34b2-b035-2752d6a1e7c8',
+        annullert: true,
+        lest: true
+    }
+}
+
+export const vedtakTestdata: Vedtak[] = [ ulestRefusjonTilArbeidsgiver, lestRefusjonTilArbeidsgiver, annullertRefusjonTilArbeidsgiver, lestRefusjonTilArbeidsgiverUtenInntektsmelding ]

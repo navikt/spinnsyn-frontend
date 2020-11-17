@@ -8,7 +8,7 @@ import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { tekst } from '../../../utils/tekster'
-import SkrivIkon from '../lokale-lenker/ikon-hodetelefon.svg' // bytt til riktig ikon når vi får det fra bendik
+import SkrivIkon from './ikon-skriv-til-oss.svg'
 
 const AnnulleringsInfo = () => {
     return (
@@ -19,7 +19,7 @@ const AnnulleringsInfo = () => {
                 <Normaltekst>
                     {parser(tekst('annullering.info.body'))}
                     <div className="link__med__ikon">
-                        <span><img aria-hidden="true" src={SkrivIkon} alt="Skriv" /></span>
+                        <span><img alt="" src={SkrivIkon} /></span>
                         <Lenke href="#">{tekst('annullering.info.skriv-til-oss')}</Lenke>
                     </div>
                 </Normaltekst>

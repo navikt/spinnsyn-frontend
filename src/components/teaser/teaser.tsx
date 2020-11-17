@@ -9,6 +9,8 @@ import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangs
 import Vis from '../vis'
 import handHover from './hand-hover.svg'
 import hand from './hand.svg'
+import annullertHover from './ikon-annullert-hover.svg'
+import annullert from './ikon-annullert.svg'
 import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
@@ -18,7 +20,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
                 <div className="inngangspanel__del1">
-                    <InngangsIkon ikon={hand} ikonHover={handHover} />
+                    <InngangsIkon ikon={vedtak.annullert ? annullert : hand} ikonHover={vedtak.annullert ? annullertHover : handHover} />
                     <div className="inngangspanel__innhold utvidbar__toggle">
                         <InngangsHeader
                             meta={
