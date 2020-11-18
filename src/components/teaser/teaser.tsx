@@ -27,7 +27,7 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
                                 dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
                                 dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
                             }
-                            tittel={tekst('spinnsyn.teaser.tittel')}
+                            tittel={vedtak.annullert ? tekst('spinnsyn.teaser.annullert.tittel') : tekst('spinnsyn.teaser.tittel')}
                         />
                         {arbeidsgiverListevisning(vedtak, soknader)}
                     </div>

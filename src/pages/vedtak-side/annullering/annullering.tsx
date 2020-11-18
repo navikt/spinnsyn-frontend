@@ -20,7 +20,7 @@ const AnnulleringsInfo = () => {
                     {parser(tekst('annullering.info.body'))}
                     <div className="link__med__ikon">
                         <span><img alt="" src={SkrivIkon} /></span>
-                        <Lenke href="#">{tekst('annullering.info.skriv-til-oss')}</Lenke>
+                        <Lenke href={tekst('behandling.lenke.url')}>{tekst('annullering.info.skriv-til-oss')}</Lenke>
                     </div>
                 </Normaltekst>
             </Utvidbar>
