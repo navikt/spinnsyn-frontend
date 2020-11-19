@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import { HoyreChevron } from 'nav-frontend-chevron'
+import { EtikettFokus } from 'nav-frontend-etiketter'
 import React from 'react'
 
 import { useAppStore } from '../../data/stores/app-store'
@@ -12,7 +13,6 @@ import hand from './hand.svg'
 import annullertHover from './ikon-annullert-hover.svg'
 import annullert from './ikon-annullert.svg'
 import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
-import {EtikettFokus} from "nav-frontend-etiketter";
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     const { soknader } = useAppStore()
