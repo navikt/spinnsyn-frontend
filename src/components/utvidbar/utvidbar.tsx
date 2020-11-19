@@ -17,7 +17,7 @@ interface UtvidbarProps {
     ikonAltTekst?: string;
     className?: string;
     visLukk?: boolean;
-    type?: 'intern' | undefined;
+    type?: 'intern' | 'info' | undefined;
     fixedHeight?: boolean;
 }
 
@@ -40,7 +40,7 @@ const Utvidbar = (props: UtvidbarProps) => {
     }, [ props.erApen, props.fixedHeight ])
 
     function onTransitionEnd() {
-        if (props.type === 'intern') return
+        if (props.type !== undefined) return
         if (erApen) {
             utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'center' })
         } else {
@@ -89,6 +89,9 @@ const Utvidbar = (props: UtvidbarProps) => {
                 <Vis hvis={props.type === 'intern'}>
                     <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
                 </Vis>
+                <Vis hvis={props.type === 'info'}>
+                    <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
+                </Vis>
                 <span className="utvidbar__handling">
                     <Chevron type={erApen ? 'opp' : 'ned'} />
                 </span>
@@ -100,7 +103,7 @@ const Utvidbar = (props: UtvidbarProps) => {
             >
                 <div ref={innhold} className="utvidbar__innhold">
                     {props.children}
-                    <Vis hvis={props.type !== 'intern'}>
+                    <Vis hvis={props.type === undefined}>
                         <div className="lenkerad">
                             <button type="button" className="lenke" aria-pressed={!erApen}
                                 tabIndex={(erApen ? null : -1) as any} onClick={() => setErApen(!erApen)}

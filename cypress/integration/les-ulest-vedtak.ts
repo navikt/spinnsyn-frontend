@@ -10,10 +10,10 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
     })
 
-    it('Det er et ulest vedtak og to lest', () => {
+    it('Det er et ulest vedtak og tre leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 2)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
@@ -86,14 +86,14 @@ describe('Tester at appen starter', () => {
         cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
-    it('Det er ingen uleste vedtak og tre lest', () => {
+    it('Det er ingen uleste vedtak og fire leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
         cy.contains('Du har ingen nye behandlede søknader fra NAV.')
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4)
     })
 
     it('Vi åpner et vedtak uten inntektsmelding', () => {
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3).last()
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4).last()
             .click({ force: true })
         cy.contains('15 000 kroner').click()
         cy.contains('Mer om beregningen').click({ force: true })
@@ -104,6 +104,22 @@ describe('Tester at appen starter', () => {
             .and('contain', 'Totalbeløp')
             .and('contain', 'Hvis du er delvis sykmeldt')
         cy.should('not.contain', 'Automatisk behandling')
+    })
+
+    it('Vi går tilbake til oversikten', () => {
+        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
+    })
+
+    it('Vi åpner et annullert vedtak', () => {
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4).eq(2).click({ force: true })
+        cy.contains('Søknaden behandles på nytt')
+        cy.contains('Når søknaden blir behandlet på nytt, vil dette ikke skje automatisk, men av en våre saksbehandlere.')
+        cy.get('.annullering > .info')
+            .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
+            .and('contain', 'Hvem har sendt opplysningene?')
+            .and('contain', 'Hvorfor behandles den på nytt?')
+            .and('contain', 'Må jeg gjøre noe nå?')
+
     })
 
 })

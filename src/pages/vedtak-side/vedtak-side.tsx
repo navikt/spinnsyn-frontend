@@ -2,7 +2,7 @@ import './vedtak-side.less'
 
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
-import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
+import { Normaltekst, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -19,7 +19,9 @@ import env from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
 import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
+import AnnulleringsInfo from './annullering/annullering'
 import AutomatiskBehandling from './behandling/automatiskBehandling'
+import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
@@ -84,13 +86,22 @@ const VedtakSide = () => {
                 <BetaAlertstripe />
 
                 <VedtakStatus />
+                <Vis hvis={valgtVedtak.annullert}>
+                    <AnnulleringsInfo />
+                    <Systemtittel className="tidligere__beslutning">{tekst('annullering.se-tidligere-beslutning')}</Systemtittel>
+                </Vis>
 
                 <UtbetalingMedInntekt ekspandert={false} />
                 <Sykepengedager />
 
-                <Uenig />
-                <Vis hvis={valgtVedtak.vedtak.automatiskBehandling}>
-                    <AutomatiskBehandling />
+                <Vis hvis={!valgtVedtak.annullert}>
+                    <Uenig />
+                    <Vis hvis={valgtVedtak.vedtak.automatiskBehandling}>
+                        <AutomatiskBehandling />
+                    </Vis>
+                </Vis>
+                <Vis hvis={valgtVedtak.annullert && valgtVedtak.vedtak.automatiskBehandling}>
+                    <AutomatiskBehandlingPreteritum />
                 </Vis>
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />

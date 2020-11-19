@@ -38,6 +38,12 @@
         text-align: left;
     }
 
+    .inngangspanel__ytre {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .inngangspanel__venstre {
         display: flex;
         align-items: center;
@@ -113,6 +119,13 @@
             margin: 0 -1rem 0 1rem;
         }
     }
+
+    .inngangspanel__annullert {
+        background: @navOransjeLighten80;
+        border: 1px solid @navOransjeDarken20;
+        border-radius: 4px;
+        padding: 0.3rem 0.5rem;
+    }
 }
 
 .inngangspanel--inaktivt {
@@ -141,6 +154,13 @@
         justify-content: space-between;
         align-items: center;
         padding-right: 2rem;
+
+        .inngangspanel__ytre {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(100% - 2rem);
+        }
 
         .inngangspanel__ikon {
             display: flex;
@@ -205,6 +225,9 @@
                 display: inline-block;
                 margin: 0 -1rem 0 1rem;
             }
+        }
+        .inngangspanel__annullert {
+            display: block;
         }
 
         .inngangspanel__innhold {
