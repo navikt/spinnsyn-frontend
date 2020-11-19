@@ -113,7 +113,7 @@ describe('Tester at appen starter', () => {
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4).eq(2).click({ force: true })
         cy.contains('Søknaden behandles på nytt')
-        cy.contains('Når søknaden blir behandlet på nytt, vil dette ikke skje automatisk, men av en våre saksbehandlere.')
+        cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
         cy.get('.annullering > .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
