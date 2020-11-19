@@ -12,6 +12,7 @@ import hand from './hand.svg'
 import annullertHover from './ikon-annullert-hover.svg'
 import annullert from './ikon-annullert.svg'
 import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
+import {EtikettFokus} from "nav-frontend-etiketter";
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     const { soknader } = useAppStore()
@@ -19,25 +20,25 @@ const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
-                <div className="inngangspanel__del1">
-                    <InngangsIkon ikon={vedtak.annullert ? annullert : hand} ikonHover={vedtak.annullert ? annullertHover : handHover} />
-                    <div className="inngangspanel__innhold utvidbar__toggle">
-                        <InngangsHeader
-                            meta={
-                                dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
-                                dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
-                            }
-                            tittel={vedtak.annullert ? tekst('spinnsyn.teaser.annullert.tittel') : tekst('spinnsyn.teaser.tittel')}
-                        />
-                        {arbeidsgiverListevisning(vedtak, soknader)}
+                <div className="inngangspanel__ytre">
+                    <div className="inngangspanel__del1">
+                        <InngangsIkon ikon={vedtak.annullert ? annullert : hand} ikonHover={vedtak.annullert ? annullertHover : handHover} />
+                        <div className="inngangspanel__innhold utvidbar__toggle">
+                            <InngangsHeader
+                                meta={
+                                    dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
+                                    dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
+                                }
+                                tittel={vedtak.annullert ? tekst('spinnsyn.teaser.annullert.tittel') : tekst('spinnsyn.teaser.tittel')}
+                            />
+                            {arbeidsgiverListevisning(vedtak, soknader)}
+                        </div>
                     </div>
+                    <Vis hvis={vedtak.annullert}>
+                        <EtikettFokus>{tekst('spinnsyn.teaser.annullert')}</EtikettFokus>
+                    </Vis>
                 </div>
                 <div className="inngangspanel__del2">
-                    <Vis hvis={vedtak.annullert}>
-                        <span className="inngangspanel__annullert">
-                            {tekst('spinnsyn.teaser.annullert')}
-                        </span>
-                    </Vis>
                     <HoyreChevron />
                 </div>
             </Inngangspanel>
