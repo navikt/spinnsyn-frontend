@@ -14,16 +14,12 @@ class Environment {
         return this.env.ENVIRONMENT === 'prod'
     }
 
-    get syfosoknadProxyRoot() {
-        return this.env.SYFOSOKNAD_PROXY_ROOT
-    }
-
     get sykmeldingerBackendProxyRoot() {
         return this.env.SYKMELDINGER_BACKEND_PROXY_ROOT
     }
 
-    get spinnsynRoot() {
-        return this.env.SPINNSYN_ROOT
+    get flexGatewayRoot() {
+        return this.env.FLEX_GATEWAY_ROOT
     }
 
     get isMockBackend() {

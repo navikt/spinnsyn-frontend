@@ -18,7 +18,7 @@ export function DataFetcher(props: { children: any }) {
 
     useEffect(() => {
         if (isNotStarted(rssoknader)) {
-            rssoknader.fetch(env.syfosoknadProxyRoot + '/api/soknader', {
+            rssoknader.fetch(env.flexGatewayRoot + '/syfosoknad/api/soknader', {
                 credentials: 'include',
             }, (fetchState: FetchState<RSSoknad[]>) => {
                 if (hasData(fetchState)) {
@@ -30,7 +30,7 @@ export function DataFetcher(props: { children: any }) {
         }
 
         if (isNotStarted(vedtak)) {
-            vedtak.fetch(env.spinnsynRoot + '/api/v1/vedtak', {
+            vedtak.fetch(env.flexGatewayRoot + '/spinnsyn-backend/api/v1/vedtak', {
                 credentials: 'include',
             }, (fetchState: FetchState<Vedtak[]>) => {
                 if (hasData(fetchState)) {
