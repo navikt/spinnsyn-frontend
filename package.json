@@ -64,8 +64,8 @@
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
-    "@types/react-router-dom": "^5.1.5",
     "@types/classnames": "^2.2.10",
+    "@types/react-router-dom": "^5.1.5",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
@@ -78,7 +78,7 @@
     "jest-environment-jsdom-fifteen": "^1.0.2",
     "jest-react-hooks-shallow": "^1.4.1",
     "react-test-renderer": "^16.13.1",
-    "start-server-and-test": "^1.11.5",
+    "start-server-and-test": "^1.11.7",
     "yet-another-fetch-mock": "^4.1.0"
   },
   "resolutions": {
