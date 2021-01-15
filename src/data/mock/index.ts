@@ -11,11 +11,11 @@ const mock = FetchMock.configure({
     )
 })
 
-mock.get(`${env.syfosoknadProxyRoot}/api/soknader`,
+mock.get(`${env.flexGatewayRoot}/syfosoknad/api/soknader`,
     (req, res, ctx) => res(ctx.json(soknader)))
 
-mock.get(`${env.spinnsynRoot}/api/v1/vedtak`,
+mock.get(`${env.flexGatewayRoot}/spinnsyn-backend/api/v1/vedtak`,
     (req, res, ctx) => res(ctx.json(vedtakTestdata)))
 
-mock.post(`${env.spinnsynRoot}/api/v1/vedtak/:id/les`, () => Promise.resolve({ status: 200 }))
+mock.post(`${env.flexGatewayRoot}/spinnsyn-backend/api/v1/vedtak/:id/les`, () => Promise.resolve({ status: 200 }))
 
