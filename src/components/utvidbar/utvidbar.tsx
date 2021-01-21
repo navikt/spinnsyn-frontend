@@ -5,6 +5,7 @@ import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { erSynligIViewport } from '../../utils/browser-utils'
+import { useAmplitudeInstance } from '../amplitude/amplitude'
 import Vis from '../vis'
 
 interface UtvidbarProps {
@@ -22,6 +23,7 @@ interface UtvidbarProps {
 }
 
 const Utvidbar = (props: UtvidbarProps) => {
+    const { logEvent } = useAmplitudeInstance()
     const [ erApen, setErApen ] = useState<boolean>(props.erApen)
     const [ innholdHeight, setInnholdHeight ] = useState<number>(0)
     const utvidbar = useRef<HTMLDivElement>(null)
@@ -52,6 +54,13 @@ const Utvidbar = (props: UtvidbarProps) => {
     }
 
     const onButtonClick = () => {
+        if (!erApen) {
+            if (props.type !== undefined) {
+                logEvent('panel åpnet', { 'component': props.tittel })
+            } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
+                logEvent('panel åpnet', { 'component': props.systemtittel })
+            }
+        }
         utvidbar.current!.focus()
         setErApen(!erApen)
     }

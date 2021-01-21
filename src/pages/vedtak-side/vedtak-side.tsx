@@ -7,6 +7,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { RouteParams } from '../../app'
+import { useAmplitudeInstance } from '../../components/amplitude/amplitude'
 import Banner from '../../components/banner/banner'
 import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
@@ -26,6 +27,7 @@ import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
 
+
 const brodsmuler: Brodsmule[] = [
     {
         tittel: tekst('vedtak-liste.sidetittel'),
@@ -40,11 +42,13 @@ const brodsmuler: Brodsmule[] = [
 
 const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
+    const { logEvent } = useAmplitudeInstance()
     const { valgtVedtak, setValgtVedtak, vedtak, setVedtak  } = useAppStore()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
-    }, [])
+        logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
+    }, [ logEvent ])
 
     useEffect(() => {
         const aktivtVedtak = vedtak.find(a => a.id === id)

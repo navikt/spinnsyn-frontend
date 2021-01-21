@@ -48,3 +48,7 @@ spec:
       value: "https://www.nav.no/syk/sykepenger"
     - name: FRONTENDLOGGER_ROOT
       value: "https://tjenester.nav.no"
+    - name: AMPLITUDE_KEY
+      value: "d5b43a81941b61a3b06059197807a25a"
+    - name: AMPLITUDE_ENABLED
+      value: "true"

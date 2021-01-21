@@ -49,6 +49,14 @@ class Environment {
     get frontendloggerRoot() {
         return this.env.FRONTENDLOGGER_ROOT
     }
+
+    get amplitudeKey() {
+        return this.env.AMPLITUDE_KEY
+    }
+
+    get amplitudeEnabled() {
+        return this.env.AMPLITUDE_ENABLED === 'true'
+    }
 }
 
 const env = new Environment()
