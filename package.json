@@ -12,6 +12,7 @@
     "@types/node": "^14.11.2",
     "@types/react": "^16.9.50",
     "@types/react-dom": "^16.9.8",
+    "amplitude-js": "^7.1.0",
     "classnames": "^2.2.6",
     "constate": "^3.0.1",
     "craco-less": "^1.17.0",
@@ -64,6 +65,7 @@
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
+    "@types/amplitude-js": "^5.11.0",
     "@types/classnames": "^2.2.10",
     "@types/react-router-dom": "^5.1.5",
     "@types/uuid": "^8.3.0",
