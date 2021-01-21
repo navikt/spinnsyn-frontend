@@ -7,7 +7,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { erSynligIViewport } from '../../utils/browser-utils'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
 import Vis from '../vis'
-import { useAmplitudeInstance } from '../amplitude/amplitude'
 
 interface UtvidbarProps {
     erApen: boolean;
