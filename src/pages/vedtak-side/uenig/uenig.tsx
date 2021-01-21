@@ -13,11 +13,6 @@ const Uenig = () => {
     const { valgtVedtak } = useAppStore()
     const { logEvent } = useAmplitudeInstance()
 
-    function naviger(url: string) {
-        logEvent('navigere', { destinasjon: url, skjemanavn: 'vedtak' })
-        window.open(url, '_blank')
-    }
-
     return (
         <div className="uenig">
             <Undertittel className="uenig__tittel">
@@ -30,7 +25,11 @@ const Uenig = () => {
                     {tekst('uenig.lenke1')}
                 </Lenke>,
                 {tekst('uenig.tekst3')}
-                <button type="button" className="lenke" onClick={() => naviger(tekst('uenig.lenke2.url'))}>{tekst('uenig.lenke2')}</button>.
+                <Lenke href={tekst('uenig.lenke2.url')}
+                    target="_blank"
+                    onClick={() => logEvent('navigere', { destinasjon: tekst('uenig.lenke2.url'), skjemanavn: 'vedtak' })}>
+                    {tekst('uenig.lenke2')}
+                </Lenke>.
             </Normaltekst>
             <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(valgtVedtak)}</Element>
         </div>
