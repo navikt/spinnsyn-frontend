@@ -39,7 +39,6 @@ export const [ AmplitudeProvider, useAmplitudeInstance ] = constate(() => {
                 },
             },
         )
-        instance.current._userAgent = ''
         // eslint-disable-next-line
     }, []);
 
