@@ -39,9 +39,9 @@ spec:
     - name: ENVIRONMENT
       value: "q1"
     - name: SYKEFRAVAER_URL
-      value: "https://tjenester-q1.nav.no/sykefravaer"
+      value: "https://www-gcp.dev.nav.no/sykefravaer"
     - name: DITTNAV_URL
-      value: "https://www-q1.nav.no/person/dittnav/"
+      value: "https://www.dev.nav.no/person/dittnav/"
     - name: OPPLAERING
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
