@@ -11,6 +11,7 @@ const UtbetalingTekster = {
     'utbetaling.utbetalingsdager.innhold': 'Når NAV utbetaler sykepenger, betales det alltid for dagene mandag til fredag. Dette gjør vi selv om det er helligdager i løpet av disse dagene, og uavhengig av om du eventuelt jobber lørdag og søndag.',
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
     'utbetaling.totalbelop.innhold': 'Til slutt ganger vi daglig beløp med antallet utbetalingsdager.',
+    'utbetaling.totalbelop.innhold-2': 'Utbetalingen blir redusert til 6 ganger folketrygdens grunnbeløp hvis du tjener mer enn det til sammen. Har du flere arbeidsforhold, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.',
     'utbetaling.delvis.tittel': 'Hvis du er delvis sykmeldt',
     'utbetaling.delvis.innhold': 'Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
@@ -27,7 +28,7 @@ const UtbetalingTekster = {
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
     'utbetaling.arbeidsgiver.tittel': 'Beløpet går til arbeidsgiveren din',
-    'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV.',
+    'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
 }
 
 export default UtbetalingTekster
