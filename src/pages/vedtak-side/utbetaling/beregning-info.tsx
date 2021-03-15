@@ -40,6 +40,9 @@ const BeregningInfo = () => {
             <Normaltekst>
                 {tekst('utbetaling.totalbelop.innhold')}
             </Normaltekst>
+            <Normaltekst className="tekstinfo__avsnitt">
+                {tekst('utbetaling.totalbelop.innhold-2')}
+            </Normaltekst>
             <Element tag="h2" className="tekstinfo__avsnitt">
                 {tekst('utbetaling.delvis.tittel')}
             </Element>
