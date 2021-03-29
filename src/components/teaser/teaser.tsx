@@ -8,10 +8,10 @@ import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import Vis from '../vis'
-import handHover from './hand-hover.svg'
 import hand from './hand.svg'
-import annullertHover from './ikon-annullert-hover.svg'
+import handHover from './hand-hover.svg'
 import annullert from './ikon-annullert.svg'
+import annullertHover from './ikon-annullert-hover.svg'
 import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
