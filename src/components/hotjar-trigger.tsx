@@ -18,7 +18,7 @@ export const HotjarTrigger = ({ children }: HotjarTriggerProps) => {
     useEffect(() => {
         const hotJarWindow = (window as unknown as HotjarWindow)
 
-        if (env.isProd || env.isOpplaering) { // TODO: Sett til bare prod
+        if (env.isProd) {
             setTimeout(() => {
                 if (typeof hotJarWindow.hj !== 'function') {
                     warn('Hotjar ble ikke lastet inn...')
