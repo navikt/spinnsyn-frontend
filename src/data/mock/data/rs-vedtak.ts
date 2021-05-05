@@ -1,8 +1,10 @@
-export const nyeVedtak = [
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+
+export const nyeVedtak: RSVedtakWrapper[] = [
     {
         id: '99f389f2-0084-481b-bed8-47f6ac3491d4',
-        lest: true,
-        lestDato: '2021-05-03T09:51:02.062476Z',
+        lest: false,
+        lestDato: undefined,
         vedtak: {
             organisasjonsnummer: 'org-nr',
             fom: '2021-03-22',
@@ -18,7 +20,7 @@ export const nyeVedtak = [
                 }
             ],
             inntekt: 37500,
-            sykepengegrunnlag: null,
+            sykepengegrunnlag: null as any,
             utbetaling: {
                 organisasjonsnummer: 'org-nr',
                 forbrukteSykedager: 15,

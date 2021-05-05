@@ -3,16 +3,16 @@ import { Dokument } from '../vedtak'
 export interface RSVedtakWrapper {
     id: string
     lest: boolean;
-    lestDato?: Date;
+    lestDato?: string;
     vedtak: RSVedtak;
-    opprettet: Date;
+    opprettet: string;
     annullert: boolean
 }
 
 interface RSVedtak {
     organisasjonsnummer: string;
-    fom: Date;
-    tom: Date;
+    fom: string;
+    tom: string;
     dokumenter: Dokument[];
     inntekt?: number;
     sykepengegrunnlag?: number;
@@ -36,14 +36,14 @@ interface RSOppdrag {
 }
 
 export interface RSUtbetalingslinje {
-    fom: Date;
-    tom: Date;
+    fom: string;
+    tom: string;
     dagsats: number;
     totalbeløp: number;
     grad: number;
 }
 
 interface RSUtbetalingdag {
-    dato: Date;
+    dato: string;
     type: string;
 }
