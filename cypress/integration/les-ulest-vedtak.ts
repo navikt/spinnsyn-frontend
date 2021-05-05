@@ -1,4 +1,4 @@
-import { nyeVedtak } from '../../src/data/mock/data/rs-vedtak';
+import { nyeVedtak } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester at appen starter', () => {
 
