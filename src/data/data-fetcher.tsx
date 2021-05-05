@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 
 import IngenData from '../pages/feil/ingen-data'
 import { RSSoknad } from '../types/rs-types/rs-soknad'
+import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { Soknad } from '../types/types'
 import { Vedtak } from '../types/vedtak'
 import env from '../utils/environment'
@@ -12,9 +13,10 @@ import { FetchState, hasAny401, hasAnyFailed, hasData, isAnyNotStartedOrPending,
 import { useAppStore } from './stores/app-store'
 
 export function DataFetcher(props: { children: any }) {
-    const { setSoknader, setVedtak } = useAppStore()
+    const { setSoknader, setVedtak, setRsVedtak } = useAppStore()
     const rssoknader = useFetch<RSSoknad[]>()
     const vedtak = useFetch<Vedtak[]>()
+    const rsVedtak = useFetch<RSVedtakWrapper[]>()
 
     useEffect(() => {
         if (isNotStarted(rssoknader)) {
@@ -39,17 +41,27 @@ export function DataFetcher(props: { children: any }) {
             })
         }
 
-        // eslint-disable-next-line
-    }, [rssoknader, vedtak]);
+        if (isNotStarted(rsVedtak)) {
+            rsVedtak.fetch(env.flexGatewayRoot + '/spinnsyn-backend/api/v2/vedtak', {
+                credentials: 'include',
+            }, (fetchState: FetchState<RSVedtakWrapper[]>) => {
+                if (hasData(fetchState)) {
+                    setRsVedtak(fetchState.data)
+                }
+            })
+        }
 
-    if (hasAny401([ rssoknader, vedtak ])) {
+        // eslint-disable-next-line
+    }, [rssoknader, vedtak, rsVedtak]);
+
+    if (hasAny401([ rssoknader, vedtak, rsVedtak ])) {
         window.location.href = hentLoginUrl()
 
-    } else if (isAnyNotStartedOrPending([ vedtak ])) {
+    } else if (isAnyNotStartedOrPending([ vedtak, rsVedtak ])) {
         return <Spinner type={'XXL'} />
 
-    } else if (hasAnyFailed([ rssoknader, vedtak ])) {
-        logger.error('Klarer ikke hente en av disse [ rssoknader, vedtak ]')
+    } else if (hasAnyFailed([ rssoknader, vedtak, rsVedtak ])) {
+        logger.error('Klarer ikke hente en av disse [ rssoknader, vedtak, rsVedtak ]')
         return <IngenData />
     }
 

@@ -34,7 +34,7 @@ export interface UtbetalingslinjeDto {
     sykedager: number;  // Sykedager brukt, minus helg
 }
 
-interface Dokument {
+export interface Dokument {
     dokumentId: string;
     type: 'Sykmelding' | 'Søknad' | 'Inntektsmelding';
 }

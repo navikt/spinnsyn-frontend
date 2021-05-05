@@ -24,9 +24,9 @@ const brodsmuler: Brodsmule[] = [ {
 } ]
 
 const VedtakListe = () => {
-    const { vedtak, setValgtVedtak } = useAppStore()
-    const uleste = vedtak.filter(v => v.lest === false)
-    const leste = vedtak.filter(v => v.lest === true)
+    const { rsVedtak, setValgtVedtak } = useAppStore()
+    const uleste = rsVedtak.filter(v => v.lest === false)
+    const leste = rsVedtak.filter(v => v.lest === true)
 
     useEffect(() => {
         setBodyClass('vedtak-liste')

@@ -1,11 +1,11 @@
 import { Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { Soknad } from '../../types/types'
-import { Vedtak } from '../../types/vedtak'
 import { getLedetekst, tekst } from '../../utils/tekster'
 
-export const arbeidsgiverListevisning = (vedtak: Vedtak, soknader: Soknad[]) => {
+export const arbeidsgiverListevisning = (vedtak: RSVedtakWrapper, soknader: Soknad[]) => {
 
     const soknadIder = vedtak?.vedtak.dokumenter
         .filter(dok => dok.type === 'Søknad')
@@ -22,6 +22,6 @@ export const arbeidsgiverListevisning = (vedtak: Vedtak, soknader: Soknad[]) => 
     )
 }
 
-export interface SykepengesoknadTeaserProps {
-    vedtak: Vedtak;
+export interface VedtakTeaserProps {
+    vedtak: RSVedtakWrapper;
 }

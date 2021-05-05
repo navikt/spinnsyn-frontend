@@ -43,7 +43,7 @@ const brodsmuler: Brodsmule[] = [
 const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
     const { logEvent } = useAmplitudeInstance()
-    const { valgtVedtak, setValgtVedtak, vedtak, setVedtak  } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, rsVedtak, setRsVedtak  } = useAppStore()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -51,7 +51,7 @@ const VedtakSide = () => {
     }, [ logEvent ])
 
     useEffect(() => {
-        const aktivtVedtak = vedtak.find(a => a.id === id)
+        const aktivtVedtak = rsVedtak.find(a => a.id === id)
         setValgtVedtak(aktivtVedtak)
 
         if (aktivtVedtak && !aktivtVedtak.lest) {
@@ -66,8 +66,8 @@ const VedtakSide = () => {
                 } else if (status === 200) {
                     aktivtVedtak.lest = true
                     setValgtVedtak(aktivtVedtak)
-                    vedtak.find(a => a.id === id)!.lest = true
-                    setVedtak(vedtak)
+                    rsVedtak.find(a => a.id === id)!.lest = true
+                    setRsVedtak(rsVedtak)
                 } else {
                     logger.error('Feil ved markering av vedtak som lest. Ikke status 200', res)
                 }
@@ -100,11 +100,11 @@ const VedtakSide = () => {
 
                 <Vis hvis={!valgtVedtak.annullert}>
                     <Uenig />
-                    <Vis hvis={valgtVedtak.vedtak.automatiskBehandling}>
+                    <Vis hvis={valgtVedtak.vedtak.utbetaling.automatiskBehandling}>
                         <AutomatiskBehandling />
                     </Vis>
                 </Vis>
-                <Vis hvis={valgtVedtak.annullert && valgtVedtak.vedtak.automatiskBehandling}>
+                <Vis hvis={valgtVedtak.annullert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}>
                     <AutomatiskBehandlingPreteritum />
                 </Vis>
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
