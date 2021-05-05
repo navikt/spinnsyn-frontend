@@ -1,5 +1,3 @@
-import { Dokument } from '../vedtak'
-
 export interface RSVedtakWrapper {
     id: string
     lest: boolean;
@@ -46,4 +44,9 @@ export interface RSUtbetalingslinje {
 interface RSUtbetalingdag {
     dato: string;
     type: string;
+}
+
+export interface Dokument {
+    dokumentId: string;
+    type: 'Sykmelding' | 'Søknad' | 'Inntektsmelding';
 }

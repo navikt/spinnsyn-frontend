@@ -14,21 +14,7 @@ interface SoknaderTeasereProps {
     kanSorteres?: boolean;
 }
 
-type Sortering = 'Dato'
-
 const Teasere = ({ vedtak, className, tittel, tomListeTekst, kanSorteres }: SoknaderTeasereProps) => {
-    /*
-    const [ setSortering ] = useState<Sortering>('Dato')
-        const [ sorterteVedtak, setSorterteVedtak ] = useState<Vedtak[]>([])
-
-        useEffect(() => {
-            if (sortering === 'Dato') {
-                console.log('sortering', sortering); // eslint-disable-line
-                setSorterteVedtak(vedtak.sort(sorterEtterPeriodeTom))
-            }
-            // eslint-disable-next-line
-        }, [sortering, sorterteVedtak])
-    */
 
     return (
         <div className={className}>
@@ -39,7 +25,6 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst, kanSorteres }: Sokn
                         className="inngangspanel__sortering"
                         onChange={(event) => {
                             event.persist()
-                            // setSortering(event.target.value as Sortering)
                         }}
                     >
                         <option value="Dato">Dato</option>

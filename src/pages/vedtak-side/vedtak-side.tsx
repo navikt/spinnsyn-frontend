@@ -56,7 +56,7 @@ const VedtakSide = () => {
 
         if (aktivtVedtak && !aktivtVedtak.lest) {
             const merkVedtakSomLest = async() => {
-                const res = await fetch(`${env.flexGatewayRoot}/spinnsyn-backend/api/v1/vedtak/${aktivtVedtak.id}/les`, {
+                const res = await fetch(`${env.flexGatewayRoot}/spinnsyn-backend/api/v2/vedtak/${aktivtVedtak.id}/les`, {
                     method: 'POST',
                     credentials: 'include',
                 })
