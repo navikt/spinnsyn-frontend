@@ -86,21 +86,24 @@ describe('Tester henting av refusjon til arbeidsgiver beløp', () => {
                         tom: '2020-09-29',
                         dagsats: 2000,
                         totalbeløp: 6000,
-                        grad: 100
+                        grad: 100,
+                        stønadsdager: 3
                     },
                     {
                         fom: '2020-09-30',
                         tom: '2020-10-13',
                         dagsats: 3000,
                         totalbeløp: 15000,
-                        grad: 100
+                        grad: 100,
+                        stønadsdager: 5
                     },
                     {
                         fom: '2020-09-30',
                         tom: '2020-10-13',
                         dagsats: 2000,
                         totalbeløp: 12000,
-                        grad: 100
+                        grad: 100,
+                        stønadsdager: 6,
                     }
                 ]
             },
@@ -137,14 +140,16 @@ describe('Tester refusjon til arbeidsgiver', () => {
                         tom: '2020-09-29',
                         dagsats: 2092,
                         totalbeløp: 52300,
-                        grad: 100
+                        grad: 100,
+                        stønadsdager: 25
                     },
                     {
                         fom: '2020-09-30',
                         tom: '2020-10-13',
                         dagsats: 1632,
                         totalbeløp: 16320,
-                        grad: 78
+                        grad: 78,
+                        stønadsdager: 10
                     }
                 ]
             },
@@ -157,10 +162,10 @@ describe('Tester refusjon til arbeidsgiver', () => {
     })
 
     it('Flere utbetalinger der vedtaksperioden er del av siste utbetaling', () => {
-        const vedtak = jsonDeepCopy(nyeVedtak[0])
-        vedtak.vedtak.fom = '2020-10-13'
-        vedtak.vedtak.tom = '2020-10-20'
-        vedtak.vedtak.utbetaling = {
+        const vedtakWrapper = jsonDeepCopy(nyeVedtak[0])
+        vedtakWrapper.vedtak.fom = '2020-10-13'
+        vedtakWrapper.vedtak.tom = '2020-10-20'
+        vedtakWrapper.vedtak.utbetaling = {
             organisasjonsnummer: arbeidstaker100.arbeidsgiver!.orgnummer!,
             forbrukteSykedager: 6,
             gjenståendeSykedager: 180,
@@ -174,23 +179,25 @@ describe('Tester refusjon til arbeidsgiver', () => {
                         tom: '2020-07-20',
                         dagsats: 1221,
                         totalbeløp: 17094,
-                        grad: 53
+                        grad: 53,
+                        stønadsdager: 14
                     },
                     {
                         fom: '2020-08-11',
                         tom: '2020-10-20',
                         dagsats: 2304,
                         totalbeløp: 117504,
-                        grad: 100
+                        grad: 100,
+                        stønadsdager: 51
                     }
                 ]
             },
             utbetalingsdager: []
         }
 
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(2304)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(6)
-        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(13824)
+        expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(2304)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(6)
+        expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(13824)
     })
 
     it('Lengre periode der vedtaksperioden er i månedskifte', () => {
@@ -211,7 +218,8 @@ describe('Tester refusjon til arbeidsgiver', () => {
                         tom: '2020-10-16',
                         dagsats: 1361,
                         totalbeløp: 47635,
-                        grad: 80
+                        grad: 80,
+                        stønadsdager: 35,
                     }
                 ]
             },
@@ -223,10 +231,10 @@ describe('Tester refusjon til arbeidsgiver', () => {
     })
 
     it('Kort vedtak', () => {
-        const vedtak = jsonDeepCopy(nyeVedtak[0])
-        vedtak.vedtak.fom = '2020-10-19'
-        vedtak.vedtak.tom = '2020-10-19'
-        vedtak.vedtak.utbetaling = {
+        const vedtakWrapper = jsonDeepCopy(nyeVedtak[0])
+        vedtakWrapper.vedtak.fom = '2020-10-19'
+        vedtakWrapper.vedtak.tom = '2020-10-19'
+        vedtakWrapper.vedtak.utbetaling = {
             organisasjonsnummer: arbeidstaker100.arbeidsgiver!.orgnummer!,
             forbrukteSykedager: 6,
             gjenståendeSykedager: 180,
@@ -240,15 +248,16 @@ describe('Tester refusjon til arbeidsgiver', () => {
                         tom: '2020-10-19',
                         dagsats: 1317,
                         totalbeløp: 7902,
-                        grad: 100
+                        grad: 100,
+                        stønadsdager: 6
                     }
                 ]
             },
             utbetalingsdager: []
         }
 
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1317)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(1)
-        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(1317)
+        expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(1317)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(1)
+        expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(1317)
     })
 })

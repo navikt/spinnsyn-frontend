@@ -24,15 +24,10 @@ export const estimertSluttdato = (vedtakWrapper?: RSVedtakWrapper) => {
     return slutt.format('D. MMM YYYY')
 }
 
-export const refusjonTilArbeidsgiverOrgnummer = (vedtakWrapper?: RSVedtakWrapper) => {
-    return vedtakWrapper?.vedtak.utbetaling.arbeidsgiverOppdrag.mottaker
-}
-
 export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtakWrapper?: RSVedtakWrapper) => {
     if (!vedtakWrapper) return 0
 
-    const refusjoner = refusjonUtbetalingsLinjer(vedtakWrapper)
-    const refusjonsdager = utbetalingslinjerTilDager(refusjoner)
+    const refusjonsdager = utbetalingslinjerTilDager(vedtakWrapper.vedtak.utbetaling.arbeidsgiverOppdrag.utbetalingslinjer)
     const refusjonsdagerInnenforVedtakPeriode = dagerInnenforPeriode(refusjonsdager, vedtakWrapper)
 
     return refusjonsdagerInnenforVedtakPeriode.length
@@ -41,8 +36,7 @@ export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtakWrapper?: RSVedtak
 export const refusjonTilArbeidsgiverTotalBeløp = (vedtakWrapper?: RSVedtakWrapper) => {
     if (!vedtakWrapper) return 0
 
-    const refusjoner = refusjonUtbetalingsLinjer(vedtakWrapper)
-    const refusjonsdager = utbetalingslinjerTilDager(refusjoner)
+    const refusjonsdager = utbetalingslinjerTilDager(vedtakWrapper.vedtak.utbetaling.arbeidsgiverOppdrag.utbetalingslinjer)
     const refusjonsdagerInnenforVedtakPeriode = dagerInnenforPeriode(refusjonsdager, vedtakWrapper)
 
     return refusjonsdagerInnenforVedtakPeriode
@@ -52,16 +46,11 @@ export const refusjonTilArbeidsgiverTotalBeløp = (vedtakWrapper?: RSVedtakWrapp
 export const refusjonTilArbeidsgiverBeløp = (vedtakWrapper?: RSVedtakWrapper) => {
     if (!vedtakWrapper) return 0
 
-    const refusjoner = refusjonUtbetalingsLinjer(vedtakWrapper)
-    const refusjonsdager = utbetalingslinjerTilDager(refusjoner)
+    const refusjonsdager = utbetalingslinjerTilDager(vedtakWrapper.vedtak.utbetaling.arbeidsgiverOppdrag.utbetalingslinjer)
     const refusjonsdagerInnenforVedtakPeriode = dagerInnenforPeriode(refusjonsdager, vedtakWrapper)
     const belop = refusjonsdagerInnenforVedtakPeriode.map(dag => dag.beløp)
 
     return Math.max(...belop) || 0
-}
-
-const refusjonUtbetalingsLinjer = (vedtakWrapper: RSVedtakWrapper) => {
-    return vedtakWrapper.vedtak.utbetaling.arbeidsgiverOppdrag.utbetalingslinjer
 }
 
 interface Dag {
