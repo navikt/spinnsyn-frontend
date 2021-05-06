@@ -8,7 +8,7 @@ export interface RSVedtakWrapper {
 }
 
 interface RSVedtak {
-    organisasjonsnummer: string;
+    organisasjonsnummer?: string;
     fom: string;
     tom: string;
     dokumenter: Dokument[];
@@ -18,7 +18,7 @@ interface RSVedtak {
 }
 
 interface RSUtbetalingUtbetalt {
-    organisasjonsnummer: string;
+    organisasjonsnummer?: string;
     utbetalingId?: string;
     forbrukteSykedager: number;
     gjenståendeSykedager: number;
