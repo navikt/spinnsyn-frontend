@@ -34,8 +34,9 @@ export const nyeVedtak: RSVedtakWrapper[] = [
                             fom: '2021-03-22',
                             tom: '2021-04-09',
                             dagsats: 1404,
-                            totalbeløp: 1404,
-                            grad: 100
+                            totalbeløp: 21060,
+                            grad: 100,
+                            stønadsdager: 15,
                         }
                     ]
                 },
@@ -71,8 +72,9 @@ export const nyeVedtak: RSVedtakWrapper[] = [
                             fom: '2021-04-27',
                             tom: '2021-05-04',
                             dagsats: 1404,
-                            totalbeløp: 1404,
-                            grad: 100.0
+                            totalbeløp: 8424,
+                            grad: 100.0,
+                            stønadsdager: 6,
                         }
                     ]
                 },

@@ -36,9 +36,10 @@ interface RSOppdrag {
 export interface RSUtbetalingslinje {
     fom: string;
     tom: string;
+    grad: number;
+    stønadsdager: number;
     dagsats: number;
     totalbeløp: number;
-    grad: number;
 }
 
 interface RSUtbetalingdag {
