@@ -1,4 +1,4 @@
-import { nyeVedtak } from '../../src/data/mock/data/rs-vedtak'
+import { ulestVedtakUtenUtbetalingsdager } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester at appen starter', () => {
 
@@ -10,16 +10,16 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
     })
 
-    it('Det er et ulest vedtak og tre leste', () => {
+    it('Det er et ulest vedtak og to leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 1)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 2)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
         cy.get('.vedtak--uleste > article > .inngangspanel').click()
 
-        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${nyeVedtak[0].id}`)
+        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${ulestVedtakUtenUtbetalingsdager.id}`)
 
         cy.get('.vedtak-status')
             .should('contain', 'Godkjent søknad om sykepenger')
@@ -86,15 +86,15 @@ describe('Tester at appen starter', () => {
         cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
-    it('Det er ingen uleste vedtak og to leste', () => {
+    it('Det er ingen uleste vedtak og tre leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
         cy.contains('Du har ingen nye behandlede søknader fra NAV.')
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 2)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
     })
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 2).eq(1).click({ force: true })
+            .should('have.length', 3).eq(2).click({ force: true })
         cy.contains('Søknaden behandles på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
         cy.get('.annullering > .info')

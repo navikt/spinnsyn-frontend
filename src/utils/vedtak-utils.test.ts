@@ -1,12 +1,12 @@
 import dayjs from 'dayjs'
 
-import { nyeVedtak } from '../data/mock/data/rs-vedtak'
+import { ulestVedtakUtenUtbetalingsdager } from '../data/mock/data/rs-vedtak'
 import { arbeidstaker100 } from '../data/mock/data/soknader'
 import { jsonDeepCopy } from './json-deep-copy'
 import { estimertSluttdato, refusjonTilArbeidsgiverBeløp, refusjonTilArbeidsgiverTotalBeløp, refusjonTilArbeidsgiverUtbetalingsdager } from './vedtak-utils'
 
 describe('Tester estimering av sluttdato', () => {
-    const testVedtak = nyeVedtak[0]
+    const testVedtak = ulestVedtakUtenUtbetalingsdager
 
     it('Numrene på ukedager er de samme', () => {
         expect(dayjs('2020-06-08').day()).toEqual(1)    // mandag
@@ -69,7 +69,7 @@ describe('Tester estimering av sluttdato', () => {
 
 describe('Tester henting av refusjon til arbeidsgiver beløp', () => {
     it('Høyeste beløpet innenfor vedtak perioden', () => {
-        const vedtakWrapper = jsonDeepCopy(nyeVedtak[0])
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
         vedtakWrapper.vedtak.fom = '2020-10-01'
         vedtakWrapper.vedtak.tom = '2020-10-15'
         vedtakWrapper.vedtak.utbetaling = {
@@ -116,14 +116,14 @@ describe('Tester henting av refusjon til arbeidsgiver beløp', () => {
 
 describe('Tester refusjon til arbeidsgiver', () => {
     it('Utbetalingslinje periode lengre enn vedtak periode', () => {
-        const vedtak = jsonDeepCopy(nyeVedtak[0])
+        const vedtak = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
         expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1404)
         expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(15)
         expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(21060)
     })
 
     it('2 utbetalinger med forskjellig grad', () => {
-        const vedtakWrapper = jsonDeepCopy(nyeVedtak[0])
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
         vedtakWrapper.vedtak.fom = '2020-09-30'
         vedtakWrapper.vedtak.tom = '2020-10-13'
         vedtakWrapper.vedtak.utbetaling = {
@@ -162,7 +162,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
     })
 
     it('Flere utbetalinger der vedtaksperioden er del av siste utbetaling', () => {
-        const vedtakWrapper = jsonDeepCopy(nyeVedtak[0])
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
         vedtakWrapper.vedtak.fom = '2020-10-13'
         vedtakWrapper.vedtak.tom = '2020-10-20'
         vedtakWrapper.vedtak.utbetaling = {
@@ -201,7 +201,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
     })
 
     it('Lengre periode der vedtaksperioden er i månedskifte', () => {
-        const vedtakWrapper = jsonDeepCopy(nyeVedtak[0])
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
         vedtakWrapper.vedtak.fom = '2020-09-23'
         vedtakWrapper.vedtak.tom = '2020-10-16'
         vedtakWrapper.vedtak.utbetaling = {
@@ -231,7 +231,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
     })
 
     it('Kort vedtak', () => {
-        const vedtakWrapper = jsonDeepCopy(nyeVedtak[0])
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
         vedtakWrapper.vedtak.fom = '2020-10-19'
         vedtakWrapper.vedtak.tom = '2020-10-19'
         vedtakWrapper.vedtak.utbetaling = {
