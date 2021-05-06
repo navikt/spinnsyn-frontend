@@ -22,12 +22,11 @@ const InntektInfo = () => {
     const [ sum, setSum ] = useState<string>('-')
 
     useEffect(() => {
-
         setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
         setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak) + ' dager')
         setSum(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)) + ' kr')
-        if(valgtVedtak?.vedtak.månedsinntekt !== null && valgtVedtak?.vedtak.månedsinntekt  !== undefined){
-            const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.månedsinntekt)
+        if(valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt  !== undefined){
+            const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.inntekt)
             setMnd(ValutaFormat.format(manedsinntekt || 0) + ' kr')
             setAr(ValutaFormat.format(manedsinntekt * 12 || 0) + ' kr')
         }
@@ -38,7 +37,7 @@ const InntektInfo = () => {
             <Element className="inntekt__info__tittel">
                 {tekst('utbetaling.inntekt.info.tittel')}
             </Element>
-            <Vis hvis={valgtVedtak?.vedtak.månedsinntekt !== null && valgtVedtak?.vedtak.månedsinntekt  !== undefined}>
+            <Vis hvis={valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt  !== undefined}>
                 <div className="inntekt__info__linje">
                     <Normaltekst tag="span">
                         {tekst('utbetaling.inntekt.info.beregnet')}

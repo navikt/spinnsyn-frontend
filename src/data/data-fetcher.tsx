@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 
 import IngenData from '../pages/feil/ingen-data'
 import { RSSoknad } from '../types/rs-types/rs-soknad'
+import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { Soknad } from '../types/types'
-import { Vedtak } from '../types/vedtak'
 import env from '../utils/environment'
 import { logger } from '../utils/logger'
 import useFetch from './rest/use-fetch'
@@ -12,9 +12,9 @@ import { FetchState, hasAny401, hasAnyFailed, hasData, isAnyNotStartedOrPending,
 import { useAppStore } from './stores/app-store'
 
 export function DataFetcher(props: { children: any }) {
-    const { setSoknader, setVedtak } = useAppStore()
+    const { setSoknader, setRsVedtak } = useAppStore()
     const rssoknader = useFetch<RSSoknad[]>()
-    const vedtak = useFetch<Vedtak[]>()
+    const rsVedtak = useFetch<RSVedtakWrapper[]>()
 
     useEffect(() => {
         if (isNotStarted(rssoknader)) {
@@ -29,27 +29,27 @@ export function DataFetcher(props: { children: any }) {
             })
         }
 
-        if (isNotStarted(vedtak)) {
-            vedtak.fetch(env.flexGatewayRoot + '/spinnsyn-backend/api/v1/vedtak', {
+        if (isNotStarted(rsVedtak)) {
+            rsVedtak.fetch(env.flexGatewayRoot + '/spinnsyn-backend/api/v2/vedtak', {
                 credentials: 'include',
-            }, (fetchState: FetchState<Vedtak[]>) => {
+            }, (fetchState: FetchState<RSVedtakWrapper[]>) => {
                 if (hasData(fetchState)) {
-                    setVedtak(fetchState.data)
+                    setRsVedtak(fetchState.data)
                 }
             })
         }
 
         // eslint-disable-next-line
-    }, [rssoknader, vedtak]);
+    }, [rssoknader, rsVedtak]);
 
-    if (hasAny401([ rssoknader, vedtak ])) {
+    if (hasAny401([ rssoknader, rsVedtak ])) {
         window.location.href = hentLoginUrl()
 
-    } else if (isAnyNotStartedOrPending([ vedtak ])) {
+    } else if (isAnyNotStartedOrPending([ rsVedtak ])) {
         return <Spinner type={'XXL'} />
 
-    } else if (hasAnyFailed([ rssoknader, vedtak ])) {
-        logger.error('Klarer ikke hente en av disse [ rssoknader, vedtak ]')
+    } else if (hasAnyFailed([ rssoknader, rsVedtak ])) {
+        logger.error('Klarer ikke hente en av disse [ rssoknader, vedtak, rsVedtak ]')
         return <IngenData />
     }
 

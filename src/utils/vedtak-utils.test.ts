@@ -1,17 +1,12 @@
 import dayjs from 'dayjs'
 
+import { ulestVedtakUtenUtbetalingsdager } from '../data/mock/data/rs-vedtak'
 import { arbeidstaker100 } from '../data/mock/data/soknader'
-import { ulestRefusjonTilArbeidsgiver } from '../data/mock/data/vedtak'
 import { jsonDeepCopy } from './json-deep-copy'
-import {
-    estimertSluttdato,
-    refusjonTilArbeidsgiverBeløp,
-    refusjonTilArbeidsgiverTotalBeløp,
-    refusjonTilArbeidsgiverUtbetalingsdager
-} from './vedtak-utils'
+import { estimertSluttdato, refusjonTilArbeidsgiverBeløp, refusjonTilArbeidsgiverTotalBeløp, refusjonTilArbeidsgiverUtbetalingsdager } from './vedtak-utils'
 
 describe('Tester estimering av sluttdato', () => {
-    const testVedtak = ulestRefusjonTilArbeidsgiver
+    const testVedtak = ulestVedtakUtenUtbetalingsdager
 
     it('Numrene på ukedager er de samme', () => {
         expect(dayjs('2020-06-08').day()).toEqual(1)    // mandag
@@ -23,49 +18,49 @@ describe('Tester estimering av sluttdato', () => {
     it('Neste uke på en fredag', () => {
         const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
-        mandagsVedtak.vedtak.gjenståendeSykedager = 5 + 4   // Slutt neste fredag
+        mandagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 5 + 4   // Slutt neste fredag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('12. Jun 2020')
     })
 
     it('Neste mandag', () => {
         const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
-        mandagsVedtak.vedtak.gjenståendeSykedager = 5       // Neste mandag
+        mandagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 5       // Neste mandag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('8. Jun 2020')
     })
 
     it('Fredag til mandag', () => {
         const fredagsVedtak = jsonDeepCopy(testVedtak)
         fredagsVedtak.vedtak.tom = '2020-06-05'             // Fredag
-        fredagsVedtak.vedtak.gjenståendeSykedager = 1       // Neste mandag
+        fredagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 1       // Neste mandag
         expect(estimertSluttdato(fredagsVedtak)).toEqual('8. Jun 2020')
     })
 
     it('Går over til neste måned', () => {
         const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
-        mandagsVedtak.vedtak.gjenståendeSykedager = 24      // Neste måneds fredag
+        mandagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 24      // Neste måneds fredag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('3. Jul 2020')
     })
 
     it('Ingen sykedager igjen på mandag', () => {
         const mandagsVedtak = jsonDeepCopy(testVedtak)
         mandagsVedtak.vedtak.tom = '2020-06-01'             // Mandag
-        mandagsVedtak.vedtak.gjenståendeSykedager = 0       // Samme dag
+        mandagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 0       // Samme dag
         expect(estimertSluttdato(mandagsVedtak)).toEqual('1. Jun 2020')
     })
 
     it('Ingen sykedager igjen på fredag', () => {
         const fredagsVedtak = jsonDeepCopy(testVedtak)
         fredagsVedtak.vedtak.tom = '2020-06-05'             // Fredag
-        fredagsVedtak.vedtak.gjenståendeSykedager = 0       // Samme dag
+        fredagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 0       // Samme dag
         expect(estimertSluttdato(fredagsVedtak)).toEqual('5. Jun 2020')
     })
 
     it('Siste dag var fredag, men tom er lørdag', () => {
         const lørdagsVedtak = jsonDeepCopy(testVedtak)
         lørdagsVedtak.vedtak.tom = '2020-06-06'             // Lørdag
-        lørdagsVedtak.vedtak.gjenståendeSykedager = 0       // Samme dag
+        lørdagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 0       // Samme dag
         expect(estimertSluttdato(lørdagsVedtak)).toEqual('6. Jun 2020')
     })
 
@@ -74,177 +69,195 @@ describe('Tester estimering av sluttdato', () => {
 
 describe('Tester henting av refusjon til arbeidsgiver beløp', () => {
     it('Høyeste beløpet innenfor vedtak perioden', () => {
-        const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
-        vedtak.vedtak.fom = '2020-10-01'
-        vedtak.vedtak.tom = '2020-10-15'
-        vedtak.vedtak.utbetalinger = [
-            {
-                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
-                'fagområde': 'SPREF',
-                'totalbeløp': 15000,
-                'utbetalingslinjer': [ {
-                    'fom': '2020-10-01',
-                    'tom': '2020-10-05',
-                    'grad': 100,
-                    'beløp': 2000,
-                    'dagsats': 2000,
-                    'sykedager': 3
-                }, {
-                    'fom': '2020-10-09',
-                    'tom': '2020-10-15',
-                    'grad': 100,
-                    'beløp': 3000,
-                    'dagsats': 3000,
-                    'sykedager': 5
-                }, {
-                    'fom': '2020-10-16',
-                    'tom': '2020-10-20',
-                    'grad': 100,
-                    'beløp': 4000,
-                    'dagsats': 4000,
-                    'sykedager': 3
-                } ]
-            }
-        ]
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(3000)
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
+        vedtakWrapper.vedtak.fom = '2020-10-01'
+        vedtakWrapper.vedtak.tom = '2020-10-15'
+        vedtakWrapper.vedtak.utbetaling = {
+            organisasjonsnummer: arbeidstaker100.arbeidsgiver!.orgnummer!,
+            forbrukteSykedager: 6,
+            gjenståendeSykedager: 180,
+            automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                mottaker: 'org-nr',
+                nettoBeløp: 15000,
+                utbetalingslinjer: [
+                    {
+                        fom: '2020-08-26',
+                        tom: '2020-09-29',
+                        dagsats: 2000,
+                        totalbeløp: 6000,
+                        grad: 100,
+                        stønadsdager: 3
+                    },
+                    {
+                        fom: '2020-09-30',
+                        tom: '2020-10-13',
+                        dagsats: 3000,
+                        totalbeløp: 15000,
+                        grad: 100,
+                        stønadsdager: 5
+                    },
+                    {
+                        fom: '2020-09-30',
+                        tom: '2020-10-13',
+                        dagsats: 2000,
+                        totalbeløp: 12000,
+                        grad: 100,
+                        stønadsdager: 6,
+                    }
+                ]
+            },
+            utbetalingsdager: []
+        }
+
+        expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(3000)
     })
 })
 
 describe('Tester refusjon til arbeidsgiver', () => {
     it('Utbetalingslinje periode lengre enn vedtak periode', () => {
-        const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1050)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(5)
-        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(5250)
+        const vedtak = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
+        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1404)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(15)
+        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(21060)
     })
 
     it('2 utbetalinger med forskjellig grad', () => {
-        const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
-        vedtak.vedtak.fom = '2020-09-30'
-        vedtak.vedtak.tom = '2020-10-13'
-        vedtak.vedtak.utbetalinger = [
-            {
-                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
-                'fagområde': 'SPREF',
-                'totalbeløp': 68620,
-                'utbetalingslinjer': [ {
-                    'fom': '2020-08-26',
-                    'tom': '2020-09-29',
-                    'grad': 100.0,
-                    'dagsats': 2092,
-                    'beløp': 2092,
-                    'sykedager': 25
-                }, {
-                    'fom': '2020-09-30',
-                    'tom': '2020-10-13',
-                    'grad': 78.0,
-                    'dagsats': 2092,
-                    'beløp': 1632,
-                    'sykedager': 10
-                } ]
-            }, {
-                'mottaker': '01010112345',
-                'fagområde': 'SP',
-                'totalbeløp': 0,
-                'utbetalingslinjer': []
-            }
-        ]
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1632)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(10)
-        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(16320)
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
+        vedtakWrapper.vedtak.fom = '2020-09-30'
+        vedtakWrapper.vedtak.tom = '2020-10-13'
+        vedtakWrapper.vedtak.utbetaling = {
+            organisasjonsnummer: arbeidstaker100.arbeidsgiver!.orgnummer!,
+            forbrukteSykedager: 6,
+            gjenståendeSykedager: 180,
+            automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                mottaker: 'org-nr',
+                nettoBeløp: 68620,
+                utbetalingslinjer: [
+                    {
+                        fom: '2020-08-26',
+                        tom: '2020-09-29',
+                        dagsats: 2092,
+                        totalbeløp: 52300,
+                        grad: 100,
+                        stønadsdager: 25
+                    },
+                    {
+                        fom: '2020-09-30',
+                        tom: '2020-10-13',
+                        dagsats: 1632,
+                        totalbeløp: 16320,
+                        grad: 78,
+                        stønadsdager: 10
+                    }
+                ]
+            },
+            utbetalingsdager: []
+        }
+
+        expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(1632)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(10)
+        expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(16320)
     })
 
     it('Flere utbetalinger der vedtaksperioden er del av siste utbetaling', () => {
-        const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
-        vedtak.vedtak.fom = '2020-10-13'
-        vedtak.vedtak.tom = '2020-10-20'
-        vedtak.vedtak.utbetalinger = [
-            {
-                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
-                'fagområde': 'SPREF',
-                'totalbeløp': 134598,
-                'utbetalingslinjer': [ {
-                    'fom': '2020-07-01',
-                    'tom': '2020-07-20',
-                    'grad': 53.0,
-                    'dagsats': 2304,
-                    'beløp': 1221,
-                    'sykedager': 14
-                }, {
-                    'fom': '2020-08-11',
-                    'tom': '2020-10-20',
-                    'grad': 100.0,
-                    'dagsats': 2304,
-                    'beløp': 2304,
-                    'sykedager': 51
-                } ]
-            }, {
-                'mottaker': '01010112345',
-                'fagområde': 'SP',
-                'totalbeløp': 0,
-                'utbetalingslinjer': []
-            }
-        ]
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(2304)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(6)
-        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(13824)
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
+        vedtakWrapper.vedtak.fom = '2020-10-13'
+        vedtakWrapper.vedtak.tom = '2020-10-20'
+        vedtakWrapper.vedtak.utbetaling = {
+            organisasjonsnummer: arbeidstaker100.arbeidsgiver!.orgnummer!,
+            forbrukteSykedager: 6,
+            gjenståendeSykedager: 180,
+            automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                mottaker: 'org-nr',
+                nettoBeløp: 134598,
+                utbetalingslinjer: [
+                    {
+                        fom: '2020-07-01',
+                        tom: '2020-07-20',
+                        dagsats: 1221,
+                        totalbeløp: 17094,
+                        grad: 53,
+                        stønadsdager: 14
+                    },
+                    {
+                        fom: '2020-08-11',
+                        tom: '2020-10-20',
+                        dagsats: 2304,
+                        totalbeløp: 117504,
+                        grad: 100,
+                        stønadsdager: 51
+                    }
+                ]
+            },
+            utbetalingsdager: []
+        }
+
+        expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(2304)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(6)
+        expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(13824)
     })
 
     it('Lengre periode der vedtaksperioden er i månedskifte', () => {
-        const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
-        vedtak.vedtak.fom = '2020-09-23'
-        vedtak.vedtak.tom = '2020-10-16'
-        vedtak.vedtak.utbetalinger = [
-            {
-                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
-                'fagområde': 'SPREF',
-                'totalbeløp': 47635,
-                'utbetalingslinjer': [ {
-                    'fom': '2020-08-29',
-                    'tom': '2020-10-16',
-                    'grad': 80.0,
-                    'dagsats': 1701,
-                    'beløp': 1361,
-                    'sykedager': 35
-                } ]
-            }, {
-                'mottaker': '01010112345',
-                'fagområde': 'SP',
-                'totalbeløp': 0,
-                'utbetalingslinjer': []
-            }
-        ]
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1361)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(18)
-        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(24498)
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
+        vedtakWrapper.vedtak.fom = '2020-09-23'
+        vedtakWrapper.vedtak.tom = '2020-10-16'
+        vedtakWrapper.vedtak.utbetaling = {
+            organisasjonsnummer: arbeidstaker100.arbeidsgiver!.orgnummer!,
+            forbrukteSykedager: 6,
+            gjenståendeSykedager: 180,
+            automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                mottaker: 'org-nr',
+                nettoBeløp: 47635,
+                utbetalingslinjer: [
+                    {
+                        fom: '2020-08-29',
+                        tom: '2020-10-16',
+                        dagsats: 1361,
+                        totalbeløp: 47635,
+                        grad: 80,
+                        stønadsdager: 35,
+                    }
+                ]
+            },
+            utbetalingsdager: []
+        }
+        expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(1361)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(18)
+        expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(24498)
     })
 
     it('Kort vedtak', () => {
-        const vedtak = jsonDeepCopy(ulestRefusjonTilArbeidsgiver)
-        vedtak.vedtak.fom = '2020-10-19'
-        vedtak.vedtak.tom = '2020-10-19'
-        vedtak.vedtak.utbetalinger = [
-            {
-                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer!,
-                'fagområde': 'SPREF',
-                'totalbeløp': 7902,
-                'utbetalingslinjer': [ {
-                    'fom': '2020-10-12',
-                    'tom': '2020-10-19',
-                    'grad': 100.0,
-                    'dagsats': 1314,
-                    'beløp': 1317,
-                    'sykedager': 6
-                } ]
-            }, {
-                'mottaker': '01010112345',
-                'fagområde': 'SP',
-                'totalbeløp': 0,
-                'utbetalingslinjer': []
-            }
-        ]
-        expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1317)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(1)
-        expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(1317)
+        const vedtakWrapper = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
+        vedtakWrapper.vedtak.fom = '2020-10-19'
+        vedtakWrapper.vedtak.tom = '2020-10-19'
+        vedtakWrapper.vedtak.utbetaling = {
+            organisasjonsnummer: arbeidstaker100.arbeidsgiver!.orgnummer!,
+            forbrukteSykedager: 6,
+            gjenståendeSykedager: 180,
+            automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                mottaker: 'org-nr',
+                nettoBeløp: 21060,
+                utbetalingslinjer: [
+                    {
+                        fom: '2020-10-12',
+                        tom: '2020-10-19',
+                        dagsats: 1317,
+                        totalbeløp: 7902,
+                        grad: 100,
+                        stønadsdager: 6
+                    }
+                ]
+            },
+            utbetalingsdager: []
+        }
+
+        expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(1317)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(1)
+        expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(1317)
     })
 })

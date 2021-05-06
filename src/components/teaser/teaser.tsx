@@ -12,9 +12,9 @@ import hand from './hand.svg'
 import handHover from './hand-hover.svg'
 import annullert from './ikon-annullert.svg'
 import annullertHover from './ikon-annullert-hover.svg'
-import { arbeidsgiverListevisning,SykepengesoknadTeaserProps } from './teaser-util'
+import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 
-const Teaser = ({ vedtak }: SykepengesoknadTeaserProps) => {
+const Teaser = ({ vedtak }: VedtakTeaserProps) => {
     const { soknader } = useAppStore()
 
     return (

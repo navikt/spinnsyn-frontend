@@ -20,12 +20,12 @@ const Sykepengedager = () => {
     return (
         <Utvidbar className={'blokkinfo bla' + (apen ? ' apen' : '')}
             erApen={apen} ikon={LedningImg} ikonHover={LedningImg}
-            tittel={valgtVedtak.vedtak.forbrukteSykedager} ikonAltTekst=""
+            tittel={valgtVedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.hittil')}
         >
 
             <Systemtittel tag="h3" className="tekstinfo__avsnitt">
-                {valgtVedtak.vedtak.gjenståendeSykedager}
+                {valgtVedtak.vedtak.utbetaling.gjenståendeSykedager}
             </Systemtittel>
             <Normaltekst className="">
                 {tekst('sykepengedager.systemtittel')}
