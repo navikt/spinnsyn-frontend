@@ -1,0 +1,89 @@
+import 'nav-frontend-tabell-style'
+
+import dayjs from 'dayjs'
+import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel'
+import Etikett from 'nav-frontend-etiketter'
+import { Element } from 'nav-frontend-typografi'
+import React from 'react'
+
+import { useAppStore } from '../../../data/stores/app-store'
+import { RSDagType } from '../../../types/rs-types/rs-vedtak'
+import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
+
+interface DagData {
+    dato: string;
+    beløp: number;
+    dagtype: RSDagType;
+}
+
+const DagTabell = () => {
+    const { valgtVedtak } = useAppStore()
+
+    const lagDagData = () => {
+        const dager: DagData[] = valgtVedtak!.vedtak.utbetaling.utbetalingsdager.map(dag => {
+            return {
+                dato: dag.dato,
+                beløp: 0,
+                dagtype: dag.type
+            }
+        })
+        const dagerMedBeløp = refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak)
+        dagerMedBeløp.forEach(dag => {
+            const dagen = dager.find(d => d.dato === dayjs(dag.dato).format('YYYY-MM-DD'))
+            if (dagen) {
+                dagen.beløp = dag.beløp
+            }
+        })
+        return dager
+    }
+
+    const lagDagLabel = (dagtype: RSDagType) => {
+        switch (dagtype) {
+            case 'NavDag':
+                return <Etikett mini type="suksess">Syk</Etikett>
+            case 'NavHelgDag':
+                return <Etikett mini type="info">Helg</Etikett>
+            case 'ArbeidsgiverperiodeDag':
+                return <Etikett mini type="suksess">Syk</Etikett>
+            case 'Arbeidsdag':
+                return <Etikett mini type="info">Arbeid</Etikett>
+            case 'Fridag':
+                return <Etikett mini type="info">Fri</Etikett>
+            case 'AvvistDag':
+                return <Etikett mini type="info">Avvist</Etikett>
+            case 'ForeldetDag':
+                return <Etikett mini type="info">Foreldet</Etikett>
+            case 'UkjentDag':
+                return <Etikett mini type="info">Ukjent</Etikett>
+        }
+    }
+
+    return (
+        <Ekspanderbartpanel apen={false} tittel={
+            <Element>Daglig utbetalingsoversikt</Element>
+        }>
+            <table className="tabell tabell--stripet tabell--dag">
+                <thead>
+                    <tr>
+                        <th>Dato</th>
+                        <th>Sum</th>
+                        <th>Dagtype</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {lagDagData().map((dag, idx) => {
+                        return (
+                            <tr key={idx}>
+                                <td>{dayjs(dag.dato).format('DD/MM')}</td>
+                                <td>{dag.beløp}</td>
+                                <td>{lagDagLabel(dag.dagtype)}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </Ekspanderbartpanel>
+    )
+}
+
+export default DagTabell

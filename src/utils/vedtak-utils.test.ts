@@ -118,7 +118,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
     it('Utbetalingslinje periode lengre enn vedtak periode', () => {
         const vedtak = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
         expect(refusjonTilArbeidsgiverBeløp(vedtak)).toEqual(1404)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak)).toEqual(15)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtak).length).toEqual(15)
         expect(refusjonTilArbeidsgiverTotalBeløp(vedtak)).toEqual(21060)
     })
 
@@ -157,7 +157,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
         }
 
         expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(1632)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(10)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper).length).toEqual(10)
         expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(16320)
     })
 
@@ -196,7 +196,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
         }
 
         expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(2304)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(6)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper).length).toEqual(6)
         expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(13824)
     })
 
@@ -226,7 +226,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
             utbetalingsdager: []
         }
         expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(1361)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(18)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper).length).toEqual(18)
         expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(24498)
     })
 
@@ -257,7 +257,7 @@ describe('Tester refusjon til arbeidsgiver', () => {
         }
 
         expect(refusjonTilArbeidsgiverBeløp(vedtakWrapper)).toEqual(1317)
-        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper)).toEqual(1)
+        expect(refusjonTilArbeidsgiverUtbetalingsdager(vedtakWrapper).length).toEqual(1)
         expect(refusjonTilArbeidsgiverTotalBeløp(vedtakWrapper)).toEqual(1317)
     })
 })

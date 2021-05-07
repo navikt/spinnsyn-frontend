@@ -23,7 +23,7 @@ const InntektInfo = () => {
 
     useEffect(() => {
         setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
-        setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak) + ' dager')
+        setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak).length + ' dager')
         setSum(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)) + ' kr')
         if(valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt  !== undefined){
             const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.inntekt)

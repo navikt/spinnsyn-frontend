@@ -5,12 +5,14 @@ import React, { useEffect, useState } from 'react'
 
 import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
+import Vis from '../../../components/vis'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverTotalBeløp } from '../../../utils/vedtak-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
+import DagTabell from './dag-tabell'
 import FeilOpplysninger from './feil-opplysninger'
 import InntektInfo from './inntekt-info/inntekt-info'
 
@@ -45,6 +47,9 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
                 <Normaltekst>
                     {tekst('utbetaling.trekk')}
                 </Normaltekst>
+                <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}>
+                    <DagTabell />
+                </Vis>
                 <BeregningInfo />
                 <FeilOpplysninger />
             </div>

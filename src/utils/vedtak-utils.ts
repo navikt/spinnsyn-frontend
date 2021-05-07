@@ -24,13 +24,11 @@ export const estimertSluttdato = (vedtakWrapper?: RSVedtakWrapper) => {
     return slutt.format('D. MMM YYYY')
 }
 
-export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtakWrapper?: RSVedtakWrapper) => {
-    if (!vedtakWrapper) return 0
+export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtakWrapper?: RSVedtakWrapper): Dag[] => {
+    if (!vedtakWrapper) return []
 
     const refusjonsdager = utbetalingslinjerTilDager(vedtakWrapper.vedtak.utbetaling.arbeidsgiverOppdrag.utbetalingslinjer)
-    const refusjonsdagerInnenforVedtakPeriode = dagerInnenforPeriode(refusjonsdager, vedtakWrapper)
-
-    return refusjonsdagerInnenforVedtakPeriode.length
+    return dagerInnenforPeriode(refusjonsdager, vedtakWrapper)
 }
 
 export const refusjonTilArbeidsgiverTotalBeløp = (vedtakWrapper?: RSVedtakWrapper) => {
