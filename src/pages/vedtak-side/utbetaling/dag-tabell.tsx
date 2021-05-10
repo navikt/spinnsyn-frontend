@@ -3,7 +3,7 @@ import 'nav-frontend-tabell-style'
 import dayjs from 'dayjs'
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel'
 import Etikett from 'nav-frontend-etiketter'
-import { Element } from 'nav-frontend-typografi'
+import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { useAppStore } from '../../../data/stores/app-store'
@@ -88,6 +88,47 @@ const DagTabell = () => {
                     })}
                 </tbody>
             </table>
+
+            <div className="tekstinfo" >
+                <Undertittel className="tekstinfo__avsnitt">
+                    Mer om dagtyper
+                </Undertittel>
+
+                <Element tag="h2" className="tekstinfo__avsnitt">
+                    Syk
+                </Element>
+                <Normaltekst>
+                    Du har vært syk en hel dag, og du får sykepenger for denne dagen.
+                </Normaltekst>
+
+                <Element tag="h2" className="tekstinfo__avsnitt">
+                    Delvis syk
+                </Element>
+                <Normaltekst>
+                    Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.
+                </Normaltekst>
+
+                <Element tag="h2" className="tekstinfo__avsnitt">
+                    Helg
+                </Element>
+                <Normaltekst>
+                    Sykepenger betales alltid for dagene mandag til fredag. Det skjer uavhengig av om du eventuelt jobber lørdag og søndag.
+                </Normaltekst>
+
+                <Element tag="h2" className="tekstinfo__avsnitt">
+                    Ferie
+                </Element>
+                <Normaltekst>
+                    Man får ikke sykepenger for dager man har ferie.
+                </Normaltekst>
+
+                <Element tag="h2" className="tekstinfo__avsnitt">
+                    Permisjon
+                </Element>
+                <Normaltekst>
+                    Man får ikke sykepenger for dager man har permisjon.
+                </Normaltekst>
+            </div>
         </Ekspanderbartpanel>
     )
 }
