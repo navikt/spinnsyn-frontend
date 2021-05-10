@@ -8,12 +8,14 @@ import React from 'react'
 
 import { useAppStore } from '../../../data/stores/app-store'
 import { RSDagType } from '../../../types/rs-types/rs-vedtak'
+import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
 
 interface DagData {
     dato: string;
-    beløp: number;
+    beløp: string;
     dagtype: RSDagType;
+    grad: number;
 }
 
 const DagTabell = () => {
@@ -23,28 +25,32 @@ const DagTabell = () => {
         const dager: DagData[] = valgtVedtak!.vedtak.utbetaling.utbetalingsdager.map(dag => {
             return {
                 dato: dag.dato,
-                beløp: 0,
-                dagtype: dag.type
+                beløp: '-',
+                dagtype: dag.type,
+                grad: 0
             }
         })
-        const dagerMedBeløp = refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak)
-        dagerMedBeløp.forEach(dag => {
+        const dagerMedBeløpOgGrad = refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak)
+        dagerMedBeløpOgGrad.forEach(dag => {
             const dagen = dager.find(d => d.dato === dayjs(dag.dato).format('YYYY-MM-DD'))
             if (dagen) {
-                dagen.beløp = dag.beløp
+                dagen.beløp = ValutaFormat.format(dag.beløp) + ' kr'
+                dagen.grad = dag.grad
             }
         })
         return dager
     }
 
-    const lagDagLabel = (dagtype: RSDagType) => {
-        switch (dagtype) {
-            case 'NavDag':
-                return <Etikett mini type="suksess">Syk</Etikett>
+    const lagDagLabel = (dag: DagData) => {
+        switch (dag.dagtype) {
+            case 'NavDag': {
+                if (dag.grad === 100) return <Etikett mini type="suksess">Syk</Etikett>
+                else return <Etikett mini type="suksess">Delvis syk</Etikett>
+            }
             case 'NavHelgDag':
                 return <Etikett mini type="info">Helg</Etikett>
             case 'ArbeidsgiverperiodeDag':
-                return <Etikett mini type="suksess">Syk</Etikett>
+                return <Etikett mini type="suksess">Arbeidsgiver</Etikett>
             case 'Arbeidsdag':
                 return <Etikett mini type="info">Arbeid</Etikett>
             case 'Fridag':
@@ -76,7 +82,7 @@ const DagTabell = () => {
                             <tr key={idx}>
                                 <td>{dayjs(dag.dato).format('DD/MM')}</td>
                                 <td>{dag.beløp}</td>
-                                <td>{lagDagLabel(dag.dagtype)}</td>
+                                <td>{lagDagLabel(dag)}</td>
                             </tr>
                         )
                     })}

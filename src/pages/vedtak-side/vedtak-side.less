@@ -11,18 +11,10 @@
     }
 
     .ekspanderbartPanel {
-        margin-top: 2rem;
+        margin: 2rem -1rem;
 
         &.ekspanderbartPanel--apen {
             background-color: #f4f9f6;
-        }
-
-        & + .ekspanderbartPanel {
-            margin-top: 1rem;
-        }
-
-        &:last-child {
-            margin-bottom: 1rem;
         }
     }
 
@@ -32,7 +24,6 @@
 
             &:nth-child(2) {
                 text-align: right;
-                width: 20%;
             }
 
             &:nth-child(3) {
@@ -48,6 +39,10 @@
 
 @media (min-width: @screen-sm) {
     .vedtak-side {
+        .ekspanderbartPanel {
+            margin: 2rem 0;
+        }
+
         .tabell--dag {
             th, td {
                 padding: 1rem;
