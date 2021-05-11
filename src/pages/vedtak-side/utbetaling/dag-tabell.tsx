@@ -2,12 +2,13 @@ import 'nav-frontend-tabell-style'
 
 import dayjs from 'dayjs'
 import Etikett from 'nav-frontend-etiketter'
-import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { RSDagType } from '../../../types/rs-types/rs-vedtak'
+import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
 
@@ -42,6 +43,7 @@ const DagTabell = () => {
     }
 
     const lagDagLabel = (dag: DagData) => {
+        // TODO: Legg inn permisjon og ferie når vi mottar denne dataen
         switch (dag.dagtype) {
             case 'NavDag': {
                 if (dag.grad === 100) return <Etikett mini type="suksess">Syk</Etikett>
@@ -50,15 +52,14 @@ const DagTabell = () => {
             case 'NavHelgDag':
                 return <Etikett mini type="info">Helg</Etikett>
             case 'ArbeidsgiverperiodeDag':
-                return <Etikett mini type="suksess">Arbeidsgiver</Etikett>
+                return <Etikett mini type="info">Arbeidsgiver betaler</Etikett>
             case 'Arbeidsdag':
-                return <Etikett mini type="info">Arbeid</Etikett>
+                return <Etikett mini type="info">Arbeidsdag</Etikett>
             case 'Fridag':
-                return <Etikett mini type="info">Fri</Etikett>
+                return <Etikett mini type="info">FRI</Etikett>
             case 'AvvistDag':
-                return <Etikett mini type="info">Avvist</Etikett>
             case 'ForeldetDag':
-                return <Etikett mini type="info">Foreldet</Etikett>
+                return <Etikett mini type="fokus">Avslått</Etikett>
             case 'UkjentDag':
                 return <Etikett mini type="info">Ukjent</Etikett>
         }
@@ -94,40 +95,50 @@ const DagTabell = () => {
                     Mer om dagtyper
                 </Undertittel>
 
-                <Element tag="h2" className="tekstinfo__avsnitt">
-                    Syk
-                </Element>
-                <Normaltekst>
-                    Du har vært syk en hel dag, og du får sykepenger for denne dagen.
-                </Normaltekst>
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'ArbeidsgiverperiodeDag' } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.arbeidsgiver-betaler')}</Normaltekst>
+                </div>
 
-                <Element tag="h2" className="tekstinfo__avsnitt">
-                    Delvis syk
-                </Element>
-                <Normaltekst>
-                    Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.
-                </Normaltekst>
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'Arbeidsdag' } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.arbeidsdag')}</Normaltekst>
+                </div>
 
-                <Element tag="h2" className="tekstinfo__avsnitt">
-                    Helg
-                </Element>
-                <Normaltekst>
-                    Sykepenger betales alltid for dagene mandag til fredag. Det skjer uavhengig av om du eventuelt jobber lørdag og søndag.
-                </Normaltekst>
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'NavDag', grad: 100 } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.syk')}</Normaltekst>
+                </div>
 
-                <Element tag="h2" className="tekstinfo__avsnitt">
-                    Ferie
-                </Element>
-                <Normaltekst>
-                    Man får ikke sykepenger for dager man har ferie.
-                </Normaltekst>
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'NavDag', grad: 50 } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.delvis-syk')}</Normaltekst>
+                </div>
 
-                <Element tag="h2" className="tekstinfo__avsnitt">
-                    Permisjon
-                </Element>
-                <Normaltekst>
-                    Man får ikke sykepenger for dager man har permisjon.
-                </Normaltekst>
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'NavHelgDag' } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.helg')}</Normaltekst>
+                </div>
+
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'Fridag' } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.ferie')}</Normaltekst>
+                </div>
+
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'Fridag' } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.permisjon')}</Normaltekst>
+                </div>
+
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'AvvistDag' } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.avslått')}</Normaltekst>
+                </div>
+
+                <div className="tekstinfo__avsnitt">
+                    {lagDagLabel({ dagtype: 'UkjentDag' } as any)}
+                    <Normaltekst>{tekst('utbetaling.tabell.ukjent')}</Normaltekst>
+                </div>
             </div>
         </Utvidbar>
     )
