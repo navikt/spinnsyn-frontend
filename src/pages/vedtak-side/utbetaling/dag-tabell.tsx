@@ -1,11 +1,11 @@
 import 'nav-frontend-tabell-style'
 
 import dayjs from 'dayjs'
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel'
 import Etikett from 'nav-frontend-etiketter'
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
+import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { RSDagType } from '../../../types/rs-types/rs-vedtak'
 import { ValutaFormat } from '../../../utils/valuta-utils'
@@ -65,9 +65,9 @@ const DagTabell = () => {
     }
 
     return (
-        <Ekspanderbartpanel apen={false} tittel={
-            <Element>Daglig utbetalingsoversikt</Element>
-        }>
+        <Utvidbar erApen={false} visLukk={true} type="intern" className=""
+            tittel={'Daglig utbetalingsoversikt'}
+        >
             <table className="tabell tabell--stripet tabell--dag">
                 <thead>
                     <tr>
@@ -129,7 +129,7 @@ const DagTabell = () => {
                     Man får ikke sykepenger for dager man har permisjon.
                 </Normaltekst>
             </div>
-        </Ekspanderbartpanel>
+        </Utvidbar>
     )
 }
 
