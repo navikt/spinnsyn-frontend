@@ -112,7 +112,7 @@ const Utvidbar = (props: UtvidbarProps) => {
             >
                 <div ref={innhold} className="utvidbar__innhold">
                     {props.children}
-                    <Vis hvis={props.type === undefined}>
+                    <Vis hvis={props.visLukk}>
                         <div className="lenkerad">
                             <button type="button" className="lenke" aria-pressed={!erApen}
                                 tabIndex={(erApen ? null : -1) as any} onClick={() => setErApen(!erApen)}

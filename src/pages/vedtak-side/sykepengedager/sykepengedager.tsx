@@ -19,7 +19,7 @@ const Sykepengedager = () => {
 
     return (
         <Utvidbar className={'blokkinfo bla' + (apen ? ' apen' : '')}
-            erApen={apen} ikon={LedningImg} ikonHover={LedningImg}
+            erApen={apen} ikon={LedningImg} ikonHover={LedningImg} visLukk={true}
             tittel={valgtVedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.hittil')}
         >
