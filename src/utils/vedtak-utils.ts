@@ -54,6 +54,7 @@ export const refusjonTilArbeidsgiverBeløp = (vedtakWrapper?: RSVedtakWrapper) =
 interface Dag {
     dato: string;
     beløp: number;
+    grad: number;
 }
 
 const utbetalingslinjerTilDager = (utbetalingslinjer: RSUtbetalingslinje[]) => {
@@ -67,7 +68,8 @@ const utbetalingslinjerTilDager = (utbetalingslinjer: RSUtbetalingslinje[]) => {
             if (!erHelg(start.toDate())) {
                 dager.push({
                     dato: start.toString(),
-                    beløp: linje.dagsats
+                    beløp: linje.dagsats,
+                    grad: linje.grad
                 })
             }
             start = start.add(1, 'day')

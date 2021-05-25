@@ -34,6 +34,7 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
     return (
         <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
             erApen={ekspandert}
+            visLukk={true}
             ikon={HandImg}
             ikonHover={HandImg}
             tittel={belop + ' kroner'}

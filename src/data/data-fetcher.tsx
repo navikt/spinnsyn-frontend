@@ -49,7 +49,7 @@ export function DataFetcher(props: { children: any }) {
         return <Spinner type={'XXL'} />
 
     } else if (hasAnyFailed([ rssoknader, rsVedtak ])) {
-        logger.error('Klarer ikke hente en av disse [ rssoknader, vedtak, rsVedtak ]')
+        logger.error(`Klarer ikke hente en av disse [ rssoknader = ${rssoknader.httpCode}, rsVedtak = ${rsVedtak.httpCode} ]`)
         return <IngenData />
     }
 

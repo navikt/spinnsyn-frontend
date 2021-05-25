@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { useAppStore } from '../data/stores/app-store'
 import env from '../utils/environment'
-import { warn } from '../utils/logger'
+import { info } from '../utils/logger'
 
 interface HotjarTriggerProps {
     children: any;
@@ -18,10 +18,10 @@ export const HotjarTrigger = ({ children }: HotjarTriggerProps) => {
     useEffect(() => {
         const hotJarWindow = (window as unknown as HotjarWindow)
 
-        if (env.isProd || env.isOpplaering) { // TODO: Sett til bare prod
+        if (env.isProd || env.isOpplaering) {
             setTimeout(() => {
                 if (typeof hotJarWindow.hj !== 'function') {
-                    warn('Hotjar ble ikke lastet inn...')
+                    info('Hotjar ble ikke lastet inn...')
                 } else {
                     hotJarWindow.hj('trigger', 'SP_INNSYN')
                 }
