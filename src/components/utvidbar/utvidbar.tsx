@@ -4,6 +4,7 @@ import Chevron from 'nav-frontend-chevron'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useRef, useState } from 'react'
 
+import { useAppStore } from '../../data/stores/app-store'
 import { erSynligIViewport } from '../../utils/browser-utils'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
 import Vis from '../vis'
@@ -23,9 +24,11 @@ interface UtvidbarProps {
 }
 
 const Utvidbar = (props: UtvidbarProps) => {
+    const { utvidet, setUtvidet } = useAppStore()
     const { logEvent } = useAmplitudeInstance()
     const [ erApen, setErApen ] = useState<boolean>(props.erApen)
     const [ innholdHeight, setInnholdHeight ] = useState<number>(0)
+
     const utvidbar = useRef<HTMLDivElement>(null)
     const jsToggle = useRef<HTMLButtonElement>(null)
     const btnImage = useRef<HTMLImageElement>(null)
@@ -43,17 +46,23 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     function onTransitionEnd() {
         if (props.type !== undefined) return
-        if (erApen) {
-            utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        } else {
-            if (!erSynligIViewport(utvidbar.current!)) {
-                utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        console.log('utvidet', utvidet) // eslint-disable-line
+        if (utvidbar.current === utvidet) {
+            console.log('utvidbar.current onTransitionEnd', utvidbar.current) // eslint-disable-line
+            if (erApen) {
+                utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            } else {
+                if (!erSynligIViewport(utvidbar.current!)) {
+                    utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+                jsToggle.current!.focus()
+                setUtvidet(undefined)
             }
-            jsToggle.current!.focus()
         }
     }
 
     const onButtonClick = () => {
+        console.log('utvidbar.current', utvidbar.current) // eslint-disable-line
         if (!erApen) {
             if (props.type !== undefined) {
                 logEvent('panel åpnet', { 'component': props.tittel })
@@ -61,6 +70,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                 logEvent('panel åpnet', { 'component': props.systemtittel })
             }
         }
+        setUtvidet(utvidbar.current!)
         utvidbar.current!.focus()
         setErApen(!erApen)
     }
@@ -115,7 +125,8 @@ const Utvidbar = (props: UtvidbarProps) => {
                     <Vis hvis={props.visLukk}>
                         <div className="lenkerad">
                             <button type="button" className="lenke" aria-pressed={!erApen}
-                                tabIndex={(erApen ? null : -1) as any} onClick={() => setErApen(!erApen)}
+                                tabIndex={(erApen ? null : -1) as any}
+                                onClick={() => setErApen(!erApen)}
                             >
                                 <Normaltekst tag="span">
                                     {props.type === 'intern' ? 'Skjul' : 'Lukk'}

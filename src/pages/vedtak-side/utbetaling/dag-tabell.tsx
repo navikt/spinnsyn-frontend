@@ -56,7 +56,7 @@ const DagTabell = () => {
             case 'Arbeidsdag':
                 return <Etikett mini type="info">Arbeidsdag</Etikett>
             case 'Fridag':
-                return <Etikett mini type="info">FRI</Etikett>
+                return <Etikett mini type="info">Fridag</Etikett>
             case 'AvvistDag':
             case 'ForeldetDag':
                 return <Etikett mini type="fokus">Avslått</Etikett>
@@ -66,7 +66,7 @@ const DagTabell = () => {
     }
 
     return (
-        <Utvidbar erApen={false} visLukk={true} type="intern" className=""
+        <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
             tittel={'Daglig utbetalingsoversikt'}
         >
             <table className="tabell tabell--stripet tabell--dag">
@@ -81,7 +81,7 @@ const DagTabell = () => {
                     {lagDagData().map((dag, idx) => {
                         return (
                             <tr key={idx}>
-                                <td>{dayjs(dag.dato).format('DD/MM')}</td>
+                                <td>{dayjs(dag.dato).format('DD.MM.YY')}</td>
                                 <td>{dag.beløp}</td>
                                 <td>{lagDagLabel(dag)}</td>
                             </tr>
@@ -122,12 +122,7 @@ const DagTabell = () => {
 
                 <div className="tekstinfo__avsnitt">
                     {lagDagLabel({ dagtype: 'Fridag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.ferie')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'Fridag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.permisjon')}</Normaltekst>
+                    <Normaltekst>{tekst('utbetaling.tabell.fridag')}</Normaltekst>
                 </div>
 
                 <div className="tekstinfo__avsnitt">

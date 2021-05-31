@@ -7,8 +7,8 @@ import { tekst } from '../../../utils/tekster'
 
 const BeregningInfo = () => {
     return (
-        <Ekspanderbartpanel apen={false} className="tekstinfo" tittel={
-            <Element tag="span">Mer om beregningen</Element>
+        <Ekspanderbartpanel apen={false} className="" tittel={
+            <Element tag="span">{tekst('utbetaling.beregning.tittel')}</Element>
         }>
             <>
                 <Element tag="h2" className="tekstinfo__avsnitt">
