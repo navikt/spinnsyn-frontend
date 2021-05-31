@@ -47,7 +47,11 @@ interface RSUtbetalingdag {
     type: RSDagType;
 }
 
-export type RSDagType = 'NavDag' | 'NavDagSyk' | 'NavDagDelvisSyk' | 'NavHelgDag' | 'ArbeidsgiverperiodeDag' | 'Arbeidsdag' | 'Fridag' | 'AvvistDag' | 'ForeldetDag' | 'UkjentDag'
+export type RSDagType = 'NavDag' | 'NavHelgDag' | 'ArbeidsgiverperiodeDag' | 'Arbeidsdag' | 'Fridag' | 'AvvistDag' | 'ForeldetDag' | 'UkjentDag'
+
+export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
+
+export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
 export interface Dokument {
     dokumentId: string;

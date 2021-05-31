@@ -7,22 +7,17 @@ import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
-import { RSDagType } from '../../../types/rs-types/rs-vedtak'
+import { RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
 
-interface DagTypeGrad {
-    dagtype: RSDagType;
-    grad: number;
-}
-
-interface DagDatoBeløp {
+interface DagData {
     dato: string;
     beløp: string;
+    dagtype: RSDagTypeKomplett;
+    grad: number;
 }
-
-type DagData = DagTypeGrad & DagDatoBeløp
 
 const DagTabell = () => {
     const { valgtVedtak } = useAppStore()
