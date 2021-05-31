@@ -1,4 +1,4 @@
-import { vedtakMed100Grad } from '../../src/data/mock/data/rs-vedtak';
+import { vedtakMed100Grad } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester visning av utbetalingsoversikt', () => {
 
