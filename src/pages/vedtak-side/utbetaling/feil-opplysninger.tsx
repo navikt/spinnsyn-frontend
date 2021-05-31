@@ -11,8 +11,8 @@ const FeilOpplysninger = () => {
     const { valgtVedtak } = useAppStore()
 
     return (
-        <Ekspanderbartpanel apen={false} className="tekstinfo" tittel={
-            <Element tag="span">Ved feil opplysninger</Element>
+        <Ekspanderbartpanel apen={false} tittel={
+            <Element tag="span">{tekst('utbetaling.opplysninger.tittel')}</Element>
         }>
             <>
                 <Normaltekst className="tekstinfo__avsnitt">
