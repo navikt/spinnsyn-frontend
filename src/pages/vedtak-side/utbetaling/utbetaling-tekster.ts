@@ -14,9 +14,11 @@ const UtbetalingTekster = {
     'utbetaling.totalbelop.innhold-2': 'Utbetalingen blir redusert til 6 ganger folketrygdens grunnbeløp hvis du tjener mer enn det til sammen. Har du flere arbeidsforhold, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.',
     'utbetaling.delvis.tittel': 'Hvis du er delvis sykmeldt',
     'utbetaling.delvis.innhold': 'Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
+    'utbetaling.beregning.tittel': 'Mer om beregningen',
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
     'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
     'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',
+    'utbetaling.opplysninger.tittel': 'Ved feil opplysninger',
     'utbetaling.opplysninger.inntektsmelding': 'Når vi beregner sykepengene dine, bruker vi månedsinntekten som arbeidsgiveren din oppgir i inntektsmeldingen. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
     'utbetaling.inntekt.info.tittel': 'Slik beregner vi sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
@@ -29,6 +31,16 @@ const UtbetalingTekster = {
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
     'utbetaling.arbeidsgiver.tittel': 'Beløpet går til arbeidsgiveren din',
     'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
+
+    'utbetaling.tabell.undertittel': 'Mer om dagtyper',
+    'utbetaling.tabell.ArbeidsgiverperiodeDag': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
+    'utbetaling.tabell.Arbeidsdag': 'Det utbetales ikke sykepenger for hele dager du har vært på jobben.',
+    'utbetaling.tabell.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
+    'utbetaling.tabell.NavDagDelvisSyk': 'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.',
+    'utbetaling.tabell.NavHelgDag': 'Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.',
+    'utbetaling.tabell.Fridag': 'Man får ikke sykepenger for dager man har ferie eller permisjon.',
+    'utbetaling.tabell.AvvistDag': 'En dag som er avslått, får du ikke sykepenger for.',
+    'utbetaling.tabell.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
 }
 
 export default UtbetalingTekster

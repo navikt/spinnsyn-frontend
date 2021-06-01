@@ -24,13 +24,11 @@ export const estimertSluttdato = (vedtakWrapper?: RSVedtakWrapper) => {
     return slutt.format('D. MMM YYYY')
 }
 
-export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtakWrapper?: RSVedtakWrapper) => {
-    if (!vedtakWrapper) return 0
+export const refusjonTilArbeidsgiverUtbetalingsdager = (vedtakWrapper?: RSVedtakWrapper): Dag[] => {
+    if (!vedtakWrapper) return []
 
     const refusjonsdager = utbetalingslinjerTilDager(vedtakWrapper.vedtak.utbetaling.arbeidsgiverOppdrag.utbetalingslinjer)
-    const refusjonsdagerInnenforVedtakPeriode = dagerInnenforPeriode(refusjonsdager, vedtakWrapper)
-
-    return refusjonsdagerInnenforVedtakPeriode.length
+    return dagerInnenforPeriode(refusjonsdager, vedtakWrapper)
 }
 
 export const refusjonTilArbeidsgiverTotalBeløp = (vedtakWrapper?: RSVedtakWrapper) => {
@@ -56,6 +54,7 @@ export const refusjonTilArbeidsgiverBeløp = (vedtakWrapper?: RSVedtakWrapper) =
 interface Dag {
     dato: string;
     beløp: number;
+    grad: number;
 }
 
 const utbetalingslinjerTilDager = (utbetalingslinjer: RSUtbetalingslinje[]) => {
@@ -69,7 +68,8 @@ const utbetalingslinjerTilDager = (utbetalingslinjer: RSUtbetalingslinje[]) => {
             if (!erHelg(start.toDate())) {
                 dager.push({
                     dato: start.toString(),
-                    beløp: linje.dagsats
+                    beløp: linje.dagsats,
+                    grad: linje.grad
                 })
             }
             start = start.add(1, 'day')

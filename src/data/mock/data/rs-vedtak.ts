@@ -7,8 +7,8 @@ export const vedtakMed100Grad: RSVedtakWrapper = {
     lestDato: '1970-01-01T01:00:00+01:00',
     vedtak: {
         organisasjonsnummer: '972674818',
-        fom: '2021-04-01',
-        tom: '2021-04-30',
+        fom: '2021-02-08',
+        tom: '2021-02-21',
         dokumenter: [
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
@@ -19,148 +19,156 @@ export const vedtakMed100Grad: RSVedtakWrapper = {
                 type: 'Søknad'
             }
         ],
-        inntekt: 37500.0,
-        sykepengegrunnlag: 450000.0,
+        inntekt: 48513.47,
+        sykepengegrunnlag: 582161.64,
         utbetaling: {
             organisasjonsnummer: '972674818',
             utbetalingId: '2b60ba06-7ddb-45e6-991b-3ca944f0e979',
-            forbrukteSykedager: 22,
-            gjenståendeSykedager: 173,
+            forbrukteSykedager: 10,
+            gjenståendeSykedager: 238,
             automatiskBehandling: true,
             arbeidsgiverOppdrag: {
                 mottaker: '972674818',
-                nettoBeløp: 30888,
+                nettoBeløp: 8960,
                 utbetalingslinjer: [
                     {
-                        fom: '2021-04-01',
-                        tom: '2021-04-30',
-                        dagsats: 1404,
-                        totalbeløp: 30888,
-                        grad: 100.0,
-                        stønadsdager: 22
+                        fom: '2021-02-08',
+                        tom: '2021-02-21',
+                        dagsats: 896,
+                        totalbeløp: 8960,
+                        grad: 40.0,
+                        stønadsdager: 10
                     }
                 ]
             },
             utbetalingsdager: [
                 {
-                    dato: '2021-04-01',
+                    dato: '2021-01-21',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-02',
+                    dato: '2021-01-22',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-03',
+                    dato: '2021-01-23',
+                    type: 'Arbeidsdag'
+                },
+                {
+                    dato: '2021-01-24',
+                    type: 'Arbeidsdag'
+                },
+                {
+                    dato: '2021-01-25',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-04',
+                    dato: '2021-01-26',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-05',
+                    dato: '2021-01-27',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-06',
+                    dato: '2021-01-28',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-07',
+                    dato: '2021-01-29',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-08',
+                    dato: '2021-01-30',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-09',
+                    dato: '2021-01-31',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-10',
+                    dato: '2021-02-01',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-11',
+                    dato: '2021-02-02',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-12',
+                    dato: '2021-02-03',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-13',
+                    dato: '2021-02-04',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-14',
+                    dato: '2021-02-05',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-15',
+                    dato: '2021-02-06',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-16',
+                    dato: '2021-02-07',
                     type: 'ArbeidsgiverperiodeDag'
                 },
                 {
-                    dato: '2021-04-17',
+                    dato: '2021-02-08',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-09',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-10',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-11',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-12',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-13',
                     type: 'NavHelgDag'
                 },
                 {
-                    dato: '2021-04-18',
+                    dato: '2021-02-14',
                     type: 'NavHelgDag'
                 },
                 {
-                    dato: '2021-04-19',
+                    dato: '2021-02-15',
                     type: 'NavDag'
                 },
                 {
-                    dato: '2021-04-20',
+                    dato: '2021-02-16',
                     type: 'NavDag'
                 },
                 {
-                    dato: '2021-04-21',
+                    dato: '2021-02-17',
                     type: 'NavDag'
                 },
                 {
-                    dato: '2021-04-22',
+                    dato: '2021-02-18',
                     type: 'NavDag'
                 },
                 {
-                    dato: '2021-04-23',
+                    dato: '2021-02-19',
                     type: 'NavDag'
                 },
                 {
-                    dato: '2021-04-24',
+                    dato: '2021-02-20',
                     type: 'NavHelgDag'
                 },
                 {
-                    dato: '2021-04-25',
+                    dato: '2021-02-21',
                     type: 'NavHelgDag'
-                },
-                {
-                    dato: '2021-04-26',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-04-27',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-04-28',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-04-29',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-04-30',
-                    type: 'NavDag'
                 }
             ]
         }

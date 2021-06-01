@@ -1,3 +1,5 @@
+@import '../../../node_modules/nav-frontend-core/less/core';
+
 .vedtak-side {
     .vedtak__tilbake {
         display: block;
@@ -8,9 +10,58 @@
         }
     }
 
-}
+    .ekspanderbartPanel {
+        margin-top: 2rem;
 
+        &.ekspanderbartPanel--apen {
+            background-color: #f4f9f6;
+        }
+
+        & + .ekspanderbartPanel {
+            margin-top: 1rem;
+        }
+
+        &:last-child {
+            margin-bottom: 1rem;
+        }
+
+        .tekstinfo {
+            padding-top: 1rem;
+        }
+    }
+
+    .tabell--dag {
+        th, td {
+            padding: 0.5rem 0;
+
+            &:nth-child(1) {
+                padding-left: 1rem;
+            }
+
+            &:nth-child(2) {
+                text-align: right;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            &:nth-child(3) {
+                padding-right: 1rem;
+                text-align: right;
+            }
+        }
+    }
+}
 
 .tidligere__beslutning {
     margin: 3rem 0 1rem 0;
+}
+
+@media (min-width: @screen-sm) {
+    .vedtak-side {
+        .tabell--dag {
+            th, td {
+                padding: 1rem;
+            }
+        }
+    }
 }
