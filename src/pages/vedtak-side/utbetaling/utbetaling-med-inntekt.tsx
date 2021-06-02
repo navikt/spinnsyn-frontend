@@ -22,7 +22,6 @@ interface UtbetalingerProps {
 
 const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
     const { valgtVedtak } = useAppStore()
-
     const [ belop, setBelop ] = useState<string>('-')
 
     useEffect(() => {

@@ -4,7 +4,6 @@ import Chevron from 'nav-frontend-chevron'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useRef, useState } from 'react'
 
-import { useAppStore } from '../../data/stores/app-store'
 import { erSynligIViewport } from '../../utils/browser-utils'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
 import Vis from '../vis'
@@ -24,15 +23,12 @@ interface UtvidbarProps {
 }
 
 const Utvidbar = (props: UtvidbarProps) => {
-    const { utvidet, setUtvidet } = useAppStore()
     const { logEvent } = useAmplitudeInstance()
     const [ erApen, setErApen ] = useState<boolean>(props.erApen)
     const [ innholdHeight, setInnholdHeight ] = useState<number>(0)
 
     const utvidbar = useRef<HTMLDivElement>(null)
-    const jsToggle = useRef<HTMLButtonElement>(null)
     const btnImage = useRef<HTMLImageElement>(null)
-    const container = useRef<HTMLDivElement>(null)
     const innhold = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -42,36 +38,45 @@ const Utvidbar = (props: UtvidbarProps) => {
                 ? 3000
                 : innhold.current!.offsetHeight
         )
+        // eslint-disable-next-line
     }, [ props.erApen, props.fixedHeight ])
 
-    function onTransitionEnd() {
-        if (props.type !== undefined) return
-        console.log('utvidet', utvidet) // eslint-disable-line
-        if (utvidbar.current === utvidet) {
-            console.log('utvidbar.current onTransitionEnd', utvidbar.current) // eslint-disable-line
-            if (erApen) {
-                utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            } else {
-                if (!erSynligIViewport(utvidbar.current!)) {
-                    utvidbar.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }
-                jsToggle.current!.focus()
-                setUtvidet(undefined)
+    const åpne = (top: number) => {
+        if (props.type !== undefined) {
+            logEvent('panel åpnet', { 'component': props.tittel })
+        } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
+            logEvent('panel åpnet', { 'component': props.systemtittel })
+        }
+        window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
+        utvidbar.current!.focus()
+    }
+
+    const lukke = () => {
+        if (!erApen) {
+            const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY
+            const header = document.querySelector('.sticky-placeholder') as HTMLElement
+            let sticky = 0
+            if (header !== null && erSynligIViewport(header)) {
+                sticky = 106
             }
+            const pad = 20
+            window.scrollTo({ left: 0, top: top - sticky - pad, behavior: 'smooth' })
         }
     }
 
     const onButtonClick = () => {
-        console.log('utvidbar.current', utvidbar.current) // eslint-disable-line
+        const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY - 20
         if (!erApen) {
             if (props.type !== undefined) {
                 logEvent('panel åpnet', { 'component': props.tittel })
             } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
                 logEvent('panel åpnet', { 'component': props.systemtittel })
             }
+            window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
+            utvidbar.current!.focus()
+        } else {
+            åpne(top)
         }
-        setUtvidet(utvidbar.current!)
-        utvidbar.current!.focus()
         setErApen(!erApen)
     }
 
@@ -85,7 +90,6 @@ const Utvidbar = (props: UtvidbarProps) => {
             }
         >
             <button aria-expanded={erApen}
-                ref={jsToggle}
                 onMouseEnter={props.ikon !== undefined ? () => btnImage.current!.src = props.ikonHover! : undefined}
                 onMouseLeave={props.ikon !== undefined ? () => btnImage.current!.src = props.ikon! : undefined}
                 onClick={onButtonClick}
@@ -116,8 +120,8 @@ const Utvidbar = (props: UtvidbarProps) => {
                 </span>
             </button>
 
-            <div ref={container} className={'utvidbar__innholdContainer' + (erApen ? ' apen' : '')}
-                onTransitionEnd={() => onTransitionEnd()}
+            <div className={'utvidbar__innholdContainer' + (erApen ? ' apen' : '')}
+                onTransitionEnd={lukke}
                 style={{ maxHeight: erApen ? (innholdHeight * 2) + 'px' : '0' }}
             >
                 <div ref={innhold} className="utvidbar__innhold">
@@ -126,7 +130,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                         <div className="lenkerad">
                             <button type="button" className="lenke" aria-pressed={!erApen}
                                 tabIndex={(erApen ? null : -1) as any}
-                                onClick={() => setErApen(!erApen)}
+                                onClick={onButtonClick}
                             >
                                 <Normaltekst tag="span">
                                     {props.type === 'intern' ? 'Skjul' : 'Lukk'}

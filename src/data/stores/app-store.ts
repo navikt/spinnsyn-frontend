@@ -10,7 +10,6 @@ export const [ AppStoreProvider, useAppStore ] = constate(() => {
     const [ rsVedtak, setRsVedtak ] = useState<RSVedtakWrapper[]>([])
     const [ valgtVedtak, setValgtVedtak ] = useState<RSVedtakWrapper>()
     const [ feilState, setFeilState ] = useState<boolean>(false)
-    const [ utvidet, setUtvidet ] = useState<HTMLDivElement>()
 
     return {
         soknader, setSoknader,
@@ -18,6 +17,5 @@ export const [ AppStoreProvider, useAppStore ] = constate(() => {
         rsVedtak, setRsVedtak,
         valgtVedtak, setValgtVedtak,
         feilState, setFeilState,
-        utvidet, setUtvidet,
     }
 })
