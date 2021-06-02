@@ -7,7 +7,7 @@ import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
-import { RSDagType } from '../../../types/rs-types/rs-vedtak'
+import { RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
@@ -15,7 +15,7 @@ import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-u
 interface DagData {
     dato: string;
     beløp: string;
-    dagtype: RSDagType;
+    dagtype: RSDagTypeKomplett;
     grad: number;
 }
 
@@ -37,18 +37,23 @@ const DagTabell = () => {
             if (dagen) {
                 dagen.beløp = ValutaFormat.format(dag.beløp) + ' kr'
                 dagen.grad = dag.grad
+                if (dagen.dagtype === 'NavDag') {
+                    dagen.dagtype = dagen.grad !== 100 ? 'NavDagDelvisSyk' : 'NavDagSyk'
+                }
             }
         })
         return dager
     }
 
+    const alleDager = lagDagData()
+
     const lagDagLabel = (dag: DagData) => {
         // TODO: Legg inn permisjon og ferie når vi mottar denne dataen
         switch (dag.dagtype) {
-            case 'NavDag': {
-                if (dag.grad === 100) return <Etikett mini type="suksess">Syk</Etikett>
-                else return <Etikett mini type="suksess">Delvis syk</Etikett>
-            }
+            case 'NavDagSyk':
+                return <Etikett mini type="suksess">Syk</Etikett>
+            case 'NavDagDelvisSyk':
+                return <Etikett mini type="suksess">Delvis syk</Etikett>
             case 'NavHelgDag':
                 return <Etikett mini type="info">Helg</Etikett>
             case 'ArbeidsgiverperiodeDag':
@@ -65,6 +70,13 @@ const DagTabell = () => {
         }
     }
 
+    const unikeDager = () => {
+        return alleDager.reduce((list: DagData[], dag) => {
+            !list.find((v: DagData) => v.dagtype === dag.dagtype) && list.push(dag)
+            return list
+        }, [])
+    }
+
     return (
         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
             tittel={'Daglig utbetalingsoversikt'}
@@ -78,7 +90,7 @@ const DagTabell = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {lagDagData().map((dag, idx) => {
+                    {alleDager.map((dag, idx) => {
                         return (
                             <tr key={idx}>
                                 <td>{dayjs(dag.dato).format('DD.MM.YY')}</td>
@@ -90,50 +102,21 @@ const DagTabell = () => {
                 </tbody>
             </table>
 
-            <div className="tekstinfo" >
+            <div className="tekstinfo">
                 <Undertittel className="tekstinfo__avsnitt">
-                    Mer om dagtyper
+                    {tekst('utbetaling.tabell.undertittel')}
                 </Undertittel>
 
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'ArbeidsgiverperiodeDag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.arbeidsgiver-betaler')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'Arbeidsdag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.arbeidsdag')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'NavDag', grad: 100 } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.syk')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'NavDag', grad: 50 } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.delvis-syk')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'NavHelgDag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.helg')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'Fridag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.fridag')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'AvvistDag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.avslått')}</Normaltekst>
-                </div>
-
-                <div className="tekstinfo__avsnitt">
-                    {lagDagLabel({ dagtype: 'UkjentDag' } as any)}
-                    <Normaltekst>{tekst('utbetaling.tabell.ukjent')}</Normaltekst>
-                </div>
+                {unikeDager().map((d, idx) => {
+                    return (
+                        <div className="tekstinfo__avsnitt" key={idx}>
+                            {lagDagLabel(d)}
+                            <Normaltekst>
+                                {tekst(`utbetaling.tabell.${d.dagtype}` as any)}
+                            </Normaltekst>
+                        </div>
+                    )
+                })}
             </div>
         </Utvidbar>
     )

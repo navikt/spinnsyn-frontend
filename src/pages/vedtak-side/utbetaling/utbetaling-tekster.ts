@@ -31,14 +31,16 @@ const UtbetalingTekster = {
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
     'utbetaling.arbeidsgiver.tittel': 'Beløpet går til arbeidsgiveren din',
     'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
-    'utbetaling.tabell.arbeidsgiver-betaler': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
-    'utbetaling.tabell.arbeidsdag': 'Det utbetales ikke sykepenger for hele dager du har vært på jobben.',
-    'utbetaling.tabell.syk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
-    'utbetaling.tabell.delvis-syk': 'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden. ',
-    'utbetaling.tabell.helg': 'Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.',
-    'utbetaling.tabell.fridag': 'Man får ikke sykepenger for dager man har ferie eller permisjon.',
-    'utbetaling.tabell.avslått': 'En dag som er avslått, får du ikke sykepenger for. Du ser begrunnelsen i en egen fane.',
-    'utbetaling.tabell.ukjent': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
+
+    'utbetaling.tabell.undertittel': 'Mer om dagtyper',
+    'utbetaling.tabell.ArbeidsgiverperiodeDag': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
+    'utbetaling.tabell.Arbeidsdag': 'Det utbetales ikke sykepenger for hele dager du har vært på jobben.',
+    'utbetaling.tabell.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
+    'utbetaling.tabell.NavDagDelvisSyk': 'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.',
+    'utbetaling.tabell.NavHelgDag': 'Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.',
+    'utbetaling.tabell.Fridag': 'Man får ikke sykepenger for dager man har ferie eller permisjon.',
+    'utbetaling.tabell.AvvistDag': 'En dag som er avslått, får du ikke sykepenger for.',
+    'utbetaling.tabell.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
 }
 
 export default UtbetalingTekster
