@@ -13,7 +13,7 @@ describe('Tester at appen starter', () => {
     it('Det er et ulest vedtak og to leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 2)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
@@ -86,12 +86,12 @@ describe('Tester at appen starter', () => {
     it('Det er ingen uleste vedtak og tre leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
         cy.contains('Du har ingen nye behandlede søknader fra NAV.')
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4)
     })
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 3).eq(2).click({ force: true })
+            .should('have.length', 4).eq(2).click({ force: true })
         cy.contains('Søknaden behandles på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
         cy.get('.annullering > .info')
