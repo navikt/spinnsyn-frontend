@@ -1275,4 +1275,15 @@ export const arbeidstaker100SoknadForNyttVedtak: RSSoknad = {
     'egenmeldtSykmelding': false
 }
 
-export const soknader: RSSoknad[] = [ arbeidstaker100, arbeidstaker100SoknadForNyttVedtak ]
+export const integrasjonsSoknad: RSSoknad = {
+    ...arbeidstaker100SoknadForNyttVedtak,
+    ...{
+        'id': 'ddaf9bd6-e31b-4ece-b16a-wefwe',
+        'arbeidsgiver': {
+            'navn': 'INTEGRASJON AS',
+            'orgnummer': '972674818'
+        }
+    }
+}
+
+export const soknader: RSSoknad[] = [ arbeidstaker100, arbeidstaker100SoknadForNyttVedtak, integrasjonsSoknad ]

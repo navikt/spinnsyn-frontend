@@ -1,8 +1,8 @@
-import { vedtakMed100Grad } from '../../src/data/mock/data/rs-vedtak'
+import { vedtakMed40Grad } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester visning av utbetalingsoversikt', () => {
 
-    const vedtak = vedtakMed100Grad
+    const vedtak = vedtakMed40Grad
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
