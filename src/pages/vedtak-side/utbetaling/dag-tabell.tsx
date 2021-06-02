@@ -2,13 +2,14 @@ import 'nav-frontend-tabell-style'
 
 import dayjs from 'dayjs'
 import Etikett from 'nav-frontend-etiketter'
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
-import { RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
+import { RSBegrunnelse, RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
+import { camelCaseTilSetning } from '../../../utils/utils'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
 
@@ -17,6 +18,7 @@ interface DagData {
     beløp: string;
     dagtype: RSDagTypeKomplett;
     grad: number;
+    begrunnelser?: RSBegrunnelse[];
 }
 
 const DagTabell = () => {
@@ -32,7 +34,8 @@ const DagTabell = () => {
                     dato: dag.dato,
                     beløp: '-',
                     dagtype: dag.type,
-                    grad: 0
+                    grad: 0,
+                    begrunnelser: dag.begrunnelser
                 }
             })
         const dagerMedBeløpOgGrad = refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak)
@@ -67,16 +70,30 @@ const DagTabell = () => {
             case 'Fridag':
                 return <Etikett mini type="info">Fridag</Etikett>
             case 'AvvistDag':
+                return <Etikett mini type="fokus">Ingen utbetaling</Etikett>
+            // TODO: Legg inn egen etikett for ForeldetDag
             case 'ForeldetDag':
-                return <Etikett mini type="fokus">Avslått</Etikett>
+                return <Etikett mini type="fokus">Foreldetdag</Etikett>
             case 'UkjentDag':
                 return <Etikett mini type="info">Ukjent</Etikett>
         }
     }
 
-    const unikeDager = () => {
+    const unikeDager = (): DagData[] => {
         return alleDager.reduce((list: DagData[], dag) => {
             !list.find((v: DagData) => v.dagtype === dag.dagtype) && list.push(dag)
+            return list
+        }, [])
+    }
+
+    // TODO: Finn perioden disse begrunnelsene gjelder for
+    const unikeAvvistBegrunnelser = (): RSBegrunnelse[] => {
+        return alleDager.reduce((list: RSBegrunnelse[], dag) => {
+            if (dag.dagtype === 'AvvistDag') {
+                dag.begrunnelser?.forEach((b: RSBegrunnelse ) => {
+                    !list.includes(b) && list.push(b)
+                })
+            }
             return list
         }, [])
     }
@@ -94,33 +111,46 @@ const DagTabell = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {alleDager.map((dag, idx) => {
-                        return (
-                            <tr key={idx}>
-                                <td>{dayjs(dag.dato).format('DD.MM.YY')}</td>
-                                <td>{dag.beløp}</td>
-                                <td>{lagDagLabel(dag)}</td>
-                            </tr>
-                        )
-                    })}
+                    {alleDager.map((dag, idx) =>
+                        <tr key={idx}>
+                            <td>{dayjs(dag.dato).format('DD.MM.YY')}</td>
+                            <td>{dag.beløp}</td>
+                            <td>{lagDagLabel(dag)}</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
 
             <div className="tekstinfo">
                 <Undertittel className="tekstinfo__avsnitt">
-                    {tekst('utbetaling.tabell.undertittel')}
+                    {tekst('utbetaling.tabell.dagtyper')}
                 </Undertittel>
 
-                {unikeDager().map((d, idx) => {
-                    return (
-                        <div className="tekstinfo__avsnitt" key={idx}>
-                            {lagDagLabel(d)}
-                            <Normaltekst>
-                                {tekst(`utbetaling.tabell.${d.dagtype}` as any)}
-                            </Normaltekst>
-                        </div>
-                    )
-                })}
+                {unikeDager().map((d, idx) =>
+                    <div className="tekstinfo__avsnitt" key={idx}>
+                        {lagDagLabel(d)}
+                        <Normaltekst>
+                            {tekst(`utbetaling.tabell.label.${d.dagtype}` as any)}
+                        </Normaltekst>
+                    </div>
+                )}
+            </div>
+
+            <div className="tekstinfo">
+                <Undertittel className="tekstinfo__avsnitt">
+                    {tekst('utbetaling.tabell.avvist')}
+                </Undertittel>
+
+                {unikeAvvistBegrunnelser().map((b, idx) =>
+                    <div className="tekstinfo__avsnitt" key={idx}>
+                        <Element tag="h2" className="tekstinfo__avsnitt">
+                            {`${camelCaseTilSetning(b)}`}
+                        </Element>
+                        <Normaltekst>
+                            {tekst(`utbetaling.tabell.avvist.${b}` as any)}
+                        </Normaltekst>
+                    </div>
+                )}
             </div>
         </Utvidbar>
     )
