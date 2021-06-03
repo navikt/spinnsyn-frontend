@@ -434,6 +434,21 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
                     dato: '2021-02-22',
                     type: 'AvvistDag',
                     begrunnelser: [ 'UKJENT' ]
+                },
+                {
+                    dato: '2021-02-23',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'UKJENT' ]
+                },
+                {
+                    dato: '2021-02-24',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'UKJENT' ]
+                },
+                {
+                    dato: '2021-02-28',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'UKJENT' ]
                 }
             ]
         }

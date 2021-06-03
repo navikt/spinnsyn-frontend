@@ -8,6 +8,7 @@ import React from 'react'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { RSBegrunnelse, RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
+import { tilLesbarDatoMedArstall, tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
 import { camelCaseTilSetning } from '../../../utils/utils'
 import { ValutaFormat } from '../../../utils/valuta-utils'
@@ -19,6 +20,11 @@ interface DagData {
     dagtype: RSDagTypeKomplett;
     grad: number;
     begrunnelser?: RSBegrunnelse[];
+}
+
+interface BegrunnelseMedDatoer {
+    begrunnelse: RSBegrunnelse;
+    datoer: string[];
 }
 
 const DagTabell = () => {
@@ -86,16 +92,43 @@ const DagTabell = () => {
         }, [])
     }
 
-    // TODO: Finn perioden disse begrunnelsene gjelder for
-    const unikeAvvistBegrunnelser = (): RSBegrunnelse[] => {
-        return alleDager.reduce((list: RSBegrunnelse[], dag) => {
+    const unikeAvvistBegrunnelser = (): BegrunnelseMedDatoer[] => {
+        return alleDager.reduce((list: BegrunnelseMedDatoer[], dag) => {
             if (dag.dagtype === 'AvvistDag') {
-                dag.begrunnelser?.forEach((b: RSBegrunnelse ) => {
-                    !list.includes(b) && list.push(b)
+                dag.begrunnelser?.forEach((dagBegrunnelse: RSBegrunnelse ) => {
+                    list.find(b => b.begrunnelse === dagBegrunnelse)
+                        ?.datoer
+                        ?.push(dag.dato)
+                    || list.push({ begrunnelse: dagBegrunnelse, datoer: [ dag.dato ] })
                 })
             }
             return list
         }, [])
+    }
+
+    // TODO: datoer må være sortert
+    const datoerTilPerioder = (datoer: string[]): string => {
+        const grupperingIPerioder = datoer.reduce((fomKeyTomVal: any, dato: string) => {
+            const eksisterendePeriode = Object.entries(fomKeyTomVal).find((fomTom) =>
+                dayjs(dato).add(-1, 'day').format('YYYY-MM-DD') === fomTom[1]
+            )
+            if (eksisterendePeriode) {
+                fomKeyTomVal[eksisterendePeriode[0]] = dato
+            } else {
+                fomKeyTomVal[dato] = dato
+            }
+            return fomKeyTomVal
+        }, {})
+
+        return Object.entries(grupperingIPerioder)
+            .map((fomTom: any) => {
+                if (fomTom[0] !== fomTom[1]) {
+                    return tilLesbarPeriodeMedArstall(fomTom[0], fomTom[1])
+                } else {
+                    return tilLesbarDatoMedArstall(fomTom[0])
+                }
+            })
+            .join(' , ')
     }
 
     return (
@@ -144,10 +177,13 @@ const DagTabell = () => {
                 {unikeAvvistBegrunnelser().map((b, idx) =>
                     <div className="tekstinfo__avsnitt" key={idx}>
                         <Element tag="h2" className="tekstinfo__avsnitt">
-                            {`${camelCaseTilSetning(b)}`}
+                            {datoerTilPerioder(b.datoer)}
+                        </Element>
+                        <Element tag="h2" className="tekstinfo__avsnitt">
+                            {camelCaseTilSetning(b.begrunnelse)}
                         </Element>
                         <Normaltekst>
-                            {tekst(`utbetaling.tabell.avvist.${b}` as any)}
+                            {tekst(`utbetaling.tabell.avvist.${b.begrunnelse}` as any)}
                         </Normaltekst>
                     </div>
                 )}
