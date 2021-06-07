@@ -71,7 +71,7 @@ const DagTabell = () => {
             case 'Fridag':
                 return <Etikett mini type="info">Fridag</Etikett>
             case 'ForeldetDag':
-                return <Etikett mini type="fokus">Foreldet dag</Etikett>
+                return <Etikett mini type="fokus">Søkt for sent</Etikett>
             case 'AvvistDag':
                 return dag.begrunnelser?.map((begrunnelse) =>
                     lagBegrunnelseLabel(begrunnelse)

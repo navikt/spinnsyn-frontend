@@ -39,8 +39,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.NavDagDelvisSyk': 'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.',
     'utbetaling.tabell.label.NavHelgDag': 'Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.',
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
-    'utbetaling.tabell.label.AvvistDag': 'Disse dagene får du ikke sykepenger for. Du ser begrunnelsen lengre ned',
-    'utbetaling.tabell.label.ForeldetDag': 'Dagen ligger for langt tilbake i tid til at man kan få sykepenger for den',
+    'utbetaling.tabell.label.ForeldetDag': 'Søknaden må sendes senest tre måneder etter den siste dagen i sykmeldingsperioden.',
     'utbetaling.tabell.label.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
 
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger. Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
