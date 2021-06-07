@@ -1,8 +1,7 @@
 import './sykepengedager.less'
 
 import parser from 'html-react-parser'
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel'
-import { Element, Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
@@ -51,13 +50,13 @@ const Sykepengedager = () => {
                 {tekst('sykepengedager.sluttdato.tekst3')}
             </Normaltekst>
 
-            <Ekspanderbartpanel apen={false} className="tekstinfo" tittel={
-                <Element tag="span">{tekst('sykepengedager.ekspanderbar')}</Element>
-            }>
+            <Utvidbar erApen={false} type="intern" className="tekstinfo"
+                tittel={tekst('sykepengedager.ekspanderbar')}
+            >
                 <Normaltekst className="blokkinfo__avsnitt">
                     {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
                 </Normaltekst>
-            </Ekspanderbartpanel>
+            </Utvidbar>
         </Utvidbar>
     )
 }
