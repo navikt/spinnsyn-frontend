@@ -38,18 +38,20 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
     'utbetaling.tabell.label.NavDagDelvisSyk': 'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.',
     'utbetaling.tabell.label.NavHelgDag': 'Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.',
-    'utbetaling.tabell.label.Fridag': 'Man får ikke sykepenger for dager man har ferie eller permisjon.',
+    'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
     'utbetaling.tabell.label.AvvistDag': 'Disse dagene får du ikke sykepenger for. Du ser begrunnelsen lengre ned',
+    'utbetaling.tabell.label.ForeldetDag': 'Dagen ligger for langt tilbake i tid til at man kan få sykepenger for den',
     'utbetaling.tabell.label.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
 
-    'utbetaling.tabell.avvist': 'Dager uten utbetaling',
-    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Har brukt opp maks antall sykepengedager',
-    'utbetaling.tabell.avvist.MinimumInntekt': 'Må ha en inntekt pr år på minst et halvt grunnbeløp',
-    'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode': 'Det er oppgitt sykedag, men er ikke sendt søknad, kun egenmelding',
-    'utbetaling.tabell.avvist.MinimumSykdomsgrad': 'Må være minst 20% sykmeldt',
-    'utbetaling.tabell.avvist.ManglerOpptjening': 'Må ha vært i arbeid minst fire uker rett før sykefravær',
-    'utbetaling.tabell.avvist.ManglerMedlemskap': 'For å ha rett må man være medlem i folketrygden, det er man når man er bosatt og/eller jobber i Norge',
-    'utbetaling.tabell.avvist.EtterDødsdato': 'Får ikke kroner etter død',
+    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger. Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
+    'utbetaling.tabell.avvist.MinimumInntekt': 'Du må ha en årlig inntekt på minst et halvt ' +
+        '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
+        ' for å få sykepenger.',
+    'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode': 'Egenmelding kan bare brukes i arbeidsgiverperioden, det vil si de første 16 dagene av sykefraværet som arbeidsgiveren betaler. Etter dette må du søke om sykepenger.',
+    'utbetaling.tabell.avvist.MinimumSykdomsgrad': 'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
+    'utbetaling.tabell.avvist.ManglerOpptjening': 'Du må ha vært i arbeid i minst fire uker rett før sykefraværet.',
+    'utbetaling.tabell.avvist.ManglerMedlemskap': 'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.',
+    'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 }
 

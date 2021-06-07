@@ -1,16 +1,15 @@
 import 'nav-frontend-tabell-style'
 
 import dayjs from 'dayjs'
+import parser from 'html-react-parser'
 import Etikett from 'nav-frontend-etiketter'
-import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { RSBegrunnelse, RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
-import { tilLesbarDatoMedArstall, tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { tekst } from '../../../utils/tekster'
-import { camelCaseTilSetning } from '../../../utils/utils'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
 
@@ -20,11 +19,6 @@ interface DagData {
     dagtype: RSDagTypeKomplett;
     grad: number;
     begrunnelser?: RSBegrunnelse[];
-}
-
-interface BegrunnelseMedDatoer {
-    begrunnelse: RSBegrunnelse;
-    datoer: string[];
 }
 
 const DagTabell = () => {
@@ -46,7 +40,7 @@ const DagTabell = () => {
             })
         const dagerMedBeløpOgGrad = refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak)
         dagerMedBeløpOgGrad.forEach(dag => {
-            const dagen = dager.find(d => d.dato === dayjs(dag.dato).format('YYYY-MM-DD'))
+            const dagen = dager.find(d => d.dato === dag.dato)
             if (dagen) {
                 dagen.beløp = ValutaFormat.format(dag.beløp) + ' kr'
                 dagen.grad = dag.grad
@@ -75,60 +69,82 @@ const DagTabell = () => {
                 return <Etikett mini type="info">Arbeidsdag</Etikett>
             case 'Fridag':
                 return <Etikett mini type="info">Fridag</Etikett>
-            case 'AvvistDag':
-                return <Etikett mini type="fokus">Ingen utbetaling</Etikett>
-            // TODO: Legg inn egen etikett for ForeldetDag
             case 'ForeldetDag':
                 return <Etikett mini type="fokus">Foreldetdag</Etikett>
+            case 'AvvistDag':
+                return dag.begrunnelser?.map((begrunnelse) =>
+                    lagBegrunnelseLabel(begrunnelse)
+                )
             case 'UkjentDag':
+            default:
                 return <Etikett mini type="info">Ukjent</Etikett>
         }
     }
 
-    const unikeDager = (): DagData[] => {
-        return alleDager.reduce((list: DagData[], dag) => {
-            !list.find((v: DagData) => v.dagtype === dag.dagtype) && list.push(dag)
-            return list
-        }, [])
+    const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelse) => {
+        switch (begrunnelse) {
+            case 'SykepengedagerOppbrukt':
+                return <Etikett mini type="fokus">Maks antall dager nådd</Etikett>
+            case 'MinimumInntekt':
+                return <Etikett mini type="fokus">For lav inntekt</Etikett>
+            case 'EgenmeldingUtenforArbeidsgiverperiode':
+                return <Etikett mini type="fokus">Egenmelding for sent</Etikett>
+            case 'MinimumSykdomsgrad':
+                return <Etikett mini type="fokus">Sykmeldt i for liten grad</Etikett>
+            case 'ManglerOpptjening':
+                return <Etikett mini type="fokus">Jobbet for kort</Etikett>
+            case 'ManglerMedlemskap':
+                return <Etikett mini type="fokus">Ikke medlem</Etikett>
+            case 'EtterDødsdato':
+                return <Etikett mini type="fokus">Etter dødsfall</Etikett>
+            case 'UKJENT':
+            default:
+                return <Etikett mini type="fokus">Ukjent</Etikett>
+        }
     }
 
-    const unikeAvvistBegrunnelser = (): BegrunnelseMedDatoer[] => {
-        return alleDager.reduce((list: BegrunnelseMedDatoer[], dag) => {
+    const lagBeskrivelseForUnikDag = (dag: DagData) => {
+        if (dag.dagtype !== 'AvvistDag') {
+            return(
+                <Normaltekst>
+                    {tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}
+                </Normaltekst>
+            )
+        }
+
+        return(
+            <Normaltekst>
+                {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
+            </Normaltekst>
+        )
+    }
+
+    const unikeDager = (): DagData[] => {
+        const unikeDagtyper = alleDager.reduce((list: DagData[], dag) => {
+            if (dag.dagtype !== 'AvvistDag' && !list.find((d: DagData) => d.dagtype === dag.dagtype)) {
+                list.push(dag)
+            }
+            return list
+        }, [])
+
+        const unikeBegrunnelser = alleDager.reduce((list: DagData[], dag) => {
             if (dag.dagtype === 'AvvistDag') {
-                dag.begrunnelser?.forEach((dagBegrunnelse: RSBegrunnelse ) => {
-                    list.find(b => b.begrunnelse === dagBegrunnelse)
-                        ?.datoer
-                        ?.push(dag.dato)
-                    || list.push({ begrunnelse: dagBegrunnelse, datoer: [ dag.dato ] })
+                dag.begrunnelser?.forEach((begrunnelse: RSBegrunnelse) => {
+                    if (!list.find((d: DagData) => d.begrunnelser?.includes(begrunnelse))) {
+                        list.push({
+                            dato: dag.dato,
+                            beløp: dag.beløp,
+                            dagtype: dag.dagtype,
+                            grad: dag.grad,
+                            begrunnelser: [ begrunnelse ]
+                        } as DagData)
+                    }
                 })
             }
             return list
         }, [])
-    }
 
-    // TODO: datoer må være sortert
-    const datoerTilPerioder = (datoer: string[]): string => {
-        const grupperingIPerioder = datoer.reduce((fomKeyTomVal: any, dato: string) => {
-            const eksisterendePeriode = Object.entries(fomKeyTomVal).find((fomTom) =>
-                dayjs(dato).add(-1, 'day').format('YYYY-MM-DD') === fomTom[1]
-            )
-            if (eksisterendePeriode) {
-                fomKeyTomVal[eksisterendePeriode[0]] = dato
-            } else {
-                fomKeyTomVal[dato] = dato
-            }
-            return fomKeyTomVal
-        }, {})
-
-        return Object.entries(grupperingIPerioder)
-            .map((fomTom: any) => {
-                if (fomTom[0] !== fomTom[1]) {
-                    return tilLesbarPeriodeMedArstall(fomTom[0], fomTom[1])
-                } else {
-                    return tilLesbarDatoMedArstall(fomTom[0])
-                }
-            })
-            .join(' , ')
+        return [ ...unikeDagtyper, ...unikeBegrunnelser ] as DagData[]
     }
 
     return (
@@ -162,29 +178,7 @@ const DagTabell = () => {
                 {unikeDager().map((d, idx) =>
                     <div className="tekstinfo__avsnitt" key={idx}>
                         {lagDagLabel(d)}
-                        <Normaltekst>
-                            {tekst(`utbetaling.tabell.label.${d.dagtype}` as any)}
-                        </Normaltekst>
-                    </div>
-                )}
-            </div>
-
-            <div className="tekstinfo">
-                <Undertittel className="tekstinfo__avsnitt">
-                    {tekst('utbetaling.tabell.avvist')}
-                </Undertittel>
-
-                {unikeAvvistBegrunnelser().map((b, idx) =>
-                    <div className="tekstinfo__avsnitt" key={idx}>
-                        <Element tag="h2" className="tekstinfo__avsnitt">
-                            {datoerTilPerioder(b.datoer)}
-                        </Element>
-                        <Element tag="h2" className="tekstinfo__avsnitt">
-                            {camelCaseTilSetning(b.begrunnelse)}
-                        </Element>
-                        <Normaltekst>
-                            {tekst(`utbetaling.tabell.avvist.${b.begrunnelse}` as any)}
-                        </Normaltekst>
+                        {lagBeskrivelseForUnikDag(d)}
                     </div>
                 )}
             </div>
