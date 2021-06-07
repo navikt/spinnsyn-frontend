@@ -9,6 +9,7 @@ import React from 'react'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { RSBegrunnelse, RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
+import { logger } from '../../../utils/logger'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
@@ -99,6 +100,7 @@ const DagTabell = () => {
                 return <Etikett mini type="fokus">Etter dødsfall</Etikett>
             case 'UKJENT':
             default:
+                logger.warn(`Har ingen begrunnelse for: ${begrunnelse}`)
                 return <Etikett mini type="fokus">Ukjent</Etikett>
         }
     }
