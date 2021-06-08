@@ -1,4 +1,4 @@
-import { ulestVedtakUtenUtbetalingsdager } from '../../src/data/mock/data/rs-vedtak'
+import { ulestVedtakUtenUtbetalingsdager, vedtakAnnullert, vedtakRevurdert } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester at appen starter', () => {
 
@@ -10,10 +10,10 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
     })
 
-    it('Det er et ulest vedtak og to leste', () => {
+    it('Det er et ulest vedtak og 4 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 3)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
@@ -83,15 +83,33 @@ describe('Tester at appen starter', () => {
         cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
-    it('Det er ingen uleste vedtak og tre leste', () => {
+    it('Det er ingen uleste vedtak og 5 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
         cy.contains('Du har ingen nye behandlede søknader fra NAV.')
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 5)
     })
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 4).eq(2).click({ force: true })
+            .should('have.length', 5).eq(2).click({ force: true })
+        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakAnnullert.id}`)
+        cy.contains('Søknaden behandles på nytt')
+        cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
+        cy.get('.annullering > .info')
+            .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
+            .and('contain', 'Hvem har sendt opplysningene?')
+            .and('contain', 'Hvorfor behandles den på nytt?')
+            .and('contain', 'Må jeg gjøre noe nå?')
+    })
+
+    it('Vi går tilbake til oversikten', () => {
+        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
+    })
+
+    it('Vi åpner et revurdert vedtak', () => {
+        cy.get('.vedtak--leste > article > .inngangspanel')
+            .should('have.length', 5).eq(3).click({ force: true })
+        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakRevurdert.id}`)
         cy.contains('Søknaden behandles på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
         cy.get('.annullering > .info')

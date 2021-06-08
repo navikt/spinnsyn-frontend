@@ -19,11 +19,14 @@ const VedtakStatus = () => {
         (valgtVedtak!.id.charCodeAt(0) % 2) === 1 ? setVeileder(Dame) : setVeileder(Mann)
     }, [ valgtVedtak ])
 
+    if (valgtVedtak === undefined) return null
+    const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
+
     return (
         <div className="vedtak-status">
             <Veilederpanel kompakt svg={<img src={veileder} alt="" />}>
                 <Undertittel tag="h3" className="vedtak-status__tittel">
-                    {valgtVedtak!.annullert
+                    {annullertEllerRevurdert
                         ? tekst('vedtak.status.annullert.tittel')
                         : tekst('vedtak.status.tittel')}
                 </Undertittel>

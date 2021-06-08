@@ -16,25 +16,26 @@ import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: VedtakTeaserProps) => {
     const { soknader } = useAppStore()
-
+    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>
                 <div className="inngangspanel__ytre">
                     <div className="inngangspanel__del1">
-                        <InngangsIkon ikon={vedtak.annullert ? annullert : hand} ikonHover={vedtak.annullert ? annullertHover : handHover} />
+                        <InngangsIkon ikon={annullertEllerRevurdert ? annullert : hand}
+                            ikonHover={annullertEllerRevurdert ? annullertHover : handHover} />
                         <div className="inngangspanel__innhold utvidbar__toggle">
                             <InngangsHeader
                                 meta={
                                     dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
                                     dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
                                 }
-                                tittel={vedtak.annullert ? tekst('spinnsyn.teaser.annullert.tittel') : tekst('spinnsyn.teaser.tittel')}
+                                tittel={annullertEllerRevurdert ? tekst('spinnsyn.teaser.annullert.tittel') : tekst('spinnsyn.teaser.tittel')}
                             />
                             {arbeidsgiverListevisning(vedtak, soknader)}
                         </div>
                     </div>
-                    <Vis hvis={vedtak.annullert}>
+                    <Vis hvis={annullertEllerRevurdert}>
                         <EtikettFokus>{tekst('spinnsyn.teaser.annullert')}</EtikettFokus>
                     </Vis>
                 </div>

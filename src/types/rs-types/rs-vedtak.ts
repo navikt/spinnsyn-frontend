@@ -5,6 +5,7 @@ export interface RSVedtakWrapper {
     vedtak: RSVedtak;
     opprettet: string;
     annullert: boolean;
+    revurdert: boolean;
 }
 
 interface RSVedtak {

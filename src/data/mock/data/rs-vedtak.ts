@@ -174,7 +174,8 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-06',
-    annullert: false
+    annullert: false,
+    revurdert: false
 }
 
 export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
@@ -220,7 +221,8 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-03',
-    annullert: false
+    annullert: false,
+    revurdert: false
 }
 
 export const vedtakAnnullert: RSVedtakWrapper = {
@@ -259,7 +261,48 @@ export const vedtakAnnullert: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-05',
-    annullert: true
+    annullert: true,
+    revurdert: false
+}
+
+export const vedtakRevurdert: RSVedtakWrapper = {
+    id: '9ae82dd2-dcf1-4c16-9e12-35cb6d634338',
+    lest: true,
+    lestDato: '2021-05-03T11:50:56.812287Z',
+    vedtak: {
+        organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+        fom: '2021-04-26',
+        tom: '2021-05-03',
+        dokumenter: [
+            { dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f', type: 'Sykmelding' },
+            { dokumentId: arbeidstaker100.id, type: 'Søknad' }
+        ],
+        inntekt: 37500.0,
+        utbetaling: {
+            organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+            forbrukteSykedager: 9,
+            gjenståendeSykedager: 186,
+            automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                mottaker: '972674818',
+                nettoBeløp: 8424,
+                utbetalingslinjer: [
+                    {
+                        fom: '2021-04-26',
+                        tom: '2021-05-03',
+                        dagsats: 1404,
+                        totalbeløp: 8424,
+                        grad: 100.0,
+                        stønadsdager: 6,
+                    }
+                ]
+            },
+            utbetalingsdager: []
+        }
+    },
+    opprettet: '2021-05-03',
+    annullert: false,
+    revurdert: true
 }
 
 export const integrasjonsVedtak: RSVedtakWrapper = {
@@ -439,12 +482,14 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-06',
-    annullert: false
+    annullert: false,
+    revurdert: false
 }
 
 export const nyeVedtak: RSVedtakWrapper[] = [
     vedtakMed40Grad,
     ulestVedtakUtenUtbetalingsdager,
     vedtakAnnullert,
+    vedtakRevurdert,
     integrasjonsVedtak,
 ]

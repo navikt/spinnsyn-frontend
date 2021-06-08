@@ -78,6 +78,7 @@ const VedtakSide = () => {
     }, [])
 
     if (valgtVedtak === undefined) return null
+    const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
 
     return (
         <>
@@ -90,7 +91,7 @@ const VedtakSide = () => {
                 <BetaAlertstripe />
 
                 <VedtakStatus />
-                <Vis hvis={valgtVedtak.annullert}>
+                <Vis hvis={annullertEllerRevurdert}>
                     <AnnulleringsInfo />
                     <Systemtittel className="tidligere__beslutning">{tekst('annullering.se-tidligere-beslutning')}</Systemtittel>
                 </Vis>
@@ -98,13 +99,13 @@ const VedtakSide = () => {
                 <UtbetalingMedInntekt ekspandert={false} />
                 <Sykepengedager />
 
-                <Vis hvis={!valgtVedtak.annullert}>
+                <Vis hvis={!annullertEllerRevurdert}>
                     <Uenig />
                     <Vis hvis={valgtVedtak.vedtak.utbetaling.automatiskBehandling}>
                         <AutomatiskBehandling />
                     </Vis>
                 </Vis>
-                <Vis hvis={valgtVedtak.annullert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}>
+                <Vis hvis={annullertEllerRevurdert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}>
                     <AutomatiskBehandlingPreteritum />
                 </Vis>
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
