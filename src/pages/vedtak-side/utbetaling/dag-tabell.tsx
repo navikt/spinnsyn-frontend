@@ -23,14 +23,18 @@ const DagTabell = () => {
     const { valgtVedtak } = useAppStore()
 
     const lagDagData = () => {
-        const dager: DagData[] = valgtVedtak!.vedtak.utbetaling.utbetalingsdager.map(dag => {
-            return {
-                dato: dag.dato,
-                beløp: '-',
-                dagtype: dag.type,
-                grad: 0
-            }
-        })
+        const dager: DagData[] = valgtVedtak!.vedtak.utbetaling.utbetalingsdager
+            .filter(dag => {
+                return dag.dato >= valgtVedtak!.vedtak.fom && dag.dato <= valgtVedtak!.vedtak.tom
+            })
+            .map(dag => {
+                return {
+                    dato: dag.dato,
+                    beløp: '-',
+                    dagtype: dag.type,
+                    grad: 0
+                }
+            })
         const dagerMedBeløpOgGrad = refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak)
         dagerMedBeløpOgGrad.forEach(dag => {
             const dagen = dager.find(d => d.dato === dayjs(dag.dato).format('YYYY-MM-DD'))

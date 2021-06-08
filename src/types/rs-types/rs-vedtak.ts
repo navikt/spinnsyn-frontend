@@ -4,7 +4,7 @@ export interface RSVedtakWrapper {
     lestDato?: string;
     vedtak: RSVedtak;
     opprettet: string;
-    annullert: boolean
+    annullert: boolean;
 }
 
 interface RSVedtak {
