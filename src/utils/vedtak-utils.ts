@@ -67,7 +67,7 @@ const utbetalingslinjerTilDager = (utbetalingslinjer: RSUtbetalingslinje[]) => {
         while (start <= slutt) {
             if (!erHelg(start.toDate())) {
                 dager.push({
-                    dato: start.toString(),
+                    dato: start.format('YYYY-MM-DD'),
                     beløp: linje.dagsats,
                     grad: linje.grad
                 })

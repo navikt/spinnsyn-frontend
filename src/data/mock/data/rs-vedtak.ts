@@ -1,7 +1,7 @@
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-import { arbeidstaker100, arbeidstaker100SoknadForNyttVedtak } from './soknader'
+import { arbeidstaker100, arbeidstaker100SoknadForNyttVedtak, integrasjonsSoknad } from './soknader'
 
-export const vedtakMed100Grad: RSVedtakWrapper = {
+export const vedtakMed40Grad: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946af',
     lest: true,
     lestDato: '1970-01-01T01:00:00+01:00',
@@ -262,8 +262,189 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     annullert: true
 }
 
+export const integrasjonsVedtak: RSVedtakWrapper = {
+    id: 'dff11217-31ea-404a-86ab-fwefwwef',
+    lest: true,
+    lestDato: '1970-01-01T01:00:00+01:00',
+    vedtak: {
+        organisasjonsnummer: integrasjonsSoknad.arbeidsgiver?.orgnummer,
+        fom: '2021-01-30',
+        tom: '2021-02-22',
+        dokumenter: [
+            {
+                dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
+                type: 'Sykmelding'
+            },
+            {
+                dokumentId: integrasjonsSoknad.id,
+                type: 'Søknad'
+            }
+        ],
+        inntekt: 30000,
+        sykepengegrunnlag: 120000,
+        utbetaling: {
+            organisasjonsnummer: integrasjonsSoknad.arbeidsgiver?.orgnummer,
+            utbetalingId: '2b60ba06-7ddb-45e6-991b-asfafwq',
+            forbrukteSykedager: 10,
+            gjenståendeSykedager: 238,
+            automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                mottaker: integrasjonsSoknad.arbeidsgiver!.orgnummer,
+                nettoBeløp: 8000,
+                utbetalingslinjer: [
+                    {
+                        fom: '2021-01-30',
+                        tom: '2021-02-05',
+                        dagsats: 1000,
+                        totalbeløp: 5000,
+                        grad: 100.0,
+                        stønadsdager: 5
+                    },
+                    {
+                        fom: '2021-02-08',
+                        tom: '2021-02-10',
+                        dagsats: 400,
+                        totalbeløp: 1200,
+                        grad: 40.0,
+                        stønadsdager: 3
+                    }
+                ]
+            },
+            utbetalingsdager: [
+                {
+                    dato: '2021-01-25',
+                    type: 'ArbeidsgiverperiodeDag'
+                },
+                {
+                    dato: '2021-01-26',
+                    type: 'ArbeidsgiverperiodeDag'
+                },
+                {
+                    dato: '2021-01-27',
+                    type: 'ArbeidsgiverperiodeDag'
+                },
+                {
+                    dato: '2021-01-28',
+                    type: 'Arbeidsdag'
+                },
+                {
+                    dato: '2021-01-29',
+                    type: 'Arbeidsdag'
+                },
+                {
+                    dato: '2021-01-30',
+                    type: 'Arbeidsdag'
+                },
+                {
+                    dato: '2021-01-31',
+                    type: 'ArbeidsgiverperiodeDag'
+                },
+                {
+                    dato: '2021-02-01',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-02',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-03',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-04',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-05',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-06',
+                    type: 'NavHelgDag'
+                },
+                {
+                    dato: '2021-02-07',
+                    type: 'NavHelgDag'
+                },
+                {
+                    dato: '2021-02-08',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-09',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-10',
+                    type: 'NavDag'
+                },
+                {
+                    dato: '2021-02-11',
+                    type: 'Fridag'
+                },
+                {
+                    dato: '2021-02-12',
+                    type: 'Fridag'
+                },
+                {
+                    dato: '2021-02-13',
+                    type: 'ForeldetDag'
+                },
+                {
+                    dato: '2021-02-14',
+                    type: 'UkjentDag'
+                },
+                {
+                    dato: '2021-02-15',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'SykepengedagerOppbrukt' ]
+                },
+                {
+                    dato: '2021-02-16',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'MinimumInntekt' ]
+                },
+                {
+                    dato: '2021-02-17',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'EgenmeldingUtenforArbeidsgiverperiode' ]
+                },
+                {
+                    dato: '2021-02-18',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'MinimumSykdomsgrad' ]
+                },
+                {
+                    dato: '2021-02-19',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'ManglerOpptjening' ]
+                },
+                {
+                    dato: '2021-02-20',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'ManglerMedlemskap' ]
+                },
+                {
+                    dato: '2021-02-21',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'EtterDødsdato' ]
+                },
+                {
+                    dato: '2021-02-22',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'UKJENT' ]
+                }
+            ]
+        }
+    },
+    opprettet: '2021-05-06',
+    annullert: false
+}
+
 export const nyeVedtak: RSVedtakWrapper[] = [
-    vedtakMed100Grad,
+    vedtakMed40Grad,
     ulestVedtakUtenUtbetalingsdager,
-    vedtakAnnullert
+    vedtakAnnullert,
+    integrasjonsVedtak,
 ]

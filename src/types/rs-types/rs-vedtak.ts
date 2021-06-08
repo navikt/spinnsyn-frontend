@@ -45,12 +45,13 @@ export interface RSUtbetalingslinje {
 interface RSUtbetalingdag {
     dato: string;
     type: RSDagType;
+    begrunnelser?: RSBegrunnelse[]
 }
 
+export type RSBegrunnelse = 'SykepengedagerOppbrukt' | 'MinimumInntekt' | 'EgenmeldingUtenforArbeidsgiverperiode' | 'MinimumSykdomsgrad' | 'ManglerOpptjening' | 'ManglerMedlemskap' | 'EtterDødsdato' | 'UKJENT'
+
 export type RSDagType = 'NavDag' | 'NavHelgDag' | 'ArbeidsgiverperiodeDag' | 'Arbeidsdag' | 'Fridag' | 'AvvistDag' | 'ForeldetDag' | 'UkjentDag'
-
 export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
-
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
 export interface Dokument {
