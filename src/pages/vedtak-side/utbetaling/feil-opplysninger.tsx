@@ -14,11 +14,11 @@ const FeilOpplysninger = () => {
         <Utvidbar erApen={false} type="intern" className="blokkinfo"
             tittel={tekst('utbetaling.opplysninger.tittel')}
         >
-            <Normaltekst className="tekstinfo__avsnitt">
+            <Normaltekst className="blokkinfo__avsnitt">
                 {tekst('utbetaling.opplysninger.inntektsmelding')}
             </Normaltekst>
 
-            <Normaltekst className="tekstinfo__avsnitt">
+            <Normaltekst className="blokkinfo__avsnitt">
                 {tekst('uenig.tekst2')}
                 <Lenke href={tekst('uenig.lenke1.url')} target="_blank">
                     {tekst('uenig.lenke1')}
