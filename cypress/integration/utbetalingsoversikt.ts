@@ -21,6 +21,11 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('Daglig utbetalingsoversikt')
             .click({ force: true })
 
+        // Dager utenfor vedtak fom og tom
+        cy.contains('21.01.21').should('not.exist')
+        cy.contains('23.01.21').should('not.exist')
+
+        // Dager innenfor vedtak fom og tom
         cy.contains('08.02.21').parent().should('contain', 'Delvis syk').and('contain', '896')
         cy.contains('20.02.21').parent().should('contain', 'Helg').and('contain', '-')
     })
@@ -44,9 +49,8 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('Daglig utbetalingsoversikt').click({ force: true })
 
         cy.get('.utbetalingsoversikt').within(() => {
-            cy.contains('25.01.21').parent().should('contain', 'Arbeidsgiver betaler').and('contain', '-')
-            cy.contains('28.01.21').parent().should('contain', 'Arbeidsdag').and('contain', '-')
-            cy.contains('30.01.21').parent().should('contain', 'Arbeidsgiver betaler').and('contain', '-')
+            cy.contains('30.01.21').parent().should('contain', 'Arbeidsdag').and('contain', '-')
+            cy.contains('31.01.21').parent().should('contain', 'Arbeidsgiver betaler').and('contain', '-')
             cy.contains('01.02.21').parent().should('contain', 'Syk').and('contain', '1\u00a0000 kr')
             cy.contains('06.02.21').parent().should('contain', 'Helg').and('contain', '-')
             cy.contains('08.02.21').parent().should('contain', 'Delvis syk').and('contain', '400 kr')

@@ -268,7 +268,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
     lestDato: '1970-01-01T01:00:00+01:00',
     vedtak: {
         organisasjonsnummer: integrasjonsSoknad.arbeidsgiver?.orgnummer,
-        fom: '2021-02-01',
+        fom: '2021-01-30',
         tom: '2021-02-22',
         dokumenter: [
             {
@@ -293,7 +293,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
                 nettoBeløp: 8000,
                 utbetalingslinjer: [
                     {
-                        fom: '2021-02-01',
+                        fom: '2021-01-30',
                         tom: '2021-02-05',
                         dagsats: 1000,
                         totalbeløp: 5000,
@@ -333,7 +333,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-01-30',
-                    type: 'ArbeidsgiverperiodeDag'
+                    type: 'Arbeidsdag'
                 },
                 {
                     dato: '2021-01-31',
