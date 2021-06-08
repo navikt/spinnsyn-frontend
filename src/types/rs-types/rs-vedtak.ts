@@ -45,7 +45,7 @@ export interface RSUtbetalingslinje {
 interface RSUtbetalingdag {
     dato: string;
     type: RSDagType;
-    begrunnelser?: RSBegrunnelse[] // TODO: Sett opp i backend
+    begrunnelser?: RSBegrunnelse[]
 }
 
 export type RSBegrunnelse = 'SykepengedagerOppbrukt' | 'MinimumInntekt' | 'EgenmeldingUtenforArbeidsgiverperiode' | 'MinimumSykdomsgrad' | 'ManglerOpptjening' | 'ManglerMedlemskap' | 'EtterDødsdato' | 'UKJENT'
