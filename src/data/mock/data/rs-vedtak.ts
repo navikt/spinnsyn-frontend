@@ -174,7 +174,8 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-06',
-    annullert: false
+    annullert: false,
+    revurdert: false
 }
 
 export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
@@ -220,7 +221,8 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-03',
-    annullert: false
+    annullert: false,
+    revurdert: false
 }
 
 export const vedtakAnnullert: RSVedtakWrapper = {
@@ -259,7 +261,8 @@ export const vedtakAnnullert: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-05',
-    annullert: true
+    annullert: true,
+    revurdert: false
 }
 
 export const integrasjonsVedtak: RSVedtakWrapper = {
@@ -439,7 +442,8 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
         }
     },
     opprettet: '2021-05-06',
-    annullert: false
+    annullert: false,
+    revurdert: false
 }
 
 export const nyeVedtak: RSVedtakWrapper[] = [
