@@ -96,25 +96,33 @@ const Utvidbar = (props: UtvidbarProps) => {
                 type={'button'}
                 className="utvidbar__toggle"
             >
-                <Vis hvis={props.ikon !== undefined}>
-                    <img aria-hidden="true" className="utvidbar__ikon"
-                        ref={btnImage}
-                        alt={props.ikonAltTekst}
-                        src={props.ikon}
-                    />
-                </Vis>
-                <Vis hvis={props.type === undefined}>
-                    <div className="utvidbar__tittel">
-                        <Systemtittel tag="h3">{props.tittel}</Systemtittel>
-                        <Normaltekst className="utvidbar__tekst">{props.systemtittel}</Normaltekst>
-                    </div>
-                </Vis>
-                <Vis hvis={props.type === 'intern'}>
-                    <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
-                </Vis>
-                <Vis hvis={props.type === 'info'}>
-                    <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
-                </Vis>
+                <Vis hvis={props.ikon !== undefined}
+                    render={() =>
+                        <img aria-hidden="true" className="utvidbar__ikon"
+                            ref={btnImage}
+                            alt={props.ikonAltTekst}
+                            src={props.ikon}
+                        />
+                    }
+                />
+                <Vis hvis={props.type === undefined}
+                    render={() =>
+                        <div className="utvidbar__tittel">
+                            <Systemtittel tag="h3">{props.tittel}</Systemtittel>
+                            <Normaltekst className="utvidbar__tekst">{props.systemtittel}</Normaltekst>
+                        </div>
+                    }
+                />
+                <Vis hvis={props.type === 'intern'}
+                    render={() =>
+                        <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
+                    }
+                />
+                <Vis hvis={props.type === 'info'}
+                    render={() =>
+                        <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
+                    }
+                />
                 <span className="utvidbar__handling">
                     <Chevron type={erApen ? 'opp' : 'ned'} />
                 </span>
@@ -126,18 +134,20 @@ const Utvidbar = (props: UtvidbarProps) => {
             >
                 <div ref={innhold} className="utvidbar__innhold">
                     {props.children}
-                    <Vis hvis={props.visLukk}>
-                        <div className="lenkerad">
-                            <button type="button" className="lenke" aria-pressed={!erApen}
-                                tabIndex={(erApen ? null : -1) as any}
-                                onClick={onButtonClick}
-                            >
-                                <Normaltekst tag="span">
-                                    {props.type === 'intern' ? 'Skjul' : 'Lukk'}
-                                </Normaltekst>
-                            </button>
-                        </div>
-                    </Vis>
+                    <Vis hvis={props.visLukk}
+                        render={() =>
+                            <div className="lenkerad">
+                                <button type="button" className="lenke" aria-pressed={!erApen}
+                                    tabIndex={(erApen ? null : -1) as any}
+                                    onClick={onButtonClick}
+                                >
+                                    <Normaltekst tag="span">
+                                        {props.type === 'intern' ? 'Skjul' : 'Lukk'}
+                                    </Normaltekst>
+                                </button>
+                            </div>
+                        }
+                    />
                 </div>
             </div>
         </div>

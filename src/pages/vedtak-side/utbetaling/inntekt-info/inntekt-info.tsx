@@ -7,11 +7,7 @@ import Vis from '../../../../components/vis'
 import { useAppStore } from '../../../../data/stores/app-store'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
-import {
-    refusjonTilArbeidsgiverBeløp,
-    refusjonTilArbeidsgiverTotalBeløp,
-    refusjonTilArbeidsgiverUtbetalingsdager
-} from '../../../../utils/vedtak-utils'
+import { refusjonTilArbeidsgiverBeløp, refusjonTilArbeidsgiverTotalBeløp, refusjonTilArbeidsgiverUtbetalingsdager } from '../../../../utils/vedtak-utils'
 
 const InntektInfo = () => {
     const { valgtVedtak } = useAppStore()
@@ -25,7 +21,7 @@ const InntektInfo = () => {
         setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
         setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak).length + ' dager')
         setSum(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)) + ' kr')
-        if(valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt  !== undefined){
+        if (valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined) {
             const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.inntekt)
             setMnd(ValutaFormat.format(manedsinntekt || 0) + ' kr')
             setAr(ValutaFormat.format(manedsinntekt * 12 || 0) + ' kr')
@@ -37,20 +33,24 @@ const InntektInfo = () => {
             <Element className="inntekt__info__tittel">
                 {tekst('utbetaling.inntekt.info.tittel')}
             </Element>
-            <Vis hvis={valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt  !== undefined}>
-                <div className="inntekt__info__linje">
-                    <Normaltekst tag="span">
-                        {tekst('utbetaling.inntekt.info.beregnet')}
-                    </Normaltekst>
-                    <Normaltekst tag="span">{mnd}</Normaltekst>
-                </div>
-                <div className="inntekt__info__linje gra__understrek">
-                    <Normaltekst tag="span">
-                        {tekst('utbetaling.inntekt.info.omregnet')}
-                    </Normaltekst>
-                    <Normaltekst tag="span">{ar}</Normaltekst>
-                </div>
-            </Vis>
+            <Vis hvis={valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined}
+                render={() =>
+                    <>
+                        <div className="inntekt__info__linje">
+                            <Normaltekst tag="span">
+                                {tekst('utbetaling.inntekt.info.beregnet')}
+                            </Normaltekst>
+                            <Normaltekst tag="span">{mnd}</Normaltekst>
+                        </div>
+                        <div className="inntekt__info__linje gra__understrek">
+                            <Normaltekst tag="span">
+                                {tekst('utbetaling.inntekt.info.omregnet')}
+                            </Normaltekst>
+                            <Normaltekst tag="span">{ar}</Normaltekst>
+                        </div>
+                    </>
+                }
+            />
             <div className="inntekt__info__linje">
                 <Element tag="span" className="inntekt__info__uthevet">
                     {tekst('utbetaling.inntekt.info.daglig')}

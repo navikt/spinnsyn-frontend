@@ -39,7 +39,7 @@ describe('Tester at appen starter', () => {
 
         cy.contains('21 060 kroner')
             .and('contain', 'Utbetales til arbeidsgiveren')
-            .click()
+            .click({ force: true })
 
         cy.get('.inntekt__info')
             .should('contain', 'Slik beregner vi sykepengene')
