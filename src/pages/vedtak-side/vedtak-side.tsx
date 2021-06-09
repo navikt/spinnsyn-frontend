@@ -12,7 +12,7 @@ import Banner from '../../components/banner/banner'
 import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
-import Vis2 from '../../components/vis'
+import Vis from '../../components/vis'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
@@ -91,7 +91,7 @@ const VedtakSide = () => {
                 <BetaAlertstripe />
 
                 <VedtakStatus />
-                <Vis2 hvis={annullertEllerRevurdert}
+                <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
                             <AnnulleringsInfo />
@@ -105,11 +105,11 @@ const VedtakSide = () => {
                 <UtbetalingMedInntekt ekspandert={false} />
                 <Sykepengedager />
 
-                <Vis2 hvis={!annullertEllerRevurdert}
+                <Vis hvis={!annullertEllerRevurdert}
                     render={() =>
                         <>
                             <Uenig />
-                            <Vis2 hvis={valgtVedtak.vedtak.utbetaling.automatiskBehandling}
+                            <Vis hvis={valgtVedtak.vedtak.utbetaling.automatiskBehandling}
                                 render={() =>
                                     <AutomatiskBehandling />
                                 }
@@ -117,7 +117,7 @@ const VedtakSide = () => {
                         </>
                     }
                 />
-                <Vis2 hvis={annullertEllerRevurdert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}
+                <Vis hvis={annullertEllerRevurdert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}
                     render={() =>
                         <AutomatiskBehandlingPreteritum />
                     }

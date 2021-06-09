@@ -3,7 +3,7 @@ import './inntekt-info.less'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
-import Vis2 from '../../../../components/vis'
+import Vis from '../../../../components/vis'
 import { useAppStore } from '../../../../data/stores/app-store'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
@@ -33,7 +33,7 @@ const InntektInfo = () => {
             <Element className="inntekt__info__tittel">
                 {tekst('utbetaling.inntekt.info.tittel')}
             </Element>
-            <Vis2 hvis={valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined}
+            <Vis hvis={valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined}
                 render={() =>
                     <>
                         <div className="inntekt__info__linje">
