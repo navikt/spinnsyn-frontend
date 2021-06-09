@@ -12,7 +12,7 @@ import Banner from '../../components/banner/banner'
 import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
-import Vis from '../../components/vis'
+import Vis2 from '../../components/vis'
 import { useAppStore } from '../../data/stores/app-store'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
@@ -43,7 +43,7 @@ const brodsmuler: Brodsmule[] = [
 const VedtakSide = () => {
     const { id } = useParams<RouteParams>()
     const { logEvent } = useAmplitudeInstance()
-    const { valgtVedtak, setValgtVedtak, rsVedtak, setRsVedtak  } = useAppStore()
+    const { valgtVedtak, setValgtVedtak, rsVedtak, setRsVedtak } = useAppStore()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -91,23 +91,37 @@ const VedtakSide = () => {
                 <BetaAlertstripe />
 
                 <VedtakStatus />
-                <Vis hvis={annullertEllerRevurdert}>
-                    <AnnulleringsInfo />
-                    <Systemtittel className="tidligere__beslutning">{tekst('annullering.se-tidligere-beslutning')}</Systemtittel>
-                </Vis>
+                <Vis2 hvis={annullertEllerRevurdert}
+                    render={() =>
+                        <>
+                            <AnnulleringsInfo />
+                            <Systemtittel className="tidligere__beslutning">
+                                {tekst('annullering.se-tidligere-beslutning')}
+                            </Systemtittel>
+                        </>
+                    }
+                />
 
                 <UtbetalingMedInntekt ekspandert={false} />
                 <Sykepengedager />
 
-                <Vis hvis={!annullertEllerRevurdert}>
-                    <Uenig />
-                    <Vis hvis={valgtVedtak.vedtak.utbetaling.automatiskBehandling}>
-                        <AutomatiskBehandling />
-                    </Vis>
-                </Vis>
-                <Vis hvis={annullertEllerRevurdert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}>
-                    <AutomatiskBehandlingPreteritum />
-                </Vis>
+                <Vis2 hvis={!annullertEllerRevurdert}
+                    render={() =>
+                        <>
+                            <Uenig />
+                            <Vis2 hvis={valgtVedtak.vedtak.utbetaling.automatiskBehandling}
+                                render={() =>
+                                    <AutomatiskBehandling />
+                                }
+                            />
+                        </>
+                    }
+                />
+                <Vis2 hvis={annullertEllerRevurdert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}
+                    render={() =>
+                        <AutomatiskBehandlingPreteritum />
+                    }
+                />
                 <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
                     <VenstreChevron />
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>

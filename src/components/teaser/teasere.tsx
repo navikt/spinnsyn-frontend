@@ -20,27 +20,31 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst, kanSorteres }: Sokn
         <div className={className}>
             <header className="inngangspanelerHeader">
                 <Systemtittel className="inngangspanelerHeader__tittel" tag="h2">{tittel}</Systemtittel>
-                <Vis hvis={kanSorteres}>
-                    <Select label="Sorter etter" bredde="s"
-                        className="inngangspanel__sortering"
-                        onChange={(event) => {
-                            event.persist()
-                        }}
-                    >
-                        <option value="Dato">Dato</option>
-                    </Select>
-                </Vis>
+                <Vis hvis={kanSorteres}
+                    render={() =>
+                        <Select label="Sorter etter" bredde="s"
+                            className="inngangspanel__sortering"
+                            onChange={(event) => {
+                                event.persist()
+                            }}
+                        >
+                            <option value="Dato">Dato</option>
+                        </Select>
+                    }
+                />
             </header>
 
             {vedtak.map((v, idx) => {
                 return <Teaser key={idx} vedtak={v} />
             })}
 
-            <Vis hvis={vedtak.length === 0}>
-                <Element className="inngangspanel inngangspanel--tomListe">
-                    {tomListeTekst}
-                </Element>
-            </Vis>
+            <Vis hvis={vedtak.length === 0}
+                render={() =>
+                    <Element className="inngangspanel inngangspanel--tomListe">
+                        {tomListeTekst}
+                    </Element>
+                }
+            />
         </div>
     )
 }

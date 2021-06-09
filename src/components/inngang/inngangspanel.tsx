@@ -17,11 +17,13 @@ export const InngangsIkon = ({ ikon, ikonHover }: InngangsIkonProps) => {
             <span className="inngangspanel__ikon inngangspanel__ikon--normal">
                 <img alt="" src={ikon} />
             </span>
-            <Vis hvis={ikonHover !== undefined}>
-                <span className="inngangspanel__ikon inngangspanel__ikon--hover">
-                    <img alt="" src={ikonHover || ikon} />
-                </span>
-            </Vis>
+            <Vis hvis={ikonHover !== undefined}
+                render={() =>
+                    <span className="inngangspanel__ikon inngangspanel__ikon--hover">
+                        <img alt="" src={ikonHover || ikon} />
+                    </span>
+                }
+            />
         </>
     )
 }

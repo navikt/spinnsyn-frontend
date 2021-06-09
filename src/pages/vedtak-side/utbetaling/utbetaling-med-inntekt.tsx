@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
-import Vis from '../../../components/vis'
+import Vis2 from '../../../components/vis'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
@@ -47,9 +47,11 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
                 <Normaltekst>
                     {tekst('utbetaling.trekk')}
                 </Normaltekst>
-                <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}>
-                    <DagTabell />
-                </Vis>
+                <Vis2 hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
+                    render={() =>
+                        <DagTabell />
+                    }
+                />
                 <BeregningInfo />
                 <FeilOpplysninger />
             </div>

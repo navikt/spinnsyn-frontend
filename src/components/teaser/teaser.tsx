@@ -35,9 +35,11 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
                             {arbeidsgiverListevisning(vedtak, soknader)}
                         </div>
                     </div>
-                    <Vis hvis={annullertEllerRevurdert}>
-                        <EtikettFokus>{tekst('spinnsyn.teaser.annullert')}</EtikettFokus>
-                    </Vis>
+                    <Vis hvis={annullertEllerRevurdert}
+                        render={() =>
+                            <EtikettFokus>{tekst('spinnsyn.teaser.annullert')}</EtikettFokus>
+                        }
+                    />
                 </div>
                 <div className="inngangspanel__del2">
                     <HoyreChevron />
