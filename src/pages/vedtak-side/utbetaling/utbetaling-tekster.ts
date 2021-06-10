@@ -48,7 +48,7 @@ const UtbetalingTekster = {
         ' for å få sykepenger.',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode': 'Egenmelding kan bare brukes i arbeidsgiverperioden, det vil si de første 16 dagene av sykefraværet som arbeidsgiveren betaler. Etter dette må du ha sykmelding og sende inn søknad for at NAV skal betale.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad': 'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
-    'utbetaling.tabell.avvist.ManglerOpptjening': 'Du må ha vært i arbeid i minst fire uker rett før sykefraværet.',
+    'utbetaling.tabell.avvist.ManglerOpptjening': 'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.',
     'utbetaling.tabell.avvist.ManglerMedlemskap': 'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.',
     'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',

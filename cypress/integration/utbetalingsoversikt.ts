@@ -107,7 +107,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
                 .contains('Du må være minst 20 prosent sykmeldt for å få sykepenger.')
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Jobbet for kort').parent().siblings()
-                .contains('Du må ha vært i arbeid i minst fire uker rett før sykefraværet.')
+                .contains('Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.')
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Ikke medlem').parent().siblings()
                 .contains('Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.')
