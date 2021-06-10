@@ -89,7 +89,7 @@ const DagTabell = () => {
             case 'MinimumInntekt':
                 return <Etikett mini type="fokus">For lav inntekt</Etikett>
             case 'EgenmeldingUtenforArbeidsgiverperiode':
-                return <Etikett mini type="fokus">Egenmelding for sent</Etikett>
+                return <Etikett mini type="fokus">Egenmelding når NAV skal betale</Etikett>
             case 'MinimumSykdomsgrad':
                 return <Etikett mini type="fokus">Sykmeldt i for liten grad</Etikett>
             case 'ManglerOpptjening':
