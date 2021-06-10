@@ -94,7 +94,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
                 .contains('Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.')
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Maks antall dager nådd').parent().siblings()
-                .contains('Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger hvis du er under 67 år. Fra du er blitt 67 år har du rett til 60 dager.  Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.')
+                .contains('Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger hvis du er under 67 år. Fra du er blitt 67 år har du rett til 60 dager. Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.')
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('For lav inntekt').parent().siblings()
                 .contains('Du må ha en årlig inntekt på minst et halvt grunnbeløp for å få sykepenger.')

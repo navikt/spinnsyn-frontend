@@ -42,7 +42,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.ForeldetDag': 'Søknaden må sendes senest tre måneder etter den siste dagen i sykmeldingsperioden.',
     'utbetaling.tabell.label.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
 
-    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger hvis du er under 67 år. Fra du er blitt 67 år har du rett til 60 dager.  Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
+    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger hvis du er under 67 år. Fra du er blitt 67 år har du rett til 60 dager. Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
     'utbetaling.tabell.avvist.MinimumInntekt': 'Du må ha en årlig inntekt på minst et halvt ' +
         '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
         ' for å få sykepenger.',
