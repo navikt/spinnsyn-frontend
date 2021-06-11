@@ -106,6 +106,20 @@ const DagTabell = () => {
     }
 
     const lagBeskrivelseForUnikDag = (dag: DagData) => {
+        if (dag.dagtype === 'ForeldetDag') {
+            return (
+                <>
+                    <Normaltekst>
+                        {tekst('utbetaling.tabell.label.ForeldetDag' as any)}
+                    </Normaltekst>
+
+                    <Normaltekst className={'avvist-lovhjemmel'}>
+                        {parser(tekst('utbetaling.tabell.avvist.lovhjemmel.ForeldetDag'))}
+                    </Normaltekst>
+                </>
+            )
+        }
+
         if (dag.dagtype !== 'AvvistDag') {
             return (
                 <Normaltekst>
