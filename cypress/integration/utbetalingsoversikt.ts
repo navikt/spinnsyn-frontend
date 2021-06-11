@@ -98,7 +98,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('For lav inntekt').parent().siblings()
                 .contains('Du må ha en årlig inntekt på minst et halvt grunnbeløp for å få sykepenger.')
-                .get('a').should('have.attr', 'href', 'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden')
+                .get('a').contains('grunnbeløp').should('have.attr', 'href', 'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden')
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Egenmelding når NAV skal betale').parent().siblings()
                 .contains('Egenmelding kan bare brukes i arbeidsgiverperioden, det vil si de første 16 dagene av sykefraværet som arbeidsgiveren betaler. Etter dette må du ha sykmelding og sende inn søknad for at NAV skal betale.')
