@@ -107,17 +107,23 @@ const DagTabell = () => {
 
     const lagBeskrivelseForUnikDag = (dag: DagData) => {
         if (dag.dagtype !== 'AvvistDag') {
-            return(
+            return (
                 <Normaltekst>
                     {tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}
                 </Normaltekst>
             )
         }
 
-        return(
-            <Normaltekst>
-                {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
-            </Normaltekst>
+        return (
+            <>
+                <Normaltekst>
+                    {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[ 0 ]}` as any))}
+                </Normaltekst>
+
+                <Normaltekst className={'avvist-lovhjemmel'}>
+                    {parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[ 0 ]}` as any))}
+                </Normaltekst>
+            </>
         )
     }
 

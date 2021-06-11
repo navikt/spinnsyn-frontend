@@ -42,8 +42,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.ForeldetDag': 'Søknaden må sendes senest tre måneder etter den siste dagen i sykmeldingsperioden.',
     'utbetaling.tabell.label.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
 
-    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger hvis du er under 67 år. Fra du er blitt 67 år har du rett til 60 dager. Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.' +
-        '<br />Beregningen er gjort etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>',
+    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger hvis du er under 67 år. Fra du er blitt 67 år har du rett til 60 dager. Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
     'utbetaling.tabell.avvist.MinimumInntekt': 'Du må ha en årlig inntekt på minst et halvt ' +
         '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
         ' for å få sykepenger.',
@@ -53,6 +52,14 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.ManglerMedlemskap': 'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.',
     'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
+
+    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': 'Beregningen er gjort etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': 'Beregningen er gjort etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-3</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': 'Beregningen er gjort etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-17</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': 'Beregningen er gjort etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap': 'Beregningen er gjort etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato': 'Beregningen er gjort etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
 }
 
 export default UtbetalingTekster
