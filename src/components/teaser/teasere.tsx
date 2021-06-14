@@ -1,4 +1,3 @@
-import { Select } from 'nav-frontend-skjema'
 import { Element, Systemtittel } from 'nav-frontend-typografi'
 import React from 'react'
 
@@ -11,27 +10,14 @@ interface SoknaderTeasereProps {
     className?: string;
     tittel: string;
     tomListeTekst?: string;
-    kanSorteres?: boolean;
 }
 
-const Teasere = ({ vedtak, className, tittel, tomListeTekst, kanSorteres }: SoknaderTeasereProps) => {
+const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeasereProps) => {
 
     return (
         <div className={className}>
             <header className="inngangspanelerHeader">
                 <Systemtittel className="inngangspanelerHeader__tittel" tag="h2">{tittel}</Systemtittel>
-                <Vis hvis={kanSorteres}
-                    render={() =>
-                        <Select label="Sorter etter" bredde="s"
-                            className="inngangspanel__sortering"
-                            onChange={(event) => {
-                                event.persist()
-                            }}
-                        >
-                            <option value="Dato">Dato</option>
-                        </Select>
-                    }
-                />
             </header>
 
             {vedtak.map((v, idx) => {
