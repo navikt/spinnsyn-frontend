@@ -88,7 +88,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
                 .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Søkt for sent').parent().siblings()
-                .contains('Søknaden må sendes senest tre måneder etter den siste dagen i sykmeldingsperioden.')
+                .contains('Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.')
             cy.get('.etikett--mini.etikett--info')
                 .contains('Ukjent').parent().siblings()
                 .contains('Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.')
