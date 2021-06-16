@@ -91,7 +91,7 @@ describe('Tester at appen starter', () => {
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 5).eq(2).click({ force: true })
+            .should('have.length', 5).eq(0).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakAnnullert.id}`)
         cy.contains('Søknaden er behandlet på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
@@ -108,7 +108,7 @@ describe('Tester at appen starter', () => {
 
     it('Vi åpner et revurdert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 5).eq(3).click({ force: true })
+            .should('have.length', 5).eq(1).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakRevurdert.id}`)
         cy.contains('Søknaden er behandlet på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
