@@ -52,7 +52,7 @@ export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
             <Undertekst className="inngangspanel__meta">
                 {meta}
             </Undertekst>
-            <Undertittel className="inngangspanel__tittel">
+            <Undertittel tag="h3" className="inngangspanel__tittel">
                 <span className="txtlink"> {tittel} </span>
             </Undertittel>
         </header>
