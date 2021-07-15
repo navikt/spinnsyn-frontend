@@ -14,7 +14,7 @@ const AnnulleringsInfo = () => {
     return (
         <div className="annullering">
             <AlertStripeAdvarsel>{tekst('annullering.alert')}</AlertStripeAdvarsel>
-            <Utvidbar erApen={true} type="info" tittel={tekst('annullering.info.header')}
+            <Utvidbar erApen={true} type="info" tittel={tekst('annullering.info.header')} heading="h2"
             >
                 <Normaltekst>
                     {parser(tekst('annullering.info.body'))}

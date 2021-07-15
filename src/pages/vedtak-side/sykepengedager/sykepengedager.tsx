@@ -18,25 +18,25 @@ const Sykepengedager = () => {
     if (valgtVedtak === undefined) return null
 
     return (
-        <Utvidbar className={'blokkinfo bla' + (apen ? ' apen' : '')}
+        <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}
             erApen={apen} ikon={LedningImg} ikonHover={LedningImg} visLukk={true}
             tittel={valgtVedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
-            systemtittel={tekst('sykepengedager.hittil')}
+            systemtittel={tekst('sykepengedager.hittil')} heading="h2"
         >
 
             <Systemtittel tag="h3" className="tekstinfo__avsnitt">
                 {valgtVedtak.vedtak.utbetaling.gjenståendeSykedager}
+                <Normaltekst tag="span">
+                    <br />{tekst('sykepengedager.systemtittel')}
+                </Normaltekst>
             </Systemtittel>
-            <Normaltekst className="">
-                {tekst('sykepengedager.systemtittel')}
-            </Normaltekst>
 
             <Systemtittel tag="h3" className="tekstinfo__avsnitt">
                 {sluttdato}
+                <Normaltekst tag="span" className="">
+                    <br />{tekst('sykepengedager.sluttdato')}
+                </Normaltekst>
             </Systemtittel>
-            <Normaltekst className="">
-                {tekst('sykepengedager.sluttdato')}
-            </Normaltekst>
 
             <Normaltekst className="tekstinfo__avsnitt">
                 {tekst('sykepengedager.sluttdato.tekst1')}

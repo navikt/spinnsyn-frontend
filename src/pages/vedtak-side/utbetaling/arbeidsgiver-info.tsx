@@ -15,7 +15,7 @@ const ArbeidsgiverInfo = () => {
 
     return (
         <section className="arbeidsgiver-info">
-            <Element tag="h2" className="arbeidsgiver-info__tittel">
+            <Element tag="h3" className="arbeidsgiver-info__tittel">
                 {tekst('utbetaling.arbeidsgiver.tittel')}
             </Element>
             <Normaltekst className="arbeidsgiver-info__tekst">

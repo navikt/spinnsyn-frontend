@@ -18,8 +18,9 @@ interface UtvidbarProps {
     ikonAltTekst?: string;
     className?: string;
     visLukk?: boolean;
-    type?: 'intern' | 'info' | undefined;
+    type?: 'intern' | 'info' | 'integrert' | undefined;
     fixedHeight?: boolean;
+    heading?: string;
 }
 
 const Utvidbar = (props: UtvidbarProps) => {
@@ -30,6 +31,8 @@ const Utvidbar = (props: UtvidbarProps) => {
     const utvidbar = useRef<HTMLDivElement>(null)
     const btnImage = useRef<HTMLImageElement>(null)
     const innhold = useRef<HTMLDivElement>(null)
+
+    const heading = !props.heading ? 'h3' : props.heading
 
     useEffect(() => {
         setErApen(props.erApen)
@@ -108,19 +111,29 @@ const Utvidbar = (props: UtvidbarProps) => {
                 <Vis hvis={props.type === undefined}
                     render={() =>
                         <div className="utvidbar__tittel">
-                            <Systemtittel tag="h3">{props.tittel}</Systemtittel>
+                            <Systemtittel tag={heading}>{props.tittel}</Systemtittel>
                             <Normaltekst className="utvidbar__tekst">{props.systemtittel}</Normaltekst>
+                        </div>
+                    }
+                />
+                <Vis hvis={props.type === 'integrert'}
+                    render={() =>
+                        <div className="utvidbar__tittel">
+                            <Systemtittel tag={heading}>
+                                {props.tittel}<br />
+                                <Normaltekst tag="span" className="utvidbar__tekst">{props.systemtittel}</Normaltekst>
+                            </Systemtittel>
                         </div>
                     }
                 />
                 <Vis hvis={props.type === 'intern'}
                     render={() =>
-                        <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
+                        <Normaltekst tag={heading} className="utvidbar__tittel">{props.tittel}</Normaltekst>
                     }
                 />
                 <Vis hvis={props.type === 'info'}
                     render={() =>
-                        <Normaltekst tag="h3" className="utvidbar__tittel">{props.tittel}</Normaltekst>
+                        <Normaltekst tag={heading} className="utvidbar__tittel">{props.tittel}</Normaltekst>
                     }
                 />
                 <span className="utvidbar__handling">

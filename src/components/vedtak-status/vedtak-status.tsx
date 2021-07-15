@@ -25,7 +25,7 @@ const VedtakStatus = () => {
     return (
         <div className="vedtak-status">
             <Veilederpanel kompakt svg={<img src={veileder} alt="" />}>
-                <Undertittel tag="h3" className="vedtak-status__tittel">
+                <Undertittel tag="h2" className="vedtak-status__tittel">
                     {annullertEllerRevurdert
                         ? tekst('vedtak.status.annullert.tittel')
                         : tekst('vedtak.status.tittel')}

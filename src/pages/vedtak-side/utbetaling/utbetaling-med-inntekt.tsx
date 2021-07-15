@@ -31,7 +31,8 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
     if (valgtVedtak === undefined) return null
 
     return (
-        <Utvidbar className={'gronn' + (ekspandert ? ' apen' : '')}
+        <Utvidbar type="integrert"
+            className={'gronn' + (ekspandert ? ' apen' : '')}
             erApen={ekspandert}
             visLukk={true}
             ikon={HandImg}
@@ -40,6 +41,7 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
             systemtittel={tekst('utbetaling.systemtittel')}
             ikonAltTekst=""
             fixedHeight={true}
+            heading="h2"
         >
             <div className="utbetaling__innhold">
                 <ArbeidsgiverInfo />

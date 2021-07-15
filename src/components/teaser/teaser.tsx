@@ -24,13 +24,17 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
                     <div className="inngangspanel__del1">
                         <InngangsIkon ikon={annullertEllerRevurdert ? annullert : hand}
                             ikonHover={annullertEllerRevurdert ? annullertHover : handHover} />
-                        <div className="inngangspanel__innhold utvidbar__toggle">
+                        <div id={`soknader-header-${vedtak.id}`} className="inngangspanel__innhold utvidbar__toggle">
                             <InngangsHeader
                                 meta={
                                     dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' +
                                     dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
                                 }
-                                tittel={annullertEllerRevurdert ? tekst('spinnsyn.teaser.annullert.tittel') : tekst('spinnsyn.teaser.tittel')}
+                                tittel={
+                                    annullertEllerRevurdert
+                                        ? tekst('spinnsyn.teaser.annullert.tittel')
+                                        : tekst('spinnsyn.teaser.tittel')
+                                }
                             />
                             {arbeidsgiverListevisning(vedtak, soknader)}
                         </div>
