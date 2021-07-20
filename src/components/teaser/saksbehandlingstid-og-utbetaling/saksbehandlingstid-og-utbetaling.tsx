@@ -13,7 +13,7 @@ const SaksbehandlingstidOgUtbetaling = () => {
             href={tekst('saksbehandlingstid.utbetaling.lenke.url')}
             target="_blank" rel="noreferrer noopener"
         >
-            <Undertittel tag="h3" className="txtlink">
+            <Undertittel tag="h2" className="txtlink">
                 {tekst('saksbehandlingstid.utbetaling.tittel')}
             </Undertittel>
             <HoyreChevron />
