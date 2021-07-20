@@ -14,10 +14,7 @@ export const redirectTilLoginHvis401 = (res: Response) => {
 
 export const setBodyClass = (name: string) => {
     if (document.body.className !== '') {
-        const classes = document.body.className.split(' ')
-        classes.forEach(cl => {
-            document.body.classList.remove(cl)
-        })
+        document.body.setAttribute('class', '')
     }
     document.body.classList.add(name)
 }
