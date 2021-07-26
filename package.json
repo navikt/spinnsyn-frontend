@@ -73,6 +73,7 @@
         "eslint-plugin-cypress": "^2.11.3",
         "eslint-plugin-react-hooks": "^4.2.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
+        "react-shallow-renderer": "^16.14.1",
         "react-test-renderer": "^17.0.2",
         "ts-loader": "^9.2.4",
         "yet-another-fetch-mock": "^4.1.0"
