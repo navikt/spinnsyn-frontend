@@ -94,6 +94,7 @@
     "yet-another-fetch-mock": "^4.1.0"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start-mock": "NODE_ENV=development craco start",
     "start": "craco start",
     "build": "CI=true craco build",
