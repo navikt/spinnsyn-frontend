@@ -13,7 +13,7 @@
     "@types/react": "^17.0.5",
     "@types/react-collapse": "^5.0.0",
     "@types/react-dom": "^17.0.3",
-    "amplitude-js": "^8.2.1",
+    "amplitude-js": "^8.3.1",
     "browserslist": ">=4.16.5",
     "classnames": "^2.3.1",
     "constate": "^3.2.0",
@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
-    "@types/amplitude-js": "^7.0.1",
+    "@types/amplitude-js": "^8.0.1",
     "@types/classnames": "^2.3.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/uuid": "^8.3.0",
