@@ -98,7 +98,7 @@
     "start": "craco start",
     "build": "CI=true craco build",
     "test": "MOCK_BACKEND=true craco test",
-    "cy:open": "cypress open",
+    "cy:open": "cypress open --config pageLoadTimeout=100000,watchForFileChanges=false",
     "e2e": "MOCK_BACKEND=true start-test 8080 cy:open",
     "lint": "eslint --ext=ts,tsx src cypress",
     "lint:fix": "eslint --ext=ts,tsx src cypress --fix"
