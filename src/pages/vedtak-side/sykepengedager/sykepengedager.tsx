@@ -5,17 +5,18 @@ import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
-import { useAppStore } from '../../../data/stores/app-store'
+import useValgtVedtak from '../../../query-hooks/useValgtVedtak'
 import { tekst } from '../../../utils/tekster'
 import { estimertSluttdato } from '../../../utils/vedtak-utils'
 import LedningImg from './ikon-sykefravaersoversikt.svg'
 
 const Sykepengedager = () => {
-    const { valgtVedtak } = useAppStore()
+    const valgtVedtak = useValgtVedtak()
     const [ apen ] = useState<boolean>(false)
-    const sluttdato = estimertSluttdato(valgtVedtak)
 
-    if (valgtVedtak === undefined) return null
+    if (!valgtVedtak) return null
+
+    const sluttdato = estimertSluttdato(valgtVedtak)
 
     return (
         <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}

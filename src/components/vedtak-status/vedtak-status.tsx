@@ -4,14 +4,14 @@ import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import React, { useEffect, useState } from 'react'
 
-import { useAppStore } from '../../data/stores/app-store'
+import useValgtVedtak from '../../query-hooks/useValgtVedtak'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 import Dame from './female.svg'
 import Mann from './male.svg'
 
 const VedtakStatus = () => {
-    const { valgtVedtak } = useAppStore()
+    const valgtVedtak = useValgtVedtak()
     const periode = tilLesbarPeriodeMedArstall(valgtVedtak?.vedtak.fom, valgtVedtak?.vedtak.tom)
     const [ veileder, setVeileder ] = useState<string>()
 
@@ -19,7 +19,7 @@ const VedtakStatus = () => {
         (valgtVedtak!.id.charCodeAt(0) % 2) === 1 ? setVeileder(Dame) : setVeileder(Mann)
     }, [ valgtVedtak ])
 
-    if (valgtVedtak === undefined) return null
+    if (!valgtVedtak) return null
     const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
 
     return (

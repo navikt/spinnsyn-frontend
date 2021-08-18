@@ -7,7 +7,7 @@ import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
-import { useAppStore } from '../../../data/stores/app-store'
+import useValgtVedtak from '../../../query-hooks/useValgtVedtak'
 import { RSBegrunnelse, RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
 import { logger } from '../../../utils/logger'
 import { tekst } from '../../../utils/tekster'
@@ -23,7 +23,7 @@ interface DagData {
 }
 
 const DagTabell = () => {
-    const { valgtVedtak } = useAppStore()
+    const valgtVedtak = useValgtVedtak()
 
     const lagDagData = () => {
         const dager: DagData[] = valgtVedtak!.vedtak.utbetaling.utbetalingsdager

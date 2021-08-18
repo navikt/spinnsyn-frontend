@@ -4,7 +4,6 @@ import SaksbehandlingstidOgUtbetalingTekster
     from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
-import RefreshHvisFeilStateTekster from '../pages/feil/refresh-hvis-feil-state-tekster'
 import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
 import AnnulleringTekster from '../pages/vedtak-side/annullering/annullering-tekster'
 import BehandlingTekster from '../pages/vedtak-side/behandling/behandling-tekster'
@@ -20,7 +19,6 @@ const tekster = {
     ...VedtakTekster,
     ...VedtakStatusTekster,
     ...UtbetalingTekster,
-    ...RefreshHvisFeilStateTekster,
     ...UenigTekster,
     ...BehandlingTekster,
     ...SykepengedagerTekster,
@@ -38,7 +36,6 @@ type TekstKeys =
     | keyof typeof BetaTekster
     | keyof typeof VedtakStatusTekster
     | keyof typeof UtbetalingTekster
-    | keyof typeof RefreshHvisFeilStateTekster
     | keyof typeof UenigTekster
     | keyof typeof BehandlingTekster
     | keyof typeof SykepengedagerTekster

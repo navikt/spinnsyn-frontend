@@ -14,15 +14,18 @@ const AnnulleringsInfo = () => {
     return (
         <div className="annullering">
             <AlertStripeAdvarsel>{tekst('annullering.alert')}</AlertStripeAdvarsel>
-            <Utvidbar erApen={true} type="info" tittel={tekst('annullering.info.header')} heading="h2"
-            >
-                <Normaltekst>
+            <Utvidbar erApen={true} type="info" tittel={tekst('annullering.info.header')} heading="h2">
+                <Normaltekst tag="div">
                     {parser(tekst('annullering.info.body'))}
-                    <div className="link__med__ikon">
-                        <span><img alt="" src={SkrivIkon} /></span>
-                        <Lenke href={tekst('behandling.lenke.url')}>{tekst('annullering.info.skriv-til-oss')}</Lenke>
-                    </div>
                 </Normaltekst>
+                <div className="link__med__ikon">
+                    <span><img alt="" src={SkrivIkon} /></span>
+                    <Lenke href={tekst('behandling.lenke.url')}>
+                        <Normaltekst tag="span">
+                            {tekst('annullering.info.skriv-til-oss')}
+                        </Normaltekst>
+                    </Lenke>
+                </div>
             </Utvidbar>
         </div>
     )

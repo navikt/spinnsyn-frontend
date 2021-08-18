@@ -1,17 +1,19 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { useAppStore } from '../../../data/stores/app-store'
+import useSoknader from '../../../query-hooks/useSoknader'
+import useValgtVedtak from '../../../query-hooks/useValgtVedtak'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 
 const ArbeidsgiverInfo = () => {
-    const { valgtVedtak, soknader } = useAppStore()
+    const valgtVedtak = useValgtVedtak()
+    const { data: soknader } = useSoknader()
 
     const soknadIder = valgtVedtak?.vedtak.dokumenter
         .filter(dok => dok.type === 'Søknad')
         .map(dok => dok.dokumentId)
 
-    const soknad = soknader.find(sok => soknadIder?.includes(sok.id))
+    const soknad = soknader?.find(sok => soknadIder?.includes(sok.id))
 
     return (
         <section className="arbeidsgiver-info">
