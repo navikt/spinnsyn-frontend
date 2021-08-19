@@ -59,7 +59,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a>',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>',
     'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
