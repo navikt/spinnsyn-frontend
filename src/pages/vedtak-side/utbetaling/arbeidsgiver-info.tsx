@@ -1,12 +1,12 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { useAppStore } from '../../../data/stores/app-store'
 import useSoknader from '../../../query-hooks/useSoknader'
-import useValgtVedtak from '../../../query-hooks/useValgtVedtak'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 
 const ArbeidsgiverInfo = () => {
-    const valgtVedtak = useValgtVedtak()
+    const { valgtVedtak } = useAppStore()
     const { data: soknader } = useSoknader()
 
     const soknadIder = valgtVedtak?.vedtak.dokumenter

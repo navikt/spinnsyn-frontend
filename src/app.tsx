@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import { Amplitude } from './components/amplitude/amplitudeProvider'
 import { HotjarTrigger } from './components/hotjar-trigger'
+import StoreProvider from './data/stores/store-provider'
 import RedirectTilOversikt from './pages/feil/redirect-til-oversikt'
 import VedtakListe from './pages/vedtak-liste/vedtak-liste'
 import VedtakSide from './pages/vedtak-side/vedtak-side'
@@ -30,19 +31,21 @@ const App = (): any => {
     ModalWrapper.setAppElement('#root')
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <Amplitude>
-                <HotjarTrigger>
-                    <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                        <Switch>
-                            <Route exact={true} path="/" component={VedtakListe} />
-                            <Route path={'/vedtak/:id'} component={VedtakSide} />
-                            <Route path={'/vedtak/'} component={RedirectTilOversikt} />
-                        </Switch>
-                    </main>
-                </HotjarTrigger>
-            </Amplitude>
-        </QueryClientProvider>
+        <StoreProvider>
+            <QueryClientProvider client={queryClient}>
+                <Amplitude>
+                    <HotjarTrigger>
+                        <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+                            <Switch>
+                                <Route exact={true} path="/" component={VedtakListe} />
+                                <Route path={'/vedtak/:id'} component={VedtakSide} />
+                                <Route path={'/vedtak/'} component={RedirectTilOversikt} />
+                            </Switch>
+                        </main>
+                    </HotjarTrigger>
+                </Amplitude>
+            </QueryClientProvider>
+        </StoreProvider>
     )
 }
 

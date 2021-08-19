@@ -3,12 +3,12 @@ import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
-import useValgtVedtak from '../../../query-hooks/useValgtVedtak'
+import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
 
 const FeilOpplysninger = () => {
-    const valgtVedtak = useValgtVedtak()
+    const { valgtVedtak } = useAppStore()
 
     return (
         <Utvidbar erApen={false} type="intern" className="blokkinfo"

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import Vis from '../../../components/vis'
-import useValgtVedtak from '../../../query-hooks/useValgtVedtak'
+import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverTotalBeløp } from '../../../utils/vedtak-utils'
@@ -22,7 +22,7 @@ interface UtbetalingerProps {
 
 const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
     const [ belop, setBelop ] = useState<string>('-')
-    const valgtVedtak = useValgtVedtak()
+    const { valgtVedtak } = useAppStore()
 
     useEffect(() => {
         setBelop(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)))

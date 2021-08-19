@@ -5,12 +5,12 @@ import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { useAmplitudeInstance } from '../../../components/amplitude/amplitude'
-import useValgtVedtak from '../../../query-hooks/useValgtVedtak'
+import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
 
 const Uenig = () => {
-    const valgtVedtak = useValgtVedtak()
+    const { valgtVedtak } = useAppStore()
     const { logEvent } = useAmplitudeInstance()
 
     return (

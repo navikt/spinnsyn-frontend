@@ -4,15 +4,18 @@ import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
+import { RouteParams } from '../../app'
 import { useAmplitudeInstance } from '../../components/amplitude/amplitude'
 import Banner from '../../components/banner/banner'
 import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import Vis from '../../components/vis'
+import { useAppStore } from '../../data/stores/app-store'
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
-import useValgtVedtak from '../../query-hooks/useValgtVedtak'
+import useVedtak from '../../query-hooks/useVedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import env from '../../utils/environment'
@@ -39,13 +42,24 @@ const brodsmuler: Brodsmule[] = [
 
 const VedtakSide = () => {
     const { logEvent } = useAmplitudeInstance()
-    const valgtVedtak = useValgtVedtak()
+    const { id } = useParams<RouteParams>()
+    const { data: vedtak } = useVedtak()
+    const { valgtVedtak, setValgtVedtak } = useAppStore()
     const { mutate: merkLest } = useMerkVedtakSomLest()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
         logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
-    }, [ logEvent ])
+        // eslint-disable-next-line
+    }, [])
+
+    useEffect(() => {
+        if (vedtak) {
+            const aktivtVedtak = vedtak.find(v => v.id === id)
+            setValgtVedtak(aktivtVedtak)
+        }
+        // eslint-disable-next-line
+    }, [ vedtak ])
 
     useEffect(() => {
         if (valgtVedtak && !valgtVedtak.lest) {

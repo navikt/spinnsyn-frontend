@@ -4,13 +4,13 @@ import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
 import Vis from '../../../../components/vis'
-import useValgtVedtak from '../../../../query-hooks/useValgtVedtak'
+import { useAppStore } from '../../../../data/stores/app-store'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
 import { refusjonTilArbeidsgiverBeløp, refusjonTilArbeidsgiverTotalBeløp, refusjonTilArbeidsgiverUtbetalingsdager } from '../../../../utils/vedtak-utils'
 
 const InntektInfo = () => {
-    const valgtVedtak = useValgtVedtak()
+    const { valgtVedtak } = useAppStore()
     const [ mnd, setMnd ] = useState<string>('-')
     const [ ar, setAr ] = useState<string>('-')
     const [ daglig, setDaglig ] = useState<string>('-')
