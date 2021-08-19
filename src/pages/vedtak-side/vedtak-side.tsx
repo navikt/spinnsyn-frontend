@@ -4,7 +4,6 @@ import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
-import { useQueryClient } from 'react-query'
 
 import { useAmplitudeInstance } from '../../components/amplitude/amplitude'
 import Banner from '../../components/banner/banner'
@@ -12,13 +11,13 @@ import BetaAlertstripe from '../../components/beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import Vis from '../../components/vis'
+import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
 import useValgtVedtak from '../../query-hooks/useValgtVedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import env from '../../utils/environment'
-import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
-import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
+import { setBodyClass } from '../../utils/utils'
 import AnnulleringsInfo from './annullering/annullering'
 import AutomatiskBehandling from './behandling/automatiskBehandling'
 import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
@@ -41,7 +40,7 @@ const brodsmuler: Brodsmule[] = [
 const VedtakSide = () => {
     const { logEvent } = useAmplitudeInstance()
     const valgtVedtak = useValgtVedtak()
-    const queryClient = useQueryClient()
+    const { mutate: merkLest } = useMerkVedtakSomLest()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -50,21 +49,7 @@ const VedtakSide = () => {
 
     useEffect(() => {
         if (valgtVedtak && !valgtVedtak.lest) {
-            const merkVedtakSomLest = async() => {
-                const res = await fetch(`${env.flexGatewayRoot}/spinnsyn-backend/api/v2/vedtak/${valgtVedtak.id}/les`, {
-                    method: 'POST',
-                    credentials: 'include',
-                })
-                const status = res.status
-                if (redirectTilLoginHvis401(res)) {
-                    return
-                } else if (status === 200) {
-                    queryClient.invalidateQueries('vedtak')
-                } else {
-                    logger.error('Feil ved markering av vedtak som lest. Ikke status 200', res)
-                }
-            }
-            merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
+            merkLest(valgtVedtak.id)
         }
         // eslint-disable-next-line
     }, [ valgtVedtak ])
