@@ -21,8 +21,8 @@ interface UtbetalingerProps {
 }
 
 const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
-    const { valgtVedtak } = useAppStore()
     const [ belop, setBelop ] = useState<string>('-')
+    const { valgtVedtak } = useAppStore()
 
     useEffect(() => {
         setBelop(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)))

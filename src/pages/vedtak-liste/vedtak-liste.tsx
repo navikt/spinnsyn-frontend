@@ -11,7 +11,7 @@ import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import SaksbehandlingstidOgUtbetaling
     from '../../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling'
 import Teasere from '../../components/teaser/teasere'
-import { useAppStore } from '../../data/stores/app-store'
+import useVedtak from '../../query-hooks/useVedtak'
 import { Brodsmule } from '../../types/types'
 import env from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
@@ -25,21 +25,16 @@ const brodsmuler: Brodsmule[] = [ {
 } ]
 
 const VedtakListe = () => {
-    const { rsVedtak, setValgtVedtak } = useAppStore()
-
-    const uleste = rsVedtak
-        .filter(v => v.lest === false)
-    const leste = rsVedtak
-        .filter(v => v.lest === true)
-        .sort(sorterEtterNyesteTom)
+    const { data: rsVedtak } = useVedtak()
 
     useEffect(() => {
         setBodyClass('vedtak-liste')
     }, [])
 
-    useEffect(() => {
-        setValgtVedtak(undefined)
-    }, [ setValgtVedtak ])
+    if (!rsVedtak) return null
+
+    const uleste = rsVedtak.filter(v => v.lest === false)
+    const leste = rsVedtak.filter(v => v.lest === true).sort(sorterEtterNyesteTom)
 
     return (
         <>

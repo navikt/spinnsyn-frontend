@@ -14,19 +14,19 @@ import Brodsmuler from '../../components/brodsmuler/brodsmuler'
 import VedtakStatus from '../../components/vedtak-status/vedtak-status'
 import Vis from '../../components/vis'
 import { useAppStore } from '../../data/stores/app-store'
+import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
+import useVedtak from '../../query-hooks/useVedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import env from '../../utils/environment'
-import { logger } from '../../utils/logger'
 import { tekst } from '../../utils/tekster'
-import { redirectTilLoginHvis401, setBodyClass } from '../../utils/utils'
+import { setBodyClass } from '../../utils/utils'
 import AnnulleringsInfo from './annullering/annullering'
 import AutomatiskBehandling from './behandling/automatiskBehandling'
 import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
-
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -41,43 +41,34 @@ const brodsmuler: Brodsmule[] = [
 ]
 
 const VedtakSide = () => {
-    const { id } = useParams<RouteParams>()
     const { logEvent } = useAmplitudeInstance()
-    const { valgtVedtak, setValgtVedtak, rsVedtak, setRsVedtak } = useAppStore()
+    const { id } = useParams<RouteParams>()
+    const { data: vedtak } = useVedtak()
+    const { valgtVedtak, setValgtVedtak } = useAppStore()
+    const { mutate: merkLest } = useMerkVedtakSomLest()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
         logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
-    }, [ logEvent ])
-
-    useEffect(() => {
-        const aktivtVedtak = rsVedtak.find(a => a.id === id)
-        setValgtVedtak(aktivtVedtak)
-
-        if (aktivtVedtak && !aktivtVedtak.lest) {
-            const merkVedtakSomLest = async() => {
-                const res = await fetch(`${env.flexGatewayRoot}/spinnsyn-backend/api/v2/vedtak/${aktivtVedtak.id}/les`, {
-                    method: 'POST',
-                    credentials: 'include',
-                })
-                const status = res.status
-                if (redirectTilLoginHvis401(res)) {
-                    return
-                } else if (status === 200) {
-                    aktivtVedtak.lest = true
-                    setValgtVedtak(aktivtVedtak)
-                    rsVedtak.find(a => a.id === id)!.lest = true
-                    setRsVedtak(rsVedtak)
-                } else {
-                    logger.error('Feil ved markering av vedtak som lest. Ikke status 200', res)
-                }
-            }
-            merkVedtakSomLest().catch(r => logger.error('Feil ved markering av vedtak som lest async', r))
-        }
         // eslint-disable-next-line
     }, [])
 
-    if (valgtVedtak === undefined) return null
+    useEffect(() => {
+        if (vedtak) {
+            const aktivtVedtak = vedtak.find(v => v.id === id)
+            setValgtVedtak(aktivtVedtak)
+        }
+        // eslint-disable-next-line
+    }, [ vedtak ])
+
+    useEffect(() => {
+        if (valgtVedtak && !valgtVedtak.lest) {
+            merkLest(valgtVedtak.id)
+        }
+        // eslint-disable-next-line
+    }, [ valgtVedtak ])
+
+    if (!valgtVedtak) return null
     const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
 
     return (

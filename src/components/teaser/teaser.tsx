@@ -3,7 +3,7 @@ import { HoyreChevron } from 'nav-frontend-chevron'
 import { EtikettFokus } from 'nav-frontend-etiketter'
 import React from 'react'
 
-import { useAppStore } from '../../data/stores/app-store'
+import useSoknader from '../../query-hooks/useSoknader'
 import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
@@ -15,8 +15,11 @@ import annullertHover from './ikon-annullert-hover.svg'
 import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: VedtakTeaserProps) => {
-    const { soknader } = useAppStore()
+    const { data: soknader } = useSoknader()
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+
+    if (!soknader) return null
+
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
             <Inngangspanel to={getUrlTilVedtak(vedtak)}>

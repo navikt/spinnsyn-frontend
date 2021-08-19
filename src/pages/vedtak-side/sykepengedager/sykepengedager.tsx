@@ -13,9 +13,10 @@ import LedningImg from './ikon-sykefravaersoversikt.svg'
 const Sykepengedager = () => {
     const { valgtVedtak } = useAppStore()
     const [ apen ] = useState<boolean>(false)
-    const sluttdato = estimertSluttdato(valgtVedtak)
 
-    if (valgtVedtak === undefined) return null
+    if (!valgtVedtak) return null
+
+    const sluttdato = estimertSluttdato(valgtVedtak)
 
     return (
         <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}

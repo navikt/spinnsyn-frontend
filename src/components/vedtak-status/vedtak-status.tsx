@@ -19,7 +19,7 @@ const VedtakStatus = () => {
         (valgtVedtak!.id.charCodeAt(0) % 2) === 1 ? setVeileder(Dame) : setVeileder(Mann)
     }, [ valgtVedtak ])
 
-    if (valgtVedtak === undefined) return null
+    if (!valgtVedtak) return null
     const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
 
     return (

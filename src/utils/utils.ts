@@ -1,4 +1,4 @@
-import { hentLoginUrl } from '../data/data-fetcher'
+import { hentLoginUrl } from './fetch'
 import { logger } from './logger'
 
 
