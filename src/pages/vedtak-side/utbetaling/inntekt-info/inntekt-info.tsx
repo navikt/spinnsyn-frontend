@@ -7,7 +7,6 @@ import Vis from '../../../../components/vis'
 import { useAppStore } from '../../../../data/stores/app-store'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
-import { refusjonTilArbeidsgiverBeløp, refusjonTilArbeidsgiverTotalBeløp, refusjonTilArbeidsgiverUtbetalingsdager } from '../../../../utils/vedtak-utils'
 
 const InntektInfo = () => {
     const { valgtVedtak } = useAppStore()
@@ -18,13 +17,15 @@ const InntektInfo = () => {
     const [ sum, setSum ] = useState<string>('-')
 
     useEffect(() => {
-        setDaglig(ValutaFormat.format(refusjonTilArbeidsgiverBeløp(valgtVedtak)) + ' kr')
-        setDager(refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak).length + ' dager')
-        setSum(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)) + ' kr')
-        if (valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined) {
-            const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.inntekt)
-            setMnd(ValutaFormat.format(manedsinntekt || 0) + ' kr')
-            setAr(ValutaFormat.format(manedsinntekt * 12 || 0) + ' kr')
+        if (valgtVedtak) {
+            setDaglig(ValutaFormat.format(valgtVedtak.dagligUtbetalingsbelop) + ' kr')
+            setDager(valgtVedtak.antallDagerMedUtbetaling + ' dager')
+            setSum(ValutaFormat.format(valgtVedtak.sykepengebelop )+ ' kr')
+            if (valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined) {
+                const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.inntekt)
+                setMnd(ValutaFormat.format(manedsinntekt || 0) + ' kr')
+                setAr(ValutaFormat.format(manedsinntekt * 12 || 0) + ' kr')
+            }
         }
     }, [ valgtVedtak ])
 

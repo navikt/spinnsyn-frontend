@@ -175,7 +175,110 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
     },
     opprettet: '2021-05-06',
     annullert: false,
-    revurdert: false
+    revurdert: false,
+    dager: [
+        {
+            dato: '2021-02-08',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-09',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-10',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-11',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-12',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-13',
+            belop: 0,
+            grad: 40.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-14',
+            belop: 0,
+            grad: 40.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-15',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-16',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-17',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-18',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-19',
+            belop: 896,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-20',
+            belop: 0,
+            grad: 40.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-21',
+            belop: 0,
+            grad: 40.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        }
+    ],
+    dagligUtbetalingsbelop: 896,
+    antallDagerMedUtbetaling: 10,
+    sykepengebelop: 8960,
 }
 
 export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
@@ -222,7 +325,152 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
     },
     opprettet: '2021-05-03',
     annullert: false,
-    revurdert: false
+    revurdert: false,
+    dager: [
+        {
+            dato: '2021-03-22',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-23',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-24',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-25',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-26',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-26',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-27',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-28',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-29',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-30',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-03-31',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-01',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-02',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-03',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-04',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-05',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-06',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-07',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-08',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-09',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+    ],
+    dagligUtbetalingsbelop: 1404,
+    antallDagerMedUtbetaling: 15,
+    sykepengebelop: 21060,
 }
 
 export const vedtakAnnullert: RSVedtakWrapper = {
@@ -262,7 +510,75 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     },
     opprettet: '2021-05-05',
     annullert: true,
-    revurdert: false
+    revurdert: false,
+    dager: [
+        {
+            dato: '2021-04-27',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-28',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-29',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-30',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-01',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-02',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-03',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-04',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-05',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+    ],
+    dagligUtbetalingsbelop: 1404,
+    antallDagerMedUtbetaling: 6,
+    sykepengebelop: 8424,
 }
 
 export const vedtakRevurdert: RSVedtakWrapper = {
@@ -302,7 +618,68 @@ export const vedtakRevurdert: RSVedtakWrapper = {
     },
     opprettet: '2021-05-03',
     annullert: false,
-    revurdert: true
+    revurdert: true,
+    dager: [
+        {
+            dato: '2021-04-26',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-27',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-28',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-29',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-04-30',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-01',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-02',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-05-03',
+            belop: 1404,
+            grad: 100,
+            dagtype: 'NavDag',
+            begrunnelser: []
+        },
+    ],
+    dagligUtbetalingsbelop: 1404,
+    antallDagerMedUtbetaling: 6,
+    sykepengebelop: 8424,
 }
 
 export const integrasjonsVedtak: RSVedtakWrapper = {
@@ -483,7 +860,215 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
     },
     opprettet: '2021-05-06',
     annullert: false,
-    revurdert: false
+    revurdert: false,
+    dager: [
+        {
+            dato: '2021-01-25',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-01-26',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-01-27',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-01-28',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Arbeidsdag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-01-29',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-01-30',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Arbeidsdag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-01-31',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-01',
+            belop: 1000,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-02',
+            belop: 1000,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-03',
+            belop: 1000,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-04',
+            belop: 1000,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-05',
+            belop: 1000,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-06',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-07',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-08',
+            belop: 400,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-09',
+            belop: 400,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-10',
+            belop: 400,
+            grad: 40.0,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-11',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-12',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-13',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ForeldetDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-14',
+            belop: 0,
+            grad: 0,
+            dagtype: 'UkjentDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-15',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'SykepengedagerOppbrukt' ]
+        },
+        {
+            dato: '2021-02-16',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'MinimumInntekt' ]
+        },
+        {
+            dato: '2021-02-17',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'EgenmeldingUtenforArbeidsgiverperiode' ]
+        },
+        {
+            dato: '2021-02-18',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'MinimumSykdomsgrad' ]
+        },
+        {
+            dato: '2021-02-19',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'ManglerOpptjening' ]
+        },
+        {
+            dato: '2021-02-20',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'ManglerMedlemskap' ]
+        },
+        {
+            dato: '2021-02-21',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'EtterDødsdato' ]
+        },
+        {
+            dato: '2021-02-22',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'UKJENT' ]
+        }
+    ],
+    dagligUtbetalingsbelop: 1000,
+    antallDagerMedUtbetaling: 8,
+    sykepengebelop: 6200,
 }
 
 export const nyeVedtak: RSVedtakWrapper[] = [

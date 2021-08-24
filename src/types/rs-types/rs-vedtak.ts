@@ -6,6 +6,18 @@ export interface RSVedtakWrapper {
     opprettet: string;
     annullert: boolean;
     revurdert: boolean;
+    dager: RSDag[];
+    dagligUtbetalingsbelop: number;
+    antallDagerMedUtbetaling: number;
+    sykepengebelop: number;
+}
+
+export interface RSDag {
+    dato: string;
+    belop: number;
+    grad: number;
+    dagtype: RSDagTypeKomplett;
+    begrunnelser: RSBegrunnelse[];
 }
 
 interface RSVedtak {
