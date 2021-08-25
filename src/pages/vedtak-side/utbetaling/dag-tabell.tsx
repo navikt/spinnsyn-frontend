@@ -8,54 +8,17 @@ import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
-import { RSBegrunnelse, RSDagTypeKomplett } from '../../../types/rs-types/rs-vedtak'
+import { RSBegrunnelse, RSDag } from '../../../types/rs-types/rs-vedtak'
 import { logger } from '../../../utils/logger'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import { refusjonTilArbeidsgiverUtbetalingsdager } from '../../../utils/vedtak-utils'
-
-interface DagData {
-    dato: string;
-    beløp: string;
-    dagtype: RSDagTypeKomplett;
-    grad: number;
-    begrunnelser?: RSBegrunnelse[];
-}
 
 const DagTabell = () => {
     const { valgtVedtak } = useAppStore()
+    if (!valgtVedtak) return null
+    const alleDager = valgtVedtak.dager
 
-    const lagDagData = () => {
-        const dager: DagData[] = valgtVedtak!.vedtak.utbetaling.utbetalingsdager
-            .filter(dag => {
-                return dag.dato >= valgtVedtak!.vedtak.fom && dag.dato <= valgtVedtak!.vedtak.tom
-            })
-            .map(dag => {
-                return {
-                    dato: dag.dato,
-                    beløp: '-',
-                    dagtype: dag.type,
-                    grad: 0,
-                    begrunnelser: dag.begrunnelser
-                }
-            })
-        const dagerMedBeløpOgGrad = refusjonTilArbeidsgiverUtbetalingsdager(valgtVedtak)
-        dagerMedBeløpOgGrad.forEach(dag => {
-            const dagen = dager.find(d => d.dato === dag.dato)
-            if (dagen) {
-                dagen.beløp = ValutaFormat.format(dag.beløp) + ' kr'
-                dagen.grad = dag.grad
-                if (dagen.dagtype === 'NavDag') {
-                    dagen.dagtype = dagen.grad !== 100 ? 'NavDagDelvisSyk' : 'NavDagSyk'
-                }
-            }
-        })
-        return dager
-    }
-
-    const alleDager = lagDagData()
-
-    const lagDagLabel = (dag: DagData) => {
+    const lagDagLabel = (dag: RSDag) => {
         // TODO: Legg inn permisjon og ferie når vi mottar denne dataen
         switch (dag.dagtype) {
             case 'NavDagSyk':
@@ -105,7 +68,7 @@ const DagTabell = () => {
         }
     }
 
-    const lagBeskrivelseForUnikDag = (dag: DagData) => {
+    const lagBeskrivelseForUnikDag = (dag: RSDag) => {
         if (dag.dagtype === 'ForeldetDag') {
             return (
                 <>
@@ -141,32 +104,32 @@ const DagTabell = () => {
         )
     }
 
-    const unikeDager = (): DagData[] => {
-        const unikeDagtyper = alleDager.reduce((list: DagData[], dag) => {
-            if (dag.dagtype !== 'AvvistDag' && !list.find((d: DagData) => d.dagtype === dag.dagtype)) {
+    const unikeDager = (): RSDag[] => {
+        const unikeDagtyper = alleDager.reduce((list: RSDag[], dag) => {
+            if (dag.dagtype !== 'AvvistDag' && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
                 list.push(dag)
             }
             return list
         }, [])
 
-        const unikeBegrunnelser = alleDager.reduce((list: DagData[], dag) => {
+        const unikeBegrunnelser = alleDager.reduce((list: RSDag[], dag) => {
             if (dag.dagtype === 'AvvistDag') {
                 dag.begrunnelser?.forEach((begrunnelse: RSBegrunnelse) => {
-                    if (!list.find((d: DagData) => d.begrunnelser?.includes(begrunnelse))) {
+                    if (!list.find((d: RSDag) => d.begrunnelser?.includes(begrunnelse))) {
                         list.push({
                             dato: dag.dato,
-                            beløp: dag.beløp,
+                            belop: dag.belop,
                             dagtype: dag.dagtype,
                             grad: dag.grad,
                             begrunnelser: [ begrunnelse ]
-                        } as DagData)
+                        } as RSDag)
                     }
                 })
             }
             return list
         }, [])
 
-        return [ ...unikeDagtyper, ...unikeBegrunnelser ] as DagData[]
+        return [ ...unikeDagtyper, ...unikeBegrunnelser ] as RSDag[]
     }
 
     return (
@@ -185,7 +148,13 @@ const DagTabell = () => {
                     {alleDager.map((dag, idx) =>
                         <tr key={idx}>
                             <td>{dayjs(dag.dato).format('DD.MM.YY')}</td>
-                            <td>{dag.beløp}</td>
+                            <td>
+                                {
+                                    (dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
+                                        ? ValutaFormat.format(dag.belop) + ' kr'
+                                        : '-'
+                                }
+                            </td>
                             <td>{lagDagLabel(dag)}</td>
                         </tr>
                     )}

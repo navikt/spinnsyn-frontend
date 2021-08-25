@@ -9,7 +9,6 @@ import Vis from '../../../components/vis'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import { refusjonTilArbeidsgiverTotalBeløp } from '../../../utils/vedtak-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 import DagTabell from './dag-tabell'
@@ -25,7 +24,9 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
     const { valgtVedtak } = useAppStore()
 
     useEffect(() => {
-        setBelop(ValutaFormat.format(refusjonTilArbeidsgiverTotalBeløp(valgtVedtak)))
+        if (valgtVedtak) {
+            setBelop(ValutaFormat.format(valgtVedtak.sykepengebelop))
+        }
     }, [ valgtVedtak ])
 
     if (valgtVedtak === undefined) return null
