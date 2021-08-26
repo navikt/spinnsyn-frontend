@@ -1,6 +1,6 @@
 const UtbetalingTekster = {
     'utbetaling.systemtittel': 'Utbetales til arbeidsgiveren',
-    'utbetaling.trekk': '* Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
+    'sykepengegrunnlag.forklaring': '* Inntekten som brukes til å beregne sykepengene',
     'utbetaling.mndlonn.tittel': 'Månedslønnen',
     'utbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk.',
     'utbetaling.arslonn.tittel': 'Årslønn',
@@ -23,9 +23,7 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.info.tittel': 'Slik beregner vi sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årslønn',
-    'utbetaling.inntekt.info.daglig': 'Daglig utbetalingsbeløp',
-    'utbetaling.inntekt.info.utbetalingsdager': 'Utbetalingsdager',
-    'utbetaling.inntekt.info.sykepengebelop': 'Sykepengebeløp *',
+    'utbetaling.inntekt.info.sykepengegrunnlag': 'Sykepengegrunnlag *',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',

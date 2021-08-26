@@ -300,7 +300,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             }
         ],
         inntekt: 37500,
-        sykepengegrunnlag: null as any,
+        sykepengegrunnlag: 455000,
         utbetaling: {
             organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
             forbrukteSykedager: 15,
@@ -701,7 +701,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             }
         ],
         inntekt: 30000,
-        sykepengegrunnlag: 120000,
+        sykepengegrunnlag: 370000,
         utbetaling: {
             organisasjonsnummer: integrasjonsSoknad.arbeidsgiver?.orgnummer,
             utbetalingId: '2b60ba06-7ddb-45e6-991b-asfafwq',

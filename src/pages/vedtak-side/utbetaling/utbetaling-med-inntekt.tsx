@@ -47,9 +47,6 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
             <div className="utbetaling__innhold">
                 <ArbeidsgiverInfo />
                 <InntektInfo />
-                <Normaltekst>
-                    {tekst('utbetaling.trekk')}
-                </Normaltekst>
                 <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
                         <DagTabell />
