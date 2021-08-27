@@ -486,6 +486,7 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             { dokumentId: arbeidstaker100.id, type: 'Søknad' }
         ],
         inntekt: 37500.0,
+        sykepengegrunnlag: 450000,
         utbetaling: {
             organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
             forbrukteSykedager: 9,
