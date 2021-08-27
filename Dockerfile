@@ -2,6 +2,7 @@ FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY /build /usr/share/nginx/html/syk/sykepenger
+COPY demoside.html /usr/share/nginx/html/index.html
 
 
 # Copy .env file and shell script to container
