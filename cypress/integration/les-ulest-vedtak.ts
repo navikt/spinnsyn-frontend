@@ -45,11 +45,9 @@ describe('Tester at appen starter', () => {
             .should('contain', 'Slik beregner vi sykepengene')
             .should('contain', 'Beregnet månedslønn').and('contain', '37\u00a0500 kr')
             .should('contain', 'Omregnet til årslønn').and('contain', '450\u00a0000 kr')
-            .should('contain', 'Sykepengegrunnlag').and('contain', '455\u00a0000 kr')
 
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
-            .and('contain', 'Inntekten som brukes til å beregne sykepengene')
 
         cy.contains('Mer om beregningen').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
