@@ -25,6 +25,13 @@ const BeregningInfo = () => {
             </Normaltekst>
 
             <Element tag="h4" className="blokkinfo__avsnitt">
+                {tekst('utbetaling.sykepengegrunnlag.tittel')}
+            </Element>
+            <Normaltekst>
+                {tekst('utbetaling.sykepengegrunnlag.innhold')}
+            </Normaltekst>
+
+            <Element tag="h4" className="blokkinfo__avsnitt">
                 {tekst('utbetaling.dagligbelop.tittel')}
             </Element>
             <Normaltekst>

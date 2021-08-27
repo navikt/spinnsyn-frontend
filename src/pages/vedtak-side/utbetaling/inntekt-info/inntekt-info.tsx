@@ -63,9 +63,6 @@ const InntektInfo = () => {
                                 {sykepengegrunnlag}
                             </Element>
                         </div>
-                        <Normaltekst>
-                            {tekst('sykepengegrunnlag.forklaring')}
-                        </Normaltekst>
                     </>
                 }
             />
