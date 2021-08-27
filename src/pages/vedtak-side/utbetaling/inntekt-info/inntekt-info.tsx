@@ -43,7 +43,7 @@ const InntektInfo = () => {
                             </Normaltekst>
                             <Normaltekst tag="span">{mnd}</Normaltekst>
                         </div>
-                        <div className="inntekt__info__linje gra__understrek">
+                        <div className="inntekt__info__linje">
                             <Normaltekst tag="span">
                                 {tekst('utbetaling.inntekt.info.omregnet')}
                             </Normaltekst>
@@ -56,12 +56,10 @@ const InntektInfo = () => {
                 render={() =>
                     <>
                         <div className="inntekt__info__linje">
-                            <Element tag="span" className="inntekt__info__uthevet">
+                            <Normaltekst tag="span">
                                 {tekst('utbetaling.inntekt.info.sykepengegrunnlag')}
-                            </Element>
-                            <Element tag="span" className="inntekt__info__uthevet">
-                                {sykepengegrunnlag}
-                            </Element>
+                            </Normaltekst>
+                            <Normaltekst tag="span">{sykepengegrunnlag}</Normaltekst>
                         </div>
                     </>
                 }
