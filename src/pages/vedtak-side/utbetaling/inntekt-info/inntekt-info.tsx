@@ -13,18 +13,12 @@ const InntektInfo = () => {
     const [ mnd, setMnd ] = useState<string>('-')
     const [ ar, setAr ] = useState<string>('-')
 
-    const [ sykepengegrunnlag, setSykepengegrunnlag ] = useState<string>('-')
-
     useEffect(() => {
         if (valgtVedtak) {
             if (valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined) {
                 const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.inntekt)
                 setMnd(ValutaFormat.format(manedsinntekt || 0) + ' kr')
                 setAr(ValutaFormat.format(manedsinntekt * 12 || 0) + ' kr')
-            }
-            if (valgtVedtak?.vedtak.sykepengegrunnlag !== null && valgtVedtak?.vedtak.sykepengegrunnlag !== undefined) {
-                const sykepengegrunnlag = Math.floor(valgtVedtak?.vedtak?.sykepengegrunnlag)
-                setSykepengegrunnlag(ValutaFormat.format(sykepengegrunnlag || 0) + ' kr')
             }
         }
     }, [ valgtVedtak ])
@@ -48,18 +42,6 @@ const InntektInfo = () => {
                                 {tekst('utbetaling.inntekt.info.omregnet')}
                             </Normaltekst>
                             <Normaltekst tag="span">{ar}</Normaltekst>
-                        </div>
-                    </>
-                }
-            />
-            <Vis hvis={valgtVedtak?.vedtak.sykepengegrunnlag !== null && valgtVedtak?.vedtak.sykepengegrunnlag !== undefined}
-                render={() =>
-                    <>
-                        <div className="inntekt__info__linje">
-                            <Normaltekst tag="span">
-                                {tekst('utbetaling.inntekt.info.sykepengegrunnlag')}
-                            </Normaltekst>
-                            <Normaltekst tag="span">{sykepengegrunnlag}</Normaltekst>
                         </div>
                     </>
                 }
