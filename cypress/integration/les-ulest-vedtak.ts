@@ -45,13 +45,11 @@ describe('Tester at appen starter', () => {
             .should('contain', 'Slik beregner vi sykepengene')
             .should('contain', 'Beregnet månedslønn').and('contain', '37\u00a0500 kr')
             .should('contain', 'Omregnet til årslønn').and('contain', '450\u00a0000 kr')
-            .should('contain', 'Daglig utbetalingsbeløp').and('contain', '1\u00a0404 kr')
-            .should('contain', 'Utbetalingsdager').and('contain', '15 dager')
-            .should('contain', 'Sykepengebeløp').and('contain', '21\u00a0060 kr')
+            .should('contain', 'Sykepengegrunnlag').and('contain', '455\u00a0000 kr')
 
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
-            .and('contain', 'Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.')
+            .and('contain', 'Inntekten som brukes til å beregne sykepengene')
 
         cy.contains('Mer om beregningen').click({ force: true })
         cy.contains('folketrygdloven § 8-28')

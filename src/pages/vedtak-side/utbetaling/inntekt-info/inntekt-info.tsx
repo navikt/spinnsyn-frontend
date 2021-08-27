@@ -12,19 +12,19 @@ const InntektInfo = () => {
     const { valgtVedtak } = useAppStore()
     const [ mnd, setMnd ] = useState<string>('-')
     const [ ar, setAr ] = useState<string>('-')
-    const [ daglig, setDaglig ] = useState<string>('-')
-    const [ dager, setDager ] = useState<string>('-')
-    const [ sum, setSum ] = useState<string>('-')
+
+    const [ sykepengegrunnlag, setSykepengegrunnlag ] = useState<string>('-')
 
     useEffect(() => {
         if (valgtVedtak) {
-            setDaglig(ValutaFormat.format(valgtVedtak.dagligUtbetalingsbelop) + ' kr')
-            setDager(valgtVedtak.antallDagerMedUtbetaling + ' dager')
-            setSum(ValutaFormat.format(valgtVedtak.sykepengebelop )+ ' kr')
             if (valgtVedtak?.vedtak.inntekt !== null && valgtVedtak?.vedtak.inntekt !== undefined) {
                 const manedsinntekt = Math.floor(valgtVedtak?.vedtak?.inntekt)
                 setMnd(ValutaFormat.format(manedsinntekt || 0) + ' kr')
                 setAr(ValutaFormat.format(manedsinntekt * 12 || 0) + ' kr')
+            }
+            if (valgtVedtak?.vedtak.sykepengegrunnlag !== null && valgtVedtak?.vedtak.sykepengegrunnlag !== undefined) {
+                const sykepengegrunnlag = Math.floor(valgtVedtak?.vedtak?.sykepengegrunnlag)
+                setSykepengegrunnlag(ValutaFormat.format(sykepengegrunnlag || 0) + ' kr')
             }
         }
     }, [ valgtVedtak ])
@@ -52,28 +52,20 @@ const InntektInfo = () => {
                     </>
                 }
             />
-            <div className="inntekt__info__linje">
-                <Element tag="span" className="inntekt__info__uthevet">
-                    {tekst('utbetaling.inntekt.info.daglig')}
-                </Element>
-                <Element tag="span" className="inntekt__info__uthevet">
-                    {daglig}
-                </Element>
-            </div>
-            <div className="inntekt__info__linje svart__understrek">
-                <Normaltekst tag="span">
-                    {tekst('utbetaling.inntekt.info.utbetalingsdager')}
-                </Normaltekst>
-                <Normaltekst tag="span">{dager}</Normaltekst>
-            </div>
-            <div className="inntekt__info__linje">
-                <Element tag="span" className="inntekt__info__uthevet">
-                    {tekst('utbetaling.inntekt.info.sykepengebelop')}
-                </Element>
-                <Element tag="span" className="inntekt__info__uthevet">
-                    {sum}
-                </Element>
-            </div>
+            <Vis hvis={valgtVedtak?.vedtak.sykepengegrunnlag !== null && valgtVedtak?.vedtak.sykepengegrunnlag !== undefined}
+                render={() =>
+                    <>
+                        <div className="inntekt__info__linje">
+                            <Element tag="span" className="inntekt__info__uthevet">
+                                {tekst('utbetaling.inntekt.info.sykepengegrunnlag')}
+                            </Element>
+                            <Element tag="span" className="inntekt__info__uthevet">
+                                {sykepengegrunnlag}
+                            </Element>
+                        </div>
+                    </>
+                }
+            />
         </section>
     )
 }
