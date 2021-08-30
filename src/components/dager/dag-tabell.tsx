@@ -1,0 +1,47 @@
+import './dag-tabell.less'
+import 'nav-frontend-tabell-style'
+
+import dayjs from 'dayjs'
+import React from 'react'
+
+import {  RSDag } from '../../types/rs-types/rs-vedtak'
+import { ValutaFormat } from '../../utils/valuta-utils'
+import DagLabel from './dag-label'
+
+interface DagTabellProps{
+    dager: RSDag[]
+}
+
+const DagTabell = ({ dager }: DagTabellProps) => {
+
+    return (
+        <table className="tabell tabell--stripet tabell--dag">
+            <thead>
+                <tr>
+                    <th>Dato</th>
+                    <th>Sum</th>
+                    <th>Dagtype</th>
+                </tr>
+            </thead>
+            <tbody>
+                {dager.map((dag, idx) =>
+                    <tr key={idx}>
+                        <td>{dayjs(dag.dato).format('DD.MM.YY')}</td>
+                        <td>
+                            {
+                                (dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
+                                    ? ValutaFormat.format(dag.belop) + ' kr'
+                                    : '-'
+                            }
+                        </td>
+                        <td>
+                            <DagLabel dag={dag} />
+                        </td>
+                    </tr>
+                )}
+            </tbody>
+        </table>
+    )
+}
+
+export default DagTabell

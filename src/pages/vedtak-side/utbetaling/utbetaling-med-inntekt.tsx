@@ -1,8 +1,9 @@
 import './utbetaling.less'
 
-import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
+import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
+import DagTabell from '../../../components/dager/dag-tabell'
 import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import Vis from '../../../components/vis'
@@ -11,7 +12,6 @@ import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
-import DagTabell from './dag-tabell'
 import FeilOpplysninger from './feil-opplysninger'
 import InntektInfo from './inntekt-info/inntekt-info'
 
@@ -49,7 +49,12 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
                 <InntektInfo />
                 <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
-                        <DagTabell />
+                        <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
+                            tittel={'Daglig utbetalingsoversikt'}
+                        >
+                            <DagTabell dager={valgtVedtak.dager} />
+                            <DagBeskrivelse dager={valgtVedtak.dager} />
+                        </Utvidbar>
                     }
                 />
                 <BeregningInfo />

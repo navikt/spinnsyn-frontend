@@ -22,6 +22,7 @@ import env from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import AnnulleringsInfo from './annullering/annullering'
+import AvvisteDager from './avviste-dager/avviste-dager'
 import AutomatiskBehandling from './behandling/automatiskBehandling'
 import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
 import Sykepengedager from './sykepengedager/sykepengedager'
@@ -94,6 +95,7 @@ const VedtakSide = () => {
                 />
 
                 <UtbetalingMedInntekt ekspandert={false} />
+                <AvvisteDager />
                 <Sykepengedager />
 
                 <Vis hvis={!annullertEllerRevurdert}
