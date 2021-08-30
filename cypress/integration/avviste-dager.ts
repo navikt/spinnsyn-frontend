@@ -1,4 +1,4 @@
-import { integrasjonsVedtak, vedtakMed40Grad } from '../../src/data/mock/data/rs-vedtak'
+import { avvistVedtak, integrasjonsVedtak, vedtakMed40Grad } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
@@ -49,5 +49,60 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             cy.contains('21.02.21').parent().should('contain', 'Etter dødsfall').and('contain', '-')
             cy.contains('22.02.21').parent().should('contain', 'Ukjent').and('contain', '-')
         })
+
+        cy.contains('Mer om dagtyper').parent().within(() => {
+            cy.get('.etikett--mini.etikett--info')
+                .contains('Fridag').parent().siblings()
+                .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
+            cy.get('.etikett--mini.etikett--fokus')
+                .contains('Etter dødsfall').parent().siblings()
+                .contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
+
+        })
+
+        cy.contains('Mer om beregningen').click({ force: true })
+        cy.contains('folketrygdloven § 8-28')
+            .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
+
+        cy.contains('Ved feil opplysninger').click({ force: true })
+        cy.get('.utvidbar__innholdContainer')
+            .should('contain', 'Klagefrist: 17. juni 2021')
+
+        cy.get('.smule')
+            .contains('Utbetalinger')
+            .click()
+    })
+
+    it('Vedtak med avviste dager og ingen utbetaling', () => {
+        cy.get(`article a[href*=${avvistVedtak.id}]`).click()
+
+        cy.get('.utvidbar.gronn')
+            .should('not.exist')
+
+        cy.get('.utvidbar.orange')
+            .should('contain', '4 sykepengedager')
+            .and('contain', 'Dekkes ikke av NAV')
+            .click()
+
+        cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
+
+        cy.get('.tabell--dag').within(() => {
+            cy.contains('17.08.21').parent().should('contain', 'Fridag').and('contain', '-')
+            cy.contains('18.08.21').parent().should('contain', 'Fridag').and('contain', '-')
+            cy.contains('19.08.21').parent().should('contain', 'Fridag').and('contain', '-')
+            cy.contains('20.08.21').parent().should('contain', 'Etter dødsfall').and('contain', '-')
+        })
+
+        cy.contains('Mer om beregningen').click({ force: true })
+        cy.contains('folketrygdloven § 8-28')
+            .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
+
+        cy.contains('Ved feil opplysninger').click({ force: true })
+        cy.get('.utvidbar__innholdContainer')
+            .should('contain', 'Klagefrist: 11. oktober 2021')
+
+        cy.get('.smule')
+            .contains('Utbetalinger')
+            .click()
     })
 })
