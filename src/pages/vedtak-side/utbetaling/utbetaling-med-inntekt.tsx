@@ -15,13 +15,11 @@ import FeilOpplysninger from './feil-opplysninger'
 import PengerIkon from './ikon-penger.svg'
 import InntektInfo from './inntekt-info/inntekt-info'
 
-interface UtbetalingerProps {
-    ekspandert: boolean;
-}
-
-const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
-    const [ belop, setBelop ] = useState<string>('-')
+const UtbetalingMedInntekt = () => {
     const { valgtVedtak } = useAppStore()
+    const [ belop, setBelop ] = useState<string>('-')
+    const [ apen ] = useState<boolean>(false)
+
 
     useEffect(() => {
         if (valgtVedtak) {
@@ -33,8 +31,8 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
 
     return (
         <Utvidbar type="integrert"
-            className={'gronn' + (ekspandert ? ' apen' : '')}
-            erApen={ekspandert}
+            className={'gronn' + (apen ? ' apen' : '')}
+            erApen={apen}
             visLukk={true}
             ikon={PengerIkon}
             ikonHover={PengerIkon}
