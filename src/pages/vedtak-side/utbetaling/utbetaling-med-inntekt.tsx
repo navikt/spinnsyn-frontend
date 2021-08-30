@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 
 import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
 import DagTabell from '../../../components/dager/dag-tabell'
-import HandImg from '../../../components/teaser/hand.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import Vis from '../../../components/vis'
 import { useAppStore } from '../../../data/stores/app-store'
@@ -13,6 +12,7 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 import FeilOpplysninger from './feil-opplysninger'
+import PengerIkon from './ikon-penger.svg'
 import InntektInfo from './inntekt-info/inntekt-info'
 
 interface UtbetalingerProps {
@@ -36,8 +36,8 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
             className={'gronn' + (ekspandert ? ' apen' : '')}
             erApen={ekspandert}
             visLukk={true}
-            ikon={HandImg}
-            ikonHover={HandImg}
+            ikon={PengerIkon}
+            ikonHover={PengerIkon}
             tittel={belop + ' kroner'}
             systemtittel={tekst('utbetaling.systemtittel')}
             ikonAltTekst=""
