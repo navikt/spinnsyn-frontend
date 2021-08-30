@@ -1077,10 +1077,297 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
     sykepengebelop: 6200,
 }
 
+export const avvistVedtak: RSVedtakWrapper = {
+    'id': '55d8b14f-e1a6-45a8-ac64-b7af1e845b06',
+    'lest': true,
+    'lestDato': '2021-08-30T13:05:17.337442+02:00',
+    'vedtak': {
+        'organisasjonsnummer': arbeidstaker100.arbeidsgiver!.orgnummer,
+        'fom': '2021-08-01',
+        'tom': '2021-08-20',
+        'dokumenter': [
+            {
+                'dokumentId': '1aaaf28e-af69-4c9d-8e91-d14a3906361f',
+                'type': 'Sykmelding'
+            },
+            {
+                'dokumentId': '6b1e5fff-3d99-48b9-8ddf-f121da4d88af',
+                'type': 'Inntektsmelding'
+            },
+            { dokumentId: arbeidstaker100.id, type: 'Søknad' }
+        ],
+        'inntekt': 20000,
+        'sykepengegrunnlag': 240000,
+        'utbetaling': {
+            'organisasjonsnummer': '896929119',
+            'utbetalingId': 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
+            'forbrukteSykedager': 0,
+            'gjenståendeSykedager': 248,
+            'automatiskBehandling': false,
+            'arbeidsgiverOppdrag': {
+                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer,
+                'nettoBeløp': 0,
+                'utbetalingslinjer': []
+            },
+            'utbetalingsdager': [
+                {
+                    'dato': '2021-08-01',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-02',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-03',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-04',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-05',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-06',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-07',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-08',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-09',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-10',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-11',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-12',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-13',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-14',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-15',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-16',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-17',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-18',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-19',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-20',
+                    'type': 'AvvistDag',
+                    'begrunnelser': [ 'EtterDødsdato' ]
+                }
+            ],
+        }
+    },
+    'opprettet': '2021-08-30',
+    'annullert': false,
+    'revurdert': false,
+    'dager': [
+        {
+            'dato': '2021-08-01',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-02',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-03',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-04',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-05',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-06',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-07',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-08',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-09',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-10',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-11',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-12',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-13',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-14',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-15',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-16',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-17',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'Fridag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-18',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'Fridag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-19',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'Fridag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-08-20',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'AvvistDag',
+            'begrunnelser': [ 'EtterDødsdato' ]
+        }
+    ],
+    'dagligUtbetalingsbelop': 0,
+    'antallDagerMedUtbetaling': 0,
+    'sykepengebelop': 0
+}
+
 export const nyeVedtak: RSVedtakWrapper[] = [
     vedtakMed40Grad,
     ulestVedtakUtenUtbetalingsdager,
     vedtakAnnullert,
     vedtakRevurdert,
     integrasjonsVedtak,
+    avvistVedtak,
 ]

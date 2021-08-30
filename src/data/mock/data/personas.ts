@@ -1,7 +1,10 @@
 import { RSSoknad } from '../../../types/rs-types/rs-soknad'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import {
-    nyeVedtak, ulestGammeltVedtak,
+    avvistVedtak,
+    integrasjonsVedtak,
+    nyeVedtak,
+    ulestGammeltVedtak,
     vedtakAnnullert,
 } from './rs-vedtak'
 import { soknader } from './soknader'
@@ -31,4 +34,9 @@ export const annullert: Persona = {
 export const eldgammelt: Persona = {
     soknader: soknader,
     vedtak: [ ulestGammeltVedtak ],
+}
+
+export const avvistPerson: Persona = {
+    soknader: soknader,
+    vedtak: [ integrasjonsVedtak, avvistVedtak ]
 }
