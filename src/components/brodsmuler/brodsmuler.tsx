@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { Brodsmule } from '../../types/types'
 import env from '../../utils/environment'
 import Vis from '../vis'
-import personIkon from './person.svg'
+import Person from './Person'
 
 const LITEN = 768
 
@@ -61,13 +61,13 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         window.addEventListener('resize', () => {
             setSkjerm(window.innerWidth)
         })
-        setSynlige(skjerm <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler)
+        setSynlige(skjerm <= LITEN ? [ brodsmuler[ brodsmuler.length - 1 ] ] : brodsmuler)
         // eslint-disable-next-line
-    }, [ skjerm ])
+    }, [skjerm])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
-            setSynlige([ brodsmuler[brodsmuler.length - 1] ])
+            setSynlige([ brodsmuler[ brodsmuler.length - 1 ] ])
             smulesti.current!.classList.remove('apen')
         } else {
             setSynlige(brodsmuler)
@@ -78,7 +78,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
     return (
         <nav className="brodsmuler" ref={smulesti} aria-label="Du er her: ">
             <div className="limit">
-                <img src={personIkon} alt="Du" className="brodsmuler__ikon" />
+                <Person />
                 <Normaltekst tag="ul" className="brodsmuler__smuler">
                     <Vis hvis={skjerm <= LITEN}
                         render={() =>
@@ -91,7 +91,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                                     className="js-toggle"
                                     onClick={toggleSynlige}
                                 >
-                                    ...
+                                     ...
                                 </button>
                             </li>
                         }
