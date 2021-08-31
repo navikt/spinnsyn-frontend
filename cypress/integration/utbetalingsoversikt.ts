@@ -83,7 +83,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
             cy.get('.etikett--mini.etikett--suksess')
                 .contains('Delvis syk').parent().siblings()
                 .contains('Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.')
-            cy.get('.etikett--mini.etikett--info')
+            cy.get('.etikett--mini.etikett--fokus')
                 .contains('Fridag').parent().siblings()
                 .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
             cy.get('.etikett--mini.etikett--fokus')

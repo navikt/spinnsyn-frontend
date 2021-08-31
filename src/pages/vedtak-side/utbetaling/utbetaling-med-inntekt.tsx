@@ -1,9 +1,9 @@
 import './utbetaling.less'
 
-import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
-import HandImg from '../../../components/teaser/hand.svg'
+import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
+import DagTabell from '../../../components/dager/dag-tabell'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import Vis from '../../../components/vis'
 import { useAppStore } from '../../../data/stores/app-store'
@@ -11,17 +11,15 @@ import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
-import DagTabell from './dag-tabell'
 import FeilOpplysninger from './feil-opplysninger'
+import PengerIkon from './ikon-penger.svg'
 import InntektInfo from './inntekt-info/inntekt-info'
 
-interface UtbetalingerProps {
-    ekspandert: boolean;
-}
-
-const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
-    const [ belop, setBelop ] = useState<string>('-')
+const UtbetalingMedInntekt = () => {
     const { valgtVedtak } = useAppStore()
+    const [ belop, setBelop ] = useState<string>('-')
+    const [ apen ] = useState<boolean>(false)
+
 
     useEffect(() => {
         if (valgtVedtak) {
@@ -33,11 +31,11 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
 
     return (
         <Utvidbar type="integrert"
-            className={'gronn' + (ekspandert ? ' apen' : '')}
-            erApen={ekspandert}
+            className={'gronn' + (apen ? ' apen' : '')}
+            erApen={apen}
             visLukk={true}
-            ikon={HandImg}
-            ikonHover={HandImg}
+            ikon={PengerIkon}
+            ikonHover={PengerIkon}
             tittel={belop + ' kroner'}
             systemtittel={tekst('utbetaling.systemtittel')}
             ikonAltTekst=""
@@ -49,7 +47,12 @@ const UtbetalingMedInntekt = ({ ekspandert }: UtbetalingerProps) => {
                 <InntektInfo />
                 <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
-                        <DagTabell />
+                        <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
+                            tittel={'Daglig utbetalingsoversikt'}
+                        >
+                            <DagTabell dager={valgtVedtak.dager} />
+                            <DagBeskrivelse dager={valgtVedtak.dager} />
+                        </Utvidbar>
                     }
                 />
                 <BeregningInfo />

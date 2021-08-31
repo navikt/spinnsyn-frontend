@@ -16,12 +16,14 @@ import Vis from '../../components/vis'
 import { useAppStore } from '../../data/stores/app-store'
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
 import useVedtak from '../../query-hooks/useVedtak'
+import { RSDagTypeKomplett } from '../../types/rs-types/rs-vedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import env from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import AnnulleringsInfo from './annullering/annullering'
+import AvvisteDager from './avviste-dager/avviste-dager'
 import AutomatiskBehandling from './behandling/automatiskBehandling'
 import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
 import Sykepengedager from './sykepengedager/sykepengedager'
@@ -38,6 +40,12 @@ const brodsmuler: Brodsmule[] = [
         sti: '/vedtak',
         erKlikkbar: false
     }
+]
+
+const dagErAvvist: RSDagTypeKomplett[] = [
+    'AvvistDag',
+    'Fridag',
+    'ForeldetDag',
 ]
 
 const VedtakSide = () => {
@@ -70,6 +78,7 @@ const VedtakSide = () => {
 
     if (!valgtVedtak) return null
     const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
+    const avvisteDager = valgtVedtak.dager.filter(dag => dagErAvvist.includes(dag.dagtype))
 
     return (
         <>
@@ -93,7 +102,16 @@ const VedtakSide = () => {
                     }
                 />
 
-                <UtbetalingMedInntekt ekspandert={false} />
+                <Vis hvis={valgtVedtak.antallDagerMedUtbetaling > 0}
+                    render={() =>
+                        <UtbetalingMedInntekt />
+                    }
+                />
+                <Vis hvis={avvisteDager.length > 0}
+                    render={() =>
+                        <AvvisteDager avvisteDager={avvisteDager} />
+                    }
+                />
                 <Sykepengedager />
 
                 <Vis hvis={!annullertEllerRevurdert}

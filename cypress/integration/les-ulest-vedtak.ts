@@ -10,10 +10,10 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
     })
 
-    it('Det er et ulest vedtak og 4 leste', () => {
+    it('Det er et ulest vedtak og 5 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 4)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 5)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
@@ -79,15 +79,15 @@ describe('Tester at appen starter', () => {
         cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
     })
 
-    it('Det er ingen uleste vedtak og 5 leste', () => {
+    it('Det er ingen uleste vedtak og 6 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
         cy.contains('Du har ingen nye behandlede søknader fra NAV.')
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 5)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 6)
     })
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 5).eq(0).click({ force: true })
+            .should('have.length', 6).eq(1).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakAnnullert.id}`)
         cy.contains('Søknaden er behandlet på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')
@@ -104,7 +104,7 @@ describe('Tester at appen starter', () => {
 
     it('Vi åpner et revurdert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 5).eq(1).click({ force: true })
+            .should('have.length', 6).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakRevurdert.id}`)
         cy.contains('Søknaden er behandlet på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden. ')

@@ -6,6 +6,7 @@ import TeaserTekster from '../components/teaser/teaser-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
 import VedtakListeTekster from '../pages/vedtak-liste/vedtak-liste-tekster'
 import AnnulleringTekster from '../pages/vedtak-side/annullering/annullering-tekster'
+import AvvisteDagerTekster from '../pages/vedtak-side/avviste-dager/avviste-dager-tekster'
 import BehandlingTekster from '../pages/vedtak-side/behandling/behandling-tekster'
 import SykepengedagerTekster from '../pages/vedtak-side/sykepengedager/sykepengedager-tekster'
 import UenigTekster from '../pages/vedtak-side/uenig/uenig-tekster'
@@ -21,6 +22,7 @@ const tekster = {
     ...UtbetalingTekster,
     ...UenigTekster,
     ...BehandlingTekster,
+    ...AvvisteDagerTekster,
     ...SykepengedagerTekster,
     ...SaksbehandlingstidOgUtbetalingTekster,
     ...BetaTekster,
@@ -38,6 +40,7 @@ type TekstKeys =
     | keyof typeof UtbetalingTekster
     | keyof typeof UenigTekster
     | keyof typeof BehandlingTekster
+    | keyof typeof AvvisteDagerTekster
     | keyof typeof SykepengedagerTekster
     | keyof typeof SaksbehandlingstidOgUtbetalingTekster
     | keyof typeof AnnulleringTekster;
