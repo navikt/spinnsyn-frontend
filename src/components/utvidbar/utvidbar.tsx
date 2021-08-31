@@ -42,7 +42,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                 : innhold.current!.offsetHeight
         )
         // eslint-disable-next-line
-    }, [ props.erApen, props.fixedHeight ])
+    }, [ innhold.current ])
 
     const åpne = (top: number) => {
         if (props.type !== undefined) {
