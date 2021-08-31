@@ -23,7 +23,7 @@ const DagLabel = ({ dag }: DagLabelProps) => {
             case 'Arbeidsdag':
                 return <Etikett mini type="info">Arbeidsdag</Etikett>
             case 'Fridag':
-                return <Etikett mini type="info">Fridag</Etikett>
+                return <Etikett mini type="fokus">Fridag</Etikett>
             case 'ForeldetDag':
                 return <Etikett mini type="fokus">Søkt for sent</Etikett>
             case 'AvvistDag':
