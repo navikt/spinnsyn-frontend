@@ -11,6 +11,7 @@ const UtbetalingTekster = {
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
     'utbetaling.totalbelop.innhold': 'Til slutt ganger vi daglig beløp med antallet utbetalingsdager.',
     'utbetaling.totalbelop.innhold-2': 'Utbetalingen blir redusert til 6 ganger folketrygdens grunnbeløp hvis du tjener mer enn det til sammen. Har du flere arbeidsforhold, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.',
+    'utbetaling.totalbelop.innhold-3': 'Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
     'utbetaling.delvis.tittel': 'Hvis du er delvis sykmeldt',
     'utbetaling.delvis.innhold': 'Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
     'utbetaling.beregning.tittel': 'Mer om beregningen',

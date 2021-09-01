@@ -48,6 +48,10 @@ const BeregningInfo = () => {
                 {tekst('utbetaling.totalbelop.innhold-2')}
             </Normaltekst>
 
+            <Normaltekst className="blokkinfo__avsnitt">
+                {tekst('utbetaling.totalbelop.innhold-3')}
+            </Normaltekst>
+
             <Element tag="h4" className="blokkinfo__avsnitt">
                 {tekst('utbetaling.delvis.tittel')}
             </Element>
