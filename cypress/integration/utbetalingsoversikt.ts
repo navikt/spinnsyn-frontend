@@ -30,7 +30,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('20.02.21').parent().should('contain', 'Helg').and('contain', '-')
     })
 
-    it('Mer om dagtyper', () => {
+    it('Forklaring', () => {
         cy.get('.utbetalingsoversikt .tekstinfo .etikett').should('have.text', 'Delvis syk' + 'Helg')
         cy.get('.utbetalingsoversikt .tekstinfo .typo-normal').should('have.text',
             'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.' +
@@ -67,7 +67,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
             cy.contains('22.02.21').parent().should('contain', 'Ukjent').and('contain', '-')
         })
 
-        cy.contains('Mer om dagtyper').parent().within(() => {
+        cy.contains('Forklaring').parent().within(() => {
             cy.get('.etikett--mini.etikett--info')
                 .contains('Arbeidsgiver betaler').parent().siblings()
                 .contains('Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.')
