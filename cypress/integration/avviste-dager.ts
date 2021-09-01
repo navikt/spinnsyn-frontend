@@ -50,7 +50,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             cy.contains('22.02.21').parent().should('contain', 'Ukjent').and('contain', '-')
         })
 
-        cy.contains('Mer om dagtyper').parent().within(() => {
+        cy.contains('Forklaring').parent().within(() => {
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Fridag').parent().siblings()
                 .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')

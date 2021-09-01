@@ -29,7 +29,7 @@ const UtbetalingTekster = {
     'utbetaling.arbeidsgiver.tittel': 'Beløpet går til arbeidsgiveren din',
     'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
 
-    'utbetaling.tabell.dagtyper': 'Mer om dagtyper',
+    'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
     'utbetaling.tabell.label.Arbeidsdag': 'Det utbetales ikke sykepenger for hele dager du har vært på jobben.',
     'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
