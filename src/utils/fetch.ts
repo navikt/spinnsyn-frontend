@@ -45,7 +45,6 @@ class Fetch {
         }
         if (res.status === 401) {
             window.location.href = this.loginServiceUrl
-            logger.warn(`Session expired for request to ${url}`)
             throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
         const textResponse = await res.text()
@@ -78,7 +77,6 @@ class Fetch {
         }
         if (res.status === 401) {
             window.location.href = this.loginServiceUrl
-            logger.warn(`Session expired for request to ${url}`)
             throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
         logger.error(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
