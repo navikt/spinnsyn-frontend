@@ -1,6 +1,6 @@
 const BannerTekster = {
-    'spinnsyn.sidetittel.liste': 'Utbetaling av sykepenger',
-    'spinnsyn.sidetittel.vedtak': 'Utbetaling av sykepenger',
+    'spinnsyn.sidetittel.liste': 'Behandlede søknader',
+    'spinnsyn.sidetittel.vedtak': 'Behandlede søknader',
 
 }
 

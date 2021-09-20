@@ -1,5 +1,5 @@
 const VedtakTekster = {
-    'vedtak.sidetittel': 'Utbetaling',
+    'vedtak.sidetittel': 'Behandlet søknad',
     'vedtak.tilbake': 'Til hovedsiden ditt sykefravær'
 }
 
