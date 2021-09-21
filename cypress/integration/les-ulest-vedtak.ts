@@ -76,7 +76,7 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
+        cy.get(':nth-child(3) > .lenke').contains('Behandlede søknader').click()
     })
 
     it('Det er ingen uleste vedtak og 6 leste', () => {
@@ -99,7 +99,7 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Utbetalinger').click()
+        cy.get(':nth-child(3) > .lenke').contains('Behandlede søknader').click()
     })
 
     it('Vi åpner et revurdert vedtak', () => {

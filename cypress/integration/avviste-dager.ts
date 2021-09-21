@@ -17,7 +17,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             .should('not.exist')
 
         cy.get('.smule')
-            .contains('Utbetalinger')
+            .contains('Behandlede søknader')
             .click()
     })
 
@@ -69,7 +69,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             .should('contain', 'Klagefrist: 17. juni 2021')
 
         cy.get('.smule')
-            .contains('Utbetalinger')
+            .contains('Behandlede søknader')
             .click()
     })
 
@@ -102,7 +102,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             .should('contain', 'Klagefrist: 11. oktober 2021')
 
         cy.get('.smule')
-            .contains('Utbetalinger')
+            .contains('Behandlede søknader')
             .click()
     })
 })

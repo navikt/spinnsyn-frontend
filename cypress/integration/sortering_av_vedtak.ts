@@ -14,7 +14,7 @@ const articleTilVedtak = (articles: any) => {
 describe('Tester sortering av vedtak', () => {
     it('Laster startside', function() {
         cy.visit('http://localhost:8080')
-        cy.get('.typo-sidetittel').should('be.visible').and('have.text', 'Utbetaling av sykepenger')
+        cy.get('.typo-sidetittel').should('be.visible').and('have.text', 'Behandlede søknader')
     })
 
     it('Tidligere vedtak sorteres etter tidligste tom dato', function() {
