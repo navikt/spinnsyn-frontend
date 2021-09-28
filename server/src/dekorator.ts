@@ -5,7 +5,7 @@ export const getHtmlWithDecorator = (filePath) =>
         dekoratorenUrl: process.env.DECORATOR_URL,
         env: process.env.DECORATOR_ENV as any,
         filePath: filePath,
-        simple: true,
+        simple: false,
         chatbot: false,
         urlLookupTable: false,
     })
