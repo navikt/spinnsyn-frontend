@@ -30,4 +30,4 @@ spec:
     - name: AMPLITUDE_ENABLED
       value: "false"
     - name: DECORATOR_ENV
-      value: "dev"
+      value: "prod"

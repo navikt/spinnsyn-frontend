@@ -41,9 +41,8 @@ server.get('/internal/isAlive|isReady', (req, res) =>
     res.sendStatus(200)
 )
 
-server.use('*', (req, res) => {
-    logger.info('all: ' + basePath)
-    return getHtmlWithDecorator(`${buildPath}/index.html`)
+server.use('*', (req, res) =>
+    getHtmlWithDecorator(`${buildPath}/index.html`)
         .then((html) => {
             disableCache(res)
             res.send(html)
@@ -53,8 +52,6 @@ server.use('*', (req, res) => {
             disableCache(res)
             res.status(500).send(e)
         })
-}
-
 )
 
 function disableCache(res) {
