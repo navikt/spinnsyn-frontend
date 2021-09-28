@@ -15,10 +15,6 @@ spec:
   readiness:
     path: internal/isReady
   env:
-    - name: LOGINSERVICE_URL
-      value: "https://loginservice-q.nav.no/login"
-    - name: MOCK_BACKEND
-      value: "true"
     - name: ENVIRONMENT
       value: "labs"
     - name: SYKEFRAVAER_URL
@@ -26,6 +22,10 @@ spec:
     - name: DITTNAV_URL
       value: "https://www.nav.no/person/dittnav"
     - name: OPPLAERING
+      value: "true"
+    - name: LOGINSERVICE_URL
+      value: "https://loginservice-q.nav.no/login"
+    - name: MOCK_BACKEND
       value: "true"
     - name: AMPLITUDE_ENABLED
       value: "false"

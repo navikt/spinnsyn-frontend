@@ -19,11 +19,8 @@ server.get(`${basePath}/env-config-server.js`, (req, res) => {
     res.contentType('application/javascript; charset=UTF-8')
     disableCache(res)
     res.send(`window._env_ = {
-    SYFOSOKNAD_PROXY_ROOT: '${process.env.SYFOSOKNAD_PROXY_ROOT}',
     SYKMELDINGER_BACKEND_PROXY_ROOT: '${process.env.SYKMELDINGER_BACKEND_PROXY_ROOT}',
-    SPINNSYN_ROOT: '${process.env.SPINNSYN_ROOT}',
     FLEX_GATEWAY_ROOT: '${process.env.FLEX_GATEWAY_ROOT}',
-    UNLEASH_URL: '${process.env.UNLEASH_URL}',
     LOGINSERVICE_URL: '${process.env.LOGINSERVICE_URL}',
     LOGINSERVICE_REDIRECT_URL: '${process.env.LOGINSERVICE_REDIRECT_URL}',
     DITTNAV_URL: '${process.env.DITTNAV_URL}',
@@ -33,6 +30,7 @@ server.get(`${basePath}/env-config-server.js`, (req, res) => {
     AMPLITUDE_KEY: '${process.env.AMPLITUDE_KEY}',
     AMPLITUDE_ENABLED: '${process.env.AMPLITUDE_ENABLED}',
     OPPLAERING: '${process.env.OPPLAERING}',
+    FRONTENDLOGGER_ROOT: '${process.env.FRONTENDLOGGER_ROOT}'
 }`)
 })
 
