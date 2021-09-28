@@ -19,8 +19,6 @@ spec:
       value: "https://loginservice-q.nav.no/login"
     - name: MOCK_BACKEND
       value: "true"
-    - name: DECORATOR_URL
-      value: "https://www.nav.no/dekoratoren"
     - name: ENVIRONMENT
       value: "labs"
     - name: SYKEFRAVAER_URL
@@ -31,3 +29,5 @@ spec:
       value: "true"
     - name: AMPLITUDE_ENABLED
       value: "false"
+    - name: DECORATOR_ENV
+      value: "dev"

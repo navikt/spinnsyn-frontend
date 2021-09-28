@@ -14,8 +14,8 @@ import Person from './Person'
 const LITEN = 768
 
 const faste: Brodsmule[] = [
-    { tittel: 'Ditt NAV', sti: env.dittNavUrl, erKlikkbar: true },
-    { tittel: 'Ditt sykefravær', sti: env.sykefravaerUrl, erKlikkbar: true }
+    { tittel: 'Ditt NAV', sti: env.dittNavUrl(), erKlikkbar: true },
+    { tittel: 'Ditt sykefravær', sti: env.sykefravaerUrl(), erKlikkbar: true }
 ]
 
 const BrodsmuleBit = ({ sti, tittel, erKlikkbar }: Brodsmule) => {
