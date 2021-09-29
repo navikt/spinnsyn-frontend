@@ -96,6 +96,7 @@
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "start-mock": "NODE_ENV=development craco start",
+    "start-mock-ci": "CHOKIDAR_USEPOLLING=1 NODE_ENV=development craco start",
     "start": "craco start",
     "build": "CI=true craco build",
     "test": "MOCK_BACKEND=true craco test",
