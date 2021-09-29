@@ -30,6 +30,10 @@ function setUpMock(persona: Persona) {
             vedtak.lestDato = dayjs().format('YYYY-MM-DD')
             return res(ctx.json({ status: 200 }))
         })
+    // Vil ellers feile på CORS policy i labs.
+    mock.get('https://www.nav.no/person/innloggingsstatus/auth', (req, res, ctx) =>
+        res(ctx.json({}))
+    )
 }
 
 
