@@ -1,35 +1,58 @@
-# Teknisk nytt i denne appen
+# spinnsyn-frontend
 
-* create-react-app
-    * bootstrappet med [Create React App](https://github.com/facebook/create-react-app)
-    * utvidet med [craco](https://github.com/gsoft-inc/craco) for typescript og less
-* state håndteres via hooks
-    * `redux` er fjernet
-    * lokal state med `use-state`
-    * global state med `use-context`
-    * se /stores
-* syfotekster brukes ikke lenger
-    * tekstfil lagres sammen med komponenten
-    * importeres i komponenten
-    * html escapes med [html-react-parser](https://github.com/remarkablemark/html-react-parser)
-* less håndteres med webpack
-    * lessfil lagres sammen med komponenten
-    * importeres i komponenten
-    * lokal less-bygging er fjernet
-* `nav-frontend`[-komponenter](https://design.nav.no/components) brukes fremfor egne
-    * IKKE bruk typografi-klasser på html-elementer
-    * IKKE definer egen typografi
-    * IKKE definer egne farger
+Applikasjon som viser vedtak mottatt fra `Speil`. Henter data fra [spinnsyn-backend](https://github.com/navikt/spinnsyn-backend).
 
-* Banner ligger nå over brødsmulene, i gammel app lå den under
-* Kvittering for sendt søknad er helt skrevet om. 
-* Kvitteringen er samme side man kommer til om man går inn på en sendt søknad fra oversikten
-* Utenlandssøknaden har nå et spørsmål per side, ikke en side med alle spørsmål
-* Ved klikk på utgått søknad får man en popup, ikke en egen side
-* Kalendere oppfører seg litt annerledes på mobil  
+Lever under:
 
+- prod-gcp: [https://www.nav.no/syk/sykepenger](https://www.nav.no/syk/sykepenger)
+- dev-gcp: [https://www-gcp.dev.nav.no/syk/sykepenger](https://www-gcp.dev.nav.no/syk/sykepenger)
+- labs-gcp (demo): [https://sykepenger.labs.nais.io/syk/sykepenger](https://sykepenger.labs.nais.io/syk/sykepenger)
 
-# Debugging med sourcemaps
-Ved feil i produksjon vil en minimert stacktrace logges til frontendlogger. 
-Ved å laste ned artifikaten sources-with-sourcemaps fra GHA for bygget hvor feilen oppstod kan man sammen med skriptet sourcemap-debug.js finne ut av hvor i originalkoden feilen oppstod. 
-Se også https://stackoverflow.com/questions/33128859/how-can-i-take-a-minified-javascript-stack-trace-and-run-it-against-a-source-map
+## Kjør lokalt uten backend
+
+```sh
+npm run start-mock
+```
+
+## Kjør lokalt i docker-compose
+
+Endre image i flex-docker-compose fra:
+
+```text
+image: "docker.pkg.github.com/navikt/spinnsyn-frontned/spinnsyn-frontend:latest"
+```
+
+Til:
+
+```text
+image: "spinnsyn-frontend:latest"
+```text
+
+Bygg og tag nytt image ved å kjøre:
+
+```sh
+./buildlatest.sh
+```
+
+## Enhetstester
+
+```sh
+npm run test
+```
+
+## Cypress tester
+
+```sh
+npm run e2e
+```
+
+## Debugging med sourcemaps
+
+Ved feil i produksjon vil en minimert stacktrace logges til frontendlogger.
+Ved å laste ned artifikaten sources-with-sourcemaps fra GHA for bygget hvor feilen oppstod kan man sammen med skriptet sourcemap-debug.js finne ut av hvor i originalkoden feilen oppstod.
+
+Se også [https://stackoverflow.com/questions/33128859/how-can-i-take-a-minified-javascript-stack-trace-and-run-it-against-a-source-map](https://stackoverflow.com/questions/33128859/how-can-i-take-a-minified-javascript-stack-trace-and-run-it-against-a-source-map)
+
+## Kontakt oss
+
+Kanalen `flex` på Slack.

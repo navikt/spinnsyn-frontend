@@ -8,7 +8,7 @@ export default function() {
 
     return useMutation<unknown, Error, string>((vedtaksId) => {
         return Fetch.authenticatedPost(
-            `${env.flexGatewayRoot}/spinnsyn-backend/api/v2/vedtak/${vedtaksId}/les`
+            `${env.flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak/${vedtaksId}/les`
         )
     },
     {

@@ -3,8 +3,6 @@ kind: "Application"
 metadata:
   name: spinnsyn-frontend
   namespace: flex
-  annotations:
-      nais.io/security-does-not-matter: "true"
   labels:
     team: flex
 spec:
@@ -36,8 +34,6 @@ spec:
       value: "https://loginservice.dev.nav.no/login"
     - name: MOCK_BACKEND
       value: "false"
-    - name: DECORATOR_URL
-      value: "https://dekoratoren.dev.nav.no"
     - name: ENVIRONMENT
       value: "q1"
     - name: SYKEFRAVAER_URL
@@ -54,3 +50,5 @@ spec:
       value: "7a887ba3e5a07c755526c6591810101a"
     - name: AMPLITUDE_ENABLED
       value: "true"
+    - name: DECORATOR_ENV
+      value: "dev"

@@ -15,13 +15,13 @@ const mock = FetchMock.configure({
 })
 
 function setUpMock(persona: Persona) {
-    mock.get(`${env.flexGatewayRoot}/syfosoknad/api/soknader`,
+    mock.get(`${env.flexGatewayRoot()}/syfosoknad/api/soknader`,
         (req, res, ctx) => res(ctx.json(persona.soknader)))
 
-    mock.get(`${env.flexGatewayRoot}/spinnsyn-backend/api/v2/vedtak`,
+    mock.get(`${env.flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak`,
         (req, res, ctx) => res(ctx.json(persona.vedtak)))
 
-    mock.post(`${env.flexGatewayRoot}/spinnsyn-backend/api/v2/vedtak/:id/les`,
+    mock.post(`${env.flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak/:id/les`,
         (req, res, ctx) => {
             const vedtak = nyeVedtak.find((ved: RSVedtakWrapper) =>
                 ved.id === req.pathParams.id
@@ -30,6 +30,10 @@ function setUpMock(persona: Persona) {
             vedtak.lestDato = dayjs().format('YYYY-MM-DD')
             return res(ctx.json({ status: 200 }))
         })
+    // Vil ellers feile på CORS policy i labs.
+    mock.get('https://www.nav.no/person/innloggingsstatus/auth', (req, res, ctx) =>
+        res(ctx.json({}))
+    )
 }
 
 

@@ -131,7 +131,7 @@ const VedtakSide = () => {
                         <AutomatiskBehandlingPreteritum />
                     }
                 />
-                <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl}>
+                <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl()}>
                     <VenstreChevron />
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
                 </Lenke>

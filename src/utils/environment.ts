@@ -1,64 +1,145 @@
-class Environment {
+interface EnvironmentInterface {
+    isDev(): boolean
+    isQ1(): boolean
+    isProd(): boolean
+    sykmeldingerBackendProxyRoot(): string
+    flexGatewayRoot(): string
+    isMockBackend(): boolean
+    isOpplaering(): boolean
+    loginServiceUrl(): string
+    loginServiceRedirectUrl(): string
+    sykefravaerUrl(): string
+    dittNavUrl(): string
+    frontendloggerRoot(): string
+    amplitudeEnabled(): boolean
+    amplitudeKey(): string
+}
+class Environment implements EnvironmentInterface {
 
     private env = (window as any)._env_;
 
-    get isDev() {
+    isDev() {
         return this.env.ENVIRONMENT === 'dev'
     }
 
-    get isQ1() {
+    isQ1() {
         return this.env.ENVIRONMENT === 'q1'
     }
 
-    get isProd() {
+    isProd() {
         return this.env.ENVIRONMENT === 'prod'
     }
 
-    get sykmeldingerBackendProxyRoot() {
+    sykmeldingerBackendProxyRoot() {
         return this.env.SYKMELDINGER_BACKEND_PROXY_ROOT
     }
 
-    get flexGatewayRoot() {
+    flexGatewayRoot() {
         return this.env.FLEX_GATEWAY_ROOT
     }
 
-    get isMockBackend() {
+    isMockBackend() {
         return this.env.MOCK_BACKEND === 'true'
     }
 
-    get isOpplaering() {
+    isOpplaering() {
         return this.env.OPPLAERING === 'true'
     }
 
-    get loginServiceUrl() {
+    loginServiceUrl() {
         return this.env.LOGINSERVICE_URL
     }
 
-    get loginServiceRedirectUrl() {
+    loginServiceRedirectUrl() {
         return this.env.LOGINSERVICE_REDIRECT_URL
     }
 
-    get sykefravaerUrl() {
+    sykefravaerUrl() {
         return this.env.SYKEFRAVAER_URL
     }
 
-    get dittNavUrl() {
+    dittNavUrl() {
         return this.env.DITTNAV_URL
     }
 
-    get frontendloggerRoot() {
+    frontendloggerRoot() {
         return this.env.FRONTENDLOGGER_ROOT
     }
 
-    get amplitudeKey() {
+    amplitudeKey() {
         return this.env.AMPLITUDE_KEY
     }
 
-    get amplitudeEnabled() {
+    amplitudeEnabled() {
         return this.env.AMPLITUDE_ENABLED === 'true'
     }
 }
 
-const env = new Environment()
+class MockEnvironment implements EnvironmentInterface {
+    isDev() {
+        return true
+    }
+
+    isQ1() {
+        return false
+    }
+
+    isProd() {
+        return false
+    }
+
+    sykmeldingerBackendProxyRoot() {
+        return ''
+    }
+
+    flexGatewayRoot() {
+        return ''
+    }
+
+    isMockBackend() {
+        return true
+    }
+
+    isOpplaering() {
+        return process.env.REACT_APP_OPPLAERING === 'true'
+    }
+
+    loginServiceUrl() {
+        return ''
+    }
+
+    loginServiceRedirectUrl() {
+        return ''
+    }
+
+    sykefravaerUrl() {
+        return ''
+    }
+
+    dittNavUrl() {
+        return ''
+    }
+
+    frontendloggerRoot() {
+        return ''
+    }
+
+    amplitudeKey() {
+        return ''
+    }
+
+    amplitudeEnabled() {
+        return false
+    }
+}
+
+function hentEnvironment(): EnvironmentInterface {
+    if (process.env.NODE_ENV === 'development') {
+        return new MockEnvironment()
+    }
+    return new Environment()
+}
+
+const env = hentEnvironment()
 
 export default env
