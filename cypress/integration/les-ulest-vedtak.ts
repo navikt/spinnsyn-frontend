@@ -49,14 +49,10 @@ describe('Tester at appen starter', () => {
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
 
-        cy.contains('Mer om beregningen').click({ force: true })
+        cy.contains('Slik beregner vi hva du får per dag').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
-        cy.contains('Ved feil opplysninger').click({ force: true })
-        cy.get('.utvidbar__innholdContainer')
-            .should('contain', 'Klagefrist: 14. juni 2021')
-        cy.get('.utvidbar__innholdContainer').contains('Lukk').click({ force: true })
     })
 
     it('Den blå boksen har riktig innhold', () => {

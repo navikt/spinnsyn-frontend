@@ -18,7 +18,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
             .and('contain', 'Utbetales til arbeidsgiveren')
             .click({ force: true })
 
-        cy.contains('Daglig utbetalingsoversikt')
+        cy.contains('Se hva du får per dag')
             .click({ force: true })
 
         // Dager utenfor vedtak fom og tom
@@ -46,7 +46,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
 
         cy.get('.utvidbar.gronn').click()
-        cy.contains('Daglig utbetalingsoversikt').click({ force: true })
+        cy.contains('Se hva du får per dag').click({ force: true })
 
         cy.get('.utbetalingsoversikt').within(() => {
             cy.contains('30.01.21').parent().should('contain', 'Arbeidsdag').and('contain', '-')
