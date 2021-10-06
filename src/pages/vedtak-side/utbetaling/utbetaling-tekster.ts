@@ -19,6 +19,7 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.info.tittel': 'Slik beregner vi sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årslønn',
+    'utbetaling.inntekt.info.redusert': 'Redusert til 6G',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
