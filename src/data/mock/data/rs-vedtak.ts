@@ -21,6 +21,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             }
         ],
         inntekt: 48513.47,
+        // TODO: Kan bli krøll fordi vi runder ned inntekt
         sykepengegrunnlag: 582161.64,
         utbetaling: {
             organisasjonsnummer: '972674818',
@@ -301,7 +302,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             }
         ],
         inntekt: 37500,
-        sykepengegrunnlag: 455000,
+        sykepengegrunnlag: 450000,
         utbetaling: {
             organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
             forbrukteSykedager: 15,
@@ -707,7 +708,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             }
         ],
         inntekt: 30000,
-        sykepengegrunnlag: 370000,
+        sykepengegrunnlag: 360000,
         utbetaling: {
             organisasjonsnummer: integrasjonsSoknad.arbeidsgiver?.orgnummer,
             utbetalingId: '2b60ba06-7ddb-45e6-991b-asfafwq',
