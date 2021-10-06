@@ -21,7 +21,6 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             }
         ],
         inntekt: 48513.47,
-        // TODO: Kan bli krøll fordi vi runder ned inntekt
         sykepengegrunnlag: 582161.64,
         utbetaling: {
             organisasjonsnummer: '972674818',
