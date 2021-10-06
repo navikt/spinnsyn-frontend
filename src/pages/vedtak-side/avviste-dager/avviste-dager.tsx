@@ -9,7 +9,6 @@ import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { RSDag } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import BeregningInfo from '../utbetaling/beregning-info'
-import FeilOpplysninger from '../utbetaling/feil-opplysninger'
 import VarselbobleIkon from './ikon-varselboble.svg'
 
 interface AvvisteDagerProps {
@@ -42,7 +41,6 @@ const AvvisteDager = ({ avvisteDager }: AvvisteDagerProps) => {
                 <DagBeskrivelse dager={avvisteDager} />
             </div>
             <BeregningInfo />
-            <FeilOpplysninger />
         </Utvidbar>
     )
 }

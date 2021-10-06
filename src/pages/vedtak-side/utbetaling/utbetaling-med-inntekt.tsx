@@ -11,7 +11,6 @@ import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
-import FeilOpplysninger from './feil-opplysninger'
 import PengerIkon from './ikon-penger.svg'
 import InntektInfo from './inntekt-info/inntekt-info'
 
@@ -48,7 +47,7 @@ const UtbetalingMedInntekt = () => {
                 <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
-                            tittel={'Daglig utbetalingsoversikt'}
+                            tittel={'Se hva du får per dag'}
                         >
                             <DagTabell dager={valgtVedtak.dager} />
                             <DagBeskrivelse dager={valgtVedtak.dager} />
@@ -56,7 +55,6 @@ const UtbetalingMedInntekt = () => {
                     }
                 />
                 <BeregningInfo />
-                <FeilOpplysninger />
             </div>
         </Utvidbar>
     )
