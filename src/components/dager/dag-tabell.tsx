@@ -35,7 +35,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                             }
                         </td>
                         <td>
-                            <DagLabel dag={dag} />
+                            <DagLabel dag={dag} skalViseProsent={true} />
                         </td>
                     </tr>
                 )}
