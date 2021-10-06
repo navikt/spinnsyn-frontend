@@ -6,15 +6,19 @@ import { logger } from '../../utils/logger'
 
 interface DagLabelProps {
     dag: RSDag
+    skalViseProsent?: Boolean
 }
 
-const DagLabel = ({ dag }: DagLabelProps) => {
+const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
     const lagDagLabel = (dag: RSDag) => {
         // TODO: Legg inn permisjon og ferie når vi mottar denne dataen
         switch (dag.dagtype) {
             case 'NavDagSyk':
                 return <Etikett mini type="suksess">Syk</Etikett>
             case 'NavDagDelvisSyk':
+                if (skalViseProsent) {
+                    return <Etikett mini type="suksess">{dag.grad}% syk</Etikett>
+                }
                 return <Etikett mini type="suksess">Delvis syk</Etikett>
             case 'NavHelgDag':
                 return <Etikett mini type="info">Helg</Etikett>
