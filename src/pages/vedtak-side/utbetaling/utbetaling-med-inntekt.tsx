@@ -12,7 +12,6 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 import PengerIkon from './ikon-penger.svg'
-import InntektInfo from './inntekt-info/inntekt-info'
 
 const UtbetalingMedInntekt = () => {
     const { valgtVedtak } = useAppStore()
@@ -43,7 +42,6 @@ const UtbetalingMedInntekt = () => {
         >
             <div className="utbetaling__innhold">
                 <ArbeidsgiverInfo />
-                <InntektInfo />
                 <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"

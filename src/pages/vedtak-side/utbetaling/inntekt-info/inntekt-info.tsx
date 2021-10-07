@@ -23,6 +23,13 @@ const InntektInfo = () => {
             : undefined
     }
 
+    // TODO: Denne er ikke 100% dagsats
+    function dagsats() {
+        return (valgtVedtak?.dagligUtbetalingsbelop)
+            ? ValutaFormat.format(Math.floor(valgtVedtak.dagligUtbetalingsbelop)) + ' kr'
+            : undefined
+    }
+
     function grunnlag() {
         return (valgtVedtak?.vedtak.sykepengegrunnlag)
             ? ValutaFormat.format(Math.floor(valgtVedtak.vedtak.sykepengegrunnlag)) + ' kr'
@@ -31,30 +38,33 @@ const InntektInfo = () => {
 
     return (
         <section className="inntekt__info">
-            <Element className="inntekt__info__tittel">
-                {tekst('utbetaling.inntekt.info.tittel')}
-            </Element>
             <Vis hvis={inntektMnd() && inntektAr()}
                 render={() =>
                     <>
                         <div className="inntekt__info__linje">
-                            <Normaltekst tag="span">
+                            <Element tag="h4">
                                 {tekst('utbetaling.inntekt.info.beregnet')}
-                            </Normaltekst>
+                            </Element>
                             <Normaltekst tag="span">{inntektMnd()}</Normaltekst>
                         </div>
                         <div className="inntekt__info__linje">
-                            <Normaltekst tag="span">
+                            <Element tag="h4">
                                 {tekst('utbetaling.inntekt.info.omregnet')}
-                            </Normaltekst>
+                            </Element>
                             <Normaltekst tag="span">{inntektAr()}</Normaltekst>
+                        </div>
+                        <div className="inntekt__info__linje">
+                            <Element tag="h4">
+                                {tekst('utbetaling.inntekt.info.dagsats')}
+                            </Element>
+                            <Normaltekst tag="span">{dagsats()}</Normaltekst>
                         </div>
                         <Vis hvis={grunnlag() && grunnlag() !== inntektAr()}
                             render={() =>
                                 <div className="inntekt__info__linje">
-                                    <Normaltekst tag="span">
+                                    <Element tag="h4">
                                         {tekst('utbetaling.inntekt.info.redusert')}
-                                    </Normaltekst>
+                                    </Element>
                                     <Normaltekst tag="span">{grunnlag()}</Normaltekst>
                                 </div>
                             }
