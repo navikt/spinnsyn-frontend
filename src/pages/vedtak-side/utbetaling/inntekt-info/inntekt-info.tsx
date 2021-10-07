@@ -46,18 +46,14 @@ const InntektInfo = () => {
                             </Element>
                             <Normaltekst tag="span">{inntektMnd()}</Normaltekst>
                         </div>
+
                         <div className="inntekt__info__linje">
                             <Element tag="h4">
                                 {tekst('utbetaling.inntekt.info.omregnet')}
                             </Element>
                             <Normaltekst tag="span">{inntektAr()}</Normaltekst>
                         </div>
-                        <div className="inntekt__info__linje">
-                            <Element tag="h4">
-                                {tekst('utbetaling.inntekt.info.dagsats')}
-                            </Element>
-                            <Normaltekst tag="span">{dagsats()}</Normaltekst>
-                        </div>
+
                         <Vis hvis={grunnlag() && grunnlag() !== inntektAr()}
                             render={() =>
                                 <div className="inntekt__info__linje">
@@ -68,6 +64,13 @@ const InntektInfo = () => {
                                 </div>
                             }
                         />
+
+                        <div className="inntekt__info__linje">
+                            <Element tag="h4">
+                                {tekst('utbetaling.inntekt.info.dagsats')}
+                            </Element>
+                            <Normaltekst tag="span">{dagsats()}</Normaltekst>
+                        </div>
                     </>
                 }
             />
