@@ -60,7 +60,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
         })
 
-        cy.contains('Slik beregner vi hva du får per dag').click({ force: true })
+        cy.contains('Slik beregner vi hva du får').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
@@ -90,7 +90,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             cy.contains('20.08.21').parent().should('contain', 'Etter dødsfall').and('contain', '-')
         })
 
-        cy.contains('Slik beregner vi hva du får per dag').click({ force: true })
+        cy.contains('Slik beregner vi hva du får').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 

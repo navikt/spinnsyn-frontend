@@ -1,3 +1,4 @@
+import parser from 'html-react-parser'
 import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
@@ -21,7 +22,7 @@ const BeregningInfo = () => {
                 {tekst('utbetaling.arslonn.tittel')}
             </Element>
             <Normaltekst>
-                {tekst('utbetaling.arslonn.innhold')}
+                {parser(tekst('utbetaling.arslonn.innhold'))}
             </Normaltekst>
 
             <Element tag="h4" className="blokkinfo__avsnitt">
@@ -32,32 +33,27 @@ const BeregningInfo = () => {
             </Normaltekst>
 
             <Element tag="h4" className="blokkinfo__avsnitt">
+                {tekst('utbetaling.totalbelop.tittel')}
+            </Element>
+            <Normaltekst>
+                {tekst('utbetaling.totalbelop.innhold')}
+            </Normaltekst>
+
+            <Element tag="h4" className="blokkinfo__avsnitt">
+                {tekst('utbetaling.flere-arbeidsforhold.tittel')}
+            </Element>
+            <Normaltekst>
+                {tekst('utbetaling.flere-arbeidsforhold.innhold')}
+            </Normaltekst>
+
+            <Element tag="h4" className="blokkinfo__avsnitt">
                 {tekst('utbetaling.utbetalingsdager.tittel')}
             </Element>
             <Normaltekst>
                 {tekst('utbetaling.utbetalingsdager.innhold')}
             </Normaltekst>
 
-            <Element tag="h4" className="blokkinfo__avsnitt">
-                {tekst('utbetaling.totalbelop.tittel')}
-            </Element>
-            <Normaltekst>
-                {tekst('utbetaling.totalbelop.innhold')}
-            </Normaltekst>
-            <Normaltekst>
-                {tekst('utbetaling.totalbelop.innhold-2')}
-            </Normaltekst>
 
-            <Normaltekst className="blokkinfo__avsnitt">
-                {tekst('utbetaling.totalbelop.innhold-3')}
-            </Normaltekst>
-
-            <Element tag="h4" className="blokkinfo__avsnitt">
-                {tekst('utbetaling.delvis.tittel')}
-            </Element>
-            <Normaltekst>
-                {tekst('utbetaling.delvis.innhold')}
-            </Normaltekst>
             <Normaltekst className="blokkinfo__avsnitt">
                 {tekst('utbetaling.beregning.les.mer')}
                 <Lenke href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
