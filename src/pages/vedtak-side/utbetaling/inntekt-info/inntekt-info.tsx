@@ -23,10 +23,9 @@ const InntektInfo = () => {
             : undefined
     }
 
-    // TODO: Denne er ikke 100% dagsats
     function dagsats() {
-        return (valgtVedtak?.dagligUtbetalingsbelop)
-            ? ValutaFormat.format(Math.floor(valgtVedtak.dagligUtbetalingsbelop)) + ' kr'
+        return (valgtVedtak?.vedtak.sykepengegrunnlag)
+            ? ValutaFormat.format(Math.floor(valgtVedtak?.vedtak.sykepengegrunnlag / 260)) + ' kr'
             : undefined
     }
 
