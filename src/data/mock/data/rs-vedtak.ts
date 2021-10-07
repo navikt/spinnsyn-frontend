@@ -1363,6 +1363,824 @@ export const avvistVedtak: RSVedtakWrapper = {
     'sykepengebelop': 0
 }
 
+export const over6GVedtak: RSVedtakWrapper = {
+    'id': '15607abb3-0ad2-4dbd-b9b6-6g',
+    'lest': true,
+    'lestDato': '1970-01-01T01:00:00+01:00',
+    'vedtak': {
+        'organisasjonsnummer': arbeidstaker100.arbeidsgiver!.orgnummer,
+        'fom': '2021-09-20',
+        'tom': '2021-10-07',
+        'dokumenter': [
+            {
+                'dokumentId': 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f',
+                'type': 'Sykmelding'
+            },
+            {
+                'dokumentId': arbeidstaker100.id,
+                'type': 'Søknad'
+            }
+        ],
+        'inntekt': 74976,
+        'sykepengegrunnlag': 638394,
+        'utbetaling': {
+            'organisasjonsnummer': arbeidstaker100.arbeidsgiver!.orgnummer,
+            'utbetalingId': 'abc-123',
+            'forbrukteSykedager': 52,
+            'gjenståendeSykedager': 196,
+            'automatiskBehandling': true,
+            'arbeidsgiverOppdrag': {
+                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer,
+                'nettoBeløp': 17192,
+                'utbetalingslinjer': [
+                    {
+                        'fom': '2021-08-09',
+                        'tom': '2021-08-29',
+                        'dagsats': 1473,
+                        'totalbeløp': 22095,
+                        'grad': 60,
+                        'stønadsdager': 15
+                    },
+                    {
+                        'fom': '2021-08-30',
+                        'tom': '2021-10-07',
+                        'dagsats': 1228,
+                        'totalbeløp': 35612,
+                        'grad': 50,
+                        'stønadsdager': 29
+                    }
+                ]
+            },
+            'utbetalingsdager': [
+                {
+                    'dato': '2021-06-04',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-05',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-06',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-07',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-08',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-09',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-10',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-11',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-12',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-13',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-14',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-15',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-16',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-17',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-18',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-19',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-20',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-21',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-22',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-23',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-24',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-25',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-26',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-27',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-28',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-29',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-06-30',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-01',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-02',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-03',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-04',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-05',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-06',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-07',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-08',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-09',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-10',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-11',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-12',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-13',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-14',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-15',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-16',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-17',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-18',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-19',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-20',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-21',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-22',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-23',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-24',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-25',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-26',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-27',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-28',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-29',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-30',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-07-31',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-01',
+                    'type': 'Fridag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-02',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-03',
+                    'type': 'Arbeidsdag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-04',
+                    'type': 'UkjentDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-05',
+                    'type': 'UkjentDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-06',
+                    'type': 'UkjentDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-07',
+                    'type': 'UkjentDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-08',
+                    'type': 'UkjentDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-09',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-10',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-11',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-12',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-13',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-14',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-15',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-16',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-17',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-18',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-19',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-20',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-21',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-22',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-23',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-24',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-25',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-26',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-27',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-28',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-29',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-30',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-08-31',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-01',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-02',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-03',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-04',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-05',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-06',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-07',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-08',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-09',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-10',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-11',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-12',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-13',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-14',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-15',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-16',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-17',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-18',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-19',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-20',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-21',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-22',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-23',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-24',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-25',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-26',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-27',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-28',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-29',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-30',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-01',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-02',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-03',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-04',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-05',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-06',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-07',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                }
+            ],
+        }
+    },
+    'opprettet': '2021-10-07',
+    'annullert': false,
+    'revurdert': false,
+    'dager': [
+        {
+            'dato': '2021-09-20',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-21',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-22',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-23',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-24',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-25',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'NavHelgDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-26',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'NavHelgDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-27',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-28',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-29',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-09-30',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-01',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-02',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'NavHelgDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-03',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'NavHelgDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-04',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-05',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-06',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-07',
+            'belop': 1228,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        }
+    ],
+    'dagligUtbetalingsbelop': 1228,
+    'antallDagerMedUtbetaling': 14,
+    'sykepengebelop': 17192
+}
+
 export const nyeVedtak: RSVedtakWrapper[] = [
     vedtakMed40Grad,
     ulestVedtakUtenUtbetalingsdager,
@@ -1370,4 +2188,5 @@ export const nyeVedtak: RSVedtakWrapper[] = [
     vedtakRevurdert,
     integrasjonsVedtak,
     avvistVedtak,
+    over6GVedtak,
 ]

@@ -4,6 +4,7 @@ import {
     avvistVedtak,
     integrasjonsVedtak,
     nyeVedtak,
+    over6GVedtak,
     ulestGammeltVedtak,
     vedtakAnnullert,
 } from './rs-vedtak'
@@ -39,4 +40,9 @@ export const eldgammelt: Persona = {
 export const avvistPerson: Persona = {
     soknader: soknader,
     vedtak: [ integrasjonsVedtak, avvistVedtak ]
+}
+
+export const over6GPerson: Persona = {
+    soknader: soknader,
+    vedtak: [ over6GVedtak ]
 }
