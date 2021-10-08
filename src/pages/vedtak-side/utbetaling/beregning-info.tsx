@@ -5,12 +5,15 @@ import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { tekst } from '../../../utils/tekster'
+import InntektInfo from './inntekt-info/inntekt-info'
 
 const BeregningInfo = () => {
     return (
         <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo"
             tittel={tekst('utbetaling.beregning.tittel')}
         >
+            <InntektInfo />
+
             <Element tag="h4" className="blokkinfo__avsnitt">
                 {tekst('utbetaling.mndlonn.tittel')}
             </Element>
