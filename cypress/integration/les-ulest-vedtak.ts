@@ -41,11 +41,6 @@ describe('Tester at appen starter', () => {
             .and('contain', 'Utbetales til arbeidsgiveren')
             .click({ force: true })
 
-        cy.get('.inntekt__info')
-            .should('contain', 'Slik beregner vi sykepengene')
-            .should('contain', 'Beregnet månedslønn').and('contain', '37\u00a0500 kr')
-            .should('contain', 'Omregnet til årslønn').and('contain', '450\u00a0000 kr')
-
         cy.get('.utvidbar__innholdContainer')
             .should('have.class', 'apen')
 
@@ -53,6 +48,9 @@ describe('Tester at appen starter', () => {
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
+        cy.get('.inntekt__info')
+            .should('contain', 'Beregnet månedslønn').and('contain', '37\u00a0500 kr')
+            .should('contain', 'Omregnet til årslønn').and('contain', '450\u00a0000 kr')
     })
 
     it('Den blå boksen har riktig innhold', () => {
