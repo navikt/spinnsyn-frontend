@@ -78,7 +78,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
         cy.get('.utvidbar.orange')
             .should('contain', '4 sykepengedager')
-            .and('contain', 'Dekkes ikke av NAV')
+            .and('contain', 'Utbetales ikke av NAV')
             .click()
 
         cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
