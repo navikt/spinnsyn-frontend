@@ -12,7 +12,7 @@ const UtbetalingTekster = {
     'utbetaling.flere-arbeidsforhold.innhold': 'Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.',
     'utbetaling.utbetalingsdager.tittel': 'Utbetalingsdager',
     'utbetaling.utbetalingsdager.innhold': 'Når NAV utbetaler sykepenger, betales det alltid for dagene mandag til fredag. Dette gjør vi selv om det er helligdager i løpet av disse dagene, og uavhengig av om du eventuelt jobber lørdag og søndag. Penger du tjener på lørdager og søndager, blir regnet med i beløpet du får utbetalt.',
-    'utbetaling.beregning.tittel': 'Slik beregner vi hva du får',
+    'utbetaling.beregning.tittel': 'Slik beregner vi sykepengene',
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
     'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
     'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',

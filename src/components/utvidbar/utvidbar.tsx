@@ -38,7 +38,7 @@ const Utvidbar = (props: UtvidbarProps) => {
         setErApen(props.erApen)
         setInnholdHeight(
             props.fixedHeight
-                ? 3000
+                ? 10000
                 : innhold.current!.offsetHeight
         )
         // eslint-disable-next-line
