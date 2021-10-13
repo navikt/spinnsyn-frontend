@@ -26,7 +26,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
             <tbody>
                 {dager.map((dag, idx) =>
                     <tr key={idx}>
-                        <td>{dayjs(dag.dato).format('DD.MM.YY')}</td>
+                        <td>{dayjs(dag.dato).format('DD.MMM')}</td>
                         <td>
                             {
                                 (dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
