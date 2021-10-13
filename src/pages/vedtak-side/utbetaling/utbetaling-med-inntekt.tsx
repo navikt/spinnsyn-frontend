@@ -42,6 +42,7 @@ const UtbetalingMedInntekt = () => {
         >
             <div className="utbetaling__innhold">
                 <ArbeidsgiverInfo />
+                <BeregningInfo />
                 <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
@@ -52,7 +53,6 @@ const UtbetalingMedInntekt = () => {
                         </Utvidbar>
                     }
                 />
-                <BeregningInfo />
             </div>
         </Utvidbar>
     )
