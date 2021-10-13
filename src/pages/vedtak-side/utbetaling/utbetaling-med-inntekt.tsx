@@ -46,7 +46,7 @@ const UtbetalingMedInntekt = () => {
                 <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
-                            tittel={'Se hva du får per dag'}
+                            tittel={'Beløpet dag for dag'}
                         >
                             <DagTabell dager={valgtVedtak.dager} />
                             <DagBeskrivelse dager={valgtVedtak.dager} />
