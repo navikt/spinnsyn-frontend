@@ -26,8 +26,8 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('23.01.21').should('not.exist')
 
         // Dager innenfor vedtak fom og tom
-        cy.contains('08.02.21').parent().should('contain', '40% syk').and('contain', '896')
-        cy.contains('20.02.21').parent().should('contain', 'Helg').and('contain', '-')
+        cy.contains('08.feb.').parent().should('contain', '40% syk').and('contain', '896')
+        cy.contains('20.feb.').parent().should('contain', 'Helg').and('contain', '-')
     })
 
     it('Forklaring', () => {
@@ -49,22 +49,22 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('Se hva du får per dag').click({ force: true })
 
         cy.get('.utbetalingsoversikt').within(() => {
-            cy.contains('30.01.21').parent().should('contain', 'Arbeidsdag').and('contain', '-')
-            cy.contains('31.01.21').parent().should('contain', 'Arbeidsgiver betaler').and('contain', '-')
-            cy.contains('01.02.21').parent().should('contain', 'Syk').and('contain', '1\u00a0000 kr')
-            cy.contains('06.02.21').parent().should('contain', 'Helg').and('contain', '-')
-            cy.contains('08.02.21').parent().should('contain', '40% syk').and('contain', '400 kr')
-            cy.contains('11.02.21').parent().should('contain', 'Fridag').and('contain', '-')
-            cy.contains('13.02.21').parent().should('contain', 'Søkt for sent').and('contain', '-')
-            cy.contains('14.02.21').parent().should('contain', 'Ukjent').and('contain', '-')
-            cy.contains('15.02.21').parent().should('contain', 'Maks antall dager nådd').and('contain', '-')
-            cy.contains('16.02.21').parent().should('contain', 'For lav inntekt').and('contain', '-')
-            cy.contains('17.02.21').parent().should('contain', 'Egenmelding når NAV skal betale').and('contain', '-')
-            cy.contains('18.02.21').parent().should('contain', 'Sykmeldt i for liten grad').and('contain', '-')
-            cy.contains('19.02.21').parent().should('contain', 'Jobbet for kort').and('contain', '-')
-            cy.contains('20.02.21').parent().should('contain', 'Ikke medlem').and('contain', '-')
-            cy.contains('21.02.21').parent().should('contain', 'Etter dødsfall').and('contain', '-')
-            cy.contains('22.02.21').parent().should('contain', 'Ukjent').and('contain', '-')
+            cy.contains('30.jan.').parent().should('contain', 'Arbeidsdag').and('contain', '-')
+            cy.contains('31.jan.').parent().should('contain', 'Arbeidsgiver betaler').and('contain', '-')
+            cy.contains('01.feb.').parent().should('contain', 'Syk').and('contain', '1\u00a0000 kr')
+            cy.contains('06.feb.').parent().should('contain', 'Helg').and('contain', '-')
+            cy.contains('08.feb.').parent().should('contain', '40% syk').and('contain', '400 kr')
+            cy.contains('11.feb.').parent().should('contain', 'Fridag').and('contain', '-')
+            cy.contains('13.feb.').parent().should('contain', 'Søkt for sent').and('contain', '-')
+            cy.contains('14.feb.').parent().should('contain', 'Ukjent').and('contain', '-')
+            cy.contains('15.feb.').parent().should('contain', 'Maks antall dager nådd').and('contain', '-')
+            cy.contains('16.feb.').parent().should('contain', 'For lav inntekt').and('contain', '-')
+            cy.contains('17.feb.').parent().should('contain', 'Egenmelding når NAV skal betale').and('contain', '-')
+            cy.contains('18.feb.').parent().should('contain', 'Sykmeldt i for liten grad').and('contain', '-')
+            cy.contains('19.feb.').parent().should('contain', 'Jobbet for kort').and('contain', '-')
+            cy.contains('20.feb.').parent().should('contain', 'Ikke medlem').and('contain', '-')
+            cy.contains('21.feb.').parent().should('contain', 'Etter dødsfall').and('contain', '-')
+            cy.contains('22.feb.').parent().should('contain', 'Ukjent').and('contain', '-')
         })
 
         cy.contains('Forklaring').parent().within(() => {
