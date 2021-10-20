@@ -16,6 +16,8 @@ import '../components/dager/dag-tabell.less'
 import '../components/brodsmuler/brodsmuler.less'
 import '../components/banner/banner.less'
 import '../components/vedtak-status/vedtak-status.less'
+import '../app.less'
+import '../basic.less'
 
 import type { AppProps as NextAppProps } from 'next/app'
 import React, { PropsWithChildren } from 'react'
@@ -31,8 +33,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
 
     return (
+        <div className="pagewrapper">
+            <div id="root"><Component {...pageProps} /></div>
+        </div>
 
-        <Component {...pageProps} />
 
     )
 }

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
+import React, { useEffect, useState } from 'react'
 
 import CreateReactAppEntryPoint from '../app'
 
@@ -13,7 +14,16 @@ function App() {
         return null
     }
 
-    return <CreateReactAppEntryPoint />
+
+    const CreateReactAppEntryPoint = dynamic(
+        () => import('../app'),
+        { ssr: false }
+    )
+
+    return <>
+        <strong>HÆLLLSDF</strong>
+        <CreateReactAppEntryPoint />
+    </>
 }
 
 export default App

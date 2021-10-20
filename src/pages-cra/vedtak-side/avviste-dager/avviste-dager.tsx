@@ -1,4 +1,3 @@
-import './avviste-dager.less'
 
 import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useState } from 'react'

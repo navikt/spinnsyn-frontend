@@ -1,4 +1,4 @@
-import './brodsmuler.less'
+
 
 import { OppChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'

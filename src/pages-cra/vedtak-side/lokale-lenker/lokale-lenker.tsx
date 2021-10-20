@@ -1,4 +1,4 @@
-import './lokale-lenker.less'
+
 
 import { LenkepanelBase } from 'nav-frontend-lenkepanel'
 import { Element, Innholdstittel } from 'nav-frontend-typografi'

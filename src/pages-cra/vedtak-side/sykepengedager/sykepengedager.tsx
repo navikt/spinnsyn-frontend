@@ -1,4 +1,4 @@
-import './sykepengedager.less'
+
 
 import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'

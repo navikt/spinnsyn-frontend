@@ -1,4 +1,3 @@
-import './vedtak-side.less'
 
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
