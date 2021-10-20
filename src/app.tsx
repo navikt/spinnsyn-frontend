@@ -8,9 +8,9 @@ import { Route, Switch } from 'react-router-dom'
 import { Amplitude } from './components/amplitude/amplitudeProvider'
 import { HotjarTrigger } from './components/hotjar-trigger'
 import StoreProvider from './data/stores/store-provider'
-import RedirectTilOversikt from './pages/feil/redirect-til-oversikt'
-import VedtakListe from './pages/vedtak-liste/vedtak-liste'
-import VedtakSide from './pages/vedtak-side/vedtak-side'
+import RedirectTilOversikt from './pages-cra/feil/redirect-til-oversikt'
+import VedtakListe from './pages-cra/vedtak-liste/vedtak-liste'
+import VedtakSide from './pages-cra/vedtak-side/vedtak-side'
 
 export interface RouteParams {
     id: string;
