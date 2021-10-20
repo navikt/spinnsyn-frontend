@@ -1,6 +1,10 @@
+import 'dayjs/locale/nb'
+
+import dayjs from 'dayjs'
+import nb from 'dayjs/locale/nb'
 import ModalWrapper from 'nav-frontend-modal'
 import React from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import {  QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { HotjarTrigger } from './components/hotjar-trigger'
@@ -8,9 +12,19 @@ import StoreProvider from './data/stores/store-provider'
 import RedirectTilOversikt from './pages-cra/feil/redirect-til-oversikt'
 import VedtakListe from './pages-cra/vedtak-liste/vedtak-liste'
 import VedtakSide from './pages-cra/vedtak-side/vedtak-side'
+import env from './utils/environment'
 
 export interface RouteParams {
     id: string;
+}
+
+dayjs.locale({
+    ...nb,
+    weekStart: 1,
+})
+
+if (env.isMockBackend()) {
+    require('./data/mock')
 }
 
 const App = (): any => {
@@ -28,10 +42,10 @@ const App = (): any => {
     ModalWrapper.setAppElement('#root')
 
     return (
-        <StoreProvider>
-            <QueryClientProvider client={queryClient}>
-                <HotjarTrigger>
-                    <BrowserRouter>
+        <BrowserRouter basename="/syk/sykepenger">
+            <StoreProvider>
+                <QueryClientProvider client={queryClient}>
+                    <HotjarTrigger>
                         <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
                             <Switch>
                                 <Route exact={true} path="/" component={VedtakListe} />
@@ -39,10 +53,10 @@ const App = (): any => {
                                 <Route path={'/vedtak/'} component={RedirectTilOversikt} />
                             </Switch>
                         </main>
-                    </BrowserRouter>
-                </HotjarTrigger>
-            </QueryClientProvider>
-        </StoreProvider>
+                    </HotjarTrigger>
+                </QueryClientProvider>
+            </StoreProvider>
+        </BrowserRouter>
     )
 }
 
