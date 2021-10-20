@@ -1,4 +1,3 @@
-import './saksbehandlingstid-og-utbetaling.less'
 
 import { HoyreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'

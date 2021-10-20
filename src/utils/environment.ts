@@ -137,7 +137,8 @@ function hentEnvironment(): EnvironmentInterface {
     if (process.env.NODE_ENV === 'development') {
         return new MockEnvironment()
     }
-    return new Environment()
+    return new MockEnvironment()
+    //return new Environment()
 }
 
 const env = hentEnvironment()

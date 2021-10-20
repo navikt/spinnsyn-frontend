@@ -1,4 +1,3 @@
-import './banner.less'
 
 import React from 'react'
 

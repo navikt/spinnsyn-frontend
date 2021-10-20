@@ -1,4 +1,3 @@
-import './annullering.less'
 
 import parser from 'html-react-parser'
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper'

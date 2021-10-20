@@ -1,4 +1,3 @@
-import './utvidbar.less'
 
 import Chevron from 'nav-frontend-chevron'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'

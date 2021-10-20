@@ -1,4 +1,3 @@
-import './vedtak-status.less'
 
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import Veilederpanel from 'nav-frontend-veilederpanel'
