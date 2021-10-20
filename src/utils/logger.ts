@@ -1,6 +1,13 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import safeStringify from 'fast-safe-stringify'
 
-const frontendlogger = (window as any).frontendlogger
+const frontendlogger = {
+    info: function(arg: any) {
+    }, warn: function(arg: any) {
+    }, error: function(arg: any) {
+    }, event: function(arg: any) {
+    }
+}
 
 // Grafana - Metrikk
 export const event = (arg: object): void => {
@@ -9,7 +16,7 @@ export const event = (arg: object): void => {
 
 const msgToString = (msg: string, arg?: any): string => {
     if (arg) {
-        if(arg.stack){
+        if (arg.stack) {
             return `${msg} - ${safeStringify(arg.stack)}`
         }
         return `${msg} - ${safeStringify(arg)}`
