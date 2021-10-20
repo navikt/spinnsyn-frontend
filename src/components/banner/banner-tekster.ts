@@ -1,6 +1,6 @@
 const BannerTekster = {
     'spinnsyn.sidetittel.liste': 'Behandlede søknader',
-    'spinnsyn.sidetittel.vedtak': 'Behandlede søknader',
+    'spinnsyn.sidetittel.vedtak': 'Behandlet søknad',
 
 }
 
