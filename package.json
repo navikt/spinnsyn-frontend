@@ -97,9 +97,9 @@
     "yet-another-fetch-mock": "^4.1.0"
   },
   "scripts": {
-    "start-mock": "NODE_ENV=development craco start",
-    "start": "craco start",
-    "build": "CI=true craco build",
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build",
     "test": "MOCK_BACKEND=true craco test",
     "cy:open": "cypress open",
     "e2e": "MOCK_BACKEND=true start-test 8080 cy:open",

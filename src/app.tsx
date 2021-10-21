@@ -4,9 +4,10 @@ import dayjs from 'dayjs'
 import nb from 'dayjs/locale/nb'
 import ModalWrapper from 'nav-frontend-modal'
 import React from 'react'
-import {  QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
+import { Amplitude } from './components/amplitude/amplitudeProvider'
 import { HotjarTrigger } from './components/hotjar-trigger'
 import StoreProvider from './data/stores/store-provider'
 import RedirectTilOversikt from './pages-cra/feil/redirect-til-oversikt'
@@ -45,15 +46,17 @@ const App = (): any => {
         <BrowserRouter basename="/syk/sykepenger">
             <StoreProvider>
                 <QueryClientProvider client={queryClient}>
-                    <HotjarTrigger>
-                        <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                            <Switch>
-                                <Route exact={true} path="/" component={VedtakListe} />
-                                <Route path={'/vedtak/:id'} component={VedtakSide} />
-                                <Route path={'/vedtak/'} component={RedirectTilOversikt} />
-                            </Switch>
-                        </main>
-                    </HotjarTrigger>
+                    <Amplitude>
+                        <HotjarTrigger>
+                            <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+                                <Switch>
+                                    <Route exact={true} path="/" component={VedtakListe} />
+                                    <Route path={'/vedtak/:id'} component={VedtakSide} />
+                                    <Route path={'/vedtak/'} component={RedirectTilOversikt} />
+                                </Switch>
+                            </main>
+                        </HotjarTrigger>
+                    </Amplitude>
                 </QueryClientProvider>
             </StoreProvider>
         </BrowserRouter>
