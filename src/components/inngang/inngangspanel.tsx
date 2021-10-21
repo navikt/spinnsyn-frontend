@@ -1,5 +1,4 @@
 
-
 import { Undertekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 import { Link } from 'react-router-dom'

@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
 
@@ -21,9 +22,13 @@ function App() {
     )
 
     return <>
-        <strong>HÆLLLSDF</strong>
         <CreateReactAppEntryPoint />
     </>
+}
+
+export const getServerSideProps: GetServerSideProps<object> = async() => {
+    // Tvinger dynamic page rendring
+    return Promise.resolve({ props: {} })
 }
 
 export default App
