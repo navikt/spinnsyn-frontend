@@ -3,6 +3,18 @@ const withLess = require('next-with-less')
 
 module.exports = withLess({
     lessLoaderOptions: {},
+    async rewrites() {
+        return [
+            {
+                source: '/internal/isAlive',
+                destination: '/api/isAlive',
+            },
+            {
+                source: '/internal/isReady',
+                destination: '/api/isReady',
+            },
+        ]
+    },
     serverRuntimeConfig: {
         // Will only be available on the server side
         decoratorEnv: process.env.DECORATOR_ENV,

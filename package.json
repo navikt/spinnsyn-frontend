@@ -100,7 +100,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "start": "next start",
+    "start": "next start -p 8080",
     "build": "next build",
     "test": "MOCK_BACKEND=true craco test",
     "cy:open": "cypress open",
