@@ -4,8 +4,12 @@ ENV NODE_ENV production
 
 COPY server/dist/index.js .
 
-COPY /build ./build
+COPY /next.config.js ./
+COPY /public ./public
+COPY /.next ./.next
+COPY /node_modules ./node_modules
+COPY /package.json ./package.json
 
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
 
 EXPOSE 8080
