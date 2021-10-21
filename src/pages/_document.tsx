@@ -14,7 +14,7 @@ const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) 
 }
 
 interface Props {
-    Decorator: Components;
+    Decorator?: Components;
     language: string;
 }
 
@@ -22,14 +22,21 @@ class MyDocument extends Document<Props> {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps & Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
-        const Decorator = await fetchDecoratorReact({
-            dekoratorenUrl: serverRuntimeConfig.decoratorUrl,
-            env: serverRuntimeConfig.decoratorEnv,
-            simple: false,
-            chatbot: false,
-            feedback: false,
-            urlLookupTable: false,
-        })
+        const skapDekorator = async() => {
+            if (ctx.pathname == '500' || ctx.pathname == '404') {
+                return undefined
+            }
+            return await fetchDecoratorReact({
+                dekoratorenUrl: serverRuntimeConfig.decoratorUrl,
+                env: serverRuntimeConfig.decoratorEnv,
+                simple: false,
+                chatbot: false,
+                feedback: false,
+                urlLookupTable: false,
+            })
+        }
+
+        const Decorator = await skapDekorator()
 
         const language = getDocumentParameter(initialProps, 'lang')
 
@@ -38,7 +45,20 @@ class MyDocument extends Document<Props> {
 
     render(): JSX.Element {
         const { Decorator, language } = this.props
-
+        if (!Decorator) {
+            return (
+                <Html lang={language || 'no'}>
+                    <Head>
+                        <meta name="robots" content="noindex" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    </Head>
+                    <body>
+                        <Main />
+                        <NextScript />
+                    </body>
+                </Html>
+            )
+        }
         return (
             <Html lang={language || 'no'}>
                 <Head>
