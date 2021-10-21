@@ -14,7 +14,7 @@ const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) 
 }
 
 interface Props {
-    Decorator?: Components;
+    Decorator: Components;
     language: string;
 }
 
@@ -22,21 +22,21 @@ class MyDocument extends Document<Props> {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps & Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
-        const skapDekorator = async() => {
-            if (ctx.pathname == '500' || ctx.pathname == '404') {
-                return undefined
+        const skapDekoratorEnv = () => {
+            if (ctx.pathname == '/500' || ctx.pathname == '/404') {
+                return 'prod' //Blir statisk kompilert i GHA så må hentes defra
             }
-            return await fetchDecoratorReact({
-                dekoratorenUrl: serverRuntimeConfig.decoratorUrl,
-                env: serverRuntimeConfig.decoratorEnv,
-                simple: false,
-                chatbot: false,
-                feedback: false,
-                urlLookupTable: false,
-            })
+            return serverRuntimeConfig.decoratorEnv
         }
 
-        const Decorator = await skapDekorator()
+        const Decorator = await fetchDecoratorReact({
+            dekoratorenUrl: serverRuntimeConfig.decoratorUrl,
+            env: skapDekoratorEnv(),
+            simple: false,
+            chatbot: false,
+            feedback: false,
+            urlLookupTable: false,
+        })
 
         const language = getDocumentParameter(initialProps, 'lang')
 
@@ -45,20 +45,6 @@ class MyDocument extends Document<Props> {
 
     render(): JSX.Element {
         const { Decorator, language } = this.props
-        if (!Decorator) {
-            return (
-                <Html lang={language || 'no'}>
-                    <Head>
-                        <meta name="robots" content="noindex" />
-                        <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    </Head>
-                    <body>
-                        <Main />
-                        <NextScript />
-                    </body>
-                </Html>
-            )
-        }
         return (
             <Html lang={language || 'no'}>
                 <Head>
