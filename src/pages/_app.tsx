@@ -1,5 +1,6 @@
 import '../style/global.css'
 import '../app.less'
+import '../pages-cra/vedtak-liste/vedtak-liste.less'
 import '../pages-cra/vedtak-side/vedtak-side.less'
 import '../pages-cra/vedtak-side/utbetaling/utbetaling.less'
 import '../pages-cra/vedtak-side/utbetaling/inntekt-info/inntekt-info.less'
@@ -18,6 +19,7 @@ import '../components/banner/banner.less'
 import '../components/vedtak-status/vedtak-status.less'
 import '../app.less'
 import '../basic.less'
+import '../../node_modules/nav-frontend-etiketter-style/src/index.less'
 
 import type { AppProps as NextAppProps } from 'next/app'
 import React, { PropsWithChildren } from 'react'
@@ -36,8 +38,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <div className="pagewrapper">
             <div id="root"><Component {...pageProps} /></div>
         </div>
-
-
     )
 }
 
