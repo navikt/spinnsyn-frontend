@@ -3,6 +3,11 @@ const withLess = require('next-with-less')
 
 module.exports = withLess({
     lessLoaderOptions: {},
+    serverRuntimeConfig: {
+        // Will only be available on the server side
+        decoratorEnv: process.env.DECORATOR_ENV,
+        decoratorUrl: process.env.DECORATOR_URL,
+    },
     publicRuntimeConfig: {
         // Will be available on both server and client
         loginserviceUrl: process.env.LOGINSERVICE_URL,
