@@ -11,7 +11,7 @@ Lever under:
 ## Kjør lokalt uten backend
 
 ```sh
-npm run start-mock
+npm run dev
 ```
 
 ## Kjør lokalt i docker-compose
@@ -46,12 +46,6 @@ npm run test
 npm run e2e
 ```
 
-## Debugging med sourcemaps
-
-Ved feil i produksjon vil en minimert stacktrace logges til frontendlogger.
-Ved å laste ned artifikaten sources-with-sourcemaps fra GHA for bygget hvor feilen oppstod kan man sammen med skriptet sourcemap-debug.js finne ut av hvor i originalkoden feilen oppstod.
-
-Se også [https://stackoverflow.com/questions/33128859/how-can-i-take-a-minified-javascript-stack-trace-and-run-it-against-a-source-map](https://stackoverflow.com/questions/33128859/how-can-i-take-a-minified-javascript-stack-trace-and-run-it-against-a-source-map)
 
 ## Kontakt oss
 
