@@ -3,7 +3,6 @@ FROM node:16-alpine
 ENV NODE_ENV production
 
 COPY /next.config.js ./
-COPY /public ./public
 COPY /.next ./.next
 COPY /node_modules ./node_modules
 COPY /package.json ./package.json
