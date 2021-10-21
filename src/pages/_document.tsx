@@ -1,11 +1,11 @@
 import 'node-fetch'
 
-import { Components,fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr'
+import { Components, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr'
 import getConfig from 'next/config'
-import Document, { DocumentContext,DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 
-const { serverRuntimeConfig  } = getConfig()
+const { serverRuntimeConfig } = getConfig()
 
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
