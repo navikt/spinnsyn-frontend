@@ -1,5 +1,4 @@
 
-
 import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'

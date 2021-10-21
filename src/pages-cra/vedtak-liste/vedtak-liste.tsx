@@ -1,5 +1,4 @@
 
-
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'

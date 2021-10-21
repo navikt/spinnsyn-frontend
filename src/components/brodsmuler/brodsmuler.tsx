@@ -1,5 +1,4 @@
 
-
 import { OppChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst } from 'nav-frontend-typografi'
