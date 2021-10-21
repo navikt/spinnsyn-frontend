@@ -1,3 +1,5 @@
+@import '../../../../node_modules/nav-frontend-core/less/_variabler';
+
 .utbetaling__innhold {
     .tekstinfo {
         margin: 0 1rem;
@@ -24,7 +26,8 @@
     }
 
     .utbetalingsoversikt .utvidbar__innholdContainer.apen {
-        margin: 0 -1rem;
+        margin: 1rem -1rem 0;
+        background-color: white;
     }
 
     .etikett {
@@ -33,5 +36,12 @@
 
     .avvist-lovhjemmel {
         margin-top: 1em;
+    }
+}
+
+@media (min-width: @screen-sm) {
+    .utbetalingsoversikt .utvidbar__innholdContainer.apen {
+        border: 1px solid @navGra40;
+        border-radius: 4px;
     }
 }

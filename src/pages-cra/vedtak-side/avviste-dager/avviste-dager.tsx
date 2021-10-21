@@ -36,11 +36,14 @@ const AvvisteDager = ({ avvisteDager }: AvvisteDagerProps) => {
                 {tekst('avviste.dager.intro')}
             </Normaltekst>
 
-            <div className="avvistedageroversikt">
+            <BeregningInfo />
+
+            <Utvidbar erApen={true} visLukk={true} type="intern" className="avvistedageroversikt"
+                tittel={'Dager NAV ikke utbetaler'}
+            >
                 <DagTabell dager={avvisteDager} />
                 <DagBeskrivelse dager={avvisteDager} />
-            </div>
-            <BeregningInfo />
+            </Utvidbar>
         </Utvidbar>
     )
 }
