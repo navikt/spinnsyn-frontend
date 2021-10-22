@@ -43,6 +43,8 @@ class MyDocument extends Document<Props> {
         return (
             <Html lang={language || 'no'}>
                 <Head>
+                    <title>Behandlede søknader</title> {//TODO denne endrer seg kanskje til svar i master
+                    }
                     {showDecorator && <Decorator.Styles />}
                     <meta name="robots" content="noindex" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
