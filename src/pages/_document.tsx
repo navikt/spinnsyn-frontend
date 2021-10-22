@@ -22,16 +22,10 @@ class MyDocument extends Document<Props> {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps & Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
-        const skapDekoratorEnv = () => {
-            if (ctx.pathname == '/500' || ctx.pathname == '/404') {
-                return 'prod' //Blir statisk kompilert i GHA så må hentes defra
-            }
-            return serverRuntimeConfig.decoratorEnv
-        }
 
         const Decorator = await fetchDecoratorReact({
             dekoratorenUrl: serverRuntimeConfig.decoratorUrl,
-            env: skapDekoratorEnv(),
+            env: serverRuntimeConfig.decoratorEnv,
             simple: false,
             chatbot: false,
             feedback: false,
