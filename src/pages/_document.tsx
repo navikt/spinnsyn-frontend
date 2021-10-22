@@ -39,18 +39,21 @@ class MyDocument extends Document<Props> {
 
     render(): JSX.Element {
         const { Decorator, language } = this.props
+        const showDecorator = serverRuntimeConfig.noDecorator != 'true'
         return (
             <Html lang={language || 'no'}>
                 <Head>
-                    <Decorator.Styles />
+                    {showDecorator && <Decorator.Styles />}
                     <meta name="robots" content="noindex" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                 </Head>
                 <body>
-                    <Decorator.Header />
+                    {showDecorator && <Decorator.Header />}
                     <Main />
-                    <Decorator.Footer />
-                    <Decorator.Scripts />
+                    {showDecorator && <>
+                        <Decorator.Footer />
+                        <Decorator.Scripts />
+                    </>}
                     <NextScript />
                 </body>
             </Html>

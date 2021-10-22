@@ -19,6 +19,7 @@ module.exports = withLess({
         // Will only be available on the server side
         decoratorEnv: process.env.DECORATOR_ENV,
         decoratorUrl: process.env.DECORATOR_URL,
+        noDecorator: process.env.NO_DECORATOR,
     },
     publicRuntimeConfig: {
         // Will be available on both server and client
