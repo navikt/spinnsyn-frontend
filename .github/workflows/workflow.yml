@@ -34,7 +34,7 @@ jobs:
       - name: Run lint
         run: npm run lint
       - name: Run tests
-        run: CI=true npm run test
+        run: npm run test:ci
 #      - name: Run cypress
 #        uses: cypress-io/github-action@v2
 #        with:
