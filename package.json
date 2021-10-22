@@ -101,7 +101,7 @@
     "yet-another-fetch-mock": "^4.1.0"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "start": "next start -p 8080",
     "build": "next build",
     "test": "jest --watch",
