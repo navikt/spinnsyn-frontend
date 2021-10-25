@@ -39,7 +39,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Behandlede søknader').click()
+        cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click()
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {

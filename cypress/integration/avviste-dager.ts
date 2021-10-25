@@ -17,7 +17,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             .should('not.exist')
 
         cy.get('.smule')
-            .contains('Behandlede søknader')
+            .contains('Svar på søknader')
             .click()
     })
 
@@ -66,7 +66,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
 
         cy.get('.smule')
-            .contains('Behandlede søknader')
+            .contains('Svar på søknader')
             .click()
     })
 
@@ -96,7 +96,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
 
         cy.get('.smule')
-            .contains('Behandlede søknader')
+            .contains('Svar på søknader')
             .click()
     })
 })
