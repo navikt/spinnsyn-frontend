@@ -33,27 +33,25 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
     'utbetaling.tabell.label.ForeldetDag': 'Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.',
     'utbetaling.tabell.label.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
-
-    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har vært sykmeldt i mer enn 260 dager, som er det maksimale antallet dager du kan få sykepenger hvis du er under 67 år. Fra du er blitt 67 år har du rett til 60 dager. Det må gå 26 uker uten sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
-    'utbetaling.tabell.avvist.MinimumInntekt': 'Du må ha en årlig inntekt på minst et halvt ' +
+    'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
+    'utbetaling.tabell.avvist.MinimumInntekt': 'Du har et sykepengegrunnlag på mindre enn et halvt ' +
         '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
-        ' for å få sykepenger.',
-    'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode': 'Egenmelding kan bare brukes i arbeidsgiverperioden, det vil si de første 16 dagene av sykefraværet som arbeidsgiveren betaler. Etter dette må du ha sykmelding og sende inn søknad for at NAV skal betale.',
+        ' i året. Det betyr at du ikke kan få sykepenger.',
+    'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode': 'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad': 'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
     'utbetaling.tabell.avvist.ManglerOpptjening': 'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.',
     'utbetaling.tabell.avvist.ManglerMedlemskap': 'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.',
     'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
-    'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a>',
-
-    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>',
-    'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a>',
-    'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato': 'Avgjørelsen er tatt etter <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>',
+    'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
 }
 
