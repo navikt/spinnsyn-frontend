@@ -22,7 +22,7 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${ulestVedtakUtenUtbetalingsdager.id}`)
 
         cy.get('.vedtak-status')
-            .should('contain', 'Behandlet søknad om sykepenger')
+            .should('contain', 'Svar på søknad om sykepenger')
             .and('contain', 'Gjelder sykefravær fra')
             .and('contain', '22. mars – 9. april 2021')
 
@@ -70,12 +70,12 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Behandlede søknader').click()
+        cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click()
     })
 
     it('Det er ingen uleste vedtak og 6 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
-        cy.contains('Du har ingen nye behandlede søknader fra NAV.')
+        cy.contains('Du har ingen nye svar på søknader fra NAV.')
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 6)
     })
 
@@ -93,7 +93,7 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Behandlede søknader').click()
+        cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click()
     })
 
     it('Vi åpner et revurdert vedtak', () => {
