@@ -22,6 +22,7 @@ import '../basic.less'
 import '../../node_modules/nav-frontend-etiketter-style/src/index.less'
 
 import type { AppProps as NextAppProps } from 'next/app'
+import Head from 'next/head'
 import React, { PropsWithChildren } from 'react'
 import { DehydratedState } from 'react-query/hydration'
 
@@ -35,9 +36,16 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
 
     return (
-        <div className="pagewrapper">
-            <div id="root"><Component {...pageProps} /></div>
-        </div>
+        <>
+            <Head>
+                <title>Svar på søknader</title>
+                <meta name="robots" content="noindex" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </Head>
+            <div className="pagewrapper">
+                <div id="root"><Component {...pageProps} /></div>
+            </div>
+        </>
     )
 }
 
