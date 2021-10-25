@@ -43,11 +43,11 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
     const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelse) => {
         switch (begrunnelse) {
             case 'SykepengedagerOppbrukt':
-                return <Etikett mini type="fokus">Maks antall dager nådd</Etikett>
+                return <Etikett mini type="fokus">Maks antall dager</Etikett>
             case 'MinimumInntekt':
                 return <Etikett mini type="fokus">For lav inntekt</Etikett>
             case 'EgenmeldingUtenforArbeidsgiverperiode':
-                return <Etikett mini type="fokus">Egenmelding når NAV skal betale</Etikett>
+                return <Etikett mini type="fokus">Egenmelding</Etikett>
             case 'MinimumSykdomsgrad':
                 return <Etikett mini type="fokus">Sykmeldt i for liten grad</Etikett>
             case 'ManglerOpptjening':
