@@ -24,10 +24,10 @@ const getFrontendLogger = (): pino.Logger =>
 
 const createBackendLogger = (): pino.Logger =>
     pino({
-        timestamp: false,
+        timestamp: pino.stdTimeFunctions.isoTime,
         formatters: {
             level: (label) => {
-                return { level: label }
+                return { level: label.toUpperCase() }
             },
         },
     })
