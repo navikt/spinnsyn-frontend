@@ -1,5 +1,5 @@
+import { loginServiceRedirectUrl, loginServiceUrl } from './environment'
 import { logger } from './logger'
-import {loginServiceRedirectUrl, loginServiceUrl} from "./environment";
 
 
 export const hentLoginUrl = () => {

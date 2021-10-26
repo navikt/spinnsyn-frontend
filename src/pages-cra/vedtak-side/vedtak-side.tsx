@@ -18,6 +18,7 @@ import useVedtak from '../../query-hooks/useVedtak'
 import { RSDagTypeKomplett } from '../../types/rs-types/rs-vedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
+import { sykefravaerUrl } from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import AnnulleringsInfo from './annullering/annullering'
@@ -27,7 +28,6 @@ import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPre
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
-import {sykefravaerUrl} from "../../utils/environment";
 
 const brodsmuler: Brodsmule[] = [
     {

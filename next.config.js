@@ -20,6 +20,16 @@ module.exports = withLess({
             },
         ]
     },
+    async redirects() {
+        return [
+            {
+                basePath: false,
+                source: '/',
+                destination: '/syk/sykepenger',
+                permanent: false,
+            },
+        ]
+    },
     serverRuntimeConfig: {
         // Will only be available on the server side
         decoratorEnv: process.env.DECORATOR_ENV,

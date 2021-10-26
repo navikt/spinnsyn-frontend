@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: spinnsyn-frontend-next
+  name: spinnsyn-frontend
   namespace: flex
   labels:
     team: flex
@@ -9,7 +9,7 @@ spec:
   image: {{ image }}
   port: 8080
   ingresses:
-    - "https://sykepenger-next.labs.nais.io/"
+    - "https://sykepenger.labs.nais.io/"
   liveness:
     path: internal/isAlive
   readiness:

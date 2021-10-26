@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { flexGatewayRoot } from '../utils/environment'
 import Fetch from '../utils/fetch'
 
-export default function() {
+export default function UseMerkVedtakSomLest() {
     const queryClient = useQueryClient()
 
     return useMutation<unknown, Error, string>((vedtaksId) => {
