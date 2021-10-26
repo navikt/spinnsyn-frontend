@@ -1,13 +1,12 @@
-
 import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
+import PlasterIkon from '../../../../public/static/img/ikon-plaster.svg'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { estimertSluttdato } from '../../../utils/vedtak-utils'
-import PlasterIkon from './ikon-plaster.svg'
 
 const Sykepengedager = () => {
     const { valgtVedtak } = useAppStore()
@@ -19,7 +18,10 @@ const Sykepengedager = () => {
 
     return (
         <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}
-            erApen={apen} ikon={PlasterIkon} ikonHover={PlasterIkon} visLukk={true}
+            erApen={apen}
+            ikon={'/static/img/ikon-plaster.svg'}
+            ikonHover={'/static/img/ikon-plaster.svg'}
+            visLukk={true}
             tittel={valgtVedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.hittil')} heading="h2"
         >
