@@ -1,47 +1,35 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import safeStringify from 'fast-safe-stringify'
+import pino from 'pino'
 
-const frontendlogger = {
-    info: function(arg: any) {
-    }, warn: function(arg: any) {
-    }, error: function(arg: any) {
-    }, event: function(arg: any) {
-    }
-}
+const getFrontendLogger = (): pino.Logger =>
+    pino({
+        browser: {
+            transmit: {
+                send: async(level, logEvent) => {
+                    try {
+                        await fetch('/syk/sykepenger/api/logger', {
+                            method: 'POST',
+                            headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify(logEvent),
+                        })
+                    } catch (e) {
+                        // eslint-disable-next-line no-console
+                        console.warn(e)
+                        // eslint-disable-next-line no-console
+                        console.warn('Unable to log to backend', logEvent)
+                    }
+                },
+            },
+        },
+    })
 
-// Grafana - Metrikk
-export const event = (arg: object): void => {
-    frontendlogger.event(arg)
-}
+const createBackendLogger = (): pino.Logger =>
+    pino({
+        timestamp: false,
+        formatters: {
+            level: (label) => {
+                return { level: label }
+            },
+        },
+    })
 
-const msgToString = (msg: string, arg?: any): string => {
-    if (arg) {
-        if (arg.stack) {
-            return `${msg} - ${safeStringify(arg.stack)}`
-        }
-        return `${msg} - ${safeStringify(arg)}`
-    }
-    return msg
-}
-
-// Kibana - Warning
-export const warn = (msg: string, arg?: any): void => {
-    frontendlogger.warn(msgToString(msg, arg))
-}
-
-// Kibana - Info
-export const info = (msg: string, arg?: any): void => {
-    frontendlogger.info(msgToString(msg, arg))
-}
-
-// Kibana - Error
-export const error = (msg: string, arg?: any): void => {
-    frontendlogger.error(msgToString(msg, arg))
-}
-
-export const logger = {
-    event,
-    error,
-    warn,
-    info,
-}
+export const logger = typeof window !== 'undefined' ? getFrontendLogger() : createBackendLogger()

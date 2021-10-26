@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import FetchMock, { MiddlewareUtils } from 'yet-another-fetch-mock'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
-import env from '../../utils/environment'
+import { flexGatewayRoot } from '../../utils/environment'
 import { diverseData, Persona } from './data/personas'
 import { nyeVedtak } from './data/rs-vedtak'
 import { personas } from './testperson'
@@ -15,13 +15,13 @@ const mock = FetchMock.configure({
 })
 
 function setUpMock(persona: Persona) {
-    mock.get(`${env.flexGatewayRoot()}/syfosoknad/api/soknader`,
+    mock.get(`${flexGatewayRoot()}/syfosoknad/api/soknader`,
         (req, res, ctx) => res(ctx.json(persona.soknader)))
 
-    mock.get(`${env.flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak`,
+    mock.get(`${flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak`,
         (req, res, ctx) => res(ctx.json(persona.vedtak)))
 
-    mock.post(`${env.flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak/:id/les`,
+    mock.post(`${flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak/:id/les`,
         (req, res, ctx) => {
             const vedtak = nyeVedtak.find((ved: RSVedtakWrapper) =>
                 ved.id === req.pathParams.id

@@ -2,77 +2,50 @@ import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
 
-interface EnvironmentInterface {
-    isDev(): boolean
-    isQ1(): boolean
-    isProd(): boolean
-    sykmeldingerBackendProxyRoot(): string
-    flexGatewayRoot(): string
-    isMockBackend(): boolean
-    isOpplaering(): boolean
-    loginServiceUrl(): string
-    loginServiceRedirectUrl(): string
-    sykefravaerUrl(): string
-    dittNavUrl(): string
-    amplitudeEnabled(): boolean
-    amplitudeKey(): string
+export function isDev() {
+    return publicRuntimeConfig.environment === 'dev'
 }
 
-class Environment implements EnvironmentInterface{
-
-    isDev() {
-        return publicRuntimeConfig.environment === 'dev'
-    }
-
-    isQ1() {
-        return publicRuntimeConfig.environment === 'q1'
-    }
-
-    isProd() {
-        return publicRuntimeConfig.environment === 'prod'
-    }
-
-    sykmeldingerBackendProxyRoot() {
-        return publicRuntimeConfig.sykmeldingerBackendProxyRoot
-    }
-
-    flexGatewayRoot() {
-        return publicRuntimeConfig.flexGatewayRoot
-    }
-
-    isMockBackend() {
-        return publicRuntimeConfig.mockBackend === 'true'
-    }
-
-    isOpplaering() {
-        return publicRuntimeConfig.opplaering === 'true'
-    }
-
-    loginServiceUrl() {
-        return publicRuntimeConfig.loginserviceUrl
-    }
-
-    loginServiceRedirectUrl() {
-        return publicRuntimeConfig.loginServiceRedirectUrl
-    }
-
-    sykefravaerUrl() {
-        return publicRuntimeConfig.sykefravaerUrl
-    }
-
-    dittNavUrl() {
-        return publicRuntimeConfig.dittNavUrl
-    }
-
-    amplitudeKey() {
-        return publicRuntimeConfig.amplitudeKey
-    }
-
-    amplitudeEnabled() {
-        return publicRuntimeConfig.amplitudeEnabled === 'true'
-    }
+export function isQ1() {
+    return publicRuntimeConfig.environment === 'q1'
 }
 
-const env = new Environment()
+export function isProd() {
+    return publicRuntimeConfig.environment === 'prod'
+}
 
-export default env
+export function flexGatewayRoot() {
+    return publicRuntimeConfig.flexGatewayRoot
+}
+
+export function isMockBackend() {
+    return publicRuntimeConfig.mockBackend === 'true'
+}
+
+export function isOpplaering() {
+    return publicRuntimeConfig.opplaering === 'true'
+}
+
+export function loginServiceUrl() {
+    return publicRuntimeConfig.loginserviceUrl
+}
+
+export function loginServiceRedirectUrl() {
+    return publicRuntimeConfig.loginServiceRedirectUrl
+}
+
+export function sykefravaerUrl() {
+    return publicRuntimeConfig.sykefravaerUrl
+}
+
+export function dittNavUrl() {
+    return publicRuntimeConfig.dittNavUrl
+}
+
+export function amplitudeKey() {
+    return publicRuntimeConfig.amplitudeKey
+}
+
+export function amplitudeEnabled() {
+    return publicRuntimeConfig.amplitudeEnabled === 'true'
+}

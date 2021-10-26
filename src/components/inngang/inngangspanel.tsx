@@ -1,5 +1,4 @@
 import { Undertekst, Undertittel } from 'nav-frontend-typografi'
-import Image from 'next/image'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -14,12 +13,12 @@ export const InngangsIkon = ({ ikon, ikonHover }: InngangsIkonProps) => {
     return (
         <>
             <span className="inngangspanel__ikon inngangspanel__ikon--normal">
-                <Image alt="" src={ikon} />
+                <img alt="" src={ikon} />
             </span>
             <Vis hvis={ikonHover !== undefined}
                 render={() =>
                     <span className="inngangspanel__ikon inngangspanel__ikon--hover">
-                        <Image alt="" src={ikonHover || ikon} />
+                        <img alt="" src={ikonHover || ikon} />
                     </span>
                 }
             />

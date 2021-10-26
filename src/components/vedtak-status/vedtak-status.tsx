@@ -1,22 +1,22 @@
 
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import Veilederpanel from 'nav-frontend-veilederpanel'
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 import { useAppStore } from '../../data/stores/app-store'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
-import Dame from './female.svg'
-import Mann from './male.svg'
+
 
 const VedtakStatus = () => {
     const { valgtVedtak } = useAppStore()
     const periode = tilLesbarPeriodeMedArstall(valgtVedtak?.vedtak.fom, valgtVedtak?.vedtak.tom)
-    const [ veileder, setVeileder ] = useState<string>(Mann)
+    const dame = '/syk/sykepenger/static/img/female.svg'
+    const mann = '/syk/sykepenger/static/img/male.svg'
+    const [ veileder, setVeileder ] = useState<string>(mann)
 
     useEffect(() => {
-        (valgtVedtak!.id.charCodeAt(0) % 2) === 1 ? setVeileder(Dame) : setVeileder(Mann)
+        (valgtVedtak!.id.charCodeAt(0) % 2) === 1 ? setVeileder(dame) : setVeileder(mann)
     }, [ valgtVedtak ])
 
     if (!valgtVedtak) return null
@@ -24,7 +24,7 @@ const VedtakStatus = () => {
 
     return (
         <div className="vedtak-status">
-            <Veilederpanel kompakt svg={<Image src={veileder} alt="" />}>
+            <Veilederpanel kompakt svg={<img src={veileder} alt="" />}>
                 <Undertittel tag="h2" className="vedtak-status__tittel">
                     {annullertEllerRevurdert
                         ? tekst('vedtak.status.annullert.tittel')

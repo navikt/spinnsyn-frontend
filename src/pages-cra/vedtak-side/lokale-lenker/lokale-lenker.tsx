@@ -4,7 +4,7 @@ import { Element, Innholdstittel } from 'nav-frontend-typografi'
 import React, { SyntheticEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import HandImg from '../../../components/teaser/hand.svg'
+import HandImg from '../../../../public/static/img/hand.svg'
 import HodeTelefonImg from './ikon-hodetelefon.svg'
 
 const LokaleLenker = () => {

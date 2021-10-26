@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import PengerIkon from '../../../../public/static/img/ikon-penger.svg'
+import PengerIkon from '../../../../public/syk/sykepenger/static/img/ikon-penger.svg'
 import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
 import DagTabell from '../../../components/dager/dag-tabell'
 import Utvidbar from '../../../components/utvidbar/utvidbar'
@@ -30,8 +30,8 @@ const UtbetalingMedInntekt = () => {
             className={'gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
-            ikon={'/static/img/ikon-penger.svg'}
-            ikonHover={'/static/img/ikon-penger.svg'}
+            ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
+            ikonHover={'/syk/sykepenger/static/img/ikon-penger.svg'}
             tittel={belop + ' kroner'}
             systemtittel={tekst('utbetaling.systemtittel')}
             ikonAltTekst=""

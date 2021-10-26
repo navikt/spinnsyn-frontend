@@ -2,13 +2,13 @@ import Popover, { PopoverOrientering } from 'nav-frontend-popover'
 import React, { useRef, useState } from 'react'
 
 import { personas } from '../../data/mock/testperson'
-import env from '../../utils/environment'
+import { isMockBackend, isOpplaering } from '../../utils/environment'
 import Vis from '../vis'
 
 const Person = () => {
     const [ visInnhold, setVisInnhold ] = useState<boolean>(false)
     const person = useRef<HTMLImageElement>(null)
-    const kanVelgePerson = (env.isMockBackend() || env.isOpplaering())
+    const kanVelgePerson = (isMockBackend() || isOpplaering())
 
     if (kanVelgePerson) {
         person?.current?.addEventListener('click', () => {
@@ -18,7 +18,7 @@ const Person = () => {
 
     return (
         <>
-            <img src={'/static/img/person.svg'} alt="Du" className="brodsmuler__ikon" ref={person} />
+            <img src={'/syk/sykepenger/static/img/person.svg'} alt="Du" className="brodsmuler__ikon" ref={person} />
             <Vis hvis={kanVelgePerson && visInnhold}
                 render={() =>
                     <Popover

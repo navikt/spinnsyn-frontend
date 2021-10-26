@@ -21,8 +21,8 @@ const AvvisteDager = ({ avvisteDager }: AvvisteDagerProps) => {
             className={'orange avviste__dager__innhold' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
-            ikon={'/static/img/ikon-varselboble.svg'}
-            ikonHover={'/static/img/ikon-varselboble.svg'}
+            ikon={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
+            ikonHover={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
             tittel={avvisteDager.length + ' sykepengedager'}
             systemtittel={tekst('avviste.dager.dekkes.ikke')}
             ikonAltTekst=""

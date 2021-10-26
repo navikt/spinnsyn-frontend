@@ -18,7 +18,6 @@ import useVedtak from '../../query-hooks/useVedtak'
 import { RSDagTypeKomplett } from '../../types/rs-types/rs-vedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
-import env from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import AnnulleringsInfo from './annullering/annullering'
@@ -28,6 +27,7 @@ import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPre
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
+import {sykefravaerUrl} from "../../utils/environment";
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -130,7 +130,7 @@ const VedtakSide = () => {
                         <AutomatiskBehandlingPreteritum />
                     }
                 />
-                <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl()}>
+                <Lenke className="vedtak__tilbake" href={sykefravaerUrl()}>
                     <VenstreChevron />
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
                 </Lenke>

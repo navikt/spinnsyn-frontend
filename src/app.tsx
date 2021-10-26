@@ -13,7 +13,7 @@ import StoreProvider from './data/stores/store-provider'
 import RedirectTilOversikt from './pages-cra/feil/redirect-til-oversikt'
 import VedtakListe from './pages-cra/vedtak-liste/vedtak-liste'
 import VedtakSide from './pages-cra/vedtak-side/vedtak-side'
-import env from './utils/environment'
+import { isMockBackend } from './utils/environment'
 
 export interface RouteParams {
     id: string;
@@ -24,7 +24,7 @@ dayjs.locale({
     weekStart: 1,
 })
 
-if (env.isMockBackend()) {
+if (isMockBackend()) {
     require('./data/mock')
 }
 
