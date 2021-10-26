@@ -26,8 +26,6 @@ spec:
   readiness:
     path: syk/sykepenger/api/isReady
   env:
-    - name: SYKMELDINGER_BACKEND_PROXY_ROOT
-      value: "https://sykmeldinger-backend-proxy.dev.nav.no"
     - name: FLEX_GATEWAY_ROOT
       value: "https://flex-gateway.dev.nav.no"
     - name: LOGINSERVICE_URL
@@ -44,8 +42,6 @@ spec:
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
       value: "https://www-gcp.dev.nav.no/syk/sykepenger"
-    - name: FRONTENDLOGGER_ROOT
-      value: "https://tjenester-q1.nav.no"
     - name: AMPLITUDE_KEY
       value: "7a887ba3e5a07c755526c6591810101a"
     - name: AMPLITUDE_ENABLED

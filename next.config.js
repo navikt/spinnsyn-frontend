@@ -23,7 +23,6 @@ module.exports = withLess({
     publicRuntimeConfig: {
         // Will be available on both server and client
         loginserviceUrl: process.env.LOGINSERVICE_URL,
-        sykmeldingerBackendProxyRoot: process.env.SYKMELDINGER_BACKEND_PROXY_ROOT,
         flexGatewayRoot: process.env.FLEX_GATEWAY_ROOT,
         mockBackend: process.env.MOCK_BACKEND,
         opplaering: process.env.OPPLAERING,
