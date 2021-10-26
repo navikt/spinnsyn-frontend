@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 
-import PengerIkon from '../../../../public/syk/sykepenger/static/img/ikon-penger.svg'
 import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
 import DagTabell from '../../../components/dager/dag-tabell'
 import Utvidbar from '../../../components/utvidbar/utvidbar'

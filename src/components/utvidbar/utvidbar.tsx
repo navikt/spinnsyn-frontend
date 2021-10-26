@@ -3,7 +3,6 @@ import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { erSynligIViewport } from '../../utils/browser-utils'
-import { logger } from '../../utils/logger'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
 import Vis from '../vis'
 
@@ -68,14 +67,7 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     const onButtonClick = () => {
         const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY - 20
-        logger.info('info fra front' + Date().toString() )
-        logger.warn('warning fra front')
-        try{
-            throw Error('jaadasd')
-        } catch (e){
 
-            logger.error('auda', e)
-        }
         if (!erApen) {
             if (props.type !== undefined) {
                 logEvent('panel åpnet', { 'component': props.tittel })
