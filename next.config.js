@@ -4,22 +4,6 @@ const withLess = require('next-with-less')
 module.exports = withLess({
     basePath: '/syk/sykepenger',
     lessLoaderOptions: {},
-    async rewrites() {
-        return [
-            {
-                source: '/internal/isAlive',
-                destination: '/api/isAlive',
-            },
-            {
-                source: '/internal/isReady',
-                destination: '/api/isReady',
-            },
-            {
-                source: '/syk/sykepenger/api/logger',
-                destination: '/api/logger',
-            },
-        ]
-    },
     async redirects() {
         return [
             {

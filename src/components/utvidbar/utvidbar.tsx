@@ -68,6 +68,8 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     const onButtonClick = () => {
         const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY - 20
+        logger.info('info fra front' + Date().toString() )
+        logger.warn('warning fra front')
         try{
             throw Error('jaadasd')
         } catch (e){

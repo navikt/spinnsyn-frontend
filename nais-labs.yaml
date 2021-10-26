@@ -11,9 +11,9 @@ spec:
   ingresses:
     - "https://sykepenger.labs.nais.io/"
   liveness:
-    path: internal/isAlive
+    path: syk/sykepenger/api/isAlive
   readiness:
-    path: internal/isReady
+    path: syk/sykepenger/api/isReady
   env:
     - name: ENVIRONMENT
       value: "labs"
