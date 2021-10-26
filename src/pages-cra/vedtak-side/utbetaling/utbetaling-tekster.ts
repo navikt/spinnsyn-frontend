@@ -33,6 +33,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
     'utbetaling.tabell.label.ForeldetDag': 'Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.',
     'utbetaling.tabell.label.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
+    'utbetaling.tabell.avvist.Over70': 'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
     'utbetaling.tabell.avvist.MinimumInntekt': 'Du har et sykepengegrunnlag på mindre enn et halvt ' +
         '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
@@ -45,6 +46,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.Over70': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a> når vi har behandlet saken din.',
