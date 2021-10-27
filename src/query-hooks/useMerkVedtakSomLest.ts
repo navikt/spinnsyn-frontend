@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { flexGatewayRoot } from '../utils/environment'
 import Fetch from '../utils/fetch'
+import { logger } from '../utils/logger'
 
 export default function UseMerkVedtakSomLest() {
     const queryClient = useQueryClient()
@@ -12,8 +13,9 @@ export default function UseMerkVedtakSomLest() {
         )
     },
     {
-        onSuccess: () => {
+        onSuccess: (_, vedtaksId) => {
             queryClient.invalidateQueries('vedtak')
+            logger.info(`vedtak ${vedtaksId} ble lest`)
         },
     })
 }
