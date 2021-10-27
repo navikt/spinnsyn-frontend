@@ -594,6 +594,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
     id: '9ae82dd2-dcf1-4c16-9e12-35cb6d634338',
     lest: true,
     lestDato: '2021-05-03T11:50:56.812287Z',
+    orgnavn: 'POSTEN NORGE AS, BÆRUM',
     vedtak: {
         organisasjonsnummer: '999999999',
         fom: '2021-04-26',
@@ -695,6 +696,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-fwefwwef',
     lest: true,
     lestDato: '1970-01-01T01:00:00+01:00',
+    orgnavn: 'INTEGRASJON AS',
     vedtak: {
         organisasjonsnummer: '999999998',
         fom: '2021-01-30',
@@ -1096,6 +1098,7 @@ export const avvistVedtak: RSVedtakWrapper = {
     'id': '55d8b14f-e1a6-45a8-ac64-b7af1e845b06',
     'lest': true,
     'lestDato': '2021-08-30T13:05:17.337442+02:00',
+    orgnavn: 'POSTEN NORGE AS, BÆRUM',
     'vedtak': {
         'organisasjonsnummer': '999999999',
         'fom': '2021-08-01',
