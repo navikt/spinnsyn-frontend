@@ -1,5 +1,3 @@
-import './utvidbar.less'
-
 import Chevron from 'nav-frontend-chevron'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect, useRef, useState } from 'react'
@@ -42,7 +40,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                 : innhold.current!.offsetHeight
         )
         // eslint-disable-next-line
-    }, [ innhold.current ])
+    }, [innhold.current])
 
     const åpne = (top: number) => {
         if (props.type !== undefined) {
@@ -69,6 +67,7 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     const onButtonClick = () => {
         const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY - 20
+
         if (!erApen) {
             if (props.type !== undefined) {
                 logEvent('panel åpnet', { 'component': props.tittel })
@@ -87,9 +86,9 @@ const Utvidbar = (props: UtvidbarProps) => {
         <div ref={utvidbar} tabIndex={-1}
             className={
                 'utvidbar' +
-                (props.className ? ' ' + props.className : '') +
-                (props.type ? ' ' + props.type : '') +
-                (erApen ? ' apen' : '')
+                 (props.className ? ' ' + props.className : '') +
+                 (props.type ? ' ' + props.type : '') +
+                 (erApen ? ' apen' : '')
             }
         >
             <button aria-expanded={erApen}

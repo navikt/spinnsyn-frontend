@@ -1,5 +1,3 @@
-import './brodsmuler.less'
-
 import { OppChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst } from 'nav-frontend-typografi'
@@ -7,15 +5,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Brodsmule } from '../../types/types'
-import env from '../../utils/environment'
+import { dittNavUrl, sykefravaerUrl } from '../../utils/environment'
 import Vis from '../vis'
 import Person from './Person'
 
 const LITEN = 768
 
 const faste: Brodsmule[] = [
-    { tittel: 'Ditt NAV', sti: env.dittNavUrl(), erKlikkbar: true },
-    { tittel: 'Ditt sykefravær', sti: env.sykefravaerUrl(), erKlikkbar: true }
+    { tittel: 'Ditt NAV', sti: dittNavUrl(), erKlikkbar: true },
+    { tittel: 'Ditt sykefravær', sti: sykefravaerUrl(), erKlikkbar: true }
 ]
 
 const BrodsmuleBit = ({ sti, tittel, erKlikkbar }: Brodsmule) => {

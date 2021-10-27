@@ -1,4 +1,3 @@
-import './inntekt-info.less'
 
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'

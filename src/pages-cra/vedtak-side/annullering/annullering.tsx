@@ -1,5 +1,3 @@
-import './annullering.less'
-
 import parser from 'html-react-parser'
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper'
 import Lenke from 'nav-frontend-lenker'
@@ -8,7 +6,6 @@ import React from 'react'
 
 import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { tekst } from '../../../utils/tekster'
-import SkrivIkon from './ikon-skriv-til-oss.svg'
 
 const AnnulleringsInfo = () => {
     return (
@@ -19,7 +16,7 @@ const AnnulleringsInfo = () => {
                     {parser(tekst('annullering.info.body'))}
                 </Normaltekst>
                 <div className="link__med__ikon">
-                    <span><img alt="" src={SkrivIkon} /></span>
+                    <span><img alt="" src={'/syk/sykepenger/static/img/ikon-skriv-til-oss.svg'} /></span>
                     <Lenke href={tekst('behandling.lenke.url')}>
                         <Normaltekst tag="span">
                             {tekst('annullering.info.skriv-til-oss')}

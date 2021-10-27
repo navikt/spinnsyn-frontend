@@ -8,10 +8,6 @@ import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import Vis from '../vis'
-import hand from './hand.svg'
-import handHover from './hand-hover.svg'
-import annullert from './ikon-annullert.svg'
-import annullertHover from './ikon-annullert-hover.svg'
 import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: VedtakTeaserProps) => {
@@ -19,6 +15,11 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     if (!soknader) return null
+
+    const hand = '/syk/sykepenger/static/img/hand.svg'
+    const handHover = '/syk/sykepenger/static/img/hand-hover.svg'
+    const annullert = '/syk/sykepenger/static/img/ikon-annullert.svg'
+    const annullertHover = '/syk/sykepenger/static/img/ikon-annullert-hover.svg'
 
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>

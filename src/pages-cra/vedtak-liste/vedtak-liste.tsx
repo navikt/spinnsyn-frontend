@@ -1,4 +1,3 @@
-import './vedtak-liste.less'
 
 import { VenstreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
@@ -13,7 +12,7 @@ import SaksbehandlingstidOgUtbetaling
 import Teasere from '../../components/teaser/teasere'
 import useVedtak from '../../query-hooks/useVedtak'
 import { Brodsmule } from '../../types/types'
-import env from '../../utils/environment'
+import { sykefravaerUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
@@ -64,7 +63,7 @@ const VedtakListe = () => {
                     tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
 
-                <Lenke className="vedtak__tilbake" href={env.sykefravaerUrl()}>
+                <Lenke className="vedtak__tilbake" href={sykefravaerUrl()}>
                     <VenstreChevron />
                     <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
                 </Lenke>

@@ -1,4 +1,3 @@
-import './uenig.less'
 
 import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'

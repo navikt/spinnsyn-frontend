@@ -1,4 +1,3 @@
-import './behandling.less'
 
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi'

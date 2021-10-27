@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals'
 import dayjs from 'dayjs'
 
 import { ulestVedtakUtenUtbetalingsdager } from '../data/mock/data/rs-vedtak'

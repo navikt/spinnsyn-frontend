@@ -1,145 +1,51 @@
-interface EnvironmentInterface {
-    isDev(): boolean
-    isQ1(): boolean
-    isProd(): boolean
-    sykmeldingerBackendProxyRoot(): string
-    flexGatewayRoot(): string
-    isMockBackend(): boolean
-    isOpplaering(): boolean
-    loginServiceUrl(): string
-    loginServiceRedirectUrl(): string
-    sykefravaerUrl(): string
-    dittNavUrl(): string
-    frontendloggerRoot(): string
-    amplitudeEnabled(): boolean
-    amplitudeKey(): string
-}
-class Environment implements EnvironmentInterface {
+import getConfig from 'next/config'
 
-    private env = (window as any)._env_;
+const { publicRuntimeConfig } = getConfig()
 
-    isDev() {
-        return this.env.ENVIRONMENT === 'dev'
-    }
-
-    isQ1() {
-        return this.env.ENVIRONMENT === 'q1'
-    }
-
-    isProd() {
-        return this.env.ENVIRONMENT === 'prod'
-    }
-
-    sykmeldingerBackendProxyRoot() {
-        return this.env.SYKMELDINGER_BACKEND_PROXY_ROOT
-    }
-
-    flexGatewayRoot() {
-        return this.env.FLEX_GATEWAY_ROOT
-    }
-
-    isMockBackend() {
-        return this.env.MOCK_BACKEND === 'true'
-    }
-
-    isOpplaering() {
-        return this.env.OPPLAERING === 'true'
-    }
-
-    loginServiceUrl() {
-        return this.env.LOGINSERVICE_URL
-    }
-
-    loginServiceRedirectUrl() {
-        return this.env.LOGINSERVICE_REDIRECT_URL
-    }
-
-    sykefravaerUrl() {
-        return this.env.SYKEFRAVAER_URL
-    }
-
-    dittNavUrl() {
-        return this.env.DITTNAV_URL
-    }
-
-    frontendloggerRoot() {
-        return this.env.FRONTENDLOGGER_ROOT
-    }
-
-    amplitudeKey() {
-        return this.env.AMPLITUDE_KEY
-    }
-
-    amplitudeEnabled() {
-        return this.env.AMPLITUDE_ENABLED === 'true'
-    }
+export function isDev() {
+    return publicRuntimeConfig.environment === 'dev'
 }
 
-class MockEnvironment implements EnvironmentInterface {
-    isDev() {
-        return true
-    }
-
-    isQ1() {
-        return false
-    }
-
-    isProd() {
-        return false
-    }
-
-    sykmeldingerBackendProxyRoot() {
-        return ''
-    }
-
-    flexGatewayRoot() {
-        return ''
-    }
-
-    isMockBackend() {
-        return true
-    }
-
-    isOpplaering() {
-        return process.env.REACT_APP_OPPLAERING === 'true'
-    }
-
-    loginServiceUrl() {
-        return ''
-    }
-
-    loginServiceRedirectUrl() {
-        return ''
-    }
-
-    sykefravaerUrl() {
-        return ''
-    }
-
-    dittNavUrl() {
-        return ''
-    }
-
-    frontendloggerRoot() {
-        return ''
-    }
-
-    amplitudeKey() {
-        return ''
-    }
-
-    amplitudeEnabled() {
-        return false
-    }
+export function isQ1() {
+    return publicRuntimeConfig.environment === 'q1'
 }
 
-function hentEnvironment(): EnvironmentInterface {
-    if (process.env.NODE_ENV === 'development') {
-        return new MockEnvironment()
-    }
-    return new Environment()
+export function isProd() {
+    return publicRuntimeConfig.environment === 'prod'
 }
 
-const env = hentEnvironment()
+export function flexGatewayRoot() {
+    return publicRuntimeConfig.flexGatewayRoot
+}
 
-export default env
+export function isMockBackend() {
+    return publicRuntimeConfig.mockBackend === 'true'
+}
+
+export function isOpplaering() {
+    return publicRuntimeConfig.opplaering === 'true'
+}
+
+export function loginServiceUrl() {
+    return publicRuntimeConfig.loginserviceUrl
+}
+
+export function loginServiceRedirectUrl() {
+    return publicRuntimeConfig.loginServiceRedirectUrl
+}
+
+export function sykefravaerUrl() {
+    return publicRuntimeConfig.sykefravaerUrl
+}
+
+export function dittNavUrl() {
+    return publicRuntimeConfig.dittNavUrl
+}
+
+export function amplitudeKey() {
+    return publicRuntimeConfig.amplitudeKey
+}
+
+export function amplitudeEnabled() {
+    return publicRuntimeConfig.amplitudeEnabled === 'true'
+}

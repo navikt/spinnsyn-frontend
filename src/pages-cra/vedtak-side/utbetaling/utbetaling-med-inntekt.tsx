@@ -1,5 +1,3 @@
-import './utbetaling.less'
-
 import React, { useEffect, useState } from 'react'
 
 import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
@@ -11,7 +9,6 @@ import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
-import PengerIkon from './ikon-penger.svg'
 
 const UtbetalingMedInntekt = () => {
     const { valgtVedtak } = useAppStore()
@@ -32,8 +29,8 @@ const UtbetalingMedInntekt = () => {
             className={'gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
-            ikon={PengerIkon}
-            ikonHover={PengerIkon}
+            ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
+            ikonHover={'/syk/sykepenger/static/img/ikon-penger.svg'}
             tittel={belop + ' kroner'}
             systemtittel={tekst('utbetaling.systemtittel')}
             ikonAltTekst=""
