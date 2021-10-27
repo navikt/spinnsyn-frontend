@@ -860,6 +860,11 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
                     dato: '2021-02-22',
                     type: 'AvvistDag',
                     begrunnelser: [ 'UKJENT' ]
+                },
+                {
+                    dato: '2021-02-23',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'Over70' ]
                 }
             ]
         }
@@ -1070,6 +1075,13 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             grad: 0,
             dagtype: 'AvvistDag',
             begrunnelser: [ 'UKJENT' ]
+        },
+        {
+            dato: '2021-02-23',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'Over70' ]
         }
     ],
     dagligUtbetalingsbelop: 1000,

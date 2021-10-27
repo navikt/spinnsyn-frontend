@@ -54,6 +54,8 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return <Etikett mini type="fokus">Jobbet for kort</Etikett>
             case 'ManglerMedlemskap':
                 return <Etikett mini type="fokus">Ikke medlem</Etikett>
+            case 'Over70':
+                return <Etikett mini type="fokus">Over 70 år</Etikett>
             case 'EtterDødsdato':
                 return <Etikett mini type="fokus">Etter dødsfall</Etikett>
             case 'UKJENT':

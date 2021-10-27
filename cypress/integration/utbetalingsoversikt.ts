@@ -65,6 +65,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
             cy.contains('20.feb.').parent().should('contain', 'Ikke medlem').and('contain', '-')
             cy.contains('21.feb.').parent().should('contain', 'Etter dødsfall').and('contain', '-')
             cy.contains('22.feb.').parent().should('contain', 'Ukjent').and('contain', '-')
+            cy.contains('23.feb.').parent().should('contain', 'Over 70 år').and('contain', '-')
         })
 
         cy.contains('Forklaring').parent().within(() => {
@@ -117,6 +118,9 @@ describe('Tester visning av utbetalingsoversikt', () => {
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Ukjent').parent().siblings()
                 .contains('Beskrivelse kommer...')
+            cy.get('.etikett--mini.etikett--fokus')
+                .contains('Over 70 år').parent().siblings()
+                .contains('Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.')
 
         })
     })

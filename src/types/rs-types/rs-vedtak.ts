@@ -61,7 +61,7 @@ interface RSUtbetalingdag {
     begrunnelser?: RSBegrunnelse[]
 }
 
-export type RSBegrunnelse = 'SykepengedagerOppbrukt' | 'MinimumInntekt' | 'EgenmeldingUtenforArbeidsgiverperiode' | 'MinimumSykdomsgrad' | 'ManglerOpptjening' | 'ManglerMedlemskap' | 'EtterDødsdato' | 'UKJENT'
+export type RSBegrunnelse = 'SykepengedagerOppbrukt' | 'MinimumInntekt' | 'EgenmeldingUtenforArbeidsgiverperiode' | 'MinimumSykdomsgrad' | 'ManglerOpptjening' | 'ManglerMedlemskap' | 'Over70' | 'EtterDødsdato' | 'UKJENT'
 
 export type RSDagType = 'NavDag' | 'NavHelgDag' | 'ArbeidsgiverperiodeDag' | 'Arbeidsdag' | 'Fridag' | 'AvvistDag' | 'ForeldetDag' | 'UkjentDag'
 export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
