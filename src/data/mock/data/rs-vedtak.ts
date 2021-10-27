@@ -1,11 +1,11 @@
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { jsonDeepCopy } from '../../../utils/json-deep-copy'
-import { arbeidstaker100, arbeidstaker100SoknadForNyttVedtak, integrasjonsSoknad } from './soknader'
 
 export const vedtakMed40Grad: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946af',
     lest: true,
     lestDato: '1970-01-01T01:00:00+01:00',
+    orgnavn: 'PENGELØS SPAREBANK',
     vedtak: {
         organisasjonsnummer: '972674818',
         fom: '2021-02-08',
@@ -16,7 +16,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
                 type: 'Sykmelding'
             },
             {
-                dokumentId: arbeidstaker100SoknadForNyttVedtak.id,
+                dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
                 type: 'Søknad'
             }
         ],
@@ -286,8 +286,9 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
     id: '99f389f2-0084-481b-bed8-47f6ac3491d4',
     lest: false,
     lestDato: undefined,
+    orgnavn: 'PENGELØS SPAREBANK',
     vedtak: {
-        organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+        organisasjonsnummer: '999999999',
         fom: '2021-03-22',
         tom: '2021-04-09',
         dokumenter: [
@@ -296,14 +297,14 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
                 type: 'Sykmelding'
             },
             {
-                dokumentId: arbeidstaker100.id,
+                dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6',
                 type: 'Søknad'
             }
         ],
         inntekt: 37500,
         sykepengegrunnlag: 455000,
         utbetaling: {
-            organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+            organisasjonsnummer: '999999999',
             forbrukteSykedager: 15,
             gjenståendeSykedager: 180,
             automatiskBehandling: true,
@@ -482,18 +483,20 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     id: '9ae82dd2-dcf1-4c16-9e12-35cb6d634337',
     lest: true,
     lestDato: '2021-05-05T11:50:56.812287Z',
+    orgnavn: 'POSTEN NORGE AS, BÆRUM',
+
     vedtak: {
-        organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+        organisasjonsnummer: '999999999',
         fom: '2021-04-27',
         tom: '2021-05-04',
         dokumenter: [
             { dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f', type: 'Sykmelding' },
-            { dokumentId: arbeidstaker100.id, type: 'Søknad' }
+            { dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00', type: 'Søknad' }
         ],
         inntekt: 37500.0,
         sykepengegrunnlag: 450000,
         utbetaling: {
-            organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+            organisasjonsnummer: '999999999',
             forbrukteSykedager: 9,
             gjenståendeSykedager: 186,
             automatiskBehandling: true,
@@ -592,16 +595,16 @@ export const vedtakRevurdert: RSVedtakWrapper = {
     lest: true,
     lestDato: '2021-05-03T11:50:56.812287Z',
     vedtak: {
-        organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+        organisasjonsnummer: '999999999',
         fom: '2021-04-26',
         tom: '2021-05-03',
         dokumenter: [
             { dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f', type: 'Sykmelding' },
-            { dokumentId: arbeidstaker100.id, type: 'Søknad' }
+            { dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6', type: 'Søknad' }
         ],
         inntekt: 37500.0,
         utbetaling: {
-            organisasjonsnummer: arbeidstaker100.arbeidsgiver?.orgnummer,
+            organisasjonsnummer: '999999999',
             forbrukteSykedager: 9,
             gjenståendeSykedager: 186,
             automatiskBehandling: true,
@@ -693,7 +696,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
     lest: true,
     lestDato: '1970-01-01T01:00:00+01:00',
     vedtak: {
-        organisasjonsnummer: integrasjonsSoknad.arbeidsgiver?.orgnummer,
+        organisasjonsnummer: '999999998',
         fom: '2021-01-30',
         tom: '2021-02-22',
         dokumenter: [
@@ -702,20 +705,20 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
                 type: 'Sykmelding'
             },
             {
-                dokumentId: integrasjonsSoknad.id,
+                dokumentId: 'dsfgew4fq43',
                 type: 'Søknad'
             }
         ],
         inntekt: 30000,
         sykepengegrunnlag: 370000,
         utbetaling: {
-            organisasjonsnummer: integrasjonsSoknad.arbeidsgiver?.orgnummer,
+            organisasjonsnummer: '999999998',
             utbetalingId: '2b60ba06-7ddb-45e6-991b-asfafwq',
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
             arbeidsgiverOppdrag: {
-                mottaker: integrasjonsSoknad.arbeidsgiver!.orgnummer,
+                mottaker: '999999998',
                 nettoBeløp: 8000,
                 utbetalingslinjer: [
                     {
@@ -1094,7 +1097,7 @@ export const avvistVedtak: RSVedtakWrapper = {
     'lest': true,
     'lestDato': '2021-08-30T13:05:17.337442+02:00',
     'vedtak': {
-        'organisasjonsnummer': arbeidstaker100.arbeidsgiver!.orgnummer,
+        'organisasjonsnummer': '999999999',
         'fom': '2021-08-01',
         'tom': '2021-08-20',
         'dokumenter': [
@@ -1105,8 +1108,7 @@ export const avvistVedtak: RSVedtakWrapper = {
             {
                 'dokumentId': '6b1e5fff-3d99-48b9-8ddf-f121da4d88af',
                 'type': 'Inntektsmelding'
-            },
-            { dokumentId: arbeidstaker100.id, type: 'Søknad' }
+            }
         ],
         'inntekt': 20000,
         'sykepengegrunnlag': 240000,
@@ -1117,7 +1119,7 @@ export const avvistVedtak: RSVedtakWrapper = {
             'gjenståendeSykedager': 248,
             'automatiskBehandling': false,
             'arbeidsgiverOppdrag': {
-                'mottaker': arbeidstaker100.arbeidsgiver!.orgnummer,
+                'mottaker': '999999999',
                 'nettoBeløp': 0,
                 'utbetalingslinjer': []
             },

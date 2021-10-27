@@ -3,7 +3,6 @@ import { HoyreChevron } from 'nav-frontend-chevron'
 import { EtikettFokus } from 'nav-frontend-etiketter'
 import React from 'react'
 
-import useSoknader from '../../query-hooks/useSoknader'
 import { tekst } from '../../utils/tekster'
 import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
@@ -11,10 +10,7 @@ import Vis from '../vis'
 import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: VedtakTeaserProps) => {
-    const { data: soknader } = useSoknader()
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-
-    if (!soknader) return null
 
     const hand = '/syk/sykepenger/static/img/hand.svg'
     const handHover = '/syk/sykepenger/static/img/hand-hover.svg'
@@ -40,7 +36,7 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
                                         : tekst('spinnsyn.teaser.tittel')
                                 }
                             />
-                            {arbeidsgiverListevisning(vedtak, soknader)}
+                            {arbeidsgiverListevisning(vedtak)}
                         </div>
                     </div>
                     <Vis hvis={annullertEllerRevurdert}
