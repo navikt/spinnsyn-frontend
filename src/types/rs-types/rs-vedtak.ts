@@ -4,6 +4,7 @@ export interface RSVedtakWrapper {
     lestDato?: string;
     vedtak: RSVedtak;
     opprettet: string;
+    orgnavn: string;
     annullert: boolean;
     revurdert: boolean;
     dager: RSDag[];
