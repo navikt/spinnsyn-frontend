@@ -31,12 +31,9 @@ class Fetch {
                 return await cb(await res.json())
             } catch (error) {
                 if (error instanceof TypeError) {
-                    logger.error('oops', {
-                        message: `${error.name}: ${error.message}`,
-                        stack: error.stack,
-                    })
+                    logger.warn('oops', error)
                 } else {
-                    logger.error({ ...error, message: 'Unnamed error occured' })
+                    logger.error('Unnamed error occured', error )
                 }
                 throw new Error(
                     'Beklager! En uventet feil har oppstått. Sannsynligvis jobber vi med saken allerede, men ta kontakt med oss hvis det ikke har løst seg til i morgen.',
@@ -79,7 +76,7 @@ class Fetch {
             window.location.href = this.loginServiceUrl
             throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
-        logger.error(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
+        logger.warn(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
         if (res.status === 400) {
             throw new Error(textResponse)
         }
