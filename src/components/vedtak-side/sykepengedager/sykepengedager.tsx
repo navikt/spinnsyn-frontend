@@ -2,10 +2,10 @@ import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
-import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { estimertSluttdato } from '../../../utils/vedtak-utils'
+import Utvidbar from '../../utvidbar/utvidbar'
 
 const Sykepengedager = () => {
     const { valgtVedtak } = useAppStore()

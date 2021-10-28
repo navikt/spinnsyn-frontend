@@ -3,8 +3,8 @@ import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { tekst } from '../../../utils/tekster'
+import Utvidbar from '../../utvidbar/utvidbar'
 import InntektInfo from './inntekt-info/inntekt-info'
 
 const BeregningInfo = () => {

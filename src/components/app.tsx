@@ -7,13 +7,13 @@ import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { Amplitude } from './components/amplitude/amplitudeProvider'
-import { HotjarTrigger } from './components/hotjar-trigger'
-import StoreProvider from './data/stores/store-provider'
-import RedirectTilOversikt from './pages-cra/feil/redirect-til-oversikt'
-import VedtakListe from './pages-cra/vedtak-liste/vedtak-liste'
-import VedtakSide from './pages-cra/vedtak-side/vedtak-side'
-import { isMockBackend } from './utils/environment'
+import StoreProvider from '../data/stores/store-provider'
+import { isMockBackend } from '../utils/environment'
+import { Amplitude } from './amplitude/amplitudeProvider'
+import RedirectTilOversikt from './feil/redirect-til-oversikt'
+import { HotjarTrigger } from './hotjar-trigger'
+import VedtakListe from './vedtak-liste/vedtak-liste'
+import VedtakSide from './vedtak-side/vedtak-side'
 
 export interface RouteParams {
     id: string;
@@ -25,7 +25,7 @@ dayjs.locale({
 })
 
 if (isMockBackend()) {
-    require('./data/mock')
+    require('../data/mock')
 }
 
 const App = (): any => {

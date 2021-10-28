@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
-import DagTabell from '../../../components/dager/dag-tabell'
-import Utvidbar from '../../../components/utvidbar/utvidbar'
-import Vis from '../../../components/vis'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
+import DagBeskrivelse from '../../dager/dag-beskrivelse'
+import DagTabell from '../../dager/dag-tabell'
+import Utvidbar from '../../utvidbar/utvidbar'
+import Vis from '../../vis'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 
