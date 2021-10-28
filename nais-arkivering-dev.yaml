@@ -28,7 +28,7 @@ spec:
       external:
         - host: login.microsoftonline.com
       rules:
-        - host: spinnsyn-backend
+        - application: spinnsyn-backend
     inbound:
       rules:
         - application: spinnsyn-arkivering

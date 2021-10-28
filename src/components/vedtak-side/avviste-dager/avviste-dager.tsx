@@ -1,11 +1,11 @@
 import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
-import DagBeskrivelse from '../../../components/dager/dag-beskrivelse'
-import DagTabell from '../../../components/dager/dag-tabell'
-import Utvidbar from '../../../components/utvidbar/utvidbar'
 import { RSDag } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
+import DagBeskrivelse from '../../dager/dag-beskrivelse'
+import DagTabell from '../../dager/dag-tabell'
+import Utvidbar from '../../utvidbar/utvidbar'
 import BeregningInfo from '../utbetaling/beregning-info'
 
 interface AvvisteDagerProps {

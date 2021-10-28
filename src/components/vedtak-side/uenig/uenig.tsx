@@ -3,10 +3,10 @@ import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { useAmplitudeInstance } from '../../../components/amplitude/amplitude'
 import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
+import { useAmplitudeInstance } from '../../amplitude/amplitude'
 
 const Uenig = () => {
     const { valgtVedtak } = useAppStore()

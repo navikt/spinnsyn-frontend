@@ -2,10 +2,10 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import Vis from '../../../../components/vis'
 import { useAppStore } from '../../../../data/stores/app-store'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
+import Vis from '../../../vis'
 
 const InntektInfo = () => {
     const { valgtVedtak } = useAppStore()

@@ -3,15 +3,15 @@ import BetaTekster from '../components/beta-alertstripe/beta-tekster'
 import SaksbehandlingstidOgUtbetalingTekster
     from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
+import VedtakListeTekster from '../components/vedtak-liste/vedtak-liste-tekster'
+import AnnulleringTekster from '../components/vedtak-side/annullering/annullering-tekster'
+import AvvisteDagerTekster from '../components/vedtak-side/avviste-dager/avviste-dager-tekster'
+import BehandlingTekster from '../components/vedtak-side/behandling/behandling-tekster'
+import SykepengedagerTekster from '../components/vedtak-side/sykepengedager/sykepengedager-tekster'
+import UenigTekster from '../components/vedtak-side/uenig/uenig-tekster'
+import UtbetalingTekster from '../components/vedtak-side/utbetaling/utbetaling-tekster'
+import VedtakTekster from '../components/vedtak-side/vedtak-tekster'
 import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
-import VedtakListeTekster from '../pages-cra/vedtak-liste/vedtak-liste-tekster'
-import AnnulleringTekster from '../pages-cra/vedtak-side/annullering/annullering-tekster'
-import AvvisteDagerTekster from '../pages-cra/vedtak-side/avviste-dager/avviste-dager-tekster'
-import BehandlingTekster from '../pages-cra/vedtak-side/behandling/behandling-tekster'
-import SykepengedagerTekster from '../pages-cra/vedtak-side/sykepengedager/sykepengedager-tekster'
-import UenigTekster from '../pages-cra/vedtak-side/uenig/uenig-tekster'
-import UtbetalingTekster from '../pages-cra/vedtak-side/utbetaling/utbetaling-tekster'
-import VedtakTekster from '../pages-cra/vedtak-side/vedtak-tekster'
 
 const tekster = {
     ...BannerTekster,
