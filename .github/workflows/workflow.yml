@@ -96,7 +96,7 @@ jobs:
             env:
                 APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
                 CLUSTER: dev-gcp
-                RESOURCE: nais-arkiviering-dev.yaml
+                RESOURCE: nais-arkivering-dev.yaml
 
   deploy-to-prod-gcp:
     if: github.ref == 'refs/heads/master'
@@ -136,7 +136,7 @@ jobs:
             env:
                 APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
                 CLUSTER: prod-gcp
-                RESOURCE: nais-prod.yaml
+                RESOURCE: nais-arkivering-prod.yaml
 
 
   deploy-to-labs-gcp:
