@@ -12,13 +12,7 @@ ij_typescript_spaces_within_brackets = true
 trim_trailing_whitespace = false
 
 [package.json]
-indent_style = space
 indent_size = 2
 
-[{.eslintrc,.scss-lint.yml}]
-indent_style = space
-indent_size = 4
-
-[*.{scss,sass,less}]
-indent_style = space
-indent_size = 4
+[*.yaml]
+indent_size = 2

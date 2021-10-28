@@ -1,0 +1,60 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: spinnsyn-frontend-arkivering
+  namespace: flex
+  labels:
+    team: flex
+spec:
+  image: { { image } }
+  port: 8080
+  replicas:
+    min: 1
+    max: 1
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: 200m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  liveness:
+    path: syk/sykepenger/api/isAlive
+  readiness:
+    path: syk/sykepenger/api/isReady
+  accessPolicy:
+    outbound:
+      external:
+        - host: login.microsoftonline.com
+      rules:
+        - host: spinnsyn-backend
+    inbound:
+      rules:
+        - application: spinnsyn-arkivering
+  azure:
+    application:
+      enabled: true
+  env:
+    - name: FLEX_GATEWAY_ROOT
+      value: "https://flex-gateway.nav.no"
+    - name: LOGINSERVICE_URL
+      value: "https://loginservice.nav.no/login"
+    - name: MOCK_BACKEND
+      value: "false"
+    - name: ENVIRONMENT
+      value: "prod"
+    - name: SYKEFRAVAER_URL
+      value: "https://www.nav.no/syk/sykefravaer"
+    - name: DITTNAV_URL
+      value: "https://www.nav.no/person/dittnav"
+    - name: OPPLAERING
+      value: "false"
+    - name: LOGINSERVICE_REDIRECT_URL
+      value: "https://www.nav.no/syk/sykepenger"
+    - name: AMPLITUDE_KEY
+      value: "d5b43a81941b61a3b06059197807a25a"
+    - name: AMPLITUDE_ENABLED
+      value: "true"
+    - name: DECORATOR_ENV
+      value: "prod"
