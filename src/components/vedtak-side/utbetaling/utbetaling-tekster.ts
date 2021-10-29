@@ -35,9 +35,13 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.UkjentDag': 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.Over70': 'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt': 'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
+    'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67': 'Etter at du har fylt 67 år, får du ikke sykepenger fra NAV i mer enn 60 dager.',
     'utbetaling.tabell.avvist.MinimumInntekt': 'Du har et sykepengegrunnlag på mindre enn et halvt ' +
         '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
         ' i året. Det betyr at du ikke kan få sykepenger.',
+    'utbetaling.tabell.avvist.MinimumInntektOver67': 'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to  ' +
+        '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
+        ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet.',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode': 'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad': 'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
     'utbetaling.tabell.avvist.ManglerOpptjening': 'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.',
@@ -48,7 +52,9 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.Over70': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': 'Vi har brukt folketrygdloven <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a> når vi har behandlet saken din.',
