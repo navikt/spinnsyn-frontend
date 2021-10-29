@@ -25,7 +25,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
 
         cy.get('.utvidbar.orange')
-            .should('contain', '12 sykepengedager')
+            .should('contain', '14 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
 

@@ -870,6 +870,16 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
                     dato: '2021-02-23',
                     type: 'AvvistDag',
                     begrunnelser: [ 'Over70' ]
+                },
+                {
+                    dato: '2021-02-24',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'MinimumInntektOver67' ]
+                },
+                {
+                    dato: '2021-02-25',
+                    type: 'AvvistDag',
+                    begrunnelser: [ 'SykepengedagerOppbruktOver67' ]
                 }
             ]
         }
@@ -1087,6 +1097,20 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             grad: 0,
             dagtype: 'AvvistDag',
             begrunnelser: [ 'Over70' ]
+        },
+        {
+            dato: '2021-02-24',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'MinimumInntektOver67' ]
+        },
+        {
+            dato: '2021-02-25',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: [ 'SykepengedagerOppbruktOver67' ]
         }
     ],
     dagligUtbetalingsbelop: 1000,
