@@ -6,7 +6,6 @@ import CreateReactAppEntryPoint from '../components/app'
 
 function App() {
 
-
     const CreateReactAppEntryPoint = dynamic(
         () => import('../components/app'),
         { ssr: false }

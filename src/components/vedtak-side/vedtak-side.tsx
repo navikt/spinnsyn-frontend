@@ -1,7 +1,4 @@
-
-import { VenstreChevron } from 'nav-frontend-chevron'
-import Lenke from 'nav-frontend-lenker'
-import { Normaltekst, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
+import { Sidetittel, Systemtittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -11,7 +8,6 @@ import useVedtak from '../../query-hooks/useVedtak'
 import { RSDagTypeKomplett } from '../../types/rs-types/rs-vedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
-import { sykefravaerUrl } from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import { useAmplitudeInstance } from '../amplitude/amplitude'
@@ -19,6 +15,7 @@ import { RouteParams } from '../app'
 import Banner from '../banner/banner'
 import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../brodsmuler/brodsmuler'
+import TilbakeLenke from '../tilbake/tilbake-lenke'
 import VedtakStatus from '../vedtak-status/vedtak-status'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
@@ -89,7 +86,7 @@ const VedtakSide = () => {
             <div className="limit">
                 <BetaAlertstripe />
 
-                <VedtakStatus />
+                <VedtakStatus vedtak={valgtVedtak} />
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
@@ -103,7 +100,7 @@ const VedtakSide = () => {
 
                 <Vis hvis={valgtVedtak.antallDagerMedUtbetaling > 0}
                     render={() =>
-                        <UtbetalingMedInntekt />
+                        <UtbetalingMedInntekt vedtak={valgtVedtak} />
                     }
                 />
                 <Vis hvis={avvisteDager.length > 0}
@@ -111,7 +108,8 @@ const VedtakSide = () => {
                         <AvvisteDager avvisteDager={avvisteDager} />
                     }
                 />
-                <Sykepengedager />
+
+                <Sykepengedager vedtak={valgtVedtak} />
 
                 <Vis hvis={!annullertEllerRevurdert}
                     render={() =>
@@ -130,10 +128,7 @@ const VedtakSide = () => {
                         <AutomatiskBehandlingPreteritum />
                     }
                 />
-                <Lenke className="vedtak__tilbake" href={sykefravaerUrl()}>
-                    <VenstreChevron />
-                    <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
-                </Lenke>
+                <TilbakeLenke />
             </div>
         </>
     )

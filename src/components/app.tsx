@@ -7,6 +7,7 @@ import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
+import { ArkiveringContext } from '../context/arkivering-context'
 import StoreProvider from '../data/stores/store-provider'
 import { isMockBackend } from '../utils/environment'
 import { Amplitude } from './amplitude/amplitudeProvider'
@@ -44,21 +45,23 @@ const App = (): any => {
 
     return (
         <BrowserRouter basename="/syk/sykepenger">
-            <StoreProvider>
-                <QueryClientProvider client={queryClient}>
-                    <Amplitude>
-                        <HotjarTrigger>
-                            <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                                <Switch>
-                                    <Route exact={true} path="/" component={VedtakListe} />
-                                    <Route path={'/vedtak/:id'} component={VedtakSide} />
-                                    <Route path={'/vedtak/'} component={RedirectTilOversikt} />
-                                </Switch>
-                            </main>
-                        </HotjarTrigger>
-                    </Amplitude>
-                </QueryClientProvider>
-            </StoreProvider>
+            <ArkiveringContext.Provider value={false}>
+                <StoreProvider>
+                    <QueryClientProvider client={queryClient}>
+                        <Amplitude>
+                            <HotjarTrigger>
+                                <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+                                    <Switch>
+                                        <Route exact={true} path="/" component={VedtakListe} />
+                                        <Route path={'/vedtak/:id'} component={VedtakSide} />
+                                        <Route path={'/vedtak/'} component={RedirectTilOversikt} />
+                                    </Switch>
+                                </main>
+                            </HotjarTrigger>
+                        </Amplitude>
+                    </QueryClientProvider>
+                </StoreProvider>
+            </ArkiveringContext.Provider>
         </BrowserRouter>
     )
 }

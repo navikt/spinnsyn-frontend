@@ -2,18 +2,17 @@ import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
-import { useAppStore } from '../../../data/stores/app-store'
+import { ServerVedtakProps } from '../../../pages/server-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { estimertSluttdato } from '../../../utils/vedtak-utils'
 import Utvidbar from '../../utvidbar/utvidbar'
 
-const Sykepengedager = () => {
-    const { valgtVedtak } = useAppStore()
+const Sykepengedager = ({ vedtak }: ServerVedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
-    if (!valgtVedtak) return null
+    if (!vedtak) return null
 
-    const sluttdato = estimertSluttdato(valgtVedtak)
+    const sluttdato = estimertSluttdato(vedtak)
 
     return (
         <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}
@@ -21,12 +20,12 @@ const Sykepengedager = () => {
             ikon={'/syk/sykepenger/static/img/ikon-plaster.svg'}
             ikonHover={'/syk/sykepenger/static/img/ikon-plaster.svg'}
             visLukk={true}
-            tittel={valgtVedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
+            tittel={vedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.hittil')} heading="h2"
         >
 
             <Systemtittel tag="h3" className="tekstinfo__avsnitt">
-                {valgtVedtak.vedtak.utbetaling.gjenståendeSykedager}
+                {vedtak.vedtak.utbetaling.gjenståendeSykedager}
                 <Normaltekst tag="span">
                     <br />{tekst('sykepengedager.systemtittel')}
                 </Normaltekst>

@@ -98,6 +98,7 @@
   },
   "scripts": {
     "dev": "next dev -p 8080",
+    "dev-ingen-dekorator": "NO_DECORATOR=true npm dev",
     "start": "next start -p 8080",
     "start-ingen-dekorator": "NO_DECORATOR=true npm start",
     "build": "next build",

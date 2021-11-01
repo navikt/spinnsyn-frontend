@@ -50,22 +50,26 @@ interface BrodsmulerProps {
 
 const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
     const [ synlige, setSynlige ] = useState<Brodsmule[]>([])
-    const [ skjerm, setSkjerm ] = useState<number>(window.innerWidth)
+    const [ skjerm, setSkjerm ] = useState<number>()
     const smulesti = useRef<HTMLElement>(null)
 
     brodsmuler = faste.concat(brodsmuler)
 
     useEffect(() => {
+        setSkjerm(window.innerWidth)
+    }, [])
+
+    useEffect(() => {
         window.addEventListener('resize', () => {
             setSkjerm(window.innerWidth)
         })
-        setSynlige(skjerm <= LITEN ? [ brodsmuler[ brodsmuler.length - 1 ] ] : brodsmuler)
+        setSynlige(skjerm! <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler)
         // eslint-disable-next-line
-    }, [skjerm])
+    }, [ skjerm ])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
-            setSynlige([ brodsmuler[ brodsmuler.length - 1 ] ])
+            setSynlige([ brodsmuler[brodsmuler.length - 1] ])
             smulesti.current!.classList.remove('apen')
         } else {
             setSynlige(brodsmuler)
@@ -78,7 +82,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
             <div className="limit">
                 <Person />
                 <Normaltekst tag="ul" className="brodsmuler__smuler">
-                    <Vis hvis={skjerm <= LITEN}
+                    <Vis hvis={skjerm! <= LITEN}
                         render={() =>
                             <li className="smule">
                                 <button
@@ -89,7 +93,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                                     className="js-toggle"
                                     onClick={toggleSynlige}
                                 >
-                                     ...
+                                    ...
                                 </button>
                             </li>
                         }
@@ -100,7 +104,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                             <BrodsmuleBit key={index}
                                 sti={smule.sti}
                                 tittel={
-                                    skjerm <= LITEN && smule.mobilTittel && !smulesti.current!.classList.contains('apen')
+                                    skjerm! <= LITEN && smule.mobilTittel && !smulesti.current!.classList.contains('apen')
                                         ? smule.mobilTittel
                                         : smule.tittel
                                 }

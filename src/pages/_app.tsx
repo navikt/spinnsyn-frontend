@@ -1,5 +1,7 @@
 import '../style/global.css'
 import '../components/app.less'
+import '../components/server-vedtak.less'
+import '../components/tilbake/tilbake-lenke.less'
 import '../components/vedtak-liste/vedtak-liste.less'
 import '../components/vedtak-side/vedtak-side.less'
 import '../components/vedtak-side/utbetaling/utbetaling.less'
@@ -32,7 +34,6 @@ interface AppProps extends Omit<NextAppProps, 'pageProps'> {
 }
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-
 
     return (
         <>

@@ -10,7 +10,7 @@ import { useAmplitudeInstance } from '../../amplitude/amplitude'
 
 const Uenig = () => {
     const { valgtVedtak } = useAppStore()
-    const { logEvent } = useAmplitudeInstance()
+    // const { logEvent } = useAmplitudeInstance()
 
     return (
         <div className="uenig">
@@ -26,7 +26,8 @@ const Uenig = () => {
                 {tekst('uenig.tekst3')}
                 <Lenke href={tekst('uenig.lenke2.url')}
                     target="_blank"
-                    onClick={() => logEvent('navigere', { destinasjon: tekst('uenig.lenke2.url'), skjemanavn: 'vedtak' })}>
+                    //onClick={() => logEvent('navigere', { destinasjon: tekst('uenig.lenke2.url'), skjemanavn: 'vedtak' })}
+                >
                     {tekst('uenig.lenke2')}
                 </Lenke>.
             </Normaltekst>

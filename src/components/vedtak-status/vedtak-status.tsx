@@ -1,26 +1,23 @@
-
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import React, { useEffect, useState } from 'react'
 
-import { useAppStore } from '../../data/stores/app-store'
+import { ServerVedtakProps } from '../../pages/server-vedtak'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 
-
-const VedtakStatus = () => {
-    const { valgtVedtak } = useAppStore()
-    const periode = tilLesbarPeriodeMedArstall(valgtVedtak?.vedtak.fom, valgtVedtak?.vedtak.tom)
+const VedtakStatus = ({ vedtak }: ServerVedtakProps) => {
+    const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
     const dame = '/syk/sykepenger/static/img/female.svg'
     const mann = '/syk/sykepenger/static/img/male.svg'
     const [ veileder, setVeileder ] = useState<string>(mann)
 
     useEffect(() => {
-        (valgtVedtak!.id.charCodeAt(0) % 2) === 1 ? setVeileder(dame) : setVeileder(mann)
-    }, [ valgtVedtak ])
+        (vedtak!.id?.charCodeAt(0) % 2) === 1 ? setVeileder(dame) : setVeileder(mann)
+    }, [ vedtak ])
 
-    if (!valgtVedtak) return null
-    const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
+    if (!vedtak) return null
+    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     return (
         <div className="vedtak-status">

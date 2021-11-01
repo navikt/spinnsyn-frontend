@@ -7,7 +7,6 @@ import React from 'react'
 
 const { serverRuntimeConfig } = getConfig()
 
-
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
     return initialProps.head?.find((element) => element?.props?.name === name)?.props?.content
@@ -21,7 +20,6 @@ interface Props {
 class MyDocument extends Document<Props> {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps & Props> {
         const initialProps = await Document.getInitialProps(ctx)
-
 
         const Decorator = await fetchDecoratorReact({
             dekoratorenUrl: serverRuntimeConfig.decoratorUrl,
@@ -44,7 +42,6 @@ class MyDocument extends Document<Props> {
             <Html lang={language || 'no'}>
                 <Head>
                     {showDecorator && <Decorator.Styles />}
-
                 </Head>
                 <body>
                     {showDecorator && <Decorator.Header />}

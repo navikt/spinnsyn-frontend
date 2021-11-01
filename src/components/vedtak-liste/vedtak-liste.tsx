@@ -1,12 +1,8 @@
-
-import { VenstreChevron } from 'nav-frontend-chevron'
-import Lenke from 'nav-frontend-lenker'
-import { Normaltekst, Sidetittel } from 'nav-frontend-typografi'
+import { Sidetittel } from 'nav-frontend-typografi'
 import React, { useEffect } from 'react'
 
 import useVedtak from '../../query-hooks/useVedtak'
 import { Brodsmule } from '../../types/types'
-import { sykefravaerUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
@@ -16,6 +12,7 @@ import Brodsmuler from '../brodsmuler/brodsmuler'
 import SaksbehandlingstidOgUtbetaling
     from '../teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling'
 import Teasere from '../teaser/teasere'
+import TilbakeLenke from '../tilbake/tilbake-lenke'
 
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel'),
@@ -63,10 +60,7 @@ const VedtakListe = () => {
                     tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
 
-                <Lenke className="vedtak__tilbake" href={sykefravaerUrl()}>
-                    <VenstreChevron />
-                    <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
-                </Lenke>
+                <TilbakeLenke />
             </div>
         </>
     )
