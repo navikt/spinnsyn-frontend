@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
 import useVedtak from '../../query-hooks/useVedtak'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { isOpplaering, isProd } from '../../utils/environment'
+import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
 import { RouteParams } from '../app'
@@ -29,6 +31,27 @@ const VedtakSide = () => {
         }
         // eslint-disable-next-line
     }, [vedtak])
+
+
+    useEffect(() => {
+        interface HotjarWindow extends Window {
+            hj: (name: string, value: string) => void;
+        }
+
+        const hotJarWindow = (window as unknown as HotjarWindow)
+        if (isProd() || isOpplaering()) {
+            setTimeout(() => {
+                if (typeof hotJarWindow.hj !== 'function') {
+                    logger.info('Hotjar ble ikke lastet inn...')
+                } else {
+                    hotJarWindow.hj('trigger', 'SP_INNSYN')
+                }
+            }, 2000)
+        } else {
+            // eslint-disable-next-line no-console
+            console.log('Skipper hotjar trigging')
+        }
+    }, [])
 
     useEffect(() => {
         if (valgtVedtak && !valgtVedtak.lest) {

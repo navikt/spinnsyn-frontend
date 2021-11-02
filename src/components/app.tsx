@@ -10,7 +10,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ArkiveringContext } from '../context/arkivering-context'
 import { isMockBackend } from '../utils/environment'
 import RedirectTilOversikt from './feil/redirect-til-oversikt'
-import { HotjarTrigger } from './hotjar-trigger'
 import VedtakListe from './vedtak-liste/vedtak-liste'
 import VedtakSide from './vedtak-side/vedtak-side'
 
@@ -45,15 +44,13 @@ const App = (): any => {
         <BrowserRouter basename="/syk/sykepenger">
             <ArkiveringContext.Provider value={false}>
                 <QueryClientProvider client={queryClient}>
-                    <HotjarTrigger>
-                        <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                            <Switch>
-                                <Route exact={true} path="/" component={VedtakListe} />
-                                <Route path={'/vedtak/:id'} component={VedtakSide} />
-                                <Route path={'/vedtak/'} component={RedirectTilOversikt} />
-                            </Switch>
-                        </main>
-                    </HotjarTrigger>
+                    <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+                        <Switch>
+                            <Route exact={true} path="/" component={VedtakListe} />
+                            <Route path={'/vedtak/:id'} component={VedtakSide} />
+                            <Route path={'/vedtak/'} component={RedirectTilOversikt} />
+                        </Switch>
+                    </main>
                 </QueryClientProvider>
             </ArkiveringContext.Provider>
         </BrowserRouter>
