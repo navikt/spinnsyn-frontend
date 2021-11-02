@@ -31,3 +31,5 @@ spec:
       value: "false"
     - name: DECORATOR_ENV
       value: "prod"
+    - name: UTVIKLING_ARKIVERING
+      value: "true"

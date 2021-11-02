@@ -2,7 +2,7 @@ import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import React, { useEffect, useState } from 'react'
 
-import { ServerVedtakProps } from '../../pages/server-vedtak'
+import { ServerVedtakProps } from '../../pages/vedtak/arkivering/server-vedtak'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 

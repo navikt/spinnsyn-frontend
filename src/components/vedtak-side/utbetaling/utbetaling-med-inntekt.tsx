@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { ServerVedtakProps } from '../../../pages/server-vedtak'
+import { ServerVedtakProps } from '../../../pages/vedtak/arkivering/server-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'

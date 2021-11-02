@@ -2,7 +2,7 @@ import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
-import { ServerVedtakProps } from '../../../pages/server-vedtak'
+import { ServerVedtakProps } from '../../../pages/vedtak/arkivering/server-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { estimertSluttdato } from '../../../utils/vedtak-utils'
 import Utvidbar from '../../utvidbar/utvidbar'

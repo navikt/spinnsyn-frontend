@@ -1,21 +1,36 @@
 import { Sidetittel, Systemtittel } from 'nav-frontend-typografi'
-import React from 'react'
+import React, { useContext } from 'react'
 
-import Banner from '../components/banner/banner'
-import BetaAlertstripe from '../components/beta-alertstripe/beta-alertstripe'
-import AnnulleringsInfo from '../components/vedtak-side/annullering/annullering'
-import AvvisteDager from '../components/vedtak-side/avviste-dager/avviste-dager'
-import AutomatiskBehandling from '../components/vedtak-side/behandling/automatiskBehandling'
-import AutomatiskBehandlingPreteritum from '../components/vedtak-side/behandling/automatiskBehandlingPreteritum'
-import Sykepengedager from '../components/vedtak-side/sykepengedager/sykepengedager'
-import Uenig from '../components/vedtak-side/uenig/uenig'
-import UtbetalingMedInntekt from '../components/vedtak-side/utbetaling/utbetaling-med-inntekt'
-import VedtakStatus from '../components/vedtak-status/vedtak-status'
-import Vis from '../components/vis'
-import { ArkiveringContext } from '../context/arkivering-context'
-import { vedtakMed40Grad } from '../data/mock/data/rs-vedtak'
-import { RSDagTypeKomplett, RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
-import { tekst } from '../utils/tekster'
+import { ArkiveringContext } from '../../context/arkivering-context'
+import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { Brodsmule } from '../../types/types'
+import { SEPARATOR } from '../../utils/constants'
+import { tekst } from '../../utils/tekster'
+import Banner from '../banner/banner'
+import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
+import Brodsmuler from '../brodsmuler/brodsmuler'
+import TilbakeLenke from '../tilbake/tilbake-lenke'
+import VedtakStatus from '../vedtak-status/vedtak-status'
+import Vis from '../vis'
+import AnnulleringsInfo from './annullering/annullering'
+import AvvisteDager from './avviste-dager/avviste-dager'
+import AutomatiskBehandling from './behandling/automatiskBehandling'
+import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
+import Sykepengedager from './sykepengedager/sykepengedager'
+import Uenig from './uenig/uenig'
+import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
+
+const brodsmuler: Brodsmule[] = [
+    {
+        tittel: tekst('vedtak-liste.sidetittel'),
+        sti: SEPARATOR,
+        erKlikkbar: true
+    }, {
+        tittel: tekst('vedtak.sidetittel'),
+        sti: '/vedtak',
+        erKlikkbar: false
+    }
+]
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -23,25 +38,33 @@ const dagErAvvist: RSDagTypeKomplett[] = [
     'ForeldetDag',
 ]
 
-export interface ServerVedtakProps {
+export interface VedtakProps {
     vedtak: RSVedtakWrapper
 }
 
-const ServerVedtak = ({ vedtak }: ServerVedtakProps) => {
+const Vedtak = ({ vedtak }: VedtakProps) => {
+
+
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const avvisteDager = vedtak.dager?.filter(dag => dagErAvvist.includes(dag.dagtype))
+    const avvisteDager = vedtak.dager.filter(dag => dagErAvvist.includes(dag.dagtype))
+    const erArkivering = useContext(ArkiveringContext)
 
     return (
-        <ArkiveringContext.Provider value={true}>
+        <>
             <Banner>
                 <Sidetittel className="sidebanner__tittel">{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
             </Banner>
+            <Vis hvis={!erArkivering}
+                render={() =>
+                    <Brodsmuler brodsmuler={brodsmuler} />
+                }
+            />
 
-            <div className="limit server-vedtak">
+
+            <div className="limit">
                 <BetaAlertstripe />
 
                 <VedtakStatus vedtak={vedtak} />
-
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
@@ -58,7 +81,7 @@ const ServerVedtak = ({ vedtak }: ServerVedtakProps) => {
                         <UtbetalingMedInntekt vedtak={vedtak} />
                     }
                 />
-                <Vis hvis={avvisteDager?.length > 0}
+                <Vis hvis={avvisteDager.length > 0}
                     render={() =>
                         <AvvisteDager avvisteDager={avvisteDager} />
                     }
@@ -70,7 +93,7 @@ const ServerVedtak = ({ vedtak }: ServerVedtakProps) => {
                     render={() =>
                         <>
                             <Uenig />
-                            <Vis hvis={vedtak.vedtak.utbetaling?.automatiskBehandling}
+                            <Vis hvis={vedtak.vedtak.utbetaling.automatiskBehandling}
                                 render={() =>
                                     <AutomatiskBehandling />
                                 }
@@ -83,19 +106,11 @@ const ServerVedtak = ({ vedtak }: ServerVedtakProps) => {
                         <AutomatiskBehandlingPreteritum />
                     }
                 />
+                <TilbakeLenke />
             </div>
-        </ArkiveringContext.Provider>
+        </>
     )
 }
 
-export async function getStaticProps() {
-    const vedtak = vedtakMed40Grad
+export default Vedtak
 
-    return {
-        props: {
-            vedtak,
-        },
-    }
-}
-
-export default ServerVedtak
