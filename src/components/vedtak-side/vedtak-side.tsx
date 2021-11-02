@@ -10,7 +10,7 @@ import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
-import { amplitude } from '../amplitude/amplitude'
+import { logEvent } from '../amplitude/amplitude'
 import { RouteParams } from '../app'
 import Banner from '../banner/banner'
 import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
@@ -52,7 +52,7 @@ const VedtakSide = () => {
 
     useEffect(() => {
         setBodyClass('vedtak-side')
-        amplitude.getInstance().logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
+        logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
         // eslint-disable-next-line
     }, [])
 

@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { erSynligIViewport } from '../../utils/browser-utils'
+import { logEvent } from '../amplitude/amplitude'
 import Vis from '../vis'
 
 interface UtvidbarProps {
@@ -23,7 +24,6 @@ interface UtvidbarProps {
 
 const Utvidbar = (props: UtvidbarProps) => {
     const isServer = useContext(ArkiveringContext)
-    // const { logEvent } = useAmplitudeInstance()
     const [ erApen, setErApen ] = useState<boolean>(isServer || props.erApen)
     const [ innholdHeight, setInnholdHeight ] = useState<number>(0)
 
@@ -34,7 +34,7 @@ const Utvidbar = (props: UtvidbarProps) => {
     const heading = !props.heading ? 'h3' : props.heading
 
     useEffect(() => {
-        setErApen(isServer ||props.erApen)
+        setErApen(isServer || props.erApen)
         setInnholdHeight(
             props.fixedHeight
                 ? 10000
@@ -45,13 +45,13 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     const åpne = (top: number) => {
         if (window) {
-            /*
-                if (props.type !== undefined) {
-                    logEvent('panel åpnet', { 'component': props.tittel })
-                } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
-                    logEvent('panel åpnet', { 'component': props.systemtittel })
-                }
-            */
+
+            if (props.type !== undefined) {
+                logEvent('panel åpnet', { 'component': props.tittel })
+            } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
+                logEvent('panel åpnet', { 'component': props.systemtittel })
+            }
+
             window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
             utvidbar.current!.focus()
         }
@@ -78,13 +78,13 @@ const Utvidbar = (props: UtvidbarProps) => {
         if (!erApen) {
             if (window) {
                 top = top + window.scrollY - 20
-                /*
-                    if (props.type !== undefined) {
-                        logEvent('panel åpnet', { 'component': props.tittel })
-                    } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
-                        logEvent('panel åpnet', { 'component': props.systemtittel })
-                    }
-                */
+
+                if (props.type !== undefined) {
+                    logEvent('panel åpnet', { 'component': props.tittel })
+                } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
+                    logEvent('panel åpnet', { 'component': props.systemtittel })
+                }
+
                 window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
                 utvidbar.current!.focus()
             }

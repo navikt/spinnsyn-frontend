@@ -22,12 +22,10 @@ import '../components/basic.less'
 import '../../node_modules/nav-frontend-etiketter-style/src/index.less'
 
 import type { AppProps as NextAppProps } from 'next/app'
-import { router } from 'next/client'
 import Head from 'next/head'
 import React, { PropsWithChildren, useEffect } from 'react'
 import { DehydratedState } from 'react-query/hydration'
 
-import { initAmplitude } from '../components/amplitude/amplitude'
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
@@ -37,11 +35,6 @@ interface AppProps extends Omit<NextAppProps, 'pageProps'> {
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
-    useEffect(() => {
-        if (router.isReady) {
-            initAmplitude()
-        }
-    }, [])
 
     return (
         <>
