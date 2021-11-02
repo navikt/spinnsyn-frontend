@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-import { ServerVedtakProps } from '../../../pages/vedtak/arkivering/server-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import Utvidbar from '../../utvidbar/utvidbar'
 import Vis from '../../vis'
+import { VedtakProps } from '../vedtak'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 
-const UtbetalingMedInntekt = ({ vedtak }: ServerVedtakProps) => {
+const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ belop, setBelop ] = useState<string>('-')
     const [ apen ] = useState<boolean>(false)
 
@@ -20,8 +20,6 @@ const UtbetalingMedInntekt = ({ vedtak }: ServerVedtakProps) => {
             setBelop(ValutaFormat.format(vedtak.sykepengebelop))
         }
     }, [ vedtak ])
-
-    if (vedtak === undefined) return null
 
     return (
         <Utvidbar type="integrert"
@@ -37,8 +35,8 @@ const UtbetalingMedInntekt = ({ vedtak }: ServerVedtakProps) => {
             heading="h2"
         >
             <div className="utbetaling__innhold">
-                <ArbeidsgiverInfo />
-                <BeregningInfo />
+                <ArbeidsgiverInfo vedtak={vedtak} />
+                <BeregningInfo vedtak={vedtak} />
                 <Vis hvis={vedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"

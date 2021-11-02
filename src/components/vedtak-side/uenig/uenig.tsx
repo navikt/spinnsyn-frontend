@@ -2,14 +2,12 @@ import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
 import { logEvent } from '../../amplitude/amplitude'
+import { VedtakProps } from '../vedtak'
 
-const Uenig = () => {
-    const { valgtVedtak } = useAppStore()
-
+const Uenig = ({ vedtak }: VedtakProps) => {
     return (
         <div className="uenig">
             <Undertittel className="uenig__tittel">
@@ -32,7 +30,7 @@ const Uenig = () => {
                     {tekst('uenig.lenke2')}
                 </Lenke>.
             </Normaltekst>
-            <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(valgtVedtak)}</Element>
+            <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(vedtak)}</Element>
         </div>
     )
 }

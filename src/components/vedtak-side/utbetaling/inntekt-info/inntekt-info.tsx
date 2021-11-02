@@ -1,21 +1,20 @@
-
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { useAppStore } from '../../../../data/stores/app-store'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
 import Vis from '../../../vis'
+import { VedtakProps } from '../../vedtak'
 
-const InntektInfo = () => {
-    const { valgtVedtak } = useAppStore()
+const InntektInfo = ({ vedtak }: VedtakProps) => {
 
-    const inntektMnd = (valgtVedtak?.vedtak.inntekt)
-        ? ValutaFormat.format(Math.floor(valgtVedtak!.vedtak.inntekt!)) + ' kr'
+
+    const inntektMnd = (vedtak.vedtak.inntekt)
+        ? ValutaFormat.format(Math.floor(vedtak.vedtak.inntekt!)) + ' kr'
         : undefined
 
-    const inntektAr = (valgtVedtak?.vedtak.inntekt)
-        ? ValutaFormat.format(Math.floor(valgtVedtak.vedtak.inntekt * 12)) + ' kr'
+    const inntektAr = (vedtak.vedtak.inntekt)
+        ? ValutaFormat.format(Math.floor(vedtak.vedtak.inntekt * 12)) + ' kr'
         : undefined
 
     return (

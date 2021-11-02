@@ -83,7 +83,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 />
                 <Vis hvis={avvisteDager.length > 0}
                     render={() =>
-                        <AvvisteDager avvisteDager={avvisteDager} />
+                        <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
                     }
                 />
 
@@ -92,7 +92,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Vis hvis={!annullertEllerRevurdert}
                     render={() =>
                         <>
-                            <Uenig />
+                            <Uenig vedtak={vedtak} />
                             <Vis hvis={vedtak.vedtak.utbetaling.automatiskBehandling}
                                 render={() =>
                                     <AutomatiskBehandling />

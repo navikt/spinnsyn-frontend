@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 
-import { useAppStore } from '../data/stores/app-store'
 import { isOpplaering, isProd } from '../utils/environment'
 import { logger } from '../utils/logger'
 
@@ -13,7 +12,6 @@ interface HotjarWindow extends Window {
 }
 
 export const HotjarTrigger = ({ children }: HotjarTriggerProps) => {
-    const { valgtVedtak } = useAppStore()
 
     useEffect(() => {
         const hotJarWindow = (window as unknown as HotjarWindow)
@@ -27,7 +25,7 @@ export const HotjarTrigger = ({ children }: HotjarTriggerProps) => {
                 }
             }, 2000)
         }
-    }, [ valgtVedtak ])
+    }, [])
 
     return children
 }

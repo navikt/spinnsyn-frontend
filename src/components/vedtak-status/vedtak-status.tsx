@@ -2,11 +2,11 @@ import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import Veilederpanel from 'nav-frontend-veilederpanel'
 import React, { useEffect, useState } from 'react'
 
-import { ServerVedtakProps } from '../../pages/vedtak/arkivering/server-vedtak'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
+import { VedtakProps } from '../vedtak-side/vedtak'
 
-const VedtakStatus = ({ vedtak }: ServerVedtakProps) => {
+const VedtakStatus = ({ vedtak }: VedtakProps) => {
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
     const dame = '/syk/sykepenger/static/img/female.svg'
     const mann = '/syk/sykepenger/static/img/male.svg'
