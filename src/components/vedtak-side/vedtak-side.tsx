@@ -10,7 +10,7 @@ import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
-import { useAmplitudeInstance } from '../amplitude/amplitude'
+import { amplitude } from '../amplitude/amplitude'
 import { RouteParams } from '../app'
 import Banner from '../banner/banner'
 import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
@@ -45,7 +45,6 @@ const dagErAvvist: RSDagTypeKomplett[] = [
 ]
 
 const VedtakSide = () => {
-    const { logEvent } = useAmplitudeInstance()
     const { id } = useParams<RouteParams>()
     const { data: vedtak } = useVedtak()
     const { valgtVedtak, setValgtVedtak } = useAppStore()
@@ -53,7 +52,7 @@ const VedtakSide = () => {
 
     useEffect(() => {
         setBodyClass('vedtak-side')
-        logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
+        amplitude.getInstance().logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
         // eslint-disable-next-line
     }, [])
 

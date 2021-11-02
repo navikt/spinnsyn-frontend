@@ -1,28 +1,13 @@
-import amplitude from 'amplitude-js'
-import constate from 'constate'
-import { useEffect, useRef } from 'react'
-
 import { amplitudeEnabled, amplitudeKey } from '../../utils/environment'
 
-export const [ AmplitudeProvider, useAmplitudeInstance ] = constate(() => {
+export let amplitude: any
+export let instance: any
+export let mockInstance: any
 
-    const instance: any = useRef({
-        _userAgent: '',
-        logEvent: (eventName: string, data?: any) => {
-            // eslint-disable-next-line
-            console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(data)}!`);
-            return 1
-        },
-        init: () => {
-            // console.log('Initialiserer mockAmplitude'); // eslint-disable-line
-        }
-    })
-
-    useEffect(() => {
-        if (amplitudeEnabled()) {
-            instance.current = amplitude.getInstance()
-        }
-        instance.current.init(
+export const initAmplitude = () => {
+    if (process.browser && amplitudeEnabled()) {
+        amplitude = require('amplitude-js')
+        instance = amplitude.getInstance().init(
             amplitudeKey(), null, {
                 apiEndpoint: 'amplitude.nav.no/collect',
                 saveEvents: false,
@@ -39,12 +24,21 @@ export const [ AmplitudeProvider, useAmplitudeInstance ] = constate(() => {
                 },
             },
         )
-        // eslint-disable-next-line
-    }, []);
 
-    function logEvent(eventName: string, eventProperties: any) {
-        instance.current.logEvent(eventName, eventProperties)
+        mockInstance = {
+            _userAgent: '',
+            logEvent: (eventName: string, data?: any) => {
+                // eslint-disable-next-line
+                console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(data)}!`)
+                return 1
+            },
+            init: () => {
+                console.log('Initialiserer mockAmplitude'); // eslint-disable-line
+            }
+        }
     }
+}
 
-    return { logEvent }
-})
+export const logEvent = (eventName: string, eventProperties: any) => {
+    amplitude.getInstance().logEvent(eventName, eventProperties)
+}

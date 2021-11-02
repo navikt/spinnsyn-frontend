@@ -10,7 +10,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ArkiveringContext } from '../context/arkivering-context'
 import StoreProvider from '../data/stores/store-provider'
 import { isMockBackend } from '../utils/environment'
-import { Amplitude } from './amplitude/amplitudeProvider'
 import RedirectTilOversikt from './feil/redirect-til-oversikt'
 import { HotjarTrigger } from './hotjar-trigger'
 import VedtakListe from './vedtak-liste/vedtak-liste'
@@ -48,17 +47,15 @@ const App = (): any => {
             <ArkiveringContext.Provider value={false}>
                 <StoreProvider>
                     <QueryClientProvider client={queryClient}>
-                        <Amplitude>
-                            <HotjarTrigger>
-                                <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                                    <Switch>
-                                        <Route exact={true} path="/" component={VedtakListe} />
-                                        <Route path={'/vedtak/:id'} component={VedtakSide} />
-                                        <Route path={'/vedtak/'} component={RedirectTilOversikt} />
-                                    </Switch>
-                                </main>
-                            </HotjarTrigger>
-                        </Amplitude>
+                        <HotjarTrigger>
+                            <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+                                <Switch>
+                                    <Route exact={true} path="/" component={VedtakListe} />
+                                    <Route path={'/vedtak/:id'} component={VedtakSide} />
+                                    <Route path={'/vedtak/'} component={RedirectTilOversikt} />
+                                </Switch>
+                            </main>
+                        </HotjarTrigger>
                     </QueryClientProvider>
                 </StoreProvider>
             </ArkiveringContext.Provider>
