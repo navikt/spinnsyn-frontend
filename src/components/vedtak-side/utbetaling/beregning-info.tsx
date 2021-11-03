@@ -5,14 +5,15 @@ import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
 import Utvidbar from '../../utvidbar/utvidbar'
+import { VedtakProps } from '../vedtak'
 import InntektInfo from './inntekt-info/inntekt-info'
 
-const BeregningInfo = () => {
+const BeregningInfo = ({ vedtak }: VedtakProps) => {
     return (
         <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo"
             tittel={tekst('utbetaling.beregning.tittel')}
         >
-            <InntektInfo />
+            <InntektInfo vedtak={vedtak} />
 
             <Element tag="h4" className="blokkinfo__avsnitt">
                 {tekst('utbetaling.mndlonn.tittel')}

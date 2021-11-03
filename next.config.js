@@ -9,6 +9,7 @@ module.exports = withLess({
         decoratorEnv: process.env.DECORATOR_ENV,
         decoratorUrl: process.env.DECORATOR_URL,
         noDecorator: process.env.NO_DECORATOR,
+        utviklingArkivering: process.env.UTVIKLING_ARKIVERING,
     },
     publicRuntimeConfig: {
         // Will be available on both server and client

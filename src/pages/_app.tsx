@@ -1,5 +1,7 @@
 import '../style/global.css'
 import '../components/app.less'
+import '../components/server-vedtak.less'
+import '../components/tilbake/tilbake-lenke.less'
 import '../components/vedtak-liste/vedtak-liste.less'
 import '../components/vedtak-side/vedtak-side.less'
 import '../components/vedtak-side/utbetaling/utbetaling.less'
@@ -16,19 +18,19 @@ import '../components/dager/dag-tabell.less'
 import '../components/brodsmuler/brodsmuler.less'
 import '../components/banner/banner.less'
 import '../components/vedtak-status/vedtak-status.less'
-import '../components/app.less'
 import '../components/basic.less'
 import '../../node_modules/nav-frontend-etiketter-style/src/index.less'
 
 import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useEffect } from 'react'
 import { DehydratedState } from 'react-query/hydration'
+
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
         dehydratedState: DehydratedState;
-    };
+    }
 }
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

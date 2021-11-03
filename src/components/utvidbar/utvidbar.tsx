@@ -1,9 +1,10 @@
 import Chevron from 'nav-frontend-chevron'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
+import { ArkiveringContext } from '../../context/arkivering-context'
 import { erSynligIViewport } from '../../utils/browser-utils'
-import { useAmplitudeInstance } from '../amplitude/amplitude'
+import { logEvent } from '../amplitude/amplitude'
 import Vis from '../vis'
 
 interface UtvidbarProps {
@@ -22,8 +23,8 @@ interface UtvidbarProps {
 }
 
 const Utvidbar = (props: UtvidbarProps) => {
-    const { logEvent } = useAmplitudeInstance()
-    const [ erApen, setErApen ] = useState<boolean>(props.erApen)
+    const isServer = useContext(ArkiveringContext)
+    const [ erApen, setErApen ] = useState<boolean>(isServer || props.erApen)
     const [ innholdHeight, setInnholdHeight ] = useState<number>(0)
 
     const utvidbar = useRef<HTMLDivElement>(null)
@@ -33,7 +34,7 @@ const Utvidbar = (props: UtvidbarProps) => {
     const heading = !props.heading ? 'h3' : props.heading
 
     useEffect(() => {
-        setErApen(props.erApen)
+        setErApen(isServer || props.erApen)
         setInnholdHeight(
             props.fixedHeight
                 ? 10000
@@ -43,39 +44,50 @@ const Utvidbar = (props: UtvidbarProps) => {
     }, [innhold.current])
 
     const åpne = (top: number) => {
-        if (props.type !== undefined) {
-            logEvent('panel åpnet', { 'component': props.tittel })
-        } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
-            logEvent('panel åpnet', { 'component': props.systemtittel })
-        }
-        window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
-        utvidbar.current!.focus()
-    }
+        if (window) {
 
-    const lukke = () => {
-        if (!erApen) {
-            const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY
-            const header = document.querySelector('.sticky-placeholder') as HTMLElement
-            let sticky = 0
-            if (header !== null && erSynligIViewport(header)) {
-                sticky = 106
-            }
-            const pad = 20
-            window.scrollTo({ left: 0, top: top - sticky - pad, behavior: 'smooth' })
-        }
-    }
-
-    const onButtonClick = () => {
-        const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY - 20
-
-        if (!erApen) {
             if (props.type !== undefined) {
                 logEvent('panel åpnet', { 'component': props.tittel })
             } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
                 logEvent('panel åpnet', { 'component': props.systemtittel })
             }
+
             window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
             utvidbar.current!.focus()
+        }
+    }
+
+    const lukke = () => {
+        if (!erApen) {
+            if (window) {
+                const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY
+                const header = document.querySelector('.sticky-placeholder') as HTMLElement
+                let sticky = 0
+                if (header !== null && erSynligIViewport(header)) {
+                    sticky = 106
+                }
+                const pad = 20
+                window.scrollTo({ left: 0, top: top - sticky - pad, behavior: 'smooth' })
+            }
+        }
+    }
+
+    const onButtonClick = () => {
+        let top = utvidbar.current!.getBoundingClientRect().top
+
+        if (!erApen) {
+            if (window) {
+                top = top + window.scrollY - 20
+
+                if (props.type !== undefined) {
+                    logEvent('panel åpnet', { 'component': props.tittel })
+                } else { // unngår å logge beløp og sykepengedager ved åpning av hovedpanelene
+                    logEvent('panel åpnet', { 'component': props.systemtittel })
+                }
+
+                window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
+                utvidbar.current!.focus()
+            }
         } else {
             åpne(top)
         }

@@ -1,4 +1,3 @@
-
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'

@@ -1,7 +1,7 @@
 import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
-import { RSDag } from '../../../types/rs-types/rs-vedtak'
+import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
@@ -10,9 +10,10 @@ import BeregningInfo from '../utbetaling/beregning-info'
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
+    vedtak: RSVedtakWrapper
 }
 
-const AvvisteDager = ({ avvisteDager }: AvvisteDagerProps) => {
+const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
 
     return (
@@ -33,7 +34,7 @@ const AvvisteDager = ({ avvisteDager }: AvvisteDagerProps) => {
                 {tekst('avviste.dager.intro')}
             </Normaltekst>
 
-            <BeregningInfo />
+            <BeregningInfo vedtak={vedtak} />
 
             <Utvidbar erApen={true} visLukk={true} type="intern" className="avvistedageroversikt"
                 tittel={'Dager NAV ikke utbetaler'}

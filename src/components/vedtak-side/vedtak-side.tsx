@@ -1,58 +1,22 @@
-
-import { VenstreChevron } from 'nav-frontend-chevron'
-import Lenke from 'nav-frontend-lenker'
-import { Normaltekst, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useAppStore } from '../../data/stores/app-store'
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
 import useVedtak from '../../query-hooks/useVedtak'
-import { RSDagTypeKomplett } from '../../types/rs-types/rs-vedtak'
-import { Brodsmule } from '../../types/types'
-import { SEPARATOR } from '../../utils/constants'
-import { sykefravaerUrl } from '../../utils/environment'
-import { tekst } from '../../utils/tekster'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { isOpplaering, isProd } from '../../utils/environment'
+import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
-import { useAmplitudeInstance } from '../amplitude/amplitude'
+import { logEvent } from '../amplitude/amplitude'
 import { RouteParams } from '../app'
-import Banner from '../banner/banner'
-import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
-import Brodsmuler from '../brodsmuler/brodsmuler'
-import VedtakStatus from '../vedtak-status/vedtak-status'
-import Vis from '../vis'
-import AnnulleringsInfo from './annullering/annullering'
-import AvvisteDager from './avviste-dager/avviste-dager'
-import AutomatiskBehandling from './behandling/automatiskBehandling'
-import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
-import Sykepengedager from './sykepengedager/sykepengedager'
-import Uenig from './uenig/uenig'
-import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
+import Vedtak from './vedtak'
 
-const brodsmuler: Brodsmule[] = [
-    {
-        tittel: tekst('vedtak-liste.sidetittel'),
-        sti: SEPARATOR,
-        erKlikkbar: true
-    }, {
-        tittel: tekst('vedtak.sidetittel'),
-        sti: '/vedtak',
-        erKlikkbar: false
-    }
-]
-
-const dagErAvvist: RSDagTypeKomplett[] = [
-    'AvvistDag',
-    'Fridag',
-    'ForeldetDag',
-]
 
 const VedtakSide = () => {
-    const { logEvent } = useAmplitudeInstance()
     const { id } = useParams<RouteParams>()
     const { data: vedtak } = useVedtak()
-    const { valgtVedtak, setValgtVedtak } = useAppStore()
     const { mutate: merkLest } = useMerkVedtakSomLest()
+    const [ valgtVedtak, setValgtVedtak ] = useState<RSVedtakWrapper>()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
@@ -66,76 +30,40 @@ const VedtakSide = () => {
             setValgtVedtak(aktivtVedtak)
         }
         // eslint-disable-next-line
-    }, [ vedtak ])
+    }, [vedtak])
+
+
+    useEffect(() => {
+        interface HotjarWindow extends Window {
+            hj: (name: string, value: string) => void;
+        }
+
+        const hotJarWindow = (window as unknown as HotjarWindow)
+        if (isProd() || isOpplaering()) {
+            setTimeout(() => {
+                if (typeof hotJarWindow.hj !== 'function') {
+                    logger.info('Hotjar ble ikke lastet inn...')
+                } else {
+                    hotJarWindow.hj('trigger', 'SP_INNSYN')
+                }
+            }, 2000)
+        } else {
+            // eslint-disable-next-line no-console
+            console.log('Skipper hotjar trigging')
+        }
+    }, [])
 
     useEffect(() => {
         if (valgtVedtak && !valgtVedtak.lest) {
             merkLest(valgtVedtak.id)
         }
         // eslint-disable-next-line
-    }, [ valgtVedtak ])
+    }, [valgtVedtak])
 
     if (!valgtVedtak) return null
-    const annullertEllerRevurdert = valgtVedtak.annullert || valgtVedtak.revurdert
-    const avvisteDager = valgtVedtak.dager.filter(dag => dagErAvvist.includes(dag.dagtype))
 
     return (
-        <>
-            <Banner>
-                <Sidetittel className="sidebanner__tittel">{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
-            </Banner>
-            <Brodsmuler brodsmuler={brodsmuler} />
-
-            <div className="limit">
-                <BetaAlertstripe />
-
-                <VedtakStatus />
-                <Vis hvis={annullertEllerRevurdert}
-                    render={() =>
-                        <>
-                            <AnnulleringsInfo />
-                            <Systemtittel className="tidligere__beslutning">
-                                {tekst('annullering.se-tidligere-beslutning')}
-                            </Systemtittel>
-                        </>
-                    }
-                />
-
-                <Vis hvis={valgtVedtak.antallDagerMedUtbetaling > 0}
-                    render={() =>
-                        <UtbetalingMedInntekt />
-                    }
-                />
-                <Vis hvis={avvisteDager.length > 0}
-                    render={() =>
-                        <AvvisteDager avvisteDager={avvisteDager} />
-                    }
-                />
-                <Sykepengedager />
-
-                <Vis hvis={!annullertEllerRevurdert}
-                    render={() =>
-                        <>
-                            <Uenig />
-                            <Vis hvis={valgtVedtak.vedtak.utbetaling.automatiskBehandling}
-                                render={() =>
-                                    <AutomatiskBehandling />
-                                }
-                            />
-                        </>
-                    }
-                />
-                <Vis hvis={annullertEllerRevurdert && valgtVedtak.vedtak.utbetaling.automatiskBehandling}
-                    render={() =>
-                        <AutomatiskBehandlingPreteritum />
-                    }
-                />
-                <Lenke className="vedtak__tilbake" href={sykefravaerUrl()}>
-                    <VenstreChevron />
-                    <Normaltekst className="vedtak__tilbake--lenke"> {tekst('vedtak.tilbake')} </Normaltekst>
-                </Lenke>
-            </div>
-        </>
+        <Vedtak vedtak={valgtVedtak} />
     )
 }
 

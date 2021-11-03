@@ -1,17 +1,13 @@
-
 import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
-import { useAmplitudeInstance } from '../../amplitude/amplitude'
+import { logEvent } from '../../amplitude/amplitude'
+import { VedtakProps } from '../vedtak'
 
-const Uenig = () => {
-    const { valgtVedtak } = useAppStore()
-    const { logEvent } = useAmplitudeInstance()
-
+const Uenig = ({ vedtak }: VedtakProps) => {
     return (
         <div className="uenig">
             <Undertittel className="uenig__tittel">
@@ -26,11 +22,15 @@ const Uenig = () => {
                 {tekst('uenig.tekst3')}
                 <Lenke href={tekst('uenig.lenke2.url')}
                     target="_blank"
-                    onClick={() => logEvent('navigere', { destinasjon: tekst('uenig.lenke2.url'), skjemanavn: 'vedtak' })}>
+                    onClick={() => logEvent('navigere', {
+                        destinasjon: tekst('uenig.lenke2.url'),
+                        skjemanavn: 'vedtak'
+                    })}
+                >
                     {tekst('uenig.lenke2')}
                 </Lenke>.
             </Normaltekst>
-            <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(valgtVedtak)}</Element>
+            <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(vedtak)}</Element>
         </div>
     )
 }

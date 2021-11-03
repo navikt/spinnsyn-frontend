@@ -58,3 +58,5 @@ spec:
       value: "true"
     - name: DECORATOR_ENV
       value: "dev"
+    - name: UTVIKLING_ARKIVERING
+      value: "false"

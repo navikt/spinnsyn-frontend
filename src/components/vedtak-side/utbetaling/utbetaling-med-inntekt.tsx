@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react'
 
-import { useAppStore } from '../../../data/stores/app-store'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import Utvidbar from '../../utvidbar/utvidbar'
 import Vis from '../../vis'
+import { VedtakProps } from '../vedtak'
 import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 
-const UtbetalingMedInntekt = () => {
-    const { valgtVedtak } = useAppStore()
+const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ belop, setBelop ] = useState<string>('-')
     const [ apen ] = useState<boolean>(false)
 
 
     useEffect(() => {
-        if (valgtVedtak) {
-            setBelop(ValutaFormat.format(valgtVedtak.sykepengebelop))
+        if (vedtak) {
+            setBelop(ValutaFormat.format(vedtak.sykepengebelop))
         }
-    }, [ valgtVedtak ])
-
-    if (valgtVedtak === undefined) return null
+    }, [ vedtak ])
 
     return (
         <Utvidbar type="integrert"
@@ -38,15 +35,15 @@ const UtbetalingMedInntekt = () => {
             heading="h2"
         >
             <div className="utbetaling__innhold">
-                <ArbeidsgiverInfo />
-                <BeregningInfo />
-                <Vis hvis={valgtVedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
+                <ArbeidsgiverInfo vedtak={vedtak} />
+                <BeregningInfo vedtak={vedtak} />
+                <Vis hvis={vedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
                             tittel={'Beløpet dag for dag'}
                         >
-                            <DagTabell dager={valgtVedtak.dager} />
-                            <DagBeskrivelse dager={valgtVedtak.dager} />
+                            <DagTabell dager={vedtak.dager} />
+                            <DagBeskrivelse dager={vedtak.dager} />
                         </Utvidbar>
                     }
                 />

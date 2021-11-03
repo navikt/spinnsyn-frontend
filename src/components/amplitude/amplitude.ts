@@ -1,29 +1,21 @@
-import amplitude from 'amplitude-js'
-import constate from 'constate'
-import { useEffect, useRef } from 'react'
+import { AmplitudeClient } from 'amplitude-js'
 
 import { amplitudeEnabled, amplitudeKey } from '../../utils/environment'
 
-export const [ AmplitudeProvider, useAmplitudeInstance ] = constate(() => {
+interface AmplitudeInstance {
+    logEvent: (eventName: string, data?: any) => void
+}
 
-    const instance: any = useRef({
-        _userAgent: '',
-        logEvent: (eventName: string, data?: any) => {
-            // eslint-disable-next-line
-            console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(data)}!`);
-            return 1
-        },
-        init: () => {
-            // console.log('Initialiserer mockAmplitude'); // eslint-disable-line
-        }
-    })
 
-    useEffect(() => {
-        if (amplitudeEnabled()) {
-            instance.current = amplitude.getInstance()
-        }
-        instance.current.init(
-            amplitudeKey(), null, {
+let amplitudeInstance: AmplitudeInstance | undefined
+
+const getLogEventFunction = (): AmplitudeInstance => {
+    if (window && amplitudeEnabled()) {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const amplitudeJs = require('amplitude-js')
+        const amplitudeInstance: AmplitudeClient = amplitudeJs.getInstance()
+        amplitudeInstance.init(
+            amplitudeKey(), undefined, {
                 apiEndpoint: 'amplitude.nav.no/collect',
                 saveEvents: false,
                 includeUtm: true,
@@ -31,20 +23,33 @@ export const [ AmplitudeProvider, useAmplitudeInstance ] = constate(() => {
                 includeReferrer: true,
                 trackingOptions: {
                     city: false,
-                    ip_address: false, // eslint-disable-line
-                    version_name: false, // eslint-disable-line
+                    ip_address: false,
+                    version_name: false,
                     region: false,
                     country: false,
                     dma: false,
                 },
             },
         )
-        // eslint-disable-next-line
-    }, []);
+        return amplitudeInstance
 
-    function logEvent(eventName: string, eventProperties: any) {
-        instance.current.logEvent(eventName, eventProperties)
+    } else {
+        return {
+            logEvent: (eventName: string, data?: any) => {
+                // eslint-disable-next-line no-console
+                console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(data)}!`)
+            }
+        }
     }
+}
 
-    return { logEvent }
-})
+export const logEvent = (eventName: string, eventProperties: any) => {
+    if (window) {
+        if (amplitudeInstance) {
+            amplitudeInstance.logEvent(eventName, eventProperties)
+        } else {
+            amplitudeInstance = getLogEventFunction()
+            amplitudeInstance.logEvent(eventName, eventProperties)
+        }
+    }
+}
