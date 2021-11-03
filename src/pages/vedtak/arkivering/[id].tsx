@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+import getConfig from 'next/config'
 import React from 'react'
 
 import Vedtak from '../../../components/vedtak-side/vedtak'
@@ -7,6 +8,7 @@ import { getAccessToken } from '../../../server/getAccessToken'
 import { hentVedtak } from '../../../server/hentVedtak'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
+const { serverRuntimeConfig } = getConfig()
 
 interface VedtakArkiveringProps {
     vedtak?: RSVedtakWrapper
@@ -15,7 +17,7 @@ interface VedtakArkiveringProps {
 
 const ServerVedtak = ({ vedtak }: VedtakArkiveringProps) => {
     if (!vedtak) {
-        return (<div>404</div>)
+        return <span>Disabled</span>
     }
 
     return (
@@ -26,6 +28,12 @@ const ServerVedtak = ({ vedtak }: VedtakArkiveringProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = async(ctx) => {
+    if (serverRuntimeConfig.arkivering !== 'true') {
+        return {
+            props: {}
+        }
+    }
+
     try {
         const vedtakId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any

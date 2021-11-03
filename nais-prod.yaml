@@ -50,3 +50,5 @@ spec:
       value: "prod"
     - name: UTVIKLING_ARKIVERING
       value: "false"
+    - name: ARKIVERING
+      value: "false"

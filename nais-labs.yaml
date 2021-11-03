@@ -33,3 +33,5 @@ spec:
       value: "prod"
     - name: UTVIKLING_ARKIVERING
       value: "true"
+    - name: ARKIVERING
+      value: "false"

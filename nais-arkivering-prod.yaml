@@ -62,3 +62,7 @@ spec:
       value: "true"
     - name: UTVIKLING_ARKIVERING
       value: "false"
+    - name: ARKIVERING
+      value: "true"
+    - name: SPINNSYN_BACKEND_CLIENT_ID
+      value: "api://prod-gcp.flex.spinnsyn-backend/.default"

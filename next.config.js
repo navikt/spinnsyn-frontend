@@ -10,6 +10,12 @@ module.exports = withLess({
         decoratorUrl: process.env.DECORATOR_URL,
         noDecorator: process.env.NO_DECORATOR,
         utviklingArkivering: process.env.UTVIKLING_ARKIVERING,
+        arkivering: process.env.ARKIVERING,
+        spinnsynBackendUrl: process.env.SPINNSYN_BACKEND_URL,
+        azureAppClientId: process.env.AZURE_APP_CLIENT_ID,
+        azureAppClientSecret: process.env.AZURE_APP_CLIENT_SECRET,
+        azureOpenidConfigTokenEndpoint: process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
+        spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
     },
     publicRuntimeConfig: {
         // Will be available on both server and client
