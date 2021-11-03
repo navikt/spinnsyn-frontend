@@ -48,7 +48,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const avvisteDager = vedtak.dager.filter(dag => dagErAvvist.includes(dag.dagtype))
     const erArkivering = useContext(ArkiveringContext)
-
+    const indreKlassenavn = () => {
+        if (erArkivering) {
+            return 'limit server-vedtak'
+        }
+        return 'limit'
+    }
     return (
         <>
             <Banner>
@@ -61,7 +66,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             />
 
 
-            <div className="limit">
+            <div className={indreKlassenavn()}>
                 <BetaAlertstripe />
 
                 <VedtakStatus vedtak={vedtak} />

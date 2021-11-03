@@ -20,9 +20,7 @@ const ServerVedtak = ({ vedtak }: VedtakArkiveringProps) => {
 
     return (
         <ArkiveringContext.Provider value={true}>
-            <div className="limit server-vedtak">
-                <Vedtak vedtak={vedtak} />
-            </div>
+            <Vedtak vedtak={vedtak} />
         </ArkiveringContext.Provider>
     )
 }
