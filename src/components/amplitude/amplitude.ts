@@ -2,9 +2,14 @@ import { AmplitudeClient } from 'amplitude-js'
 
 import { amplitudeEnabled, amplitudeKey } from '../../utils/environment'
 
-let logEventFunction: ((eventName: string, data?: any) => void) | undefined
+interface AmplitudeInstance {
+    logEvent: (eventName: string, data?: any) => void
+}
 
-const getLogEventFunction = () => {
+
+let amplitudeInstance: AmplitudeInstance | undefined
+
+const getLogEventFunction = (): AmplitudeInstance => {
     if (window && amplitudeEnabled()) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const amplitudeJs = require('amplitude-js')
@@ -26,23 +31,25 @@ const getLogEventFunction = () => {
                 },
             },
         )
-        return amplitudeInstance.logEvent
+        return amplitudeInstance
 
     } else {
-        return (eventName: string, data?: any) => {
-            // eslint-disable-next-line no-console
-            console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(data)}!`)
+        return {
+            logEvent: (eventName: string, data?: any) => {
+                // eslint-disable-next-line no-console
+                console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(data)}!`)
+            }
         }
     }
 }
 
 export const logEvent = (eventName: string, eventProperties: any) => {
     if (window) {
-        if (logEventFunction) {
-            logEventFunction(eventName, eventProperties)
+        if (amplitudeInstance) {
+            amplitudeInstance.logEvent(eventName, eventProperties)
         } else {
-            logEventFunction = getLogEventFunction()
-            logEventFunction(eventName, eventProperties)
+            amplitudeInstance = getLogEventFunction()
+            amplitudeInstance.logEvent(eventName, eventProperties)
         }
     }
 }
