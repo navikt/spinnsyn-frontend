@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
@@ -11,15 +11,10 @@ import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 
 const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
-    const [ belop, setBelop ] = useState<string>('-')
     const [ apen ] = useState<boolean>(false)
 
+    const belop = ValutaFormat.format(vedtak.sykepengebelop)
 
-    useEffect(() => {
-        if (vedtak) {
-            setBelop(ValutaFormat.format(vedtak.sykepengebelop))
-        }
-    }, [ vedtak ])
 
     return (
         <Utvidbar type="integrert"
