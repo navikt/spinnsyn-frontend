@@ -106,7 +106,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                         <AutomatiskBehandlingPreteritum />
                     }
                 />
-                <TilbakeLenke />
+                <Vis hvis={!erArkivering}
+                    render={() =>
+                        <TilbakeLenke />
+                    }
+                />
+
             </div>
         </>
     )
