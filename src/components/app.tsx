@@ -1,7 +1,4 @@
-import 'dayjs/locale/nb'
 
-import dayjs from 'dayjs'
-import nb from 'dayjs/locale/nb'
 import ModalWrapper from 'nav-frontend-modal'
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -17,10 +14,6 @@ export interface RouteParams {
     id: string;
 }
 
-dayjs.locale({
-    ...nb,
-    weekStart: 1,
-})
 
 if (isMockBackend()) {
     require('../data/mock')

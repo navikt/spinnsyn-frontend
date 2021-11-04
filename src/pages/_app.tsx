@@ -21,9 +21,11 @@ import '../components/vedtak-status/vedtak-status.less'
 import '../components/basic.less'
 import '../../node_modules/nav-frontend-etiketter-style/src/index.less'
 
+import dayjs from 'dayjs'
+import nb from 'dayjs/locale/nb'
 import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
-import React, { PropsWithChildren, useEffect } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { DehydratedState } from 'react-query/hydration'
 
 
@@ -32,6 +34,11 @@ interface AppProps extends Omit<NextAppProps, 'pageProps'> {
         dehydratedState: DehydratedState;
     }
 }
+
+dayjs.locale({
+    ...nb,
+    weekStart: 1,
+})
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
