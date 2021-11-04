@@ -4,6 +4,7 @@ import React from 'react'
 
 import Vedtak from '../../../components/vedtak-side/vedtak'
 import { ArkiveringContext } from '../../../context/arkivering-context'
+import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { getAccessToken } from '../../../server-utils/getAccessToken'
 import { hentVedtak } from '../../../server-utils/hentVedtak'
 import { verifyToken } from '../../../server-utils/verifyAzureAccessToken'
@@ -14,12 +15,13 @@ const { serverRuntimeConfig } = getConfig()
 
 interface VedtakArkiveringProps {
     vedtak?: RSVedtakWrapper
+    status?: number
 }
 
 
-const ServerVedtak = ({ vedtak }: VedtakArkiveringProps) => {
+const ServerVedtak = ({ vedtak, status }: VedtakArkiveringProps) => {
     if (!vedtak) {
-        return <span>Disabled</span>
+        return <span>{status}</span>
     }
 
     return (
@@ -32,24 +34,20 @@ const ServerVedtak = ({ vedtak }: VedtakArkiveringProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = async(ctx) => {
-    if (serverRuntimeConfig.arkivering !== 'true') {
-        return {
-            props: {}
-        }
-    }
-
-    const authHeader = ctx.req.headers.authorization
-    if (!authHeader) {
-        ctx.res.statusCode = 401
-        return {
-            props: {}
-        }
-    }
-    logger.info('Auth header: ' + authHeader)
-    const tokenInn = authHeader.split(' ')[ 1 ]
-
-    await verifyToken(tokenInn)
     try {
+        if (serverRuntimeConfig.arkivering !== 'true') {
+            throw new ErrorMedStatus('Arkivering ikke enablet', 400)
+        }
+
+        const authHeader = ctx.req.headers.authorization
+
+        if (!authHeader) {
+            throw new ErrorMedStatus('Ingen auth header', 401)
+
+        }
+        const tokenInn = authHeader.split(' ')[ 1 ]
+        await verifyToken(tokenInn)
+
         const vedtakId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
 
@@ -58,7 +56,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         const vedtak = await hentVedtak(fnr, token.access_token)
         const vedtaket = vedtak.find(i => i.id == vedtakId)
         if (!vedtaket) {
-            ctx.res.statusCode = 404
+            throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
         return {
             props: {
@@ -66,12 +64,11 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             }
         }
     } catch (e) {
-        logger.error('Noe gæli: ' + e.toString(), e)
-        logger.error(e)
-        ctx.res.statusCode = 500
+        logger.error({ err: e })
+        ctx.res.statusCode = e.status || 500
 
         return {
-            props: {}
+            props: { status: ctx.res.statusCode }
         }
     }
 }

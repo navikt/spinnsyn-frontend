@@ -2,7 +2,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken'
 import jwks from 'jwks-rsa'
 import getConfig from 'next/config'
 
-import { logger } from '../utils/logger'
+import { ErrorMedStatus } from './ErrorMedStatus'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -11,9 +11,13 @@ const jwksClient = jwks({
     jwksUri: serverRuntimeConfig.azureOpenidConfigJwksUri
 })
 
+interface PreauthorizedApps {
+    name: string,
+    clientId: string
+}
+
 
 export async function verifyToken(token: string) {
-    logger.info('token: ' + token)
     const decoded = jwt.decode(token, { complete: true })!
 
     const kid = decoded.header.kid!
@@ -22,7 +26,21 @@ export async function verifyToken(token: string) {
     const signingKey = key.getPublicKey()
     const verified = jwt.verify(token, signingKey) as JwtPayload
 
+    if (verified.aud !== serverRuntimeConfig.azureAppClientId) {
+        throw new ErrorMedStatus('Audience matcher ikke min client ID', 401)
+    }
+    const preAuthorizedApps = JSON.parse(serverRuntimeConfig.azureAppPreAuthorizedApps) as PreauthorizedApps[]
 
-    logger.info('Verified aud' +  verified.aud)
+    const spinnsynArkiveringClientId = preAuthorizedApps.find(a => a.name.endsWith('-gcp:flex:spinnsyn-arkivering'))
+    if (!spinnsynArkiveringClientId) {
+        throw new ErrorMedStatus('Fant ikke spinnsyn arkivering client id', 500)
+    }
 
+    const azp = verified.azp
+    if (!azp) {
+        throw new ErrorMedStatus('Fant ikke azp claim i token', 401)
+    }
+    if (azp != spinnsynArkiveringClientId) {
+        throw new ErrorMedStatus('AZP claim matcher ikke spinnsyn arkivering', 401)
+    }
 }

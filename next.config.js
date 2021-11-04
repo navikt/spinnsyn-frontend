@@ -16,6 +16,7 @@ module.exports = withLess({
         azureAppClientSecret: process.env.AZURE_APP_CLIENT_SECRET,
         azureOpenidConfigTokenEndpoint: process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
         azureOpenidConfigJwksUri: process.env.AZURE_OPENID_CONFIG_JWKS_URI,
+        azureAppPreAuthorizedApps: process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
         spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
     },
     publicRuntimeConfig: {

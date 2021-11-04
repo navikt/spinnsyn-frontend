@@ -1,6 +1,7 @@
 import getConfig from 'next/config'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { ErrorMedStatus } from './ErrorMedStatus'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -13,7 +14,7 @@ export const hentVedtak = async(fnr: string, token: string): Promise<RSVedtakWra
     })
 
     if (response.status != 200) {
-        throw Error('Ikke 200 response fra spinnsyn backend')
+        throw new ErrorMedStatus('Ikke 200 svar fra spinnsyn-backend', 500)
     }
     return await response.json()
 }
