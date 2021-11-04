@@ -10,7 +10,6 @@ import { VedtakProps } from '../vedtak'
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
-    if (!vedtak) return null
 
     const sluttdato = estimertSluttdato(vedtak)
 
