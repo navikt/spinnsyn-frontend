@@ -66,3 +66,5 @@ spec:
       value: "true"
     - name: SPINNSYN_BACKEND_CLIENT_ID
       value: "api://prod-gcp.flex.spinnsyn-backend/.default"
+    - name: SPINNSYN_BACKEND_URL
+      value: "http://spinnsyn-backend"
