@@ -1,12 +1,15 @@
 import getConfig from 'next/config'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { logger } from '../utils/logger'
 
 const { serverRuntimeConfig } = getConfig()
 
 
 export const hentVedtak = async(fnr: string, token: string): Promise<RSVedtakWrapper[]> => {
-    const response = await fetch(`${serverRuntimeConfig.spinnsynBackendUrl}/api/v1/arkivering/vedtak`, {
+    const url = `${serverRuntimeConfig.spinnsynBackendUrl}/api/v1/arkivering/vedtak`
+    logger.info('Henter fra ' + url)
+    const response = await fetch(url, {
         method: 'GET',
         headers: { 'fnr': fnr, 'Authorization': `Bearer ${token}` }
     })
