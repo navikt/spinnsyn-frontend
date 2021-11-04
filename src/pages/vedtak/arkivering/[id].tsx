@@ -4,8 +4,9 @@ import React from 'react'
 
 import Vedtak from '../../../components/vedtak-side/vedtak'
 import { ArkiveringContext } from '../../../context/arkivering-context'
-import { getAccessToken } from '../../../server/getAccessToken'
-import { hentVedtak } from '../../../server/hentVedtak'
+import { getAccessToken } from '../../../server-utils/getAccessToken'
+import { hentVedtak } from '../../../server-utils/hentVedtak'
+import { verifyToken } from '../../../server-utils/verifyAzureAccessToken'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
 const { serverRuntimeConfig } = getConfig()
@@ -36,6 +37,16 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         }
     }
 
+    const authHeader = ctx.req.headers.authorization
+    if(!authHeader){
+        ctx.res.statusCode = 401
+        return {
+            props: {}
+        }
+    }
+    const tokenInn = authHeader.replace(/^(Bearer: )/,'')
+
+    await verifyToken(tokenInn)
     try {
         const vedtakId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
