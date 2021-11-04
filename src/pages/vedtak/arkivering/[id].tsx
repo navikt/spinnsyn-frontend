@@ -8,6 +8,7 @@ import { getAccessToken } from '../../../server-utils/getAccessToken'
 import { hentVedtak } from '../../../server-utils/hentVedtak'
 import { verifyToken } from '../../../server-utils/verifyAzureAccessToken'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { logger } from '../../../utils/logger'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -38,13 +39,14 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
     }
 
     const authHeader = ctx.req.headers.authorization
-    if(!authHeader){
+    if (!authHeader) {
         ctx.res.statusCode = 401
         return {
             props: {}
         }
     }
-    const tokenInn = authHeader.replace(/^(Bearer: )/,'')
+    logger.info('Auth header: ' + authHeader)
+    const tokenInn = authHeader.split(' ')[1]
 
     await verifyToken(tokenInn)
     try {

@@ -13,7 +13,7 @@ const jwksClient = jwks({
 
 
 export async function verifyToken(token: string) {
-    logger.info('token', token)
+    logger.info('token: ' + token)
     const decoded = jwt.decode(token, { complete: true })!
 
     const kid = decoded.header.kid!
