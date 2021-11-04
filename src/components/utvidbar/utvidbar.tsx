@@ -25,23 +25,12 @@ interface UtvidbarProps {
 const Utvidbar = (props: UtvidbarProps) => {
     const isServer = useContext(ArkiveringContext)
     const [ erApen, setErApen ] = useState<boolean>(isServer || props.erApen)
-    const [ innholdHeight, setInnholdHeight ] = useState<number>(0)
 
     const utvidbar = useRef<HTMLDivElement>(null)
     const btnImage = useRef<HTMLImageElement>(null)
-    const innhold = useRef<HTMLDivElement>(null)
 
     const heading = !props.heading ? 'h3' : props.heading
 
-    useEffect(() => {
-        setErApen(isServer || props.erApen)
-        setInnholdHeight(
-            props.fixedHeight
-                ? 10000
-                : innhold.current!.offsetHeight
-        )
-        // eslint-disable-next-line
-    }, [innhold.current])
 
     const åpne = (top: number) => {
         if (window) {
@@ -154,9 +143,9 @@ const Utvidbar = (props: UtvidbarProps) => {
 
             <div className={'utvidbar__innholdContainer' + (erApen ? ' apen' : '')}
                 onTransitionEnd={lukke}
-                style={{ maxHeight: erApen ? (innholdHeight * 2) + 'px' : '0' }}
+                style={{ maxHeight: erApen ? '10000px' : '0' }}
             >
-                <div ref={innhold} className="utvidbar__innhold">
+                <div className="utvidbar__innhold">
                     {props.children}
                     <Vis hvis={props.visLukk}
                         render={() =>

@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 import React from 'react'
 
-import Vedtak  from '../../../components/vedtak-side/vedtak'
+import Vedtak from '../../../components/vedtak-side/vedtak'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { vedtakMed40Grad } from '../../../data/mock/data/rs-vedtak'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -21,7 +21,9 @@ const UtviklingArkivering = ({ vedtak, enabled }: DevVedtakProps) => {
     }
     return (
         <ArkiveringContext.Provider value={true}>
-            <Vedtak vedtak={vedtak} />
+            <div className="server-vedtak">
+                <Vedtak vedtak={vedtak} />
+            </div>
         </ArkiveringContext.Provider>
     )
 }
