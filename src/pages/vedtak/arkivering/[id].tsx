@@ -66,7 +66,8 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             }
         }
     } catch (e) {
-        logger.error('Noe gæli', e)
+        logger.error('Noe gæli: ' + e.toString(), e)
+        logger.error(e)
         ctx.res.statusCode = 500
 
         return {
