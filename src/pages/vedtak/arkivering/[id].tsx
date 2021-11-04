@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         }
     }
     logger.info('Auth header: ' + authHeader)
-    const tokenInn = authHeader.split(' ')[1]
+    const tokenInn = authHeader.split(' ')[ 1 ]
 
     await verifyToken(tokenInn)
     try {
@@ -66,6 +66,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             }
         }
     } catch (e) {
+        logger.error('Noe gæli', e)
         ctx.res.statusCode = 500
 
         return {

@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import jwks from 'jwks-rsa'
 import getConfig from 'next/config'
 
@@ -20,9 +20,9 @@ export async function verifyToken(token: string) {
 
     const key = await jwksClient.getSigningKey(kid)
     const signingKey = key.getPublicKey()
-    const verified = jwt.verify(token, signingKey)
+    const verified = jwt.verify(token, signingKey) as JwtPayload
 
 
-    logger.info('Verified', verified)
+    logger.info('Verified aud' +  verified.aud)
 
 }
