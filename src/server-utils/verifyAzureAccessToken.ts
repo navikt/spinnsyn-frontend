@@ -40,7 +40,8 @@ export async function verifyToken(token: string) {
     if (!azp) {
         throw new ErrorMedStatus('Fant ikke azp claim i token', 401)
     }
-    if (azp != spinnsynArkiveringClientId) {
+
+    if (azp != spinnsynArkiveringClientId.clientId) {
         throw new ErrorMedStatus('AZP claim matcher ikke spinnsyn arkivering', 401)
     }
 }
