@@ -32,7 +32,7 @@ const Utvidbar = (props: UtvidbarProps) => {
     const heading = !props.heading ? 'h3' : props.heading
 
 
-    const åpne = (top: number) => {
+    const åpne = () => {
         if (window) {
 
             if (props.type !== undefined) {
@@ -41,32 +41,15 @@ const Utvidbar = (props: UtvidbarProps) => {
                 logEvent('panel åpnet', { 'component': props.systemtittel })
             }
 
-            window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
             utvidbar.current!.focus()
         }
     }
 
-    const lukke = () => {
-        if (!erApen) {
-            if (window) {
-                const top = utvidbar.current!.getBoundingClientRect().top + window.scrollY
-                const header = document.querySelector('.sticky-placeholder') as HTMLElement
-                let sticky = 0
-                if (header !== null && erSynligIViewport(header)) {
-                    sticky = 106
-                }
-                const pad = 20
-                window.scrollTo({ left: 0, top: top - sticky - pad, behavior: 'smooth' })
-            }
-        }
-    }
 
     const onButtonClick = () => {
-        let top = utvidbar.current!.getBoundingClientRect().top
 
         if (!erApen) {
             if (window) {
-                top = top + window.scrollY - 20
 
                 if (props.type !== undefined) {
                     logEvent('panel åpnet', { 'component': props.tittel })
@@ -74,11 +57,10 @@ const Utvidbar = (props: UtvidbarProps) => {
                     logEvent('panel åpnet', { 'component': props.systemtittel })
                 }
 
-                window.scrollTo({ left: 0, top: top, behavior: 'smooth' })
                 utvidbar.current!.focus()
             }
         } else {
-            åpne(top)
+            åpne()
         }
         setErApen(!erApen)
     }
@@ -142,7 +124,6 @@ const Utvidbar = (props: UtvidbarProps) => {
             </button>
 
             <div className={'utvidbar__innholdContainer' + (erApen ? ' apen' : '')}
-                onTransitionEnd={lukke}
                 style={{ maxHeight: erApen ? '10000px' : '0' }}
             >
                 <div className="utvidbar__innhold">
