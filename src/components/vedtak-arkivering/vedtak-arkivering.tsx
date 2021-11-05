@@ -10,14 +10,25 @@ export interface VedtakArkiveringProps {
     fnr: String
 }
 
-export const VedtakArkivering = ({ vedtak }: VedtakArkiveringProps) => {
+export const VedtakArkivering = ({ vedtak, fnr }: VedtakArkiveringProps) => {
 
     return (
         <ArkiveringContext.Provider value={true}>
-            <div id="header">
-                <h1 className="title">{tekst('vedtak.status.tittel')}</h1>
-            </div>
+
             <div className="vedtak-arkivering">
+                <div id="header">
+                    <h1 className="title">{tekst('vedtak.status.tittel')}</h1>
+                </div>
+                <div className="personinfo">
+                    <div className="persontekst">
+                        <div className="persontekst__sidetopp">
+                            <img src={'/syk/sykepenger/static/img/person.svg'} className="personikon" />
+                            <div className="persontekst__personalia">
+                                <p className="id">{fnr}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Vedtak vedtak={vedtak} />
             </div>
             <div id="footer">

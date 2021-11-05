@@ -1,20 +1,4 @@
-@page {
-    size: A4 portrait;
-    margin: 1cm 0.3cm 0.5cm;
-    padding-bottom: 1cm;
 
-    @bottom-left {
-        content: element(footer);
-    }
-}
-
-@page :first {
-    margin-top: 0;
-
-    @top-left {
-        content: element(header);
-    }
-}
 
 #pagenumber:before {
     content: counter(page);
@@ -25,6 +9,35 @@
 }
 
 .vedtak-arkivering {
+
+    #header {
+        background: #C2EAF7;
+        padding: 0cm 0.7cm;
+    }
+
+    .personinfo {
+        position: relative;
+        top: 25px;
+    }
+
+    .id {
+        width: 430px;
+        margin-bottom: 30px;
+    }
+
+    .personikon {
+        display: inline-block;
+        width: 32px;
+        margin-right: 8px;
+        margin-left: 3px;
+    }
+
+    .persontekst {
+        display: inline-block;
+        width: 667px;
+    }
+
+
     .chevronboks, .utvidbar .lenkerad {
         display: none;
     }

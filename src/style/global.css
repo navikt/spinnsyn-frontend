@@ -8,3 +8,21 @@
 @import '~nav-frontend-popover-style/dist/main.css';
 @import '~nav-frontend-alertstriper-style/dist/main.css';
 @import '~@navikt/ds-css/dist/index.css';
+
+@page {
+    size: A4 portrait;
+    margin: 1cm 0.3cm 0.5cm;
+    padding-bottom: 1cm;
+
+    @bottom-left {
+        content: element(footer);
+    }
+}
+
+@page :first {
+    margin-top: 0;
+
+    @top-left {
+        content: element(header);
+    }
+}
