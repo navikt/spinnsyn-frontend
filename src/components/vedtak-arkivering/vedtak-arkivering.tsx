@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import React from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -33,7 +34,7 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
                 <Vedtak vedtak={vedtak} />
             </div>
             <div id="ark-footer">
-                <span className="utbetalingId">{utbetalingId}</span>
+                <span>{utbetalingId} {dayjs().format()}</span>
                 <span className="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
             </div>
         </ArkiveringContext.Provider>
