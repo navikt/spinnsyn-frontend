@@ -17,7 +17,7 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
         <ArkiveringContext.Provider value={true}>
 
             <div className="vedtak-arkivering">
-                <div id="header">
+                <div id="ark-header">
                     <h1 className="title">{tekst('vedtak.status.tittel')}</h1>
                 </div>
                 <div className="personinfo">
@@ -32,7 +32,7 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
                 </div>
                 <Vedtak vedtak={vedtak} />
             </div>
-            <div id="footer">
+            <div id="ark-footer">
                 <span className="utbetalingId">{utbetalingId}</span>
                 <span className="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
             </div>
