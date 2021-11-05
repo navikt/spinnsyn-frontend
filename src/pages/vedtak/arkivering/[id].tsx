@@ -16,19 +16,18 @@ interface VedtakArkiveringProps {
     vedtak?: RSVedtakWrapper
     status?: number
     fnr?: string
+    utbetalingId?: string
 }
 
 
-const ServerVedtak = ({ vedtak, status, fnr }: VedtakArkiveringProps) => {
-    if (!vedtak) {
-        return <span>{status}</span>
-    }
-    if (!fnr) {
+const ServerVedtak = ({ vedtak, status, fnr, utbetalingId }: VedtakArkiveringProps) => {
+    if (!vedtak || !fnr || !utbetalingId) {
         return <span>{status}</span>
     }
 
+
     return (
-        <VedtakArkivering vedtak={vedtak} fnr={fnr} />
+        <VedtakArkivering vedtak={vedtak} fnr={fnr} utbetalingId={utbetalingId} />
     )
 }
 
@@ -47,13 +46,13 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         const tokenInn = authHeader.split(' ')[ 1 ]
         await verifyToken(tokenInn)
 
-        const vedtakId: string = ctx.params!.id as any
+        const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
 
         const token = await getAccessToken()
 
         const vedtak = await hentVedtak(fnr, token.access_token)
-        const vedtaket = vedtak.find(i => i.id == vedtakId)
+        const vedtaket = vedtak.find(i => i.id == utbetalingId)
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
@@ -61,6 +60,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             props: {
                 vedtak: vedtaket,
                 fnr: fnr,
+                utbetalingId: utbetalingId,
             }
         }
     } catch (e) {

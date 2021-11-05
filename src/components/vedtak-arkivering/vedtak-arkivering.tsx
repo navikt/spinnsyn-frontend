@@ -7,10 +7,11 @@ import Vedtak from '../vedtak-side/vedtak'
 
 export interface VedtakArkiveringProps {
     vedtak: RSVedtakWrapper,
-    fnr: String
+    fnr: String,
+    utbetalingId: String,
 }
 
-export const VedtakArkivering = ({ vedtak, fnr }: VedtakArkiveringProps) => {
+export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkiveringProps) => {
 
     return (
         <ArkiveringContext.Provider value={true}>
@@ -32,7 +33,7 @@ export const VedtakArkivering = ({ vedtak, fnr }: VedtakArkiveringProps) => {
                 <Vedtak vedtak={vedtak} />
             </div>
             <div id="footer">
-                <span className="soknadsid">Utbetalingsid her!</span>
+                <span className="utbetalingId">{utbetalingId}</span>
                 <span className="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
             </div>
         </ArkiveringContext.Provider>
