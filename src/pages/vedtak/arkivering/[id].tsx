@@ -2,8 +2,7 @@ import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 import React from 'react'
 
-import Vedtak from '../../../components/vedtak-side/vedtak'
-import { ArkiveringContext } from '../../../context/arkivering-context'
+import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { getAccessToken } from '../../../server-utils/getAccessToken'
 import { hentVedtak } from '../../../server-utils/hentVedtak'
@@ -16,20 +15,20 @@ const { serverRuntimeConfig } = getConfig()
 interface VedtakArkiveringProps {
     vedtak?: RSVedtakWrapper
     status?: number
+    fnr?: string
 }
 
 
-const ServerVedtak = ({ vedtak, status }: VedtakArkiveringProps) => {
+const ServerVedtak = ({ vedtak, status, fnr }: VedtakArkiveringProps) => {
     if (!vedtak) {
+        return <span>{status}</span>
+    }
+    if (!fnr) {
         return <span>{status}</span>
     }
 
     return (
-        <ArkiveringContext.Provider value={true}>
-            <div className="server-vedtak">
-                <Vedtak vedtak={vedtak} />
-            </div>
-        </ArkiveringContext.Provider>
+        <VedtakArkivering vedtak={vedtak} fnr={fnr} />
     )
 }
 
@@ -60,7 +59,8 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         }
         return {
             props: {
-                vedtak: vedtaket
+                vedtak: vedtaket,
+                fnr: fnr,
             }
         }
     } catch (e) {
