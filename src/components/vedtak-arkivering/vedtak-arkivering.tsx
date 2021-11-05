@@ -19,6 +19,7 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
 
             <div className="vedtak-arkivering">
                 <div id="ark-header">
+                    <img className="navlogo" src={'/syk/sykepenger/static/img/nav.svg'} />
                     <h1 className="title">{tekst('vedtak.status.tittel')}</h1>
                 </div>
                 <div className="personinfo">
@@ -26,7 +27,9 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
                         <div className="persontekst__sidetopp">
                             <img src={'/syk/sykepenger/static/img/person.svg'} className="personikon" />
                             <div className="persontekst__personalia">
-                                <p className="id">{fnr}</p>
+                                <p className="navn">
+                                    {fnr}
+                                </p>
                             </div>
                         </div>
                     </div>
