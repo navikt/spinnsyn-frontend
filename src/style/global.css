@@ -15,7 +15,7 @@
     padding-bottom: 1cm;
 
     @bottom-left {
-        content: element(footer);
+        content: element(ark-footer);
     }
 }
 
@@ -23,6 +23,18 @@
     margin-top: 0;
 
     @top-left {
-        content: element(header);
+        content: element(ark-header);
     }
+}
+
+#ark-header {
+    background: #C2EAF7;
+    padding: 0cm 0.7cm;
+}
+
+#ark-footer {
+    position: running(ark-footer);
+    font-size: 12px;
+    margin-top: -25px;
+    padding-left: 0.6cm;
 }
