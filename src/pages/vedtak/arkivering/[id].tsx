@@ -56,6 +56,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
+        ctx.res.setHeader('x-nais-app-image', serverRuntimeConfig.naisAppImage)
         return {
             props: {
                 vedtak: vedtaket,
