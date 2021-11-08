@@ -1,3 +1,5 @@
+@import '../../../node_modules/nav-frontend-core/less/core';
+
 @page {
     size: A4 portrait;
     margin: 1cm 0.3cm 0.5cm;
@@ -27,6 +29,7 @@
         top: -12px;
         left: 130px;
     }
+
     .navlogo {
         display: inline-block;
         padding-top: 15px;
@@ -100,7 +103,14 @@
         width: 170px;
         font-size: 14px;
     }
+
     .chevronboks, .utvidbar .lenkerad {
         display: none;
+    }
+
+    h3.typo-normal.utvidbar__tittel {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: @navMorkGra;
     }
 }
