@@ -1,10 +1,13 @@
 import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
 import React from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Vedtak from '../vedtak-side/vedtak'
+
+dayjs.extend(localizedFormat)
 
 export interface VedtakArkiveringProps {
     vedtak: RSVedtakWrapper,
@@ -13,6 +16,8 @@ export interface VedtakArkiveringProps {
 }
 
 export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkiveringProps) => {
+
+    const fnrForVisning = `${fnr.slice(0, 6)} ${fnr.slice(5)}`
 
     return (
         <ArkiveringContext.Provider value={true}>
@@ -28,12 +33,12 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
                             <img src={'/syk/sykepenger/static/img/person.svg'} className="personikon" />
                             <div className="persontekst__personalia">
                                 <p className="navn">
-                                    {fnr}
+                                    {fnrForVisning}
                                 </p>
                             </div>
                             <div className="sendt">
                                 <p>
-                                    Dokument opprettet<br />{dayjs().format()}
+                                    Dokument opprettet<br />{dayjs().format('LLL')}
                                 </p>
                             </div>
                         </div>
