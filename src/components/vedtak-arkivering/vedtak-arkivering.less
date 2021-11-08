@@ -1,0 +1,116 @@
+@import '../../../node_modules/nav-frontend-core/less/core';
+
+@page {
+    size: A4 portrait;
+    margin: 1cm 0.3cm 0.5cm;
+    padding-bottom: 1cm;
+
+    @bottom-left {
+        content: element(ark-footer);
+    }
+}
+
+@page :first {
+    margin-top: 0;
+
+    @top-left {
+        content: element(ark-header);
+    }
+}
+
+#ark-header {
+    background: #C2EAF7;
+    padding: 0cm 0.7cm;
+    margin: 8px;
+
+    .title {
+        display: inline-block;
+        position: absolute;
+        top: -12px;
+        left: 130px;
+    }
+
+    .navlogo {
+        display: inline-block;
+        padding-top: 15px;
+        padding-bottom: 12px;
+        margin-left: 3px;
+        width: 48px;
+    }
+}
+
+
+#ark-footer {
+    position: running(ark-footer);
+    font-size: 12px;
+    margin-top: -25px;
+    padding-left: 0.6cm;
+
+    .sidetall {
+        float: right;
+    }
+
+}
+
+
+#pagenumber:before {
+    content: counter(page);
+}
+
+#pagecount:before {
+    content: counter(pages)
+}
+
+
+.vedtak-arkivering {
+
+    .personinfo {
+        position: relative;
+        top: 25px;
+        left: 12px;
+    }
+
+    .navn {
+        font-weight: bold;
+        font-size: 16px;
+        width: 350px;
+    }
+
+    .personikon {
+        display: inline-block;
+        width: 32px;
+        margin-right: 8px;
+        margin-left: 3px;
+    }
+
+    .persontekst {
+        display: inline-block;
+        width: 667px;
+    }
+
+    .persontekst__sidetopp {
+        display: block;
+        margin-bottom: 32px;
+    }
+
+    .persontekst__personalia {
+        display: inline-block;
+    }
+
+    .sendt {
+        display: inline-block;
+        float: right;
+        width: 170px;
+        font-size: 14px;
+    }
+
+    .chevronboks, .utvidbar .lenkerad {
+        display: none;
+    }
+
+    h3.typo-normal.utvidbar__tittel {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: @navMorkGra;
+    }
+}

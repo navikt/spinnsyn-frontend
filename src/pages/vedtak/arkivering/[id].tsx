@@ -2,8 +2,7 @@ import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 import React from 'react'
 
-import Vedtak from '../../../components/vedtak-side/vedtak'
-import { ArkiveringContext } from '../../../context/arkivering-context'
+import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { getAccessToken } from '../../../server-utils/getAccessToken'
 import { hentVedtak } from '../../../server-utils/hentVedtak'
@@ -16,20 +15,19 @@ const { serverRuntimeConfig } = getConfig()
 interface VedtakArkiveringProps {
     vedtak?: RSVedtakWrapper
     status?: number
+    fnr?: string
+    utbetalingId?: string
 }
 
 
-const ServerVedtak = ({ vedtak, status }: VedtakArkiveringProps) => {
-    if (!vedtak) {
+const ServerVedtak = ({ vedtak, status, fnr, utbetalingId }: VedtakArkiveringProps) => {
+    if (!vedtak || !fnr || !utbetalingId) {
         return <span>{status}</span>
     }
 
+
     return (
-        <ArkiveringContext.Provider value={true}>
-            <div className="server-vedtak">
-                <Vedtak vedtak={vedtak} />
-            </div>
-        </ArkiveringContext.Provider>
+        <VedtakArkivering vedtak={vedtak} fnr={fnr} utbetalingId={utbetalingId} />
     )
 }
 
@@ -48,19 +46,21 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         const tokenInn = authHeader.split(' ')[ 1 ]
         await verifyToken(tokenInn)
 
-        const vedtakId: string = ctx.params!.id as any
+        const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
 
         const token = await getAccessToken()
 
         const vedtak = await hentVedtak(fnr, token.access_token)
-        const vedtaket = vedtak.find(i => i.id == vedtakId)
+        const vedtaket = vedtak.find(i => i.id == utbetalingId)
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
         return {
             props: {
-                vedtak: vedtaket
+                vedtak: vedtaket,
+                fnr: fnr,
+                utbetalingId: utbetalingId,
             }
         }
     } catch (e) {
