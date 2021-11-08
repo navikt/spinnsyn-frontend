@@ -18,6 +18,7 @@ module.exports = withLess({
         azureOpenidConfigJwksUri: process.env.AZURE_OPENID_CONFIG_JWKS_URI,
         azureAppPreAuthorizedApps: process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
         spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
+        naisAppImage: process.env.NAIS_APP_IMAGE,
     },
     publicRuntimeConfig: {
         // Will be available on both server and client
