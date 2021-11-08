@@ -31,13 +31,18 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
                                     {fnr}
                                 </p>
                             </div>
+                            <div className="sendt">
+                                <p>
+                                    Dokument opprettet<br />{dayjs().format()}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <Vedtak vedtak={vedtak} />
             </div>
             <div id="ark-footer">
-                <span>{utbetalingId} {dayjs().format()}</span>
+                <span>{utbetalingId}</span>
                 <span className="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
             </div>
         </ArkiveringContext.Provider>
