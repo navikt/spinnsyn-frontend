@@ -2,7 +2,6 @@ import { Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
-import { Soknad } from '../../types/types'
 import { getLedetekst, tekst } from '../../utils/tekster'
 
 export const arbeidsgiverListevisning = (vedtak: RSVedtakWrapper) => {

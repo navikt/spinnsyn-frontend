@@ -1,6 +1,7 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../../utils/tekster'
 import { ValutaFormat } from '../../../../utils/valuta-utils'
 import Vis from '../../../vis'
@@ -8,15 +9,20 @@ import { VedtakProps } from '../../vedtak'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
 
+    function formaterValuta(belop: number) {
+        return ValutaFormat.format(Math.floor(belop)) + ' kr'
+    }
 
     const inntektMnd = (vedtak.vedtak.inntekt)
-        ? ValutaFormat.format(Math.floor(vedtak.vedtak.inntekt!)) + ' kr'
+        ? formaterValuta(vedtak.vedtak.inntekt)
         : undefined
 
     const inntektAr = (vedtak.vedtak.inntekt)
-        ? ValutaFormat.format(Math.floor(vedtak.vedtak.inntekt * 12)) + ' kr'
+        ? formaterValuta(vedtak.vedtak.inntekt * 12)
         : undefined
 
+    const skalViseDagsats = vedtak.vedtak.sykepengegrunnlag && harFlereArbeidsgivere(vedtak) == 'nei'
+    const dagsats = vedtak.vedtak.sykepengegrunnlag && (vedtak.vedtak.sykepengegrunnlag / 260) || 0
     return (
         <Vis hvis={inntektMnd && inntektAr}
             render={() =>
@@ -34,6 +40,16 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                         </Element>
                         <Normaltekst tag="span">{inntektAr}</Normaltekst>
                     </div>
+                    <Vis hvis={skalViseDagsats}
+                        render={() =>
+                            <div className="inntekt__info__linje">
+                                <Element tag="h4">
+                                    {tekst('utbetaling.inntekt.info.dagsats')}
+                                </Element>
+                                <Normaltekst tag="span">{formaterValuta(dagsats)}</Normaltekst>
+                            </div>
+                        }
+                    />
                 </section>
             }
         />

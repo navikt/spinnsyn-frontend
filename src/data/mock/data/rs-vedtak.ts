@@ -22,6 +22,9 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
         ],
         inntekt: 48513.47,
         sykepengegrunnlag: 582161.64,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
+            '972674818': 582161.64,
+        },
         utbetaling: {
             organisasjonsnummer: '972674818',
             utbetalingId: '2b60ba06-7ddb-45e6-991b-3ca944f0e979',
