@@ -30,6 +30,14 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('20.feb.').parent().should('contain', 'Helg').and('contain', '-')
     })
 
+    it('Slik beregner vi sykepengene har en dagsats', () => {
+        cy.contains('Slik beregner vi sykepengene')
+            .click({ force: true })
+
+        cy.get('.inntekt__info > :nth-child(3)').contains('Dagsats')
+        cy.get('.inntekt__info > :nth-child(3)').contains('2 239 kr')
+    })
+
     it('Forklaring', () => {
         cy.get('.utbetalingsoversikt .tekstinfo .etikett').should('have.text', 'Delvis syk' + 'Helg')
         cy.get('.utbetalingsoversikt .tekstinfo .typo-normal').should('have.text',

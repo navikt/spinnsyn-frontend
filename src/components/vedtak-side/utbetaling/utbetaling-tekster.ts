@@ -18,6 +18,7 @@ const UtbetalingTekster = {
     'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årslønn',
+    'utbetaling.inntekt.info.dagsats': 'Dagsats',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',

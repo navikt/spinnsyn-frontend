@@ -21,6 +21,10 @@ export interface RSDag {
     begrunnelser: RSBegrunnelse[];
 }
 
+interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
+    [ orgnummer: string ]: number;
+}
+
 interface RSVedtak {
     organisasjonsnummer?: string;
     fom: string;
@@ -28,6 +32,7 @@ interface RSVedtak {
     dokumenter: Dokument[];
     inntekt?: number;
     sykepengegrunnlag?: number;
+    grunnlagForSykepengegrunnlagPerArbeidsgiver?: GrunnlagForSykepengegrunnlagPerArbeidsgiver,
     utbetaling: RSUtbetalingUtbetalt;
 }
 
@@ -74,7 +79,15 @@ export type RSBegrunnelse = 'SykepengedagerOppbrukt'
 | 'EtterDødsdato'
 | 'UKJENT'
 
-export type RSDagType = 'NavDag' | 'NavHelgDag' | 'ArbeidsgiverperiodeDag' | 'Arbeidsdag' | 'Fridag' | 'AvvistDag' | 'ForeldetDag' | 'UkjentDag'
+export type RSDagType =
+    'NavDag'
+    | 'NavHelgDag'
+    | 'ArbeidsgiverperiodeDag'
+    | 'Arbeidsdag'
+    | 'Fridag'
+    | 'AvvistDag'
+    | 'ForeldetDag'
+    | 'UkjentDag'
 export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
