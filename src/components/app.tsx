@@ -1,4 +1,3 @@
-
 import ModalWrapper from 'nav-frontend-modal'
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
