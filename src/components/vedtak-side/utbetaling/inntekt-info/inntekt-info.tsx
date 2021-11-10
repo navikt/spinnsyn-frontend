@@ -23,6 +23,9 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
     const skalViseDagsats = vedtak.vedtak.sykepengegrunnlag && harFlereArbeidsgivere(vedtak) == 'nei'
     const dagsats = vedtak.vedtak.sykepengegrunnlag && (vedtak.vedtak.sykepengegrunnlag / 260) || 0
+    const skalVise6G = vedtak.vedtak.begrensning == 'ER_6G_BEGRENSET'
+    const seksG = vedtak.vedtak.sykepengegrunnlag
+
     return (
         <Vis hvis={inntektMnd && inntektAr}
             render={() =>
@@ -50,6 +53,17 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             </div>
                         }
                     />
+                    <Vis hvis={skalVise6G}
+                        render={() =>
+                            <div className="inntekt__info__linje">
+                                <Element tag="h4">
+                                    {tekst('utbetaling.redusert.til.6G')}
+                                </Element>
+                                <Normaltekst tag="span">{formaterValuta(seksG!)}</Normaltekst>
+                            </div>
+                        }
+                    />
+
                 </section>
             }
         />

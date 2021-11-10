@@ -36,6 +36,8 @@ describe('Tester visning av utbetalingsoversikt', () => {
 
         cy.get('.inntekt__info > :nth-child(3)').contains('Dagsats')
         cy.get('.inntekt__info > :nth-child(3)').contains('2 239 kr')
+
+        cy.contains('Redusert til 6G').should('not.exist')
     })
 
     it('Forklaring', () => {

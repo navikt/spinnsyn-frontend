@@ -19,6 +19,7 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årslønn',
     'utbetaling.inntekt.info.dagsats': 'Dagsats',
+    'utbetaling.redusert.til.6G': 'Redusert til 6G',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
