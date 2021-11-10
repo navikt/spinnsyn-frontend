@@ -1,6 +1,7 @@
 const SykepengedagerTekster = {
     'sykepengedager.systemtittel': 'Sykepengedager gjenstår',
     'sykepengedager.hittil': 'Sykepengedager brukt hittil',
+    'sykepengedag.hittil': 'Sykepengedag brukt hittil',
     'sykepengedager.sluttdato': 'Beregnet slutt på sykepenger',
     'sykepengedager.sluttdato.tekst1': 'Datoen gjelder hvis du er sykmeldt uten pauser. Den vil flytte seg hvis du jobber i noen perioder, eller hvis du tar ferie.',
     'sykepengedager.sluttdato.tekst2': 'Du kan få sykepenger i maksimalt 52 uker, det vil si 260 dager. Vanligvis får du 12 dager fra din arbeidsgiver og 248 fra NAV. Fra du er 67 år kan du få sykepenger i maksimalt 60 dager. Sykepengene gis for alle dager mellom mandag og fredag, også når de er helligdager.',

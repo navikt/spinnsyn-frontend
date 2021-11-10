@@ -38,11 +38,11 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         return (
             <>
                 <Normaltekst>
-                    {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[ 0 ]}` as any))}
+                    {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
                 </Normaltekst>
 
                 <Normaltekst className={'avvist-lovhjemmel'}>
-                    {parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[ 0 ]}` as any))}
+                    {parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))}
                 </Normaltekst>
             </>
         )
@@ -76,20 +76,18 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         return [ ...unikeDagtyper, ...unikeBegrunnelser ] as RSDag[]
     }
 
-    return(
+    return (
         <div className="tekstinfo">
             <Undertittel className="tekstinfo__avsnitt">
                 {tekst('utbetaling.tabell.dagtyper')}
             </Undertittel>
 
-            {
-                unikeDager().map((dag, idx) =>
-                    <div className="tekstinfo__avsnitt" key={idx}>
-                        <DagLabel dag={dag} />
-                        {lagBeskrivelseForUnikDag(dag)}
-                    </div>
-                )
-            }
+            {unikeDager().map((dag, idx) =>
+                <div className="tekstinfo__avsnitt" key={idx}>
+                    <DagLabel dag={dag} />
+                    {lagBeskrivelseForUnikDag(dag)}
+                </div>
+            )}
         </div>
     )
 }

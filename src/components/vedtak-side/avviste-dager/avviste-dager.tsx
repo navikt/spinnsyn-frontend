@@ -16,6 +16,10 @@ interface AvvisteDagerProps {
 const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
 
+    const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1
+        ? ' sykepengedager'
+        : ' sykepengedag'
+
     return (
         <Utvidbar
             type="integrert"
@@ -24,7 +28,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
             ikonHover={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
-            tittel={avvisteDager.length + ' sykepengedager'}
+            tittel={avvisteDager.length + avvisteDagerTekst}
             systemtittel={tekst('avviste.dager.dekkes.ikke')}
             ikonAltTekst=""
             fixedHeight={true}
