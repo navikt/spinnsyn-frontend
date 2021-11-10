@@ -1,5 +1,7 @@
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
 import React from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -8,6 +10,8 @@ import { tekst } from '../../utils/tekster'
 import Vedtak from '../vedtak-side/vedtak'
 
 dayjs.extend(localizedFormat)
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 export interface VedtakArkiveringProps {
     vedtak: RSVedtakWrapper,
@@ -38,7 +42,7 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
                             </div>
                             <div className="sendt">
                                 <p>
-                                    Dokument opprettet<br />{dayjs().format('LLL')}
+                                    Dokument opprettet<br />{dayjs().tz('Europe/Oslo').format('LLL')}
                                 </p>
                             </div>
                         </div>
