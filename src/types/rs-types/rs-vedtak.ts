@@ -40,6 +40,7 @@ interface RSVedtak {
 
 interface RSUtbetalingUtbetalt {
     organisasjonsnummer?: string;
+    foreløpigBeregnetSluttPåSykepenger?: string;
     utbetalingId?: string;
     forbrukteSykedager: number;
     gjenståendeSykedager: number;

@@ -108,6 +108,16 @@ describe('Tester at appen starter', () => {
             .and('contain', 'Hvorfor behandles den på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
     })
+
+    it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
+
+        cy.get('.utvidbar.bla').should('contain', '9')
+            .and('contain', 'Sykepengedager brukt hittil')
+            .click({ force: true })
+
+        cy.should('contain', '186').and('contain', 'Sykepengedager gjenstår')
+        cy.should('contain', '11. nov. 1918').and('contain', 'Beregnet slutt på sykepenger')
+    })
 })
 
 
