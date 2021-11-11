@@ -60,7 +60,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
 
         cy.get('.utbetalingsoversikt').within(() => {
             cy.contains('30.jan.').parent().should('contain', 'Arbeidsdag').and('contain', '-')
-            cy.contains('31.jan.').parent().should('contain', 'Arbeidsgiver betaler').and('contain', '-')
+            cy.contains('31.jan.').parent().should('contain', 'Arbeidsgiveren betaler').and('contain', '-')
             cy.contains('01.feb.').parent().should('contain', 'Syk').and('contain', '1\u00a0000 kr')
             cy.contains('06.feb.').parent().should('contain', 'Helg').and('contain', '-')
             cy.contains('08.feb.').parent().should('contain', '40% syk').and('contain', '400 kr')
@@ -80,7 +80,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
 
         cy.contains('Forklaring').parent().within(() => {
             cy.get('.etikett--mini.etikett--info')
-                .contains('Arbeidsgiver betaler').parent().siblings()
+                .contains('Arbeidsgiveren betaler').parent().siblings()
                 .contains('Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.')
             cy.get('.etikett--mini.etikett--info')
                 .contains('Arbeidsdag').parent().siblings()
