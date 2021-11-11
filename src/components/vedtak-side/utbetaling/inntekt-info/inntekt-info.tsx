@@ -43,16 +43,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                         </Element>
                         <Normaltekst tag="span">{inntektAr}</Normaltekst>
                     </div>
-                    <Vis hvis={skalViseDagsats}
-                        render={() =>
-                            <div className="inntekt__info__linje">
-                                <Element tag="h4">
-                                    {tekst('utbetaling.inntekt.info.dagsats')}
-                                </Element>
-                                <Normaltekst tag="span">{formaterValuta(dagsats)}</Normaltekst>
-                            </div>
-                        }
-                    />
                     <Vis hvis={skalVise6G}
                         render={() =>
                             <div className="inntekt__info__linje">
@@ -60,6 +50,16 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     {tekst('utbetaling.redusert.til.6G')}
                                 </Element>
                                 <Normaltekst tag="span">{formaterValuta(seksG!)}</Normaltekst>
+                            </div>
+                        }
+                    />
+                    <Vis hvis={skalViseDagsats}
+                        render={() =>
+                            <div className="inntekt__info__linje">
+                                <Element tag="h4">
+                                    {tekst('utbetaling.inntekt.info.dagsats')}
+                                </Element>
+                                <Normaltekst tag="span">{formaterValuta(dagsats)}</Normaltekst>
                             </div>
                         }
                     />
