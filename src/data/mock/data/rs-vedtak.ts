@@ -1407,6 +1407,287 @@ export const avvistVedtak: RSVedtakWrapper = {
     'sykepengebelop': 0
 }
 
+export const vedtakRedusertTil6G: RSVedtakWrapper = {
+    'id': '1ae568bd-71ff-4e31-b73f-c0c4ed85e01b',
+    'lest': true,
+    'lestDato': '2020-11-02T10:17:38.197496+01:00',
+    'vedtak': {
+        'organisasjonsnummer': '12345725',
+        'fom': '2021-10-18',
+        'tom': '2021-10-24',
+        'dokumenter': [
+            {
+                'dokumentId': 'TODO',
+                'type': 'Søknad'
+            },
+            {
+                'dokumentId': 'TODO',
+                'type': 'Sykmelding'
+            },
+            {
+                'dokumentId': 'TODO',
+                'type': 'Inntektsmelding'
+            }
+        ],
+        'inntekt': 67033,
+        'sykepengegrunnlag': 638394,
+        'utbetaling': {
+            'organisasjonsnummer': '12345725',
+            'utbetalingId': '26dc7822-351d-469d-934f-a5e9e50c7ca6',
+            'forbrukteSykedager': 10,
+            'gjenståendeSykedager': 238,
+            'automatiskBehandling': true,
+            'arbeidsgiverOppdrag': {
+                'mottaker': '12345725',
+                'nettoBeløp': 9820,
+                'utbetalingslinjer': [
+                    {
+                        'fom': '2021-10-09',
+                        'tom': '2021-10-17',
+                        'dagsats': 1719,
+                        'totalbeløp': 8595,
+                        'grad': 70,
+                        'stønadsdager': 5
+                    },
+                    {
+                        'fom': '2021-10-18',
+                        'tom': '2021-10-24',
+                        'dagsats': 1964,
+                        'totalbeløp': 9820,
+                        'grad': 80,
+                        'stønadsdager': 5
+                    }
+                ]
+            },
+            'utbetalingsdager': [
+                {
+                    'dato': '2021-09-23',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-24',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-25',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-26',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-27',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-28',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-29',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-09-30',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-01',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-02',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-03',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-04',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-05',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-06',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-07',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-08',
+                    'type': 'ArbeidsgiverperiodeDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-09',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-10',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-11',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-12',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-13',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-14',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-15',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-16',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-17',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-18',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-19',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-20',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-21',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-22',
+                    'type': 'NavDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-23',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                },
+                {
+                    'dato': '2021-10-24',
+                    'type': 'NavHelgDag',
+                    'begrunnelser': []
+                }
+            ],
+        },
+        'grunnlagForSykepengegrunnlag': 804396,
+        'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
+            '12345725': 804396
+        },
+        'begrensning': 'ER_6G_BEGRENSET'
+    },
+    'opprettet': '2021-11-04',
+    'orgnavn': 'JOBB AS',
+    'annullert': false,
+    'revurdert': false,
+    'dager': [
+        {
+            'dato': '2021-10-18',
+            'belop': 1964,
+            'grad': 80,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-19',
+            'belop': 1964,
+            'grad': 80,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-20',
+            'belop': 1964,
+            'grad': 80,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-21',
+            'belop': 1964,
+            'grad': 80,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-22',
+            'belop': 1964,
+            'grad': 80,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-23',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'NavHelgDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-24',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'NavHelgDag',
+            'begrunnelser': []
+        }
+    ],
+    'dagligUtbetalingsbelop': 1964,
+    'antallDagerMedUtbetaling': 5,
+    'sykepengebelop': 9820
+}
+
 export const nyeVedtak: RSVedtakWrapper[] = [
     vedtakMed40Grad,
     ulestVedtakUtenUtbetalingsdager,
@@ -1414,4 +1695,5 @@ export const nyeVedtak: RSVedtakWrapper[] = [
     vedtakRevurdert,
     integrasjonsVedtak,
     avvistVedtak,
+    vedtakRedusertTil6G
 ]

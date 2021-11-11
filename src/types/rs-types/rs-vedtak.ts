@@ -32,7 +32,9 @@ interface RSVedtak {
     dokumenter: Dokument[];
     inntekt?: number;
     sykepengegrunnlag?: number;
+    grunnlagForSykepengegrunnlag?: number;
     grunnlagForSykepengegrunnlagPerArbeidsgiver?: GrunnlagForSykepengegrunnlagPerArbeidsgiver,
+    begrensning?: string;
     utbetaling: RSUtbetalingUtbetalt;
 }
 
