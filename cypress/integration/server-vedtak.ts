@@ -10,7 +10,7 @@ describe('Tester serverside rendret vedtak for arkivering ', () => {
 
         cy.contains('Svar på søknad')
         cy.contains('Du kan lese mer om hvordan sykepengene beregnes i')
-        cy.contains('Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.')
+        cy.contains('Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.')
     })
 
 })

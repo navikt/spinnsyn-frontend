@@ -44,7 +44,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.get('.utbetalingsoversikt .tekstinfo .etikett').should('have.text', 'Delvis syk' + 'Helg')
         cy.get('.utbetalingsoversikt .tekstinfo .typo-normal').should('have.text',
             'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.' +
-            'Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.'
+            'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.'
         )
     })
 
@@ -90,7 +90,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
                 .contains('Du har vært syk en hel dag, og du får sykepenger for denne dagen.')
             cy.get('.etikett--mini.etikett--info')
                 .contains('Helg').parent().siblings()
-                .contains('Sykepenger betales alltid fra mandag til fredag. Om du jobber lørdager og søndager blir dette medregnet i totalbeløpet.')
+                .contains('Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.')
             cy.get('.etikett--mini.etikett--suksess')
                 .contains('Delvis syk').parent().siblings()
                 .contains('Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene dine om hvor mye du jobbet i perioden.')
