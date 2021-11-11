@@ -84,7 +84,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
                 .contains('Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.')
             cy.get('.etikett--mini.etikett--info')
                 .contains('Arbeidsdag').parent().siblings()
-                .contains('Det utbetales ikke sykepenger for hele dager du har vært på jobben.')
+                .contains('Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.')
             cy.get('.etikett--mini.etikett--suksess')
                 .contains('Syk').parent().siblings()
                 .contains('Du har vært syk en hel dag, og du får sykepenger for denne dagen.')
