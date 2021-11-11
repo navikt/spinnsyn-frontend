@@ -1,3 +1,4 @@
+import { integrasjonsVedtak, vedtakMed40Grad } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester serverside rendret vedtak for arkivering ', () => {
 
