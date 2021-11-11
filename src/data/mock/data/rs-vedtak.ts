@@ -612,6 +612,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             forbrukteSykedager: 9,
             gjenståendeSykedager: 186,
             automatiskBehandling: true,
+            foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
             arbeidsgiverOppdrag: {
                 mottaker: '972674818',
                 nettoBeløp: 8424,

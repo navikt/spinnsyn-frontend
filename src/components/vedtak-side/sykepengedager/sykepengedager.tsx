@@ -1,9 +1,10 @@
+import dayjs, { Dayjs } from 'dayjs'
 import parser from 'html-react-parser'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
-import { estimertSluttdato } from '../../../utils/vedtak-utils'
+import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import Utvidbar from '../../utvidbar/utvidbar'
 import { VedtakProps } from '../vedtak'
 
@@ -11,7 +12,13 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
 
-    const sluttdato = estimertSluttdato(vedtak)
+    const finnSluttdato = (): Dayjs => {
+        if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
+            return dayjs(vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger)
+        }
+        return fallbackEstimertSluttdato(vedtak)
+    }
+    const sluttdato = finnSluttdato().format('D. MMM YYYY')
 
     return (
         <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}
