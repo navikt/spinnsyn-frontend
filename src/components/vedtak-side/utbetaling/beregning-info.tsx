@@ -3,8 +3,10 @@ import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import Utvidbar from '../../utvidbar/utvidbar'
+import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import InntektInfo from './inntekt-info/inntekt-info'
 
@@ -43,12 +45,16 @@ const BeregningInfo = ({ vedtak }: VedtakProps) => {
                 {tekst('utbetaling.totalbelop.innhold')}
             </Normaltekst>
 
-            <Element tag="h4" className="blokkinfo__avsnitt">
-                {tekst('utbetaling.flere-arbeidsforhold.tittel')}
-            </Element>
-            <Normaltekst>
-                {tekst('utbetaling.flere-arbeidsforhold.innhold')}
-            </Normaltekst>
+            <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
+                render={ () =>
+                    <>
+                        <Element tag="h4" className="blokkinfo__avsnitt">
+                            {tekst('utbetaling.flere-arbeidsforhold.tittel')}
+                        </Element>
+                        <Normaltekst> {tekst('utbetaling.flere-arbeidsforhold.innhold')} </Normaltekst>
+                    </>
+                }
+            />
 
             <Element tag="h4" className="blokkinfo__avsnitt">
                 {tekst('utbetaling.utbetalingsdager.tittel')}
