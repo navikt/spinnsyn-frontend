@@ -26,7 +26,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return <Etikett mini type="info">Helg</Etikett>
 
             case 'ArbeidsgiverperiodeDag':
-                return <Etikett mini type="info">Arbeidsgiver betaler</Etikett>
+                return <Etikett mini type="info">Arbeidsgiveren betaler</Etikett>
 
             case 'Arbeidsdag':
                 return <Etikett mini type="info">Arbeidsdag</Etikett>
