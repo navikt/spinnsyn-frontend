@@ -38,8 +38,8 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return <Etikett mini type="fokus">Søkt for sent</Etikett>
 
             case 'AvvistDag':
-                return dag.begrunnelser?.map((begrunnelse) =>
-                    lagBegrunnelseLabel(begrunnelse)
+                return dag.begrunnelser?.map((begrunnelse, idx) =>
+                    lagBegrunnelseLabel(begrunnelse, idx)
                 )
 
             case 'UkjentDag':
@@ -49,38 +49,38 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         }
     }
 
-    const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelse) => {
+    const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelse, idx: number) => {
         switch (begrunnelse) {
             case 'SykepengedagerOppbrukt':
             case 'SykepengedagerOppbruktOver67':
-                return <Etikett mini type="fokus">Maks antall dager</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Maks antall dager</Etikett>
 
             case 'MinimumInntekt':
             case 'MinimumInntektOver67':
-                return <Etikett mini type="fokus">For lav inntekt</Etikett>
+                return <Etikett mini type="fokus" key={idx}>For lav inntekt</Etikett>
 
             case 'EgenmeldingUtenforArbeidsgiverperiode':
-                return <Etikett mini type="fokus">Egenmelding</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Egenmelding</Etikett>
 
             case 'MinimumSykdomsgrad':
-                return <Etikett mini type="fokus">Sykmeldt i for liten grad</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Sykmeldt i for liten grad</Etikett>
 
             case 'ManglerOpptjening':
-                return <Etikett mini type="fokus">Jobbet for kort</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Jobbet for kort</Etikett>
 
             case 'ManglerMedlemskap':
-                return <Etikett mini type="fokus">Ikke medlem</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Ikke medlem</Etikett>
 
             case 'Over70':
-                return <Etikett mini type="fokus">Over 70 år</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Over 70 år</Etikett>
 
             case 'EtterDødsdato':
-                return <Etikett mini type="fokus">Etter dødsfall</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Etter dødsfall</Etikett>
 
             case 'UKJENT':
             default:
                 logger.warn(`Har ingen begrunnelse for: ${begrunnelse}`)
-                return <Etikett mini type="fokus">Ukjent</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Ukjent</Etikett>
         }
     }
 
