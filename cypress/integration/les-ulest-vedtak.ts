@@ -26,7 +26,7 @@ describe('Tester at appen starter', () => {
             .and('contain', 'Gjelder sykefravær fra')
             .and('contain', '22. mars – 9. april 2021')
 
-        cy.contains('Klagefrist: 14. juni 2021')
+        cy.contains('14. juni 2021')
 
         cy.contains('Automatisk behandling')
         cy.contains('Søknaden din er behandlet automatisk. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')

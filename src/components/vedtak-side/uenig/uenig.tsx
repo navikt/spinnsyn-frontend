@@ -1,8 +1,8 @@
 import Lenke from 'nav-frontend-lenker'
-import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Element,Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
-import { tekst } from '../../../utils/tekster'
+import { getLedetekst, tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
 import { logEvent } from '../../amplitude/amplitude'
 import { VedtakProps } from '../vedtak'
@@ -14,7 +14,7 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                 {tekst('uenig.tittel')}
             </Undertittel>
             <Normaltekst>
-                {tekst('uenig.tekst1')}
+                {getLedetekst(tekst('uenig.tekst1'), { '%KLAGEFRIST%': klagefrist(vedtak) })}
                 {tekst('uenig.tekst2')}
                 <Lenke href={tekst('uenig.lenke1.url')} target="_blank">
                     {tekst('uenig.lenke1')}
@@ -30,7 +30,15 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                     {tekst('uenig.lenke2')}
                 </Lenke>.
             </Normaltekst>
-            <Element className="uenig__klagefrist">{'Klagefrist: ' + klagefrist(vedtak)}</Element>
+
+            <div className="egen-klagefrist">
+                <Element className="egen__klagefrist__tittel">
+                    {tekst('uenig.egenklagefrist.tittel')}
+                </Element>
+                <Normaltekst>
+                    {tekst('uenig.egenklagefrist.tekst')}
+                </Normaltekst>
+            </div>
         </div>
     )
 }
