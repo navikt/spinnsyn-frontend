@@ -11,6 +11,14 @@ import { VedtakProps } from '../vedtak'
 import InntektInfo from './inntekt-info/inntekt-info'
 
 const BeregningInfo = ({ vedtak }: VedtakProps) => {
+
+    const sykepengegrunnlagInnholdKey = () => {
+        if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
+            return 'utbetaling.sykepengegrunnlag.under6g.innhold'
+        }
+        return 'utbetaling.sykepengegrunnlag.over6g.innhold'
+
+    }
     return (
         <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo"
             tittel={tekst('utbetaling.beregning.tittel')}
@@ -21,7 +29,7 @@ const BeregningInfo = ({ vedtak }: VedtakProps) => {
                 {tekst('utbetaling.mndlonn.tittel')}
             </Element>
             <Normaltekst>
-                {tekst('utbetaling.mndlonn.innhold')}
+                {parser(tekst('utbetaling.mndlonn.innhold'))}
             </Normaltekst>
 
             <Element tag="h4" className="blokkinfo__avsnitt">
@@ -29,6 +37,17 @@ const BeregningInfo = ({ vedtak }: VedtakProps) => {
             </Element>
             <Normaltekst>
                 {parser(tekst('utbetaling.arslonn.innhold'))}
+            </Normaltekst>
+
+            <Element tag="h4" className="blokkinfo__avsnitt">
+                {tekst('utbetaling.sykepengegrunnlag.tittel')}
+            </Element>
+            <Normaltekst>
+                {parser(tekst(sykepengegrunnlagInnholdKey()))}
+            </Normaltekst>
+
+            <Normaltekst className="blokkinfo__avsnitt">
+                {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
             </Normaltekst>
 
             <Element tag="h4" className="blokkinfo__avsnitt">
@@ -46,7 +65,7 @@ const BeregningInfo = ({ vedtak }: VedtakProps) => {
             </Normaltekst>
 
             <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                render={ () =>
+                render={() =>
                     <>
                         <Element tag="h4" className="blokkinfo__avsnitt">
                             {tekst('utbetaling.flere-arbeidsforhold.tittel')}

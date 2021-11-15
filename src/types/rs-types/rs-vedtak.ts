@@ -25,6 +25,8 @@ interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
     [ orgnummer: string ]: number;
 }
 
+export type Begrensning = 'ER_6G_BEGRENSET' | 'ER_IKKE_6G_BEGRENSET' | 'VURDERT_I_INFOTRYGD' | 'VET_IKKE'
+
 interface RSVedtak {
     organisasjonsnummer?: string;
     fom: string;
@@ -34,7 +36,7 @@ interface RSVedtak {
     sykepengegrunnlag?: number;
     grunnlagForSykepengegrunnlag?: number;
     grunnlagForSykepengegrunnlagPerArbeidsgiver?: GrunnlagForSykepengegrunnlagPerArbeidsgiver,
-    begrensning?: string;
+    begrensning?: Begrensning;
     utbetaling: RSUtbetalingUtbetalt;
 }
 
