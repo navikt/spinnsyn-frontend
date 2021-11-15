@@ -4,7 +4,7 @@ import React from 'react'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 
-const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
+export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
 
     return (
         <section className="arbeidsgiver-info">
@@ -20,4 +20,3 @@ const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
     )
 }
 
-export default ArbeidsgiverInfo

@@ -8,9 +8,11 @@ export interface RSVedtakWrapper {
     annullert: boolean;
     revurdert: boolean;
     dager: RSDag[];
-    dagligUtbetalingsbelop: number;
+    dagerDirekteutbetaling: RSDag[];
     antallDagerMedUtbetaling: number;
+    antallDagerMedDirekteUtbetaling: number;
     sykepengebelop: number;
+    sykepengebelopDirekteUtbetaling: number;
 }
 
 export interface RSDag {
@@ -47,7 +49,8 @@ interface RSUtbetalingUtbetalt {
     forbrukteSykedager: number;
     gjenståendeSykedager: number;
     automatiskBehandling: boolean;
-    arbeidsgiverOppdrag: RSOppdrag;
+    arbeidsgiverOppdrag?: RSOppdrag;
+    brukerOppdrag?: RSOppdrag;
     utbetalingsdager: RSUtbetalingdag[];
 }
 

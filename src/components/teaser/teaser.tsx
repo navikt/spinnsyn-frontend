@@ -37,6 +37,7 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
                                 }
                             />
                             {arbeidsgiverListevisning(vedtak)}
+
                         </div>
                     </div>
                     <Vis hvis={annullertEllerRevurdert}

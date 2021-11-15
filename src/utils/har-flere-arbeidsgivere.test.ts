@@ -1,12 +1,12 @@
 import { expect } from '@jest/globals'
 
-import { vedtakMed40Grad } from '../data/mock/data/rs-vedtak'
+import { kombinertDirekteOgRefusjon } from '../data/mock/data/rs-vedtak'
 import { harFlereArbeidsgivere } from './har-flere-arbeidsgivere'
 import { jsonDeepCopy } from './json-deep-copy'
 
 
 describe('Tester estimering av sluttdato', () => {
-    const testVedtak = vedtakMed40Grad
+    const testVedtak = kombinertDirekteOgRefusjon
 
     it('Har en arbeidsgiver', () => {
         expect(harFlereArbeidsgivere(testVedtak)).toEqual('nei')

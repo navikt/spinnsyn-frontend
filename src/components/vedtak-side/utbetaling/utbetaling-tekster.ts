@@ -1,6 +1,8 @@
 const UtbetalingTekster = {
     'utbetaling.systemtittel': 'Utbetales til arbeidsgiveren',
+    'utbetaling.direkteutbetaling.systemtittel': 'til deg (før skatt)',
     'utbetaling.mndlonn.tittel': 'Månedslønnen',
+    'utbetaling.direkteutbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
     'utbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. Lønn for overtid tas bare med i helt spesielle tilfeller. <a href="https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/inntekter-som-inngar-i-beregningen-av-manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med.</a> Hvis du er usikker på om månedslønnen er riktig, kontakt arbeidsgiveren din. ',
     'utbetaling.arslonn.tittel': 'Årslønn',
     'utbetaling.arslonn.innhold': 'Så blir månedslønnen regnet om til årslønn ved å gange den med 12. Hvis du har flere arbeidsgivere, legger vi sammen lønnen fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er.',
@@ -12,6 +14,7 @@ const UtbetalingTekster = {
     'utbetaling.dagligbelop.innhold': 'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
     'utbetaling.totalbelop.innhold': 'Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
+    'utbetaling.direkteutbetaling.totalbelop.innhold': 'Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
     'utbetaling.flere-arbeidsforhold.tittel': 'Flere arbeidsforhold',
     'utbetaling.flere-arbeidsforhold.innhold': 'Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.',
     'utbetaling.utbetalingsdager.tittel': 'Utbetalingsdager',
@@ -29,6 +32,7 @@ const UtbetalingTekster = {
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
     'utbetaling.arbeidsgiver.tittel': 'Beløpet går til arbeidsgiveren din',
+    'utbetaling.til-kontonummer.tittel': 'Utbetales til kontonummer: 1111 22 0988',
     'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
 
     'utbetaling.tabell.dagtyper': 'Forklaring',

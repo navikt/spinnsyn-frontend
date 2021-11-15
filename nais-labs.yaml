@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: spinnsyn-frontend
+  name: spinnsyn-frontend-brukerutbetaling
   namespace: flex
   labels:
     team: flex
@@ -9,7 +9,7 @@ spec:
   image: {{ image }}
   port: 8080
   ingresses:
-    - "https://sykepenger.labs.nais.io/"
+    - "https://sykepenger-brukerutbetaling.labs.nais.io/"
   liveness:
     path: syk/sykepenger/api/isAlive
   readiness:
