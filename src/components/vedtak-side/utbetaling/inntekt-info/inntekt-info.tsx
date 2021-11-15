@@ -50,9 +50,8 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         {tekst('utbetaling.sykepengegrunnlag')}
                                     </Element>
                                     <Vis hvis={vedtak.vedtak.begrensning == 'ER_6G_BEGRENSET'} render={() =>
-                                        <Normaltekst
-                                            tag="p"
-                                            style={{ fontSize: '14px' }}>{tekst('utbetaling.redusert.til.6G')}
+                                        <Normaltekst className={'inntekt__info__redusert'} tag="p">
+                                            {tekst('utbetaling.redusert.til.6G')}
                                         </Normaltekst>
                                     } />
 
