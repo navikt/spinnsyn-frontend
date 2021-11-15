@@ -28,7 +28,8 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.get('.inntekt__info > :nth-child(2)').contains('804 396 kr')
 
         // Sjekker om sykepengegrunnlaget er redusert
-        cy.get('.inntekt__info > :nth-child(3)').contains('Redusert til 6G')
+        cy.get('.inntekt__info > :nth-child(3)').contains('Sykepengegrunnlag')
+        cy.get('.inntekt__info > :nth-child(3)').contains('redusert til 6G')
         cy.get('.inntekt__info > :nth-child(3)').contains('638 394 kr')
 
         cy.get('.inntekt__info > :nth-child(4)').contains('Dagsats')

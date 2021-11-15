@@ -23,8 +23,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
     const skalViseDagsats = vedtak.vedtak.sykepengegrunnlag && harFlereArbeidsgivere(vedtak) == 'nei'
     const dagsats = vedtak.vedtak.sykepengegrunnlag && (vedtak.vedtak.sykepengegrunnlag / 260) || 0
-    const skalVise6G = vedtak.vedtak.begrensning == 'ER_6G_BEGRENSET'
-    const seksG = vedtak.vedtak.sykepengegrunnlag
+    const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     return (
         <Vis hvis={inntektMnd && inntektAr}
@@ -43,13 +42,24 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                         </Element>
                         <Normaltekst tag="span">{inntektAr}</Normaltekst>
                     </div>
-                    <Vis hvis={skalVise6G}
+                    <Vis hvis={skalViseSykepengegrunnlag}
                         render={() =>
                             <div className="inntekt__info__linje">
-                                <Element tag="h4">
-                                    {tekst('utbetaling.redusert.til.6G')}
-                                </Element>
-                                <Normaltekst tag="span">{formaterValuta(seksG!)}</Normaltekst>
+                                <div>
+                                    <Element tag="h4">
+                                        {tekst('utbetaling.sykepengegrunnlag')}
+                                    </Element>
+                                    <Vis hvis={vedtak.vedtak.begrensning == 'ER_6G_BEGRENSET'} render={() =>
+                                        <Normaltekst
+                                            tag="p"
+                                            style={{ fontSize: '14px' }}>{tekst('utbetaling.redusert.til.6G')}
+                                        </Normaltekst>
+                                    } />
+
+                                </div>
+                                <Normaltekst
+                                    tag="span">{formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}</Normaltekst>
+
                             </div>
                         }
                     />
