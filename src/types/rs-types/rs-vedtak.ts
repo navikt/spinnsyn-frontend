@@ -51,7 +51,6 @@ interface RSUtbetalingUtbetalt {
     automatiskBehandling: boolean;
     arbeidsgiverOppdrag?: RSOppdrag;
     brukerOppdrag?: RSOppdrag;
-    utbetalingsdager: RSUtbetalingdag[];
 }
 
 interface RSOppdrag {
@@ -69,11 +68,6 @@ export interface RSUtbetalingslinje {
     totalbeløp: number;
 }
 
-interface RSUtbetalingdag {
-    dato: string;
-    type: RSDagType;
-    begrunnelser?: RSBegrunnelse[]
-}
 
 export type RSBegrunnelse = 'SykepengedagerOppbrukt'
 | 'SykepengedagerOppbruktOver67'
