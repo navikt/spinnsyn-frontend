@@ -7,11 +7,11 @@ import { VedtakProps } from '../vedtak'
 export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
 
     return (
-        <section className="arbeidsgiver-info">
-            <Element tag="h3" className="arbeidsgiver-info__tittel">
+        <section className="info">
+            <Element tag="h3" className="info__tittel">
                 {tekst('utbetaling.arbeidsgiver.tittel')}
             </Element>
-            <Normaltekst className="arbeidsgiver-info__tekst">
+            <Normaltekst className="info__tekst">
                 {getLedetekst(tekst('utbetaling.arbeidsgiver.tekst'), {
                     '%ARBEIDSGIVER%': vedtak.orgnavn
                 })}

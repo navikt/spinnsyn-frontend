@@ -26,7 +26,7 @@ const DirekteutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
             ikonHover={'/syk/sykepenger/static/img/ikon-penger.svg'}
             tittel={belop + ' kroner'}
-            systemtittel={tekst('utbetaling.direkteutbetaling.systemtittel')}
+            systemtittel={tekst('utbetaling.person.systemtittel')}
             ikonAltTekst=""
             fixedHeight={true}
             heading="h2"

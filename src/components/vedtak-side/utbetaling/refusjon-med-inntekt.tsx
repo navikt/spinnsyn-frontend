@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -26,7 +25,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
             ikonHover={'/syk/sykepenger/static/img/ikon-penger.svg'}
             tittel={belop + ' kroner'}
-            systemtittel={tekst('utbetaling.systemtittel')}
+            systemtittel={tekst('utbetaling.arbeidsgiver.systemtittel')}
             ikonAltTekst=""
             fixedHeight={true}
             heading="h2"
