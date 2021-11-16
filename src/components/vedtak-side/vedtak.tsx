@@ -77,7 +77,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 }
             />
 
-            <Vis hvis={vedtak.antallDagerMedUtbetaling > 0}
+            <Vis hvis={vedtak.sykepengebelop > 0}
                 render={() =>
                     <UtbetalingMedInntekt vedtak={vedtak} />
                 }
