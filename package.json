@@ -93,7 +93,7 @@
     "next-with-less": "^1.0.1",
     "react-shallow-renderer": "^16.14.1",
     "react-test-renderer": "^17.0.2",
-    "start-server-and-test": "^1.13.1",
+    "start-server-and-test": "^1.14.0",
     "ts-loader": "^5.4.5",
     "webpack": "^5.60.0",
     "yet-another-fetch-mock": "^4.1.0"
@@ -107,7 +107,7 @@
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "cy:open": "cypress open",
-    "e2e": "MOCK_BACKEND=true start-test 8080 cy:open",
+    "e2e": "start-test dev-ingen-dekorator http://localhost:8080/syk/sykepenger cy:open",
     "lint": "eslint --ext=ts,tsx src cypress",
     "lint:fix": "eslint --ext=ts,tsx src cypress --fix",
     "postinstall": "./scripts/strip-less"
