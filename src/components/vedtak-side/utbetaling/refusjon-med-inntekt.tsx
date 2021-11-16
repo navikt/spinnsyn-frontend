@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -7,13 +8,14 @@ import DagTabell from '../../dager/dag-tabell'
 import Utvidbar from '../../utvidbar/utvidbar'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
-import ArbeidsgiverInfo from './arbeidsgiver-info'
+import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 
-const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
+
+const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
-    const belop = ValutaFormat.format(vedtak.sykepengebelop)
+    const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
 
 
     return (
@@ -32,13 +34,13 @@ const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <div className="utbetaling__innhold">
                 <ArbeidsgiverInfo vedtak={vedtak} />
                 <BeregningInfo vedtak={vedtak} />
-                <Vis hvis={vedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
+                <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
                             tittel={'Beløpet dag for dag'}
                         >
-                            <DagTabell dager={vedtak.dager} />
-                            <DagBeskrivelse dager={vedtak.dager} />
+                            <DagTabell dager={vedtak.dagerArbeidsgiver} />
+                            <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
                         </Utvidbar>
                     }
                 />
@@ -47,4 +49,4 @@ const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     )
 }
 
-export default UtbetalingMedInntekt
+export default RefusjonMedInntekt

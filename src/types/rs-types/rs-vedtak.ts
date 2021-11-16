@@ -7,10 +7,10 @@ export interface RSVedtakWrapper {
     orgnavn: string;
     annullert: boolean;
     revurdert: boolean;
-    dager: RSDag[];
-    dagligUtbetalingsbelop: number;
-    antallDagerMedUtbetaling: number;
-    sykepengebelop: number;
+    dagerArbeidsgiver: RSDag[];
+    dagerPerson: RSDag[];
+    sykepengebelopArbeidsgiver: number;
+    sykepengebelopPerson: number;
 }
 
 export interface RSDag {
@@ -47,30 +47,8 @@ interface RSUtbetalingUtbetalt {
     forbrukteSykedager: number;
     gjenståendeSykedager: number;
     automatiskBehandling: boolean;
-    arbeidsgiverOppdrag: RSOppdrag;
-    utbetalingsdager: RSUtbetalingdag[];
 }
 
-interface RSOppdrag {
-    mottaker: string;
-    nettoBeløp: number;
-    utbetalingslinjer: RSUtbetalingslinje[];
-}
-
-export interface RSUtbetalingslinje {
-    fom: string;
-    tom: string;
-    grad: number;
-    stønadsdager: number;
-    dagsats: number;
-    totalbeløp: number;
-}
-
-interface RSUtbetalingdag {
-    dato: string;
-    type: RSDagType;
-    begrunnelser?: RSBegrunnelse[]
-}
 
 export type RSBegrunnelse = 'SykepengedagerOppbrukt'
 | 'SykepengedagerOppbruktOver67'

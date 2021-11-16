@@ -18,7 +18,8 @@ import AutomatiskBehandling from './behandling/automatiskBehandling'
 import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
-import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
+import DirekteutbetalingMedInntekt from './utbetaling/direkteutbetaling-med-inntekt'
+import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
 const brodsmuler: Brodsmule[] = [
     {
@@ -46,7 +47,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const avvisteDager = vedtak.dager.filter(dag => dagErAvvist.includes(dag.dagtype))
+    const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
     const erArkivering = useContext(ArkiveringContext)
 
     return (
@@ -77,9 +78,14 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 }
             />
 
-            <Vis hvis={vedtak.sykepengebelop > 0}
+            <Vis hvis={vedtak.sykepengebelopPerson > 0}
                 render={() =>
-                    <UtbetalingMedInntekt vedtak={vedtak} />
+                    <DirekteutbetalingMedInntekt vedtak={vedtak} />
+                }
+            />
+            <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0}
+                render={() =>
+                    <RefusjonMedInntekt vedtak={vedtak} />
                 }
             />
             <Vis hvis={avvisteDager.length > 0}
