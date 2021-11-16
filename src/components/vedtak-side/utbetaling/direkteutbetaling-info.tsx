@@ -7,17 +7,19 @@ export const DirekteutbetalingInfo = () => {
 
     return (
         <section className="arbeidsgiver-info">
-            <Element tag="h3" className="arbeidsgiver-info__tittel" style={{ paddingBottom: '1em' }}>
-                {tekst('utbetaling.til-kontonummer.tittel')}
-            </Element>
             <Element tag="h3" className="blokkinfo__avsnitt" style={{ fontSize: '18px', paddingBottom: '0em' }}>
                 Når får du pengene?
             </Element>
             <Normaltekst>
-                <p>Pengene blir utbetalt innen fem dager.</p>
+                <p>Pengene utbetales som regel innen 4 uker. <a
+                    href={'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap'}
+                    target={'_blank'}
+                    rel="noreferrer">Her</a> kan
+                    du lese mer om når pengene kommer.</p>
 
 
-                Da kan du se beløpet i <a href={'https://tjenester.nav.no/utbetalingsoversikt/'} target={'_blank'} rel="noreferrer">Din utbetalingsoversikt</a> med
+                Du vil se beløpet i <a href={'https://tjenester.nav.no/utbetalingsoversikt/'} target={'_blank'}
+                    rel="noreferrer">Din utbetalingsoversikt</a> med
                 skattetrekk og
                 eventuelle andre trekk.
             </Normaltekst>

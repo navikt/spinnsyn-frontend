@@ -49,23 +49,6 @@ interface RSUtbetalingUtbetalt {
     forbrukteSykedager: number;
     gjenståendeSykedager: number;
     automatiskBehandling: boolean;
-    arbeidsgiverOppdrag?: RSOppdrag;
-    personOppdrag?: RSOppdrag;
-}
-
-interface RSOppdrag {
-    mottaker: string;
-    nettoBeløp: number;
-    utbetalingslinjer: RSUtbetalingslinje[];
-}
-
-export interface RSUtbetalingslinje {
-    fom: string;
-    tom: string;
-    grad: number;
-    stønadsdager: number;
-    dagsats: number;
-    totalbeløp: number;
 }
 
 
