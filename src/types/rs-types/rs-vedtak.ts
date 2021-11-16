@@ -50,7 +50,7 @@ interface RSUtbetalingUtbetalt {
     gjenståendeSykedager: number;
     automatiskBehandling: boolean;
     arbeidsgiverOppdrag?: RSOppdrag;
-    brukerOppdrag?: RSOppdrag;
+    personOppdrag?: RSOppdrag;
 }
 
 interface RSOppdrag {
