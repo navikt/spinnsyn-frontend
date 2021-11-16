@@ -73,7 +73,7 @@ const Utvidbar = (props: UtvidbarProps) => {
                 top = position.top - ((winhight - position.height) / 2) + window.scrollY
             }
             window.scrollTo({ top: top, left: 0, behavior: 'smooth' })
-        }, 300)
+        }, 1)
     }
 
     return (
