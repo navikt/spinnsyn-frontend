@@ -60,6 +60,9 @@ const Utvidbar = (props: UtvidbarProps) => {
 
     const midtstill = () => {
         setTimeout(() => {
+            if (!utvidbar.current) {
+                return
+            }
             const winhight = window.innerHeight
             const position = utvidbar.current!.getBoundingClientRect()
 
