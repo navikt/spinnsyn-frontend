@@ -6,6 +6,7 @@ import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedt
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import { tekst } from '../../utils/tekster'
+import { medQuery } from '../../utils/url-utils'
 import Banner from '../banner/banner'
 import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../brodsmuler/brodsmuler'
@@ -24,7 +25,7 @@ import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 const brodsmuler: Brodsmule[] = [
     {
         tittel: tekst('vedtak-liste.sidetittel'),
-        sti: SEPARATOR,
+        sti: SEPARATOR + medQuery(),
         erKlikkbar: true
     }, {
         tittel: tekst('vedtak.sidetittel'),
