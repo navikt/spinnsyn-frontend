@@ -21,21 +21,3 @@ export const camelCaseTilSetning = (str: string) => {
     const medSpace = str.replace(/([a-z0-9])([A-Z])/g, '$1 $2') // Add space between camel casing
     return medSpace.charAt(0).toUpperCase() + medSpace.slice(1).toLowerCase() // Capitalize the first letter
 }
-
-export const storFørste = (str: string) => {
-    let ord = ''
-    ord += str.substring(0, 1).toUpperCase()
-    ord += str.substring(1, str.length).toLowerCase()
-    return ord
-}
-
-export const storeTilStoreOgSmå = (str: string) => {
-    const strArr = str.split(' ')
-    let navn = ''
-    strArr.map(ord => {
-        ord.toLowerCase() !== 'as' && !ord.toLowerCase().includes('a/s')
-            ? navn += storFørste(ord) + ' '
-            : navn += ord
-    })
-    return navn
-}
