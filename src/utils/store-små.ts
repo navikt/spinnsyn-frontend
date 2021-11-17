@@ -10,7 +10,7 @@ export const storFørste = (str: string, navn: string) => {
 }
 
 export const storeTilStoreOgSmå = (str: string) => {
-    let nyStr = str.replaceAll(',', ', ')
+    let nyStr = str.replace(/,/g, ', ')
     nyStr = nyStr.replace(/  +/g, ' ')
     const strArr = nyStr.split(' ')
     let navn = ''
