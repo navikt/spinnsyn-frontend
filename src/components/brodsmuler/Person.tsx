@@ -29,7 +29,7 @@ const Person = () => {
                         <ul style={{ minWidth: 190 }}>
                             {Object.keys(personas).map((p, idx) =>
                                 <li key={idx}>
-                                    <a href={`?testperson=${p}`}>{p}</a>
+                                    <a href={`/syk/sykepenger?testperson=${p}`}>{p}</a>
                                 </li>
                             )}
                         </ul>

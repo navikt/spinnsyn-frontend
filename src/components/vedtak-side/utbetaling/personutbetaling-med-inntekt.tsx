@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -7,38 +8,39 @@ import DagTabell from '../../dager/dag-tabell'
 import Utvidbar from '../../utvidbar/utvidbar'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
-import ArbeidsgiverInfo from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
+import { PersonutbetalingInfo } from './personutbetaling-info'
 
-const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
+
+export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
-    const belop = ValutaFormat.format(vedtak.sykepengebelop)
+    const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
 
 
     return (
         <Utvidbar type="integrert"
-            className={'gronn' + (apen ? ' apen' : '')}
+            className={'personutbetaling gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
             ikonHover={'/syk/sykepenger/static/img/ikon-penger.svg'}
             tittel={belop + ' kroner'}
-            systemtittel={tekst('utbetaling.systemtittel')}
+            systemtittel={tekst('utbetaling.person.systemtittel')}
             ikonAltTekst=""
             fixedHeight={true}
             heading="h2"
         >
             <div className="utbetaling__innhold">
-                <ArbeidsgiverInfo vedtak={vedtak} />
-                <BeregningInfo vedtak={vedtak} />
-                <Vis hvis={vedtak.vedtak.utbetaling.utbetalingsdager.length > 0}
+                <PersonutbetalingInfo />
+                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
+                <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
                             tittel={'Beløpet dag for dag'}
                         >
-                            <DagTabell dager={vedtak.dager} />
-                            <DagBeskrivelse dager={vedtak.dager} />
+                            <DagTabell dager={vedtak.dagerPerson} />
+                            <DagBeskrivelse dager={vedtak.dagerPerson} />
                         </Utvidbar>
                     }
                 />
@@ -47,4 +49,4 @@ const UtbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     )
 }
 
-export default UtbetalingMedInntekt
+

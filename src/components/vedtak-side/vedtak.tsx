@@ -6,6 +6,7 @@ import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedt
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
 import { tekst } from '../../utils/tekster'
+import { medQuery } from '../../utils/url-utils'
 import Banner from '../banner/banner'
 import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../brodsmuler/brodsmuler'
@@ -18,12 +19,13 @@ import AutomatiskBehandling from './behandling/automatiskBehandling'
 import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
-import UtbetalingMedInntekt from './utbetaling/utbetaling-med-inntekt'
+import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
+import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
 const brodsmuler: Brodsmule[] = [
     {
         tittel: tekst('vedtak-liste.sidetittel'),
-        sti: SEPARATOR,
+        sti: SEPARATOR + medQuery(),
         erKlikkbar: true
     }, {
         tittel: tekst('vedtak.sidetittel'),
@@ -46,7 +48,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const avvisteDager = vedtak.dager.filter(dag => dagErAvvist.includes(dag.dagtype))
+    const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
     const erArkivering = useContext(ArkiveringContext)
 
     return (
@@ -77,9 +79,14 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 }
             />
 
-            <Vis hvis={vedtak.sykepengebelop > 0}
+            <Vis hvis={vedtak.sykepengebelopPerson > 0}
                 render={() =>
-                    <UtbetalingMedInntekt vedtak={vedtak} />
+                    <PersonutbetalingMedInntekt vedtak={vedtak} />
+                }
+            />
+            <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0}
+                render={() =>
+                    <RefusjonMedInntekt vedtak={vedtak} />
                 }
             />
             <Vis hvis={avvisteDager.length > 0}

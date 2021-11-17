@@ -31,156 +31,12 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                mottaker: '972674818',
-                nettoBeløp: 8960,
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-02-08',
-                        tom: '2021-02-21',
-                        dagsats: 896,
-                        totalbeløp: 8960,
-                        grad: 40.0,
-                        stønadsdager: 10
-                    }
-                ]
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-01-21',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-22',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-23',
-                    type: 'Arbeidsdag'
-                },
-                {
-                    dato: '2021-01-24',
-                    type: 'Arbeidsdag'
-                },
-                {
-                    dato: '2021-01-25',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-26',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-27',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-28',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-29',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-30',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-31',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-01',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-02',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-03',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-04',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-05',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-06',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-07',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-08',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-09',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-10',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-11',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-12',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-13',
-                    type: 'NavHelgDag'
-                },
-                {
-                    dato: '2021-02-14',
-                    type: 'NavHelgDag'
-                },
-                {
-                    dato: '2021-02-15',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-16',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-17',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-18',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-19',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-20',
-                    type: 'NavHelgDag'
-                },
-                {
-                    dato: '2021-02-21',
-                    type: 'NavHelgDag'
-                }
-            ]
         }
     },
     opprettet: '2021-05-06',
     annullert: false,
     revurdert: false,
-    dager: [
+    dagerArbeidsgiver: [
         {
             dato: '2021-02-08',
             belop: 896,
@@ -280,9 +136,9 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             begrunnelser: []
         }
     ],
-    dagligUtbetalingsbelop: 896,
-    antallDagerMedUtbetaling: 10,
-    sykepengebelop: 8960,
+    sykepengebelopArbeidsgiver: 8960,
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
 }
 
 export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
@@ -311,27 +167,12 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             forbrukteSykedager: 15,
             gjenståendeSykedager: 180,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                mottaker: 'org-nr',
-                nettoBeløp: 21060,
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-03-22',
-                        tom: '2021-04-09',
-                        dagsats: 1404,
-                        totalbeløp: 21060,
-                        grad: 100,
-                        stønadsdager: 15,
-                    }
-                ]
-            },
-            utbetalingsdager: []
         }
     },
     opprettet: '2021-05-03',
     annullert: false,
     revurdert: false,
-    dager: [
+    dagerArbeidsgiver: [
         {
             dato: '2021-03-22',
             belop: 1404,
@@ -473,9 +314,9 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             begrunnelser: []
         },
     ],
-    dagligUtbetalingsbelop: 1404,
-    antallDagerMedUtbetaling: 15,
-    sykepengebelop: 21060,
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
+    sykepengebelopArbeidsgiver: 21060,
 }
 
 export const ulestGammeltVedtak = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
@@ -503,27 +344,12 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             forbrukteSykedager: 9,
             gjenståendeSykedager: 186,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                mottaker: '972674818',
-                nettoBeløp: 8424,
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-04-27',
-                        tom: '2021-05-04',
-                        dagsats: 1404,
-                        totalbeløp: 8424,
-                        grad: 100.0,
-                        stønadsdager: 6,
-                    }
-                ]
-            },
-            utbetalingsdager: []
         }
     },
     opprettet: '2021-05-05',
     annullert: true,
     revurdert: false,
-    dager: [
+    dagerArbeidsgiver: [
         {
             dato: '2021-04-27',
             belop: 1404,
@@ -588,9 +414,9 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             begrunnelser: []
         },
     ],
-    dagligUtbetalingsbelop: 1404,
-    antallDagerMedUtbetaling: 6,
-    sykepengebelop: 8424,
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
+    sykepengebelopArbeidsgiver: 8424,
 }
 
 export const vedtakRevurdert: RSVedtakWrapper = {
@@ -613,27 +439,12 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             gjenståendeSykedager: 186,
             automatiskBehandling: true,
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
-            arbeidsgiverOppdrag: {
-                mottaker: '972674818',
-                nettoBeløp: 8424,
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-04-26',
-                        tom: '2021-05-03',
-                        dagsats: 1404,
-                        totalbeløp: 8424,
-                        grad: 100.0,
-                        stønadsdager: 6,
-                    }
-                ]
-            },
-            utbetalingsdager: []
         }
     },
     opprettet: '2021-05-03',
     annullert: false,
     revurdert: true,
-    dager: [
+    dagerArbeidsgiver: [
         {
             dato: '2021-04-26',
             belop: 1404,
@@ -691,9 +502,9 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             begrunnelser: []
         },
     ],
-    dagligUtbetalingsbelop: 1404,
-    antallDagerMedUtbetaling: 6,
-    sykepengebelop: 8424,
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
+    sykepengebelopArbeidsgiver: 8424,
 }
 
 export const integrasjonsVedtak: RSVedtakWrapper = {
@@ -723,175 +534,12 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                mottaker: '999999998',
-                nettoBeløp: 8000,
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-01-30',
-                        tom: '2021-02-05',
-                        dagsats: 1000,
-                        totalbeløp: 5000,
-                        grad: 100.0,
-                        stønadsdager: 5
-                    },
-                    {
-                        fom: '2021-02-08',
-                        tom: '2021-02-10',
-                        dagsats: 400,
-                        totalbeløp: 1200,
-                        grad: 40.0,
-                        stønadsdager: 3
-                    }
-                ]
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-01-25',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-26',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-27',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-01-28',
-                    type: 'Arbeidsdag'
-                },
-                {
-                    dato: '2021-01-29',
-                    type: 'Arbeidsdag'
-                },
-                {
-                    dato: '2021-01-30',
-                    type: 'Arbeidsdag'
-                },
-                {
-                    dato: '2021-01-31',
-                    type: 'ArbeidsgiverperiodeDag'
-                },
-                {
-                    dato: '2021-02-01',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-02',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-03',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-04',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-05',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-06',
-                    type: 'NavHelgDag'
-                },
-                {
-                    dato: '2021-02-07',
-                    type: 'NavHelgDag'
-                },
-                {
-                    dato: '2021-02-08',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-09',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-10',
-                    type: 'NavDag'
-                },
-                {
-                    dato: '2021-02-11',
-                    type: 'Fridag'
-                },
-                {
-                    dato: '2021-02-12',
-                    type: 'Fridag'
-                },
-                {
-                    dato: '2021-02-13',
-                    type: 'ForeldetDag'
-                },
-                {
-                    dato: '2021-02-14',
-                    type: 'UkjentDag'
-                },
-                {
-                    dato: '2021-02-15',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'SykepengedagerOppbrukt' ]
-                },
-                {
-                    dato: '2021-02-16',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'MinimumInntekt' ]
-                },
-                {
-                    dato: '2021-02-17',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'EgenmeldingUtenforArbeidsgiverperiode' ]
-                },
-                {
-                    dato: '2021-02-18',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'MinimumSykdomsgrad' ]
-                },
-                {
-                    dato: '2021-02-19',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'ManglerOpptjening' ]
-                },
-                {
-                    dato: '2021-02-20',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'ManglerMedlemskap' ]
-                },
-                {
-                    dato: '2021-02-21',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'EtterDødsdato' ]
-                },
-                {
-                    dato: '2021-02-22',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'UKJENT' ]
-                },
-                {
-                    dato: '2021-02-23',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'Over70' ]
-                },
-                {
-                    dato: '2021-02-24',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'MinimumInntektOver67' ]
-                },
-                {
-                    dato: '2021-02-25',
-                    type: 'AvvistDag',
-                    begrunnelser: [ 'SykepengedagerOppbruktOver67' ]
-                }
-            ]
         }
     },
     opprettet: '2021-05-06',
     annullert: false,
     revurdert: false,
-    dager: [
+    dagerArbeidsgiver: [
         {
             dato: '2021-01-25',
             belop: 0,
@@ -1117,9 +765,9 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             begrunnelser: [ 'SykepengedagerOppbruktOver67' ]
         }
     ],
-    dagligUtbetalingsbelop: 1000,
-    antallDagerMedUtbetaling: 8,
-    sykepengebelop: 6200,
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
+    sykepengebelopArbeidsgiver: 6200,
 }
 
 export const avvistVedtak: RSVedtakWrapper = {
@@ -1149,119 +797,13 @@ export const avvistVedtak: RSVedtakWrapper = {
             'forbrukteSykedager': 0,
             'gjenståendeSykedager': 248,
             'automatiskBehandling': false,
-            'arbeidsgiverOppdrag': {
-                'mottaker': '999999999',
-                'nettoBeløp': 0,
-                'utbetalingslinjer': []
-            },
-            'utbetalingsdager': [
-                {
-                    'dato': '2021-08-01',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-02',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-03',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-04',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-05',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-06',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-07',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-08',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-09',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-10',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-11',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-12',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-13',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-14',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-15',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-16',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-17',
-                    'type': 'Fridag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-18',
-                    'type': 'Fridag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-19',
-                    'type': 'Fridag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-08-20',
-                    'type': 'AvvistDag',
-                    'begrunnelser': [ 'EtterDødsdato' ]
-                }
-            ],
+
         }
     },
     'opprettet': '2021-08-30',
     'annullert': false,
     'revurdert': false,
-    'dager': [
+    'dagerArbeidsgiver': [
         {
             'dato': '2021-08-01',
             'belop': 0,
@@ -1403,9 +945,9 @@ export const avvistVedtak: RSVedtakWrapper = {
             'begrunnelser': [ 'EtterDødsdato' ]
         }
     ],
-    'dagligUtbetalingsbelop': 0,
-    'antallDagerMedUtbetaling': 0,
-    'sykepengebelop': 0
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
+    'sykepengebelopArbeidsgiver': 0
 }
 
 export const vedtakRedusertTil6G: RSVedtakWrapper = {
@@ -1437,191 +979,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
             'utbetalingId': '26dc7822-351d-469d-934f-a5e9e50c7ca6',
             'forbrukteSykedager': 10,
             'gjenståendeSykedager': 238,
-            'automatiskBehandling': true,
-            'arbeidsgiverOppdrag': {
-                'mottaker': '12345725',
-                'nettoBeløp': 9820,
-                'utbetalingslinjer': [
-                    {
-                        'fom': '2021-10-09',
-                        'tom': '2021-10-17',
-                        'dagsats': 1719,
-                        'totalbeløp': 8595,
-                        'grad': 70,
-                        'stønadsdager': 5
-                    },
-                    {
-                        'fom': '2021-10-18',
-                        'tom': '2021-10-24',
-                        'dagsats': 1964,
-                        'totalbeløp': 9820,
-                        'grad': 80,
-                        'stønadsdager': 5
-                    }
-                ]
-            },
-            'utbetalingsdager': [
-                {
-                    'dato': '2021-09-23',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-09-24',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-09-25',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-09-26',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-09-27',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-09-28',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-09-29',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-09-30',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-01',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-02',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-03',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-04',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-05',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-06',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-07',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-08',
-                    'type': 'ArbeidsgiverperiodeDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-09',
-                    'type': 'NavHelgDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-10',
-                    'type': 'NavHelgDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-11',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-12',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-13',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-14',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-15',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-16',
-                    'type': 'NavHelgDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-17',
-                    'type': 'NavHelgDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-18',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-19',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-20',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-21',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-22',
-                    'type': 'NavDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-23',
-                    'type': 'NavHelgDag',
-                    'begrunnelser': []
-                },
-                {
-                    'dato': '2021-10-24',
-                    'type': 'NavHelgDag',
-                    'begrunnelser': []
-                }
-            ],
+            'automatiskBehandling': true
         },
         'grunnlagForSykepengegrunnlag': 804396,
         'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
@@ -1633,7 +991,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     'orgnavn': 'JOBB AS',
     'annullert': false,
     'revurdert': false,
-    'dager': [
+    'dagerArbeidsgiver': [
         {
             'dato': '2021-10-18',
             'belop': 1964,
@@ -1684,17 +1042,315 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
             'begrunnelser': []
         }
     ],
-    'dagligUtbetalingsbelop': 1964,
-    'antallDagerMedUtbetaling': 5,
-    'sykepengebelop': 9820
+    'sykepengebelopArbeidsgiver': 9820,
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
 }
 
-export const nyeVedtak: RSVedtakWrapper[] = [
+export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
+    id: 'dff11217-31ea-404a-86ab-b521a6a946af',
+    lest: false,
+    orgnavn: 'KIOSKEN AS',
+    vedtak: {
+        organisasjonsnummer: '972674818',
+        fom: '2021-02-08',
+        tom: '2021-02-21',
+        dokumenter: [
+            {
+                dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
+                type: 'Sykmelding'
+            },
+            {
+                dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
+                type: 'Søknad'
+            }
+        ],
+        inntekt: 55000,
+        sykepengegrunnlag: 638394,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
+            '972674818': 660000,
+        },
+        begrensning: 'ER_6G_BEGRENSET',
+        utbetaling: {
+            organisasjonsnummer: '972674818',
+            utbetalingId: '2b60ba06-7ddb-45e6-991b-3ca944f0e979',
+            forbrukteSykedager: 12,
+            gjenståendeSykedager: 248,
+            automatiskBehandling: true,
+        }
+    },
+    opprettet: '2021-05-06',
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
+        {
+            dato: '2021-02-04',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-05',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        }
+    ],
+    dagerPerson: [
+        {
+            dato: '2021-02-08',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-09',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-10',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-11',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-12',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-13',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-14',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-15',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-16',
+            belop: 2455,
+            grad: 100,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-17',
+            belop: 2455,
+            grad: 100,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-18',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-19',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-20',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-21',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        }
+    ],
+    sykepengebelopArbeidsgiver: 2455 * 2,
+    sykepengebelopPerson: 24550,
+}
+
+export const kunDirekte: RSVedtakWrapper = {
+    id: 'dff11217-31ea-404a-86ab-b521a6a946ac',
+    lest: false,
+    orgnavn: 'MATBUTIKKEN AS',
+    vedtak: {
+        organisasjonsnummer: '972674818',
+        fom: '2021-02-08',
+        tom: '2021-02-21',
+        dokumenter: [
+            {
+                dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
+                type: 'Sykmelding'
+            },
+            {
+                dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
+                type: 'Søknad'
+            }
+        ],
+        inntekt: 55000,
+        sykepengegrunnlag: 638394,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
+            '972674818': 660000,
+        },
+        begrensning: 'ER_6G_BEGRENSET',
+        utbetaling: {
+            organisasjonsnummer: '972674818',
+            utbetalingId: '2b60ba06-7ddb-45e6-991b-3ca944f0e979',
+            forbrukteSykedager: 10,
+            gjenståendeSykedager: 238,
+            automatiskBehandling: true
+        }
+    },
+    opprettet: '2021-05-06',
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [],
+    dagerPerson: [
+        {
+            dato: '2021-02-08',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-09',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-10',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-11',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-12',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-13',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-14',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-15',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-16',
+            belop: 2455,
+            grad: 100,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-17',
+            belop: 2455,
+            grad: 100,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-18',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-19',
+            belop: 2455,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-20',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        },
+        {
+            dato: '2021-02-21',
+            belop: 0,
+            grad: 100.0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: []
+        }
+    ],
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopPerson: 24550,
+}
+
+
+export const alleVedtak: RSVedtakWrapper[] = [
     vedtakMed40Grad,
     ulestVedtakUtenUtbetalingsdager,
     vedtakAnnullert,
     vedtakRevurdert,
     integrasjonsVedtak,
     avvistVedtak,
-    vedtakRedusertTil6G
+    vedtakRedusertTil6G,
+    kunDirekte,
+    kombinertDirekteOgRefusjon
 ]
