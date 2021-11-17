@@ -7,7 +7,7 @@ export const getUrlTilVedtak = (vedtak: RSVedtakWrapper) => {
 export const oversiktside = '/'
 
 export const medQuery = () => {
-    if (window) {
+    if (typeof window !== 'undefined') {
         if (window.location && window.location.search) {
             return window.location.search
         }

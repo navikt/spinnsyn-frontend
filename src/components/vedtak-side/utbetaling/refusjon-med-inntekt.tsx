@@ -19,7 +19,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
 
     return (
         <Utvidbar type="integrert"
-            className={'gronn' + (apen ? ' apen' : '')}
+            className={'refusjon gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
@@ -32,7 +32,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <div className="utbetaling__innhold">
                 <ArbeidsgiverInfo vedtak={vedtak} />
-                <BeregningInfo vedtak={vedtak} />
+                <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
                 <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"

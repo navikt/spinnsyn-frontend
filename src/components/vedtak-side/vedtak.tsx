@@ -19,7 +19,7 @@ import AutomatiskBehandling from './behandling/automatiskBehandling'
 import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
-import DirekteutbetalingMedInntekt from './utbetaling/direkteutbetaling-med-inntekt'
+import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
 const brodsmuler: Brodsmule[] = [
@@ -81,7 +81,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
             <Vis hvis={vedtak.sykepengebelopPerson > 0}
                 render={() =>
-                    <DirekteutbetalingMedInntekt vedtak={vedtak} />
+                    <PersonutbetalingMedInntekt vedtak={vedtak} />
                 }
             />
             <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0}

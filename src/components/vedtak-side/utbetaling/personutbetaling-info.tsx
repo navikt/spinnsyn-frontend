@@ -5,7 +5,7 @@ import React from 'react'
 import { tekst } from '../../../utils/tekster'
 
 
-export const DirekteutbetalingInfo = () => {
+export const PersonutbetalingInfo = () => {
 
     return (
         <section className="info">

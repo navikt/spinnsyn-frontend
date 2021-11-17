@@ -9,10 +9,10 @@ import Utvidbar from '../../utvidbar/utvidbar'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import BeregningInfo from './beregning-info'
-import { DirekteutbetalingInfo } from './direkteutbetaling-info'
+import { PersonutbetalingInfo } from './personutbetaling-info'
 
 
-const DirekteutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
+export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
@@ -20,7 +20,7 @@ const DirekteutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
 
     return (
         <Utvidbar type="integrert"
-            className={'gronn' + (apen ? ' apen' : '')}
+            className={'personutbetaling gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
@@ -32,8 +32,8 @@ const DirekteutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             heading="h2"
         >
             <div className="utbetaling__innhold">
-                <DirekteutbetalingInfo />
-                <BeregningInfo vedtak={vedtak} />
+                <PersonutbetalingInfo />
+                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
                 <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
@@ -49,4 +49,4 @@ const DirekteutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     )
 }
 
-export default DirekteutbetalingMedInntekt
+

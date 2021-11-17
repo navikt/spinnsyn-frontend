@@ -3,6 +3,7 @@ import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import Utvidbar from '../../utvidbar/utvidbar'
@@ -10,14 +11,25 @@ import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import InntektInfo from './inntekt-info/inntekt-info'
 
-const BeregningInfo = ({ vedtak }: VedtakProps) => {
+export interface BeregningInfoProps {
+    vedtak: RSVedtakWrapper;
+    mottaker: 'person' | 'refusjon'
+}
+
+const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
 
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
             return 'utbetaling.sykepengegrunnlag.under6g.innhold'
         }
         return 'utbetaling.sykepengegrunnlag.over6g.innhold'
+    }
 
+    const totalbelopInnholdKey = () => {
+        if (mottaker == 'person') {
+            return 'utbetaling.person.totalbelop.innhold'
+        }
+        return 'utbetaling.totalbelop.innhold'
     }
     return (
         <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo"
@@ -60,8 +72,8 @@ const BeregningInfo = ({ vedtak }: VedtakProps) => {
             <Element tag="h4" className="blokkinfo__avsnitt">
                 {tekst('utbetaling.totalbelop.tittel')}
             </Element>
-            <Normaltekst>
-                {tekst('utbetaling.totalbelop.innhold')}
+            <Normaltekst className="totalbelop">
+                {tekst(totalbelopInnholdKey())}
             </Normaltekst>
 
             <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
