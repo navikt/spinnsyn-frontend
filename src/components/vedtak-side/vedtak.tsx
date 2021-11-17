@@ -1,10 +1,12 @@
-import { Sidetittel, Systemtittel } from 'nav-frontend-typografi'
+import { Element, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { Brodsmule } from '../../types/types'
 import { SEPARATOR } from '../../utils/constants'
+import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
+import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
 import { medQuery } from '../../utils/url-utils'
 import Banner from '../banner/banner'
@@ -45,82 +47,87 @@ export interface VedtakProps {
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
-
-
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
     const erArkivering = useContext(ArkiveringContext)
+    const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
 
     return (
-        <><Vis hvis={!erArkivering}
-            render={() =>
-                <>
-                    <Banner>
-                        <Sidetittel className="sidebanner__tittel">{tekst('spinnsyn.sidetittel.vedtak')}</Sidetittel>
-                    </Banner>
-                    <Brodsmuler brodsmuler={brodsmuler} />
-                </>
-            }
-        />
-
-
-        <div className="limit">
-            <BetaAlertstripe />
-
-            <VedtakStatus vedtak={vedtak} />
-            <Vis hvis={annullertEllerRevurdert}
-                render={() =>
-                    <>
-                        <AnnulleringsInfo />
-                        <Systemtittel className="tidligere__beslutning">
-                            {tekst('annullering.se-tidligere-beslutning')}
-                        </Systemtittel>
-                    </>
-                }
-            />
-
-            <Vis hvis={vedtak.sykepengebelopPerson > 0}
-                render={() =>
-                    <PersonutbetalingMedInntekt vedtak={vedtak} />
-                }
-            />
-            <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0}
-                render={() =>
-                    <RefusjonMedInntekt vedtak={vedtak} />
-                }
-            />
-            <Vis hvis={avvisteDager.length > 0}
-                render={() =>
-                    <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
-                }
-            />
-
-            <Sykepengedager vedtak={vedtak} />
-
-            <Vis hvis={!annullertEllerRevurdert}
-                render={() =>
-                    <>
-                        <Uenig vedtak={vedtak} />
-                        <Vis hvis={vedtak.vedtak.utbetaling.automatiskBehandling}
-                            render={() =>
-                                <AutomatiskBehandling />
-                            }
-                        />
-                    </>
-                }
-            />
-            <Vis hvis={annullertEllerRevurdert && vedtak.vedtak.utbetaling.automatiskBehandling}
-                render={() =>
-                    <AutomatiskBehandlingPreteritum />
-                }
-            />
+        <>
             <Vis hvis={!erArkivering}
                 render={() =>
-                    <TilbakeLenke />
+                    <>
+                        <Banner>
+                            <Sidetittel className="sidebanner__tittel">
+                                {tekst('spinnsyn.sidetittel.vedtak')}
+                            </Sidetittel>
+                            <Element className="subtittel">
+                                <span>{storeTilStoreOgSmå(vedtak.orgnavn)}&nbsp;</span>
+                                <span>fra {periode}</span>
+                            </Element>
+                        </Banner>
+                        <Brodsmuler brodsmuler={brodsmuler} />
+                    </>
                 }
             />
 
-        </div>
+            <div className="limit">
+                <BetaAlertstripe />
+
+                <VedtakStatus vedtak={vedtak} />
+                <Vis hvis={annullertEllerRevurdert}
+                    render={() =>
+                        <>
+                            <AnnulleringsInfo />
+                            <Systemtittel className="tidligere__beslutning">
+                                {tekst('annullering.se-tidligere-beslutning')}
+                            </Systemtittel>
+                        </>
+                    }
+                />
+
+                <Vis hvis={vedtak.sykepengebelopPerson > 0}
+                    render={() =>
+                        <PersonutbetalingMedInntekt vedtak={vedtak} />
+                    }
+                />
+                <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0}
+                    render={() =>
+                        <RefusjonMedInntekt vedtak={vedtak} />
+                    }
+                />
+                <Vis hvis={avvisteDager.length > 0}
+                    render={() =>
+                        <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
+                    }
+                />
+
+                <Sykepengedager vedtak={vedtak} />
+
+                <Vis hvis={!annullertEllerRevurdert}
+                    render={() =>
+                        <>
+                            <Uenig vedtak={vedtak} />
+                            <Vis hvis={vedtak.vedtak.utbetaling.automatiskBehandling}
+                                render={() =>
+                                    <AutomatiskBehandling />
+                                }
+                            />
+                        </>
+                    }
+                />
+                <Vis hvis={annullertEllerRevurdert && vedtak.vedtak.utbetaling.automatiskBehandling}
+                    render={() =>
+                        <AutomatiskBehandlingPreteritum />
+                    }
+                />
+                <Vis hvis={!erArkivering}
+                    render={() =>
+                        <TilbakeLenke />
+                    }
+                />
+
+            </div>
         </>
     )
 }

@@ -1,7 +1,6 @@
 import { hentLoginUrl } from './fetch'
 import { logger } from './logger'
 
-
 export const redirectTilLoginHvis401 = (res: Response) => {
     if (res.status === 401) {
         logger.warn('Redirecter til login grunnet 401')
@@ -10,7 +9,6 @@ export const redirectTilLoginHvis401 = (res: Response) => {
     }
     return false
 }
-
 
 export const setBodyClass = (name: string) => {
     if (document.body.className !== '') {
