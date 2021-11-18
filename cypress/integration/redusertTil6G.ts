@@ -27,13 +27,19 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.get('.inntekt__info > :nth-child(2)').contains('Omregnet til årslønn')
         cy.get('.inntekt__info > :nth-child(2)').contains('804 396 kr')
 
-        // Sjekker om sykepengegrunnlaget er redusert
-        cy.get('.inntekt__info > :nth-child(3)').contains('Sykepengegrunnlag')
-        cy.get('.inntekt__info > :nth-child(3)').contains('redusert til 6G')
-        cy.get('.inntekt__info > :nth-child(3)').contains('638 394 kr')
+        cy.get('.inntekt__info > :nth-child(3)').contains('Andre arbeidsgivere')
+        cy.get('.inntekt__info > :nth-child(3)').contains('Rik organisasjon AS')
+        cy.get('.inntekt__info > :nth-child(3)').contains('804 396 kr')
+        cy.get('.inntekt__info > :nth-child(3)').contains('Gjerrig organisasjon AS, avd. Oslo')
+        cy.get('.inntekt__info > :nth-child(3)').contains('0 kr')
 
-        cy.get('.inntekt__info > :nth-child(4)').contains('Dagsats')
-        cy.get('.inntekt__info > :nth-child(4)').contains('2 455 kr')
+        cy.get('.inntekt__info > :nth-child(4)').contains('Samlet årslønn')
+        cy.get('.inntekt__info > :nth-child(4)').contains('804 396 kr')
+
+        // Sjekker om sykepengegrunnlaget er redusert
+        cy.get('.inntekt__info > :nth-child(5)').contains('Sykepengegrunnlag')
+        cy.get('.inntekt__info > :nth-child(5)').contains('redusert til 6G')
+        cy.get('.inntekt__info > :nth-child(5)').contains('638 394 kr')
 
     })
 })
