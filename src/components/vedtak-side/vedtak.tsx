@@ -1,4 +1,5 @@
-import { Element, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
+import Lenke from 'nav-frontend-lenker'
+import { Element, Normaltekst, Sidetittel, Systemtittel, Undertittel } from 'nav-frontend-typografi'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -119,6 +120,18 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                         <AutomatiskBehandlingPreteritum />
                     }
                 />
+
+                <Undertittel className="utvikling__tittel">
+                    {tekst('vedtak.utvikling.tittel')}
+                </Undertittel>
+
+                <Normaltekst>
+                    {tekst('vedtak.utvikling.tekst')}
+                    <Lenke href={tekst('vedtak.utvikling.lenke.url')} target="_blank" rel="noopener noreferrer">
+                        {tekst('vedtak.utvikling.lenke')}
+                    </Lenke>
+                </Normaltekst>
+
                 <Vis hvis={!erArkivering}
                     render={() =>
                         <TilbakeLenke />

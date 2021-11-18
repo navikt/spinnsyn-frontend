@@ -17,12 +17,6 @@ const AutomatiskBehandling = () => {
                 </Lenke>
                 {tekst('behandling.tekst2')}
             </Normaltekst>
-            <Normaltekst>
-                {tekst('behandling.tekst3')}
-                <Lenke href={tekst('behandling.lenke2.url')} target="_blank" rel="noopener noreferrer">
-                    {tekst('behandling.lenke2')}
-                </Lenke>
-            </Normaltekst>
         </div>
     )
 }
