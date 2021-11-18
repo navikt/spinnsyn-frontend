@@ -1272,7 +1272,8 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
         },
         'grunnlagForSykepengegrunnlag': 804396,
         'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
-            '12345725': 804396
+            'Rik organisasjon AS': 804396,
+            'Gjerrig organisasjon AS, avd. Oslo': 0,
         },
         'begrensning': 'ER_6G_BEGRENSET'
     },
