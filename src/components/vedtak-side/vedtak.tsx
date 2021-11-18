@@ -10,7 +10,6 @@ import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
 import { medQuery } from '../../utils/url-utils'
 import Banner from '../banner/banner'
-import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../brodsmuler/brodsmuler'
 import TilbakeLenke from '../tilbake/tilbake-lenke'
 import VedtakStatus from '../vedtak-status/vedtak-status'
@@ -72,9 +71,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             />
 
             <div className="limit">
-                <BetaAlertstripe />
-
                 <VedtakStatus vedtak={vedtak} />
+
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
