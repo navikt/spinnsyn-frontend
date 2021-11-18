@@ -37,7 +37,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.get('.inntekt__info > :nth-child(4)').contains('Dagsats')
         cy.get('.inntekt__info > :nth-child(4)').contains('2 239 kr')
 
-        cy.contains('redusert til 6G').should('not.exist')
+        cy.contains('Redusert til 6G').should('not.exist')
 
         cy.contains('Flere arbeidsforhold').should('not.exist')
         cy.contains('Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.').should('not.exist')

@@ -26,6 +26,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
         <Vis hvis={inntektMnd && inntektAr}
             render={() =>
                 <section className="inntekt__info">
+
                     <div className="inntekt__info__linje">
                         <Element tag="h4">
                             {tekst('utbetaling.inntekt.info.beregnet')}
@@ -58,24 +59,43 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
                     <Vis hvis={skalViseSykepengegrunnlag}
                         render={() =>
-                            <div className="inntekt__info__linje">
-                                <div>
-                                    <Element tag="h4">
-                                        {tekst('utbetaling.sykepengegrunnlag')}
-                                    </Element>
-                                    <Vis hvis={vedtak.vedtak.begrensning == 'ER_6G_BEGRENSET'} render={() =>
-                                        <Normaltekst className={'inntekt__info__redusert'} tag="p">
+                            <>
+                                <Vis hvis={vedtak.vedtak.begrensning == 'ER_6G_BEGRENSET'} render={() =>
+                                    <div className="inntekt__info__redusert_sykepengegrunnlag">
+                                        <img alt="" src={'/syk/sykepenger/static/img/info.svg'} />
+                                        <Element tag="span">
+                                            Redusert til 6G
+                                        </Element>
+
+                                        <Normaltekst tag="p">
                                             {tekst('utbetaling.redusert.til.6G')}
                                         </Normaltekst>
-                                    } />
 
-                                </div>
-                                <Normaltekst
-                                    tag="span">{formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}</Normaltekst>
+                                        <div className="inntekt__info__linje">
+                                            <Element tag="h4">
+                                                {tekst('utbetaling.sykepengegrunnlag')}
+                                            </Element>
+                                            <Normaltekst tag="span">
+                                                {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
+                                            </Normaltekst>
+                                        </div>
+                                    </div>
+                                } />
 
-                            </div>
+                                <Vis hvis={vedtak.vedtak.begrensning != 'ER_6G_BEGRENSET'} render={() =>
+                                    <div className="inntekt__info__linje">
+                                        <Element tag="h4">
+                                            {tekst('utbetaling.sykepengegrunnlag')}
+                                        </Element>
+                                        <Normaltekst tag="span">
+                                            {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
+                                        </Normaltekst>
+                                    </div>
+                                } />
+                            </>
                         }
                     />
+
                     <Vis hvis={skalViseDagsats}
                         render={() =>
                             <div className="inntekt__info__linje">
