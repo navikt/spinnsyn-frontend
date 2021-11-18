@@ -1,6 +1,295 @@
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { jsonDeepCopy } from '../../../utils/json-deep-copy'
 
+export const vedtakMedDetMeste: RSVedtakWrapper = {
+    'id': '4e044d03-2dfe-45e9-a904-77777777',
+    'lest': false,
+    'vedtak': {
+        'organisasjonsnummer': '123456789',
+        'fom': '2021-10-04',
+        'tom': '2021-10-23',
+        'dokumenter': [],
+        'inntekt': 74675,
+        'sykepengegrunnlag': 638394,
+        'utbetaling': {
+            'organisasjonsnummer': '123456789',
+            'utbetalingId': '4f649298-b308-4057-9654-abcd123',
+            'forbrukteSykedager': 4,
+            'gjenståendeSykedager': 244,
+            'automatiskBehandling': true,
+            'foreløpigBeregnetSluttPåSykepenger': '2022-09-30',
+        },
+        'grunnlagForSykepengegrunnlag': 1091881.6,
+        'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
+            '123456789': 896100,
+            '987654321': 195781.6
+        },
+        'begrensning': 'ER_6G_BEGRENSET'
+    },
+    'opprettet': '2021-11-18',
+    'orgnavn': 'POSTEN NORGE AS, BÆRUM',
+    'annullert': false,
+    'revurdert': false,
+    'dagerArbeidsgiver': [
+        {
+            'dato': '2021-10-04',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-05',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-06',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-07',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-08',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-09',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-10',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-11',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-12',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-13',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-14',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-15',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-16',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-17',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-18',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-19',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-20',
+            'belop': 1007,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-21',
+            'belop': 1007,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-22',
+            'belop': 1007,
+            'grad': 50,
+            'dagtype': 'NavDagDelvisSyk',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-23',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'AvvistDag',
+            'begrunnelser': [ 'Over70' ]
+        }
+    ],
+    'dagerPerson': [
+        {
+            'dato': '2021-10-04',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-05',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-06',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-07',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-08',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-09',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-10',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-11',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-12',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-13',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-14',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-15',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-16',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-17',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-18',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        },
+        {
+            'dato': '2021-10-19',
+            'belop': 0,
+            'grad': 0,
+            'dagtype': 'ArbeidsgiverperiodeDag',
+            'begrunnelser': []
+        }
+    ],
+    'sykepengebelopArbeidsgiver': 3021,
+    'sykepengebelopPerson': 0
+}
+
 export const vedtakMed40Grad: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946af',
     lest: true,
@@ -1352,5 +1641,6 @@ export const alleVedtak: RSVedtakWrapper[] = [
     avvistVedtak,
     vedtakRedusertTil6G,
     kunDirekte,
-    kombinertDirekteOgRefusjon
+    kombinertDirekteOgRefusjon,
+    vedtakMedDetMeste,
 ]

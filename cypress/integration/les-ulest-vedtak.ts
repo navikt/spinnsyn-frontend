@@ -10,14 +10,16 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
     })
 
-    it('Det er et ulest vedtak og 6 leste', () => {
+    it('Det er 2 ulest vedtak og 6 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
+        cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 2)
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 6)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
-        cy.get('.vedtak--uleste > article > .inngangspanel').click()
+        cy.get('.vedtak--uleste')
+            .get(`article a[href*=${ulestVedtakUtenUtbetalingsdager.id}]`)
+            .click()
 
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${ulestVedtakUtenUtbetalingsdager.id}`)
 
@@ -73,9 +75,9 @@ describe('Tester at appen starter', () => {
         cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click()
     })
 
-    it('Det er ingen uleste vedtak og 7 leste', () => {
+    it('Det er 1 uleste vedtak og 7 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
-        cy.contains('Du har ingen nye svar på søknader fra NAV.')
+        cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 7)
     })
 
