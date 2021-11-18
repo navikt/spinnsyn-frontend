@@ -1,4 +1,5 @@
-import { Element, Sidetittel, Systemtittel } from 'nav-frontend-typografi'
+import Lenke from 'nav-frontend-lenker'
+import { Element, Normaltekst, Sidetittel, Systemtittel, Undertittel } from 'nav-frontend-typografi'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -10,7 +11,6 @@ import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
 import { medQuery } from '../../utils/url-utils'
 import Banner from '../banner/banner'
-import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../brodsmuler/brodsmuler'
 import TilbakeLenke from '../tilbake/tilbake-lenke'
 import VedtakStatus from '../vedtak-status/vedtak-status'
@@ -72,9 +72,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             />
 
             <div className="limit">
-                <BetaAlertstripe />
-
                 <VedtakStatus vedtak={vedtak} />
+
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
@@ -121,6 +120,18 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                         <AutomatiskBehandlingPreteritum />
                     }
                 />
+
+                <Undertittel className="utvikling__tittel">
+                    {tekst('vedtak.utvikling.tittel')}
+                </Undertittel>
+
+                <Normaltekst>
+                    {tekst('vedtak.utvikling.tekst')}
+                    <Lenke href={tekst('vedtak.utvikling.lenke.url')} target="_blank" rel="noopener noreferrer">
+                        {tekst('vedtak.utvikling.lenke')}
+                    </Lenke>
+                </Normaltekst>
+
                 <Vis hvis={!erArkivering}
                     render={() =>
                         <TilbakeLenke />

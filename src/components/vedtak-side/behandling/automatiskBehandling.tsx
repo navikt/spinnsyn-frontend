@@ -12,7 +12,7 @@ const AutomatiskBehandling = () => {
             </Undertittel>
             <Normaltekst>
                 {tekst('behandling.tekst1')}
-                <Lenke href={tekst('behandling.lenke.url')} target="_blank">
+                <Lenke href={tekst('behandling.lenke.url')} target="_blank" rel="noopener noreferrer">
                     {tekst('behandling.lenke')}
                 </Lenke>
                 {tekst('behandling.tekst2')}

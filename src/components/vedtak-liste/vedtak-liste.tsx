@@ -7,7 +7,6 @@ import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import Banner from '../banner/banner'
-import BetaAlertstripe from '../beta-alertstripe/beta-alertstripe'
 import Brodsmuler from '../brodsmuler/brodsmuler'
 import SaksbehandlingstidOgUtbetaling
     from '../teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling'
@@ -42,8 +41,6 @@ const VedtakListe = () => {
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
-                <BetaAlertstripe />
-
                 <Teasere
                     className="vedtak--uleste vedtak--teasere"
                     vedtak={uleste}

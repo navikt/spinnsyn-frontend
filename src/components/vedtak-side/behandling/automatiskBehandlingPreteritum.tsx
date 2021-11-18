@@ -12,7 +12,7 @@ const AutomatiskBehandlingPreteritum = () => {
             </Undertittel>
             <Normaltekst>
                 {tekst('behandling.preteritum.tekst1')}
-                <Lenke href={tekst('behandling.lenke.url')} target="_blank">
+                <Lenke href={tekst('behandling.lenke.url')} target="_blank" rel="noopener noreferrer">
                     {tekst('behandling.lenke')}
                 </Lenke>
                 {tekst('behandling.tekst2')}
