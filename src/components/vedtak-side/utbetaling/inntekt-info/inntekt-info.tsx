@@ -3,15 +3,12 @@ import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../../utils/tekster'
-import { ValutaFormat } from '../../../../utils/valuta-utils'
+import { formaterValuta } from '../../../../utils/valuta-utils'
 import Vis from '../../../vis'
 import { VedtakProps } from '../../vedtak'
+import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-arbeidsgivere'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
-
-    function formaterValuta(belop: number) {
-        return ValutaFormat.format(Math.floor(belop)) + ' kr'
-    }
 
     const inntektMnd = (vedtak.vedtak.inntekt)
         ? formaterValuta(vedtak.vedtak.inntekt)
@@ -42,6 +39,23 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                         </Element>
                         <Normaltekst tag="span">{inntektAr}</Normaltekst>
                     </div>
+
+                    <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
+                        render={() =>
+                            <>
+                                <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
+                                <div className="inntekt__info__linje">
+                                    <Element tag="h4">
+                                        {tekst('utbetaling.inntekt.samlet.årslønn')}
+                                    </Element>
+                                    <Normaltekst tag="span">
+                                        {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
+                                    </Normaltekst>
+                                </div>
+                            </>
+                        }
+                    />
+
                     <Vis hvis={skalViseSykepengegrunnlag}
                         render={() =>
                             <div className="inntekt__info__linje">

@@ -5,6 +5,7 @@ export interface RSVedtakWrapper {
     vedtak: RSVedtak;
     opprettet: string;
     orgnavn: string;
+    andreArbeidsgivere: AndreArbeidsgivere;
     annullert: boolean;
     revurdert: boolean;
     dagerArbeidsgiver: RSDag[];
@@ -23,6 +24,10 @@ export interface RSDag {
 
 interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
     [ orgnummer: string ]: number;
+}
+
+interface AndreArbeidsgivere {
+    [ organisasjonsnavn: string ]: number;
 }
 
 export type Begrensning = 'ER_6G_BEGRENSET' | 'ER_IKKE_6G_BEGRENSET' | 'VURDERT_I_INFOTRYGD' | 'VET_IKKE'
