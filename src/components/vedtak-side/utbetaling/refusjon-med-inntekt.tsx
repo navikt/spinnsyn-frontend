@@ -23,7 +23,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
-            ikonHover={'/syk/sykepenger/static/img/ikon-penger.svg'}
+            ikonHover={'/syk/sykepenger/static/img/ikon-penger-hover.svg'}
             tittel={belop + ' kroner'}
             systemtittel={tekst('utbetaling.arbeidsgiver.systemtittel')}
             ikonAltTekst=""

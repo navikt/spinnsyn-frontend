@@ -10,14 +10,12 @@ import SykepengedagerTekster from '../components/vedtak-side/sykepengedager/syke
 import UenigTekster from '../components/vedtak-side/uenig/uenig-tekster'
 import UtbetalingTekster from '../components/vedtak-side/utbetaling/utbetaling-tekster'
 import VedtakTekster from '../components/vedtak-side/vedtak-tekster'
-import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
 
 const tekster = {
     ...BannerTekster,
     ...VedtakListeTekster,
     ...TeaserTekster,
     ...VedtakTekster,
-    ...VedtakStatusTekster,
     ...UtbetalingTekster,
     ...UenigTekster,
     ...BehandlingTekster,
@@ -33,7 +31,6 @@ type TekstKeys =
     | keyof typeof VedtakListeTekster
     | keyof typeof TeaserTekster
     | keyof typeof VedtakTekster
-    | keyof typeof VedtakStatusTekster
     | keyof typeof UtbetalingTekster
     | keyof typeof UenigTekster
     | keyof typeof BehandlingTekster

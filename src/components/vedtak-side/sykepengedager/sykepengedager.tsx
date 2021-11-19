@@ -24,7 +24,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
         <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}
             erApen={apen}
             ikon={'/syk/sykepenger/static/img/ikon-plaster.svg'}
-            ikonHover={'/syk/sykepenger/static/img/ikon-plaster.svg'}
+            ikonHover={'/syk/sykepenger/static/img/ikon-plaster-hover.svg'}
             visLukk={true}
             tittel={vedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.hittil')} heading="h2"
