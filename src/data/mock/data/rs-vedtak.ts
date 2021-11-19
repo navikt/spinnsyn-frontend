@@ -29,7 +29,7 @@ export const vedtakMedDetMeste: RSVedtakWrapper = {
     'opprettet': '2021-11-18',
     'orgnavn': 'POSTEN NORGE AS, BÆRUM',
     'andreArbeidsgivere': {
-        'Organisasjonsnummer: 123456789': 195781.6
+        'The ministry of magic AS': 195781.6
     },
     'annullert': false,
     'revurdert': false,
