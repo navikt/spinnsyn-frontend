@@ -11,20 +11,20 @@ import { VedtakProps } from '../vedtak'
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
-
     const finnSluttdato = (): Dayjs => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
             return dayjs(vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger)
         }
         return fallbackEstimertSluttdato(vedtak)
     }
+
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
 
     return (
         <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}
             erApen={apen}
             ikon={'/syk/sykepenger/static/img/ikon-plaster.svg'}
-            ikonHover={'/syk/sykepenger/static/img/ikon-plaster.svg'}
+            ikonHover={'/syk/sykepenger/static/img/ikon-plaster-hover.svg'}
             visLukk={true}
             tittel={vedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
             systemtittel={tekst('sykepengedager.hittil')} heading="h2"

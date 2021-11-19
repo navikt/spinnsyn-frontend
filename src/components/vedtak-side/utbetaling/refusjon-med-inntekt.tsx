@@ -16,14 +16,13 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
 
-
     return (
         <Utvidbar type="integrert"
             className={'refusjon gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
-            ikonHover={'/syk/sykepenger/static/img/ikon-penger.svg'}
+            ikonHover={'/syk/sykepenger/static/img/ikon-penger-hover.svg'}
             tittel={belop + ' kroner'}
             systemtittel={tekst('utbetaling.arbeidsgiver.systemtittel')}
             ikonAltTekst=""

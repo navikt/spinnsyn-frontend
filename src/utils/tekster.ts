@@ -2,6 +2,7 @@ import BannerTekster from '../components/banner/banner-tekster'
 import SaksbehandlingstidOgUtbetalingTekster
     from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
+import VedtakArkiveringTekster from '../components/vedtak-arkivering/vedtak-arkivering-tekster'
 import VedtakListeTekster from '../components/vedtak-liste/vedtak-liste-tekster'
 import AnnulleringTekster from '../components/vedtak-side/annullering/annullering-tekster'
 import AvvisteDagerTekster from '../components/vedtak-side/avviste-dager/avviste-dager-tekster'
@@ -10,14 +11,13 @@ import SykepengedagerTekster from '../components/vedtak-side/sykepengedager/syke
 import UenigTekster from '../components/vedtak-side/uenig/uenig-tekster'
 import UtbetalingTekster from '../components/vedtak-side/utbetaling/utbetaling-tekster'
 import VedtakTekster from '../components/vedtak-side/vedtak-tekster'
-import VedtakStatusTekster from '../components/vedtak-status/vedtak-status-tekster'
 
 const tekster = {
     ...BannerTekster,
     ...VedtakListeTekster,
     ...TeaserTekster,
     ...VedtakTekster,
-    ...VedtakStatusTekster,
+    ...VedtakArkiveringTekster,
     ...UtbetalingTekster,
     ...UenigTekster,
     ...BehandlingTekster,
@@ -33,7 +33,7 @@ type TekstKeys =
     | keyof typeof VedtakListeTekster
     | keyof typeof TeaserTekster
     | keyof typeof VedtakTekster
-    | keyof typeof VedtakStatusTekster
+    | keyof typeof VedtakArkiveringTekster
     | keyof typeof UtbetalingTekster
     | keyof typeof UenigTekster
     | keyof typeof BehandlingTekster

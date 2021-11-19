@@ -23,11 +23,6 @@ describe('Tester at appen starter', () => {
 
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${ulestVedtakUtenUtbetalingsdager.id}`)
 
-        cy.get('.vedtak-status')
-            .should('contain', 'Svar på søknad om sykepenger')
-            .and('contain', 'Gjelder sykefravær fra')
-            .and('contain', '22. mars – 9. april 2021')
-
         cy.contains('14. juni 2021')
 
         cy.contains('Automatisk behandling')
@@ -85,7 +80,6 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 7).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakAnnullert.id}`)
-        cy.contains('Perioden er behandlet på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
         cy.get('.annullering > .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
@@ -102,7 +96,6 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 7).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakRevurdert.id}`)
-        cy.contains('Perioden er behandlet på nytt')
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
         cy.get('.annullering > .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')

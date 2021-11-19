@@ -25,11 +25,10 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
 
     return (
         <ArkiveringContext.Provider value={true}>
-
             <div className="vedtak-arkivering">
                 <div id="ark-header">
                     <img className="navlogo" src={'/syk/sykepenger/static/img/nav.svg'} />
-                    <h1 className="title">{tekst('vedtak.status.tittel')}</h1>
+                    <h1 className="title">{tekst('vedtak.arkivering.tittel')}</h1>
                 </div>
                 <div className="personinfo">
                     <div className="persontekst">

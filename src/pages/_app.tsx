@@ -17,7 +17,6 @@ import '../components/inngang/inngangspanel.less'
 import '../components/dager/dag-tabell.less'
 import '../components/brodsmuler/brodsmuler.less'
 import '../components/banner/banner.less'
-import '../components/vedtak-status/vedtak-status.less'
 import '../components/basic.less'
 import '../../node_modules/nav-frontend-etiketter-style/src/index.less'
 

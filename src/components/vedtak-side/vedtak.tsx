@@ -13,7 +13,6 @@ import { medQuery } from '../../utils/url-utils'
 import Banner from '../banner/banner'
 import Brodsmuler from '../brodsmuler/brodsmuler'
 import TilbakeLenke from '../tilbake/tilbake-lenke'
-import VedtakStatus from '../vedtak-status/vedtak-status'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -72,8 +71,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             />
 
             <div className="limit">
-                <VedtakStatus vedtak={vedtak} />
-
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
