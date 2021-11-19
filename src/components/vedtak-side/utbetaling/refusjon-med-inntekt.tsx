@@ -16,7 +16,6 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
 
-
     return (
         <Utvidbar type="integrert"
             className={'refusjon gronn' + (apen ? ' apen' : '')}

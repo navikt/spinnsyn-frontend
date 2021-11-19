@@ -11,13 +11,13 @@ import { VedtakProps } from '../vedtak'
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
 
-
     const finnSluttdato = (): Dayjs => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
             return dayjs(vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger)
         }
         return fallbackEstimertSluttdato(vedtak)
     }
+
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
 
     return (
