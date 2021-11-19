@@ -1,7 +1,7 @@
 @import '../../../../../node_modules/nav-frontend-core/less/_variabler';
 
 .inntekt__info {
-    margin: 0.5rem 0 1rem;
+    padding: 0.5rem 1rem 1rem;
 
     .inntekt__info__linje {
         padding-top: 0.5rem;
@@ -13,8 +13,23 @@
         }
     }
 
-    .inntekt__info__redusert {
+    .italic {
         font-size: 14px;
         font-style: italic;
+    }
+
+    .inntekt__info__redusert_sykepengegrunnlag {
+        background-color: mix(@navOransje, @white, 5%);
+        margin: 0.5rem -0.5rem 0;
+        padding: 0.5rem;
+
+        img  {
+            width: 24px;
+            margin-right: 0.5rem;
+
+            ~ p {
+                padding-top: 0.5rem;
+            }
+        }
     }
 }

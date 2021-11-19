@@ -30,6 +30,34 @@
         background-color: white;
     }
 
+    .beregning .utvidbar__innholdContainer.apen {
+        margin: 1rem -1rem 0;
+
+        .inntekt__info {
+            background-color: white;
+
+            // Alle siblings
+            ~ * {
+                padding: 0 1rem 0;
+            }
+
+            &:after {
+                content: '';
+                left: 0;
+                width: 1rem;
+                height: 1rem;
+                position: relative;
+                display: block;
+                transform: translateY(1.5rem) rotate(45deg);
+                background-color: white;
+            }
+
+            + h4 {
+                padding-top: 0.5rem;
+            }
+        }
+    }
+
     .etikett {
         margin-bottom: 0.3rem;
     }
@@ -40,8 +68,29 @@
 }
 
 @media (min-width: @screen-sm) {
-    .utbetalingsoversikt .utvidbar__innholdContainer.apen {
-        border: 1px solid @navGra40;
-        border-radius: 4px;
+    .utbetaling__innhold {
+        .utbetalingsoversikt .utvidbar__innholdContainer.apen {
+            border: 1px solid @navGra40;
+            border-radius: 4px;
+        }
+
+        .beregning .utvidbar__innholdContainer.apen {
+            margin: 0.5rem 0 0 0;
+
+            .inntekt__info {
+                border: 1px solid @navGra40;
+
+                // Alle siblings
+                ~ * {
+                    padding: 0;
+                }
+
+                &:after {
+                    border-bottom: 1px solid @navGra40;
+                    border-right: 1px solid @navGra40;
+                    transform: translateY(1.5rem) translateY(0.5px) rotate(45deg);
+                }
+            }
+        }
     }
 }

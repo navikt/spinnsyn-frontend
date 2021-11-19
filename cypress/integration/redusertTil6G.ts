@@ -28,16 +28,16 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.get('.inntekt__info > :nth-child(2)').contains('896 100 kr')
 
         cy.get('.inntekt__info > :nth-child(3)').contains('Andre arbeidsgivere')
-        cy.get('.inntekt__info > :nth-child(3)').contains('The Ministry Of Magic AS')
-        cy.get('.inntekt__info > :nth-child(3)').contains('195 781 kr')
+        cy.get('.inntekt__info > :nth-child(4)').contains('The Ministry Of Magic AS')
+        cy.get('.inntekt__info > :nth-child(4)').contains('195 781 kr')
 
-        cy.get('.inntekt__info > :nth-child(4)').contains('Samlet årslønn')
-        cy.get('.inntekt__info > :nth-child(4)').contains('1 091 881 kr')
+        cy.get('.inntekt__info > :nth-child(5)').contains('Samlet årslønn')
+        cy.get('.inntekt__info > :nth-child(5)').contains('1 091 881 kr')
 
         // Sjekker om sykepengegrunnlaget er redusert
-        cy.get('.inntekt__info > :nth-child(5)').contains('Sykepengegrunnlag')
-        cy.get('.inntekt__info > :nth-child(5)').contains('redusert til 6G')
-        cy.get('.inntekt__info > :nth-child(5)').contains('638 394 kr')
+        cy.contains('Redusert til 6G')
+        cy.get('.inntekt__info > :nth-child(6)').contains('Sykepengegrunnlag')
+        cy.get('.inntekt__info > :nth-child(6)').contains('638 394 kr')
 
     })
 })

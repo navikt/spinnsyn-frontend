@@ -8,7 +8,6 @@ import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import Utvidbar from '../../utvidbar/utvidbar'
 import Vis from '../../vis'
-import { VedtakProps } from '../vedtak'
 import InntektInfo from './inntekt-info/inntekt-info'
 
 export interface BeregningInfoProps {
@@ -32,7 +31,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
         return 'utbetaling.totalbelop.innhold'
     }
     return (
-        <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo"
+        <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo beregning"
             tittel={tekst('utbetaling.beregning.tittel')}
         >
             <InntektInfo vedtak={vedtak} />

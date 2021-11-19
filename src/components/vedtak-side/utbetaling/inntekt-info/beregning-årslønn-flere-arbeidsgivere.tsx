@@ -11,7 +11,7 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
     const alleÅrsLønn = vedtak.andreArbeidsgivere
 
     return (
-        <section className="inntekt__info">
+        <>
             <div className="inntekt__info__linje">
                 <Element tag="h4">
                     {tekst('utbetaling.andre.arbeidsgivere.tittel')}
@@ -22,7 +22,7 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
                 { Object.keys(alleÅrsLønn!).map((arbeidsgiverNavn) => (
                     <li key={arbeidsgiverNavn}>
                         <div className="inntekt__info__linje">
-                            <Element className={'inntekt__info__redusert'} tag="p">
+                            <Element className="italic" tag="p">
                                 {storeTilStoreOgSmå(arbeidsgiverNavn)}
                             </Element>
                             <Normaltekst tag="span">{formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}</Normaltekst>
@@ -30,7 +30,7 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
                     </li>
                 ))}
             </ul>
-        </section>
+        </>
     )
 }
 
