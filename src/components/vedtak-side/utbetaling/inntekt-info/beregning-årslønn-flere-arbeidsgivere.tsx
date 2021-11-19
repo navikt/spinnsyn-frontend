@@ -7,7 +7,7 @@ import { VedtakProps } from '../../vedtak'
 
 const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
 
-    const alleÅrsLønn = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
+    const alleÅrsLønn = vedtak.andreArbeidsgivere
 
     return (
         <section className="inntekt__info">

@@ -28,6 +28,9 @@ export const vedtakMedDetMeste: RSVedtakWrapper = {
     },
     'opprettet': '2021-11-18',
     'orgnavn': 'POSTEN NORGE AS, BÆRUM',
+    'andreArbeidsgivere': {
+        'Organisasjonsnummer: 123456789': 195781.6
+    },
     'annullert': false,
     'revurdert': false,
     'dagerArbeidsgiver': [
@@ -295,6 +298,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
     lest: true,
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'PENGELØS SPAREBANK',
+    andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '972674818',
         fom: '2021-02-08',
@@ -435,6 +439,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
     lest: false,
     lestDato: undefined,
     orgnavn: 'PENGELØS SPAREBANK',
+    andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '999999999',
         fom: '2021-03-22',
@@ -617,7 +622,7 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     lest: true,
     lestDato: '2021-05-05T11:50:56.812287Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
-
+    andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '999999999',
         fom: '2021-04-27',
@@ -713,6 +718,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
     lest: true,
     lestDato: '2021-05-03T11:50:56.812287Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
+    andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '999999999',
         fom: '2021-04-26',
@@ -801,6 +807,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
     lest: true,
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'INTEGRASJON AS',
+    andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '999999998',
         fom: '2021-01-30',
@@ -1064,6 +1071,7 @@ export const avvistVedtak: RSVedtakWrapper = {
     'lest': true,
     'lestDato': '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
+    andreArbeidsgivere: {},
     'vedtak': {
         'organisasjonsnummer': '999999999',
         'fom': '2021-08-01',
@@ -1272,13 +1280,13 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
         },
         'grunnlagForSykepengegrunnlag': 804396,
         'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
-            'Rik organisasjon AS': 804396,
-            'Gjerrig organisasjon AS, avd. Oslo': 0,
+            '12345725': 804396
         },
         'begrensning': 'ER_6G_BEGRENSET'
     },
     'opprettet': '2021-11-04',
     'orgnavn': 'JOBB AS',
+    'andreArbeidsgivere': {},
     'annullert': false,
     'revurdert': false,
     'dagerArbeidsgiver': [
@@ -1341,6 +1349,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946af',
     lest: false,
     orgnavn: 'KIOSKEN AS',
+    andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '972674818',
         fom: '2021-02-08',
@@ -1496,6 +1505,7 @@ export const kunDirekte: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946ac',
     lest: false,
     orgnavn: 'MATBUTIKKEN AS',
+    andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '972674818',
         fom: '2021-02-08',
