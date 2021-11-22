@@ -47,7 +47,14 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 {tekst('utbetaling.arslonn.tittel')}
             </Element>
             <Normaltekst>
-                {parser(tekst('utbetaling.arslonn.innhold'))}
+                {parser(tekst('utbetaling.arslonn.innhold.del1'))}
+                <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
+                    render={ () =>
+                        <>
+                            {parser(tekst('utbetaling.arslonn.innhold.del2'))}
+                        </>
+                    }
+                />
             </Normaltekst>
 
             <Element tag="h4" className="blokkinfo__avsnitt">
