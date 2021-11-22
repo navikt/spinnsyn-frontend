@@ -5,11 +5,15 @@
 
     .inntekt__info__linje {
         padding-top: 0.5rem;
-        display: flex;
         width: 100%;
+        clear: both;
+
+        :first-child {
+            display: inline-block;
+        }
 
         :last-child {
-            margin-left: auto;
+            float: right;
             white-space: nowrap;
         }
     }
