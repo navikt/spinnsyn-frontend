@@ -26,7 +26,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                         <td>{dayjs(dag.dato).format('DD.MMM')}</td>
                         <td>
                             {
-                                (dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
+                                (dag.dagtype === 'NavDag' || dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
                                     ? ValutaFormat.format(dag.belop) + ' kr'
                                     : '-'
                             }
