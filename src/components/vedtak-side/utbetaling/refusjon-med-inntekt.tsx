@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -9,7 +10,6 @@ import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
-import { storeTilStoreOgSmå } from '../../../utils/store-små';
 
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
