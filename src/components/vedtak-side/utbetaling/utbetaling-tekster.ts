@@ -2,7 +2,7 @@ const UtbetalingTekster = {
 
     'utbetaling.mndlonn.tittel': 'Månedslønnen',
     'utbetaling.person.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
-    'utbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. Lønn for overtid tas bare med i helt spesielle tilfeller. <a href="https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/inntekter-som-inngar-i-beregningen-av-manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med.</a> Hvis du er usikker på om månedslønnen er riktig, kontakt arbeidsgiveren din. ',
+    'utbetaling.mndlonn.innhold': 'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. <a href="https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/inntekter-som-inngar-i-beregningen-av-manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med.</a> Hvis du er usikker på om månedslønnen er riktig, kontakt arbeidsgiveren din. ',
     'utbetaling.arslonn.tittel': 'Årslønn',
     'utbetaling.arslonn.innhold.del1': 'Så blir månedslønnen regnet om til årslønn ved å gange den med 12. ',
     'utbetaling.arslonn.innhold.del2': 'Siden du har flere arbeidsgivere, legger vi sammen lønnen fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er.',
