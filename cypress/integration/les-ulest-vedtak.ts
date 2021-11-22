@@ -35,7 +35,7 @@ describe('Tester at appen starter', () => {
             .and('not.be.visible')
 
         cy.contains('21 060 kroner')
-            .and('contain', 'Utbetales til arbeidsgiveren')
+            .and('contain', 'Utbetales til Pengeløs Sparebank')
             .click({ force: true })
 
         cy.get('.utvidbar__innholdContainer')

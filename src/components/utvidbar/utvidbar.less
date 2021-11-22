@@ -5,20 +5,23 @@
     border: 1px solid @navGra40;
     border-radius: 4px;
     margin: .5rem 0;
+    overflow: hidden;
 
     &:focus {
         outline: none;
         box-shadow: 0 0 0 3px @fokusFarge;
     }
+
     &.info {
-        background: #E4EDF2;
-        border: #E4EDF2 solid 1px;
+        background: @alternativLysBla;
+        border: @alternativLysBla solid 1px;
 
         .utvidbar__toggle {
             padding: 1rem;
             background-color: inherit;
             text-decoration: none;
         }
+
         .utvidbar__innhold {
             padding: 0 1rem 1rem 1rem;
             border-top: @white solid 2px;
@@ -78,12 +81,17 @@
         border: 0;
         cursor: pointer;
         background-color: inherit;
+        color: @navMorkGra;
 
         &:focus {
             position: relative;
             box-shadow: 0 0 0 3px @fokusFarge;
             outline: 0;
             z-index: 1;
+        }
+
+        .utvidbar__ikon {
+            display: none;
         }
     }
 
@@ -96,7 +104,7 @@
     }
 
     &.orange {
-        background-color: #FFF4E4;
+        background-color: @alternativLysOrange;
     }
 
     .utvidbar__ikon {
@@ -147,10 +155,13 @@
     .utvidbar {
         .utvidbar__toggle {
             padding: 1.5rem 1rem;
-            color: @navMorkGra;
 
             &:hover {
                 color: @navBla;
+            }
+
+            .utvidbar__ikon {
+                display: block;
             }
         }
 
