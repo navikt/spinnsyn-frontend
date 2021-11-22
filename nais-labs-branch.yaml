@@ -1,0 +1,37 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: {{appname}}
+  namespace: flex
+  labels:
+    team: flex
+spec:
+  image: {{ image }}
+  port: 8080
+  ingresses:
+    - "https://spinnsyn-{{appname}}.labs.nais.io/"
+  liveness:
+    path: syk/sykepenger/api/isAlive
+  readiness:
+    path: syk/sykepenger/api/isReady
+  env:
+    - name: ENVIRONMENT
+      value: "labs"
+    - name: SYKEFRAVAER_URL
+      value: "https://ditt-sykefravaer.labs.nais.io/syk/sykefravaer"
+    - name: DITTNAV_URL
+      value: "https://www.nav.no/person/dittnav"
+    - name: OPPLAERING
+      value: "true"
+    - name: LOGINSERVICE_URL
+      value: "https://loginservice-q.nav.no/login"
+    - name: MOCK_BACKEND
+      value: "true"
+    - name: AMPLITUDE_ENABLED
+      value: "false"
+    - name: DECORATOR_ENV
+      value: "prod"
+    - name: UTVIKLING_ARKIVERING
+      value: "true"
+    - name: ARKIVERING
+      value: "false"
