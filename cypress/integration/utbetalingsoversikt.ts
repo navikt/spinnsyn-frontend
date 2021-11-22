@@ -15,7 +15,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
 
     it('Utbetalingsoversikt', () => {
         cy.contains('8 960 kroner')
-            .and('contain', 'Utbetales til arbeidsgiveren')
+            .and('contain', 'Utbetales til Pengeløs Sparebank')
             .click({ force: true })
 
         cy.contains('Beløpet dag for dag')

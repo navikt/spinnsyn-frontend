@@ -14,19 +14,17 @@ describe('Tester visning personutbetaling', () => {
     })
 
     it('Viser info om utbetaling til person', () => {
-        cy.contains('Utbetales til arbeidsgiveren').should('not.exist')
+        cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
         cy.contains('24 550 kroner')
             .and('contain', 'til deg (før skatt)')
             .click({ force: true })
-
 
         cy.get('.info').contains('Når får du pengene?')
         cy.get('.info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.')
 
         cy.contains('Slik beregner vi sykepengene')
             .click({ force: true })
-
 
         //
         cy.get('.utvidbar__innhold > :nth-child(11)').contains('Totalbeløp')

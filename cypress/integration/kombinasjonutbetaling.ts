@@ -41,17 +41,15 @@ describe('Tester visning av kombinasjon', () => {
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
         cy.contains('4 910 kroner')
-            .and('contain', 'Utbetales til arbeidsgiveren')
+            .and('contain', 'Utbetales til Kiosken AS')
 
-        cy.contains('Utbetales til arbeidsgiveren')
+        cy.contains('Utbetales til Kiosken AS')
             .click({ force: true })
-
 
         cy.get('.info').contains('Når får du pengene?').should('not.be.visible')
         cy.get('.info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.').should('not.be.visible')
 
         cy.get('.refusjon').contains('Slik beregner vi sykepengene').click({ force: true })
-
 
         cy.get('.refusjon .utvidbar__innhold > :nth-child(11)').contains('Totalbeløp').should('be.visible')
         cy.get('.refusjon .utvidbar__innhold > :nth-child(12)').contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.').should('be.visible')
