@@ -1348,7 +1348,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
 export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946af',
     lest: false,
-    orgnavn: 'KIOSKEN AS',
+    orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '972674818',
