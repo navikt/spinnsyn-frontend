@@ -199,10 +199,9 @@ jobs:
         env:
           SLACK_CHANNEL: flex-labs-deploy
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-          SLACK_MESSAGE: 'Ny versjon ute i labs :rocket: https://spinnsyn-${{ env.branchname }}.labs.nais.io/syk/sykepenger'
+          SLACK_MESSAGE: 'Ny versjon av svar på søknader ute i labs :rocket: \n\nhttps://spinnsyn-${{ env.branchname }}.labs.nais.io/syk/sykepenger'
           SLACK_TITLE: ${{ env.branchname }}
-          SLACK_USERNAME: Labs deploy
-          SLACK_ICON: ":lab_coat:"
+          SLACK_ICON_EMOJI: ":bell:"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
   tag-image-as-latest:
