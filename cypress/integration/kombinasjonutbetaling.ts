@@ -41,9 +41,9 @@ describe('Tester visning av kombinasjon', () => {
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
         cy.contains('4 910 kroner')
-            .and('contain', 'Utbetales til Kiosken AS')
+            .and('contain', 'Utbetales til Matbutikken AS')
 
-        cy.contains('Utbetales til Kiosken AS')
+        cy.contains('Utbetales til Matbutikken AS')
             .click({ force: true })
 
         cy.get('.info').contains('Når får du pengene?').should('not.be.visible')
