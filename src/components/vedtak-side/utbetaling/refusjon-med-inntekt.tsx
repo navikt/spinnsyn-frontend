@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { tekst } from '../../../utils/tekster'
+import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
@@ -9,11 +9,11 @@ import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
+import { storeTilStoreOgSmå } from '../../../utils/store-små';
 
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
-
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
 
     return (
@@ -24,7 +24,9 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
             ikonHover={'/syk/sykepenger/static/img/ikon-penger-hover.svg'}
             tittel={belop + ' kroner'}
-            systemtittel={tekst('utbetaling.arbeidsgiver.systemtittel')}
+            systemtittel={getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
+                '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
+            })}
             ikonAltTekst=""
             fixedHeight={true}
             heading="h2"
