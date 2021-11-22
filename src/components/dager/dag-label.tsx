@@ -13,6 +13,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
     const lagDagLabel = (dag: RSDag) => {
         // TODO: Legg inn permisjon og ferie når vi mottar denne dataen
         switch (dag.dagtype) {
+            case 'NavDag':
             case 'NavDagSyk':
                 return <Etikett mini type="suksess">Syk</Etikett>
 
