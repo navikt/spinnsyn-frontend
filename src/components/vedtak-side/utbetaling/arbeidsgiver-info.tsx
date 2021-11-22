@@ -1,6 +1,7 @@
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 
@@ -13,7 +14,7 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
             </Element>
             <Normaltekst className="info__tekst">
                 {getLedetekst(tekst('utbetaling.arbeidsgiver.tekst'), {
-                    '%ARBEIDSGIVER%': vedtak.orgnavn
+                    '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
                 })}
             </Normaltekst>
         </section>

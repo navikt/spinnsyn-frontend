@@ -2,7 +2,8 @@ import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
-import { tekst } from '../../../../utils/tekster'
+import { storeTilStoreOgSmå } from '../../../../utils/store-små'
+import { getLedetekst,tekst } from '../../../../utils/tekster'
 import { formaterValuta } from '../../../../utils/valuta-utils'
 import Vis from '../../../vis'
 import { VedtakProps } from '../../vedtak'
@@ -29,14 +30,18 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
                     <div className="inntekt__info__linje">
                         <Element tag="h4">
-                            {tekst('utbetaling.inntekt.info.beregnet')}
+                            {getLedetekst(tekst('utbetaling.inntekt.info.beregnet'), {
+                                '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
+                            })}
                         </Element>
                         <Normaltekst tag="span">{inntektMnd}</Normaltekst>
                     </div>
 
                     <div className="inntekt__info__linje">
                         <Element tag="h4">
-                            {tekst('utbetaling.inntekt.info.omregnet')}
+                            {getLedetekst(tekst('utbetaling.inntekt.info.omregnet'), {
+                                '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
+                            })}
                         </Element>
                         <Normaltekst tag="span">{inntektAr}</Normaltekst>
                     </div>
