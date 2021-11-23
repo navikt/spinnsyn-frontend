@@ -966,7 +966,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             dato: '2021-02-12',
             belop: 0,
             grad: 0,
-            dagtype: 'Fridag',
+            dagtype: 'Feriedag',
             begrunnelser: []
         },
         {
@@ -1059,6 +1059,13 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             grad: 0,
             dagtype: 'AvvistDag',
             begrunnelser: [ 'SykepengedagerOppbruktOver67' ]
+        },
+        {
+            dato: '2021-02-26',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Permisjonsdag',
+            begrunnelser: [ ]
         }
     ],
     dagerPerson: [],

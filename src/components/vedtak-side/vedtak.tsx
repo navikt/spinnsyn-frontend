@@ -39,6 +39,8 @@ const brodsmuler: Brodsmule[] = [
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
     'Fridag',
+    'Feriedag',
+    'Permisjonsdag',
     'ForeldetDag',
 ]
 
