@@ -30,6 +30,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
         }
         return 'utbetaling.totalbelop.innhold'
     }
+
     return (
         <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo beregning"
             tittel={tekst('utbetaling.beregning.tittel')}
@@ -100,7 +101,6 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Normaltekst>
                     {tekst('utbetaling.utbetalingsdager.innhold')}
                 </Normaltekst>
-
 
                 <Normaltekst className="blokkinfo__avsnitt">
                     {tekst('utbetaling.beregning.les.mer')}
