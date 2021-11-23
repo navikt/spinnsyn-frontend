@@ -1,5 +1,6 @@
 import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst, Sidetittel, Systemtittel, Undertittel } from 'nav-frontend-typografi'
+import Veilederpanel from 'nav-frontend-veilederpanel'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -79,6 +80,18 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                                 {tekst('annullering.se-tidligere-beslutning')}
                             </Systemtittel>
                         </>
+                    }
+                />
+
+                <Vis hvis={vedtak.sykepengebelopPerson !== 0 && vedtak.sykepengebelopArbeidsgiver !== 0}
+                    render={() =>
+                        <Veilederpanel
+                            type={'plakat'}
+                            kompakt
+                            svg={<img alt="" style={{ height: '100%' }} src={'/syk/sykepenger/static/img/male.svg'} />}
+                        >
+                            <Normaltekst>{tekst('vedtak.veileder.delvis.refusjon')}</Normaltekst>
+                        </Veilederpanel>
                     }
                 />
 
