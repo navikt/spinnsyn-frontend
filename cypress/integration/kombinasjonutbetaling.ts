@@ -14,6 +14,8 @@ describe('Tester visning av kombinasjon', () => {
     })
 
     it('Viser info om utbetaling til personen', () => {
+        cy.contains('Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.')
+
         cy.contains('24 550 kroner')
             .and('contain', 'til deg (før skatt)')
             .click({ force: true })

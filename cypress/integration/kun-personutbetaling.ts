@@ -14,6 +14,7 @@ describe('Tester visning personutbetaling', () => {
     })
 
     it('Viser info om utbetaling til person', () => {
+        cy.contains('Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.').should('not.exist')
         cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
         cy.contains('24 550 kroner')
