@@ -17,7 +17,7 @@ interface PreauthorizedApps {
 }
 
 
-export async function verifyAzureAccessToken(token: string) {
+export async function verifyIdportenAccessToken(token: string) {
     const decoded = jwt.decode(token, { complete: true })!
 
     const kid = decoded.header.kid!

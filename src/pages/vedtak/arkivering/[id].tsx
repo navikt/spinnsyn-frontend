@@ -6,7 +6,7 @@ import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-a
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { getAccessToken } from '../../../server-utils/getAccessToken'
 import { hentVedtak } from '../../../server-utils/hentVedtak'
-import { verifyToken } from '../../../server-utils/verifyAzureAccessToken'
+import { verifyAzureAccessToken } from '../../../server-utils/verifyAzureAccessToken'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { logger } from '../../../utils/logger'
 
@@ -44,7 +44,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
 
         }
         const tokenInn = authHeader.split(' ')[ 1 ]
-        await verifyToken(tokenInn)
+        await verifyAzureAccessToken(tokenInn)
 
         const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any

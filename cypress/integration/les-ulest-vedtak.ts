@@ -71,7 +71,7 @@ describe('Tester at appen starter', () => {
     })
 
     it('Det er 1 uleste vedtak og 7 leste', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
+        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 7)
     })

@@ -74,7 +74,7 @@ jobs:
             docker push ${IMAGE}
 
   deploy-to-dev-gcp:
-    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/dev-')
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/dev-') || startsWith(github.ref, 'refs/heads/ssr-wonderwall')
     name: Deploy to dev-gcp
     needs: build-and-publish
     runs-on: ubuntu-latest
