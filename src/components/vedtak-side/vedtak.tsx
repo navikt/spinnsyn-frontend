@@ -86,6 +86,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Vis hvis={vedtak.sykepengebelopPerson !== 0 && vedtak.sykepengebelopArbeidsgiver !== 0}
                     render={() =>
                         <Veilederpanel
+                            fargetema="info"
                             type={'plakat'}
                             kompakt
                             svg={<img alt="" style={{ height: '100%' }} src={'/syk/sykepenger/static/img/male.svg'} />}
