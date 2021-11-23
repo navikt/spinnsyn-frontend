@@ -73,6 +73,8 @@ export type RSDagType =
     | 'ArbeidsgiverperiodeDag'
     | 'Arbeidsdag'
     | 'Fridag'
+    | 'Feriedag'
+    | 'Permisjonsdag'
     | 'AvvistDag'
     | 'ForeldetDag'
     | 'UkjentDag'
