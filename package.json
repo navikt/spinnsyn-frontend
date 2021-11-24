@@ -51,6 +51,7 @@
     "nav-frontend-veileder-style": "^3.0.1",
     "nav-frontend-veilederpanel": "^2.0.1",
     "nav-frontend-veilederpanel-style": "2.0.1",
+    "openid-client": "^5.0.2",
     "pino": "^7.0.5",
     "react": "^17.0.2",
     "react-collapse": "^5.1.0",
