@@ -19,7 +19,6 @@ export async function hentVedtak(incomingMessage: IncomingMessage): Promise<RSVe
     if (isMockBackend()) {
         return hentMockVedtak(incomingMessage.url)
     } else {
-        //TODO hent fra spinnsynbackend
         return hentVedtakFraSpinnsynBackend(incomingMessage)
     }
 }

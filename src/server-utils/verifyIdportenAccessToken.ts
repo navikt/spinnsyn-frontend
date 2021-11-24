@@ -2,8 +2,6 @@ import jwt, { JwtPayload } from 'jsonwebtoken'
 import jwks from 'jwks-rsa'
 import getConfig from 'next/config'
 
-import { logger } from '../utils/logger'
-
 const { serverRuntimeConfig } = getConfig()
 
 let discoveryData: DiscoveryData | null = null
@@ -66,8 +64,12 @@ export async function verifyIdportenAccessToken(bearerToken: string) {
     const key = await jwksClient.getSigningKey(kid)
     const signingKey = key.getPublicKey()
     const verified = jwt.verify(token, signingKey) as JwtPayload
-    logger.info('Jwt som ble verifisert: ' + token)
+
     if (verified.client_id !== serverRuntimeConfig.idportenClientId) {
         throw new Error('client_id matcher ikke min client ID')
+    }
+
+    if (verified.acr !== 'Level4') {
+        throw new Error('Har ikke acr Level4')
     }
 }
