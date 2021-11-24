@@ -21,14 +21,14 @@ module.exports = withLess({
         idportenClientId: process.env.IDPORTEN_CLIENT_ID,
         idportenWellKnownUrl: process.env.IDPORTEN_WELL_KNOWN_URL,
         naisAppImage: process.env.NAIS_APP_IMAGE,
+        loginserviceUrl: process.env.LOGINSERVICE_URL,
+        loginServiceRedirectUrl: process.env.LOGINSERVICE_REDIRECT_URL,
     },
     publicRuntimeConfig: {
         // Will be available on both server and client
-        loginserviceUrl: process.env.LOGINSERVICE_URL,
         flexGatewayRoot: process.env.FLEX_GATEWAY_ROOT,
         mockBackend: process.env.MOCK_BACKEND,
         opplaering: process.env.OPPLAERING,
-        loginServiceRedirectUrl: process.env.LOGINSERVICE_REDIRECT_URL,
         sykefravaerUrl: process.env.SYKEFRAVAER_URL,
         dittNavUrl: process.env.DITTNAV_URL,
         amplitudeKey: process.env.AMPLITUDE_KEY,
