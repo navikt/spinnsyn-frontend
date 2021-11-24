@@ -46,8 +46,8 @@ describe('Tester at appen starter', () => {
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
         cy.get('.inntekt__info')
-            .should('contain', 'Månedslønn Pengeløs Sparebank').and('contain', '37\u00a0500 kr')
-            .should('contain', 'Årslønn Pengeløs Sparebank').and('contain', '450\u00a0000 kr')
+            .should('contain', 'Månedslønn').and('contain', '37\u00a0500 kr')
+            .should('contain', 'Årslønn').and('contain', '450\u00a0000 kr')
     })
 
     it('Den blå boksen har riktig innhold', () => {

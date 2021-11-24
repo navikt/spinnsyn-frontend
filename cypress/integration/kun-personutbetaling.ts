@@ -28,8 +28,8 @@ describe('Tester visning personutbetaling', () => {
             .click({ force: true })
 
         //
-        cy.get('.utvidbar__innhold > :nth-child(11)').contains('Totalbeløp')
-        cy.get('.utvidbar__innhold > :nth-child(12)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.')
+        cy.get('.utvidbar__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp')
+        cy.get('.utvidbar__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.')
 
     })
 })
