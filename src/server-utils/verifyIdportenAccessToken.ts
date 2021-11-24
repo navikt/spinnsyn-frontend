@@ -2,22 +2,63 @@ import jwt, { JwtPayload } from 'jsonwebtoken'
 import jwks from 'jwks-rsa'
 import getConfig from 'next/config'
 
-import { ErrorMedStatus } from './ErrorMedStatus'
+import { logger } from '../utils/logger'
 
 const { serverRuntimeConfig } = getConfig()
 
+let discoveryData: DiscoveryData | null = null
+let jwksClient: jwks.JwksClient | null = null
 
-const jwksClient = jwks({
-    jwksUri: serverRuntimeConfig.azureOpenidConfigJwksUri
-})
 
-interface PreauthorizedApps {
-    name: string,
-    clientId: string
+interface DiscoveryData {
+    jwks_uri: string;
+    issuer: string;
+}
+
+async function getJwksUrlFromDiscoveryEndpoint(): Promise<DiscoveryData> {
+    const discoveryUrl = serverRuntimeConfig.idportenWellKnownUrl
+    return fetch(discoveryUrl)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`Received unexpected status ${res.status} from ${discoveryUrl}`)
+            }
+
+            return res.json()
+        })
+        .then(discoveryData => {
+            const jwks_uri = discoveryData.jwks_uri
+            const issuer = discoveryData.issuer
+
+            if (!jwks_uri) {
+                throw new Error('Could not find "jwks_uri" from discovery endpoint: ' + JSON.stringify(discoveryData))
+            } else if (!issuer) {
+                throw new Error('Could not find "issuer" from discovery endpoint: ' + JSON.stringify(discoveryData))
+            }
+
+            return {
+                jwks_uri,
+                issuer
+            }
+        })
+}
+
+async function initJwksClient() {
+    if (discoveryData == null) {
+        discoveryData = await getJwksUrlFromDiscoveryEndpoint()
+        jwksClient = jwks({
+            jwksUri: discoveryData.jwks_uri
+        })
+    }
 }
 
 
 export async function verifyIdportenAccessToken(token: string) {
+    logger.info('Jwt som skal bli verifisert: ' + token)
+
+    await initJwksClient()
+    if (!jwksClient) {
+        throw Error('jwksClient skal være satt')
+    }
     const decoded = jwt.decode(token, { complete: true })!
 
     const kid = decoded.header.kid!
@@ -25,23 +66,8 @@ export async function verifyIdportenAccessToken(token: string) {
     const key = await jwksClient.getSigningKey(kid)
     const signingKey = key.getPublicKey()
     const verified = jwt.verify(token, signingKey) as JwtPayload
-
-    if (verified.aud !== serverRuntimeConfig.azureAppClientId) {
-        throw new ErrorMedStatus('Audience matcher ikke min client ID', 401)
-    }
-    const preAuthorizedApps = JSON.parse(serverRuntimeConfig.azureAppPreAuthorizedApps) as PreauthorizedApps[]
-
-    const spinnsynArkiveringClientId = preAuthorizedApps.find(a => a.name.endsWith('-gcp:flex:spinnsyn-arkivering'))
-    if (!spinnsynArkiveringClientId) {
-        throw new ErrorMedStatus('Fant ikke spinnsyn arkivering client id', 500)
-    }
-
-    const azp = verified.azp
-    if (!azp) {
-        throw new ErrorMedStatus('Fant ikke azp claim i token', 401)
-    }
-
-    if (azp != spinnsynArkiveringClientId.clientId) {
-        throw new ErrorMedStatus('AZP claim matcher ikke spinnsyn arkivering', 401)
+    logger.info('Jwt som ble verifisert: ' + token)
+    if (verified.client_id !== serverRuntimeConfig.idportenClientId) {
+        throw new Error('client_id matcher ikke min client ID')
     }
 }

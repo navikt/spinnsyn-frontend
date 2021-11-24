@@ -18,6 +18,8 @@ module.exports = withLess({
         azureOpenidConfigJwksUri: process.env.AZURE_OPENID_CONFIG_JWKS_URI,
         azureAppPreAuthorizedApps: process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
         spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
+        idportenClientId: process.env.IDPORTEN_CLIENT_ID,
+        idportenWellKnownUrl: process.env.IDPORTEN_WELL_KNOWN_URL,
         naisAppImage: process.env.NAIS_APP_IMAGE,
     },
     publicRuntimeConfig: {

@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import { withAuthenticatedApi } from '../../../auth/withAuthentication'
 import { hentVedtak } from '../../../data/hentVedtak'
 
-const handler = async(req: NextApiRequest, res: NextApiResponse) => {
+const handler = withAuthenticatedApi(async(req: NextApiRequest, res: NextApiResponse) => {
 
     const vedtakene = await hentVedtak(req)
 
@@ -19,6 +20,6 @@ const handler = async(req: NextApiRequest, res: NextApiResponse) => {
         }
         return v
     }))
-}
+})
 
 export default handler

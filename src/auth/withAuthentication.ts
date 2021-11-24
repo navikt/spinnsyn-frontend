@@ -1,31 +1,13 @@
-import http from 'http'
-import { NextApiResponse, NextPageContext } from 'next'
+import { NextApiRequest, NextApiResponse, NextPageContext } from 'next'
 
+import { verifyIdportenAccessToken } from '../server-utils/verifyIdportenAccessToken'
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { isMockBackend } from '../utils/environment'
 import { logger } from '../utils/logger'
 
-type ApiHandler = (req: NextRequest, res: NextApiResponse) => void | Promise<unknown>;
+type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>;
 type PageHandler = (context: NextPageContext) => void | Promise<GetServerSidePropsPrefetchResult>;
 
-export interface TokenPayload {
-    sub: string;
-    iss: string;
-    client_amr: string;
-    pid: string;
-    token_type: string;
-    client_id: string;
-    acr: string;
-    scope: string;
-    exp: string;
-    iat: string;
-    client_orgno: string;
-    jti: string;
-    consumer: {
-        authority: string;
-        ID: string;
-    };
-}
 
 /**
  * Used to authenticate Next.JS pages. Assumes application is behind
@@ -55,18 +37,22 @@ export function withAuthenticatedPage(handler: PageHandler) {
                 },
             }
         }
-        logger.info('Fikk bearer token: ' + bearerToken)
+        try {
+            await verifyIdportenAccessToken(bearerToken)
+        } catch (e) {
+            logger.error('kunne ikke autentisere', e)
+
+            return {
+                redirect: {
+                    destination: '/oauth2/login?redirect=/syk/sykepenger',
+                    permanent: false,
+                },
+            }
+        }
         return handler(context)
     }
 }
 
-export interface NextRequest extends http.IncomingMessage {
-    cookies: Record<string, string>;
-    url: string;
-    query: { [ key: string ]: string };
-    headers: { [ key: string ]: string };
-    body: string | { [ key: string ]: unknown };
-}
 
 /**
  * Used to authenticate Next.JS pages. Assumes application is behind
@@ -80,6 +66,13 @@ export function withAuthenticatedApi(handler: ApiHandler): ApiHandler {
 
         const bearerToken: string | null | undefined = req.headers[ 'authorization' ]
         if (!bearerToken) {
+            res.status(401).json({ message: 'Access denied' })
+            return
+        }
+        try {
+            await verifyIdportenAccessToken(bearerToken)
+        } catch (e) {
+            logger.error('kunne ikke autentisere', e)
             res.status(401).json({ message: 'Access denied' })
             return
         }

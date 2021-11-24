@@ -12,6 +12,8 @@ function hentMockVedtak(url?: string): RSVedtakWrapper[] {
 export async function hentVedtak(incomingMessage: IncomingMessage): Promise<RSVedtakWrapper[]> {
     if (isMockBackend()) {
         return hentMockVedtak(incomingMessage.url)
+    } else {
+        //TODO hent fra spinnsynbackend
+        return hentMockVedtak(incomingMessage.url)
     }
-    throw Error('HAr ikke implementert!!')
 }
