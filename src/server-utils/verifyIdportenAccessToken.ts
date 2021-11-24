@@ -52,8 +52,8 @@ async function initJwksClient() {
 }
 
 
-export async function verifyIdportenAccessToken(token: string) {
-    logger.info('Jwt som skal bli verifisert: ' + token)
+export async function verifyIdportenAccessToken(bearerToken: string) {
+    const token = bearerToken.split(' ')[ 1 ]
 
     await initJwksClient()
     if (!jwksClient) {
