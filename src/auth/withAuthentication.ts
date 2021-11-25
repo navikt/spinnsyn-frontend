@@ -39,8 +39,7 @@ export function withAuthenticatedPage(handler: PageHandler) {
             return loginserviceRedirect
         }
         try {
-            //await verifyIdportenAccessToken(bearerToken)
-            // TODO verifiser loginservice cookie
+            // TODO verifiser loginservice token sin gyldighet
         } catch (e) {
             logger.error('kunne ikke autentisere', e)
             return loginserviceRedirect

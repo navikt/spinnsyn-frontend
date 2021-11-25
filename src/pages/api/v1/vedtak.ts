@@ -4,7 +4,9 @@ import { withAuthenticatedApi } from '../../../auth/withAuthentication'
 import { hentVedtak } from '../../../data/hentVedtak'
 
 const handler = withAuthenticatedApi(async(req: NextApiRequest, res: NextApiResponse) => {
-
+    if (req.method !== 'GET') {
+        return res.status(404).json('Må være GET')
+    }
     const vedtakene = await hentVedtak(req)
 
 
