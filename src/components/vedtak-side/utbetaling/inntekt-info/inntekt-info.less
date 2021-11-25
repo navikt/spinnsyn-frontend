@@ -1,40 +1,69 @@
 @import '../../../../../node_modules/nav-frontend-core/less/_variabler';
 
 .inntekt__info {
-    padding: 0.5rem 1rem 1rem;
+    background-color: @white;
+    border-collapse: collapse;
+    padding-top: 0.8rem;
 
-    .inntekt__info__linje {
-        padding-top: 0.5rem;
+    &:after {
+        content: '';
+        top: -15px;
+        left: 15px;
+        width: 1rem;
+        height: 1rem;
+        position: relative;
+        display: block;
+        transform: translateY(1.5rem) rotate(45deg);
+        background-color: white;
+    }
+
+    table {
         width: 100%;
-        clear: both;
+        border-collapse: collapse;
 
-        :first-child {
-            display: inline-block;
+        th, td {
+            padding: 0.35rem 1.5rem;
         }
 
-        :last-child {
-            float: right;
-            white-space: nowrap;
+        th {
+            text-align: left;
+        }
+
+        td {
+            text-align: right;
         }
     }
 
-    .italic {
-        font-size: 14px;
-        font-style: italic;
+    .flere-arbeidsgivere {
+        .arbgivernavn {
+            font-weight: normal;
+            padding-left: 2.5rem;
+        }
+
+        tr:last-child {
+            th, td {
+                padding-top: 1rem;
+            }
+        }
     }
 
-    .inntekt__info__redusert_sykepengegrunnlag {
-        background-color: mix(@navOransje, @white, 5%);
-        margin: 0.5rem -0.5rem 0;
-        padding: 0.5rem;
+    .redusert_sykepengegrunnlag {
+        margin: 0.5rem 0.7rem 1rem;
+        padding: 0.5rem 0.8rem;
+        background-color: mix(@navOransje, @white, 7%);
 
-        img  {
+        .img-rad {
+            display: flex;
+            margin: 0.5rem 0;
+        }
+
+        img {
             width: 24px;
             margin-right: 0.5rem;
+        }
 
-            ~ p {
-                padding-top: 0.5rem;
-            }
+        th, td {
+            padding: 0.7rem 0 0.35rem;
         }
     }
 }
