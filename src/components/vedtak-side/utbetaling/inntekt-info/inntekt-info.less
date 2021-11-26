@@ -21,23 +21,28 @@
         width: 100%;
         border-collapse: collapse;
 
-        th, td {
-            padding: 0.35rem 1.5rem;
-        }
-
         th {
+            padding: 0.35rem 0.25rem 0.35rem 1rem;
             text-align: left;
         }
 
         td {
+            padding: 0.35rem 1rem 0.35rem 0.25rem;
             text-align: right;
+            white-space: nowrap;
         }
     }
 
     .flere-arbeidsgivere {
         .arbgivernavn {
             font-weight: normal;
-            padding-left: 2.5rem;
+            padding-left: 1.5rem;
+
+            &:before {
+                content: "•";
+                font-size: 14px;
+                margin-right: 5px;
+            }
         }
 
         tr:last-child {

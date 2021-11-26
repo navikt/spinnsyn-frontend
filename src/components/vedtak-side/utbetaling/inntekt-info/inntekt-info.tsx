@@ -2,8 +2,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
-import { storeTilStoreOgSmå } from '../../../../utils/store-små'
-import { getLedetekst, tekst } from '../../../../utils/tekster'
+import { tekst } from '../../../../utils/tekster'
 import { formaterValuta } from '../../../../utils/valuta-utils'
 import Vis from '../../../vis'
 import { VedtakProps } from '../../vedtak'
@@ -36,7 +35,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     </Element>
                                     <Normaltekst tag="td">{inntektMnd}</Normaltekst>
                                 </tr>
-
                                 <tr>
                                     <Element tag="th">
                                         {tekst('utbetaling.inntekt.info.omregnet')}

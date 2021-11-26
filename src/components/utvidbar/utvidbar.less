@@ -5,6 +5,7 @@
     border: 1px solid @navGra40;
     border-radius: 4px;
     margin: .5rem 0;
+    overflow: hidden;
 
     &:focus {
         outline: none;
@@ -33,7 +34,7 @@
 
     &.intern {
         border: 0;
-        margin: 1rem 0;
+        margin: 1rem -1rem;
 
         &:focus {
             box-shadow: none;
@@ -41,6 +42,7 @@
 
         .utvidbar__toggle {
             width: auto;
+            margin: 0 1rem;
             padding: 0;
             background-color: inherit;
             color: @navBla;
@@ -84,7 +86,7 @@
 
         &:focus {
             position: relative;
-            box-shadow: 0 0 0 3px @fokusFarge;
+            text-decoration: underline;
             outline: 0;
             z-index: 1;
         }

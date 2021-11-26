@@ -13,15 +13,14 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
     return (
         <>
             <tr>
-                <Element tag="th">
-                    {tekst('utbetaling.andre.arbeidsgivere.tittel')}
-                </Element>
-                <Normaltekst tag="td">{}</Normaltekst>
+                <th colSpan={2}>
+                    <Element>{tekst('utbetaling.andre.arbeidsgivere.tittel')}</Element>
+                </th>
             </tr>
             {Object.keys(alleÅrsLønn!).map((arbeidsgiverNavn) => (
                 <tr key={arbeidsgiverNavn}>
                     <Element tag="th" className="arbgivernavn">
-                        {storeTilStoreOgSmå(arbeidsgiverNavn)}
+                        <span>{storeTilStoreOgSmå(arbeidsgiverNavn)}</span>
                     </Element>
                     <Normaltekst tag="td">
                         {formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}
