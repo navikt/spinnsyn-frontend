@@ -11,7 +11,6 @@ interface DagLabelProps {
 
 const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
     const lagDagLabel = (dag: RSDag) => {
-        // TODO: Legg inn permisjon og ferie når vi mottar denne dataen
         switch (dag.dagtype) {
             case 'NavDag':
             case 'NavDagSyk':
@@ -83,6 +82,15 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
 
             case 'EtterDødsdato':
                 return <Etikett mini type="fokus" key={idx}>Etter dødsfall</Etikett>
+
+            case 'Ferie':
+                return <Etikett mini type="fokus" key={idx}>Ferie</Etikett>
+
+            case 'Permisjon':
+                return <Etikett mini type="fokus" key={idx}>Permisjon</Etikett>
+
+            case 'Foreldet':
+                return <Etikett mini type="fokus" key={idx}>Permisjon</Etikett>
 
             case 'UKJENT':
             default:

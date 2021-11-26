@@ -4,6 +4,7 @@ import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
+import Vis from '../vis'
 import DagLabel from './dag-label'
 
 interface DagBeskrivelseProps {
@@ -13,37 +14,35 @@ interface DagBeskrivelseProps {
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     const lagBeskrivelseForUnikDag = (dag: RSDag) => {
-        if (dag.dagtype === 'ForeldetDag') {
-            return (
-                <>
-                    <Normaltekst>
-                        {tekst('utbetaling.tabell.label.ForeldetDag' as any)}
-                    </Normaltekst>
-
-                    <Normaltekst className={'avvist-lovhjemmel'}>
-                        {parser(tekst('utbetaling.tabell.avvist.lovhjemmel.ForeldetDag'))}
-                    </Normaltekst>
-                </>
-            )
-        }
-
-        if (dag.dagtype !== 'AvvistDag') {
-            return (
-                <Normaltekst>
-                    {tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}
-                </Normaltekst>
-            )
-        }
 
         return (
             <>
-                <Normaltekst>
-                    {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
-                </Normaltekst>
 
-                <Normaltekst className={'avvist-lovhjemmel'}>
-                    {parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))}
-                </Normaltekst>
+                <Vis hvis={dag.dagtype !== 'AvvistDag'}
+                    render={() =>
+                        <Normaltekst>
+                            {tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}
+                        </Normaltekst>
+                    }
+                />
+
+                <Vis hvis={dag.dagtype == 'AvvistDag'}
+                    render={() =>
+                        <Normaltekst>
+                            {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
+                        </Normaltekst>
+                    }
+                />
+
+                <Vis hvis={dag.begrunnelser.length > 0}
+                    render={ () =>
+                        <>
+                            <Normaltekst className={'avvist-lovhjemmel'}>
+                                {parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))}
+                            </Normaltekst>
+                        </>
+                    }
+                />
             </>
         )
     }

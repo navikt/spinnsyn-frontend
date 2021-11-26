@@ -967,14 +967,14 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             belop: 0,
             grad: 0,
             dagtype: 'Feriedag',
-            begrunnelser: []
+            begrunnelser: [ 'Ferie' ]
         },
         {
             dato: '2021-02-13',
             belop: 0,
             grad: 0,
             dagtype: 'ForeldetDag',
-            begrunnelser: []
+            begrunnelser: [ 'Foreldet' ]
         },
         {
             dato: '2021-02-14',
@@ -1065,7 +1065,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             belop: 0,
             grad: 0,
             dagtype: 'Permisjonsdag',
-            begrunnelser: [ ]
+            begrunnelser: [ 'Permisjon' ]
         }
     ],
     dagerPerson: [],
