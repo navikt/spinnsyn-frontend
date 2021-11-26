@@ -83,15 +83,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'EtterDødsdato':
                 return <Etikett mini type="fokus" key={idx}>Etter dødsfall</Etikett>
 
-            case 'Ferie':
-                return <Etikett mini type="fokus" key={idx}>Ferie</Etikett>
-
-            case 'Permisjon':
-                return <Etikett mini type="fokus" key={idx}>Permisjon</Etikett>
-
-            case 'Foreldet':
-                return <Etikett mini type="fokus" key={idx}>Foreldet</Etikett>
-
             case 'UKJENT':
             default:
                 logger.warn(`Har ingen begrunnelse for: ${begrunnelse}`)
