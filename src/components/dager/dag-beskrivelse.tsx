@@ -24,10 +24,10 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     }
 
     const lagBeskrivelseForUnikDag = (dag: RSDag) => {
+        const lovhjemmelTekst = lovhjemmel(dag)
 
         return (
             <>
-
                 <Vis hvis={dag.dagtype !== 'AvvistDag'}
                     render={() =>
                         <Normaltekst>
@@ -43,11 +43,13 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
                         </Normaltekst>
                     }
                 />
-
-                <Normaltekst className={'avvist-lovhjemmel'}>
-                    {lovhjemmel(dag)}
-                </Normaltekst>
-
+                <Vis hvis={lovhjemmelTekst !== ''}
+                    render={() =>
+                        <Normaltekst className={'avvist-lovhjemmel'}>
+                            {lovhjemmelTekst}
+                        </Normaltekst>
+                    }
+                />
             </>
         )
     }
