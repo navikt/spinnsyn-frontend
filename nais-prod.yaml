@@ -10,6 +10,11 @@ spec:
   port: 8080
   ingresses:
     - "https://www.nav.no/syk/sykepenger"
+  idporten:
+    enabled: true
+    sidecar:
+      enabled: true
+      level: Level4
   replicas:
     min: 2
     max: 3
@@ -25,6 +30,12 @@ spec:
     path: syk/sykepenger/api/isAlive
   readiness:
     path: syk/sykepenger/api/isReady
+  accessPolicy:
+    outbound:
+      rules:
+        - application: spinnsyn-backend
+  tokenx:
+    enabled: true
   env:
     - name: FLEX_GATEWAY_ROOT
       value: "https://flex-gateway.nav.no"
