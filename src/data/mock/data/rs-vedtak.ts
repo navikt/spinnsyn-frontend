@@ -1065,7 +1065,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             belop: 0,
             grad: 0,
             dagtype: 'Permisjonsdag',
-            begrunnelser: [ ]
+            begrunnelser: []
         }
     ],
     dagerPerson: [],
