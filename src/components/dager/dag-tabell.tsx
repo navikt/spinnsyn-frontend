@@ -24,7 +24,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                 {dager.map((dag, idx) =>
                     <tr key={idx}>
                         <td>{dayjs(dag.dato).format('DD.MMM')}</td>
-                        <td>
+                        <td className="kroner">
                             {
                                 (dag.dagtype === 'NavDag' || dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
                                     ? ValutaFormat.format(dag.belop) + ' kr'
