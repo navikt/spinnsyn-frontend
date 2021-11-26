@@ -21,10 +21,10 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.contains('Slik beregner vi sykepengene')
             .click({ force: true })
 
-        cy.get('.inntekt__info > :nth-child(1)').contains('Månedslønn Posten Norge AS, Bærum')
+        cy.get('.inntekt__info > :nth-child(1)').contains('Månedslønn')
         cy.get('.inntekt__info > :nth-child(1)').contains('74 675 kr')
 
-        cy.get('.inntekt__info > :nth-child(2)').contains('Årslønn Posten Norge AS, Bærum')
+        cy.get('.inntekt__info > :nth-child(2)').contains('Årslønn')
         cy.get('.inntekt__info > :nth-child(2)').contains('896 100 kr')
 
         cy.get('.inntekt__info > :nth-child(3)').contains('Årslønn fra andre arbeidsgivere')

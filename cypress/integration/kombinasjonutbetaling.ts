@@ -29,8 +29,8 @@ describe('Tester visning av kombinasjon', () => {
 
 
         //
-        cy.get('.personutbetaling .utvidbar__innhold > :nth-child(11)').contains('Totalbeløp').should('be.visible')
-        cy.get('.personutbetaling .utvidbar__innhold > :nth-child(12)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.').should('be.visible')
+        cy.get('.personutbetaling .utvidbar__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
+        cy.get('.personutbetaling .utvidbar__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.').should('be.visible')
 
 
         cy.contains('24 550 kroner')
@@ -53,8 +53,8 @@ describe('Tester visning av kombinasjon', () => {
 
         cy.get('.refusjon').contains('Slik beregner vi sykepengene').click({ force: true })
 
-        cy.get('.refusjon .utvidbar__innhold > :nth-child(11)').contains('Totalbeløp').should('be.visible')
-        cy.get('.refusjon .utvidbar__innhold > :nth-child(12)').contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.').should('be.visible')
+        cy.get('.refusjon .utvidbar__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
+        cy.get('.refusjon .utvidbar__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.').should('be.visible')
 
     })
 })

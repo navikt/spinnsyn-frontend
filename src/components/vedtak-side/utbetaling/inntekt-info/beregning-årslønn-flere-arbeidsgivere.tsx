@@ -1,4 +1,4 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Element, Normaltekst, Undertekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../../utils/store-små'
@@ -22,9 +22,9 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
                 { Object.keys(alleÅrsLønn!).map((arbeidsgiverNavn) => (
                     <li key={arbeidsgiverNavn}>
                         <div className="inntekt__info__linje">
-                            <Element className="italic" tag="p">
+                            <Undertekst tag="em">
                                 {storeTilStoreOgSmå(arbeidsgiverNavn)}
-                            </Element>
+                            </Undertekst>
                             <Normaltekst tag="span">{formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}</Normaltekst>
                         </div>
                     </li>
