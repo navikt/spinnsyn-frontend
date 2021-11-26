@@ -460,7 +460,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             organisasjonsnummer: '999999999',
             forbrukteSykedager: 15,
             gjenståendeSykedager: 180,
-            automatiskBehandling: true,
+            automatiskBehandling: false,
         }
     },
     opprettet: '2021-05-03',
@@ -732,7 +732,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             organisasjonsnummer: '999999999',
             forbrukteSykedager: 9,
             gjenståendeSykedager: 186,
-            automatiskBehandling: true,
+            automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
         }
     },

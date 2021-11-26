@@ -25,8 +25,8 @@ describe('Tester at appen starter', () => {
 
         cy.contains('14. juni 2021')
 
-        cy.contains('Automatisk behandling')
-        cy.contains('Søknaden din er behandlet automatisk. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')
+        cy.contains('Opplysningene')
+        cy.contains('Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')
     })
 
     it('Den grønne boksen har riktig innhold', () => {
@@ -96,7 +96,6 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 7).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakRevurdert.id}`)
-        cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
         cy.get('.annullering > .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
