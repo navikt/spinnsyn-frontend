@@ -35,7 +35,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return <Etikett mini type="fokus">Fridag</Etikett>
 
             case 'Feriedag':
-                return <Etikett mini type="fokus">Feriedag</Etikett>
+                return <Etikett mini type="fokus">Ferie</Etikett>
 
             case 'Permisjonsdag':
                 return <Etikett mini type="fokus">Permisjon</Etikett>
@@ -90,7 +90,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return <Etikett mini type="fokus" key={idx}>Permisjon</Etikett>
 
             case 'Foreldet':
-                return <Etikett mini type="fokus" key={idx}>Permisjon</Etikett>
+                return <Etikett mini type="fokus" key={idx}>Foreldet</Etikett>
 
             case 'UKJENT':
             default:

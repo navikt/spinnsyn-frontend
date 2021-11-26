@@ -67,10 +67,10 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
-    'utbetaling.tabell.avvist.lovhjemmel.Foreldet': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.Over70': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
-    'utbetaling.tabell.avvist.lovhjemmel.Ferie': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a> når vi har behandlet saken din.',
-    'utbetaling.tabell.avvist.lovhjemmel.Permisjon': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.Feriedag': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': 'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',

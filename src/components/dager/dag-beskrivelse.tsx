@@ -13,6 +13,16 @@ interface DagBeskrivelseProps {
 
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
+    const lovhjemmel = (dag: RSDag) => {
+        if (dag.begrunnelser.length > 0) {
+            return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[ 0 ]}` as any))
+        }
+        if ( dag.dagtype == 'ForeldetDag' || dag.dagtype == 'Feriedag' || dag.dagtype == 'Permisjonsdag') {
+            return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.dagtype}` as any))
+        }
+        else return ''
+    }
+
     const lagBeskrivelseForUnikDag = (dag: RSDag) => {
 
         return (
@@ -34,15 +44,10 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
                     }
                 />
 
-                <Vis hvis={dag.begrunnelser.length > 0}
-                    render={ () =>
-                        <>
-                            <Normaltekst className={'avvist-lovhjemmel'}>
-                                {parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))}
-                            </Normaltekst>
-                        </>
-                    }
-                />
+                <Normaltekst className={'avvist-lovhjemmel'}>
+                    {lovhjemmel(dag)}
+                </Normaltekst>
+
             </>
         )
     }

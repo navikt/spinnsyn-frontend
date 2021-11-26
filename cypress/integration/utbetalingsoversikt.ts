@@ -101,7 +101,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
                 .contains('Fridag').parent().siblings()
                 .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
             cy.get('.etikett--mini.etikett--fokus')
-                .contains('Feriedag').parent().siblings()
+                .contains('Ferie').parent().siblings()
                 .contains('Du har oppgitt i søknaden at du hadde ferie. I ferien stoppes sykepengene.')
             cy.get('.etikett--mini.etikett--fokus')
                 .contains('Søkt for sent').parent().siblings()
