@@ -17,8 +17,7 @@ import TilbakeLenke from '../tilbake/tilbake-lenke'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
-import AutomatiskBehandling from './behandling/automatiskBehandling'
-import AutomatiskBehandlingPreteritum from './behandling/automatiskBehandlingPreteritum'
+import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
@@ -118,21 +117,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
                 <Vis hvis={!annullertEllerRevurdert}
                     render={() =>
-                        <>
-                            <Uenig vedtak={vedtak} />
-                            <Vis hvis={vedtak.vedtak.utbetaling.automatiskBehandling}
-                                render={() =>
-                                    <AutomatiskBehandling />
-                                }
-                            />
-                        </>
+                        <Uenig vedtak={vedtak} />
                     }
                 />
-                <Vis hvis={annullertEllerRevurdert && vedtak.vedtak.utbetaling.automatiskBehandling}
-                    render={() =>
-                        <AutomatiskBehandlingPreteritum />
-                    }
-                />
+
+
+                <Behandling vedtak={vedtak} />
+
 
                 <Undertittel className="utvikling__tittel">
                     {tekst('vedtak.utvikling.tittel')}
