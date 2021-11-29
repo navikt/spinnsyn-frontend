@@ -1,11 +1,11 @@
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
-import { withAuthenticatedPage } from '../auth/withAuthentication'
+import { beskyttetSide } from '../auth/beskyttetSide'
 import { hentVedtak } from '../data/hentVedtak'
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 
-export const prefetchVedtak = withAuthenticatedPage(async(ctx): Promise<GetServerSidePropsPrefetchResult> => {
+export const prefetchVedtak = beskyttetSide(async(ctx): Promise<GetServerSidePropsPrefetchResult> => {
     const queryClient = new QueryClient()
 
     await queryClient.prefetchQuery('vedtak', () => {

@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http'
 import getConfig from 'next/config'
 
-import { getTokenxToken } from '../auth/tokenx'
+import { getTokenxToken } from '../auth/getTokenxToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { isMockBackend } from '../utils/environment'

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
-import { isOpplaering, isProd } from '../../utils/environment'
+import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
@@ -28,7 +28,9 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
         if (isProd() || isOpplaering()) {
             setTimeout(() => {
                 if (typeof hotJarWindow.hj !== 'function') {
-                    logger.info('Hotjar ble ikke lastet inn...')
+                    if (!isMockBackend()) {
+                        logger.info('Hotjar ble ikke lastet inn...')
+                    }
                 } else {
                     hotJarWindow.hj('trigger', 'SP_INNSYN')
                 }

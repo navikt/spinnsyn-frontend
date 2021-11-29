@@ -1,4 +1,9 @@
+import getConfig from 'next/config'
 import { Client, errors, GrantBody, Issuer } from 'openid-client'
+
+import { logger } from '../utils/logger'
+
+const { serverRuntimeConfig } = getConfig()
 const OPError = errors.OPError
 
 let _issuer: Issuer<Client>
@@ -6,27 +11,27 @@ let _client: Client
 
 async function issuer() {
     if (typeof _issuer === 'undefined') {
-        if (!process.env.TOKEN_X_WELL_KNOWN_URL)
+        if (!serverRuntimeConfig.tokenXWellKnownUrl)
             throw new TypeError('Miljøvariabelen "TOKEN_X_WELL_KNOWN_URL må være satt')
-        _issuer = await Issuer.discover(process.env.TOKEN_X_WELL_KNOWN_URL)
+        _issuer = await Issuer.discover(serverRuntimeConfig.tokenXWellKnownUrl)
     }
     return _issuer
 }
 
 function jwk() {
-    if (!process.env.TOKEN_X_PRIVATE_JWK) throw new TypeError('Miljøvariabelen "TOKEN_X_PRIVATE_JWK må være satt')
-    return JSON.parse(process.env.TOKEN_X_PRIVATE_JWK)
+    if (!serverRuntimeConfig.tokenXPrivateJwk) throw new TypeError('Miljøvariabelen "TOKEN_X_PRIVATE_JWK må være satt')
+    return JSON.parse(serverRuntimeConfig.tokenXPrivateJwk)
 }
 
 async function client() {
     if (typeof _client === 'undefined') {
-        if (!process.env.TOKEN_X_CLIENT_ID) throw new TypeError('Miljøvariabelen "TOKEN_X_CLIENT_ID må være satt')
+        if (!serverRuntimeConfig.tokenXClientId) throw new TypeError('Miljøvariabelen "TOKEN_X_CLIENT_ID må være satt')
 
         const _jwk = jwk()
         const _issuer = await issuer()
         _client = new _issuer.Client(
             {
-                client_id: process.env.TOKEN_X_CLIENT_ID,
+                client_id: serverRuntimeConfig.tokenXClientId,
                 token_endpoint_auth_method: 'private_key_jwt',
             },
             { keys: [ _jwk ] },
@@ -57,15 +62,10 @@ export async function getTokenxToken(subject_token: string, audience: string): P
     try {
         const grant = await _client.grant(grantBody, additionalClaims)
         return grant.access_token
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
         switch (err.constructor) {
-            // TODO: case RequestError:
-            //     console.error('Kunne ikke koble til TokenX', err);
-            //     break;
             case OPError:
-                // eslint-disable-next-line no-console
-                console.error(
+                logger.error(
                     `Noe gikk galt med token exchange mot TokenX.
             Feilmelding fra openid-client: (${err}).
             HTTP Status fra TokenX: (${err.response.statusCode} ${err.response.statusMessage})

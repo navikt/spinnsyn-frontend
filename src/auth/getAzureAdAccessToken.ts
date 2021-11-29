@@ -9,7 +9,7 @@ interface TokenResponse {
     'access_token': string
 }
 
-export const getAccessToken = async(): Promise<TokenResponse> => {
+export const getAzureAdAccessToken = async(): Promise<TokenResponse> => {
 
     const params = new URLSearchParams()
     params.append('client_id', serverRuntimeConfig.azureAppClientId)

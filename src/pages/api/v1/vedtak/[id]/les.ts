@@ -2,13 +2,14 @@ import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import getConfig from 'next/config'
 
-import { getTokenxToken } from '../../../../../auth/tokenx'
+import { beskyttetApi } from '../../../../../auth/beskyttetApi'
+import { getTokenxToken } from '../../../../../auth/getTokenxToken'
 import { ErrorMedStatus } from '../../../../../server-utils/ErrorMedStatus'
 import { isMockBackend } from '../../../../../utils/environment'
 
 const { serverRuntimeConfig } = getConfig()
 
-const handler = async(req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const handler = beskyttetApi(async(req: NextApiRequest, res: NextApiResponse): Promise<void> => {
     if (req.method !== 'POST') {
         return res.status(404).json('Må være POST')
 
@@ -34,6 +35,6 @@ const handler = async(req: NextApiRequest, res: NextApiResponse): Promise<void> 
         throw new ErrorMedStatus('Ikke 200 svar fra spinnsyn-backend', 500)
     }
     res.status(200).json({ ok: 'ok' })
-}
+})
 
 export default handler

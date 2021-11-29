@@ -23,6 +23,11 @@ module.exports = withLess({
         naisAppImage: process.env.NAIS_APP_IMAGE,
         loginserviceUrl: process.env.LOGINSERVICE_URL,
         loginServiceRedirectUrl: process.env.LOGINSERVICE_REDIRECT_URL,
+        loginserviceIdportenDiscoveryUrl: process.env.LOGINSERVICE_IDPORTEN_DISCOVERY_URL,
+        loginserviceIdportenAudience: process.env.LOGINSERVICE_IDPORTEN_AUDIENCE,
+        tokenXWellKnownUrl: process.env.TOKEN_X_WELL_KNOWN_URL,
+        tokenXPrivateJwk: process.env.TOKEN_X_PRIVATE_JWK,
+        tokenXClientId: process.env.TOKEN_X_CLIENT_ID,
     },
     publicRuntimeConfig: {
         // Will be available on both server and client

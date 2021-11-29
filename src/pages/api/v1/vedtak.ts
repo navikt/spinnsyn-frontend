@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { withAuthenticatedApi } from '../../../auth/withAuthentication'
+import { beskyttetApi } from '../../../auth/beskyttetApi'
 import { hentVedtak } from '../../../data/hentVedtak'
 
-const handler = withAuthenticatedApi(async(req: NextApiRequest, res: NextApiResponse) => {
+const handler = beskyttetApi(async(req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'GET') {
         return res.status(404).json('Må være GET')
     }
