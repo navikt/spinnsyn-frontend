@@ -1,35 +1,74 @@
 @import '../../../../../node_modules/nav-frontend-core/less/_variabler';
 
 .inntekt__info {
-    padding: 0.5rem 1rem 1rem;
+    background-color: @white;
+    border-collapse: collapse;
+    padding-top: 0.8rem;
 
-    .inntekt__info__linje {
-        padding-top: 0.5rem;
+    &:after {
+        content: '';
+        top: -15px;
+        left: 15px;
+        width: 1rem;
+        height: 1rem;
+        position: relative;
+        display: block;
+        transform: translateY(1.5rem) rotate(45deg);
+        background-color: white;
+    }
+
+    table {
         width: 100%;
-        clear: both;
+        border-collapse: collapse;
 
-        :first-child {
-            display: inline-block;
+        th {
+            padding: 0.35rem 0.25rem 0.35rem 1rem;
+            text-align: left;
         }
 
-        :last-child {
-            float: right;
+        td {
+            padding: 0.35rem 1rem 0.35rem 0.25rem;
+            text-align: right;
             white-space: nowrap;
         }
     }
 
-    .inntekt__info__redusert_sykepengegrunnlag {
-        background-color: mix(@navOransje, @white, 5%);
-        margin: 0.5rem 0 0;
-        padding: 0.5rem;
+    .flere-arbeidsgivere {
+        .arbgivernavn {
+            font-weight: normal;
+            padding-left: 1.5rem;
 
-        img  {
+            &:before {
+                content: "•";
+                font-size: 14px;
+                margin-right: 5px;
+            }
+        }
+
+        tr:last-child {
+            th, td {
+                padding-top: 1rem;
+            }
+        }
+    }
+
+    .redusert_sykepengegrunnlag {
+        margin: 0.5rem 0.7rem 1rem;
+        padding: 0.5rem 0.8rem;
+        background-color: mix(@navOransje, @white, 7%);
+
+        .img-rad {
+            display: flex;
+            margin: 0.5rem 0;
+        }
+
+        img {
             width: 24px;
             margin-right: 0.5rem;
+        }
 
-            ~ p {
-                padding-top: 0.5rem;
-            }
+        th, td {
+            padding: 0.7rem 0 0.35rem;
         }
     }
 }
