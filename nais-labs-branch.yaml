@@ -5,8 +5,6 @@ metadata:
   namespace: flex
   labels:
     team: flex
-  annotations:
-    snorlax.nais.io/enabled: "true"
 spec:
   image: {{ image }}
   port: 8080
