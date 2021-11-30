@@ -16,4 +16,4 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: labs-gcp
           RESOURCE: nais-labs-branch.yaml
-          VAR: appname=${{ env.branchname }},replicas=0
+          VAR: appname=${{ env.branchname }},replicas=0,branchState=deleted

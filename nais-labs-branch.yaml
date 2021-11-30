@@ -5,14 +5,13 @@ metadata:
   namespace: flex
   labels:
     team: flex
+    branchState: {{ branchState }}
 spec:
   image: {{ image }}
   port: 8080
   ingresses:
     - "https://spinnsyn-{{appname}}.labs.nais.io/"
-  replicas:
-    min: {{ replicas }}
-    max: {{ replicas }}
+  replicas: {{ replicas }}
   liveness:
     path: syk/sykepenger/api/isAlive
   readiness:
