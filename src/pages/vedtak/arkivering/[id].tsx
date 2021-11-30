@@ -59,6 +59,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         ctx.res.setHeader('x-nais-app-image', serverRuntimeConfig.naisAppImage)
         ctx.res.setHeader('x-vedtak-fom', vedtaket.vedtak.fom)
         ctx.res.setHeader('x-vedtak-tom', vedtaket.vedtak.tom)
+        logger.info(`Rendrer vedtak ${utbetalingId} for arkivering`)
 
         return {
             props: {
