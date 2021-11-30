@@ -11,7 +11,9 @@ spec:
   port: 8080
   ingresses:
     - "https://spinnsyn-{{appname}}.labs.nais.io/"
-  replicas: {{ replicas }}
+  replicas:
+    min: {{ replicas }}
+    max: {{ replicas }}
   liveness:
     path: syk/sykepenger/api/isAlive
   readiness:
