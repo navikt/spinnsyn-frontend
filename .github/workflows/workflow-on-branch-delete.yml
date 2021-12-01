@@ -4,6 +4,11 @@ env:
   APP: spinnsyn-frontend
   branchname: ${{ github.ref_name }}
 jobs:
+  run-this:
+    name: Echo
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${github.event.ref} og ${github.ref}"
   deploy-branch-to-labs-gcp:
     if: startsWith(github.ref, 'refs/heads/labs-')
     name: Delete branch labs-gcp
