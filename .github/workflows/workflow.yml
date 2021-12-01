@@ -79,6 +79,7 @@ jobs:
     name: Deploy to dev-gcp
     needs: build-and-publish
     runs-on: ubuntu-latest
+    concurrency: deploy-to-dev-gcp
     steps:
       - uses: actions/checkout@v1
       - uses: actions/download-artifact@v1
@@ -94,11 +95,33 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: nais-dev.yaml
 
+  deploy-spinnsyn-interne-to-dev-gcp:
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/dev-')
+    name: Deploy spinnsyn-interne to dev-gcp
+    needs: build-and-publish
+    runs-on: ubuntu-latest
+    concurrency: deploy-spinnsyn-interne-to-dev-gcp
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/download-artifact@v1
+        with:
+          name: VERSION.txt
+          path: .
+      - run: echo "VERSION=`cat VERSION.txt`" >> $GITHUB_ENV
+      - run: echo "IMAGE=docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP:$VERSION" >> $GITHUB_ENV
+      - name: Deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: nais-interne-dev.yaml
+
   deploy-arkivering-to-dev-gcp:
       if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/dev-')
       name: Deploy frontend arkivering to dev-gcp
       needs: build-and-publish
       runs-on: ubuntu-latest
+      concurrency: deploy-arkivering-to-dev-gcp
       steps:
           - uses: actions/checkout@v1
           - uses: actions/download-artifact@v1
@@ -134,6 +157,27 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
           RESOURCE: nais-prod.yaml
+
+  deploy-spinnsyn-interne-to-prod-gcp:
+    if: github.ref == 'refs/heads/master'
+    name: Deploy spinnsyn-interne to prod-gcp
+    needs: build-and-publish
+    runs-on: ubuntu-latest
+    concurrency: deploy-spinnsyn-interne-to-prod-gcp
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/download-artifact@v1
+        with:
+          name: VERSION.txt
+          path: .
+      - run: echo "VERSION=`cat VERSION.txt`" >> $GITHUB_ENV
+      - run: echo "IMAGE=docker.pkg.github.com/${GITHUB_REPOSITORY}/$APP:$VERSION" >> $GITHUB_ENV
+      - name: Deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-gcp
+          RESOURCE: nais-interne-prod.yaml
 
   deploy-arkivering-to-prod-gcp:
       if: github.ref == 'refs/heads/master'
