@@ -2,16 +2,11 @@ import { loginServiceRedirectUrl, loginServiceUrl } from './environment'
 import { logger } from './logger'
 
 
-export const hentLoginUrl = () => {
-    return `${loginServiceUrl()}?redirect=${loginServiceRedirectUrl()}`
-}
-
 /**
  * Class with utility functions for working with fetch.
  * Redirects to Login Service if any request contains a 401 response.
  */
 class Fetch {
-    static loginServiceUrl = hentLoginUrl();
 
     /**
      * Make a GET request for the specified resource
@@ -33,7 +28,7 @@ class Fetch {
                 if (error instanceof TypeError) {
                     logger.warn('oops', error)
                 } else {
-                    logger.error('Unnamed error occured', error )
+                    logger.error('Unnamed error occured', error)
                 }
                 throw new Error(
                     'Beklager! En uventet feil har oppstått. Sannsynligvis jobber vi med saken allerede, men ta kontakt med oss hvis det ikke har løst seg til i morgen.',
@@ -41,7 +36,7 @@ class Fetch {
             }
         }
         if (res.status === 401) {
-            window.location.href = this.loginServiceUrl
+            window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
             throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
         const textResponse = await res.text()
@@ -73,7 +68,7 @@ class Fetch {
             return textResponse
         }
         if (res.status === 401) {
-            window.location.href = this.loginServiceUrl
+            window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
             throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
         logger.warn(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
