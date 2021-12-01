@@ -1,16 +1,18 @@
 import Lenke from 'nav-frontend-lenker'
 import { Element, Normaltekst, Sidetittel, Systemtittel, Undertittel } from 'nav-frontend-typografi'
 import Veilederpanel from 'nav-frontend-veilederpanel'
-import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { Brodsmule } from '../../types/types'
+import { SEPARATOR } from '../../utils/constants'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
+import { medQuery } from '../../utils/url-utils'
 import Banner from '../banner/banner'
-import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
+import Brodsmuler from '../brodsmuler/brodsmuler'
 import TilbakeLenke from '../tilbake/tilbake-lenke'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
@@ -21,6 +23,17 @@ import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
+const brodsmuler: Brodsmule[] = [
+    {
+        tittel: tekst('vedtak-liste.sidetittel'),
+        sti: SEPARATOR + medQuery(),
+        erKlikkbar: true
+    }, {
+        tittel: tekst('vedtak.sidetittel'),
+        sti: '/vedtak',
+        erKlikkbar: false
+    }
+]
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -35,29 +48,11 @@ export interface VedtakProps {
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
-
-    const router = useRouter()
-
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
     const erArkivering = useContext(ArkiveringContext)
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
-    const query: NodeJS.Dict<string | string[]> = {}
 
-    for (const key in router.query) {
-        if (key != 'id') {
-            query[ key ] = router.query[ key ]
-        }
-    }
-
-    const brodsmuler: Brodsmule[] = [
-        {
-            tittel: tekst('vedtak-liste.sidetittel'),
-            sti: { pathname: '/', query },
-        }, {
-            tittel: tekst('vedtak.sidetittel'),
-        }
-    ]
     return (
         <>
             <Vis hvis={!erArkivering}

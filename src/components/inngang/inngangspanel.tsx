@@ -1,9 +1,7 @@
 import { Undertekst, Undertittel } from 'nav-frontend-typografi'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import Vis from '../vis'
 
 interface InngangsIkonProps {
@@ -29,16 +27,14 @@ export const InngangsIkon = ({ ikon, ikonHover }: InngangsIkonProps) => {
 }
 
 interface InngangsProps {
-    vedtak: RSVedtakWrapper;
+    to: string;
     children: React.ReactNode;
 }
 
-export const Inngangspanel = ({ vedtak, children, }: InngangsProps) => {
-    const router = useRouter()
-
+export const Inngangspanel = ({ to, children, }: InngangsProps) => {
     return (
-        <Link href={{ pathname: `/vedtak/${vedtak.id}`, query: router.query }}>
-            <a className="inngangspanel">{children}</a>
+        <Link to={to} className="inngangspanel">
+            {children}
         </Link>
     )
 }

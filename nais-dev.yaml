@@ -36,8 +36,6 @@ spec:
         - application: spinnsyn-backend
   tokenx:
     enabled: true
-  envFrom:
-    - configmap: loginservice-idporten
   env:
     - name: FLEX_GATEWAY_ROOT
       value: "https://flex-gateway.dev.nav.no"
@@ -65,5 +63,3 @@ spec:
       value: "false"
     - name: ARKIVERING
       value: "false"
-    - name: SPINNSYN_BACKEND_URL
-      value: "http://spinnsyn-backend"

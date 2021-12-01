@@ -24,14 +24,14 @@ import dayjs from 'dayjs'
 import nb from 'dayjs/locale/nb'
 import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
-import React, { PropsWithChildren, useState } from 'react'
-import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import React, { PropsWithChildren } from 'react'
+import { DehydratedState } from 'react-query/hydration'
 
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
         dehydratedState: DehydratedState;
-    };
+    }
 }
 
 dayjs.locale({
@@ -41,19 +41,6 @@ dayjs.locale({
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
-    const [ queryClient ] = useState(
-        () =>
-            new QueryClient({
-                defaultOptions: {
-                    queries: {
-                        /* Setting this to true causes the request to be immediately executed after initial
-                           mount Even if the query had data hydrated from the server side render */
-                        refetchOnMount: false,
-                    },
-                },
-            }),
-    )
-
 
     return (
         <>
@@ -62,17 +49,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                 <meta name="robots" content="noindex" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <QueryClientProvider client={queryClient}>
-                <Hydrate state={pageProps.dehydratedState}>
-                    <div className="pagewrapper">
-                        <div id="root"><Component {...pageProps} /></div>
-                    </div>
-                </Hydrate>
-            </QueryClientProvider>
-
+            <div className="pagewrapper">
+                <div id="root"><Component {...pageProps} /></div>
+            </div>
         </>
     )
 }
-
 
 export default MyApp

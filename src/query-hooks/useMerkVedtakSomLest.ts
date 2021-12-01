@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query'
 
+import { flexGatewayRoot } from '../utils/environment'
 import Fetch from '../utils/fetch'
 import { logger } from '../utils/logger'
 
@@ -8,7 +9,7 @@ export default function UseMerkVedtakSomLest() {
 
     return useMutation<unknown, Error, string>((vedtaksId) => {
         return Fetch.authenticatedPost(
-            `/syk/sykepenger/api/v1/vedtak/${vedtaksId}/les`
+            `${flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak/${vedtaksId}/les`
         )
     },
     {
