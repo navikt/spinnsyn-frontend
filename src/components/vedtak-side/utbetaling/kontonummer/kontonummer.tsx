@@ -12,6 +12,7 @@ const Kontonummer = () => {
 
     useEffect(() => {
         hentKontonummer()
+            .then(kontonummer => setKontonummer(kontonummer!))
     }, [])
 
     async function hentKontonummer() {
@@ -23,11 +24,11 @@ const Kontonummer = () => {
                 headers: { 'Content-Type': 'application/json' }
             })
             const data: Personalia = await res.json()
-            setKontonummer(data?.personalia?.kontonr)
+            return (data?.personalia?.kontonr)
         }
 
         if (isMockBackend()) {
-            setKontonummer('10010110001')
+            return ('12332112332')
         }
     }
 
