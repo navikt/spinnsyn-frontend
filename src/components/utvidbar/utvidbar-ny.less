@@ -1,0 +1,172 @@
+@import '../../../node_modules/nav-frontend-core/less/_variabler';
+@import '../../../src/components/basic';
+
+.utvidbarNy {
+    overflow: hidden;
+    padding: 0.6rem 0;
+    margin: 0.5rem 0;
+
+    .ekspanderbartPanel__hode:focus {
+        box-shadow: none;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        background: none;
+        border: 0;
+
+        .ekspanderbartPanel__flex-wrapper {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .ekspanderbartPanel__tittel {
+            display: inline-flex;
+        }
+    }
+
+    .ekspanderbartPanel__innhold {
+        padding: 0 5.8rem 1.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .utvidbar__ikon {
+        margin: auto 1.5rem auto 0.75rem;
+        min-width: 40px;
+        max-width: 36px;
+    }
+
+    &.apen {
+        .utvidbar__ikon {
+            display: none;
+        }
+    }
+
+    &.bla {
+        background-color: @navLysBlaLighten80;
+    }
+
+    &.gronn {
+        background-color: @alternativLysGronn;
+    }
+
+    &.gul {
+        background-color: @alternativLysOrange;
+    }
+
+    &.intern {
+        display: inline-block;
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 0.5rem;
+
+        &:hover {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        button {
+            display: inline;
+            padding: 0;
+            background-color: transparent;
+            border: 0;
+
+            .ekspanderbartPanel__flex-wrapper {
+                display: inline-flex;
+            }
+
+            .ekspanderbartPanel__tittel {
+                color: @navBla;
+            }
+
+            .ekspanderbartPanel__indikator {
+                color: @navBla;
+                margin-left: 0.5rem;
+            }
+        }
+
+        .ekspanderbartPanel__innhold {
+            padding: 0;
+        }
+
+        .utvidbar__innhold {
+            padding: 0 0 2rem;
+
+            .alertstripe__ikon {
+                display: none;
+            }
+        }
+
+        .lenkerad {
+            padding-top: 1rem;
+            text-align: center;
+
+            .lenke {
+                border: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    .tekstinfo__avsnitt {
+        margin-top: 1rem;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .typo-normal {
+            margin: 0.35rem 0 0;
+        }
+    }
+
+}
+
+@media (min-width: @screen-sm) {
+    .utvidbarNy {
+        .utvidbar__toggle {
+            padding: 1.5rem 1rem;
+
+            &:hover {
+                color: @navBla;
+            }
+
+            .utvidbar__ikon {
+                display: block;
+            }
+        }
+
+        &.apen {
+            .utvidbar__ikon {
+                display: block;
+            }
+        }
+    }
+}
+
+@media print {
+    .utvidbarNy {
+        .utvidbar__toggle {
+            border-bottom: 1px solid @navGra40;
+            text-decoration: none;
+        }
+    }
+
+    &.intern {
+        .utvidbar__toggle {
+            border: 0;
+        }
+
+        .utvidbar__innhold {
+            .alertstripe__ikon {
+                display: inline;
+            }
+        }
+    }
+}
