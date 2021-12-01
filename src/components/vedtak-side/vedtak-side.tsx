@@ -1,22 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
-import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
+import useVedtak from '../../query-hooks/useVedtak'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { isOpplaering, isProd } from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
-import Vedtak, { VedtakProps } from './vedtak'
+import { RouteParams } from '../app'
+import Vedtak from './vedtak'
 
 
-const VedtakSide = ({ vedtak }: VedtakProps) => {
+const VedtakSide = () => {
+    const { id } = useParams<RouteParams>()
+    const { data: vedtak } = useVedtak()
     const { mutate: merkLest } = useMerkVedtakSomLest()
-
+    const [ valgtVedtak, setValgtVedtak ] = useState<RSVedtakWrapper>()
 
     useEffect(() => {
         setBodyClass('vedtak-side')
         logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
         // eslint-disable-next-line
     }, [])
+
+    useEffect(() => {
+        if (vedtak) {
+            const aktivtVedtak = vedtak.find(v => v.id === id)
+            setValgtVedtak(aktivtVedtak)
+        }
+        // eslint-disable-next-line
+    }, [vedtak])
 
 
     useEffect(() => {
@@ -28,9 +42,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
         if (isProd() || isOpplaering()) {
             setTimeout(() => {
                 if (typeof hotJarWindow.hj !== 'function') {
-                    if (!isMockBackend()) {
-                        logger.info('Hotjar ble ikke lastet inn...')
-                    }
+                    logger.info('Hotjar ble ikke lastet inn...')
                 } else {
                     hotJarWindow.hj('trigger', 'SP_INNSYN')
                 }
@@ -42,14 +54,16 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
     }, [])
 
     useEffect(() => {
-        if (!vedtak.lest) {
-            merkLest(vedtak.id)
+        if (valgtVedtak && !valgtVedtak.lest) {
+            merkLest(valgtVedtak.id)
         }
-    }, [ vedtak, merkLest ])
+        // eslint-disable-next-line
+    }, [valgtVedtak])
 
+    if (!valgtVedtak) return null
 
     return (
-        <Vedtak vedtak={vedtak} />
+        <Vedtak vedtak={valgtVedtak} />
     )
 }
 

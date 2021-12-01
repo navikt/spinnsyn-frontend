@@ -1,6 +1,6 @@
 import getConfig from 'next/config'
 
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig()
 
 export function isDev() {
     return publicRuntimeConfig.environment === 'dev'
@@ -27,11 +27,11 @@ export function isOpplaering() {
 }
 
 export function loginServiceUrl() {
-    return serverRuntimeConfig.loginserviceUrl
+    return publicRuntimeConfig.loginserviceUrl
 }
 
 export function loginServiceRedirectUrl() {
-    return serverRuntimeConfig.loginServiceRedirectUrl
+    return publicRuntimeConfig.loginServiceRedirectUrl
 }
 
 export function sykefravaerUrl() {

@@ -1,22 +1,13 @@
-import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { flexGatewayRoot } from '../utils/environment'
 import Fetch from '../utils/fetch'
 
 export default function UseVedtak() {
-    const router = useRouter()
-    const testpersonQuery = router.query[ 'testperson' ]
-
-    const query = () => {
-        if (testpersonQuery) {
-            return `?testperson=${testpersonQuery}`
-        }
-        return ''
-    }
     return useQuery<RSVedtakWrapper[], Error>('vedtak', () =>
         Fetch.authenticatedGet(
-            '/syk/sykepenger/api/v1/vedtak' + query(),
+            `${flexGatewayRoot()}/spinnsyn-backend/api/v2/vedtak`,
             async(data) => {
                 return data as RSVedtakWrapper[]
             },

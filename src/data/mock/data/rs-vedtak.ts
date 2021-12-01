@@ -437,6 +437,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
 export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
     id: '99f389f2-0084-481b-bed8-47f6ac3491d4',
     lest: false,
+    lestDato: undefined,
     orgnavn: 'PENGELØS SPAREBANK',
     andreArbeidsgivere: {},
     vedtak: {
@@ -1352,7 +1353,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
 }
 
 export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
-    id: 'dff11217-31ea-404a-86ab-b521a6a946df',
+    id: 'dff11217-31ea-404a-86ab-b521a6a946af',
     lest: false,
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},

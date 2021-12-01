@@ -67,15 +67,11 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(200)
         cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click()
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(200)
     })
 
     it('Det er 1 uleste vedtak og 7 leste', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
+        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger/')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 7)
     })
