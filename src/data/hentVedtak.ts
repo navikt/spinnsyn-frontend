@@ -42,7 +42,7 @@ export async function hentVedtak(incomingMessage: IncomingMessage, cookies?: { [
 const hentVedtakFraSpinnsynBackend = async(incomingMessage: IncomingMessage): Promise<RSVedtakWrapper[]> => {
 
     const idportenToken = incomingMessage.headers.authorization!.split(' ')[ 1 ]
-    const tokenxToken = await getTokenxToken(idportenToken, 'dev-gcp:flex:spinnsyn-backend')
+    const tokenxToken = await getTokenxToken(idportenToken, serverRuntimeConfig.spinnsynBackendTokenxClientId)
     const response = await fetch(`${serverRuntimeConfig.spinnsynBackendUrl}/api/v3/vedtak`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${tokenxToken}` }

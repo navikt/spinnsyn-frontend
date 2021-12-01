@@ -12,6 +12,7 @@ module.exports = withLess({
         utviklingArkivering: process.env.UTVIKLING_ARKIVERING,
         arkivering: process.env.ARKIVERING,
         spinnsynBackendUrl: process.env.SPINNSYN_BACKEND_URL,
+        spinnsynBackendTokenxClientId: process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
         azureAppClientId: process.env.AZURE_APP_CLIENT_ID,
         azureAppClientSecret: process.env.AZURE_APP_CLIENT_SECRET,
         azureOpenidConfigTokenEndpoint: process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,

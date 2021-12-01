@@ -67,3 +67,5 @@ spec:
       value: "false"
     - name: SPINNSYN_BACKEND_URL
       value: "http://spinnsyn-backend"
+    - name: SPINNSYN_BACKEND_TOKENX_CLIENT_ID
+      value: "dev-gcp:flex:spinnsyn-backend"
