@@ -3,7 +3,7 @@ import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
-
+import Kontonummer from './kontonummer/kontonummer'
 
 export const PersonutbetalingInfo = () => {
 
@@ -15,6 +15,9 @@ export const PersonutbetalingInfo = () => {
             <Normaltekst>
                 {parser(tekst('utbetaling.person.når.innhold'))}
             </Normaltekst>
+
+            <Kontonummer />
+
         </section>
     )
 }

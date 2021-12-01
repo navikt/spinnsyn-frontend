@@ -20,6 +20,7 @@ export const personas: StringFunctionMap = {
     'veldig-gammelt-vedtak': () => eldgammelt,
     'delvis-og-helt-avviste-vedtak': () => avvistPerson,
     'kun-direkte': () => kunDirektePerson,
+    'kun-direkte-uten-kontonummer': () => kunDirektePerson,
     'kombinasjon': () => kombinasjonPerson,
     'kun-ag-periode': () => ({ vedtak: [ kunAgPeriode ] }),
 }
