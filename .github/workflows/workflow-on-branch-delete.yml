@@ -2,7 +2,7 @@ name: Labs delete
 on: delete
 env:
   APP: spinnsyn-frontend
-  branchname: ${{ github.ref_name }}
+  branchname: ${{ github.event.ref }}
 jobs:
   deploy-branch-to-labs-gcp:
     if: startsWith(github.event.ref, 'labs-')
