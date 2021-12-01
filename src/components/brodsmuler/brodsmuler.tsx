@@ -1,10 +1,10 @@
 import { OppChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst } from 'nav-frontend-typografi'
+import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { UrlObject } from 'url'
 
-import { Brodsmule } from '../../types/types'
 import { dittNavUrl, sykefravaerUrl } from '../../utils/environment'
 import Vis from '../vis'
 import Person from './Person'
@@ -12,17 +12,18 @@ import Person from './Person'
 const LITEN = 768
 
 const faste: Brodsmule[] = [
-    { tittel: 'Ditt NAV', sti: dittNavUrl(), erKlikkbar: true },
-    { tittel: 'Ditt sykefravær', sti: sykefravaerUrl(), erKlikkbar: true }
+    { tittel: 'Ditt NAV', sti: dittNavUrl() },
+    { tittel: 'Ditt sykefravær', sti: sykefravaerUrl() }
 ]
 
-const BrodsmuleBit = ({ sti, tittel, erKlikkbar }: Brodsmule) => {
-    const erEkstern = sti && (sti.startsWith('https://') || sti.startsWith('http://'))
+const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
+    const erKlikkbar = sti !== undefined
+    const erEkstern = typeof sti === 'string'
 
     const link = erEkstern
-        ? <Lenke href={sti}>{tittel}</Lenke>
+        ? <Lenke href={sti as string}>{tittel}</Lenke>
         : sti
-            ? <Link to={sti} className="lenke">{tittel}</Link>
+            ? <Link href={sti}><a className="lenke">{tittel}</a></Link>
             : <span>{tittel}</span>
 
     if (!erKlikkbar) {
@@ -63,13 +64,13 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         window.addEventListener('resize', () => {
             setSkjerm(window.innerWidth)
         })
-        setSynlige(skjerm! <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler)
+        setSynlige(skjerm! <= LITEN ? [ brodsmuler[ brodsmuler.length - 1 ] ] : brodsmuler)
         // eslint-disable-next-line
-    }, [ skjerm ])
+    }, [skjerm])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
-            setSynlige([ brodsmuler[brodsmuler.length - 1] ])
+            setSynlige([ brodsmuler[ brodsmuler.length - 1 ] ])
             smulesti.current!.classList.remove('apen')
         } else {
             setSynlige(brodsmuler)
@@ -93,7 +94,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                                     className="js-toggle"
                                     onClick={toggleSynlige}
                                 >
-                                    ...
+                                     ...
                                 </button>
                             </li>
                         }
@@ -108,7 +109,6 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                                         ? smule.mobilTittel
                                         : smule.tittel
                                 }
-                                erKlikkbar={smule.erKlikkbar}
                             />
                         )
                     })}
@@ -129,3 +129,9 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
 }
 
 export default Brodsmuler
+
+export interface Brodsmule {
+    sti?: string | UrlObject;
+    tittel: string
+    mobilTittel?: string
+}
