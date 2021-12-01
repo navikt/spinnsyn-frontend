@@ -27,7 +27,6 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         try {
             await validerLoginserviceToken(selvbetjeningIdtoken)
         } catch (e) {
-            logger.warn('kunne ikke autentisere', e)
             return send401()
         }
 
@@ -38,7 +37,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.warn('kunne ikke autentisere', e)
+            logger.warn('kunne ikke validere idportentoken i beskyttetApi', e)
             return send401()
         }
 

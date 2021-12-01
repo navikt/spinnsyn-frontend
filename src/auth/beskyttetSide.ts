@@ -34,7 +34,6 @@ export function beskyttetSide(handler: PageHandler) {
         try {
             await validerLoginserviceToken(selvbetjeningIdtoken)
         } catch (e) {
-            logger.warn('kunne ikke autentisere', e)
             return loginserviceRedirect
         }
 
@@ -51,7 +50,7 @@ export function beskyttetSide(handler: PageHandler) {
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.error('kunne ikke autentisere', e)
+            logger.error('kunne ikke validere idportentoken i beskyttetSide', e)
             return wonderwallRedirect
         }
         return handler(context)
