@@ -1773,7 +1773,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
 }
 
 export const kunDirekte: RSVedtakWrapper = {
-    id: 'dff11217-31ea-404a-86ab-b521a6a946ac',
+    id: '348a5462-456a-4bfc-9b54-11cd77a9937f',
     lest: false,
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
