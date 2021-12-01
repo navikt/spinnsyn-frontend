@@ -13,16 +13,17 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
     it('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', () => {
         cy.get(`article a[href*=${vedtakMed40Grad.id}]`).click()
 
+        cy.contains('Pengeløs Sparebank fra 8. – 21. februar 2021')
+
         cy.get('.utvidbar.orange')
             .should('not.exist')
-
         cy.get('.smule')
             .contains('Svar på søknader')
             .click()
     })
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
-        cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
+        cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click({ force: true })
 
         cy.get('.utvidbar.orange')
             .should('contain', '15 sykepengedager')
@@ -68,10 +69,11 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
         cy.get('.smule')
             .contains('Svar på søknader')
             .click()
+
     })
 
     it('Vedtak med avviste dager og ingen utbetaling', () => {
-        cy.get(`article a[href*=${avvistVedtak.id}]`).click()
+        cy.get(`article a[href*=${avvistVedtak.id}]`).click({ force: true })
 
         cy.get('.utvidbar.gronn')
             .should('not.exist')
