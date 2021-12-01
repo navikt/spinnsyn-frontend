@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             }
         }
     } catch (e) {
-        logger.error({ err: e })
+        logger.warn({ err: e })
         ctx.res.statusCode = e.status || 500
 
         return {
