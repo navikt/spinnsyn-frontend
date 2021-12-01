@@ -193,7 +193,7 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: labs-gcp
           RESOURCE: nais-labs-branch.yaml
-          VAR: appname=${{ env.branchname }}
+          VAR: appname=${{ env.branchname }},replicas=1,branchState=alive
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
