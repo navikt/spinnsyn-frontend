@@ -1,6 +1,8 @@
+import parser from 'html-react-parser'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
+import { tekst } from '../../../../utils/tekster'
 import Vis from '../../../vis'
 
 const Kontonummer = () => {
@@ -12,17 +14,17 @@ const Kontonummer = () => {
         <>
             <Vis hvis={visKontonummer} render={() =>
                 <Normaltekst>
-                    <strong>Utbetales til kontonummer:</strong> 9901 01 12345
+                    <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong> 9901 01 12345
                 </Normaltekst>
             } />
 
             <Vis hvis={testperson === 'kun-direkte-uten-kontonummer'} render={() =>
                 <>
                     <Element tag="h2" className="info__tittel">
-                        Kontonummer for utbetaling
+                        {tekst('utbetaling.kontonummer.tittel')}
                     </Element>
                     <Normaltekst>
-                        Vi har ikke registrert noe kontonummer på deg.
+                        {parser(tekst('utbetaling.kontonummer.mangler'))}
                     </Normaltekst>
                 </>
             } />
