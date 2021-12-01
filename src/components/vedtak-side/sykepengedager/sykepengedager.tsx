@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { tekst } from '../../../utils/tekster'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import Utvidbar from '../../utvidbar/utvidbar'
+import UtvidbarBlå from '../../utvidbar/utvidbar-blå'
 import { VedtakProps } from '../vedtak'
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
@@ -21,49 +22,58 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
 
     return (
-        <Utvidbar type="integrert" className={'blokkinfo bla' + (apen ? ' apen' : '')}
+        <UtvidbarBlå
             erApen={apen}
-            ikon={'/syk/sykepenger/static/img/ikon-plaster.svg'}
-            ikonHover={'/syk/sykepenger/static/img/ikon-plaster-hover.svg'}
-            visLukk={true}
-            tittel={vedtak.vedtak.utbetaling.forbrukteSykedager} ikonAltTekst=""
-            systemtittel={tekst('sykepengedager.hittil')} heading="h2"
+            tittel={
+                <div className="tekstinfo__avsnitt">
+                    <Systemtittel tag="h3">
+                        {vedtak.vedtak.utbetaling.forbrukteSykedager}
+                    </Systemtittel>
+                    <Normaltekst>
+                        {tekst('sykepengedager.hittil')}
+                    </Normaltekst>
+                </div>
+            }
         >
 
-            <Systemtittel tag="h3" className="tekstinfo__avsnitt">
-                {vedtak.vedtak.utbetaling.gjenståendeSykedager}
+            <div className="tekstinfo__avsnitt">
+                <Systemtittel tag="h3">
+                    {vedtak.vedtak.utbetaling.gjenståendeSykedager}
+                </Systemtittel>
                 <Normaltekst tag="span">
-                    <br />{tekst('sykepengedager.systemtittel')}
+                    {tekst('sykepengedager.systemtittel')}
                 </Normaltekst>
-            </Systemtittel>
+            </div>
 
-            <Systemtittel tag="h3" className="tekstinfo__avsnitt">
-                {sluttdato}
+            <div className="tekstinfo__avsnitt">
+                <Systemtittel tag="h3">
+                    {sluttdato}
+                </Systemtittel>
                 <Normaltekst tag="span" className="">
-                    <br />{tekst('sykepengedager.sluttdato')}
+                    {tekst('sykepengedager.sluttdato')}
                 </Normaltekst>
-            </Systemtittel>
+            </div>
 
-            <Normaltekst className="tekstinfo__avsnitt">
-                {tekst('sykepengedager.sluttdato.tekst1')}
-            </Normaltekst>
+            <div className="tekstinfo__avsnitt">
+                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst1')}</Normaltekst>
+            </div>
 
-            <Normaltekst className="tekstinfo__avsnitt">
-                {tekst('sykepengedager.sluttdato.tekst2')}
-            </Normaltekst>
+            <div className="tekstinfo__avsnitt">
+                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst2')}</Normaltekst>
+            </div>
 
-            <Normaltekst className="tekstinfo__avsnitt">
-                {tekst('sykepengedager.sluttdato.tekst3')}
-            </Normaltekst>
+            <div className="tekstinfo__avsnitt">
+                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst3')}</Normaltekst>
+            </div>
 
-            <Utvidbar erApen={false} type="intern" className="tekstinfo"
+            <Utvidbar type="intern" erApen={false} className="blokkinfo tekstinfo"
                 tittel={tekst('sykepengedager.ekspanderbar')}
             >
                 <Normaltekst className="blokkinfo__avsnitt">
                     {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
                 </Normaltekst>
             </Utvidbar>
-        </Utvidbar>
+        </UtvidbarBlå>
     )
 }
 
