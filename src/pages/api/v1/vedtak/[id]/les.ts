@@ -25,7 +25,7 @@ const handler = beskyttetApi(async(req: NextApiRequest, res: NextApiResponse): P
         return
     }
     const idportenToken = req.headers.authorization!.split(' ')[ 1 ]
-    const tokenxToken = await getTokenxToken(idportenToken, 'dev-gcp:flex:spinnsyn-backend')
+    const tokenxToken = await getTokenxToken(idportenToken, serverRuntimeConfig.spinnsynBackendTokenxClientId)
     const response = await fetch(`${serverRuntimeConfig.spinnsynBackendUrl}/api/v3/vedtak/${id}/les`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${tokenxToken}` }
