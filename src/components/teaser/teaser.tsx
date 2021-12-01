@@ -4,7 +4,6 @@ import { EtikettFokus } from 'nav-frontend-etiketter'
 import React from 'react'
 
 import { tekst } from '../../utils/tekster'
-import { getUrlTilVedtak } from '../../utils/url-utils'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import Vis from '../vis'
 import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
@@ -19,7 +18,7 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
 
     return (
         <article aria-labelledby={`soknader-header-${vedtak.id}`}>
-            <Inngangspanel to={getUrlTilVedtak(vedtak)}>
+            <Inngangspanel vedtak={vedtak}>
                 <div className="inngangspanel__ytre">
                     <div className="inngangspanel__del1">
                         <InngangsIkon ikon={annullertEllerRevurdert ? annullert : hand}
