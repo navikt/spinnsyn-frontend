@@ -36,8 +36,15 @@ interface InngangsProps {
 export const Inngangspanel = ({ vedtak, children, }: InngangsProps) => {
     const router = useRouter()
 
+    const query: NodeJS.Dict<string | string[]> = {}
+
+    for (const key in router.query) {
+        query[ key ] = router.query[ key ]
+    }
+    query[ 'id' ] = vedtak.id
+
     return (
-        <Link href={{ pathname: `/vedtak/${vedtak.id}`, query: router.query }}>
+        <Link href={{ query }} shallow={true}>
             <a className="inngangspanel">{children}</a>
         </Link>
     )
