@@ -17,12 +17,12 @@ spec:
       level: Level4
   replicas:
     min: 2
-    max: 3
+    max: 4
     cpuThresholdPercentage: 50
   resources:
     limits:
-      cpu: 200m
-      memory: 128Mi
+      cpu: 500m
+      memory: 512Mi
     requests:
       cpu: 100m
       memory: 64Mi
