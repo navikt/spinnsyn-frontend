@@ -49,7 +49,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <Systemtittel tag="h3">
                     {sluttdato}
                 </Systemtittel>
-                <Normaltekst tag="span" className="">
+                <Normaltekst tag="span">
                     {tekst('sykepengedager.sluttdato')}
                 </Normaltekst>
             </div>
