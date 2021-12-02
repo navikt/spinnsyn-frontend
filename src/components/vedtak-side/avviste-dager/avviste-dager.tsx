@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -6,6 +6,7 @@ import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import Utvidbar from '../../utvidbar/utvidbar'
+import UtvidbarGul from '../../utvidbar/utvidbar-gul'
 import BeregningInfo from '../utbetaling/beregning-info'
 
 interface AvvisteDagerProps {
@@ -21,22 +22,22 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
         : ' sykepengedag'
 
     return (
-        <Utvidbar
-            type="integrert"
-            className={'orange avviste__dager__innhold' + (apen ? ' apen' : '')}
+        <UtvidbarGul
             erApen={apen}
-            visLukk={true}
-            ikon={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
-            ikonHover={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
-            tittel={avvisteDager.length + avvisteDagerTekst}
-            systemtittel={tekst('avviste.dager.dekkes.ikke')}
-            ikonAltTekst=""
-            fixedHeight={true}
-            heading="h2"
+            tittel={
+                <div className="tekstinfo__avsnitt">
+                    <Systemtittel tag="h3">
+                        {avvisteDager.length + avvisteDagerTekst}
+                    </Systemtittel>
+                    <Normaltekst tag="span">
+                        {tekst('avviste.dager.dekkes.ikke')}
+                    </Normaltekst>
+                </div>
+            }
         >
-            <Normaltekst className="tekstinfo__avsnitt">
-                {tekst('avviste.dager.intro')}
-            </Normaltekst>
+            <div className="tekstinfo__avsnitt">
+                <Normaltekst>{tekst('avviste.dager.intro')}</Normaltekst>
+            </div>
 
             <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
 
@@ -46,7 +47,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                 <DagTabell dager={avvisteDager} />
                 <DagBeskrivelse dager={avvisteDager} />
             </Utvidbar>
-        </Utvidbar>
+        </UtvidbarGul>
     )
 }
 
