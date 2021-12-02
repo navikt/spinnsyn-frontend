@@ -52,9 +52,9 @@ describe('Tester at appen starter', () => {
 
     it('Den blå boksen har riktig innhold', () => {
 
-        cy.get('.utvidbar.bla').should('contain', '15')
+        cy.get('.utvidbarNy.bla').should('contain', '15')
             .and('contain', 'Sykepengedager brukt hittil')
-            .click({ force: true })
+            .click()
 
         cy.should('contain', '180').and('contain', 'Sykepengedager gjenstår')
         cy.should('contain', '17. des. 2021').and('contain', 'Beregnet slutt på sykepenger')
@@ -109,9 +109,9 @@ describe('Tester at appen starter', () => {
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
 
-        cy.get('.utvidbar.bla').should('contain', '9')
+        cy.get('.utvidbarNy.bla').should('contain', '9')
             .and('contain', 'Sykepengedager brukt hittil')
-            .click({ force: true })
+            .click()
 
         cy.should('contain', '186').and('contain', 'Sykepengedager gjenstår')
         cy.should('contain', '11. nov. 1918').and('contain', 'Beregnet slutt på sykepenger')

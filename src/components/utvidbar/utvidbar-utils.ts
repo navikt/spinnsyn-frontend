@@ -1,5 +1,6 @@
+import React from 'react'
+
 import { logEvent } from '../amplitude/amplitude'
-import React from 'react';
 
 export interface UtvidbarProps {
     erApen: boolean
