@@ -52,18 +52,18 @@ jobs:
         run: npm run test:ci
       - name: Build application
         run: npm run build
-      - name: Run cypress
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          record: false
-          start: npm run start-ingen-dekorator
-          wait-on: http://localhost:8080/syk/sykepenger/api/isAlive
-      - uses: actions/upload-artifact@v1
-        if: ${{ always() }}
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+#      - name: Run cypress
+#        uses: cypress-io/github-action@v2
+#        with:
+#          install: false
+#          record: false
+#          start: npm run start-ingen-dekorator
+#          wait-on: http://localhost:8080/syk/sykepenger/api/isAlive
+#      - uses: actions/upload-artifact@v1
+#        if: ${{ always() }}
+#        with:
+#          name: cypress-screenshots
+#          path: cypress/screenshots
       - name: Docker login
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -96,7 +96,7 @@ jobs:
           RESOURCE: nais-dev.yaml
 
   deploy-spinnsyn-interne-to-dev-gcp:
-    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/dev-')
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/spinnsyn-interne')
     name: Deploy spinnsyn-interne to dev-gcp
     needs: build-and-publish
     runs-on: ubuntu-latest

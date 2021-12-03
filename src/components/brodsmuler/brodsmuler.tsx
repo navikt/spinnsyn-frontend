@@ -5,7 +5,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { UrlObject } from 'url'
 
-import { dittNavUrl, sykefravaerUrl } from '../../utils/environment'
+import { dittNavUrl, spinnsynFrontendInterne, sykefravaerUrl } from '../../utils/environment'
 import Vis from '../vis'
 import Person from './Person'
 
@@ -20,8 +20,17 @@ const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
     const erKlikkbar = sti !== undefined
     const erEkstern = typeof sti === 'string'
 
+    const eksternLenke = () => {
+        if (spinnsynFrontendInterne()) {
+            return (
+                <span>{tittel}</span>
+            )
+        }
+        return <Lenke href={sti as string}>{tittel}</Lenke>
+    }
+
     const link = erEkstern
-        ? <Lenke href={sti as string}>{tittel}</Lenke>
+        ? eksternLenke()
         : sti
             ? <Link href={sti} shallow={true}><a className="lenke">{tittel}</a></Link>
             : <span>{tittel}</span>

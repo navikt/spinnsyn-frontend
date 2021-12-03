@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
 
-        const token = await getAzureAdAccessToken()
+        const token = await getAzureAdAccessToken(serverRuntimeConfig.spinnsynBackendClientId)
 
         const vedtak = await hentVedtakForArkivering(fnr, token.access_token)
         const vedtaket = vedtak.find(i => i.id == utbetalingId)

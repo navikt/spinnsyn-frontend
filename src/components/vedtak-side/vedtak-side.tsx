@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
-import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
+import { isMockBackend, isOpplaering, isProd, spinnsynFrontendInterne } from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
@@ -42,7 +42,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
     }, [])
 
     useEffect(() => {
-        if (!vedtak.lest) {
+        if (!vedtak.lest && !spinnsynFrontendInterne()) {
             merkLest(vedtak.id)
         }
     }, [ vedtak, merkLest ])

@@ -9,11 +9,11 @@ interface TokenResponse {
     'access_token': string
 }
 
-export const getAzureAdAccessToken = async(): Promise<TokenResponse> => {
+export const getAzureAdAccessToken = async(scope: string): Promise<TokenResponse> => {
 
     const params = new URLSearchParams()
     params.append('client_id', serverRuntimeConfig.azureAppClientId)
-    params.append('scope', serverRuntimeConfig.spinnsynBackendClientId)
+    params.append('scope', scope)
     params.append('client_secret', serverRuntimeConfig.azureAppClientSecret)
     params.append('grant_type', 'client_credentials')
 
