@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -7,6 +7,7 @@ import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import Utvidbar from '../../utvidbar/utvidbar'
 import BeregningInfo from '../utbetaling/beregning-info'
+import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
@@ -37,6 +38,12 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
             <Normaltekst className="tekstinfo__avsnitt">
                 {tekst('avviste.dager.intro')}
             </Normaltekst>
+
+            <Element tag="h3" className="info__tittel">
+                {tekst('utbetaling.inntekt.info.tittel')}
+            </Element>
+
+            <InntektInfo vedtak={vedtak} />
 
             <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
 

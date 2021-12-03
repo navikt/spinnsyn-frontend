@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -32,8 +31,10 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             heading="h2"
         >
             <div className="utbetaling__innhold">
-                <PersonutbetalingInfo />
+                <PersonutbetalingInfo vedtak={vedtak} />
+
                 <BeregningInfo vedtak={vedtak} mottaker={'person'} />
+
                 <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"

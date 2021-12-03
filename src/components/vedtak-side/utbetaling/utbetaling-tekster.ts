@@ -23,6 +23,7 @@ const UtbetalingTekster = {
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
     'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
     'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',
+    'utbetaling.inntekt.info.tittel': 'Slik beregner vi sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Årslønn',
     'utbetaling.inntekt.samlet.årslønn': 'Samlet årslønn',
