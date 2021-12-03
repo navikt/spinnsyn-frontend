@@ -21,7 +21,7 @@ const UtvidbarBlå = (props: UtvidbarProps) => {
             src="/syk/sykepenger/static/img/ikon-plaster.svg"
             alt=""
         />
-        <>{props.tittel}</>
+        <div>{props.tittel}</div>
     </>
 
     return (

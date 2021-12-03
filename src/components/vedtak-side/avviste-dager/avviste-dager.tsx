@@ -25,7 +25,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
         <UtvidbarGul
             erApen={apen}
             tittel={
-                <div className="tekstinfo__avsnitt">
+                <div className="utvidbar__tittel">
                     <Systemtittel tag="h3">
                         {avvisteDager.length + avvisteDagerTekst}
                     </Systemtittel>
