@@ -23,6 +23,8 @@ const UtbetalingTekster = {
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
     'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
     'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',
+    'utbetaling.beregning.når.tittel': 'Utbetaling',
+    'utbetaling.beregning.når.innhold': 'Det kan variere litt når pengene blir utbetalt. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Her</a> kan du lese mer om når pengene kommer. <br/>Du vil se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank" rel="noreferrer">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
     'utbetaling.inntekt.info.tittel': 'Slik beregner vi sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Årslønn',
@@ -40,7 +42,8 @@ const UtbetalingTekster = {
 
     'utbetaling.person.systemtittel': 'til deg (før skatt)',
     'utbetaling.person.når': 'Når får du pengene?',
-    'utbetaling.person.når.innhold': '<p>Pengene utbetales som regel innen 4 uker. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Her</a> kan du lese mer om når pengene kommer.</p>\<p>Du vil se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank" rel="noreferrer">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.</p>',
+    'utbetaling.person.når.innhold': 'Det kan variere litt når pengene blir utbetalt. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Her</a> kan du lese mer om når pengene kommer.',
+    'utbetaling.person.når.beløp': 'Beløpet er <b>før skatt</b> og eventuelle andre trekk.',
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',

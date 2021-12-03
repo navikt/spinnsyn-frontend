@@ -22,7 +22,7 @@ describe('Tester visning av kombinasjon', () => {
 
 
         cy.get('.personutbetaling .info').contains('Når får du pengene?').should('be.visible')
-        cy.get('.personutbetaling .info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.').should('be.visible')
+        cy.get('.personutbetaling .info').contains('Det kan variere litt når pengene blir utbetalt. Her kan du lese mer om når pengene kommer.').should('be.visible')
 
         cy.get('.personutbetaling .utvidbar__tittel').contains('Slik beregner vi sykepengene')
             .click({ force: true })
@@ -48,7 +48,7 @@ describe('Tester visning av kombinasjon', () => {
             .click({ force: true })
 
         cy.get('.info').contains('Når får du pengene?').should('not.be.visible')
-        cy.get('.info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.').should('not.be.visible')
+        cy.get('.info').contains('Det kan variere litt når pengene blir utbetalt. Her kan du lese mer om når pengene kommer.').should('not.be.visible')
 
         cy.get('.refusjon .utvidbar__tittel').contains('Slik beregner vi sykepengene').click({ force: true })
 

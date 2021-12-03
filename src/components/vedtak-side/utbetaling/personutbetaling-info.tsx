@@ -22,6 +22,10 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
                 {parser(tekst('utbetaling.person.når.innhold'))}
             </Normaltekst>
 
+            <Normaltekst className="blokkinfo__avsnitt">
+                {parser(tekst('utbetaling.person.når.beløp'))}
+            </Normaltekst>
+
             <Element tag="h3" className="info__tittel">
                 {tekst('utbetaling.inntekt.info.tittel')}
             </Element>

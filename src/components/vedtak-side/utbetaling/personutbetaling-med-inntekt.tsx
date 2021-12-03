@@ -19,7 +19,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
 
     return (
         <Utvidbar type="integrert"
-            className={'personutbetaling gronn' + (apen ? ' apen' : '')}
+            className={'personutbetaling blokkinfo gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}

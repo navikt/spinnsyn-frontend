@@ -18,7 +18,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
 
     return (
         <Utvidbar type="integrert"
-            className={'refusjon gronn' + (apen ? ' apen' : '')}
+            className={'refusjon blokkinfo gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
