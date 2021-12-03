@@ -14,7 +14,7 @@ describe('Tester har flere arbeidsgivere', () => {
 
     it('Har ikke data', () => {
         const kopiertVedtak = jsonDeepCopy(testVedtak)
-        kopiertVedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver = undefined
+        delete kopiertVedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
         expect(harFlereArbeidsgivere(kopiertVedtak)).toEqual('vet_ikke')
     })
 

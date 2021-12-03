@@ -49,6 +49,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                         /* Setting this to true causes the request to be immediately executed after initial
                            mount Even if the query had data hydrated from the server side render */
                         refetchOnMount: false,
+                        refetchOnWindowFocus: false,
                     },
                 },
             }),

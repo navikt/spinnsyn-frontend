@@ -23,7 +23,7 @@ const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
     const link = erEkstern
         ? <Lenke href={sti as string}>{tittel}</Lenke>
         : sti
-            ? <Link href={sti}><a className="lenke">{tittel}</a></Link>
+            ? <Link href={sti} shallow={true}><a className="lenke">{tittel}</a></Link>
             : <span>{tittel}</span>
 
     if (!erKlikkbar) {

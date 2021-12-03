@@ -21,7 +21,7 @@ describe('Tester at appen starter', () => {
             .get(`article a[href*=${ulestVedtakUtenUtbetalingsdager.id}]`)
             .click()
 
-        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${ulestVedtakUtenUtbetalingsdager.id}`)
+        cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${ulestVedtakUtenUtbetalingsdager.id}`)
 
         cy.contains('14. juni 2021')
 
@@ -83,7 +83,7 @@ describe('Tester at appen starter', () => {
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 7).eq(2).click({ force: true })
-        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakAnnullert.id}`)
+        cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
         cy.get('.annullering > .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
@@ -99,7 +99,7 @@ describe('Tester at appen starter', () => {
     it('Vi åpner et revurdert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 7).eq(3).click({ force: true })
-        cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakRevurdert.id}`)
+        cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.get('.annullering > .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
