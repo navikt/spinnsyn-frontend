@@ -20,10 +20,6 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
                 })}
             </Normaltekst>
 
-            <Undertittel tag="h3" className="info__tittel">
-                {tekst('utbetaling.inntekt.info.tittel')}
-            </Undertittel>
-
             <InntektInfo vedtak={vedtak} />
         </section>
     )

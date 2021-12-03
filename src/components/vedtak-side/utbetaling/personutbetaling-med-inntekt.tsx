@@ -33,18 +33,18 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <div className="utbetaling__innhold">
                 <PersonutbetalingInfo vedtak={vedtak} />
 
-                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
-
                 <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
-                            tittel={'Beløpet dag for dag'}
+                            tittel={'Sykepengene dag for dag'}
                         >
                             <DagTabell dager={vedtak.dagerPerson} />
                             <DagBeskrivelse dager={vedtak.dagerPerson} />
                         </Utvidbar>
                     }
                 />
+
+                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
             </div>
         </Utvidbar>
     )

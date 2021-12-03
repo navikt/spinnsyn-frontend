@@ -24,7 +24,7 @@ describe('Tester visning personutbetaling', () => {
         cy.get('.info').contains('Når får du pengene?')
         cy.get('.info').contains('Det kan variere litt når pengene blir utbetalt. Her kan du lese mer om når pengene kommer.')
 
-        cy.contains('Slik beregner vi sykepengene')
+        cy.contains('Mer om beregningen')
             .click({ force: true })
 
         //

@@ -1,4 +1,4 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
@@ -26,6 +26,10 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
         <Vis hvis={inntektMnd && inntektAr}
             render={() =>
                 <>
+                    <Undertittel tag="h3" className="info__tittel">
+                        {tekst('utbetaling.inntekt.info.tittel')}
+                    </Undertittel>
+
                     <section className="inntekt__info">
                         <table>
                             <tbody>

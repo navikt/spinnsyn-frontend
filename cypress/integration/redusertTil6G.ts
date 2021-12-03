@@ -18,7 +18,7 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
             .and('contain', 'Utbetales til Posten Norge AS, Bærum')
             .click({ force: true })
 
-        cy.contains('Slik beregner vi sykepengene')
+        cy.contains('Mer om beregningen')
             .click({ force: true })
 
         cy.get('.inntekt__info > table > tbody > tr:nth-child(1)').contains('Månedslønn')

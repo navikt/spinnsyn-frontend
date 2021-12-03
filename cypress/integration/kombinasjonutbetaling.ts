@@ -24,7 +24,7 @@ describe('Tester visning av kombinasjon', () => {
         cy.get('.personutbetaling .info').contains('Når får du pengene?').should('be.visible')
         cy.get('.personutbetaling .info').contains('Det kan variere litt når pengene blir utbetalt. Her kan du lese mer om når pengene kommer.').should('be.visible')
 
-        cy.get('.personutbetaling .utvidbar__tittel').contains('Slik beregner vi sykepengene')
+        cy.get('.personutbetaling .utvidbar__tittel').contains('Mer om beregningen')
             .click({ force: true })
 
 
@@ -50,7 +50,7 @@ describe('Tester visning av kombinasjon', () => {
         cy.get('.info').contains('Når får du pengene?').should('not.be.visible')
         cy.get('.info').contains('Det kan variere litt når pengene blir utbetalt. Her kan du lese mer om når pengene kommer.').should('not.be.visible')
 
-        cy.get('.refusjon .utvidbar__tittel').contains('Slik beregner vi sykepengene').click({ force: true })
+        cy.get('.refusjon .utvidbar__tittel').contains('Mer om beregningen').click({ force: true })
 
         cy.get('.refusjon .utvidbar__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
         cy.get('.refusjon .utvidbar__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.').should('be.visible')

@@ -1,4 +1,4 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -38,10 +38,6 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
             <Normaltekst className="tekstinfo__avsnitt">
                 {tekst('avviste.dager.intro')}
             </Normaltekst>
-
-            <Element tag="h3" className="info__tittel">
-                {tekst('utbetaling.inntekt.info.tittel')}
-            </Element>
 
             <InntektInfo vedtak={vedtak} />
 
