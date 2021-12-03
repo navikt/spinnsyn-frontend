@@ -34,7 +34,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('Slik beregner vi sykepengene')
             .click({ force: true })
 
-        cy.get('.inntekt__info .dagsats').contains('Dagsats')
+        cy.get('.inntekt__info .dagsats').contains('Sykepenger per dag')
         cy.get('.inntekt__info > .dagsats').contains('2 239 kr')
 
         cy.contains('Redusert til 6G').should('not.exist')
