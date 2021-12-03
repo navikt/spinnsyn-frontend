@@ -1,4 +1,4 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -10,9 +10,9 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
 
     return (
         <section className="info">
-            <Element tag="h3" className="info__tittel">
+            <Undertittel tag="h3" className="info__tittel">
                 {tekst('utbetaling.arbeidsgiver.tittel')}
-            </Element>
+            </Undertittel>
 
             <Normaltekst className="info__tekst">
                 {getLedetekst(tekst('utbetaling.arbeidsgiver.tekst'), {
@@ -20,9 +20,9 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
                 })}
             </Normaltekst>
 
-            <Element tag="h3" className="info__tittel">
+            <Undertittel tag="h3" className="info__tittel">
                 {tekst('utbetaling.inntekt.info.tittel')}
-            </Element>
+            </Undertittel>
 
             <InntektInfo vedtak={vedtak} />
         </section>

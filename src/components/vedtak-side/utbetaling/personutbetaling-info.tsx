@@ -1,5 +1,5 @@
 import parser from 'html-react-parser'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -14,9 +14,9 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
 
     return (
         <section className="info">
-            <Element tag="h3" className="info__tittel">
+            <Undertittel tag="h3" className="info__tittel">
                 {tekst('utbetaling.person.når')}
-            </Element>
+            </Undertittel>
 
             <Normaltekst>
                 {parser(tekst('utbetaling.person.når.innhold'))}
@@ -26,9 +26,9 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
                 {parser(tekst('utbetaling.person.når.beløp'))}
             </Normaltekst>
 
-            <Element tag="h3" className="info__tittel">
+            <Undertittel tag="h3" className="info__tittel">
                 {tekst('utbetaling.inntekt.info.tittel')}
-            </Element>
+            </Undertittel>
 
             <InntektInfo vedtak={vedtak} />
         </section>
