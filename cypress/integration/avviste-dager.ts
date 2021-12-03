@@ -25,7 +25,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click({ force: true })
 
-        cy.get('.utvidbar.orange')
+        cy.get('.utvidbarNy.gul')
             .should('contain', '15 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
@@ -78,7 +78,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
         cy.get('.utvidbar.gronn')
             .should('not.exist')
 
-        cy.get('.utvidbar.orange')
+        cy.get('.utvidbarNy.gul')
             .should('contain', '4 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
@@ -95,7 +95,6 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
         cy.contains('Slik beregner vi sykepengene').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
-
 
         cy.get('.smule')
             .contains('Svar på søknader')
