@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
 
         const token = await getAzureAdAccessToken(serverRuntimeConfig.spinnsynBackendClientId)
 
-        const vedtak = await hentVedtakForArkivering(fnr, token.access_token)
+        const vedtak = await hentVedtakForArkivering(fnr, token.access_token!)
         const vedtaket = vedtak.find(i => i.id == utbetalingId)
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
