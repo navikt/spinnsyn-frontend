@@ -3,7 +3,7 @@ import getConfig from 'next/config'
 import React from 'react'
 
 import { getAzureAdAccessToken } from '../../../auth/getAzureAdAccessToken'
-import { verifyAzureAccessToken } from '../../../auth/verifyAzureAccessToken'
+import { verifyAzureAccessTokenVedArkivering } from '../../../auth/verifyAzureAccessTokenVedArkivering'
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { hentVedtakForArkivering } from '../../../data/hentVedtakForArkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
@@ -44,7 +44,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
 
         }
         const tokenInn = authHeader.split(' ')[ 1 ]
-        await verifyAzureAccessToken(tokenInn)
+        await verifyAzureAccessTokenVedArkivering(tokenInn)
 
         const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any

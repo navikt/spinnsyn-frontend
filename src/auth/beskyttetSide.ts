@@ -6,6 +6,7 @@ import { isMockBackend, loginServiceRedirectUrl, loginServiceUrl, spinnsynFronte
 import { logger } from '../utils/logger'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
+import {verifyAzureAccessTokenSpinnsynInterne} from "./verifyAzureAccessTokenVedArkivering";
 
 type PageHandler = (context: NextPageContext) => void | Promise<GetServerSidePropsPrefetchResult>;
 
@@ -80,8 +81,7 @@ export function beskyttetSide(handler: PageHandler) {
             return wonderwallRedirect
         }
         try {
-            //TODO verifiser azure pålogginga!
-            // await verifyIdportenAccessToken(bearerToken)
+            await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
         } catch (e) {
             logger.error('kunne ikke autentisere', e)
             return wonderwallRedirect

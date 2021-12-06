@@ -48,8 +48,9 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
     }
 
     async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse) {
-
-        return handler(req, res)
+        // Ingen av APIene brukes for øyeblikket av spinnsyn-interne
+        res.status(401).json({ message: 'Access denied' })
+        return
     }
 }
 
