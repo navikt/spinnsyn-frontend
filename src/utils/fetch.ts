@@ -21,14 +21,16 @@ class Fetch {
             credentials: 'include',
             headers: headers
         })
+        const text = await res.text()
         if (res.ok) {
             try {
-                return await cb(await res.json())
+                return await cb(JSON.parse(text))
             } catch (error) {
                 if (error instanceof TypeError) {
                     logger.warn('oops', error)
                 } else {
                     logger.error('Unnamed error occured', error)
+                    logger.error({ msg: 'Response som text', 'x-response': text })
                 }
                 throw new Error(
                     'Beklager! En uventet feil har oppstått. Sannsynligvis jobber vi med saken allerede, men ta kontakt med oss hvis det ikke har løst seg til i morgen.',
