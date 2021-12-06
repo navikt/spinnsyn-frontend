@@ -1,6 +1,10 @@
+import { isMockBackend } from '../utils/environment'
 import { getAzureAuthClient } from './azureClient'
 
-export async function getOboAccessToken(userToken: string, scope: string): Promise<string> {
+export async function getOboAccessToken(userToken: string | undefined, scope: string): Promise<string> {
+    if (isMockBackend()) {
+        return ''
+    }
     const oidcClient = await getAzureAuthClient()
 
     const oboTokenSet = await oidcClient.grant({

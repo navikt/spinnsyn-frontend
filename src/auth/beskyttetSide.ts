@@ -4,9 +4,9 @@ import { NextPageContext } from 'next'
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { isMockBackend, loginServiceRedirectUrl, loginServiceUrl, spinnsynFrontendInterne } from '../utils/environment'
 import { logger } from '../utils/logger'
+import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
-import {verifyAzureAccessTokenSpinnsynInterne} from "./verifyAzureAccessTokenVedArkivering";
 
 type PageHandler = (context: NextPageContext) => void | Promise<GetServerSidePropsPrefetchResult>;
 

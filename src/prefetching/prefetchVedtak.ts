@@ -16,7 +16,7 @@ export const prefetchVedtak = beskyttetSide(async(ctx): Promise<GetServerSidePro
         sykmeldtFnr = await hentModiaContext(ctx.req!)
 
         if (sykmeldtFnr) {
-            const oboSpinnsynBackend = await getOboAccessToken(ctx.req!.headers.authorization!.split(' ')[ 1 ]!, 'api://dev-gcp.flex.spinnsyn-backend/.default')
+            const oboSpinnsynBackend = await getOboAccessToken(ctx.req?.headers.authorization?.split(' ')[ 1 ], 'api://dev-gcp.flex.spinnsyn-backend/.default')
 
             await queryClient.prefetchQuery('vedtak', () => {
                 return hentVedtakFraSpinnsynBackendForInterne(oboSpinnsynBackend, sykmeldtFnr!)

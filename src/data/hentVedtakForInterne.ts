@@ -2,12 +2,16 @@ import getConfig from 'next/config'
 
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { isMockBackend } from '../utils/environment'
+import { diverseData } from './mock/data/personas'
 
 const { serverRuntimeConfig } = getConfig()
 
 
 export const hentVedtakFraSpinnsynBackendForInterne = async(token: string, fnr: string): Promise<RSVedtakWrapper[]> => {
-
+    if (isMockBackend()) {
+        return diverseData.vedtak
+    }
 
     const response = await fetch(`${serverRuntimeConfig.spinnsynBackendUrl}/api/v4/veileder/vedtak`, {
         method: 'GET',

@@ -1,13 +1,15 @@
 import { IncomingMessage } from 'http'
-import { NextApiRequest, NextApiResponse } from 'next'
 
 import { getAzureAdAccessToken } from '../auth/getAzureAdAccessToken'
 import { getOboAccessToken } from '../auth/getOboAccessToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
+import { isMockBackend } from '../utils/environment'
 import { logger } from '../utils/logger'
 
 export async function hentModiaContext(incomingMessage: IncomingMessage): Promise<string | undefined> {
-
+    if (isMockBackend()) {
+        return '01019012345'
+    }
     const accessToken = incomingMessage.headers.authorization!.split(' ')[ 1 ]
 
     const [ modiaContextAccessToken, flexFssProxyToken ] = await Promise.all([
