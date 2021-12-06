@@ -54,9 +54,9 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     <tbody>
                                         <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
                                         <tr>
-                                            <Element tag="th">
+                                            <Normaltekst tag="th">
                                                 {tekst('utbetaling.inntekt.samlet.årslønn')}
-                                            </Element>
+                                            </Normaltekst>
                                             <Normaltekst tag="td">
                                                 {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
                                             </Normaltekst>
