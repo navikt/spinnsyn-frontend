@@ -107,10 +107,10 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 </Normaltekst>
 
                 <Element tag="h4" className="blokkinfo__avsnitt">
-                    {tekst('utbetaling.beregning.når.tittel')}
+                    {tekst('utbetaling.info.tittel')}
                 </Element>
                 <Normaltekst>
-                    {parser(tekst('utbetaling.beregning.når.innhold'))}
+                    {parser(tekst('utbetaling.info.innhold'))}
                 </Normaltekst>
             </div>
         </Utvidbar>
