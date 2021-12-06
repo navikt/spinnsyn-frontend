@@ -61,9 +61,6 @@ export function beskyttetSide(handler: PageHandler) {
     }
 
     async function beskyttetSideInterne(context: NextPageContext): Promise<ReturnType<typeof handler>> {
-        if (isMockBackend()) {
-            return handler(context)
-        }
 
         const request = context.req
         if (request == null) {

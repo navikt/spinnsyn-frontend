@@ -1,6 +1,5 @@
 import { TokenSet } from 'openid-client'
 
-import { logger } from '../utils/logger'
 import { getAzureAuthClient } from './azureClient'
 
 interface TokesetAndExp {
@@ -26,7 +25,6 @@ function erIkkeUtlopt(tokenset: TokesetAndExp) {
 export const getAzureAdAccessToken = async(scope: string): Promise<TokenSet> => {
     const eksisterendeToken = tokens[ scope ]
     if (eksisterendeToken && erIkkeUtlopt(eksisterendeToken)) {
-        logger.info('Gjenbruker token')
         return eksisterendeToken.tokenset
     }
     const oidcClient = await getAzureAuthClient()
@@ -45,7 +43,6 @@ export const getAzureAdAccessToken = async(scope: string): Promise<TokenSet> => 
         tokenset: tokenSet,
         expiresAt: expiresAt
     }
-    logger.info('Hentet nytt token som expires at ' + expiresAt)
 
     return tokenSet
 }
