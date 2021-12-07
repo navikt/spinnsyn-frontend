@@ -1,4 +1,5 @@
-import { diverseData, Persona } from './data/personas'
+import { jsonDeepCopy } from '../../utils/json-deep-copy'
+import { diverseData } from './data/personas'
 import { personas } from './testperson'
 
 
@@ -7,8 +8,8 @@ export function hentTestdata(url?: string) {
 
     const testperson = parsetUrl.searchParams.get('testperson')
     if (testperson && Object.prototype.hasOwnProperty.call(personas, testperson)) {
-        return personas[ testperson ]().vedtak
+        return jsonDeepCopy(personas[ testperson ]().vedtak)
     } else {
-        return diverseData.vedtak
+        return jsonDeepCopy(diverseData.vedtak)
     }
 }
