@@ -13,20 +13,32 @@ import { PrefetchResults } from '../types/prefecthing'
 import { spinnsynFrontendInterne } from '../utils/environment'
 
 
-const Index = ({ sykmeldtFnr }: PrefetchResults) => {
+const Index = ({ sykmeldtFnr, dehydratedState }: PrefetchResults) => {
+    if (!sykmeldtFnr && spinnsynFrontendInterne()) {
+        return (
+            <IndexInterneUtenFnr sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />
+        )
+    }
+    return (<IndexMedData sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />)
+}
+
+const IndexInterneUtenFnr = ({ sykmeldtFnr }: PrefetchResults) => {
+
+    return (
+        <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
+            <AlertStripeAdvarsel>
+                Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
+            </AlertStripeAdvarsel>
+        </ArkiveringOgMain>
+    )
+
+}
+
+const IndexMedData = ({ sykmeldtFnr }: PrefetchResults) => {
     const router = useRouter()
     const { id } = router.query
     const { data: vedtak } = useVedtak()
 
-    if (!sykmeldtFnr && spinnsynFrontendInterne()) {
-        return (
-            <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
-                <AlertStripeAdvarsel>
-                    Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
-                </AlertStripeAdvarsel>
-            </ArkiveringOgMain>
-        )
-    }
     if (id) {
         const vedtaket = vedtak?.find((v) => v.id == id)
         if (!vedtaket) {
