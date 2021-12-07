@@ -1,7 +1,7 @@
 import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { isMockBackend } from '../utils/environment'
+import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 import { logger } from '../utils/logger'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
@@ -10,9 +10,12 @@ type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<
 
 
 export function beskyttetApi(handler: ApiHandler): ApiHandler {
-    return async function withBearerTokenHandler(req, res, ...rest) {
+    return async function withBearerTokenHandler(req, res) {
         if (isMockBackend()) {
-            return handler(req, res, ...rest)
+            return handler(req, res)
+        }
+        if (spinnsynFrontendInterne()) {
+            return beskyttetApiInterne(req, res)
         }
 
         function send401() {
@@ -41,7 +44,13 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             return send401()
         }
 
-        return handler(req, res, ...rest)
+        return handler(req, res)
+    }
+
+    async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse) {
+        // Ingen av APIene brukes for øyeblikket av spinnsyn-interne
+        res.status(401).json({ message: 'Access denied' })
+        return
     }
 }
 
