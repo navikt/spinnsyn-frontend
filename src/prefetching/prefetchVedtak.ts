@@ -1,3 +1,4 @@
+import getConfig from 'next/config'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
@@ -9,6 +10,8 @@ import { hentVedtakFraSpinnsynBackendForInterne } from '../data/hentVedtakForInt
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { spinnsynFrontendInterne } from '../utils/environment'
 
+const { serverRuntimeConfig } = getConfig()
+
 export const prefetchVedtak = beskyttetSide(async(ctx): Promise<GetServerSidePropsPrefetchResult> => {
     let sykmeldtFnr: string | undefined
     const queryClient = new QueryClient()
@@ -16,7 +19,7 @@ export const prefetchVedtak = beskyttetSide(async(ctx): Promise<GetServerSidePro
         sykmeldtFnr = await hentModiaContext(ctx.req!)
 
         if (sykmeldtFnr) {
-            const oboSpinnsynBackend = await getOboAccessToken(ctx.req?.headers.authorization?.split(' ')[ 1 ], 'api://dev-gcp.flex.spinnsyn-backend/.default')
+            const oboSpinnsynBackend = await getOboAccessToken(ctx.req?.headers.authorization?.split(' ')[ 1 ], serverRuntimeConfig.spinnsynBackendClientId)
 
             await queryClient.prefetchQuery('vedtak', () => {
                 return hentVedtakFraSpinnsynBackendForInterne(oboSpinnsynBackend, sykmeldtFnr!)

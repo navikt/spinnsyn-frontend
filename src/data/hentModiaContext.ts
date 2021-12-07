@@ -1,10 +1,14 @@
 import { IncomingMessage } from 'http'
+import getConfig from 'next/config'
 
 import { getAzureAdAccessToken } from '../auth/getAzureAdAccessToken'
 import { getOboAccessToken } from '../auth/getOboAccessToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { isMockBackend } from '../utils/environment'
 import { logger } from '../utils/logger'
+
+const { serverRuntimeConfig } = getConfig()
+
 
 export async function hentModiaContext(incomingMessage: IncomingMessage): Promise<string | undefined> {
     if (isMockBackend()) {
@@ -14,10 +18,10 @@ export async function hentModiaContext(incomingMessage: IncomingMessage): Promis
 
     const [ modiaContextAccessToken, flexFssProxyToken ] = await Promise.all([
         await getOboAccessToken(accessToken, 'https://graph.microsoft.com/.default'),
-        await getAzureAdAccessToken('api://dev-fss.flex.flex-fss-proxy/.default'),
+        await getAzureAdAccessToken(serverRuntimeConfig.flexFssProxyClientId),
     ])
 
-    const response = await fetch('https://flex-fss-proxy.dev-fss-pub.nais.io/modiacontextholder/api/context/aktivbruker', {
+    const response = await fetch(`${serverRuntimeConfig.flexFssProxyUrl}/modiacontextholder/api/context/aktivbruker`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${flexFssProxyToken.access_token}`,
