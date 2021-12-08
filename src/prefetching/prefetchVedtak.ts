@@ -13,7 +13,7 @@ import { spinnsynFrontendInterne } from '../utils/environment'
 const { serverRuntimeConfig } = getConfig()
 
 export const prefetchVedtak = beskyttetSide(async(ctx): Promise<GetServerSidePropsPrefetchResult> => {
-    let sykmeldtFnr: string | undefined
+    let sykmeldtFnr: string | null = null
     const queryClient = new QueryClient()
     if (spinnsynFrontendInterne()) {
         sykmeldtFnr = await hentModiaContext(ctx.req!)
