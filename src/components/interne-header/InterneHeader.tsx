@@ -2,7 +2,7 @@ import { Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 interface InterneHeaderProps {
-    fnr?: string;
+    fnr: string | null;
 }
 
 function InterneHeader({ fnr }: InterneHeaderProps): JSX.Element {

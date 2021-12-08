@@ -4,6 +4,7 @@ const withLess = require('next-with-less')
 module.exports = withLess({
     basePath: '/syk/sykepenger',
     lessLoaderOptions: {},
+    generateEtags: false, //Disabler etag i pages
     serverRuntimeConfig: {
         // Will only be available on the server side
         decoratorEnv: process.env.DECORATOR_ENV,

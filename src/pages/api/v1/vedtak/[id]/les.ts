@@ -1,6 +1,7 @@
 import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import getConfig from 'next/config'
+import onHeaders from 'on-headers'
 
 import { beskyttetApi } from '../../../../../auth/beskyttetApi'
 import { getTokenxToken } from '../../../../../auth/getTokenxToken'
@@ -10,6 +11,10 @@ import { isMockBackend } from '../../../../../utils/environment'
 const { serverRuntimeConfig } = getConfig()
 
 const handler = beskyttetApi(async(req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+    onHeaders(res, function() {
+        this.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+        this.removeHeader('ETag')
+    })
     if (req.method !== 'POST') {
         return res.status(404).json('Må være POST')
 

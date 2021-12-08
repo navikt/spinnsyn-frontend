@@ -10,7 +10,7 @@ import { logger } from '../utils/logger'
 const { serverRuntimeConfig } = getConfig()
 
 
-export async function hentModiaContext(incomingMessage: IncomingMessage): Promise<string | undefined> {
+export async function hentModiaContext(incomingMessage: IncomingMessage): Promise<string | null> {
     if (isMockBackend()) {
         return '01019012345'
     }
@@ -35,6 +35,6 @@ export async function hentModiaContext(incomingMessage: IncomingMessage): Promis
         throw new ErrorMedStatus('Ikke 200 svar fra modiacontextholder', 500)
     }
     const json = await response.json()
-    return json.aktivBruker
+    return json.aktivBruker || null
 
 }

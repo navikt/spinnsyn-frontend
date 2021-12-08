@@ -59,7 +59,7 @@ const IndexMedData = ({ sykmeldtFnr }: PrefetchResults) => {
 
 interface ArkiveringOgMainProps {
     children: React.ReactNode;
-    sykmeldtFnr?: string
+    sykmeldtFnr: string | null
 }
 
 const ArkiveringOgMain = ({ children, sykmeldtFnr }: ArkiveringOgMainProps) => (
