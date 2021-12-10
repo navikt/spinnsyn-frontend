@@ -11,11 +11,11 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
     })
 
     it('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', () => {
-        cy.get(`article a[href*=${vedtakMed40Grad.id}]`).click()
+        cy.get(`article a[href*=${vedtakMed40Grad.id}]`).click({ force: true })
 
         cy.contains('Pengeløs Sparebank fra 8. – 21. februar 2021')
 
-        cy.get('.utvidbar.orange')
+        cy.get('.ekspanderbar.gul')
             .should('not.exist')
         cy.get('.smule')
             .contains('Svar på søknader')
@@ -25,22 +25,26 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click({ force: true })
 
-        cy.get('.utvidbarNy.gul')
+        cy.get('.ekspanderbar.gul')
             .should('contain', '15 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
 
         cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
 
+        cy.get('.avvistedageroversikt')
+            .should('contain', 'Dager NAV ikke utbetaler')
+            .click({ force: true })
+
         cy.get('.tabell--dag').within(() => {
-            cy.contains('30.jan.').should('not.be.visible')
-            cy.contains('31.jan.').should('not.be.visible')
-            cy.contains('01.feb.').should('not.be.visible')
-            cy.contains('06.feb.').should('not.be.visible')
-            cy.contains('08.feb.').should('not.be.visible')
+            cy.contains('30.jan.').should('not.exist')
+            cy.contains('31.jan.').should('not.exist')
+            cy.contains('01.feb.').should('not.exist')
+            cy.contains('06.feb.').should('not.exist')
+            cy.contains('08.feb.').should('not.exist')
             cy.contains('11.feb.').parent().should('contain', 'Fridag').and('contain', '-')
             cy.contains('13.feb.').parent().should('contain', 'Søkt for sent').and('contain', '-')
-            cy.contains('14.feb.').should('not.be.visible')
+            cy.contains('14.feb.').should('not.exist')
             cy.contains('15.feb.').parent().should('contain', 'Maks antall dager').and('contain', '-')
             cy.contains('16.feb.').parent().should('contain', 'For lav inntekt').and('contain', '-')
             cy.contains('17.feb.').parent().should('contain', 'Egenmelding').and('contain', '-')
@@ -75,15 +79,19 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
     it('Vedtak med avviste dager og ingen utbetaling', () => {
         cy.get(`article a[href*=${avvistVedtak.id}]`).click({ force: true })
 
-        cy.get('.utvidbar.gronn')
+        cy.get('.ekspanderbar.gronn')
             .should('not.exist')
 
-        cy.get('.utvidbarNy.gul')
+        cy.get('.ekspanderbar.gul')
             .should('contain', '4 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
 
         cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
+
+        cy.get('.avvistedageroversikt')
+            .should('contain', 'Dager NAV ikke utbetaler')
+            .click()
 
         cy.get('.tabell--dag').within(() => {
             cy.contains('17.aug.').parent().should('contain', 'Fridag').and('contain', '-')

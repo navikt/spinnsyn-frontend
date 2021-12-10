@@ -21,7 +21,6 @@ import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
-
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
     'Fridag',

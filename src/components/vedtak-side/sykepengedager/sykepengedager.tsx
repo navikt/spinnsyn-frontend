@@ -5,8 +5,8 @@ import React, { useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
-import Utvidbar from '../../utvidbar/utvidbar'
-import UtvidbarBlå from '../../utvidbar/utvidbar-blå'
+import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
+import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import { VedtakProps } from '../vedtak'
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
@@ -22,10 +22,10 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
 
     return (
-        <UtvidbarBlå
+        <Ekspanderbar type="bla"
             erApen={apen}
             tittel={
-                <div className="utvidbar__tittel">
+                <div className="ekspanderbar__tittel">
                     <Systemtittel tag="h3">
                         {vedtak.vedtak.utbetaling.forbrukteSykedager}
                     </Systemtittel>
@@ -66,14 +66,14 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <Normaltekst>{tekst('sykepengedager.sluttdato.tekst3')}</Normaltekst>
             </div>
 
-            <Utvidbar type="intern" erApen={false} className="blokkinfo tekstinfo"
+            <EkspanderbarIntern erApen={false} className="blokkinfo tekstinfo"
                 tittel={tekst('sykepengedager.ekspanderbar')}
             >
                 <Normaltekst className="blokkinfo__avsnitt">
                     {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
                 </Normaltekst>
-            </Utvidbar>
-        </UtvidbarBlå>
+            </EkspanderbarIntern>
+        </Ekspanderbar>
     )
 }
 

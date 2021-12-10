@@ -30,16 +30,9 @@ describe('Tester at appen starter', () => {
     })
 
     it('Den grønne boksen har riktig innhold', () => {
-        cy.get('.utvidbar__innholdContainer')
-            .should('not.have.class', 'apen')
-            .and('not.be.visible')
-
         cy.contains('21 060 kroner')
             .and('contain', 'Utbetales til Pengeløs Sparebank')
             .click({ force: true })
-
-        cy.get('.utvidbar__innholdContainer')
-            .should('have.class', 'apen')
 
         cy.contains('Slik beregner vi sykepengene').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
@@ -52,7 +45,7 @@ describe('Tester at appen starter', () => {
 
     it('Den blå boksen har riktig innhold', () => {
 
-        cy.get('.utvidbarNy.bla').should('contain', '15')
+        cy.get('.ekspanderbar.bla').should('contain', '15')
             .and('contain', 'Sykepengedager brukt hittil')
             .click()
 
@@ -61,7 +54,7 @@ describe('Tester at appen starter', () => {
         cy.should('contain', 'Datoen gjelder hvis du er sykmeldt uten pauser.')
 
         cy.contains('Når sykepengene tar slutt').click({ force: true })
-        cy.get('.utvidbar__innholdContainer')
+        cy.get('.ekspanderbartPanel__innhold')
             .should('contain', 'Om du fortsatt ikke kan arbeide på grunn av sykdom eller skade etter 52 uker')
 
     })
@@ -85,8 +78,9 @@ describe('Tester at appen starter', () => {
             .should('have.length', 7).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakAnnullert.id}`)
         cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
-        cy.get('.annullering > .info')
-            .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
+
+        cy.get('.annullering .info').click()
+        cy.should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
             .and('contain', 'Hvorfor behandles den på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
@@ -100,8 +94,9 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 7).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger/vedtak/${vedtakRevurdert.id}`)
-        cy.get('.annullering > .info')
-            .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
+
+        cy.get('.annullering .info').click()
+        cy.should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
             .and('contain', 'Hvorfor behandles den på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
@@ -109,7 +104,7 @@ describe('Tester at appen starter', () => {
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
 
-        cy.get('.utvidbarNy.bla').should('contain', '9')
+        cy.get('.ekspanderbar.bla').should('contain', '9')
             .and('contain', 'Sykepengedager brukt hittil')
             .click()
 

@@ -12,8 +12,7 @@ import '../components/vedtak-side/behandling/behandling.less'
 import '../components/vedtak-side/avviste-dager/avviste-dager.less'
 import '../components/vedtak-side/annullering/annullering.less'
 import '../../node_modules/nav-frontend-ekspanderbartpanel-style/src/index.less'
-import '../components/utvidbar/utvidbar.less'
-import '../components/utvidbar/utvidbar-ny.less'
+import '../components/ekspanderbar/ekspanderbar.less'
 import '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling.less'
 import '../components/inngang/inngangspanel.less'
 import '../components/dager/dag-tabell.less'
@@ -28,7 +27,6 @@ import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
-
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
@@ -56,7 +54,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             }),
     )
 
-
     return (
         <>
             <Head>
@@ -75,6 +72,5 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         </>
     )
 }
-
 
 export default MyApp

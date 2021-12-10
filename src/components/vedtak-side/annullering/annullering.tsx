@@ -5,13 +5,17 @@ import { Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
-import Utvidbar from '../../utvidbar/utvidbar'
+import EkspanderbarInfo from '../../ekspanderbar/ekspanderbar-info'
 
 const AnnulleringsInfo = () => {
     return (
         <div className="annullering">
             <AlertStripeAdvarsel>{tekst('annullering.alert')}</AlertStripeAdvarsel>
-            <Utvidbar erApen={true} type="info" tittel={tekst('annullering.info.header')} heading="h2">
+
+            <EkspanderbarInfo
+                erApen={true}
+                tittel={tekst('annullering.info.header')}
+            >
                 <Normaltekst tag="div">
                     {parser(tekst('annullering.info.body'))}
                 </Normaltekst>
@@ -23,7 +27,7 @@ const AnnulleringsInfo = () => {
                         </Normaltekst>
                     </Lenke>
                 </div>
-            </Utvidbar>
+            </EkspanderbarInfo>
         </div>
     )
 }

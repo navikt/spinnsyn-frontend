@@ -1,7 +1,7 @@
-@import '../../../node_modules/nav-frontend-core/less/_variabler';
-@import '../../../src/components/basic';
+@import 'node_modules/nav-frontend-core/less/_variabler';
+@import 'src/components/basic';
 
-.utvidbarNy {
+.ekspanderbar {
     overflow: hidden;
     padding: 0.6rem 0;
     margin: 0.5rem 0;
@@ -25,7 +25,7 @@
         .ekspanderbartPanel__tittel {
             display: inline-flex;
 
-            .utvidbar__tittel {
+            .ekspanderbar__tittel {
                 .typo-systemtittel {
                     margin-bottom: 0.25rem;
                 }
@@ -38,14 +38,14 @@
         margin: 0.5rem 0;
     }
 
-    .utvidbar__ikon {
+    .ekspanderbar__ikon {
         margin: auto 1.5rem auto 0.75rem;
         min-width: 40px;
         max-width: 36px;
     }
 
     &.apen {
-        .utvidbar__ikon {
+        .ekspanderbar__ikon {
             display: none;
         }
     }
@@ -66,7 +66,8 @@
         display: inline-block;
         background-color: transparent;
         padding: 0;
-        margin-bottom: 0.5rem;
+        border: 0;
+        margin: 1rem -1rem;
 
         &:hover {
             outline: none;
@@ -79,7 +80,7 @@
 
         button {
             display: inline;
-            padding: 0;
+            padding: 0 1rem;
             background-color: transparent;
             border: 0;
 
@@ -101,7 +102,7 @@
             padding: 0;
         }
 
-        .utvidbar__innhold {
+        .ekspanderbar__innhold {
             padding: 0 0 2rem;
 
             .alertstripe__ikon {
@@ -135,21 +136,21 @@
 }
 
 @media (min-width: @screen-sm) {
-    .utvidbarNy {
-        .utvidbar__toggle {
+    .ekspanderbar {
+        .ekspanderbar__toggle {
             padding: 1.5rem 1rem;
 
             &:hover {
                 color: @navBla;
             }
 
-            .utvidbar__ikon {
+            .ekspanderbar__ikon {
                 display: block;
             }
         }
 
         &.apen {
-            .utvidbar__ikon {
+            .ekspanderbar__ikon {
                 display: block;
             }
         }
@@ -157,19 +158,19 @@
 }
 
 @media print {
-    .utvidbarNy {
-        .utvidbar__toggle {
+    .ekspanderbar {
+        .ekspanderbar__toggle {
             border-bottom: 1px solid @navGra40;
             text-decoration: none;
         }
     }
 
     &.intern {
-        .utvidbar__toggle {
+        .ekspanderbar__toggle {
             border: 0;
         }
 
-        .utvidbar__innhold {
+        .ekspanderbar__innhold {
             .alertstripe__ikon {
                 display: inline;
             }

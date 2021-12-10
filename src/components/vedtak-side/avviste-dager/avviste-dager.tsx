@@ -5,8 +5,8 @@ import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
-import Utvidbar from '../../utvidbar/utvidbar'
-import UtvidbarGul from '../../utvidbar/utvidbar-gul'
+import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
+import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import BeregningInfo from '../utbetaling/beregning-info'
 
 interface AvvisteDagerProps {
@@ -22,10 +22,10 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
         : ' sykepengedag'
 
     return (
-        <UtvidbarGul
+        <Ekspanderbar type="gul"
             erApen={apen}
             tittel={
-                <div className="utvidbar__tittel">
+                <div className="ekspanderbar__tittel">
                     <Systemtittel tag="h3">
                         {avvisteDager.length + avvisteDagerTekst}
                     </Systemtittel>
@@ -41,13 +41,13 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
 
             <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
 
-            <Utvidbar erApen={true} visLukk={true} type="intern" className="avvistedageroversikt"
+            <EkspanderbarIntern erApen={true} className="avvistedageroversikt"
                 tittel={'Dager NAV ikke utbetaler'}
             >
                 <DagTabell dager={avvisteDager} />
                 <DagBeskrivelse dager={avvisteDager} />
-            </Utvidbar>
-        </UtvidbarGul>
+            </EkspanderbarIntern>
+        </Ekspanderbar>
     )
 }
 

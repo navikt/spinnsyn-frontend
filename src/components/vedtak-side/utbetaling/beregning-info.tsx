@@ -6,7 +6,7 @@ import React from 'react'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
-import Utvidbar from '../../utvidbar/utvidbar'
+import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import Vis from '../../vis'
 import InntektInfo from './inntekt-info/inntekt-info'
 
@@ -32,7 +32,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
     }
 
     return (
-        <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo beregning"
+        <EkspanderbarIntern erApen={false} className="blokkinfo beregning"
             tittel={tekst('utbetaling.beregning.tittel')}
         >
             <InntektInfo vedtak={vedtak} />
@@ -109,7 +109,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     </Lenke>
                 </Normaltekst>
             </div>
-        </Utvidbar>
+        </EkspanderbarIntern>
     )
 }
 

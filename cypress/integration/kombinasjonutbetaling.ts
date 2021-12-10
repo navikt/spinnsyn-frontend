@@ -29,15 +29,15 @@ describe('Tester visning av kombinasjon', () => {
 
 
         //
-        cy.get('.personutbetaling .utvidbar__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
-        cy.get('.personutbetaling .utvidbar__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.').should('be.visible')
+        cy.get('.personutbetaling .ekspanderbartPanel__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
+        cy.get('.personutbetaling .ekspanderbartPanel__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.').should('be.visible')
 
 
         cy.contains('24 550 kroner')
             .and('contain', 'til deg (før skatt)')
             .click({ force: true })
 
-        cy.get('.personutbetaling').contains('Når får du pengene?').should('not.be.visible')
+        cy.get('.personutbetaling').contains('Når får du pengene?').should('not.exist')
 
     })
 
@@ -46,15 +46,15 @@ describe('Tester visning av kombinasjon', () => {
             .and('contain', 'Utbetales til Matbutikken AS')
 
         cy.contains('Utbetales til Matbutikken AS')
-            .click({ force: true })
+            .click()
 
-        cy.get('.info').contains('Når får du pengene?').should('not.be.visible')
-        cy.get('.info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.').should('not.be.visible')
+        cy.get('.info').contains('Når får du pengene?').should('not.exist')
+        cy.get('.info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.').should('not.exist')
 
         cy.get('.refusjon').contains('Slik beregner vi sykepengene').click({ force: true })
 
-        cy.get('.refusjon .utvidbar__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
-        cy.get('.refusjon .utvidbar__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.').should('be.visible')
+        cy.get('.refusjon .ekspanderbartPanel__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
+        cy.get('.refusjon .ekspanderbartPanel__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.').should('be.visible')
 
     })
 })

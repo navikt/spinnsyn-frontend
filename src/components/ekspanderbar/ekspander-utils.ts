@@ -2,28 +2,28 @@ import React from 'react'
 
 import { logEvent } from '../amplitude/amplitude'
 
-export interface UtvidbarProps {
+export interface EkspanderProps {
     erApen: boolean
     tittel: React.ReactNode | string
     children: React.ReactNode
     className?: string
 }
 
-const åpne = (utvidbar: any, tittel: string) => {
+const åpne = (ekspanderbar: any, tittel: string) => {
     if (window) {
         logEvent('panel åpnet', { 'component': tittel })
-        midtstill(utvidbar)
-        utvidbar.current?.focus()
+        midtstill(ekspanderbar)
+        ekspanderbar.current?.focus()
     }
 }
 
-const midtstill = (utvidbar: any) => {
+const midtstill = (ekspanderbar: any) => {
     setTimeout(() => {
-        if (!utvidbar.current) {
+        if (!ekspanderbar.current) {
             return
         }
         const winhight = window.innerHeight
-        const position = utvidbar.current!.getBoundingClientRect()
+        const position = ekspanderbar.current!.getBoundingClientRect()
         let top
         if (position.height >= winhight) {
             top = position.top + window.scrollY
@@ -34,14 +34,14 @@ const midtstill = (utvidbar: any) => {
     }, 300)
 }
 
-export const utvidbarKlikk = (erApen: boolean, utvidbar: any, amplitudeText: string) => {
+export const ekspanderbarKlikk = (erApen: boolean, ekspanderbar: any, amplitudeText: string) => {
     if (!erApen) {
         if (window) {
             logEvent('panel åpnet', { 'component': amplitudeText })
-            midtstill(utvidbar)
-            utvidbar.current?.focus()
+            midtstill(ekspanderbar)
+            ekspanderbar.current?.focus()
         }
     } else {
-        åpne(utvidbar, amplitudeText)
+        åpne(ekspanderbar, amplitudeText)
     }
 }

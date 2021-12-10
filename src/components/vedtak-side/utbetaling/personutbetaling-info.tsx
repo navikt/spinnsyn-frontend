@@ -4,9 +4,7 @@ import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
 
-
 export const PersonutbetalingInfo = () => {
-
     return (
         <section className="info">
             <Element tag="h3" className="info__tittel">
