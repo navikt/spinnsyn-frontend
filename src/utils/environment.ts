@@ -49,3 +49,6 @@ export function amplitudeKey() {
 export function amplitudeEnabled() {
     return publicRuntimeConfig.amplitudeEnabled === 'true'
 }
+export function spinnsynFrontendInterne() {
+    return publicRuntimeConfig.spinnsynFrontendInterne === 'true'
+}

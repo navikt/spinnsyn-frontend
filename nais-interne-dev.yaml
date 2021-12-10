@@ -55,3 +55,9 @@ spec:
       value: "true"
     - name: SPINNSYN_FRONTEND_INTERNE
       value: "true"
+    - name: SPINNSYN_BACKEND_CLIENT_ID
+      value: "api://dev-gcp.flex.spinnsyn-backend/.default"
+    - name: FLEX_FSS_PROXY_CLIENT_ID
+      value: "api://dev-fss.flex.flex-fss-proxy/.default"
+    - name: FLEX_FSS_PROXY_URL
+      value: "https://flex-fss-proxy.dev-fss-pub.nais.io"

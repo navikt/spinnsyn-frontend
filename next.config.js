@@ -4,6 +4,7 @@ const withLess = require('next-with-less')
 module.exports = withLess({
     basePath: '/syk/sykepenger',
     lessLoaderOptions: {},
+    generateEtags: false, //Disabler etag i pages
     serverRuntimeConfig: {
         // Will only be available on the server side
         decoratorEnv: process.env.DECORATOR_ENV,
@@ -19,6 +20,8 @@ module.exports = withLess({
         azureAppWellKnownUrl: process.env.AZURE_APP_WELL_KNOWN_URL,
         azureAppPreAuthorizedApps: process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
         spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
+        flexFssProxyClientId: process.env.FLEX_FSS_PROXY_CLIENT_ID,
+        flexFssProxyUrl: process.env.FLEX_FSS_PROXY_URL,
         idportenClientId: process.env.IDPORTEN_CLIENT_ID,
         idportenWellKnownUrl: process.env.IDPORTEN_WELL_KNOWN_URL,
         naisAppImage: process.env.NAIS_APP_IMAGE,
@@ -40,5 +43,6 @@ module.exports = withLess({
         amplitudeKey: process.env.AMPLITUDE_KEY,
         amplitudeEnabled: process.env.AMPLITUDE_ENABLED,
         environment: process.env.ENVIRONMENT,
+        spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE
     },
 })

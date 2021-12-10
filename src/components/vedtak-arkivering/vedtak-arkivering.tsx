@@ -6,6 +6,7 @@ import React from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { fnrForVisning } from '../../utils/fnr-for-visning'
 import { tekst } from '../../utils/tekster'
 import Vedtak from '../vedtak-side/vedtak'
 
@@ -15,13 +16,12 @@ dayjs.extend(timezone)
 
 export interface VedtakArkiveringProps {
     vedtak: RSVedtakWrapper,
-    fnr: String,
+    fnr: string,
     utbetalingId: String,
 }
 
 export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkiveringProps) => {
 
-    const fnrForVisning = `${fnr.slice(0, 6)} ${fnr.slice(5)}`
 
     return (
         <ArkiveringContext.Provider value={true}>
@@ -36,7 +36,7 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
                             <img src={'/syk/sykepenger/static/img/person.svg'} className="personikon" />
                             <div className="persontekst__personalia">
                                 <p className="navn">
-                                    {fnrForVisning}
+                                    {fnrForVisning(fnr)}
                                 </p>
                             </div>
                             <div className="sendt">

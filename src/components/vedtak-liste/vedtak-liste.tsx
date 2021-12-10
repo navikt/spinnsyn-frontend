@@ -7,8 +7,6 @@ import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
-import SaksbehandlingstidOgUtbetaling
-    from '../teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling'
 import Teasere from '../teaser/teasere'
 import TilbakeLenke from '../tilbake/tilbake-lenke'
 
@@ -46,8 +44,6 @@ const VedtakListe = () => {
                     tittel={tekst('spinnsyn.teaser.uleste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-nye-soknader')}
                 />
-
-                <SaksbehandlingstidOgUtbetaling />
 
                 <Teasere
                     className="vedtak--leste"

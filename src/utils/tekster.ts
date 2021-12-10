@@ -1,6 +1,4 @@
 import BannerTekster from '../components/banner/banner-tekster'
-import SaksbehandlingstidOgUtbetalingTekster
-    from '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling-tekster'
 import TeaserTekster from '../components/teaser/teaser-tekster'
 import VedtakArkiveringTekster from '../components/vedtak-arkivering/vedtak-arkivering-tekster'
 import VedtakListeTekster from '../components/vedtak-liste/vedtak-liste-tekster'
@@ -23,7 +21,6 @@ const tekster = {
     ...BehandlingTekster,
     ...AvvisteDagerTekster,
     ...SykepengedagerTekster,
-    ...SaksbehandlingstidOgUtbetalingTekster,
     ...AnnulleringTekster
 }
 
@@ -39,7 +36,6 @@ type TekstKeys =
     | keyof typeof BehandlingTekster
     | keyof typeof AvvisteDagerTekster
     | keyof typeof SykepengedagerTekster
-    | keyof typeof SaksbehandlingstidOgUtbetalingTekster
     | keyof typeof AnnulleringTekster;
 
 export const tekst = (tekst: TekstKeys): string => {

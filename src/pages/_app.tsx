@@ -15,6 +15,7 @@ import '../../node_modules/nav-frontend-ekspanderbartpanel-style/src/index.less'
 import '../components/ekspanderbar/ekspanderbar.less'
 import '../components/teaser/saksbehandlingstid-og-utbetaling/saksbehandlingstid-og-utbetaling.less'
 import '../components/inngang/inngangspanel.less'
+import '../components/interne-header/interneheader.less'
 import '../components/dager/dag-tabell.less'
 import '../components/brodsmuler/brodsmuler.less'
 import '../components/banner/banner.less'
@@ -49,6 +50,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                         /* Setting this to true causes the request to be immediately executed after initial
                            mount Even if the query had data hydrated from the server side render */
                         refetchOnMount: false,
+                        refetchOnWindowFocus: false,
                     },
                 },
             }),
