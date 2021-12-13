@@ -28,7 +28,7 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.samlet.årslønn': 'Samlet årslønn',
     'utbetaling.inntekt.info.dagsats': 'Dagsats',
     'utbetaling.sykepengegrunnlag': 'Sykepengegrunnlag',
-    'utbetaling.redusert.til.6G': 'Sykepengegrunnlaget kan aldri være høyere enn 6 ganger folketrygdens grunnbeløp (G). Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet.',
+    'utbetaling.redusert.til.6G': 'Sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet.',
     'utbetaling.andre.arbeidsgivere.tittel': 'Årslønn fra andre arbeidsgivere',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
