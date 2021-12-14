@@ -29,7 +29,6 @@ function hentMockVedtak(incomingMessage: IncomingMessage, cookies?: { [ p: strin
     })
 }
 
-
 export async function hentVedtak(incomingMessage: IncomingMessage, cookies?: { [ p: string ]: string }): Promise<RSVedtakWrapper[]> {
     if (isMockBackend()) {
         return hentMockVedtak(incomingMessage, cookies)

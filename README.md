@@ -14,6 +14,23 @@ Testes ved å se på dokumentet som havner i gosys eller ved å bruke denne hjel
 
 https://spinnsyn-arkivering.dev.nav.no/api/test/pdf/:fnr/:vedtakid
 
+# spinnsyn-frontend-interne
+Variant av spinnsyn-frontend som lenkes til fra Modia. Her henter vi opp personen som den innlogga brukeren ser på i modia og viser det slik den brukeren ser.
+Benytter seg av azure AD og wonderwall for å logge inn interne brukere.
+
+Lever under:
+
+- prod-gcp: https://spinnsyn-frontend-interne.intern.nav.no/syk/sykepenger
+- dev-gcp: https://spinnsyn-frontend-interne.dev.intern.nav.no/syk/sykepenger
+
+
+For å teste lokalt
+```sh
+npm run interne
+```
+Og gå til http://localhost:8080/syk/sykepenger
+
+
 ## Kjør lokalt uten backend
 
 ```sh

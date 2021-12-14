@@ -41,7 +41,7 @@ interface PreauthorizedApps {
 }
 
 
-export async function verifyAzureAccessToken(token: string) {
+export async function verifyAzureAccessTokenVedArkivering(token: string) {
 
     const verified = await validerToken(token)
 
@@ -62,5 +62,15 @@ export async function verifyAzureAccessToken(token: string) {
 
     if (azp != spinnsynArkiveringClientId.clientId) {
         throw new ErrorMedStatus('AZP claim matcher ikke spinnsyn arkivering', 401)
+    }
+}
+
+
+export async function verifyAzureAccessTokenSpinnsynInterne(bearerToken: string) {
+    const token = bearerToken.split(' ')[ 1 ]
+    const verified = await validerToken(token)
+
+    if (verified.payload.aud !== serverRuntimeConfig.azureAppClientId) {
+        throw new ErrorMedStatus('Audience matcher ikke min client ID', 401)
     }
 }

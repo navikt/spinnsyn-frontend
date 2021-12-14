@@ -58,7 +58,7 @@ describe('Tester at appen starter', () => {
 
         cy.should('contain', '180').and('contain', 'Sykepengedager gjenstår')
         cy.should('contain', '17. des. 2021').and('contain', 'Beregnet slutt på sykepenger')
-        cy.should('contain', 'Datoen gjelder hvis du er sykmeldt uten pauser.')
+        cy.should('contain', 'Datoen gjelder hvis du er sykmeldt uten opphold.')
 
         cy.contains('Når sykepengene tar slutt').click({ force: true })
         cy.get('.utvidbar__innholdContainer')

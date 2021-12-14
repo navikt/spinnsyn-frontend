@@ -1,27 +1,49 @@
-import getConfig from 'next/config'
+import { TokenSet } from 'openid-client'
 
-const { serverRuntimeConfig } = getConfig()
+import { getAzureAuthClient } from './azureClient'
 
-
-interface TokenResponse {
-    'token_type': string,
-    'expires_in': number,
-    'access_token': string
+interface TokesetAndExp {
+    expiresAt: number,
+    tokenset: TokenSet
 }
 
-export const getAzureAdAccessToken = async(): Promise<TokenResponse> => {
+type TokensetMap = {
+    [ scope: string ]: TokesetAndExp;
+};
 
-    const params = new URLSearchParams()
-    params.append('client_id', serverRuntimeConfig.azureAppClientId)
-    params.append('scope', serverRuntimeConfig.spinnsynBackendClientId)
-    params.append('client_secret', serverRuntimeConfig.azureAppClientSecret)
-    params.append('grant_type', 'client_credentials')
+const tokens: TokensetMap = {}
+const drift = 60
 
+function now() {
+    return Math.floor(Date.now() / 1000)
+}
 
-    const response = await fetch(serverRuntimeConfig.azureOpenidConfigTokenEndpoint, { method: 'POST', body: params })
-    if (response.status != 200) {
-        throw Error('Ikke 200 response fra azure')
+function erIkkeUtlopt(tokenset: TokesetAndExp) {
+    return tokenset.expiresAt > now()
+}
+
+export const getAzureAdAccessToken = async(scope: string): Promise<TokenSet> => {
+    const eksisterendeToken = tokens[ scope ]
+    if (eksisterendeToken && erIkkeUtlopt(eksisterendeToken)) {
+        return eksisterendeToken.tokenset
     }
-    return (await response.json())
+    const oidcClient = await getAzureAuthClient()
+
+    const tokenSet = await oidcClient.grant({
+        grant_type: 'client_credentials',
+        scope,
+    })
+
+    if (!tokenSet.access_token) {
+        throw new Error(' Access token is undefined')
+    }
+
+    const expiresAt = (tokenSet.expires_in || 0) + now() - drift
+    tokens[ scope ] = {
+        tokenset: tokenSet,
+        expiresAt: expiresAt
+    }
+
+    return tokenSet
 }
 
