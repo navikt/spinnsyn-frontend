@@ -41,14 +41,14 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
 
             <InntektInfo vedtak={vedtak} />
 
-            <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-
             <Utvidbar erApen={true} visLukk={true} type="intern" className="avvistedageroversikt"
                 tittel={'Dager NAV ikke utbetaler'}
             >
                 <DagTabell dager={avvisteDager} />
                 <DagBeskrivelse dager={avvisteDager} />
             </Utvidbar>
+
+            <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
         </Utvidbar>
     )
 }
