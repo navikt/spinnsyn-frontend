@@ -22,7 +22,7 @@ describe('Tester visning av kombinasjon', () => {
 
 
         cy.get('.personutbetaling .info').contains('Når får du sykepengene?').should('be.visible')
-        cy.get('.personutbetaling .info').contains('Det kan variere litt når pengene blir utbetalt. Her kan du lese mer om når pengene kommer.').should('be.visible')
+        cy.get('.personutbetaling .info').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din.').should('be.visible')
 
         cy.get('.personutbetaling .utvidbar__tittel').contains('Mer om beregningen')
             .click({ force: true })
@@ -48,7 +48,7 @@ describe('Tester visning av kombinasjon', () => {
             .click({ force: true })
 
         cy.get('.info').contains('Når får du sykepengene?').should('not.be.visible')
-        cy.get('.info').contains('Det kan variere litt når pengene blir utbetalt. Her kan du lese mer om når pengene kommer.').should('not.be.visible')
+        cy.get('.info').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din.').should('not.be.visible')
 
         cy.get('.refusjon .utvidbar__tittel').contains('Mer om beregningen').click({ force: true })
 
