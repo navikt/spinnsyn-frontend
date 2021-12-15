@@ -8,7 +8,6 @@ import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import Utvidbar from '../../utvidbar/utvidbar'
 import Vis from '../../vis'
-import InntektInfo from './inntekt-info/inntekt-info'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper;
@@ -35,8 +34,6 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
         <Utvidbar erApen={false} visLukk={true} type="intern" className="blokkinfo beregning"
             tittel={tekst('utbetaling.beregning.tittel')}
         >
-            <InntektInfo vedtak={vedtak} />
-
             <div className="mer__inntekt__info">
                 <Element tag="h4" className="blokkinfo__avsnitt">
                     {tekst('utbetaling.mndlonn.tittel')}
@@ -107,6 +104,13 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     <Lenke href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                         {tekst('utbetaling.beregning.lenke.tekst')}
                     </Lenke>
+                </Normaltekst>
+
+                <Element tag="h4" className="blokkinfo__avsnitt">
+                    {tekst('utbetaling.info.tittel')}
+                </Element>
+                <Normaltekst>
+                    {parser(tekst('utbetaling.info.innhold'))}
                 </Normaltekst>
             </div>
         </Utvidbar>

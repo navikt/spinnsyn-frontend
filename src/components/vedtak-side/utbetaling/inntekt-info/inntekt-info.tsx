@@ -26,20 +26,24 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     return (
         <Vis hvis={inntektMnd && inntektAr}
             render={() =>
-                <>
-                    <section className="inntekt__info">
+                <div className="inntekt__info">
+                    <Element tag="h3">
+                        {tekst('utbetaling.inntekt.info.tittel')}
+                    </Element>
+
+                    <section>
                         <table>
                             <tbody>
                                 <tr>
-                                    <Element tag="th">
+                                    <Normaltekst tag="th">
                                         {tekst('utbetaling.inntekt.info.beregnet')}
-                                    </Element>
+                                    </Normaltekst>
                                     <Normaltekst tag="td">{inntektMnd}</Normaltekst>
                                 </tr>
                                 <tr>
-                                    <Element tag="th">
+                                    <Normaltekst tag="th">
                                         {tekst('utbetaling.inntekt.info.omregnet')}
-                                    </Element>
+                                    </Normaltekst>
                                     <Normaltekst tag="td">{inntektAr}</Normaltekst>
                                 </tr>
                             </tbody>
@@ -51,9 +55,9 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     <tbody>
                                         <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
                                         <tr>
-                                            <Element tag="th">
+                                            <Normaltekst tag="th">
                                                 {tekst('utbetaling.inntekt.samlet.årslønn')}
-                                            </Element>
+                                            </Normaltekst>
                                             <Normaltekst tag="td">
                                                 {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
                                             </Normaltekst>
@@ -69,7 +73,8 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
                                         <div className="redusert_sykepengegrunnlag">
                                             <Element tag="div" className="img-rad">
-                                                <img alt="" src={'/syk/sykepenger/static/img/info.svg'} />
+
+                                                <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
                                                 Redusert til 6G
                                             </Element>
                                             <Normaltekst>
@@ -78,9 +83,9 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                             <table>
                                                 <tbody>
                                                     <tr>
-                                                        <Element tag="th">
+                                                        <Normaltekst tag="th">
                                                             {tekst('utbetaling.sykepengegrunnlag')}
-                                                        </Element>
+                                                        </Normaltekst>
                                                         <Normaltekst tag="td">
                                                             {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
                                                         </Normaltekst>
@@ -94,9 +99,9 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <Element tag="th">
+                                                    <Normaltekst tag="th">
                                                         {tekst('utbetaling.sykepengegrunnlag')}
-                                                    </Element>
+                                                    </Normaltekst>
                                                     <Normaltekst tag="td">
                                                         {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
                                                     </Normaltekst>
@@ -113,7 +118,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 <table className="dagsats">
                                     <tbody>
                                         <tr>
-                                            <Element tag="th">{tekst('utbetaling.inntekt.info.dagsats')}</Element>
+                                            <Normaltekst tag="th">{tekst('utbetaling.inntekt.info.dagsats')}</Normaltekst>
                                             <Normaltekst tag="td">{formaterValuta(dagsats)}</Normaltekst>
                                         </tr>
                                     </tbody>
@@ -121,7 +126,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             }
                         />
                     </section>
-                </>
+                </div>
             }
         />
     )

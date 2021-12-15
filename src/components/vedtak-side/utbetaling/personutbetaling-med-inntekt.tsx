@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -20,7 +19,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
 
     return (
         <Utvidbar type="integrert"
-            className={'personutbetaling gronn' + (apen ? ' apen' : '')}
+            className={'personutbetaling blokkinfo gronn' + (apen ? ' apen' : '')}
             erApen={apen}
             visLukk={true}
             ikon={'/syk/sykepenger/static/img/ikon-penger.svg'}
@@ -32,18 +31,20 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             heading="h2"
         >
             <div className="utbetaling__innhold">
-                <PersonutbetalingInfo />
-                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
+                <PersonutbetalingInfo vedtak={vedtak} />
+
                 <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <Utvidbar erApen={false} visLukk={true} type="intern" className="utbetalingsoversikt"
-                            tittel={'Beløpet dag for dag'}
+                            tittel={'Sykepengene dag for dag'}
                         >
                             <DagTabell dager={vedtak.dagerPerson} />
                             <DagBeskrivelse dager={vedtak.dagerPerson} />
                         </Utvidbar>
                     }
                 />
+
+                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
             </div>
         </Utvidbar>
     )

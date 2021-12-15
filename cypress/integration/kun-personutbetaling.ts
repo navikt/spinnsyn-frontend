@@ -21,10 +21,10 @@ describe('Tester visning personutbetaling', () => {
             .and('contain', 'til deg (før skatt)')
             .click({ force: true })
 
-        cy.get('.info').contains('Når får du pengene?')
-        cy.get('.info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.')
+        cy.get('.info').contains('Når får du sykepengene?')
+        cy.get('.info').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din.')
 
-        cy.contains('Slik beregner vi sykepengene')
+        cy.contains('Mer om beregningen')
             .click({ force: true })
 
         //

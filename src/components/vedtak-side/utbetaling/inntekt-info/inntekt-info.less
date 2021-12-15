@@ -1,33 +1,24 @@
 @import '../../../../../node_modules/nav-frontend-core/less/_variabler';
 
 .inntekt__info {
-    background-color: @white;
-    border-collapse: collapse;
-    padding-top: 0.8rem;
-
-    &:after {
-        content: '';
-        top: -15px;
-        left: 15px;
-        width: 1rem;
-        height: 1rem;
-        position: relative;
-        display: block;
-        transform: translateY(1.5rem) rotate(45deg);
-        background-color: white;
-    }
+    background-color: white;
+    padding: 1rem;
+    margin: 2rem 0;
+    border: 1px solid @navGra40;
+    border-radius: 4px;
 
     table {
         width: 100%;
         border-collapse: collapse;
+        margin-top: 0.5rem;
 
         th {
-            padding: 0.35rem 0.25rem 0.35rem 1rem;
+            padding: 0.35rem 0 0.35rem 0;
             text-align: left;
         }
 
         td {
-            padding: 0.35rem 1rem 0.35rem 0.25rem;
+            padding: 0.35rem 0 0.35rem 0.25rem;
             text-align: right;
             white-space: nowrap;
         }
@@ -53,18 +44,22 @@
     }
 
     .redusert_sykepengegrunnlag {
-        margin: 0.5rem 0.7rem 1rem;
-        padding: 0.5rem 0.8rem;
+        margin: 0 -1rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
         background-color: mix(@navOransje, @white, 7%);
 
         .img-rad {
             display: flex;
-            margin: 0.5rem 0;
+            align-items: center;
+
+            img {
+                width: 24px;
+                margin-right: 0.5rem;
+            }
         }
 
-        img {
-            width: 24px;
-            margin-right: 0.5rem;
+        > .typo-normal {
+            padding-left: 2rem;
         }
 
         th, td {
