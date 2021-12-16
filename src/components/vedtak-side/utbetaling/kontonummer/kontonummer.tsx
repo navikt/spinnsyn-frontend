@@ -9,10 +9,30 @@ import Vis from '../../../vis'
 
 const Kontonummer = () => {
     const [ kontonummer, setKontonummer ] = useState<string>()
+    const [ erKontonummerHentet, setErKontonummerHentet ] = useState<boolean>(false)
+
+    const hentKontonummer = async(url: string) => {
+        const res = await fetch(url, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        // Det returneres 404 hvis det ikke ble funnet noe kontonummer.
+        if (res.status !== 200) {
+            return null
+        }
+
+        const data: Brukerkonto = await res.json()
+        return (data?.kontonummer)
+    }
 
     useEffect(() => {
         hentKontonummer(lagApiRouteUrl())
-            .then(kontonummer => setKontonummer(kontonummer!))
+            .then(kontonummer => {
+                setErKontonummerHentet(true)
+                setKontonummer(kontonummer!)
+            })
     }, [])
 
     const lagApiRouteUrl = () => {
@@ -26,39 +46,30 @@ const Kontonummer = () => {
         return `${apiRouteUrl}?id=${id}`
     }
 
-    async function hentKontonummer(url: string) {
-        const res = await fetch(url, {
-            method: 'GET',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' }
-        })
-
-        const data: Brukerkonto = await res.json()
-        return (data?.kontonummer)
-    }
-
     const formaterKontonummer = (kontonummer: string) =>
         kontonummer.replace(/^(.{4})(.{2})(.*)$/, '$1 $2 $3')
 
     return (
-        <>
-            <Vis hvis={kontonummer} render={() =>
-                <Normaltekst>
-                    <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong> {formaterKontonummer(kontonummer!)}
-                </Normaltekst>
-            } />
-
-            <Vis hvis={!kontonummer} render={() =>
-                <>
-                    <Element tag="h2" className="info__tittel">
-                        {tekst('utbetaling.kontonummer.tittel')}
-                    </Element>
+        <Vis hvis={erKontonummerHentet} render={() =>
+            <>
+                <Vis hvis={kontonummer} render={() =>
                     <Normaltekst>
-                        {parser(tekst('utbetaling.kontonummer.mangler'))}
+                        <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong> {formaterKontonummer(kontonummer!)}
                     </Normaltekst>
-                </>
-            } />
-        </>
+                } />
+
+                <Vis hvis={!kontonummer} render={() =>
+                    <>
+                        <Element tag="h2" className="info__tittel">
+                            {tekst('utbetaling.kontonummer.tittel')}
+                        </Element>
+                        <Normaltekst>
+                            {parser(tekst('utbetaling.kontonummer.mangler'))}
+                        </Normaltekst>
+                    </>
+                } />
+            </>
+        } />
     )
 }
 

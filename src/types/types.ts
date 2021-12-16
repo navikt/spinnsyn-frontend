@@ -1,3 +1,9 @@
+export interface Personalia {
+    personalia: {
+        kontonr: string
+    }
+}
+
 export interface Brukerkonto {
     kontonummer: string
 }
