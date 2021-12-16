@@ -34,17 +34,19 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <>
                 <ArbeidsgiverInfo vedtak={vedtak} />
-                <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+
                 <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
                     render={() =>
                         <EkspanderbarIntern erApen={false} className="utbetalingsoversikt"
-                            tittel="Beløpet dag for dag"
+                            tittel="Sykepengene dag for dag"
                         >
                             <DagTabell dager={vedtak.dagerArbeidsgiver} />
                             <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
                         </EkspanderbarIntern>
                     }
                 />
+
+                <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
             </>
         </Ekspanderbar>
     )

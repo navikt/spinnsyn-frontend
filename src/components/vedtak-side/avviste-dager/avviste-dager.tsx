@@ -8,6 +8,7 @@ import DagTabell from '../../dager/dag-tabell'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import BeregningInfo from '../utbetaling/beregning-info'
+import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
@@ -39,7 +40,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                 <Normaltekst>{tekst('avviste.dager.intro')}</Normaltekst>
             </div>
 
-            <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+            <InntektInfo vedtak={vedtak} />
 
             <EkspanderbarIntern erApen={true} className="avvistedageroversikt"
                 tittel={'Dager NAV ikke utbetaler'}
@@ -47,6 +48,8 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                 <DagTabell dager={avvisteDager} />
                 <DagBeskrivelse dager={avvisteDager} />
             </EkspanderbarIntern>
+
+            <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
         </Ekspanderbar>
     )
 }

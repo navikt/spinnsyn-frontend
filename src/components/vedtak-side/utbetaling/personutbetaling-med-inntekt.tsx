@@ -1,6 +1,5 @@
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
-
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -30,20 +29,21 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             }
         >
             <>
-                <PersonutbetalingInfo />
+                <PersonutbetalingInfo vedtak={vedtak} />
 
                 <BeregningInfo vedtak={vedtak} mottaker={'person'} />
 
                 <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <EkspanderbarIntern erApen={false} className="utbetalingsoversikt"
-                            tittel={'Beløpet dag for dag'}
+                            tittel={'Sykepengene dag for dag'}
                         >
                             <DagTabell dager={vedtak.dagerPerson} />
                             <DagBeskrivelse dager={vedtak.dagerPerson} />
                         </EkspanderbarIntern>
                     }
                 />
+                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
             </>
         </Ekspanderbar>
     )

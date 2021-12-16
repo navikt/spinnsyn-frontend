@@ -21,10 +21,10 @@ describe('Tester visning av kombinasjon', () => {
             .click({ force: true })
 
 
-        cy.get('.personutbetaling .info').contains('Når får du pengene?').should('be.visible')
-        cy.get('.personutbetaling .info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.').should('be.visible')
+        cy.get('.personutbetaling .info').contains('Når får du sykepengene?').should('be.visible')
+        cy.get('.personutbetaling .info').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din.').should('be.visible')
 
-        cy.get('.personutbetaling').contains('Slik beregner vi sykepengene')
+        cy.get('.personutbetaling .utvidbar__tittel').contains('Mer om beregningen')
             .click({ force: true })
 
 
@@ -37,7 +37,7 @@ describe('Tester visning av kombinasjon', () => {
             .and('contain', 'til deg (før skatt)')
             .click({ force: true })
 
-        cy.get('.personutbetaling').contains('Når får du pengene?').should('not.exist')
+        cy.get('.personutbetaling').contains('Når får du sykepengene?').should('not.exist')
 
     })
 
@@ -48,10 +48,10 @@ describe('Tester visning av kombinasjon', () => {
         cy.contains('Utbetales til Matbutikken AS')
             .click()
 
-        cy.get('.info').contains('Når får du pengene?').should('not.exist')
-        cy.get('.info').contains('Pengene utbetales som regel innen 4 uker. Her kan du lese mer om når pengene kommer.').should('not.exist')
+        cy.get('.info').contains('Når får du sykepengene?').should('not.be.visible')
+        cy.get('.info').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din.').should('not.be.visible')
 
-        cy.get('.refusjon').contains('Slik beregner vi sykepengene').click({ force: true })
+        cy.get('.refusjon .utvidbar__tittel').contains('Mer om beregningen').click({ force: true })
 
         cy.get('.refusjon .ekspanderbartPanel__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp').should('be.visible')
         cy.get('.refusjon .ekspanderbartPanel__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.').should('be.visible')

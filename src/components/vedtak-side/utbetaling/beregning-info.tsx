@@ -108,6 +108,13 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                         {tekst('utbetaling.beregning.lenke.tekst')}
                     </Lenke>
                 </Normaltekst>
+
+                <Element tag="h4" className="blokkinfo__avsnitt">
+                    {tekst('utbetaling.info.tittel')}
+                </Element>
+                <Normaltekst>
+                    {parser(tekst('utbetaling.info.innhold'))}
+                </Normaltekst>
             </div>
         </EkspanderbarIntern>
     )

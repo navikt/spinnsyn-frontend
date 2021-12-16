@@ -18,7 +18,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
             .and('contain', 'Utbetales til Pengeløs Sparebank')
             .click({ force: true })
 
-        cy.contains('Beløpet dag for dag')
+        cy.contains('Sykepengene dag for dag')
             .click({ force: true })
 
         // Dager utenfor vedtak fom og tom
@@ -30,12 +30,12 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('20.feb.').parent().should('contain', 'Helg').and('contain', '-')
     })
 
-    it('Slik beregner vi sykepengene har en dagsats', () => {
-        cy.contains('Slik beregner vi sykepengene')
+    it('Mer om beregningen har en dagsats', () => {
+        cy.contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.get('.inntekt__info .dagsats').contains('Dagsats')
-        cy.get('.inntekt__info > .dagsats').contains('2 239 kr')
+        cy.get('.inntekt__info .dagsats').contains('Sykepenger per dag')
+        cy.get('.inntekt__info .dagsats').contains('2 239 kr')
 
         cy.contains('Redusert til 6G').should('not.exist')
 
@@ -59,7 +59,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
 
         cy.get('.ekspanderbar.gronn').click()
-        cy.contains('Beløpet dag for dag').click({ force: true })
+        cy.contains('Sykepengene dag for dag').click({ force: true })
 
         cy.get('.utbetalingsoversikt').within(() => {
             cy.contains('30.jan.').parent().should('contain', 'Arbeidsdag').and('contain', '-')
