@@ -35,7 +35,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                 </div>
             }
         >
-            <div className="tekstinfo__avsnitt">
+            <div className="tekstinfo">
                 <Normaltekst>{tekst('avviste.dager.intro')}</Normaltekst>
             </div>
 

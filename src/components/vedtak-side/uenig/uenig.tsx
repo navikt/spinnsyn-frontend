@@ -1,5 +1,5 @@
 import Lenke from 'nav-frontend-lenker'
-import { Element,Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { getLedetekst, tekst } from '../../../utils/tekster'
@@ -9,8 +9,8 @@ import { VedtakProps } from '../vedtak'
 
 const Uenig = ({ vedtak }: VedtakProps) => {
     return (
-        <div className="uenig">
-            <Undertittel className="uenig__tittel">
+        <div className="tekstinfo">
+            <Undertittel>
                 {tekst('uenig.tittel')}
             </Undertittel>
             <Normaltekst>
@@ -31,14 +31,12 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                 </Lenke>.
             </Normaltekst>
 
-            <div className="egen-klagefrist">
-                <Element className="egen__klagefrist__tittel">
-                    {tekst('uenig.egenklagefrist.tittel')}
-                </Element>
-                <Normaltekst>
-                    {tekst('uenig.egenklagefrist.tekst')}
-                </Normaltekst>
-            </div>
+            <Element tag="h3">
+                {tekst('uenig.egenklagefrist.tittel')}
+            </Element>
+            <Normaltekst>
+                {tekst('uenig.egenklagefrist.tekst')}
+            </Normaltekst>
         </div>
     )
 }

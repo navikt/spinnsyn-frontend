@@ -36,13 +36,14 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
                     }
                 />
 
-                <Vis hvis={dag.dagtype == 'AvvistDag'}
+                <Vis hvis={dag.dagtype === 'AvvistDag'}
                     render={() =>
                         <Normaltekst>
                             {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
                         </Normaltekst>
                     }
                 />
+
                 <Vis hvis={lovhjemmelTekst !== ''}
                     render={() =>
                         <Normaltekst className={'avvist-lovhjemmel'}>
@@ -84,15 +85,15 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     return (
         <div className="tekstinfo">
-            <Undertittel className="tekstinfo__avsnitt">
+            <Undertittel>
                 {tekst('utbetaling.tabell.dagtyper')}
             </Undertittel>
 
             {unikeDager().map((dag, idx) =>
-                <div className="tekstinfo__avsnitt" key={idx}>
+                <>
                     <DagLabel dag={dag} />
                     {lagBeskrivelseForUnikDag(dag)}
-                </div>
+                </>
             )}
         </div>
     )

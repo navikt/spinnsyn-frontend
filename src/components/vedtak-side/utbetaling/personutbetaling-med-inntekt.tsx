@@ -29,8 +29,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                 </div>
             }
         >
-            <div className="utbetaling__innhold">
-
+            <>
                 <PersonutbetalingInfo />
 
                 <BeregningInfo vedtak={vedtak} mottaker={'person'} />
@@ -45,7 +44,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                         </EkspanderbarIntern>
                     }
                 />
-            </div>
+            </>
         </Ekspanderbar>
     )
 }

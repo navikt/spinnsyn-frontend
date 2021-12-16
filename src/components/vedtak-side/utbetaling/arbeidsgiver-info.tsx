@@ -8,11 +8,11 @@ import { VedtakProps } from '../vedtak'
 export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
 
     return (
-        <section className="info">
-            <Element tag="h3" className="info__tittel">
+        <section className="tekstinfo">
+            <Element tag="h3">
                 {tekst('utbetaling.arbeidsgiver.tittel')}
             </Element>
-            <Normaltekst className="info__tekst">
+            <Normaltekst>
                 {getLedetekst(tekst('utbetaling.arbeidsgiver.tekst'), {
                     '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
                 })}

@@ -7,17 +7,14 @@ import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
 import Vedtak, { VedtakProps } from './vedtak'
 
-
 const VedtakSide = ({ vedtak }: VedtakProps) => {
     const { mutate: merkLest } = useMerkVedtakSomLest()
-
 
     useEffect(() => {
         setBodyClass('vedtak-side')
         logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
         // eslint-disable-next-line
     }, [])
-
 
     useEffect(() => {
         interface HotjarWindow extends Window {
@@ -46,7 +43,6 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
             merkLest(vedtak.id)
         }
     }, [ vedtak, merkLest ])
-
 
     return (
         <Vedtak vedtak={vedtak} />

@@ -32,20 +32,20 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
     }
 
     return (
-        <EkspanderbarIntern erApen={false} className="blokkinfo beregning"
+        <EkspanderbarIntern erApen={false} className="beregning"
             tittel={tekst('utbetaling.beregning.tittel')}
         >
             <InntektInfo vedtak={vedtak} />
 
-            <div className="mer__inntekt__info">
-                <Element tag="h4" className="blokkinfo__avsnitt">
+            <div className="tekstinfo ">
+                <Element tag="h4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Element>
                 <Normaltekst>
                     {parser(tekst('utbetaling.mndlonn.innhold'))}
                 </Normaltekst>
 
-                <Element tag="h4" className="blokkinfo__avsnitt">
+                <Element tag="h4">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Element>
                 <Normaltekst>
@@ -59,25 +59,25 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     />
                 </Normaltekst>
 
-                <Element tag="h4" className="blokkinfo__avsnitt">
+                <Element tag="h4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Element>
                 <Normaltekst>
                     {parser(tekst(sykepengegrunnlagInnholdKey()))}
                 </Normaltekst>
 
-                <Normaltekst className="blokkinfo__avsnitt">
+                <Normaltekst>
                     {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
                 </Normaltekst>
 
-                <Element tag="h4" className="blokkinfo__avsnitt">
+                <Element tag="h4">
                     {tekst('utbetaling.dagligbelop.tittel')}
                 </Element>
                 <Normaltekst>
                     {tekst('utbetaling.dagligbelop.innhold')}
                 </Normaltekst>
 
-                <Element tag="h4" className="blokkinfo__avsnitt">
+                <Element tag="h4">
                     {tekst('utbetaling.totalbelop.tittel')}
                 </Element>
                 <Normaltekst className="totalbelop">
@@ -87,7 +87,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                     render={() =>
                         <>
-                            <Element tag="h4" className="blokkinfo__avsnitt">
+                            <Element tag="h4">
                                 {tekst('utbetaling.flere-arbeidsforhold.tittel')}
                             </Element>
                             <Normaltekst> {tekst('utbetaling.flere-arbeidsforhold.innhold')} </Normaltekst>
@@ -95,14 +95,14 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     }
                 />
 
-                <Element tag="h4" className="blokkinfo__avsnitt">
+                <Element tag="h4">
                     {tekst('utbetaling.utbetalingsdager.tittel')}
                 </Element>
                 <Normaltekst>
                     {tekst('utbetaling.utbetalingsdager.innhold')}
                 </Normaltekst>
 
-                <Normaltekst className="blokkinfo__avsnitt">
+                <Normaltekst>
                     {tekst('utbetaling.beregning.les.mer')}
                     <Lenke href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                         {tekst('utbetaling.beregning.lenke.tekst')}

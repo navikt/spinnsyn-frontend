@@ -6,12 +6,15 @@ import { tekst } from '../../../utils/tekster'
 
 export const PersonutbetalingInfo = () => {
     return (
-        <section className="info">
-            <Element tag="h3" className="info__tittel">
+        <section className="tekstinfo">
+            <Element tag="h3">
                 {tekst('utbetaling.person.når')}
             </Element>
             <Normaltekst>
-                {parser(tekst('utbetaling.person.når.innhold'))}
+                {parser(tekst('utbetaling.person.når.innhold1'))}
+            </Normaltekst>
+            <Normaltekst>
+                {parser(tekst('utbetaling.person.når.innhold2'))}
             </Normaltekst>
         </section>
     )

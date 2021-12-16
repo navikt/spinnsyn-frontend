@@ -32,7 +32,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                 </div>
             }
         >
-            <div className="utbetaling__innhold">
+            <>
                 <ArbeidsgiverInfo vedtak={vedtak} />
                 <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
                 <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
@@ -45,7 +45,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                         </EkspanderbarIntern>
                     }
                 />
-            </div>
+            </>
         </Ekspanderbar>
     )
 }

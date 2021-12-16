@@ -36,40 +36,30 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             }
         >
 
-            <div className="tekstinfo__avsnitt">
-                <Systemtittel tag="h3">
+            <div className="tekstinfo">
+                <Systemtittel tag="h3" className="primo">
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager}
                 </Systemtittel>
-                <Normaltekst tag="span">
+                <Normaltekst>
                     {tekst('sykepengedager.systemtittel')}
                 </Normaltekst>
-            </div>
 
-            <div className="tekstinfo__avsnitt">
-                <Systemtittel tag="h3">
+                <Systemtittel tag="h3" className="segundo">
                     {sluttdato}
                 </Systemtittel>
-                <Normaltekst tag="span">
+                <Normaltekst>
                     {tekst('sykepengedager.sluttdato')}
                 </Normaltekst>
-            </div>
 
-            <div className="tekstinfo__avsnitt">
                 <Normaltekst>{tekst('sykepengedager.sluttdato.tekst1')}</Normaltekst>
-            </div>
-
-            <div className="tekstinfo__avsnitt">
                 <Normaltekst>{tekst('sykepengedager.sluttdato.tekst2')}</Normaltekst>
-            </div>
-
-            <div className="tekstinfo__avsnitt">
                 <Normaltekst>{tekst('sykepengedager.sluttdato.tekst3')}</Normaltekst>
             </div>
 
-            <EkspanderbarIntern erApen={false} className="blokkinfo tekstinfo"
+            <EkspanderbarIntern erApen={false} className="sykepenger_slutt"
                 tittel={tekst('sykepengedager.ekspanderbar')}
             >
-                <Normaltekst className="blokkinfo__avsnitt">
+                <Normaltekst>
                     {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
                 </Normaltekst>
             </EkspanderbarIntern>
