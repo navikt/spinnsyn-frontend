@@ -1,19 +1,19 @@
 import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { isDev, isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 import { logger } from '../utils/logger'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
 type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>;
 
-
 export function beskyttetApi(handler: ApiHandler): ApiHandler {
     return async function withBearerTokenHandler(req, res) {
         if (isMockBackend()) {
             return handler(req, res)
         }
+
         if (spinnsynFrontendInterne()) {
             return beskyttetApiInterne(req, res)
         }
