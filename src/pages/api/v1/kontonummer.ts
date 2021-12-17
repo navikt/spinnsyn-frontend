@@ -50,7 +50,6 @@ async function hentKontonummer(queryString: QueryString, cookies: string | undef
 }
 
 // Ett mock-kontonummer blir returnert for dev, så dev må være ubeskyttet i tillegg til prod.
-const unprotectedDev = true
 const handler = beskyttetApi(async(req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'GET') {
         return res.status(405).json('Kun GET er tillatt')
@@ -61,6 +60,6 @@ const handler = beskyttetApi(async(req: NextApiRequest, res: NextApiResponse) =>
     }
 
     return res.status(404).json(null)
-}, unprotectedDev)
+})
 
 export default handler

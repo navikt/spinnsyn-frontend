@@ -8,13 +8,9 @@ import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
 type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>;
 
-export function beskyttetApi(handler: ApiHandler, unprotectedDev = false): ApiHandler {
+export function beskyttetApi(handler: ApiHandler): ApiHandler {
     return async function withBearerTokenHandler(req, res) {
         if (isMockBackend()) {
-            return handler(req, res)
-        }
-
-        if (unprotectedDev && isDev()) {
             return handler(req, res)
         }
 
