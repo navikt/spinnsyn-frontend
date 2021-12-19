@@ -42,8 +42,11 @@ const UtbetalingTekster = {
     'utbetaling.arbeidsgiver.tekst': 'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
 
     'utbetaling.person.systemtittel': 'til deg (før skatt)',
-    'utbetaling.person.når': 'Når får du sykepengene?',
-    'utbetaling.person.når.innhold': 'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Les mer om når du kan forvente å få pengene.</a>',
+    'utbetaling.person.når': 'Når får du sykepengene? ',
+    'utbetaling.person.når.innhold': 'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Les mer om når du kan forvente å få pengene.</a>',
+    'utbetaling.kontonummer.tittel': 'Kontonummer for utbetaling',
+    'utbetaling.kontonummer.utbetales': 'Utbetales til kontonummer:',
+    'utbetaling.kontonummer.mangler': 'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/#utbetaling">Din profil</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',
