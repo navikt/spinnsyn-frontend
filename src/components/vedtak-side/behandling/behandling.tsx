@@ -11,7 +11,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     return (
-        <div className="tekstinfo">
+        <div className="behandling tekstinfo">
             <Undertittel>
                 {tekst(automatisk ? 'behandling.automatisk.tittel' : 'behandling.manuell.tittel')}
             </Undertittel>

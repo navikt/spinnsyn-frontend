@@ -1,11 +1,9 @@
 describe('Tester logikk i behandling.tsx', () => {
 
-
     it('Automatisk behandlet', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=4e044d03-2dfe-45e9-a904-77777777')
         cy.get('.behandling > .typo-undertittel').should('have.text', 'Automatisk behandling')
         cy.get('.behandling').contains('Søknaden din er behandlet automatisk. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
-
     })
 
     it('Manuelt behandlet', () => {
