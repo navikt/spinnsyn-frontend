@@ -66,9 +66,29 @@
         background-color: @alternativLysOrange;
     }
 
+    &.info {
+        background-color: @alternativLysBla;
+        padding: 0;
+
+        button {
+            .ekspanderbartPanel__tittel {
+                color: @navMorkGra;
+            }
+        }
+
+        &:hover {
+            button {
+                .ekspanderbartPanel__tittel {
+                    color: @navBla;
+                }
+            }
+        }
+    }
+
     &.intern {
         display: inline-block;
         background-color: transparent;
+        width: 100%;
         padding: 0;
         border: 0;
 
@@ -89,6 +109,11 @@
 
             .ekspanderbartPanel__flex-wrapper {
                 display: inline-flex;
+                justify-content: flex-start;
+            }
+
+            .ekspanderbartPanel__indikator {
+                margin-left: 0.5rem;
             }
         }
 

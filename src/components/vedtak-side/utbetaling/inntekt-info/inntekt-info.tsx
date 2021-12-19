@@ -68,7 +68,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
                                     <div className="redusert_sykepengegrunnlag">
                                         <Element tag="div" className="img-rad">
-                                            <img alt="" src={'/syk/sykepenger/static/img/info.svg'} />
+                                            <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
                                             Redusert til 6G
                                         </Element>
                                         <Normaltekst>
