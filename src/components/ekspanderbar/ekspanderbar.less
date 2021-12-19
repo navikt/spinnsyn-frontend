@@ -10,6 +10,10 @@
         box-shadow: none;
     }
 
+    .ekspanderbar__ikon {
+        display: none;
+    }
+
     button {
         display: block;
         width: 100%;
@@ -24,6 +28,7 @@
 
         .ekspanderbartPanel__tittel {
             display: inline-flex;
+            color: @navBla;
 
             .ekspanderbar__tittel {
                 .typo-systemtittel {
@@ -31,23 +36,22 @@
                 }
             }
         }
+
+        .ekspanderbartPanel__indikator {
+            color: @navBla;
+        }
     }
 
     .ekspanderbartPanel__innhold {
-        padding: 0 5.8rem 1.5rem;
+        padding: 0 1rem 1.5rem;
         margin: 0.5rem 0;
     }
 
     .ekspanderbar__ikon {
+        display: none;
         margin: auto 1.5rem auto 0.75rem;
         min-width: 40px;
         max-width: 36px;
-    }
-
-    &.apen {
-        .ekspanderbar__ikon {
-            display: none;
-        }
     }
 
     &.bla {
@@ -67,7 +71,6 @@
         background-color: transparent;
         padding: 0;
         border: 0;
-        margin: 1rem -1rem;
 
         &:hover {
             outline: none;
@@ -86,15 +89,6 @@
 
             .ekspanderbartPanel__flex-wrapper {
                 display: inline-flex;
-            }
-
-            .ekspanderbartPanel__tittel {
-                color: @navBla;
-            }
-
-            .ekspanderbartPanel__indikator {
-                color: @navBla;
-                margin-left: 0.5rem;
             }
         }
 
@@ -143,10 +137,33 @@
             &:hover {
                 color: @navBla;
             }
+        }
+
+        .ekspanderbartPanel__hode {
+            .ekspanderbar__tittel {
+                color: @navMorkGra;
+            }
+
+            .ekspanderbartPanel__indikator {
+                color: @navMorkGra;
+            }
+
+            &:hover {
+                .ekspanderbartPanel__tittel {
+                    text-decoration: none;
+                }
+                .ekspanderbar__tittel {
+                    color: @navBla;
+                }
+            }
 
             .ekspanderbar__ikon {
                 display: block;
             }
+        }
+
+        .ekspanderbartPanel__innhold {
+            padding: 0 5.8rem 1.5rem;
         }
 
         &.apen {

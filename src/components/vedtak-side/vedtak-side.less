@@ -1,3 +1,5 @@
+@import 'node_modules/nav-frontend-core/less/_variabler';
+
 .vedtak-side {
     .tidligere__beslutning {
         margin: 3rem 0 1rem 0;
@@ -5,6 +7,14 @@
 
     .nav-veilederpanel--kompakt.nav-veilederpanel--plakat {
         margin-bottom: 2rem;
-        padding: 4rem 2rem 1rem;
+        padding: 4rem 1rem 1rem;
+    }
+}
+
+@media (min-width: @screen-sm) {
+    .vedtak-side {
+        .nav-veilederpanel--kompakt.nav-veilederpanel--plakat {
+            padding: 4rem 2rem 1rem;
+        }
     }
 }

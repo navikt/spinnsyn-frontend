@@ -2,8 +2,6 @@
 
 .utbetalingsoversikt {
     .tekstinfo {
-        margin: 0 1rem 2rem;
-
         .etikett {
             margin: 1rem 0 0.5rem;
         }
@@ -18,31 +16,5 @@
     .utbetalingsoversikt .ekspanderbartPanel__innhold {
         border: 1px solid @navGra40;
         border-radius: 4px;
-    }
-
-    .beregning.ekspanderbar.intern {
-        margin: 1.5rem -1rem 0;
-
-        .tekstinfo {
-            margin: 0 1rem;
-        }
-
-        .ekspanderbartPanel__innhold {
-            .inntekt__info {
-                border: 1px solid @navGra40;
-                margin-bottom: 2rem;
-
-                // Alle siblings
-                ~ * {
-                    padding: 0;
-                }
-
-                &:after {
-                    border-bottom: 1px solid @navGra40;
-                    border-right: 1px solid @navGra40;
-                    transform: translateY(1.5rem) translateY(0.5px) rotate(45deg);
-                }
-            }
-        }
     }
 }

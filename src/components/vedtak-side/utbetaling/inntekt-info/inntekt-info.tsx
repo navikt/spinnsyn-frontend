@@ -1,3 +1,4 @@
+import parser from 'html-react-parser'
 import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
@@ -71,7 +72,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                             Redusert til 6G
                                         </Element>
                                         <Normaltekst>
-                                            {tekst('utbetaling.redusert.til.6G')}
+                                            {parser(tekst('utbetaling.redusert.til.6G'))}
                                         </Normaltekst>
                                         <table>
                                             <tbody>

@@ -1,8 +1,10 @@
 .tekstinfo {
-    margin-top: 2rem;
-
     .typo-undertittel, .typo-element, .typo-normal + .typo-normal {
         margin: 1.5rem 0 0.35rem;
+
+        &:first-child {
+            margin-top: 0;
+        }
     }
 
     .primo {
@@ -16,8 +18,12 @@
             margin-bottom: 1.5rem;
         }
     }
+
+    & + .tekstinfo {
+        margin-top: 2rem;
+    }
 }
 
-.sykepenger_slutt .typo-normal {
-    padding-left: 1rem;
+.ekspanderbar__wrapper + .tekstinfo {
+    margin-top: 2rem;
 }

@@ -43,9 +43,7 @@ const UtbetalingTekster = {
 
     'utbetaling.person.systemtittel': 'til deg (før skatt)',
     'utbetaling.person.når': 'Når får du sykepengene?',
-    'utbetaling.person.når.innhold': 'Du får vanligvis utbetalt sykepengene enten <b>innen den 25. i måneden</b>, eller <b>innen fem dager</b> etter at vi har sendt deg svar på søknaden din. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Les mer om når du kan forvente å få pengene.</a>',
-    'utbetaling.person.når.innhold1': 'Pengene utbetales som regel innen 4 uker. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Her</a> kan du lese mer om når pengene kommer.',
-    'utbetaling.person.når.innhold2': 'Du vil se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank" rel="noreferrer">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
+    'utbetaling.person.når.innhold': 'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Les mer om når du kan forvente å få pengene.</a>',
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',

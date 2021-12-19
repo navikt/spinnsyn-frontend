@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import React, { useState } from 'react'
+
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'

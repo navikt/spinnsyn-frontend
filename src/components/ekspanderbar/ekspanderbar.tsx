@@ -31,11 +31,11 @@ const Ekspanderbar = (props: AllProps) => {
             src={`/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
             alt=""
         />
-        <div>{props.tittel}</div>
+        <>{props.tittel}</>
     </>
 
     return (
-        <div ref={ekspanderbar}>
+        <div ref={ekspanderbar} className="ekspanderbar__wrapper">
             <Ekspanderbartpanel
                 tittel={tittel}
                 onClick={onButtonClick}
