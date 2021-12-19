@@ -22,10 +22,9 @@ describe('Tester visning av kombinasjon', () => {
 
 
         cy.get('.personutbetaling .tekstinfo').contains('Når får du sykepengene?').should('be.visible')
-        cy.get('.personutbetaling .tekstinfo').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din.').should('be.visible')
-        cy.get('.personutbetaling .info').first().contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.').should('be.visible')
-        cy.get('.personutbetaling .info > h2').contains('Kontonummer for utbetaling')
-        cy.get('.personutbetaling .info > :nth-child(4)').contains('Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på Din profil slik at vi får utbetalt sykepengene til deg så raskt som mulig.')
+        cy.get('.personutbetaling .tekstinfo').first().contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.').should('be.visible')
+        cy.get('.personutbetaling .tekstinfo > h2').contains('Kontonummer for utbetaling')
+        cy.get('.personutbetaling .tekstinfo > :nth-child(4)').contains('Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på Din profil slik at vi får utbetalt sykepengene til deg så raskt som mulig.')
 
         cy.get('.personutbetaling .utvidbar__tittel').contains('Mer om beregningen')
             .click({ force: true })
