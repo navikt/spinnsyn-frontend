@@ -32,8 +32,6 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <>
                 <PersonutbetalingInfo vedtak={vedtak} />
 
-                <BeregningInfo vedtak={vedtak} mottaker={'person'} />
-
                 <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <EkspanderbarIntern erApen={false} className="utbetalingsoversikt"

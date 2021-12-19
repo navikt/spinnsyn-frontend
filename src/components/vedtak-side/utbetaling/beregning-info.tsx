@@ -35,6 +35,8 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
         <EkspanderbarIntern erApen={false} className="beregning"
             tittel={tekst('utbetaling.beregning.tittel')}
         >
+            <InntektInfo vedtak={vedtak} />
+
             <div className="tekstinfo ">
                 <Element tag="h4">
                     {tekst('utbetaling.mndlonn.tittel')}

@@ -35,10 +35,6 @@ describe('Tester at appen starter', () => {
             .click({ force: true })
 
         cy.contains('Mer om beregningen').click({ force: true })
-        cy.get('.utvidbar__innholdContainer')
-            .should('have.class', 'apen')
-
-        cy.contains('Mer om beregningen').click({ force: true })
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
