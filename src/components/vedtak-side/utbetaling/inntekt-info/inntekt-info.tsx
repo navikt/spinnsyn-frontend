@@ -28,6 +28,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
             render={() =>
                 <section className="inntekt__info">
                     <table>
+                        <caption>{tekst('utbetaling.inntekt.info.tittel')}</caption>
                         <tbody>
                             <tr>
                                 <Element tag="th">
@@ -47,6 +48,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                     <Vis hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
                         render={() =>
                             <table className="flere-arbeidsgivere">
+                                <caption>{tekst('utbetaling.andre.arbeidsgivere.tittel')}</caption>
                                 <tbody>
                                     <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
                                     <tr>
@@ -67,7 +69,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             <>
                                 <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
                                     <div className="redusert_sykepengegrunnlag">
-                                        <Element tag="div" className="img-rad">
+                                        <Element tag="h4" className="img-rad">
                                             <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
                                             Redusert til 6G
                                         </Element>

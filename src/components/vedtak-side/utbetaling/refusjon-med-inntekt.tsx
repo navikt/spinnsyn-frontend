@@ -24,11 +24,14 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             tittel={
                 <div className="ekspanderbar__tittel">
                     <Systemtittel tag="h2">
-                        {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
-                            '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
-                        })}
+                        {belop + ' kroner'}
+                        <br />
+                        <Normaltekst tag="span">
+                            {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
+                                '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
+                            })}
+                        </Normaltekst>
                     </Systemtittel>
-                    <Normaltekst>{belop + ' kroner'}</Normaltekst>
                 </div>
             }
         >
