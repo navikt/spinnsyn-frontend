@@ -97,7 +97,6 @@
     .sendt {
         display: inline-block;
         float: right;
-        clear-after: bottom;
         width: 170px;
         font-size: 14px;
     }
@@ -106,9 +105,11 @@
         display: none;
     }
 
-    h3.typo-normal.ekspanderbar__tittel {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: @navMorkGra;
+    .ekspanderbartPanel__hode {
+        min-height: 64px;
+
+        .ekspanderbar__tittel {
+            color: @navMorkGra;
+        }
     }
 }
