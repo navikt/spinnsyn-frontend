@@ -22,7 +22,6 @@ export interface VedtakArkiveringProps {
 
 export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkiveringProps) => {
 
-
     return (
         <ArkiveringContext.Provider value={true}>
             <div className="vedtak-arkivering">
