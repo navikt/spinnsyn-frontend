@@ -50,6 +50,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag': 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',
+    'utbetaling.tabell.label.NavDag': '',
     'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
     'utbetaling.tabell.label.NavDagDelvisSyk': 'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
     'utbetaling.tabell.label.NavHelgDag': 'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
