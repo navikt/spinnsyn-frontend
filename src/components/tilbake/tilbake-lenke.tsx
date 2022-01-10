@@ -12,7 +12,7 @@ const TilbakeLenke = () => {
     return (
         <Link className="vedtak__tilbake" href={sykefravaerUrl()}>
             <Back />
-            <BodyShort spacing size="small" as="span" className="vedtak__tilbake--lenke">
+            <BodyShort spacing size="small" as="span">
                 {tekst('vedtak.tilbake')}
             </BodyShort>
         </Link>

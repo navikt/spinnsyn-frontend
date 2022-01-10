@@ -1,6 +1,8 @@
+import { VenstreChevron } from 'nav-frontend-chevron'
+import Lenke from 'nav-frontend-lenker'
+import { Normaltekst } from 'nav-frontend-typografi'
 import { Heading } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
-
 import useVedtak from '../../query-hooks/useVedtak'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
@@ -47,6 +49,13 @@ const VedtakListe = () => {
                     tittel={tekst('spinnsyn.teaser.leste')}
                     tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
+
+                <Lenke className="arkiverte_vedtak" href="https://www.nav.no/mine-saker/tema/SYK">
+                    <VenstreChevron />
+                    <Normaltekst tag="span">
+                        {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
+                    </Normaltekst>
+                </Lenke>
 
                 <TilbakeLenke />
             </div>
