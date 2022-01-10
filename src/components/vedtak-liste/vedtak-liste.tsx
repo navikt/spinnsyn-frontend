@@ -4,6 +4,7 @@ import { Normaltekst } from 'nav-frontend-typografi'
 import { Heading } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 import useVedtak from '../../query-hooks/useVedtak'
+import { arkiverteVedtakUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
@@ -50,7 +51,7 @@ const VedtakListe = () => {
                     tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
 
-                <Lenke className="arkiverte_vedtak" href="https://www.nav.no/mine-saker/tema/SYK">
+                <Lenke className="arkiverte_vedtak" href={arkiverteVedtakUrl()}>
                     <Normaltekst tag="span">
                         {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
                     </Normaltekst>
