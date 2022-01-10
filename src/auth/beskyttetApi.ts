@@ -1,8 +1,9 @@
 import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { isDev, isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 import { logger } from '../utils/logger'
+import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
@@ -20,6 +21,20 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
 
         function send401() {
             res.status(401).json({ message: 'Access denied' })
+        }
+
+        async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse) {
+            const bearerToken: string | null | undefined = req.headers[ 'authorization' ]
+            if (!bearerToken) {
+                return send401()
+            }
+            try {
+                await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
+            } catch (e) {
+                logger.error('kunne ikke autentisere', e)
+                return send401()
+            }
+            return handler(req, res)
         }
 
         const cookies = cookie.parse(req?.headers.cookie || '')
@@ -47,10 +62,5 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         return handler(req, res)
     }
 
-    async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse) {
-        // Ingen av APIene brukes for øyeblikket av spinnsyn-interne
-        res.status(401).json({ message: 'Access denied' })
-        return
-    }
 }
 
