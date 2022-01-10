@@ -3,7 +3,7 @@ const VedtakListeTekster = {
     'vedtak-liste.ingen-nye-soknader': 'Du har ingen nye svar på søknader fra NAV.',
     'vedtak-liste.ingen-tidligere-soknader': 'Du har ingen tidligere svar på søknader fra NAV.',
     'vedtak-liste.sorter.etter': 'Sorter etter',
-    'vedtak-liste.lenke-arkiverte-vedtak': 'Arkiverte vedtak i dokumentoversikten på Ditt NAV'
+    'vedtak-liste.lenke-arkiverte-vedtak': 'Til arkiverte vedtak i dokumentoversikten på Ditt NAV'
 }
 
 export default VedtakListeTekster

@@ -1,4 +1,4 @@
-import { VenstreChevron } from 'nav-frontend-chevron'
+import { HoyreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst } from 'nav-frontend-typografi'
 import { Heading } from '@navikt/ds-react'
@@ -51,10 +51,10 @@ const VedtakListe = () => {
                 />
 
                 <Lenke className="arkiverte_vedtak" href="https://www.nav.no/mine-saker/tema/SYK">
-                    <VenstreChevron />
                     <Normaltekst tag="span">
                         {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
                     </Normaltekst>
+                    <HoyreChevron />
                 </Lenke>
 
                 <TilbakeLenke />
