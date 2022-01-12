@@ -56,6 +56,10 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 {tekst('sykepengedager.sluttdato.tekst3')}
             </Normaltekst>
 
+            <Normaltekst className="tekstinfo__avsnitt">
+                {tekst('sykepengedager.sluttdato.tekst4')}
+            </Normaltekst>
+
             <Utvidbar erApen={false} type="intern" className="tekstinfo"
                 tittel={tekst('sykepengedager.ekspanderbar')}
             >
