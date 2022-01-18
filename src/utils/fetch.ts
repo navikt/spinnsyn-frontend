@@ -1,6 +1,4 @@
-import { loginServiceRedirectUrl, loginServiceUrl } from './environment'
 import { logger } from './logger'
-
 
 /**
  * Class with utility functions for working with fetch.
@@ -36,7 +34,9 @@ class Fetch {
             }
         }
         if (res.status === 401) {
-            window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
+            if (process.browser) {
+                window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
+            }
             throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
         const textResponse = await res.text()
@@ -68,7 +68,9 @@ class Fetch {
             return textResponse
         }
         if (res.status === 401) {
-            window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
+            if (process.browser) {
+                window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
+            }
             throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
         logger.warn(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)

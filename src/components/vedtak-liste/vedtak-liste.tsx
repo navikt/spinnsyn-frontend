@@ -1,4 +1,3 @@
-import { HoyreChevron } from 'nav-frontend-chevron'
 import Lenke from 'nav-frontend-lenker'
 import { Normaltekst } from 'nav-frontend-typografi'
 import { Heading } from '@navikt/ds-react'
@@ -34,6 +33,7 @@ const VedtakListe = () => {
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
             </Banner>
+
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
@@ -55,7 +55,6 @@ const VedtakListe = () => {
                     <Normaltekst tag="span">
                         {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
                     </Normaltekst>
-                    <HoyreChevron />
                 </Lenke>
 
                 <TilbakeLenke />
