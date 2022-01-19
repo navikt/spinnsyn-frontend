@@ -10,24 +10,33 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
-
     return (
-        <div className="behandling">
-            <Undertittel className="behandling__tittel">
+        <div className="behandling tekstinfo">
+            <Undertittel>
                 {tekst(automatisk ? 'behandling.automatisk.tittel' : 'behandling.manuell.tittel')}
             </Undertittel>
             <Normaltekst>
-                <Vis hvis={automatisk} render={() => <>{tekst(annullertEllerRevurdert ? 'behandling.behandlet.automatisk.preteritum' : 'behandling.behandlet.automatisk.presens')}</>} />
-                {tekst(annullertEllerRevurdert ? 'behandling.opplysningene.preteritum' : 'behandling.opplysningene.presens')}
+                <Vis hvis={automatisk} render={() => <>
+                    {tekst(annullertEllerRevurdert
+                        ? 'behandling.behandlet.automatisk.preteritum'
+                        : 'behandling.behandlet.automatisk.presens')}
+                </>} />
+                {
+                    tekst(annullertEllerRevurdert
+                        ? 'behandling.opplysningene.preteritum'
+                        : 'behandling.opplysningene.presens')
+                }
                 <Lenke href={tekst('behandling.lenke.url')} target="_blank" rel="noopener noreferrer">
                     {tekst('behandling.lenke')}
                 </Lenke>
                 {tekst('behandling.se-opplysningene')}
             </Normaltekst>
+
             <Vis hvis={automatisk && annullertEllerRevurdert} render={() =>
-                (<Normaltekst>
+                <Normaltekst>
                     {tekst('behandling.ny-behandling')}
-                </Normaltekst>)} />
+                </Normaltekst>}
+            />
         </div>
     )
 }

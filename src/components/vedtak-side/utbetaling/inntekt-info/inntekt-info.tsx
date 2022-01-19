@@ -26,107 +26,102 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     return (
         <Vis hvis={inntektMnd && inntektAr}
             render={() =>
-                <div className="inntekt__info">
-                    <Element tag="h3">
-                        {tekst('utbetaling.inntekt.info.tittel')}
-                    </Element>
+                <section className="inntekt__info">
+                    <table>
+                        <caption>{tekst('utbetaling.inntekt.info.tittel')}</caption>
+                        <tbody>
+                            <tr>
+                                <Element tag="th">
+                                    {tekst('utbetaling.inntekt.info.beregnet')}
+                                </Element>
+                                <Normaltekst tag="td">{inntektMnd}</Normaltekst>
+                            </tr>
+                            <tr>
+                                <Element tag="th">
+                                    {tekst('utbetaling.inntekt.info.omregnet')}
+                                </Element>
+                                <Normaltekst tag="td">{inntektAr}</Normaltekst>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    <section>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <Normaltekst tag="th">
-                                        {tekst('utbetaling.inntekt.info.beregnet')}
-                                    </Normaltekst>
-                                    <Normaltekst tag="td">{inntektMnd}</Normaltekst>
-                                </tr>
-                                <tr>
-                                    <Normaltekst tag="th">
-                                        {tekst('utbetaling.inntekt.info.omregnet')}
-                                    </Normaltekst>
-                                    <Normaltekst tag="td">{inntektAr}</Normaltekst>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <Vis hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
+                        render={() =>
+                            <table className="flere-arbeidsgivere">
+                                <caption>{tekst('utbetaling.andre.arbeidsgivere.tittel')}</caption>
+                                <tbody>
+                                    <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
+                                    <tr>
+                                        <Element tag="th">
+                                            {tekst('utbetaling.inntekt.samlet.årslønn')}
+                                        </Element>
+                                        <Normaltekst tag="td">
+                                            {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
+                                        </Normaltekst>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    />
 
-                        <Vis hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
-                            render={() =>
-                                <table className="flere-arbeidsgivere">
-                                    <tbody>
-                                        <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
-                                        <tr>
-                                            <Normaltekst tag="th">
-                                                {tekst('utbetaling.inntekt.samlet.årslønn')}
-                                            </Normaltekst>
-                                            <Normaltekst tag="td">
-                                                {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
-                                            </Normaltekst>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            }
-                        />
-
-                        <Vis hvis={skalViseSykepengegrunnlag}
-                            render={() =>
-                                <>
-                                    <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
-                                        <div className="redusert_sykepengegrunnlag">
-                                            <Element tag="div" className="img-rad">
-
-                                                <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
-                                                Redusert til 6G
-                                            </Element>
-                                            <Normaltekst>
-                                                {parser(tekst('utbetaling.redusert.til.6G'))}
-                                            </Normaltekst>
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <Normaltekst tag="th">
-                                                            {tekst('utbetaling.sykepengegrunnlag')}
-                                                        </Normaltekst>
-                                                        <Normaltekst tag="td">
-                                                            {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
-                                                        </Normaltekst>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    } />
-
-                                    <Vis hvis={vedtak.vedtak.begrensning !== 'ER_6G_BEGRENSET'} render={() =>
+                    <Vis hvis={skalViseSykepengegrunnlag}
+                        render={() =>
+                            <>
+                                <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
+                                    <div className="redusert_sykepengegrunnlag">
+                                        <Element tag="h4" className="img-rad">
+                                            <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
+                                            Redusert til 6G
+                                        </Element>
+                                        <Normaltekst>
+                                            {parser(tekst('utbetaling.redusert.til.6G'))}
+                                        </Normaltekst>
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <Normaltekst tag="th">
+                                                    <Element tag="th">
                                                         {tekst('utbetaling.sykepengegrunnlag')}
-                                                    </Normaltekst>
+                                                    </Element>
                                                     <Normaltekst tag="td">
                                                         {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
                                                     </Normaltekst>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    } />
-                                </>
-                            }
-                        />
+                                    </div>
+                                } />
 
-                        <Vis hvis={skalViseDagsats}
-                            render={() =>
-                                <table className="dagsats">
-                                    <tbody>
-                                        <tr>
-                                            <Normaltekst tag="th">{tekst('utbetaling.inntekt.info.dagsats')}</Normaltekst>
-                                            <Normaltekst tag="td">{formaterValuta(dagsats)}</Normaltekst>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            }
-                        />
-                    </section>
-                </div>
+                                <Vis hvis={vedtak.vedtak.begrensning !== 'ER_6G_BEGRENSET'} render={() =>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <Element tag="th">
+                                                    {tekst('utbetaling.sykepengegrunnlag')}
+                                                </Element>
+                                                <Normaltekst tag="td">
+                                                    {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
+                                                </Normaltekst>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                } />
+                            </>
+                        }
+                    />
+
+                    <Vis hvis={skalViseDagsats}
+                        render={() =>
+                            <table className="dagsats">
+                                <tbody>
+                                    <tr>
+                                        <Element tag="th">{tekst('utbetaling.inntekt.info.dagsats')}</Element>
+                                        <Normaltekst tag="td">{formaterValuta(dagsats)}</Normaltekst>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    />
+                </section>
             }
         />
     )

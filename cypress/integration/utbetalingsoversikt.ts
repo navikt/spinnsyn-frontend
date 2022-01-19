@@ -58,7 +58,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
 
-        cy.get('.utvidbar.gronn').click()
+        cy.get('.ekspanderbar.gronn').click()
         cy.contains('Sykepengene dag for dag').click({ force: true })
 
         cy.get('.utbetalingsoversikt').within(() => {

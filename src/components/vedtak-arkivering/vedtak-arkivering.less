@@ -19,8 +19,8 @@
 }
 
 #ark-header {
-    background: #C2EAF7;
-    padding: 0cm 0.7cm;
+    background: #c2eaf7;
+    padding: 0 0.7cm;
     margin: 8px;
 
     .title {
@@ -49,7 +49,6 @@
     .sidetall {
         float: right;
     }
-
 }
 
 
@@ -61,9 +60,7 @@
     content: counter(pages)
 }
 
-
 .vedtak-arkivering {
-
     .personinfo {
         position: relative;
         top: 25px;
@@ -104,13 +101,27 @@
         font-size: 14px;
     }
 
-    .chevronboks, .utvidbar .lenkerad {
+    .chevronboks, .ekspanderbar .lenkerad {
         display: none;
     }
 
-    h3.typo-normal.utvidbar__tittel {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: @navMorkGra;
+    .ekspanderbartPanel.intern, .ekspanderbartPanel.info {
+        .ekspanderbartPanel__hode {
+            min-height: auto;
+
+            .ekspanderbartPanel__tittel .typo-normal {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: @navMorkGra;
+            }
+        }
+    }
+
+    .ekspanderbartPanel__hode {
+        min-height: 72px;
+
+        .ekspanderbar__tittel {
+            color: @navMorkGra;
+        }
     }
 }

@@ -1,34 +1,17 @@
 @import '../../../../node_modules/nav-frontend-core/less/_variabler';
 
-.avviste__dager__innhold {
-    .tekstinfo {
-        margin: 0 1rem;
-
-        .tekstinfo__avsnitt {
-            margin-top: 1rem;
-        }
-
-        .typo-element {
-            margin: 1.2rem 0 0.2rem;
-        }
-
-        .tekstinfo__dobbel {
-            margin-top: 2rem;
-        }
-    }
-
-    .info__tittel {
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .avvistedageroversikt .utvidbar__innholdContainer.apen {
+.avvistedageroversikt {
+    .ekspanderbartPanel__innhold {
         margin: 1rem 0 0;
-        background-color: white;
+        background-color: @white;
     }
 
-    .etikett {
-        margin-bottom: 0.3rem;
+    .tekstinfo {
+        margin: 1rem;
+
+        .etikett {
+            margin: 0.7rem 0 0.35rem;
+        }
     }
 
     .avvist-lovhjemmel {
@@ -37,7 +20,7 @@
 }
 
 @media (min-width: @screen-sm) {
-    .avvistedageroversikt .utvidbar__innholdContainer.apen {
+    .avvistedageroversikt .ekspanderbartPanel__innhold {
         border: 1px solid @navGra40;
         border-radius: 4px;
     }

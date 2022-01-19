@@ -2,7 +2,7 @@
 
 .inntekt__info {
     background-color: white;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     margin: 2rem 0;
     border: 1px solid @navGra40;
     border-radius: 4px;
@@ -10,17 +10,37 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 0.5rem;
+
+        caption {
+            text-align: left;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 0.5rem 0 0.5rem 0;
+            border-bottom: 1px solid @navGra20;
+        }
+
+        tr {
+            border-bottom: 1px solid @navGra20;
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
 
         th {
-            padding: 0.35rem 0 0.35rem 0;
+            padding: 0.5rem 0 0.5rem 0;
             text-align: left;
+            font-weight: normal;
         }
 
         td {
-            padding: 0.35rem 0 0.35rem 0.25rem;
+            padding: 0.5rem 0 0.5rem 0.25rem;
             text-align: right;
             white-space: nowrap;
+        }
+
+        & + table {
+            margin-top: 1rem;
         }
     }
 
@@ -35,16 +55,10 @@
                 margin-right: 5px;
             }
         }
-
-        tr:last-child {
-            th, td {
-                padding-top: 1rem;
-            }
-        }
     }
 
     .redusert_sykepengegrunnlag {
-        margin: 0 -1rem;
+        margin: 1rem -1rem;
         padding: 0.5rem 1rem 0.5rem 1rem;
         background-color: mix(@navOransje, @white, 7%);
 
@@ -60,6 +74,10 @@
 
         > .typo-normal {
             padding-left: 2rem;
+        }
+
+        table {
+            margin-top: 0.7rem;
         }
 
         th, td {

@@ -1,11 +1,12 @@
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
-import Utvidbar from '../../utvidbar/utvidbar'
+import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
+import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import BeregningInfo from '../utbetaling/beregning-info'
 import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
 
@@ -22,34 +23,34 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
         : ' sykepengedag'
 
     return (
-        <Utvidbar
-            type="integrert"
-            className={'orange avviste__dager__innhold' + (apen ? ' apen' : '')}
+        <Ekspanderbar type="gul"
             erApen={apen}
-            visLukk={true}
-            ikon={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
-            ikonHover={'/syk/sykepenger/static/img/ikon-varselboble.svg'}
-            tittel={avvisteDager.length + avvisteDagerTekst}
-            systemtittel={tekst('avviste.dager.dekkes.ikke')}
-            ikonAltTekst=""
-            fixedHeight={true}
-            heading="h2"
+            tittel={
+                <div className="ekspanderbar__tittel">
+                    <Systemtittel tag="h3">
+                        {avvisteDager.length + avvisteDagerTekst}
+                    </Systemtittel>
+                    <Normaltekst tag="span">
+                        {tekst('avviste.dager.dekkes.ikke')}
+                    </Normaltekst>
+                </div>
+            }
         >
-            <Normaltekst className="tekstinfo__avsnitt">
-                {tekst('avviste.dager.intro')}
-            </Normaltekst>
+            <div className="tekstinfo">
+                <Normaltekst>{tekst('avviste.dager.intro')}</Normaltekst>
+            </div>
 
             <InntektInfo vedtak={vedtak} />
 
-            <Utvidbar erApen={true} visLukk={true} type="intern" className="avvistedageroversikt"
+            <EkspanderbarIntern erApen={true} className="avvistedageroversikt"
                 tittel={'Dager NAV ikke utbetaler'}
             >
                 <DagTabell dager={avvisteDager} />
                 <DagBeskrivelse dager={avvisteDager} />
-            </Utvidbar>
+            </EkspanderbarIntern>
 
             <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-        </Utvidbar>
+        </Ekspanderbar>
     )
 }
 

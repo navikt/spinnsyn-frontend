@@ -1,71 +1,22 @@
 @import '../../../../node_modules/nav-frontend-core/less/_variabler';
 
-.utbetaling__innhold {
+.utbetalingsoversikt {
     .tekstinfo {
-        margin: 0 1rem;
+        margin: 1rem;
 
-        .tekstinfo__avsnitt {
-            margin-top: 1rem;
-        }
-
-        .typo-element {
-            margin: 1.2rem 0 0.2rem;
-        }
-
-        .tekstinfo__dobbel {
-            margin-top: 2rem;
+        .etikett {
+            margin: 0.7rem 0 0.35rem;
         }
     }
 
-    .info {
-        margin-bottom: 2rem;
-
-        .info__tittel {
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
+    .ekspanderbartPanel__innhold {
+        background-color: white;
     }
-
-    .etikett {
-        margin-bottom: 0.3rem;
-    }
-
-    .avvist-lovhjemmel {
-        margin-top: 1em;
-    }
-}
-
-.utbetalingsoversikt .utvidbar__innholdContainer.apen {
-    margin: 1rem 0 0;
-    background-color: white;
-}
-
-.beregning .utvidbar__innholdContainer.apen {
-    margin: 1rem 0 0;
 }
 
 @media (min-width: @screen-sm) {
-    .utbetalingsoversikt .utvidbar__innholdContainer.apen {
+    .utbetalingsoversikt .ekspanderbartPanel__innhold {
         border: 1px solid @navGra40;
         border-radius: 4px;
-    }
-
-    .beregning .utvidbar__innholdContainer.apen {
-        margin: 0.5rem 0 0 0;
-
-        .inntekt__info {
-            border: 1px solid @navGra40;
-
-            // Alle siblings
-            ~ * {
-                padding: 0;
-            }
-
-            &:after {
-                border-bottom: 1px solid @navGra40;
-                border-right: 1px solid @navGra40;
-                transform: translateY(1.5rem) translateY(0.5px) rotate(45deg);
-            }
-        }
     }
 }

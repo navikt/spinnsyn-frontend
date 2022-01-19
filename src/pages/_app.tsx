@@ -6,13 +6,11 @@ import '../components/vedtak-liste/vedtak-liste.less'
 import '../components/vedtak-side/vedtak-side.less'
 import '../components/vedtak-side/utbetaling/utbetaling.less'
 import '../components/vedtak-side/utbetaling/inntekt-info/inntekt-info.less'
-import '../components/vedtak-side/utbetaling/kontonummer/kontonummer.less'
-import '../components/vedtak-side/uenig/uenig.less'
 import '../components/vedtak-side/sykepengedager/sykepengedager.less'
-import '../components/vedtak-side/behandling/behandling.less'
 import '../components/vedtak-side/avviste-dager/avviste-dager.less'
 import '../components/vedtak-side/annullering/annullering.less'
-import '../components/utvidbar/utvidbar.less'
+import '../../node_modules/nav-frontend-ekspanderbartpanel-style/src/index.less'
+import '../components/ekspanderbar/ekspanderbar.less'
 import '../components/inngang/inngangspanel.less'
 import '../components/interne-header/interneheader.less'
 import '../components/dager/dag-tabell.less'
@@ -27,7 +25,6 @@ import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
-
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
@@ -56,7 +53,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             }),
     )
 
-
     return (
         <>
             <Head>
@@ -71,10 +67,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                     </div>
                 </Hydrate>
             </QueryClientProvider>
-
         </>
     )
 }
-
 
 export default MyApp

@@ -21,18 +21,18 @@ describe('Tester visning personutbetaling', () => {
             .and('contain', 'til deg (før skatt)')
             .click({ force: true })
 
-        cy.get('.info').children().first().contains('Når får du sykepengene?')
-        cy.get('.info').children('.typo-normal').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.')
+        cy.get('.tekstinfo').children().first().contains('Når får du sykepengene?')
+        cy.get('.tekstinfo').children('.typo-normal').contains('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.')
 
-        cy.get('.info > :nth-child(3) > strong').contains('Utbetales til kontonummer:')
-        cy.get('.info > :nth-child(3)').contains('1001 11 10011')
+        cy.get('.tekstinfo > :nth-child(3) > strong').contains('Utbetales til kontonummer:')
+        cy.get('.tekstinfo > :nth-child(3)').contains('1001 11 10011')
 
         cy.contains('Mer om beregningen')
             .click({ force: true })
 
         //
-        cy.get('.utvidbar__innhold .mer__inntekt__info > :nth-child(10)').contains('Totalbeløp')
-        cy.get('.utvidbar__innhold .mer__inntekt__info > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.')
+        cy.get('.ekspanderbartPanel__innhold .tekstinfo > :nth-child(10)').contains('Totalbeløp')
+        cy.get('.ekspanderbartPanel__innhold .tekstinfo > :nth-child(11)').contains('Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.')
 
     })
 })

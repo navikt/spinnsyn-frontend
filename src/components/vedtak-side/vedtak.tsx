@@ -21,7 +21,6 @@ import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
-
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
     'Fridag',
@@ -35,9 +34,7 @@ export interface VedtakProps {
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
-
     const router = useRouter()
-
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
     const erArkivering = useContext(ArkiveringContext)
@@ -46,7 +43,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     for (const key in router.query) {
         if (key != 'id') {
-            query[ key ] = router.query[ key ]
+            query[key] = router.query[key]
         }
     }
 
@@ -58,6 +55,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             tittel: tekst('vedtak.sidetittel'),
         }
     ]
+
     return (
         <>
             <Vis hvis={!erArkivering}
@@ -129,27 +127,25 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     }
                 />
 
-
                 <Behandling vedtak={vedtak} />
 
-
-                <Undertittel className="utvikling__tittel">
-                    {tekst('vedtak.utvikling.tittel')}
-                </Undertittel>
-
-                <Normaltekst>
-                    {tekst('vedtak.utvikling.tekst')}
-                    <Lenke href={tekst('vedtak.utvikling.lenke.url')} target="_blank" rel="noopener noreferrer">
-                        {tekst('vedtak.utvikling.lenke')}
-                    </Lenke>
-                </Normaltekst>
+                <div className="tekstinfo">
+                    <Undertittel>
+                        {tekst('vedtak.utvikling.tittel')}
+                    </Undertittel>
+                    <Normaltekst>
+                        {tekst('vedtak.utvikling.tekst')}
+                        <Lenke href={tekst('vedtak.utvikling.lenke.url')} target="_blank" rel="noopener noreferrer">
+                            {tekst('vedtak.utvikling.lenke')}
+                        </Lenke>
+                    </Normaltekst>
+                </div>
 
                 <Vis hvis={!erArkivering}
                     render={() =>
                         <TilbakeLenke />
                     }
                 />
-
             </div>
         </>
     )

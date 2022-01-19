@@ -1,31 +1,29 @@
-.utvidbar.blokkinfo {
-    .tekstinfo__avsnitt {
-        margin: 1rem 0 4px;
+.tekstinfo {
+    .typo-undertittel, .typo-element, .typo-normal + .typo-normal {
+        margin: 1.5rem 0 0.35rem;
 
         &:first-child {
             margin-top: 0;
         }
+    }
 
-        &:nth-child(3) {
-            margin-top: 1.5rem;
-        }
+    .primo {
+        margin: 0.5rem 0;
+    }
 
-        &:nth-child(7) {
-            margin-bottom: 2rem;
+    .segundo {
+        margin: 1.35rem 0 0.5rem;
+
+        & + .typo-normal {
+            margin-bottom: 1.5rem;
         }
     }
 
-    .blokkinfo__avsnitt {
-        margin: 1rem 0 4px;
-    }
-
-    .mer__inntekt__info {
-        margin: 1rem 1rem 0;
+    & + .tekstinfo {
+        margin-top: 2rem;
     }
 }
 
-.utvidbar.tekstinfo {
-    .utvidbar__innhold {
-        margin: 0 1rem;
-    }
+.ekspanderbar__wrapper + .tekstinfo {
+    margin-top: 2rem;
 }

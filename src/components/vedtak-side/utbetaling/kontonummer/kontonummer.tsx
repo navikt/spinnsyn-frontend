@@ -53,14 +53,14 @@ const Kontonummer = () => {
         <Vis hvis={erKontonummerHentet} render={() =>
             <>
                 <Vis hvis={kontonummer} render={() =>
-                    <Normaltekst className="kontonummer__nr">
+                    <Normaltekst>
                         <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong> {formaterKontonummer(kontonummer!)}
                     </Normaltekst>
                 } />
 
                 <Vis hvis={!kontonummer} render={() =>
                     <>
-                        <Element tag="h2" className="info__tittel">
+                        <Element tag="h2">
                             {tekst('utbetaling.kontonummer.tittel')}
                         </Element>
                         <Normaltekst>

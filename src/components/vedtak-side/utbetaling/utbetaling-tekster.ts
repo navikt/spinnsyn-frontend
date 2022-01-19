@@ -43,7 +43,7 @@ const UtbetalingTekster = {
 
     'utbetaling.person.systemtittel': 'til deg (før skatt)',
     'utbetaling.person.når': 'Når får du sykepengene? ',
-    'utbetaling.person.når.innhold': 'Du får vanligvis utbetalt sykepengene enten <b>innen den 25. i måneden</b>, eller <b>innen fem dager</b> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Les mer om når du kan forvente å få pengene.</a>',
+    'utbetaling.person.når.innhold': 'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to. <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap" target="_blank" rel="noreferrer">Les mer om når du kan forvente å få pengene.</a>',
     'utbetaling.kontonummer.tittel': 'Kontonummer for utbetaling',
     'utbetaling.kontonummer.utbetales': 'Utbetales til kontonummer:',
     'utbetaling.kontonummer.mangler': 'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/#utbetaling">Din profil</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
