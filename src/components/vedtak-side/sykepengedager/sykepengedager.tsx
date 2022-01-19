@@ -54,6 +54,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <Normaltekst>{tekst('sykepengedager.sluttdato.tekst1')}</Normaltekst>
                 <Normaltekst>{tekst('sykepengedager.sluttdato.tekst2')}</Normaltekst>
                 <Normaltekst>{tekst('sykepengedager.sluttdato.tekst3')}</Normaltekst>
+                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst4')}</Normaltekst>
             </div>
 
             <EkspanderbarIntern erApen={false} className="sykepenger_slutt"
