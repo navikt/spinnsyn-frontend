@@ -1,4 +1,4 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -10,14 +10,14 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
 
     return (
         <section className="tekstinfo">
-            <Element tag="h3">
+            <Heading spacing size="medium" level="3">
                 {tekst('utbetaling.arbeidsgiver.tittel')}
-            </Element>
-            <Normaltekst>
+            </Heading>
+            <BodyLong spacing size="small">
                 {getLedetekst(tekst('utbetaling.arbeidsgiver.tekst'), {
                     '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
                 })}
-            </Normaltekst>
+            </BodyLong>
 
             <InntektInfo vedtak={vedtak} />
         </section>

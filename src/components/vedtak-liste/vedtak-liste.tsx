@@ -1,4 +1,4 @@
-import { Sidetittel } from 'nav-frontend-typografi'
+import { Heading } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
 import useVedtak from '../../query-hooks/useVedtak'
@@ -14,16 +14,12 @@ const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel')
 } ]
 
-
 const VedtakListe = () => {
-
     const { data: vedtak } = useVedtak()
-
 
     useEffect(() => {
         setBodyClass('vedtak-liste')
     }, [])
-
 
     const uleste = vedtak!.filter(v => !v.lest)
     const leste = vedtak!.filter(v => v.lest).sort(sorterEtterNyesteTom)
@@ -31,9 +27,9 @@ const VedtakListe = () => {
     return (
         <>
             <Banner>
-                <Sidetittel className="sidebanner__tittel">
+                <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                     {tekst('spinnsyn.sidetittel.liste')}
-                </Sidetittel>
+                </Heading>
             </Banner>
             <Brodsmuler brodsmuler={brodsmuler} />
 

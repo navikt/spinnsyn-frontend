@@ -1,6 +1,6 @@
+import { BodyLong, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
 import parser from 'html-react-parser'
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
 import React, { useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
@@ -26,43 +26,43 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Systemtittel tag="h3">
+                    <Heading spacing size="large" as="h3">
                         {vedtak.vedtak.utbetaling.forbrukteSykedager}
-                    </Systemtittel>
-                    <Normaltekst>
+                    </Heading>
+                    <BodyLong spacing size="small">
                         {tekst('sykepengedager.hittil')}
-                    </Normaltekst>
+                    </BodyLong>
                 </div>
             }
         >
 
             <div className="tekstinfo">
-                <Systemtittel tag="h3" className="primo">
+                <Heading spacing size="large" level="3" className="primo">
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager}
-                </Systemtittel>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {tekst('sykepengedager.systemtittel')}
-                </Normaltekst>
+                </BodyLong>
 
-                <Systemtittel tag="h3" className="segundo">
+                <Heading spacing size="large" level="3" className="segundo">
                     {sluttdato}
-                </Systemtittel>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {tekst('sykepengedager.sluttdato')}
-                </Normaltekst>
+                </BodyLong>
 
-                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst1')}</Normaltekst>
-                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst2')}</Normaltekst>
-                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst3')}</Normaltekst>
-                <Normaltekst>{tekst('sykepengedager.sluttdato.tekst4')}</Normaltekst>
+                <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
+                <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst2')}</BodyLong>
+                <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst3')}</BodyLong>
+                <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
 
             <EkspanderbarIntern erApen={false} className="sykepenger_slutt"
                 tittel={tekst('sykepengedager.ekspanderbar')}
             >
-                <Normaltekst>
+                <BodyLong spacing size="small">
                     {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
-                </Normaltekst>
+                </BodyLong>
             </EkspanderbarIntern>
         </Ekspanderbar>
     )

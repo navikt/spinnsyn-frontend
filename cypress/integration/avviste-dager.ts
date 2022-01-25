@@ -55,15 +55,10 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             cy.contains('22.feb.').parent().should('contain', 'Ukjent').and('contain', '-')
         })
 
-        cy.contains('Forklaring').parent().within(() => {
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Fridag').parent().siblings()
-                .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Etter dødsfall').parent().siblings()
-                .contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
-
-        })
+        cy.get('.tekstinfo')
+        cy.get('.navds-body-short:first-child').contains('Forklaring')
+        cy.get('.navds-body-short:nth-child(3)').contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
+        cy.get('.navds-body-short:nth-child(32)').contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
 
         cy.contains('Mer om beregningen').click({ force: true })
         cy.contains('folketrygdloven § 8-28')

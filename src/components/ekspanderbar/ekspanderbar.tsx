@@ -1,4 +1,4 @@
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel'
+import { Accordion } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -35,18 +35,21 @@ const Ekspanderbar = (props: AllProps) => {
     </>
 
     return (
-        <div ref={ekspanderbar} className="ekspanderbar__wrapper">
-            <Ekspanderbartpanel
-                tittel={tittel}
-                onClick={onButtonClick}
-                onMouseEnter={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}-hover.svg`}
-                onMouseLeave={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
+        <Accordion ref={ekspanderbar}>
+            <Accordion.Item open={erApen}
                 className={`ekspanderbar ${props.type}${props.className ? ' ' + props.className : ''}`}
-                apen={erApen}
             >
-                {props.children}
-            </Ekspanderbartpanel>
-        </div>
+                <Accordion.Header onClick={onButtonClick}
+                    onMouseEnter={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}-hover.svg`}
+                    onMouseLeave={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
+                >
+                    {tittel}
+                </Accordion.Header>
+                <Accordion.Content>
+                    {props.children}
+                </Accordion.Content>
+            </Accordion.Item>
+        </Accordion>
     )
 }
 

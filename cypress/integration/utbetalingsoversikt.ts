@@ -40,19 +40,26 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('Redusert til 6G').should('not.exist')
 
         cy.contains('Flere arbeidsforhold').should('not.exist')
-        cy.contains('Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.').should('not.exist')
+        cy.contains('Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, ' +
+            'blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.')
+            .should('not.exist')
     })
 
     it('Forklaring', () => {
-        cy.get('.utbetalingsoversikt .tekstinfo .etikett').should('have.text', 'Delvis syk' + 'Helg')
-        cy.get('.utbetalingsoversikt .tekstinfo .typo-normal').should('have.text',
-            'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.' +
-            'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.'
+        cy.get('.utbetalingsoversikt .tekstinfo .navds-tag').should('have.text', 'Delvis syk' + 'Helg')
+
+        cy.get('.utbetalingsoversikt .tekstinfo').children('.navds-body-short').should('have.text',
+            'Forklaring' +
+            'Du får sykepenger for den delen av arbeidstiden du ikke jobber. ' +
+            'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.' +
+            'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, ' +
+            'blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, ' +
+            'blir fordelt på ukedagene.'
         )
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click()
+        cy.get(':nth-child(3) > .navds-link').contains('Svar på søknader').click()
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
@@ -82,65 +89,116 @@ describe('Tester visning av utbetalingsoversikt', () => {
         })
 
         cy.contains('Forklaring').parent().within(() => {
-            cy.get('.etikett--mini.etikett--info')
-                .contains('Arbeidsgiveren betaler').parent().siblings()
+            cy.get('.navds-tag--small.navds-tag--info')
+                .contains('Arbeidsgiveren betaler')
+            cy.get('.navds-tag--small.navds-tag--info + .navds-body-short')
                 .contains('Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.')
-            cy.get('.etikett--mini.etikett--info')
-                .contains('Arbeidsdag').parent().siblings()
-                .contains('Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.')
-            cy.get('.etikett--mini.etikett--suksess')
-                .contains('Syk').parent().siblings()
-                .contains('Du har vært syk en hel dag, og du får sykepenger for denne dagen.')
-            cy.get('.etikett--mini.etikett--info')
-                .contains('Helg').parent().siblings()
-                .contains('Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.')
-            cy.get('.etikett--mini.etikett--suksess')
-                .contains('Delvis syk').parent().siblings()
-                .contains('Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Fridag').parent().siblings()
-                .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Ferie').parent().siblings()
-                .contains('Du har oppgitt i søknaden at du hadde ferie. I ferien stoppes sykepengene.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Søkt for sent').parent().siblings()
-                .contains('Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.')
-            cy.get('.etikett--mini.etikett--info')
-                .contains('Ukjent').parent().siblings()
-                .contains('Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Permisjon').parent().siblings()
-                .contains('Du har oppgitt i søknaden at du hadde permisjon. Du får ikke sykepenger for dager du har permisjon.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Maks antall dager').parent().siblings()
-                .contains('Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('For lav inntekt').parent().siblings()
-                .contains('Du har et sykepengegrunnlag på mindre enn et halvt grunnbeløp i året. Det betyr at du ikke kan få sykepenger.')
-                .get('a').contains('grunnbeløp').should('have.attr', 'href', 'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Egenmelding').parent().siblings()
-                .contains('Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Sykmeldt i for liten grad').parent().siblings()
-                .contains('Du må være minst 20 prosent sykmeldt for å få sykepenger.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Jobbet for kort').parent().siblings()
-                .contains('Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Ikke medlem').parent().siblings()
-                .contains('Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Etter dødsfall').parent().siblings()
-                .contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Ukjent').parent().siblings()
-                .contains('Beskrivelse kommer...')
-            cy.get('.etikett--mini.etikett--fokus')
-                .contains('Over 70 år').parent().siblings()
-                .contains('Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.')
 
+            cy.get('.navds-tag--small.navds-tag--info')
+                .contains('Arbeidsdag')
+            cy.get('.navds-tag--small.navds-tag--info + .navds-body-short')
+                .contains('Du får ikke sykepenger for hele dager du har vært på jobb. ' +
+                    'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.')
+
+            cy.get('.navds-tag--small.navds-tag--success')
+                .contains('Syk')
+            cy.get('.navds-tag--small.navds-tag--success + .navds-body-short')
+                .contains('Du har vært syk en hel dag, og du får sykepenger for denne dagen.')
+
+            cy.get('.navds-tag--small.navds-tag--info')
+                .contains('Helg')
+            cy.get('.navds-tag--small.navds-tag--info + .navds-body-short')
+                .contains('Sykepenger betales bare for dagene mandag til fredag. ' +
+                    'Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. ' +
+                    'Inntekten som du har på helgedagene, blir fordelt på ukedagene.')
+
+            cy.get('.navds-tag--small.navds-tag--success')
+                .contains('Delvis syk')
+            cy.get('.navds-tag--small.navds-tag--success + .navds-body-short')
+                .contains('Du får sykepenger for den delen av arbeidstiden du ikke jobber. ' +
+                    'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Fridag')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Ferie')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du har oppgitt i søknaden at du hadde ferie. I ferien stoppes sykepengene.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Søkt for sent')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.')
+
+            cy.get('.navds-tag--small.navds-tag--info')
+                .contains('Ukjent')
+            cy.get('.navds-tag--small.navds-tag--info + .navds-body-short')
+                .contains('Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Permisjon')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du har oppgitt i søknaden at du hadde permisjon. ' +
+                    'Du får ikke sykepenger for dager du har permisjon.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Maks antall dager')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). ' +
+                    'Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('For lav inntekt')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du har et sykepengegrunnlag på mindre enn et halvt grunnbeløp i året. ' +
+                    'Det betyr at du ikke kan få sykepenger.')
+                .get('a').contains('grunnbeløp')
+                .should(
+                    'have.attr',
+                    'href',
+                    'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden'
+                )
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Egenmelding')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. ' +
+                    'For de dagene må du ha sykmelding.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Sykmeldt i for liten grad')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du må være minst 20 prosent sykmeldt for å få sykepenger.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Jobbet for kort')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du må ha vært i arbeid i minst fire uker rett før sykefraværet, ' +
+                    'det vil si 28 dager fra og med dagen før du ble sykmeldt.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Ikke medlem')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Du må være medlem i folketrygden for å få sykepenger. ' +
+                    'Du er medlem bare hvis du bor eller jobber i Norge.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Etter dødsfall')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Ukjent')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Beskrivelse kommer...')
+
+            cy.get('.navds-tag--small.navds-tag--warning')
+                .contains('Over 70 år')
+            cy.get('.navds-tag--small.navds-tag--warning + .navds-body-short')
+                .contains('Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.')
         })
     })
 })

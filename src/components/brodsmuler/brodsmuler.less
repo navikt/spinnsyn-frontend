@@ -1,9 +1,9 @@
-@import '../../../node_modules/nav-frontend-core/less/_variabler';
-@import '../../../src/components/basic';
+@import '../../../node_modules/@navikt/ds-tokens/dist/tokens';
+@import '../basic';
 
 .brodsmuler {
     max-height: 40px;
-    background-color: @alternativBakgrunn;
+    background-color: @navds-global-color-gray-50;
     padding: 8px 0 8px 1rem;
     margin-bottom: 1em;
 
@@ -14,7 +14,7 @@
         padding: 0;
     }
 
-    .chevron--opp {
+    .js-toggle svg {
         display: none;
     }
 
@@ -23,10 +23,10 @@
         overflow: hidden;
         transition: max-height 500ms ease;
 
-        .chevron--opp {
+        .js-toggle svg {
             display: block;
             margin-right: 0.5rem;
-            color: @navBla;
+            color: @navds-semantic-color-interaction-primary;
         }
     }
 
@@ -53,15 +53,16 @@
             content: '';
         }
 
-        .lenke {
+        .navds-link {
             white-space: nowrap;
         }
     }
 
     .js-toggle {
+        display: inline-flex;
         border: 0;
-        padding: 0 0.5rem;
-        color: @navBla;
+        padding: 0 0.5rem 2px;
+        color: @navds-semantic-color-interaction-primary;
         cursor: pointer;
 
         &:focus {

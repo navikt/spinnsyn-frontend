@@ -1,6 +1,4 @@
-import Lenke from 'nav-frontend-lenker'
-import { Element, Normaltekst, Sidetittel, Systemtittel, Undertittel } from 'nav-frontend-typografi'
-import Veilederpanel from 'nav-frontend-veilederpanel'
+import { BodyLong, GuidePanel, Heading, Label, Link } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
@@ -62,13 +60,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 render={() =>
                     <>
                         <Banner>
-                            <Sidetittel className="sidebanner__tittel">
+                            <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                                 {tekst('spinnsyn.sidetittel.vedtak')}
-                            </Sidetittel>
-                            <Element className="subtittel">
+                            </Heading>
+                            <Label spacing className="subtittel">
                                 <span>{storeTilStoreOgSmå(vedtak.orgnavn)}&nbsp;</span>
                                 <span>fra {periode}</span>
-                            </Element>
+                            </Label>
                         </Banner>
                         <Brodsmuler brodsmuler={brodsmuler} />
                     </>
@@ -80,23 +78,20 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     render={() =>
                         <>
                             <AnnulleringsInfo />
-                            <Systemtittel className="tidligere__beslutning">
+                            <Heading spacing size="large" level="2" className="tidligere__beslutning">
                                 {tekst('annullering.se-tidligere-beslutning')}
-                            </Systemtittel>
+                            </Heading>
                         </>
                     }
                 />
 
-                <Vis hvis={vedtak.sykepengebelopPerson !== 0 && vedtak.sykepengebelopArbeidsgiver !== 0}
+                <Vis hvis={1 === 1}
                     render={() =>
-                        <Veilederpanel
-                            fargetema="info"
-                            type={'plakat'}
-                            kompakt
-                            svg={<img alt="" style={{ height: '100%' }} src={'/syk/sykepenger/static/img/male.svg'} />}
+                        <GuidePanel poster
+                            illustration={<img alt="" style={{ height: '100%' }} src={'/syk/sykepenger/static/img/male.svg'} />}
                         >
-                            <Normaltekst>{tekst('vedtak.veileder.delvis.refusjon')}</Normaltekst>
-                        </Veilederpanel>
+                            <BodyLong spacing size="small">{tekst('vedtak.veileder.delvis.refusjon')}</BodyLong>
+                        </GuidePanel>
                     }
                 />
 
@@ -130,15 +125,15 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Behandling vedtak={vedtak} />
 
                 <div className="tekstinfo">
-                    <Undertittel>
+                    <Heading spacing size="medium" level="2">
                         {tekst('vedtak.utvikling.tittel')}
-                    </Undertittel>
-                    <Normaltekst>
+                    </Heading>
+                    <BodyLong spacing size="small">
                         {tekst('vedtak.utvikling.tekst')}
-                        <Lenke href={tekst('vedtak.utvikling.lenke.url')} target="_blank" rel="noopener noreferrer">
+                        <Link href={tekst('vedtak.utvikling.lenke.url')} target="_blank" rel="noopener noreferrer">
                             {tekst('vedtak.utvikling.lenke')}
-                        </Lenke>
-                    </Normaltekst>
+                        </Link>
+                    </BodyLong>
                 </div>
 
                 <Vis hvis={!erArkivering}

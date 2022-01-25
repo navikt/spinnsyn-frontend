@@ -1,6 +1,6 @@
+import { Next } from '@navikt/ds-icons'
+import { Tag } from '@navikt/ds-react'
 import dayjs from 'dayjs'
-import { HoyreChevron } from 'nav-frontend-chevron'
-import { EtikettFokus } from 'nav-frontend-etiketter'
 import React from 'react'
 
 import { tekst } from '../../utils/tekster'
@@ -40,12 +40,12 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
                     </div>
                     <Vis hvis={annullertEllerRevurdert}
                         render={() =>
-                            <EtikettFokus>{tekst('spinnsyn.teaser.annullert')}</EtikettFokus>
+                            <Tag variant="warning">{tekst('spinnsyn.teaser.annullert')}</Tag>
                         }
                     />
                 </div>
                 <div className="inngangspanel__del2">
-                    <HoyreChevron />
+                    <Next />
                 </div>
             </Inngangspanel>
         </article>

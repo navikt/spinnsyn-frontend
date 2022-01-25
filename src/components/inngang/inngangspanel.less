@@ -1,12 +1,12 @@
-@import '../../../node_modules/nav-frontend-core/less/_variabler';
-@import '../../../src/components/basic';
+@import '../../../node_modules/@navikt/ds-tokens/dist/tokens';
+@import '../basic';
 
 .inngangspanelerHeader {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding: 1.5rem 0;
-    background-color: @white;
+    background-color: @navds-semantic-color-canvas-background-light;
 
     &__tittel {
         display: inline-block;
@@ -24,12 +24,12 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    border: 1px solid @navMorkGra;
+    border: 1px solid @navds-semantic-color-text;
     border-radius: 4px;
-    background-color: @white;
+    background-color: @navds-semantic-color-canvas-background-light;
     margin-bottom: 1rem;
     padding: 28px 30px 30px 20px;
-    color: @navMorkGra;
+    color: @navds-semantic-color-text;
     text-decoration: none;
 
     &.inngangspanel__btn {
@@ -76,13 +76,13 @@
     &:hover {
         .inngangspanel__del2 {
             .chevronboks {
-                color: @navBla;
+                color: @navds-semantic-color-interaction-primary;
             }
         }
     }
 
     &.inngangspanel--ekstern {
-        border: 5px solid @navDypBlaLighten40;
+        border: 5px solid @navds-global-color-deepblue-300;
         background-position: 97% center;
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
@@ -121,8 +121,8 @@
     }
 
     .inngangspanel__annullert {
-        background: @navOransjeLighten80;
-        border: 1px solid @navOransjeDarken20;
+        background: @navds-global-color-orange-100;
+        border: 1px solid @navds-global-color-orange-600;
         border-radius: 4px;
         padding: 0.3rem 0.5rem;
     }
@@ -130,21 +130,10 @@
 
 .inngangspanel--inaktivt {
     background-image: none;
-    color: @navGra60;
+    color: @navds-global-color-gray-600;
 
     .inngangspanel__status {
-        color: @navMorkGra;
-    }
-}
-
-.modal.modal__teaser_popup {
-    .modal__tittel {
-        margin: 0.25rem 0 1rem;
-    }
-
-    .knapp.knapp--hoved {
-        display: block;
-        margin: 2rem auto 1rem;
+        color: @navds-semantic-color-text;
     }
 }
 
@@ -177,7 +166,7 @@
         &:hover {
             position: relative;
             z-index: 100;
-            box-shadow: @navLysGra 0 0 4px 2px;
+            box-shadow: @navds-semantic-color-canvas-background 0 0 4px 2px;
 
             .inngangspanel__ikon--hover {
                 display: flex;
@@ -191,7 +180,7 @@
         &:hover {
             .inngangspanel__del2 {
                 .chevronboks {
-                    color: @navBla;
+                    color: @navds-semantic-color-interaction-primary;
                 }
             }
         }
@@ -210,7 +199,7 @@
         &:hover {
             .txtlink {
                 text-decoration: underline;
-                color: @navBla;
+                color: @navds-semantic-color-interaction-primary;
             }
         }
 

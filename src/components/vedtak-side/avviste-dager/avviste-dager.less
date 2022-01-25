@@ -1,15 +1,16 @@
-@import '../../../../node_modules/nav-frontend-core/less/_variabler';
+@import '../../../../node_modules/@navikt/ds-tokens/dist/tokens';
+@import '../../basic';
 
 .avvistedageroversikt {
-    .ekspanderbartPanel__innhold {
+    .ekspanderbart__innhold {
         margin: 1rem 0 0;
-        background-color: @white;
+        background-color: @navds-semantic-color-canvas-background-light;
     }
 
     .tekstinfo {
         margin: 1rem;
 
-        .etikett {
+        .navds-tag {
             margin: 0.7rem 0 0.35rem;
         }
     }
@@ -21,7 +22,7 @@
 
 @media (min-width: @screen-sm) {
     .avvistedageroversikt .ekspanderbartPanel__innhold {
-        border: 1px solid @navGra40;
+        border: 1px solid @navds-global-color-gray-400;
         border-radius: 4px;
     }
 }

@@ -1,4 +1,4 @@
-import Etikett from 'nav-frontend-etiketter'
+import { Tag } from '@navikt/ds-react'
 import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
@@ -14,34 +14,34 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         switch (dag.dagtype) {
             case 'NavDag':
             case 'NavDagSyk':
-                return <Etikett mini type="suksess">Syk</Etikett>
+                return <Tag variant="success" size="small">Syk</Tag>
 
             case 'NavDagDelvisSyk':
                 if (skalViseProsent) {
-                    return <Etikett mini type="suksess">{dag.grad}% syk</Etikett>
+                    return <Tag variant="success" size="small">{dag.grad}% syk</Tag>
                 }
-                return <Etikett mini type="suksess">Delvis syk</Etikett>
+                return <Tag variant="success" size="small">Delvis syk</Tag>
 
             case 'NavHelgDag':
-                return <Etikett mini type="info">Helg</Etikett>
+                return <Tag size="small" variant="info">Helg</Tag>
 
             case 'ArbeidsgiverperiodeDag':
-                return <Etikett mini type="info">Arbeidsgiveren betaler</Etikett>
+                return <Tag size="small" variant="info">Arbeidsgiveren betaler</Tag>
 
             case 'Arbeidsdag':
-                return <Etikett mini type="info">Arbeidsdag</Etikett>
+                return <Tag size="small" variant="info">Arbeidsdag</Tag>
 
             case 'Fridag':
-                return <Etikett mini type="fokus">Fridag</Etikett>
+                return <Tag size="small" variant="warning">Fridag</Tag>
 
             case 'Feriedag':
-                return <Etikett mini type="fokus">Ferie</Etikett>
+                return <Tag size="small" variant="warning">Ferie</Tag>
 
             case 'Permisjonsdag':
-                return <Etikett mini type="fokus">Permisjon</Etikett>
+                return <Tag size="small" variant="warning">Permisjon</Tag>
 
             case 'ForeldetDag':
-                return <Etikett mini type="fokus">Søkt for sent</Etikett>
+                return <Tag size="small" variant="warning">Søkt for sent</Tag>
 
             case 'AvvistDag':
                 return dag.begrunnelser?.map((begrunnelse, idx) =>
@@ -51,7 +51,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'UkjentDag':
 
             default:
-                return <Etikett mini type="info">Ukjent</Etikett>
+                return <Tag size="small" variant="info">Ukjent</Tag>
         }
     }
 
@@ -59,34 +59,34 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         switch (begrunnelse) {
             case 'SykepengedagerOppbrukt':
             case 'SykepengedagerOppbruktOver67':
-                return <Etikett mini type="fokus" key={idx}>Maks antall dager</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Maks antall dager</Tag>
 
             case 'MinimumInntekt':
             case 'MinimumInntektOver67':
-                return <Etikett mini type="fokus" key={idx}>For lav inntekt</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>For lav inntekt</Tag>
 
             case 'EgenmeldingUtenforArbeidsgiverperiode':
-                return <Etikett mini type="fokus" key={idx}>Egenmelding</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Egenmelding</Tag>
 
             case 'MinimumSykdomsgrad':
-                return <Etikett mini type="fokus" key={idx}>Sykmeldt i for liten grad</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Sykmeldt i for liten grad</Tag>
 
             case 'ManglerOpptjening':
-                return <Etikett mini type="fokus" key={idx}>Jobbet for kort</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Jobbet for kort</Tag>
 
             case 'ManglerMedlemskap':
-                return <Etikett mini type="fokus" key={idx}>Ikke medlem</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Ikke medlem</Tag>
 
             case 'Over70':
-                return <Etikett mini type="fokus" key={idx}>Over 70 år</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Over 70 år</Tag>
 
             case 'EtterDødsdato':
-                return <Etikett mini type="fokus" key={idx}>Etter dødsfall</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Etter dødsfall</Tag>
 
             case 'UKJENT':
             default:
                 logger.warn(`Har ingen begrunnelse for: ${begrunnelse}`)
-                return <Etikett mini type="fokus" key={idx}>Ukjent</Etikett>
+                return <Tag size="small" variant="warning" key={idx}>Ukjent</Tag>
         }
     }
 

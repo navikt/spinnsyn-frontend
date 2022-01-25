@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi'
+import { BodyLong } from '@navikt/ds-react'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
@@ -8,11 +8,11 @@ import { getLedetekst, tekst } from '../../utils/tekster'
 export const arbeidsgiverListevisning = (vedtak: RSVedtakWrapper) => {
 
     return (
-        <Normaltekst className="inngangspanel__tekst">
+        <BodyLong spacing size="small" className="inngangspanel__tekst">
             {getLedetekst(tekst('spinnsyn.teaser.sykmeldt-fra'), {
                 '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
             })}
-        </Normaltekst>
+        </BodyLong>
     )
 }
 

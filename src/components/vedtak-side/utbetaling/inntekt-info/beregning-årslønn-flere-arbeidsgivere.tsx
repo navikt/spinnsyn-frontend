@@ -1,4 +1,4 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi'
+import { BodyShort, Label } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../../utils/store-små'
@@ -6,19 +6,18 @@ import { formaterValuta } from '../../../../utils/valuta-utils'
 import { VedtakProps } from '../../vedtak'
 
 const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
-
     const alleÅrsLønn = vedtak.andreArbeidsgivere
 
     return (
         <>
             {Object.keys(alleÅrsLønn!).map((arbeidsgiverNavn) => (
                 <tr key={arbeidsgiverNavn}>
-                    <Element tag="th" className="arbgivernavn">
+                    <Label spacing as="th" className="arbgivernavn">
                         <span>{storeTilStoreOgSmå(arbeidsgiverNavn)}</span>
-                    </Element>
-                    <Normaltekst tag="td">
+                    </Label>
+                    <BodyShort spacing size="small" as="td">
                         {formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}
-                    </Normaltekst>
+                    </BodyShort>
                 </tr>
             ))}
         </>

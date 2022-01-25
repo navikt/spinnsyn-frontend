@@ -1,4 +1,4 @@
-@import '../../../node_modules/nav-frontend-core/less/_variabler';
+@import '../../../node_modules/@navikt/ds-tokens/dist/tokens';
 
 .vedtak-liste {
     .sidetopp__tittel {
@@ -11,16 +11,16 @@
         justify-content: flex-end;
         padding: 2rem 0 0;
         margin-bottom: -2rem;
-        border-top: 1px solid @navGra40;
+        border-top: 1px solid @navds-global-color-gray-400;
     }
 
     .vedtak--uleste {
         .inngangspanel {
-            border-color: @navOransje;
-            background-color: mix(@navOransje, @white, 5%);
+            border-color: @navds-global-color-orange-500;
+            background-color: @navds-global-color-orange-50;
 
             &.inngangspanel--tomListe {
-                background-color: @white;
+                background-color: @navds-semantic-color-canvas-background-light;
             }
         }
 

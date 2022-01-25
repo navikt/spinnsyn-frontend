@@ -1,4 +1,4 @@
-@import '../../../node_modules/nav-frontend-core/less/core';
+@import '../../../node_modules/@navikt/ds-tokens/dist/tokens';
 
 @page {
     size: A4 portrait;
@@ -105,23 +105,23 @@
         display: none;
     }
 
-    .ekspanderbartPanel.intern, .ekspanderbartPanel.info {
-        .ekspanderbartPanel__hode {
+    .ekspanderbart.intern, .ekspanderbart.info {
+        .navds-accordion__header {
             min-height: auto;
 
-            .ekspanderbartPanel__tittel .typo-normal {
+            .ekspanderbart__tittel .typo-normal {
                 font-size: 1.25rem;
                 font-weight: 600;
-                color: @navMorkGra;
+                color: @navds-semantic-color-text;
             }
         }
     }
 
-    .ekspanderbartPanel__hode {
+    .navds-accordion__header {
         min-height: 72px;
 
         .ekspanderbar__tittel {
-            color: @navMorkGra;
+            color: @navds-semantic-color-text;
         }
     }
 }

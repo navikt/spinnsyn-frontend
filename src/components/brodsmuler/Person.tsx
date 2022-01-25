@@ -1,4 +1,4 @@
-import Popover, { PopoverOrientering } from 'nav-frontend-popover'
+import { Popover } from '@navikt/ds-react'
 import React, { useRef, useState } from 'react'
 
 import { personas } from '../../data/mock/testperson'
@@ -22,9 +22,10 @@ const Person = () => {
             <Vis hvis={kanVelgePerson && visInnhold}
                 render={() =>
                     <Popover
-                        ankerEl={person.current as HTMLElement}
-                        orientering={PopoverOrientering.Under}
-                        onRequestClose={() => setVisInnhold(false)}
+                        open={false}
+                        anchorEl={person.current as HTMLElement}
+                        placement="bottom"
+                        onClose={() => setVisInnhold(false)}
                     >
                         <ul style={{ minWidth: 190 }}>
                             {Object.keys(personas).map((p, idx) =>

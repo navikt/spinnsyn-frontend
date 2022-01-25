@@ -1,6 +1,5 @@
-import { VenstreChevron } from 'nav-frontend-chevron'
-import Lenke from 'nav-frontend-lenker'
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Back } from '@navikt/ds-icons'
+import { BodyShort, Link } from '@navikt/ds-react'
 import React from 'react'
 
 import { spinnsynFrontendInterne, sykefravaerUrl } from '../../utils/environment'
@@ -11,12 +10,12 @@ const TilbakeLenke = () => {
         return null
     }
     return (
-        <Lenke className="vedtak__tilbake" href={sykefravaerUrl()}>
-            <VenstreChevron />
-            <Normaltekst tag="span" className="vedtak__tilbake--lenke">
+        <Link className="vedtak__tilbake" href={sykefravaerUrl()}>
+            <Back />
+            <BodyShort spacing size="small" as="span" className="vedtak__tilbake--lenke">
                 {tekst('vedtak.tilbake')}
-            </Normaltekst>
-        </Lenke>
+            </BodyShort>
+        </Link>
     )
 }
 

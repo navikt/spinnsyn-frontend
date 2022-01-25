@@ -1,4 +1,4 @@
-import { Undertekst, Undertittel } from 'nav-frontend-typografi'
+import { Detail, Heading } from '@navikt/ds-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -58,12 +58,12 @@ interface InngangsHeaderProps {
 export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
     return (
         <header>
-            <Undertekst className="inngangspanel__meta">
+            <Detail size="small" className="inngangspanel__meta">
                 {meta}
-            </Undertekst>
-            <Undertittel tag="h3" className="inngangspanel__tittel">
+            </Detail>
+            <Heading spacing size="medium" level="3" className="inngangspanel__tittel">
                 <span className="txtlink"> {tittel} </span>
-            </Undertittel>
+            </Heading>
         </header>
     )
 }

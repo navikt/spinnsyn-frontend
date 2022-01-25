@@ -1,4 +1,4 @@
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React, { useState } from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -23,15 +23,15 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Systemtittel tag="h2">
+                    <Heading spacing size="large" level="2">
                         {belop + ' kroner'}
                         <br />
-                        <Normaltekst tag="span">
+                        <BodyShort spacing size="small" as="span">
                             {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                                 '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
                             })}
-                        </Normaltekst>
-                    </Systemtittel>
+                        </BodyShort>
+                    </Heading>
                 </div>
             }
         >

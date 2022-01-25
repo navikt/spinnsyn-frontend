@@ -19,7 +19,6 @@ interface VedtakArkiveringProps {
     utbetalingId?: string
 }
 
-
 const ServerVedtak = ({ vedtak, status, fnr, utbetalingId }: VedtakArkiveringProps) => {
     if (!vedtak || !fnr || !utbetalingId) {
         return <span>{status}</span>
@@ -68,7 +67,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
                 utbetalingId: utbetalingId,
             }
         }
-    } catch (e) {
+    } catch (e: any) {
         logger.warn({ err: e })
         ctx.res.statusCode = e.status || 500
 
@@ -77,6 +76,5 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         }
     }
 }
-
 
 export default ServerVedtak

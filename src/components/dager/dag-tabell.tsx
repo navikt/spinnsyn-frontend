@@ -1,3 +1,4 @@
+import { Table } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 
@@ -12,32 +13,32 @@ interface DagTabellProps{
 const DagTabell = ({ dager }: DagTabellProps) => {
 
     return (
-        <table className="tabell tabell--stripet tabell--dag">
-            <thead>
-                <tr>
-                    <th>Dato</th>
-                    <th>Sum</th>
-                    <th>Dagtype</th>
-                </tr>
-            </thead>
-            <tbody>
+        <Table zebraStripes={true} className="tabell--dag">
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell>Dato</Table.HeaderCell>
+                    <Table.HeaderCell>Sum</Table.HeaderCell>
+                    <Table.HeaderCell>Dagtype</Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
+            <Table.Body>
                 {dager.map((dag, idx) =>
-                    <tr key={idx}>
-                        <td>{dayjs(dag.dato).format('DD.MMM')}</td>
-                        <td className="kroner">
+                    <Table.Row key={idx}>
+                        <Table.DataCell>{dayjs(dag.dato).format('DD.MMM')}</Table.DataCell>
+                        <Table.DataCell className="kroner">
                             {
                                 (dag.dagtype === 'NavDag' || dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
                                     ? ValutaFormat.format(dag.belop) + ' kr'
                                     : '-'
                             }
-                        </td>
-                        <td>
+                        </Table.DataCell>
+                        <Table.DataCell>
                             <DagLabel dag={dag} skalViseProsent={true} />
-                        </td>
-                    </tr>
+                        </Table.DataCell>
+                    </Table.Row>
                 )}
-            </tbody>
-        </table>
+            </Table.Body>
+        </Table>
     )
 }
 
