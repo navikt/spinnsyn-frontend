@@ -1,4 +1,4 @@
-import { BodyLong, Heading } from '@navikt/ds-react'
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -27,12 +27,12 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading spacing size="large" level="3">
+                    <Heading size="medium" level="2">
                         {avvisteDager.length + avvisteDagerTekst}
+                        <BodyShort spacing size="small" as="span">
+                            {tekst('avviste.dager.dekkes.ikke')}
+                        </BodyShort>
                     </Heading>
-                    <BodyLong spacing size="small" as="span">
-                        {tekst('avviste.dager.dekkes.ikke')}
-                    </BodyLong>
                 </div>
             }
         >

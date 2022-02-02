@@ -61,7 +61,7 @@ export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
             <Detail size="small" className="inngangspanel__meta">
                 {meta}
             </Detail>
-            <Heading spacing size="medium" level="3" className="inngangspanel__tittel">
+            <Heading size="small" level="3" className="inngangspanel__tittel">
                 <span className="txtlink"> {tittel} </span>
             </Heading>
         </header>

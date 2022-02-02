@@ -17,7 +17,7 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeaserePr
     return (
         <div className={className}>
             <header className="inngangspanelerHeader">
-                <Heading spacing size="large" level="2" className="inngangspanelerHeader__tittel">{tittel}</Heading>
+                <Heading size="medium" level="2">{tittel}</Heading>
             </header>
 
             {vedtak.map((v, idx) => {

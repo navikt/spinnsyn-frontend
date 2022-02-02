@@ -1,4 +1,4 @@
-import { BodyLong, Label } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useContext } from 'react'
 
@@ -20,9 +20,9 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
 
     return (
         <section className="tekstinfo">
-            <Label spacing as="h3">
+            <Heading spacing level="3" size="small">
                 {tekst('utbetaling.person.når')}
-            </Label>
+            </Heading>
 
             <BodyLong spacing size="small">
                 {parser(tekst('utbetaling.person.når.innhold'))}

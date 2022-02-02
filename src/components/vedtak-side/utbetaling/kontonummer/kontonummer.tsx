@@ -1,4 +1,4 @@
-import { BodyLong, BodyShort, Label } from '@navikt/ds-react'
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useEffect, useState } from 'react'
 
@@ -60,9 +60,9 @@ const Kontonummer = () => {
 
                 <Vis hvis={!kontonummer} render={() =>
                     <>
-                        <Label spacing as="h2">
+                        <Heading spacing level="3" size="small">
                             {tekst('utbetaling.kontonummer.tittel')}
-                        </Label>
+                        </Heading>
                         <BodyLong spacing size="small">
                             {parser(tekst('utbetaling.kontonummer.mangler'))}
                         </BodyLong>

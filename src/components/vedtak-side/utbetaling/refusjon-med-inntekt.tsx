@@ -23,9 +23,8 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading spacing size="large" level="2">
+                    <Heading size="medium" level="2">
                         {belop + ' kroner'}
-                        <br />
                         <BodyShort spacing size="small" as="span">
                             {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                                 '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)

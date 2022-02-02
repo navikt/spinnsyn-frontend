@@ -12,7 +12,7 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
         <>
             {Object.keys(alleÅrsLønn!).map((arbeidsgiverNavn) => (
                 <tr key={arbeidsgiverNavn}>
-                    <Label spacing as="th" className="arbgivernavn">
+                    <Label spacing as="th" size="small" className="arbgivernavn">
                         <span>{storeTilStoreOgSmå(arbeidsgiverNavn)}</span>
                     </Label>
                     <BodyShort spacing size="small" as="td">

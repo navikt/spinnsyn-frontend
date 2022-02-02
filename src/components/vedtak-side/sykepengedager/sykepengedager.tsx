@@ -1,4 +1,4 @@
-import { BodyLong, Heading } from '@navikt/ds-react'
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
 import parser from 'html-react-parser'
 import React, { useState } from 'react'
@@ -26,30 +26,30 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading spacing size="large" as="h3">
+                    <Heading size="medium" level="3">
                         {vedtak.vedtak.utbetaling.forbrukteSykedager}
+                        <BodyShort spacing size="small" as="span">
+                            {tekst('sykepengedager.hittil')}
+                        </BodyShort>
                     </Heading>
-                    <BodyLong spacing size="small">
-                        {tekst('sykepengedager.hittil')}
-                    </BodyLong>
                 </div>
             }
         >
 
             <div className="tekstinfo">
-                <Heading spacing size="large" level="3" className="primo">
+                <Heading spacing size="medium" level="3" className="primo">
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager}
+                    <BodyShort size="small">
+                        {tekst('sykepengedager.systemtittel')}
+                    </BodyShort>
                 </Heading>
-                <BodyLong spacing size="small">
-                    {tekst('sykepengedager.systemtittel')}
-                </BodyLong>
 
-                <Heading spacing size="large" level="3" className="segundo">
+                <Heading spacing size="medium" level="3" className="segundo">
                     {sluttdato}
+                    <BodyShort spacing size="small">
+                        {tekst('sykepengedager.sluttdato')}
+                    </BodyShort>
                 </Heading>
-                <BodyLong spacing size="small">
-                    {tekst('sykepengedager.sluttdato')}
-                </BodyLong>
 
                 <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
                 <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst2')}</BodyLong>

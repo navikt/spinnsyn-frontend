@@ -9,7 +9,7 @@ import { VedtakProps } from '../vedtak'
 const Uenig = ({ vedtak }: VedtakProps) => {
     return (
         <div className="tekstinfo">
-            <Heading spacing size="medium" level="4">
+            <Heading size="small" level="2">
                 {tekst('uenig.tittel')}
             </Heading>
             <BodyLong spacing size="small">
@@ -30,9 +30,9 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                 </Link>.
             </BodyLong>
 
-            <Label spacing as="h3">
+            <Heading spacing size="xsmall" level="3">
                 {tekst('uenig.egenklagefrist.tittel')}
-            </Label>
+            </Heading>
             <BodyLong spacing size="small">
                 {tekst('uenig.egenklagefrist.tekst')}
             </BodyLong>

@@ -11,7 +11,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
 
     return (
         <div className="behandling tekstinfo">
-            <Heading spacing size="medium" level="4">
+            <Heading size="small" level="2">
                 {tekst(automatisk ? 'behandling.automatisk.tittel' : 'behandling.manuell.tittel')}
             </Heading>
             <BodyLong spacing size="small">

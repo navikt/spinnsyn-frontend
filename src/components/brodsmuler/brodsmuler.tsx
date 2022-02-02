@@ -92,39 +92,36 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         <nav className="brodsmuler" ref={smulesti} aria-label="Du er her: ">
             <div className="limit">
                 <Person />
-                <ul className="brodsmuler__smuler">
-                    <BodyLong spacing size="small" className="brodsmuler__smuler">
-                        <Vis hvis={skjerm! <= LITEN}
-                            render={() =>
-                                <li className="smule">
-                                    <button
-                                        aria-label={
-                                            synlige.length === brodsmuler.length
-                                                ? 'Vis redusert brødsmulesti'
-                                                : 'Vis hele brødsmulestien'}
-                                        className="js-toggle"
-                                        onClick={toggleSynlige}
-                                    >
-                                        ...
-                                    </button>
-                                </li>
-                            }
-                        />
+                <BodyLong as="ul" spacing size="small" className="brodsmuler__smuler">
+                    <Vis hvis={skjerm! <= LITEN}
+                        render={() =>
+                            <li className="smule">
+                                <button className="js-toggle"
+                                    aria-label={
+                                        synlige.length === brodsmuler.length
+                                            ? 'Vis redusert brødsmulesti'
+                                            : 'Vis hele brødsmulestien'}
+                                    onClick={toggleSynlige}
+                                >
+                                    ...
+                                </button>
+                            </li>
+                        }
+                    />
 
-                        {synlige.map((smule, index) => {
-                            return (
-                                <BrodsmuleBit key={index}
-                                    sti={smule.sti}
-                                    tittel={
-                                        skjerm! <= LITEN && smule.mobilTittel && !smulesti.current!.classList.contains('apen')
-                                            ? smule.mobilTittel
-                                            : smule.tittel
-                                    }
-                                />
-                            )
-                        })}
-                    </BodyLong>
-                </ul>
+                    {synlige.map((smule, index) => {
+                        return (
+                            <BrodsmuleBit key={index}
+                                sti={smule.sti}
+                                tittel={
+                                    skjerm! <= LITEN && smule.mobilTittel && !smulesti.current!.classList.contains('apen')
+                                        ? smule.mobilTittel
+                                        : smule.tittel
+                                }
+                            />
+                        )
+                    })}
+                </BodyLong>
 
                 <button
                     aria-label={

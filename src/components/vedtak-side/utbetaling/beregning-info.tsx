@@ -34,14 +34,14 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
             tittel={tekst('utbetaling.beregning.tittel')}
         >
             <div className="tekstinfo ">
-                <Heading spacing size="medium" level="4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
                 <BodyLong spacing size="small">
                     {parser(tekst('utbetaling.mndlonn.innhold'))}
                 </BodyLong>
 
-                <Heading spacing size="medium" level="4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Heading>
                 <BodyLong spacing size="small">
@@ -55,7 +55,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     />
                 </BodyLong>
 
-                <Heading spacing size="medium" level="4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
                 <BodyLong spacing size="small">
@@ -66,14 +66,14 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
                 </BodyLong>
 
-                <Heading spacing size="medium" level="4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.dagligbelop.tittel')}
                 </Heading>
                 <BodyLong spacing size="small">
                     {tekst('utbetaling.dagligbelop.innhold')}
                 </BodyLong>
 
-                <Heading spacing size="medium" level="4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.totalbelop.tittel')}
                 </Heading>
                 <BodyLong spacing size="small" className="totalbelop">
@@ -83,7 +83,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                     render={() =>
                         <>
-                            <Heading spacing size="medium" level="4">
+                            <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.flere-arbeidsforhold.tittel')}
                             </Heading>
                             <BodyLong spacing size="small">
@@ -93,7 +93,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     }
                 />
 
-                <Heading spacing size="medium" level="4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.utbetalingsdager.tittel')}
                 </Heading>
                 <BodyLong spacing size="small">
@@ -107,7 +107,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     </Link>
                 </BodyLong>
 
-                <Heading spacing size="medium" level="4" className="blokkinfo__avsnitt">
+                <Heading spacing size="xsmall" level="4" className="blokkinfo__avsnitt">
                     {tekst('utbetaling.info.tittel')}
                 </Heading>
                 <BodyLong spacing size="small">

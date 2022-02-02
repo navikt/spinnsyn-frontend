@@ -125,7 +125,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Behandling vedtak={vedtak} />
 
                 <div className="tekstinfo">
-                    <Heading spacing size="medium" level="2">
+                    <Heading size="small" level="2">
                         {tekst('vedtak.utvikling.tittel')}
                     </Heading>
                     <BodyLong spacing size="small">

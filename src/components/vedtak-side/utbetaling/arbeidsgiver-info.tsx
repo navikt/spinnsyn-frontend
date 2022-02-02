@@ -10,7 +10,7 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
 
     return (
         <section className="tekstinfo">
-            <Heading spacing size="medium" level="3">
+            <Heading spacing size="xsmall" level="3">
                 {tekst('utbetaling.arbeidsgiver.tittel')}
             </Heading>
             <BodyLong spacing size="small">

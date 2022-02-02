@@ -7,11 +7,18 @@
     border-radius: 4px;
     border: 1px solid;
 
+    .ekspanderbar__tittel {
+        .navds-body-short {
+            display: block;
+            margin: 0.25rem 0 0;
+        }
+    }
+
     .navds-accordion__header {
         display: flex;
         overflow: hidden;
         width: 100%;
-        padding: 1rem;
+        padding: 1.3rem 1rem 1.5rem;
         border-bottom: 0;
 
         &:focus {
@@ -61,6 +68,10 @@
         width: 100%;
         padding: 0;
         border: 0;
+
+        .navds-body-long {
+            margin: 0;
+        }
 
         &:hover {
             outline: none;
