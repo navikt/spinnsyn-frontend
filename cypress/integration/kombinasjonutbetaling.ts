@@ -29,7 +29,8 @@ describe('Tester visning av kombinasjon', () => {
                 'dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.')
             .should('be.visible')
 
-        cy.get('.personutbetaling .tekstinfo > h2').contains('Kontonummer for utbetaling')
+        cy.get('.personutbetaling .tekstinfo > h3').contains('Kontonummer for utbetaling')
+
         cy.get('.personutbetaling .tekstinfo > :nth-child(4)')
             .contains('Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn ' +
                 'på Din profil slik at vi får utbetalt sykepengene til deg så raskt som mulig.')
