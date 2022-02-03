@@ -85,12 +85,14 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     }
                 />
 
-                <Vis hvis={1 === 1}
+                <Vis hvis={vedtak.sykepengebelopPerson !== 0 && vedtak.sykepengebelopArbeidsgiver !== 0}
                     render={() =>
                         <GuidePanel poster
-                            illustration={<img alt="" style={{ height: '100%' }} src={'/syk/sykepenger/static/img/male.svg'} />}
+                            illustration={<img src={'/syk/sykepenger/static/img/male.svg'} alt="" />}
                         >
-                            <BodyLong spacing size="small">{tekst('vedtak.veileder.delvis.refusjon')}</BodyLong>
+                            <BodyLong spacing size="small">
+                                {tekst('vedtak.veileder.delvis.refusjon')}
+                            </BodyLong>
                         </GuidePanel>
                     }
                 />

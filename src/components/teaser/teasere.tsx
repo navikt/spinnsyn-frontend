@@ -1,4 +1,4 @@
-import { Heading, Label } from '@navikt/ds-react'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
@@ -26,9 +26,9 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeaserePr
 
             <Vis hvis={vedtak.length === 0}
                 render={() =>
-                    <Label spacing className="inngangspanel inngangspanel--tomListe">
+                    <BodyShort size="small" className="inngangspanel inngangspanel--tomListe">
                         {tomListeTekst}
-                    </Label>
+                    </BodyShort>
                 }
             />
         </div>

@@ -20,7 +20,7 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
 
     return (
         <section className="tekstinfo">
-            <Heading spacing level="3" size="small">
+            <Heading spacing level="3" size="xsmall">
                 {tekst('utbetaling.person.når')}
             </Heading>
 
