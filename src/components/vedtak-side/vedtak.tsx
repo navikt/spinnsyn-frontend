@@ -103,12 +103,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     }
                 />
                 <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0 ||
-                (vedtak.sykepengebelopPerson == 0
-                    && vedtak.sykepengebelopArbeidsgiver == 0
-                    && avvisteDager.length == 0)}
-                render={() =>
-                    <RefusjonMedInntekt vedtak={vedtak} />
-                }
+                    (vedtak.sykepengebelopPerson == 0
+                        && vedtak.sykepengebelopArbeidsgiver == 0
+                        && avvisteDager.length == 0)} render={() => <RefusjonMedInntekt vedtak={vedtak} />}
                 />
                 <Vis hvis={avvisteDager.length > 0}
                     render={() =>
