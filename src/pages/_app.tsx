@@ -29,7 +29,7 @@ import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'reac
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
         dehydratedState: DehydratedState;
-    };
+    }
 }
 
 dayjs.locale({
