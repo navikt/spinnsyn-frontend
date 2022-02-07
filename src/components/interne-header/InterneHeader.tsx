@@ -1,4 +1,4 @@
-import { Undertittel } from 'nav-frontend-typografi'
+import { Heading } from '@navikt/ds-react'
 import React from 'react'
 
 interface InterneHeaderProps {
@@ -17,7 +17,7 @@ function InterneHeader({ fnr }: InterneHeaderProps): JSX.Element {
     return (
         <header className="interne-header">
             <img src="/syk/sykepenger/static/img/nav-hvit.svg" alt="NAV logo" />
-            <Undertittel>{undertittel()}</Undertittel>
+            <Heading spacing size="medium">{undertittel()}</Heading>
         </header>
     )
 }

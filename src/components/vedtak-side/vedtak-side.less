@@ -1,20 +1,30 @@
-@import 'node_modules/nav-frontend-core/less/_variabler';
+@import '../../../node_modules/@navikt/ds-tokens/dist/tokens';
+@import '../basic';
 
 .vedtak-side {
     .tidligere__beslutning {
         margin: 3rem 0 1rem 0;
     }
 
-    .nav-veilederpanel--kompakt.nav-veilederpanel--plakat {
+    .navds-guide-panel__content {
+        padding: 4rem 1rem 1.4rem;
         margin-bottom: 2rem;
-        padding: 4rem 1rem 1rem;
+        border: 2px solid @navds-global-color-lightblue-300;
+        border-radius: 8px;
+
+        p {
+            margin-bottom: 0;
+        }
     }
+
+    --navds-guide-panel-color-border: @navds-global-color-transparent;
+    --navds-guide-panel-color-illustration-background: @navds-global-color-blue-200;
 }
 
 @media (min-width: @screen-sm) {
     .vedtak-side {
-        .nav-veilederpanel--kompakt.nav-veilederpanel--plakat {
-            padding: 4rem 2rem 1rem;
+        .navds-guide-panel__content {
+            padding: 4rem 4rem 1rem;
         }
     }
 }

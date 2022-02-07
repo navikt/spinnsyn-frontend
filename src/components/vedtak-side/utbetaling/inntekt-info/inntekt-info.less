@@ -1,10 +1,10 @@
-@import '../../../../../node_modules/nav-frontend-core/less/_variabler';
+@import '../../../../../node_modules/@navikt/ds-tokens/dist/tokens';
 
 .inntekt__info {
-    background-color: white;
+    background-color: @navds-semantic-color-canvas-background-light;
     padding: 0.5rem 1rem;
     margin: 2rem 0;
-    border: 1px solid @navGra40;
+    border: 1px solid @navds-global-color-gray-400;
     border-radius: 4px;
 
     table {
@@ -16,11 +16,11 @@
             font-size: 1rem;
             font-weight: bold;
             padding: 0.5rem 0 0.5rem 0;
-            border-bottom: 1px solid @navGra20;
+            border-bottom: 1px solid @navds-global-color-gray-200;
         }
 
         tr {
-            border-bottom: 1px solid @navGra20;
+            border-bottom: 1px solid @navds-global-color-gray-200;
 
             &:last-child {
                 border-bottom: 0;
@@ -60,7 +60,7 @@
     .redusert_sykepengegrunnlag {
         margin: 1rem -1rem;
         padding: 0.5rem 1rem 0.5rem 1rem;
-        background-color: mix(@navOransje, @white, 7%);
+        background-color: mix(@navds-global-color-orange-500, @navds-semantic-color-canvas-background-light, 7%);
 
         .img-rad {
             display: flex;

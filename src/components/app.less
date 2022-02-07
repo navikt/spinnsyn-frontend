@@ -1,5 +1,5 @@
-@import '../../node_modules/nav-frontend-core/less/core';
-@import 'basic';
+@import '../../node_modules/@navikt/ds-tokens/dist/tokens';
+@import './basic';
 
 * {
     box-sizing: border-box;
@@ -7,16 +7,11 @@
 
 body {
     margin: 0;
-    color: @navMorkGra;
+    color: @navds-semantic-color-text;
 }
 
 html, body, #app-root {
     height: 100%;
-
-    .spinner {
-        display: block;
-        margin: 0 auto;
-    }
 }
 
 .pagewrapper {
@@ -40,7 +35,7 @@ html, body, #app-root {
     }
 
     .limit {
-        background-color: @white;
+        background-color: @navds-semantic-color-canvas-background-light;
         padding-top: 1rem;
     }
 }
@@ -54,7 +49,7 @@ html, body, #app-root {
 }
 
 a {
-    color: @navBla;
+    color: @navds-semantic-color-interaction-primary;
 }
 
 .fade-enter {

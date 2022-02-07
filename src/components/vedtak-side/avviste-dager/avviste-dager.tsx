@@ -1,4 +1,4 @@
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -27,17 +27,17 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Systemtittel tag="h3">
+                    <Heading size="medium" level="2">
                         {avvisteDager.length + avvisteDagerTekst}
-                    </Systemtittel>
-                    <Normaltekst tag="span">
-                        {tekst('avviste.dager.dekkes.ikke')}
-                    </Normaltekst>
+                        <BodyShort spacing size="small" as="span">
+                            {tekst('avviste.dager.dekkes.ikke')}
+                        </BodyShort>
+                    </Heading>
                 </div>
             }
         >
             <div className="tekstinfo">
-                <Normaltekst>{tekst('avviste.dager.intro')}</Normaltekst>
+                <BodyLong spacing size="small">{tekst('avviste.dager.intro')}</BodyLong>
             </div>
 
             <InntektInfo vedtak={vedtak} />

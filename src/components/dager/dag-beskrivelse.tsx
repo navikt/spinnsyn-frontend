@@ -1,5 +1,5 @@
+import { BodyShort } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
@@ -30,25 +30,25 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
             <>
                 <Vis hvis={dag.dagtype !== 'AvvistDag'}
                     render={() =>
-                        <Normaltekst>
+                        <BodyShort spacing size="small">
                             {tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}
-                        </Normaltekst>
+                        </BodyShort>
                     }
                 />
 
                 <Vis hvis={dag.dagtype === 'AvvistDag'}
                     render={() =>
-                        <Normaltekst>
+                        <BodyShort spacing  size="small">
                             {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
-                        </Normaltekst>
+                        </BodyShort>
                     }
                 />
 
                 <Vis hvis={lovhjemmelTekst !== ''}
                     render={() =>
-                        <Normaltekst className={'avvist-lovhjemmel'}>
+                        <BodyShort spacing size="small" className={'avvist-lovhjemmel'}>
                             {lovhjemmelTekst}
-                        </Normaltekst>
+                        </BodyShort>
                     }
                 />
             </>
@@ -85,9 +85,9 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     return (
         <div className="tekstinfo">
-            <Undertittel>
+            <BodyShort spacing size="small">
                 {tekst('utbetaling.tabell.dagtyper')}
-            </Undertittel>
+            </BodyShort>
 
             {unikeDager().map((dag, idx) =>
                 <>

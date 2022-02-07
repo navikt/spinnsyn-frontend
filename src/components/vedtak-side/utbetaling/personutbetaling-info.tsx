@@ -1,5 +1,5 @@
+import { BodyLong, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -20,20 +20,19 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
 
     return (
         <section className="tekstinfo">
-            <Element tag="h3">
+            <Heading spacing level="3" size="xsmall">
                 {tekst('utbetaling.person.når')}
-            </Element>
+            </Heading>
 
-            <Normaltekst>
+            <BodyLong spacing size="small">
                 {parser(tekst('utbetaling.person.når.innhold'))}
-            </Normaltekst>
+            </BodyLong>
 
             <Vis hvis={!erInterne && !erArkivering} render={() =>
                 <Kontonummer />
             } />
 
             <InntektInfo vedtak={vedtak} />
-
         </section>
     )
 }

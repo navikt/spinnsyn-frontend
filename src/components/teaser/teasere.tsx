@@ -1,4 +1,4 @@
-import { Element, Systemtittel } from 'nav-frontend-typografi'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
@@ -17,7 +17,7 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeaserePr
     return (
         <div className={className}>
             <header className="inngangspanelerHeader">
-                <Systemtittel className="inngangspanelerHeader__tittel" tag="h2">{tittel}</Systemtittel>
+                <Heading size="medium" level="2">{tittel}</Heading>
             </header>
 
             {vedtak.map((v, idx) => {
@@ -26,9 +26,9 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeaserePr
 
             <Vis hvis={vedtak.length === 0}
                 render={() =>
-                    <Element className="inngangspanel inngangspanel--tomListe">
+                    <BodyShort size="small" className="inngangspanel inngangspanel--tomListe">
                         {tomListeTekst}
-                    </Element>
+                    </BodyShort>
                 }
             />
         </div>

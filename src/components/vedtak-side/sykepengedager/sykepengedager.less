@@ -1,9 +1,15 @@
 .tekstinfo {
-    .typo-undertittel, .typo-element, .typo-normal + .typo-normal {
+    .navds-heading, .navds-body-long + .navds-body-long {
         margin: 1.5rem 0 0.35rem;
 
         &:first-child {
             margin-top: 0;
+        }
+    }
+
+    .navds-heading--medium {
+        .navds-body-short--small {
+            display: block;
         }
     }
 
@@ -12,7 +18,7 @@
     }
 
     .segundo {
-        margin: 1.35rem 0 0.5rem;
+        margin: 1.35rem 0 1.8rem;
 
         & + .typo-normal {
             margin-bottom: 1.5rem;
@@ -24,6 +30,6 @@
     }
 }
 
-.ekspanderbar__wrapper + .tekstinfo {
+.navds-accordion + .tekstinfo {
     margin-top: 2rem;
 }

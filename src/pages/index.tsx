@@ -1,4 +1,4 @@
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper'
+import { Alert } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -26,9 +26,9 @@ const IndexInterneUtenFnr = ({ sykmeldtFnr }: PrefetchResults) => {
 
     return (
         <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
-            <AlertStripeAdvarsel>
+            <Alert variant="warning">
                 Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
-            </AlertStripeAdvarsel>
+            </Alert>
         </ArkiveringOgMain>
     )
 

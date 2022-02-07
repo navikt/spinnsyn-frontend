@@ -1,4 +1,4 @@
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React, { useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
@@ -22,10 +22,12 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Systemtittel tag="h2">
+                    <Heading level="2" size="medium">
                         {tekst('utbetaling.person.systemtittel')}
-                    </Systemtittel>
-                    <Normaltekst>{belop + ' kroner'}</Normaltekst>
+                    </Heading>
+                    <BodyShort spacing size="small" as="span">
+                        {belop + ' kroner'}
+                    </BodyShort>
                 </div>
             }
         >

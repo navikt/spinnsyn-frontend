@@ -1,22 +1,24 @@
-@import '../../../../node_modules/nav-frontend-core/less/_variabler';
+@import '../../../../node_modules/@navikt/ds-tokens/dist/tokens';
+@import '../../basic';
 
 .utbetalingsoversikt {
     .tekstinfo {
         margin: 1rem;
 
-        .etikett {
+        .navds-tag {
             margin: 0.7rem 0 0.35rem;
         }
     }
 
-    .ekspanderbartPanel__innhold {
-        background-color: white;
+    .navds-accordion__content {
+        background-color: @navds-semantic-color-canvas-background-light;
+        border-bottom: 0.25rem solid @navds-semantic-color-canvas-background-light;
     }
 }
 
 @media (min-width: @screen-sm) {
-    .utbetalingsoversikt .ekspanderbartPanel__innhold {
-        border: 1px solid @navGra40;
+    .utbetalingsoversikt .navds-accordion__content {
+        border: 1px solid @navds-global-color-gray-400;
         border-radius: 4px;
     }
 }

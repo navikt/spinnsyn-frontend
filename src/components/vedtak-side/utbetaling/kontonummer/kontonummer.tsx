@@ -1,5 +1,5 @@
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React, { useEffect, useState } from 'react'
 
 import { Brukerkonto } from '../../../../types/types'
@@ -53,19 +53,19 @@ const Kontonummer = () => {
         <Vis hvis={erKontonummerHentet} render={() =>
             <>
                 <Vis hvis={kontonummer} render={() =>
-                    <Normaltekst>
+                    <BodyShort spacing size="small">
                         <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong> {formaterKontonummer(kontonummer!)}
-                    </Normaltekst>
+                    </BodyShort>
                 } />
 
                 <Vis hvis={!kontonummer} render={() =>
                     <>
-                        <Element tag="h2">
+                        <Heading spacing level="3" size="small">
                             {tekst('utbetaling.kontonummer.tittel')}
-                        </Element>
-                        <Normaltekst>
+                        </Heading>
+                        <BodyLong spacing size="small">
                             {parser(tekst('utbetaling.kontonummer.mangler'))}
-                        </Normaltekst>
+                        </BodyLong>
                     </>
                 } />
             </>

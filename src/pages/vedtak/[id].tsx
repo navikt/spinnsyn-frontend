@@ -9,9 +9,8 @@ const VedtakPage = () => {
         router.push('/?id=' + id)
     }, [ id, router ])
 
-
     return (
-        <strong>Vidersender..</strong>
+        <strong>Vidersender...</strong>
     )
 }
 

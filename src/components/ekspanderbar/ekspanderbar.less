@@ -1,42 +1,36 @@
-@import 'node_modules/nav-frontend-core/less/_variabler';
-@import 'src/components/basic';
+@import '../../../node_modules/@navikt/ds-tokens/dist/tokens';
+@import '../basic';
 
 .ekspanderbar {
     overflow: hidden;
-    padding: 0.6rem 0;
     margin: 0.5rem 0;
+    border-radius: 4px;
+    border: 1px solid;
 
-    .ekspanderbartPanel__hode:focus {
-        box-shadow: none;
+    .ekspanderbar__tittel {
+        .navds-body-short {
+            display: block;
+            margin: 0.25rem 0 0;
+        }
     }
 
-    .ekspanderbar__ikon {
-        display: none;
-    }
-
-    button {
-        display: block;
+    .navds-accordion__header {
+        display: flex;
+        overflow: hidden;
         width: 100%;
-        background: none;
-        border: 0;
+        padding: 1.3rem 1rem 1.5rem;
+        border-bottom: 0;
 
-        .ekspanderbartPanel__flex-wrapper {
-            display: flex;
-            overflow: hidden;
-            width: 100%;
+        &:hover {
+            text-decoration: none;
         }
 
-        .ekspanderbartPanel__tittel {
-            display: inline-flex;
-            color: @navBla;
-        }
-
-        .ekspanderbartPanel__indikator {
-            color: @navBla;
+        &:focus {
+            box-shadow: none;
         }
     }
 
-    .ekspanderbartPanel__innhold {
+    .navds-accordion__content {
         padding: 0 1rem 1.5rem;
         margin: 0.5rem 0;
     }
@@ -49,36 +43,25 @@
     }
 
     &.bla {
-        background-color: @navLysBlaLighten80;
+        border-color: @navds-semantic-color-interaction-primary;
+        background-color: @navds-global-color-lightblue-100;
     }
 
     &.gronn {
-        background-color: @alternativLysGronn;
+        border-color: @navds-global-color-green-500;
+        background-color: @navds-global-color-green-100;
     }
 
     &.gul {
-        background-color: @alternativLysOrange;
+        border-color: @navds-global-color-orange-500;
+        background-color: @navds-global-color-orange-100;
     }
 
     &.info {
-        background-color: @alternativLysBla;
+        background-color: @navds-global-color-lightblue-50;
         padding: 0;
 
-        button {
-            .ekspanderbartPanel__tittel {
-                color: @navMorkGra;
-            }
-        }
-
-        &:hover {
-            button {
-                .ekspanderbartPanel__tittel {
-                    color: @navBla;
-                }
-            }
-        }
-
-        .ekspanderbartPanel__innhold {
+        .navds-accordion__content {
             padding: 0 1rem 1.5rem;
         }
     }
@@ -90,6 +73,10 @@
         padding: 0;
         border: 0;
 
+        .navds-body-long {
+            margin: 0;
+        }
+
         &:hover {
             outline: none;
             box-shadow: none;
@@ -100,22 +87,15 @@
         }
 
         button {
-            display: inline;
+            display: inline-flex;
+            justify-content: flex-start;
             padding: 0;
             background-color: transparent;
+            color: @navds-semantic-color-interaction-primary;
             border: 0;
-
-            .ekspanderbartPanel__flex-wrapper {
-                display: inline-flex;
-                justify-content: flex-start;
-            }
-
-            .ekspanderbartPanel__indikator {
-                margin-left: 0.5rem;
-            }
         }
 
-        .ekspanderbartPanel__innhold {
+        .navds-accordion__content {
             padding: 0;
         }
 
@@ -131,7 +111,7 @@
             padding-top: 1rem;
             text-align: center;
 
-            .lenke {
+            .navds-link {
                 border: 0;
                 padding: 0;
             }
@@ -158,34 +138,22 @@
             padding: 1.5rem 1rem;
 
             &:hover {
-                color: @navBla;
+                color: @navds-semantic-color-interaction-primary;
             }
         }
 
-        .ekspanderbartPanel__hode {
-            .ekspanderbar__tittel {
-                color: @navMorkGra;
-            }
-
-            .ekspanderbartPanel__indikator {
-                color: @navMorkGra;
-            }
-
-            &:hover {
-                .ekspanderbartPanel__tittel {
-                    text-decoration: none;
-                }
-                .ekspanderbar__tittel {
-                    color: @navBla;
-                }
-            }
-
+        .navds-accordion__header {
             .ekspanderbar__ikon {
                 display: block;
+                margin-right: 0.5rem;
+            }
+
+            .ekspanderbar__tittel {
+                width: 100%;
             }
         }
 
-        .ekspanderbartPanel__innhold {
+        .navds-accordion__content {
             padding: 0 5.8rem 1.5rem;
         }
 
@@ -200,7 +168,7 @@
 @media print {
     .ekspanderbar {
         .ekspanderbar__toggle {
-            border-bottom: 1px solid @navGra40;
+            border-bottom: 1px solid @navds-global-color-gray-400;
             text-decoration: none;
         }
     }
@@ -217,3 +185,4 @@
         }
     }
 }
+

@@ -1,4 +1,4 @@
-@import '../../../node_modules/nav-frontend-core/less/core';
+@import '../../../node_modules/@navikt/ds-tokens/dist/tokens';
 
 @page {
     size: A4 portrait;
@@ -76,8 +76,7 @@
     .personikon {
         display: inline-block;
         width: 32px;
-        margin-right: 8px;
-        margin-left: 3px;
+        margin: 0 8px -10px 3px;
     }
 
     .persontekst {
@@ -101,27 +100,85 @@
         font-size: 14px;
     }
 
-    .chevronboks, .ekspanderbar .lenkerad {
+    .navds-accordion .ekspanderbar .lenkerad {
         display: none;
     }
 
-    .ekspanderbartPanel.intern, .ekspanderbartPanel.info {
-        .ekspanderbartPanel__hode {
+    .ekspanderbar.intern, .ekspanderbar.info {
+        .navds-accordion__header {
             min-height: auto;
 
-            .ekspanderbartPanel__tittel .typo-normal {
+            .navds-body-long {
                 font-size: 1.25rem;
                 font-weight: 600;
-                color: @navMorkGra;
+                color: @navds-semantic-color-text;
             }
         }
     }
 
-    .ekspanderbartPanel__hode {
+    .navds-accordion__header {
         min-height: 72px;
 
-        .ekspanderbar__tittel {
-            color: @navMorkGra;
+        svg {
+            display: none;
         }
+
+        .ekspanderbar__tittel {
+            color: @navds-semantic-color-text;
+
+            .navds-heading--medium {
+                font-size: @navds-font-size-heading-medium;
+
+                .navds-body-short--small {
+                    font-size: @navds-font-size-medium;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
+    .navds-accordion__content {
+        .navds-heading--medium {
+            font-size: @navds-font-size-heading-medium;
+
+            .navds-body-short--small {
+                font-size: @navds-font-size-medium;
+                font-weight: normal;
+            }
+        }
+    }
+
+    .navds-tag {
+        display: inline-block;
+
+        &.navds-tag--small {
+            padding-left: 4px;
+            padding-right: 4px;
+            font-size: 0.875rem;
+        }
+
+        &.navds-tag--info {
+            background-color: @navds-semantic-color-feedback-info-background;
+            border-color: @navds-semantic-color-feedback-info-border;
+        }
+
+        &.navds-tag--success {
+            background-color: @navds-semantic-color-feedback-success-background;
+            border-color: @navds-semantic-color-feedback-success-border;
+        }
+
+        &.navds-tag--warning {
+            background-color: @navds-semantic-color-feedback-warning-background;
+            border-color: @navds-semantic-color-feedback-warning-border;
+        }
+
+        &.navds-tag--error {
+            background-color: @navds-semantic-color-feedback-danger-background;
+            border-color: @navds-semantic-color-feedback-danger-border;
+        }
+    }
+
+    .navds-table__data-cell, .navds-table__header-cell {
+        padding: 0.5rem 1rem;
     }
 }

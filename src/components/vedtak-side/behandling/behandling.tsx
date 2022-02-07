@@ -1,5 +1,4 @@
-import Lenke from 'nav-frontend-lenker'
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { BodyLong, Heading, Link } from '@navikt/ds-react'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
@@ -12,10 +11,10 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
 
     return (
         <div className="behandling tekstinfo">
-            <Undertittel>
+            <Heading size="small" level="2">
                 {tekst(automatisk ? 'behandling.automatisk.tittel' : 'behandling.manuell.tittel')}
-            </Undertittel>
-            <Normaltekst>
+            </Heading>
+            <BodyLong spacing size="small">
                 <Vis hvis={automatisk} render={() => <>
                     {tekst(annullertEllerRevurdert
                         ? 'behandling.behandlet.automatisk.preteritum'
@@ -26,16 +25,16 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                         ? 'behandling.opplysningene.preteritum'
                         : 'behandling.opplysningene.presens')
                 }
-                <Lenke href={tekst('behandling.lenke.url')} target="_blank" rel="noopener noreferrer">
+                <Link href={tekst('behandling.lenke.url')} target="_blank" rel="noopener noreferrer">
                     {tekst('behandling.lenke')}
-                </Lenke>
+                </Link>
                 {tekst('behandling.se-opplysningene')}
-            </Normaltekst>
+            </BodyLong>
 
             <Vis hvis={automatisk && annullertEllerRevurdert} render={() =>
-                <Normaltekst>
+                <BodyLong spacing size="small">
                     {tekst('behandling.ny-behandling')}
-                </Normaltekst>}
+                </BodyLong>}
             />
         </div>
     )

@@ -1,5 +1,4 @@
-import Lenke from 'nav-frontend-lenker'
-import { Element, Normaltekst, Undertittel } from 'nav-frontend-typografi'
+import { BodyLong, Heading, Label, Link } from '@navikt/ds-react'
 import React from 'react'
 
 import { getLedetekst, tekst } from '../../../utils/tekster'
@@ -10,17 +9,17 @@ import { VedtakProps } from '../vedtak'
 const Uenig = ({ vedtak }: VedtakProps) => {
     return (
         <div className="tekstinfo">
-            <Undertittel>
+            <Heading size="small" level="2">
                 {tekst('uenig.tittel')}
-            </Undertittel>
-            <Normaltekst>
+            </Heading>
+            <BodyLong spacing size="small">
                 {getLedetekst(tekst('uenig.tekst1'), { '%KLAGEFRIST%': klagefrist(vedtak) })}
                 {tekst('uenig.tekst2')}
-                <Lenke href={tekst('uenig.lenke1.url')} target="_blank">
+                <Link href={tekst('uenig.lenke1.url')} target="_blank">
                     {tekst('uenig.lenke1')}
-                </Lenke>,
+                </Link>,
                 {tekst('uenig.tekst3')}
-                <Lenke href={tekst('uenig.lenke2.url')}
+                <Link href={tekst('uenig.lenke2.url')}
                     target="_blank"
                     onClick={() => logEvent('navigere', {
                         destinasjon: tekst('uenig.lenke2.url'),
@@ -28,15 +27,15 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                     })}
                 >
                     {tekst('uenig.lenke2')}
-                </Lenke>.
-            </Normaltekst>
+                </Link>.
+            </BodyLong>
 
-            <Element tag="h3">
+            <Heading spacing size="xsmall" level="3">
                 {tekst('uenig.egenklagefrist.tittel')}
-            </Element>
-            <Normaltekst>
+            </Heading>
+            <BodyLong spacing size="small">
                 {tekst('uenig.egenklagefrist.tekst')}
-            </Normaltekst>
+            </BodyLong>
         </div>
     )
 }

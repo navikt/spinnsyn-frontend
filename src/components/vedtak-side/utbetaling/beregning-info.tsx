@@ -1,6 +1,5 @@
+import { BodyLong, Heading, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import Lenke from 'nav-frontend-lenker'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
@@ -8,7 +7,6 @@ import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import Vis from '../../vis'
-import InntektInfo from './inntekt-info/inntekt-info'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper;
@@ -36,17 +34,17 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
             tittel={tekst('utbetaling.beregning.tittel')}
         >
             <div className="tekstinfo ">
-                <Element tag="h4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
-                </Element>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {parser(tekst('utbetaling.mndlonn.innhold'))}
-                </Normaltekst>
+                </BodyLong>
 
-                <Element tag="h4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.arslonn.tittel')}
-                </Element>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {parser(tekst('utbetaling.arslonn.innhold.del1'))}
                     <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                         render={() =>
@@ -55,64 +53,66 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                             </>
                         }
                     />
-                </Normaltekst>
+                </BodyLong>
 
-                <Element tag="h4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
-                </Element>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {parser(tekst(sykepengegrunnlagInnholdKey()))}
-                </Normaltekst>
+                </BodyLong>
 
-                <Normaltekst>
+                <BodyLong spacing size="small">
                     {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
-                </Normaltekst>
+                </BodyLong>
 
-                <Element tag="h4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.dagligbelop.tittel')}
-                </Element>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {tekst('utbetaling.dagligbelop.innhold')}
-                </Normaltekst>
+                </BodyLong>
 
-                <Element tag="h4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.totalbelop.tittel')}
-                </Element>
-                <Normaltekst className="totalbelop">
+                </Heading>
+                <BodyLong spacing size="small" className="totalbelop">
                     {tekst(totalbelopInnholdKey())}
-                </Normaltekst>
+                </BodyLong>
 
                 <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                     render={() =>
                         <>
-                            <Element tag="h4">
+                            <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.flere-arbeidsforhold.tittel')}
-                            </Element>
-                            <Normaltekst> {tekst('utbetaling.flere-arbeidsforhold.innhold')} </Normaltekst>
+                            </Heading>
+                            <BodyLong spacing size="small">
+                                {tekst('utbetaling.flere-arbeidsforhold.innhold')}
+                            </BodyLong>
                         </>
                     }
                 />
 
-                <Element tag="h4">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.utbetalingsdager.tittel')}
-                </Element>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {tekst('utbetaling.utbetalingsdager.innhold')}
-                </Normaltekst>
+                </BodyLong>
 
-                <Normaltekst>
+                <BodyLong spacing size="small">
                     {tekst('utbetaling.beregning.les.mer')}
-                    <Lenke href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
+                    <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                         {tekst('utbetaling.beregning.lenke.tekst')}
-                    </Lenke>
-                </Normaltekst>
+                    </Link>
+                </BodyLong>
 
-                <Element tag="h4" className="blokkinfo__avsnitt">
+                <Heading spacing size="xsmall" level="4" className="blokkinfo__avsnitt">
                     {tekst('utbetaling.info.tittel')}
-                </Element>
-                <Normaltekst>
+                </Heading>
+                <BodyLong spacing size="small">
                     {parser(tekst('utbetaling.info.innhold'))}
-                </Normaltekst>
+                </BodyLong>
             </div>
         </EkspanderbarIntern>
     )

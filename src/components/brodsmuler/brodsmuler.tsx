@@ -1,6 +1,5 @@
-import { OppChevron } from 'nav-frontend-chevron'
-import Lenke from 'nav-frontend-lenker'
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Collapse } from '@navikt/ds-icons'
+import { BodyLong } from '@navikt/ds-react'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { UrlObject } from 'url'
@@ -26,13 +25,15 @@ const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
                 <span>{tittel}</span>
             )
         }
-        return <Lenke href={sti as string}>{tittel}</Lenke>
+        return <a className="navds-link" href={sti as string}>{tittel}</a>
     }
 
     const link = erEkstern
         ? eksternLenke()
         : sti
-            ? <Link href={sti} shallow={true}><a className="lenke">{tittel}</a></Link>
+            ? <Link href={sti} shallow={true}>
+                <a className="navds-link">{tittel}</a>
+            </Link>
             : <span>{tittel}</span>
 
     if (!erKlikkbar) {
@@ -73,13 +74,13 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         window.addEventListener('resize', () => {
             setSkjerm(window.innerWidth)
         })
-        setSynlige(skjerm! <= LITEN ? [ brodsmuler[ brodsmuler.length - 1 ] ] : brodsmuler)
+        setSynlige(skjerm! <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler)
         // eslint-disable-next-line
-    }, [skjerm])
+    }, [ skjerm ])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
-            setSynlige([ brodsmuler[ brodsmuler.length - 1 ] ])
+            setSynlige([ brodsmuler[brodsmuler.length - 1] ])
             smulesti.current!.classList.remove('apen')
         } else {
             setSynlige(brodsmuler)
@@ -91,19 +92,18 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         <nav className="brodsmuler" ref={smulesti} aria-label="Du er her: ">
             <div className="limit">
                 <Person />
-                <Normaltekst tag="ul" className="brodsmuler__smuler">
+                <BodyLong as="ul" spacing size="small" className="brodsmuler__smuler">
                     <Vis hvis={skjerm! <= LITEN}
                         render={() =>
                             <li className="smule">
-                                <button
+                                <button className="js-toggle"
                                     aria-label={
                                         synlige.length === brodsmuler.length
                                             ? 'Vis redusert brødsmulesti'
                                             : 'Vis hele brødsmulestien'}
-                                    className="js-toggle"
                                     onClick={toggleSynlige}
                                 >
-                                     ...
+                                    ...
                                 </button>
                             </li>
                         }
@@ -121,7 +121,8 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                             />
                         )
                     })}
-                </Normaltekst>
+                </BodyLong>
+
                 <button
                     aria-label={
                         synlige.length === brodsmuler.length
@@ -130,7 +131,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                     className="js-toggle"
                     onClick={toggleSynlige}
                 >
-                    <OppChevron />
+                    <Collapse />
                 </button>
             </div>
         </nav>

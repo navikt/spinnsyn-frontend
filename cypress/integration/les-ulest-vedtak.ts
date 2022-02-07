@@ -54,7 +54,7 @@ describe('Tester at appen starter', () => {
         cy.should('contain', 'Datoen gjelder hvis du er sykmeldt uten opphold.')
 
         cy.contains('Når sykepengene tar slutt').click({ force: true })
-        cy.get('.ekspanderbartPanel__innhold')
+        cy.get('.ekspanderbar')
             .should('contain', 'Om du fortsatt ikke kan arbeide på grunn av sykdom eller skade etter 52 uker')
 
     })
@@ -62,7 +62,7 @@ describe('Tester at appen starter', () => {
     it('Vi går tilbake til oversikten', () => {
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(1000)
-        cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click()
+        cy.get(':nth-child(3) > .navds-link').contains('Svar på søknader').click()
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(1000)
     })
@@ -87,7 +87,7 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .lenke').contains('Svar på søknader').click({ force: true })
+        cy.get(':nth-child(3) > .navds-link').contains('Svar på søknader').click({ force: true })
     })
 
     it('Vi åpner et revurdert vedtak', () => {

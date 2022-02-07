@@ -1,5 +1,4 @@
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel'
-import { Normaltekst } from 'nav-frontend-typografi'
+import { Accordion, BodyShort } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -16,16 +15,18 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
     }
 
     return (
-        <div ref={ekspanderbar}>
-            <Ekspanderbartpanel
-                tittel={<Normaltekst>{props.tittel}</Normaltekst>}
-                onClick={onButtonClick}
+        <Accordion ref={ekspanderbar}>
+            <Accordion.Item open={erApen}
                 className={`ekspanderbar info${props.className ? ' ' + props.className : ''}`}
-                apen={erApen}
             >
-                {props.children}
-            </Ekspanderbartpanel>
-        </div>
+                <Accordion.Header onClick={onButtonClick}>
+                    <BodyShort spacing size="small">{props.tittel}</BodyShort>
+                </Accordion.Header>
+                <Accordion.Content>
+                    {props.children}
+                </Accordion.Content>
+            </Accordion.Item>
+        </Accordion>
     )
 }
 

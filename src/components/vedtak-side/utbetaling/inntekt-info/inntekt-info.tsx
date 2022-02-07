@@ -1,5 +1,5 @@
+import { BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import { Element, Normaltekst } from 'nav-frontend-typografi'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
@@ -31,16 +31,16 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                         <caption>{tekst('utbetaling.inntekt.info.tittel')}</caption>
                         <tbody>
                             <tr>
-                                <Element tag="th">
+                                <Label spacing as="th" size="small">
                                     {tekst('utbetaling.inntekt.info.beregnet')}
-                                </Element>
-                                <Normaltekst tag="td">{inntektMnd}</Normaltekst>
+                                </Label>
+                                <BodyShort size="small" spacing as="td">{inntektMnd}</BodyShort>
                             </tr>
                             <tr>
-                                <Element tag="th">
+                                <Label spacing as="th" size="small">
                                     {tekst('utbetaling.inntekt.info.omregnet')}
-                                </Element>
-                                <Normaltekst tag="td">{inntektAr}</Normaltekst>
+                                </Label>
+                                <BodyShort spacing size="small" as="td">{inntektAr}</BodyShort>
                             </tr>
                         </tbody>
                     </table>
@@ -52,12 +52,12 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 <tbody>
                                     <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
                                     <tr>
-                                        <Element tag="th">
+                                        <Label spacing as="th" size="small">
                                             {tekst('utbetaling.inntekt.samlet.årslønn')}
-                                        </Element>
-                                        <Normaltekst tag="td">
+                                        </Label>
+                                        <BodyShort spacing size="small" as="td">
                                             {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
-                                        </Normaltekst>
+                                        </BodyShort>
                                     </tr>
                                 </tbody>
                             </table>
@@ -69,22 +69,22 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             <>
                                 <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
                                     <div className="redusert_sykepengegrunnlag">
-                                        <Element tag="h4" className="img-rad">
+                                        <Heading size="xsmall" level="4" className="img-rad">
                                             <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
                                             Redusert til 6G
-                                        </Element>
-                                        <Normaltekst>
+                                        </Heading>
+                                        <BodyLong spacing size="small">
                                             {parser(tekst('utbetaling.redusert.til.6G'))}
-                                        </Normaltekst>
+                                        </BodyLong>
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <Element tag="th">
+                                                    <Label spacing as="th" size="small">
                                                         {tekst('utbetaling.sykepengegrunnlag')}
-                                                    </Element>
-                                                    <Normaltekst tag="td">
+                                                    </Label>
+                                                    <BodyShort spacing size="small" as="td">
                                                         {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
-                                                    </Normaltekst>
+                                                    </BodyShort>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -95,12 +95,12 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <Element tag="th">
+                                                <Label spacing as="th">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
-                                                </Element>
-                                                <Normaltekst tag="td">
+                                                </Label>
+                                                <BodyShort spacing size="small" as="td">
                                                     {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
-                                                </Normaltekst>
+                                                </BodyShort>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -114,8 +114,8 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             <table className="dagsats">
                                 <tbody>
                                     <tr>
-                                        <Element tag="th">{tekst('utbetaling.inntekt.info.dagsats')}</Element>
-                                        <Normaltekst tag="td">{formaterValuta(dagsats)}</Normaltekst>
+                                        <Label spacing as="th">{tekst('utbetaling.inntekt.info.dagsats')}</Label>
+                                        <BodyShort spacing size="small" as="td">{formaterValuta(dagsats)}</BodyShort>
                                     </tr>
                                 </tbody>
                             </table>
