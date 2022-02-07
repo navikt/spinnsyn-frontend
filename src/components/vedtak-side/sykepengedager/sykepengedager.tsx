@@ -28,7 +28,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <div className="ekspanderbar__tittel">
                     <Heading size="medium" level="3">
                         {vedtak.vedtak.utbetaling.forbrukteSykedager}
-                        <BodyShort spacing size="small" as="span">
+                        <BodyShort size="small" as="span">
                             {tekst('sykepengedager.hittil')}
                         </BodyShort>
                     </Heading>
@@ -39,14 +39,14 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             <div className="tekstinfo">
                 <Heading spacing size="medium" level="3" className="primo">
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager}
-                    <BodyShort size="small">
+                    <BodyShort size="small" as="span">
                         {tekst('sykepengedager.systemtittel')}
                     </BodyShort>
                 </Heading>
 
                 <Heading spacing size="medium" level="3" className="segundo">
                     {sluttdato}
-                    <BodyShort spacing size="small">
+                    <BodyShort size="small" as="span">
                         {tekst('sykepengedager.sluttdato')}
                     </BodyShort>
                 </Heading>
