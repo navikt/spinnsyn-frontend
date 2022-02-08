@@ -8,9 +8,14 @@
     border: 1px solid;
 
     .ekspanderbar__tittel {
+        .navds-heading {
+            color: @navds-semantic-color-text;
+        }
+
         .navds-body-short {
             display: block;
             margin: 0.25rem 0 0;
+            color: @navds-semantic-color-text;
         }
     }
 
@@ -31,6 +36,10 @@
 
         &:focus {
             box-shadow: none;
+        }
+
+        svg {
+            color: @navds-semantic-color-text;
         }
     }
 
@@ -151,14 +160,6 @@
 
 @media (min-width: @screen-sm) {
     .ekspanderbar {
-        .ekspanderbar__toggle {
-            padding: 1.5rem 1rem;
-
-            &:hover {
-                color: @navds-semantic-color-interaction-primary;
-            }
-        }
-
         .navds-accordion__header {
             .ekspanderbar__ikon {
                 display: block;
@@ -189,22 +190,12 @@
 
 @media print {
     .ekspanderbar {
-        .ekspanderbar__toggle {
-            border-bottom: 1px solid @navds-global-color-gray-400;
-            text-decoration: none;
-        }
-    }
-
-    &.intern {
-        .ekspanderbar__toggle {
-            border: 0;
-        }
-
-        .ekspanderbar__innhold {
-            .alertstripe__ikon {
-                display: inline;
+        &.intern {
+            .ekspanderbar__innhold {
+                .alertstripe__ikon {
+                    display: inline;
+                }
             }
         }
     }
 }
-
