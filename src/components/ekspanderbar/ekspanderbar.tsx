@@ -44,13 +44,13 @@ const Ekspanderbar = (props: AllProps) => {
                     onMouseLeave={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
                 >
                     {tittel}
-                    <BodyShort as="span" size="small" className="open-text">{erApen ? 'lukk' : 'åpne'}</BodyShort>
+                    <BodyShort as="span" size="small" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
                 </Accordion.Header>
                 <Accordion.Content>
                     {props.children}
                     <div className="knapperad">
                         <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>
-                            {erApen ? 'lukk' : 'åpne'}
+                            {erApen ? 'Lukk' : 'Åpne'}
                         </Button>
                     </div>
                 </Accordion.Content>

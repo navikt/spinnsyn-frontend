@@ -98,9 +98,18 @@
         button {
             display: inline-flex;
             justify-content: flex-start;
+            padding: 0;
             background-color: transparent;
             color: @navds-semantic-color-interaction-primary;
             border: 0;
+
+            &.navds-button--tertiary {
+                padding: 0.375rem @navds-spacing-3;
+            }
+        }
+
+        .navds-accordion__header {
+            margin-bottom: 0.5rem;
         }
 
         .navds-accordion__content {
