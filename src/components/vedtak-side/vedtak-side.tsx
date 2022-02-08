@@ -12,7 +12,11 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
 
     useEffect(() => {
         setBodyClass('vedtak-side')
-        logEvent('skjema åpnet', { skjemanavn: 'vedtak' })
+        logEvent('skjema åpnet', {
+            skjemanavn: 'vedtak',
+            brukerutbetaling: vedtak.sykepengebelopPerson > 0,
+            refusjon: vedtak.sykepengebelopArbeidsgiver > 0
+        })
         // eslint-disable-next-line
     }, [])
 
