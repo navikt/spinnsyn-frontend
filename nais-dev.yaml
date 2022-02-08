@@ -52,7 +52,7 @@ spec:
     - name: DITTNAV_URL
       value: "https://www.dev.nav.no/person/dittnav/"
     - name: ARKIVERTE_VEDTAK_URL
-      value: "https://person.nav.no/mine-saker/tema/SYK"
+      value: "https://person.dev.nav.no/mine-saker/tema/SYK"
     - name: OPPLAERING
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
