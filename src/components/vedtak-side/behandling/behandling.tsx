@@ -2,6 +2,7 @@ import { BodyLong, Heading, Link } from '@navikt/ds-react'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
+import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 
@@ -25,9 +26,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                         ? 'behandling.opplysningene.preteritum'
                         : 'behandling.opplysningene.presens')
                 }
-                <Link href={tekst('behandling.lenke.url')} target="_blank" rel="noopener noreferrer">
-                    {tekst('behandling.lenke')}
-                </Link>
+                <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
                 {tekst('behandling.se-opplysningene')}
             </BodyLong>
 

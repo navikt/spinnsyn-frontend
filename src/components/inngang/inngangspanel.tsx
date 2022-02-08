@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { logEvent } from '../amplitude/amplitude'
 import Vis from '../vis'
 
 interface InngangsIkonProps {
@@ -45,7 +46,16 @@ export const Inngangspanel = ({ vedtak, children, }: InngangsProps) => {
 
     return (
         <Link href={{ query }} shallow={true}>
-            <a className="inngangspanel">{children}</a>
+            <a className="inngangspanel" onClick={() =>
+                logEvent('navigere', {
+                    destinasjon: 'vedtak',
+                    skjemanavn: 'vedtak-listevisning',
+                    tidligereLest: vedtak.lest,
+                    revurdert: vedtak.revurdert,
+                    annullert: vedtak.annullert
+                })
+
+            }>{children}</a>
         </Link>
     )
 }

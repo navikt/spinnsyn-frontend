@@ -4,6 +4,7 @@ import React from 'react'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
 import { logEvent } from '../../amplitude/amplitude'
+import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import { VedtakProps } from '../vedtak'
 
 const Uenig = ({ vedtak }: VedtakProps) => {
@@ -15,19 +16,9 @@ const Uenig = ({ vedtak }: VedtakProps) => {
             <BodyLong spacing size="small">
                 {getLedetekst(tekst('uenig.tekst1'), { '%KLAGEFRIST%': klagefrist(vedtak) })}
                 {tekst('uenig.tekst2')}
-                <Link href={tekst('uenig.lenke1.url')} target="_blank">
-                    {tekst('uenig.lenke1')}
-                </Link>,
+                <LenkeMedAmplitude url={tekst('uenig.lenke1.url')} tekst={tekst('uenig.lenke1')} />
                 {tekst('uenig.tekst3')}
-                <Link href={tekst('uenig.lenke2.url')}
-                    target="_blank"
-                    onClick={() => logEvent('navigere', {
-                        destinasjon: tekst('uenig.lenke2.url'),
-                        skjemanavn: 'vedtak'
-                    })}
-                >
-                    {tekst('uenig.lenke2')}
-                </Link>.
+                <LenkeMedAmplitude url={tekst('uenig.lenke2.url')} tekst={tekst('uenig.lenke2')} />
             </BodyLong>
 
             <Heading spacing size="xsmall" level="3">

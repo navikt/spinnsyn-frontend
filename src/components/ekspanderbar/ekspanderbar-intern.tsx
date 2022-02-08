@@ -10,7 +10,7 @@ const EkspanderbarIntern = (props: EkspanderProps) => {
     const ekspanderbar = useRef<HTMLDivElement>(null)
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(erApen, ekspanderbar, 'Ekspanderbar intern')
+        ekspanderbarKlikk(erApen, ekspanderbar, props.tittel?.toString() || 'Ekspanderbar intern')
         setErApen(!erApen)
     }
 
