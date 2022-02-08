@@ -9,6 +9,7 @@ import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
+import { LenkeMedAmplitude } from '../lenke/lenke-med-amplitude'
 import TilbakeLenke from '../tilbake/tilbake-lenke'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
@@ -41,7 +42,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     for (const key in router.query) {
         if (key != 'id') {
-            query[key] = router.query[key]
+            query[ key ] = router.query[ key ]
         }
     }
 
@@ -129,9 +130,10 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Heading>
                     <BodyLong spacing size="small">
                         {tekst('vedtak.utvikling.tekst')}
-                        <Link href={tekst('vedtak.utvikling.lenke.url')} target="_blank" rel="noopener noreferrer">
-                            {tekst('vedtak.utvikling.lenke')}
-                        </Link>
+                        <LenkeMedAmplitude
+                            url={tekst('vedtak.utvikling.lenke.url')}
+                            tekst={tekst('vedtak.utvikling.lenke')} />
+
                     </BodyLong>
                 </div>
 

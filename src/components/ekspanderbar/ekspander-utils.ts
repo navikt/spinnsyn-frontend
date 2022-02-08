@@ -9,9 +9,9 @@ export interface EkspanderProps {
     className?: string
 }
 
-const åpne = (ekspanderbar: any, tittel: string) => {
+const lukk = (ekspanderbar: any, tittel: string) => {
     if (window) {
-        logEvent('panel åpnet', { 'component': tittel })
+        logEvent('panel lukket', { 'component': tittel })
         midtstill(ekspanderbar)
         ekspanderbar.current?.focus()
     }
@@ -42,6 +42,6 @@ export const ekspanderbarKlikk = (erApen: boolean, ekspanderbar: any, amplitudeT
             ekspanderbar.current?.focus()
         }
     } else {
-        åpne(ekspanderbar, amplitudeText)
+        lukk(ekspanderbar, amplitudeText)
     }
 }
