@@ -3,7 +3,6 @@ import React from 'react'
 
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { klagefrist } from '../../../utils/vedtak-utils'
-import { logEvent } from '../../amplitude/amplitude'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import { VedtakProps } from '../vedtak'
 
