@@ -23,10 +23,10 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             tittel={
                 <div className="ekspanderbar__tittel">
                     <Heading level="2" size="medium">
-                        {tekst('utbetaling.person.systemtittel')}
+                        {belop + ' kroner'}
                     </Heading>
                     <BodyShort spacing size="small" as="span">
-                        {belop + ' kroner'}
+                        {tekst('utbetaling.person.systemtittel')}
                     </BodyShort>
                 </div>
             }
