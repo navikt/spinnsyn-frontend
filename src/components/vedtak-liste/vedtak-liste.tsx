@@ -1,7 +1,6 @@
-import Lenke from 'nav-frontend-lenker'
-import { Normaltekst } from 'nav-frontend-typografi'
-import { Heading } from '@navikt/ds-react'
+import { BodyShort, Heading, Link } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
+
 import useVedtak from '../../query-hooks/useVedtak'
 import { arkiverteVedtakUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
@@ -51,11 +50,11 @@ const VedtakListe = () => {
                     tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
 
-                <Lenke className="arkiverte_vedtak" href={arkiverteVedtakUrl()}>
-                    <Normaltekst tag="span">
+                <Link className="arkiverte_vedtak" href={arkiverteVedtakUrl()}>
+                    <BodyShort spacing size="small" as="span">
                         {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
-                    </Normaltekst>
-                </Lenke>
+                    </BodyShort>
+                </Link>
 
                 <TilbakeLenke />
             </div>
