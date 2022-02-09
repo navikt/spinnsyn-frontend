@@ -26,7 +26,7 @@ const EkspanderbarIntern = (props: EkspanderProps) => {
                     {props.children}
                     <div className="knapperad">
                         <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>
-                            skjul
+                            Skjul
                         </Button>
                     </div>
                 </Accordion.Content>
