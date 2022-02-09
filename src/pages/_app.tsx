@@ -1,7 +1,6 @@
 import '../style/global.css'
 import '../components/app.less'
 import '../components/vedtak-arkivering/vedtak-arkivering.less'
-import '../components/tilbake/tilbake-lenke.less'
 import '../components/vedtak-liste/vedtak-liste.less'
 import '../components/vedtak-side/vedtak-side.less'
 import '../components/vedtak-side/utbetaling/utbetaling.less'

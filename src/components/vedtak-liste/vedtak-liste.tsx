@@ -9,7 +9,6 @@ import { setBodyClass } from '../../utils/utils'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
 import Teasere from '../teaser/teasere'
-import TilbakeLenke from '../tilbake/tilbake-lenke'
 
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel')
@@ -50,13 +49,11 @@ const VedtakListe = () => {
                     tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
 
-                <Link className="arkiverte_vedtak" href={arkiverteVedtakUrl()}>
+                <Link className="arkiverte-lenke" href={arkiverteVedtakUrl()}>
                     <BodyShort spacing size="small" as="span">
                         {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
                     </BodyShort>
                 </Link>
-
-                <TilbakeLenke />
             </div>
         </>
     )
