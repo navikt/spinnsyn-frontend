@@ -51,7 +51,6 @@
     }
 }
 
-
 #pagenumber:before {
     content: counter(page);
 }
@@ -104,15 +103,21 @@
         display: none;
     }
 
-    .ekspanderbar.intern, .ekspanderbar.info {
-        .navds-accordion__header {
-            min-height: auto;
+    .ekspanderbar {
+        .intern, .ekspanderbar.info {
+            .navds-accordion__header {
+                min-height: auto;
 
-            .navds-body-long {
-                font-size: 1.25rem;
-                font-weight: 600;
-                color: @navds-semantic-color-text;
+                .navds-body-long {
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    color: @navds-semantic-color-text;
+                }
             }
+        }
+
+        .knapperad {
+            display: none;
         }
     }
 
