@@ -1,14 +1,14 @@
-import { Heading } from '@navikt/ds-react'
+import { BodyShort, Heading, Link } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
 import useVedtak from '../../query-hooks/useVedtak'
+import { arkiverteVedtakUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
 import Teasere from '../teaser/teasere'
-import TilbakeLenke from '../tilbake/tilbake-lenke'
 
 const brodsmuler: Brodsmule[] = [ {
     tittel: tekst('vedtak-liste.sidetittel')
@@ -31,6 +31,7 @@ const VedtakListe = () => {
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
             </Banner>
+
             <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
@@ -48,7 +49,11 @@ const VedtakListe = () => {
                     tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
 
-                <TilbakeLenke />
+                <Link className="arkiverte-lenke" href={arkiverteVedtakUrl()}>
+                    <BodyShort spacing size="small" as="span">
+                        {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
+                    </BodyShort>
+                </Link>
             </div>
         </>
     )

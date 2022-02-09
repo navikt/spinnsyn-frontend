@@ -10,7 +10,6 @@ import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
 import { LenkeMedAmplitude } from '../lenke/lenke-med-amplitude'
-import TilbakeLenke from '../tilbake/tilbake-lenke'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -137,11 +136,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </BodyLong>
                 </div>
 
-                <Vis hvis={!erArkivering}
-                    render={() =>
-                        <TilbakeLenke />
-                    }
-                />
             </div>
         </>
     )

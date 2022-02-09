@@ -7,7 +7,6 @@ function NotFound(): JSX.Element | boolean {
         if (window.location.pathname === '/') {
             window.location.pathname = '/syk/sykepenger'
         }
-
     }, [])
 
     return (
