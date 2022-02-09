@@ -45,11 +45,11 @@ describe('Tester at appen starter', () => {
 
     it('Den blå boksen har riktig innhold', () => {
 
-        cy.get('.ekspanderbar.bla').should('contain', '15')
-            .and('contain', 'Sykepengedager brukt hittil')
+        cy.get('.ekspanderbar.bla').should('contain', '15 sykepengedager')
+            .and('contain', 'Brukt per 3. mai 2021')
             .click()
 
-        cy.should('contain', '180').and('contain', 'Sykepengedager gjenstår')
+        cy.should('contain', '180 sykepengedager').and('contain', 'Gjenstår per 3. mai 2021')
         cy.should('contain', '17. des. 2021').and('contain', 'Beregnet slutt på sykepenger')
         cy.should('contain', 'Datoen gjelder hvis du er sykmeldt uten opphold.')
 
@@ -104,11 +104,11 @@ describe('Tester at appen starter', () => {
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
 
-        cy.get('.ekspanderbar.bla').should('contain', '9')
-            .and('contain', 'Sykepengedager brukt hittil')
+        cy.get('.ekspanderbar.bla').should('contain', '9 sykepengedager')
+            .and('contain', 'Brukt per 3. mai 2021')
             .click()
 
-        cy.should('contain', '186').and('contain', 'Sykepengedager gjenstår')
+        cy.should('contain', '186 sykepengedager').and('contain', 'Gjenstår per 3. mai 2021')
         cy.should('contain', '11. nov. 1918').and('contain', 'Beregnet slutt på sykepenger')
     })
 })

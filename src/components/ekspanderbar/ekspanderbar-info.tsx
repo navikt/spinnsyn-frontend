@@ -1,4 +1,4 @@
-import { Accordion, BodyShort } from '@navikt/ds-react'
+import { Accordion, BodyShort, Button } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -24,6 +24,11 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                 </Accordion.Header>
                 <Accordion.Content>
                     {props.children}
+                    <div className="knapperad">
+                        <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>
+                            skjul
+                        </Button>
+                    </div>
                 </Accordion.Content>
             </Accordion.Item>
         </Accordion>

@@ -6,6 +6,7 @@ import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import { tekst } from '../../../utils/tekster'
+import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import Vis from '../../vis'
 import InntektInfo from './inntekt-info/inntekt-info'
 import Kontonummer from './kontonummer/kontonummer'
@@ -26,6 +27,9 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
 
             <BodyLong spacing size="small">
                 {parser(tekst('utbetaling.person.når.innhold'))}
+                <LenkeMedAmplitude
+                    url={tekst('utbetaling.person.når.lenke.url')}
+                    tekst={tekst('utbetaling.person.når.lenke.tekst')} />
             </BodyLong>
 
             <Vis hvis={!erInterne && !erArkivering} render={() =>
