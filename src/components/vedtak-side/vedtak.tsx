@@ -1,4 +1,4 @@
-import { BodyLong, GuidePanel, Heading, Label, Link } from '@navikt/ds-react'
+import { BodyLong, GuidePanel, Heading, Label } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
@@ -9,7 +9,6 @@ import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
-import { LenkeMedAmplitude } from '../lenke/lenke-med-amplitude'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -122,20 +121,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 />
 
                 <Behandling vedtak={vedtak} />
-
-                <div className="tekstinfo">
-                    <Heading size="small" level="2">
-                        {tekst('vedtak.utvikling.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {tekst('vedtak.utvikling.tekst')}
-                        <LenkeMedAmplitude
-                            url={tekst('vedtak.utvikling.lenke.url')}
-                            tekst={tekst('vedtak.utvikling.lenke')} />
-
-                    </BodyLong>
-                </div>
-
             </div>
         </>
     )
