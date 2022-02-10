@@ -30,12 +30,13 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('20.feb.').parent().parent().should('contain', 'Helg').and('contain', '-')
     })
 
-    it('Mer om beregningen har en dagsats', () => {
+    it('Mer om beregningen har riktig sykepengegrunnlag', () => {
         cy.contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.get('.inntekt__info .dagsats').contains('Sykepenger per dag')
-        cy.get('.inntekt__info .dagsats').contains('2 239 kr')
+        cy.contains('Sykepengegrunnlag')
+            .siblings()
+            .contains('582 161 kr')
 
         cy.contains('Redusert til 6G').should('not.exist')
 
