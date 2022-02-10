@@ -93,7 +93,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <Label spacing as="th">
+                                                <Label spacing as="th" size="small">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>
                                                 <BodyShort spacing size="small" as="td">
