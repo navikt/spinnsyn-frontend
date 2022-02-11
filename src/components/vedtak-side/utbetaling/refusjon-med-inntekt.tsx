@@ -40,7 +40,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                 <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
                     render={() =>
                         <EkspanderbarIntern erApen={false} className="utbetalingsoversikt"
-                            tittel="Sykepengene dag for dag"
+                            tittel="Sykepenger per dag"
                         >
                             <DagTabell dager={vedtak.dagerArbeidsgiver} />
                             <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
