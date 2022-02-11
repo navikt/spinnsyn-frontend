@@ -37,7 +37,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                 <Vis hvis={vedtak.dagerPerson.length > 0}
                     render={() =>
                         <EkspanderbarIntern erApen={false} className="utbetalingsoversikt"
-                            tittel={'Sykepengene dag for dag'}
+                            tittel="Sykepenger per dag"
                         >
                             <DagTabell dager={vedtak.dagerPerson} />
                             <DagBeskrivelse dager={vedtak.dagerPerson} />
