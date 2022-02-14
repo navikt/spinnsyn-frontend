@@ -32,11 +32,15 @@ export interface VedtakProps {
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
-    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
     const erArkivering = useContext(ArkiveringContext)
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
     const query: NodeJS.Dict<string | string[]> = {}
+
+    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+    const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
+    const erSP = vedtak.sykepengebelopPerson > 0
+    const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
+    const erAvvist = avvisteDager.length > 0
 
     for (const key in router.query) {
         if (key != 'id') {
@@ -84,7 +88,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     }
                 />
 
-                <Vis hvis={vedtak.sykepengebelopPerson !== 0 && vedtak.sykepengebelopArbeidsgiver !== 0}
+                <Vis hvis={erSP && erSPREF}
                     render={() =>
                         <GuidePanel poster
                             illustration={<img src={'/syk/sykepenger/static/img/male.svg'} alt="" />}
@@ -96,17 +100,17 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     }
                 />
 
-                <Vis hvis={vedtak.sykepengebelopPerson > 0}
+                <Vis hvis={erSP}
                     render={() =>
                         <PersonutbetalingMedInntekt vedtak={vedtak} />
                     }
                 />
-                <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0 ||
-                    (vedtak.sykepengebelopPerson == 0
-                        && vedtak.sykepengebelopArbeidsgiver == 0
-                        && avvisteDager.length == 0)} render={() => <RefusjonMedInntekt vedtak={vedtak} />}
+                <Vis hvis={erSPREF || (!erSP && !erSPREF && !erAvvist)/* vedtak med bare arbeidsgiverperiode dager */}
+                    render={() =>
+                        <RefusjonMedInntekt vedtak={vedtak} />
+                    }
                 />
-                <Vis hvis={avvisteDager.length > 0}
+                <Vis hvis={erAvvist}
                     render={() =>
                         <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
                     }
