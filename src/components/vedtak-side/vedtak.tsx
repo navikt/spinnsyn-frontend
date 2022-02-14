@@ -112,7 +112,11 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 />
                 <Vis hvis={erAvvist}
                     render={() =>
-                        <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
+                        <AvvisteDager
+                            avvisteDager={avvisteDager}
+                            vedtak={vedtak}
+                            heltAvvist={!erSP && !erSPREF}
+                        />
                     }
                 />
 
