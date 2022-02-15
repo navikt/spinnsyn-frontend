@@ -52,18 +52,18 @@ jobs:
         run: npm run test:ci
       - name: Build application
         run: npm run build
-      - name: Run cypress
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          record: false
-          start: npm run start-ingen-dekorator
-          wait-on: http://localhost:8080/syk/sykepenger/api/isAlive
-      - uses: actions/upload-artifact@v1
-        if: ${{ always() }}
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+#      - name: Run cypress
+#        uses: cypress-io/github-action@v2
+#        with:
+#          install: false
+#          record: false
+#          start: npm run start-ingen-dekorator
+#          wait-on: http://localhost:8080/syk/sykepenger/api/isAlive
+#      - uses: actions/upload-artifact@v1
+#        if: ${{ always() }}
+#        with:
+#          name: cypress-screenshots
+#          path: cypress/screenshots
       - name: Docker login
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
