@@ -1,17 +1,17 @@
-import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
 import parser from 'html-react-parser'
 import React, { useState } from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
-import { fallbackEstimertSluttdato, klagefrist } from '../../../utils/vedtak-utils'
+import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
-import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import { VedtakProps } from '../vedtak'
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
+    const [ open, setOpen ] = useState<boolean>(false)
 
     const finnSluttdato = (): Dayjs => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
@@ -26,10 +26,11 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
 
     return (
         <Ekspanderbar type="bla"
+            ikon="/syk/sykepenger/static/img/plaster.svg"
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading size="medium" level="3" className={'primo'}>
+                    <Heading size="large" level="3" className={'primo'}>
                         {vedtak.vedtak.utbetaling.forbrukteSykedager} {tekst('sykepengedager.sykepengedager')}
                         <BodyShort size="small" as="span">
                             {getLedetekst(tekst('sykepengedager.hittil'), { '%DATO%': vedtaktsdato })}
@@ -60,13 +61,18 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
 
-            <EkspanderbarIntern erApen={false} className="sykepenger_slutt"
-                tittel={tekst('sykepengedager.ekspanderbar')}
-            >
-                <BodyLong spacing size="small">
-                    {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
-                </BodyLong>
-            </EkspanderbarIntern>
+            <Accordion>
+                <Accordion.Item open={open} className="sykepenger_slutt">
+                    <Accordion.Header onClick={() => setOpen(!open)}>
+                        {tekst('sykepengedager.ekspanderbar')}
+                    </Accordion.Header>
+                    <Accordion.Content>
+                        <BodyLong spacing size="small">
+                            {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
+                        </BodyLong>
+                    </Accordion.Content>
+                </Accordion.Item>
+            </Accordion>
         </Ekspanderbar>
     )
 }

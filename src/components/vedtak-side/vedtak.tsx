@@ -1,15 +1,13 @@
-import { BodyLong, GuidePanel, Heading, Label, Link } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
-import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
-import { LenkeMedAmplitude } from '../lenke/lenke-med-amplitude'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -17,7 +15,6 @@ import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
-import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -41,7 +38,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     for (const key in router.query) {
         if (key != 'id') {
-            query[ key ] = router.query[ key ]
+            query[key] = router.query[key]
         }
     }
 
@@ -63,10 +60,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                             <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                                 {tekst('spinnsyn.sidetittel.vedtak')}
                             </Heading>
-                            <Label spacing className="subtittel">
-                                <span>{storeTilStoreOgSmå(vedtak.orgnavn)}&nbsp;</span>
-                                <span>fra {periode}</span>
-                            </Label>
                         </Banner>
                         <Brodsmuler brodsmuler={brodsmuler} />
                     </>
@@ -74,6 +67,27 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             />
 
             <div className="limit">
+                <Vis hvis={!annullertEllerRevurdert}
+                    render={() =>
+                        <div className="velkommen">
+                            <img src={'/syk/sykepenger/static/img/adult_people.svg'} alt="" />
+                            <div className="velkommen-innhold">
+                                <Heading size="small" as="h2">
+                                    {tekst('vedtak.velkommen.tittel')}
+                                </Heading>
+                                <BodyLong size="medium">
+                                    {tekst('vedtak.velkommen.tekst1')}
+                                </BodyLong>
+                                {/* TODO: fjern utkommentering
+                                <BodyLong size="medium">
+                                    {tekst('vedtak.velkommen.tekst2')}
+                                </BodyLong>
+                                */}
+                            </div>
+                        </div>
+                    }
+                />
+
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
@@ -85,28 +99,18 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     }
                 />
 
-                <Vis hvis={vedtak.sykepengebelopPerson !== 0 && vedtak.sykepengebelopArbeidsgiver !== 0}
-                    render={() =>
-                        <GuidePanel poster
-                            illustration={<img src={'/syk/sykepenger/static/img/male.svg'} alt="" />}
-                        >
-                            <BodyLong spacing size="small">
-                                {tekst('vedtak.veileder.delvis.refusjon')}
-                            </BodyLong>
-                        </GuidePanel>
-                    }
-                />
-
                 <Vis hvis={vedtak.sykepengebelopPerson > 0}
                     render={() =>
                         <PersonutbetalingMedInntekt vedtak={vedtak} />
                     }
                 />
+                {/* TODO: fjern utkommentering
                 <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0 ||
-                    (vedtak.sykepengebelopPerson == 0
-                        && vedtak.sykepengebelopArbeidsgiver == 0
-                        && avvisteDager.length == 0)} render={() => <RefusjonMedInntekt vedtak={vedtak} />}
+                    (vedtak.sykepengebelopPerson === 0
+                        && vedtak.sykepengebelopArbeidsgiver === 0
+                        && avvisteDager.length === 0)} render={() => <RefusjonMedInntekt vedtak={vedtak} />}
                 />
+                */}
                 <Vis hvis={avvisteDager.length > 0}
                     render={() =>
                         <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
@@ -122,19 +126,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 />
 
                 <Behandling vedtak={vedtak} />
-
-                <div className="tekstinfo">
-                    <Heading size="small" level="2">
-                        {tekst('vedtak.utvikling.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {tekst('vedtak.utvikling.tekst')}
-                        <LenkeMedAmplitude
-                            url={tekst('vedtak.utvikling.lenke.url')}
-                            tekst={tekst('vedtak.utvikling.lenke')} />
-
-                    </BodyLong>
-                </div>
 
             </div>
         </>

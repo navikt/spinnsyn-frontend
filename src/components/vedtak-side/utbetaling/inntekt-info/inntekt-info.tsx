@@ -5,8 +5,12 @@ import React from 'react'
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../../utils/tekster'
 import { formaterValuta } from '../../../../utils/valuta-utils'
+import DagBeskrivelse from '../../../dager/dag-beskrivelse'
+import DagTabell from '../../../dager/dag-tabell'
+import EkspanderbarIntern from '../../../ekspanderbar/ekspanderbar-intern'
 import Vis from '../../../vis'
 import { VedtakProps } from '../../vedtak'
+import BeregningInfo from '../beregning-info'
 import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-arbeidsgivere'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
@@ -28,19 +32,26 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
             render={() =>
                 <section className="inntekt__info">
                     <table>
-                        <caption>{tekst('utbetaling.inntekt.info.tittel')}</caption>
+                        <caption>
+                            <Heading size="small" level="4">
+                                {tekst('utbetaling.inntekt.info.tittel')}
+                            </Heading>
+                            <BodyLong size="medium">
+                                Her ser du hvilke inntekter vi har lagt til grunn for utbetalingen av sykepengene dine.
+                            </BodyLong>
+                        </caption>
                         <tbody>
                             <tr>
-                                <Label spacing as="th" size="small">
+                                <Label as="th" size="small">
                                     {tekst('utbetaling.inntekt.info.beregnet')}
                                 </Label>
                                 <BodyShort size="small" spacing as="td">{inntektMnd}</BodyShort>
                             </tr>
                             <tr>
-                                <Label spacing as="th" size="small">
+                                <Label as="th" size="small">
                                     {tekst('utbetaling.inntekt.info.omregnet')}
                                 </Label>
-                                <BodyShort spacing size="small" as="td">{inntektAr}</BodyShort>
+                                <BodyShort size="small" as="td">{inntektAr}</BodyShort>
                             </tr>
                         </tbody>
                     </table>
@@ -48,14 +59,16 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                     <Vis hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
                         render={() =>
                             <table className="flere-arbeidsgivere">
-                                <caption>{tekst('utbetaling.andre.arbeidsgivere.tittel')}</caption>
+                                <Heading size="small" as="caption">
+                                    {tekst('utbetaling.andre.arbeidsgivere.tittel')}
+                                </Heading>
                                 <tbody>
                                     <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
                                     <tr>
-                                        <Label spacing as="th" size="small">
+                                        <Label as="th" size="small">
                                             {tekst('utbetaling.inntekt.samlet.årslønn')}
                                         </Label>
-                                        <BodyShort spacing size="small" as="td">
+                                        <BodyShort size="small" as="td">
                                             {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
                                         </BodyShort>
                                     </tr>
@@ -69,25 +82,15 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             <>
                                 <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
                                     <div className="redusert_sykepengegrunnlag">
-                                        <Heading size="xsmall" level="4" className="img-rad">
-                                            <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
-                                            Redusert til 6G
-                                        </Heading>
-                                        <BodyLong spacing size="small">
-                                            {parser(tekst('utbetaling.redusert.til.6G'))}
-                                        </BodyLong>
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <Label spacing as="th" size="small">
-                                                        {tekst('utbetaling.sykepengegrunnlag')}
-                                                    </Label>
-                                                    <BodyShort spacing size="small" as="td">
-                                                        {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
-                                                    </BodyShort>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <img alt="" src={'/syk/sykepenger/static/img/info-filled.svg'} />
+                                        <div>
+                                            <Heading size="xsmall" level="4">
+                                                {tekst('utbetaling.redusert6G.tittel')}
+                                            </Heading>
+                                            <BodyLong size="small">
+                                                {parser(tekst('utbetaling.redusert6G.tekst'))}
+                                            </BodyLong>
+                                        </div>
                                     </div>
                                 } />
 
@@ -95,10 +98,10 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <Label spacing as="th">
+                                                <Label as="th">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>
-                                                <BodyShort spacing size="small" as="td">
+                                                <BodyShort size="small" as="td">
                                                     {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
                                                 </BodyShort>
                                             </tr>
@@ -114,8 +117,16 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             <table className="dagsats">
                                 <tbody>
                                     <tr>
-                                        <Label spacing as="th">{tekst('utbetaling.inntekt.info.dagsats')}</Label>
-                                        <BodyShort spacing size="small" as="td">{formaterValuta(dagsats)}</BodyShort>
+                                        <Label as="th" size="small">
+                                            {tekst('utbetaling.sykepengegrunnlag')}
+                                        </Label>
+                                        <BodyShort spacing size="small" as="td">
+                                            {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
+                                        </BodyShort>
+                                    </tr>
+                                    <tr>
+                                        <Label size="small" as="th">{tekst('utbetaling.inntekt.info.dagsats')}</Label>
+                                        <BodyShort size="small" as="td">{formaterValuta(dagsats)}</BodyShort>
                                     </tr>
                                 </tbody>
                             </table>

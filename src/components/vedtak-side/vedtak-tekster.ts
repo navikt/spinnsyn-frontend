@@ -1,11 +1,9 @@
 const VedtakTekster = {
     'vedtak.sidetittel': 'Svar på søknad',
+    'vedtak.velkommen.tittel': 'Hei, Julie!',
+    'vedtak.velkommen.tekst1': 'Svaret på søknaden om sykepenger er vedtaket i saken din. Nedenfor ser du hva vi har besluttet i saken din og hvorfor.',
+    'vedtak.velkommen.tekst2': 'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
     'vedtak.tilbake': 'Til hovedsiden ditt sykefravær',
-    'vedtak.utvikling.tittel': 'Denne siden er under utvikling',
-    'vedtak.utvikling.tekst': 'Det varierer derfor hvem som får se denne informasjonen. ',
-    'vedtak.utvikling.lenke': 'Les om hva du kan forvente.',
-    'vedtak.utvikling.lenke.url': 'https://www.nav.no/no/person/arbeid/sykmeldt-arbeidsavklaringspenger-og-yrkesskade/sykepenger/sykepenger-hva-vises-pa-nav.no',
-    'vedtak.veileder.delvis.refusjon': 'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.'
 }
 
 export default VedtakTekster

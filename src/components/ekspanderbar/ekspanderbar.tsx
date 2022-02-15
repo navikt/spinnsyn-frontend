@@ -2,6 +2,7 @@ import { Accordion, BodyShort, Button } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
+import Vis from '../vis'
 import { ekspanderbarKlikk, EkspanderProps } from './ekspander-utils'
 
 interface TypeProps {
@@ -25,24 +26,24 @@ const Ekspanderbar = (props: AllProps) => {
         setErApen(!erApen)
     }
 
-    const tittel = <>
-        <img aria-hidden="true" className="ekspanderbar__ikon"
-            ref={btnImage}
-            src={`/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
-            alt=""
-        />
-        <>{props.tittel}</>
-    </>
+    const tittel =
+        <>
+            <Vis hvis={props.ikon} render={() =>
+                <img aria-hidden="true" className="ekspanderbar__ikon"
+                    ref={btnImage}
+                    src={props.ikon}
+                    alt=""
+                />
+            } />
+            {props.tittel}
+        </>
 
     return (
         <Accordion ref={ekspanderbar}>
             <Accordion.Item open={erApen}
                 className={`ekspanderbar ${props.type}${props.className ? ' ' + props.className : ''}`}
             >
-                <Accordion.Header onClick={onButtonClick}
-                    onMouseEnter={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}-hover.svg`}
-                    onMouseLeave={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
-                >
+                <Accordion.Header onClick={onButtonClick}>
                     {tittel}
                     <BodyShort as="span" size="small" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
                 </Accordion.Header>

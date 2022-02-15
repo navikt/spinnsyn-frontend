@@ -2,6 +2,34 @@
 @import '../basic';
 
 .vedtak-side {
+    .velkommen {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 2rem;
+
+        img {
+            width: 4rem;
+            margin-right: 1rem;
+        }
+
+        .velkommen-innhold {
+            padding: 1rem;
+            margin: 0;
+            background-color: @navds-global-color-gray-50;
+            border: 1px solid @navds-global-color-gray-100;
+            border-radius: 16px 16px 16px 0;
+            box-shadow: 1px 2px 3px @navds-global-color-gray-200;
+
+            .navds-heading {
+                margin-bottom: 0.5rem;
+            }
+
+            .navds-body-long--small {
+                margin: 0;
+            }
+        }
+    }
+
     .tidligere__beslutning {
         margin: 3rem 0 1rem 0;
     }

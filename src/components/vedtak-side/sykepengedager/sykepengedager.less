@@ -1,7 +1,5 @@
 .tekstinfo {
     .navds-heading, .navds-body-long + .navds-body-long {
-        margin: 1.5rem 0 0.35rem;
-
         &:first-child {
             margin-top: 0;
         }
@@ -26,18 +24,23 @@
     }
 
     & + .tekstinfo {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 
     .sykepengedager-forste-avsnitt {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 }
 
-.navds-accordion + .tekstinfo {
-    margin-top: 2rem;
-}
+.navds-accordion {
+    & + .tekstinfo {
+        margin-top: 2rem;
+    }
 
-.ekspanderbar.intern.sykepenger_slutt {
-    margin-top: 2.5rem;
+    .sykepenger_slutt {
+        .navds-accordion__content {
+            margin-top: 1.5rem;
+            padding: 0 !important;
+        }
+    }
 }

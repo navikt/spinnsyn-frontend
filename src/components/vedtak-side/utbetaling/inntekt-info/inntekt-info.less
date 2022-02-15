@@ -1,11 +1,17 @@
 @import '../../../../../node_modules/@navikt/ds-tokens/dist/tokens';
 
 .inntekt__info {
-    background-color: @navds-semantic-color-canvas-background-light;
+    background-color: @navds-global-color-blue-50;
     padding: 0.5rem 1rem;
     margin: 2rem 0;
-    border: 1px solid @navds-global-color-gray-400;
     border-radius: 4px;
+
+    .utbetalingsoversikt {
+        .navds-accordion__content {
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+    }
 
     table {
         width: 100%;
@@ -13,35 +19,43 @@
 
         caption {
             text-align: left;
-            font-size: 1rem;
-            font-weight: bold;
-            padding: 0.5rem 0 0.5rem 0;
-            border-bottom: 1px solid @navds-global-color-gray-200;
+            margin-bottom: 0.75rem;
+
+            .navds-body-long {
+                margin: 0.75rem 0 0.25rem;
+            }
         }
 
         tr {
-            border-bottom: 1px solid @navds-global-color-gray-200;
-
             &:last-child {
                 border-bottom: 0;
             }
         }
 
         th {
-            padding: 0.5rem 0 0.5rem 0;
             text-align: left;
-            font-weight: normal;
         }
 
         td {
             padding: 0.5rem 0 0.5rem 0.25rem;
-            text-align: right;
             white-space: nowrap;
+
+            &:first-child {
+                padding-left: 1rem;
+            }
+
+            &:last-child {
+                text-align: right;
+            }
         }
 
         & + table {
             margin-top: 1rem;
         }
+    }
+
+    .dagsats {
+        margin-bottom: 1rem;
     }
 
     .flere-arbeidsgivere {
@@ -58,22 +72,19 @@
     }
 
     .redusert_sykepengegrunnlag {
+        display: flex;
+        align-items: flex-start;
         margin: 1rem -1rem;
         padding: 0.5rem 1rem 0.5rem 1rem;
-        background-color: mix(@navds-global-color-orange-500, @navds-semantic-color-canvas-background-light, 7%);
+        background-color: @navds-global-color-orange-100;
 
-        .img-rad {
-            display: flex;
-            align-items: center;
-
-            img {
-                width: 24px;
-                margin-right: 0.5rem;
-            }
+        img {
+            width: 24px;
+            margin-right: 0.5rem;
         }
 
-        > .typo-normal {
-            padding-left: 2rem;
+        div {
+            width: calc(100% - 32px)
         }
 
         table {

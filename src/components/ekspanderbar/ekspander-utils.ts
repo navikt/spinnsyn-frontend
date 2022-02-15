@@ -5,6 +5,7 @@ import { logEvent } from '../amplitude/amplitude'
 export interface EkspanderProps {
     erApen: boolean
     tittel: React.ReactNode | string
+    ikon?: string
     children: React.ReactNode
     className?: string
 }
