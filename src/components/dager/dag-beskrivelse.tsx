@@ -1,4 +1,4 @@
-import { BodyShort } from '@navikt/ds-react'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React from 'react'
 
@@ -85,9 +85,9 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     return (
         <div className="tekstinfo">
-            <BodyShort spacing size="small">
+            <Heading spacing size="xsmall" level="4">
                 {tekst('utbetaling.tabell.dagtyper')}
-            </BodyShort>
+            </Heading>
 
             {unikeDager().map((dag, idx) =>
                 <>
