@@ -1,8 +1,7 @@
 const BehandlingTekster = {
-    'behandling.automatisk.tittel': 'Automatisk behandling',
     'behandling.manuell.tittel': 'Opplysningene',
-    'behandling.behandlet.automatisk.presens': 'Søknaden din er behandlet automatisk. ',
-    'behandling.behandlet.automatisk.preteritum': 'Søknaden din ble behandlet automatisk. ',
+    'behandling.automatisk.tittel.presens': 'Søknaden er behandlet automatisk',
+    'behandling.automatisk.tittel.preteritum': 'Søknaden ble behandlet automatisk',
     'behandling.opplysningene.presens': 'Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. ',
     'behandling.opplysningene.preteritum': 'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.  ',
     'behandling.lenke': 'Kontakt oss',

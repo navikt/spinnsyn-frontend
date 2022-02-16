@@ -122,13 +122,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
                 <Sykepengedager vedtak={vedtak} />
 
+                <Behandling vedtak={vedtak} />
+
                 <Vis hvis={!annullertEllerRevurdert}
                     render={() =>
                         <Uenig vedtak={vedtak} />
                     }
                 />
-
-                <Behandling vedtak={vedtak} />
             </div>
         </>
     )
