@@ -1,10 +1,9 @@
-import { BodyLong, GuidePanel, Heading, Label } from '@navikt/ds-react'
+import { BodyLong, GuidePanel, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
-import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'

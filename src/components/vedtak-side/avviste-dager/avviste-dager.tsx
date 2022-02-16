@@ -44,9 +44,9 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                     <BodyLong spacing size="small">{tekst('avviste.dager.intro')}</BodyLong>
                 </div>
 
-            <Vis hvis={heltAvvist} render={() =>
-                <InntektInfo vedtak={vedtak} />
-            } />
+                <Vis hvis={heltAvvist} render={() =>
+                    <InntektInfo vedtak={vedtak} />
+                } />
 
                 <Accordion>
                     <Accordion.Item open={open} className="avvistedageroversikt">
@@ -58,10 +58,10 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                     </Accordion.Item>
                 </Accordion>
 
-            <Vis hvis={heltAvvist} render={() =>
-                <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-            } />
-        </Ekspanderbar>
+                <Vis hvis={heltAvvist} render={() =>
+                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+                } />
+            </Ekspanderbar>
         </Accordion>
     )
 }
