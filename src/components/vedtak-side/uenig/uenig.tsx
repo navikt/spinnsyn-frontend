@@ -1,4 +1,4 @@
-import { BodyLong, Heading, Label, Link } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { getLedetekst, tekst } from '../../../utils/tekster'
@@ -18,13 +18,6 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                 <LenkeMedAmplitude url={tekst('uenig.lenke1.url')} tekst={tekst('uenig.lenke1')} />
                 {tekst('uenig.tekst3')}
                 <LenkeMedAmplitude url={tekst('uenig.lenke2.url')} tekst={tekst('uenig.lenke2')} />
-            </BodyLong>
-
-            <Heading spacing size="xsmall" level="3">
-                {tekst('uenig.egenklagefrist.tittel')}
-            </Heading>
-            <BodyLong spacing size="small">
-                {tekst('uenig.egenklagefrist.tekst')}
             </BodyLong>
         </div>
     )

@@ -41,7 +41,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                     <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
                         render={() =>
                             <Accordion.Item open={open} className="utbetalingsoversikt">
-                                <Accordion.Header onClick={() => setOpen(!open)}>Sykepengene dag for dag</Accordion.Header>
+                                <Accordion.Header onClick={() => setOpen(!open)}>Sykepenger per dag</Accordion.Header>
                                 <Accordion.Content>
                                     <DagTabell dager={vedtak.dagerArbeidsgiver} />
                                     <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />

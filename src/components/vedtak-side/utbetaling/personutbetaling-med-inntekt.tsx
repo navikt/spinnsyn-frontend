@@ -53,7 +53,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                     <Accordion>
                         <Accordion.Item open={open} className="utbetalingsoversikt">
                             <Accordion.Header onClick={() => setOpen(!open)}>
-                                Sykepengene dag for dag
+                                Sykepenger per dag
                             </Accordion.Header>
                             <Accordion.Content>
                                 <DagTabell dager={vedtak.dagerPerson} />

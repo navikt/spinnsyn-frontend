@@ -6,15 +6,17 @@ import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
+import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/beregning-info'
 import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
     vedtak: RSVedtakWrapper
+    heltAvvist: Boolean
 }
 
-const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
+const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
     const [ open, setOpen ] = useState<boolean>(false)
 
@@ -42,7 +44,9 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                     <BodyLong spacing size="small">{tekst('avviste.dager.intro')}</BodyLong>
                 </div>
 
+            <Vis hvis={heltAvvist} render={() =>
                 <InntektInfo vedtak={vedtak} />
+            } />
 
                 <Accordion>
                     <Accordion.Item open={open} className="avvistedageroversikt">
@@ -54,8 +58,10 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                     </Accordion.Item>
                 </Accordion>
 
+            <Vis hvis={heltAvvist} render={() =>
                 <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-            </Ekspanderbar>
+            } />
+        </Ekspanderbar>
         </Accordion>
     )
 }

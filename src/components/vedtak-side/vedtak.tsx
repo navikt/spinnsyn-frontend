@@ -1,4 +1,4 @@
-import { BodyLong, Heading } from '@navikt/ds-react'
+import { BodyLong, GuidePanel, Heading, Label } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
@@ -31,15 +31,18 @@ export interface VedtakProps {
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
+    const erArkivering = useContext(ArkiveringContext)
+    const query: NodeJS.Dict<string | string[]> = {}
+
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const avvisteDager = vedtak.dagerArbeidsgiver.filter(dag => dagErAvvist.includes(dag.dagtype))
-    const erArkivering = useContext(ArkiveringContext)
-    const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
-    const query: NodeJS.Dict<string | string[]> = {}
+    const erSP = vedtak.sykepengebelopPerson > 0
+    const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
+    const erAvvist = avvisteDager.length > 0
 
     for (const key in router.query) {
         if (key != 'id') {
-            query[key] = router.query[key]
+            query[ key ] = router.query[ key ]
         }
     }
 
@@ -100,31 +103,47 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     }
                 />
 
-                <Vis hvis={vedtak.sykepengebelopPerson > 0}
+                <Vis hvis={erSP && erSPREF}
+                    render={() =>
+                        <GuidePanel poster
+                            illustration={<img src={'/syk/sykepenger/static/img/male.svg'} alt="" />}
+                        >
+                            <BodyLong spacing size="small">
+                                {tekst('vedtak.veileder.delvis.refusjon')}
+                            </BodyLong>
+                        </GuidePanel>
+                    }
+                />
+
+                <Vis hvis={erSP}
                     render={() =>
                         <PersonutbetalingMedInntekt vedtak={vedtak} />
                     }
                 />
-                <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0 ||
-                    (vedtak.sykepengebelopPerson === 0
-                        && vedtak.sykepengebelopArbeidsgiver === 0
-                        && avvisteDager.length === 0)} render={() => <RefusjonMedInntekt vedtak={vedtak} />}
-                />
-                <Vis hvis={avvisteDager.length > 0}
+                <Vis hvis={erSPREF || (!erSP && !erSPREF && !erAvvist)/* vedtak med bare arbeidsgiverperiode dager */}
                     render={() =>
-                        <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
+                        <RefusjonMedInntekt vedtak={vedtak} />
+                    }
+                />
+                <Vis hvis={erAvvist}
+                    render={() =>
+                        <AvvisteDager
+                            avvisteDager={avvisteDager}
+                            vedtak={vedtak}
+                            heltAvvist={!erSP && !erSPREF}
+                        />
                     }
                 />
 
                 <Sykepengedager vedtak={vedtak} />
+
+                <Behandling vedtak={vedtak} />
 
                 <Vis hvis={!annullertEllerRevurdert}
                     render={() =>
                         <Uenig vedtak={vedtak} />
                     }
                 />
-
-                <Behandling vedtak={vedtak} />
             </div>
         </>
     )
