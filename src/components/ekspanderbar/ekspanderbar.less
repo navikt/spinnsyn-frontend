@@ -7,11 +7,7 @@
         margin: 0.5rem 0 0;
         border: 6px solid;
         border-radius: 4px;
-        box-shadow: 1px 2px 3px @navds-global-color-gray-200;
-
-        &:hover {
-            box-shadow: 1px 2px 3px @navds-global-color-gray-600;
-        }
+        box-shadow: 0 2px 0 @navds-global-color-gray-200;
 
         .ekspanderbar__tittel {
             .navds-heading {
@@ -59,91 +55,45 @@
             margin-top: 2rem;
         }
 
-        .navds-accordion__content {
+        .ekspanderbar__innhold {
             padding: 0 1rem 1.5rem;
         }
 
         .ekspanderbar__ikon {
             display: none;
             margin: auto 1.5rem auto 0.75rem;
-            min-width: 40px;
-            max-width: 36px;
         }
 
         &.bla {
             border-color: @navds-global-color-blue-300;
+
+            &:hover {
+                box-shadow: 0 2px 0 @navds-global-color-blue-600;
+            }
         }
 
         &.gronn {
             border-color: @navds-global-color-green-300;
+
+            &:hover {
+                box-shadow: 0 2px 0 @navds-global-color-green-600;
+            }
         }
 
         &.gul {
             border-color: @navds-global-color-orange-400;
+
+            &:hover {
+                box-shadow: 0 2px 0 @navds-global-color-orange-700;
+            }
         }
 
         &.info {
             background-color: @navds-global-color-lightblue-50;
             padding: 0;
 
-            .navds-accordion__content {
-                padding: 0 1rem 1.5rem;
-            }
-        }
-
-        &.intern {
-            display: inline-block;
-            background-color: @navds-global-color-white;
-            width: 100%;
-            padding: 0.5rem 1rem;
-            border-width: 1px;
-            border-color: @navds-global-color-gray-400;
-
-            .navds-body-long {
-                margin: 0;
-            }
-
-            &:hover {
-                outline: none;
-                box-shadow: none;
-            }
-
-            &:focus {
-                box-shadow: none;
-            }
-
-            button {
-                display: flex;
-                justify-content: space-between;
-                padding: 0;
-                background-color: transparent;
-                border: 0;
-
-                &.navds-button--tertiary {
-                    padding: 0.375rem @navds-spacing-3;
-                }
-            }
-
-            .navds-accordion__content {
-                padding: 0;
-            }
-
             .ekspanderbar__innhold {
-                padding: 0 0 2rem;
-
-                .alertstripe__ikon {
-                    display: none;
-                }
-            }
-
-            .lenkerad {
-                padding-top: 1rem;
-                text-align: center;
-
-                .navds-link {
-                    border: 0;
-                    padding: 0;
-                }
+                padding: 0 1rem 1.5rem;
             }
         }
 
@@ -163,7 +113,7 @@
             & > .navds-accordion__header {
                 .ekspanderbar__ikon {
                     display: block;
-                    margin-right: 0.5rem;
+                    margin: 0 0.28rem;
                 }
 
                 .ekspanderbar__tittel {
@@ -176,7 +126,7 @@
                 margin-right: -0.5rem;
             }
 
-            .navds-accordion__content {
+            .ekspanderbar__innhold {
                 padding: 0 5.8rem 1.5rem;
             }
 

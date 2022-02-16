@@ -15,6 +15,7 @@ import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
+import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -104,13 +105,11 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                         <PersonutbetalingMedInntekt vedtak={vedtak} />
                     }
                 />
-                {/* TODO: fjern utkommentering
                 <Vis hvis={vedtak.sykepengebelopArbeidsgiver > 0 ||
                     (vedtak.sykepengebelopPerson === 0
                         && vedtak.sykepengebelopArbeidsgiver === 0
                         && avvisteDager.length === 0)} render={() => <RefusjonMedInntekt vedtak={vedtak} />}
                 />
-                */}
                 <Vis hvis={avvisteDager.length > 0}
                     render={() =>
                         <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />
@@ -126,7 +125,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 />
 
                 <Behandling vedtak={vedtak} />
-
             </div>
         </>
     )

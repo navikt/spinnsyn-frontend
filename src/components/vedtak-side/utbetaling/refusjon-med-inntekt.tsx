@@ -1,4 +1,4 @@
-import { BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useState } from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -7,7 +7,6 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
-import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
@@ -15,15 +14,17 @@ import BeregningInfo from './beregning-info'
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
+    const [ open, setOpen ] = useState<boolean>(false)
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
 
     return (
         <Ekspanderbar type="gronn"
+            ikon="/syk/sykepenger/static/img/ikon-ekspander-gronn.svg"
             className="refusjon"
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading size="medium" level="2">
+                    <Heading size="large" level="2">
                         {belop + ' kroner'}
                         <BodyShort spacing size="small" as="span">
                             {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
@@ -36,19 +37,20 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <>
                 <ArbeidsgiverInfo vedtak={vedtak} />
-
-                <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
-                    render={() =>
-                        <EkspanderbarIntern erApen={false} className="utbetalingsoversikt"
-                            tittel="Sykepengene dag for dag"
-                        >
-                            <DagTabell dager={vedtak.dagerArbeidsgiver} />
-                            <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
-                        </EkspanderbarIntern>
-                    }
-                />
-
-                <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+                <Accordion>
+                    <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
+                        render={() =>
+                            <Accordion.Item open={open} className="utbetalingsoversikt">
+                                <Accordion.Header onClick={() => setOpen(!open)}>Sykepengene dag for dag</Accordion.Header>
+                                <Accordion.Content>
+                                    <DagTabell dager={vedtak.dagerArbeidsgiver} />
+                                    <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
+                                </Accordion.Content>
+                            </Accordion.Item>
+                        }
+                    />
+                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+                </Accordion>
             </>
         </Ekspanderbar>
     )

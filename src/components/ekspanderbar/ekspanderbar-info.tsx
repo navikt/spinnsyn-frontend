@@ -22,7 +22,7 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                 <Accordion.Header onClick={onButtonClick}>
                     <BodyShort spacing size="small">{props.tittel}</BodyShort>
                 </Accordion.Header>
-                <Accordion.Content>
+                <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
                         <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>

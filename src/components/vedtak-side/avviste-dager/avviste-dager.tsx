@@ -25,10 +25,11 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
     return (
         <Accordion>
             <Ekspanderbar type="gul"
+                ikon="/syk/sykepenger/static/img/warning.svg"
                 erApen={apen}
                 tittel={
                     <div className="ekspanderbar__tittel">
-                        <Heading size="medium" level="2">
+                        <Heading size="large" level="2">
                             {avvisteDager.length + avvisteDagerTekst}
                             <BodyShort spacing size="small" as="span">
                                 {tekst('avviste.dager.dekkes.ikke')}

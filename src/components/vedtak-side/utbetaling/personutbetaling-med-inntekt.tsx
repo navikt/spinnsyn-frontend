@@ -1,16 +1,21 @@
-import { BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useState } from 'react'
 
 import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
+import DagBeskrivelse from '../../dager/dag-beskrivelse'
+import DagTabell from '../../dager/dag-tabell'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
+import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
+import BeregningInfo from './beregning-info'
 import { PersonutbetalingInfo } from './personutbetaling-info'
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(true)
+    const [ open, setOpen ] = useState<boolean>(true)
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
 
@@ -42,6 +47,24 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             </div>
 
             <PersonutbetalingInfo vedtak={vedtak} />
+
+            <Vis hvis={vedtak.dagerPerson.length > 0}
+                render={() =>
+                    <Accordion>
+                        <Accordion.Item open={open} className="utbetalingsoversikt">
+                            <Accordion.Header onClick={() => setOpen(!open)}>
+                                Sykepengene dag for dag
+                            </Accordion.Header>
+                            <Accordion.Content>
+                                <DagTabell dager={vedtak.dagerPerson} />
+                                <DagBeskrivelse dager={vedtak.dagerPerson} />
+                            </Accordion.Content>
+                        </Accordion.Item>
+                    </Accordion>
+                }
+            />
+            <BeregningInfo vedtak={vedtak} mottaker={'person'} />
+
         </Ekspanderbar>
     )
 }

@@ -47,7 +47,7 @@ const Ekspanderbar = (props: AllProps) => {
                     {tittel}
                     <BodyShort as="span" size="small" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
                 </Accordion.Header>
-                <Accordion.Content>
+                <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
                         <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>

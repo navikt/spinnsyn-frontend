@@ -30,92 +30,90 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
     }
 
     return (
-        <Accordion>
-            <Accordion.Item open={open} className="beregning">
-                <Accordion.Header onClick={() => setOpen(!open)}>
-                    {tekst('utbetaling.beregning.tittel')}
-                </Accordion.Header>
+        <Accordion.Item open={open} className="beregning">
+            <Accordion.Header onClick={() => setOpen(!open)}>
+                {tekst('utbetaling.beregning.tittel')}
+            </Accordion.Header>
 
-                <Accordion.Content className="tekstinfo ">
-                    <Heading spacing size="xsmall" level="4">
-                        {tekst('utbetaling.mndlonn.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {parser(tekst('utbetaling.mndlonn.innhold'))}
-                    </BodyLong>
+            <Accordion.Content className="tekstinfo ">
+                <Heading spacing size="xsmall" level="4">
+                    {tekst('utbetaling.mndlonn.tittel')}
+                </Heading>
+                <BodyLong spacing size="small">
+                    {parser(tekst('utbetaling.mndlonn.innhold'))}
+                </BodyLong>
 
-                    <Heading spacing size="xsmall" level="4">
-                        {tekst('utbetaling.arslonn.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {parser(tekst('utbetaling.arslonn.innhold.del1'))}
-                        <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                            render={() =>
-                                <>{parser(tekst('utbetaling.arslonn.innhold.del2'))}</>
-                            }
-                        />
-                    </BodyLong>
-
-                    <Heading spacing size="xsmall" level="4">
-                        {tekst('utbetaling.sykepengegrunnlag.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {parser(tekst(sykepengegrunnlagInnholdKey()))}
-                    </BodyLong>
-
-                    <BodyLong spacing size="small">
-                        {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
-                    </BodyLong>
-
-                    <Heading spacing size="xsmall" level="4">
-                        {tekst('utbetaling.dagligbelop.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {tekst('utbetaling.dagligbelop.innhold')}
-                    </BodyLong>
-
-                    <Heading spacing size="xsmall" level="4">
-                        {tekst('utbetaling.totalbelop.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small" className="totalbelop">
-                        {tekst(totalbelopInnholdKey())}
-                    </BodyLong>
-
+                <Heading spacing size="xsmall" level="4">
+                    {tekst('utbetaling.arslonn.tittel')}
+                </Heading>
+                <BodyLong spacing size="small">
+                    {parser(tekst('utbetaling.arslonn.innhold.del1'))}
                     <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                        render={() => <>
-                            <Heading spacing size="xsmall" level="4">
-                                {tekst('utbetaling.flere-arbeidsforhold.tittel')}
-                            </Heading>
-                            <BodyLong spacing size="small">
-                                {tekst('utbetaling.flere-arbeidsforhold.innhold')}
-                            </BodyLong>
-                        </>
+                        render={() =>
+                            <>{parser(tekst('utbetaling.arslonn.innhold.del2'))}</>
                         }
                     />
+                </BodyLong>
 
-                    <Heading spacing size="xsmall" level="4">
-                        {tekst('utbetaling.utbetalingsdager.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {tekst('utbetaling.utbetalingsdager.innhold')}
-                    </BodyLong>
+                <Heading spacing size="xsmall" level="4">
+                    {tekst('utbetaling.sykepengegrunnlag.tittel')}
+                </Heading>
+                <BodyLong spacing size="small">
+                    {parser(tekst(sykepengegrunnlagInnholdKey()))}
+                </BodyLong>
 
-                    <BodyLong spacing size="small">
-                        {tekst('utbetaling.beregning.les.mer')}
-                        <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
-                            {tekst('utbetaling.beregning.lenke.tekst')}
-                        </Link>
-                    </BodyLong>
+                <BodyLong spacing size="small">
+                    {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
+                </BodyLong>
 
-                    <Heading spacing size="xsmall" level="4" className="blokkinfo__avsnitt">
-                        {tekst('utbetaling.info.tittel')}
-                    </Heading>
-                    <BodyLong spacing size="small">
-                        {parser(tekst('utbetaling.info.innhold'))}
-                    </BodyLong>
-                </Accordion.Content>
-            </Accordion.Item>
-        </Accordion>
+                <Heading spacing size="xsmall" level="4">
+                    {tekst('utbetaling.dagligbelop.tittel')}
+                </Heading>
+                <BodyLong spacing size="small">
+                    {tekst('utbetaling.dagligbelop.innhold')}
+                </BodyLong>
+
+                <Heading spacing size="xsmall" level="4">
+                    {tekst('utbetaling.totalbelop.tittel')}
+                </Heading>
+                <BodyLong spacing size="small" className="totalbelop">
+                    {tekst(totalbelopInnholdKey())}
+                </BodyLong>
+
+                <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
+                    render={() => <>
+                        <Heading spacing size="xsmall" level="4">
+                            {tekst('utbetaling.flere-arbeidsforhold.tittel')}
+                        </Heading>
+                        <BodyLong spacing size="small">
+                            {tekst('utbetaling.flere-arbeidsforhold.innhold')}
+                        </BodyLong>
+                    </>
+                    }
+                />
+
+                <Heading spacing size="xsmall" level="4">
+                    {tekst('utbetaling.utbetalingsdager.tittel')}
+                </Heading>
+                <BodyLong spacing size="small">
+                    {tekst('utbetaling.utbetalingsdager.innhold')}
+                </BodyLong>
+
+                <BodyLong spacing size="small">
+                    {tekst('utbetaling.beregning.les.mer')}
+                    <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
+                        {tekst('utbetaling.beregning.lenke.tekst')}
+                    </Link>
+                </BodyLong>
+
+                <Heading spacing size="xsmall" level="4" className="blokkinfo__avsnitt">
+                    {tekst('utbetaling.info.tittel')}
+                </Heading>
+                <BodyLong spacing size="small">
+                    {parser(tekst('utbetaling.info.innhold'))}
+                </BodyLong>
+            </Accordion.Content>
+        </Accordion.Item>
     )
 }
 

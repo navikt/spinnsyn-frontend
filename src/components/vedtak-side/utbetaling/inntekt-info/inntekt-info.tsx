@@ -5,12 +5,8 @@ import React from 'react'
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../../utils/tekster'
 import { formaterValuta } from '../../../../utils/valuta-utils'
-import DagBeskrivelse from '../../../dager/dag-beskrivelse'
-import DagTabell from '../../../dager/dag-tabell'
-import EkspanderbarIntern from '../../../ekspanderbar/ekspanderbar-intern'
 import Vis from '../../../vis'
 import { VedtakProps } from '../../vedtak'
-import BeregningInfo from '../beregning-info'
 import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-arbeidsgivere'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
