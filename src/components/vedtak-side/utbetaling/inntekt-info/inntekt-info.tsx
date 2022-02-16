@@ -19,8 +19,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
         ? formaterValuta(vedtak.vedtak.inntekt * 12)
         : undefined
 
-    const skalViseDagsats = vedtak.vedtak.sykepengegrunnlag && harFlereArbeidsgivere(vedtak) === 'nei'
-    const dagsats = vedtak.vedtak.sykepengegrunnlag && (vedtak.vedtak.sykepengegrunnlag / 260) || 0
     const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     return (
@@ -95,7 +93,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <Label spacing as="th">
+                                                <Label spacing as="th" size="small">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>
                                                 <BodyShort spacing size="small" as="td">
@@ -106,19 +104,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     </table>
                                 } />
                             </>
-                        }
-                    />
-
-                    <Vis hvis={skalViseDagsats}
-                        render={() =>
-                            <table className="dagsats">
-                                <tbody>
-                                    <tr>
-                                        <Label spacing as="th">{tekst('utbetaling.inntekt.info.dagsats')}</Label>
-                                        <BodyShort spacing size="small" as="td">{formaterValuta(dagsats)}</BodyShort>
-                                    </tr>
-                                </tbody>
-                            </table>
                         }
                     />
                 </section>

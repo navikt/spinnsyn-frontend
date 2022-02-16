@@ -18,7 +18,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
             .and('contain', 'Utbetales til Pengeløs Sparebank')
             .click({ force: true })
 
-        cy.contains('Sykepengene dag for dag')
+        cy.contains('Sykepenger per dag')
             .click({ force: true })
 
         // Dager utenfor vedtak fom og tom
@@ -30,12 +30,13 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('20.feb.').parent().parent().should('contain', 'Helg').and('contain', '-')
     })
 
-    it('Mer om beregningen har en dagsats', () => {
+    it('Mer om beregningen har riktig sykepengegrunnlag', () => {
         cy.contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.get('.inntekt__info .dagsats').contains('Sykepenger per dag')
-        cy.get('.inntekt__info .dagsats').contains('2 239 kr')
+        cy.contains('Sykepengegrunnlag')
+            .siblings()
+            .contains('582 161 kr')
 
         cy.contains('Redusert til 6G').should('not.exist')
 
@@ -48,8 +49,10 @@ describe('Tester visning av utbetalingsoversikt', () => {
     it('Forklaring', () => {
         cy.get('.utbetalingsoversikt .tekstinfo .navds-tag').should('have.text', 'Delvis syk' + 'Helg')
 
+        cy.get('.utbetalingsoversikt .tekstinfo').children('.navds-heading').should('have.text',
+            'Forklaring'
+        )
         cy.get('.utbetalingsoversikt .tekstinfo').children('.navds-body-short').should('have.text',
-            'Forklaring' +
             'Du får sykepenger for den delen av arbeidstiden du ikke jobber. ' +
             'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.' +
             'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, ' +
@@ -66,7 +69,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
 
         cy.get('.ekspanderbar.gronn').click()
-        cy.contains('Sykepengene dag for dag').click({ force: true })
+        cy.contains('Sykepenger per dag').click({ force: true })
 
         cy.get('.utbetalingsoversikt').within(() => {
             cy.contains('30.jan.').parent().parent().should('contain', 'Arbeidsdag').and('contain', '-')
