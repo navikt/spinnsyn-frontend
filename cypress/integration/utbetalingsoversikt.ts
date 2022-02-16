@@ -49,8 +49,10 @@ describe('Tester visning av utbetalingsoversikt', () => {
     it('Forklaring', () => {
         cy.get('.utbetalingsoversikt .tekstinfo .navds-tag').should('have.text', 'Delvis syk' + 'Helg')
 
+        cy.get('.utbetalingsoversikt .tekstinfo').children('.navds-heading').should('have.text',
+            'Forklaring'
+        )
         cy.get('.utbetalingsoversikt .tekstinfo').children('.navds-body-short').should('have.text',
-            'Forklaring' +
             'Du får sykepenger for den delen av arbeidstiden du ikke jobber. ' +
             'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.' +
             'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, ' +
