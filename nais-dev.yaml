@@ -36,6 +36,10 @@ spec:
         - application: spinnsyn-backend
   tokenx:
     enabled: true
+  gcp:
+    buckets:
+      - name: spinnsyn-frontend-dev-static
+        retentionPeriodDays: 1095
   envFrom:
     - configmap: loginservice-idporten
   env:
