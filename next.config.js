@@ -4,6 +4,8 @@ const withLess = require('next-with-less')
 module.exports = withLess({
     basePath: '/syk/sykepenger',
     lessLoaderOptions: {},
+    assetPrefix: process.env.ASSET_PREFIX || '',
+
     generateEtags: false, //Disabler etag i pages
     serverRuntimeConfig: {
         // Will only be available on the server side

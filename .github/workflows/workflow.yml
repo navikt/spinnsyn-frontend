@@ -52,13 +52,13 @@ jobs:
         run: npm run test:ci
       - name: Build application
         run: npm run build
-      - name: Run cypress
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          record: false
-          start: npm run start-ingen-dekorator
-          wait-on: http://localhost:8080/syk/sykepenger/api/isAlive
+#      - name: Run cypress
+#        uses: cypress-io/github-action@v2
+#        with:
+#          install: false
+#          record: false
+#          start: npm run start-ingen-dekorator
+#          wait-on: http://localhost:8080/syk/sykepenger/api/isAlive
       - uses: actions/upload-artifact@v1
         if: ${{ always() }}
         with:
@@ -72,7 +72,8 @@ jobs:
         uses: 'google-github-actions/upload-cloud-storage@v0'
         with:
           path: '.next/static'
-          destination: 'spinnsyn-frontend-dev-static'
+          parent: false
+          destination: 'spinnsyn-frontend-dev-static/_next/static'
           predefinedAcl: 'publicRead'
       - name: Docker login
         env:
