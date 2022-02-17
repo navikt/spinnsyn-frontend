@@ -10,6 +10,7 @@ import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
+import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
 
@@ -43,6 +44,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             }
         >
             <>
+                <VedtakPeriode vedtak={vedtak} />
                 <ArbeidsgiverInfo vedtak={vedtak} />
                 <Accordion>
                     <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}

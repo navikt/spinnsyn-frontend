@@ -1,9 +1,7 @@
 import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useRef, useState } from 'react'
 
-import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
-import { storeTilStoreOgSmå } from '../../../utils/store-små'
-import { getLedetekst, tekst } from '../../../utils/tekster'
+import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
@@ -11,6 +9,7 @@ import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
+import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import BeregningInfo from './beregning-info'
 import { PersonutbetalingInfo } from './personutbetaling-info'
 
@@ -20,7 +19,6 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const accordionRef = useRef(null)
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
-    const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
 
     const onButtonClick = () => {
         ekspanderbarKlikk(open, accordionRef, 'Sykepenger per dag')
@@ -43,16 +41,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                 </div>
             }
         >
-            <div className="arbgiver_periode">
-                <BodyShort>
-                    {getLedetekst(tekst('utbetaling.person.fra'), {
-                        '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
-                    })}
-                </BodyShort>
-                <BodyShort>
-                    Periode: {periode}
-                </BodyShort>
-            </div>
+            <VedtakPeriode vedtak={vedtak} />
 
             <PersonutbetalingInfo vedtak={vedtak} />
 
