@@ -6,9 +6,9 @@ import React, { useRef, useState } from 'react'
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
+import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import { VedtakProps } from '../vedtak'
-import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils';
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
