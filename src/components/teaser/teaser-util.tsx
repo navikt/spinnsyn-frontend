@@ -8,7 +8,7 @@ import { getLedetekst, tekst } from '../../utils/tekster'
 export const arbeidsgiverListevisning = (vedtak: RSVedtakWrapper) => {
 
     return (
-        <BodyLong spacing size="small" className="inngangspanel__tekst">
+        <BodyLong spacing className="inngangspanel__tekst">
             {getLedetekst(tekst('spinnsyn.teaser.sykmeldt-fra'), {
                 '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
             })}

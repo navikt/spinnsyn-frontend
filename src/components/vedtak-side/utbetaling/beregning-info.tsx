@@ -39,14 +39,14 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.mndlonn.innhold'))}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.arslonn.innhold.del1'))}
                     <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                         render={() =>
@@ -58,25 +58,25 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst(sykepengegrunnlagInnholdKey()))}
                 </BodyLong>
 
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.dagligbelop.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('utbetaling.dagligbelop.innhold')}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.totalbelop.tittel')}
                 </Heading>
-                <BodyLong spacing size="small" className="totalbelop">
+                <BodyLong spacing className="totalbelop">
                     {tekst(totalbelopInnholdKey())}
                 </BodyLong>
 
@@ -85,7 +85,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                         <Heading spacing size="xsmall" level="4">
                             {tekst('utbetaling.flere-arbeidsforhold.tittel')}
                         </Heading>
-                        <BodyLong spacing size="small">
+                        <BodyLong spacing>
                             {tekst('utbetaling.flere-arbeidsforhold.innhold')}
                         </BodyLong>
                     </>
@@ -95,11 +95,11 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.utbetalingsdager.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('utbetaling.utbetalingsdager.innhold')}
                 </BodyLong>
 
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('utbetaling.beregning.les.mer')}
                     <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                         {tekst('utbetaling.beregning.lenke.tekst')}
@@ -109,7 +109,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Heading spacing size="xsmall" level="4" className="blokkinfo__avsnitt">
                     {tekst('utbetaling.info.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.info.innhold'))}
                 </BodyLong>
             </Accordion.Content>

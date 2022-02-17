@@ -1,4 +1,4 @@
-import { BodyLong, GuidePanel, Heading } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
@@ -41,7 +41,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     for (const key in router.query) {
         if (key != 'id') {
-            query[ key ] = router.query[ key ]
+            query[key] = router.query[key]
         }
     }
 
@@ -59,12 +59,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Vis hvis={!erArkivering}
                 render={() =>
                     <>
+                        <Brodsmuler brodsmuler={brodsmuler} />
                         <Banner>
                             <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                                 {tekst('spinnsyn.sidetittel.vedtak')}
                             </Heading>
                         </Banner>
-                        <Brodsmuler brodsmuler={brodsmuler} />
                     </>
                 }
             />
@@ -75,17 +75,16 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                         <div className="velkommen">
                             <img src={'/syk/sykepenger/static/img/adult_people.svg'} alt="" />
                             <div className="velkommen-innhold">
-                                <Heading size="small" as="h2">
-                                    {tekst('vedtak.velkommen.tittel')}
-                                </Heading>
                                 <BodyLong size="medium">
                                     {tekst('vedtak.velkommen.tekst1')}
                                 </BodyLong>
-                                {/* TODO: fjern utkommentering
-                                <BodyLong size="medium">
-                                    {tekst('vedtak.velkommen.tekst2')}
-                                </BodyLong>
-                                */}
+                                <Vis hvis={erSP && erSPREF}
+                                    render={() =>
+                                        <BodyLong size="medium">
+                                            {tekst('vedtak.velkommen.tekst2')}
+                                        </BodyLong>
+                                    }
+                                />
                             </div>
                         </div>
                     }
@@ -99,18 +98,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                                 {tekst('annullering.se-tidligere-beslutning')}
                             </Heading>
                         </>
-                    }
-                />
-
-                <Vis hvis={erSP && erSPREF}
-                    render={() =>
-                        <GuidePanel poster
-                            illustration={<img src={'/syk/sykepenger/static/img/male.svg'} alt="" />}
-                        >
-                            <BodyLong spacing size="small">
-                                {tekst('vedtak.veileder.delvis.refusjon')}
-                            </BodyLong>
-                        </GuidePanel>
                     }
                 />
 

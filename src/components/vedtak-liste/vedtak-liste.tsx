@@ -50,7 +50,7 @@ const VedtakListe = () => {
                 />
 
                 <Link className="arkiverte-lenke" href={arkiverteVedtakUrl()}>
-                    <BodyShort spacing size="small" as="span">
+                    <BodyShort as="span">
                         {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
                     </BodyShort>
                 </Link>

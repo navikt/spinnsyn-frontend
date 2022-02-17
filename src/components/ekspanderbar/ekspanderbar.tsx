@@ -45,7 +45,7 @@ const Ekspanderbar = (props: AllProps) => {
             >
                 <Accordion.Header onClick={onButtonClick}>
                     {tittel}
-                    <BodyShort as="span" size="small" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
+                    <BodyShort as="span" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
                 </Accordion.Header>
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}

@@ -26,7 +26,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             <Heading size="small" level="2">
                 {tekst(tittelNokkel())}
             </Heading>
-            <BodyLong spacing size="small">
+            <BodyLong spacing>
                 {
                     tekst(annullertEllerRevurdert
                         ? 'behandling.opplysningene.preteritum'
@@ -37,7 +37,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             </BodyLong>
 
             <Vis hvis={automatisk && annullertEllerRevurdert} render={() =>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('behandling.ny-behandling')}
                 </BodyLong>}
             />

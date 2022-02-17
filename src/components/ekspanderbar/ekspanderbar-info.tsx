@@ -20,7 +20,7 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                 className={`ekspanderbar info${props.className ? ' ' + props.className : ''}`}
             >
                 <Accordion.Header onClick={onButtonClick}>
-                    <BodyShort spacing size="small">{props.tittel}</BodyShort>
+                    <BodyShort>{props.tittel}</BodyShort>
                 </Accordion.Header>
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}

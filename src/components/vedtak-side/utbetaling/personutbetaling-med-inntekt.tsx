@@ -26,22 +26,22 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading level="2" size="large">
+                    <Heading level="2" size="xlarge">
                         {belop + ' kroner'}
                     </Heading>
-                    <BodyShort spacing size="small">
+                    <BodyShort>
                         <strong>{tekst('utbetaling.person.systemtittel')}</strong>
                     </BodyShort>
                 </div>
             }
         >
             <div className="arbgiver_periode">
-                <BodyShort spacing size="small">
+                <BodyShort>
                     {getLedetekst(tekst('utbetaling.person.fra'), {
                         '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
                     })}
                 </BodyShort>
-                <BodyShort spacing size="small">
+                <BodyShort>
                     Periode: {periode}
                 </BodyShort>
             </div>

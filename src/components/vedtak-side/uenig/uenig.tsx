@@ -12,7 +12,7 @@ const Uenig = ({ vedtak }: VedtakProps) => {
             <Heading size="small" level="2">
                 {tekst('uenig.tittel')}
             </Heading>
-            <BodyLong spacing size="small">
+            <BodyLong spacing>
                 {getLedetekst(tekst('uenig.tekst1'), { '%KLAGEFRIST%': klagefrist(vedtak) })}
                 {tekst('uenig.tekst2')}
                 <LenkeMedAmplitude url={tekst('uenig.lenke1.url')} tekst={tekst('uenig.lenke1')} />

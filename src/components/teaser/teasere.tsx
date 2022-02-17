@@ -26,7 +26,7 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeaserePr
 
             <Vis hvis={vedtak.length === 0}
                 render={() =>
-                    <BodyShort size="small" className="inngangspanel inngangspanel--tomListe">
+                    <BodyShort className="inngangspanel inngangspanel--tomListe">
                         {tomListeTekst}
                     </BodyShort>
                 }

@@ -15,7 +15,7 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
                     <Label spacing as="th" size="small" className="arbgivernavn">
                         <span>{storeTilStoreOgSmå(arbeidsgiverNavn)}</span>
                     </Label>
-                    <BodyShort spacing size="small" as="td">
+                    <BodyShort as="td">
                         {formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}
                     </BodyShort>
                 </tr>

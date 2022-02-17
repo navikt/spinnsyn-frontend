@@ -39,13 +39,13 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 <Label as="th" size="small">
                                     {tekst('utbetaling.inntekt.info.beregnet')}
                                 </Label>
-                                <BodyShort size="small" spacing as="td">{inntektMnd}</BodyShort>
+                                <BodyShort as="td">{inntektMnd}</BodyShort>
                             </tr>
                             <tr>
                                 <Label as="th" size="small">
                                     {tekst('utbetaling.inntekt.info.omregnet')}
                                 </Label>
-                                <BodyShort size="small" as="td">{inntektAr}</BodyShort>
+                                <BodyShort as="td">{inntektAr}</BodyShort>
                             </tr>
                         </tbody>
                     </table>
@@ -62,7 +62,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <Label as="th" size="small">
                                             {tekst('utbetaling.inntekt.samlet.årslønn')}
                                         </Label>
-                                        <BodyShort size="small" as="td">
+                                        <BodyShort as="td">
                                             {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
                                         </BodyShort>
                                     </tr>
@@ -81,7 +81,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                             <Heading size="xsmall" level="4">
                                                 {tekst('utbetaling.redusert6G.tittel')}
                                             </Heading>
-                                            <BodyLong size="small">
+                                            <BodyLong>
                                                 {parser(tekst('utbetaling.redusert6G.tekst'))}
                                             </BodyLong>
                                         </div>
@@ -95,7 +95,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                                 <Label as="th">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>
-                                                <BodyShort size="small" as="td">
+                                                <BodyShort as="td">
                                                     {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
                                                 </BodyShort>
                                             </tr>

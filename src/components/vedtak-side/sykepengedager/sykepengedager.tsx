@@ -30,9 +30,9 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading size="large" level="3" className={'primo'}>
+                    <Heading size="xlarge" level="3" className={'primo'}>
                         {vedtak.vedtak.utbetaling.forbrukteSykedager} {tekst('sykepengedager.sykepengedager')}
-                        <BodyShort size="small" as="span">
+                        <BodyShort as="span">
                             {getLedetekst(tekst('sykepengedager.hittil'), { '%DATO%': vedtaktsdato })}
                         </BodyShort>
                     </Heading>
@@ -41,24 +41,24 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
         >
 
             <div className="tekstinfo">
-                <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
+                <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
                 <Heading spacing size="medium" level="3" className="primo">
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager} {tekst('sykepengedager.sykepengedager')}
-                    <BodyShort size="small" as="span">
+                    <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.gjenstar'), { '%DATO%': vedtaktsdato })}
                     </BodyShort>
                 </Heading>
-                <BodyLong spacing className="sykepengedager-forste-avsnitt" size="small">{tekst('sykepengedager.sluttdato.tekst2')}</BodyLong>
+                <BodyLong spacing className="sykepengedager-forste-avsnitt">{tekst('sykepengedager.sluttdato.tekst2')}</BodyLong>
 
-                <Heading spacing size="medium" level="3" className="primo">
+                <Heading spacing level="3" className="primo">
                     {sluttdato}
-                    <BodyShort size="small" as="span">
+                    <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.sluttdato'), { '%DATO%': vedtaktsdato })}
 
                     </BodyShort>
                 </Heading>
-                <BodyLong spacing className="sykepengedager-forste-avsnitt" size="small">{tekst('sykepengedager.sluttdato.tekst3')}</BodyLong>
-                <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
+                <BodyLong spacing className="sykepengedager-forste-avsnitt">{tekst('sykepengedager.sluttdato.tekst3')}</BodyLong>
+                <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
 
             <Accordion>
@@ -67,7 +67,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                         {tekst('sykepengedager.ekspanderbar')}
                     </Accordion.Header>
                     <Accordion.Content>
-                        <BodyLong spacing size="small">
+                        <BodyLong spacing>
                             {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
                         </BodyLong>
                     </Accordion.Content>
