@@ -18,7 +18,7 @@ const lukk = (ekspanderbar: any, tittel: string) => {
     }
 }
 
-const midtstill = (ekspanderbar: any) => {
+export const midtstill = (ekspanderbar: any) => {
     setTimeout(() => {
         if (!ekspanderbar.current) {
             return

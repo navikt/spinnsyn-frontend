@@ -1,10 +1,11 @@
 import { Accordion, BodyLong, BodyShort, Heading } from '@navikt/ds-react'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
+import { midtstill } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/beregning-info'
@@ -19,6 +20,7 @@ interface AvvisteDagerProps {
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
     const [ open, setOpen ] = useState<boolean>(false)
+    const accordionRef = useRef(null)
 
     const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1
         ? ' sykepengedager'
@@ -48,9 +50,14 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                     <InntektInfo vedtak={vedtak} />
                 } />
 
-                <Accordion>
+                <Accordion ref={accordionRef}>
                     <Accordion.Item open={open} className="avvistedageroversikt">
-                        <Accordion.Header onClick={() => setOpen(!open)}>Dager NAV ikke utbetaler</Accordion.Header>
+                        <Accordion.Header onClick={() => {
+                            setOpen(!open)
+                            midtstill(accordionRef.current)
+                        }}>
+                            Dager NAV ikke utbetaler
+                        </Accordion.Header>
                         <Accordion.Content>
                             <DagTabell dager={avvisteDager} />
                             <DagBeskrivelse dager={avvisteDager} />
