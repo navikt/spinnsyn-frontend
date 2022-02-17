@@ -1,5 +1,5 @@
 import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
@@ -11,11 +11,18 @@ import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
+import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils';
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
     const [ open, setOpen ] = useState<boolean>(false)
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
+    const accordionRef = useRef(null)
+
+    const onButtonClick = () => {
+        ekspanderbarKlikk(open, accordionRef, 'Sykepenger per dag')
+        setOpen(!open)
+    }
 
     return (
         <Ekspanderbar type="gronn"
@@ -40,8 +47,8 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                 <Accordion>
                     <Vis hvis={vedtak.dagerArbeidsgiver.length > 0}
                         render={() =>
-                            <Accordion.Item open={open} className="utbetalingsoversikt">
-                                <Accordion.Header onClick={() => setOpen(!open)}>Sykepenger per dag</Accordion.Header>
+                            <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
+                                <Accordion.Header onClick={onButtonClick}>Sykepenger per dag</Accordion.Header>
                                 <Accordion.Content>
                                     <DagTabell dager={vedtak.dagerArbeidsgiver} />
                                     <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />

@@ -1,10 +1,11 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
+import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Vis from '../../vis'
 
 export interface BeregningInfoProps {
@@ -14,6 +15,7 @@ export interface BeregningInfoProps {
 
 const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
     const [ open, setOpen ] = useState<boolean>(false)
+    const accordionRef = useRef(null)
 
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
@@ -29,9 +31,14 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
         return 'utbetaling.totalbelop.innhold'
     }
 
+    const onButtonClick = () => {
+        ekspanderbarKlikk(open, accordionRef, 'Mer om beregningen')
+        setOpen(!open)
+    }
+
     return (
-        <Accordion.Item open={open} className="beregning">
-            <Accordion.Header onClick={() => setOpen(!open)}>
+        <Accordion.Item ref={accordionRef} open={open} className="beregning">
+            <Accordion.Header onClick={onButtonClick}>
                 {tekst('utbetaling.beregning.tittel')}
             </Accordion.Header>
 

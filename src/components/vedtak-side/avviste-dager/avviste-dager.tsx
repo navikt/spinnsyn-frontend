@@ -5,7 +5,7 @@ import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
-import { midtstill } from '../../ekspanderbar/ekspander-utils'
+import { ekspanderbarKlikk, midtstill } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/beregning-info'
@@ -25,6 +25,11 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1
         ? ' sykepengedager'
         : ' sykepengedag'
+
+    const onButtonClick = () => {
+        ekspanderbarKlikk(open, accordionRef, 'Dager NAV ikke utbetaler')
+        setOpen(!open)
+    }
 
     return (
         <Accordion>
@@ -50,12 +55,9 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                     <InntektInfo vedtak={vedtak} />
                 } />
 
-                <Accordion ref={accordionRef}>
-                    <Accordion.Item open={open} className="avvistedageroversikt">
-                        <Accordion.Header onClick={() => {
-                            setOpen(!open)
-                            midtstill(accordionRef.current)
-                        }}>
+                <Accordion>
+                    <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
+                        <Accordion.Header onClick={onButtonClick}>
                             Dager NAV ikke utbetaler
                         </Accordion.Header>
                         <Accordion.Content>
@@ -63,11 +65,12 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                             <DagBeskrivelse dager={avvisteDager} />
                         </Accordion.Content>
                     </Accordion.Item>
+
+                    <Vis hvis={heltAvvist} render={() =>
+                        <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+                    } />
                 </Accordion>
 
-                <Vis hvis={heltAvvist} render={() =>
-                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-                } />
             </Ekspanderbar>
         </Accordion>
     )

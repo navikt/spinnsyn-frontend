@@ -1,17 +1,19 @@
 import { Accordion, BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
 import parser from 'html-react-parser'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import { VedtakProps } from '../vedtak'
+import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils';
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
     const [ open, setOpen ] = useState<boolean>(false)
+    const accordionRef = useRef(null)
 
     const finnSluttdato = (): Dayjs => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
@@ -21,8 +23,12 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     }
 
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
-
     const vedtaktsdato = tilLesbarDatoMedArstall(dayjs(vedtak?.opprettet).toDate())
+
+    const onButtonClick = () => {
+        ekspanderbarKlikk(open, accordionRef, 'Når sykepengene tar slutt')
+        setOpen(!open)
+    }
 
     return (
         <Ekspanderbar type="bla"
@@ -50,20 +56,19 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 </Heading>
                 <BodyLong spacing className="sykepengedager-forste-avsnitt">{tekst('sykepengedager.sluttdato.tekst2')}</BodyLong>
 
-                <Heading spacing level="3" className="primo">
+                <Heading spacing size="medium" level="3" className="primo">
                     {sluttdato}
                     <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.sluttdato'), { '%DATO%': vedtaktsdato })}
-
                     </BodyShort>
                 </Heading>
                 <BodyLong spacing className="sykepengedager-forste-avsnitt">{tekst('sykepengedager.sluttdato.tekst3')}</BodyLong>
                 <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
 
-            <Accordion>
+            <Accordion ref={accordionRef}>
                 <Accordion.Item open={open} className="sykepenger_slutt">
-                    <Accordion.Header onClick={() => setOpen(!open)}>
+                    <Accordion.Header onClick={onButtonClick}>
                         {tekst('sykepengedager.ekspanderbar')}
                     </Accordion.Header>
                     <Accordion.Content>
