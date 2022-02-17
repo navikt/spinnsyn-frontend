@@ -5,7 +5,7 @@ import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
-import { ekspanderbarKlikk, midtstill } from '../../ekspanderbar/ekspander-utils'
+import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/beregning-info'
@@ -19,7 +19,7 @@ interface AvvisteDagerProps {
 
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
-    const [ open, setOpen ] = useState<boolean>(false)
+    const [ open, setOpen ] = useState<boolean>(true)
     const accordionRef = useRef(null)
 
     const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1
