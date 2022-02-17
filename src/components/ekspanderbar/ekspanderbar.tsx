@@ -50,7 +50,7 @@ const Ekspanderbar = (props: AllProps) => {
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
-                        <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>
+                        <Button variant="tertiary" size="small" onClick={onButtonClick}>
                             {erApen ? 'Lukk' : 'Åpne'}
                         </Button>
                     </div>

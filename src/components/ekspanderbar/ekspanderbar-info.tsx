@@ -25,8 +25,8 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
-                        <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>
-                            skjul
+                        <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                            Skjul
                         </Button>
                     </div>
                 </Accordion.Content>
