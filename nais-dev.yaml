@@ -39,6 +39,7 @@ spec:
   gcp:
     buckets:
       - name: spinnsyn-frontend-dev-static
+        cascadingDelete: true
         retentionPeriodDays: 1095
   envFrom:
     - configmap: loginservice-idporten

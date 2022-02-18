@@ -73,8 +73,7 @@ jobs:
         with:
           path: '.next/static'
           parent: false
-          destination: 'spinnsyn-frontend-dev-static/_next/static'
-          predefinedAcl: 'publicRead'
+          destination: 'flex-static-files-dev/spinnsyn/_next/static'
       - name: Docker login
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
