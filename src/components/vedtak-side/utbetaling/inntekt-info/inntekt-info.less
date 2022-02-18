@@ -1,11 +1,8 @@
 @import '../../../../../node_modules/@navikt/ds-tokens/dist/tokens';
 
 .inntekt__info {
-    .utbetalingsoversikt {
-        .navds-accordion__content {
-            margin-left: -1rem;
-            margin-right: -1rem;
-        }
+    .navds-accordion__content {
+        background-color: @navds-semantic-color-canvas-background-light;
     }
 
     table {
@@ -49,10 +46,6 @@
         }
     }
 
-    .dagsats {
-        margin-bottom: 1rem;
-    }
-
     .flere-arbeidsgivere {
         .arbgivernavn {
             font-weight: normal;
@@ -69,7 +62,6 @@
     .redusert_sykepengegrunnlag {
         display: flex;
         align-items: flex-start;
-        margin: 1rem -1rem;
         padding: 0.5rem 1rem 0.5rem 1rem;
         background-color: @navds-global-color-orange-100;
 
