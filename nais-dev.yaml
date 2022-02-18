@@ -36,11 +36,6 @@ spec:
         - application: spinnsyn-backend
   tokenx:
     enabled: true
-  gcp:
-    buckets:
-      - name: spinnsyn-frontend-dev-static
-        cascadingDelete: true
-        retentionPeriodDays: 1095
   envFrom:
     - configmap: loginservice-idporten
   env:
@@ -77,4 +72,4 @@ spec:
     - name: SPINNSYN_BACKEND_TOKENX_CLIENT_ID
       value: "dev-gcp:flex:spinnsyn-backend"
     - name: ASSET_PREFIX
-      value: "https://storage.googleapis.com/spinnsyn-frontend-dev-static"
+      value: "https://flex-static-files.dev.nav.no/spinnsyn"
