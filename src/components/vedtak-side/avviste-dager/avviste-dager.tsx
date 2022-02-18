@@ -32,47 +32,45 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     }
 
     return (
-        <Accordion>
-            <Ekspanderbar type="gul"
-                ikon="/syk/sykepenger/static/img/warning.svg"
-                erApen={apen}
-                tittel={
-                    <div className="ekspanderbar__tittel">
-                        <Heading size="xlarge" level="2">
-                            {avvisteDager.length + avvisteDagerTekst}
-                            <BodyShort as="span">
-                                {tekst('avviste.dager.dekkes.ikke')}
-                            </BodyShort>
-                        </Heading>
-                    </div>
-                }
-            >
-                <div className="tekstinfo">
-                    <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
+        <Ekspanderbar type="gul"
+            ikon="/syk/sykepenger/static/img/warning.svg"
+            erApen={apen}
+            tittel={
+                <div className="ekspanderbar__tittel">
+                    <Heading size="xlarge" level="2">
+                        {avvisteDager.length + avvisteDagerTekst}
+                        <BodyShort as="span">
+                            {tekst('avviste.dager.dekkes.ikke')}
+                        </BodyShort>
+                    </Heading>
                 </div>
+            }
+        >
+            <div className="tekstinfo">
+                <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
+            </div>
+
+            <Vis hvis={heltAvvist} render={() =>
+                <InntektInfo vedtak={vedtak} />
+            } />
+
+            <Accordion>
+                <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
+                    <Accordion.Header onClick={onButtonClick}>
+                            Dager NAV ikke utbetaler
+                    </Accordion.Header>
+                    <Accordion.Content>
+                        <DagTabell dager={avvisteDager} />
+                        <DagBeskrivelse dager={avvisteDager} />
+                    </Accordion.Content>
+                </Accordion.Item>
 
                 <Vis hvis={heltAvvist} render={() =>
-                    <InntektInfo vedtak={vedtak} />
+                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
                 } />
+            </Accordion>
 
-                <Accordion>
-                    <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
-                        <Accordion.Header onClick={onButtonClick}>
-                            Dager NAV ikke utbetaler
-                        </Accordion.Header>
-                        <Accordion.Content>
-                            <DagTabell dager={avvisteDager} />
-                            <DagBeskrivelse dager={avvisteDager} />
-                        </Accordion.Content>
-                    </Accordion.Item>
-
-                    <Vis hvis={heltAvvist} render={() =>
-                        <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-                    } />
-                </Accordion>
-
-            </Ekspanderbar>
-        </Accordion>
+        </Ekspanderbar>
     )
 }
 
