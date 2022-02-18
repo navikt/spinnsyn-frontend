@@ -37,7 +37,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading size="xlarge" level="2">
+                    <Heading size="large" level="2">
                         {avvisteDager.length + avvisteDagerTekst}
                         <BodyShort as="span">
                             {tekst('avviste.dager.dekkes.ikke')}
