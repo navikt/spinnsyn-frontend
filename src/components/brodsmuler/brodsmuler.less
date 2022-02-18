@@ -93,7 +93,11 @@
         position: relative;
 
         .limit {
-            padding: 0 4.6rem;
+            margin: 0;
+            padding-left: 2rem;
+            @media (max-width: 1024px) {
+                padding-left: 0;
+            }
         }
 
         .smule {
