@@ -26,13 +26,13 @@ const VedtakListe = () => {
 
     return (
         <>
-            <Brodsmuler brodsmuler={brodsmuler} />
-
             <Banner>
                 <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
             </Banner>
+
+            <Brodsmuler brodsmuler={brodsmuler} />
 
             <div className="limit">
                 <Teasere

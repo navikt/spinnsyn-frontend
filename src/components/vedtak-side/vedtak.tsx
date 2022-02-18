@@ -59,12 +59,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Vis hvis={!erArkivering}
                 render={() =>
                     <>
-                        <Brodsmuler brodsmuler={brodsmuler} />
                         <Banner>
                             <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                                 {tekst('spinnsyn.sidetittel.vedtak')}
                             </Heading>
                         </Banner>
+                        <Brodsmuler brodsmuler={brodsmuler} />
                     </>
                 }
             />
