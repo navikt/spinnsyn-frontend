@@ -32,7 +32,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
 
     return (
         <Ekspanderbar type="bla"
-            ikon="/syk/sykepenger/static/img/sykepengedager.svg"
+            ikon="/syk/sykepenger/static/img/ikon-ekspander-bla.svg"
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">

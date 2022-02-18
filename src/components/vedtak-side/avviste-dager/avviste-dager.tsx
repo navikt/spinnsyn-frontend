@@ -33,7 +33,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
 
     return (
         <Ekspanderbar type="gul"
-            ikon="/syk/sykepenger/static/img/warning.svg"
+            ikon="/syk/sykepenger/static/img/ikon-ekspander-gul.svg"
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
