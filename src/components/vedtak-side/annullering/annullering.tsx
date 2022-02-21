@@ -1,4 +1,4 @@
-import { Alert, BodyLong, BodyShort, Label, Link } from '@navikt/ds-react'
+import { Alert, BodyLong, BodyShort, Heading, Label, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React from 'react'
 
@@ -11,13 +11,13 @@ import { VedtakProps } from '../vedtak'
 const RevurdertAlert = () => {
     return (
         <Alert variant="warning">
-            <Label spacing>{parser(tekst('revurdert.alert.header'))}</Label>
-            <BodyShort spacing size="small">
+            <Heading spacing level={'2'} size={'small'}>{parser(tekst('revurdert.alert.header'))}</Heading>
+            <BodyShort spacing>
                 {parser(tekst('revurdert.alert.tekst'))}
             </BodyShort>
 
             <Link href={tekst('revurdert.alert.link.url')}>
-                <BodyLong size="small">
+                <BodyLong>
                     {tekst('revurdert.alert.link.tekst')}
                 </BodyLong>
             </Link>
@@ -28,11 +28,11 @@ const RevurdertAlert = () => {
 const AnnullertAlert = () => {
     return (
         <Alert variant="warning">
-            <Label spacing>{parser(tekst('annullert.alert.header'))}</Label>
-            <BodyShort spacing size="small">
+            <Heading spacing level={'2'} size={'small'}>{parser(tekst('annullert.alert.header'))}</Heading>
+            <BodyShort spacing>
                 {parser(tekst('annulert.alert.tekst'))}
             </BodyShort>
-            <BodyShort spacing size="small">
+            <BodyShort spacing>
                 {parser(tekst('annulert.alert.undertekst'))}
             </BodyShort>
         </Alert>
@@ -65,22 +65,19 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                 <AnnullertAlert />
             } />
 
-            <EkspanderbarInfo erApen={true} tittel={parser(tekst('annullert.info.header'))}>
+            <EkspanderbarInfo erApen={true} tittel={tekst('annullert.info.header')}>
 
-                <Label size="small">{tekst('annullert.info.header1')}</Label>
-                <BodyLong spacing size="small">{tekst('annullert.info.body1')}</BodyLong>
+                <Label>{tekst('annullert.info.header1')}</Label>
+                <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>
 
-                <Label size="small">{tekst('annullert.info.header2')}</Label>
-                <BodyLong spacing size="small">{bodyFraUtbetalingstype()}</BodyLong>
+                <Label>{tekst('annullert.info.header2')}</Label>
+                <BodyLong spacing>{bodyFraUtbetalingstype()}</BodyLong>
 
-                <Label size="small">{tekst('annullert.info.header3')}</Label>
-                <BodyLong spacing size="small">{tekst('annullert.info.body3')}</BodyLong>
+                <Label>{tekst('annullert.info.header3')}</Label>
+                <BodyLong spacing>{tekst('annullert.info.body3')}</BodyLong>
 
-                <Label size="small">{tekst('annullert.info.header4')}</Label>
-                <BodyLong spacing size="small">{tekst('annullert.info.body4')}</BodyLong>
-
-                <Label size="small">{tekst('annullert.info.header4')}</Label>
-                <BodyLong spacing size="small" as="div">{tekst('annullert.info.body4')}</BodyLong>
+                <Label>{tekst('annullert.info.header4')}</Label>
+                <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
 
                 <div className="link__med__ikon">
                     <img alt="" src={'/syk/sykepenger/static/img/ikon-skriv-til-oss.svg'} />

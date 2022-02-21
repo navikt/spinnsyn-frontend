@@ -38,7 +38,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                         {belop + ' kroner'}
                     </Heading>
                     <BodyShort>
-                        <strong>{tekst('utbetaling.person.systemtittel')}</strong>
+                        {tekst('utbetaling.person.systemtittel')}
                     </BodyShort>
                 </div>
             }
