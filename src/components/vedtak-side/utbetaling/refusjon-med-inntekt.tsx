@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Button, Heading } from '@navikt/ds-react'
 import React, { useRef, useState } from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -53,7 +53,14 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                                 <Accordion.Header onClick={onButtonClick}>Sykepenger per dag</Accordion.Header>
                                 <Accordion.Content>
                                     <DagTabell dager={vedtak.dagerArbeidsgiver} />
+
                                     <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
+
+                                    <div className="knapperad">
+                                        <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                                            Skjul
+                                        </Button>
+                                    </div>
                                 </Accordion.Content>
                             </Accordion.Item>
                         }

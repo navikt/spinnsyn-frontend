@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Button, Heading } from '@navikt/ds-react'
 import React, { useRef, useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
@@ -54,7 +54,14 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                             </Accordion.Header>
                             <Accordion.Content>
                                 <DagTabell dager={vedtak.dagerPerson} />
+
                                 <DagBeskrivelse dager={vedtak.dagerPerson} />
+
+                                <div className="knapperad">
+                                    <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                                        Skjul
+                                    </Button>
+                                </div>
                             </Accordion.Content>
                         </Accordion.Item>
                     }

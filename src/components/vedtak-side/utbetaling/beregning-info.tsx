@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
+import { Accordion, BodyLong, Button, Heading, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useRef, useState } from 'react'
 
@@ -119,6 +119,12 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <BodyLong spacing>
                     {parser(tekst('utbetaling.info.innhold'))}
                 </BodyLong>
+
+                <div className="knapperad">
+                    <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                        Skjul
+                    </Button>
+                </div>
             </Accordion.Content>
         </Accordion.Item>
     )

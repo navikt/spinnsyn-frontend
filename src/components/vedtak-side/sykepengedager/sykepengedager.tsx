@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
 import parser from 'html-react-parser'
 import React, { useRef, useState } from 'react'
@@ -75,6 +75,11 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                         <BodyLong spacing>
                             {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
                         </BodyLong>
+                        <div className="knapperad">
+                            <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                                Skjul
+                            </Button>
+                        </div>
                     </Accordion.Content>
                 </Accordion.Item>
             </Accordion>

@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, Button, Heading, Label } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useRef, useState } from 'react'
 
@@ -33,7 +33,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
         <Vis hvis={inntektMnd && inntektAr}
             render={() =>
                 <Accordion className="inntekt__info">
-                    <Accordion.Item ref={accordionRef}>
+                    <Accordion.Item open={open} ref={accordionRef}>
                         <Accordion.Header onClick={onButtonClick}>
                             <Heading size="small" level="4">
                                 {tekst('utbetaling.inntekt.info.tittel')}
@@ -117,6 +117,12 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     </>
                                 }
                             />
+
+                            <div className="knapperad">
+                                <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                                    Skjul
+                                </Button>
+                            </div>
                         </Accordion.Content>
                     </Accordion.Item>
                 </Accordion>
