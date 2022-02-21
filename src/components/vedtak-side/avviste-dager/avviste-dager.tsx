@@ -19,7 +19,7 @@ interface AvvisteDagerProps {
 
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
-    const [ open, setOpen ] = useState<boolean>(true)
+    const [ open, setOpen ] = useState<boolean>(false)
     const accordionRef = useRef(null)
 
     const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1

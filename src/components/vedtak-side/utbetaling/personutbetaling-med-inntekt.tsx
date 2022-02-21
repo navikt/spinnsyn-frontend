@@ -14,8 +14,8 @@ import BeregningInfo from './beregning-info'
 import { PersonutbetalingInfo } from './personutbetaling-info'
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
-    const [ apen ] = useState<boolean>(true)
-    const [ open, setOpen ] = useState<boolean>(true)
+    const [ apen ] = useState<boolean>(false)
+    const [ open, setOpen ] = useState<boolean>(false)
     const accordionRef = useRef(null)
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
