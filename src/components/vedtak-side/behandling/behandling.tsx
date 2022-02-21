@@ -10,15 +10,18 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
-    const tittelNokkel = ()=> {
-        if(automatisk){
-            if (annullertEllerRevurdert) {
+    const tittelNokkel = () => {
+        if (annullertEllerRevurdert) {
+            if (automatisk) {
                 return 'behandling.automatisk.tittel.preteritum'
-            } else {
+            }
+            return 'behandling.manuell.tittel.preteritum'
+        } else {
+            if (automatisk) {
                 return 'behandling.automatisk.tittel.presens'
             }
+            return 'behandling.manuell.tittel.presens'
         }
-        return 'behandling.manuell.tittel'
     }
 
     return (
