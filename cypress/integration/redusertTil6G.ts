@@ -27,7 +27,6 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.get('.inntekt__info > table > tbody > tr:nth-child(2)').contains('Årslønn')
         cy.get('.inntekt__info > table > tbody > tr:nth-child(2)').contains('896 100 kr')
 
-        cy.get('.inntekt__info .flere-arbeidsgivere > caption').contains('Årslønn fra andre arbeidsgivere')
         cy.get('.inntekt__info .flere-arbeidsgivere > tbody > tr:nth-child(1)').contains('The Ministry Of Magic AS')
         cy.get('.inntekt__info .flere-arbeidsgivere > tbody > tr:nth-child(1)').contains('195 781 kr')
 

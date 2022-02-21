@@ -30,14 +30,9 @@
         }
 
         td {
-            padding: 0.5rem 0 0.5rem 0.25rem;
             white-space: nowrap;
 
-            &:first-child {
-                padding-left: 1rem;
-            }
-
-            &:last-child {
+            &:nth-child(2) {
                 text-align: right;
             }
         }
@@ -47,33 +42,27 @@
         }
     }
 
-    .flere-arbeidsgivere {
-        .arbgivernavn {
-            font-weight: normal;
-            padding-left: 1.5rem;
+    .arbgiver_inntekt {
+        .arbgiver_navn {
+            width: 100%;
+        }
 
-            &:before {
-                content: "•";
-                font-size: 14px;
-                margin-right: 5px;
-            }
+        section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .arbgiver {
+            border-top: 1px solid @navds-global-color-gray-400;
+            margin-top: 1rem;
+            padding-top: 1rem;
         }
     }
 
     .redusert_sykepengegrunnlag {
-        display: flex;
-        align-items: flex-start;
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: 1rem;
+        margin: 1.4rem 0;
         background-color: @navds-global-color-orange-100;
-
-        img {
-            width: 24px;
-            margin-right: 0.5rem;
-        }
-
-        div {
-            width: calc(100% - 32px)
-        }
 
         table {
             margin-top: 0.7rem;
