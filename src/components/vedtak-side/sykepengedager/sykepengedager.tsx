@@ -1,6 +1,5 @@
-import { Accordion, BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
+import { BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
-import parser from 'html-react-parser'
 import React, { useRef, useState } from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
@@ -45,7 +44,6 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 </div>
             }
         >
-
             <div className="tekstinfo">
                 <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
                 <Heading spacing size="medium" level="3" className="primo">
@@ -63,26 +61,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                     </BodyShort>
                 </Heading>
                 <BodyLong spacing className="sykepengedager-forste-avsnitt">{tekst('sykepengedager.sluttdato.tekst3')}</BodyLong>
-                <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
-
-            <Accordion ref={accordionRef} className="sykepenger_slutt">
-                <Accordion.Item open={open}>
-                    <Accordion.Header onClick={onButtonClick}>
-                        {tekst('sykepengedager.ekspanderbar')}
-                    </Accordion.Header>
-                    <Accordion.Content>
-                        <BodyLong spacing>
-                            {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
-                        </BodyLong>
-                        <div className="knapperad">
-                            <Button variant="tertiary" size="small" onClick={onButtonClick}>
-                                Skjul
-                            </Button>
-                        </div>
-                    </Accordion.Content>
-                </Accordion.Item>
-            </Accordion>
         </Ekspanderbar>
     )
 }
