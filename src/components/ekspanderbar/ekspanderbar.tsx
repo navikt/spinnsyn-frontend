@@ -43,7 +43,10 @@ const Ekspanderbar = (props: AllProps) => {
             <Accordion.Item open={erApen}
                 className={`ekspanderbar ${props.type}${props.className ? ' ' + props.className : ''}`}
             >
-                <Accordion.Header onClick={onButtonClick}>
+                <Accordion.Header onClick={onButtonClick}
+                    onMouseEnter={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}-hover.svg`}
+                    onMouseLeave={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
+                >
                     {tittel}
                     <BodyShort as="span" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
                 </Accordion.Header>
