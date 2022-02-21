@@ -66,8 +66,8 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
 
-            <Accordion ref={accordionRef}>
-                <Accordion.Item open={open} className="sykepenger_slutt">
+            <Accordion ref={accordionRef} className="sykepenger_slutt">
+                <Accordion.Item open={open}>
                     <Accordion.Header onClick={onButtonClick}>
                         {tekst('sykepengedager.ekspanderbar')}
                     </Accordion.Header>

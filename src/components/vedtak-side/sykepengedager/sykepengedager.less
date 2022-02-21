@@ -1,3 +1,5 @@
+@import '../../../../node_modules/@navikt/ds-tokens/dist/tokens';
+
 .tekstinfo {
     .navds-heading, .navds-body-long + .navds-body-long {
         &:first-child {
@@ -25,6 +27,12 @@
 
     .sykepengedager-forste-avsnitt {
         margin-top: 1rem;
+    }
+}
+
+.sykepenger_slutt {
+    .navds-accordion__content {
+        background-color: @navds-semantic-color-canvas-background-light;
     }
 }
 
