@@ -57,7 +57,6 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                     </BodyShort>
                 </Heading>
                 <BodyLong spacing className="sykepengedager-forste-avsnitt" size="small">{tekst('sykepengedager.sluttdato.tekst3')}</BodyLong>
-                <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
 
         </Ekspanderbar>
