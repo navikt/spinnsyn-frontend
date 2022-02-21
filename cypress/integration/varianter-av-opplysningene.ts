@@ -16,7 +16,6 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337')
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet automatisk')
         cy.get('.behandling').contains('Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
-        cy.get('.behandling').contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
     })
 
     it('Manuell revurdert eller annullert', () => {

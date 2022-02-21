@@ -74,7 +74,6 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 7).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
-        cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
 
         cy.get('.annullering .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
