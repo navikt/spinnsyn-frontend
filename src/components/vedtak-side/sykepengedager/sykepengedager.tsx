@@ -60,13 +60,6 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <BodyLong spacing size="small">{tekst('sykepengedager.sluttdato.tekst4')}</BodyLong>
             </div>
 
-            <EkspanderbarIntern erApen={false} className="sykepenger_slutt"
-                tittel={tekst('sykepengedager.ekspanderbar')}
-            >
-                <BodyLong spacing size="small">
-                    {parser(tekst('sykepengedager.ekspanderbar.tekst'))}
-                </BodyLong>
-            </EkspanderbarIntern>
         </Ekspanderbar>
     )
 }
