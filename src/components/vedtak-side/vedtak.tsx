@@ -93,9 +93,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
-                            <AnnulleringsInfo />
+                            <AnnulleringsInfo vedtak={vedtak} />
                             <Heading spacing size="large" level="2" className="tidligere__beslutning">
-                                {tekst('annullering.se-tidligere-beslutning')}
+                                {tekst('annullert.se-tidligere-beslutning')}
                             </Heading>
                         </>
                     }

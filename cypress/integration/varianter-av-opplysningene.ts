@@ -12,14 +12,27 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.behandling').contains('Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
     })
 
-    it('Automatisk revurdert eller annullert', () => {
+    it('Automatisk behandlet annullert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337')
+
+        cy.get('.navds-alert').contains('Dette vedtaket gjelder ikke lenger')
+        cy.get('.navds-alert').contains('Vi har mottatt nye opplysninger som gjør at dette vedtaket behandles på nytt av en saksbehandler.')
+        cy.get('.navds-alert').contains('Du vil motta et eget brev med det nye vedtaket.')
+        cy.get('.navds-alert').should('not.contain', 'Du finner det nye vedtaket i listen over svar på søknader')
+
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet automatisk')
         cy.get('.behandling').contains('Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
     })
 
-    it('Manuell revurdert eller annullert', () => {
+    it('Manuelt behandlet revurdert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634338')
+
+        cy.get('.navds-alert').contains('Du har fått et nytt vedtak som erstatter dette vedtaket')
+        cy.get('.navds-alert').contains('Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.')
+        cy.get('.navds-alert').contains('Du finner det nye vedtaket i listen over svar på søknader')
+        cy.get('.navds-alert').should('not.contain', 'Du vil motta et eget brev med det nye vedtaket.git o')
+
+
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet av en saksbehandler')
         cy.get('.behandling').contains('Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
     })
