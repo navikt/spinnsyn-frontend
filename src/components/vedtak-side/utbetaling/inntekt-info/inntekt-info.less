@@ -6,43 +6,11 @@
         background-color: @navds-semantic-color-canvas-background-light;
     }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-
-        caption {
-            text-align: left;
-            margin-bottom: 0.75rem;
-
-            .navds-body-long {
-                margin: 0.75rem 0 0.25rem;
-            }
-        }
-
-        tr {
-            &:last-child {
-                border-bottom: 0;
-            }
-        }
-
-        th {
-            text-align: left;
-        }
-
-        td {
-            white-space: nowrap;
-
-            &:nth-child(2) {
-                text-align: right;
-            }
-        }
-
-        & + table {
-            margin-top: 1rem;
-        }
-    }
-
     .arbgiver_inntekt {
+        .navds-body-short, .navds-label {
+            line-height: 1.7;
+        }
+
         .arbgiver_navn {
             width: 100%;
         }
