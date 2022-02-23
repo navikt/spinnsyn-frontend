@@ -56,6 +56,7 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                 <BodyLong as="div">
                     {parser(tekst('annullert.info.body'))}
                 </BodyLong>
+
                 <div className="link__med__ikon">
                     <img alt="" src={'/syk/sykepenger/static/img/ikon-skriv-til-oss.svg'} />
                     <Link href={tekst('behandling.lenke.url')}>

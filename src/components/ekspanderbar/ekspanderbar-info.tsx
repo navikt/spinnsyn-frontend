@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Button } from '@navikt/ds-react'
+import { Accordion, BodyShort, Button, Label } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -20,7 +20,7 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                 className={`ekspanderbar info${props.className ? ' ' + props.className : ''}`}
             >
                 <Accordion.Header onClick={onButtonClick}>
-                    <BodyShort>{props.tittel}</BodyShort>
+                    <Label>{props.tittel}</Label>
                 </Accordion.Header>
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
