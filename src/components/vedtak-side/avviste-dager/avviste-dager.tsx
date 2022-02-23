@@ -34,7 +34,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     }
 
     return (
-        <Ekspanderbar type="gul"
+        <Ekspanderbar type="gul" erUgyldig={vedtak.revurdert || vedtak.annullert}
             ikon="/syk/sykepenger/static/img/ikon-ekspander-gul.svg"
             erApen={apen}
             tittel={

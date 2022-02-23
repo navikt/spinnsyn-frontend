@@ -104,55 +104,124 @@
             }
         }
 
-        .tekstinfo__avsnitt {
-            margin-top: 1rem;
-
-            &:first-child {
-                margin-top: 0;
-            }
+        &.ugyldig {
+            border-color: @navds-global-color-gray-900;
+            background-color: @navds-global-color-gray-100;
         }
-    }
-}
 
-@media (min-width: @screen-sm) {
-    .navds-accordion {
-        & > .ekspanderbar {
-            & > .navds-accordion__header {
-                .ekspanderbar__ikon {
-                    display: block;
-                    margin: 0 0.28rem;
-                }
+        &.intern {
+            display: inline-block;
+            background-color: transparent;
+            width: 100%;
+            padding: 0;
+            border: 0;
 
-                .ekspanderbar__tittel {
-                    width: 100%;
+            .navds-body-long {
+                margin: 0;
+            }
+
+            &:hover {
+                outline: none;
+                box-shadow: none;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            button {
+                display: inline-flex;
+                justify-content: flex-start;
+                padding: 0;
+                background-color: transparent;
+                color: @navds-semantic-color-interaction-primary;
+                border: 0;
+
+                &.navds-button--tertiary {
+                    padding: 0.375rem @navds-spacing-3;
                 }
             }
 
-            .open-text {
-                display: inline;
-                margin-right: -0.5rem;
+            .navds-accordion__header {
+                margin-bottom: 0.5rem;
+            }
+
+            .navds-accordion__content {
+                padding: 0;
             }
 
             .ekspanderbar__innhold {
-                padding: 0 5.4rem 1.5rem;
+                padding: 0 0 2rem;
+
+                .alertstripe__ikon {
+                    display: none;
+                }
             }
 
-            &.apen {
-                .ekspanderbar__ikon {
-                    display: block;
+            .lenkerad {
+                padding-top: 1rem;
+                text-align: center;
+
+                .navds-link {
+                    border: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        .tekstinfo__avsnitt {
+            margin-top: 1rem;
+
+            .tekstinfo__avsnitt {
+                margin-top: 1rem;
+
+                &:first-child {
+                    margin-top: 0;
                 }
             }
         }
     }
-}
 
-@media print {
-    .navds-accordion {
-        & > .ekspanderbar {
-            &.intern {
+    @media (min-width: @screen-sm) {
+        .navds-accordion {
+            & > .ekspanderbar {
+                & > .navds-accordion__header {
+                    .ekspanderbar__ikon {
+                        display: block;
+                        margin: 0 0.28rem;
+                    }
+
+                    .ekspanderbar__tittel {
+                        width: 100%;
+                    }
+                }
+
+                .open-text {
+                    display: inline;
+                    margin-right: -0.5rem;
+                }
+
                 .ekspanderbar__innhold {
-                    .alertstripe__ikon {
-                        display: inline;
+                    padding: 0 5.4rem 1.5rem;
+                }
+
+                &.apen {
+                    .ekspanderbar__ikon {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    @media print {
+        .navds-accordion {
+            & > .ekspanderbar {
+                &.intern {
+                    .ekspanderbar__innhold {
+                        .alertstripe__ikon {
+                            display: inline;
+                        }
                     }
                 }
             }

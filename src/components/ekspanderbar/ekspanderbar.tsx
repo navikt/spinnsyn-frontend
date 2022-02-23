@@ -7,9 +7,12 @@ import { ekspanderbarKlikk, EkspanderProps } from './ekspander-utils'
 
 interface TypeProps {
     type: string
+    erUgyldig?: boolean
 }
 
 type AllProps = EkspanderProps & TypeProps
+
+const ugyldigType = 'ugyldig'
 
 const Ekspanderbar = (props: AllProps) => {
     const isServer = useContext(ArkiveringContext)
@@ -38,10 +41,17 @@ const Ekspanderbar = (props: AllProps) => {
             {props.tittel}
         </>
 
+    const hentType = () => {
+        if (props.erUgyldig) {
+            return ugyldigType
+        }
+        return props.type
+    }
+
     return (
         <Accordion ref={ekspanderbar}>
             <Accordion.Item open={erApen}
-                className={`ekspanderbar ${props.type}${props.className ? ' ' + props.className : ''}`}
+                className={`ekspanderbar ${hentType()}${props.className ? ' ' + props.className : ''}`}
             >
                 <Accordion.Header onClick={onButtonClick}
                     onMouseEnter={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}-hover.svg`}

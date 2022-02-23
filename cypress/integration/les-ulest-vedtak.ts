@@ -100,7 +100,7 @@ describe('Tester at appen starter', () => {
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
 
-        cy.get('.ekspanderbar.bla').should('contain', '9 sykepengedager')
+        cy.get('.ekspanderbar.ugyldig').eq(1).should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
             .click()
 

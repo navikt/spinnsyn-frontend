@@ -4,12 +4,17 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=4e044d03-2dfe-45e9-a904-77777777')
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden er behandlet automatisk')
         cy.get('.behandling').contains('Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
+
+        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('not.exist')
+
     })
 
     it('Manuelt behandlet', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=99f389f2-0084-481b-bed8-47f6ac3491d4')
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden er behandlet av en saksbehandler')
         cy.get('.behandling').contains('Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
+
+        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('not.exist')
     })
 
     it('Automatisk behandlet annullert vedtak', () => {
@@ -22,6 +27,8 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet automatisk')
         cy.get('.behandling').contains('Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
+
+        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 2)
     })
 
     it('Manuelt behandlet revurdert vedtak', () => {
@@ -32,9 +39,10 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-alert').contains('Du finner det nye vedtaket i listen over svar på søknader')
         cy.get('.navds-alert').should('not.contain', 'Du vil motta et eget brev med det nye vedtaket.git o')
 
-
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet av en saksbehandler')
         cy.get('.behandling').contains('Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.')
+
+        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 2)
     })
 })
 
