@@ -41,6 +41,19 @@ const AnnullertAlert = () => {
 
 const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
 
+    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const erBrukerutbetaling = vedtak.sykepengebelopPerson > 0
+
+    const bodyFraUtbetalingstype = () => {
+        if (erRefusjon && erBrukerutbetaling) {
+            return tekst('annullert.info.body2.delvis-refusjon')
+        } else if (erRefusjon) {
+            return tekst('annullert.info.body2.refusjon')
+        } else {
+            return tekst('annullert.info.body2.brukerutbetaling')
+        }
+    }
+
     return (
         <div className="annullering">
 
@@ -53,9 +66,21 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
             } />
 
             <EkspanderbarInfo erApen={true} tittel={parser(tekst('annullert.info.header'))}>
-                <BodyLong as="div">
-                    {parser(tekst('annullert.info.body'))}
-                </BodyLong>
+
+                <Label size="small">{tekst('annullert.info.header1')}</Label>
+                <BodyLong spacing size="small">{tekst('annullert.info.body1')}</BodyLong>
+
+                <Label size="small">{tekst('annullert.info.header2')}</Label>
+                <BodyLong spacing size="small">{bodyFraUtbetalingstype()}</BodyLong>
+
+                <Label size="small">{tekst('annullert.info.header3')}</Label>
+                <BodyLong spacing size="small">{tekst('annullert.info.body3')}</BodyLong>
+
+                <Label size="small">{tekst('annullert.info.header4')}</Label>
+                <BodyLong spacing size="small">{tekst('annullert.info.body4')}</BodyLong>
+
+                <Label size="small">{tekst('annullert.info.header4')}</Label>
+                <BodyLong spacing size="small" as="div">{tekst('annullert.info.body4')}</BodyLong>
 
                 <div className="link__med__ikon">
                     <img alt="" src={'/syk/sykepenger/static/img/ikon-skriv-til-oss.svg'} />

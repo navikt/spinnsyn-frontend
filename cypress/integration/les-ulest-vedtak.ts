@@ -78,7 +78,7 @@ describe('Tester at appen starter', () => {
         cy.get('.annullering .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
-            .and('contain', 'Hvorfor behandles den på nytt?')
+            .and('contain', 'Hvorfor behandles vedtaket på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
     })
 
@@ -94,7 +94,7 @@ describe('Tester at appen starter', () => {
         cy.get('.annullering .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
-            .and('contain', 'Hvorfor behandles den på nytt?')
+            .and('contain', 'Hvorfor behandles vedtaket på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
     })
 
