@@ -59,7 +59,9 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
             <Accordion>
                 <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
                     <Accordion.Header onClick={onButtonClick}>
+                        <Heading size="small" level="4">
                             Dager NAV ikke utbetaler
+                        </Heading>
                     </Accordion.Header>
                     <Accordion.Content>
                         <DagTabell dager={avvisteDager} />

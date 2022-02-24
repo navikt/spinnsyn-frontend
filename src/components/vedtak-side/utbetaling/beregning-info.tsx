@@ -41,7 +41,9 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
     return (
         <Accordion.Item ref={accordionRef} open={open} className="beregning">
             <Accordion.Header onClick={onButtonClick}>
-                {tekst('utbetaling.beregning.tittel')}
+                <Heading size="small" level="4">
+                    {tekst('utbetaling.beregning.tittel')}
+                </Heading>
             </Accordion.Header>
 
             <Accordion.Content className="tekstinfo ">

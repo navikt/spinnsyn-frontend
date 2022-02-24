@@ -52,7 +52,9 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                     render={() =>
                         <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
                             <Accordion.Header onClick={onButtonClick}>
-                                Sykepenger per dag
+                                <Heading size="small" level="4">
+                                    {tekst('utbetaling.inntekt.info.dagsats')}
+                                </Heading>
                             </Accordion.Header>
                             <Accordion.Content>
                                 <DagTabell dager={vedtak.dagerPerson} />

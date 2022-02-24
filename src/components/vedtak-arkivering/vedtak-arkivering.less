@@ -111,12 +111,16 @@
         display: none;
     }
 
-    .ekspanderbar {
-        .ekspanderbar.info {
-            .navds-accordion__header {
-                min-height: auto;
+    .limit .velkommen img {
+        display: none;
+    }
 
-                .navds-body-long {
+    .ekspanderbar {
+        &.info {
+            & > .navds-accordion__header {
+                min-height: 42px;
+
+                .navds-body-short {
                     font-size: 1.25rem;
                     font-weight: 600;
                     color: @navds-semantic-color-text;
@@ -127,27 +131,35 @@
         .knapperad {
             display: none;
         }
+
+        & > .navds-accordion__header {
+            min-height: 112px;
+
+            .ekspanderbar__tittel {
+                color: @navds-semantic-color-text;
+
+                .navds-heading--large {
+                    font-size: @navds-font-size-heading-large;
+
+                    .navds-body-short {
+                        font-size: @navds-font-size-large;
+                        font-weight: normal;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
     }
 
     .navds-accordion__header {
-        min-height: 72px;
+        min-height: 32px;
 
         svg {
             display: none;
         }
+    }
 
-        .ekspanderbar__tittel {
-            color: @navds-semantic-color-text;
-
-            .navds-heading--medium {
-                font-size: @navds-font-size-heading-medium;
-
-                .navds-body-short--small {
-                    font-size: @navds-font-size-medium;
-                    font-weight: normal;
-                }
-            }
-        }
+    .annullering {
     }
 
     .navds-accordion__content {
@@ -178,6 +190,7 @@
         &.navds-tag--success {
             background-color: @navds-semantic-color-feedback-success-background;
             border-color: @navds-semantic-color-feedback-success-border;
+            min-width: 60px;
         }
 
         &.navds-tag--warning {
@@ -191,7 +204,20 @@
         }
     }
 
-    .navds-table__data-cell, .navds-table__header-cell {
-        padding: 0.5rem 1rem;
+    .inntekt__info .arbgiver_inntekt section {
+        display: block;
+
+        div {
+            display: inline-block;
+
+            &:first-child {
+                width: 49%;
+            }
+
+            &:last-child {
+                width: 49%;
+                text-align: right;
+            }
+        }
     }
 }

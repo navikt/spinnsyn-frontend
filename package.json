@@ -71,6 +71,7 @@
     "interne": "SPINNSYN_FRONTEND_INTERNE=true NO_DECORATOR=true npm run dev",
     "start": "next start -p 8080",
     "start-ingen-dekorator": "NO_DECORATOR=true npm start",
+    "arkiv": "npm run build && npm run start-ingen-dekorator",
     "build": "next build",
     "test": "jest --watch",
     "test:ci": "jest --ci",
