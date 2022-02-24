@@ -1,5 +1,5 @@
 import { Accordion, BodyShort, Button, Heading } from '@navikt/ds-react'
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
@@ -12,10 +12,12 @@ import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import BeregningInfo from './beregning-info'
 import { PersonutbetalingInfo } from './personutbetaling-info'
+import { ArkiveringContext } from '../../../context/arkivering-context';
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
-    const [ open, setOpen ] = useState<boolean>(false)
+    const isServer = useContext(ArkiveringContext)
+    const [ open, setOpen ] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)

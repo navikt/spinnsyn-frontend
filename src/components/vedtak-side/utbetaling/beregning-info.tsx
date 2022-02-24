@@ -1,12 +1,13 @@
 import { Accordion, BodyLong, Button, Heading, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Vis from '../../vis'
+import { ArkiveringContext } from '../../../context/arkivering-context';
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper;
@@ -14,7 +15,8 @@ export interface BeregningInfoProps {
 }
 
 const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
-    const [ open, setOpen ] = useState<boolean>(false)
+    const isServer = useContext(ArkiveringContext)
+    const [ open, setOpen ] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
     const sykepengegrunnlagInnholdKey = () => {
@@ -113,7 +115,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     </Link>
                 </BodyLong>
 
-                <Heading spacing size="xsmall" level="4" className="blokkinfo__avsnitt">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.info.tittel')}
                 </Heading>
                 <BodyLong spacing>

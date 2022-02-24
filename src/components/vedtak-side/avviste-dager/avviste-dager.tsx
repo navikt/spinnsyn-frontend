@@ -1,5 +1,5 @@
 import { Accordion, BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
@@ -10,6 +10,7 @@ import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/beregning-info'
 import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
+import { ArkiveringContext } from '../../../context/arkivering-context';
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
@@ -19,7 +20,8 @@ interface AvvisteDagerProps {
 
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
-    const [ open, setOpen ] = useState<boolean>(false)
+    const isServer = useContext(ArkiveringContext)
+    const [ open, setOpen ] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
     const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1

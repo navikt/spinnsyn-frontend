@@ -32,12 +32,12 @@ describe('Tester visning av kombinasjon', () => {
             .contains('Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn ' +
                 'på Din profil slik at vi får utbetalt sykepengene til deg så raskt som mulig.')
 
-        cy.get('.personutbetaling .ekspanderbar.intern.beregning').contains('Mer om beregningen')
+        cy.get('.personutbetaling .navds-accordion__item.beregning').contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.get('.personutbetaling .ekspanderbar.intern.beregning .tekstinfo > :nth-child(10)')
+        cy.get('.personutbetaling .navds-accordion__item.beregning .tekstinfo > :nth-child(10)')
             .contains('Totalbeløp').should('be.visible')
-        cy.get('.personutbetaling .ekspanderbar.intern.beregning .tekstinfo > :nth-child(11)')
+        cy.get('.personutbetaling .navds-accordion__item.beregning .tekstinfo > :nth-child(11)')
             .contains('Til slutt summerer vi alle dagene. ' +
                 'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.')
             .should('be.visible')
@@ -63,13 +63,13 @@ describe('Tester visning av kombinasjon', () => {
             'eller innen fem dager etter at vi har sendt deg svar på søknaden din.')
             .should('not.exist')
 
-        cy.get('.refusjon .ekspanderbar.intern.beregning').contains('Mer om beregningen')
+        cy.get('.refusjon .navds-accordion__item.beregning').contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.get('.refusjon .ekspanderbar.intern.beregning .tekstinfo > :nth-child(10)')
+        cy.get('.refusjon .navds-accordion__item.beregning .tekstinfo > :nth-child(10)')
             .contains('Totalbeløp').should('be.visible')
 
-        cy.get('.refusjon .ekspanderbar.intern.beregning .tekstinfo > :nth-child(11)')
+        cy.get('.refusjon .navds-accordion__item.beregning .tekstinfo > :nth-child(11)')
             .contains('Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, ' +
                 'har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.')
             .should('be.visible')

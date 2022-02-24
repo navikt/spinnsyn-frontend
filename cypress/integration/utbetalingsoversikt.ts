@@ -34,6 +34,8 @@ describe('Tester visning av utbetalingsoversikt', () => {
         cy.contains('Mer om beregningen')
             .click({ force: true })
 
+        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene').click()
+
         cy.contains('Sykepengegrunnlag')
             .siblings()
             .contains('582 161 kr')

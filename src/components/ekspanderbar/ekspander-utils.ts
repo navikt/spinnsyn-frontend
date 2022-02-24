@@ -41,8 +41,12 @@ export const ekspanderbarKlikk = (erApen: boolean, ekspanderbar: any, amplitudeT
             logEvent('panel åpnet', { 'component': amplitudeText })
             midtstill(ekspanderbar)
             ekspanderbar.current?.focus()
+            ekspanderbar.current?.classList.add('delayed--open')
         }
     } else {
         lukk(ekspanderbar, amplitudeText)
+        setTimeout(() => {
+            ekspanderbar.current?.classList.remove('delayed--open')
+        }, 300)
     }
 }

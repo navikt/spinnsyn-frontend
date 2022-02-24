@@ -76,9 +76,13 @@ a {
     padding: 0.2rem 0.7rem;
 }
 
-.navds-accordion__header:focus {
-    box-shadow: none;
-    border-color: @navds-global-color-gray-400;
+.navds-accordion__header {
+    color: @navds-semantic-color-text;
+
+    &:focus {
+        box-shadow: none;
+        border-color: @navds-global-color-gray-400;
+    }
 }
 
 @media (min-width: @screen-sm) {

@@ -2,10 +2,17 @@
 @import '../basic';
 
 .navds-accordion {
+    &.delayed--open {
+        & > .ekspanderbar {
+            & > .navds-accordion__header {
+                border-width: 0;
+            }
+        }
+    }
+
     & > .ekspanderbar {
         overflow: hidden;
         margin: 0.5rem 0 0;
-        border: 1px solid;
         border-radius: 4px;
 
         .ekspanderbar__tittel {
@@ -29,7 +36,7 @@
             overflow: hidden;
             width: 100%;
             padding: 1.3rem 1rem 1.5rem;
-            border-bottom: 0;
+            border-width: 3px;
 
             &:hover {
                 text-decoration: none;
@@ -64,18 +71,27 @@
         }
 
         &.gronn {
-            border-color: @navds-global-color-green-500;
             background: @navds-global-color-green-100;
+
+            & > .navds-accordion__header:hover {
+                border-color: @navds-global-color-green-400;
+            }
         }
 
         &.gul {
-            border-color: @navds-global-color-orange-500;
             background: @navds-global-color-orange-100;
+
+            & > .navds-accordion__header:hover {
+                border-color: @navds-global-color-orange-600;
+            }
         }
 
         &.bla {
-            border-color: @navds-global-color-deepblue-500;
-            background: @navds-global-color-deepblue-100;
+            background: @navds-global-color-blue-100;
+
+            & > .navds-accordion__header:hover {
+                border-color: @navds-global-color-blue-400;
+            }
         }
 
         &.info {

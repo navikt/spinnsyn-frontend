@@ -21,22 +21,24 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.get('.inntekt__info > table > tbody > tr:nth-child(1)').contains('Månedslønn')
-        cy.get('.inntekt__info > table > tbody > tr:nth-child(1)').contains('74 675 kr')
+        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene').click()
 
-        cy.get('.inntekt__info > table > tbody > tr:nth-child(2)').contains('Årslønn')
-        cy.get('.inntekt__info > table > tbody > tr:nth-child(2)').contains('896 100 kr')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('Beregnet månedslønn')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('74 675 kr')
 
-        cy.get('.inntekt__info .flere-arbeidsgivere > tbody > tr:nth-child(1)').contains('The Ministry Of Magic AS')
-        cy.get('.inntekt__info .flere-arbeidsgivere > tbody > tr:nth-child(1)').contains('195 781 kr')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(1).contains('Beregnet årslønn')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(1).contains('896 100 kr')
 
-        cy.get('.inntekt__info .flere-arbeidsgivere > tbody > :nth-child(2)').contains('Samlet årslønn')
-        cy.get('.inntekt__info .flere-arbeidsgivere > tbody > :nth-child(2)').contains('1 091 881 kr')
+        cy.get('.inntekt__info .arbgiver_navn').contains('The Ministry Of Magic AS')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(2).contains('Årslønn')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(2).contains('195 781 kr')
+
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(3).contains('Samlet årslønn')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(3).contains('1 091 881 kr')
 
         // Sjekker om sykepengegrunnlaget er redusert
         cy.contains('Redusert til 6G')
-        cy.get('.inntekt__info .redusert_sykepengegrunnlag').contains('Sykepengegrunnlag')
-        cy.get('.inntekt__info .redusert_sykepengegrunnlag').contains('638 394 kr')
-
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('Sykepengegrunnlag')
+        cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('638 394 kr')
     })
 })
