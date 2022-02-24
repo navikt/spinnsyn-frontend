@@ -60,6 +60,16 @@
 }
 
 .vedtak-arkivering {
+    .navds-accordion {
+        &.navds-accordion__item--open {
+            & > .ekspanderbar {
+                & > .navds-accordion__header {
+                    border-width: 0;
+                }
+            }
+        }
+    }
+
     .personinfo {
         position: relative;
         top: 25px;
