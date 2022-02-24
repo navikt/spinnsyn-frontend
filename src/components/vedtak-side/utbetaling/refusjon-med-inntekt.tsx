@@ -1,6 +1,7 @@
 import { Accordion, BodyShort, Button, Heading } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
+import { ArkiveringContext } from '../../../context/arkivering-context'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
@@ -13,7 +14,6 @@ import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import BeregningInfo from './beregning-info'
-import { ArkiveringContext } from '../../../context/arkivering-context';
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)

@@ -1,6 +1,7 @@
 import { Accordion, BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
+import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
@@ -10,7 +11,6 @@ import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/beregning-info'
 import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
-import { ArkiveringContext } from '../../../context/arkivering-context';
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]

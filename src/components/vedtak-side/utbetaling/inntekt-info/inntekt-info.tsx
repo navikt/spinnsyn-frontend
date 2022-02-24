@@ -2,6 +2,7 @@ import { Accordion, BodyLong, BodyShort, Button, Heading, Label } from '@navikt/
 import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
+import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { storeTilStoreOgSmå } from '../../../../utils/store-små'
 import { tekst } from '../../../../utils/tekster'
@@ -10,7 +11,6 @@ import { ekspanderbarKlikk } from '../../../ekspanderbar/ekspander-utils'
 import Vis from '../../../vis'
 import { VedtakProps } from '../../vedtak'
 import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-arbeidsgivere'
-import { ArkiveringContext } from '../../../../context/arkivering-context';
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
     const isServer = useContext(ArkiveringContext)
