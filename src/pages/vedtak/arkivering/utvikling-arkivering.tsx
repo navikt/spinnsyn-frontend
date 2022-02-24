@@ -26,6 +26,9 @@ const UtviklingArkivering = ({ vedtak, enabled }: DevVedtakProps) => {
 export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async(ctx) => {
     const vedtak = vedtakMed40Grad
 
+    ctx.res.setHeader('x-nais-app-image', 'testtest')
+    ctx.res.setHeader('x-vedtak-fom', vedtak.vedtak.fom)
+    ctx.res.setHeader('x-vedtak-tom', vedtak.vedtak.tom)
     return {
         props: {
             enabled: serverRuntimeConfig.utviklingArkivering === 'true',
