@@ -49,7 +49,7 @@ describe('Tester visning av utbetalingsoversikt', () => {
     })
 
     it('Forklaring', () => {
-        cy.get('.utbetalingsoversikt .tekstinfo .navds-tag').should('have.text', 'Delvis syk' + 'Helg')
+        cy.get('.utbetalingsoversikt .tekstinfo .navds-tag').should('have.text', 'Delvis\u00a0syk' + 'Helg')
 
         cy.get('.utbetalingsoversikt .tekstinfo').children('.navds-heading').should('have.text',
             'Forklaring'
@@ -75,22 +75,22 @@ describe('Tester visning av utbetalingsoversikt', () => {
 
         cy.get('.utbetalingsoversikt').within(() => {
             cy.contains('30.jan.').parent().parent().should('contain', 'Arbeidsdag').and('contain', '-')
-            cy.contains('31.jan.').parent().parent().should('contain', 'Arbeidsgiveren betaler').and('contain', '-')
+            cy.contains('31.jan.').parent().parent().should('contain', 'Arbeidsgiveren\u00a0betaler').and('contain', '-')
             cy.contains('01.feb.').parent().parent().should('contain', 'Syk').and('contain', '1\u00a0000 kr')
             cy.contains('06.feb.').parent().parent().should('contain', 'Helg').and('contain', '-')
             cy.contains('08.feb.').parent().parent().should('contain', '40% syk').and('contain', '400 kr')
             cy.contains('11.feb.').parent().parent().should('contain', 'Fridag').and('contain', '-')
-            cy.contains('13.feb.').parent().parent().should('contain', 'Søkt for sent').and('contain', '-')
+            cy.contains('13.feb.').parent().parent().should('contain', 'Søkt\u00a0for\u00a0sent').and('contain', '-')
             cy.contains('14.feb.').parent().parent().should('contain', 'Ukjent').and('contain', '-')
-            cy.contains('15.feb.').parent().parent().should('contain', 'Maks antall dager').and('contain', '-')
-            cy.contains('16.feb.').parent().parent().should('contain', 'For lav inntekt').and('contain', '-')
+            cy.contains('15.feb.').parent().parent().should('contain', 'Maks\u00a0antall\u00a0dager').and('contain', '-')
+            cy.contains('16.feb.').parent().parent().should('contain', 'For\u00a0lav\u00a0inntekt').and('contain', '-')
             cy.contains('17.feb.').parent().parent().should('contain', 'Egenmelding').and('contain', '-')
-            cy.contains('18.feb.').parent().parent().should('contain', 'Sykmeldt i for liten grad').and('contain', '-')
-            cy.contains('19.feb.').parent().parent().should('contain', 'Jobbet for kort').and('contain', '-')
-            cy.contains('20.feb.').parent().parent().should('contain', 'Ikke medlem').and('contain', '-')
-            cy.contains('21.feb.').parent().parent().should('contain', 'Etter dødsfall').and('contain', '-')
+            cy.contains('18.feb.').parent().parent().should('contain', 'Sykmeldt\u00a0i\u00a0for\u00a0liten\u00a0grad').and('contain', '-')
+            cy.contains('19.feb.').parent().parent().should('contain', 'Jobbet\u00a0for\u00a0kort').and('contain', '-')
+            cy.contains('20.feb.').parent().parent().should('contain', 'Ikke\u00a0medlem').and('contain', '-')
+            cy.contains('21.feb.').parent().parent().should('contain', 'Etter\u00a0dødsfall').and('contain', '-')
             cy.contains('22.feb.').parent().parent().should('contain', 'Ukjent').and('contain', '-')
-            cy.contains('23.feb.').parent().parent().should('contain', 'Over 70 år').and('contain', '-')
+            cy.contains('23.feb.').parent().parent().should('contain', 'Over\u00a070\u00a0år').and('contain', '-')
         })
 
         cy.contains('Forklaring').parent().within(() => {
