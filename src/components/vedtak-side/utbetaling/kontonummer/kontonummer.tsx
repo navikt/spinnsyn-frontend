@@ -53,7 +53,7 @@ const Kontonummer = () => {
         <Vis hvis={erKontonummerHentet} render={() =>
             <>
                 <Vis hvis={kontonummer} render={() =>
-                    <BodyShort spacing size="small">
+                    <BodyShort>
                         <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong> {formaterKontonummer(kontonummer!)}
                     </BodyShort>
                 } />
@@ -63,7 +63,7 @@ const Kontonummer = () => {
                         <Heading spacing level="3" size="small">
                             {tekst('utbetaling.kontonummer.tittel')}
                         </Heading>
-                        <BodyLong spacing size="small">
+                        <BodyLong spacing>
                             {parser(tekst('utbetaling.kontonummer.mangler'))}
                         </BodyLong>
                     </>

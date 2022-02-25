@@ -30,7 +30,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
             <>
                 <Vis hvis={dag.dagtype !== 'AvvistDag'}
                     render={() =>
-                        <BodyShort spacing size="small">
+                        <BodyShort>
                             {tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}
                         </BodyShort>
                     }
@@ -38,7 +38,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
                 <Vis hvis={dag.dagtype === 'AvvistDag'}
                     render={() =>
-                        <BodyShort spacing  size="small">
+                        <BodyShort>
                             {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
                         </BodyShort>
                     }
@@ -46,7 +46,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
                 <Vis hvis={lovhjemmelTekst !== ''}
                     render={() =>
-                        <BodyShort spacing size="small" className={'avvist-lovhjemmel'}>
+                        <BodyShort className={'avvist-lovhjemmel'}>
                             {lovhjemmelTekst}
                         </BodyShort>
                     }

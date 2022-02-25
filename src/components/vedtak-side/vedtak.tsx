@@ -1,11 +1,9 @@
-import { BodyLong, GuidePanel, Heading, Label } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
-import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
-import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
@@ -33,7 +31,6 @@ export interface VedtakProps {
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
-    const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
     const query: NodeJS.Dict<string | string[]> = {}
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
@@ -44,7 +41,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     for (const key in router.query) {
         if (key != 'id') {
-            query[ key ] = router.query[ key ]
+            query[key] = router.query[key]
         }
     }
 
@@ -66,10 +63,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                             <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                                 {tekst('spinnsyn.sidetittel.vedtak')}
                             </Heading>
-                            <Label spacing className="subtittel">
-                                <span>{storeTilStoreOgSmå(vedtak.orgnavn)}&nbsp;</span>
-                                <span>fra {periode}</span>
-                            </Label>
                         </Banner>
                         <Brodsmuler brodsmuler={brodsmuler} />
                     </>
@@ -77,6 +70,26 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             />
 
             <div className="limit">
+                <Vis hvis={!annullertEllerRevurdert}
+                    render={() =>
+                        <div className="velkommen">
+                            <img src={'/syk/sykepenger/static/img/adult_people.svg'} alt="" />
+                            <div className="velkommen-innhold">
+                                <BodyLong size="medium">
+                                    {tekst('vedtak.velkommen.tekst1')}
+                                </BodyLong>
+                                <Vis hvis={erSP && erSPREF}
+                                    render={() =>
+                                        <BodyLong size="medium">
+                                            {tekst('vedtak.velkommen.tekst2')}
+                                        </BodyLong>
+                                    }
+                                />
+                            </div>
+                        </div>
+                    }
+                />
+
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
@@ -85,18 +98,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                                 {tekst('annullering.se-tidligere-beslutning')}
                             </Heading>
                         </>
-                    }
-                />
-
-                <Vis hvis={erSP && erSPREF}
-                    render={() =>
-                        <GuidePanel poster
-                            illustration={<img src={'/syk/sykepenger/static/img/male.svg'} alt="" />}
-                        >
-                            <BodyLong spacing size="small">
-                                {tekst('vedtak.veileder.delvis.refusjon')}
-                            </BodyLong>
-                        </GuidePanel>
                     }
                 />
 

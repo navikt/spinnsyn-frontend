@@ -878,6 +878,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
 }
 
 export const ulestGammeltVedtak = jsonDeepCopy(ulestVedtakUtenUtbetalingsdager)
+ulestGammeltVedtak.id = '7ae34cv2-dcf1-4c16-9e12-35cb6d537023'
 delete ulestGammeltVedtak.vedtak.sykepengegrunnlag
 delete ulestGammeltVedtak.vedtak.inntekt
 

@@ -31,12 +31,12 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                 {dager.map((dag, idx) =>
                     <Table.Row key={idx}>
                         <Table.DataCell>
-                            <BodyShort spacing as="span" size="small">
+                            <BodyShort size="small" as="span">
                                 {dayjs(dag.dato).format('DD.MMM')}
                             </BodyShort>
                         </Table.DataCell>
                         <Table.DataCell className="kroner">
-                            <BodyShort spacing as="span" size="small">
+                            <BodyShort size="small" as="span">
                                 {(dag.dagtype === 'NavDag' || dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
                                     ? ValutaFormat.format(dag.belop) + ' kr'
                                     : '-'}

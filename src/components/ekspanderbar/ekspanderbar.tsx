@@ -2,6 +2,7 @@ import { Accordion, BodyShort, Button } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
+import Vis from '../vis'
 import { ekspanderbarKlikk, EkspanderProps } from './ekspander-utils'
 
 interface TypeProps {
@@ -25,14 +26,17 @@ const Ekspanderbar = (props: AllProps) => {
         setErApen(!erApen)
     }
 
-    const tittel = <>
-        <img aria-hidden="true" className="ekspanderbar__ikon"
-            ref={btnImage}
-            src={`/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
-            alt=""
-        />
-        <>{props.tittel}</>
-    </>
+    const tittel =
+        <>
+            <Vis hvis={props.ikon} render={() =>
+                <img aria-hidden="true" className="ekspanderbar__ikon"
+                    ref={btnImage}
+                    src={props.ikon}
+                    alt=""
+                />
+            } />
+            {props.tittel}
+        </>
 
     return (
         <Accordion ref={ekspanderbar}>
@@ -44,12 +48,12 @@ const Ekspanderbar = (props: AllProps) => {
                     onMouseLeave={() => btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}.svg`}
                 >
                     {tittel}
-                    <BodyShort as="span" size="small" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
+                    <BodyShort as="span" className="open-text">{erApen ? 'Lukk' : 'Åpne'}</BodyShort>
                 </Accordion.Header>
-                <Accordion.Content>
+                <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
-                        <Button variant="tertiary" size="small" onClick={() => setErApen(!erApen)}>
+                        <Button variant="tertiary" size="small" onClick={onButtonClick}>
                             {erApen ? 'Lukk' : 'Åpne'}
                         </Button>
                     </div>

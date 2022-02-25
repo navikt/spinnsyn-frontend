@@ -92,7 +92,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         <nav className="brodsmuler" ref={smulesti} aria-label="Du er her: ">
             <div className="limit">
                 <Person />
-                <BodyLong as="ul" spacing size="small" className="brodsmuler__smuler">
+                <BodyLong as="ul" spacing className="brodsmuler__smuler">
                     <Vis hvis={skjerm! <= LITEN}
                         render={() =>
                             <li className="smule">

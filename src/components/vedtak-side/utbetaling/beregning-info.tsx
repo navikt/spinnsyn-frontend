@@ -1,11 +1,12 @@
-import { BodyLong, Heading, Link } from '@navikt/ds-react'
+import { Accordion, BodyLong, Button, Heading, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import React from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
+import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
-import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
+import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Vis from '../../vis'
 
 export interface BeregningInfoProps {
@@ -14,6 +15,9 @@ export interface BeregningInfoProps {
 }
 
 const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
+    const isServer = useContext(ArkiveringContext)
+    const [ open, setOpen ] = useState<boolean>(isServer)
+    const accordionRef = useRef(null)
 
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
@@ -29,28 +33,35 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
         return 'utbetaling.totalbelop.innhold'
     }
 
+    const onButtonClick = () => {
+        ekspanderbarKlikk(open, accordionRef, 'Mer om beregningen')
+        setOpen(!open)
+    }
+
     return (
-        <EkspanderbarIntern erApen={false} className="beregning"
-            tittel={tekst('utbetaling.beregning.tittel')}
-        >
-            <div className="tekstinfo ">
+        <Accordion.Item ref={accordionRef} open={open} className="beregning">
+            <Accordion.Header onClick={onButtonClick}>
+                <Heading size="small" level="4">
+                    {tekst('utbetaling.beregning.tittel')}
+                </Heading>
+            </Accordion.Header>
+
+            <Accordion.Content className="tekstinfo ">
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.mndlonn.innhold'))}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.arslonn.innhold.del1'))}
                     <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                         render={() =>
-                            <>
-                                {parser(tekst('utbetaling.arslonn.innhold.del2'))}
-                            </>
+                            <>{parser(tekst('utbetaling.arslonn.innhold.del2'))}</>
                         }
                     />
                 </BodyLong>
@@ -58,63 +69,68 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst(sykepengegrunnlagInnholdKey()))}
                 </BodyLong>
 
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.dagligbelop.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('utbetaling.dagligbelop.innhold')}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.totalbelop.tittel')}
                 </Heading>
-                <BodyLong spacing size="small" className="totalbelop">
+                <BodyLong spacing className="totalbelop">
                     {tekst(totalbelopInnholdKey())}
                 </BodyLong>
 
                 <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                    render={() =>
-                        <>
-                            <Heading spacing size="xsmall" level="4">
-                                {tekst('utbetaling.flere-arbeidsforhold.tittel')}
-                            </Heading>
-                            <BodyLong spacing size="small">
-                                {tekst('utbetaling.flere-arbeidsforhold.innhold')}
-                            </BodyLong>
-                        </>
+                    render={() => <>
+                        <Heading spacing size="xsmall" level="4">
+                            {tekst('utbetaling.flere-arbeidsforhold.tittel')}
+                        </Heading>
+                        <BodyLong spacing>
+                            {tekst('utbetaling.flere-arbeidsforhold.innhold')}
+                        </BodyLong>
+                    </>
                     }
                 />
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.utbetalingsdager.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('utbetaling.utbetalingsdager.innhold')}
                 </BodyLong>
 
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('utbetaling.beregning.les.mer')}
                     <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                         {tekst('utbetaling.beregning.lenke.tekst')}
                     </Link>
                 </BodyLong>
 
-                <Heading spacing size="xsmall" level="4" className="blokkinfo__avsnitt">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.info.tittel')}
                 </Heading>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {parser(tekst('utbetaling.info.innhold'))}
                 </BodyLong>
-            </div>
-        </EkspanderbarIntern>
+
+                <div className="knapperad">
+                    <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                        Skjul
+                    </Button>
+                </div>
+            </Accordion.Content>
+        </Accordion.Item>
     )
 }
 

@@ -26,13 +26,13 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
         <ArkiveringContext.Provider value={true}>
             <div className="vedtak-arkivering">
                 <div id="ark-header">
-                    <img className="navlogo" src={'/syk/sykepenger/static/img/nav.svg'} />
+                    <img className="navlogo" src={'/syk/sykepenger/static/img/nav.svg'} alt="" />
                     <h1 className="title">{tekst('vedtak.arkivering.tittel')}</h1>
                 </div>
                 <div className="personinfo">
                     <div className="persontekst">
                         <div className="persontekst__sidetopp">
-                            <img src={'/syk/sykepenger/static/img/person.svg'} className="personikon" />
+                            <img src={'/syk/sykepenger/static/img/person.svg'} className="personikon" alt="" />
                             <div className="persontekst__personalia">
                                 <p className="navn">
                                     {fnrForVisning(fnr)}
@@ -50,7 +50,7 @@ export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkivering
             </div>
             <div id="ark-footer">
                 <span>{utbetalingId}</span>
-                <span className="sidetall">side <span id="pagenumber"></span> av <span id="pagecount"></span></span>
+                <span className="sidetall">side <span id="pagenumber" /> av <span id="pagecount" /></span>
             </div>
         </ArkiveringContext.Provider>
     )

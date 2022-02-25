@@ -1,12 +1,13 @@
-import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
-import React, { useState } from 'react'
+import { Accordion, BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
+import React, { useContext, useRef, useState } from 'react'
 
+import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
+import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
-import EkspanderbarIntern from '../../ekspanderbar/ekspanderbar-intern'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/beregning-info'
 import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
@@ -19,19 +20,28 @@ interface AvvisteDagerProps {
 
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const [ apen ] = useState<boolean>(false)
+    const isServer = useContext(ArkiveringContext)
+    const [ open, setOpen ] = useState<boolean>(isServer)
+    const accordionRef = useRef(null)
 
     const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1
         ? ' sykepengedager'
         : ' sykepengedag'
 
+    const onButtonClick = () => {
+        ekspanderbarKlikk(open, accordionRef, 'Dager NAV ikke utbetaler')
+        setOpen(!open)
+    }
+
     return (
         <Ekspanderbar type="gul"
+            ikon="/syk/sykepenger/static/img/ikon-ekspander-gul.svg"
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading size="medium" level="2">
+                    <Heading size="large" level="2">
                         {avvisteDager.length + avvisteDagerTekst}
-                        <BodyShort spacing size="small" as="span">
+                        <BodyShort as="span">
                             {tekst('avviste.dager.dekkes.ikke')}
                         </BodyShort>
                     </Heading>
@@ -39,23 +49,38 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
             }
         >
             <div className="tekstinfo">
-                <BodyLong spacing size="small">{tekst('avviste.dager.intro')}</BodyLong>
+                <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
             </div>
 
             <Vis hvis={heltAvvist} render={() =>
                 <InntektInfo vedtak={vedtak} />
             } />
 
-            <EkspanderbarIntern erApen={true} className="avvistedageroversikt"
-                tittel={'Dager NAV ikke utbetaler'}
-            >
-                <DagTabell dager={avvisteDager} />
-                <DagBeskrivelse dager={avvisteDager} />
-            </EkspanderbarIntern>
+            <Accordion>
+                <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
+                    <Accordion.Header onClick={onButtonClick}>
+                        <Heading size="small" level="4">
+                            Dager NAV ikke utbetaler
+                        </Heading>
+                    </Accordion.Header>
+                    <Accordion.Content>
+                        <DagTabell dager={avvisteDager} />
 
-            <Vis hvis={heltAvvist} render={() =>
-                <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-            } />
+                        <DagBeskrivelse dager={avvisteDager} />
+
+                        <div className="knapperad">
+                            <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                                Skjul
+                            </Button>
+                        </div>
+                    </Accordion.Content>
+                </Accordion.Item>
+
+                <Vis hvis={heltAvvist} render={() =>
+                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+                } />
+            </Accordion>
+
         </Ekspanderbar>
     )
 }
