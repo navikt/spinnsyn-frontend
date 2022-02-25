@@ -84,9 +84,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <>
                                             <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
                                                 <div className="redusert_sykepengegrunnlag">
-                                                    <Heading size="xsmall" level="4">
-                                                        {tekst('utbetaling.redusert6G.tittel')}
-                                                    </Heading>
                                                     <BodyLong size="small">
                                                         {parser(tekst('utbetaling.redusert6G.tekst'))}
                                                     </BodyLong>
