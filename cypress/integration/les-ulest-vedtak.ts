@@ -32,31 +32,28 @@ describe('Tester at appen starter', () => {
     it('Den grønne boksen har riktig innhold', () => {
         cy.contains('21 060 kroner')
             .and('contain', 'Utbetales til Pengeløs Sparebank')
-            .click({ force: true })
+            .click()
 
-        cy.contains('Mer om beregningen').click({ force: true })
+        cy.contains('Mer om beregningen').click()
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
-        cy.get('.inntekt__info')
-            .should('contain', 'Månedslønn').and('contain', '37\u00a0500 kr')
+        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene').click()
+        cy.get('.tekstinfo')
+            .should('contain', 'Beregnet månedslønn').and('contain', '37\u00a0500 kr')
             .should('contain', 'Årslønn').and('contain', '450\u00a0000 kr')
     })
 
     it('Den blå boksen har riktig innhold', () => {
-
         cy.get('.ekspanderbar.bla').should('contain', '15 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
             .click()
 
-        cy.should('contain', '180 sykepengedager').and('contain', 'Gjenstår per 3. mai 2021')
+        cy.should('contain', '180 sykepengedager')
+            .and('contain', 'Gjenstår per 3. mai 2021')
+
         cy.should('contain', '17. des. 2021').and('contain', 'Beregnet slutt på sykepenger')
         cy.should('contain', 'Datoen gjelder hvis du er sykmeldt uten opphold.')
-
-        cy.contains('Når sykepengene tar slutt').click({ force: true })
-        cy.get('.ekspanderbar')
-            .should('contain', 'Om du fortsatt ikke kan arbeide på grunn av sykdom eller skade etter 52 uker')
-
     })
 
     it('Vi går tilbake til oversikten', () => {

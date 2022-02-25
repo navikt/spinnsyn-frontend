@@ -18,15 +18,16 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
 
             case 'NavDagDelvisSyk':
                 if (skalViseProsent) {
-                    return <Tag variant="success" size="small">{dag.grad}% syk</Tag>
+                    const grad = dag.grad.toString()
+                    return <Tag variant="success" size="small">{grad}% syk</Tag>
                 }
-                return <Tag variant="success" size="small">Delvis syk</Tag>
+                return <Tag variant="success" size="small">Delvis&nbsp;syk</Tag>
 
             case 'NavHelgDag':
                 return <Tag size="small" variant="info">Helg</Tag>
 
             case 'ArbeidsgiverperiodeDag':
-                return <Tag size="small" variant="info">Arbeidsgiveren betaler</Tag>
+                return <Tag size="small" variant="info">Arbeidsgiveren&nbsp;betaler</Tag>
 
             case 'Arbeidsdag':
                 return <Tag size="small" variant="info">Arbeidsdag</Tag>
@@ -41,7 +42,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return <Tag size="small" variant="warning">Permisjon</Tag>
 
             case 'ForeldetDag':
-                return <Tag size="small" variant="warning">Søkt for sent</Tag>
+                return <Tag size="small" variant="warning">Søkt&nbsp;for&nbsp;sent</Tag>
 
             case 'AvvistDag':
                 return dag.begrunnelser?.map((begrunnelse, idx) =>
@@ -59,29 +60,29 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         switch (begrunnelse) {
             case 'SykepengedagerOppbrukt':
             case 'SykepengedagerOppbruktOver67':
-                return <Tag size="small" variant="warning" key={idx}>Maks antall dager</Tag>
+                return <Tag size="small" variant="warning" key={idx}>Maks&nbsp;antall&nbsp;dager</Tag>
 
             case 'MinimumInntekt':
             case 'MinimumInntektOver67':
-                return <Tag size="small" variant="warning" key={idx}>For lav inntekt</Tag>
+                return <Tag size="small" variant="warning" key={idx}>For&nbsp;lav&nbsp;inntekt</Tag>
 
             case 'EgenmeldingUtenforArbeidsgiverperiode':
                 return <Tag size="small" variant="warning" key={idx}>Egenmelding</Tag>
 
             case 'MinimumSykdomsgrad':
-                return <Tag size="small" variant="warning" key={idx}>Sykmeldt i for liten grad</Tag>
+                return <Tag size="small" variant="warning" key={idx}>Sykmeldt&nbsp;i&nbsp;for&nbsp;liten&nbsp;grad</Tag>
 
             case 'ManglerOpptjening':
-                return <Tag size="small" variant="warning" key={idx}>Jobbet for kort</Tag>
+                return <Tag size="small" variant="warning" key={idx}>Jobbet&nbsp;for&nbsp;kort</Tag>
 
             case 'ManglerMedlemskap':
-                return <Tag size="small" variant="warning" key={idx}>Ikke medlem</Tag>
+                return <Tag size="small" variant="warning" key={idx}>Ikke&nbsp;medlem</Tag>
 
             case 'Over70':
-                return <Tag size="small" variant="warning" key={idx}>Over 70 år</Tag>
+                return <Tag size="small" variant="warning" key={idx}>Over&nbsp;70&nbsp;år</Tag>
 
             case 'EtterDødsdato':
-                return <Tag size="small" variant="warning" key={idx}>Etter dødsfall</Tag>
+                return <Tag size="small" variant="warning" key={idx}>Etter&nbsp;dødsfall</Tag>
 
             case 'UKJENT':
             default:

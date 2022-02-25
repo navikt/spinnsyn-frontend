@@ -11,8 +11,8 @@ import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 const Teaser = ({ vedtak }: VedtakTeaserProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
-    const hand = '/syk/sykepenger/static/img/hand.svg'
-    const handHover = '/syk/sykepenger/static/img/hand-hover.svg'
+    const hand = '/syk/sykepenger/static/img/ikon-hand.svg'
+    const handHover = '/syk/sykepenger/static/img/ikon-hand-hover.svg'
     const annullert = '/syk/sykepenger/static/img/ikon-annullert.svg'
     const annullertHover = '/syk/sykepenger/static/img/ikon-annullert-hover.svg'
 

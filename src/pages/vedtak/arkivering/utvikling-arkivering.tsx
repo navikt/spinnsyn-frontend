@@ -3,7 +3,7 @@ import getConfig from 'next/config'
 import React from 'react'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
-import { vedtakMed40Grad } from '../../../data/mock/data/rs-vedtak'
+import { integrasjonsVedtak } from '../../../data/mock/data/rs-vedtak'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
 const { serverRuntimeConfig } = getConfig()
@@ -24,8 +24,11 @@ const UtviklingArkivering = ({ vedtak, enabled }: DevVedtakProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async(ctx) => {
-    const vedtak = vedtakMed40Grad
+    const vedtak = integrasjonsVedtak
 
+    ctx.res.setHeader('x-nais-app-image', 'testtest')
+    ctx.res.setHeader('x-vedtak-fom', vedtak.vedtak.fom)
+    ctx.res.setHeader('x-vedtak-tom', vedtak.vedtak.tom)
     return {
         props: {
             enabled: serverRuntimeConfig.utviklingArkivering === 'true',

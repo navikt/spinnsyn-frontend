@@ -13,7 +13,7 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
             <Heading spacing size="xsmall" level="3">
                 {tekst('utbetaling.arbeidsgiver.tittel')}
             </Heading>
-            <BodyLong spacing size="small">
+            <BodyLong spacing>
                 {getLedetekst(tekst('utbetaling.arbeidsgiver.tekst'), {
                     '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
                 })}

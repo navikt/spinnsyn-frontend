@@ -5,6 +5,7 @@ import { logEvent } from '../amplitude/amplitude'
 export interface EkspanderProps {
     erApen: boolean
     tittel: React.ReactNode | string
+    ikon?: string
     children: React.ReactNode
     className?: string
 }
@@ -17,7 +18,7 @@ const lukk = (ekspanderbar: any, tittel: string) => {
     }
 }
 
-const midtstill = (ekspanderbar: any) => {
+export const midtstill = (ekspanderbar: any) => {
     setTimeout(() => {
         if (!ekspanderbar.current) {
             return
@@ -40,8 +41,12 @@ export const ekspanderbarKlikk = (erApen: boolean, ekspanderbar: any, amplitudeT
             logEvent('panel åpnet', { 'component': amplitudeText })
             midtstill(ekspanderbar)
             ekspanderbar.current?.focus()
+            ekspanderbar.current?.classList.add('delayed--open')
         }
     } else {
         lukk(ekspanderbar, amplitudeText)
+        setTimeout(() => {
+            ekspanderbar.current?.classList.remove('delayed--open')
+        }, 300)
     }
 }

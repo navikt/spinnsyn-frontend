@@ -10,15 +10,18 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
-    const tittelNokkel = ()=> {
-        if(automatisk){
-            if (annullertEllerRevurdert) {
+    const tittelNokkel = () => {
+        if (annullertEllerRevurdert) {
+            if (automatisk) {
                 return 'behandling.automatisk.tittel.preteritum'
-            } else {
+            }
+            return 'behandling.manuell.tittel.preteritum'
+        } else {
+            if (automatisk) {
                 return 'behandling.automatisk.tittel.presens'
             }
+            return 'behandling.manuell.tittel.presens'
         }
-        return 'behandling.manuell.tittel'
     }
 
     return (
@@ -26,7 +29,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             <Heading size="small" level="2">
                 {tekst(tittelNokkel())}
             </Heading>
-            <BodyLong spacing size="small">
+            <BodyLong spacing>
                 {
                     tekst(annullertEllerRevurdert
                         ? 'behandling.opplysningene.preteritum'
@@ -37,7 +40,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             </BodyLong>
 
             <Vis hvis={automatisk && annullertEllerRevurdert} render={() =>
-                <BodyLong spacing size="small">
+                <BodyLong spacing>
                     {tekst('behandling.ny-behandling')}
                 </BodyLong>}
             />

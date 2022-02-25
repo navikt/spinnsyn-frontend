@@ -21,11 +21,11 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
 
     return (
         <section className="tekstinfo">
-            <Heading spacing level="3" size="xsmall">
+            <Heading spacing level="3" size="small">
                 {tekst('utbetaling.person.når')}
             </Heading>
 
-            <BodyLong spacing size="small">
+            <BodyLong spacing>
                 {parser(tekst('utbetaling.person.når.innhold'))}
                 <LenkeMedAmplitude
                     url={tekst('utbetaling.person.når.lenke.url')}
