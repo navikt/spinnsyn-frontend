@@ -61,3 +61,5 @@ spec:
       value: "api://prod-fss.flex.flex-fss-proxy/.default"
     - name: FLEX_FSS_PROXY_URL
       value: "https://flex-fss-proxy.prod-fss-pub.nais.io"
+    - name: ASSET_PREFIX
+      value: "https://flex-static-files.nav.no/spinnsyn"

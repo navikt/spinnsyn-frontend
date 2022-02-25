@@ -71,3 +71,5 @@ spec:
       value: "http://spinnsyn-backend"
     - name: SPINNSYN_BACKEND_TOKENX_CLIENT_ID
       value: "prod-gcp:flex:spinnsyn-backend"
+    - name: ASSET_PREFIX
+      value: "https://flex-static-files.nav.no/spinnsyn"
