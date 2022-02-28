@@ -65,7 +65,7 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                 <AnnullertAlert />
             } />
 
-            <EkspanderbarInfo erApen={true} tittel={tekst('annullert.info.header')}>
+            <EkspanderbarInfo erApen={false} tittel={tekst('annullert.info.header')}>
 
                 <Label>{tekst('annullert.info.header1')}</Label>
                 <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>

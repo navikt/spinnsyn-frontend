@@ -14,13 +14,6 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
         setErApen(!erApen)
     }
 
-    useEffect(() => {
-        if (erApen) {
-            ekspanderbar.current?.classList.add('delayed--open')
-        }
-        // eslint-disable-next-line
-    }, [])
-
     return (
         <Accordion ref={ekspanderbar}>
             <Accordion.Item open={erApen}

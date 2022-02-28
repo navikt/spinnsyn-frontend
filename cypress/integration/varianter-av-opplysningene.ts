@@ -47,11 +47,13 @@ describe('Tester logikk i behandling.tsx', () => {
 
     it('Revurdert vedtak med direkte utbetaling', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=21eac584-d8ea-4e4b-bf9a-ae0a400009c4')
+        cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing').eq(2).contains('Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.')
     })
 
     it('Revurdert vedtak med kombinasjonsutbetaling', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=85f25c03-faa8-4a99-8f15-971e9406f64f')
+        cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing').eq(2).contains('Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.')
     })
 })

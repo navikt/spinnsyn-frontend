@@ -74,6 +74,8 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 9).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
+        cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
+
 
         cy.get('.annullering .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
@@ -90,6 +92,7 @@ describe('Tester at appen starter', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
             .should('have.length', 9).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
+        cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
         cy.get('.annullering .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
@@ -99,7 +102,6 @@ describe('Tester at appen starter', () => {
     })
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
-
         cy.get('.ekspanderbar.ugyldig').eq(1).should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
             .click()
