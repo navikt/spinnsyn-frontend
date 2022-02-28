@@ -82,14 +82,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 <Vis hvis={skalViseSykepengegrunnlag}
                                     render={() =>
                                         <>
-                                            <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
-                                                <div className="redusert_sykepengegrunnlag">
-                                                    <BodyLong size="small">
-                                                        {parser(tekst('utbetaling.redusert6G.tekst'))}
-                                                    </BodyLong>
-                                                </div>
-                                            } />
-
                                             <section>
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
@@ -98,6 +90,14 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                                     {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
                                                 </Label>
                                             </section>
+
+                                            <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
+                                                <div className="redusert_sykepengegrunnlag">
+                                                    <BodyLong size="small">
+                                                        {parser(tekst('utbetaling.redusert6G.tekst'))}
+                                                    </BodyLong>
+                                                </div>
+                                            } />
                                         </>
                                     }
                                 />
