@@ -38,7 +38,7 @@ describe('Tester at appen starter', () => {
         cy.contains('folketrygdloven § 8-28')
             .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
-        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene').click()
+        cy.contains('Inntekter lagt til grunn for sykepengene').click()
         cy.get('.tekstinfo')
             .should('contain', 'Beregnet månedslønn').and('contain', '37\u00a0500 kr')
             .should('contain', 'Årslønn').and('contain', '450\u00a0000 kr')

@@ -28,7 +28,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Inntektsopplysninger lagt til grunn for sykepengene')
+        ekspanderbarKlikk(open, accordionRef, 'Inntekter lagt til grunn for sykepengene')
         setOpen(!open)
     }
 

@@ -26,7 +26,7 @@ const UtbetalingTekster = {
     'utbetaling.info.tittel': 'Utbetaling',
     'utbetaling.info.innhold': 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Da kan du se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
 
-    'utbetaling.inntekt.info.tittel': 'Inntektsopplysninger lagt til grunn for sykepengene',
+    'utbetaling.inntekt.info.tittel': 'Inntekter lagt til grunn for sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Beregnet årslønn',
     'utbetaling.inntekt.årslønn': 'Årslønn',
