@@ -110,18 +110,17 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     {tekst('utbetaling.utbetalingsdager.innhold')}
                 </BodyLong>
 
-                <BodyLong spacing>
-                    {tekst('utbetaling.beregning.les.mer')}
-                    <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
-                        {tekst('utbetaling.beregning.lenke.tekst')}
-                    </Link>
-                </BodyLong>
-
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.info.tittel')}
                 </Heading>
                 <BodyLong spacing>
                     {parser(tekst('utbetaling.info.innhold'))}
+                </BodyLong>
+                <BodyLong spacing>
+                    {tekst('utbetaling.beregning.les.mer')}
+                    <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
+                        {tekst('utbetaling.beregning.lenke.tekst')}
+                    </Link>
                 </BodyLong>
 
                 <div className="knapperad">
