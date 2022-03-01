@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { BodyLong, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
@@ -38,6 +39,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const erSP = vedtak.sykepengebelopPerson > 0
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
+
+    useEffect(() => {
+        // Scrollpoint beholdes når man går fra listevisning til vedtak. Nullstiller da det ser rart ut hvis vedtaket
+        // er lengre enn det som vises i nettleser.
+        window.scrollTo({ top: 0 })
+    }, [])
 
     for (const key in router.query) {
         if (key != 'id') {
@@ -93,9 +100,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Vis hvis={annullertEllerRevurdert}
                     render={() =>
                         <>
-                            <AnnulleringsInfo />
+                            <AnnulleringsInfo vedtak={vedtak} />
                             <Heading spacing size="large" level="2" className="tidligere__beslutning">
-                                {tekst('annullering.se-tidligere-beslutning')}
+                                {tekst('annullert.se-tidligere-beslutning')}
                             </Heading>
                         </>
                     }

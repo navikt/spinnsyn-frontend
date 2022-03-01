@@ -10,10 +10,10 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
     })
 
-    it('Det er 2 ulest vedtak og 6 leste', () => {
+    it('Det er 2 ulest vedtak og 8 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 2)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 6)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 8)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
@@ -64,22 +64,23 @@ describe('Tester at appen starter', () => {
         cy.wait(1000)
     })
 
-    it('Det er 1 uleste vedtak og 7 leste', () => {
+    it('Det er 1 uleste vedtak og 9 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 7)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9)
     })
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 7).eq(2).click({ force: true })
+            .should('have.length', 9).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
-        cy.contains('Ny behandling av søknaden vil ikke skje automatisk. Da er det en saksbehandler som vurderer søknaden.')
+        cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
+
 
         cy.get('.annullering .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
-            .and('contain', 'Hvorfor behandles den på nytt?')
+            .and('contain', 'Hvorfor behandles vedtaket på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
     })
 
@@ -89,19 +90,19 @@ describe('Tester at appen starter', () => {
 
     it('Vi åpner et revurdert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 7).eq(3).click({ force: true })
+            .should('have.length', 9).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
+        cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
         cy.get('.annullering .info')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
-            .and('contain', 'Hvorfor behandles den på nytt?')
+            .and('contain', 'Hvorfor behandles vedtaket på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
     })
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
-
-        cy.get('.ekspanderbar.bla').should('contain', '9 sykepengedager')
+        cy.get('.ekspanderbar.ugyldig').eq(1).should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
             .click()
 

@@ -11,8 +11,6 @@ import { VedtakProps } from '../vedtak'
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const [ apen ] = useState<boolean>(false)
-    const [ open, setOpen ] = useState<boolean>(false)
-    const accordionRef = useRef(null)
 
     const finnSluttdato = (): Dayjs => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
@@ -24,13 +22,8 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
     const vedtaktsdato = tilLesbarDatoMedArstall(dayjs(vedtak?.opprettet).toDate())
 
-    const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Når sykepengene tar slutt')
-        setOpen(!open)
-    }
-
     return (
-        <Ekspanderbar type="bla"
+        <Ekspanderbar type="bla" erUgyldig={vedtak.revurdert || vedtak.annullert}
             ikon="/syk/sykepenger/static/img/ikon-ekspander-bla.svg"
             erApen={apen}
             tittel={
