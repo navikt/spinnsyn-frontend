@@ -16,7 +16,7 @@ const RevurdertAlert = () => {
                 {parser(tekst('revurdert.alert.tekst'))}
             </BodyShort>
 
-            <Link href={tekst('revurdert.alert.link.url')}>
+            <Link className="alert-link-listevisning" href={tekst('revurdert.alert.link.url')}>
                 <BodyLong>
                     {tekst('revurdert.alert.link.tekst')}
                 </BodyLong>
