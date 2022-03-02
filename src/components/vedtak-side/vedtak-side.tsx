@@ -7,24 +7,30 @@ import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
 import Vedtak, { VedtakProps } from './vedtak'
 
+interface HotjarWindow extends Window {
+    hj: (name: string, value: string) => void;
+}
+
+enum HotjarTriggerType {
+    SPREF_SURVEY = 'SP_INNSYN',
+}
+
 const VedtakSide = ({ vedtak }: VedtakProps) => {
     const { mutate: merkLest } = useMerkVedtakSomLest()
+    const brukerutbetaling = vedtak.sykepengebelopPerson > 0
+    const refusjon = vedtak.sykepengebelopArbeidsgiver > 0
 
     useEffect(() => {
         setBodyClass('vedtak-side')
         logEvent('skjema åpnet', {
             skjemanavn: 'vedtak',
-            brukerutbetaling: vedtak.sykepengebelopPerson > 0,
-            refusjon: vedtak.sykepengebelopArbeidsgiver > 0
+            brukerutbetaling: brukerutbetaling,
+            refusjon: refusjon
         })
         // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
-        interface HotjarWindow extends Window {
-            hj: (name: string, value: string) => void;
-        }
-
         const hotJarWindow = (window as unknown as HotjarWindow)
         if (isProd() || isOpplaering()) {
             setTimeout(() => {
@@ -32,14 +38,15 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
                     if (!isMockBackend()) {
                         logger.info('Hotjar ble ikke lastet inn...')
                     }
-                } else {
-                    hotJarWindow.hj('trigger', 'SP_INNSYN')
+                } else if (refusjon) {
+                    hotJarWindow.hj('trigger', HotjarTriggerType.SPREF_SURVEY)
                 }
             }, 2000)
         } else {
             // eslint-disable-next-line no-console
             console.log('Skipper hotjar trigging')
         }
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
