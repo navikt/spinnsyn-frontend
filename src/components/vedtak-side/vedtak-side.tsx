@@ -13,6 +13,9 @@ interface HotjarWindow extends Window {
 
 enum HotjarTriggerType {
     SPREF_SURVEY = 'SP_INNSYN',
+    SP_SURVEY = 'todo',
+    KOMBINASJON_SURVEY = 'todo',
+    HELT_AVVIST = 'todo'
 }
 
 const VedtakSide = ({ vedtak }: VedtakProps) => {
