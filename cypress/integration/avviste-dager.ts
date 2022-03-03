@@ -1,4 +1,4 @@
-import { avvistVedtak, integrasjonsVedtak, vedtakMed40Grad } from '../../src/data/mock/data/rs-vedtak'
+import { avvistVedtak, avvistVedtakMedLavInntekt, integrasjonsVedtak, vedtakMed40Grad } from '../../src/data/mock/data/rs-vedtak'
 
 describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
@@ -76,6 +76,8 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
         cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
 
+        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene').should('not.exist')
+
         cy.get('.avvistedageroversikt')
             .should('contain', 'Dager NAV ikke utbetaler')
             .click()
@@ -87,9 +89,51 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             cy.contains('20.aug.').parent().parent().should('contain', 'Etter\u00a0dødsfall').and('contain', '-')
         })
 
-        cy.contains('Mer om beregningen').click({ force: true })
-        cy.contains('folketrygdloven § 8-28')
-            .should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
+        cy.contains('Mer om beregningen').should('not.exist')
+
+        cy.get('.smule')
+            .contains('Svar på søknader')
+            .click()
+    })
+
+    it('Vedtak med avviste dager og lav inntekt', () => {
+        cy.get(`article a[href*=${avvistVedtakMedLavInntekt.id}]`).click({ force: true })
+
+        cy.get('.ekspanderbar.gronn')
+            .should('not.exist')
+
+        cy.get('.ekspanderbar.gul')
+            .should('contain', '5 sykepengedager')
+            .and('contain', 'Utbetales ikke av NAV')
+            .click()
+
+        cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
+
+        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene')
+
+        cy.get('.avvistedageroversikt')
+            .should('contain', 'Dager NAV ikke utbetaler')
+            .click()
+
+        cy.get('.tabell--dag').within(() => {
+            cy.contains('17.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
+            cy.contains('18.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
+            cy.contains('19.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
+            cy.contains('20.aug.').parent().parent().should('contain', 'For\u00a0lav\u00a0inntekt').and('contain', '-')
+            cy.contains('21.aug.').parent().parent().should('contain', 'Etter\u00a0dødsfall').and('contain', '-')
+        })
+
+        cy.get('.beregning')
+            .should('contain', 'Mer om beregningen')
+            .click()
+
+        cy.contains('Månedslønnen')
+        cy.contains('Årslønn')
+        cy.contains('Sykepengegrunnlag')
+        cy.contains('Sykepenger per dag').should('not.exist')
+        cy.contains('Totalbeløp').should('not.exist')
+        cy.contains('Utbetalingsdager').should('not.exist')
+        cy.contains('Utbetaling').should('not.exist')
 
         cy.get('.smule')
             .contains('Svar på søknader')

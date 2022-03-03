@@ -1,6 +1,7 @@
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import {
-    avvistVedtak, integrasjonsVedtak, kombinertDirekteOgRefusjon, kunDirekte,
+    avvistVedtak, avvistVedtakMedLavInntekt,
+    integrasjonsVedtak, kombinertDirekteOgRefusjon, kunDirekte,
     ulestGammeltVedtak, ulestVedtakUtenUtbetalingsdager, vedtakAnnullert,
     vedtakMed40Grad, vedtakMedDetMeste, vedtakRedusertTil6G,
     vedtakRevurdert, vedtakRevurdertDirekte, vedtakRevurdertKombinasjon
@@ -27,6 +28,7 @@ export const diverseData: Persona = {
         vedtakRevurdertKombinasjon,
         integrasjonsVedtak,
         avvistVedtak,
+        avvistVedtakMedLavInntekt,
         vedtakRedusertTil6G,
     ],
 }
@@ -40,7 +42,7 @@ export const eldgammelt: Persona = {
 }
 
 export const avvistPerson: Persona = {
-    vedtak: [ integrasjonsVedtak, avvistVedtak ]
+    vedtak: [ integrasjonsVedtak, avvistVedtak, avvistVedtakMedLavInntekt ]
 }
 
 export const kunDirektePerson: Persona = {
