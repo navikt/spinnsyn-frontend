@@ -72,7 +72,7 @@ describe('Tester at appen starter', () => {
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 10).eq(2).click({ force: true })
+            .should('have.length', 10).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
@@ -90,7 +90,7 @@ describe('Tester at appen starter', () => {
 
     it('Vi åpner et revurdert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 9).eq(3).click({ force: true })
+            .should('have.length', 10).eq(4).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
