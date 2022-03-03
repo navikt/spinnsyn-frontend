@@ -25,7 +25,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     const accordionRef = useRef(null)
 
     const harMinstEnForLavInntektDag =
-        vedtak.dagerPerson.filter(dag =>
+        vedtak.dagerArbeidsgiver.filter(dag =>
             dag.begrunnelser.includes('MinimumInntekt')
         ).length > 0
 
@@ -57,7 +57,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                 <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
             </div>
 
-            <Vis hvis={!heltAvvist && !harMinstEnForLavInntektDag} render={() =>
+            <Vis hvis={!heltAvvist || harMinstEnForLavInntektDag } render={() =>
                 <InntektInfo vedtak={vedtak} />
             } />
 
@@ -81,7 +81,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                     </Accordion.Content>
                 </Accordion.Item>
 
-                <Vis hvis={!heltAvvist && !harMinstEnForLavInntektDag} render={() =>
+                <Vis hvis={!heltAvvist || harMinstEnForLavInntektDag} render={() =>
                     <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
                 } />
             </Accordion>
