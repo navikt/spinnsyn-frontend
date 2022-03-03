@@ -82,7 +82,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                 </Accordion.Item>
 
                 <Vis hvis={!heltAvvist || harMinstEnForLavInntektDag} render={() =>
-                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} heltAvvist={heltAvvist} />
                 } />
             </Accordion>
 

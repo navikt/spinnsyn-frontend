@@ -12,9 +12,10 @@ import Vis from '../../vis'
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper;
     mottaker: 'person' | 'refusjon'
+    heltAvvist?: Boolean
 }
 
-const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
+const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => {
     const isServer = useContext(ArkiveringContext)
     const [ open, setOpen ] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
@@ -82,7 +83,7 @@ const BeregningInfo = ({ vedtak, mottaker }: BeregningInfoProps) => {
                     {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
                 </BodyLong>
 
-                <Vis hvis={!harMinstEnForLavInntektDag}
+                <Vis hvis={!heltAvvist || !harMinstEnForLavInntektDag}
                     render={ () =>
                         <>
                             <Heading spacing size="xsmall" level="4">
