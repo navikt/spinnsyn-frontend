@@ -10,10 +10,10 @@ describe('Tester at appen starter', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
     })
 
-    it('Det er 2 ulest vedtak og 8 leste', () => {
+    it('Det er 2 ulest vedtak og 9 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 2)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 8)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
@@ -64,15 +64,15 @@ describe('Tester at appen starter', () => {
         cy.wait(1000)
     })
 
-    it('Det er 1 uleste vedtak og 9 leste', () => {
+    it('Det er 1 uleste vedtak og 10 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 1)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9)
+        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 10)
     })
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('.vedtak--leste > article > .inngangspanel')
-            .should('have.length', 9).eq(2).click({ force: true })
+            .should('have.length', 10).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
