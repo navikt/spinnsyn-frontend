@@ -55,7 +55,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
         cy.get('.navds-body-short:nth-child(3)').contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
         cy.get('.navds-body-short:nth-child(32)').contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
 
-        cy.contains('Mer om beregningen')
+        cy.contains('Mer om beregningen').should('not.exist')
 
         cy.get('.smule')
             .contains('Svar på søknader')
