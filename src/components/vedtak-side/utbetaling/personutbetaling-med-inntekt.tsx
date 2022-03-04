@@ -28,7 +28,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     }
 
     return (
-        <Ekspanderbar type="gronn"
+        <Ekspanderbar type="gronn" erUgyldig={vedtak.revurdert || vedtak.annullert}
             ikon="/syk/sykepenger/static/img/ikon-ekspander-gronn.svg"
             className="personutbetaling"
             erApen={apen}
@@ -38,7 +38,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                         {belop + ' kroner'}
                     </Heading>
                     <BodyShort>
-                        <strong>{tekst('utbetaling.person.systemtittel')}</strong>
+                        {tekst('utbetaling.person.systemtittel')}
                     </BodyShort>
                 </div>
             }

@@ -28,7 +28,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     }
 
     return (
-        <Ekspanderbar type="gronn"
+        <Ekspanderbar type="gronn" erUgyldig={vedtak.revurdert || vedtak.annullert}
             ikon="/syk/sykepenger/static/img/ikon-ekspander-gronn.svg"
             className="refusjon"
             erApen={apen}

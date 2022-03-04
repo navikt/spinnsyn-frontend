@@ -40,8 +40,6 @@ describe('Tester visning av utbetalingsoversikt', () => {
             .siblings()
             .contains('582 161 kr')
 
-        cy.contains('Redusert til 6G').should('not.exist')
-
         cy.contains('Flere arbeidsforhold').should('not.exist')
         cy.contains('Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, ' +
             'blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.')

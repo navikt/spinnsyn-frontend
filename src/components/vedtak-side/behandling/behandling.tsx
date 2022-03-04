@@ -38,12 +38,6 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                 <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
                 {tekst('behandling.se-opplysningene')}
             </BodyLong>
-
-            <Vis hvis={automatisk && annullertEllerRevurdert} render={() =>
-                <BodyLong spacing>
-                    {tekst('behandling.ny-behandling')}
-                </BodyLong>}
-            />
         </div>
     )
 }
