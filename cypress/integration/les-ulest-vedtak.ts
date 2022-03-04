@@ -26,7 +26,7 @@ describe('Tester at appen starter', () => {
         cy.contains('14. juni 2021')
 
         cy.contains('Opplysningene')
-        cy.contains('Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')
+        cy.contains('Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.')
     })
 
     it('Den grønne boksen har riktig innhold', () => {

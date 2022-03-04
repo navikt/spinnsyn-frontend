@@ -1,9 +1,10 @@
-import { BodyLong, Heading, Link } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
+import dayjs from 'dayjs'
 import React from 'react'
 
-import { tekst } from '../../../utils/tekster'
+import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
+import { getLedetekst,tekst } from '../../../utils/tekster'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
-import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 
 export const Behandling = ({ vedtak }: VedtakProps) => {
@@ -30,11 +31,12 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                 {tekst(tittelNokkel())}
             </Heading>
             <BodyLong spacing>
-                {
-                    tekst(annullertEllerRevurdert
-                        ? 'behandling.opplysningene.preteritum'
-                        : 'behandling.opplysningene.presens')
-                }
+                {getLedetekst(tekst(annullertEllerRevurdert
+                    ? 'behandling.opplysningene.preteritum'
+                    : 'behandling.opplysningene.presens'
+                ), {
+                    '%DATO%': tilLesbarDatoMedArstall(dayjs(vedtak.vedtak.vedtakFattetTidspunkt).toDate())
+                })}
                 <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
                 {tekst('behandling.se-opplysningene')}
             </BodyLong>
