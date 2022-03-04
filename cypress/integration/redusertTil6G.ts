@@ -21,7 +21,7 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene').click()
+        cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
         cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('Beregnet månedslønn')
         cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('74 675 kr')
