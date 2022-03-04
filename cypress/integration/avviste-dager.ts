@@ -76,7 +76,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
         cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
 
-        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene').should('not.exist')
+        cy.contains('Inntekter lagt til grunn for sykepengene').should('not.exist')
 
         cy.get('.avvistedageroversikt')
             .should('contain', 'Dager NAV ikke utbetaler')
@@ -109,7 +109,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
         cy.contains('Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.')
 
-        cy.contains('Inntektsopplysninger lagt til grunn for sykepengene')
+        cy.contains('Inntekter lagt til grunn for sykepengene')
 
         cy.get('.avvistedageroversikt')
             .should('contain', 'Dager NAV ikke utbetaler')
