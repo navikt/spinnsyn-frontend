@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
+import useVedtak from '../../query-hooks/useVedtak'
 import { isMockBackend, isOpplaering, isProd, spinnsynFrontendInterne } from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
@@ -20,6 +21,7 @@ enum HotjarTriggerType {
 
 const VedtakSide = ({ vedtak }: VedtakProps) => {
     const { mutate: merkLest } = useMerkVedtakSomLest()
+    const { data: vedtakene } = useVedtak()
     const brukerutbetaling = vedtak.sykepengebelopPerson > 0
     const refusjon = vedtak.sykepengebelopArbeidsgiver > 0
 
@@ -28,7 +30,8 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
         logEvent('skjema åpnet', {
             skjemanavn: 'vedtak',
             brukerutbetaling: brukerutbetaling,
-            refusjon: refusjon
+            refusjon: refusjon,
+            flereVedtak: vedtakene?.length !== 1
         })
         // eslint-disable-next-line
     }, [])
