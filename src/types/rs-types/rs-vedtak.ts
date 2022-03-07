@@ -43,7 +43,7 @@ interface RSVedtak {
     grunnlagForSykepengegrunnlagPerArbeidsgiver?: GrunnlagForSykepengegrunnlagPerArbeidsgiver,
     begrensning?: Begrensning;
     utbetaling: RSUtbetalingUtbetalt;
-    vedtakFattetTidspunkt: string;
+    vedtakFattetTidspunkt?: string;
 }
 
 interface RSUtbetalingUtbetalt {
