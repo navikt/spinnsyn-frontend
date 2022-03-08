@@ -10,6 +10,7 @@ export const vedtakMedDetMeste: RSVedtakWrapper = {
         'tom': '2021-10-23',
         'dokumenter': [],
         'inntekt': 74675,
+        'vedtakFattetTidspunkt': '2021-10-23',
         'sykepengegrunnlag': 638394,
         'utbetaling': {
             'organisasjonsnummer': '123456789',
@@ -303,6 +304,7 @@ export const kunAgPeriode: RSVedtakWrapper = {
         'tom': '2021-10-23',
         'dokumenter': [],
         'inntekt': 74675,
+        'vedtakFattetTidspunkt': '2021-10-24',
         'sykepengegrunnlag': 638394,
         'utbetaling': {
             'organisasjonsnummer': '123456789',
@@ -579,6 +581,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             }
         ],
         inntekt: 48513.47,
+        vedtakFattetTidspunkt: '2021-02-22',
         sykepengegrunnlag: 582161.64,
         grunnlagForSykepengegrunnlagPerArbeidsgiver: {
             '972674818': 582161.64,
@@ -719,6 +722,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             }
         ],
         inntekt: 37500,
+        vedtakFattetTidspunkt: '2021-04-12',
         sykepengegrunnlag: 455000,
         utbetaling: {
             organisasjonsnummer: '999999999',
@@ -897,6 +901,7 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             { dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00', type: 'Søknad' }
         ],
         inntekt: 37500.0,
+        vedtakFattetTidspunkt: '2021-05-04',
         sykepengegrunnlag: 450000,
         utbetaling: {
             organisasjonsnummer: '999999999',
@@ -993,6 +998,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             { dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6', type: 'Søknad' }
         ],
         inntekt: 37500.0,
+        vedtakFattetTidspunkt: '2021-05-06',
         utbetaling: {
             organisasjonsnummer: '999999999',
             forbrukteSykedager: 9,
@@ -1082,6 +1088,7 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
             { dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6', type: 'Søknad' }
         ],
         inntekt: 37500.0,
+        vedtakFattetTidspunkt: '2021-05-06',
         utbetaling: {
             organisasjonsnummer: '999999999',
             forbrukteSykedager: 9,
@@ -1171,6 +1178,7 @@ export const vedtakRevurdertKombinasjon: RSVedtakWrapper = {
             { dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6', type: 'Søknad' }
         ],
         inntekt: 37500.0,
+        vedtakFattetTidspunkt: '2021-05-05',
         utbetaling: {
             organisasjonsnummer: '999999999',
             forbrukteSykedager: 9,
@@ -1267,6 +1275,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
         ],
         inntekt: 30000,
         sykepengegrunnlag: 370000,
+        vedtakFattetTidspunkt: '2021-02-22',
         utbetaling: {
             organisasjonsnummer: '999999998',
             utbetalingId: '2b60ba06-7ddb-45e6-991b-asfafwq',
@@ -1538,6 +1547,7 @@ export const avvistVedtak: RSVedtakWrapper = {
         ],
         'inntekt': 20000,
         'sykepengegrunnlag': 240000,
+        'vedtakFattetTidspunkt': '2021-08-21',
         'utbetaling': {
             'organisasjonsnummer': '896929119',
             'utbetalingId': 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
@@ -1719,6 +1729,7 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
         ],
         'inntekt': 20000,
         'sykepengegrunnlag': 240000,
+        'vedtakFattetTidspunkt': '2021-08-22',
         'utbetaling': {
             'organisasjonsnummer': '896929119',
             'utbetalingId': 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
@@ -1909,6 +1920,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
         ],
         'inntekt': 67033,
         'sykepengegrunnlag': 638394,
+        'vedtakFattetTidspunkt': '2021-02-24',
         'utbetaling': {
             'organisasjonsnummer': '12345725',
             'utbetalingId': '26dc7822-351d-469d-934f-a5e9e50c7ca6',
@@ -2008,6 +2020,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
             '972674818': 660000,
         },
         begrensning: 'ER_6G_BEGRENSET',
+        vedtakFattetTidspunkt: '2021-02-21',
         utbetaling: {
             organisasjonsnummer: '972674818',
             utbetalingId: '2b60ba06-7ddb-45e6-991b-3ca944f0e979',
@@ -2164,6 +2177,7 @@ export const kunDirekte: RSVedtakWrapper = {
             '972674818': 660000,
         },
         begrensning: 'ER_6G_BEGRENSET',
+        vedtakFattetTidspunkt: '2021-02-21',
         utbetaling: {
             organisasjonsnummer: '972674818',
             utbetalingId: '2b60ba06-7ddb-45e6-991b-3ca944f0e979',
