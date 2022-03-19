@@ -6,7 +6,7 @@
     "@navikt/ds-css": "^0.12.11",
     "@navikt/ds-icons": "^0.8.4",
     "@navikt/ds-react": "^0.14.11",
-    "@navikt/ds-tokens": "^0.7.1",
+    "@navikt/ds-tokens": "^0.8.4",
     "@navikt/nav-dekoratoren-moduler": "^1.6.9",
     "amplitude-js": "^8.17.0",
     "browserslist": "^4.19.1",
