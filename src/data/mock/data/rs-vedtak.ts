@@ -2294,19 +2294,3 @@ export const kunDirekte: RSVedtakWrapper = {
     sykepengebelopPerson: 24550,
 }
 
-
-export const alleVedtak: RSVedtakWrapper[] = [
-    vedtakMed40Grad,
-    ulestVedtakUtenUtbetalingsdager,
-    vedtakAnnullert,
-    vedtakRevurdert,
-    vedtakRevurdertDirekte,
-    vedtakRevurdertKombinasjon,
-    integrasjonsVedtak,
-    avvistVedtak,
-    avvistVedtakMedLavInntekt,
-    vedtakRedusertTil6G,
-    kunDirekte,
-    kombinertDirekteOgRefusjon,
-    vedtakMedDetMeste,
-]

@@ -6,6 +6,7 @@ import {
     vedtakMed40Grad, vedtakMedDetMeste, vedtakRedusertTil6G,
     vedtakRevurdert, vedtakRevurdertDirekte, vedtakRevurdertKombinasjon
 } from './rs-vedtak'
+import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 
 
 export interface Persona {
@@ -15,6 +16,10 @@ export interface Persona {
 
 export const utenData: Persona = {
     vedtak: [],
+}
+
+export const etVedtakFlereArbeidsgivere: Persona = {
+    vedtak: [ vedtakMedFlereArbeidsgivere ]
 }
 
 export const diverseData: Persona = {

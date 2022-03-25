@@ -1,9 +1,10 @@
 export interface RSVedtakWrapper {
     id: string
     lest: boolean;
-    lestDato?: string;
+    lestDato?: string | null;
     vedtak: RSVedtak;
     opprettet: string;
+    opprettetTimestamp?: string;
     orgnavn: string;
     andreArbeidsgivere: AndreArbeidsgivere;
     annullert: boolean;
@@ -53,6 +54,7 @@ interface RSUtbetalingUtbetalt {
     forbrukteSykedager: number;
     gjenståendeSykedager: number;
     automatiskBehandling: boolean;
+    utbetalingType?: string;
 }
 
 
