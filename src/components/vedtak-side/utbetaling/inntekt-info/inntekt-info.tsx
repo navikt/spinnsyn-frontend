@@ -17,13 +17,21 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const [ open, setOpen ] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
-    const inntektMnd = (vedtak.vedtak.inntekt)
-        ? formaterValuta(vedtak.vedtak.inntekt)
-        : undefined
 
-    const inntektAr = (vedtak.vedtak.inntekt)
-        ? formaterValuta(vedtak.vedtak.inntekt * 12)
-        : undefined
+    const finnRiktigInntekt = () => {
+        const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
+        if (grunnlagPerAg && vedtak.vedtak.organisasjonsnummer) {
+            const inntektFraGrunnlagPerAg = grunnlagPerAg [ vedtak.vedtak.organisasjonsnummer  ]
+            if (inntektFraGrunnlagPerAg) {
+                return inntektFraGrunnlagPerAg / 12
+            }
+        }
+        return vedtak.vedtak.inntekt
+    }
+
+    const inntekt = finnRiktigInntekt()
+    const inntektMnd = (inntekt) ? formaterValuta(inntekt) : undefined
+    const inntektAr = (inntekt) ? formaterValuta(inntekt * 12) : undefined
 
     const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
@@ -105,7 +113,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
                             <div className="knapperad">
                                 <Button variant="tertiary" size="small" onClick={onButtonClick}>
-                                    Skjul
+                                     Skjul
                                 </Button>
                             </div>
                         </Accordion.Content>

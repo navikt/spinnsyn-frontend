@@ -2,7 +2,7 @@ import {
     annullert,
     avvistPerson,
     diverseData,
-    eldgammelt,
+    eldgammelt, etVedtakFlereArbeidsgivere,
     kombinasjonPerson,
     kunDirektePerson,
     Persona, utenData
@@ -16,6 +16,7 @@ export interface StringFunctionMap {
 export const personas: StringFunctionMap = {
     'uten-data': () => utenData,
     'diverse-data': () => diverseData,
+    'et-vedtak-flere-arbeidsgivere': () => etVedtakFlereArbeidsgivere,
     'annulert-og-overført-infotrygd': () => annullert,
     'veldig-gammelt-vedtak': () => eldgammelt,
     'delvis-og-helt-avviste-vedtak': () => avvistPerson,
