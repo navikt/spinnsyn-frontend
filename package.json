@@ -13,7 +13,7 @@
     "cookie": "^0.4.1",
     "dayjs": "^1.10.7",
     "html-react-parser": "^1.4.8",
-    "jose": "^4.5.1",
+    "jose": "^4.6.0",
     "less-plugin-npm-import": "^2.1.0",
     "lodash.throttle": "^4.1.1",
     "on-headers": "^1.0.2",
