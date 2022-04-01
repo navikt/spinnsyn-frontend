@@ -10,7 +10,7 @@ function InterneHeader({ fnr }: InterneHeaderProps): JSX.Element {
         if (!fnr) {
             return 'Speiling av brukers visning av svar på sykepengesøknader'
         }
-        const fnrForVisning = `${fnr.slice(0, 6)} ${fnr.slice(5)}`
+        const fnrForVisning = `${fnr.slice(0, 6)} ${fnr.slice(6)}`
         return `Slik ser svar på søknader ut for ${fnrForVisning}`
     }
 
