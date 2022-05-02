@@ -7,12 +7,9 @@ const VedtakPage = () => {
 
     useEffect(() => {
         router.push('/?id=' + id)
-    }, [ id, router ])
+    }, [id, router])
 
-    return (
-        <strong>Vidersender...</strong>
-    )
+    return <strong>Vidersender...</strong>
 }
-
 
 export default VedtakPage

@@ -7,7 +7,6 @@ import { VedtakProps } from '../vedtak'
 import InntektInfo from './inntekt-info/inntekt-info'
 
 export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
-
     return (
         <section className="tekstinfo">
             <Heading spacing size="xsmall" level="3">
@@ -15,7 +14,7 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
             </Heading>
             <BodyLong spacing>
                 {getLedetekst(tekst('utbetaling.arbeidsgiver.tekst'), {
-                    '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn)
+                    '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
                 })}
             </BodyLong>
 
@@ -23,4 +22,3 @@ export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
         </section>
     )
 }
-

@@ -29,12 +29,14 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
                 {parser(tekst('utbetaling.person.når.innhold'))}
                 <LenkeMedAmplitude
                     url={tekst('utbetaling.person.når.lenke.url')}
-                    tekst={tekst('utbetaling.person.når.lenke.tekst')} />
+                    tekst={tekst('utbetaling.person.når.lenke.tekst')}
+                />
             </BodyLong>
 
-            <Vis hvis={!erInterne && !erArkivering} render={() =>
-                <Kontonummer />
-            } />
+            <Vis
+                hvis={!erInterne && !erArkivering}
+                render={() => <Kontonummer />}
+            />
 
             <InntektInfo vedtak={vedtak} />
         </section>

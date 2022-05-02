@@ -12,7 +12,7 @@ export interface EkspanderProps {
 
 const lukk = (ekspanderbar: any, tittel: string) => {
     if (window) {
-        logEvent('panel lukket', { 'component': tittel })
+        logEvent('panel lukket', { component: tittel })
         midtstill(ekspanderbar)
         ekspanderbar.current?.focus()
     }
@@ -29,16 +29,21 @@ export const midtstill = (ekspanderbar: any) => {
         if (position.height >= winhight) {
             top = position.top + window.scrollY
         } else {
-            top = position.top - ((winhight - position.height) / 2) + window.scrollY
+            top =
+                position.top - (winhight - position.height) / 2 + window.scrollY
         }
         window.scrollTo({ top: top, left: 0, behavior: 'smooth' })
     }, 300)
 }
 
-export const ekspanderbarKlikk = (erApen: boolean, ekspanderbar: any, amplitudeText: string) => {
+export const ekspanderbarKlikk = (
+    erApen: boolean,
+    ekspanderbar: any,
+    amplitudeText: string
+) => {
     if (!erApen) {
         if (window) {
-            logEvent('panel åpnet', { 'component': amplitudeText })
+            logEvent('panel åpnet', { component: amplitudeText })
             midtstill(ekspanderbar)
             ekspanderbar.current?.focus()
             ekspanderbar.current?.classList.add('delayed--open')

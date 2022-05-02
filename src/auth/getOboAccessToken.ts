@@ -1,7 +1,10 @@
 import { isMockBackend } from '../utils/environment'
 import { getAzureAuthClient } from './azureClient'
 
-export async function getOboAccessToken(userToken: string | undefined, scope: string): Promise<string> {
+export async function getOboAccessToken(
+    userToken: string | undefined,
+    scope: string
+): Promise<string> {
     if (isMockBackend()) {
         return ''
     }
@@ -9,7 +12,8 @@ export async function getOboAccessToken(userToken: string | undefined, scope: st
 
     const oboTokenSet = await oidcClient.grant({
         grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-        assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+        assertion_type:
+            'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
         requested_token_use: 'on_behalf_of',
         scope,
         assertion: userToken,

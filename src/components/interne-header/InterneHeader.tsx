@@ -2,7 +2,7 @@ import { Heading } from '@navikt/ds-react'
 import React from 'react'
 
 interface InterneHeaderProps {
-    fnr: string | null;
+    fnr: string | null
 }
 
 function InterneHeader({ fnr }: InterneHeaderProps): JSX.Element {
@@ -17,7 +17,9 @@ function InterneHeader({ fnr }: InterneHeaderProps): JSX.Element {
     return (
         <header className="interne-header">
             <img src="/syk/sykepenger/static/img/nav-hvit.svg" alt="NAV logo" />
-            <Heading spacing size="medium">{undertittel()}</Heading>
+            <Heading spacing size="medium">
+                {undertittel()}
+            </Heading>
         </header>
     )
 }

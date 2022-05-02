@@ -4,7 +4,6 @@ import { vedtakMed40Grad } from '../data/mock/data/rs-vedtak'
 import { harFlereArbeidsgivere } from './har-flere-arbeidsgivere'
 import { jsonDeepCopy } from './json-deep-copy'
 
-
 describe('Tester har flere arbeidsgivere', () => {
     const testVedtak = vedtakMed40Grad
 

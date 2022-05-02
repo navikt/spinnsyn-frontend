@@ -10,18 +10,22 @@ import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Vis from '../../vis'
 
 export interface BeregningInfoProps {
-    vedtak: RSVedtakWrapper;
+    vedtak: RSVedtakWrapper
     mottaker: 'person' | 'refusjon'
     heltAvvist?: Boolean
 }
 
-const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => {
+const BeregningInfo = ({
+    vedtak,
+    mottaker,
+    heltAvvist,
+}: BeregningInfoProps) => {
     const isServer = useContext(ArkiveringContext)
-    const [ open, setOpen ] = useState<boolean>(isServer)
+    const [open, setOpen] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
     const harMinstEnForLavInntektDag =
-        vedtak.dagerArbeidsgiver.filter(dag =>
+        vedtak.dagerArbeidsgiver.filter((dag) =>
             dag.begrunnelser.includes('MinimumInntekt')
         ).length > 0
 
@@ -65,10 +69,15 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                 </Heading>
                 <BodyLong spacing>
                     {parser(tekst('utbetaling.arslonn.innhold.del1'))}
-                    <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                        render={() =>
-                            <>{parser(tekst('utbetaling.arslonn.innhold.del2'))}</>
-                        }
+                    <Vis
+                        hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
+                        render={() => (
+                            <>
+                                {parser(
+                                    tekst('utbetaling.arslonn.innhold.del2')
+                                )}
+                            </>
+                        )}
                     />
                 </BodyLong>
 
@@ -83,8 +92,9 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                     {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
                 </BodyLong>
 
-                <Vis hvis={!heltAvvist || !harMinstEnForLavInntektDag}
-                    render={ () =>
+                <Vis
+                    hvis={!heltAvvist || !harMinstEnForLavInntektDag}
+                    render={() => (
                         <>
                             <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.dagligbelop.tittel')}
@@ -100,16 +110,26 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                                 {tekst(totalbelopInnholdKey())}
                             </BodyLong>
 
-                            <Vis hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                                render={() => <>
-                                    <Heading spacing size="xsmall" level="4">
-                                        {tekst('utbetaling.flere-arbeidsforhold.tittel')}
-                                    </Heading>
-                                    <BodyLong spacing>
-                                        {tekst('utbetaling.flere-arbeidsforhold.innhold')}
-                                    </BodyLong>
-                                </>
-                                }
+                            <Vis
+                                hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
+                                render={() => (
+                                    <>
+                                        <Heading
+                                            spacing
+                                            size="xsmall"
+                                            level="4"
+                                        >
+                                            {tekst(
+                                                'utbetaling.flere-arbeidsforhold.tittel'
+                                            )}
+                                        </Heading>
+                                        <BodyLong spacing>
+                                            {tekst(
+                                                'utbetaling.flere-arbeidsforhold.innhold'
+                                            )}
+                                        </BodyLong>
+                                    </>
+                                )}
                             />
 
                             <Heading spacing size="xsmall" level="4">
@@ -121,7 +141,12 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
 
                             <BodyLong spacing>
                                 {tekst('utbetaling.beregning.les.mer')}
-                                <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
+                                <Link
+                                    href={tekst(
+                                        'utbetaling.beregning.lenke.url'
+                                    )}
+                                    target="_blank"
+                                >
                                     {tekst('utbetaling.beregning.lenke.tekst')}
                                 </Link>
                             </BodyLong>
@@ -133,11 +158,15 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                                 {parser(tekst('utbetaling.info.innhold'))}
                             </BodyLong>
                         </>
-                    }
+                    )}
                 />
 
                 <div className="knapperad">
-                    <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                    <Button
+                        variant="tertiary"
+                        size="small"
+                        onClick={onButtonClick}
+                    >
                         Skjul
                     </Button>
                 </div>

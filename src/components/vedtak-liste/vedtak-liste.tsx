@@ -10,9 +10,11 @@ import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
 import Teasere from '../teaser/teasere'
 
-const brodsmuler: Brodsmule[] = [ {
-    tittel: tekst('vedtak-liste.sidetittel')
-} ]
+const brodsmuler: Brodsmule[] = [
+    {
+        tittel: tekst('vedtak-liste.sidetittel'),
+    },
+]
 
 const VedtakListe = () => {
     const { data: vedtak } = useVedtak()
@@ -21,13 +23,18 @@ const VedtakListe = () => {
         setBodyClass('vedtak-liste')
     }, [])
 
-    const uleste = vedtak!.filter(v => !v.lest)
-    const leste = vedtak!.filter(v => v.lest).sort(sorterEtterNyesteTom)
+    const uleste = vedtak!.filter((v) => !v.lest)
+    const leste = vedtak!.filter((v) => v.lest).sort(sorterEtterNyesteTom)
 
     return (
         <>
             <Banner>
-                <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
+                <Heading
+                    spacing
+                    size="2xlarge"
+                    level="1"
+                    className="sidebanner__tittel"
+                >
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
             </Banner>
@@ -46,7 +53,9 @@ const VedtakListe = () => {
                     className="vedtak--leste"
                     vedtak={leste}
                     tittel={tekst('spinnsyn.teaser.leste')}
-                    tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
+                    tomListeTekst={tekst(
+                        'vedtak-liste.ingen-tidligere-soknader'
+                    )}
                 />
 
                 <Link className="arkiverte-lenke" href={arkiverteVedtakUrl()}>

@@ -1,4 +1,11 @@
-import { Alert, BodyLong, BodyShort, Heading, Label, Link } from '@navikt/ds-react'
+import {
+    Alert,
+    BodyLong,
+    BodyShort,
+    Heading,
+    Label,
+    Link,
+} from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React from 'react'
 
@@ -7,19 +14,21 @@ import EkspanderbarInfo from '../../ekspanderbar/ekspanderbar-info'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 
-
 const RevurdertAlert = () => {
     return (
         <Alert variant="warning">
-            <Heading spacing level={'2'} size={'small'}>{parser(tekst('revurdert.alert.header'))}</Heading>
+            <Heading spacing level={'2'} size={'small'}>
+                {parser(tekst('revurdert.alert.header'))}
+            </Heading>
             <BodyShort spacing>
                 {parser(tekst('revurdert.alert.tekst'))}
             </BodyShort>
 
-            <Link className="alert-link-listevisning" href={tekst('revurdert.alert.link.url')}>
-                <BodyLong>
-                    {tekst('revurdert.alert.link.tekst')}
-                </BodyLong>
+            <Link
+                className="alert-link-listevisning"
+                href={tekst('revurdert.alert.link.url')}
+            >
+                <BodyLong>{tekst('revurdert.alert.link.tekst')}</BodyLong>
             </Link>
         </Alert>
     )
@@ -28,7 +37,9 @@ const RevurdertAlert = () => {
 const AnnullertAlert = () => {
     return (
         <Alert variant="warning">
-            <Heading spacing level={'2'} size={'small'}>{parser(tekst('annullert.alert.header'))}</Heading>
+            <Heading spacing level={'2'} size={'small'}>
+                {parser(tekst('annullert.alert.header'))}
+            </Heading>
             <BodyShort spacing>
                 {parser(tekst('annulert.alert.tekst'))}
             </BodyShort>
@@ -40,7 +51,6 @@ const AnnullertAlert = () => {
 }
 
 const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
-
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBrukerutbetaling = vedtak.sykepengebelopPerson > 0
 
@@ -56,17 +66,14 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
 
     return (
         <div className="annullering">
+            <Vis hvis={vedtak.revurdert} render={() => <RevurdertAlert />} />
 
-            <Vis hvis={vedtak.revurdert} render={() =>
-                <RevurdertAlert />
-            } />
+            <Vis hvis={vedtak.annullert} render={() => <AnnullertAlert />} />
 
-            <Vis hvis={vedtak.annullert} render={() =>
-                <AnnullertAlert />
-            } />
-
-            <EkspanderbarInfo erApen={false} tittel={tekst('annullert.info.header')}>
-
+            <EkspanderbarInfo
+                erApen={false}
+                tittel={tekst('annullert.info.header')}
+            >
                 <Label>{tekst('annullert.info.header1')}</Label>
                 <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>
 
@@ -80,7 +87,12 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                 <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
 
                 <div className="link__med__ikon">
-                    <img alt="" src={'/syk/sykepenger/static/img/ikon-skriv-til-oss.svg'} />
+                    <img
+                        alt=""
+                        src={
+                            '/syk/sykepenger/static/img/ikon-skriv-til-oss.svg'
+                        }
+                    />
                     <Link href={tekst('behandling.lenke.url')}>
                         <BodyShort as="span">
                             {tekst('annullert.info.skriv-til-oss')}

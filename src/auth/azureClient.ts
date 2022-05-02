@@ -1,26 +1,25 @@
 import { Client, ClientMetadata, Issuer } from 'openid-client'
 import { ResponseType } from 'openid-client'
 
-
 let client: Client | null = null
 
 export interface AzureConfig {
-    discoveryUrl: string;
-    clientId: string;
-    clientSecret: string;
-    redirectUri: string;
-    responseTypes: ResponseType[];
+    discoveryUrl: string
+    clientId: string
+    clientSecret: string
+    redirectUri: string
+    responseTypes: ResponseType[]
     tokenEndpointAuthMethod:
-    | 'client_secret_post'
-    | 'client_secret_basic'
-    | 'client_secret_jwt'
-    | 'private_key_jwt'
-    | 'tls_client_auth'
-    | 'self_signed_tls_client_auth'
-    | 'none'
-    | undefined;
-    responseMode: string;
-    logoutRedirectUri?: string;
+        | 'client_secret_post'
+        | 'client_secret_basic'
+        | 'client_secret_jwt'
+        | 'private_key_jwt'
+        | 'tls_client_auth'
+        | 'self_signed_tls_client_auth'
+        | 'none'
+        | undefined
+    responseMode: string
+    logoutRedirectUri?: string
 }
 
 function getAzureConfig(): AzureConfig {
@@ -31,12 +30,11 @@ function getAzureConfig(): AzureConfig {
         redirectUri: process.env.AAD_REDIRECT_URL!,
         logoutRedirectUri: process.env.AAD_LOGOUT_REDIRECT_URL!,
         tokenEndpointAuthMethod: 'client_secret_post',
-        responseTypes: [ 'code' ],
+        responseTypes: ['code'],
         responseMode: 'query',
     }
     return azureAd
 }
-
 
 export async function getAzureAuthClient(): Promise<Client> {
     if (client) {
@@ -48,7 +46,7 @@ export async function getAzureAuthClient(): Promise<Client> {
     const metadata: ClientMetadata = {
         client_id: azureConfig.clientId,
         client_secret: azureConfig.clientSecret,
-        redirect_uris: [ azureConfig.redirectUri ],
+        redirect_uris: [azureConfig.redirectUri],
         token_endpoint_auth_method: azureConfig.tokenEndpointAuthMethod,
         response_types: azureConfig.responseTypes,
         response_mode: azureConfig.responseMode,
@@ -58,4 +56,3 @@ export async function getAzureAuthClient(): Promise<Client> {
     client = new issuer.Client(metadata)
     return client
 }
-

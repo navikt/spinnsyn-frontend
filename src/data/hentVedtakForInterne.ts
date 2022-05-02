@@ -7,23 +7,27 @@ import { diverseData } from './mock/data/personas'
 
 const { serverRuntimeConfig } = getConfig()
 
-
-export const hentVedtakFraSpinnsynBackendForInterne = async(token: string, fnr: string): Promise<RSVedtakWrapper[]> => {
+export const hentVedtakFraSpinnsynBackendForInterne = async (
+    token: string,
+    fnr: string
+): Promise<RSVedtakWrapper[]> => {
     if (isMockBackend()) {
         return diverseData.vedtak
     }
 
-    const response = await fetch(`${serverRuntimeConfig.spinnsynBackendUrl}/api/v4/veileder/vedtak`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'sykmeldt-fnr': fnr,
+    const response = await fetch(
+        `${serverRuntimeConfig.spinnsynBackendUrl}/api/v4/veileder/vedtak`,
+        {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'sykmeldt-fnr': fnr,
+            },
         }
-    })
+    )
 
     if (response.status != 200) {
         throw new ErrorMedStatus('Ikke 200 svar fra spinnsyn-backend', 500)
     }
     return await response.json()
 }
-
