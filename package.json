@@ -80,8 +80,8 @@
     "test:ci": "jest --ci",
     "cy:open": "cypress open",
     "e2e": "start-test dev-ingen-dekorator http://localhost:8080/syk/sykepenger cy:open",
-    "prettier:write": "prettier --no-semi --single-quote --write .",
-    "prettier:check": "prettier --no-semi --single-quote --check .",
+    "prettier:write": "prettier --write .",
+    "prettier:check": "prettier --check .",
     "lint": "eslint --ext=ts,tsx src cypress",
     "lint:fix": "eslint --ext=ts,tsx src cypress --fix"
   },
