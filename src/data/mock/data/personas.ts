@@ -1,25 +1,32 @@
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import {
-    avvistVedtak, avvistVedtakMedLavInntekt,
-    integrasjonsVedtak, kombinertDirekteOgRefusjon, kunDirekte,
-    ulestGammeltVedtak, ulestVedtakUtenUtbetalingsdager, vedtakAnnullert,
-    vedtakMed40Grad, vedtakMedDetMeste, vedtakRedusertTil6G,
-    vedtakRevurdert, vedtakRevurdertDirekte, vedtakRevurdertKombinasjon
+    avvistVedtak,
+    avvistVedtakMedLavInntekt,
+    integrasjonsVedtak,
+    kombinertDirekteOgRefusjon,
+    kunDirekte,
+    ulestGammeltVedtak,
+    ulestVedtakUtenUtbetalingsdager,
+    vedtakAnnullert,
+    vedtakMed40Grad,
+    vedtakMedDetMeste,
+    vedtakRedusertTil6G,
+    vedtakRevurdert,
+    vedtakRevurdertDirekte,
+    vedtakRevurdertKombinasjon,
 } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 
-
 export interface Persona {
-    vedtak: RSVedtakWrapper[],
+    vedtak: RSVedtakWrapper[]
 }
-
 
 export const utenData: Persona = {
     vedtak: [],
 }
 
 export const etVedtakFlereArbeidsgivere: Persona = {
-    vedtak: [ vedtakMedFlereArbeidsgivere ]
+    vedtak: [vedtakMedFlereArbeidsgivere],
 }
 
 export const diverseData: Persona = {
@@ -39,21 +46,21 @@ export const diverseData: Persona = {
 }
 
 export const annullert: Persona = {
-    vedtak: [ vedtakAnnullert ],
+    vedtak: [vedtakAnnullert],
 }
 
 export const eldgammelt: Persona = {
-    vedtak: [ ulestGammeltVedtak ],
+    vedtak: [ulestGammeltVedtak],
 }
 
 export const avvistPerson: Persona = {
-    vedtak: [ integrasjonsVedtak, avvistVedtak, avvistVedtakMedLavInntekt ]
+    vedtak: [integrasjonsVedtak, avvistVedtak, avvistVedtakMedLavInntekt],
 }
 
 export const kunDirektePerson: Persona = {
-    vedtak: [ kunDirekte ],
+    vedtak: [kunDirekte],
 }
 
 export const kombinasjonPerson: Persona = {
-    vedtak: [ kombinertDirekteOgRefusjon ],
+    vedtak: [kombinertDirekteOgRefusjon],
 }

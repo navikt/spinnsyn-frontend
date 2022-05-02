@@ -6,7 +6,7 @@ import { ekspanderbarKlikk, EkspanderProps } from './ekspander-utils'
 
 const EkspanderbarInfo = (props: EkspanderProps) => {
     const isServer = useContext(ArkiveringContext)
-    const [ erApen, setErApen ] = useState<boolean>(isServer || props.erApen)
+    const [erApen, setErApen] = useState<boolean>(isServer || props.erApen)
     const ekspanderbar = useRef<HTMLDivElement>(null)
 
     const onButtonClick = () => {
@@ -16,16 +16,25 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
 
     return (
         <Accordion ref={ekspanderbar}>
-            <Accordion.Item open={erApen}
-                className={`ekspanderbar info${props.className ? ' ' + props.className : ''}`}
+            <Accordion.Item
+                open={erApen}
+                className={`ekspanderbar info${
+                    props.className ? ' ' + props.className : ''
+                }`}
             >
                 <Accordion.Header onClick={onButtonClick}>
-                    <Heading level={'2'} size={'small'}>{props.tittel}</Heading>
+                    <Heading level={'2'} size={'small'}>
+                        {props.tittel}
+                    </Heading>
                 </Accordion.Header>
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
-                        <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                        <Button
+                            variant="tertiary"
+                            size="small"
+                            onClick={onButtonClick}
+                        >
                             Skjul
                         </Button>
                     </div>

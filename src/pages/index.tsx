@@ -12,26 +12,32 @@ import useVedtak from '../query-hooks/useVedtak'
 import { PrefetchResults } from '../types/prefecthing'
 import { spinnsynFrontendInterne } from '../utils/environment'
 
-
 const Index = ({ sykmeldtFnr, dehydratedState }: PrefetchResults) => {
     if (!sykmeldtFnr && spinnsynFrontendInterne()) {
         return (
-            <IndexInterneUtenFnr sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />
+            <IndexInterneUtenFnr
+                sykmeldtFnr={sykmeldtFnr}
+                dehydratedState={dehydratedState}
+            />
         )
     }
-    return (<IndexMedData sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />)
+    return (
+        <IndexMedData
+            sykmeldtFnr={sykmeldtFnr}
+            dehydratedState={dehydratedState}
+        />
+    )
 }
 
 const IndexInterneUtenFnr = ({ sykmeldtFnr }: PrefetchResults) => {
-
     return (
         <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
             <Alert variant="warning">
-                Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
+                Du har ingen aktiv person åpen i modia. Åpne en person i modia
+                og refresh denne siden.
             </Alert>
         </ArkiveringOgMain>
     )
-
 }
 
 const IndexMedData = ({ sykmeldtFnr }: PrefetchResults) => {
@@ -42,7 +48,7 @@ const IndexMedData = ({ sykmeldtFnr }: PrefetchResults) => {
     if (id) {
         const vedtaket = vedtak?.find((v) => v.id == id)
         if (!vedtaket) {
-            return (<RedirectTilForsiden />)
+            return <RedirectTilForsiden />
         }
         return (
             <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
@@ -58,7 +64,7 @@ const IndexMedData = ({ sykmeldtFnr }: PrefetchResults) => {
 }
 
 interface ArkiveringOgMainProps {
-    children: React.ReactNode;
+    children: React.ReactNode
     sykmeldtFnr: string | null
 }
 
@@ -66,7 +72,12 @@ const ArkiveringOgMain = ({ children, sykmeldtFnr }: ArkiveringOgMainProps) => (
     <>
         {spinnsynFrontendInterne() && <InterneHeader fnr={sykmeldtFnr} />}
         <ArkiveringContext.Provider value={false}>
-            <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+            <main
+                id="maincontent"
+                className="maincontent"
+                role="main"
+                tabIndex={-1}
+            >
                 {children}
             </main>
         </ArkiveringContext.Provider>
@@ -74,6 +85,5 @@ const ArkiveringOgMain = ({ children, sykmeldtFnr }: ArkiveringOgMainProps) => (
 )
 
 export const getServerSideProps = prefetchVedtak
-
 
 export default Index

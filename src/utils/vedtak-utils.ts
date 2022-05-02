@@ -5,13 +5,13 @@ import { erHelg, tilLesbarDatoMedArstall } from './dato-utils'
 
 export const klagefrist = (vedtakWrapper?: RSVedtakWrapper) => {
     return tilLesbarDatoMedArstall(
-        dayjs(vedtakWrapper?.opprettet)
-            .add(42, 'day')
-            .toDate()
+        dayjs(vedtakWrapper?.opprettet).add(42, 'day').toDate()
     )
 }
 
-export const fallbackEstimertSluttdato = (vedtakWrapper: RSVedtakWrapper): Dayjs => {
+export const fallbackEstimertSluttdato = (
+    vedtakWrapper: RSVedtakWrapper
+): Dayjs => {
     let slutt = dayjs(vedtakWrapper.vedtak.tom)
     let x = 0
     while (x < vedtakWrapper.vedtak.utbetaling.gjenståendeSykedager) {

@@ -2,7 +2,7 @@
 const withLess = require('next-with-less')
 
 const csp = {
-    'default-src': [ "'none'" ],
+    'default-src': ["'none'"],
     'connect-src': [
         "'self'",
         'https://*.nav.no',
@@ -10,12 +10,18 @@ const csp = {
         'https://nav.psplugin.com',
         'https://ta-survey-v2.herokuapp.com',
     ],
-    'img-src': [ "'self'", 'data:', 'https://*.nav.no', 'https://www.google-analytics.com' ],
-    'font-src': [ "'self'", 'data:', 'https://*.psplugin.com' ],
-    'frame-src': [ "'self'", 'data:', 'https://vars.hotjar.com', ],
-    'worker-src': [ 'blob:', '*.nais.io' ],
-    'style-src': [ "'self'", "'unsafe-inline'", 'https://*.nav.no', ],
-    'script-src': [ "'self'",
+    'img-src': [
+        "'self'",
+        'data:',
+        'https://*.nav.no',
+        'https://www.google-analytics.com',
+    ],
+    'font-src': ["'self'", 'data:', 'https://*.psplugin.com'],
+    'frame-src': ["'self'", 'data:', 'https://vars.hotjar.com'],
+    'worker-src': ['blob:', '*.nais.io'],
+    'style-src': ["'self'", "'unsafe-inline'", 'https://*.nav.no'],
+    'script-src': [
+        "'self'",
         "'unsafe-inline'",
         "'unsafe-eval'",
         'https://*.nav.no',
@@ -61,10 +67,12 @@ module.exports = withLess({
         utviklingArkivering: process.env.UTVIKLING_ARKIVERING,
         arkivering: process.env.ARKIVERING,
         spinnsynBackendUrl: process.env.SPINNSYN_BACKEND_URL,
-        spinnsynBackendTokenxClientId: process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
+        spinnsynBackendTokenxClientId:
+            process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
         azureAppClientId: process.env.AZURE_APP_CLIENT_ID,
         azureAppClientSecret: process.env.AZURE_APP_CLIENT_SECRET,
-        azureOpenidConfigTokenEndpoint: process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
+        azureOpenidConfigTokenEndpoint:
+            process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
         azureAppWellKnownUrl: process.env.AZURE_APP_WELL_KNOWN_URL,
         azureAppPreAuthorizedApps: process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
         spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
@@ -75,8 +83,10 @@ module.exports = withLess({
         naisAppImage: process.env.NAIS_APP_IMAGE,
         loginserviceUrl: process.env.LOGINSERVICE_URL,
         loginServiceRedirectUrl: process.env.LOGINSERVICE_REDIRECT_URL,
-        loginserviceIdportenDiscoveryUrl: process.env.LOGINSERVICE_IDPORTEN_DISCOVERY_URL,
-        loginserviceIdportenAudience: process.env.LOGINSERVICE_IDPORTEN_AUDIENCE,
+        loginserviceIdportenDiscoveryUrl:
+            process.env.LOGINSERVICE_IDPORTEN_DISCOVERY_URL,
+        loginserviceIdportenAudience:
+            process.env.LOGINSERVICE_IDPORTEN_AUDIENCE,
         tokenXWellKnownUrl: process.env.TOKEN_X_WELL_KNOWN_URL,
         tokenXPrivateJwk: process.env.TOKEN_X_PRIVATE_JWK,
         tokenXClientId: process.env.TOKEN_X_CLIENT_ID,
@@ -92,6 +102,6 @@ module.exports = withLess({
         amplitudeEnabled: process.env.AMPLITUDE_ENABLED,
         environment: process.env.ENVIRONMENT,
         spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE,
-        arkiverteVedtakUrl: process.env.ARKIVERTE_VEDTAK_URL
+        arkiverteVedtakUrl: process.env.ARKIVERTE_VEDTAK_URL,
     },
 })

@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
-import { getLedetekst,tekst } from '../../../utils/tekster'
+import { getLedetekst, tekst } from '../../../utils/tekster'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
@@ -30,18 +30,22 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const behandlingInfoTekst = () => {
         return (
             <>
-                <Vis hvis={vedtaksDato}
-                    render={() =>
+                <Vis
+                    hvis={vedtaksDato}
+                    render={() => (
                         <>
                             {getLedetekst(tekst('behandling.dato-fattet'), {
-                                '%DATO%': tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate())
+                                '%DATO%': tilLesbarDatoMedArstall(
+                                    dayjs(vedtaksDato).toDate()
+                                ),
                             })}
                         </>
-                    }
+                    )}
                 />
-                {tekst(annullertEllerRevurdert
-                    ? 'behandling.opplysningene.preteritum'
-                    : 'behandling.opplysningene.presens'
+                {tekst(
+                    annullertEllerRevurdert
+                        ? 'behandling.opplysningene.preteritum'
+                        : 'behandling.opplysningene.presens'
                 )}
             </>
         )
@@ -54,7 +58,10 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             </Heading>
             <BodyLong spacing>
                 {behandlingInfoTekst()}
-                <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
+                <LenkeMedAmplitude
+                    url={tekst('behandling.lenke.url')}
+                    tekst={tekst('behandling.lenke')}
+                />
                 {tekst('behandling.se-opplysningene')}
             </BodyLong>
         </div>

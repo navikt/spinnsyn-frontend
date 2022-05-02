@@ -3,13 +3,13 @@ import { TokenSet } from 'openid-client'
 import { getAzureAuthClient } from './azureClient'
 
 interface TokesetAndExp {
-    expiresAt: number,
+    expiresAt: number
     tokenset: TokenSet
 }
 
 type TokensetMap = {
-    [ scope: string ]: TokesetAndExp;
-};
+    [scope: string]: TokesetAndExp
+}
 
 const tokens: TokensetMap = {}
 const drift = 60
@@ -22,8 +22,10 @@ function erIkkeUtlopt(tokenset: TokesetAndExp) {
     return tokenset.expiresAt > now()
 }
 
-export const getAzureAdAccessToken = async(scope: string): Promise<TokenSet> => {
-    const eksisterendeToken = tokens[ scope ]
+export const getAzureAdAccessToken = async (
+    scope: string
+): Promise<TokenSet> => {
+    const eksisterendeToken = tokens[scope]
     if (eksisterendeToken && erIkkeUtlopt(eksisterendeToken)) {
         return eksisterendeToken.tokenset
     }
@@ -39,11 +41,10 @@ export const getAzureAdAccessToken = async(scope: string): Promise<TokenSet> => 
     }
 
     const expiresAt = (tokenSet.expires_in || 0) + now() - drift
-    tokens[ scope ] = {
+    tokens[scope] = {
         tokenset: tokenSet,
-        expiresAt: expiresAt
+        expiresAt: expiresAt,
     }
 
     return tokenSet
 }
-

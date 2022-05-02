@@ -2,21 +2,26 @@ import React, { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
 import useVedtak from '../../query-hooks/useVedtak'
-import { isMockBackend, isOpplaering, isProd, spinnsynFrontendInterne } from '../../utils/environment'
+import {
+    isMockBackend,
+    isOpplaering,
+    isProd,
+    spinnsynFrontendInterne,
+} from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
 import Vedtak, { VedtakProps } from './vedtak'
 
 interface HotjarWindow extends Window {
-    hj: (name: string, value: string) => void;
+    hj: (name: string, value: string) => void
 }
 
 enum HotjarTriggerType {
     SPREF_SURVEY = 'SP_INNSYN',
     SP_SURVEY = 'todo',
     KOMBINASJON_SURVEY = 'todo',
-    HELT_AVVIST = 'todo'
+    HELT_AVVIST = 'todo',
 }
 
 const VedtakSide = ({ vedtak }: VedtakProps) => {
@@ -31,13 +36,13 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
             skjemanavn: 'vedtak',
             brukerutbetaling: brukerutbetaling,
             refusjon: refusjon,
-            flereVedtak: vedtakene?.length !== 1
+            flereVedtak: vedtakene?.length !== 1,
         })
         // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
-        const hotJarWindow = (window as unknown as HotjarWindow)
+        const hotJarWindow = window as unknown as HotjarWindow
         if (isProd() || isOpplaering()) {
             setTimeout(() => {
                 if (typeof hotJarWindow.hj !== 'function') {
@@ -59,12 +64,9 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
         if (!vedtak.lest && !spinnsynFrontendInterne()) {
             merkLest(vedtak.id)
         }
-    }, [ vedtak, merkLest ])
+    }, [vedtak, merkLest])
 
-    return (
-        <Vedtak vedtak={vedtak} />
-    )
+    return <Vedtak vedtak={vedtak} />
 }
 
 export default VedtakSide
-

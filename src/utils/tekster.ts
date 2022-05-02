@@ -21,12 +21,11 @@ const tekster = {
     ...BehandlingTekster,
     ...AvvisteDagerTekster,
     ...SykepengedagerTekster,
-    ...AnnulleringTekster
+    ...AnnulleringTekster,
 }
 
-
 type TekstKeys =
-    keyof typeof BannerTekster
+    | keyof typeof BannerTekster
     | keyof typeof VedtakListeTekster
     | keyof typeof TeaserTekster
     | keyof typeof VedtakTekster
@@ -36,7 +35,7 @@ type TekstKeys =
     | keyof typeof BehandlingTekster
     | keyof typeof AvvisteDagerTekster
     | keyof typeof SykepengedagerTekster
-    | keyof typeof AnnulleringTekster;
+    | keyof typeof AnnulleringTekster
 
 export const tekst = (tekst: TekstKeys): string => {
     const verdi = tekster[tekst]

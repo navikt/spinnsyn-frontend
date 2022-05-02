@@ -6,8 +6,7 @@ export const RedirectTilForsiden = () => {
 
     useEffect(() => {
         router.push('/')
-    }, [ router ])
+    }, [router])
 
     return null
-
 }

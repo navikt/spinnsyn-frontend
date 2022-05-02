@@ -11,24 +11,29 @@ interface DagTabellProps {
 }
 
 const DagTabell = ({ dager }: DagTabellProps) => {
-
     return (
         <Table zebraStripes={true} className="tabell--dag" size="medium">
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell>
-                        <Label spacing as="span" size="small">Dato</Label>
+                        <Label spacing as="span" size="small">
+                            Dato
+                        </Label>
                     </Table.HeaderCell>
                     <Table.HeaderCell>
-                        <Label spacing as="span" size="small">Sum</Label>
+                        <Label spacing as="span" size="small">
+                            Sum
+                        </Label>
                     </Table.HeaderCell>
                     <Table.HeaderCell>
-                        <Label spacing as="span" size="small">Dagtype</Label>
+                        <Label spacing as="span" size="small">
+                            Dagtype
+                        </Label>
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {dager.map((dag, idx) =>
+                {dager.map((dag, idx) => (
                     <Table.Row key={idx}>
                         <Table.DataCell>
                             <BodyShort size="small" as="span">
@@ -37,7 +42,9 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                         </Table.DataCell>
                         <Table.DataCell className="kroner">
                             <BodyShort size="small" as="span">
-                                {(dag.dagtype === 'NavDag' || dag.dagtype === 'NavDagSyk' || dag.dagtype === 'NavDagDelvisSyk')
+                                {dag.dagtype === 'NavDag' ||
+                                dag.dagtype === 'NavDagSyk' ||
+                                dag.dagtype === 'NavDagDelvisSyk'
                                     ? ValutaFormat.format(dag.belop) + ' kr'
                                     : '-'}
                             </BodyShort>
@@ -46,7 +53,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                             <DagLabel dag={dag} skalViseProsent={true} />
                         </Table.DataCell>
                     </Table.Row>
-                )}
+                ))}
             </Table.Body>
         </Table>
     )

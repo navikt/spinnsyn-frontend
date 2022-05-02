@@ -4,7 +4,11 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { UrlObject } from 'url'
 
-import { dittNavUrl, spinnsynFrontendInterne, sykefravaerUrl } from '../../utils/environment'
+import {
+    dittNavUrl,
+    spinnsynFrontendInterne,
+    sykefravaerUrl,
+} from '../../utils/environment'
 import Vis from '../vis'
 import Person from './Person'
 
@@ -12,7 +16,7 @@ const LITEN = 768
 
 const faste: Brodsmule[] = [
     { tittel: 'Ditt NAV', sti: dittNavUrl() },
-    { tittel: 'Ditt sykefravær', sti: sykefravaerUrl() }
+    { tittel: 'Ditt sykefravær', sti: sykefravaerUrl() },
 ]
 
 const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
@@ -21,20 +25,24 @@ const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
 
     const eksternLenke = () => {
         if (spinnsynFrontendInterne()) {
-            return (
-                <span>{tittel}</span>
-            )
+            return <span>{tittel}</span>
         }
-        return <a className="navds-link" href={sti as string}>{tittel}</a>
+        return (
+            <a className="navds-link" href={sti as string}>
+                {tittel}
+            </a>
+        )
     }
 
-    const link = erEkstern
-        ? eksternLenke()
-        : sti
-            ? <Link href={sti} shallow={true}>
-                <a className="navds-link">{tittel}</a>
-            </Link>
-            : <span>{tittel}</span>
+    const link = erEkstern ? (
+        eksternLenke()
+    ) : sti ? (
+        <Link href={sti} shallow={true}>
+            <a className="navds-link">{tittel}</a>
+        </Link>
+    ) : (
+        <span>{tittel}</span>
+    )
 
     if (!erKlikkbar) {
         return (
@@ -44,9 +52,7 @@ const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
             </li>
         )
     } else if (erKlikkbar) {
-        return (
-            <li className="smule">{link}</li>
-        )
+        return <li className="smule">{link}</li>
     }
     return (
         <li className="smule">
@@ -56,12 +62,12 @@ const BrodsmuleBit = ({ sti, tittel }: Brodsmule) => {
 }
 
 interface BrodsmulerProps {
-    brodsmuler: Brodsmule[];
+    brodsmuler: Brodsmule[]
 }
 
 const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
-    const [ synlige, setSynlige ] = useState<Brodsmule[]>([])
-    const [ skjerm, setSkjerm ] = useState<number>()
+    const [synlige, setSynlige] = useState<Brodsmule[]>([])
+    const [skjerm, setSkjerm] = useState<number>()
     const smulesti = useRef<HTMLElement>(null)
 
     brodsmuler = faste.concat(brodsmuler)
@@ -74,13 +80,15 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         window.addEventListener('resize', () => {
             setSkjerm(window.innerWidth)
         })
-        setSynlige(skjerm! <= LITEN ? [ brodsmuler[brodsmuler.length - 1] ] : brodsmuler)
+        setSynlige(
+            skjerm! <= LITEN ? [brodsmuler[brodsmuler.length - 1]] : brodsmuler
+        )
         // eslint-disable-next-line
-    }, [ skjerm ])
+    }, [skjerm])
 
     const toggleSynlige = () => {
         if (synlige.length === brodsmuler.length) {
-            setSynlige([ brodsmuler[brodsmuler.length - 1] ])
+            setSynlige([brodsmuler[brodsmuler.length - 1]])
             smulesti.current!.classList.remove('apen')
         } else {
             setSynlige(brodsmuler)
@@ -93,28 +101,36 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
             <div className="limit">
                 <Person />
                 <BodyLong as="ul" spacing className="brodsmuler__smuler">
-                    <Vis hvis={skjerm! <= LITEN}
-                        render={() =>
+                    <Vis
+                        hvis={skjerm! <= LITEN}
+                        render={() => (
                             <li className="smule">
-                                <button className="js-toggle"
+                                <button
+                                    className="js-toggle"
                                     aria-label={
                                         synlige.length === brodsmuler.length
                                             ? 'Vis redusert brødsmulesti'
-                                            : 'Vis hele brødsmulestien'}
+                                            : 'Vis hele brødsmulestien'
+                                    }
                                     onClick={toggleSynlige}
                                 >
                                     ...
                                 </button>
                             </li>
-                        }
+                        )}
                     />
 
                     {synlige.map((smule, index) => {
                         return (
-                            <BrodsmuleBit key={index}
+                            <BrodsmuleBit
+                                key={index}
                                 sti={smule.sti}
                                 tittel={
-                                    skjerm! <= LITEN && smule.mobilTittel && !smulesti.current!.classList.contains('apen')
+                                    skjerm! <= LITEN &&
+                                    smule.mobilTittel &&
+                                    !smulesti.current!.classList.contains(
+                                        'apen'
+                                    )
                                         ? smule.mobilTittel
                                         : smule.tittel
                                 }
@@ -127,7 +143,8 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                     aria-label={
                         synlige.length === brodsmuler.length
                             ? 'Vis redusert brødsmulesti'
-                            : 'Vis hele brødsmulestien'}
+                            : 'Vis hele brødsmulestien'
+                    }
                     className="js-toggle"
                     onClick={toggleSynlige}
                 >
@@ -141,7 +158,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
 export default Brodsmuler
 
 export interface Brodsmule {
-    sti?: string | UrlObject;
+    sti?: string | UrlObject
     tittel: string
     mobilTittel?: string
 }

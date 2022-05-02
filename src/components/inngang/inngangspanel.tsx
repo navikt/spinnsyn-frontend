@@ -8,8 +8,8 @@ import { logEvent } from '../amplitude/amplitude'
 import Vis from '../vis'
 
 interface InngangsIkonProps {
-    ikon: string;
-    ikonHover?: string;
+    ikon: string
+    ikonHover?: string
 }
 
 export const InngangsIkon = ({ ikon, ikonHover }: InngangsIkonProps) => {
@@ -18,51 +18,56 @@ export const InngangsIkon = ({ ikon, ikonHover }: InngangsIkonProps) => {
             <span className="inngangspanel__ikon inngangspanel__ikon--normal">
                 <img alt="" src={ikon} />
             </span>
-            <Vis hvis={ikonHover !== undefined}
-                render={() =>
+            <Vis
+                hvis={ikonHover !== undefined}
+                render={() => (
                     <span className="inngangspanel__ikon inngangspanel__ikon--hover">
                         <img alt="" src={ikonHover || ikon} />
                     </span>
-                }
+                )}
             />
         </>
     )
 }
 
 interface InngangsProps {
-    vedtak: RSVedtakWrapper;
-    children: React.ReactNode;
+    vedtak: RSVedtakWrapper
+    children: React.ReactNode
 }
 
-export const Inngangspanel = ({ vedtak, children, }: InngangsProps) => {
+export const Inngangspanel = ({ vedtak, children }: InngangsProps) => {
     const router = useRouter()
 
     const query: NodeJS.Dict<string | string[]> = {}
 
     for (const key in router.query) {
-        query[ key ] = router.query[ key ]
+        query[key] = router.query[key]
     }
-    query[ 'id' ] = vedtak.id
+    query['id'] = vedtak.id
 
     return (
         <Link href={{ query }} shallow={true}>
-            <a className="inngangspanel" onClick={() =>
-                logEvent('navigere', {
-                    destinasjon: 'vedtak',
-                    skjemanavn: 'vedtak-listevisning',
-                    tidligereLest: vedtak.lest,
-                    revurdert: vedtak.revurdert,
-                    annullert: vedtak.annullert
-                })
-
-            }>{children}</a>
+            <a
+                className="inngangspanel"
+                onClick={() =>
+                    logEvent('navigere', {
+                        destinasjon: 'vedtak',
+                        skjemanavn: 'vedtak-listevisning',
+                        tidligereLest: vedtak.lest,
+                        revurdert: vedtak.revurdert,
+                        annullert: vedtak.annullert,
+                    })
+                }
+            >
+                {children}
+            </a>
         </Link>
     )
 }
 
 interface InngangsHeaderProps {
-    meta: string;
-    tittel: string;
+    meta: string
+    tittel: string
 }
 
 export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {

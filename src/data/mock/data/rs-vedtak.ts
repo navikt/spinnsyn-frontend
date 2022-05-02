@@ -2,562 +2,561 @@ import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { jsonDeepCopy } from '../../../utils/json-deep-copy'
 
 export const vedtakMedDetMeste: RSVedtakWrapper = {
-    'id': '4e044d03-2dfe-45e9-a904-77777777',
-    'lest': false,
-    'vedtak': {
-        'organisasjonsnummer': '123456789',
-        'fom': '2021-10-04',
-        'tom': '2021-10-23',
-        'dokumenter': [],
-        'inntekt': 74675,
-        'vedtakFattetTidspunkt': '2021-10-23',
-        'sykepengegrunnlag': 638394,
-        'utbetaling': {
-            'organisasjonsnummer': '123456789',
-            'utbetalingId': '4f649298-b308-4057-9654-abcd123',
-            'forbrukteSykedager': 4,
-            'gjenståendeSykedager': 244,
-            'automatiskBehandling': true,
-            'foreløpigBeregnetSluttPåSykepenger': '2022-09-30',
+    id: '4e044d03-2dfe-45e9-a904-77777777',
+    lest: false,
+    vedtak: {
+        organisasjonsnummer: '123456789',
+        fom: '2021-10-04',
+        tom: '2021-10-23',
+        dokumenter: [],
+        inntekt: 74675,
+        vedtakFattetTidspunkt: '2021-10-23',
+        sykepengegrunnlag: 638394,
+        utbetaling: {
+            organisasjonsnummer: '123456789',
+            utbetalingId: '4f649298-b308-4057-9654-abcd123',
+            forbrukteSykedager: 4,
+            gjenståendeSykedager: 244,
+            automatiskBehandling: true,
+            foreløpigBeregnetSluttPåSykepenger: '2022-09-30',
         },
-        'grunnlagForSykepengegrunnlag': 1091881.6,
-        'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
+        grunnlagForSykepengegrunnlag: 1091881.6,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
             '123456789': 896100,
-            '987654321': 195781.6
+            '987654321': 195781.6,
         },
-        'begrensning': 'ER_6G_BEGRENSET'
+        begrensning: 'ER_6G_BEGRENSET',
     },
-    'opprettet': '2021-11-18',
-    'orgnavn': 'POSTEN NORGE AS, BÆRUM',
-    'andreArbeidsgivere': {
-        'THE MINISTRY OF MAGIC AS': 195781.6
+    opprettet: '2021-11-18',
+    orgnavn: 'POSTEN NORGE AS, BÆRUM',
+    andreArbeidsgivere: {
+        'THE MINISTRY OF MAGIC AS': 195781.6,
     },
-    'annullert': false,
-    'revurdert': false,
-    'dagerArbeidsgiver': [
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
         {
-            'dato': '2021-10-04',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-04',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-05',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-05',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-06',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-06',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-07',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-07',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-08',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-08',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-09',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-09',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-10',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-10',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-11',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-11',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-12',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-12',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-13',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-13',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-14',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-14',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-15',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-15',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-16',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-16',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-17',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-17',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-18',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-18',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-19',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-19',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-20',
-            'belop': 1007,
-            'grad': 50,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-20',
+            belop: 1007,
+            grad: 50,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-21',
-            'belop': 1007,
-            'grad': 50,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-21',
+            belop: 1007,
+            grad: 50,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-22',
-            'belop': 1007,
-            'grad': 50,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-22',
+            belop: 1007,
+            grad: 50,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-23',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'AvvistDag',
-            'begrunnelser': [ 'Over70' ]
-        }
+            dato: '2021-10-23',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: ['Over70'],
+        },
     ],
-    'dagerPerson': [
+    dagerPerson: [
         {
-            'dato': '2021-10-04',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-04',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-05',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-05',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-06',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-06',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-07',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-07',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-08',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-08',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-09',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-09',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-10',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-10',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-11',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-11',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-12',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-12',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-13',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-13',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-14',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-14',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-15',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-15',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-16',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-16',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-17',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-17',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-18',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-18',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-19',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
-        }
+            dato: '2021-10-19',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
+        },
     ],
-    'sykepengebelopArbeidsgiver': 3021,
-    'sykepengebelopPerson': 0
+    sykepengebelopArbeidsgiver: 3021,
+    sykepengebelopPerson: 0,
 }
 
-
 export const kunAgPeriode: RSVedtakWrapper = {
-    'id': '4e044d03-2dfe-45e9-a904-77777723',
-    'lest': false,
-    'vedtak': {
-        'organisasjonsnummer': '123456789',
-        'fom': '2021-10-04',
-        'tom': '2021-10-23',
-        'dokumenter': [],
-        'inntekt': 74675,
-        'vedtakFattetTidspunkt': '2021-10-24',
-        'sykepengegrunnlag': 638394,
-        'utbetaling': {
-            'organisasjonsnummer': '123456789',
-            'utbetalingId': '4f649298-b308-4057-9654-abcd123',
-            'forbrukteSykedager': 4,
-            'gjenståendeSykedager': 244,
-            'automatiskBehandling': true,
-            'foreløpigBeregnetSluttPåSykepenger': '2022-09-30',
+    id: '4e044d03-2dfe-45e9-a904-77777723',
+    lest: false,
+    vedtak: {
+        organisasjonsnummer: '123456789',
+        fom: '2021-10-04',
+        tom: '2021-10-23',
+        dokumenter: [],
+        inntekt: 74675,
+        vedtakFattetTidspunkt: '2021-10-24',
+        sykepengegrunnlag: 638394,
+        utbetaling: {
+            organisasjonsnummer: '123456789',
+            utbetalingId: '4f649298-b308-4057-9654-abcd123',
+            forbrukteSykedager: 4,
+            gjenståendeSykedager: 244,
+            automatiskBehandling: true,
+            foreløpigBeregnetSluttPåSykepenger: '2022-09-30',
         },
-        'grunnlagForSykepengegrunnlag': 1091881.6,
-        'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
+        grunnlagForSykepengegrunnlag: 1091881.6,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
             '123456789': 896100,
-            '987654321': 195781.6
+            '987654321': 195781.6,
         },
-        'begrensning': 'ER_6G_BEGRENSET'
+        begrensning: 'ER_6G_BEGRENSET',
     },
-    'opprettet': '2021-11-18',
-    'orgnavn': 'POSTEN NORGE AS, BÆRUM',
-    'andreArbeidsgivere': {
-        'THE MINISTRY OF MAGIC AS': 195781.6
+    opprettet: '2021-11-18',
+    orgnavn: 'POSTEN NORGE AS, BÆRUM',
+    andreArbeidsgivere: {
+        'THE MINISTRY OF MAGIC AS': 195781.6,
     },
-    'annullert': false,
-    'revurdert': false,
-    'dagerArbeidsgiver': [
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
         {
-            'dato': '2021-10-04',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-04',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-05',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-05',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-06',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-06',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-07',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-07',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-08',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-08',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-09',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-09',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-10',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-10',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-11',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-11',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-12',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-12',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-13',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-13',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-14',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-14',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-15',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-15',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-16',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-16',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-17',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-17',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-18',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-18',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-19',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-19',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
     ],
-    'dagerPerson': [
+    dagerPerson: [
         {
-            'dato': '2021-10-04',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-04',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-05',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-05',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-06',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-06',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-07',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-07',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-08',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-08',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-09',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-09',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-10',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-10',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-11',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-11',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-12',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-12',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-13',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-13',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-14',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-14',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-15',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-15',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-16',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-16',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-17',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-17',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-18',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-10-18',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-19',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
-        }
+            dato: '2021-10-19',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
+        },
     ],
-    'sykepengebelopArbeidsgiver': 0,
-    'sykepengebelopPerson': 0
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopPerson: 0,
 }
 
 export const vedtakMed40Grad: RSVedtakWrapper = {
@@ -573,12 +572,12 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
         dokumenter: [
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
-                type: 'Sykmelding'
+                type: 'Sykmelding',
             },
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
-                type: 'Søknad'
-            }
+                type: 'Søknad',
+            },
         ],
         inntekt: 48513.47,
         vedtakFattetTidspunkt: '2021-02-22',
@@ -592,7 +591,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
-        }
+        },
     },
     opprettet: '2021-05-06',
     annullert: false,
@@ -603,99 +602,99 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-09',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-10',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-11',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-12',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-13',
             belop: 0,
             grad: 40.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-14',
             belop: 0,
             grad: 40.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-15',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-16',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-17',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-18',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-19',
             belop: 896,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-20',
             belop: 0,
             grad: 40.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-21',
             belop: 0,
             grad: 40.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
-        }
+            begrunnelser: [],
+        },
     ],
     sykepengebelopArbeidsgiver: 8960,
     dagerPerson: [],
@@ -714,12 +713,12 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
         dokumenter: [
             {
                 dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6',
-                type: 'Sykmelding'
+                type: 'Sykmelding',
             },
             {
                 dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6',
-                type: 'Søknad'
-            }
+                type: 'Søknad',
+            },
         ],
         inntekt: 37500,
         vedtakFattetTidspunkt: '2021-04-12',
@@ -729,7 +728,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             forbrukteSykedager: 15,
             gjenståendeSykedager: 180,
             automatiskBehandling: false,
-        }
+        },
     },
     opprettet: '2021-05-03',
     annullert: false,
@@ -740,140 +739,140 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-23',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-24',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-25',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-26',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-26',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-27',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-28',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-29',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-30',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-03-31',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-01',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-02',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-03',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-04',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-05',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-06',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-07',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-08',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-09',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
     ],
     dagerPerson: [],
@@ -897,8 +896,14 @@ export const vedtakAnnullert: RSVedtakWrapper = {
         fom: '2021-04-27',
         tom: '2021-05-04',
         dokumenter: [
-            { dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f', type: 'Sykmelding' },
-            { dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00', type: 'Søknad' }
+            {
+                dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f',
+                type: 'Sykmelding',
+            },
+            {
+                dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
+                type: 'Søknad',
+            },
         ],
         inntekt: 37500.0,
         vedtakFattetTidspunkt: '2021-05-04',
@@ -908,7 +913,7 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             forbrukteSykedager: 9,
             gjenståendeSykedager: 186,
             automatiskBehandling: true,
-        }
+        },
     },
     opprettet: '2021-05-05',
     annullert: true,
@@ -919,63 +924,63 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-28',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-29',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-30',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-01',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-02',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-03',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-04',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-05',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
     ],
     dagerPerson: [],
@@ -994,8 +999,14 @@ export const vedtakRevurdert: RSVedtakWrapper = {
         fom: '2021-04-26',
         tom: '2021-05-03',
         dokumenter: [
-            { dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f', type: 'Sykmelding' },
-            { dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6', type: 'Søknad' }
+            {
+                dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f',
+                type: 'Sykmelding',
+            },
+            {
+                dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6',
+                type: 'Søknad',
+            },
         ],
         inntekt: 37500.0,
         vedtakFattetTidspunkt: '2021-05-06',
@@ -1005,7 +1016,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             gjenståendeSykedager: 186,
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
-        }
+        },
     },
     opprettet: '2021-05-03',
     annullert: false,
@@ -1016,56 +1027,56 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-27',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-28',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-29',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-30',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-01',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-02',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-03',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
     ],
     dagerPerson: [],
@@ -1084,8 +1095,14 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
         fom: '2021-04-26',
         tom: '2021-05-03',
         dokumenter: [
-            { dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f', type: 'Sykmelding' },
-            { dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6', type: 'Søknad' }
+            {
+                dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f',
+                type: 'Sykmelding',
+            },
+            {
+                dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6',
+                type: 'Søknad',
+            },
         ],
         inntekt: 37500.0,
         vedtakFattetTidspunkt: '2021-05-06',
@@ -1095,7 +1112,7 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
             gjenståendeSykedager: 186,
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
-        }
+        },
     },
     opprettet: '2021-05-03',
     annullert: false,
@@ -1106,56 +1123,56 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-27',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-28',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-29',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-30',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-01',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-02',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-03',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
     ],
     dagerPerson: [],
@@ -1174,8 +1191,14 @@ export const vedtakRevurdertKombinasjon: RSVedtakWrapper = {
         fom: '2021-04-26',
         tom: '2021-05-03',
         dokumenter: [
-            { dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f', type: 'Sykmelding' },
-            { dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6', type: 'Søknad' }
+            {
+                dokumentId: 'f1c85505-e8db-4f6f-b049-ccd0cb051b7f',
+                type: 'Sykmelding',
+            },
+            {
+                dokumentId: '4391db7f-3046-4b71-a7b9-9ab5889cdad6',
+                type: 'Søknad',
+            },
         ],
         inntekt: 37500.0,
         vedtakFattetTidspunkt: '2021-05-05',
@@ -1185,7 +1208,7 @@ export const vedtakRevurdertKombinasjon: RSVedtakWrapper = {
             gjenståendeSykedager: 186,
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
-        }
+        },
     },
     opprettet: '2021-05-03',
     annullert: false,
@@ -1196,56 +1219,56 @@ export const vedtakRevurdertKombinasjon: RSVedtakWrapper = {
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-27',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-28',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-29',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-04-30',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-01',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-02',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-05-03',
             belop: 1404,
             grad: 100,
             dagtype: 'NavDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
     ],
     dagerPerson: [],
@@ -1266,12 +1289,12 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
         dokumenter: [
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
-                type: 'Sykmelding'
+                type: 'Sykmelding',
             },
             {
                 dokumentId: 'dsfgew4fq43',
-                type: 'Søknad'
-            }
+                type: 'Søknad',
+            },
         ],
         inntekt: 30000,
         sykepengegrunnlag: 370000,
@@ -1282,7 +1305,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
-        }
+        },
     },
     opprettet: '2021-05-06',
     annullert: false,
@@ -1293,232 +1316,232 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             belop: 0,
             grad: 0,
             dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-01-26',
             belop: 0,
             grad: 0,
             dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-01-27',
             belop: 0,
             grad: 0,
             dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-01-28',
             belop: 0,
             grad: 0,
             dagtype: 'Arbeidsdag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-01-29',
             belop: 0,
             grad: 0,
             dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-01-30',
             belop: 0,
             grad: 0,
             dagtype: 'Arbeidsdag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-01-31',
             belop: 0,
             grad: 0,
             dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-01',
             belop: 1000,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-02',
             belop: 1000,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-03',
             belop: 1000,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-04',
             belop: 1000,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-05',
             belop: 1000,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-06',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-07',
             belop: 0,
             grad: 0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-08',
             belop: 400,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-09',
             belop: 400,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-10',
             belop: 400,
             grad: 40.0,
             dagtype: 'NavDagDelvisSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-11',
             belop: 0,
             grad: 0,
             dagtype: 'Fridag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-12',
             belop: 0,
             grad: 0,
             dagtype: 'Feriedag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-13',
             belop: 0,
             grad: 0,
             dagtype: 'ForeldetDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-14',
             belop: 0,
             grad: 0,
             dagtype: 'UkjentDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-15',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'SykepengedagerOppbrukt' ]
+            begrunnelser: ['SykepengedagerOppbrukt'],
         },
         {
             dato: '2021-02-16',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'MinimumInntekt' ]
+            begrunnelser: ['MinimumInntekt'],
         },
         {
             dato: '2021-02-17',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'EgenmeldingUtenforArbeidsgiverperiode' ]
+            begrunnelser: ['EgenmeldingUtenforArbeidsgiverperiode'],
         },
         {
             dato: '2021-02-18',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'MinimumSykdomsgrad' ]
+            begrunnelser: ['MinimumSykdomsgrad'],
         },
         {
             dato: '2021-02-19',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'ManglerOpptjening' ]
+            begrunnelser: ['ManglerOpptjening'],
         },
         {
             dato: '2021-02-20',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'ManglerMedlemskap' ]
+            begrunnelser: ['ManglerMedlemskap'],
         },
         {
             dato: '2021-02-21',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'EtterDødsdato' ]
+            begrunnelser: ['EtterDødsdato'],
         },
         {
             dato: '2021-02-22',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'UKJENT' ]
+            begrunnelser: ['UKJENT'],
         },
         {
             dato: '2021-02-23',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'Over70' ]
+            begrunnelser: ['Over70'],
         },
         {
             dato: '2021-02-24',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'MinimumInntektOver67' ]
+            begrunnelser: ['MinimumInntektOver67'],
         },
         {
             dato: '2021-02-25',
             belop: 0,
             grad: 0,
             dagtype: 'AvvistDag',
-            begrunnelser: [ 'SykepengedagerOppbruktOver67' ]
+            begrunnelser: ['SykepengedagerOppbruktOver67'],
         },
         {
             dato: '2021-02-26',
             belop: 0,
             grad: 0,
             dagtype: 'Permisjonsdag',
-            begrunnelser: []
-        }
+            begrunnelser: [],
+        },
     ],
     dagerPerson: [],
     sykepengebelopPerson: 0,
@@ -1526,471 +1549,469 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
 }
 
 export const avvistVedtak: RSVedtakWrapper = {
-    'id': '55d8b14f-e1a6-45a8-ac64-b7af1e845b06',
-    'lest': true,
-    'lestDato': '2021-08-30T13:05:17.337442+02:00',
+    id: '55d8b14f-e1a6-45a8-ac64-b7af1e845b06',
+    lest: true,
+    lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
-    'vedtak': {
-        'organisasjonsnummer': '999999999',
-        'fom': '2021-08-01',
-        'tom': '2021-08-20',
-        'dokumenter': [
+    vedtak: {
+        organisasjonsnummer: '999999999',
+        fom: '2021-08-01',
+        tom: '2021-08-20',
+        dokumenter: [
             {
-                'dokumentId': '1aaaf28e-af69-4c9d-8e91-d14a3906361f',
-                'type': 'Sykmelding'
+                dokumentId: '1aaaf28e-af69-4c9d-8e91-d14a3906361f',
+                type: 'Sykmelding',
             },
             {
-                'dokumentId': '6b1e5fff-3d99-48b9-8ddf-f121da4d88af',
-                'type': 'Inntektsmelding'
-            }
+                dokumentId: '6b1e5fff-3d99-48b9-8ddf-f121da4d88af',
+                type: 'Inntektsmelding',
+            },
         ],
-        'inntekt': 20000,
-        'sykepengegrunnlag': 240000,
-        'vedtakFattetTidspunkt': '2021-08-21',
-        'utbetaling': {
-            'organisasjonsnummer': '896929119',
-            'utbetalingId': 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
-            'forbrukteSykedager': 0,
-            'gjenståendeSykedager': 248,
-            'automatiskBehandling': false,
-
-        }
+        inntekt: 20000,
+        sykepengegrunnlag: 240000,
+        vedtakFattetTidspunkt: '2021-08-21',
+        utbetaling: {
+            organisasjonsnummer: '896929119',
+            utbetalingId: 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
+            forbrukteSykedager: 0,
+            gjenståendeSykedager: 248,
+            automatiskBehandling: false,
+        },
     },
-    'opprettet': '2021-08-30',
-    'annullert': false,
-    'revurdert': false,
-    'dagerArbeidsgiver': [
+    opprettet: '2021-08-30',
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
         {
-            'dato': '2021-08-01',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-01',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-02',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-02',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-03',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-03',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-04',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-04',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-05',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-05',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-06',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-06',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-07',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-07',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-08',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-08',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-09',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-09',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-10',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-10',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-11',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-11',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-12',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-12',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-13',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-13',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-14',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-14',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-15',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-15',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-16',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-16',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-17',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'Fridag',
-            'begrunnelser': []
+            dato: '2021-08-17',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-18',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'Fridag',
-            'begrunnelser': []
+            dato: '2021-08-18',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-19',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'Fridag',
-            'begrunnelser': []
+            dato: '2021-08-19',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-20',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'AvvistDag',
-            'begrunnelser': [ 'EtterDødsdato' ]
-        }
+            dato: '2021-08-20',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: ['EtterDødsdato'],
+        },
     ],
     dagerPerson: [],
     sykepengebelopPerson: 0,
-    'sykepengebelopArbeidsgiver': 0
+    sykepengebelopArbeidsgiver: 0,
 }
 
 export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
-    'id': '55d8b14f-e1a6-45a8-ac64-b7af1e845b68',
-    'lest': true,
-    'lestDato': '2021-08-30T13:05:17.337442+02:00',
+    id: '55d8b14f-e1a6-45a8-ac64-b7af1e845b68',
+    lest: true,
+    lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
-    'vedtak': {
-        'organisasjonsnummer': '999999999',
-        'fom': '2021-08-01',
-        'tom': '2021-08-21',
-        'dokumenter': [
+    vedtak: {
+        organisasjonsnummer: '999999999',
+        fom: '2021-08-01',
+        tom: '2021-08-21',
+        dokumenter: [
             {
-                'dokumentId': '1aaaf28e-af69-4c9d-8e91-d14a3906361f',
-                'type': 'Sykmelding'
+                dokumentId: '1aaaf28e-af69-4c9d-8e91-d14a3906361f',
+                type: 'Sykmelding',
             },
             {
-                'dokumentId': '6b1e5fff-3d99-48b9-8ddf-f121da4d88af',
-                'type': 'Inntektsmelding'
-            }
+                dokumentId: '6b1e5fff-3d99-48b9-8ddf-f121da4d88af',
+                type: 'Inntektsmelding',
+            },
         ],
-        'inntekt': 20000,
-        'sykepengegrunnlag': 240000,
-        'vedtakFattetTidspunkt': '2021-08-22',
-        'utbetaling': {
-            'organisasjonsnummer': '896929119',
-            'utbetalingId': 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
-            'forbrukteSykedager': 0,
-            'gjenståendeSykedager': 248,
-            'automatiskBehandling': false,
-
-        }
+        inntekt: 20000,
+        sykepengegrunnlag: 240000,
+        vedtakFattetTidspunkt: '2021-08-22',
+        utbetaling: {
+            organisasjonsnummer: '896929119',
+            utbetalingId: 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
+            forbrukteSykedager: 0,
+            gjenståendeSykedager: 248,
+            automatiskBehandling: false,
+        },
     },
-    'opprettet': '2021-08-30',
-    'annullert': false,
-    'revurdert': false,
-    'dagerArbeidsgiver': [
+    opprettet: '2021-08-30',
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
         {
-            'dato': '2021-08-01',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-01',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-02',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-02',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-03',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-03',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-04',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-04',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-05',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-05',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-06',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-06',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-07',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-07',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-08',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-08',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-09',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-09',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-10',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-10',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-11',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-11',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-12',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-12',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-13',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-13',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-14',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-14',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-15',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-15',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-16',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'ArbeidsgiverperiodeDag',
-            'begrunnelser': []
+            dato: '2021-08-16',
+            belop: 0,
+            grad: 0,
+            dagtype: 'ArbeidsgiverperiodeDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-17',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'Fridag',
-            'begrunnelser': []
+            dato: '2021-08-17',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-18',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'Fridag',
-            'begrunnelser': []
+            dato: '2021-08-18',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-19',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'Fridag',
-            'begrunnelser': []
+            dato: '2021-08-19',
+            belop: 0,
+            grad: 0,
+            dagtype: 'Fridag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-08-20',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'AvvistDag',
-            'begrunnelser': [ 'MinimumInntekt' ]
+            dato: '2021-08-20',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: ['MinimumInntekt'],
         },
         {
-            'dato': '2021-08-21',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'AvvistDag',
-            'begrunnelser': [ 'EtterDødsdato' ]
-        }
+            dato: '2021-08-21',
+            belop: 0,
+            grad: 0,
+            dagtype: 'AvvistDag',
+            begrunnelser: ['EtterDødsdato'],
+        },
     ],
     dagerPerson: [],
     sykepengebelopPerson: 0,
-    'sykepengebelopArbeidsgiver': 0
+    sykepengebelopArbeidsgiver: 0,
 }
 
 export const vedtakRedusertTil6G: RSVedtakWrapper = {
-    'id': '1ae568bd-71ff-4e31-b73f-c0c4ed85e01b',
-    'lest': true,
-    'lestDato': '2020-11-02T10:17:38.197496+01:00',
-    'vedtak': {
-        'organisasjonsnummer': '12345725',
-        'fom': '2021-10-18',
-        'tom': '2021-10-24',
-        'dokumenter': [
+    id: '1ae568bd-71ff-4e31-b73f-c0c4ed85e01b',
+    lest: true,
+    lestDato: '2020-11-02T10:17:38.197496+01:00',
+    vedtak: {
+        organisasjonsnummer: '12345725',
+        fom: '2021-10-18',
+        tom: '2021-10-24',
+        dokumenter: [
             {
-                'dokumentId': 'TODO',
-                'type': 'Søknad'
+                dokumentId: 'TODO',
+                type: 'Søknad',
             },
             {
-                'dokumentId': 'TODO',
-                'type': 'Sykmelding'
+                dokumentId: 'TODO',
+                type: 'Sykmelding',
             },
             {
-                'dokumentId': 'TODO',
-                'type': 'Inntektsmelding'
-            }
+                dokumentId: 'TODO',
+                type: 'Inntektsmelding',
+            },
         ],
-        'inntekt': 67033,
-        'sykepengegrunnlag': 638394,
-        'vedtakFattetTidspunkt': '2021-02-24',
-        'utbetaling': {
-            'organisasjonsnummer': '12345725',
-            'utbetalingId': '26dc7822-351d-469d-934f-a5e9e50c7ca6',
-            'forbrukteSykedager': 10,
-            'gjenståendeSykedager': 238,
-            'automatiskBehandling': true
+        inntekt: 67033,
+        sykepengegrunnlag: 638394,
+        vedtakFattetTidspunkt: '2021-02-24',
+        utbetaling: {
+            organisasjonsnummer: '12345725',
+            utbetalingId: '26dc7822-351d-469d-934f-a5e9e50c7ca6',
+            forbrukteSykedager: 10,
+            gjenståendeSykedager: 238,
+            automatiskBehandling: true,
         },
-        'grunnlagForSykepengegrunnlag': 804396,
-        'grunnlagForSykepengegrunnlagPerArbeidsgiver': {
-            '12345725': 804396
+        grunnlagForSykepengegrunnlag: 804396,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
+            '12345725': 804396,
         },
-        'begrensning': 'ER_6G_BEGRENSET'
+        begrensning: 'ER_6G_BEGRENSET',
     },
-    'opprettet': '2021-11-04',
-    'orgnavn': 'JOBB AS',
-    'andreArbeidsgivere': {},
-    'annullert': false,
-    'revurdert': false,
-    'dagerArbeidsgiver': [
+    opprettet: '2021-11-04',
+    orgnavn: 'JOBB AS',
+    andreArbeidsgivere: {},
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
         {
-            'dato': '2021-10-18',
-            'belop': 1964,
-            'grad': 80,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-18',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-19',
-            'belop': 1964,
-            'grad': 80,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-19',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-20',
-            'belop': 1964,
-            'grad': 80,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-20',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-21',
-            'belop': 1964,
-            'grad': 80,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-21',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-22',
-            'belop': 1964,
-            'grad': 80,
-            'dagtype': 'NavDagDelvisSyk',
-            'begrunnelser': []
+            dato: '2021-10-22',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-23',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'NavHelgDag',
-            'begrunnelser': []
+            dato: '2021-10-23',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: [],
         },
         {
-            'dato': '2021-10-24',
-            'belop': 0,
-            'grad': 0,
-            'dagtype': 'NavHelgDag',
-            'begrunnelser': []
-        }
+            dato: '2021-10-24',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: [],
+        },
     ],
-    'sykepengebelopArbeidsgiver': 9820,
+    sykepengebelopArbeidsgiver: 9820,
     dagerPerson: [],
     sykepengebelopPerson: 0,
 }
@@ -2007,12 +2028,12 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
         dokumenter: [
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
-                type: 'Sykmelding'
+                type: 'Sykmelding',
             },
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
-                type: 'Søknad'
-            }
+                type: 'Søknad',
+            },
         ],
         inntekt: 55000,
         sykepengegrunnlag: 638394,
@@ -2027,7 +2048,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
             forbrukteSykedager: 12,
             gjenståendeSykedager: 248,
             automatiskBehandling: true,
-        }
+        },
     },
     opprettet: '2021-05-06',
     annullert: false,
@@ -2038,15 +2059,15 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-05',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
-        }
+            begrunnelser: [],
+        },
     ],
     dagerPerson: [
         {
@@ -2054,99 +2075,99 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-09',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-10',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-11',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-12',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-13',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-14',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-15',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-16',
             belop: 2455,
             grad: 100,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-17',
             belop: 2455,
             grad: 100,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-18',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-19',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-20',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-21',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
-        }
+            begrunnelser: [],
+        },
     ],
     sykepengebelopArbeidsgiver: 2455 * 2,
     sykepengebelopPerson: 24550,
@@ -2164,12 +2185,12 @@ export const kunDirekte: RSVedtakWrapper = {
         dokumenter: [
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
-                type: 'Sykmelding'
+                type: 'Sykmelding',
             },
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
-                type: 'Søknad'
-            }
+                type: 'Søknad',
+            },
         ],
         inntekt: 55000,
         sykepengegrunnlag: 638394,
@@ -2183,8 +2204,8 @@ export const kunDirekte: RSVedtakWrapper = {
             utbetalingId: '2b60ba06-7ddb-45e6-991b-3ca944f0e979',
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
-            automatiskBehandling: true
-        }
+            automatiskBehandling: true,
+        },
     },
     opprettet: '2021-05-06',
     annullert: false,
@@ -2196,101 +2217,100 @@ export const kunDirekte: RSVedtakWrapper = {
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-09',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-10',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-11',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-12',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-13',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-14',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-15',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-16',
             belop: 2455,
             grad: 100,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-17',
             belop: 2455,
             grad: 100,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-18',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-19',
             belop: 2455,
             grad: 100.0,
             dagtype: 'NavDagSyk',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-20',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
+            begrunnelser: [],
         },
         {
             dato: '2021-02-21',
             belop: 0,
             grad: 100.0,
             dagtype: 'NavHelgDag',
-            begrunnelser: []
-        }
+            begrunnelser: [],
+        },
     ],
     sykepengebelopArbeidsgiver: 0,
     sykepengebelopPerson: 24550,
 }
-
