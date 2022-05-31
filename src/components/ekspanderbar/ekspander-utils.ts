@@ -12,7 +12,7 @@ export interface EkspanderProps {
 
 const lukk = (ekspanderbar: any, tittel: string) => {
     if (window) {
-        logEvent('panel lukket', { component: tittel })
+        logEvent('accordion lukket', { component: tittel })
         midtstill(ekspanderbar)
         ekspanderbar.current?.focus()
     }
@@ -43,7 +43,7 @@ export const ekspanderbarKlikk = (
 ) => {
     if (!erApen) {
         if (window) {
-            logEvent('panel åpnet', { component: amplitudeText })
+            logEvent('accordion åpnet', { component: amplitudeText })
             midtstill(ekspanderbar)
             ekspanderbar.current?.focus()
             ekspanderbar.current?.classList.add('delayed--open')
