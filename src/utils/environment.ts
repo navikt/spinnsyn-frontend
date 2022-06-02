@@ -2,20 +2,8 @@ import getConfig from 'next/config'
 
 const { publicRuntimeConfig, serverRuntimeConfig } = getConfig()
 
-export function isDev() {
-    return publicRuntimeConfig.environment === 'dev'
-}
-
-export function isQ1() {
-    return publicRuntimeConfig.environment === 'q1'
-}
-
 export function isProd() {
     return publicRuntimeConfig.environment === 'prod'
-}
-
-export function flexGatewayRoot() {
-    return publicRuntimeConfig.flexGatewayRoot
 }
 
 export function isMockBackend() {
@@ -40,10 +28,6 @@ export function sykefravaerUrl() {
 
 export function dittNavUrl() {
     return publicRuntimeConfig.dittNavUrl
-}
-
-export function amplitudeKey() {
-    return publicRuntimeConfig.amplitudeKey
 }
 
 export function amplitudeEnabled() {

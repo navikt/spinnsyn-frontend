@@ -8,7 +8,11 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
 
     rest.messages.forEach((msg) => {
         const log = typeof msg === 'string' ? { msg } : msg
-        logger[ level.label ]({ ...log, isFrontend: true, x_userAgent: req.headers[ 'user-agent' ] })
+        logger[level.label]({
+            ...log,
+            isFrontend: true,
+            x_userAgent: req.headers['user-agent'],
+        })
     })
 
     res.status(200).json({ ok: 'ok' })

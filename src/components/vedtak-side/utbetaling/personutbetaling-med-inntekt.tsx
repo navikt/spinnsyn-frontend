@@ -15,9 +15,9 @@ import BeregningInfo from './beregning-info'
 import { PersonutbetalingInfo } from './personutbetaling-info'
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
-    const [ apen ] = useState<boolean>(false)
+    const [apen] = useState<boolean>(false)
     const isServer = useContext(ArkiveringContext)
-    const [ open, setOpen ] = useState<boolean>(isServer)
+    const [open, setOpen] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
@@ -28,7 +28,9 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     }
 
     return (
-        <Ekspanderbar type="gronn"
+        <Ekspanderbar
+            type="gronn"
+            erUgyldig={vedtak.revurdert || vedtak.annullert}
             ikon="/syk/sykepenger/static/img/ikon-ekspander-gronn.svg"
             className="personutbetaling"
             erApen={apen}
@@ -38,7 +40,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                         {belop + ' kroner'}
                     </Heading>
                     <BodyShort>
-                        <strong>{tekst('utbetaling.person.systemtittel')}</strong>
+                        {tekst('utbetaling.person.systemtittel')}
                     </BodyShort>
                 </div>
             }
@@ -48,9 +50,14 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <PersonutbetalingInfo vedtak={vedtak} />
 
             <Accordion>
-                <Vis hvis={vedtak.dagerPerson.length > 0}
-                    render={() =>
-                        <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
+                <Vis
+                    hvis={vedtak.dagerPerson.length > 0}
+                    render={() => (
+                        <Accordion.Item
+                            ref={accordionRef}
+                            open={open}
+                            className="utbetalingsoversikt"
+                        >
                             <Accordion.Header onClick={onButtonClick}>
                                 <Heading size="small" level="4">
                                     {tekst('utbetaling.inntekt.info.dagsats')}
@@ -62,19 +69,20 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                                 <DagBeskrivelse dager={vedtak.dagerPerson} />
 
                                 <div className="knapperad">
-                                    <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                                    <Button
+                                        variant="tertiary"
+                                        size="small"
+                                        onClick={onButtonClick}
+                                    >
                                         Skjul
                                     </Button>
                                 </div>
                             </Accordion.Content>
                         </Accordion.Item>
-                    }
+                    )}
                 />
                 <BeregningInfo vedtak={vedtak} mottaker={'person'} />
             </Accordion>
-
         </Ekspanderbar>
     )
 }
-
-

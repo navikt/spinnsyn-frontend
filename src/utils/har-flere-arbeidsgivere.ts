@@ -1,9 +1,11 @@
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { JaNeiVetIkke } from '../types/types'
 
-
-export const harFlereArbeidsgivere = (vedtakWrapper: RSVedtakWrapper): JaNeiVetIkke => {
-    const grunnlag = vedtakWrapper.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
+export const harFlereArbeidsgivere = (
+    vedtakWrapper: RSVedtakWrapper
+): JaNeiVetIkke => {
+    const grunnlag =
+        vedtakWrapper.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
 
     if (grunnlag) {
         const antall = Object.keys(grunnlag).length

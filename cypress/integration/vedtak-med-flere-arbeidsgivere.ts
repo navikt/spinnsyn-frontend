@@ -1,23 +1,24 @@
-import { vedtakMedDetMeste } from '../../src/data/mock/data/rs-vedtak'
+import { vedtakMedFlereArbeidsgivere } from '../../src/data/mock/data/vedtakMedFlereArbeidsgivere'
 
-describe('Tester visning av et vedtak redusert til 6G', () => {
-    const vedtak = vedtakMedDetMeste
-
+describe('Tester visning av et vedtak med flere arbeidsgivere', () => {
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit(
+            'http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere'
+        )
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get(`article a[href*=${vedtak.id}]`).click()
+        cy.url().should(
+            'equal',
+            'http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere'
+        )
+        cy.get(`article a[href*=${vedtakMedFlereArbeidsgivere.id}]`).click()
     })
 
-    it('Utbetalingsoversikt', () => {
-        cy.contains('3 021 kroner')
-            .and('contain', 'Utbetales til Posten Norge AS, Bærum')
+    it('Inntekter', () => {
+        cy.contains('1 359 kroner')
+            .and('contain', 'Utbetales til Industrifabrikken AS')
             .click({ force: true })
-
-        cy.contains('Mer om beregningen').click({ force: true })
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
@@ -26,33 +27,30 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
             .contains('Beregnet månedslønn')
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(0)
-            .contains('74 675 kr')
+            .contains('41 958 kr')
 
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(1)
             .contains('Beregnet årslønn')
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(1)
-            .contains('896 100 kr')
+            .contains('503 504 kr')
 
-        cy.get('.inntekt__info .arbgiver_navn').contains(
-            'The Ministry Of Magic AS'
-        )
+        cy.get('.inntekt__info .arbgiver_navn').contains('Den Andre Sjappa')
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(2)
             .contains('Årslønn')
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(2)
-            .contains('195 781 kr')
+            .contains('406 252 kr')
 
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(3)
             .contains('Samlet årslønn')
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(3)
-            .contains('1 091 881 kr')
+            .contains('909 757 kr')
 
-        // Sjekker om sykepengegrunnlaget er redusert
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(4)
             .contains('Sykepengegrunnlag')

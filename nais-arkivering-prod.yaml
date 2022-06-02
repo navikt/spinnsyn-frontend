@@ -54,10 +54,8 @@ spec:
       value: "false"
     - name: LOGINSERVICE_REDIRECT_URL
       value: "https://www.nav.no/syk/sykepenger"
-    - name: AMPLITUDE_KEY
-      value: "d5b43a81941b61a3b06059197807a25a"
     - name: AMPLITUDE_ENABLED
-      value: "true"
+      value: "false"
     - name: DECORATOR_ENV
       value: "prod"
     - name: NO_DECORATOR

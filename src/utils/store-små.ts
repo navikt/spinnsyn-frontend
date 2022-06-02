@@ -15,8 +15,12 @@ export const storeTilStoreOgSmå = (str: string) => {
     const strArr = nyStr.split(' ')
     let navn = ''
 
-    strArr.map(ord => {
-        if(ord.toLowerCase() === 'as' || ord.toLowerCase() === 'as,' || ord.toLowerCase().includes('a/s')){
+    strArr.map((ord) => {
+        if (
+            ord.toLowerCase() === 'as' ||
+            ord.toLowerCase() === 'as,' ||
+            ord.toLowerCase().includes('a/s')
+        ) {
             navn += navn !== '' ? ' ' : ''
             navn += ord.toUpperCase()
         } else {

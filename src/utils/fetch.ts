@@ -5,7 +5,6 @@ import { logger } from './logger'
  * Redirects to Login Service if any request contains a 401 response.
  */
 class Fetch {
-
     /**
      * Make a GET request for the specified resource
      * Redirects to Login Service if request contains a 401 response.
@@ -14,10 +13,14 @@ class Fetch {
      * @param {HeadersInit} headers - Headers
      * @return {Promise<T>} The data
      */
-    static async authenticatedGet<T>(url: string, cb: (data: unknown) => Promise<T>, headers?: HeadersInit): Promise<T> {
+    static async authenticatedGet<T>(
+        url: string,
+        cb: (data: unknown) => Promise<T>,
+        headers?: HeadersInit
+    ): Promise<T> {
         const res = await fetch(url, {
             credentials: 'include',
-            headers: headers
+            headers: headers,
         })
         if (res.ok) {
             try {
@@ -29,7 +32,7 @@ class Fetch {
                     logger.error('Unnamed error occured', error)
                 }
                 throw new Error(
-                    'Beklager! En uventet feil har oppstått. Sannsynligvis jobber vi med saken allerede, men ta kontakt med oss hvis det ikke har løst seg til i morgen.',
+                    'Beklager! En uventet feil har oppstått. Sannsynligvis jobber vi med saken allerede, men ta kontakt med oss hvis det ikke har løst seg til i morgen.'
                 )
             }
         }
@@ -37,14 +40,20 @@ class Fetch {
             if (process.browser) {
                 window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
             }
-            throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
+            throw new Error(
+                'Sesjonen er utløpt. Vi videresender deg til innloggingssiden.'
+            )
         }
         const textResponse = await res.text()
-        logger.error(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
+        logger.error(
+            `Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`
+        )
         if (res.status === 400) {
             throw new Error(textResponse)
         }
-        throw new Error('Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.')
+        throw new Error(
+            'Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.'
+        )
     }
 
     /**
@@ -71,13 +80,19 @@ class Fetch {
             if (process.browser) {
                 window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
             }
-            throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
+            throw new Error(
+                'Sesjonen er utløpt. Vi videresender deg til innloggingssiden.'
+            )
         }
-        logger.warn(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
+        logger.warn(
+            `Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`
+        )
         if (res.status === 400) {
             throw new Error(textResponse)
         }
-        throw new Error('Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.')
+        throw new Error(
+            'Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.'
+        )
     }
 }
 

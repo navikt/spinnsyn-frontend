@@ -39,7 +39,6 @@
     }
 }
 
-
 #ark-footer {
     position: running(ark-footer);
     font-size: 12px;
@@ -56,7 +55,7 @@
 }
 
 #pagecount:before {
-    content: counter(pages)
+    content: counter(pages);
 }
 
 .vedtak-arkivering {
@@ -118,13 +117,7 @@
     .ekspanderbar {
         &.info {
             & > .navds-accordion__header {
-                min-height: 42px;
-
-                .navds-body-short {
-                    font-size: 1.25rem;
-                    font-weight: 600;
-                    color: @navds-semantic-color-text;
-                }
+                min-height: 60px;
             }
         }
 
@@ -160,6 +153,17 @@
     }
 
     .annullering {
+        .alert-link-listevisning {
+            display: none;
+        }
+
+        svg {
+            display: none;
+        }
+    }
+
+    .navds-label {
+        font-weight: bold;
     }
 
     .navds-accordion__content {

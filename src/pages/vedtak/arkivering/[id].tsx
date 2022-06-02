@@ -19,18 +19,28 @@ interface VedtakArkiveringProps {
     utbetalingId?: string
 }
 
-const ServerVedtak = ({ vedtak, status, fnr, utbetalingId }: VedtakArkiveringProps) => {
+const ServerVedtak = ({
+    vedtak,
+    status,
+    fnr,
+    utbetalingId,
+}: VedtakArkiveringProps) => {
     if (!vedtak || !fnr || !utbetalingId) {
         return <span>{status}</span>
     }
 
-
     return (
-        <VedtakArkivering vedtak={vedtak} fnr={fnr} utbetalingId={utbetalingId} />
+        <VedtakArkivering
+            vedtak={vedtak}
+            fnr={fnr}
+            utbetalingId={utbetalingId}
+        />
     )
 }
 
-export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = async(ctx) => {
+export const getServerSideProps: GetServerSideProps<
+    VedtakArkiveringProps
+> = async (ctx) => {
     try {
         if (serverRuntimeConfig.arkivering !== 'true') {
             throw new ErrorMedStatus('Arkivering ikke enablet', 400)
@@ -40,18 +50,19 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
 
         if (!authHeader) {
             throw new ErrorMedStatus('Ingen auth header', 401)
-
         }
-        const tokenInn = authHeader.split(' ')[ 1 ]
+        const tokenInn = authHeader.split(' ')[1]
         await verifyAzureAccessTokenVedArkivering(tokenInn)
 
         const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
 
-        const token = await getAzureAdAccessToken(serverRuntimeConfig.spinnsynBackendClientId)
+        const token = await getAzureAdAccessToken(
+            serverRuntimeConfig.spinnsynBackendClientId
+        )
 
         const vedtak = await hentVedtakForArkivering(fnr, token.access_token!)
-        const vedtaket = vedtak.find(i => i.id == utbetalingId)
+        const vedtaket = vedtak.find((i) => i.id == utbetalingId)
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
@@ -65,14 +76,14 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
                 vedtak: vedtaket,
                 fnr: fnr,
                 utbetalingId: utbetalingId,
-            }
+            },
         }
     } catch (e: any) {
         logger.warn({ err: e })
         ctx.res.statusCode = e.status || 500
 
         return {
-            props: { status: ctx.res.statusCode }
+            props: { status: ctx.res.statusCode },
         }
     }
 }

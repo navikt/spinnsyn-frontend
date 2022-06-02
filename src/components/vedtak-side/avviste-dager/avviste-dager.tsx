@@ -1,4 +1,10 @@
-import { Accordion, BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
+import {
+    Accordion,
+    BodyLong,
+    BodyShort,
+    Button,
+    Heading,
+} from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -18,15 +24,25 @@ interface AvvisteDagerProps {
     heltAvvist: Boolean
 }
 
-const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
-    const [ apen ] = useState<boolean>(false)
+const AvvisteDager = ({
+    avvisteDager,
+    vedtak,
+    heltAvvist,
+}: AvvisteDagerProps) => {
+    const [apen] = useState<boolean>(false)
     const isServer = useContext(ArkiveringContext)
-    const [ open, setOpen ] = useState<boolean>(isServer)
+    const [open, setOpen] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
-    const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1
-        ? ' sykepengedager'
-        : ' sykepengedag'
+    const harMinstEnForLavInntektDag =
+        vedtak.dagerArbeidsgiver.filter((dag) =>
+            dag.begrunnelser.includes('MinimumInntekt')
+        ).length > 0
+
+    const avvisteDagerTekst =
+        avvisteDager.length > 1 || avvisteDager.length < 1
+            ? ' sykepengedager'
+            : ' sykepengedag'
 
     const onButtonClick = () => {
         ekspanderbarKlikk(open, accordionRef, 'Dager NAV ikke utbetaler')
@@ -34,7 +50,9 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     }
 
     return (
-        <Ekspanderbar type="gul"
+        <Ekspanderbar
+            type="gul"
+            erUgyldig={vedtak.revurdert || vedtak.annullert}
             ikon="/syk/sykepenger/static/img/ikon-ekspander-gul.svg"
             erApen={apen}
             tittel={
@@ -52,12 +70,17 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                 <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
             </div>
 
-            <Vis hvis={heltAvvist} render={() =>
-                <InntektInfo vedtak={vedtak} />
-            } />
+            <Vis
+                hvis={heltAvvist && harMinstEnForLavInntektDag}
+                render={() => <InntektInfo vedtak={vedtak} />}
+            />
 
             <Accordion>
-                <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
+                <Accordion.Item
+                    ref={accordionRef}
+                    open={open}
+                    className="avvistedageroversikt"
+                >
                     <Accordion.Header onClick={onButtonClick}>
                         <Heading size="small" level="4">
                             Dager NAV ikke utbetaler
@@ -69,18 +92,28 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                         <DagBeskrivelse dager={avvisteDager} />
 
                         <div className="knapperad">
-                            <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                            <Button
+                                variant="tertiary"
+                                size="small"
+                                onClick={onButtonClick}
+                            >
                                 Skjul
                             </Button>
                         </div>
                     </Accordion.Content>
                 </Accordion.Item>
 
-                <Vis hvis={heltAvvist} render={() =>
-                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-                } />
+                <Vis
+                    hvis={heltAvvist && harMinstEnForLavInntektDag}
+                    render={() => (
+                        <BeregningInfo
+                            vedtak={vedtak}
+                            mottaker={'refusjon'}
+                            heltAvvist={heltAvvist}
+                        />
+                    )}
+                />
             </Accordion>
-
         </Ekspanderbar>
     )
 }

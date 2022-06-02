@@ -10,20 +10,26 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
     const alleÅrsLønn = vedtak.andreArbeidsgivere
     const arbeidsgivere = Object.keys(alleÅrsLønn!)
 
-    return <>{arbeidsgivere.map((arbeidsgiverNavn, index) => (
+    return (
         <>
-            <Label className="arbgiver_navn arbgiver">{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
+            {arbeidsgivere.map((arbeidsgiverNavn, index) => (
+                <>
+                    <Label className="arbgiver_navn arbgiver">
+                        {storeTilStoreOgSmå(arbeidsgiverNavn)}
+                    </Label>
 
-            <section>
-                <BodyShort as="div" size="small" className="tekst">
-                    {tekst('utbetaling.inntekt.årslønn')}
-                </BodyShort>
-                <BodyShort as="div" size="small" className="beløp">
-                    {formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}
-                </BodyShort>
-            </section>
+                    <section>
+                        <BodyShort as="div" size="small" className="tekst">
+                            {tekst('utbetaling.inntekt.årslønn')}
+                        </BodyShort>
+                        <BodyShort as="div" size="small" className="beløp">
+                            {formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}
+                        </BodyShort>
+                    </section>
+                </>
+            ))}
         </>
-    ))}</>
+    )
 }
 
 export default BeregningÅrslønnFlereArbeidsgivere

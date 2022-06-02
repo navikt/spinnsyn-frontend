@@ -13,11 +13,19 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                 {tekst('uenig.tittel')}
             </Heading>
             <BodyLong spacing>
-                {getLedetekst(tekst('uenig.tekst1'), { '%KLAGEFRIST%': klagefrist(vedtak) })}
+                {getLedetekst(tekst('uenig.tekst1'), {
+                    '%KLAGEFRIST%': klagefrist(vedtak),
+                })}
                 {tekst('uenig.tekst2')}
-                <LenkeMedAmplitude url={tekst('uenig.lenke1.url')} tekst={tekst('uenig.lenke1')} />
+                <LenkeMedAmplitude
+                    url={tekst('uenig.lenke1.url')}
+                    tekst={tekst('uenig.lenke1')}
+                />
                 {tekst('uenig.tekst3')}
-                <LenkeMedAmplitude url={tekst('uenig.lenke2.url')} tekst={tekst('uenig.lenke2')} />
+                <LenkeMedAmplitude
+                    url={tekst('uenig.lenke2.url')}
+                    tekst={tekst('uenig.lenke2')}
+                />
             </BodyLong>
         </div>
     )

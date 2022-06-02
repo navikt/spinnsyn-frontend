@@ -41,7 +41,9 @@
             &:hover {
                 text-decoration: none;
 
-                .navds-heading, .navds-body-short, svg {
+                .navds-heading,
+                .navds-body-short,
+                svg {
                     color: @navds-semantic-color-interaction-primary;
                 }
             }
@@ -95,12 +97,18 @@
         }
 
         &.info {
-            border-color: @navds-global-color-lightblue-500;
-            background-color: @navds-global-color-lightblue-100;
             padding: 0;
 
             .ekspanderbar__innhold {
                 padding: 0 1rem 1.5rem;
+            }
+        }
+
+        &.ugyldig {
+            background-color: @navds-global-color-gray-100;
+
+            & > .navds-accordion__header:hover {
+                border-color: @navds-global-color-gray-800;
             }
         }
 

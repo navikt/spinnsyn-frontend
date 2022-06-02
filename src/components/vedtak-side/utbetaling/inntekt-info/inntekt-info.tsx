@@ -1,4 +1,11 @@
-import { Accordion, BodyLong, BodyShort, Button, Heading, Label } from '@navikt/ds-react'
+import {
+    Accordion,
+    BodyLong,
+    BodyShort,
+    Button,
+    Heading,
+    Label,
+} from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
@@ -14,27 +21,41 @@ import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-ar
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
     const isServer = useContext(ArkiveringContext)
-    const [ open, setOpen ] = useState<boolean>(isServer)
+    const [open, setOpen] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
-    const inntektMnd = (vedtak.vedtak.inntekt)
-        ? formaterValuta(vedtak.vedtak.inntekt)
-        : undefined
+    const finnRiktigInntekt = () => {
+        const grunnlagPerAg =
+            vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
+        if (grunnlagPerAg && vedtak.vedtak.organisasjonsnummer) {
+            const inntektFraGrunnlagPerAg =
+                grunnlagPerAg[vedtak.vedtak.organisasjonsnummer]
+            if (inntektFraGrunnlagPerAg) {
+                return inntektFraGrunnlagPerAg / 12
+            }
+        }
+        return vedtak.vedtak.inntekt
+    }
 
-    const inntektAr = (vedtak.vedtak.inntekt)
-        ? formaterValuta(vedtak.vedtak.inntekt * 12)
-        : undefined
+    const inntekt = finnRiktigInntekt()
+    const inntektMnd = inntekt ? formaterValuta(inntekt) : undefined
+    const inntektAr = inntekt ? formaterValuta(inntekt * 12) : undefined
 
     const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Inntektsopplysninger lagt til grunn for sykepengene')
+        ekspanderbarKlikk(
+            open,
+            accordionRef,
+            'Inntekter lagt til grunn for sykepengene'
+        )
         setOpen(!open)
     }
 
     return (
-        <Vis hvis={inntektMnd && inntektAr}
-            render={() =>
+        <Vis
+            hvis={inntektMnd && inntektAr}
+            render={() => (
                 <Accordion className="inntekt__info">
                     <Accordion.Item open={open} ref={accordionRef}>
                         <Accordion.Header onClick={onButtonClick}>
@@ -50,71 +71,107 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
                                 <section>
                                     <BodyShort as="div" size="small">
-                                        {tekst('utbetaling.inntekt.info.beregnet')}
+                                        {tekst(
+                                            'utbetaling.inntekt.info.beregnet'
+                                        )}
                                     </BodyShort>
-                                    <BodyShort as="div" size="small">{inntektMnd}</BodyShort>
+                                    <BodyShort as="div" size="small">
+                                        {inntektMnd}
+                                    </BodyShort>
                                 </section>
 
                                 <section>
                                     <BodyShort as="div" size="small">
-                                        {tekst('utbetaling.inntekt.info.omregnet')}
+                                        {tekst(
+                                            'utbetaling.inntekt.info.omregnet'
+                                        )}
                                     </BodyShort>
-                                    <BodyShort as="div" size="small">{inntektAr}</BodyShort>
+                                    <BodyShort as="div" size="small">
+                                        {inntektAr}
+                                    </BodyShort>
                                 </section>
 
-                                <Vis hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
-                                    render={() =>
+                                <Vis
+                                    hvis={
+                                        harFlereArbeidsgivere(vedtak) === 'ja'
+                                    }
+                                    render={() => (
                                         <>
-                                            <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
+                                            <BeregningÅrslønnFlereArbeidsgivere
+                                                vedtak={vedtak}
+                                            />
 
                                             <section className="arbgiver">
                                                 <Label as="div" size="small">
-                                                    {tekst('utbetaling.inntekt.samlet.årslønn')}
+                                                    {tekst(
+                                                        'utbetaling.inntekt.samlet.årslønn'
+                                                    )}
                                                 </Label>
                                                 <Label as="div" size="small">
-                                                    {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
+                                                    {formaterValuta(
+                                                        vedtak.vedtak
+                                                            .grunnlagForSykepengegrunnlag!
+                                                    )}
                                                 </Label>
                                             </section>
                                         </>
-                                    }
+                                    )}
                                 />
 
-                                <Vis hvis={skalViseSykepengegrunnlag}
-                                    render={() =>
+                                <Vis
+                                    hvis={skalViseSykepengegrunnlag}
+                                    render={() => (
                                         <>
-                                            <Vis hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'} render={() =>
-                                                <div className="redusert_sykepengegrunnlag">
-                                                    <Heading size="xsmall" level="4">
-                                                        {tekst('utbetaling.redusert6G.tittel')}
-                                                    </Heading>
-                                                    <BodyLong size="small">
-                                                        {parser(tekst('utbetaling.redusert6G.tekst'))}
-                                                    </BodyLong>
-                                                </div>
-                                            } />
-
                                             <section>
                                                 <Label as="div" size="small">
-                                                    {tekst('utbetaling.sykepengegrunnlag')}
+                                                    {tekst(
+                                                        'utbetaling.sykepengegrunnlag'
+                                                    )}
                                                 </Label>
                                                 <Label as="div" size="small">
-                                                    {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
+                                                    {formaterValuta(
+                                                        vedtak.vedtak
+                                                            .sykepengegrunnlag!
+                                                    )}
                                                 </Label>
                                             </section>
+
+                                            <Vis
+                                                hvis={
+                                                    vedtak.vedtak
+                                                        .begrensning ===
+                                                    'ER_6G_BEGRENSET'
+                                                }
+                                                render={() => (
+                                                    <div className="redusert_sykepengegrunnlag">
+                                                        <BodyLong size="small">
+                                                            {parser(
+                                                                tekst(
+                                                                    'utbetaling.redusert6G.tekst'
+                                                                )
+                                                            )}
+                                                        </BodyLong>
+                                                    </div>
+                                                )}
+                                            />
                                         </>
-                                    }
+                                    )}
                                 />
                             </article>
 
                             <div className="knapperad">
-                                <Button variant="tertiary" size="small" onClick={onButtonClick}>
+                                <Button
+                                    variant="tertiary"
+                                    size="small"
+                                    onClick={onButtonClick}
+                                >
                                     Skjul
                                 </Button>
                             </div>
                         </Accordion.Content>
                     </Accordion.Item>
                 </Accordion>
-            }
+            )}
         />
     )
 }
