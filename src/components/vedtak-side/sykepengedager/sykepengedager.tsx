@@ -23,7 +23,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
 
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
     const vedtaktsdato = tilLesbarDatoMedArstall(
-        dayjs(vedtak?.opprettet).toDate()
+        dayjs(vedtak?.opprettetTimestamp).toDate()
     )
 
     return (

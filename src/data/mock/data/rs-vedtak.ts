@@ -27,7 +27,7 @@ export const vedtakMedDetMeste: RSVedtakWrapper = {
         },
         begrensning: 'ER_6G_BEGRENSET',
     },
-    opprettet: '2021-11-18',
+    opprettetTimestamp: '2022-06-17T12:42:42.000Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {
         'THE MINISTRY OF MAGIC AS': 195781.6,
@@ -320,7 +320,7 @@ export const kunAgPeriode: RSVedtakWrapper = {
         },
         begrensning: 'ER_6G_BEGRENSET',
     },
-    opprettet: '2021-11-18',
+    opprettetTimestamp: '2021-11-18T12:42:42.000Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {
         'THE MINISTRY OF MAGIC AS': 195781.6,
@@ -593,7 +593,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             automatiskBehandling: true,
         },
     },
-    opprettet: '2021-05-06',
+    opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [
@@ -730,7 +730,7 @@ export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
             automatiskBehandling: false,
         },
     },
-    opprettet: '2021-05-03',
+    opprettetTimestamp: '2021-05-03T12:42:42.000Z',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [
@@ -915,7 +915,7 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             automatiskBehandling: true,
         },
     },
-    opprettet: '2021-05-05',
+    opprettetTimestamp: '2021-05-05T12:42:42.000Z',
     annullert: true,
     revurdert: false,
     dagerArbeidsgiver: [
@@ -1018,7 +1018,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
         },
     },
-    opprettet: '2021-05-03',
+    opprettetTimestamp: '2021-05-03T12:42:42.000Z',
     annullert: false,
     revurdert: true,
     dagerArbeidsgiver: [
@@ -1114,7 +1114,7 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
         },
     },
-    opprettet: '2021-05-03',
+    opprettetTimestamp: '2021-05-03T12:42:42.000Z',
     annullert: false,
     revurdert: true,
     dagerArbeidsgiver: [
@@ -1210,7 +1210,7 @@ export const vedtakRevurdertKombinasjon: RSVedtakWrapper = {
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
         },
     },
-    opprettet: '2021-05-03',
+    opprettetTimestamp: '2021-05-03T12:42:42.000Z',
     annullert: false,
     revurdert: true,
     dagerArbeidsgiver: [
@@ -1307,7 +1307,7 @@ export const integrasjonsVedtak: RSVedtakWrapper = {
             automatiskBehandling: true,
         },
     },
-    opprettet: '2021-05-06',
+    opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [
@@ -1579,7 +1579,7 @@ export const avvistVedtak: RSVedtakWrapper = {
             automatiskBehandling: false,
         },
     },
-    opprettet: '2021-08-30',
+    opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [
@@ -1760,7 +1760,7 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
             automatiskBehandling: false,
         },
     },
-    opprettet: '2021-08-30',
+    opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [
@@ -1955,7 +1955,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
         },
         begrensning: 'ER_6G_BEGRENSET',
     },
-    opprettet: '2021-11-04',
+    opprettetTimestamp: '2021-11-04T12:42:42.000Z',
     orgnavn: 'JOBB AS',
     andreArbeidsgivere: {},
     annullert: false,
@@ -2050,7 +2050,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
             automatiskBehandling: true,
         },
     },
-    opprettet: '2021-05-06',
+    opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [
@@ -2207,7 +2207,7 @@ export const kunDirekte: RSVedtakWrapper = {
             automatiskBehandling: true,
         },
     },
-    opprettet: '2021-05-06',
+    opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [],
