@@ -35,7 +35,7 @@ describe('Tester at appen starter', () => {
             `http://localhost:8080/syk/sykepenger?id=${ulestVedtakUtenUtbetalingsdager.id}`
         )
 
-        cy.contains('14. juni 2021')
+        cy.contains('15. juni 2021')
 
         cy.contains('Opplysningene')
         cy.contains(

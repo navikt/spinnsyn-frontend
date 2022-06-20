@@ -3,12 +3,6 @@ import dayjs, { Dayjs } from 'dayjs'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { erHelg, tilLesbarDatoMedArstall } from './dato-utils'
 
-export const klagefrist = (vedtakWrapper?: RSVedtakWrapper) => {
-    return tilLesbarDatoMedArstall(
-        dayjs(vedtakWrapper?.opprettet).add(42, 'day').toDate()
-    )
-}
-
 export const fallbackEstimertSluttdato = (
     vedtakWrapper: RSVedtakWrapper
 ): Dayjs => {

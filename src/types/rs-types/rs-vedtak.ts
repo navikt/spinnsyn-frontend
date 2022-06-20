@@ -3,8 +3,7 @@ export interface RSVedtakWrapper {
     lest: boolean
     lestDato?: string | null
     vedtak: RSVedtak
-    opprettet: string
-    opprettetTimestamp?: string
+    opprettetTimestamp: string
     orgnavn: string
     andreArbeidsgivere: AndreArbeidsgivere
     annullert: boolean
