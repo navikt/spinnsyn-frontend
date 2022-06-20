@@ -1,11 +1,10 @@
-import { BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
-import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import { VedtakProps } from '../vedtak'
 
@@ -20,7 +19,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     }
 
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
-    const vedtaktsdato = tilLesbarDatoMedArstall(dayjs(vedtak?.opprettetTimestamp).toDate())
+    const tomDato = tilLesbarDatoMedArstall(dayjs(vedtak.vedtak.tom).toDate())
 
     return (
         <Ekspanderbar
@@ -34,7 +33,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                         {vedtak.vedtak.utbetaling.forbrukteSykedager} {tekst('sykepengedager.sykepengedager')}
                         <BodyShort as="span">
                             {getLedetekst(tekst('sykepengedager.hittil'), {
-                                '%DATO%': vedtaktsdato,
+                                '%DATO%': tomDato,
                             })}
                         </BodyShort>
                     </Heading>
@@ -47,7 +46,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager} {tekst('sykepengedager.sykepengedager')}
                     <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.gjenstar'), {
-                            '%DATO%': vedtaktsdato,
+                            '%DATO%': tomDato,
                         })}
                     </BodyShort>
                 </Heading>
@@ -59,7 +58,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                     {sluttdato}
                     <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.sluttdato'), {
-                            '%DATO%': vedtaktsdato,
+                            '%DATO%': tomDato,
                         })}
                     </BodyShort>
                 </Heading>
