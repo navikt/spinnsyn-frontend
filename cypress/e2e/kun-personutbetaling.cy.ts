@@ -5,6 +5,7 @@ describe('Tester visning personutbetaling', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
+        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -54,5 +55,8 @@ describe('Tester visning personutbetaling', () => {
             'Til slutt summerer vi alle dagene. ' +
                 'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
         )
+    })
+    it('Tester accessibility', () => {
+        cy.checkA11y()
     })
 })

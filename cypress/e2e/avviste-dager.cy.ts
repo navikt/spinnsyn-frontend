@@ -8,6 +8,7 @@ import {
 describe('Tester visning av dager som ikke dekkes av NAV', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.injectAxe()
     })
 
     it('Laster startside', () => {

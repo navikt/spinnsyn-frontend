@@ -3,6 +3,8 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?id=4e044d03-2dfe-45e9-a904-77777777'
         )
+        cy.injectAxe()
+
         cy.get('.behandling > .navds-heading').should(
             'have.text',
             'Søknaden er behandlet automatisk'
@@ -14,12 +16,15 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should(
             'not.exist'
         )
+        cy.checkA11y()
     })
 
     it('Manuelt behandlet', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?id=99f389f2-0084-481b-bed8-47f6ac3491d4'
         )
+        cy.injectAxe()
+
         cy.get('.behandling > .navds-heading').should(
             'have.text',
             'Søknaden er behandlet av en saksbehandler'
@@ -31,6 +36,7 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should(
             'not.exist'
         )
+        cy.checkA11y()
     })
 
     it('Automatisk behandlet annullert vedtak', () => {
@@ -62,12 +68,14 @@ describe('Tester logikk i behandling.tsx', () => {
             'have.length',
             2
         )
+        cy.checkA11y()
     })
 
     it('Manuelt behandlet revurdert vedtak', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634338'
         )
+        cy.injectAxe()
 
         cy.get('.navds-alert').contains(
             'Du har fått et nytt vedtak som erstatter dette vedtaket'
@@ -95,12 +103,15 @@ describe('Tester logikk i behandling.tsx', () => {
             'have.length',
             2
         )
+        cy.checkA11y()
     })
 
     it('Revurdert vedtak med direkte utbetaling', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?id=21eac584-d8ea-4e4b-bf9a-ae0a400009c4'
         )
+        cy.injectAxe()
+
         cy.contains(
             'Dette lurer mange på når vedtaket behandles på nytt'
         ).click()
@@ -109,12 +120,15 @@ describe('Tester logikk i behandling.tsx', () => {
             .contains(
                 'Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.'
             )
+        cy.checkA11y()
     })
 
     it('Revurdert vedtak med kombinasjonsutbetaling', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?id=85f25c03-faa8-4a99-8f15-971e9406f64f'
         )
+        cy.injectAxe()
+
         cy.contains(
             'Dette lurer mange på når vedtaket behandles på nytt'
         ).click()
@@ -123,6 +137,7 @@ describe('Tester logikk i behandling.tsx', () => {
             .contains(
                 'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.'
             )
+        cy.checkA11y()
     })
 })
 

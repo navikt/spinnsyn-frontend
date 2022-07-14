@@ -7,6 +7,7 @@ import {
 describe('Tester at appen starter', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -25,6 +26,10 @@ describe('Tester at appen starter', () => {
         )
     })
 
+    it('Tester accessibility', () => {
+        cy.checkA11y()
+    })
+
     it('Vi åpner det uleste vedtaket', () => {
         cy.get('.vedtak--uleste')
             .get(`article a[href*=${ulestVedtakUtenUtbetalingsdager.id}]`)
@@ -41,6 +46,10 @@ describe('Tester at appen starter', () => {
         cy.contains(
             'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.'
         )
+    })
+
+    it('Tester accessibility', () => {
+        cy.checkA11y()
     })
 
     it('Den grønne boksen har riktig innhold', () => {
@@ -81,6 +90,10 @@ describe('Tester at appen starter', () => {
         cy.should('contain', 'Datoen gjelder hvis du er sykmeldt uten opphold.')
     })
 
+    it('Tester accessibility', () => {
+        cy.checkA11y()
+    })
+
     it('Vi går tilbake til oversikten', () => {
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(1000)
@@ -101,6 +114,10 @@ describe('Tester at appen starter', () => {
             'have.length',
             10
         )
+    })
+
+    it('Tester accessibility', () => {
+        cy.checkA11y()
     })
 
     it('Vi åpner et annullert vedtak', () => {
@@ -164,5 +181,9 @@ describe('Tester at appen starter', () => {
             'contain',
             'Beregnet slutt på sykepenger'
         )
+    })
+
+    it('Tester accessibility', () => {
+        cy.checkA11y()
     })
 })
