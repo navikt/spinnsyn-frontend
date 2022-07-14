@@ -5,6 +5,7 @@ describe('Tester visning av et vedtak med flere arbeidsgivere', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere'
         )
+        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -57,5 +58,9 @@ describe('Tester visning av et vedtak med flere arbeidsgivere', () => {
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(4)
             .contains('638 394 kr')
+    })
+
+    it('Tester accessibility', () => {
+        cy.checkA11y()
     })
 })
