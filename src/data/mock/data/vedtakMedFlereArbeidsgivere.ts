@@ -41,7 +41,6 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
         begrensning: 'ER_6G_BEGRENSET',
         vedtakFattetTidspunkt: '2022-03-21',
     },
-    opprettet: '2022-03-21',
     opprettetTimestamp: '2022-03-21T12:42:42.393305Z',
     orgnavn: 'INDUSTRIFABRIKKEN AS',
     annullert: false,
