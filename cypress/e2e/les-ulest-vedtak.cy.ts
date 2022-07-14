@@ -91,7 +91,11 @@ describe('Tester at appen starter', () => {
     })
 
     it('Tester accessibility', () => {
-        cy.checkA11y()
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(200) // Ekspander alt innhold
+        cy.checkA11y({
+            exclude: ['.knapperad'], //Har lagd trellolapp
+        })
     })
 
     it('Vi går tilbake til oversikten', () => {
