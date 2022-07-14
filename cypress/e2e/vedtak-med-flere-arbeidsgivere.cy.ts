@@ -61,6 +61,8 @@ describe('Tester visning av et vedtak med flere arbeidsgivere', () => {
     })
 
     it('Tester accessibility', () => {
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(200) // Ekspander alt innhold
         cy.checkA11y()
     })
 })
