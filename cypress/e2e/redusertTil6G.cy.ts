@@ -5,6 +5,7 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -59,5 +60,9 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         cy.get('.inntekt__info .arbgiver_inntekt section')
             .eq(4)
             .contains('638 394 kr')
+    })
+
+    it('Tester accessibility', () => {
+        cy.checkA11y()
     })
 })
