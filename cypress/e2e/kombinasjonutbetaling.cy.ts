@@ -109,6 +109,8 @@ describe('Tester visning av kombinasjon', () => {
     })
 
     it('Tester accessibility', () => {
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(200) // Ekspander alt innhold
         cy.checkA11y()
     })
 })

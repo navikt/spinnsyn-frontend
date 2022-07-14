@@ -57,6 +57,22 @@ describe('Tester visning personutbetaling', () => {
         )
     })
     it('Tester accessibility', () => {
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(200) // Ekspander alt innhold
+
         cy.checkA11y()
+    })
+
+    it('Ekspanderer blått panel', () => {
+        cy.contains('10 sykepengedager').click({ force: true })
+        cy.contains('238 sykepengedager')
+    })
+
+    it('Tester accessibility', () => {
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(200) // Ekspander alt innhold
+        cy.checkA11y({
+            exclude: ['.knapperad'],
+        })
     })
 })

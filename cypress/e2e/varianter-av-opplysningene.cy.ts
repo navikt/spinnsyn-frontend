@@ -43,6 +43,7 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337'
         )
+        cy.injectAxe()
 
         cy.get('.navds-alert').contains('Dette vedtaket gjelder ikke lenger')
         cy.get('.navds-alert').contains(
