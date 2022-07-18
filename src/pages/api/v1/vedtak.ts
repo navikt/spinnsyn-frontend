@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import getConfig from 'next/config'
-import onHeaders from 'on-headers'
 
 import { beskyttetApi } from '../../../auth/beskyttetApi'
 import { getOboAccessToken } from '../../../auth/getOboAccessToken'
@@ -14,13 +13,6 @@ const { serverRuntimeConfig } = getConfig()
 
 const handler = beskyttetApi(
     async (req: NextApiRequest, res: NextApiResponse) => {
-        onHeaders(res, function () {
-            this.setHeader(
-                'Cache-Control',
-                'no-cache, no-store, must-revalidate'
-            )
-            this.removeHeader('ETag')
-        })
         if (req.method !== 'GET') {
             return res.status(404).json('Må være GET')
         }
