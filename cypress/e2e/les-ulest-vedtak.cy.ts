@@ -27,7 +27,9 @@ describe('Tester at appen starter', () => {
     })
 
     it('Tester accessibility', () => {
-        cy.checkA11y()
+        cy.checkA11y({
+            exclude: ['.axe-exclude'],
+        })
     })
 
     it('Vi åpner det uleste vedtaket', () => {
@@ -121,7 +123,9 @@ describe('Tester at appen starter', () => {
     })
 
     it('Tester accessibility', () => {
-        cy.checkA11y()
+        cy.checkA11y({
+            exclude: ['.axe-exclude'],
+        })
     })
 
     it('Vi åpner et annullert vedtak', () => {

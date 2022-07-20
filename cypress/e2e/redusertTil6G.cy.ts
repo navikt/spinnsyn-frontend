@@ -63,6 +63,8 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
     })
 
     it('Tester accessibility', () => {
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(200) // Ekspander alt innhold
         cy.checkA11y()
     })
 })
