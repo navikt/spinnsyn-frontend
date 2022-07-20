@@ -66,7 +66,7 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
                     />
                 </div>
                 <div className="inngangspanel__del2">
-                    <Next aria-label="pil høyre" />
+                    <Next className="axe-exclude" />
                 </div>
             </Inngangspanel>
         </article>
