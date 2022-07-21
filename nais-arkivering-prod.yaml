@@ -9,16 +9,16 @@ spec:
   image: {{ image }}
   port: 8080
   replicas:
-    min: 4
-    max: 4
+    min: 2
+    max: 3
     cpuThresholdPercentage: 50
   resources:
     limits:
-      cpu: 500m
-      memory: 256Mi
+      cpu: 100m
+      memory: 200Mi
     requests:
-      cpu: 300m
-      memory: 128Mi
+      cpu: 50m
+      memory: 170Mi
   liveness:
     path: syk/sykepenger/api/isAlive
   readiness:
