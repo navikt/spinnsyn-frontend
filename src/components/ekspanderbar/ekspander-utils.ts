@@ -40,7 +40,7 @@ export const ekspanderbarKlikk = (
     erApen: boolean,
     ekspanderbar: any,
     amplitudeText: string,
-    klikksted: 'lukk tekst' | 'header' | undefined
+    klikksted?: 'lukk tekst' | 'header'
 ) => {
     if (!erApen) {
         if (window) {
