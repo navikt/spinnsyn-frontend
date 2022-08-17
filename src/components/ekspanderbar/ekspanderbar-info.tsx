@@ -9,7 +9,9 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
     const [erApen, setErApen] = useState<boolean>(isServer || props.erApen)
     const ekspanderbar = useRef<HTMLDivElement>(null)
 
-    const onButtonClick = (klikksted: 'lukk tekst' | 'header' | 'skjul tekst') => {
+    const onButtonClick = (
+        klikksted: 'lukk tekst' | 'header' | 'skjul tekst'
+    ) => {
         ekspanderbarKlikk(erApen, ekspanderbar, 'Ekspanderbar info', klikksted)
         setErApen(!erApen)
     }
