@@ -20,13 +20,14 @@ const Ekspanderbar = (props: AllProps) => {
     const ekspanderbar = useRef<HTMLDivElement>(null)
     const btnImage = useRef<HTMLImageElement>(null)
 
-    const onButtonClick = () => {
+    const onButtonClick = (klikksted: 'lukk tekst' | 'header') => {
         ekspanderbarKlikk(
             erApen,
             ekspanderbar,
             'Ekspanderbar ' +
                 props.type!.charAt(0).toUpperCase() +
-                props.type!.slice(1).toLowerCase()
+                props.type!.slice(1).toLowerCase(),
+            klikksted
         )
         setErApen(!erApen)
     }
@@ -65,7 +66,7 @@ const Ekspanderbar = (props: AllProps) => {
                 }`}
             >
                 <Accordion.Header
-                    onClick={onButtonClick}
+                    onClick={() => onButtonClick('header')}
                     onMouseEnter={() =>
                         (btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}-hover.svg`)
                     }
@@ -84,7 +85,7 @@ const Ekspanderbar = (props: AllProps) => {
                         <Button
                             variant="tertiary"
                             size="small"
-                            onClick={onButtonClick}
+                            onClick={() => onButtonClick('lukk tekst')}
                         >
                             {erApen ? 'Lukk' : 'Åpne'}
                         </Button>

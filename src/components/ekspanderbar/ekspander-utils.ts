@@ -39,11 +39,12 @@ export const midtstill = (ekspanderbar: any) => {
 export const ekspanderbarKlikk = (
     erApen: boolean,
     ekspanderbar: any,
-    amplitudeText: string
+    amplitudeText: string,
+    klikksted: 'lukk tekst' | 'header'
 ) => {
     if (!erApen) {
         if (window) {
-            logEvent('accordion åpnet', { component: amplitudeText })
+            logEvent('accordion åpnet', { component: amplitudeText, klikksted })
             midtstill(ekspanderbar)
             ekspanderbar.current?.focus()
             ekspanderbar.current?.classList.add('delayed--open')
