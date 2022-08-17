@@ -44,7 +44,7 @@ export const ekspanderbarKlikk = (
 ) => {
     if (!erApen) {
         if (window) {
-            let eventProperties: Record<string, string | boolean> = {
+            const eventProperties: Record<string, string | boolean> = {
                 component: amplitudeText,
             }
             if (klikksted) {
