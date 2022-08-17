@@ -40,11 +40,17 @@ export const ekspanderbarKlikk = (
     erApen: boolean,
     ekspanderbar: any,
     amplitudeText: string,
-    klikksted: 'lukk tekst' | 'header' | 'skjul tekst'
+    klikksted: 'lukk tekst' | 'header' | undefined
 ) => {
     if (!erApen) {
         if (window) {
-            logEvent('accordion åpnet', { component: amplitudeText, klikksted })
+            let eventProperties: Record<string, string | boolean> = {
+                component: amplitudeText,
+            }
+            if (klikksted) {
+                eventProperties['klikksted'] = klikksted
+            }
+            logEvent('accordion åpnet', eventProperties)
             midtstill(ekspanderbar)
             ekspanderbar.current?.focus()
             ekspanderbar.current?.classList.add('delayed--open')
