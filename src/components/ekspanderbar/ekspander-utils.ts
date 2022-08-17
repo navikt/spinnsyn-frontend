@@ -10,9 +10,19 @@ export interface EkspanderProps {
     className?: string
 }
 
-const lukk = (ekspanderbar: any, tittel: string) => {
+const lukk = (
+    ekspanderbar: any,
+    tittel: string,
+    klikksted?: 'lukk tekst' | 'header'
+) => {
     if (window) {
-        logEvent('accordion lukket', { component: tittel })
+        const eventProperties: Record<string, string | boolean> = {
+            component: tittel,
+        }
+        if (klikksted) {
+            eventProperties['klikksted'] = klikksted
+        }
+        logEvent('accordion lukket', eventProperties)
         midtstill(ekspanderbar)
         ekspanderbar.current?.focus()
     }
@@ -56,7 +66,7 @@ export const ekspanderbarKlikk = (
             ekspanderbar.current?.classList.add('delayed--open')
         }
     } else {
-        lukk(ekspanderbar, amplitudeText)
+        lukk(ekspanderbar, amplitudeText, klikksted)
         setTimeout(() => {
             ekspanderbar.current?.classList.remove('delayed--open')
         }, 300)
