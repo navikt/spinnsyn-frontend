@@ -9,8 +9,8 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
     const [erApen, setErApen] = useState<boolean>(isServer || props.erApen)
     const ekspanderbar = useRef<HTMLDivElement>(null)
 
-    const onButtonClick = () => {
-        ekspanderbarKlikk(erApen, ekspanderbar, 'Ekspanderbar info')
+    const onButtonClick = (klikksted: 'lukk tekst' | 'header' | 'skjul tekst') => {
+        ekspanderbarKlikk(erApen, ekspanderbar, 'Ekspanderbar info', klikksted)
         setErApen(!erApen)
     }
 
@@ -22,7 +22,7 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                     props.className ? ' ' + props.className : ''
                 }`}
             >
-                <Accordion.Header onClick={onButtonClick}>
+                <Accordion.Header onClick={() => onButtonClick('header')}>
                     <Heading level={'2'} size={'small'}>
                         {props.tittel}
                     </Heading>
@@ -33,7 +33,7 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                         <Button
                             variant="tertiary"
                             size="small"
-                            onClick={onButtonClick}
+                            onClick={() => onButtonClick('skjul tekst')}
                         >
                             Skjul
                         </Button>
