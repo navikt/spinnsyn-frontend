@@ -35,17 +35,13 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                     render={() => (
                         <>
                             {getLedetekst(tekst('behandling.dato-fattet'), {
-                                '%DATO%': tilLesbarDatoMedArstall(
-                                    dayjs(vedtaksDato).toDate()
-                                ),
+                                '%DATO%': tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()),
                             })}
                         </>
                     )}
                 />
                 {tekst(
-                    annullertEllerRevurdert
-                        ? 'behandling.opplysningene.preteritum'
-                        : 'behandling.opplysningene.presens'
+                    annullertEllerRevurdert ? 'behandling.opplysningene.preteritum' : 'behandling.opplysningene.presens'
                 )}
             </>
         )
@@ -58,10 +54,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             </Heading>
             <BodyLong spacing>
                 {behandlingInfoTekst()}
-                <LenkeMedAmplitude
-                    url={tekst('behandling.lenke.url')}
-                    tekst={tekst('behandling.lenke')}
-                />
+                <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
                 {tekst('behandling.se-opplysningene')}
             </BodyLong>
         </div>

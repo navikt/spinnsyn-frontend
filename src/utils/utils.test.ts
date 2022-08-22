@@ -93,23 +93,11 @@ describe('Tester formatering av firmanavn', () => {
                     console.log(':', storeTilStoreOgSmå(navn)) // eslint-disable-line
                 })
         */
-        expect(storeTilStoreOgSmå(firmanavn[0])).toEqual(
-            'Kranor AS, Avd Slemmestad'
-        )
-        expect(storeTilStoreOgSmå(firmanavn[5])).toEqual(
-            'Ecura Bo og Habilitering AS, Avd Molde'
-        )
-        expect(storeTilStoreOgSmå(firmanavn[8])).toEqual(
-            'Innlandet Fylkeskommune IKT og, Dokumentasjonsforvaltning'
-        )
-        expect(storeTilStoreOgSmå(firmanavn[9])).toEqual(
-            'Bufetat Sør, Agder Ungdomshjem, Nes'
-        )
-        expect(storeTilStoreOgSmå(firmanavn[40])).toEqual(
-            'NG Kiwi Øst AS, Avd 306 Elingaardkilen'
-        )
-        expect(storeTilStoreOgSmå(firmanavn[69])).toEqual(
-            'Strømsø Bo- og Servicesenter'
-        )
+        expect(storeTilStoreOgSmå(firmanavn[0])).toEqual('Kranor AS, Avd Slemmestad')
+        expect(storeTilStoreOgSmå(firmanavn[5])).toEqual('Ecura Bo og Habilitering AS, Avd Molde')
+        expect(storeTilStoreOgSmå(firmanavn[8])).toEqual('Innlandet Fylkeskommune IKT og, Dokumentasjonsforvaltning')
+        expect(storeTilStoreOgSmå(firmanavn[9])).toEqual('Bufetat Sør, Agder Ungdomshjem, Nes')
+        expect(storeTilStoreOgSmå(firmanavn[40])).toEqual('NG Kiwi Øst AS, Avd 306 Elingaardkilen')
+        expect(storeTilStoreOgSmå(firmanavn[69])).toEqual('Strømsø Bo- og Servicesenter')
     })
 })

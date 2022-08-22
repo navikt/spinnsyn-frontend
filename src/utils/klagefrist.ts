@@ -30,9 +30,7 @@ export const klagefrist = (opprettet: dayjs.Dayjs) => {
         }
         return d
     }
-    const klagefristen = skipHelg(
-        skipForSentPaDagen(opprettetOslo.add(42, 'day'))
-    )
+    const klagefristen = skipHelg(skipForSentPaDagen(opprettetOslo.add(42, 'day')))
 
     return tilLesbarDatoMedArstall(klagefristen.toDate())
 }

@@ -8,9 +8,7 @@ export default function UseMerkVedtakSomLest() {
 
     return useMutation<unknown, Error, string>(
         (vedtaksId) => {
-            return Fetch.authenticatedPost(
-                `/syk/sykepenger/api/v1/vedtak/${vedtaksId}/les`
-            )
+            return Fetch.authenticatedPost(`/syk/sykepenger/api/v1/vedtak/${vedtaksId}/les`)
         },
         {
             onSuccess: (_, vedtaksId) => {

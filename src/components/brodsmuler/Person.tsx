@@ -18,12 +18,7 @@ const Person = () => {
 
     return (
         <>
-            <img
-                src={'/syk/sykepenger/static/img/person.svg'}
-                alt="Du"
-                className="brodsmuler__ikon"
-                ref={person}
-            />
+            <img src={'/syk/sykepenger/static/img/person.svg'} alt="Du" className="brodsmuler__ikon" ref={person} />
             <Vis
                 hvis={kanVelgePerson && visInnhold}
                 render={() => (
@@ -37,11 +32,7 @@ const Person = () => {
                             <ul style={{ margin: 0, paddingLeft: '1.4rem' }}>
                                 {Object.keys(personas).map((p, idx) => (
                                     <BodyShort size="medium" as="li" key={idx}>
-                                        <a
-                                            href={`/syk/sykepenger?testperson=${p}`}
-                                        >
-                                            {p}
-                                        </a>
+                                        <a href={`/syk/sykepenger?testperson=${p}`}>{p}</a>
                                     </BodyShort>
                                 ))}
                             </ul>

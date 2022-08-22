@@ -4,11 +4,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { UrlObject } from 'url'
 
-import {
-    dittNavUrl,
-    spinnsynFrontendInterne,
-    sykefravaerUrl,
-} from '../../utils/environment'
+import { dittNavUrl, spinnsynFrontendInterne, sykefravaerUrl } from '../../utils/environment'
 import Vis from '../vis'
 import Person from './Person'
 
@@ -80,9 +76,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
         window.addEventListener('resize', () => {
             setSkjerm(window.innerWidth)
         })
-        setSynlige(
-            skjerm! <= LITEN ? [brodsmuler[brodsmuler.length - 1]] : brodsmuler
-        )
+        setSynlige(skjerm! <= LITEN ? [brodsmuler[brodsmuler.length - 1]] : brodsmuler)
         // eslint-disable-next-line
     }, [skjerm])
 
@@ -128,9 +122,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
                                 tittel={
                                     skjerm! <= LITEN &&
                                     smule.mobilTittel &&
-                                    !smulesti.current!.classList.contains(
-                                        'apen'
-                                    )
+                                    !smulesti.current!.classList.contains('apen')
                                         ? smule.mobilTittel
                                         : smule.tittel
                                 }
@@ -141,9 +133,7 @@ const Brodsmuler = ({ brodsmuler }: BrodsmulerProps) => {
 
                 <button
                     aria-label={
-                        synlige.length === brodsmuler.length
-                            ? 'Vis redusert brødsmulesti'
-                            : 'Vis hele brødsmulestien'
+                        synlige.length === brodsmuler.length ? 'Vis redusert brødsmulesti' : 'Vis hele brødsmulestien'
                     }
                     className="js-toggle"
                     onClick={toggleSynlige}

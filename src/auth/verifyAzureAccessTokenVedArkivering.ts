@@ -1,9 +1,4 @@
-import {
-    createRemoteJWKSet,
-    FlattenedJWSInput,
-    JWSHeaderParameters,
-    jwtVerify,
-} from 'jose'
+import { createRemoteJWKSet, FlattenedJWSInput, JWSHeaderParameters, jwtVerify } from 'jose'
 import { GetKeyFunction } from 'jose/dist/types/types'
 import getConfig from 'next/config'
 import { Client, Issuer } from 'openid-client'
@@ -24,9 +19,7 @@ async function validerToken(token: string | Uint8Array) {
 async function jwks() {
     if (typeof _remoteJWKSet === 'undefined') {
         const iss = await issuer()
-        _remoteJWKSet = createRemoteJWKSet(
-            new URL(<string>iss.metadata.jwks_uri)
-        )
+        _remoteJWKSet = createRemoteJWKSet(new URL(<string>iss.metadata.jwks_uri))
     }
 
     return _remoteJWKSet
@@ -35,12 +28,8 @@ async function jwks() {
 async function issuer() {
     if (typeof _issuer === 'undefined') {
         if (!serverRuntimeConfig.azureAppWellKnownUrl)
-            throw new Error(
-                'Miljøvariabelen AZURE_APP_WELL_KNOWN_URL må være satt'
-            )
-        _issuer = await Issuer.discover(
-            serverRuntimeConfig.azureAppWellKnownUrl
-        )
+            throw new Error('Miljøvariabelen AZURE_APP_WELL_KNOWN_URL må være satt')
+        _issuer = await Issuer.discover(serverRuntimeConfig.azureAppWellKnownUrl)
     }
     return _issuer
 }
@@ -56,13 +45,9 @@ export async function verifyAzureAccessTokenVedArkivering(token: string) {
     if (verified.payload.aud !== serverRuntimeConfig.azureAppClientId) {
         throw new ErrorMedStatus('Audience matcher ikke min client ID', 401)
     }
-    const preAuthorizedApps = JSON.parse(
-        serverRuntimeConfig.azureAppPreAuthorizedApps
-    ) as PreauthorizedApps[]
+    const preAuthorizedApps = JSON.parse(serverRuntimeConfig.azureAppPreAuthorizedApps) as PreauthorizedApps[]
 
-    const spinnsynArkiveringClientId = preAuthorizedApps.find((a) =>
-        a.name.endsWith('-gcp:flex:spinnsyn-arkivering')
-    )
+    const spinnsynArkiveringClientId = preAuthorizedApps.find((a) => a.name.endsWith('-gcp:flex:spinnsyn-arkivering'))
     if (!spinnsynArkiveringClientId) {
         throw new ErrorMedStatus('Fant ikke spinnsyn arkivering client id', 500)
     }
@@ -73,16 +58,11 @@ export async function verifyAzureAccessTokenVedArkivering(token: string) {
     }
 
     if (azp != spinnsynArkiveringClientId.clientId) {
-        throw new ErrorMedStatus(
-            'AZP claim matcher ikke spinnsyn arkivering',
-            401
-        )
+        throw new ErrorMedStatus('AZP claim matcher ikke spinnsyn arkivering', 401)
     }
 }
 
-export async function verifyAzureAccessTokenSpinnsynInterne(
-    bearerToken: string
-) {
+export async function verifyAzureAccessTokenSpinnsynInterne(bearerToken: string) {
     const token = bearerToken.split(' ')[1]
     const verified = await validerToken(token)
 

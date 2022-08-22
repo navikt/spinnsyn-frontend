@@ -24,9 +24,7 @@ const Ekspanderbar = (props: AllProps) => {
         ekspanderbarKlikk(
             erApen,
             ekspanderbar,
-            'Ekspanderbar ' +
-                props.type!.charAt(0).toUpperCase() +
-                props.type!.slice(1).toLowerCase(),
+            'Ekspanderbar ' + props.type!.charAt(0).toUpperCase() + props.type!.slice(1).toLowerCase(),
             klikksted
         )
         setErApen(!erApen)
@@ -37,13 +35,7 @@ const Ekspanderbar = (props: AllProps) => {
             <Vis
                 hvis={props.ikon}
                 render={() => (
-                    <img
-                        aria-hidden="true"
-                        className="ekspanderbar__ikon"
-                        ref={btnImage}
-                        src={props.ikon}
-                        alt=""
-                    />
+                    <img aria-hidden="true" className="ekspanderbar__ikon" ref={btnImage} src={props.ikon} alt="" />
                 )}
             />
             {props.tittel}
@@ -61,9 +53,7 @@ const Ekspanderbar = (props: AllProps) => {
         <Accordion ref={ekspanderbar}>
             <Accordion.Item
                 open={erApen}
-                className={`ekspanderbar ${hentType()}${
-                    props.className ? ' ' + props.className : ''
-                }`}
+                className={`ekspanderbar ${hentType()}${props.className ? ' ' + props.className : ''}`}
             >
                 <Accordion.Header
                     onClick={() => onButtonClick('header')}
@@ -82,11 +72,7 @@ const Ekspanderbar = (props: AllProps) => {
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
-                        <Button
-                            variant="tertiary"
-                            size="small"
-                            onClick={() => onButtonClick('lukk tekst')}
-                        >
+                        <Button variant="tertiary" size="small" onClick={() => onButtonClick('lukk tekst')}>
                             {erApen ? 'Lukk' : 'Åpne'}
                         </Button>
                     </div>

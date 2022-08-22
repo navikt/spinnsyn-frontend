@@ -7,10 +7,7 @@ import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenV
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
-type ApiHandler = (
-    req: NextApiRequest,
-    res: NextApiResponse
-) => void | Promise<void>
+type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>
 
 export function beskyttetApi(handler: ApiHandler): ApiHandler {
     return async function withBearerTokenHandler(req, res) {
@@ -26,12 +23,8 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             res.status(401).json({ message: 'Access denied' })
         }
 
-        async function beskyttetApiInterne(
-            req: NextApiRequest,
-            res: NextApiResponse
-        ) {
-            const bearerToken: string | null | undefined =
-                req.headers['authorization']
+        async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse) {
+            const bearerToken: string | null | undefined = req.headers['authorization']
             if (!bearerToken) {
                 return send401()
             }
@@ -55,8 +48,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             return send401()
         }
 
-        const bearerToken: string | null | undefined =
-            req.headers['authorization']
+        const bearerToken: string | null | undefined = req.headers['authorization']
         if (!bearerToken) {
             return send401()
         }

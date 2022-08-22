@@ -19,17 +19,14 @@ const hentMockKontonummer = (id: string): string | null => {
 
 const hentProdKontonummer = async (selvbetjeningsToken: string) => {
     // Hardkoder URL da dette er data som kun finnes i produksjon.
-    const res = await fetch(
-        'https://www.nav.no/person/personopplysninger-api/personalia',
-        {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json',
-                Cookie: `selvbetjening-idtoken=${selvbetjeningsToken}`,
-            },
-        }
-    )
+    const res = await fetch('https://www.nav.no/person/personopplysninger-api/personalia', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+            Cookie: `selvbetjening-idtoken=${selvbetjeningsToken}`,
+        },
+    })
     const data: Personalia = await res.json()
     return data?.personalia?.kontonr
 }
@@ -44,10 +41,7 @@ function finnVedtaksId(queryString: QueryString) {
     return queryString.id[0]
 }
 
-async function hentKontonummer(
-    queryString: QueryString,
-    cookies: string | undefined
-) {
+async function hentKontonummer(queryString: QueryString, cookies: string | undefined) {
     if (isProd()) {
         return hentProdKontonummer(finnSelvbetjeningsToken(cookies))
     } else {
@@ -56,18 +50,16 @@ async function hentKontonummer(
 }
 
 // Ett mock-kontonummer blir returnert for dev, så dev må være ubeskyttet i tillegg til prod.
-const handler = beskyttetApi(
-    async (req: NextApiRequest, res: NextApiResponse) => {
-        if (req.method !== 'GET') {
-            return res.status(405).json('Kun GET er tillatt')
-        }
-        const kontonummer = await hentKontonummer(req.query, req.headers.cookie)
-        if (kontonummer) {
-            return res.status(200).json({ kontonummer: kontonummer })
-        }
-
-        return res.status(404).json(null)
+const handler = beskyttetApi(async (req: NextApiRequest, res: NextApiResponse) => {
+    if (req.method !== 'GET') {
+        return res.status(405).json('Kun GET er tillatt')
     }
-)
+    const kontonummer = await hentKontonummer(req.query, req.headers.cookie)
+    if (kontonummer) {
+        return res.status(200).json({ kontonummer: kontonummer })
+    }
+
+    return res.status(404).json(null)
+})
 
 export default handler

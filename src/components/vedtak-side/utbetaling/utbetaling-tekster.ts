@@ -5,8 +5,7 @@ const UtbetalingTekster = {
     'utbetaling.mndlonn.innhold':
         'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. <a href="https://www.nav.no/no/bedrift/tjenester-og-skjemaer/nav-og-altinn-tjenester/inntektsmelding/inntekter-som-inngar-i-beregningen-av-manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med.</a> Hvis du er usikker på om månedslønnen er riktig, kontakt arbeidsgiveren din. ',
     'utbetaling.arslonn.tittel': 'Årslønn',
-    'utbetaling.arslonn.innhold.del1':
-        'Så blir månedslønnen regnet om til årslønn ved å gange den med 12. ',
+    'utbetaling.arslonn.innhold.del1': 'Så blir månedslønnen regnet om til årslønn ved å gange den med 12. ',
     'utbetaling.arslonn.innhold.del2':
         'Siden du har flere arbeidsgivere, legger vi sammen lønnen fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er.',
     'utbetaling.sykepengegrunnlag.tittel': 'Sykepengegrunnlag',
@@ -31,17 +30,14 @@ const UtbetalingTekster = {
     'utbetaling.utbetalingsdager.innhold':
         'Når NAV utbetaler sykepenger, betales det alltid for dagene mandag til fredag. Dette gjør vi selv om det er helligdager i løpet av disse dagene, og uavhengig av om du eventuelt jobber lørdag og søndag. Penger du tjener på lørdager og søndager, blir regnet med i beløpet du får utbetalt.',
     'utbetaling.beregning.tittel': 'Mer om beregningen',
-    'utbetaling.beregning.les.mer':
-        'Du kan lese mer om hvordan sykepengene beregnes i ',
+    'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
     'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
-    'utbetaling.beregning.lenke.url':
-        'https://lovdata.no/lov/1997-02-28-19/§8-28',
+    'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',
     'utbetaling.info.tittel': 'Utbetaling',
     'utbetaling.info.innhold':
         'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Da kan du se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
 
-    'utbetaling.inntekt.info.tittel':
-        'Inntekter lagt til grunn for sykepengene',
+    'utbetaling.inntekt.info.tittel': 'Inntekter lagt til grunn for sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
     'utbetaling.inntekt.info.omregnet': 'Beregnet årslønn',
     'utbetaling.inntekt.årslønn': 'Årslønn',
@@ -63,8 +59,7 @@ const UtbetalingTekster = {
     'utbetaling.person.når': 'Når får du sykepengene? ',
     'utbetaling.person.når.innhold':
         'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
-    'utbetaling.person.når.lenke.tekst':
-        'Les mer om når du kan forvente å få pengene.',
+    'utbetaling.person.når.lenke.tekst': 'Les mer om når du kan forvente å få pengene.',
     'utbetaling.person.når.lenke.url':
         'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap',
     'utbetaling.kontonummer.tittel': 'Kontonummer for utbetaling',
@@ -77,24 +72,20 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.Arbeidsdag':
         'Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',
     'utbetaling.tabell.label.NavDag': '',
-    'utbetaling.tabell.label.NavDagSyk':
-        'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
+    'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
     'utbetaling.tabell.label.NavDagDelvisSyk':
         'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
     'utbetaling.tabell.label.NavHelgDag':
         'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
-    'utbetaling.tabell.label.Fridag':
-        'Du får ikke sykepenger for dager du har ferie eller permisjon.',
-    'utbetaling.tabell.label.Feriedag':
-        'Du har oppgitt i søknaden at du hadde ferie. I ferien stoppes sykepengene.',
+    'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
+    'utbetaling.tabell.label.Feriedag': 'Du har oppgitt i søknaden at du hadde ferie. I ferien stoppes sykepengene.',
     'utbetaling.tabell.label.Permisjonsdag':
         'Du har oppgitt i søknaden at du hadde permisjon. Du får ikke sykepenger for dager du har permisjon. ',
     'utbetaling.tabell.label.ForeldetDag':
         'Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
-    'utbetaling.tabell.avvist.Over70':
-        'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.',
+    'utbetaling.tabell.avvist.Over70': 'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt':
         'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
     'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67':
@@ -109,14 +100,12 @@ const UtbetalingTekster = {
         ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet.',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
         'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding.',
-    'utbetaling.tabell.avvist.MinimumSykdomsgrad':
-        'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
+    'utbetaling.tabell.avvist.MinimumSykdomsgrad': 'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
         'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.',
     'utbetaling.tabell.avvist.ManglerMedlemskap':
         'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.',
-    'utbetaling.tabell.avvist.EtterDødsdato':
-        'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
+    'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':

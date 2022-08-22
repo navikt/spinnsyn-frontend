@@ -9,8 +9,7 @@ import Vis from '../../../vis'
 
 const Kontonummer = () => {
     const [kontonummer, setKontonummer] = useState<string>()
-    const [erKontonummerHentet, setErKontonummerHentet] =
-        useState<boolean>(false)
+    const [erKontonummerHentet, setErKontonummerHentet] = useState<boolean>(false)
 
     const hentKontonummer = async (url: string) => {
         const res = await fetch(url, {
@@ -46,8 +45,7 @@ const Kontonummer = () => {
         return `${apiRouteUrl}?id=${id}`
     }
 
-    const formaterKontonummer = (kontonummer: string) =>
-        kontonummer.replace(/^(.{4})(.{2})(.*)$/, '$1 $2 $3')
+    const formaterKontonummer = (kontonummer: string) => kontonummer.replace(/^(.{4})(.{2})(.*)$/, '$1 $2 $3')
 
     return (
         <Vis
@@ -58,9 +56,7 @@ const Kontonummer = () => {
                         hvis={kontonummer}
                         render={() => (
                             <BodyShort>
-                                <strong>
-                                    {tekst('utbetaling.kontonummer.utbetales')}
-                                </strong>{' '}
+                                <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong>{' '}
                                 {formaterKontonummer(kontonummer!)}
                             </BodyShort>
                         )}
@@ -73,11 +69,7 @@ const Kontonummer = () => {
                                 <Heading spacing level="3" size="small">
                                     {tekst('utbetaling.kontonummer.tittel')}
                                 </Heading>
-                                <BodyLong spacing>
-                                    {parser(
-                                        tekst('utbetaling.kontonummer.mangler')
-                                    )}
-                                </BodyLong>
+                                <BodyLong spacing>{parser(tekst('utbetaling.kontonummer.mangler'))}</BodyLong>
                             </>
                         )}
                     />

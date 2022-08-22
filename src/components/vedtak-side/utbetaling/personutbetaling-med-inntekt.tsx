@@ -39,9 +39,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                     <Heading level="2" size="large">
                         {belop + ' kroner'}
                     </Heading>
-                    <BodyShort>
-                        {tekst('utbetaling.person.systemtittel')}
-                    </BodyShort>
+                    <BodyShort>{tekst('utbetaling.person.systemtittel')}</BodyShort>
                 </div>
             }
         >
@@ -53,11 +51,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                 <Vis
                     hvis={vedtak.dagerPerson.length > 0}
                     render={() => (
-                        <Accordion.Item
-                            ref={accordionRef}
-                            open={open}
-                            className="utbetalingsoversikt"
-                        >
+                        <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
                             <Accordion.Header onClick={onButtonClick}>
                                 <Heading size="small" level="4">
                                     {tekst('utbetaling.inntekt.info.dagsats')}
@@ -69,11 +63,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                                 <DagBeskrivelse dager={vedtak.dagerPerson} />
 
                                 <div className="knapperad">
-                                    <Button
-                                        variant="tertiary"
-                                        size="small"
-                                        onClick={onButtonClick}
-                                    >
+                                    <Button variant="tertiary" size="small" onClick={onButtonClick}>
                                         Skjul
                                     </Button>
                                 </div>

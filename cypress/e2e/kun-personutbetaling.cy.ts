@@ -9,10 +9,7 @@ describe('Tester visning personutbetaling', () => {
     })
 
     it('Laster startside', () => {
-        cy.url().should(
-            'equal',
-            'http://localhost:8080/syk/sykepenger?testperson=kun-direkte'
-        )
+        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
         cy.get(`article a[href*=${vedtak.id}]`).click()
     })
 
@@ -22,14 +19,9 @@ describe('Tester visning personutbetaling', () => {
         ).should('not.exist')
         cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
-        cy.contains('24 550 kroner')
-            .and('contain', 'til deg (før skatt)')
-            .click({ force: true })
+        cy.contains('24 550 kroner').and('contain', 'til deg (før skatt)').click({ force: true })
 
-        cy.get('.tekstinfo')
-            .children()
-            .first()
-            .contains('Når får du sykepengene?')
+        cy.get('.tekstinfo').children().first().contains('Når får du sykepengene?')
 
         cy.get('.tekstinfo')
             .children('.navds-body-long')
@@ -39,17 +31,13 @@ describe('Tester visning personutbetaling', () => {
                     'Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.'
             )
 
-        cy.get('.tekstinfo > :nth-child(3) > strong').contains(
-            'Utbetales til kontonummer:'
-        )
+        cy.get('.tekstinfo > :nth-child(3) > strong').contains('Utbetales til kontonummer:')
 
         cy.get('.tekstinfo > :nth-child(3)').contains('1001 11 10011')
 
         cy.contains('Mer om beregningen').click({ force: true })
 
-        cy.get('.ekspanderbar .tekstinfo > :nth-child(10)').contains(
-            'Totalbeløp'
-        )
+        cy.get('.ekspanderbar .tekstinfo > :nth-child(10)').contains('Totalbeløp')
 
         cy.get('.ekspanderbar .tekstinfo > :nth-child(11)').contains(
             'Til slutt summerer vi alle dagene. ' +

@@ -1,8 +1,6 @@
 describe('Tester serverside rendret vedtak for arkivering ', () => {
     it('laster siden med alt ekspandert ', () => {
-        cy.visit(
-            'http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering'
-        )
+        cy.visit('http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering')
         cy.injectAxe()
 
         cy.contains('Svar på søknad')

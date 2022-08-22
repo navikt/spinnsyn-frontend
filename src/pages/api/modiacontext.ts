@@ -13,13 +13,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const accessToken = req.headers.authorization!.split(' ')[1]
 
     const [modiaContextAccessToken, flexFssProxyToken] = await Promise.all([
-        await getOboAccessToken(
-            accessToken,
-            'https://graph.microsoft.com/.default'
-        ),
-        await getAzureAdAccessToken(
-            'api://dev-fss.flex.flex-fss-proxy/.default'
-        ),
+        await getOboAccessToken(accessToken, 'https://graph.microsoft.com/.default'),
+        await getAzureAdAccessToken('api://dev-fss.flex.flex-fss-proxy/.default'),
     ])
 
     const response = await fetch(

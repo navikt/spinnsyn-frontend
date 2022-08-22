@@ -10,11 +10,7 @@ export interface EkspanderProps {
     className?: string
 }
 
-const lukk = (
-    ekspanderbar: any,
-    tittel: string,
-    klikksted?: 'lukk tekst' | 'header'
-) => {
+const lukk = (ekspanderbar: any, tittel: string, klikksted?: 'lukk tekst' | 'header') => {
     if (window) {
         const eventProperties: Record<string, string | boolean> = {
             component: tittel,
@@ -39,8 +35,7 @@ export const midtstill = (ekspanderbar: any) => {
         if (position.height >= winhight) {
             top = position.top + window.scrollY
         } else {
-            top =
-                position.top - (winhight - position.height) / 2 + window.scrollY
+            top = position.top - (winhight - position.height) / 2 + window.scrollY
         }
         window.scrollTo({ top: top, left: 0, behavior: 'smooth' })
     }, 300)

@@ -2,12 +2,7 @@ import React, { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
 import useVedtak from '../../query-hooks/useVedtak'
-import {
-    isMockBackend,
-    isOpplaering,
-    isProd,
-    spinnsynFrontendInterne,
-} from '../../utils/environment'
+import { isMockBackend, isOpplaering, isProd, spinnsynFrontendInterne } from '../../utils/environment'
 import { logger } from '../../utils/logger'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'

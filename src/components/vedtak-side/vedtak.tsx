@@ -4,10 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
-import {
-    RSDagTypeKomplett,
-    RSVedtakWrapper,
-} from '../../types/rs-types/rs-vedtak'
+import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
@@ -20,13 +17,7 @@ import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 
-const dagErAvvist: RSDagTypeKomplett[] = [
-    'AvvistDag',
-    'Fridag',
-    'Feriedag',
-    'Permisjonsdag',
-    'ForeldetDag',
-]
+const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
 
 export interface VedtakProps {
     vedtak: RSVedtakWrapper
@@ -38,9 +29,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const query: NodeJS.Dict<string | string[]> = {}
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const avvisteDager = vedtak.dagerArbeidsgiver.filter((dag) =>
-        dagErAvvist.includes(dag.dagtype)
-    )
+    const avvisteDager = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const erSP = vedtak.sykepengebelopPerson > 0
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
@@ -74,12 +63,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 render={() => (
                     <>
                         <Banner>
-                            <Heading
-                                spacing
-                                size="2xlarge"
-                                level="1"
-                                className="sidebanner__tittel"
-                            >
+                            <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                                 {tekst('spinnsyn.sidetittel.vedtak')}
                             </Heading>
                         </Banner>
@@ -93,23 +77,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     hvis={!annullertEllerRevurdert}
                     render={() => (
                         <div className="velkommen">
-                            <img
-                                src={
-                                    '/syk/sykepenger/static/img/adult_people.svg'
-                                }
-                                alt=""
-                            />
+                            <img src={'/syk/sykepenger/static/img/adult_people.svg'} alt="" />
                             <div className="velkommen-innhold">
-                                <BodyLong size="medium">
-                                    {tekst('vedtak.velkommen.tekst1')}
-                                </BodyLong>
+                                <BodyLong size="medium">{tekst('vedtak.velkommen.tekst1')}</BodyLong>
                                 <Vis
                                     hvis={erSP && erSPREF}
-                                    render={() => (
-                                        <BodyLong size="medium">
-                                            {tekst('vedtak.velkommen.tekst2')}
-                                        </BodyLong>
-                                    )}
+                                    render={() => <BodyLong size="medium">{tekst('vedtak.velkommen.tekst2')}</BodyLong>}
                                 />
                             </div>
                         </div>
@@ -121,41 +94,22 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     render={() => (
                         <>
                             <AnnulleringsInfo vedtak={vedtak} />
-                            <Heading
-                                spacing
-                                size="large"
-                                level="2"
-                                className="tidligere__beslutning"
-                            >
+                            <Heading spacing size="large" level="2" className="tidligere__beslutning">
                                 {tekst('annullert.se-tidligere-beslutning')}
                             </Heading>
                         </>
                     )}
                 />
 
+                <Vis hvis={erSP} render={() => <PersonutbetalingMedInntekt vedtak={vedtak} />} />
                 <Vis
-                    hvis={erSP}
-                    render={() => (
-                        <PersonutbetalingMedInntekt vedtak={vedtak} />
-                    )}
-                />
-                <Vis
-                    hvis={
-                        erSPREF ||
-                        (!erSP &&
-                            !erSPREF &&
-                            !erAvvist) /* vedtak med bare arbeidsgiverperiode dager */
-                    }
+                    hvis={erSPREF || (!erSP && !erSPREF && !erAvvist) /* vedtak med bare arbeidsgiverperiode dager */}
                     render={() => <RefusjonMedInntekt vedtak={vedtak} />}
                 />
                 <Vis
                     hvis={erAvvist}
                     render={() => (
-                        <AvvisteDager
-                            avvisteDager={avvisteDager}
-                            vedtak={vedtak}
-                            heltAvvist={!erSP && !erSPREF}
-                        />
+                        <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} heltAvvist={!erSP && !erSPREF} />
                     )}
                 />
 
@@ -163,10 +117,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
                 <Behandling vedtak={vedtak} />
 
-                <Vis
-                    hvis={!annullertEllerRevurdert}
-                    render={() => <Uenig vedtak={vedtak} />}
-                />
+                <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
             </div>
         </>
     )

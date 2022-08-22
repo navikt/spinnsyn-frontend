@@ -14,27 +14,16 @@ import { spinnsynFrontendInterne } from '../utils/environment'
 
 const Index = ({ sykmeldtFnr, dehydratedState }: PrefetchResults) => {
     if (!sykmeldtFnr && spinnsynFrontendInterne()) {
-        return (
-            <IndexInterneUtenFnr
-                sykmeldtFnr={sykmeldtFnr}
-                dehydratedState={dehydratedState}
-            />
-        )
+        return <IndexInterneUtenFnr sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />
     }
-    return (
-        <IndexMedData
-            sykmeldtFnr={sykmeldtFnr}
-            dehydratedState={dehydratedState}
-        />
-    )
+    return <IndexMedData sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />
 }
 
 const IndexInterneUtenFnr = ({ sykmeldtFnr }: PrefetchResults) => {
     return (
         <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
             <Alert variant="warning">
-                Du har ingen aktiv person åpen i modia. Åpne en person i modia
-                og refresh denne siden.
+                Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
             </Alert>
         </ArkiveringOgMain>
     )
@@ -72,12 +61,7 @@ const ArkiveringOgMain = ({ children, sykmeldtFnr }: ArkiveringOgMainProps) => (
     <>
         {spinnsynFrontendInterne() && <InterneHeader fnr={sykmeldtFnr} />}
         <ArkiveringContext.Provider value={false}>
-            <main
-                id="maincontent"
-                className="maincontent"
-                role="main"
-                tabIndex={-1}
-            >
+            <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
                 {children}
             </main>
         </ArkiveringContext.Provider>

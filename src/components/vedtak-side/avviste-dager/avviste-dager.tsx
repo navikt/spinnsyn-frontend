@@ -1,10 +1,4 @@
-import {
-    Accordion,
-    BodyLong,
-    BodyShort,
-    Button,
-    Heading,
-} from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -24,25 +18,16 @@ interface AvvisteDagerProps {
     heltAvvist: Boolean
 }
 
-const AvvisteDager = ({
-    avvisteDager,
-    vedtak,
-    heltAvvist,
-}: AvvisteDagerProps) => {
+const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const [apen] = useState<boolean>(false)
     const isServer = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
     const harMinstEnForLavInntektDag =
-        vedtak.dagerArbeidsgiver.filter((dag) =>
-            dag.begrunnelser.includes('MinimumInntekt')
-        ).length > 0
+        vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
 
-    const avvisteDagerTekst =
-        avvisteDager.length > 1 || avvisteDager.length < 1
-            ? ' sykepengedager'
-            : ' sykepengedag'
+    const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1 ? ' sykepengedager' : ' sykepengedag'
 
     const onButtonClick = () => {
         ekspanderbarKlikk(open, accordionRef, 'Dager NAV ikke utbetaler')
@@ -59,9 +44,7 @@ const AvvisteDager = ({
                 <div className="ekspanderbar__tittel">
                     <Heading size="large" level="2">
                         {avvisteDager.length + avvisteDagerTekst}
-                        <BodyShort as="span">
-                            {tekst('avviste.dager.dekkes.ikke')}
-                        </BodyShort>
+                        <BodyShort as="span">{tekst('avviste.dager.dekkes.ikke')}</BodyShort>
                     </Heading>
                 </div>
             }
@@ -70,17 +53,10 @@ const AvvisteDager = ({
                 <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
             </div>
 
-            <Vis
-                hvis={heltAvvist && harMinstEnForLavInntektDag}
-                render={() => <InntektInfo vedtak={vedtak} />}
-            />
+            <Vis hvis={heltAvvist && harMinstEnForLavInntektDag} render={() => <InntektInfo vedtak={vedtak} />} />
 
             <Accordion>
-                <Accordion.Item
-                    ref={accordionRef}
-                    open={open}
-                    className="avvistedageroversikt"
-                >
+                <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
                     <Accordion.Header onClick={onButtonClick}>
                         <Heading size="small" level="4">
                             Dager NAV ikke utbetaler
@@ -92,11 +68,7 @@ const AvvisteDager = ({
                         <DagBeskrivelse dager={avvisteDager} />
 
                         <div className="knapperad">
-                            <Button
-                                variant="tertiary"
-                                size="small"
-                                onClick={onButtonClick}
-                            >
+                            <Button variant="tertiary" size="small" onClick={onButtonClick}>
                                 Skjul
                             </Button>
                         </div>
@@ -105,13 +77,7 @@ const AvvisteDager = ({
 
                 <Vis
                     hvis={heltAvvist && harMinstEnForLavInntektDag}
-                    render={() => (
-                        <BeregningInfo
-                            vedtak={vedtak}
-                            mottaker={'refusjon'}
-                            heltAvvist={heltAvvist}
-                        />
-                    )}
+                    render={() => <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} heltAvvist={heltAvvist} />}
                 />
             </Accordion>
         </Ekspanderbar>

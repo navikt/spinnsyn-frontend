@@ -13,19 +13,8 @@ const csp = {
         'https://ta-survey-v2.herokuapp.com',
         'https://surveystats.hotjar.io',
     ],
-    'img-src': [
-        "'self'",
-        'data:',
-        'https://*.nav.no',
-        'https://www.google-analytics.com',
-        'https://script.hotjar.com',
-    ],
-    'font-src': [
-        "'self'",
-        'data:',
-        'https://*.psplugin.com',
-        'https://script.hotjar.com',
-    ],
+    'img-src': ["'self'", 'data:', 'https://*.nav.no', 'https://www.google-analytics.com', 'https://script.hotjar.com'],
+    'font-src': ["'self'", 'data:', 'https://*.psplugin.com', 'https://script.hotjar.com'],
     'frame-src': ["'self'", 'data:', 'https://vars.hotjar.com'],
     'worker-src': ['blob:', '*.nais.io'],
     'style-src': ["'self'", "'unsafe-inline'", 'https://*.nav.no'],
@@ -94,15 +83,12 @@ module.exports = withPlugins(
             utviklingArkivering: process.env.UTVIKLING_ARKIVERING,
             arkivering: process.env.ARKIVERING,
             spinnsynBackendUrl: process.env.SPINNSYN_BACKEND_URL,
-            spinnsynBackendTokenxClientId:
-                process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
+            spinnsynBackendTokenxClientId: process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
             azureAppClientId: process.env.AZURE_APP_CLIENT_ID,
             azureAppClientSecret: process.env.AZURE_APP_CLIENT_SECRET,
-            azureOpenidConfigTokenEndpoint:
-                process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
+            azureOpenidConfigTokenEndpoint: process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
             azureAppWellKnownUrl: process.env.AZURE_APP_WELL_KNOWN_URL,
-            azureAppPreAuthorizedApps:
-                process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
+            azureAppPreAuthorizedApps: process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
             spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
             flexFssProxyClientId: process.env.FLEX_FSS_PROXY_CLIENT_ID,
             flexFssProxyUrl: process.env.FLEX_FSS_PROXY_URL,
@@ -111,10 +97,8 @@ module.exports = withPlugins(
             naisAppImage: process.env.NAIS_APP_IMAGE,
             loginserviceUrl: process.env.LOGINSERVICE_URL,
             loginServiceRedirectUrl: process.env.LOGINSERVICE_REDIRECT_URL,
-            loginserviceIdportenDiscoveryUrl:
-                process.env.LOGINSERVICE_IDPORTEN_DISCOVERY_URL,
-            loginserviceIdportenAudience:
-                process.env.LOGINSERVICE_IDPORTEN_AUDIENCE,
+            loginserviceIdportenDiscoveryUrl: process.env.LOGINSERVICE_IDPORTEN_DISCOVERY_URL,
+            loginserviceIdportenAudience: process.env.LOGINSERVICE_IDPORTEN_AUDIENCE,
             tokenXWellKnownUrl: process.env.TOKEN_X_WELL_KNOWN_URL,
             tokenXPrivateJwk: process.env.TOKEN_X_PRIVATE_JWK,
             tokenXClientId: process.env.TOKEN_X_CLIENT_ID,

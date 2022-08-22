@@ -30,11 +30,7 @@ interface AndreArbeidsgivere {
     [organisasjonsnavn: string]: number
 }
 
-export type Begrensning =
-    | 'ER_6G_BEGRENSET'
-    | 'ER_IKKE_6G_BEGRENSET'
-    | 'VURDERT_I_INFOTRYGD'
-    | 'VET_IKKE'
+export type Begrensning = 'ER_6G_BEGRENSET' | 'ER_IKKE_6G_BEGRENSET' | 'VURDERT_I_INFOTRYGD' | 'VET_IKKE'
 
 interface RSVedtak {
     organisasjonsnummer?: string

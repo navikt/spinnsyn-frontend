@@ -18,9 +18,7 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
         <Accordion ref={ekspanderbar}>
             <Accordion.Item
                 open={erApen}
-                className={`ekspanderbar info${
-                    props.className ? ' ' + props.className : ''
-                }`}
+                className={`ekspanderbar info${props.className ? ' ' + props.className : ''}`}
             >
                 <Accordion.Header onClick={onButtonClick}>
                     <Heading level={'2'} size={'small'}>
@@ -30,11 +28,7 @@ const EkspanderbarInfo = (props: EkspanderProps) => {
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
                     <div className="knapperad">
-                        <Button
-                            variant="tertiary"
-                            size="small"
-                            onClick={onButtonClick}
-                        >
+                        <Button variant="tertiary" size="small" onClick={onButtonClick}>
                             Skjul
                         </Button>
                     </div>

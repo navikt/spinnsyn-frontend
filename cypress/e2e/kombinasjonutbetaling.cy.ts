@@ -9,10 +9,7 @@ describe('Tester visning av kombinasjon', () => {
     })
 
     it('Laster startside', () => {
-        cy.url().should(
-            'equal',
-            'http://localhost:8080/syk/sykepenger?testperson=kombinasjon'
-        )
+        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
         cy.get(`article a[href*=${vedtak.id}]`).click()
     })
 
@@ -22,13 +19,9 @@ describe('Tester visning av kombinasjon', () => {
                 'Arbeidsgiveren din får igjen pengene fra NAV senere.'
         )
 
-        cy.contains('24 550 kroner')
-            .and('contain', 'til deg (før skatt)')
-            .click({ force: true })
+        cy.contains('24 550 kroner').and('contain', 'til deg (før skatt)').click({ force: true })
 
-        cy.get('.personutbetaling .tekstinfo')
-            .contains('Når får du sykepengene?')
-            .should('be.visible')
+        cy.get('.personutbetaling .tekstinfo').contains('Når får du sykepengene?').should('be.visible')
         cy.get('.personutbetaling .tekstinfo')
             .first()
             .contains(
@@ -47,40 +40,27 @@ describe('Tester visning av kombinasjon', () => {
             .contains('Mer om beregningen')
             .click({ force: true })
 
-        cy.get(
-            '.personutbetaling .navds-accordion__item.beregning .tekstinfo > :nth-child(10)'
-        )
+        cy.get('.personutbetaling .navds-accordion__item.beregning .tekstinfo > :nth-child(10)')
             .contains('Totalbeløp')
             .should('be.visible')
-        cy.get(
-            '.personutbetaling .navds-accordion__item.beregning .tekstinfo > :nth-child(11)'
-        )
+        cy.get('.personutbetaling .navds-accordion__item.beregning .tekstinfo > :nth-child(11)')
             .contains(
                 'Til slutt summerer vi alle dagene. ' +
                     'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
             )
             .should('be.visible')
 
-        cy.contains('24 550 kroner')
-            .and('contain', 'til deg (før skatt)')
-            .click({ force: true })
+        cy.contains('24 550 kroner').and('contain', 'til deg (før skatt)').click({ force: true })
 
-        cy.get('.personutbetaling')
-            .contains('Når får du sykepengene?')
-            .should('not.exist')
+        cy.get('.personutbetaling').contains('Når får du sykepengene?').should('not.exist')
     })
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
-        cy.contains('4 910 kroner').and(
-            'contain',
-            'Utbetales til Matbutikken AS'
-        )
+        cy.contains('4 910 kroner').and('contain', 'Utbetales til Matbutikken AS')
 
         cy.contains('Utbetales til Matbutikken AS').click()
 
-        cy.get('.tekstinfo')
-            .contains('Når får du sykepengene?')
-            .should('not.exist')
+        cy.get('.tekstinfo').contains('Når får du sykepengene?').should('not.exist')
         cy.get('.tekstinfo')
             .contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
@@ -88,19 +68,13 @@ describe('Tester visning av kombinasjon', () => {
             )
             .should('not.exist')
 
-        cy.get('.refusjon .navds-accordion__item.beregning')
-            .contains('Mer om beregningen')
-            .click({ force: true })
+        cy.get('.refusjon .navds-accordion__item.beregning').contains('Mer om beregningen').click({ force: true })
 
-        cy.get(
-            '.refusjon .navds-accordion__item.beregning .tekstinfo > :nth-child(10)'
-        )
+        cy.get('.refusjon .navds-accordion__item.beregning .tekstinfo > :nth-child(10)')
             .contains('Totalbeløp')
             .should('be.visible')
 
-        cy.get(
-            '.refusjon .navds-accordion__item.beregning .tekstinfo > :nth-child(11)'
-        )
+        cy.get('.refusjon .navds-accordion__item.beregning .tekstinfo > :nth-child(11)')
             .contains(
                 'Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, ' +
                     'har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.'

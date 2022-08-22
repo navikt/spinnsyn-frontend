@@ -12,8 +12,7 @@ const getLogEventFunction = (): AmplitudeInstance => {
     if (window && amplitudeEnabled()) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const amplitudeJs = require('amplitude-js')
-        const amplitudeInstance: AmplitudeClient =
-            amplitudeJs.default.getInstance()
+        const amplitudeInstance: AmplitudeClient = amplitudeJs.default.getInstance()
         amplitudeInstance.init('default', '', {
             apiEndpoint: 'amplitude.nav.no/collect-auto',
             saveEvents: false,
@@ -27,26 +26,15 @@ const getLogEventFunction = (): AmplitudeInstance => {
         return {
             logEvent: (eventName: string, data?: any) => {
                 // eslint-disable-next-line no-console
-                console.log(
-                    `Logger ${eventName} - Event properties: ${JSON.stringify(
-                        data
-                    )}!`
-                )
+                console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(data)}!`)
             },
         }
     }
 }
 
-export type validEventNames =
-    | 'navigere'
-    | 'accordion lukket'
-    | 'accordion åpnet'
-    | 'skjema åpnet' //Bruk kun navn fra taksonomien
+export type validEventNames = 'navigere' | 'accordion lukket' | 'accordion åpnet' | 'skjema åpnet' //Bruk kun navn fra taksonomien
 
-export const logEvent = (
-    eventName: validEventNames,
-    eventProperties: Record<string, string | boolean>
-) => {
+export const logEvent = (eventName: validEventNames, eventProperties: Record<string, string | boolean>) => {
     if (window) {
         if (amplitudeInstance) {
             amplitudeInstance.logEvent(eventName, eventProperties)

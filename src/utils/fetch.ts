@@ -40,20 +40,14 @@ class Fetch {
             if (process.browser) {
                 window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
             }
-            throw new Error(
-                'Sesjonen er utløpt. Vi videresender deg til innloggingssiden.'
-            )
+            throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
         const textResponse = await res.text()
-        logger.error(
-            `Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`
-        )
+        logger.error(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
         if (res.status === 400) {
             throw new Error(textResponse)
         }
-        throw new Error(
-            'Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.'
-        )
+        throw new Error('Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.')
     }
 
     /**
@@ -80,19 +74,13 @@ class Fetch {
             if (process.browser) {
                 window.location.href = '/syk/sykepenger' //Lar SSR authen fikse alt
             }
-            throw new Error(
-                'Sesjonen er utløpt. Vi videresender deg til innloggingssiden.'
-            )
+            throw new Error('Sesjonen er utløpt. Vi videresender deg til innloggingssiden.')
         }
-        logger.warn(
-            `Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`
-        )
+        logger.warn(`Request to ${url} resulted in statuscode: ${res.status} with message: ${textResponse}`)
         if (res.status === 400) {
             throw new Error(textResponse)
         }
-        throw new Error(
-            'Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.'
-        )
+        throw new Error('Vi har problemer med baksystemene for øyeblikket. Vennligst prøv igjen senere.')
     }
 }
 
