@@ -19,8 +19,8 @@ spec:
       value: "labs"
     - name: SYKEFRAVAER_URL
       value: "https://ditt-sykefravaer.labs.nais.io/syk/sykefravaer"
-    - name: DITTNAV_URL
-      value: "https://www.nav.no/person/dittnav"
+    - name: MINSIDE_URL
+      value: "https://www.nav.no/minside/"
     - name: ARKIVERTE_VEDTAK_URL
       value: "https://person.nav.no/mine-saker/tema/SYK"
     - name: OPPLAERING
