@@ -4,14 +4,14 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { UrlObject } from 'url'
 
-import { dittNavUrl, spinnsynFrontendInterne, sykefravaerUrl } from '../../utils/environment'
+import { minSideUrl, spinnsynFrontendInterne, sykefravaerUrl } from '../../utils/environment'
 import Vis from '../vis'
 import Person from './Person'
 
 const LITEN = 768
 
 const faste: Brodsmule[] = [
-    { tittel: 'Ditt NAV', sti: dittNavUrl() },
+    { tittel: 'Min side', sti: minSideUrl() },
     { tittel: 'Ditt sykefravær', sti: sykefravaerUrl() },
 ]
 
