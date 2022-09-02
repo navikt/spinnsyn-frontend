@@ -14,15 +14,17 @@ spec:
     cpuThresholdPercentage: 50
   resources:
     limits:
-      cpu: 100m
-      memory: 200Mi
+      cpu: 200m
+      memory: 300Mi
     requests:
       cpu: 50m
       memory: 170Mi
   liveness:
     path: syk/sykepenger/api/isAlive
+    initialDelay: 30
   readiness:
     path: syk/sykepenger/api/isReady
+    initialDelay: 30
   accessPolicy:
     outbound:
       external:
