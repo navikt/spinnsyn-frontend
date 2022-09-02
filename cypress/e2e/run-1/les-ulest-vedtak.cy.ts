@@ -1,4 +1,8 @@
-import { ulestVedtakUtenUtbetalingsdager, vedtakAnnullert, vedtakRevurdert } from '../../src/data/mock/data/rs-vedtak'
+import {
+    ulestVedtakUtenUtbetalingsdager,
+    vedtakAnnullert,
+    vedtakRevurdert,
+} from '../../../src/data/mock/data/rs-vedtak'
 
 describe('Tester at appen starter', () => {
     before(() => {

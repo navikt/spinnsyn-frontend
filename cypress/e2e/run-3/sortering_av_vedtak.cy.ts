@@ -1,5 +1,5 @@
-import { diverseData } from '../../src/data/mock/data/personas'
-import { RSVedtakWrapper } from '../../src/types/rs-types/rs-vedtak'
+import { diverseData } from '../../../src/data/mock/data/personas'
+import { RSVedtakWrapper } from '../../../src/types/rs-types/rs-vedtak'
 
 const articleTilVedtak = (articles: any) => {
     const vedtakene: RSVedtakWrapper[] = []
