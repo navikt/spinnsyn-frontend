@@ -9,3 +9,25 @@ jobs:
       static-files-path: spinnsyn
       base-path: syk/sykepenger
       sentry-project: spinnsyn
+
+  arkivering-deploy:
+    needs: felles-workflow
+    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
+    with:
+      image: ${{ needs.felles-workflow.outputs.image }}
+      app: spinnsyn-arkivering
+      nais-template: nais/arkivering/nais.yaml
+      prod-vars: nais/arkivering/prod.yaml
+      dev-vars: nais/arkivering/dev.yaml
+    secrets: inherit
+
+  interne-deploy:
+    needs: felles-workflow
+    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
+    with:
+      image: ${{ needs.felles-workflow.outputs.image }}
+      app: spinnsyn-interne
+      nais-template: nais/interne/nais.yaml
+      prod-vars: nais/interne/prod.yaml
+      dev-vars: nais/interne/dev.yaml
+    secrets: inherit
