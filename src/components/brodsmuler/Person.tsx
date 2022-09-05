@@ -1,7 +1,7 @@
 import { BodyShort, Popover } from '@navikt/ds-react'
 import React, { useRef, useState } from 'react'
 
-import { personas } from '../../data/mock/testperson'
+import { personas } from '../../data/testdata/testperson'
 import { isMockBackend, isOpplaering } from '../../utils/environment'
 import Vis from '../vis'
 

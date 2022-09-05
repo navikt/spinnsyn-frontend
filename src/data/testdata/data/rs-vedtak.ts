@@ -2,7 +2,7 @@ import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { jsonDeepCopy } from '../../../utils/json-deep-copy'
 
 export const vedtakMedDetMeste: RSVedtakWrapper = {
-    id: '4e044d03-2dfe-45e9-a904-77777777',
+    id: 'a147e9a9-0aa2-4f5f-a8e3-c16c901e4071',
     lest: false,
     vedtak: {
         organisasjonsnummer: '123456789',

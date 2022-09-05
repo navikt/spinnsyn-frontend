@@ -3,7 +3,7 @@ import {
     avvistVedtakMedLavInntekt,
     integrasjonsVedtak,
     vedtakMed40Grad,
-} from '../../../src/data/mock/data/rs-vedtak'
+} from '../../../src/data/testdata/data/rs-vedtak'
 
 describe('Tester visning av dager som ikke dekkes av NAV', () => {
     before(() => {

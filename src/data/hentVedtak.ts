@@ -5,28 +5,9 @@ import { getTokenxToken } from '../auth/getTokenxToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { isMockBackend } from '../utils/environment'
-import { hentTestdata } from './mock/hentTestdata'
+import { hentMockVedtak, hentTestdata } from './testdata/hentTestdata'
 
 const { serverRuntimeConfig } = getConfig()
-
-function hentMockVedtak(incomingMessage: IncomingMessage, cookies?: { [p: string]: string }): RSVedtakWrapper[] {
-    const vedtak = hentTestdata(incomingMessage.url)
-    const lesteVedtak = [] as string[]
-    if (cookies) {
-        for (const c in cookies) {
-            if (c.startsWith('lest-vedtak')) {
-                lesteVedtak.push(cookies[c])
-            }
-        }
-    }
-
-    return vedtak.map((v) => {
-        if (lesteVedtak.includes(v.id)) {
-            v.lest = true
-        }
-        return v
-    })
-}
 
 export async function hentVedtak(
     incomingMessage: IncomingMessage,

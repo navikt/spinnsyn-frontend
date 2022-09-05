@@ -2,7 +2,7 @@ import {
     ulestVedtakUtenUtbetalingsdager,
     vedtakAnnullert,
     vedtakRevurdert,
-} from '../../../src/data/mock/data/rs-vedtak'
+} from '../../../src/data/testdata/data/rs-vedtak'
 
 describe('Tester at appen starter', () => {
     before(() => {

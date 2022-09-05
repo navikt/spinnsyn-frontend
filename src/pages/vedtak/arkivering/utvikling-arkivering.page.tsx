@@ -3,7 +3,7 @@ import getConfig from 'next/config'
 import React from 'react'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
-import { integrasjonsVedtak } from '../../../data/mock/data/rs-vedtak'
+import { integrasjonsVedtak } from '../../../data/testdata/data/rs-vedtak'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
 const { serverRuntimeConfig } = getConfig()
@@ -13,7 +13,7 @@ export interface DevVedtakProps {
     enabled: boolean
 }
 
-const UtviklingArkivering = ({ vedtak, enabled }: DevVedtakProps) => {
+const UtviklingArkiveringPage = ({ vedtak, enabled }: DevVedtakProps) => {
     if (!enabled) {
         return <span>Disabled</span>
     }
@@ -36,4 +36,4 @@ export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx
     }
 }
 
-export default UtviklingArkivering
+export default UtviklingArkiveringPage

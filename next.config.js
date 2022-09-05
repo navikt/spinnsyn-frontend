@@ -75,6 +75,7 @@ module.exports = withPlugins(
         },
         basePath: '/syk/sykepenger',
         lessLoaderOptions: {},
+        pageExtensions: ['page.tsx', 'api.ts'],
         assetPrefix: process.env.ASSET_PREFIX || '',
         serverRuntimeConfig: {
             // Will only be available on the server side
@@ -84,6 +85,7 @@ module.exports = withPlugins(
             arkivering: process.env.ARKIVERING,
             spinnsynBackendUrl: process.env.SPINNSYN_BACKEND_URL,
             spinnsynBackendTokenxClientId: process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
+            sokosKontoregisterPersonTokenxClientId: process.env.SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID,
             azureAppClientId: process.env.AZURE_APP_CLIENT_ID,
             azureAppClientSecret: process.env.AZURE_APP_CLIENT_SECRET,
             azureOpenidConfigTokenEndpoint: process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,

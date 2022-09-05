@@ -1,4 +1,4 @@
-import { diverseData } from '../../../src/data/mock/data/personas'
+import { diverseData } from '../../../src/data/testdata/data/personas'
 import { RSVedtakWrapper } from '../../../src/types/rs-types/rs-vedtak'
 
 const articleTilVedtak = (articles: any) => {

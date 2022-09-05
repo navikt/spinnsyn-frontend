@@ -1,6 +1,6 @@
 describe('Tester logikk i behandling.tsx', () => {
     it('Automatisk behandlet', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?id=4e044d03-2dfe-45e9-a904-77777777')
+        cy.visit('http://localhost:8080/syk/sykepenger?id=a147e9a9-0aa2-4f5f-a8e3-c16c901e4071')
         cy.injectAxe()
 
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden er behandlet automatisk')
