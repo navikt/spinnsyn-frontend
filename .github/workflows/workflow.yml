@@ -9,6 +9,7 @@ jobs:
       static-files-path: spinnsyn
       base-path: syk/sykepenger
       sentry-project: spinnsyn
+      labs-ingress: sykepenger
 
   arkivering-deploy:
     needs: felles-workflow
