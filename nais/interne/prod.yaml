@@ -1,0 +1,16 @@
+ingress: https://spinnsyn-frontend-interne.intern.nav.no/syk/sykepenger
+env:
+  MOCK_BACKEND: false
+  ENVIRONMENT: prod
+  OPPLAERING: false
+  AMPLITUDE_ENABLED: false
+  DECORATOR_ENV: prod
+  UTVIKLING_ARKIVERING: false
+  ARKIVERING: false
+  SPINNSYN_BACKEND_URL: http://spinnsyn-backend
+  NO_DECORATOR: true
+  SPINNSYN_FRONTEND_INTERNE: true
+  SPINNSYN_BACKEND_CLIENT_ID: api://prod-gcp.flex.spinnsyn-backend/.default
+  FLEX_FSS_PROXY_CLIENT_ID: api://prod-fss.flex.flex-fss-proxy/.default
+  FLEX_FSS_PROXY_URL: https://flex-fss-proxy.prod-fss-pub.nais.io
+  ASSET_PREFIX: https://flex-static-files.nav.no/spinnsyn
