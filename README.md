@@ -44,25 +44,6 @@ I din `.bashrc` eller `.zshrc`, sett følgende miljøvariabel:
 npm run dev
 ```
 
-## Kjør lokalt i docker-compose
-
-Endre image i flex-docker-compose fra:
-
-```text
-image: "docker.pkg.github.com/navikt/spinnsyn-frontned/spinnsyn-frontend:latest"
-```
-
-Til:
-
-```text
-image: "spinnsyn-frontend:latest"
-```text
-
-Bygg og tag nytt image ved å kjøre:
-
-```sh
-./buildlatest.sh
-```
 
 ## Enhetstester
 
@@ -77,6 +58,10 @@ npm run e2e
 ```
 
 
-## Kontakt oss
+# Henvendelser
 
-Kanalen `flex` på Slack.
+Spørsmål knyttet til koden eller prosjektet kan stilles til flex@nav.no
+
+## For NAV-ansatte
+
+Interne henvendelser kan sendes via Slack i kanalen #flex.
