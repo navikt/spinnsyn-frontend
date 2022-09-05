@@ -1,4 +1,4 @@
-import { kombinertDirekteOgRefusjon } from '../../src/data/mock/data/rs-vedtak'
+import { kombinertDirekteOgRefusjon } from '../../../src/data/mock/data/rs-vedtak'
 
 describe('Tester visning av kombinasjon', () => {
     const vedtak = kombinertDirekteOgRefusjon

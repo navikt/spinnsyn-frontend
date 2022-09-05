@@ -1,4 +1,4 @@
-import { integrasjonsVedtak, vedtakMed40Grad } from '../../src/data/mock/data/rs-vedtak'
+import { integrasjonsVedtak, vedtakMed40Grad } from '../../../src/data/mock/data/rs-vedtak'
 
 describe('Tester visning av utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad
