@@ -8,3 +8,4 @@ jobs:
     with:
       static-files-path: spinnsyn
       base-path: syk/sykepenger
+      sentry-project: spinnsyn
