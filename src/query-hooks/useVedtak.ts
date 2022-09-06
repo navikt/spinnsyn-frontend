@@ -15,7 +15,7 @@ export default function UseVedtak() {
         return ''
     }
     return useQuery<RSVedtakWrapper[], Error>('vedtak', () =>
-        Fetch.authenticatedGet('/syk/sykepenger/api/v1/vedtak' + query(), async (data) => {
+        Fetch.authenticatedGet('/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query(), async (data) => {
             return data as RSVedtakWrapper[]
         })
     )
