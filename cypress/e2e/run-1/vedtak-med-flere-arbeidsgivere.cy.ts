@@ -1,4 +1,4 @@
-import { vedtakMedFlereArbeidsgivere } from '../../../src/data/mock/data/vedtakMedFlereArbeidsgivere'
+import { vedtakMedFlereArbeidsgivere } from '../../../src/data/testdata/data/vedtakMedFlereArbeidsgivere'
 
 describe('Tester visning av et vedtak med flere arbeidsgivere', () => {
     before(() => {

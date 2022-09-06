@@ -1,6 +1,7 @@
 import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import metrics, { cleanPathForMetric } from '../metrics/metrics'
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 import { logger } from '../utils/logger'
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
@@ -11,6 +12,8 @@ type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<
 
 export function beskyttetApi(handler: ApiHandler): ApiHandler {
     return async function withBearerTokenHandler(req, res) {
+        const cleanPath = cleanPathForMetric(req.url!)
+
         if (isMockBackend()) {
             return handler(req, res)
         }
@@ -20,6 +23,8 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         }
 
         function send401() {
+            metrics.apiUnauthorized.inc({ path: cleanPath }, 1)
+
             res.status(401).json({ message: 'Access denied' })
         }
 
@@ -59,6 +64,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             return send401()
         }
 
+        metrics.apiAuthorized.inc({ path: cleanPath }, 1)
         return handler(req, res)
     }
 }
