@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Button } from '@navikt/ds-react'
+import { Accordion, BodyShort } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -20,12 +20,11 @@ const Ekspanderbar = (props: AllProps) => {
     const ekspanderbar = useRef<HTMLDivElement>(null)
     const btnImage = useRef<HTMLImageElement>(null)
 
-    const onButtonClick = (klikksted: 'lukk tekst' | 'header') => {
+    const onButtonClick = () => {
         ekspanderbarKlikk(
             erApen,
             ekspanderbar,
             'Ekspanderbar ' + props.type!.charAt(0).toUpperCase() + props.type!.slice(1).toLowerCase(),
-            klikksted
         )
         setErApen(!erApen)
     }
@@ -56,7 +55,7 @@ const Ekspanderbar = (props: AllProps) => {
                 className={`ekspanderbar ${hentType()}${props.className ? ' ' + props.className : ''}`}
             >
                 <Accordion.Header
-                    onClick={() => onButtonClick('header')}
+                    onClick={() => onButtonClick()}
                     onMouseEnter={() =>
                         (btnImage.current!.src = `/syk/sykepenger/static/img/ikon-ekspander-${props.type}-hover.svg`)
                     }
@@ -71,11 +70,6 @@ const Ekspanderbar = (props: AllProps) => {
                 </Accordion.Header>
                 <Accordion.Content className="ekspanderbar__innhold">
                     {props.children}
-                    <div className="knapperad">
-                        <Button variant="tertiary" size="small" onClick={() => onButtonClick('lukk tekst')}>
-                            {erApen ? 'Lukk' : 'Åpne'}
-                        </Button>
-                    </div>
                 </Accordion.Content>
             </Accordion.Item>
         </Accordion>
