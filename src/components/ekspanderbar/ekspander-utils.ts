@@ -27,11 +27,7 @@ export const midtstill = (ekspanderbar: any) => {
     }, 300)
 }
 
-export const ekspanderbarKlikk = (
-    erApen: boolean,
-    ekspanderbar: any,
-    amplitudeText: string,
-) => {
+export const ekspanderbarKlikk = (erApen: boolean, ekspanderbar: any, amplitudeText: string) => {
     if (!erApen) {
         if (window) {
             const eventProperties: Record<string, string | boolean> = {

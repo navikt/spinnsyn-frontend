@@ -24,7 +24,7 @@ const Ekspanderbar = (props: AllProps) => {
         ekspanderbarKlikk(
             erApen,
             ekspanderbar,
-            'Ekspanderbar ' + props.type!.charAt(0).toUpperCase() + props.type!.slice(1).toLowerCase(),
+            'Ekspanderbar ' + props.type!.charAt(0).toUpperCase() + props.type!.slice(1).toLowerCase()
         )
         setErApen(!erApen)
     }
@@ -68,9 +68,7 @@ const Ekspanderbar = (props: AllProps) => {
                         {erApen ? 'Lukk' : 'Åpne'}
                     </BodyShort>
                 </Accordion.Header>
-                <Accordion.Content className="ekspanderbar__innhold">
-                    {props.children}
-                </Accordion.Content>
+                <Accordion.Content className="ekspanderbar__innhold">{props.children}</Accordion.Content>
             </Accordion.Item>
         </Accordion>
     )
