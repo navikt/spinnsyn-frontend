@@ -1,9 +1,9 @@
+import { logger } from '@navikt/next-logger'
 import cookie from 'cookie'
 import { NextPageContext } from 'next'
 
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { isMockBackend, loginServiceRedirectUrl, loginServiceUrl, spinnsynFrontendInterne } from '../utils/environment'
-import { logger } from '../utils/logger'
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
@@ -53,7 +53,7 @@ export function beskyttetSide(handler: PageHandler) {
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.error('kunne ikke validere idportentoken i beskyttetSide', e)
+            logger.error(e, 'kunne ikke validere idportentoken i beskyttetSide')
             return wonderwallRedirect
         }
         return handler(context)
@@ -78,7 +78,7 @@ export function beskyttetSide(handler: PageHandler) {
         try {
             await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
         } catch (e) {
-            logger.error('kunne ikke autentisere', e)
+            logger.error(e, 'kunne ikke autentisere')
             return wonderwallRedirect
         }
         return handler(context)

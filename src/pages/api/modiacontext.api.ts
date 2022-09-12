@@ -1,9 +1,9 @@
+import { logger } from '@navikt/next-logger'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { getAzureAdAccessToken } from '../../auth/getAzureAdAccessToken'
 import { getOboAccessToken } from '../../auth/getOboAccessToken'
 import { ErrorMedStatus } from '../../server-utils/ErrorMedStatus'
-import { logger } from '../../utils/logger'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'GET') {

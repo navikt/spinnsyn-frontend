@@ -1,9 +1,9 @@
+import { logger } from '@navikt/next-logger'
 import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import metrics, { cleanPathForMetric } from '../metrics/metrics'
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
-import { logger } from '../utils/logger'
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
@@ -36,7 +36,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             try {
                 await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
             } catch (e) {
-                logger.error('kunne ikke autentisere', e)
+                logger.error(e, 'kunne ikke autentisere')
                 return send401()
             }
             return handler(req, res)
@@ -60,7 +60,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.warn('kunne ikke validere idportentoken i beskyttetApi', e)
+            logger.warn(e, 'kunne ikke validere idportentoken i beskyttetApi')
             return send401()
         }
 

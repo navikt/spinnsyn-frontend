@@ -1,7 +1,7 @@
+import { logger } from '@navikt/next-logger'
 import { useMutation, useQueryClient } from 'react-query'
 
 import Fetch from '../utils/fetch'
-import { logger } from '../utils/logger'
 
 export default function UseMerkVedtakSomLest() {
     const queryClient = useQueryClient()

@@ -1,4 +1,4 @@
-import { logger } from './logger'
+import { logger } from '@navikt/next-logger'
 
 /**
  * Class with utility functions for working with fetch.
@@ -26,11 +26,7 @@ class Fetch {
             try {
                 return await cb(await res.json())
             } catch (error) {
-                if (error instanceof TypeError) {
-                    logger.warn('oops', error)
-                } else {
-                    logger.error('Unnamed error occured', error)
-                }
+                logger.error(error)
                 throw new Error(
                     'Beklager! En uventet feil har oppstått. Sannsynligvis jobber vi med saken allerede, men ta kontakt med oss hvis det ikke har løst seg til i morgen.'
                 )
