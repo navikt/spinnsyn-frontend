@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Button, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -61,12 +61,6 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                                 <DagTabell dager={vedtak.dagerPerson} />
 
                                 <DagBeskrivelse dager={vedtak.dagerPerson} />
-
-                                <div className="knapperad">
-                                    <Button variant="tertiary" size="small" onClick={onButtonClick}>
-                                        Skjul
-                                    </Button>
-                                </div>
                             </Accordion.Content>
                         </Accordion.Item>
                     )}

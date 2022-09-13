@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, BodyShort, Button, Heading, Label } from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
@@ -117,12 +117,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     )}
                                 />
                             </article>
-
-                            <div className="knapperad">
-                                <Button variant="tertiary" size="small" onClick={onButtonClick}>
-                                    Skjul
-                                </Button>
-                            </div>
                         </Accordion.Content>
                     </Accordion.Item>
                 </Accordion>
