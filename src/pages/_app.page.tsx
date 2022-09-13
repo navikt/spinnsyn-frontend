@@ -17,6 +17,7 @@ import '../components/brodsmuler/brodsmuler.less'
 import '../components/banner/banner.less'
 import '../components/vedtak-side/vedtak-periode/vedtak-periode.less'
 
+import { configureLogger } from '@navikt/next-logger'
 import dayjs from 'dayjs'
 import nb from 'dayjs/locale/nb'
 import type { AppProps as NextAppProps } from 'next/app'
@@ -33,6 +34,10 @@ interface AppProps extends Omit<NextAppProps, 'pageProps'> {
 dayjs.locale({
     ...nb,
     weekStart: 1,
+})
+
+configureLogger({
+    basePath: '/syk/sykepengesoknad',
 })
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

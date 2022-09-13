@@ -1,3 +1,4 @@
+import { logger } from '@navikt/next-logger'
 import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 import React from 'react'
@@ -8,7 +9,6 @@ import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-a
 import { hentVedtakForArkivering } from '../../../data/hentVedtakForArkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-import { logger } from '../../../utils/logger'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -64,7 +64,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             },
         }
     } catch (e: any) {
-        logger.warn({ err: e })
+        logger.warn(e)
         ctx.res.statusCode = e.status || 500
 
         return {

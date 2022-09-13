@@ -1,7 +1,6 @@
+import { logger } from '@navikt/next-logger'
 import getConfig from 'next/config'
 import { Client, errors, GrantBody, Issuer } from 'openid-client'
-
-import { logger } from '../utils/logger'
 
 const { serverRuntimeConfig } = getConfig()
 const OPError = errors.OPError
@@ -66,6 +65,7 @@ export async function getTokenxToken(subject_token: string, audience: string): P
         switch (err.constructor) {
             case OPError:
                 logger.error(
+                    err,
                     `Noe gikk galt med token exchange mot TokenX.
             Feilmelding fra openid-client: (${err}).
             HTTP Status fra TokenX: (${err.response.statusCode} ${err.response.statusMessage})

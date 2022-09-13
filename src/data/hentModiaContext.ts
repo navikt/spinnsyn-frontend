@@ -1,3 +1,4 @@
+import { logger } from '@navikt/next-logger'
 import { IncomingMessage } from 'http'
 import getConfig from 'next/config'
 
@@ -5,7 +6,6 @@ import { getAzureAdAccessToken } from '../auth/getAzureAdAccessToken'
 import { getOboAccessToken } from '../auth/getOboAccessToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { isMockBackend } from '../utils/environment'
-import { logger } from '../utils/logger'
 
 const { serverRuntimeConfig } = getConfig()
 
