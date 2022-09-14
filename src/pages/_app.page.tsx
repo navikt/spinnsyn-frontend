@@ -37,7 +37,7 @@ dayjs.locale({
 })
 
 configureLogger({
-    basePath: '/syk/sykepengesoknad',
+    basePath: '/syk/sykepenger',
 })
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
