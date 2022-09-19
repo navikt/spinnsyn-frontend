@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import { Brukerkonto } from '../../../../types/types'
 import { isProd } from '../../../../utils/environment'
+import { fetchMedRequestId } from '../../../../utils/fetch'
 import { tekst } from '../../../../utils/tekster'
 import Vis from '../../../vis'
 
@@ -12,18 +13,25 @@ const Kontonummer = () => {
     const [erKontonummerHentet, setErKontonummerHentet] = useState<boolean>(false)
 
     const hentKontonummer = async (url: string) => {
-        const res = await fetch(url, {
-            method: 'GET',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-        })
+        const res = await fetchMedRequestId(
+            url,
+            {
+                method: 'GET',
+            },
+            (response, _, defaultErrorHandler) => {
+                if (response.status == 404) {
+                    // Det returneres 404 hvis det ikke ble funnet noe kontonummer.
+                    return null
+                }
+                defaultErrorHandler()
+            }
+        )
 
-        // Det returneres 404 hvis det ikke ble funnet noe kontonummer.
-        if (res.status !== 200) {
+        if (res.response.status !== 200) {
             return null
         }
 
-        const data: Brukerkonto = await res.json()
+        const data: Brukerkonto = await res.response.json()
         return data?.kontonummer
     }
 
