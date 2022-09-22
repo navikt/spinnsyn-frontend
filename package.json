@@ -14,7 +14,7 @@
     "axe-core": "^4.4.2",
     "cookie": "^0.4.1",
     "cypress-axe": "^1.0.0",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.5",
     "html-react-parser": "^1.4.8",
     "jose": "^4.9.2",
     "next-compose-plugins": "^2.2.1",
