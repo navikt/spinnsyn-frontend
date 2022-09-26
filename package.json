@@ -54,7 +54,7 @@
     "next-with-less": "^2.0.5",
     "prettier": "^2.7.1",
     "start-server-and-test": "^1.14.0",
-    "ts-loader": "^9.2.6"
+    "ts-loader": "^9.4.1"
   },
   "scripts": {
     "dev": "next dev -p 8080 | pino-pretty",
