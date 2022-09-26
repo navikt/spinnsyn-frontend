@@ -5,7 +5,6 @@ describe('Tester visning av kombinasjon', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
-        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -80,11 +79,5 @@ describe('Tester visning av kombinasjon', () => {
                     'har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.'
             )
             .should('be.visible')
-    })
-
-    it('Tester accessibility', () => {
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(200) // Ekspander alt innhold
-        cy.checkA11y()
     })
 })

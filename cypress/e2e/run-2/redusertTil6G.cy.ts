@@ -5,7 +5,6 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -36,11 +35,5 @@ describe('Tester visning av et vedtak redusert til 6G', () => {
         // Sjekker om sykepengegrunnlaget er redusert
         cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('Sykepengegrunnlag')
         cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('638 394 kr')
-    })
-
-    it('Tester accessibility', () => {
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(200) // Ekspander alt innhold
-        cy.checkA11y()
     })
 })

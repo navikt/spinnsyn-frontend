@@ -5,7 +5,6 @@ describe('Tester visning av utbetalingsoversikt', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -213,8 +212,5 @@ describe('Tester visning av utbetalingsoversikt', () => {
                     'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.'
                 )
             })
-    })
-    it('Tester accessibility', () => {
-        cy.checkA11y()
     })
 })

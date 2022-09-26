@@ -5,7 +5,6 @@ describe('Tester visning personutbetaling', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
-        cy.injectAxe()
     })
 
     it('Laster startside', () => {
@@ -44,23 +43,9 @@ describe('Tester visning personutbetaling', () => {
                 'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
         )
     })
-    it('Tester accessibility', () => {
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(200) // Ekspander alt innhold
-
-        cy.checkA11y()
-    })
 
     it('Ekspanderer blått panel', () => {
         cy.contains('10 sykepengedager').click({ force: true })
         cy.contains('238 sykepengedager')
-    })
-
-    it('Tester accessibility', () => {
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(200) // Ekspander alt innhold
-        cy.checkA11y({
-            exclude: ['.knapperad'],
-        })
     })
 })
