@@ -51,7 +51,7 @@ describe('Tester visning av kombinasjon', () => {
 
         cy.contains('24 550 kroner').and('contain', 'til deg (før skatt)').click({ force: true })
 
-        cy.get('.personutbetaling').contains('Når får du sykepengene?').should('not.exist')
+        cy.get('.personutbetaling').contains('Når får du sykepengene?').should('not.be.visible')
     })
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
@@ -59,13 +59,13 @@ describe('Tester visning av kombinasjon', () => {
 
         cy.contains('Utbetales til Matbutikken AS').click()
 
-        cy.get('.tekstinfo').contains('Når får du sykepengene?').should('not.exist')
-        cy.get('.tekstinfo')
+        cy.get('.refusjon .tekstinfo').contains('Når får du sykepengene?').should('not.exist')
+        cy.get('.refusjon .tekstinfo')
             .contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
                     'eller innen fem dager etter at vi har sendt deg svar på søknaden din.'
             )
-            .should('not.exist')
+            .should('not.be.visible')
 
         cy.get('.refusjon .navds-accordion__item.beregning').contains('Mer om beregningen').click({ force: true })
 

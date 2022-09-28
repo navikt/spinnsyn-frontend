@@ -68,7 +68,9 @@ const Ekspanderbar = (props: AllProps) => {
                         {erApen ? 'Lukk' : 'Åpne'}
                     </BodyShort>
                 </Accordion.Header>
-                <Accordion.Content className="ekspanderbar__innhold">{props.children}</Accordion.Content>
+                <Accordion.Content className="ekspanderbar__innhold">
+                    {props.children}
+                </Accordion.Content>
             </Accordion.Item>
         </Accordion>
     )
