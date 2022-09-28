@@ -29,7 +29,7 @@ const VedtakListe = () => {
     return (
         <>
             <Banner>
-                <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
+                <Heading spacing size="xlarge" level="1" className="sidebanner__tittel">
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
             </Banner>
