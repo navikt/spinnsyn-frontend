@@ -18,9 +18,7 @@ it('Sorterer gjeldende vedtak før revurderte i lista', () => {
     expect(sorterteVedtak[0]).toEqual(gjeldende)
     expect(sorterteVedtak[1]).toEqual(revurdert)
 
-    const sorterteVedtakMotsattStart = [revurdert, gjeldende].sort(
-        sorterEtterNyesteTom
-    )
+    const sorterteVedtakMotsattStart = [revurdert, gjeldende].sort(sorterEtterNyesteTom)
 
     expect(sorterteVedtakMotsattStart[0]).toEqual(gjeldende)
     expect(sorterteVedtakMotsattStart[1]).toEqual(revurdert)
@@ -40,9 +38,7 @@ it('Sorterer gjeldende vedtak før annullerte i lista', () => {
     expect(sorterteVedtak[0]).toEqual(gjeldende)
     expect(sorterteVedtak[1]).toEqual(annullert)
 
-    const sorterteVedtakMotsattStart = [annullert, gjeldende].sort(
-        sorterEtterNyesteTom
-    )
+    const sorterteVedtakMotsattStart = [annullert, gjeldende].sort(sorterEtterNyesteTom)
 
     expect(sorterteVedtakMotsattStart[0]).toEqual(gjeldende)
     expect(sorterteVedtakMotsattStart[1]).toEqual(annullert)

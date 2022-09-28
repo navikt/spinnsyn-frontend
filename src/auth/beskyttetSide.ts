@@ -1,26 +1,17 @@
+import { logger } from '@navikt/next-logger'
 import cookie from 'cookie'
 import { NextPageContext } from 'next'
 
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
-import {
-    isMockBackend,
-    loginServiceRedirectUrl,
-    loginServiceUrl,
-    spinnsynFrontendInterne,
-} from '../utils/environment'
-import { logger } from '../utils/logger'
+import { isMockBackend, loginServiceRedirectUrl, loginServiceUrl, spinnsynFrontendInterne } from '../utils/environment'
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
-type PageHandler = (
-    context: NextPageContext
-) => void | Promise<GetServerSidePropsPrefetchResult>
+type PageHandler = (context: NextPageContext) => void | Promise<GetServerSidePropsPrefetchResult>
 
 export function beskyttetSide(handler: PageHandler) {
-    return async function withBearerTokenHandler(
-        context: NextPageContext
-    ): Promise<ReturnType<typeof handler>> {
+    return async function withBearerTokenHandler(context: NextPageContext): Promise<ReturnType<typeof handler>> {
         if (isMockBackend()) {
             return handler(context)
         }
@@ -30,9 +21,7 @@ export function beskyttetSide(handler: PageHandler) {
 
         const request = context.req
         if (request == null) {
-            throw new Error(
-                'Context is missing request. This should not happen'
-            )
+            throw new Error('Context is missing request. This should not happen')
         }
         const loginserviceRedirect = {
             redirect: {
@@ -57,28 +46,23 @@ export function beskyttetSide(handler: PageHandler) {
                 permanent: false,
             },
         }
-        const bearerToken: string | null | undefined =
-            request.headers['authorization']
+        const bearerToken: string | null | undefined = request.headers['authorization']
         if (!bearerToken) {
             return wonderwallRedirect
         }
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.error('kunne ikke validere idportentoken i beskyttetSide', e)
+            logger.error(e, 'kunne ikke validere idportentoken i beskyttetSide')
             return wonderwallRedirect
         }
         return handler(context)
     }
 
-    async function beskyttetSideInterne(
-        context: NextPageContext
-    ): Promise<ReturnType<typeof handler>> {
+    async function beskyttetSideInterne(context: NextPageContext): Promise<ReturnType<typeof handler>> {
         const request = context.req
         if (request == null) {
-            throw new Error(
-                'Context is missing request. This should not happen'
-            )
+            throw new Error('Context is missing request. This should not happen')
         }
 
         const wonderwallRedirect = {
@@ -87,15 +71,14 @@ export function beskyttetSide(handler: PageHandler) {
                 permanent: false,
             },
         }
-        const bearerToken: string | null | undefined =
-            request.headers['authorization']
+        const bearerToken: string | null | undefined = request.headers['authorization']
         if (!bearerToken) {
             return wonderwallRedirect
         }
         try {
             await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
         } catch (e) {
-            logger.error('kunne ikke autentisere', e)
+            logger.error(e, 'kunne ikke autentisere')
             return wonderwallRedirect
         }
         return handler(context)

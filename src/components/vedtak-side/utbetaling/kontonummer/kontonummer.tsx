@@ -4,27 +4,34 @@ import React, { useEffect, useState } from 'react'
 
 import { Brukerkonto } from '../../../../types/types'
 import { isProd } from '../../../../utils/environment'
+import { fetchMedRequestId } from '../../../../utils/fetch'
 import { tekst } from '../../../../utils/tekster'
 import Vis from '../../../vis'
 
 const Kontonummer = () => {
     const [kontonummer, setKontonummer] = useState<string>()
-    const [erKontonummerHentet, setErKontonummerHentet] =
-        useState<boolean>(false)
+    const [erKontonummerHentet, setErKontonummerHentet] = useState<boolean>(false)
 
     const hentKontonummer = async (url: string) => {
-        const res = await fetch(url, {
-            method: 'GET',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-        })
+        const res = await fetchMedRequestId(
+            url,
+            {
+                method: 'GET',
+            },
+            (response, _, defaultErrorHandler) => {
+                if (response.status == 404) {
+                    // Det returneres 404 hvis det ikke ble funnet noe kontonummer.
+                    return null
+                }
+                defaultErrorHandler()
+            }
+        )
 
-        // Det returneres 404 hvis det ikke ble funnet noe kontonummer.
-        if (res.status !== 200) {
+        if (res.response.status !== 200) {
             return null
         }
 
-        const data: Brukerkonto = await res.json()
+        const data: Brukerkonto = await res.response.json()
         return data?.kontonummer
     }
 
@@ -46,8 +53,7 @@ const Kontonummer = () => {
         return `${apiRouteUrl}?id=${id}`
     }
 
-    const formaterKontonummer = (kontonummer: string) =>
-        kontonummer.replace(/^(.{4})(.{2})(.*)$/, '$1 $2 $3')
+    const formaterKontonummer = (kontonummer: string) => kontonummer.replace(/^(.{4})(.{2})(.*)$/, '$1 $2 $3')
 
     return (
         <Vis
@@ -58,9 +64,7 @@ const Kontonummer = () => {
                         hvis={kontonummer}
                         render={() => (
                             <BodyShort>
-                                <strong>
-                                    {tekst('utbetaling.kontonummer.utbetales')}
-                                </strong>{' '}
+                                <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong>{' '}
                                 {formaterKontonummer(kontonummer!)}
                             </BodyShort>
                         )}
@@ -73,11 +77,7 @@ const Kontonummer = () => {
                                 <Heading spacing level="3" size="small">
                                     {tekst('utbetaling.kontonummer.tittel')}
                                 </Heading>
-                                <BodyLong spacing>
-                                    {parser(
-                                        tekst('utbetaling.kontonummer.mangler')
-                                    )}
-                                </BodyLong>
+                                <BodyLong spacing>{parser(tekst('utbetaling.kontonummer.mangler'))}</BodyLong>
                             </>
                         )}
                     />

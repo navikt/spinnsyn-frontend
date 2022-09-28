@@ -1,19 +1,19 @@
+import { logger } from '@navikt/next-logger'
 import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import metrics, { cleanPathForMetric } from '../metrics/metrics'
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
-import { logger } from '../utils/logger'
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
-type ApiHandler = (
-    req: NextApiRequest,
-    res: NextApiResponse
-) => void | Promise<void>
+type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>
 
 export function beskyttetApi(handler: ApiHandler): ApiHandler {
     return async function withBearerTokenHandler(req, res) {
+        const cleanPath = cleanPathForMetric(req.url!)
+
         if (isMockBackend()) {
             return handler(req, res)
         }
@@ -23,22 +23,20 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         }
 
         function send401() {
+            metrics.apiUnauthorized.inc({ path: cleanPath }, 1)
+
             res.status(401).json({ message: 'Access denied' })
         }
 
-        async function beskyttetApiInterne(
-            req: NextApiRequest,
-            res: NextApiResponse
-        ) {
-            const bearerToken: string | null | undefined =
-                req.headers['authorization']
+        async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse) {
+            const bearerToken: string | null | undefined = req.headers['authorization']
             if (!bearerToken) {
                 return send401()
             }
             try {
                 await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
             } catch (e) {
-                logger.error('kunne ikke autentisere', e)
+                logger.error(e, 'kunne ikke autentisere')
                 return send401()
             }
             return handler(req, res)
@@ -55,18 +53,18 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             return send401()
         }
 
-        const bearerToken: string | null | undefined =
-            req.headers['authorization']
+        const bearerToken: string | null | undefined = req.headers['authorization']
         if (!bearerToken) {
             return send401()
         }
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.warn('kunne ikke validere idportentoken i beskyttetApi', e)
+            logger.warn(e, 'kunne ikke validere idportentoken i beskyttetApi')
             return send401()
         }
 
+        metrics.apiAuthorized.inc({ path: cleanPath }, 1)
         return handler(req, res)
     }
 }

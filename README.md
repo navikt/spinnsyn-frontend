@@ -30,6 +30,13 @@ npm run interne
 ```
 Og gå til http://localhost:8080/syk/sykepenger
 
+## Tilgang til Github Package Registry
+
+Siden vi bruker avhengigheter som ligger i GPR, så må man sette opp tilgang til GPR med en PAT (personal access token) som har `read:packages`. Du kan [opprette PAT her](https://github.com/settings/tokens). Dersom du har en PAT som du bruker for tilgang til maven-packages i github kan du gjenbruke denne.
+
+I din `.bashrc` eller `.zshrc`, sett følgende miljøvariabel:
+
+`export NPM_AUTH_TOKEN=<din PAT med read:packages>`
 
 ## Kjør lokalt uten backend
 
@@ -37,25 +44,6 @@ Og gå til http://localhost:8080/syk/sykepenger
 npm run dev
 ```
 
-## Kjør lokalt i docker-compose
-
-Endre image i flex-docker-compose fra:
-
-```text
-image: "docker.pkg.github.com/navikt/spinnsyn-frontned/spinnsyn-frontend:latest"
-```
-
-Til:
-
-```text
-image: "spinnsyn-frontend:latest"
-```text
-
-Bygg og tag nytt image ved å kjøre:
-
-```sh
-./buildlatest.sh
-```
 
 ## Enhetstester
 
@@ -70,6 +58,10 @@ npm run e2e
 ```
 
 
-## Kontakt oss
+# Henvendelser
 
-Kanalen `flex` på Slack.
+Spørsmål knyttet til koden eller prosjektet kan stilles til flex@nav.no
+
+## For NAV-ansatte
+
+Interne henvendelser kan sendes via Slack i kanalen #flex.

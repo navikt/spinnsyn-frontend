@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
-import Fetch from '../utils/fetch'
+import { fetchJsonMedRequestId } from '../utils/fetch'
 
 export default function UseVedtak() {
     const router = useRouter()
@@ -15,11 +15,6 @@ export default function UseVedtak() {
         return ''
     }
     return useQuery<RSVedtakWrapper[], Error>('vedtak', () =>
-        Fetch.authenticatedGet(
-            '/syk/sykepenger/api/v1/vedtak' + query(),
-            async (data) => {
-                return data as RSVedtakWrapper[]
-            }
-        )
+        fetchJsonMedRequestId('/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query())
     )
 }

@@ -11,14 +11,10 @@ const csp = {
         'https://www.google-analytics.com',
         'https://nav.psplugin.com',
         'https://ta-survey-v2.herokuapp.com',
+        'https://surveystats.hotjar.io',
     ],
-    'img-src': [
-        "'self'",
-        'data:',
-        'https://*.nav.no',
-        'https://www.google-analytics.com',
-    ],
-    'font-src': ["'self'", 'data:', 'https://*.psplugin.com'],
+    'img-src': ["'self'", 'data:', 'https://*.nav.no', 'https://www.google-analytics.com', 'https://script.hotjar.com'],
+    'font-src': ["'self'", 'data:', 'https://*.psplugin.com', 'https://script.hotjar.com'],
     'frame-src': ["'self'", 'data:', 'https://vars.hotjar.com'],
     'worker-src': ['blob:', '*.nais.io'],
     'style-src': ["'self'", "'unsafe-inline'", 'https://*.nav.no'],
@@ -42,7 +38,7 @@ const cspString = Object.entries(csp)
 
 const cspHeader = [
     {
-        key: 'Content-Security-Policy-Report-Only',
+        key: 'Content-Security-Policy',
         value: cspString,
     },
 ]
@@ -66,30 +62,35 @@ module.exports = withPlugins(
                     source: '/:path*',
                     headers: cspHeader,
                 },
+                {
+                    source: '/api/:path*',
+                    headers: [
+                        {
+                            key: 'Cache-Control',
+                            value: 'private, no-cache, no-store, max-age=0, must-revalidate',
+                        },
+                    ],
+                },
             ]
         },
         basePath: '/syk/sykepenger',
         lessLoaderOptions: {},
+        pageExtensions: ['page.tsx', 'api.ts'],
         assetPrefix: process.env.ASSET_PREFIX || '',
-
-        generateEtags: false, //Disabler etag i pages
         serverRuntimeConfig: {
             // Will only be available on the server side
             decoratorEnv: process.env.DECORATOR_ENV,
-            decoratorUrl: process.env.DECORATOR_URL,
             noDecorator: process.env.NO_DECORATOR,
             utviklingArkivering: process.env.UTVIKLING_ARKIVERING,
             arkivering: process.env.ARKIVERING,
             spinnsynBackendUrl: process.env.SPINNSYN_BACKEND_URL,
-            spinnsynBackendTokenxClientId:
-                process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
+            spinnsynBackendTokenxClientId: process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
+            sokosKontoregisterPersonTokenxClientId: process.env.SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID,
             azureAppClientId: process.env.AZURE_APP_CLIENT_ID,
             azureAppClientSecret: process.env.AZURE_APP_CLIENT_SECRET,
-            azureOpenidConfigTokenEndpoint:
-                process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
+            azureOpenidConfigTokenEndpoint: process.env.AZURE_OPENID_CONFIG_TOKEN_ENDPOINT,
             azureAppWellKnownUrl: process.env.AZURE_APP_WELL_KNOWN_URL,
-            azureAppPreAuthorizedApps:
-                process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
+            azureAppPreAuthorizedApps: process.env.AZURE_APP_PRE_AUTHORIZED_APPS,
             spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
             flexFssProxyClientId: process.env.FLEX_FSS_PROXY_CLIENT_ID,
             flexFssProxyUrl: process.env.FLEX_FSS_PROXY_URL,
@@ -98,10 +99,8 @@ module.exports = withPlugins(
             naisAppImage: process.env.NAIS_APP_IMAGE,
             loginserviceUrl: process.env.LOGINSERVICE_URL,
             loginServiceRedirectUrl: process.env.LOGINSERVICE_REDIRECT_URL,
-            loginserviceIdportenDiscoveryUrl:
-                process.env.LOGINSERVICE_IDPORTEN_DISCOVERY_URL,
-            loginserviceIdportenAudience:
-                process.env.LOGINSERVICE_IDPORTEN_AUDIENCE,
+            loginserviceIdportenDiscoveryUrl: process.env.LOGINSERVICE_IDPORTEN_DISCOVERY_URL,
+            loginserviceIdportenAudience: process.env.LOGINSERVICE_IDPORTEN_AUDIENCE,
             tokenXWellKnownUrl: process.env.TOKEN_X_WELL_KNOWN_URL,
             tokenXPrivateJwk: process.env.TOKEN_X_PRIVATE_JWK,
             tokenXClientId: process.env.TOKEN_X_CLIENT_ID,
@@ -112,7 +111,7 @@ module.exports = withPlugins(
             mockBackend: process.env.MOCK_BACKEND,
             opplaering: process.env.OPPLAERING,
             sykefravaerUrl: process.env.SYKEFRAVAER_URL,
-            dittNavUrl: process.env.DITTNAV_URL,
+            minSideUrl: process.env.MINSIDE_URL,
             amplitudeEnabled: process.env.AMPLITUDE_ENABLED,
             environment: process.env.ENVIRONMENT,
             spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE,

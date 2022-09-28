@@ -33,10 +33,7 @@ export const PersonutbetalingInfo = ({ vedtak }: PersonutbetalingInfoProps) => {
                 />
             </BodyLong>
 
-            <Vis
-                hvis={!erInterne && !erArkivering}
-                render={() => <Kontonummer />}
-            />
+            <Vis hvis={!erInterne && !erArkivering} render={() => <Kontonummer />} />
 
             <InntektInfo vedtak={vedtak} />
         </section>

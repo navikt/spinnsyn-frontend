@@ -6,5 +6,4 @@ export interface PrefetchResults {
     sykmeldtFnr: string | null
 }
 
-export type GetServerSidePropsPrefetchResult =
-    GetServerSidePropsResult<PrefetchResults>
+export type GetServerSidePropsPrefetchResult = GetServerSidePropsResult<PrefetchResults>

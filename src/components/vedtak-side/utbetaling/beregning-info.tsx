@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, Button, Heading, Link } from '@navikt/ds-react'
+import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
@@ -15,19 +15,13 @@ export interface BeregningInfoProps {
     heltAvvist?: Boolean
 }
 
-const BeregningInfo = ({
-    vedtak,
-    mottaker,
-    heltAvvist,
-}: BeregningInfoProps) => {
+const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => {
     const isServer = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
 
     const harMinstEnForLavInntektDag =
-        vedtak.dagerArbeidsgiver.filter((dag) =>
-            dag.begrunnelser.includes('MinimumInntekt')
-        ).length > 0
+        vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
 
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
@@ -60,9 +54,7 @@ const BeregningInfo = ({
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
-                <BodyLong spacing>
-                    {parser(tekst('utbetaling.mndlonn.innhold'))}
-                </BodyLong>
+                <BodyLong spacing>{parser(tekst('utbetaling.mndlonn.innhold'))}</BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.arslonn.tittel')}
@@ -71,26 +63,16 @@ const BeregningInfo = ({
                     {parser(tekst('utbetaling.arslonn.innhold.del1'))}
                     <Vis
                         hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                        render={() => (
-                            <>
-                                {parser(
-                                    tekst('utbetaling.arslonn.innhold.del2')
-                                )}
-                            </>
-                        )}
+                        render={() => <>{parser(tekst('utbetaling.arslonn.innhold.del2'))}</>}
                     />
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
-                <BodyLong spacing>
-                    {parser(tekst(sykepengegrunnlagInnholdKey()))}
-                </BodyLong>
+                <BodyLong spacing>{parser(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
 
-                <BodyLong spacing>
-                    {parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}
-                </BodyLong>
+                <BodyLong spacing>{parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}</BodyLong>
 
                 <Vis
                     hvis={!heltAvvist || !harMinstEnForLavInntektDag}
@@ -99,9 +81,7 @@ const BeregningInfo = ({
                             <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.dagligbelop.tittel')}
                             </Heading>
-                            <BodyLong spacing>
-                                {tekst('utbetaling.dagligbelop.innhold')}
-                            </BodyLong>
+                            <BodyLong spacing>{tekst('utbetaling.dagligbelop.innhold')}</BodyLong>
 
                             <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.totalbelop.tittel')}
@@ -114,20 +94,10 @@ const BeregningInfo = ({
                                 hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                                 render={() => (
                                     <>
-                                        <Heading
-                                            spacing
-                                            size="xsmall"
-                                            level="4"
-                                        >
-                                            {tekst(
-                                                'utbetaling.flere-arbeidsforhold.tittel'
-                                            )}
+                                        <Heading spacing size="xsmall" level="4">
+                                            {tekst('utbetaling.flere-arbeidsforhold.tittel')}
                                         </Heading>
-                                        <BodyLong spacing>
-                                            {tekst(
-                                                'utbetaling.flere-arbeidsforhold.innhold'
-                                            )}
-                                        </BodyLong>
+                                        <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
                                     </>
                                 )}
                             />
@@ -135,18 +105,11 @@ const BeregningInfo = ({
                             <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.utbetalingsdager.tittel')}
                             </Heading>
-                            <BodyLong spacing>
-                                {tekst('utbetaling.utbetalingsdager.innhold')}
-                            </BodyLong>
+                            <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
 
                             <BodyLong spacing>
                                 {tekst('utbetaling.beregning.les.mer')}
-                                <Link
-                                    href={tekst(
-                                        'utbetaling.beregning.lenke.url'
-                                    )}
-                                    target="_blank"
-                                >
+                                <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                                     {tekst('utbetaling.beregning.lenke.tekst')}
                                 </Link>
                             </BodyLong>
@@ -154,22 +117,10 @@ const BeregningInfo = ({
                             <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.info.tittel')}
                             </Heading>
-                            <BodyLong spacing>
-                                {parser(tekst('utbetaling.info.innhold'))}
-                            </BodyLong>
+                            <BodyLong spacing>{parser(tekst('utbetaling.info.innhold'))}</BodyLong>
                         </>
                     )}
                 />
-
-                <div className="knapperad">
-                    <Button
-                        variant="tertiary"
-                        size="small"
-                        onClick={onButtonClick}
-                    >
-                        Skjul
-                    </Button>
-                </div>
             </Accordion.Content>
         </Accordion.Item>
     )

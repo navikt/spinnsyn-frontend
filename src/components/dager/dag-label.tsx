@@ -1,8 +1,8 @@
 import { Tag } from '@navikt/ds-react'
+import { logger } from '@navikt/next-logger'
 import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
-import { logger } from '../../utils/logger'
 
 interface DagLabelProps {
     dag: RSDag
@@ -85,9 +85,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 )
 
             case 'AvvistDag':
-                return dag.begrunnelser?.map((begrunnelse, idx) =>
-                    lagBegrunnelseLabel(begrunnelse, idx)
-                )
+                return dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))
 
             case 'UkjentDag':
 

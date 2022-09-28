@@ -1,0 +1,45 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: spinnsyn-frontend-arkivering
+  namespace: flex
+  labels:
+    team: flex
+spec:
+  image: {{ image }}
+  port: 8080
+  replicas:
+    min: 3
+    max: 4
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: 200m
+      memory: 300Mi
+    requests:
+      cpu: 50m
+      memory: 170Mi
+  liveness:
+    path: syk/sykepenger/api/internal/isAlive
+    initialDelay: 30
+  readiness:
+    path: syk/sykepenger/api/internal/isReady
+    initialDelay: 30
+  accessPolicy:
+    outbound:
+      external:
+        - host: login.microsoftonline.com
+      rules:
+        - application: spinnsyn-backend
+    inbound:
+      rules:
+        - application: spinnsyn-arkivering
+  azure:
+    application:
+      enabled: true
+  env:
+  {{#each env}}
+     - name: {{@key}}
+       value: "{{this}}"
+  {{/each}}
+

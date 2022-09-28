@@ -1,18 +1,14 @@
 const AnnulleringTekster = {
-    'revurdert.alert.header':
-        'Du har fått et nytt vedtak som erstatter dette vedtaket',
+    'revurdert.alert.header': 'Du har fått et nytt vedtak som erstatter dette vedtaket',
     'revurdert.alert.tekst':
         'Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.',
-    'revurdert.alert.link.tekst':
-        'Du finner det nye vedtaket i listen over svar på søknader',
+    'revurdert.alert.link.tekst': 'Du finner det nye vedtaket i listen over svar på søknader',
     'revurdert.alert.link.url': '/syk/sykepenger',
     'annullert.alert.header': 'Dette vedtaket gjelder ikke lenger',
     'annulert.alert.tekst':
         'Vi har mottatt nye opplysninger som gjør at dette vedtaket behandles på nytt av en saksbehandler.',
-    'annulert.alert.undertekst':
-        'Du vil motta et eget brev med det nye vedtaket.',
-    'annullert.info.header':
-        'Dette lurer mange på når vedtaket behandles på nytt',
+    'annulert.alert.undertekst': 'Du vil motta et eget brev med det nye vedtaket.',
+    'annullert.info.header': 'Dette lurer mange på når vedtaket behandles på nytt',
 
     'annullert.info.header1': 'Hvorfor behandles vedtaket på nytt?',
     'annullert.info.body1':
@@ -25,8 +21,7 @@ const AnnulleringTekster = {
     'annullert.info.body2.brukerutbetaling':
         'Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.',
     'annullert.info.header3': 'Hvem har sendt opplysningene?',
-    'annullert.info.body3':
-        'Vi får opplysninger enten fra deg, arbeidsgiveren din eller den som har sykmeldt deg.',
+    'annullert.info.body3': 'Vi får opplysninger enten fra deg, arbeidsgiveren din eller den som har sykmeldt deg.',
     'annullert.info.header4': 'Må jeg gjøre noe nå?',
     'annullert.info.body4':
         'Du trenger ikke gjøre noe. Hvis vi trenger flere opplysninger, tar en av våre saksbehandlere kontakt med deg.',

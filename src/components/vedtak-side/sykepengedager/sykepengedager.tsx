@@ -14,17 +14,13 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
 
     const finnSluttdato = (): Dayjs => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
-            return dayjs(
-                vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger
-            )
+            return dayjs(vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger)
         }
         return fallbackEstimertSluttdato(vedtak)
     }
 
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
-    const vedtaktsdato = tilLesbarDatoMedArstall(
-        dayjs(vedtak?.opprettetTimestamp).toDate()
-    )
+    const vedtaktsdato = tilLesbarDatoMedArstall(dayjs(vedtak?.opprettetTimestamp).toDate())
 
     return (
         <Ekspanderbar
@@ -35,8 +31,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             tittel={
                 <div className="ekspanderbar__tittel">
                     <Heading size="large" level="3" className={'primo'}>
-                        {vedtak.vedtak.utbetaling.forbrukteSykedager}{' '}
-                        {tekst('sykepengedager.sykepengedager')}
+                        {vedtak.vedtak.utbetaling.forbrukteSykedager} {tekst('sykepengedager.sykepengedager')}
                         <BodyShort as="span">
                             {getLedetekst(tekst('sykepengedager.hittil'), {
                                 '%DATO%': vedtaktsdato,
@@ -47,12 +42,9 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             }
         >
             <div className="tekstinfo">
-                <BodyLong spacing>
-                    {tekst('sykepengedager.sluttdato.tekst1')}
-                </BodyLong>
+                <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
                 <Heading spacing size="medium" level="3" className="primo">
-                    {vedtak.vedtak.utbetaling.gjenståendeSykedager}{' '}
-                    {tekst('sykepengedager.sykepengedager')}
+                    {vedtak.vedtak.utbetaling.gjenståendeSykedager} {tekst('sykepengedager.sykepengedager')}
                     <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.gjenstar'), {
                             '%DATO%': vedtaktsdato,

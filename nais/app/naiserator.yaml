@@ -1,0 +1,49 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: spinnsyn-frontend
+  namespace: flex
+  labels:
+    team: flex
+spec:
+  image: {{ image }}
+  port: 8080
+  ingresses:
+    - {{ingress}}
+  idporten:
+    enabled: true
+    sidecar:
+      enabled: true
+      level: Level4
+  replicas:
+    min: 2
+    max: 3
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: 200m
+      memory: 300Mi
+    requests:
+      cpu: 100m
+      memory: 200Mi
+  liveness:
+    path: syk/sykepenger/api/internal/isAlive
+  readiness:
+    path: syk/sykepenger/api/internal/isReady
+  accessPolicy:
+    outbound:
+      rules:
+        - application: spinnsyn-backend
+        - application: sokos-kontoregister-person
+          namespace: okonomi
+  tokenx:
+    enabled: true
+  envFrom:
+    - configmap: loginservice-idporten
+  env:
+  {{#each env}}
+     - name: {{@key}}
+       value: "{{this}}"
+  {{/each}}
+
+

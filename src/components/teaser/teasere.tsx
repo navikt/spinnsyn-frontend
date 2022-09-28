@@ -12,12 +12,7 @@ interface SoknaderTeasereProps {
     tomListeTekst?: string
 }
 
-const Teasere = ({
-    vedtak,
-    className,
-    tittel,
-    tomListeTekst,
-}: SoknaderTeasereProps) => {
+const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeasereProps) => {
     return (
         <div className={className}>
             <header className="inngangspanelerHeader">
@@ -32,11 +27,7 @@ const Teasere = ({
 
             <Vis
                 hvis={vedtak.length === 0}
-                render={() => (
-                    <BodyShort className="inngangspanel inngangspanel--tomListe">
-                        {tomListeTekst}
-                    </BodyShort>
-                )}
+                render={() => <BodyShort className="inngangspanel inngangspanel--tomListe">{tomListeTekst}</BodyShort>}
             />
         </div>
     )

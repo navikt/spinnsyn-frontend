@@ -7,10 +7,7 @@ import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 
 const VedtakPeriode = ({ vedtak }: VedtakProps) => {
-    const periode = tilLesbarPeriodeMedArstall(
-        vedtak?.vedtak.fom,
-        vedtak?.vedtak.tom
-    )
+    const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
 
     return (
         <div className="vedtak_periode">

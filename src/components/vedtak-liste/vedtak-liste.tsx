@@ -29,12 +29,7 @@ const VedtakListe = () => {
     return (
         <>
             <Banner>
-                <Heading
-                    spacing
-                    size="2xlarge"
-                    level="1"
-                    className="sidebanner__tittel"
-                >
+                <Heading spacing size="2xlarge" level="1" className="sidebanner__tittel">
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
             </Banner>
@@ -53,15 +48,11 @@ const VedtakListe = () => {
                     className="vedtak--leste"
                     vedtak={leste}
                     tittel={tekst('spinnsyn.teaser.leste')}
-                    tomListeTekst={tekst(
-                        'vedtak-liste.ingen-tidligere-soknader'
-                    )}
+                    tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
                 />
 
                 <Link className="arkiverte-lenke" href={arkiverteVedtakUrl()}>
-                    <BodyShort as="span">
-                        {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
-                    </BodyShort>
+                    <BodyShort as="span">{tekst('vedtak-liste.lenke-arkiverte-vedtak')}</BodyShort>
                 </Link>
             </div>
         </>

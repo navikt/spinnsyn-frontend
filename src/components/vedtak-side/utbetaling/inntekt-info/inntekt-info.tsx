@@ -1,11 +1,4 @@
-import {
-    Accordion,
-    BodyLong,
-    BodyShort,
-    Button,
-    Heading,
-    Label,
-} from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
@@ -25,11 +18,9 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const accordionRef = useRef(null)
 
     const finnRiktigInntekt = () => {
-        const grunnlagPerAg =
-            vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
+        const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
         if (grunnlagPerAg && vedtak.vedtak.organisasjonsnummer) {
-            const inntektFraGrunnlagPerAg =
-                grunnlagPerAg[vedtak.vedtak.organisasjonsnummer]
+            const inntektFraGrunnlagPerAg = grunnlagPerAg[vedtak.vedtak.organisasjonsnummer]
             if (inntektFraGrunnlagPerAg) {
                 return inntektFraGrunnlagPerAg / 12
             }
@@ -44,11 +35,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(
-            open,
-            accordionRef,
-            'Inntekter lagt til grunn for sykepengene'
-        )
+        ekspanderbarKlikk(open, accordionRef, 'Inntekter lagt til grunn for sykepengene')
         setOpen(!open)
     }
 
@@ -65,15 +52,11 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                         </Accordion.Header>
                         <Accordion.Content>
                             <article className="arbgiver_inntekt">
-                                <Label className="arbgiver_navn">
-                                    {storeTilStoreOgSmå(vedtak.orgnavn)}
-                                </Label>
+                                <Label className="arbgiver_navn">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
                                 <section>
                                     <BodyShort as="div" size="small">
-                                        {tekst(
-                                            'utbetaling.inntekt.info.beregnet'
-                                        )}
+                                        {tekst('utbetaling.inntekt.info.beregnet')}
                                     </BodyShort>
                                     <BodyShort as="div" size="small">
                                         {inntektMnd}
@@ -82,9 +65,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
                                 <section>
                                     <BodyShort as="div" size="small">
-                                        {tekst(
-                                            'utbetaling.inntekt.info.omregnet'
-                                        )}
+                                        {tekst('utbetaling.inntekt.info.omregnet')}
                                     </BodyShort>
                                     <BodyShort as="div" size="small">
                                         {inntektAr}
@@ -92,26 +73,17 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 </section>
 
                                 <Vis
-                                    hvis={
-                                        harFlereArbeidsgivere(vedtak) === 'ja'
-                                    }
+                                    hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
                                     render={() => (
                                         <>
-                                            <BeregningÅrslønnFlereArbeidsgivere
-                                                vedtak={vedtak}
-                                            />
+                                            <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
 
                                             <section className="arbgiver">
                                                 <Label as="div" size="small">
-                                                    {tekst(
-                                                        'utbetaling.inntekt.samlet.årslønn'
-                                                    )}
+                                                    {tekst('utbetaling.inntekt.samlet.årslønn')}
                                                 </Label>
                                                 <Label as="div" size="small">
-                                                    {formaterValuta(
-                                                        vedtak.vedtak
-                                                            .grunnlagForSykepengegrunnlag!
-                                                    )}
+                                                    {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
                                                 </Label>
                                             </section>
                                         </>
@@ -124,32 +96,19 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <>
                                             <section>
                                                 <Label as="div" size="small">
-                                                    {tekst(
-                                                        'utbetaling.sykepengegrunnlag'
-                                                    )}
+                                                    {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>
                                                 <Label as="div" size="small">
-                                                    {formaterValuta(
-                                                        vedtak.vedtak
-                                                            .sykepengegrunnlag!
-                                                    )}
+                                                    {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
                                                 </Label>
                                             </section>
 
                                             <Vis
-                                                hvis={
-                                                    vedtak.vedtak
-                                                        .begrensning ===
-                                                    'ER_6G_BEGRENSET'
-                                                }
+                                                hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'}
                                                 render={() => (
                                                     <div className="redusert_sykepengegrunnlag">
                                                         <BodyLong size="small">
-                                                            {parser(
-                                                                tekst(
-                                                                    'utbetaling.redusert6G.tekst'
-                                                                )
-                                                            )}
+                                                            {parser(tekst('utbetaling.redusert6G.tekst'))}
                                                         </BodyLong>
                                                     </div>
                                                 )}
@@ -158,16 +117,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     )}
                                 />
                             </article>
-
-                            <div className="knapperad">
-                                <Button
-                                    variant="tertiary"
-                                    size="small"
-                                    onClick={onButtonClick}
-                                >
-                                    Skjul
-                                </Button>
-                            </div>
                         </Accordion.Content>
                     </Accordion.Item>
                 </Accordion>

@@ -12,36 +12,31 @@ import { spinnsynFrontendInterne } from '../utils/environment'
 
 const { serverRuntimeConfig } = getConfig()
 
-export const prefetchVedtak = beskyttetSide(
-    async (ctx): Promise<GetServerSidePropsPrefetchResult> => {
-        let sykmeldtFnr: string | null = null
-        const queryClient = new QueryClient()
-        if (spinnsynFrontendInterne()) {
-            sykmeldtFnr = await hentModiaContext(ctx.req!)
+export const prefetchVedtak = beskyttetSide(async (ctx): Promise<GetServerSidePropsPrefetchResult> => {
+    let sykmeldtFnr: string | null = null
+    const queryClient = new QueryClient()
+    if (spinnsynFrontendInterne()) {
+        sykmeldtFnr = await hentModiaContext(ctx.req!)
 
-            if (sykmeldtFnr) {
-                const oboSpinnsynBackend = await getOboAccessToken(
-                    ctx.req?.headers.authorization?.split(' ')[1],
-                    serverRuntimeConfig.spinnsynBackendClientId
-                )
+        if (sykmeldtFnr) {
+            const oboSpinnsynBackend = await getOboAccessToken(
+                ctx.req?.headers.authorization?.split(' ')[1],
+                serverRuntimeConfig.spinnsynBackendClientId
+            )
 
-                await queryClient.prefetchQuery('vedtak', () => {
-                    return hentVedtakFraSpinnsynBackendForInterne(
-                        oboSpinnsynBackend,
-                        sykmeldtFnr!
-                    )
-                })
-            }
-        } else {
             await queryClient.prefetchQuery('vedtak', () => {
-                return hentVedtak(ctx.req!)
+                return hentVedtakFraSpinnsynBackendForInterne(oboSpinnsynBackend, sykmeldtFnr!)
             })
         }
-        return {
-            props: {
-                dehydratedState: dehydrate(queryClient),
-                sykmeldtFnr,
-            },
-        }
+    } else {
+        await queryClient.prefetchQuery('vedtak', () => {
+            return hentVedtak(ctx.req!)
+        })
     }
-)
+    return {
+        props: {
+            dehydratedState: dehydrate(queryClient),
+            sykmeldtFnr,
+        },
+    }
+})

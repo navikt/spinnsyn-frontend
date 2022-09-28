@@ -14,22 +14,10 @@ interface DagBeskrivelseProps {
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     const lovhjemmel = (dag: RSDag) => {
         if (dag.begrunnelser.length > 0) {
-            return parser(
-                tekst(
-                    `utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any
-                )
-            )
+            return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
         }
-        if (
-            dag.dagtype == 'ForeldetDag' ||
-            dag.dagtype == 'Feriedag' ||
-            dag.dagtype == 'Permisjonsdag'
-        ) {
-            return parser(
-                tekst(
-                    `utbetaling.tabell.avvist.lovhjemmel.${dag.dagtype}` as any
-                )
-            )
+        if (dag.dagtype == 'ForeldetDag' || dag.dagtype == 'Feriedag' || dag.dagtype == 'Permisjonsdag') {
+            return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.dagtype}` as any))
         } else return ''
     }
 
@@ -40,35 +28,21 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
             <>
                 <Vis
                     hvis={dag.dagtype !== 'AvvistDag'}
-                    render={() => (
-                        <BodyShort>
-                            {tekst(
-                                `utbetaling.tabell.label.${dag.dagtype}` as any
-                            )}
-                        </BodyShort>
-                    )}
+                    render={() => <BodyShort>{tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}</BodyShort>}
                 />
 
                 <Vis
                     hvis={dag.dagtype === 'AvvistDag'}
                     render={() => (
                         <BodyShort>
-                            {parser(
-                                tekst(
-                                    `utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any
-                                )
-                            )}
+                            {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
                         </BodyShort>
                     )}
                 />
 
                 <Vis
                     hvis={lovhjemmelTekst !== ''}
-                    render={() => (
-                        <BodyShort className={'avvist-lovhjemmel'}>
-                            {lovhjemmelTekst}
-                        </BodyShort>
-                    )}
+                    render={() => <BodyShort className={'avvist-lovhjemmel'}>{lovhjemmelTekst}</BodyShort>}
                 />
             </>
         )
@@ -76,10 +50,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     const unikeDager = (): RSDag[] => {
         const unikeDagtyper = dager.reduce((list: RSDag[], dag) => {
-            if (
-                dag.dagtype !== 'AvvistDag' &&
-                !list.find((d: RSDag) => d.dagtype === dag.dagtype)
-            ) {
+            if (dag.dagtype !== 'AvvistDag' && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
                 list.push(dag)
             }
             return list
@@ -88,11 +59,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         const unikeBegrunnelser = dager.reduce((list: RSDag[], dag) => {
             if (dag.dagtype === 'AvvistDag') {
                 dag.begrunnelser?.forEach((begrunnelse: RSBegrunnelse) => {
-                    if (
-                        !list.find((d: RSDag) =>
-                            d.begrunnelser?.includes(begrunnelse)
-                        )
-                    ) {
+                    if (!list.find((d: RSDag) => d.begrunnelser?.includes(begrunnelse))) {
                         list.push({
                             dato: dag.dato,
                             belop: dag.belop,

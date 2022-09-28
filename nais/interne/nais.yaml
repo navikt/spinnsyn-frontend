@@ -1,0 +1,41 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: spinnsyn-frontend-interne
+  namespace: flex
+  labels:
+    team: flex
+spec:
+  image: {{ image }}
+  port: 8080
+  ingresses:
+    - {{ ingress }}
+  azure:
+    application:
+      enabled: true
+    sidecar:
+      enabled: true
+  replicas:
+    min: 2
+    max: 3
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: 200m
+      memory: 250Mi
+    requests:
+      cpu: 100m
+      memory: 150Mi
+  liveness:
+    path: syk/sykepenger/api/internal/isAlive
+  readiness:
+    path: syk/sykepenger/api/internal/isReady
+  accessPolicy:
+    outbound:
+      rules:
+        - application: spinnsyn-backend
+  env:
+  {{#each env}}
+     - name: {{@key}}
+       value: "{{this}}"
+  {{/each}}

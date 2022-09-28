@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Button, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -39,14 +39,9 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                     <Heading size="large" level="2">
                         {belop + ' kroner'}
                         <BodyShort spacing as="span">
-                            {getLedetekst(
-                                tekst('utbetaling.arbeidsgiver.systemtittel'),
-                                {
-                                    '%ARBEIDSGIVER%': storeTilStoreOgSmå(
-                                        vedtak.orgnavn
-                                    ),
-                                }
-                            )}
+                            {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
+                                '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
+                            })}
                         </BodyShort>
                     </Heading>
                 </div>
@@ -59,36 +54,16 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                     <Vis
                         hvis={vedtak.dagerArbeidsgiver.length > 0}
                         render={() => (
-                            <Accordion.Item
-                                ref={accordionRef}
-                                open={open}
-                                className="utbetalingsoversikt"
-                            >
+                            <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
                                 <Accordion.Header onClick={onButtonClick}>
                                     <Heading size="small" level="4">
-                                        {tekst(
-                                            'utbetaling.inntekt.info.dagsats'
-                                        )}
+                                        {tekst('utbetaling.inntekt.info.dagsats')}
                                     </Heading>
                                 </Accordion.Header>
                                 <Accordion.Content>
-                                    <DagTabell
-                                        dager={vedtak.dagerArbeidsgiver}
-                                    />
+                                    <DagTabell dager={vedtak.dagerArbeidsgiver} />
 
-                                    <DagBeskrivelse
-                                        dager={vedtak.dagerArbeidsgiver}
-                                    />
-
-                                    <div className="knapperad">
-                                        <Button
-                                            variant="tertiary"
-                                            size="small"
-                                            onClick={onButtonClick}
-                                        >
-                                            Skjul
-                                        </Button>
-                                    </div>
+                                    <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
                                 </Accordion.Content>
                             </Accordion.Item>
                         )}
