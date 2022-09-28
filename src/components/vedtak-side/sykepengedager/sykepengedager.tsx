@@ -1,11 +1,10 @@
-import { BodyLong, BodyShort, Button, Heading } from '@navikt/ds-react'
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
-import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import { VedtakProps } from '../vedtak'
 

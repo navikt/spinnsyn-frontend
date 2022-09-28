@@ -33,6 +33,7 @@
 
         & > .navds-accordion__header {
             display: flex;
+            align-items: center;
             overflow: hidden;
             width: 100%;
             padding: 1.3rem 1rem 1.5rem;
@@ -56,6 +57,12 @@
             svg {
                 color: @navds-semantic-color-text;
             }
+        }
+
+        .navds-accordion__header-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
         }
 
         .knapperad {
@@ -90,7 +97,7 @@
         }
 
         &.bla {
-            background: @navds-global-color-blue-100;
+            background: @navds-global-color-blue-50;
 
             & > .navds-accordion__header:hover {
                 border-color: @navds-global-color-blue-400;
@@ -129,7 +136,7 @@
             & > .navds-accordion__header {
                 .ekspanderbar__ikon {
                     display: block;
-                    margin: 0 0.28rem;
+                    margin: 0 1.28rem 0 0.28rem;
                 }
 
                 .ekspanderbar__tittel {
@@ -139,7 +146,6 @@
 
             .open-text {
                 display: inline;
-                margin-right: -0.5rem;
             }
 
             .ekspanderbar__innhold {

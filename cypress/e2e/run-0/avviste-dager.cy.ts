@@ -37,7 +37,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
 
         cy.get('.avvistedageroversikt').should('contain', 'Dager NAV ikke utbetaler').click()
 
-        cy.get('.tabell--dag').within(() => {
+        cy.get('.ekspanderbar.gul .tabell--dag').within(() => {
             cy.contains('30.jan.').should('not.exist')
             cy.contains('31.jan.').should('not.exist')
             cy.contains('01.feb.').should('not.exist')
@@ -64,7 +64,6 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             cy.contains('22.feb.').parent().parent().should('contain', 'Ukjent').and('contain', '-')
         })
 
-        cy.get('.tekstinfo')
         cy.get('.navds-heading:first-child').contains('Forklaring')
         cy.get('.navds-body-short:nth-child(3)').contains(
             'Du får ikke sykepenger for dager du har ferie eller permisjon.'
@@ -73,7 +72,7 @@ describe('Tester visning av dager som ikke dekkes av NAV', () => {
             'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.'
         )
 
-        cy.contains('Mer om beregningen').should('not.exist')
+        cy.get('.ekspanderbar.gul').contains('Mer om beregningen').should('not.exist')
 
         cy.get('.smule').contains('Svar på søknader').click()
     })
