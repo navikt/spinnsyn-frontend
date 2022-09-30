@@ -16,13 +16,18 @@ export function hentTestdata(url?: string) {
     }
 }
 
-export function hentMockVedtak(incomingMessage: IncomingMessage, cookies?: { [p: string]: string }): RSVedtakWrapper[] {
+export function hentMockVedtak(
+    incomingMessage: IncomingMessage,
+    cookies?: Partial<{
+        [key: string]: string
+    }>
+): RSVedtakWrapper[] {
     const vedtak = hentTestdata(incomingMessage.url)
     const lesteVedtak = [] as string[]
     if (cookies) {
         for (const c in cookies) {
             if (c.startsWith('lest-vedtak')) {
-                lesteVedtak.push(cookies[c])
+                lesteVedtak.push(cookies[c]!)
             }
         }
     }
