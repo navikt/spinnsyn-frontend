@@ -8,6 +8,7 @@ import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedt
 import { tekst } from '../../utils/tekster'
 import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
+import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -55,6 +56,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             tittel: tekst('vedtak.sidetittel'),
         },
     ]
+
+    const studyKey = () => {
+        if (erSP) {
+            return 'study-zdmd7xofvn'
+        }
+        return 'study-7f70elp6c'
+    }
 
     return (
         <>
@@ -118,6 +126,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Behandling vedtak={vedtak} />
 
                 <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
+
+                <Vis hvis={!erArkivering} render={() => <UxSignalsWidget study={studyKey()} />} />
             </div>
         </>
     )
