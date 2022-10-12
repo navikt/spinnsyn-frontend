@@ -1,6 +1,6 @@
 import { kombinertDirekteOgRefusjon } from '../../../src/data/testdata/data/rs-vedtak'
 
-describe('Tester visning av kombinasjon', () => {
+describe('Kombinasjonutbetaling', () => {
     const vedtak = kombinertDirekteOgRefusjon
 
     before(() => {

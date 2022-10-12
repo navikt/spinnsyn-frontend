@@ -12,7 +12,7 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('not.exist')
     })
 
-    it('Manuelt behandlet', () => {
+    it('Varianter av opplysningene', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=99f389f2-0084-481b-bed8-47f6ac3491d4')
 
         cy.get('.behandling > .navds-heading')

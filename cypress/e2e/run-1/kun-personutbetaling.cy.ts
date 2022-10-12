@@ -1,6 +1,6 @@
 import { kunDirekte } from '../../../src/data/testdata/data/rs-vedtak'
 
-describe('Tester visning personutbetaling', () => {
+describe('Kun personutbetaling', () => {
     const vedtak = kunDirekte
 
     before(() => {

@@ -11,7 +11,7 @@ const articleTilVedtak = (articles: any) => {
     return vedtakene
 }
 
-describe('Tester sortering av vedtak', () => {
+describe('Sortering av vedtak', () => {
     it('Laster startside', function () {
         cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('.sidebanner__tittel').should('be.visible').and('have.text', 'Svar på søknader')

@@ -1,6 +1,6 @@
 import { vedtakMedFlereArbeidsgivere } from '../../../src/data/testdata/data/vedtakMedFlereArbeidsgivere'
 
-describe('Tester visning av et vedtak med flere arbeidsgivere', () => {
+describe('Vedtak med flere arbeidsgivere', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
     })

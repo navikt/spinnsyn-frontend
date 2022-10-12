@@ -1,4 +1,4 @@
-describe('Tester serverside rendret vedtak for arkivering ', () => {
+describe('Server vedtak', () => {
     it('laster siden med alt ekspandert ', () => {
         cy.visit('http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering')
 

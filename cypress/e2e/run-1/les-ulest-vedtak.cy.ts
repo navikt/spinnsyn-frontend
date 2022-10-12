@@ -4,7 +4,7 @@ import {
     vedtakRevurdert,
 } from '../../../src/data/testdata/data/rs-vedtak'
 
-describe('Tester at appen starter', () => {
+describe('Les uleste vedtak', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
     })
