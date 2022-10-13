@@ -1,6 +1,6 @@
 import { vedtakMedDetMeste } from '../../../src/data/testdata/data/rs-vedtak'
 
-describe('Tester visning av et vedtak redusert til 6G', () => {
+describe('Redusert til 6G', () => {
     const vedtak = vedtakMedDetMeste
 
     before(() => {

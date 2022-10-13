@@ -20,8 +20,7 @@ afterEach(() => {
     cy.injectAxe()
 
     const rules = (testTittel: string) => {
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        if (testTittel == 'Tester serverside rendret vedtak for arkivering ') {
+        if (testTittel == 'Server vedtak') {
             // SSR rendret har noen quirks
             return {
                 rules: [

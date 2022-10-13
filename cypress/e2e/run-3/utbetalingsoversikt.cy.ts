@@ -1,6 +1,6 @@
 import { integrasjonsVedtak, vedtakMed40Grad } from '../../../src/data/testdata/data/rs-vedtak'
 
-describe('Tester visning av utbetalingsoversikt', () => {
+describe('Utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad
 
     before(() => {

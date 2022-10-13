@@ -5,7 +5,7 @@ import {
     vedtakMed40Grad,
 } from '../../../src/data/testdata/data/rs-vedtak'
 
-describe('Tester visning av dager som ikke dekkes av NAV', () => {
+describe('Avviste dager', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
     })
