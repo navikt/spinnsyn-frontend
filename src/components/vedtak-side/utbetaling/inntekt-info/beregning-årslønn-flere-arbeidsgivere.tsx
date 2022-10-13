@@ -12,9 +12,9 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
 
     return (
         <>
-            {arbeidsgivere.map((arbeidsgiverNavn, index) => (
+            {arbeidsgivere.map((arbeidsgiverNavn) => (
                 <>
-                    <Label className="arbgiver_navn arbgiver">{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
+                    <Label className="arbgiver_navn">{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
 
                     <section>
                         <BodyShort as="div" size="small" className="tekst">

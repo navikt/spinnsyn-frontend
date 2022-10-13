@@ -36,12 +36,21 @@ function finnSelvbetjeningsToken(cookies: string | undefined) {
     return parsedCookies['selvbetjening-idtoken']
 }
 
-function finnVedtaksId(queryString: QueryString) {
+function finnVedtaksId(
+    queryString: Partial<{
+        [key: string]: string | string[]
+    }>
+) {
     // Kun brukt til mockData, så vi kan leve med at dette kan være et array.
-    return queryString.id[0]
+    return queryString.id![0]
 }
 
-async function hentKontonummer(queryString: QueryString, cookies: string | undefined) {
+async function hentKontonummer(
+    queryString: Partial<{
+        [key: string]: string | string[]
+    }>,
+    cookies: string | undefined
+) {
     if (isProd()) {
         return hentProdKontonummer(finnSelvbetjeningsToken(cookies))
     } else {

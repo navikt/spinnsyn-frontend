@@ -57,6 +57,24 @@ npm run test
 npm run e2e
 ```
 
+## Dette logges i Amplitude
+
+| brukers handling/logg                                        | Skjemanavn | Destinasjon | tekst | komponent | Tidligere lest | Revurdert | Annulert | Refusjon | Brukerutbetaling | Flere vedtK |
+|--------------------------------------------------------------|:----------:|:-----------:|:-----:|:---------:|:--------------:|:---------:|:--------:|:--------:|:----------------:|:-----------:|
+| Åpne skjema                                                  |     x      |             |       |           |                |           |          |    x     |        x         |      X      |
+| Navigasjon til et vedtak                                     |     x      |      x      |       |           |       x        |     x     |    x     |          |                  |             |
+| Navigasjon til "kontakt oss"                                 |     x      |      x      |   x   |           |                |           |          |          |                  |             |
+| Navigasjon til "retten til å klage"                          |     x      |      x      |   x   |           |                |           |          |          |                  |             |
+| Navigasjon til "klage veilederen"                            |     x      |      x      |   x   |           |                |           |          |          |                  |             |
+| Navigasjon til "Les mer om når du kan forvente å få pengene" |     x      |      x      |   x   |           |                |           |          |          |                  |             |
+| Ekspandere utbetalingsinformasjon (grønn panel)              |            |             |       |     x     |                |           |          |          |                  |             |
+| Ekspandere avviste dager (Gul panel)                         |            |             |       |     x     |                |           |          |          |                  |             |
+| Ekspandere gjenstående sykepengedager (Blå panel)            |            |             |       |     x     |                |           |          |          |                  |             |
+| Ekspandere "Inntekter lagt til grunn for sykepengene"        |            |             |       |     x     |                |           |          |          |                  |             |
+| Ekspandere "Sykepenger per dag"                              |            |             |       |     x     |                |           |          |          |                  |             |
+| Ekspandere "Mer om beregningen"                              |            |             |       |     x     |                |           |          |          |                  |             |
+| Ekspandere "Dager NAV ikke utbetaler"                        |            |             |       |     x     |                |           |          |          |                  |             |
+
 
 # Henvendelser
 

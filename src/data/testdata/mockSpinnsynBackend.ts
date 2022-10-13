@@ -5,7 +5,7 @@ import { cleanPathForMetric } from '../../metrics/metrics'
 import { hentMockVedtak } from './hentTestdata'
 
 function lesVedtak(req: NextApiRequest, res: NextApiResponse) {
-    const id = req.query.path[3] as string
+    const id = req.query!.path![3] as string
     res.setHeader(
         'Set-Cookie',
         serialize(`lest-vedtak-${id}`, id, {
