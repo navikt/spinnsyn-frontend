@@ -123,11 +123,11 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
                 <Sykepengedager vedtak={vedtak} />
 
+                <Vis hvis={!erArkivering} render={() => <UxSignalsWidget study={studyKey()} />} />
+
                 <Behandling vedtak={vedtak} />
 
                 <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
-
-                <Vis hvis={!erArkivering} render={() => <UxSignalsWidget study={studyKey()} />} />
             </div>
         </>
     )
