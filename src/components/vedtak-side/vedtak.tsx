@@ -59,7 +59,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     const studyKey = () => {
         if (erSP) {
-            return 'study-zdmd7xofvn'
+            return 'study-y1ddhu1rch'
         }
         return 'study-7f70elp6c'
     }
