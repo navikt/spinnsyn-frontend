@@ -6,33 +6,37 @@ import { isMockBackend, isOpplaering } from '../../utils/environment'
 import Vis from '../vis'
 
 const Person = () => {
-    const [visInnhold, setVisInnhold] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false)
     const person = useRef<HTMLImageElement>(null)
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
-    if (kanVelgePerson) {
-        person?.current?.addEventListener('click', () => {
-            setVisInnhold(!visInnhold)
-        })
-    }
+    if (!kanVelgePerson) return null
 
     return (
-        <>
-            <img src={'/syk/sykepenger/static/img/person.svg'} alt="Du" className="brodsmuler__ikon" ref={person} />
+        <div className="person">
+            <button
+                aria-label="Velg person"
+                className="lenkeknapp"
+                onClick={() => {
+                    setOpen(!open)
+                }}
+            >
+                <img src="/syk/sykepenger/static/img/person.svg" className="person__ikon" ref={person} alt="" />
+            </button>
             <Vis
-                hvis={kanVelgePerson && visInnhold}
+                hvis={open}
                 render={() => (
                     <Popover
-                        open={true}
+                        open={!open}
                         anchorEl={person.current as HTMLElement}
                         placement="bottom"
-                        onClose={() => setVisInnhold(false)}
+                        onClose={() => setOpen(false)}
                     >
                         <Popover.Content>
-                            <ul style={{ margin: 0, paddingLeft: '1.4rem' }}>
+                            <ul>
                                 {Object.keys(personas).map((p, idx) => (
                                     <BodyShort size="medium" as="li" key={idx}>
-                                        <a href={`/syk/sykepenger?testperson=${p}`}>{p}</a>
+                                        <a href={`?testperson=${p}`}>{p}</a>
                                     </BodyShort>
                                 ))}
                             </ul>
@@ -40,7 +44,7 @@ const Person = () => {
                     </Popover>
                 )}
             />
-        </>
+        </div>
     )
 }
 

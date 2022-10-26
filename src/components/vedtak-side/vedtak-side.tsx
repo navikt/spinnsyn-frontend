@@ -1,8 +1,8 @@
 import { logger } from '@navikt/next-logger'
 import React, { useEffect } from 'react'
 
-import useMerkVedtakSomLest from '../../query-hooks/useMerkVedtakSomLest'
-import useVedtak from '../../query-hooks/useVedtak'
+import useMerkVedtakSomLest from '../../hooks/useMerkVedtakSomLest'
+import useVedtak from '../../hooks/useVedtak'
 import { isMockBackend, isOpplaering, isProd, spinnsynFrontendInterne } from '../../utils/environment'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'

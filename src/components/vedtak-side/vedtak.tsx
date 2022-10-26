@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
+import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
-import Banner from '../banner/banner'
-import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
+import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import Vis from '../vis'
 import AnnulleringsInfo from './annullering/annullering'
@@ -25,6 +25,14 @@ export interface VedtakProps {
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
+    useUpdateBreadcrumbs(
+        () => [
+            { title: tekst('vedtak-liste.sidetittel'), url: `/${query}`, handleInApp: true },
+            { title: tekst('vedtak.sidetittel'), url: '/', handleInApp: true },
+        ],
+        []
+    )
+
     const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
     const query: NodeJS.Dict<string | string[]> = {}
@@ -47,16 +55,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         }
     }
 
-    const brodsmuler: Brodsmule[] = [
-        {
-            tittel: tekst('vedtak-liste.sidetittel'),
-            sti: { pathname: '/', query },
-        },
-        {
-            tittel: tekst('vedtak.sidetittel'),
-        },
-    ]
-
     const studyKey = () => {
         if (erSP) {
             return 'study-y1ddhu1rch'
@@ -69,14 +67,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Vis
                 hvis={!erArkivering}
                 render={() => (
-                    <>
-                        <Banner>
-                            <Heading spacing size="xlarge" level="1" className="sidebanner__tittel">
-                                {tekst('spinnsyn.sidetittel.vedtak')}
-                            </Heading>
-                        </Banner>
-                        <Brodsmuler brodsmuler={brodsmuler} />
-                    </>
+                    <header className="sidebanner">
+                        <Heading spacing size="xlarge" level="1" className="sidebanner__tittel">
+                            {tekst('spinnsyn.sidetittel.vedtak')}
+                        </Heading>
+                        <Person />
+                    </header>
                 )}
             />
 

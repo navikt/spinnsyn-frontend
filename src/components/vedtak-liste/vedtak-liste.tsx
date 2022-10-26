@@ -1,23 +1,18 @@
 import { BodyShort, Heading, Link } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
-import useVedtak from '../../query-hooks/useVedtak'
+import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
+import useVedtak from '../../hooks/useVedtak'
 import { arkiverteVedtakUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
-import Banner from '../banner/banner'
-import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
+import Person from '../person/Person'
 import Teasere from '../teaser/teasere'
-
-const brodsmuler: Brodsmule[] = [
-    {
-        tittel: tekst('vedtak-liste.sidetittel'),
-    },
-]
 
 const VedtakListe = () => {
     const { data: vedtak } = useVedtak()
+    useUpdateBreadcrumbs(() => [{ title: tekst('vedtak-liste.sidetittel'), url: '/', handleInApp: true }], [])
 
     useEffect(() => {
         setBodyClass('vedtak-liste')
@@ -28,13 +23,12 @@ const VedtakListe = () => {
 
     return (
         <>
-            <Banner>
+            <header className="sidebanner">
                 <Heading spacing size="xlarge" level="1" className="sidebanner__tittel">
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
-            </Banner>
-
-            <Brodsmuler brodsmuler={brodsmuler} />
+                <Person />
+            </header>
 
             <div className="limit">
                 <Teasere
