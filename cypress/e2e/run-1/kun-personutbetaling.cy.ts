@@ -30,10 +30,6 @@ describe('Kun personutbetaling', () => {
                     'Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
             )
 
-        cy.get('.tekstinfo > :nth-child(3) > strong').contains('Utbetales til kontonummer:')
-
-        cy.get('.tekstinfo > :nth-child(3)').contains('1001 11 10011')
-
         cy.contains('Mer om beregningen').click({ force: true })
 
         cy.get('.ekspanderbar .tekstinfo > :nth-child(10)').contains('Totalbeløp')
