@@ -6,6 +6,7 @@ import useVedtak from '../../query-hooks/useVedtak'
 import { isMockBackend, isOpplaering, isProd, spinnsynFrontendInterne } from '../../utils/environment'
 import { setBodyClass } from '../../utils/utils'
 import { logEvent } from '../amplitude/amplitude'
+
 import Vedtak, { VedtakProps } from './vedtak'
 
 interface HotjarWindow extends Window {

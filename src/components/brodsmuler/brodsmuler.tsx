@@ -1,11 +1,13 @@
+import { UrlObject } from 'url'
+
 import { Collapse } from '@navikt/ds-icons'
 import { BodyLong } from '@navikt/ds-react'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import { UrlObject } from 'url'
 
 import { minSideUrl, spinnsynFrontendInterne, sykefravaerUrl } from '../../utils/environment'
 import Vis from '../vis'
+
 import Person from './Person'
 
 const LITEN = 768

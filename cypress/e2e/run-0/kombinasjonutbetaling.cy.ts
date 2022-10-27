@@ -15,7 +15,7 @@ describe('Kombinasjonutbetaling', () => {
     it('Viser info om utbetaling til personen', () => {
         cy.contains(
             'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. ' +
-                'Arbeidsgiveren din får igjen pengene fra NAV senere.'
+                'Arbeidsgiveren din får igjen pengene fra NAV senere.',
         )
 
         cy.contains('24 550 kroner').and('contain', 'til deg (før skatt)').click({ force: true })
@@ -26,13 +26,13 @@ describe('Kombinasjonutbetaling', () => {
             .contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
                     'eller innen fem dager etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder ' +
-                    'dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.'
+                    'dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
             )
             .should('be.visible')
 
         cy.get('.personutbetaling .tekstinfo > :nth-child(4)').contains(
             'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn ' +
-                'på Din profil slik at vi får utbetalt sykepengene til deg så raskt som mulig.'
+                'på Din profil slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
         )
 
         cy.get('.personutbetaling .navds-accordion__item.beregning')
@@ -45,7 +45,7 @@ describe('Kombinasjonutbetaling', () => {
         cy.get('.personutbetaling .navds-accordion__item.beregning .tekstinfo > :nth-child(11)')
             .contains(
                 'Til slutt summerer vi alle dagene. ' +
-                    'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
+                    'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
             )
             .should('be.visible')
 
@@ -63,7 +63,7 @@ describe('Kombinasjonutbetaling', () => {
         cy.get('.refusjon .tekstinfo')
             .contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
-                    'eller innen fem dager etter at vi har sendt deg svar på søknaden din.'
+                    'eller innen fem dager etter at vi har sendt deg svar på søknaden din.',
             )
             .should('not.be.visible')
 
@@ -76,7 +76,7 @@ describe('Kombinasjonutbetaling', () => {
         cy.get('.refusjon .navds-accordion__item.beregning .tekstinfo > :nth-child(11)')
             .contains(
                 'Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, ' +
-                    'har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.'
+                    'har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
             )
             .should('be.visible')
     })

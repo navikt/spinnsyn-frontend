@@ -41,7 +41,9 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                     )}
                 />
                 {tekst(
-                    annullertEllerRevurdert ? 'behandling.opplysningene.preteritum' : 'behandling.opplysningene.presens'
+                    annullertEllerRevurdert
+                        ? 'behandling.opplysningene.preteritum'
+                        : 'behandling.opplysningene.presens',
                 )}
             </>
         )

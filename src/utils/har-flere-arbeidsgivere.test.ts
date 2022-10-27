@@ -1,6 +1,7 @@
 import { expect } from '@jest/globals'
 
 import { vedtakMed40Grad } from '../data/testdata/data/rs-vedtak'
+
 import { harFlereArbeidsgivere } from './har-flere-arbeidsgivere'
 import { jsonDeepCopy } from './json-deep-copy'
 

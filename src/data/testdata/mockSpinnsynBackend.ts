@@ -2,6 +2,7 @@ import { serialize } from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { cleanPathForMetric } from '../../metrics/metrics'
+
 import { hentMockVedtak } from './hentTestdata'
 
 function lesVedtak(req: NextApiRequest, res: NextApiResponse) {
@@ -12,7 +13,7 @@ function lesVedtak(req: NextApiRequest, res: NextApiResponse) {
             path: '/syk/sykepenger/api',
             httpOnly: true,
             maxAge: 10,
-        })
+        }),
     )
     res.status(200).json({ ok: 'ok' })
     res.end()

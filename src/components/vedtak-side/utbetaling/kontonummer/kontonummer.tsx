@@ -24,7 +24,7 @@ const Kontonummer = () => {
                     return null
                 }
                 defaultErrorHandler()
-            }
+            },
         )
 
         if (res.response.status !== 200) {

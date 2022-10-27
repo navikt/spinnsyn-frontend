@@ -1,17 +1,19 @@
-import { logger } from '@navikt/next-logger'
 import * as http from 'http'
 import { RequestOptions } from 'http'
-import { NextApiRequest, NextApiResponse } from 'next'
 import { Readable } from 'stream'
+
+import { NextApiRequest, NextApiResponse } from 'next'
+import { logger } from '@navikt/next-logger'
 
 import { getTokenxToken } from '../auth/getTokenxToken'
 import { cleanPathForMetric } from '../metrics/metrics'
+
 import { stream2buffer } from './stream2buffer'
 
 interface Opts {
     req: NextApiRequest
     res: NextApiResponse
-    tillatteApier: String[]
+    tillatteApier: string[]
     backend: string
     backendHostname: string
     backendClientId: string
@@ -67,8 +69,8 @@ export async function proxyKallTilBackend(opts: Opts) {
         stream.on('error', (err) =>
             logger.error(
                 err,
-                `Feil ved lesing av backend stream. Message: ${err.message}, Cause: ${err.cause}, URL: ${opts.req.url}.`
-            )
+                `Feil ved lesing av backend stream. Message: ${err.message}, Cause: ${err.cause}, URL: ${opts.req.url}.`,
+            ),
         )
     })
 

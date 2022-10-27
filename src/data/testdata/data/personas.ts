@@ -1,4 +1,5 @@
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+
 import {
     avvistVedtak,
     avvistVedtakMedLavInntekt,

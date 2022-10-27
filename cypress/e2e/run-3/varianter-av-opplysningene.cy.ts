@@ -4,7 +4,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden er behandlet automatisk').and('be.visible')
         cy.get('.behandling').contains(
-            'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.'
+            'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
         cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('not.exist')
@@ -17,7 +17,7 @@ describe('Tester logikk i behandling.tsx', () => {
             .should('have.text', 'Søknaden er behandlet av en saksbehandler')
             .and('be.visible')
         cy.get('.behandling').contains(
-            'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.'
+            'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
         cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('not.exist')
@@ -29,14 +29,14 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-alert').contains('Dette vedtaket gjelder ikke lenger').and('be.visible')
 
         cy.get('.navds-alert').contains(
-            'Vi har mottatt nye opplysninger som gjør at dette vedtaket behandles på nytt av en saksbehandler.'
+            'Vi har mottatt nye opplysninger som gjør at dette vedtaket behandles på nytt av en saksbehandler.',
         )
         cy.get('.navds-alert').contains('Du vil motta et eget brev med det nye vedtaket.')
         cy.get('.navds-alert').should('not.contain', 'Du finner det nye vedtaket i listen over svar på søknader')
 
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet automatisk')
         cy.get('.behandling').contains(
-            'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.'
+            'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
         cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 2)
@@ -48,14 +48,14 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-alert').contains('Du har fått et nytt vedtak som erstatter dette vedtaket').and('be.visible')
 
         cy.get('.navds-alert').contains(
-            'Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.'
+            'Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.',
         )
         cy.get('.navds-alert').contains('Du finner det nye vedtaket i listen over svar på søknader')
         cy.get('.navds-alert').should('not.contain', 'Du vil motta et eget brev med det nye vedtaket.git o')
 
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet av en saksbehandler')
         cy.get('.behandling').contains(
-            'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.'
+            'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
         cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 2)
@@ -77,7 +77,7 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing')
             .eq(2)
             .contains(
-                'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.'
+                'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.',
             )
     })
 })

@@ -2,6 +2,7 @@ import { expect } from '@jest/globals'
 import dayjs from 'dayjs'
 
 import { ulestVedtakUtenUtbetalingsdager } from '../data/testdata/data/rs-vedtak'
+
 import { jsonDeepCopy } from './json-deep-copy'
 import { fallbackEstimertSluttdato } from './vedtak-utils'
 

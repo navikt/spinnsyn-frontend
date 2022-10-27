@@ -17,7 +17,7 @@ dayjs.extend(timezone)
 export interface VedtakArkiveringProps {
     vedtak: RSVedtakWrapper
     fnr: string
-    utbetalingId: String
+    utbetalingId: string
 }
 
 export const VedtakArkivering = ({ vedtak, fnr, utbetalingId }: VedtakArkiveringProps) => {

@@ -21,7 +21,7 @@ export const prefetchVedtak = beskyttetSide(async (ctx): Promise<GetServerSidePr
         if (sykmeldtFnr) {
             const oboSpinnsynBackend = await getOboAccessToken(
                 ctx.req?.headers.authorization?.split(' ')[1],
-                serverRuntimeConfig.spinnsynBackendClientId
+                serverRuntimeConfig.spinnsynBackendClientId,
             )
 
             await queryClient.prefetchQuery('vedtak', () => {

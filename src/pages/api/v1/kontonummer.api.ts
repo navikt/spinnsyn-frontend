@@ -5,8 +5,6 @@ import { beskyttetApi } from '../../../auth/beskyttetApi'
 import { Personalia } from '../../../types/types'
 import { isProd } from '../../../utils/environment'
 
-type QueryString = { [key: string]: string | string[] }
-
 const isNumber = (char: string) => !isNaN(parseInt(char, 10))
 
 const hentMockKontonummer = (id: string): string | null => {
@@ -39,7 +37,7 @@ function finnSelvbetjeningsToken(cookies: string | undefined) {
 function finnVedtaksId(
     queryString: Partial<{
         [key: string]: string | string[]
-    }>
+    }>,
 ) {
     // Kun brukt til mockData, så vi kan leve med at dette kan være et array.
     return queryString.id![0]
@@ -49,7 +47,7 @@ async function hentKontonummer(
     queryString: Partial<{
         [key: string]: string | string[]
     }>,
-    cookies: string | undefined
+    cookies: string | undefined,
 ) {
     if (isProd()) {
         return hentProdKontonummer(finnSelvbetjeningsToken(cookies))

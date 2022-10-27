@@ -4,6 +4,7 @@ import React from 'react'
 
 import { RSDag } from '../../types/rs-types/rs-vedtak'
 import { ValutaFormat } from '../../utils/valuta-utils'
+
 import DagLabel from './dag-label'
 
 interface DagTabellProps {
