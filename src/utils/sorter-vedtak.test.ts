@@ -1,6 +1,7 @@
 import { expect } from '@jest/globals'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+
 import { jsonDeepCopy } from './json-deep-copy'
 import { sorterEtterNyesteTom } from './sorter-vedtak'
 

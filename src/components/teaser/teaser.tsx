@@ -6,6 +6,7 @@ import React from 'react'
 import { tekst } from '../../utils/tekster'
 import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
 import Vis from '../vis'
+
 import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: VedtakTeaserProps) => {

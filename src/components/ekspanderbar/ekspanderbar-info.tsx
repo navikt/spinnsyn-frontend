@@ -2,6 +2,7 @@ import { Accordion, Heading } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
+
 import { ekspanderbarKlikk, EkspanderProps } from './ekspander-utils'
 
 const EkspanderbarInfo = (props: EkspanderProps) => {

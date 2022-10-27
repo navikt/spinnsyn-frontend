@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import metrics, { cleanPathForMetric } from '../metrics/metrics'
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'

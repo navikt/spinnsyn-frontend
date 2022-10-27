@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 XAuthorization: `Bearer ${accessToken}`,
                 Cookie: `isso-accesstoken=${modiaContextAccessToken}`,
             },
-        }
+        },
     )
 
     if (response.status != 200) {

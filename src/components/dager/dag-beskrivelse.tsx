@@ -5,6 +5,7 @@ import React from 'react'
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Vis from '../vis'
+
 import DagLabel from './dag-label'
 
 interface DagBeskrivelseProps {
@@ -82,7 +83,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
                 {tekst('utbetaling.tabell.dagtyper')}
             </Heading>
 
-            {unikeDager().map((dag, idx) => (
+            {unikeDager().map((dag) => (
                 <>
                     <DagLabel dag={dag} />
                     {lagBeskrivelseForUnikDag(dag)}

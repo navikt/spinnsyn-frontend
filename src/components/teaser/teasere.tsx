@@ -3,6 +3,7 @@ import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import Vis from '../vis'
+
 import Teaser from './teaser'
 
 interface SoknaderTeasereProps {

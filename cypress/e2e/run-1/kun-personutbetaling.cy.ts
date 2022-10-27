@@ -14,7 +14,7 @@ describe('Kun personutbetaling', () => {
 
     it('Viser info om utbetaling til person', () => {
         cy.contains(
-            'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.'
+            'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
         ).should('not.exist')
         cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
@@ -27,7 +27,7 @@ describe('Kun personutbetaling', () => {
             .contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
                     'eller innen fem dager etter at vi har sendt deg svar på søknaden din. ' +
-                    'Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.'
+                    'Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
             )
 
         cy.get('.tekstinfo > :nth-child(3) > strong').contains('Utbetales til kontonummer:')
@@ -40,7 +40,7 @@ describe('Kun personutbetaling', () => {
 
         cy.get('.ekspanderbar .tekstinfo > :nth-child(11)').contains(
             'Til slutt summerer vi alle dagene. ' +
-                'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
+                'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
         )
     })
 

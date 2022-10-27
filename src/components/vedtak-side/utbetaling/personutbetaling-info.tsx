@@ -8,6 +8,7 @@ import { spinnsynFrontendInterne } from '../../../utils/environment'
 import { tekst } from '../../../utils/tekster'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import Vis from '../../vis'
+
 import InntektInfo from './inntekt-info/inntekt-info'
 import Kontonummer from './kontonummer/kontonummer'
 

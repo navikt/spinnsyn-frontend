@@ -1,5 +1,6 @@
-import { logger } from '@navikt/next-logger'
 import { IncomingMessage } from 'http'
+
+import { logger } from '@navikt/next-logger'
 import getConfig from 'next/config'
 
 import { getAzureAdAccessToken } from '../auth/getAzureAdAccessToken'

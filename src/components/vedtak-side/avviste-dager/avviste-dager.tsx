@@ -15,7 +15,7 @@ import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
     vedtak: RSVedtakWrapper
-    heltAvvist: Boolean
+    heltAvvist: boolean
 }
 
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {

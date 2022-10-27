@@ -2,6 +2,7 @@ import { IncomingMessage } from 'http'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { jsonDeepCopy } from '../../utils/json-deep-copy'
+
 import { diverseData } from './data/personas'
 import { personas } from './testperson'
 
@@ -20,7 +21,7 @@ export function hentMockVedtak(
     incomingMessage: IncomingMessage,
     cookies?: Partial<{
         [key: string]: string
-    }>
+    }>,
 ): RSVedtakWrapper[] {
     const vedtak = hentTestdata(incomingMessage.url)
     const lesteVedtak = [] as string[]

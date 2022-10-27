@@ -10,6 +10,7 @@ import { formaterValuta } from '../../../../utils/valuta-utils'
 import { ekspanderbarKlikk } from '../../../ekspanderbar/ekspander-utils'
 import Vis from '../../../vis'
 import { VedtakProps } from '../../vedtak'
+
 import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-arbeidsgivere'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {

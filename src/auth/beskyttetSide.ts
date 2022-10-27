@@ -4,6 +4,7 @@ import { NextPageContext } from 'next'
 
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { isMockBackend, loginServiceRedirectUrl, loginServiceUrl, spinnsynFrontendInterne } from '../utils/environment'
+
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'

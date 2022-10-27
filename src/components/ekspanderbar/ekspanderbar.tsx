@@ -3,6 +3,7 @@ import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import Vis from '../vis'
+
 import { ekspanderbarKlikk, EkspanderProps } from './ekspander-utils'
 
 interface TypeProps {
@@ -24,7 +25,7 @@ const Ekspanderbar = (props: AllProps) => {
         ekspanderbarKlikk(
             erApen,
             ekspanderbar,
-            'Ekspanderbar ' + props.type!.charAt(0).toUpperCase() + props.type!.slice(1).toLowerCase()
+            'Ekspanderbar ' + props.type!.charAt(0).toUpperCase() + props.type!.slice(1).toLowerCase(),
         )
         setErApen(!erApen)
     }

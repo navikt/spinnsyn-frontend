@@ -10,6 +10,7 @@ import Banner from '../banner/banner'
 import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import Vis from '../vis'
+
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
 import { Behandling } from './behandling/behandling'
