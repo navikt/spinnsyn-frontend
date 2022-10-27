@@ -3,8 +3,8 @@ import getConfig from 'next/config'
 
 import { beskyttetApi } from '../../../auth/beskyttetApi'
 import { mockSpinnsynBackend } from '../../../data/testdata/mockSpinnsynBackend'
-import { proxyKallTilBackend } from '../../../proxy/backendproxy'
 import { isMockBackend } from '../../../utils/environment'
+import { proxyKallTilBackend } from '../../../proxy/backendproxy'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -19,8 +19,9 @@ const handler = beskyttetApi(async (req: NextApiRequest, res: NextApiResponse) =
         res,
         tillatteApier,
         backend: 'spinnsyn-backend',
-        backendHostname: 'spinnsyn-backend',
+        hostname: 'spinnsyn-backend',
         backendClientId: serverRuntimeConfig.spinnsynBackendTokenxClientId,
+        https: false,
     })
 })
 

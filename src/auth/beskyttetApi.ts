@@ -1,5 +1,4 @@
 import { logger } from '@navikt/next-logger'
-import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import metrics, { cleanPathForMetric } from '../metrics/metrics'
@@ -7,7 +6,6 @@ import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
-import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
 type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>
 
@@ -41,17 +39,6 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
                 return send401()
             }
             return handler(req, res)
-        }
-
-        const cookies = cookie.parse(req?.headers.cookie || '')
-        const selvbetjeningIdtoken = cookies['selvbetjening-idtoken']
-        if (!selvbetjeningIdtoken) {
-            return send401()
-        }
-        try {
-            await validerLoginserviceToken(selvbetjeningIdtoken)
-        } catch (e) {
-            return send401()
         }
 
         const bearerToken: string | null | undefined = req.headers['authorization']

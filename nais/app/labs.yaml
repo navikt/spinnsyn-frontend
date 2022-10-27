@@ -29,8 +29,6 @@ spec:
       value: "https://person.nav.no/mine-saker/tema/SYK"
     - name: OPPLAERING
       value: "true"
-    - name: LOGINSERVICE_URL
-      value: "https://loginservice-q.nav.no/login"
     - name: MOCK_BACKEND
       value: "true"
     - name: AMPLITUDE_ENABLED

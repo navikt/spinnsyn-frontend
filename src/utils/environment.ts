@@ -1,6 +1,6 @@
 import getConfig from 'next/config'
 
-const { publicRuntimeConfig, serverRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig()
 
 export function isProd() {
     return publicRuntimeConfig.environment === 'prod'
@@ -12,14 +12,6 @@ export function isMockBackend() {
 
 export function isOpplaering() {
     return publicRuntimeConfig.opplaering === 'true'
-}
-
-export function loginServiceUrl() {
-    return serverRuntimeConfig.loginserviceUrl
-}
-
-export function loginServiceRedirectUrl() {
-    return serverRuntimeConfig.loginServiceRedirectUrl
 }
 
 export function sykefravaerUrl() {

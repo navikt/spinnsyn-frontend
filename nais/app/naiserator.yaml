@@ -38,8 +38,6 @@ spec:
           namespace: okonomi
   tokenx:
     enabled: true
-  envFrom:
-    - configmap: loginservice-idporten
   env:
   {{#each env}}
      - name: {{@key}}
