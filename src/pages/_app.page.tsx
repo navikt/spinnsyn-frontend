@@ -25,6 +25,8 @@ import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 
+import { LabsWarning } from '../components/labs-warning/LabsWarning'
+
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
         dehydratedState: DehydratedState
@@ -66,6 +68,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                 <Hydrate state={pageProps.dehydratedState}>
                     <div className="pagewrapper">
                         <div id="root">
+                            <LabsWarning />
                             <Component {...pageProps} />
                         </div>
                     </div>
