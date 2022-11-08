@@ -12,10 +12,9 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
 
     return (
         <>
-            {arbeidsgivere.map((arbeidsgiverNavn) => (
-                <>
+            {arbeidsgivere.map((arbeidsgiverNavn, idx) => (
+                <div key={idx}>
                     <Label className="arbgiver_navn">{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
-
                     <section>
                         <BodyShort as="div" size="small" className="tekst">
                             {tekst('utbetaling.inntekt.årslønn')}
@@ -24,7 +23,7 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
                             {formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}
                         </BodyShort>
                     </section>
-                </>
+                </div>
             ))}
         </>
     )

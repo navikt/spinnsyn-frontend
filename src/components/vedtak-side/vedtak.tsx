@@ -25,14 +25,6 @@ export interface VedtakProps {
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
-    useUpdateBreadcrumbs(
-        () => [
-            { title: tekst('vedtak-liste.sidetittel'), url: `/${query}`, handleInApp: true },
-            { title: tekst('vedtak.sidetittel'), url: '/', handleInApp: true },
-        ],
-        []
-    )
-
     const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
     const query: NodeJS.Dict<string | string[]> = {}
@@ -43,10 +35,19 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
 
+    useUpdateBreadcrumbs(
+        () => [
+            { title: tekst('vedtak-liste.sidetittel'), url: `/${query}` as string, handleInApp: true },
+            { title: tekst('vedtak.sidetittel'), url: '/', handleInApp: true },
+        ],
+        []
+    )
+
     useEffect(() => {
         // Scrollpoint beholdes når man går fra listevisning til vedtak. Nullstiller da det ser rart ut hvis vedtaket
         // er lengre enn det som vises i nettleser.
         window.scrollTo({ top: 0 })
+        console.log('query', query) // eslint-disable-line
     }, [])
 
     for (const key in router.query) {

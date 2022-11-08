@@ -3,11 +3,10 @@ import React, { useRef, useState } from 'react'
 
 import { personas } from '../../data/testdata/testperson'
 import { isMockBackend, isOpplaering } from '../../utils/environment'
-import Vis from '../vis'
 
 const Person = () => {
     const [open, setOpen] = useState<boolean>(false)
-    const person = useRef<HTMLImageElement>(null)
+    const person = useRef<HTMLButtonElement>(null)
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     if (!kanVelgePerson) return null
@@ -17,33 +16,29 @@ const Person = () => {
             <button
                 aria-label="Velg person"
                 className="lenkeknapp"
+                ref={person}
                 onClick={() => {
-                    setOpen(!open)
+                    setOpen(true)
                 }}
             >
-                <img src="/syk/sykepenger/static/img/person.svg" className="person__ikon" ref={person} alt="" />
+                <img src="/syk/sykepenger/static/img/person.svg" className="person__ikon" alt="" />
             </button>
-            <Vis
-                hvis={open}
-                render={() => (
-                    <Popover
-                        open={!open}
-                        anchorEl={person.current as HTMLElement}
-                        placement="bottom"
-                        onClose={() => setOpen(false)}
-                    >
-                        <Popover.Content>
-                            <ul>
-                                {Object.keys(personas).map((p, idx) => (
-                                    <BodyShort size="medium" as="li" key={idx}>
-                                        <a href={`?testperson=${p}`}>{p}</a>
-                                    </BodyShort>
-                                ))}
-                            </ul>
-                        </Popover.Content>
-                    </Popover>
-                )}
-            />
+            <Popover
+                open={open}
+                anchorEl={person.current as HTMLElement}
+                placement="bottom"
+                onClose={() => setOpen(false)}
+            >
+                <Popover.Content>
+                    <ul>
+                        {Object.keys(personas).map((p, idx) => (
+                            <BodyShort size="medium" as="li" key={idx}>
+                                <a href={`?testperson=${p}`}>{p}</a>
+                            </BodyShort>
+                        ))}
+                    </ul>
+                </Popover.Content>
+            </Popover>
         </div>
     )
 }
