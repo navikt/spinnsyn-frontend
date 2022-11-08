@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { BodyLong, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
+import * as querystring from 'querystring'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { sykefravaerUrl } from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -37,8 +39,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     useUpdateBreadcrumbs(
         () => [
-            { title: tekst('vedtak-liste.sidetittel'), url: `/${query}` as string, handleInApp: true },
-            { title: tekst('vedtak.sidetittel'), url: '/', handleInApp: true },
+            { title: 'Ditt sykefravær', url: sykefravaerUrl() },
+            { title: tekst('spinnsyn.sidetittel.liste'), url: `/${querystring.stringify(query)}`, handleInApp: true },
+            { title: tekst('vedtak.sidetittel'), handleInApp: true },
         ],
         []
     )
@@ -47,7 +50,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         // Scrollpoint beholdes når man går fra listevisning til vedtak. Nullstiller da det ser rart ut hvis vedtaket
         // er lengre enn det som vises i nettleser.
         window.scrollTo({ top: 0 })
-        console.log('query', query) // eslint-disable-line
     }, [])
 
     for (const key in router.query) {

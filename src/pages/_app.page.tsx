@@ -25,6 +25,8 @@ import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 
+import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
+
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
         dehydratedState: DehydratedState
@@ -41,6 +43,8 @@ configureLogger({
 })
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+    useHandleDecoratorClicks()
+
     const [queryClient] = useState(
         () =>
             new QueryClient({

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import useVedtak from '../../hooks/useVedtak'
-import { arkiverteVedtakUrl } from '../../utils/environment'
+import { arkiverteVedtakUrl, sykefravaerUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
@@ -12,7 +12,14 @@ import Teasere from '../teaser/teasere'
 
 const VedtakListe = () => {
     const { data: vedtak } = useVedtak()
-    useUpdateBreadcrumbs(() => [{ title: tekst('vedtak-liste.sidetittel'), url: '/', handleInApp: true }], [])
+
+    useUpdateBreadcrumbs(
+        () => [
+            { title: 'Ditt sykefravær', url: sykefravaerUrl() },
+            { title: tekst('vedtak-liste.sidetittel'), url: '/', handleInApp: true },
+        ],
+        []
+    )
 
     useEffect(() => {
         setBodyClass('vedtak-liste')

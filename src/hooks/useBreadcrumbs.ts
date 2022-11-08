@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from 'querystring'
 import { DependencyList, useCallback, useEffect, useRef } from 'react'
 
 import { minSideUrl } from '../utils/environment'
+import { tekst } from '../utils/tekster'
 
 type Breadcrumb = { title: string; url: string }
 type LastCrumb = { title: string }
@@ -65,16 +66,16 @@ export function useHandleDecoratorClicks(): void {
     })
 }
 
-export function createInntektsmeldingBreadcrumbs(): [Breadcrumb, LastCrumb] {
-    return [baseCrumb, { title: 'Manglende inntektsmelding' }]
+export function createVedtakBreadcrumbs(): [Breadcrumb, LastCrumb] {
+    return [baseCrumb, { title: tekst('vedtak.sidetittel') }]
 }
 
 export enum SsrPathVariants {
     Root = '/',
     NotFound = '/404',
     ServerError = '/500',
-    DittSykefravaer = '/',
-    Inntektsmelding = '/inntektsmelding',
+    VedtakListe = '/',
+    Vedtak = '/[id]',
 }
 
 export function createInitialServerSideBreadcrumbs(
@@ -85,10 +86,10 @@ export function createInitialServerSideBreadcrumbs(
         case SsrPathVariants.Root:
         case SsrPathVariants.NotFound:
         case SsrPathVariants.ServerError:
-        case SsrPathVariants.DittSykefravaer:
+        case SsrPathVariants.VedtakListe:
             return createCompleteCrumbs([])
-        case SsrPathVariants.Inntektsmelding:
-            return createCompleteCrumbs(createInntektsmeldingBreadcrumbs())
+        case SsrPathVariants.Vedtak:
+            return createCompleteCrumbs(createVedtakBreadcrumbs())
         default:
             logger.error(`Unknown initial path (${pathname}), defaulting to just base breadcrumb`)
             return createCompleteCrumbs([])
