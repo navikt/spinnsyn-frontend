@@ -17,7 +17,7 @@
         "cypress-axe": "^1.0.0",
         "dayjs": "^1.11.5",
         "html-react-parser": "^3.0.4",
-        "jose": "^4.9.3",
+        "jose": "^4.11.0",
         "next-logger": "^3.0.1",
         "openid-client": "^5.1.10",
         "pino-pretty": "^9.1.1",
