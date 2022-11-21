@@ -13,5 +13,5 @@ env:
   ARKIVERING: "false"
   SPINNSYN_BACKEND_URL: "http://spinnsyn-backend"
   SPINNSYN_BACKEND_TOKENX_CLIENT_ID: "dev-gcp:flex:spinnsyn-backend"
-  ASSET_PREFIX: "https://flex-static-files.dev.nav.no/spinnsyn"
+  ASSET_PREFIX: https://cdn.dev.nav.no/flex/spinnsyn-frontend
   SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID: "dev-gcp:okonomi:sokos-kontoregister-person"
