@@ -45,7 +45,7 @@ describe('Utbetalingsoversikt', () => {
 
         cy.get('.utbetalingsoversikt .tekstinfo').children('.navds-heading').should('have.text', 'Forklaring')
         cy.get('.utbetalingsoversikt .tekstinfo')
-            .children('.navds-body-short')
+            .find('.navds-body-short')
             .should(
                 'have.text',
                 'Du får sykepenger for den delen av arbeidstiden du ikke jobber. ' +
@@ -57,7 +57,7 @@ describe('Utbetalingsoversikt', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get(':nth-child(3) > .navds-link').contains('Svar på søknader').click()
+        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
