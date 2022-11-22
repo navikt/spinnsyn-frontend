@@ -28,7 +28,7 @@ describe('Les uleste vedtak', () => {
 
         cy.contains('Opplysningene')
         cy.contains(
-            'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.'
+            'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
     })
 

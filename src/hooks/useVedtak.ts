@@ -15,6 +15,6 @@ export default function UseVedtak() {
         return ''
     }
     return useQuery<RSVedtakWrapper[], Error>('vedtak', () =>
-        fetchJsonMedRequestId('/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query())
+        fetchJsonMedRequestId('/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query()),
     )
 }

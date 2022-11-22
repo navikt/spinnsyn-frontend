@@ -11,6 +11,7 @@ import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
+
 import BeregningInfo from './beregning-info'
 import { PersonutbetalingInfo } from './personutbetaling-info'
 

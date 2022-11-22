@@ -1,7 +1,8 @@
 import dayjs, { Dayjs } from 'dayjs'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
-import { erHelg, tilLesbarDatoMedArstall } from './dato-utils'
+
+import { erHelg } from './dato-utils'
 
 export const fallbackEstimertSluttdato = (vedtakWrapper: RSVedtakWrapper): Dayjs => {
     let slutt = dayjs(vedtakWrapper.vedtak.tom)

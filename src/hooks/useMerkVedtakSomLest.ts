@@ -17,6 +17,6 @@ export default function UseMerkVedtakSomLest() {
                 queryClient.invalidateQueries('vedtak')
                 logger.info(`vedtak ${vedtaksId} ble lest`)
             },
-        }
+        },
     )
 }

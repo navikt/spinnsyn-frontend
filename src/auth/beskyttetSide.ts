@@ -1,12 +1,11 @@
 import { logger } from '@navikt/next-logger'
-import cookie from 'cookie'
 import { NextPageContext } from 'next'
 
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
-import { isMockBackend, loginServiceRedirectUrl, loginServiceUrl, spinnsynFrontendInterne } from '../utils/environment'
+import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
-import { validerLoginserviceToken } from './verifyLoginserviceAccessToken'
 
 type PageHandler = (context: NextPageContext) => void | Promise<GetServerSidePropsPrefetchResult>
 
@@ -22,22 +21,6 @@ export function beskyttetSide(handler: PageHandler) {
         const request = context.req
         if (request == null) {
             throw new Error('Context is missing request. This should not happen')
-        }
-        const loginserviceRedirect = {
-            redirect: {
-                destination: `${loginServiceUrl()}?redirect=${loginServiceRedirectUrl()}`,
-                permanent: false,
-            },
-        }
-        const cookies = cookie.parse(context.req?.headers.cookie || '')
-        const selvbetjeningIdtoken = cookies['selvbetjening-idtoken']
-        if (!selvbetjeningIdtoken) {
-            return loginserviceRedirect
-        }
-        try {
-            await validerLoginserviceToken(selvbetjeningIdtoken)
-        } catch (e) {
-            return loginserviceRedirect
         }
 
         const wonderwallRedirect = {

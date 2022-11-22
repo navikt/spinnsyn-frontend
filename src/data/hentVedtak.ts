@@ -1,17 +1,19 @@
 import { IncomingMessage } from 'http'
+
 import getConfig from 'next/config'
 
 import { getTokenxToken } from '../auth/getTokenxToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { isMockBackend } from '../utils/environment'
-import { hentMockVedtak, hentTestdata } from './testdata/hentTestdata'
+
+import { hentMockVedtak } from './testdata/hentTestdata'
 
 const { serverRuntimeConfig } = getConfig()
 
 export async function hentVedtak(
     incomingMessage: IncomingMessage,
-    cookies?: { [p: string]: string }
+    cookies?: { [p: string]: string },
 ): Promise<RSVedtakWrapper[]> {
     if (isMockBackend()) {
         return hentMockVedtak(incomingMessage, cookies)

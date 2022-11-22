@@ -12,7 +12,7 @@ import Vis from '../../vis'
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper
     mottaker: 'person' | 'refusjon'
-    heltAvvist?: Boolean
+    heltAvvist?: boolean
 }
 
 const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => {

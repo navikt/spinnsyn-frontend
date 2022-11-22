@@ -1,4 +1,5 @@
 import { isMockBackend } from '../utils/environment'
+
 import { getAzureAuthClient } from './azureClient'
 
 export async function getOboAccessToken(userToken: string | undefined, scope: string): Promise<string> {

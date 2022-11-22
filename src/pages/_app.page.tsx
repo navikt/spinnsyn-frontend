@@ -25,6 +25,8 @@ import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 
+import { LabsWarning } from '../components/labs-warning/LabsWarning'
+
 import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
@@ -56,7 +58,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                         refetchOnWindowFocus: false,
                     },
                 },
-            })
+            }),
     )
 
     return (
@@ -70,6 +72,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                 <Hydrate state={pageProps.dehydratedState}>
                     <div className="pagewrapper">
                         <div id="root">
+                            <LabsWarning />
                             <Component {...pageProps} />
                         </div>
                     </div>

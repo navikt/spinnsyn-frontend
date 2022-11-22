@@ -6,7 +6,7 @@ import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
 
 interface DagLabelProps {
     dag: RSDag
-    skalViseProsent?: Boolean
+    skalViseProsent?: boolean
 }
 
 const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
