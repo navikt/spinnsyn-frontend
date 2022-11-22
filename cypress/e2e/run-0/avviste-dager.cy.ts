@@ -68,9 +68,7 @@ describe('Avviste dager', () => {
         cy.get('.navds-body-short:nth-child(2)').contains(
             'Du får ikke sykepenger for dager du har ferie eller permisjon.',
         )
-        cy.get('p.navds-body-short').eq(57).contains(
-            'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
-        )
+        cy.get('p.navds-body-short').eq(57).contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
 
         cy.get('.ekspanderbar.gul').contains('Mer om beregningen').should('not.exist')
         cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()

@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import * as querystring from 'querystring'
+
 import { BodyLong, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
-import * as querystring from 'querystring'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -44,7 +45,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             { title: tekst('spinnsyn.sidetittel.liste'), url: `/${querystring.stringify(query)}`, handleInApp: true },
             { title: tekst('vedtak.sidetittel'), handleInApp: true },
         ],
-        []
+        [],
     )
 
     useEffect(() => {

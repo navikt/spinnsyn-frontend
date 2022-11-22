@@ -26,7 +26,6 @@ import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 
 import { LabsWarning } from '../components/labs-warning/LabsWarning'
-
 import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {

@@ -18,7 +18,7 @@ const VedtakListe = () => {
             { title: 'Ditt sykefravær', url: sykefravaerUrl() },
             { title: tekst('vedtak-liste.sidetittel'), url: '/', handleInApp: true },
         ],
-        []
+        [],
     )
 
     useEffect(() => {
