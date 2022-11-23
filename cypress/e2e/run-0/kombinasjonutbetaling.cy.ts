@@ -30,6 +30,11 @@ describe('Kombinasjonutbetaling', () => {
             )
             .should('be.visible')
 
+        cy.get('.personutbetaling .tekstinfo > :nth-child(4)').contains(
+            'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn ' +
+                'på Din profil slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
+        )
+
         cy.get('.personutbetaling .navds-accordion__item.beregning')
             .contains('Mer om beregningen')
             .click({ force: true })
