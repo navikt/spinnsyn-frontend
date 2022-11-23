@@ -55,7 +55,7 @@
         "dev-ingen-dekorator": "NO_DECORATOR=true npm run dev | pino-pretty",
         "interne": "SPINNSYN_FRONTEND_INTERNE=true NO_DECORATOR=true npm run dev | pino-pretty",
         "start": "next start -p 8080",
-        "start-ingen-dekorator": "NO_DECORATOR=true npm start",
+        "start-ingen-dekorator": "NO_DECORATOR=false npm start",
         "arkiv": "npm run build && npm run start-ingen-dekorator",
         "build": "next build",
         "test": "jest --watch",
