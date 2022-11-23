@@ -29,7 +29,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             erApen={apen}
             tittel={
                 <div className="ekspanderbar__tittel">
-                    <Heading size="large" level="3" className={'primo'}>
+                    <Heading size="large" level="3" className="primo">
                         {vedtak.vedtak.utbetaling.forbrukteSykedager} {tekst('sykepengedager.sykepengedager')}
                         <BodyShort as="span">
                             {getLedetekst(tekst('sykepengedager.hittil'), {

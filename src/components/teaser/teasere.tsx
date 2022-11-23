@@ -16,11 +16,11 @@ interface SoknaderTeasereProps {
 const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeasereProps) => {
     return (
         <div className={className}>
-            <header className="inngangspanelerHeader">
+            <div className="inngangspanelerHeader">
                 <Heading size="medium" level="2">
                     {tittel}
                 </Heading>
-            </header>
+            </div>
 
             {vedtak.map((v, idx) => {
                 return <Teaser key={idx} vedtak={v} />

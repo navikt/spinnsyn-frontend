@@ -11,7 +11,7 @@ export const LabsWarning = () => {
     }
 
     return (
-        <Alert className={styles.limit} variant={'warning'}>
+        <Alert className={styles.limit} variant="warning">
             Dette er en demoside og inneholder ikke dine personlige data.
         </Alert>
     )

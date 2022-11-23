@@ -43,7 +43,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
                 <Vis
                     hvis={lovhjemmelTekst !== ''}
-                    render={() => <BodyShort className={'avvist-lovhjemmel'}>{lovhjemmelTekst}</BodyShort>}
+                    render={() => <BodyShort className="avvist-lovhjemmel">{lovhjemmelTekst}</BodyShort>}
                 />
             </>
         )

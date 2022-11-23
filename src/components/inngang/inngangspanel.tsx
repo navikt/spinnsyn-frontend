@@ -72,13 +72,13 @@ interface InngangsHeaderProps {
 
 export const InngangsHeader = ({ meta, tittel }: InngangsHeaderProps) => {
     return (
-        <header>
-            <Detail size="small" className="inngangspanel__meta">
-                {meta}
-            </Detail>
+        <>
             <Heading size="small" level="3" className="inngangspanel__tittel">
-                <span className="txtlink"> {tittel} </span>
+                <Detail size="small" className="inngangspanel__meta" as="div">
+                    {meta}
+                </Detail>
+                <span className="txtlink">{tittel}</span>
             </Heading>
-        </header>
+        </>
     )
 }

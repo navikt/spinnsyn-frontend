@@ -34,9 +34,7 @@ const Ekspanderbar = (props: AllProps) => {
         <>
             <Vis
                 hvis={props.ikon}
-                render={() => (
-                    <img aria-hidden="true" className="ekspanderbar__ikon" ref={btnImage} src={props.ikon} alt="" />
-                )}
+                render={() => <img className="ekspanderbar__ikon" ref={btnImage} src={props.ikon} alt="" />}
             />
             {props.tittel}
         </>
