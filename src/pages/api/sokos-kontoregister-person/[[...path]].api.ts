@@ -14,7 +14,7 @@ const handler = beskyttetApi(async (req: NextApiRequest, res: NextApiResponse) =
         res,
         tillatteApier,
         backend: 'sokos-kontoregister-person',
-        hostname: 'sokos-kontoregister-person',
+        hostname: 'sokos-kontoregister-person.okonomi',
         backendClientId: serverRuntimeConfig.sokosKontoregisterPersonTokenxClientId,
         https: false,
     })
