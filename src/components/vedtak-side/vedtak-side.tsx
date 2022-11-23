@@ -18,6 +18,7 @@ enum HotjarTriggerType {
     SP_SURVEY = 'todo',
     KOMBINASJON_SURVEY = 'todo',
     HELT_AVVIST = 'todo',
+    FLEX_SPINNSYN_FEEDBACK = 'FLEX_SPINNSYN_FEEDBACK',
 }
 
 const VedtakSide = ({ vedtak }: VedtakProps) => {
@@ -45,10 +46,12 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
                     if (!isMockBackend()) {
                         logger.info('Hotjar ble ikke lastet inn...')
                     }
-                } else if (refusjon) {
-                    hotJarWindow.hj('trigger', HotjarTriggerType.SPREF_SURVEY)
+                    console.log('hotjar er ikke lastet inn')
+                } else {
+                    console.log('trigger hotjar')
+                    hotJarWindow.hj('trigger', HotjarTriggerType.FLEX_SPINNSYN_FEEDBACK)
                 }
-            }, 2000)
+            }, 10000)
         } else {
             // eslint-disable-next-line no-console
             console.log('Skipper hotjar trigging')
