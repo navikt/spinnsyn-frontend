@@ -10,7 +10,7 @@ import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import Vis from '../../vis'
 
 import InntektInfo from './inntekt-info/inntekt-info'
-import {Kontonummer} from './kontonummer/kontonummer'
+import { Kontonummer } from './kontonummer/kontonummer'
 
 export interface PersonutbetalingInfoProps {
     vedtak: RSVedtakWrapper

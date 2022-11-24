@@ -20,12 +20,16 @@ export function UseKontonummer() {
             (response, _, defaultErrorHandler) => {
                 if (response.status == 404) {
                     // Det returneres 404 hvis det ikke ble funnet noe kontonummer.
-                    return null
+                    return
                 }
                 defaultErrorHandler()
             },
         )
+        if (fetchResult.response.status == 404) {
+            return null
+        }
 
-        return fetchResult.response.json()
+        const response = await fetchResult.response.json()
+        return response.kontonummer
     })
 }
