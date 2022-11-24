@@ -1,70 +1,26 @@
 import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import { Brukerkonto } from '../../../../types/types'
-import { isProd } from '../../../../utils/environment'
-import { fetchMedRequestId } from '../../../../utils/fetch'
 import { tekst } from '../../../../utils/tekster'
 import Vis from '../../../vis'
+import { UseKontonummer } from '../../../../query-hooks/useKontonummer'
 
-const Kontonummer = () => {
-    const [kontonummer, setKontonummer] = useState<string>()
-    const [erKontonummerHentet, setErKontonummerHentet] = useState<boolean>(false)
-
-    const hentKontonummer = async (url: string) => {
-        const res = await fetchMedRequestId(
-            url,
-            {
-                method: 'GET',
-            },
-            (response, _, defaultErrorHandler) => {
-                if (response.status == 404) {
-                    // Det returneres 404 hvis det ikke ble funnet noe kontonummer.
-                    return null
-                }
-                defaultErrorHandler()
-            },
-        )
-
-        if (res.response.status !== 200) {
-            return null
-        }
-
-        const data: Brukerkonto = await res.response.json()
-        return data?.kontonummer
-    }
-
-    useEffect(() => {
-        hentKontonummer(lagApiRouteUrl()).then((kontonummer) => {
-            setErKontonummerHentet(true)
-            setKontonummer(kontonummer!)
-        })
-    }, [])
-
-    const lagApiRouteUrl = () => {
-        const apiRouteUrl = '/syk/sykepenger/api/v1/kontonummer'
-
-        if (isProd()) {
-            return apiRouteUrl
-        }
-        const url = new URL(window.location.href)
-        const id = url.searchParams.get('id')
-        return `${apiRouteUrl}?id=${id}`
-    }
+export const Kontonummer = () => {
+    const { data: kontonummer, isSuccess } = UseKontonummer()
 
     const formaterKontonummer = (kontonummer: string) => kontonummer.replace(/^(.{4})(.{2})(.*)$/, '$1 $2 $3')
 
     return (
         <Vis
-            hvis={erKontonummerHentet}
+            hvis={isSuccess}
             render={() => (
                 <>
                     <Vis
                         hvis={kontonummer}
                         render={() => (
                             <BodyShort>
-                                <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong>{' '}
+                                <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong>
                                 {formaterKontonummer(kontonummer!)}
                             </BodyShort>
                         )}
@@ -87,4 +43,3 @@ const Kontonummer = () => {
     )
 }
 
-export default Kontonummer
