@@ -64,6 +64,10 @@ export const kunDirektePerson: Persona = {
     kontonummer: '10011110011',
 }
 
+export const direkteUtenKontonummerPerson: Persona = {
+    vedtak: [kunDirekte],
+}
+
 export const kombinasjonPerson: Persona = {
     vedtak: [kombinertDirekteOgRefusjon],
 }

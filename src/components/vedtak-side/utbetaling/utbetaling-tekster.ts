@@ -65,7 +65,7 @@ const UtbetalingTekster = {
     'utbetaling.kontonummer.tittel': 'Kontonummer for utbetaling',
     'utbetaling.kontonummer.utbetales': 'Utbetales til kontonummer:',
     'utbetaling.kontonummer.mangler':
-        'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/#utbetaling">Din profil</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
+        'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/nb/#utbetaling">Min side</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag':
         'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
