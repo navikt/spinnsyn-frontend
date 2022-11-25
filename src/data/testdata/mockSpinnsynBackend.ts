@@ -29,11 +29,13 @@ function hentVedtak(req: NextApiRequest, res: NextApiResponse) {
 export function mockSpinnsynBackend(req: NextApiRequest, res: NextApiResponse) {
     const api = `${req.method} ${cleanPathForMetric(req.url!.replace('/api/spinnsyn-backend', ''))}`
 
-    switch (api) {
-        case 'POST /api/v3/vedtak/[uuid]/les':
-            return lesVedtak(req, res)
-        case 'GET /api/v3/vedtak':
-            return hentVedtak(req, res)
+    if (api.startsWith('POST /api/v3/vedtak/[uuid]/les')) {
+        return lesVedtak(req, res)
     }
+    if (api.startsWith('GET /api/v3/vedtak')) {
+        return hentVedtak(req, res)
+    }
+
     res.status(404)
+    res.end()
 }

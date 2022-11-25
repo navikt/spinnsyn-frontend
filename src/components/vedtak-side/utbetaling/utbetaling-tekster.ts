@@ -62,6 +62,10 @@ const UtbetalingTekster = {
     'utbetaling.person.når.lenke.tekst': 'Les mer om når du kan forvente å få pengene.',
     'utbetaling.person.når.lenke.url':
         'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap',
+    'utbetaling.kontonummer.tittel': 'Kontonummer for utbetaling',
+    'utbetaling.kontonummer.utbetales': 'Utbetales til kontonummer:',
+    'utbetaling.kontonummer.mangler':
+        'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/nb/#utbetaling">Min side</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag':
         'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',

@@ -20,6 +20,7 @@ import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
+    kontonummer?: string
 }
 
 export const utenData: Persona = {
@@ -59,6 +60,11 @@ export const avvistPerson: Persona = {
 }
 
 export const kunDirektePerson: Persona = {
+    vedtak: [kunDirekte],
+    kontonummer: '10011110011',
+}
+
+export const direkteUtenKontonummerPerson: Persona = {
     vedtak: [kunDirekte],
 }
 
