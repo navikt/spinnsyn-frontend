@@ -77,6 +77,7 @@ export enum SsrPathVariants {
     ServerError = '/500',
     VedtakListe = '/',
     Vedtak = '/[id]',
+    VedtakArkivering = '/vedtak/arkivering/[id]',
 }
 
 export function createInitialServerSideBreadcrumbs(pathname: SsrPathVariants | string): CompleteCrumb[] {
@@ -84,6 +85,7 @@ export function createInitialServerSideBreadcrumbs(pathname: SsrPathVariants | s
         case SsrPathVariants.Root:
         case SsrPathVariants.NotFound:
         case SsrPathVariants.ServerError:
+        case SsrPathVariants.VedtakArkivering:
         case SsrPathVariants.VedtakListe:
             return createCompleteCrumbs([])
         case SsrPathVariants.Vedtak:
