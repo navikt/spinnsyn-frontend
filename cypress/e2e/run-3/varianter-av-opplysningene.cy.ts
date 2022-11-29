@@ -66,7 +66,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').and('be.visible').click()
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing')
-            .eq(2)
+            .eq(1)
             .contains('Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.')
     })
 
@@ -75,7 +75,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').and('be.visible').click()
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing')
-            .eq(2)
+            .eq(1)
             .contains(
                 'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.',
             )

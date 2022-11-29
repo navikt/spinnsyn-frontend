@@ -22,6 +22,10 @@ export function minSideUrl() {
     return publicRuntimeConfig.minSideUrl
 }
 
+export function publicPath() {
+    return publicRuntimeConfig.publicPath
+}
+
 export function amplitudeEnabled() {
     return publicRuntimeConfig.amplitudeEnabled === 'true'
 }

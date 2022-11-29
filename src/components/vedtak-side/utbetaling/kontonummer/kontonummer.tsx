@@ -4,7 +4,7 @@ import React from 'react'
 
 import { tekst } from '../../../../utils/tekster'
 import Vis from '../../../vis'
-import { UseKontonummer } from '../../../../query-hooks/useKontonummer'
+import { UseKontonummer } from '../../../../hooks/useKontonummer'
 
 export const Kontonummer = () => {
     const { data: kontonummer, isSuccess } = UseKontonummer()

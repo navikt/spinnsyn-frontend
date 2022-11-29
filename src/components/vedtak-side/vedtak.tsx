@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import { BodyLong, Heading } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
+import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
 import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
-import Banner from '../banner/banner'
-import Brodsmuler, { Brodsmule } from '../brodsmuler/brodsmuler'
+import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import Vis from '../vis'
 
@@ -36,6 +37,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
 
+    useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
+
     useEffect(() => {
         // Scrollpoint beholdes når man går fra listevisning til vedtak. Nullstiller da det ser rart ut hvis vedtaket
         // er lengre enn det som vises i nettleser.
@@ -47,16 +50,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             query[key] = router.query[key]
         }
     }
-
-    const brodsmuler: Brodsmule[] = [
-        {
-            tittel: tekst('vedtak-liste.sidetittel'),
-            sti: { pathname: '/', query },
-        },
-        {
-            tittel: tekst('vedtak.sidetittel'),
-        },
-    ]
 
     const studyKey = () => {
         if (erSP) {
@@ -70,14 +63,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Vis
                 hvis={!erArkivering}
                 render={() => (
-                    <>
-                        <Banner>
-                            <Heading spacing size="xlarge" level="1" className="sidebanner__tittel">
-                                {tekst('spinnsyn.sidetittel.vedtak')}
-                            </Heading>
-                        </Banner>
-                        <Brodsmuler brodsmuler={brodsmuler} />
-                    </>
+                    <header className="sidebanner">
+                        <Heading spacing size="xlarge" level="1" className="sidebanner__tittel">
+                            {tekst('spinnsyn.sidetittel.vedtak')}
+                        </Heading>
+                        <Person />
+                    </header>
                 )}
             />
 
