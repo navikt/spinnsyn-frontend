@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import useVedtak from '../../hooks/useVedtak'
-import { arkiverteVedtakUrl, spinnsynFrontendInterne } from '../../utils/environment'
+import { arkiverteVedtakUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import { setBodyClass } from '../../utils/utils'
@@ -12,8 +12,8 @@ import Teasere from '../teaser/teasere'
 
 const VedtakListe = () => {
     const { data: vedtak } = useVedtak()
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    if (!spinnsynFrontendInterne()) useUpdateBreadcrumbs(() => [], [])
+
+    useUpdateBreadcrumbs(() => [], [])
 
     useEffect(() => {
         setBodyClass('vedtak-liste')

@@ -27,7 +27,6 @@ import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'reac
 
 import { LabsWarning } from '../components/labs-warning/LabsWarning'
 import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
-import { spinnsynFrontendInterne } from '../utils/environment'
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
     pageProps: PropsWithChildren<unknown> & {
@@ -45,8 +44,7 @@ configureLogger({
 })
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    if (!spinnsynFrontendInterne()) useHandleDecoratorClicks()
+    useHandleDecoratorClicks()
 
     const [queryClient] = useState(
         () =>

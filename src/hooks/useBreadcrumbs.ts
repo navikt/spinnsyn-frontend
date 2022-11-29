@@ -3,7 +3,7 @@ import { logger } from '@navikt/next-logger'
 import { useRouter } from 'next/router'
 import { DependencyList, useCallback, useEffect, useRef } from 'react'
 
-import { minSideUrl, publicPath, sykefravaerUrl } from '../utils/environment'
+import { minSideUrl, publicPath, spinnsynFrontendInterne, sykefravaerUrl } from '../utils/environment'
 import { tekst } from '../utils/tekster'
 
 type Breadcrumb = { title: string; url: string }
@@ -36,10 +36,16 @@ export function useUpdateBreadcrumbs(makeCrumbs: () => [...Breadcrumb[], LastCru
     const makeCrumbsRef = useRef(makeCrumbs)
 
     useEffect(() => {
+        if (spinnsynFrontendInterne()) {
+            return
+        }
         makeCrumbsRef.current = makeCrumbs
     }, [makeCrumbs])
 
     useEffect(() => {
+        if (spinnsynFrontendInterne()) {
+            return
+        }
         ;(async () => {
             try {
                 const prefixedCrumbs = createCompleteCrumbs(makeCrumbsRef.current())
@@ -65,6 +71,9 @@ export function useHandleDecoratorClicks(): void {
     )
 
     useEffect(() => {
+        if (spinnsynFrontendInterne()) {
+            return
+        }
         onBreadcrumbClick(callback)
     })
 }
