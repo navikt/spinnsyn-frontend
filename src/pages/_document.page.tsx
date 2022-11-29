@@ -15,7 +15,7 @@ const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) 
 }
 
 interface Props {
-    Decorator: Components
+    Decorator?: Components
     language: string
 }
 
@@ -23,30 +23,34 @@ class MyDocument extends Document<Props> {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps & Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
-        const Decorator = await fetchDecoratorReact({
-            env: serverRuntimeConfig.decoratorEnv,
-            simple: false,
-            chatbot: false,
-            feedback: false,
-            urlLookupTable: false,
-            breadcrumbs: createInitialServerSideBreadcrumbs(ctx.pathname),
-        })
-
         const language = getDocumentParameter(initialProps, 'lang')
 
-        return { ...initialProps, Decorator, language }
+        const props: DocumentInitialProps & Props = { ...initialProps, language }
+
+        const showDecorator = serverRuntimeConfig.noDecorator != 'true'
+        if (showDecorator) {
+            const Decorator = await fetchDecoratorReact({
+                env: serverRuntimeConfig.decoratorEnv,
+                simple: false,
+                chatbot: false,
+                feedback: false,
+                urlLookupTable: false,
+                breadcrumbs: createInitialServerSideBreadcrumbs(ctx.pathname),
+            })
+            props.Decorator = Decorator
+        }
+        return props
     }
 
     render(): JSX.Element {
         const { Decorator, language } = this.props
-        const showDecorator = serverRuntimeConfig.noDecorator != 'true'
         return (
             <Html lang={language || 'no'}>
-                <Head>{showDecorator && <Decorator.Styles />}</Head>
+                <Head>{Decorator && <Decorator.Styles />}</Head>
                 <body>
-                    {showDecorator && <Decorator.Header />}
+                    {Decorator && <Decorator.Header />}
                     <Main />
-                    {showDecorator && (
+                    {Decorator && (
                         <>
                             <Decorator.Footer />
                             <Decorator.Scripts />
