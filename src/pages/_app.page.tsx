@@ -22,7 +22,7 @@ import dayjs from 'dayjs'
 import nb from 'dayjs/locale/nb'
 import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
-import React, { PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useEffect, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 
 import { LabsWarning } from '../components/labs-warning/LabsWarning'
@@ -43,6 +43,23 @@ configureLogger({
     basePath: '/syk/sykepenger',
 })
 
+function logDeet(xhr: XMLHttpRequest, arg1: any) {
+    const responseURL = xhr.responseURL
+    console.log('ResponseURL', responseURL)
+    if (responseURL.startsWith('https://in.hotjar.com/api/v1/client/sites/118350/feedback/')) {
+        if (arg1[0]) {
+            const parset = JSON.parse(arg1[0])
+            console.log('parset', parset)
+
+            window.alert('Feedback: ' + parset.response.emotion)
+        } else {
+            console.log('ikke arg 1')
+        }
+    } else {
+        console.log('startet ikke')
+    }
+}
+
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     useHandleDecoratorClicks()
 
@@ -59,6 +76,38 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                 },
             }),
     )
+
+    useEffect(() => {
+        function addXMLRequestCallback(callback: any) {
+            if ((XMLHttpRequest as any).callbacks) {
+                // we've already overridden send() so just add the callback
+                ;(XMLHttpRequest as any).callbacks.push(callback)
+            } else {
+                // create a callback queue
+                ;(XMLHttpRequest as any).callbacks = [callback]
+                // store the native send()
+                const oldSend = XMLHttpRequest.prototype.send as any
+                // override the native send()
+                XMLHttpRequest.prototype.send = function () {
+                    for (let i = 0; i < (XMLHttpRequest as any).callbacks.length; i++) {
+                        // eslint-disable-next-line prefer-rest-params
+                        ;(XMLHttpRequest as any).callbacks[i](this, arguments)
+                    }
+                    // call the native send()
+                    // eslint-disable-next-line prefer-rest-params
+                    oldSend.apply(this, arguments)
+                }
+            }
+        }
+
+        // e.g.
+
+        addXMLRequestCallback(function (xhr: XMLHttpRequest, arg1: any) {
+            window.setTimeout(() => {
+                logDeet(xhr, arg1)
+            }, 500)
+        })
+    }, [])
 
     return (
         <>
