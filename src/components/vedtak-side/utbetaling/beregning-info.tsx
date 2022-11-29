@@ -18,7 +18,7 @@ export interface BeregningInfoProps {
 const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => {
     const isServer = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(isServer)
-    const accordionRef = useRef(null)
+    const accordionRef = useRef<HTMLDivElement>(null)
 
     const harMinstEnForLavInntektDag =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0

@@ -103,6 +103,7 @@ const nextConfig = {
     },
     publicRuntimeConfig: {
         // Will be available on both server and client
+        publicPath: '/syk/sykepenger',
         flexGatewayRoot: process.env.FLEX_GATEWAY_ROOT,
         mockBackend: process.env.MOCK_BACKEND,
         opplaering: process.env.OPPLAERING,

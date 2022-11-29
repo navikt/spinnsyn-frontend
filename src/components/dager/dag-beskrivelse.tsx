@@ -83,11 +83,11 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
                 {tekst('utbetaling.tabell.dagtyper')}
             </Heading>
 
-            {unikeDager().map((dag) => (
-                <>
+            {unikeDager().map((dag, idx) => (
+                <div key={idx}>
                     <DagLabel dag={dag} />
                     {lagBeskrivelseForUnikDag(dag)}
-                </>
+                </div>
             ))}
         </div>
     )
