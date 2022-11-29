@@ -51,7 +51,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
                     console.log('trigger hotjar')
                     hotJarWindow.hj('trigger', HotjarTriggerType.FLEX_SPINNSYN_FEEDBACK)
                 }
-            }, 10000)
+            }, 1000)
         } else {
             // eslint-disable-next-line no-console
             console.log('Skipper hotjar trigging')
