@@ -34,6 +34,7 @@ spec:
     outbound:
       rules:
         - application: spinnsyn-backend
+        - application: flex-hotjar-emotions
         - application: sokos-kontoregister-person
           namespace: okonomi
   tokenx:

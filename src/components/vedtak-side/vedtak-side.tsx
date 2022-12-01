@@ -46,9 +46,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
                     if (!isMockBackend()) {
                         logger.info('Hotjar ble ikke lastet inn...')
                     }
-                    console.log('hotjar er ikke lastet inn')
                 } else {
-                    console.log('trigger hotjar')
                     hotJarWindow.hj('trigger', HotjarTriggerType.FLEX_SPINNSYN_FEEDBACK)
                 }
             }, 10000)
