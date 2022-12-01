@@ -21,7 +21,7 @@ export function useFangHotjarEmotion(): void {
                     }
                     if (typeof body !== 'string') {
                         console.log('body er ikke string')
-                        return
+                        console.log('body er' + typeof body)
                     }
                     const parset = JSON.parse(body as string)
                     const emotion = parset.response.emotion
