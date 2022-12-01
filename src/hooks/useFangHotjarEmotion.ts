@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { logger } from '@navikt/next-logger'
 
+import { fetchMedRequestId } from '../utils/fetch'
+
 export function useFangHotjarEmotion(): void {
     useEffect(() => {
         ;(XMLHttpRequest as any).callback = (xhr: XMLHttpRequest, body?: Document | XMLHttpRequestBodyInit | null) => {
@@ -20,10 +22,15 @@ export function useFangHotjarEmotion(): void {
                     if (!emotion || !survey) {
                         return
                     }
-                    // Her kan vi poste til oss selv
-                    console.log({
-                        emotion,
-                        survey,
+
+                    fetchMedRequestId(`/syk/sykepenger/api/flex-hotjar-emotions/api/v1/emotion`, {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            emotion,
+                            survey,
+                        }),
+                    }).catch((e) => {
+                        logger.warn('Feil ved lagring av hotjar emotion', e)
                     })
                 } catch (e) {
                     logger.warn('Feil ved parsing av emotion', e)
