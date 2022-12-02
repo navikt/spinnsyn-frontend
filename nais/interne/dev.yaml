@@ -13,4 +13,4 @@ env:
   SPINNSYN_BACKEND_CLIENT_ID: api://dev-gcp.flex.spinnsyn-backend/.default
   FLEX_FSS_PROXY_CLIENT_ID: api://dev-fss.flex.flex-fss-proxy/.default
   FLEX_FSS_PROXY_URL: https://flex-fss-proxy.dev-fss-pub.nais.io
-  ASSET_PREFIX: https://cdn.dev.nav.no/flex/spinnsyn-frontend
+  ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend
