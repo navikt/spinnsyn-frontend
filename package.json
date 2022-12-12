@@ -11,7 +11,7 @@
         "@navikt/next-api-proxy": "^2.1.0",
         "@navikt/next-logger": "^1.13.0",
         "@sentry/nextjs": "^7.15.0",
-        "amplitude-js": "^8.21.1",
+        "amplitude-js": "^8.21.3",
         "cookie": "^0.5.0",
         "dayjs": "^1.11.5",
         "html-react-parser": "^3.0.4",
