@@ -36,7 +36,7 @@ export function beskyttetSide(handler: PageHandler) {
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.error(e, 'kunne ikke validere idportentoken i beskyttetSide')
+            logger.error(e, 'Kunne ikke validere idporten token på beskyttetSide.')
             return wonderwallRedirect
         }
         return handler(context)
@@ -61,7 +61,7 @@ export function beskyttetSide(handler: PageHandler) {
         try {
             await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
         } catch (e) {
-            logger.error(e, 'kunne ikke autentisere')
+            logger.error(e, 'Kunne ikke autentisere.')
             return wonderwallRedirect
         }
         return handler(context)

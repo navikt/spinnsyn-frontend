@@ -160,7 +160,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
 
             case 'UKJENT':
             default:
-                logger.warn(`Har ingen begrunnelse for: ${begrunnelse}`)
+                logger.warn(`Har ingen begrunnelse for: ${begrunnelse}.`)
                 return (
                     <Tag size="small" variant="warning" key={idx}>
                         Ukjent

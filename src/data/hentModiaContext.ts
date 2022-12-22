@@ -31,8 +31,8 @@ export async function hentModiaContext(incomingMessage: IncomingMessage): Promis
     })
 
     if (response.status != 200) {
-        logger.error('Status ' + response.status + ' fra modia contexthodler')
-        throw new ErrorMedStatus('Ikke 200 svar fra modiacontextholder', 500)
+        logger.warn('Mottok status ' + response.status + ' fra modiaContextHolder.')
+        throw new ErrorMedStatus('Ikke 200 svar fra modiaContextHolder.', 500)
     }
     const json = await response.json()
     return json.aktivBruker || null

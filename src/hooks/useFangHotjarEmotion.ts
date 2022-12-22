@@ -31,10 +31,10 @@ export function useFangHotjarEmotion(): void {
                             survey,
                         }),
                     }).catch((e) => {
-                        logger.warn('Feil ved lagring av hotjar emotion', e)
+                        logger.warn(e, 'Feil ved lagring av HotJar emotion.')
                     })
                 } catch (e) {
-                    logger.warn('Feil ved parsing av emotion', e)
+                    logger.warn(e, 'Feil ved parsing av HotJar emotion.')
                 }
             }, 1000)
         }

@@ -35,7 +35,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             try {
                 await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
             } catch (e) {
-                logger.error(e, 'kunne ikke autentisere')
+                logger.error(e, 'Kunne ikke autentisere.')
                 return send401()
             }
             return handler(req, res)
@@ -48,7 +48,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.warn(e, 'kunne ikke validere idportentoken i beskyttetApi')
+            logger.error(e, 'Kunne ikke validere idporten token i beskyttetApi.')
             return send401()
         }
 
