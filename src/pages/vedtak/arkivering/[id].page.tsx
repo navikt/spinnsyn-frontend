@@ -64,7 +64,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             },
         }
     } catch (e: any) {
-        logger.warn(e)
+        logger.warn(e, 'Kunne ikke hente serverSideProps.')
         ctx.res.statusCode = e.status || 500
 
         return {
