@@ -3,9 +3,7 @@ const withLess = require('next-with-less')
 const { withSentryConfig } = require('@sentry/nextjs')
 const { buildCspHeader } = require('@navikt/nav-dekoratoren-moduler/ssr')
 
-const appDirectives = {
-    'default-src': ["'none'"],
-}
+const appDirectives = {}
 
 // const appDirectives = {
 //     'default-src': ["'none'"],
@@ -52,6 +50,7 @@ const appDirectives = {
 const nextConfig = {
     async headers() {
         const env = process.env.ENVIRONMENT
+        const cspKey = env === 'prod' ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy'
         const csp = await buildCspHeader(appDirectives, env)
 
         return [
@@ -59,7 +58,7 @@ const nextConfig = {
                 source: '/:path*',
                 headers: [
                     {
-                        key: 'Content-Security-Policy',
+                        key: cspKey,
                         value: csp,
                     },
                 ],
