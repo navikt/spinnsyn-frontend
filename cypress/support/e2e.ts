@@ -34,9 +34,6 @@ afterEach(() => {
             // prettier-ignore
             rules: [
                 {id: 'svg-img-alt', enabled: false},           // Trenger ikke alt tekst på bilder
-                {id: 'heading-order', enabled: false},            // Noe rart
-                {id: 'color-contrast', enabled: false},              // Noe rart
-                {id: 'region', enabled: false}              // Noe rart
             ],
         }
     }

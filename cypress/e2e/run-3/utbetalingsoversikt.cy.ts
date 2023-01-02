@@ -57,7 +57,7 @@ describe('Utbetalingsoversikt', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {

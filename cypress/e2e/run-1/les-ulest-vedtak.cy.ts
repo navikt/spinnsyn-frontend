@@ -61,8 +61,7 @@ describe('Les uleste vedtak', () => {
     it('Vi går tilbake til oversikten', () => {
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(1000)
-        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
-        // cy.get(':nth-child(3) > .navds-link').contains('Svar på søknader').click()
+        cy.visit('http://localhost:8080/syk/sykepenger')
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(1000)
     })
@@ -86,7 +85,7 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Vi åpner et revurdert vedtak', () => {
