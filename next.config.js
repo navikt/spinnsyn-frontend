@@ -5,6 +5,8 @@ const { buildCspHeader } = require('@navikt/nav-dekoratoren-moduler/ssr')
 
 const appDirectives = {
     'script-src-elem': ['*.boost.ai'],
+    'script-src': ['https://uxsignals-frontend.uxsignals.app.iterate.no'],
+    'font-src': ['https://fonts.gstatic.com'],
 }
 
 /**
