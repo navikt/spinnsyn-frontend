@@ -7,45 +7,6 @@ const appDirectives = {
     'script-src-elem': ['*.boost.ai'],
 }
 
-// const appDirectives = {
-//     'default-src': ["'none'"],
-//     'connect-src': [
-//         "'self'",
-//         'https://*.nav.no',
-//         // 'https://www.google-analytics.com',
-//         // 'https://nav.psplugin.com',
-//         // 'https://ta-survey-v2.herokuapp.com',
-//         'https://*.hotjar.com',
-//         'https://*.hotjar.io',
-//         'wss://*.hotjar.com',
-//         'https://*.uxsignals.com',
-//     ],
-//     'img-src': [
-//         "'self'",
-//         'data:',
-//         'blob:',
-//         'https://*.nav.no',
-//         // 'https://www.google-analytics.com',
-//         'https://*.hotjar.com',
-//     ],
-//     'font-src': ["'self'", 'data:', 'https://*.psplugin.com', 'https://*.hotjar.com', 'https://fonts.gstatic.com'],
-//     'frame-src': ["'self'", 'data:', 'https://*.hotjar.com'],
-//     'worker-src': ['blob:', '*.nais.io'],
-//     'style-src': ["'self'", "'unsafe-inline'", 'https://*.nav.no', 'https://*.hotjar.com'],
-//     'script-src': [
-//         "'self'",
-//         "'unsafe-inline'",
-//         "'unsafe-eval'",
-//         'https://*.nav.no',
-//         // 'https://www.googletagmanager.com',
-//         // 'https://www.google-analytics.com',
-//         'https://*.hotjar.com',
-//         'https://in2.taskanalytics.com',
-//         // 'https://account.psplugin.com',
-//         'https://uxsignals-frontend.uxsignals.app.iterate.no',
-//     ],
-// }
-
 /**
  * @type {import("next").NextConfig}
  */
