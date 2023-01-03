@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 1.5rem 0;
-    background-color: @navds-semantic-color-canvas-background-light;
+    background-color: @a-bg-default;
 
     &__tittel {
         display: inline-block;
@@ -24,12 +24,12 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    border: 1px solid @navds-semantic-color-text;
+    border: 1px solid @a-text-default;
     border-radius: 4px;
-    background-color: @navds-semantic-color-canvas-background-light;
+    background-color: @a-bg-default;
     margin-bottom: 1rem;
     padding: 28px 30px 30px 20px;
-    color: @navds-semantic-color-text;
+    color: @a-text-default;
     text-decoration: none;
 
     &.inngangspanel__btn {
@@ -75,13 +75,13 @@
     &:hover {
         .inngangspanel__del2 {
             .chevronboks {
-                color: @navds-semantic-color-interaction-primary;
+                color: @a-surface-action;
             }
         }
     }
 
     &.inngangspanel--ekstern {
-        border: 5px solid @navds-global-color-deepblue-300;
+        border: 5px solid @a-deepblue-300;
         background-position: 97% center;
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
@@ -122,8 +122,8 @@
     }
 
     .inngangspanel__annullert {
-        background: @navds-global-color-orange-100;
-        border: 1px solid @navds-global-color-orange-600;
+        background: @a-orange-100;
+        border: 1px solid @a-orange-600;
         border-radius: 4px;
         padding: 0.3rem 0.5rem;
     }
@@ -131,10 +131,10 @@
 
 .inngangspanel--inaktivt {
     background-image: none;
-    color: @navds-global-color-gray-600;
+    color: @a-gray-600;
 
     .inngangspanel__status {
-        color: @navds-semantic-color-text;
+        color: @a-text-default;
     }
 }
 
@@ -167,7 +167,7 @@
         &:hover {
             position: relative;
             z-index: 100;
-            box-shadow: @navds-semantic-color-canvas-background 0 0 4px 2px;
+            box-shadow: @a-bg-default 0 0 4px 2px;
 
             .inngangspanel__ikon--hover {
                 display: flex;
@@ -181,7 +181,7 @@
         &:hover {
             .inngangspanel__del2 {
                 .chevronboks {
-                    color: @navds-semantic-color-interaction-primary;
+                    color: @a-surface-action;
                 }
             }
         }
@@ -196,7 +196,7 @@
         &:hover {
             .txtlink {
                 text-decoration: underline;
-                color: @navds-semantic-color-interaction-primary;
+                color: @a-surface-action;
             }
         }
 
