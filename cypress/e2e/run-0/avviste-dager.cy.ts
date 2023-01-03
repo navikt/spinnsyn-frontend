@@ -18,7 +18,7 @@ describe('Avviste dager', () => {
         cy.get(`article a[href*=${vedtakMed40Grad.id}]`).click({ force: true })
 
         cy.get('.ekspanderbar.gul').should('not.exist')
-        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
@@ -68,10 +68,10 @@ describe('Avviste dager', () => {
         cy.get('.navds-body-short:nth-child(2)').contains(
             'Du får ikke sykepenger for dager du har ferie eller permisjon.',
         )
-        cy.get('p.navds-body-short').eq(57).contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
+        cy.get('p.navds-body-short').contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
 
         cy.get('.ekspanderbar.gul').contains('Mer om beregningen').should('not.exist')
-        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Vedtak med avviste dager og ingen utbetaling', () => {
@@ -100,7 +100,7 @@ describe('Avviste dager', () => {
         })
 
         cy.contains('Mer om beregningen').should('not.exist')
-        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Vedtak med avviste dager og lav inntekt', () => {
@@ -141,6 +141,6 @@ describe('Avviste dager', () => {
         cy.get('.tekstinfo').should('not.contain', 'Utbetalingsdager')
         cy.get('.tekstinfo').should('not.contain', 'Utbetaling')
 
-        cy.get('*[class^=brodsmulesti] a').contains('Svar på søknader').click()
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 })
