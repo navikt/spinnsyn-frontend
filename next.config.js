@@ -14,6 +14,8 @@ const appDirectives = {
  */
 const nextConfig = {
     async headers() {
+        // eslint-disable-next-line no-console
+        console.log(`process.env.ENVIRONMENT: ${process.env.ENVIRONMENT}`)
         const env = { env: process.env.ENVIRONMENT }
         const csp = await buildCspHeader(appDirectives, env)
 
