@@ -4,7 +4,6 @@ const { withSentryConfig } = require('@sentry/nextjs')
 const { buildCspHeader } = require('@navikt/nav-dekoratoren-moduler/ssr')
 
 const appDirectives = {
-    'script-src-elem': ['*.boost.ai'],
     'connect-src': ['https://*.uxsignals.com'],
     'script-src': ['https://uxsignals-frontend.uxsignals.app.iterate.no'],
     'font-src': ['https://fonts.gstatic.com'],
