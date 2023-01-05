@@ -10,7 +10,7 @@
         "@navikt/nav-dekoratoren-moduler": "^1.8.1",
         "@navikt/next-api-proxy": "^2.1.0",
         "@navikt/next-logger": "^1.13.0",
-        "@sentry/nextjs": "^7.28.1",
+        "@sentry/nextjs": "^7.29.0",
         "amplitude-js": "^8.21.3",
         "cookie": "^0.5.0",
         "dayjs": "^1.11.7",
