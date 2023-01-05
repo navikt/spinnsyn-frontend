@@ -36,7 +36,7 @@
         "@types/node": "^18.11.18",
         "@types/react": "^18.0.26",
         "@types/uuid": "^9.0.0",
-        "axe-core": "^4.6.1",
+        "axe-core": "^4.6.2",
         "cypress": "^10.11.0",
         "cypress-axe": "^1.2.0",
         "eslint": "^8.31.0",
