@@ -13,3 +13,4 @@ env:
   ARKIVERING: true
   SPINNSYN_BACKEND_CLIENT_ID: api://dev-gcp.flex.spinnsyn-backend/.default
   SPINNSYN_BACKEND_URL: http://spinnsyn-backend
+  ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend
