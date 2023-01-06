@@ -11,6 +11,6 @@ env:
   NO_DECORATOR: true
   SPINNSYN_FRONTEND_INTERNE: true
   SPINNSYN_BACKEND_CLIENT_ID: api://prod-gcp.flex.spinnsyn-backend/.default
-  FLEX_FSS_PROXY_CLIENT_ID: api://prod-fss.flex.flex-fss-proxy/.default
-  FLEX_FSS_PROXY_URL: https://flex-fss-proxy.prod-fss-pub.nais.io
   ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend
+  MODIACONTEXTHOLDER_SCOPE: api://prod-fss.personoversikt.modiacontextholder/.default
+  MODIACONTEXTHOLDER_URL: https://modiacontextholder.prod-fss-pub.nais.io
