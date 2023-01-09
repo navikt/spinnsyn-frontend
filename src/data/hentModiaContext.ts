@@ -1,14 +1,10 @@
 import { IncomingMessage } from 'http'
 
 import { logger } from '@navikt/next-logger'
-import getConfig from 'next/config'
 
-import { getAzureAdAccessToken } from '../auth/getAzureAdAccessToken'
 import { getOboAccessToken } from '../auth/getOboAccessToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { isMockBackend } from '../utils/environment'
-
-const { serverRuntimeConfig } = getConfig()
 
 export async function hentModiaContext(incomingMessage: IncomingMessage): Promise<string | null> {
     if (isMockBackend()) {
@@ -16,17 +12,12 @@ export async function hentModiaContext(incomingMessage: IncomingMessage): Promis
     }
     const accessToken = incomingMessage.headers.authorization!.split(' ')[1]
 
-    const [modiaContextAccessToken, flexFssProxyToken] = await Promise.all([
-        await getOboAccessToken(accessToken, 'https://graph.microsoft.com/.default'),
-        await getAzureAdAccessToken(serverRuntimeConfig.flexFssProxyClientId),
-    ])
+    const modiaOboToken = await getOboAccessToken(accessToken, process.env.MODIACONTEXTHOLDER_SCOPE!)
 
-    const response = await fetch(`${serverRuntimeConfig.flexFssProxyUrl}/modiacontextholder/api/context/aktivbruker`, {
+    const response = await fetch(`${process.env.MODIACONTEXTHOLDER_URL}/modiacontextholder/api/context/aktivbruker`, {
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${flexFssProxyToken.access_token}`,
-            XAuthorization: `Bearer ${accessToken}`,
-            Cookie: `isso-accesstoken=${modiaContextAccessToken}`,
+            Authorization: `Bearer ${modiaOboToken}`,
         },
     })
 
