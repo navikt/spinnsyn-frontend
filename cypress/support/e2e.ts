@@ -17,8 +17,9 @@ import './commands'
 import 'cypress-axe'
 
 afterEach(() => {
+    cy.get('h1') // avventer at element som finnes på alle sider dukker opp
     cy.injectAxe()
-
+    
     const rules = (testTittel: string) => {
         if (testTittel == 'Server vedtak') {
             // SSR rendret har noen quirks
