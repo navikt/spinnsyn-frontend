@@ -50,7 +50,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     }
 
     return (
-        <div className="behandling tekstinfo">
+        <div className="behandling">
             <Heading size="small" level="2">
                 {tekst(tittelNokkel())}
             </Heading>
