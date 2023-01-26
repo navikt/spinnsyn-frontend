@@ -39,3 +39,5 @@ spec:
       value: "true"
     - name: ARKIVERING
       value: "false"
+    - name: ASSET_PREFIX
+      value: "https://cdn.nav.no/flex/spinnsyn-frontend"
