@@ -40,7 +40,6 @@ const nextConfig = {
         ]
     },
     basePath: '/syk/sykepenger',
-    lessLoaderOptions: {},
     pageExtensions: ['page.tsx', 'api.ts'],
     assetPrefix: process.env.ASSET_PREFIX || undefined,
     serverRuntimeConfig: {
