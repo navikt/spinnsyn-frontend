@@ -1,0 +1,17 @@
+.utbetalingsoversikt .navds-accordion__content {
+    padding: 0;
+    background-color: #ffffff;
+}
+.utbetalingsoversikt .tekstinfo {
+    margin: 1rem;
+}
+.utbetalingsoversikt .tekstinfo .navds-tag {
+    margin: 0.7rem 0 0.35rem;
+}
+.beregning .navds-accordion__content {
+    padding-bottom: 0;
+    background-color: #ffffff;
+}
+.beregning .navds-accordion__content .navds-heading {
+    margin: 1rem 0 0.35rem;
+}

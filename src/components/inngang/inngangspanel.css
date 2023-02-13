@@ -1,0 +1,169 @@
+.inngangspanelerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1.5rem 0;
+    background-color: #ffffff;
+}
+.inngangspanelerHeader__tittel {
+    display: inline-block;
+}
+.inngangspanelerHeader .inngangspanel__sortering {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.inngangspanel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border: 1px solid #262626;
+    border-radius: 4px;
+    background-color: #ffffff;
+    margin-bottom: 1rem;
+    padding: 28px 30px 30px 20px;
+    color: #262626;
+    text-decoration: none;
+}
+.inngangspanel.inngangspanel__btn {
+    border: 0;
+    width: 100%;
+    text-align: left;
+}
+.inngangspanel .inngangspanel__ytre {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.inngangspanel .inngangspanel__venstre {
+    display: flex;
+    align-items: center;
+}
+.inngangspanel .inngangspanel__hoyre {
+    display: flex;
+    align-items: center;
+}
+.inngangspanel .inngangspanel__status {
+    margin: 0.35rem 1rem 0 0;
+}
+.inngangspanel .inngangspanel__status ul {
+    margin: 0;
+}
+.inngangspanel .inngangspanel__ikon {
+    display: none;
+}
+.inngangspanel:hover .inngangspanel__ikon--hover {
+    display: none;
+}
+.inngangspanel:hover .inngangspanel__del2 .chevronboks {
+    color: #0067c5;
+}
+.inngangspanel.inngangspanel--ekstern {
+    border: 5px solid #66a3c4;
+    background-position: 97% center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin: 2.5rem 0;
+}
+.inngangspanel.inngangspanel--tomListe {
+    display: inline;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    width: auto;
+    font-weight: 400;
+}
+.inngangspanel .inngangspanel__meta,
+.inngangspanel .inngangspanel__tekst {
+    margin: 0.35rem 0;
+}
+.inngangspanel .inngangspanel__del1,
+.inngangspanel .inngangspanel__del2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inngangspanel .inngangspanel__del2 .inngangspanel__status {
+    margin: 1rem 0 0 44px;
+}
+.inngangspanel .inngangspanel__del2 .chevronboks {
+    display: inline-block;
+    margin: 0 -1rem 0 1rem;
+}
+.inngangspanel .inngangspanel__annullert {
+    background: #ffeccc;
+    border: 1px solid #d47b00;
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem;
+}
+.inngangspanel--inaktivt {
+    background-image: none;
+    color: #707070;
+}
+.inngangspanel--inaktivt .inngangspanel__status {
+    color: #262626;
+}
+@media (min-width: 35rem) {
+    .inngangspanel {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 2rem;
+    }
+    .inngangspanel .inngangspanel__ytre {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: calc(100% - 2rem);
+    }
+    .inngangspanel .inngangspanel__ikon {
+        display: flex;
+        margin-right: 1.5rem;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
+    .inngangspanel .inngangspanel__ikon--hover {
+        display: none;
+    }
+    .inngangspanel:hover {
+        position: relative;
+        z-index: 100;
+        box-shadow: #ffffff 0 0 4px 2px;
+    }
+    .inngangspanel:hover .inngangspanel__ikon--hover {
+        display: flex;
+    }
+    .inngangspanel:hover .inngangspanel__ikon--normal {
+        display: none;
+    }
+    .inngangspanel:hover .inngangspanel__del2 .chevronboks {
+        color: #0067c5;
+    }
+    .inngangspanel.inngangspanel--tomListe:hover {
+        box-shadow: none;
+        cursor: default;
+    }
+    .inngangspanel:hover .txtlink {
+        text-decoration: underline;
+        color: #0067c5;
+    }
+    .inngangspanel .inngangspanel__del2 {
+        margin: 0;
+    }
+    .inngangspanel .inngangspanel__del2 .inngangspanel__status {
+        margin: 0;
+    }
+    .inngangspanel .inngangspanel__del2 .chevronboks {
+        display: inline-block;
+        margin: 0 -1rem 0 1rem;
+    }
+    .inngangspanel .inngangspanel__annullert {
+        display: block;
+    }
+    .inngangspanel .inngangspanel__innhold {
+        padding-right: 0.5rem;
+    }
+}
