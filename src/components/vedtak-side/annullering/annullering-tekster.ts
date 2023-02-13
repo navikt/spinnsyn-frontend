@@ -4,10 +4,9 @@ const AnnulleringTekster = {
         'Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.',
     'revurdert.alert.link.tekst': 'Du finner det nye vedtaket i listen over svar på søknader',
     'revurdert.alert.link.url': '/syk/sykepenger',
-    'annullert.alert.header': 'Dette vedtaket gjelder ikke lenger',
-    'annulert.alert.tekst':
-        'Vi har mottatt nye opplysninger som gjør at dette vedtaket behandles på nytt av en saksbehandler.',
-    'annulert.alert.undertekst': 'Du vil motta et eget brev med det nye vedtaket.',
+    'annullert.alert.header': 'Til din informasjon',
+    'annulert.alert.tekst': 'Av tekniske årsaker er saken din er flyttet til et annet saksbehandlingssystem.',
+    'annulert.alert.undertekst': 'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
     'annullert.info.header': 'Dette lurer mange på når vedtaket behandles på nytt',
 
     'annullert.info.header1': 'Hvorfor behandles vedtaket på nytt?',

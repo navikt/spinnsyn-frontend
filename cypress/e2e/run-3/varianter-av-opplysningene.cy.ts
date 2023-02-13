@@ -26,12 +26,12 @@ describe('Tester logikk i behandling.tsx', () => {
     it('Automatisk behandlet annullert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337')
 
-        cy.get('.navds-alert').contains('Dette vedtaket gjelder ikke lenger').and('be.visible')
+        cy.get('.navds-alert').contains('Til din informasjon').and('be.visible')
 
         cy.get('.navds-alert').contains(
-            'Vi har mottatt nye opplysninger som gjør at dette vedtaket behandles på nytt av en saksbehandler.',
+            'Av tekniske årsaker er saken din er flyttet til et annet saksbehandlingssystem.',
         )
-        cy.get('.navds-alert').contains('Du vil motta et eget brev med det nye vedtaket.')
+        cy.get('.navds-alert').contains('Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.')
         cy.get('.navds-alert').should('not.contain', 'Du finner det nye vedtaket i listen over svar på søknader')
 
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet automatisk')
@@ -51,7 +51,10 @@ describe('Tester logikk i behandling.tsx', () => {
             'Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.',
         )
         cy.get('.navds-alert').contains('Du finner det nye vedtaket i listen over svar på søknader')
-        cy.get('.navds-alert').should('not.contain', 'Du vil motta et eget brev med det nye vedtaket.git o')
+        cy.get('.navds-alert').should(
+            'not.contain',
+            'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
+        )
 
         cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet av en saksbehandler')
         cy.get('.behandling').contains(

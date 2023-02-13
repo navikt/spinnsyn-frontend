@@ -55,14 +55,18 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
             <Vis hvis={vedtak.annullert} render={() => <AnnullertAlert />} />
 
             <EkspanderbarInfo erApen={false} tittel={tekst('annullert.info.header')}>
-                <Label>{tekst('annullert.info.header1')}</Label>
-                <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>
+                {vedtak.revurdert && (
+                    <>
+                        <Label>{tekst('annullert.info.header1')}</Label>
+                        <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>
 
-                <Label>{tekst('annullert.info.header2')}</Label>
-                <BodyLong spacing>{bodyFraUtbetalingstype()}</BodyLong>
+                        <Label>{tekst('annullert.info.header2')}</Label>
+                        <BodyLong spacing>{bodyFraUtbetalingstype()}</BodyLong>
 
-                <Label>{tekst('annullert.info.header3')}</Label>
-                <BodyLong spacing>{tekst('annullert.info.body3')}</BodyLong>
+                        <Label>{tekst('annullert.info.header3')}</Label>
+                        <BodyLong spacing>{tekst('annullert.info.body3')}</BodyLong>
+                    </>
+                )}
 
                 <Label>{tekst('annullert.info.header4')}</Label>
                 <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>

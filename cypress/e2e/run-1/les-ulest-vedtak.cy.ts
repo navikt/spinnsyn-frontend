@@ -78,9 +78,9 @@ describe('Les uleste vedtak', () => {
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
         cy.get('.annullering .info')
-            .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
-            .and('contain', 'Hvem har sendt opplysningene?')
-            .and('contain', 'Hvorfor behandles vedtaket på nytt?')
+            .should('not.contain', 'Vil dette ha noe å si for pengene jeg får?')
+            .and('not.contain', 'Hvem har sendt opplysningene?')
+            .and('not.contain', 'Hvorfor behandles vedtaket på nytt?')
             .and('contain', 'Må jeg gjøre noe nå?')
     })
 
