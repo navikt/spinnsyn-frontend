@@ -1,0 +1,13 @@
+.avvistedageroversikt .navds-accordion__content {
+    padding: 0;
+    background-color: #ffffff;
+}
+.avvistedageroversikt .tekstinfo {
+    margin: 1rem;
+}
+.avvistedageroversikt .tekstinfo .navds-tag {
+    margin: 0.7rem 0 0.35rem;
+}
+.avvistedageroversikt .avvist-lovhjemmel {
+    margin-top: 1em;
+}

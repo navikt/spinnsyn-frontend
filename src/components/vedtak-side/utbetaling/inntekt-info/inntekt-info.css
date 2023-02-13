@@ -1,0 +1,31 @@
+.inntekt__info .navds-accordion__content {
+    background-color: #ffffff;
+}
+.inntekt__info .arbgiver_inntekt .navds-body-short,
+.inntekt__info .arbgiver_inntekt .navds-label {
+    line-height: 1.7;
+}
+.inntekt__info .arbgiver_inntekt .arbgiver_navn {
+    width: 100%;
+}
+.inntekt__info .arbgiver_inntekt section {
+    display: flex;
+    justify-content: space-between;
+}
+.inntekt__info .arbgiver_inntekt .arbgiver {
+    border-top: 1px solid #b0b0b0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+.inntekt__info .redusert_sykepengegrunnlag {
+    padding: 1rem;
+    margin: 1.4rem 0 0;
+    background-color: #fff9f0;
+}
+.inntekt__info .redusert_sykepengegrunnlag table {
+    margin-top: 0.7rem;
+}
+.inntekt__info .redusert_sykepengegrunnlag th,
+.inntekt__info .redusert_sykepengegrunnlag td {
+    padding: 0.7rem 0 0.35rem;
+}
