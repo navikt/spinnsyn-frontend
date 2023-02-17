@@ -28,10 +28,10 @@ describe('Kombinasjonutbetaling keyboard', () => {
         cy.realPress('Tab')
         cy.focused().contains('24 550 kroner')
         cy.realPress('Enter')
-        cy.get('h3').contains('Når får du sykepengene?')
+        cy.get('h3').contains('Kontonummer for utbetaling')
 
-        cy.realPress('Tab') // Les mer link
         cy.realPress('Tab') // Min side link
+        cy.realPress('Tab') // Når får du sykepengene?
 
         cy.realPress('Tab')
         cy.focused().contains('Inntekter lagt til grunn for sykepengene')

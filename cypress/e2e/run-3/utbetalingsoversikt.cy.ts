@@ -58,6 +58,7 @@ describe('Utbetalingsoversikt', () => {
 
     it('Vi går tilbake til oversikten', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.get('.sidebanner__tittel').should('be.visible').and('have.text', 'Svar på søknader')
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
