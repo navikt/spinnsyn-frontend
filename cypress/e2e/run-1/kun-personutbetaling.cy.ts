@@ -18,9 +18,9 @@ describe('Kun personutbetaling', () => {
         ).should('not.exist')
         cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
-        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg').click({ force: true })
+        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg')
 
-        cy.get('.personutbetaling').within(() => {
+        cy.get('[data-cy*="personutbetaling"]').within(() => {
             cy.get('h3').contains('Sykepenger utbetales til kontonummer:')
             cy.contains('1001 11 10011')
 

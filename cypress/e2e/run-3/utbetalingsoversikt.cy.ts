@@ -13,7 +13,7 @@ describe('Utbetalingsoversikt', () => {
     })
 
     it('Utbetalingsoversikt', () => {
-        cy.contains('8 960 kroner').and('contain', 'Utbetales til Pengeløs Sparebank').click({ force: true })
+        cy.contains('8 960 kroner').and('contain', 'Utbetales til Pengeløs Sparebank')
 
         cy.contains('Sykepenger per dag').click({ force: true })
 
@@ -64,7 +64,6 @@ describe('Utbetalingsoversikt', () => {
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
 
-        cy.get('.ekspanderbar.gronn').click()
         cy.contains('Sykepenger per dag').click({ force: true })
 
         cy.get('.utbetalingsoversikt').within(() => {

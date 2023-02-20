@@ -19,7 +19,10 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
     }
 
     return (
-        <Panel className={styles.panelWrapper + erUgyldig()} data-cy={props.dataCy}>
+        <Panel
+            className={styles.panelWrapper + erUgyldig()}
+            data-cy={`${props.erUgyldig && 'ugyldig'} ${props.dataCy}`}
+        >
             <div className={styles.heading}>
                 <img
                     aria-hidden="true"

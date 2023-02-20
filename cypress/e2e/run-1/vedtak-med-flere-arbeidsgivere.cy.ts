@@ -11,7 +11,7 @@ describe('Vedtak med flere arbeidsgivere', () => {
     })
 
     it('Inntekter', () => {
-        cy.contains('1 359 kroner').and('contain', 'Utbetales til Industrifabrikken AS').click({ force: true })
+        cy.contains('1 359 kroner').and('contain', 'Utbetales til Industrifabrikken AS')
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
