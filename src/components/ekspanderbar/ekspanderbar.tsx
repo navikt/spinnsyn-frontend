@@ -65,7 +65,7 @@ const Ekspanderbar = (props: AllProps) => {
                     }
                 >
                     {tittel}
-                    <BodyShort as="span" className="open-text">
+                    <BodyShort as="span" className="open-text" aria-hidden>
                         {erApen ? 'Lukk' : 'Åpne'}
                     </BodyShort>
                 </Accordion.Header>
