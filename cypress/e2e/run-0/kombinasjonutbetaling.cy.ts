@@ -18,8 +18,6 @@ describe('Kombinasjonutbetaling', () => {
                 'Arbeidsgiveren din får igjen pengene fra NAV senere.',
         )
 
-        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg').click({ force: true })
-
         cy.get('.personutbetaling').within(() => {
             cy.contains('Beløpet oppgitt er før skatt og eventuelle kreditortrekk')
             cy.contains('Eksempler på kreditortrekk')

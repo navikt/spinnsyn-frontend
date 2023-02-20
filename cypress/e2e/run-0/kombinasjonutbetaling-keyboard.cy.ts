@@ -25,9 +25,6 @@ describe('Kombinasjonutbetaling keyboard', () => {
     it('Viser info om utbetaling til personen', () => {
         cy.realPress('Tab') // Person ikon
 
-        cy.realPress('Tab')
-        cy.focused().contains('24 550 kroner')
-        cy.realPress('Enter')
         cy.get('h3').contains('Kontonummer for utbetaling')
 
         cy.realPress('Tab') // Min side link
@@ -55,9 +52,6 @@ describe('Kombinasjonutbetaling keyboard', () => {
     })
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
-        cy.realPress('Tab')
-        cy.focused().contains('4 910 kroner')
-        cy.realPress('Enter')
         cy.get('h3').contains('Beløpet går til arbeidsgiveren din')
 
         cy.realPress('Tab')
