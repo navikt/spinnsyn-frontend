@@ -26,12 +26,10 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     return (
         <UtbetalingPanel
             tittel={
-                <>
-                    <Heading level="2" size="large">
-                        {belop + ' kroner'}
-                        <BodyShort as="span">{tekst('utbetaling.person.systemtittel')}</BodyShort>
-                    </Heading>
-                </>
+                <Heading level="2" size="large">
+                    {belop + ' kroner'}
+                    <BodyShort as="span">{tekst('utbetaling.person.systemtittel')}</BodyShort>
+                </Heading>
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="personutbetaling"
