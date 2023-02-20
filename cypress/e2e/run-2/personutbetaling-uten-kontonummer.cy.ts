@@ -13,11 +13,11 @@ describe('Personutbetaling uten kontonummer', () => {
     })
 
     it('Viser info om at kontonummer mangler', () => {
-        cy.contains('24 550 kroner').and('contain', 'til deg (før skatt)').click({ force: true })
+        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg').click({ force: true })
 
-        cy.get('section.tekstinfo > :nth-child(3)').contains('Kontonummer for utbetaling')
+        cy.get('.personutbetaling .navds-accordion__content > :nth-child(4)').contains('Kontonummer for utbetaling')
 
-        cy.get('section.tekstinfo > :nth-child(4)').contains(
+        cy.get('.personutbetaling .navds-accordion__content > :nth-child(5)').contains(
             'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på Min side slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
         )
     })

@@ -9,8 +9,8 @@ import DagTabell from '../../dager/dag-tabell'
 import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
-import BeregningInfo from '../utbetaling/beregning-info'
-import InntektInfo from '../utbetaling/inntekt-info/inntekt-info'
+import BeregningInfo from '../utbetaling/accordion/beregning-info'
+import InntektInfo from '../utbetaling/accordion/inntekt-info/inntekt-info'
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]

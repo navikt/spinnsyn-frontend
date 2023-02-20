@@ -54,16 +54,20 @@ const UtbetalingTekster = {
     'utbetaling.arbeidsgiver.tekst':
         'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
 
-    'utbetaling.person.systemtittel': 'sykepenger til deg (før skatt)',
+    'utbetaling.person.systemtittel': 'sykepenger til deg',
     'utbetaling.person.fra': 'Gjelder sykefravær fra %ARBEIDSGIVER%',
-    'utbetaling.person.når': 'Når får du sykepengene? ',
+    'utbetaling.person.trekk.heading':
+        'Beløpet oppgitt er før skatt og eventuelle kreditortrekk, samt refusjonskrav fra kommunen.',
+    'utbetaling.person.trekk.innhold':
+        'Eksempler på kreditortrekk kan være; kemner, statens innkrevingssentral, NAVI - feilutbetalte stønader. Refusjonskrav fra kommunen kan være i forbindelse med sosialhjelp.',
+    'utbetaling.person.når': 'Når får du sykepengene?',
     'utbetaling.person.når.innhold':
         'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
     'utbetaling.person.når.lenke.tekst': 'Les mer om når du kan forvente å få pengene.',
     'utbetaling.person.når.lenke.url':
         'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap',
     'utbetaling.kontonummer.tittel': 'Kontonummer for utbetaling',
-    'utbetaling.kontonummer.utbetales': 'Utbetales til kontonummer:',
+    'utbetaling.kontonummer.utbetales': 'Sykepenger utbetales til kontonummer: ',
     'utbetaling.kontonummer.mangler':
         'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/nb/#utbetaling">Min side</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
     'utbetaling.tabell.dagtyper': 'Forklaring',

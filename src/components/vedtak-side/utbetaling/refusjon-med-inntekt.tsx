@@ -1,32 +1,21 @@
 import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useState } from 'react'
 
-import { ArkiveringContext } from '../../../context/arkivering-context'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import DagBeskrivelse from '../../dager/dag-beskrivelse'
-import DagTabell from '../../dager/dag-tabell'
-import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
-import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
-import BeregningInfo from './beregning-info'
+import BeregningInfo from './accordion/beregning-info'
+import { SykepengerPerDag } from './accordion/sykepenger-per-dag'
+import InntektInfo from './accordion/inntekt-info/inntekt-info'
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const [apen] = useState<boolean>(false)
-    const isServer = useContext(ArkiveringContext)
-    const [open, setOpen] = useState<boolean>(isServer)
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
-    const accordionRef = useRef(null)
-
-    const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Sykepenger per dag')
-        setOpen(!open)
-    }
 
     return (
         <Ekspanderbar
@@ -50,25 +39,12 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <>
                 <VedtakPeriode vedtak={vedtak} />
-                <ArbeidsgiverInfo vedtak={vedtak} />
-                <Accordion>
-                    <Vis
-                        hvis={vedtak.dagerArbeidsgiver.length > 0}
-                        render={() => (
-                            <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
-                                <Accordion.Header onClick={onButtonClick}>
-                                    <Heading size="small" level="4">
-                                        {tekst('utbetaling.inntekt.info.dagsats')}
-                                    </Heading>
-                                </Accordion.Header>
-                                <Accordion.Content>
-                                    <DagTabell dager={vedtak.dagerArbeidsgiver} />
 
-                                    <DagBeskrivelse dager={vedtak.dagerArbeidsgiver} />
-                                </Accordion.Content>
-                            </Accordion.Item>
-                        )}
-                    />
+                <ArbeidsgiverInfo vedtak={vedtak} />
+
+                <Accordion>
+                    <InntektInfo vedtak={vedtak} />
+                    <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} />
                     <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
                 </Accordion>
             </>

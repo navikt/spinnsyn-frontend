@@ -18,30 +18,26 @@ describe('Kun personutbetaling', () => {
         ).should('not.exist')
         cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
-        cy.contains('24 550 kroner').and('contain', 'til deg (før skatt)').click({ force: true })
+        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg').click({ force: true })
 
-        cy.get('.tekstinfo').children().first().contains('Når får du sykepengene?')
+        cy.get('.personutbetaling').within(() => {
+            cy.get('h3').contains('Sykepenger utbetales til kontonummer:')
+            cy.contains('1001 11 10011')
 
-        cy.get('.tekstinfo')
-            .children('.navds-body-long')
-            .contains(
+            cy.get('.navds-accordion__item').first().contains('Når får du sykepengene?').click()
+            cy.contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
                     'eller innen fem dager etter at vi har sendt deg svar på søknaden din. ' +
                     'Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
             )
 
-        cy.get('.tekstinfo > :nth-child(3) > strong').contains('Utbetales til kontonummer:')
-
-        cy.get('.tekstinfo > :nth-child(3)').contains('1001 11 10011')
-
-        cy.contains('Mer om beregningen').click({ force: true })
-
-        cy.get('.ekspanderbar .tekstinfo > :nth-child(10)').contains('Totalbeløp')
-
-        cy.get('.ekspanderbar .tekstinfo > :nth-child(11)').contains(
-            'Til slutt summerer vi alle dagene. ' +
-                'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
-        )
+            cy.contains('Mer om beregningen').click({ force: true })
+            cy.get('.navds-accordion__item').contains('Totalbeløp')
+            cy.get('.navds-accordion__item').contains(
+                'Til slutt summerer vi alle dagene. ' +
+                    'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
+            )
+        })
     })
 
     it('Ekspanderer blått panel', () => {

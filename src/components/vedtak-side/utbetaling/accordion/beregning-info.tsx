@@ -2,12 +2,12 @@ import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
-import { ArkiveringContext } from '../../../context/arkivering-context'
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
-import { tekst } from '../../../utils/tekster'
-import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
-import Vis from '../../vis'
+import { ArkiveringContext } from '../../../../context/arkivering-context'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
+import { tekst } from '../../../../utils/tekster'
+import { ekspanderbarKlikk } from '../../../ekspanderbar/ekspander-utils'
+import Vis from '../../../vis'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper
@@ -50,7 +50,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                 </Heading>
             </Accordion.Header>
 
-            <Accordion.Content className="tekstinfo ">
+            <Accordion.Content className="tekstinfo">
                 <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>

@@ -1,10 +1,10 @@
-import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React from 'react'
 
-import { tekst } from '../../../../utils/tekster'
-import Vis from '../../../vis'
-import { UseKontonummer } from '../../../../hooks/useKontonummer'
+import { tekst } from '../../../utils/tekster'
+import Vis from '../../vis'
+import { UseKontonummer } from '../../../hooks/useKontonummer'
 
 export const Kontonummer = () => {
     const { data: kontonummer, isSuccess } = UseKontonummer()
@@ -19,10 +19,12 @@ export const Kontonummer = () => {
                     <Vis
                         hvis={kontonummer}
                         render={() => (
-                            <BodyShort>
-                                <strong>{tekst('utbetaling.kontonummer.utbetales')}</strong>
-                                {formaterKontonummer(kontonummer!)}
-                            </BodyShort>
+                            <>
+                                <Heading level="3" size="xsmall">
+                                    {tekst('utbetaling.kontonummer.utbetales')}
+                                </Heading>
+                                <BodyLong spacing>{formaterKontonummer(kontonummer!)}</BodyLong>
+                            </>
                         )}
                     />
 
@@ -30,7 +32,7 @@ export const Kontonummer = () => {
                         hvis={!kontonummer}
                         render={() => (
                             <>
-                                <Heading spacing level="3" size="small">
+                                <Heading level="3" size="xsmall">
                                     {tekst('utbetaling.kontonummer.tittel')}
                                 </Heading>
                                 <BodyLong spacing>{parser(tekst('utbetaling.kontonummer.mangler'))}</BodyLong>

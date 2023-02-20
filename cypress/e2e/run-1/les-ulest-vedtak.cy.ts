@@ -39,11 +39,13 @@ describe('Les uleste vedtak', () => {
         cy.contains('folketrygdloven § 8-28').should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
-        cy.get('.tekstinfo')
+        cy.get('.inntekt__info')
             .should('contain', 'Beregnet månedslønn')
             .and('contain', '37\u00a0500 kr')
-            .should('contain', 'Årslønn')
+            .should('contain', 'Beregnet årslønn')
             .and('contain', '450\u00a0000 kr')
+            .should('contain', 'Sykepengegrunnlag')
+            .and('contain', '455\u00a0000 kr')
     })
 
     it('Den blå boksen har riktig innhold', () => {
