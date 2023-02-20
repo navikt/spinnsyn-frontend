@@ -29,6 +29,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                 </Heading>
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
+            dataCy="refusjon"
         >
             <>
                 <VedtakPeriode vedtak={vedtak} />

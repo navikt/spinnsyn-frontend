@@ -34,6 +34,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                 </>
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
+            dataCy="personutbetaling"
         >
             <>
                 <VedtakPeriode vedtak={vedtak} />

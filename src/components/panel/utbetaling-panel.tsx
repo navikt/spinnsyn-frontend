@@ -7,6 +7,7 @@ interface UtbetalingPanelProps {
     tittel: React.ReactNode
     erUgyldig: boolean
     children: React.ReactNode
+    dataCy?: string
 }
 
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
@@ -18,7 +19,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
     }
 
     return (
-        <Panel className={styles.panelWrapper + erUgyldig()}>
+        <Panel className={styles.panelWrapper + erUgyldig()} data-cy={props.dataCy}>
             <div className={styles.heading}>
                 <img
                     aria-hidden="true"
