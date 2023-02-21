@@ -47,7 +47,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                 <Accordion className="inntekt__info">
                     <Accordion.Item open={open} ref={accordionRef}>
                         <Accordion.Header onClick={onButtonClick}>
-                            <Heading size="small" level="4">
+                            <Heading size="small" level="3">
                                 {tekst('utbetaling.inntekt.info.tittel')}
                             </Heading>
                         </Accordion.Header>

@@ -20,7 +20,7 @@ export const SykepengerNar = () => {
     return (
         <Accordion.Item ref={accordionRef} open={open} className="beregning">
             <Accordion.Header onClick={onButtonClick}>
-                <Heading size="small" level="4">
+                <Heading size="small" level="3">
                     {tekst('utbetaling.person.når')}
                 </Heading>
             </Accordion.Header>

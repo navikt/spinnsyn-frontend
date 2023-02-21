@@ -29,7 +29,7 @@ export const SykepengerPerDag = ({ dager }: SykepengerPerDagProps) => {
             render={() => (
                 <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
                     <Accordion.Header onClick={onButtonClick}>
-                        <Heading size="small" level="4">
+                        <Heading size="small" level="3">
                             {tekst('utbetaling.inntekt.info.dagsats')}
                         </Heading>
                     </Accordion.Header>
