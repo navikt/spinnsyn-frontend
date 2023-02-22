@@ -18,9 +18,7 @@ describe('Kombinasjonutbetaling', () => {
                 'Arbeidsgiveren din får igjen pengene fra NAV senere.',
         )
 
-        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg').click({ force: true })
-
-        cy.get('.personutbetaling').within(() => {
+        cy.get('[data-cy*="personutbetaling"]').within(() => {
             cy.contains('Beløpet oppgitt er før skatt og eventuelle kreditortrekk')
             cy.contains('Eksempler på kreditortrekk')
 
@@ -48,14 +46,13 @@ describe('Kombinasjonutbetaling', () => {
                 .should('be.visible')
         })
 
-        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg').click({ force: true })
-        cy.get('.personutbetaling').contains('Når får du sykepengene?').should('not.be.visible')
+        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg')
     })
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
-        cy.contains('4 910 kroner').and('contain', 'Utbetales til Matbutikken AS').click()
+        cy.contains('4 910 kroner').and('contain', 'Utbetales til Matbutikken AS')
 
-        cy.get('.refusjon').within(() => {
+        cy.get('[data-cy*="refusjon"]').within(() => {
             cy.contains('Når får du sykepengene?').should('not.exist')
             cy.contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +

@@ -7,7 +7,7 @@ describe('Tester logikk i behandling.tsx', () => {
             'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('not.exist')
+        cy.get('[data-cy*="ugyldig"]').should('not.exist')
     })
 
     it('Varianter av opplysningene', () => {
@@ -20,7 +20,7 @@ describe('Tester logikk i behandling.tsx', () => {
             'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('not.exist')
+        cy.get('[data-cy*="ugyldig"]').should('not.exist')
     })
 
     it('Automatisk behandlet annullert vedtak', () => {
@@ -39,7 +39,8 @@ describe('Tester logikk i behandling.tsx', () => {
             'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 2)
+        cy.get('[data-cy*="ugyldig"]').should('have.length', 1)
+        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 1)
     })
 
     it('Manuelt behandlet revurdert vedtak', () => {
@@ -61,7 +62,8 @@ describe('Tester logikk i behandling.tsx', () => {
             'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 2)
+        cy.get('[data-cy*="ugyldig"]').should('have.length', 1)
+        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 1)
     })
 
     it('Revurdert vedtak med direkte utbetaling', () => {

@@ -57,12 +57,6 @@
     display: none;
     margin: auto 1.5rem auto 0.75rem;
 }
-.navds-accordion > .ekspanderbar.gronn {
-    background: #ccf1d6;
-}
-.navds-accordion > .ekspanderbar.gronn > .navds-accordion__header:hover {
-    border-color: #33aa5f;
-}
 .navds-accordion > .ekspanderbar.gul {
     background: #ffeccc;
 }

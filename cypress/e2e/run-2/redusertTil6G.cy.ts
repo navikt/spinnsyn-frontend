@@ -13,7 +13,7 @@ describe('Redusert til 6G', () => {
     })
 
     it('Utbetalingsoversikt', () => {
-        cy.contains('3 021 kroner').and('contain', 'Utbetales til Posten Norge AS, Bærum').click({ force: true })
+        cy.contains('3 021 kroner').and('contain', 'Utbetales til Posten Norge AS, Bærum')
 
         cy.contains('Mer om beregningen').click({ force: true })
 
