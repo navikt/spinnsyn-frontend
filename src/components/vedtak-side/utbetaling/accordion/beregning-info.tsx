@@ -51,12 +51,12 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
             </Accordion.Header>
 
             <Accordion.Content className="tekstinfo">
-                <Heading spacing size="xsmall" level="3">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
                 <BodyLong spacing>{parser(tekst('utbetaling.mndlonn.innhold'))}</BodyLong>
 
-                <Heading spacing size="xsmall" level="3">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Heading>
                 <BodyLong spacing>
@@ -67,7 +67,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                     />
                 </BodyLong>
 
-                <Heading spacing size="xsmall" level="3">
+                <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
                 <BodyLong spacing>{parser(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
@@ -78,12 +78,12 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                     hvis={!heltAvvist || !harMinstEnForLavInntektDag}
                     render={() => (
                         <>
-                            <Heading spacing size="xsmall" level="3">
+                            <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.dagligbelop.tittel')}
                             </Heading>
                             <BodyLong spacing>{tekst('utbetaling.dagligbelop.innhold')}</BodyLong>
 
-                            <Heading spacing size="xsmall" level="3">
+                            <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.totalbelop.tittel')}
                             </Heading>
                             <BodyLong spacing className="totalbelop">
@@ -94,7 +94,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                                 hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                                 render={() => (
                                     <>
-                                        <Heading spacing size="xsmall" level="3">
+                                        <Heading spacing size="xsmall" level="4">
                                             {tekst('utbetaling.flere-arbeidsforhold.tittel')}
                                         </Heading>
                                         <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
@@ -102,7 +102,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                                 )}
                             />
 
-                            <Heading spacing size="xsmall" level="3">
+                            <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.utbetalingsdager.tittel')}
                             </Heading>
                             <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
@@ -114,7 +114,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                                 </Link>
                             </BodyLong>
 
-                            <Heading spacing size="xsmall" level="3">
+                            <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.info.tittel')}
                             </Heading>
                             <BodyLong spacing>{parser(tekst('utbetaling.info.innhold'))}</BodyLong>

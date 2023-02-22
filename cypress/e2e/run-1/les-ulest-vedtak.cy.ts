@@ -86,11 +86,8 @@ describe('Les uleste vedtak', () => {
             .and('contain', 'Må jeg gjøre noe nå?')
     })
 
-    it('Vi går tilbake til oversikten', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
-    })
-
     it('Vi åpner et revurdert vedtak', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9).eq(4).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
