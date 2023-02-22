@@ -20,7 +20,7 @@ const UtbetalingTekster = {
         'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
     'utbetaling.totalbelop.innhold':
-        'Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
+        'Til slutt summerer vi alle dagene. Når du får utbetalt sykepenger fra arbeidsgiveren din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
     'utbetaling.person.totalbelop.innhold':
         'Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
     'utbetaling.flere-arbeidsforhold.tittel': 'Flere arbeidsforhold',
@@ -56,10 +56,9 @@ const UtbetalingTekster = {
 
     'utbetaling.person.systemtittel': 'sykepenger til deg',
     'utbetaling.person.fra': 'Gjelder sykefravær fra %ARBEIDSGIVER%',
-    'utbetaling.person.trekk.heading':
-        'Beløpet oppgitt er før skatt og eventuelle kreditortrekk, samt refusjonskrav fra kommunen.',
+    'utbetaling.person.trekk.heading': 'Beløpet er før skatt, kreditortrekk og tilbakebetalingskrav fra kommunen.',
     'utbetaling.person.trekk.innhold':
-        'Eksempler på kreditortrekk kan være; kemner, statens innkrevingssentral, NAVI - feilutbetalte stønader. Refusjonskrav fra kommunen kan være i forbindelse med sosialhjelp.',
+        'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller NAV innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
     'utbetaling.person.når': 'Når får du sykepengene?',
     'utbetaling.person.når.innhold':
         'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',

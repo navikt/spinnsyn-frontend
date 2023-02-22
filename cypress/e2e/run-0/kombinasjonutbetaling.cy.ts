@@ -19,8 +19,10 @@ describe('Kombinasjonutbetaling', () => {
         )
 
         cy.get('[data-cy*="personutbetaling"]').within(() => {
-            cy.contains('Beløpet oppgitt er før skatt og eventuelle kreditortrekk')
-            cy.contains('Eksempler på kreditortrekk')
+            cy.contains('Beløpet er før skatt, kreditortrekk og tilbakebetalingskrav fra kommunen.')
+            cy.contains(
+                'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller NAV innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
+            )
 
             cy.contains(
                 'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn ' +
@@ -65,8 +67,8 @@ describe('Kombinasjonutbetaling', () => {
 
             cy.get('.navds-accordion__item')
                 .contains(
-                    'Til slutt summerer vi alle dagene. Når du får utbetalt sykepengene fra arbeidsgiveren din, ' +
-                        'har arbeidsgiveren trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
+                    'Til slutt summerer vi alle dagene. Når du får utbetalt sykepenger fra arbeidsgiveren ' +
+                        'din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
                 )
                 .should('be.visible')
         })
