@@ -18,10 +18,10 @@ describe('Avviste dager', () => {
         cy.get(`article a[href*=${vedtakMed40Grad.id}]`).click({ force: true })
 
         cy.get('.ekspanderbar.gul').should('not.exist')
-        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click({
             force: true,
         })
@@ -71,10 +71,10 @@ describe('Avviste dager', () => {
         cy.get('p.navds-body-short').contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
 
         cy.get('.ekspanderbar.gul').contains('Mer om beregningen').should('not.exist')
-        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Vedtak med avviste dager og ingen utbetaling', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`article a[href*=${avvistVedtak.id}]`).click({ force: true })
 
         cy.get('.ekspanderbar.gronn').should('not.exist')
@@ -100,10 +100,10 @@ describe('Avviste dager', () => {
         })
 
         cy.contains('Mer om beregningen').should('not.exist')
-        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Vedtak med avviste dager og lav inntekt', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`article a[href*=${avvistVedtakMedLavInntekt.id}]`).click({
             force: true,
         })
@@ -140,7 +140,5 @@ describe('Avviste dager', () => {
         cy.get('.tekstinfo').should('not.contain', 'Totalbeløp')
         cy.get('.tekstinfo').should('not.contain', 'Utbetalingsdager')
         cy.get('.tekstinfo').should('not.contain', 'Utbetaling')
-
-        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 })

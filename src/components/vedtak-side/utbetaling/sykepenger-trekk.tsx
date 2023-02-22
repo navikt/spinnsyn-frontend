@@ -7,9 +7,7 @@ export const SykepengerTrekk = () => {
     return (
         <>
             <BodyShort spacing>{tekst('utbetaling.person.trekk.heading')}</BodyShort>
-            <BodyShort spacing style={{ fontStyle: 'italic' }}>
-                {tekst('utbetaling.person.trekk.innhold')}
-            </BodyShort>
+            <BodyShort spacing>{tekst('utbetaling.person.trekk.innhold')}</BodyShort>
         </>
     )
 }

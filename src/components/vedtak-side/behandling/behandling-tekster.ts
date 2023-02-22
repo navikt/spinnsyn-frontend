@@ -9,7 +9,7 @@ const BehandlingTekster = {
     'behandling.opplysningene.preteritum':
         'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. ',
     'behandling.lenke': 'Kontakt oss',
-    'behandling.lenke.url': 'https://mininnboks.nav.no/sporsmal/skriv/HELSE',
+    'behandling.lenke.url': 'https://innboks.nav.no/s/skriv-til-oss?category=Helse',
     'behandling.se-opplysningene': ' om du ønsker å se opplysningene.',
 }
 
