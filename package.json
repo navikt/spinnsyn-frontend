@@ -45,7 +45,7 @@
         "jest-environment-jsdom": "^29.4.3",
         "next": "^12.3.1",
         "prettier": "^2.8.4",
-        "start-server-and-test": "^1.15.4",
+        "start-server-and-test": "^1.15.5",
         "ts-loader": "^9.4.2"
     },
     "scripts": {
