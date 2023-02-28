@@ -19,7 +19,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     }
 
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
-    const vedtaktsdato = tilLesbarDatoMedArstall(dayjs(vedtak?.opprettetTimestamp).toDate())
+    const sluttPaAktuelleVedtaksPeriode = tilLesbarDatoMedArstall(vedtak.vedtak.tom)
 
     return (
         <Ekspanderbar
@@ -33,7 +33,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                         {vedtak.vedtak.utbetaling.forbrukteSykedager} {tekst('sykepengedager.sykepengedager')}
                         <BodyShort as="span">
                             {getLedetekst(tekst('sykepengedager.hittil'), {
-                                '%DATO%': vedtaktsdato,
+                                '%DATO%': sluttPaAktuelleVedtaksPeriode,
                             })}
                         </BodyShort>
                     </Heading>
@@ -46,7 +46,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager} {tekst('sykepengedager.sykepengedager')}
                     <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.gjenstar'), {
-                            '%DATO%': vedtaktsdato,
+                            '%DATO%': sluttPaAktuelleVedtaksPeriode,
                         })}
                     </BodyShort>
                 </Heading>
@@ -58,7 +58,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                     {sluttdato}
                     <BodyShort as="span">
                         {getLedetekst(tekst('sykepengedager.sluttdato'), {
-                            '%DATO%': vedtaktsdato,
+                            '%DATO%': sluttPaAktuelleVedtaksPeriode,
                         })}
                     </BodyShort>
                 </Heading>
