@@ -45,6 +45,7 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
     orgnavn: 'INDUSTRIFABRIKKEN AS',
     annullert: false,
     revurdert: false,
+    dager: [],
     dagerArbeidsgiver: [
         {
             dato: '2021-12-29',

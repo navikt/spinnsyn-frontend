@@ -15,6 +15,7 @@ import {
     vedtakRevurdert,
     vedtakRevurdertDirekte,
     vedtakRevurdertKombinasjon,
+    slutterMedRefusjon,
 } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 
@@ -69,5 +70,5 @@ export const direkteUtenKontonummerPerson: Persona = {
 }
 
 export const kombinasjonPerson: Persona = {
-    vedtak: [kombinertDirekteOgRefusjon],
+    vedtak: [kombinertDirekteOgRefusjon, slutterMedRefusjon],
 }

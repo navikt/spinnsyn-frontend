@@ -8,6 +8,7 @@ export interface RSVedtakWrapper {
     andreArbeidsgivere: AndreArbeidsgivere
     annullert: boolean
     revurdert: boolean
+    dager: RSDag[]
     dagerArbeidsgiver: RSDag[]
     dagerPerson: RSDag[]
     sykepengebelopArbeidsgiver: number
