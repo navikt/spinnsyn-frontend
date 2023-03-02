@@ -2,7 +2,7 @@ import { BodyShort, Heading } from '@navikt/ds-react'
 import parser from 'html-react-parser'
 import React from 'react'
 
-import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
+import { RSBegrunnelseKomplett, RSDag } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Vis from '../vis'
 
@@ -14,12 +14,16 @@ interface DagBeskrivelseProps {
 
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     const lovhjemmel = (dag: RSDag) => {
+        if (dag.dagtype == 'NavDagSyk' || dag.dagtype == 'NavDagDelvisSyk') {
+            return ''
+        }
         if (dag.begrunnelser.length > 0) {
             return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
         }
         if (dag.dagtype == 'ForeldetDag' || dag.dagtype == 'Feriedag' || dag.dagtype == 'Permisjonsdag') {
             return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.dagtype}` as any))
-        } else return ''
+        }
+        return ''
     }
 
     const lagBeskrivelseForUnikDag = (dag: RSDag) => {
@@ -51,26 +55,24 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     const unikeDager = (): RSDag[] => {
         const unikeDagtyper = dager.reduce((list: RSDag[], dag) => {
-            if (dag.dagtype !== 'AvvistDag' && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
+            if (dag.begrunnelser.length === 0 && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
                 list.push(dag)
             }
             return list
         }, [])
 
         const unikeBegrunnelser = dager.reduce((list: RSDag[], dag) => {
-            if (dag.dagtype === 'AvvistDag') {
-                dag.begrunnelser?.forEach((begrunnelse: RSBegrunnelse) => {
-                    if (!list.find((d: RSDag) => d.begrunnelser?.includes(begrunnelse))) {
-                        list.push({
-                            dato: dag.dato,
-                            belop: dag.belop,
-                            dagtype: dag.dagtype,
-                            grad: dag.grad,
-                            begrunnelser: [begrunnelse],
-                        } as RSDag)
-                    }
-                })
-            }
+            dag.begrunnelser.forEach((begrunnelse: RSBegrunnelseKomplett) => {
+                if (!list.find((d: RSDag) => d.begrunnelser.includes(begrunnelse) && d.dagtype == dag.dagtype)) {
+                    list.push({
+                        dato: dag.dato,
+                        belop: dag.belop,
+                        dagtype: dag.dagtype,
+                        grad: dag.grad,
+                        begrunnelser: [begrunnelse],
+                    } as RSDag)
+                }
+            })
             return list
         }, [])
 

@@ -20,7 +20,7 @@ export interface RSDag {
     belop: number
     grad: number
     dagtype: RSDagTypeKomplett
-    begrunnelser: RSBegrunnelse[]
+    begrunnelser: RSBegrunnelseKomplett[]
 }
 
 interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
@@ -57,7 +57,7 @@ interface RSUtbetalingUtbetalt {
     utbetalingType?: string
 }
 
-export type RSBegrunnelse =
+type RSBegrunnelse =
     | 'SykepengedagerOppbrukt'
     | 'SykepengedagerOppbruktOver67'
     | 'MinimumInntekt'
@@ -69,8 +69,10 @@ export type RSBegrunnelse =
     | 'Over70'
     | 'EtterDødsdato'
     | 'UKJENT'
+type RSBegrunnelseExtra = 'Refusjon' | 'BrukerUtbetaling'
+export type RSBegrunnelseKomplett = RSBegrunnelse | RSBegrunnelseExtra
 
-export type RSDagType =
+type RSDagType =
     | 'NavDag'
     | 'NavHelgDag'
     | 'ArbeidsgiverperiodeDag'
@@ -81,7 +83,7 @@ export type RSDagType =
     | 'AvvistDag'
     | 'ForeldetDag'
     | 'UkjentDag'
-export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
+type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
 export interface Dokument {

@@ -2,7 +2,7 @@ import { Tag } from '@navikt/ds-react'
 import { logger } from '@navikt/next-logger'
 import React from 'react'
 
-import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
+import { RSBegrunnelseKomplett, RSDag } from '../../types/rs-types/rs-vedtak'
 
 interface DagLabelProps {
     dag: RSDag
@@ -15,24 +15,33 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'NavDag':
             case 'NavDagSyk':
                 return (
-                    <Tag variant="success" size="small">
-                        Syk
-                    </Tag>
+                    <>
+                        <Tag variant="success" size="small">
+                            Syk
+                        </Tag>
+                        {dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))}
+                    </>
                 )
 
             case 'NavDagDelvisSyk':
                 if (skalViseProsent) {
                     const grad = dag.grad.toString()
                     return (
-                        <Tag variant="success" size="small">
-                            {grad}% syk
-                        </Tag>
+                        <>
+                            <Tag variant="success" size="small">
+                                {grad}% syk
+                            </Tag>
+                            {dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))}
+                        </>
                     )
                 }
                 return (
-                    <Tag variant="success" size="small">
-                        Delvis&nbsp;syk
-                    </Tag>
+                    <>
+                        <Tag variant="success" size="small">
+                            Delvis&nbsp;syk
+                        </Tag>
+                        {dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))}
+                    </>
                 )
 
             case 'NavHelgDag':
@@ -88,7 +97,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))
 
             case 'UkjentDag':
-
             default:
                 return (
                     <Tag size="small" variant="info">
@@ -98,7 +106,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         }
     }
 
-    const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelse, idx: number) => {
+    const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelseKomplett, idx: number) => {
         switch (begrunnelse) {
             case 'SykepengedagerOppbrukt':
             case 'SykepengedagerOppbruktOver67':
@@ -155,6 +163,20 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return (
                     <Tag size="small" variant="warning" key={idx}>
                         Etter&nbsp;dødsfall
+                    </Tag>
+                )
+
+            case 'Refusjon':
+                return (
+                    <Tag size="small" variant="info" key={idx}>
+                        Refusjon
+                    </Tag>
+                )
+
+            case 'BrukerUtbetaling':
+                return (
+                    <Tag size="small" variant="success" key={idx}>
+                        Sykepenger
                     </Tag>
                 )
 
