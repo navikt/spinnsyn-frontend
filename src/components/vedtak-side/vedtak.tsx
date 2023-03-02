@@ -32,7 +32,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const query: NodeJS.Dict<string | string[]> = {}
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const avvisteDager = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
+    const avvisteDager = vedtak.dager.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const erSP = vedtak.sykepengebelopPerson > 0
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
