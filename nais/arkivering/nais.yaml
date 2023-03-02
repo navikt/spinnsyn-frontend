@@ -11,7 +11,7 @@ spec:
   replicas:
     min: 3
     max: 4
-    cpuThresholdPercentage: 50
+    cpuThresholdPercentage: 90
   resources:
     limits:
       cpu: 200m
@@ -21,9 +21,10 @@ spec:
       memory: 170Mi
   liveness:
     path: syk/sykepenger/api/internal/isAlive
-    initialDelay: 30
   readiness:
     path: syk/sykepenger/api/internal/isReady
+  startup:
+    path: syk/sykepenger/api/internal/isAlive
     initialDelay: 30
   accessPolicy:
     outbound:
