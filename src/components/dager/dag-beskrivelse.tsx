@@ -14,9 +14,6 @@ interface DagBeskrivelseProps {
 
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     const lovhjemmel = (dag: RSDag) => {
-        if (dag.dagtype == 'NavDagSyk' || dag.dagtype == 'NavDagDelvisSyk') {
-            return ''
-        }
         if (dag.begrunnelser.length > 0) {
             return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
         }
@@ -76,7 +73,15 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
             return list
         }, [])
 
-        return [...unikeDagtyper, ...unikeBegrunnelser] as RSDag[]
+        const unikeSorterteDager = [...unikeDagtyper, ...unikeBegrunnelser]
+        const indexOfHelg = unikeSorterteDager.findIndex((a) => a.dagtype === 'NavHelgDag')
+        if (indexOfHelg) {
+            // helg flyttes til slutten av lista
+            const helg = unikeSorterteDager.splice(indexOfHelg, 1)[0]
+            unikeSorterteDager.push(helg)
+        }
+
+        return unikeSorterteDager
     }
 
     return (

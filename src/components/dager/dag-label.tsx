@@ -15,38 +15,73 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'NavDag':
             case 'NavDagSyk':
                 return (
-                    <>
-                        <Tag variant="success" size="small">
-                            Syk
-                        </Tag>
-                        {dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))}
-                    </>
+                    <Tag variant="success" size="small">
+                        Syk
+                    </Tag>
                 )
 
             case 'NavDagDelvisSyk':
                 if (skalViseProsent) {
                     const grad = dag.grad.toString()
                     return (
-                        <>
-                            <Tag variant="success" size="small">
-                                {grad}% syk
-                            </Tag>
-                            {dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))}
-                        </>
+                        <Tag variant="success" size="small">
+                            {grad}% syk
+                        </Tag>
                     )
                 }
                 return (
-                    <>
+                    <Tag variant="success" size="small">
+                        Delvis syk
+                    </Tag>
+                )
+
+            case 'NavSykDag':
+                return (
+                    <Tag variant="success" size="small">
+                        Syk
+                    </Tag>
+                )
+
+            case 'NavDelvisSykDag':
+                if (skalViseProsent) {
+                    const grad = dag.grad.toString()
+                    return (
                         <Tag variant="success" size="small">
-                            Delvis syk
+                            {grad}% syk
                         </Tag>
-                        {dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))}
-                    </>
+                    )
+                }
+                return (
+                    <Tag variant="success" size="small">
+                        Delvis syk
+                    </Tag>
+                )
+
+            case 'NavRefusjonSykDag':
+                return (
+                    <Tag variant="info" size="small">
+                        Refusjon
+                    </Tag>
+                )
+
+            case 'NavRefusjonDelvisSykDag':
+                if (skalViseProsent) {
+                    const grad = dag.grad.toString()
+                    return (
+                        <Tag variant="info" size="small">
+                            {grad}% refusjon
+                        </Tag>
+                    )
+                }
+                return (
+                    <Tag variant="info" size="small">
+                        Delvis refusjon
+                    </Tag>
                 )
 
             case 'NavHelgDag':
                 return (
-                    <Tag size="small" variant="info">
+                    <Tag size="small" variant="neutral">
                         Helg
                     </Tag>
                 )
@@ -60,7 +95,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
 
             case 'Arbeidsdag':
                 return (
-                    <Tag size="small" variant="info">
+                    <Tag size="small" variant="alt1">
                         Arbeidsdag
                     </Tag>
                 )
@@ -163,20 +198,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return (
                     <Tag size="small" variant="warning" key={idx}>
                         Etter dødsfall
-                    </Tag>
-                )
-
-            case 'Refusjon':
-                return (
-                    <Tag size="small" variant="info" key={idx}>
-                        Refusjon
-                    </Tag>
-                )
-
-            case 'BrukerUtbetaling':
-                return (
-                    <Tag size="small" variant="success" key={idx}>
-                        Sykepenger
                     </Tag>
                 )
 

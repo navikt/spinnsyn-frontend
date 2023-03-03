@@ -45,7 +45,11 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                             <BodyShort size="small" as="span">
                                 {dag.dagtype === 'NavDag' ||
                                 dag.dagtype === 'NavDagSyk' ||
-                                dag.dagtype === 'NavDagDelvisSyk'
+                                dag.dagtype === 'NavDagDelvisSyk' ||
+                                dag.dagtype === 'NavSykDag' ||
+                                dag.dagtype === 'NavDelvisSykDag' ||
+                                dag.dagtype === 'NavRefusjonSykDag' ||
+                                dag.dagtype === 'NavRefusjonDelvisSykDag'
                                     ? ValutaFormat.format(dag.belop) + ' kr'
                                     : '-'}
                             </BodyShort>

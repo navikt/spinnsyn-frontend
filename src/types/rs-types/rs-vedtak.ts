@@ -69,8 +69,7 @@ type RSBegrunnelse =
     | 'Over70'
     | 'EtterDødsdato'
     | 'UKJENT'
-type RSBegrunnelseExtra = 'Refusjon' | 'BrukerUtbetaling'
-export type RSBegrunnelseKomplett = RSBegrunnelse | RSBegrunnelseExtra
+export type RSBegrunnelseKomplett = RSBegrunnelse
 
 type RSDagType =
     | 'NavDag'
@@ -83,7 +82,13 @@ type RSDagType =
     | 'AvvistDag'
     | 'ForeldetDag'
     | 'UkjentDag'
-type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
+type RSDagTypeExtra =
+    | 'NavDagSyk' // TODO: fjern
+    | 'NavDagDelvisSyk' // TODO: fjern
+    | 'NavRefusjonSykDag'
+    | 'NavRefusjonDelvisSykDag'
+    | 'NavSykDag'
+    | 'NavDelvisSykDag'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
 export interface Dokument {
