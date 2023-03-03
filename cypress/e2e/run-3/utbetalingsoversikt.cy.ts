@@ -92,8 +92,8 @@ describe('Utbetalingsoversikt', () => {
                     'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
                 )
 
-                cy.get('.navds-tag--small.navds-tag--info').contains('Arbeidsdag')
-                cy.get('.navds-tag--small.navds-tag--info + .navds-body-short').contains(
+                cy.get('.navds-tag--small.navds-tag--alt1').contains('Arbeidsdag')
+                cy.get('.navds-tag--small.navds-tag--alt1 + .navds-body-short').contains(
                     'Du får ikke sykepenger for hele dager du har vært på jobb. ' +
                         'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',
                 )
@@ -103,8 +103,8 @@ describe('Utbetalingsoversikt', () => {
                     'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
                 )
 
-                cy.get('.navds-tag--small.navds-tag--info').contains('Helg')
-                cy.get('.navds-tag--small.navds-tag--info + .navds-body-short').contains(
+                cy.get('.navds-tag--small.navds-tag--neutral').contains('Helg')
+                cy.get('.navds-tag--small.navds-tag--neutral + .navds-body-short').contains(
                     'Sykepenger betales bare for dagene mandag til fredag. ' +
                         'Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. ' +
                         'Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
