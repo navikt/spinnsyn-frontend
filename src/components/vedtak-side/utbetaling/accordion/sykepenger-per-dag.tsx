@@ -11,9 +11,10 @@ import { RSDag } from '../../../../types/rs-types/rs-vedtak'
 
 interface SykepengerPerDagProps {
     dager: RSDag[]
+    type: 'Personutbetaling' | 'Refusjon'
 }
 
-export const SykepengerPerDag = ({ dager }: SykepengerPerDagProps) => {
+export const SykepengerPerDag = ({ dager, type }: SykepengerPerDagProps) => {
     const isServer = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(isServer)
     const accordionRef = useRef(null)
@@ -34,9 +35,9 @@ export const SykepengerPerDag = ({ dager }: SykepengerPerDagProps) => {
                         </Heading>
                     </Accordion.Header>
                     <Accordion.Content>
-                        <DagTabell dager={dager} />
+                        <DagTabell dager={dager} type={type} />
 
-                        <DagBeskrivelse dager={dager} />
+                        <DagBeskrivelse dager={dager} type={type} />
                     </Accordion.Content>
                 </Accordion.Item>
             )}

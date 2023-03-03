@@ -38,7 +38,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
 
                 <Accordion>
                     <InntektInfo vedtak={vedtak} />
-                    <SykepengerPerDag dager={vedtak.dager} />
+                    <SykepengerPerDag dager={vedtak.dager} type="Refusjon" />
                     <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
                 </Accordion>
             </>

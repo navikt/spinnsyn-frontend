@@ -63,9 +63,9 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                         </Heading>
                     </Accordion.Header>
                     <Accordion.Content>
-                        <DagTabell dager={avvisteDager} />
+                        <DagTabell dager={avvisteDager} type="Avvist" />
 
-                        <DagBeskrivelse dager={avvisteDager} />
+                        <DagBeskrivelse dager={avvisteDager} type="Avvist" />
                     </Accordion.Content>
                 </Accordion.Item>
 

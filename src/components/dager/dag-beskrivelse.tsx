@@ -10,9 +10,10 @@ import DagLabel from './dag-label'
 
 interface DagBeskrivelseProps {
     dager: RSDag[]
+    type: 'Personutbetaling' | 'Refusjon' | 'Avvist'
 }
 
-const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
+const DagBeskrivelse = ({ dager, type }: DagBeskrivelseProps) => {
     const lovhjemmel = (dag: RSDag) => {
         if (dag.begrunnelser.length > 0) {
             return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
@@ -30,14 +31,18 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
             <>
                 <Vis
                     hvis={dag.dagtype !== 'AvvistDag'}
-                    render={() => <BodyShort>{tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}</BodyShort>}
+                    render={() => (
+                        <BodyShort id={`${dag.dagtype}-${type}`}>
+                            {tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}
+                        </BodyShort>
+                    )}
                 />
 
                 <Vis
                     hvis={dag.dagtype === 'AvvistDag'}
                     render={() => (
-                        <BodyShort>
-                            {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
+                        <BodyShort id={`${dag.begrunnelser[0]}-${type}`}>
+                            {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser[0]}` as any))}
                         </BodyShort>
                     )}
                 />

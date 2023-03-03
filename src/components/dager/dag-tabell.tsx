@@ -9,9 +9,10 @@ import DagLabel from './dag-label'
 
 interface DagTabellProps {
     dager: RSDag[]
+    type: 'Personutbetaling' | 'Refusjon' | 'Avvist'
 }
 
-const DagTabell = ({ dager }: DagTabellProps) => {
+const DagTabell = ({ dager, type }: DagTabellProps) => {
     return (
         <Table zebraStripes={true} className="tabell--dag" size="medium">
             <Table.Header>
@@ -54,7 +55,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                                     : '-'}
                             </BodyShort>
                         </Table.DataCell>
-                        <Table.DataCell>
+                        <Table.DataCell aria-describedby={`${dag.begrunnelser[0] || dag.dagtype}-${type}`}>
                             <DagLabel dag={dag} skalViseProsent={true} />
                         </Table.DataCell>
                     </Table.Row>

@@ -46,7 +46,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
 
                     <InntektInfo vedtak={vedtak} />
 
-                    <SykepengerPerDag dager={vedtak.dager} />
+                    <SykepengerPerDag dager={vedtak.dager} type="Personutbetaling" />
 
                     <BeregningInfo vedtak={vedtak} mottaker={'person'} />
                 </Accordion>
