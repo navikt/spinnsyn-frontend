@@ -38,7 +38,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'NavSykDag':
                 return (
                     <Tag variant="success" size="small">
-                        Syk
+                        Til deg
                     </Tag>
                 )
 
@@ -46,21 +46,26 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 if (skalViseProsent) {
                     const grad = dag.grad.toString()
                     return (
-                        <Tag variant="success" size="small">
-                            {grad}% syk
-                        </Tag>
+                        <>
+                            <Tag variant="success" size="small">
+                                {grad}%
+                            </Tag>
+                            <Tag variant="success" size="small">
+                                Til deg
+                            </Tag>
+                        </>
                     )
                 }
                 return (
                     <Tag variant="success" size="small">
-                        Delvis syk
+                        Prosent til deg
                     </Tag>
                 )
 
             case 'NavRefusjonSykDag':
                 return (
                     <Tag variant="info" size="small">
-                        Refusjon
+                        Til arbeidsgiveren
                     </Tag>
                 )
 
@@ -68,14 +73,19 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 if (skalViseProsent) {
                     const grad = dag.grad.toString()
                     return (
-                        <Tag variant="info" size="small">
-                            {grad}% refusjon
-                        </Tag>
+                        <>
+                            <Tag variant="info" size="small">
+                                {grad}%
+                            </Tag>
+                            <Tag variant="info" size="small">
+                                Til arbeidsgiveren
+                            </Tag>
+                        </>
                     )
                 }
                 return (
                     <Tag variant="info" size="small">
-                        Delvis refusjon
+                        Prosent til arbeidsgiveren
                     </Tag>
                 )
 
