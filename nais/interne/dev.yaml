@@ -1,4 +1,4 @@
-ingress: https://spinnsyn-frontend-interne.dev.intern.nav.no/syk/sykepenger
+ingress: https://spinnsyn-frontend-interne.intern.dev.nav.no/syk/sykepenger
 env:
   MOCK_BACKEND: false
   ENVIRONMENT: q1
