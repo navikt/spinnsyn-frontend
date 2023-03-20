@@ -6,7 +6,7 @@ import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
-import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -31,8 +31,19 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
     const query: NodeJS.Dict<string | string[]> = {}
 
+    // unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
+    const avvisteDagerArbeidsgiver = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
+    const avvisteDagerPerson = vedtak.dagerPerson.filter((dag) => dagErAvvist.includes(dag.dagtype))
+    const avvisteDager = avvisteDagerPerson
+        .reduce((list: RSDag[], dag: RSDag) => {
+            if (list.find((d) => d.dato === dag.dato) === undefined) {
+                list.push(dag)
+            }
+            return list
+        }, avvisteDagerArbeidsgiver)
+        .sort((a, b) => (a.dato < b.dato ? -1 : 1))
+
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const avvisteDager = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const erSP = vedtak.sykepengebelopPerson > 0
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0

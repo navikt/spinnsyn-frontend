@@ -25,9 +25,9 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     const accordionRef = useRef(null)
 
     const harMinstEnForLavInntektDag =
-        vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
+        avvisteDager.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
 
-    const avvisteDagerTekst = avvisteDager.length > 1 || avvisteDager.length < 1 ? ' sykepengedager' : ' sykepengedag'
+    const avvisteDagerTekst = avvisteDager.length === 1 ? ' sykepengedag' : ' sykepengedager'
 
     const onButtonClick = () => {
         ekspanderbarKlikk(open, accordionRef, 'Dager NAV ikke utbetaler')
