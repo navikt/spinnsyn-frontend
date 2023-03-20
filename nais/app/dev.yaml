@@ -15,3 +15,4 @@ env:
   SPINNSYN_BACKEND_TOKENX_CLIENT_ID: "dev-gcp:flex:spinnsyn-backend"
   ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend
   SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID: "dev-gcp:okonomi:sokos-kontoregister-person"
+  FEILMELDINGER_URL: "https://flex-frontend-feilmeldinger.ekstern.dev.nav.no/syk/feilmeldinger"

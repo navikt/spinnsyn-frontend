@@ -78,6 +78,7 @@ const nextConfig = {
         environment: process.env.ENVIRONMENT,
         spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE,
         arkiverteVedtakUrl: process.env.ARKIVERTE_VEDTAK_URL,
+        feilmeldingerUrl: process.env.FEILMELDINGER_URL,
     },
 }
 
