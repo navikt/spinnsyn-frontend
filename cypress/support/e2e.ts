@@ -34,7 +34,7 @@ afterEach(() => {
         return {
             // prettier-ignore
             rules: [
-                {id: 'svg-img-alt', enabled: false},           // Trenger ikke alt tekst på bilder
+                { id: 'svg-img-alt', enabled: false },  // Trenger ikke alt tekst på bilder
             ],
         }
     }
