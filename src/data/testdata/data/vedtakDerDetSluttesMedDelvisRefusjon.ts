@@ -96,7 +96,13 @@ export const vedtakDerDetSluttesMedDelvisRefusjon: RSVedtakWrapper = {
             dagtype: 'NavDagSyk',
             begrunnelser: [],
         },
-        { dato: '2023-02-09', belop: 692, grad: 100.0, dagtype: 'NavDagSyk', begrunnelser: [] },
+        {
+            dato: '2023-02-09',
+            belop: 692,
+            grad: 100.0,
+            dagtype: 'NavDagSyk',
+            begrunnelser: [],
+        },
     ],
     dagerPerson: [
         {
