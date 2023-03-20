@@ -26,7 +26,9 @@ export const fetchMedRequestId = async (
             return await fetch(url, options)
         } catch (e) {
             throw new FetchError(
-                `${e} - Kall til url: ${options.method} ${url} og x_request_id: ${requestId} feilet uten svar fra backend.`,
+                `${e} - Kall til url: ${
+                    options.method || 'GET'
+                } ${url} og x_request_id: ${requestId} feilet uten svar fra backend.`,
             )
         }
     }
@@ -78,7 +80,9 @@ export const fetchJsonMedRequestId = async (url: string, options: RequestInit = 
         lagrePayload({ requestId: fetchResult.requestId, app: 'spinnsyn-frontend', payload: await response.text() })
 
         throw new FetchError(
-            `${e} - Kall til url: ${options.method} ${url} og x_request_id: ${fetchResult.requestId} feilet ved parsing av JSON med HTTP-kode: ${response.status}.`,
+            `${e} - Kall til url: ${options.method || 'GET'} ${url} og x_request_id: ${
+                fetchResult.requestId
+            } feilet ved parsing av JSON med HTTP-kode: ${response.status}.`,
         )
     }
 }
