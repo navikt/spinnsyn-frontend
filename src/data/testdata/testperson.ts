@@ -8,6 +8,7 @@ import {
     kombinasjonPerson,
     kunDirektePerson,
     Persona,
+    slutterMedDelvisRefusjon,
     utenData,
 } from './data/personas'
 import { kunAgPeriode } from './data/rs-vedtak'
@@ -27,4 +28,5 @@ export const personas: StringFunctionMap = {
     'direkte-uten-kontonummer': () => direkteUtenKontonummerPerson,
     kombinasjon: () => kombinasjonPerson,
     'kun-ag-periode': () => ({ vedtak: [kunAgPeriode] }),
+    'slutter-med-delvis-refusjon': () => slutterMedDelvisRefusjon,
 }

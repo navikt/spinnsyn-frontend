@@ -18,6 +18,7 @@ import {
     slutterMedRefusjon,
 } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
+import { vedtakDerDetSluttesMedDelvisRefusjon } from './vedtakDerDetSluttesMedDelvisRefusjon'
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
@@ -71,4 +72,8 @@ export const direkteUtenKontonummerPerson: Persona = {
 
 export const kombinasjonPerson: Persona = {
     vedtak: [kombinertDirekteOgRefusjon, slutterMedRefusjon],
+}
+
+export const slutterMedDelvisRefusjon: Persona = {
+    vedtak: [vedtakDerDetSluttesMedDelvisRefusjon],
 }
