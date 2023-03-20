@@ -5,7 +5,7 @@ Applikasjon som viser vedtak mottatt fra `Speil` til sluttbruker på nav.no. Hen
 Lever under:
 
 - prod-gcp: [https://www.nav.no/syk/sykepenger](https://www.nav.no/syk/sykepenger)
-- dev-gcp: [https://www-gcp.dev.nav.no/syk/sykepenger](https://www-gcp.dev.nav.no/syk/sykepenger)
+- dev-gcp: [https://www.ekstern.dev.nav.no/syk/sykepenger](https://www.ekstern.dev.nav.no/syk/sykepenger)
 - labs-gcp (demo): [https://sykepenger.labs.nais.io/syk/sykepenger](https://sykepenger.labs.nais.io/syk/sykepenger)
 
 # spinnsyn-frontend-arkivering
@@ -21,7 +21,7 @@ Benytter seg av azure AD og wonderwall for å logge inn interne brukere.
 Lever under:
 
 - prod-gcp: https://spinnsyn-frontend-interne.intern.nav.no/syk/sykepenger
-- dev-gcp: https://spinnsyn-frontend-interne.dev.intern.nav.no/syk/sykepenger
+- dev-gcp: https://spinnsyn-frontend-interne.intern.dev.nav.no/syk/sykepenger
 
 
 For å teste lokalt
