@@ -46,7 +46,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const nyesteRevudering = vedtak.revurdert === false && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
-    const avvisteDager = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const erSP = vedtak.sykepengebelopPerson > 0
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
