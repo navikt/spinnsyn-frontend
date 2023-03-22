@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
+import { logger } from '@navikt/next-logger'
 
 import { feilmeldingerUrl } from './environment'
 
@@ -6,7 +7,14 @@ export type FetchResult = { requestId: string; response: Response }
 
 export type ErrorHandler = (result: Response, requestId: string, defaultErrorHandler: () => void) => void
 
-export class FetchError extends Error {}
+export class FetchError extends Error {
+    status: number
+
+    constructor(message: string, status: number) {
+        super(message)
+        this.status = status
+    }
+}
 
 export class AuthenticationError extends Error {}
 
@@ -29,6 +37,7 @@ export const fetchMedRequestId = async (
                 `${e} - Kall til url: ${
                     options.method || 'GET'
                 } ${url} og x_request_id: ${requestId} feilet uten svar fra backend.`,
+                -1,
             )
         }
     }
@@ -44,6 +53,7 @@ export const fetchMedRequestId = async (
         const defaultErrorHandler = () => {
             throw new FetchError(
                 `Kall til url: ${options.method} ${url} og x_request_id: ${requestId} feilet med HTTP-kode: ${response.status}.`,
+                response.status,
             )
         }
         if (errorHandler) {
@@ -60,18 +70,13 @@ export const fetchJsonMedRequestId = async (url: string, options: RequestInit = 
     const fetchResult = await fetchMedRequestId(url, options, errorHandler)
     const response = fetchResult.response
 
-    type Payload = { requestId: string; app: string; payload: string }
-
-    function lagrePayload(payload: Payload) {
-        try {
-            fetch(`${feilmeldingerUrl()}/api/v1/feilmelding`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
-            })
-        } catch (e) {}
+    type Payload = {
+        requestId: string
+        app: string
+        payload: string
+        method: string
+        responseCode: number
+        contentLength: number
     }
 
     // Kloner siden kall til .json() konsumerer data, og vi trenger å gjøre et kall til .text() hvis det ikke er mulig
@@ -80,15 +85,32 @@ export const fetchJsonMedRequestId = async (url: string, options: RequestInit = 
     try {
         return await response.json()
     } catch (e) {
-        lagrePayload({
+        const payload: Payload = {
             requestId: fetchResult.requestId,
             app: 'spinnsyn-frontend',
             payload: await clonedResponse.text(),
+            method: options.method || 'GET',
+            responseCode: response.status,
+            contentLength: parseInt(response.headers.get('content-length') || '0'),
+        }
+
+        fetch(`${feilmeldingerUrl()}/api/v1/feilmelding`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
         })
+            .catch((e) => {
+                logger.error(e, 'Feilet ved parsing av JSON og kunne ikke lagre payload.')
+            })
+            .finally(() => {
+                logger.info('Sendt payload til flex-frontend-feilmeldinger.')
+            })
+
         throw new FetchError(
             `${e} - Kall til url: ${options.method || 'GET'} ${url} og x_request_id: ${
                 fetchResult.requestId
             } feilet ved parsing av JSON med HTTP-kode: ${response.status}.`,
+            response.status,
         )
     }
 }
