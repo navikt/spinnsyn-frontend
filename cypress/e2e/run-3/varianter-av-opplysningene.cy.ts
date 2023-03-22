@@ -46,12 +46,10 @@ describe('Tester logikk i behandling.tsx', () => {
     it('Manuelt behandlet revurdert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634338')
 
-        cy.get('.navds-alert').contains('Du har fått et nytt vedtak som erstatter dette vedtaket').and('be.visible')
+        cy.get('.navds-alert').contains('Denne beslutningen er behandlet på nytt.').and('be.visible')
 
-        cy.get('.navds-alert').contains(
-            'Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.',
-        )
-        cy.get('.navds-alert').contains('Du finner det nye vedtaket i listen over svar på søknader')
+   
+        cy.get('.navds-alert').contains('Nytt svar for denne perioden finner du her')
         cy.get('.navds-alert').should(
             'not.contain',
             'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
