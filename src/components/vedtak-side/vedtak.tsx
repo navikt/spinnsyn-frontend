@@ -123,10 +123,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                                 {`${tekst('revurdert.alert.revurdert.nybeslutningtekst')} ${tilLesbarPeriodeMedArstall(
                                     vedtak?.vedtak.fom,
                                     vedtak?.vedtak.tom,
-                                )}.)`}
+                                )}.`}
                             </BodyShort>
                             <Link href={tekst('revurdert.alert.link.url')}>
-                                {' '}
                                 {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
                             </Link>
                         </Alert>
