@@ -75,6 +75,8 @@ describe('Tester logikk i behandling.tsx', () => {
             .contains('Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.')
     })
 
+    
+
     it('Revurdert vedtak med kombinasjonsutbetaling', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=85f25c03-faa8-4a99-8f15-971e9406f64f')
 
@@ -85,6 +87,12 @@ describe('Tester logikk i behandling.tsx', () => {
                 'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.',
             )
     })
+
+    it('Revurdert vedtak får infoboks', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.get('.navds-tag--info').contains('Ny beslutning').click()
+        cy.get('.navds-alert--info').contains('Dette er en ny beslutning av et tidligere svar for perioden 24. september – 16. desember 2022.')
+     })
 })
 
 export {}
