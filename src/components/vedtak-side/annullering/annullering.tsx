@@ -10,16 +10,11 @@ import { VedtakProps } from '../vedtak'
 const RevurdertAlert = () => {
     return (
         <Alert variant="warning">
-        <BodyShort>
-            {`${tekst('revurdert.alert.tekst')}`}
-        </BodyShort>
-        <Link href={tekst('revurdert.alert.link.url')}>
-            {tekst('revurdert.alert.link.tekst')}
-        </Link>
-    </Alert>
+            <BodyShort>{`${tekst('revurdert.alert.tekst')}`}</BodyShort>
+            <Link href={tekst('revurdert.alert.link.url')}>{tekst('revurdert.alert.link.tekst')}</Link>
+        </Alert>
     )
 }
-
 
 const AnnullertAlert = () => {
     return (

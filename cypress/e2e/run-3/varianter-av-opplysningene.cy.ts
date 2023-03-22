@@ -48,7 +48,6 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.get('.navds-alert').contains('Denne beslutningen er behandlet på nytt.').and('be.visible')
 
-   
         cy.get('.navds-alert').contains('Nytt svar for denne perioden finner du her')
         cy.get('.navds-alert').should(
             'not.contain',
