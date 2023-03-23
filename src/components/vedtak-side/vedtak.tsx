@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { BodyLong, Heading } from '@navikt/ds-react'
+import { Alert, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
 import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -44,6 +45,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         .sort((a, b) => (a.dato < b.dato ? -1 : 1))
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+    const nyesteRevudering = vedtak.revurdert === false && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const erSP = vedtak.sykepengebelopPerson > 0
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
@@ -109,6 +111,23 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                                 {tekst('annullert.se-tidligere-beslutning')}
                             </Heading>
                         </>
+                    )}
+                />
+
+                <Vis
+                    hvis={nyesteRevudering}
+                    render={() => (
+                        <Alert variant="info">
+                            <BodyShort>
+                                {`${tekst('revurdert.alert.revurdert.nybeslutningtekst')} ${tilLesbarPeriodeMedArstall(
+                                    vedtak?.vedtak.fom,
+                                    vedtak?.vedtak.tom,
+                                )}.`}
+                            </BodyShort>
+                            <Link href={tekst('revurdert.alert.link.url')}>
+                                {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
+                            </Link>
+                        </Alert>
                     )}
                 />
 

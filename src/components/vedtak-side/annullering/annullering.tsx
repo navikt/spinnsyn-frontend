@@ -10,14 +10,8 @@ import { VedtakProps } from '../vedtak'
 const RevurdertAlert = () => {
     return (
         <Alert variant="warning">
-            <Heading spacing level={'2'} size={'small'}>
-                {parser(tekst('revurdert.alert.header'))}
-            </Heading>
-            <BodyShort spacing>{parser(tekst('revurdert.alert.tekst'))}</BodyShort>
-
-            <Link className="alert-link-listevisning" href={tekst('revurdert.alert.link.url')}>
-                <BodyLong>{tekst('revurdert.alert.link.tekst')}</BodyLong>
-            </Link>
+            <BodyShort>{`${tekst('revurdert.alert.tekst')}`}</BodyShort>
+            <Link href={tekst('revurdert.alert.link.url')}>{tekst('revurdert.alert.link.tekst')}</Link>
         </Alert>
     )
 }

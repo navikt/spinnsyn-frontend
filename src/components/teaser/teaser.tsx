@@ -11,6 +11,7 @@ import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
 
 const Teaser = ({ vedtak }: VedtakTeaserProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+    const nyesteRevudering = vedtak.revurdert === false && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
 
     const hand = '/syk/sykepenger/static/img/ikon-hand.svg'
     const handHover = '/syk/sykepenger/static/img/ikon-hand-hover.svg'
@@ -42,6 +43,10 @@ const Teaser = ({ vedtak }: VedtakTeaserProps) => {
                             {arbeidsgiverListevisning(vedtak)}
                         </div>
                     </div>
+                    <Vis
+                        hvis={nyesteRevudering}
+                        render={() => <Tag variant="info">{tekst('spinnsyn.teaser.sisterevudering')}</Tag>}
+                    />
                     <Vis
                         hvis={annullertEllerRevurdert}
                         render={() => <Tag variant="warning">{tekst('spinnsyn.teaser.annullert')}</Tag>}

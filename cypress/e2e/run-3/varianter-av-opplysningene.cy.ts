@@ -46,12 +46,9 @@ describe('Tester logikk i behandling.tsx', () => {
     it('Manuelt behandlet revurdert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634338')
 
-        cy.get('.navds-alert').contains('Du har fått et nytt vedtak som erstatter dette vedtaket').and('be.visible')
+        cy.get('.navds-alert').contains('Denne beslutningen er behandlet på nytt.').and('be.visible')
 
-        cy.get('.navds-alert').contains(
-            'Vi har mottatt nye opplysninger som gjør at dette vedtaket er behandlet på nytt av en saksbehandler.',
-        )
-        cy.get('.navds-alert').contains('Du finner det nye vedtaket i listen over svar på søknader')
+        cy.get('.navds-alert').contains('Nytt svar for denne perioden finner du her')
         cy.get('.navds-alert').should(
             'not.contain',
             'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
@@ -84,6 +81,14 @@ describe('Tester logikk i behandling.tsx', () => {
             .contains(
                 'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.',
             )
+    })
+
+    it('Revurdert vedtak får infoboks', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.get('.navds-tag--info').contains('Ny beslutning').click()
+        cy.get('.navds-alert--info').contains(
+            'Dette er en ny beslutning av et tidligere svar for perioden 24. september – 16. desember 2022.',
+        )
     })
 })
 
