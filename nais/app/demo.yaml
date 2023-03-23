@@ -22,7 +22,7 @@ spec:
     - name: ENVIRONMENT
       value: "labs"
     - name: SYKEFRAVAER_URL
-      value: "https://ditt-sykefravaer.labs.nais.io/syk/sykefravaer"
+      value: "https://demo.ekstern.dev.nav.no/syk/sykefravaer"
     - name: MINSIDE_URL
       value: "https://www.nav.no/minside/"
     - name: ARKIVERTE_VEDTAK_URL
