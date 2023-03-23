@@ -14,7 +14,6 @@ jobs:
     with:
       base-path: syk/sykepenger
       sentry-project: spinnsyn
-      labs-ingress: sykepenger
       sentry-enabled: false
 
   arkivering-deploy:
