@@ -90,7 +90,7 @@ export const fetchJsonMedRequestId = async (url: string, options: RequestInit = 
             payload: await clonedResponse.text(),
             method: options.method || 'GET',
             responseCode: response.status,
-            contentLength: parseInt(response.headers.get('content-length') || '0'),
+            contentLength: parseInt(response.headers.get('Content-Length') || '0'),
         }
 
         try {
