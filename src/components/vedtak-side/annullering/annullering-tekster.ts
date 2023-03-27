@@ -6,7 +6,7 @@ const AnnulleringTekster = {
     'revurdert.alert.link.tekst': 'Nytt svar for denne perioden finner du her.',
     'revurdert.alert.link.url': '/syk/sykepenger',
     'annullert.alert.header': 'Til din informasjon',
-    'annulert.alert.tekst': 'Av tekniske årsaker er saken din er flyttet til et annet saksbehandlingssystem.',
+    'annulert.alert.tekst': 'Av tekniske årsaker er saken din flyttet til et annet saksbehandlingssystem.',
     'annulert.alert.undertekst': 'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
     'annullert.info.header': 'Dette lurer mange på når vedtaket behandles på nytt',
 
