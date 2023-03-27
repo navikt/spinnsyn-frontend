@@ -28,9 +28,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.get('.navds-alert').contains('Til din informasjon').and('be.visible')
 
-        cy.get('.navds-alert').contains(
-            'Av tekniske årsaker er saken din flyttet til et annet saksbehandlingssystem.',
-        )
+        cy.get('.navds-alert').contains('Av tekniske årsaker er saken din flyttet til et annet saksbehandlingssystem.')
         cy.get('.navds-alert').contains('Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.')
         cy.get('.navds-alert').should('not.contain', 'Du finner det nye vedtaket i listen over svar på søknader')
 
