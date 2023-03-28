@@ -84,9 +84,7 @@ describe('Tester logikk i behandling.tsx', () => {
     it('Revurdert vedtak får infoboks', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
         cy.get('.navds-tag--info').contains('Ny beslutning').click()
-        cy.get('.navds-alert--info').contains(
-            'Dette er en ny beslutning som erstatter et tidligere svar.',
-        )
+        cy.get('.navds-alert--info').contains('Dette er en ny beslutning som erstatter et tidligere svar.')
     })
 })
 

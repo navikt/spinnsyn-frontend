@@ -33,7 +33,7 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Den grønne boksen har riktig innhold', () => {
-        cy.contains('21 060 kroner').and('contain', 'Utbetales til Pengeløs Sparebank')
+        cy.contains('21 060 kroner').parent().contains('Utbetales til Pengeløs Sparebank')
 
         cy.contains('Mer om beregningen').click()
         cy.contains('folketrygdloven § 8-28').should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')

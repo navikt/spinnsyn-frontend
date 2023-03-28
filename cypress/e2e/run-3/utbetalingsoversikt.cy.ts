@@ -13,7 +13,7 @@ describe('Utbetalingsoversikt', () => {
     })
 
     it('Utbetalingsoversikt', () => {
-        cy.contains('8 960 kroner').and('contain', 'Utbetales til Pengeløs Sparebank')
+        cy.contains('8 960 kroner').parent().contains('Utbetales til Pengeløs Sparebank')
 
         cy.contains('Sykepenger per dag').click({ force: true })
 
