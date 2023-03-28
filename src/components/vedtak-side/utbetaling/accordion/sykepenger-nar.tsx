@@ -1,11 +1,11 @@
 import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
-import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
 import { tekst } from '../../../../utils/tekster'
 import { LenkeMedAmplitude } from '../../../lenke/lenke-med-amplitude'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { ekspanderbarKlikk } from '../../../ekspanderbar/ekspander-utils'
+import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
 
 export const SykepengerNar = () => {
     const isServer = useContext(ArkiveringContext)
@@ -27,7 +27,7 @@ export const SykepengerNar = () => {
 
             <Accordion.Content className="tekstinfo">
                 <BodyLong spacing>
-                    {parser(tekst('utbetaling.person.når.innhold'))}
+                    {parserWithReplace(tekst('utbetaling.person.når.innhold'))}
                     <LenkeMedAmplitude
                         url={tekst('utbetaling.person.når.lenke.url')}
                         tekst={tekst('utbetaling.person.når.lenke.tekst')}

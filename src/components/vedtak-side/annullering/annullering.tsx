@@ -1,11 +1,11 @@
 import { Alert, BodyLong, BodyShort, Heading, Label, Link } from '@navikt/ds-react'
-import parser from 'html-react-parser'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
 import EkspanderbarInfo from '../../ekspanderbar/ekspanderbar-info'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
+import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 
 const RevurdertAlert = () => {
     return (
@@ -20,10 +20,10 @@ const AnnullertAlert = () => {
     return (
         <Alert variant="warning">
             <Heading spacing level={'2'} size={'small'}>
-                {parser(tekst('annullert.alert.header'))}
+                {parserWithReplace(tekst('annullert.alert.header'))}
             </Heading>
-            <BodyShort spacing>{parser(tekst('annulert.alert.tekst'))}</BodyShort>
-            <BodyShort spacing>{parser(tekst('annulert.alert.undertekst'))}</BodyShort>
+            <BodyShort spacing>{parserWithReplace(tekst('annulert.alert.tekst'))}</BodyShort>
+            <BodyShort spacing>{parserWithReplace(tekst('annulert.alert.undertekst'))}</BodyShort>
         </Alert>
     )
 }
