@@ -1,6 +1,6 @@
 const AnnulleringTekster = {
     'revurdert.alert.header': 'Du har fått et nytt vedtak som erstatter dette vedtaket',
-    'revurdert.alert.revurdert.nybeslutningtekst': 'Dette er en ny beslutning av et tidligere svar for perioden',
+    'revurdert.alert.revurdert.nybeslutningtekst': 'Dette er en ny beslutning som erstatter et tidligere svar.',
     'revurdert.alert.revurdert.nybeslutninglenketekst': 'Tidligere svar finner du her.',
     'revurdert.alert.tekst': 'Denne beslutningen er behandlet på nytt.',
     'revurdert.alert.link.tekst': 'Nytt svar for denne perioden finner du her.',

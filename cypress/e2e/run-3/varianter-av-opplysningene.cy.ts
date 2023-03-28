@@ -85,7 +85,7 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
         cy.get('.navds-tag--info').contains('Ny beslutning').click()
         cy.get('.navds-alert--info').contains(
-            'Dette er en ny beslutning av et tidligere svar for perioden 24. september – 16. desember 2022.',
+            'Dette er en ny beslutning som erstatter et tidligere svar.',
         )
     })
 })

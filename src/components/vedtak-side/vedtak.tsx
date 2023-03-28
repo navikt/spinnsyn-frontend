@@ -7,7 +7,6 @@ import React, { useContext, useEffect } from 'react'
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
 import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
-import { tilLesbarPeriodeMedArstall } from '../../utils/dato-utils'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -118,12 +117,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     hvis={nyesteRevudering}
                     render={() => (
                         <Alert variant="info">
-                            <BodyShort>
-                                {`${tekst('revurdert.alert.revurdert.nybeslutningtekst')} ${tilLesbarPeriodeMedArstall(
-                                    vedtak?.vedtak.fom,
-                                    vedtak?.vedtak.tom,
-                                )}.`}
-                            </BodyShort>
+                            <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
                             <Link href={tekst('revurdert.alert.link.url')}>
                                 {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
                             </Link>
