@@ -1,5 +1,4 @@
 import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
-import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../../context/arkivering-context'
@@ -10,6 +9,7 @@ import { formaterValuta } from '../../../../../utils/valuta-utils'
 import { ekspanderbarKlikk } from '../../../../ekspanderbar/ekspander-utils'
 import Vis from '../../../../vis'
 import { VedtakProps } from '../../../vedtak'
+import { parserWithReplace } from '../../../../../utils/html-react-parser-utils'
 
 import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-arbeidsgivere'
 
@@ -109,7 +109,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                                 render={() => (
                                                     <div className="redusert_sykepengegrunnlag">
                                                         <BodyLong size="small">
-                                                            {parser(tekst('utbetaling.redusert6G.tekst'))}
+                                                            {parserWithReplace(tekst('utbetaling.redusert6G.tekst'))}
                                                         </BodyLong>
                                                     </div>
                                                 )}

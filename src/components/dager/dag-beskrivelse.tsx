@@ -1,10 +1,10 @@
 import { BodyShort, Heading } from '@navikt/ds-react'
-import parser from 'html-react-parser'
 import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Vis from '../vis'
+import { parserWithReplace } from '../../utils/html-react-parser-utils'
 
 import DagLabel from './dag-label'
 
@@ -15,10 +15,10 @@ interface DagBeskrivelseProps {
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     const lovhjemmel = (dag: RSDag) => {
         if (dag.begrunnelser.length > 0) {
-            return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
+            return parserWithReplace(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
         }
         if (dag.dagtype == 'ForeldetDag' || dag.dagtype == 'Feriedag' || dag.dagtype == 'Permisjonsdag') {
-            return parser(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.dagtype}` as any))
+            return parserWithReplace(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.dagtype}` as any))
         } else return ''
     }
 
@@ -36,7 +36,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
                     hvis={dag.dagtype === 'AvvistDag'}
                     render={() => (
                         <BodyShort>
-                            {parser(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
+                            {parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
                         </BodyShort>
                     )}
                 />

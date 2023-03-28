@@ -1,5 +1,4 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import parser from 'html-react-parser'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
@@ -8,6 +7,7 @@ import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere
 import { tekst } from '../../../../utils/tekster'
 import { ekspanderbarKlikk } from '../../../ekspanderbar/ekspander-utils'
 import Vis from '../../../vis'
+import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper
@@ -54,25 +54,25 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
-                <BodyLong spacing>{parser(tekst('utbetaling.mndlonn.innhold'))}</BodyLong>
+                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold'))}</BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Heading>
                 <BodyLong spacing>
-                    {parser(tekst('utbetaling.arslonn.innhold.del1'))}
+                    {parserWithReplace(tekst('utbetaling.arslonn.innhold.del1'))}
                     <Vis
                         hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                        render={() => <>{parser(tekst('utbetaling.arslonn.innhold.del2'))}</>}
+                        render={() => <>{parserWithReplace(tekst('utbetaling.arslonn.innhold.del2'))}</>}
                     />
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
-                <BodyLong spacing>{parser(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
+                <BodyLong spacing>{parserWithReplace(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
 
-                <BodyLong spacing>{parser(tekst('utbetaling.sykepengegrunnlag.skjønn'))}</BodyLong>
+                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.sykepengegrunnlag.skjønn'))}</BodyLong>
 
                 <Vis
                     hvis={!heltAvvist || !harMinstEnForLavInntektDag}
@@ -117,7 +117,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                             <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.info.tittel')}
                             </Heading>
-                            <BodyLong spacing>{parser(tekst('utbetaling.info.innhold'))}</BodyLong>
+                            <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>
                         </>
                     )}
                 />
