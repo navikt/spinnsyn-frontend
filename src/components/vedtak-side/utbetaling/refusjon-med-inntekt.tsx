@@ -21,8 +21,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         <UtbetalingPanel
             tittel={
                 <Heading size="large" level="2">
-                    {annullertEllerRevurdert && <span className="line-through">{belop + ' kroner'}</span>}
-                    {!annullertEllerRevurdert && <span>{belop + ' kroner'}</span>}
+                    <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
                     <BodyShort as="span">
                         {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                             '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
