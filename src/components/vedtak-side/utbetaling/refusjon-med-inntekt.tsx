@@ -15,12 +15,13 @@ import InntektInfo from './accordion/inntekt-info/inntekt-info'
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
+    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     return (
         <UtbetalingPanel
             tittel={
                 <Heading size="large" level="2">
-                    {belop + ' kroner'}
+                    <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
                     <BodyShort as="span">
                         {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                             '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),

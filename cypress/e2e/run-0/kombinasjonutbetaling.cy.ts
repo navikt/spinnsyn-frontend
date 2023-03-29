@@ -52,7 +52,7 @@ describe('Kombinasjonutbetaling', () => {
     })
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
-        cy.contains('4 910 kroner').and('contain', 'Utbetales til Matbutikken AS')
+        cy.contains('4 910 kroner').parent().contains('Utbetales til Matbutikken AS')
 
         cy.get('[data-cy*="refusjon"]').within(() => {
             cy.contains('Når får du sykepengene?').should('not.exist')
