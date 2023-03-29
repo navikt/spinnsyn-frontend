@@ -18,6 +18,10 @@ spec:
     path: syk/sykepenger/api/internal/isAlive
   readiness:
     path: syk/sykepenger/api/internal/isReady
+  accessPolicy:
+    outbound:
+      external:
+        - host: www.nav.no
   env:
     - name: ENVIRONMENT
       value: "labs"
