@@ -39,8 +39,8 @@ spec:
       rules:
         - application: spinnsyn-backend
       external:
-  {{ #each external-host}}
-        - host: {{this } }
+  {{#each external-host}}
+        - host: {{this }}
   {{/each}}
   env:
   {{#each env}}
