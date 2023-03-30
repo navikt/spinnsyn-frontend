@@ -1,4 +1,6 @@
 ingress: https://spinnsyn-frontend-interne.intern.dev.nav.no/syk/sykepenger
+external-host:
+  - modiacontextholder-q0.dev-fss-pub.nais.io
 env:
   MOCK_BACKEND: false
   ENVIRONMENT: q1
