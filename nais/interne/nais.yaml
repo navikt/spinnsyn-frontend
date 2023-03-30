@@ -38,6 +38,10 @@ spec:
     outbound:
       rules:
         - application: spinnsyn-backend
+      external:
+  {{ #each external-host}}
+        - host: {{this } }
+  {{/each}}
   env:
   {{#each env}}
      - name: {{@key}}
