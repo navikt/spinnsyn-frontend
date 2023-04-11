@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid'
-import { logger } from '@navikt/next-logger'
 
 import { feilmeldingerUrl } from './environment'
 
@@ -81,6 +80,17 @@ export const fetchJsonMedRequestId = async (url: string, options: RequestInit = 
     // Kloner reponse sånn at den kan konsumere flere ganger siden kall til .json() og .text() konsumerer data.
     const clonedResponse = response.clone()
 
+    // Guard for å sjekke at response er OK før vi prøver å parse JSON. defaultErrorHandler i fetchMedRequestId()
+    // forhindrer normalt at det skal kunne skje ved å kaste en exception, men den funksjonaliteten kan ikke garanteres hvis
+    // custom error handlers er brukt.
+    if (!response.ok) {
+        throw new Error(
+            `Response er ${response.status}, så vi parser ikke JSON for til url: ${
+                options.method || 'GET'
+            } ${url} og x_request_id: ${fetchResult.requestId}.`,
+        )
+    }
+
     try {
         return await response.json()
     } catch (e) {
@@ -99,10 +109,7 @@ export const fetchJsonMedRequestId = async (url: string, options: RequestInit = 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
             })
-            logger.info('Sendt payload til flex-frontend-feilmeldinger med x_request_id: ' + fetchResult.requestId)
-        } catch (e) {
-            logger.error(e, 'Feilet ved sending av payload til backend.')
-        }
+        } catch (e) {}
 
         throw new FetchError(
             `${e} - Kall til url: ${options.method || 'GET'} ${url} og x_request_id: ${
