@@ -33,7 +33,7 @@
         "@types/cookie": "^0.5.1",
         "@types/jest": "^29.5.0",
         "@types/node": "^18.15.11",
-        "@types/react": "^18.0.28",
+        "@types/react": "^18.0.34",
         "@types/uuid": "^9.0.1",
         "autoprefixer": "^10.4.14",
         "axe-core": "^4.6.3",
