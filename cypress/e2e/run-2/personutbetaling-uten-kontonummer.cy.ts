@@ -13,7 +13,9 @@ describe('Personutbetaling uten kontonummer', () => {
     })
 
     it('Viser info om at kontonummer mangler', () => {
-        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg')
+        cy.get('[data-cy="header-sykepenger-til-deg"]').contains('24 550 kroner')
+
+        cy.get('[data-cy="header-sykepenger-til-deg"]').contains('sykepenger til deg')
 
         cy.get('[data-cy*="personutbetaling"]').contains('Kontonummer for utbetaling')
 

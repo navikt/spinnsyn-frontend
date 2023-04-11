@@ -47,8 +47,9 @@ describe('Kombinasjonutbetaling', () => {
                 )
                 .should('be.visible')
         })
+        cy.get('[data-cy="header-sykepenger-til-deg"]').contains('24 550 kroner')
 
-        cy.contains('24 550 kroner').and('contain', 'sykepenger til deg')
+        cy.get('[data-cy="header-sykepenger-til-deg"]').contains('sykepenger til deg')
     })
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
