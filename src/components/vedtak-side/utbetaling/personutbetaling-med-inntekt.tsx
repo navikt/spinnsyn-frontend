@@ -22,12 +22,13 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const erInterne = spinnsynFrontendInterne()
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
+    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     return (
         <UtbetalingPanel
             tittel={
-                <Heading level="2" size="large">
-                    {belop + ' kroner'}
+                <Heading data-cy="header-sykepenger-til-deg" level="2" size="large">
+                    <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
                     <BodyShort as="span">{tekst('utbetaling.person.systemtittel')}</BodyShort>
                 </Heading>
             }
