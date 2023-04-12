@@ -37,7 +37,3 @@ export function spinnsynFrontendInterne() {
 export function arkiverteVedtakUrl() {
     return publicRuntimeConfig.arkiverteVedtakUrl
 }
-
-export function feilmeldingerUrl() {
-    return publicRuntimeConfig.feilmeldingerUrl
-}
