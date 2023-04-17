@@ -1,6 +1,5 @@
 import getConfig from 'next/config'
-import { QueryClient } from 'react-query'
-import { dehydrate } from 'react-query/hydration'
+import { QueryClient, dehydrate } from '@tanstack/react-query'
 
 import { beskyttetSide } from '../auth/beskyttetSide'
 import { getOboAccessToken } from '../auth/getOboAccessToken'
@@ -24,13 +23,17 @@ export const prefetchVedtak = beskyttetSide(async (ctx): Promise<GetServerSidePr
                 serverRuntimeConfig.spinnsynBackendClientId,
             )
 
-            await queryClient.prefetchQuery('vedtak', () => {
-                return hentVedtakFraSpinnsynBackendForInterne(oboSpinnsynBackend, sykmeldtFnr!)
+            await queryClient.prefetchQuery({
+                queryKey: ['vedtak'],
+                queryFn: () => hentVedtakFraSpinnsynBackendForInterne(oboSpinnsynBackend, sykmeldtFnr!),
             })
         }
     } else {
-        await queryClient.prefetchQuery('vedtak', () => {
-            return hentVedtak(ctx.req!)
+        await queryClient.prefetchQuery({
+            queryKey: ['vedtak'],
+            queryFn: () => {
+                return hentVedtak(ctx.req!)
+            },
         })
     }
     return {

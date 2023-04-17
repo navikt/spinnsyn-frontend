@@ -25,7 +25,7 @@ import nb from 'dayjs/locale/nb'
 import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
-import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { LabsWarning } from '../components/labs-warning/LabsWarning'
 import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'

@@ -1,5 +1,5 @@
 import { GetServerSidePropsResult } from 'next'
-import { DehydratedState } from 'react-query/hydration'
+import { DehydratedState } from '@tanstack/react-query'
 
 export interface PrefetchResults {
     dehydratedState: DehydratedState
