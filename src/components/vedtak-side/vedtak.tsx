@@ -11,6 +11,8 @@ import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import Vis from '../vis'
+import { isProd } from '../../utils/environment'
+import { useStudyStatus } from '../../hooks/useStudyStatus'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -29,6 +31,8 @@ export interface VedtakProps {
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
+    const studyKey = 'study-hpyhgdokuq'
+    const { data: studyActive } = useStudyStatus(studyKey)
     const query: NodeJS.Dict<string | string[]> = {}
 
     // unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
@@ -44,7 +48,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         .sort((a, b) => (a.dato < b.dato ? -1 : 1))
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const nyesteRevudering = vedtak.revurdert === false && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+    const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const erSP = vedtak.sykepengebelopPerson > 0
     const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
     const erAvvist = avvisteDager.length > 0
@@ -61,13 +65,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         if (key != 'id') {
             query[key] = router.query[key]
         }
-    }
-
-    const studyKey = () => {
-        if (erSP) {
-            return 'study-y1ddhu1rch'
-        }
-        return 'study-7f70elp6c'
     }
 
     return (
@@ -139,7 +136,10 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
                 <Sykepengedager vedtak={vedtak} />
 
-                <Vis hvis={!erArkivering} render={() => <UxSignalsWidget study={studyKey()} />} />
+                <Vis
+                    hvis={!erArkivering && erSP && studyActive}
+                    render={() => <UxSignalsWidget study={studyKey} demo={!isProd()} />}
+                />
 
                 <Behandling vedtak={vedtak} />
 
