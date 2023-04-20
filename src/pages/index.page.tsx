@@ -2,7 +2,6 @@ import { Alert } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import InterneHeader from '../components/interne-header/InterneHeader'
 import { RedirectTilForsiden } from '../components/redirect'
 import VedtakListe from '../components/vedtak-liste/vedtak-liste'
 import VedtakSide from '../components/vedtak-side/vedtak-side'
@@ -11,25 +10,31 @@ import useVedtak from '../hooks/useVedtak'
 import { prefetchVedtak } from '../prefetching/prefetchVedtak'
 import { PrefetchResults } from '../types/prefecthing'
 import { spinnsynFrontendInterne } from '../utils/environment'
+import { InterneInfo } from '../components/interne-info/InterneInfo'
 
-const Index = ({ sykmeldtFnr, dehydratedState }: PrefetchResults) => {
-    if (!sykmeldtFnr && spinnsynFrontendInterne()) {
-        return <IndexInterneUtenFnr sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />
+const Index = ({ sykmeldtFnr }: PrefetchResults) => {
+    if (spinnsynFrontendInterne()) {
+        if (sykmeldtFnr) {
+            return (
+                <IndexMedData>
+                    <InterneInfo fnr={sykmeldtFnr} />
+                </IndexMedData>
+            )
+        } else {
+            return (
+                <ArkiveringContextOgMain>
+                    <Alert variant="warning">
+                        Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
+                    </Alert>
+                </ArkiveringContextOgMain>
+            )
+        }
     }
-    return <IndexMedData sykmeldtFnr={sykmeldtFnr} dehydratedState={dehydratedState} />
+
+    return <IndexMedData />
 }
 
-const IndexInterneUtenFnr = ({ sykmeldtFnr }: PrefetchResults) => {
-    return (
-        <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
-            <Alert variant="warning">
-                Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
-            </Alert>
-        </ArkiveringOgMain>
-    )
-}
-
-const IndexMedData = ({ sykmeldtFnr }: PrefetchResults) => {
+const IndexMedData = ({ children }: { children?: React.ReactNode }) => {
     const router = useRouter()
     const { id } = router.query
     const { data: vedtak } = useVedtak()
@@ -40,32 +45,26 @@ const IndexMedData = ({ sykmeldtFnr }: PrefetchResults) => {
             return <RedirectTilForsiden />
         }
         return (
-            <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
+            <ArkiveringContextOgMain>
+                {children}
                 <VedtakSide vedtak={vedtaket} />
-            </ArkiveringOgMain>
+            </ArkiveringContextOgMain>
         )
     }
     return (
-        <ArkiveringOgMain sykmeldtFnr={sykmeldtFnr}>
+        <ArkiveringContextOgMain>
+            {children}
             <VedtakListe />
-        </ArkiveringOgMain>
+        </ArkiveringContextOgMain>
     )
 }
 
-interface ArkiveringOgMainProps {
-    children: React.ReactNode
-    sykmeldtFnr: string | null
-}
-
-const ArkiveringOgMain = ({ children, sykmeldtFnr }: ArkiveringOgMainProps) => (
-    <>
-        {spinnsynFrontendInterne() && <InterneHeader fnr={sykmeldtFnr} />}
-        <ArkiveringContext.Provider value={false}>
-            <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                {children}
-            </main>
-        </ArkiveringContext.Provider>
-    </>
+const ArkiveringContextOgMain = ({ children }: { children: React.ReactNode }) => (
+    <ArkiveringContext.Provider value={false}>
+        <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+            {children}
+        </main>
+    </ArkiveringContext.Provider>
 )
 
 export const getServerSideProps = prefetchVedtak

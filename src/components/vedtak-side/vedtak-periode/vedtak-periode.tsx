@@ -10,7 +10,7 @@ const VedtakPeriode = ({ vedtak }: VedtakProps) => {
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
 
     return (
-        <div className="vedtak_periode">
+        <div className="mb-8 border-b border-gray-400 pb-2">
             <BodyShort>
                 {getLedetekst(tekst('utbetaling.person.fra'), {
                     '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),

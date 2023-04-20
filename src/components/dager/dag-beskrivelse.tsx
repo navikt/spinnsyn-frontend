@@ -26,7 +26,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         const lovhjemmelTekst = lovhjemmel(dag)
 
         return (
-            <>
+            <div className={'pt-1'}>
                 <Vis
                     hvis={dag.dagtype !== 'AvvistDag'}
                     render={() => <BodyShort>{tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}</BodyShort>}
@@ -45,7 +45,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
                     hvis={lovhjemmelTekst !== ''}
                     render={() => <BodyShort className={'avvist-lovhjemmel'}>{lovhjemmelTekst}</BodyShort>}
                 />
-            </>
+            </div>
         )
     }
 
@@ -78,13 +78,13 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     }
 
     return (
-        <div className="tekstinfo">
-            <Heading spacing size="xsmall" level="4">
+        <div className={'p-3'}>
+            <Heading size="xsmall" spacing level="4">
                 {tekst('utbetaling.tabell.dagtyper')}
             </Heading>
 
             {unikeDager().map((dag, idx) => (
-                <div key={idx}>
+                <div key={idx} className={'pb-4'}>
                     <DagLabel dag={dag} />
                     {lagBeskrivelseForUnikDag(dag)}
                 </div>

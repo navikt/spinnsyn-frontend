@@ -9,7 +9,7 @@ import { VedtakProps } from '../vedtak'
 
 const Uenig = ({ vedtak }: VedtakProps) => {
     return (
-        <div className="tekstinfo">
+        <>
             <Heading size="small" level="2">
                 {tekst('uenig.tittel')}
             </Heading>
@@ -22,7 +22,7 @@ const Uenig = ({ vedtak }: VedtakProps) => {
                 {tekst('uenig.tekst3')}
                 <LenkeMedAmplitude url={tekst('uenig.lenke2.url')} tekst={tekst('uenig.lenke2')} />.
             </BodyLong>
-        </div>
+        </>
     )
 }
 

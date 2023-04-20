@@ -51,21 +51,21 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 {tekst('utbetaling.inntekt.info.tittel')}
                             </Heading>
                         </Accordion.Header>
-                        <Accordion.Content>
-                            <article className="arbgiver_inntekt">
-                                <Label className="arbgiver_navn">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
+                        <Accordion.Content className={'bg-white'}>
+                            <article>
+                                <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
-                                <section>
-                                    <BodyShort as="div" size="small">
+                                <section className={'arkivering-flex-fix flex justify-between'}>
+                                    <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.beregnet')}
                                     </BodyShort>
-                                    <BodyShort as="div" size="small">
+                                    <BodyShort as="div" size="small" spacing>
                                         {inntektMnd}
                                     </BodyShort>
                                 </section>
 
-                                <section>
-                                    <BodyShort as="div" size="small">
+                                <section className={'arkivering-flex-fix flex justify-between'}>
+                                    <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.omregnet')}
                                     </BodyShort>
                                     <BodyShort as="div" size="small">
@@ -79,7 +79,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <>
                                             <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
 
-                                            <section className="arbgiver">
+                                            <section className="arkivering-flex-fix mt-4 flex justify-between border-t border-gray-400 pt-4">
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.inntekt.samlet.årslønn')}
                                                 </Label>
@@ -95,7 +95,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     hvis={skalViseSykepengegrunnlag}
                                     render={() => (
                                         <>
-                                            <section>
+                                            <section className={'arkivering-flex-fix flex justify-between'}>
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>
@@ -107,7 +107,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                             <Vis
                                                 hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'}
                                                 render={() => (
-                                                    <div className="redusert_sykepengegrunnlag">
+                                                    <div className="mt-8 bg-orange-50 p-4">
                                                         <BodyLong size="small">
                                                             {parserWithReplace(tekst('utbetaling.redusert6G.tekst'))}
                                                         </BodyLong>

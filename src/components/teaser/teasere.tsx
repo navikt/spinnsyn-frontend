@@ -8,16 +8,16 @@ import Teaser from './teaser'
 
 interface SoknaderTeasereProps {
     vedtak: RSVedtakWrapper[]
-    className?: string
+
     tittel: string
     tomListeTekst?: string
 }
 
-const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeasereProps) => {
+const Teasere = ({ vedtak, tittel, tomListeTekst }: SoknaderTeasereProps) => {
     return (
-        <div className={className}>
-            <header className="inngangspanelerHeader">
-                <Heading size="medium" level="2">
+        <div className={'mb-12'}>
+            <header>
+                <Heading spacing size="medium" level="2">
                     {tittel}
                 </Heading>
             </header>
@@ -26,10 +26,7 @@ const Teasere = ({ vedtak, className, tittel, tomListeTekst }: SoknaderTeaserePr
                 return <Teaser key={idx} vedtak={v} />
             })}
 
-            <Vis
-                hvis={vedtak.length === 0}
-                render={() => <BodyShort className="inngangspanel inngangspanel--tomListe">{tomListeTekst}</BodyShort>}
-            />
+            <Vis hvis={vedtak.length === 0} render={() => <BodyShort>{tomListeTekst}</BodyShort>} />
         </div>
     )
 }

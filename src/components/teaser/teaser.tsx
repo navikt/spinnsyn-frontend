@@ -1,63 +1,81 @@
-import { Next } from '@navikt/ds-icons'
-import { Tag } from '@navikt/ds-react'
+import { BodyLong, Detail, Heading, LinkPanel, Tag } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import { tekst } from '../../utils/tekster'
-import { InngangsHeader, InngangsIkon, Inngangspanel } from '../inngang/inngangspanel'
-import Vis from '../vis'
+import { getLedetekst, tekst } from '../../utils/tekster'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { storeTilStoreOgSmå } from '../../utils/store-små'
+import { logEvent } from '../amplitude/amplitude'
+import { cn } from '../../utils/tw-utils'
 
-import { arbeidsgiverListevisning, VedtakTeaserProps } from './teaser-util'
-
-const Teaser = ({ vedtak }: VedtakTeaserProps) => {
+const Teaser = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const nyesteRevudering = vedtak.revurdert === false && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+    const router = useRouter()
 
-    const hand = '/syk/sykepenger/static/img/ikon-hand.svg'
-    const handHover = '/syk/sykepenger/static/img/ikon-hand-hover.svg'
-    const annullert = '/syk/sykepenger/static/img/ikon-annullert.svg'
-    const annullertHover = '/syk/sykepenger/static/img/ikon-annullert-hover.svg'
+    const query: NodeJS.Dict<string | string[]> = {}
 
+    for (const key in router.query) {
+        query[key] = router.query[key]
+    }
+    query['id'] = vedtak.id
+    const vedtakTittel = annullertEllerRevurdert
+        ? tekst('spinnsyn.teaser.annullert.tittel')
+        : tekst('spinnsyn.teaser.tittel')
+    const vedtakPeriode =
+        dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
+    const arbeidsgiverTekst = getLedetekst(tekst('spinnsyn.teaser.sykmeldt-fra'), {
+        '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
+    })
     return (
-        <article aria-labelledby={`soknader-header-${vedtak.id}`}>
-            <Inngangspanel vedtak={vedtak}>
-                <div className="inngangspanel__ytre">
-                    <div className="inngangspanel__del1">
-                        <InngangsIkon
-                            ikon={annullertEllerRevurdert ? annullert : hand}
-                            ikonHover={annullertEllerRevurdert ? annullertHover : handHover}
-                        />
-                        <div id={`soknader-header-${vedtak.id}`} className="inngangspanel__innhold utvidbar__toggle">
-                            <InngangsHeader
-                                meta={
-                                    dayjs(vedtak.vedtak.fom).format('DD. MMM') +
-                                    ' - ' +
-                                    dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
-                                }
-                                tittel={
-                                    annullertEllerRevurdert
-                                        ? tekst('spinnsyn.teaser.annullert.tittel')
-                                        : tekst('spinnsyn.teaser.tittel')
-                                }
-                            />
-                            {arbeidsgiverListevisning(vedtak)}
-                        </div>
+        <Link href={{ query }} passHref legacyBehavior>
+            <LinkPanel
+                className={cn('mb-4 p-6 [&>div]:w-full', {
+                    'border-orange-300 bg-orange-50 hover:border-orange-500': !vedtak.lest,
+                })}
+                border
+                onClick={() =>
+                    logEvent('navigere', {
+                        destinasjon: 'vedtak',
+                        skjemanavn: 'vedtak-listevisning',
+                        tidligereLest: vedtak.lest,
+                        revurdert: vedtak.revurdert,
+                        annullert: vedtak.annullert,
+                    })
+                }
+            >
+                <div className={'flex gap-3 max-[560px]:flex-col'}>
+                    <div className="grow">
+                        <header>
+                            <Detail>{vedtakPeriode}</Detail>
+                            <Heading size="small" level="3" className={'my-1'}>
+                                {vedtakTittel}
+                            </Heading>
+                        </header>
+
+                        <BodyLong>{arbeidsgiverTekst}</BodyLong>
                     </div>
-                    <Vis
-                        hvis={nyesteRevudering}
-                        render={() => <Tag variant="info">{tekst('spinnsyn.teaser.sisterevudering')}</Tag>}
-                    />
-                    <Vis
-                        hvis={annullertEllerRevurdert}
-                        render={() => <Tag variant="warning">{tekst('spinnsyn.teaser.annullert')}</Tag>}
-                    />
+
+                    <div className="flex shrink-0 items-center">
+                        <Etikett vedtak={vedtak} />
+                    </div>
                 </div>
-                <div className="inngangspanel__del2">
-                    <Next className="axe-exclude" />
-                </div>
-            </Inngangspanel>
-        </article>
+            </LinkPanel>
+        </Link>
     )
+}
+
+const Etikett = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
+    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+    if (annullertEllerRevurdert) {
+        return <Tag variant="warning">{tekst('spinnsyn.teaser.annullert')}</Tag>
+    }
+    const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+    if (nyesteRevudering) {
+        return <Tag variant="info">{tekst('spinnsyn.teaser.sisterevudering')}</Tag>
+    }
+    return null
 }
 
 export default Teaser

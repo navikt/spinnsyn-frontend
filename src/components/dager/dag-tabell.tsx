@@ -13,20 +13,20 @@ interface DagTabellProps {
 
 const DagTabell = ({ dager }: DagTabellProps) => {
     return (
-        <Table zebraStripes={true} className="tabell--dag" size="medium">
+        <Table zebraStripes={true} className="bg-white" size="medium">
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell className={'p-3 md:p-4'}>
                         <Label spacing as="span" size="small">
                             Dato
                         </Label>
                     </Table.HeaderCell>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell className={'p-3 text-right md:p-4'}>
                         <Label spacing as="span" size="small">
                             Sum
                         </Label>
                     </Table.HeaderCell>
-                    <Table.HeaderCell>
+                    <Table.HeaderCell className={'p-3 text-right md:p-4'}>
                         <Label spacing as="span" size="small">
                             Dagtype
                         </Label>
@@ -41,7 +41,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                                 {dayjs(dag.dato).format('DD.MMM')}
                             </BodyShort>
                         </Table.DataCell>
-                        <Table.DataCell className="kroner">
+                        <Table.DataCell className="whitespace-nowrap text-right">
                             <BodyShort size="small" as="span">
                                 {dag.dagtype === 'NavDag' ||
                                 dag.dagtype === 'NavDagSyk' ||
@@ -50,7 +50,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                                     : '-'}
                             </BodyShort>
                         </Table.DataCell>
-                        <Table.DataCell>
+                        <Table.DataCell className={'text-right'}>
                             <DagLabel dag={dag} skalViseProsent={true} />
                         </Table.DataCell>
                     </Table.Row>

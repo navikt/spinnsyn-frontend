@@ -50,8 +50,8 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     }
 
     return (
-        <div className="behandling">
-            <Heading size="small" level="2">
+        <>
+            <Heading size="small" level="2" className={'mt-4'}>
                 {tekst(tittelNokkel())}
             </Heading>
             <BodyLong spacing>
@@ -59,6 +59,6 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                 <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
                 {tekst('behandling.se-opplysningene')}
             </BodyLong>
-        </div>
+        </>
     )
 }

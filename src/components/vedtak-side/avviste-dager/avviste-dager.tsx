@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, ExpansionCard, Heading } from '@navikt/ds-react'
 import React, { useContext, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -7,7 +7,6 @@ import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
-import Ekspanderbar from '../../ekspanderbar/ekspanderbar'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/accordion/beregning-info'
 import InntektInfo from '../utbetaling/accordion/inntekt-info/inntekt-info'
@@ -19,9 +18,8 @@ interface AvvisteDagerProps {
 }
 
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
-    const [apen] = useState<boolean>(false)
-    const isServer = useContext(ArkiveringContext)
-    const [open, setOpen] = useState<boolean>(isServer)
+    const arkivering = useContext(ArkiveringContext)
+    const [open, setOpen] = useState<boolean>(arkivering)
     const accordionRef = useRef(null)
 
     const harMinstEnForLavInntektDag =
@@ -34,47 +32,54 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
         setOpen(!open)
     }
 
+    const graa = vedtak.annullert || vedtak.revurdert
+
     return (
-        <Ekspanderbar
-            type="gul"
-            erUgyldig={vedtak.revurdert || vedtak.annullert}
-            ikon="/syk/sykepenger/static/img/ikon-ekspander-gul.svg"
-            erApen={apen}
-            tittel={
-                <div className="ekspanderbar__tittel">
-                    <Heading size="large" level="2">
-                        {avvisteDager.length + avvisteDagerTekst}
-                        <BodyShort as="span">{tekst('avviste.dager.dekkes.ikke')}</BodyShort>
-                    </Heading>
-                </div>
+        <ExpansionCard
+            className={'mt-4'}
+            aria-label="Avviste sykepengedager"
+            defaultOpen={arkivering}
+            style={
+                {
+                    '--ac-expansioncard-bg': graa ? 'var(--a-gray-100)' : 'var(--a-orange-100)',
+                    '--ac-expansioncard-border-color': graa ? 'var(--a-gray-100)' : 'var(--a-orange-100)',
+                } as React.CSSProperties
             }
         >
-            <div className="tekstinfo">
+            <ExpansionCard.Header>
+                <Heading level="2" size="large">
+                    {avvisteDager.length + avvisteDagerTekst}
+                    <BodyShort as="span" className={'block'}>
+                        {tekst('avviste.dager.dekkes.ikke')}
+                    </BodyShort>
+                </Heading>
+            </ExpansionCard.Header>
+            <ExpansionCard.Content>
                 <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
-            </div>
 
-            <Vis hvis={heltAvvist && harMinstEnForLavInntektDag} render={() => <InntektInfo vedtak={vedtak} />} />
+                <Vis hvis={heltAvvist && harMinstEnForLavInntektDag} render={() => <InntektInfo vedtak={vedtak} />} />
 
-            <Accordion>
-                <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
-                    <Accordion.Header onClick={onButtonClick}>
-                        <Heading size="small" level="3">
-                            Dager NAV ikke utbetaler
-                        </Heading>
-                    </Accordion.Header>
-                    <Accordion.Content>
-                        <DagTabell dager={avvisteDager} />
+                <Accordion>
+                    <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
+                        <Accordion.Header onClick={onButtonClick}>
+                            <Heading size="small" level="3">
+                                Dager NAV ikke utbetaler
+                            </Heading>
+                        </Accordion.Header>
+                        <Accordion.Content className={'bg-white p-0'}>
+                            <DagTabell dager={avvisteDager} />
 
-                        <DagBeskrivelse dager={avvisteDager} />
-                    </Accordion.Content>
-                </Accordion.Item>
+                            <DagBeskrivelse dager={avvisteDager} />
+                        </Accordion.Content>
+                    </Accordion.Item>
 
-                <Vis
-                    hvis={heltAvvist && harMinstEnForLavInntektDag}
-                    render={() => <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} heltAvvist={heltAvvist} />}
-                />
-            </Accordion>
-        </Ekspanderbar>
+                    <Vis
+                        hvis={heltAvvist && harMinstEnForLavInntektDag}
+                        render={() => <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} heltAvvist={heltAvvist} />}
+                    />
+                </Accordion>
+            </ExpansionCard.Content>
+        </ExpansionCard>
     )
 }
 

@@ -27,13 +27,13 @@ export const SykepengerPerDag = ({ dager }: SykepengerPerDagProps) => {
         <Vis
             hvis={dager.length > 0}
             render={() => (
-                <Accordion.Item ref={accordionRef} open={open} className="utbetalingsoversikt">
+                <Accordion.Item ref={accordionRef} open={open} className="">
                     <Accordion.Header onClick={onButtonClick}>
                         <Heading size="small" level="3">
                             {tekst('utbetaling.inntekt.info.dagsats')}
                         </Heading>
                     </Accordion.Header>
-                    <Accordion.Content>
+                    <Accordion.Content className={'bg-white p-0'}>
                         <DagTabell dager={dager} />
 
                         <DagBeskrivelse dager={dager} />

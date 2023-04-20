@@ -1,23 +1,4 @@
-/* eslint-disable postcss-modules/no-unused-class */
 import '../style/global.css'
-import '../components/basic.css'
-import '../components/app.css'
-import '../components/person/person.css'
-import '../components/banner/banner.css'
-import '../components/vedtak-arkivering/vedtak-arkivering.css'
-import '../components/vedtak-liste/vedtak-liste.css'
-import '../components/vedtak-side/vedtak-side.css'
-import '../components/vedtak-side/utbetaling/utbetaling.css'
-import '../components/vedtak-side/utbetaling/accordion/inntekt-info/inntekt-info.css'
-import '../components/vedtak-side/sykepengedager/sykepengedager.css'
-import '../components/vedtak-side/behandling/behandling.css'
-import '../components/vedtak-side/avviste-dager/avviste-dager.css'
-import '../components/vedtak-side/annullering/annullering.css'
-import '../components/ekspanderbar/ekspanderbar.css'
-import '../components/inngang/inngangspanel.css'
-import '../components/interne-header/interneheader.css'
-import '../components/dager/dag-tabell.css'
-import '../components/vedtak-side/vedtak-periode/vedtak-periode.css'
 
 import { configureLogger } from '@navikt/next-logger'
 import dayjs from 'dayjs'
@@ -32,7 +13,7 @@ import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
 import { useFangHotjarEmotion } from '../hooks/useFangHotjarEmotion'
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
-    pageProps: PropsWithChildren<unknown> & {
+    pageProps: PropsWithChildren & {
         dehydratedState: DehydratedState
     }
 }
@@ -73,11 +54,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             </Head>
             <QueryClientProvider client={queryClient}>
                 <Hydrate state={pageProps.dehydratedState}>
-                    <div className="pagewrapper">
-                        <div id="root">
-                            <LabsWarning />
-                            <Component {...pageProps} />
-                        </div>
+                    <div id="root" className="mx-auto max-w-2xl p-4 pb-32">
+                        <LabsWarning />
+                        <Component {...pageProps} />
                     </div>
                 </Hydrate>
             </QueryClientProvider>

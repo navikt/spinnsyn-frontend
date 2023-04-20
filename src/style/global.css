@@ -1,11 +1,8 @@
 @import 'tailwindcss/base';
 @import '@navikt/ds-css';
+@import '@navikt/ds-css-internal';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-html {
-    --desktop-limit-width: 672px;
-}
 
 @layer base {
     ul {
