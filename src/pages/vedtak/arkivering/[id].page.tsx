@@ -24,7 +24,7 @@ const ServerVedtak = ({ vedtak, status, fnr, utbetalingId }: VedtakArkiveringPro
         return <span>{status}</span>
     }
 
-    return <VedtakArkivering vedtak={vedtak} fnr={fnr} utbetalingId={utbetalingId} />
+    return <VedtakArkivering vedtak={vedtak} />
 }
 
 export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = async (ctx) => {

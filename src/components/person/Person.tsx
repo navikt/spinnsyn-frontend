@@ -1,5 +1,6 @@
-import { BodyShort, Popover } from '@navikt/ds-react'
+import { Link, Popover } from '@navikt/ds-react'
 import React, { useRef, useState } from 'react'
+import { PersonCircleIcon } from '@navikt/aksel-icons'
 
 import { personas } from '../../data/testdata/testperson'
 import { isMockBackend, isOpplaering } from '../../utils/environment'
@@ -12,16 +13,15 @@ const Person = () => {
     if (!kanVelgePerson) return null
 
     return (
-        <div className="person">
-            <button
-                aria-label="Velg person"
-                className="lenkeknapp"
-                ref={person}
-                onClick={() => {
-                    setOpen(true)
-                }}
-            >
-                <img src="/syk/sykepenger/static/img/person.svg" className="person__ikon" alt="" />
+        <div className="hidden cursor-pointer md:block">
+            <button aria-label="Velg testperson" ref={person}>
+                <PersonCircleIcon
+                    onClick={() => {
+                        setOpen(!open)
+                    }}
+                    aria-label="Velg testperson"
+                    className="h-12 w-12"
+                />
             </button>
             <Popover
                 open={open}
@@ -32,9 +32,9 @@ const Person = () => {
                 <Popover.Content>
                     <ul>
                         {Object.keys(personas).map((p, idx) => (
-                            <BodyShort size="medium" as="li" key={idx}>
-                                <a href={`?testperson=${p}`}>{p}</a>
-                            </BodyShort>
+                            <li key={idx}>
+                                <Link href={`?testperson=${p}`}>{p}</Link>
+                            </li>
                         ))}
                     </ul>
                 </Popover.Content>

@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { Alert, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
@@ -72,8 +70,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Vis
                 hvis={!erArkivering}
                 render={() => (
-                    <header className="sidebanner">
-                        <Heading spacing size="xlarge" level="1" className="sidebanner__tittel">
+                    <header className="mt-4 flex items-center justify-between pb-8 ">
+                        <Heading size="xlarge" level="1">
                             {tekst('spinnsyn.sidetittel.vedtak')}
                         </Heading>
                         <Person />
@@ -81,70 +79,65 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 )}
             />
 
-            <div className="limit">
-                <Vis
-                    hvis={!annullertEllerRevurdert}
-                    render={() => (
-                        <div className="velkommen">
-                            <img src={'/syk/sykepenger/static/img/adult_people.svg'} alt="" />
-                            <div className="velkommen-innhold">
-                                <BodyLong size="medium">{tekst('vedtak.velkommen.tekst1')}</BodyLong>
-                                <Vis
-                                    hvis={erSP && erSPREF}
-                                    render={() => <BodyLong size="medium">{tekst('vedtak.velkommen.tekst2')}</BodyLong>}
-                                />
-                            </div>
-                        </div>
-                    )}
-                />
+            <Vis
+                hvis={!annullertEllerRevurdert}
+                render={() => (
+                    <>
+                        <BodyLong size="medium">{tekst('vedtak.velkommen.tekst1')}</BodyLong>
+                        <Vis
+                            hvis={erSP && erSPREF}
+                            render={() => <BodyLong size="medium">{tekst('vedtak.velkommen.tekst2')}</BodyLong>}
+                        />
+                    </>
+                )}
+            />
 
-                <Vis
-                    hvis={annullertEllerRevurdert}
-                    render={() => (
-                        <>
-                            <AnnulleringsInfo vedtak={vedtak} />
-                            <Heading spacing size="large" level="2" className="tidligere__beslutning">
-                                {tekst('annullert.se-tidligere-beslutning')}
-                            </Heading>
-                        </>
-                    )}
-                />
+            <Vis
+                hvis={annullertEllerRevurdert}
+                render={() => (
+                    <>
+                        <AnnulleringsInfo vedtak={vedtak} />
+                        <Heading spacing size="large" level="2" className="tidligere__beslutning">
+                            {tekst('annullert.se-tidligere-beslutning')}
+                        </Heading>
+                    </>
+                )}
+            />
 
-                <Vis
-                    hvis={nyesteRevudering}
-                    render={() => (
-                        <Alert variant="info">
-                            <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
-                            <Link href={tekst('revurdert.alert.link.url')}>
-                                {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
-                            </Link>
-                        </Alert>
-                    )}
-                />
+            <Vis
+                hvis={nyesteRevudering}
+                render={() => (
+                    <Alert variant="info">
+                        <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
+                        <Link href={tekst('revurdert.alert.link.url')}>
+                            {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
+                        </Link>
+                    </Alert>
+                )}
+            />
 
-                <Vis hvis={erSP} render={() => <PersonutbetalingMedInntekt vedtak={vedtak} />} />
-                <Vis
-                    hvis={erSPREF || (!erSP && !erSPREF && !erAvvist) /* vedtak med bare arbeidsgiverperiode dager */}
-                    render={() => <RefusjonMedInntekt vedtak={vedtak} />}
-                />
-                <Vis
-                    hvis={erAvvist}
-                    render={() => (
-                        <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} heltAvvist={!erSP && !erSPREF} />
-                    )}
-                />
+            <Vis hvis={erSP} render={() => <PersonutbetalingMedInntekt vedtak={vedtak} />} />
+            <Vis
+                hvis={erSPREF || (!erSP && !erSPREF && !erAvvist) /* vedtak med bare arbeidsgiverperiode dager */}
+                render={() => <RefusjonMedInntekt vedtak={vedtak} />}
+            />
+            <Vis
+                hvis={erAvvist}
+                render={() => (
+                    <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} heltAvvist={!erSP && !erSPREF} />
+                )}
+            />
 
-                <Sykepengedager vedtak={vedtak} />
+            <Sykepengedager vedtak={vedtak} />
 
-                <Vis
-                    hvis={!erArkivering && studyActive}
-                    render={() => <UxSignalsWidget study={studyKey} demo={!isProd()} />}
-                />
+            <Vis
+                hvis={!erArkivering && studyActive}
+                render={() => <UxSignalsWidget study={studyKey} demo={!isProd()} />}
+            />
 
-                <Behandling vedtak={vedtak} />
+            <Behandling vedtak={vedtak} />
 
-                <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
-            </div>
+            <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
         </>
     )
 }

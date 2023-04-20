@@ -37,3 +37,7 @@ export function spinnsynFrontendInterne() {
 export function arkiverteVedtakUrl() {
     return publicRuntimeConfig.arkiverteVedtakUrl
 }
+
+export function arkivering() {
+    return publicRuntimeConfig.arkivering === 'true'
+}

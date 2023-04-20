@@ -25,7 +25,7 @@ export const SykepengerNar = () => {
                 </Heading>
             </Accordion.Header>
 
-            <Accordion.Content className="tekstinfo">
+            <Accordion.Content className="bg-white pb-0">
                 <BodyLong spacing>
                     {parserWithReplace(tekst('utbetaling.person.når.innhold'))}
                     <LenkeMedAmplitude

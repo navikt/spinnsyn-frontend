@@ -17,9 +17,7 @@ const UtviklingArkiveringPage = ({ vedtak, enabled }: DevVedtakProps) => {
     if (!enabled) {
         return <span>Disabled</span>
     }
-    return (
-        <VedtakArkivering vedtak={vedtak} fnr={'12345678910'} utbetalingId={'7db3a630-883f-4f9d-a545-7af13f4e3f9b'} />
-    )
+    return <VedtakArkivering vedtak={vedtak} />
 }
 
 export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx) => {

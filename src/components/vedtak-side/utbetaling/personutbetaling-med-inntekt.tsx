@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -20,38 +20,30 @@ import { SykepengerPerDag } from './accordion/sykepenger-per-dag'
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
     const erInterne = spinnsynFrontendInterne()
+    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
-    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     return (
         <UtbetalingPanel
             tittel={
                 <Heading data-cy="header-sykepenger-til-deg" level="2" size="large">
                     <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
-                    <BodyShort as="span">{tekst('utbetaling.person.systemtittel')}</BodyShort>
+                    <BodyShort as="span" className={'block'}>
+                        {tekst('utbetaling.person.systemtittel')}
+                    </BodyShort>
                 </Heading>
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="personutbetaling"
         >
-            <>
-                <VedtakPeriode vedtak={vedtak} />
-
-                <SykepengerTrekk />
-
-                <Vis hvis={!erInterne && !erArkivering} render={() => <Kontonummer />} />
-
-                <Accordion>
-                    <SykepengerNar />
-
-                    <InntektInfo vedtak={vedtak} />
-
-                    <SykepengerPerDag dager={vedtak.dagerPerson} />
-
-                    <BeregningInfo vedtak={vedtak} mottaker={'person'} />
-                </Accordion>
-            </>
+            <VedtakPeriode vedtak={vedtak} />
+            <SykepengerTrekk />
+            <Vis hvis={!erInterne && !erArkivering} render={() => <Kontonummer />} />
+            <SykepengerNar />
+            <InntektInfo vedtak={vedtak} />
+            <SykepengerPerDag dager={vedtak.dagerPerson} />
+            <BeregningInfo vedtak={vedtak} mottaker={'person'} />
         </UtbetalingPanel>
     )
 }
