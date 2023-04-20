@@ -6,10 +6,10 @@ metadata:
   labels:
     team: flex
 spec:
-  image: {{ image }}
+  image: {{image}}
   port: 8080
   ingresses:
-    - {{ ingress }}
+    - {{ingress}}
   azure:
     application:
       enabled: true
@@ -22,11 +22,10 @@ spec:
     cpuThresholdPercentage: 90
   resources:
     limits:
-      cpu: 200m
-      memory: 250Mi
+      memory: {{memory}}
     requests:
-      cpu: 100m
-      memory: 150Mi
+      cpu: {{cpu}}
+      memory: {{memory}}
   liveness:
     path: syk/sykepenger/api/internal/isAlive
   readiness:
@@ -40,7 +39,7 @@ spec:
         - application: spinnsyn-backend
       external:
   {{#each external-host}}
-        - host: {{this }}
+        - host: {{this}}
   {{/each}}
   env:
   {{#each env}}
