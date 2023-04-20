@@ -6,7 +6,7 @@ metadata:
   labels:
     team: flex
 spec:
-  image: {{ image }}
+  image: {{image}}
   port: 8080
   replicas:
     min: 3
@@ -14,11 +14,10 @@ spec:
     cpuThresholdPercentage: 90
   resources:
     limits:
-      cpu: 200m
-      memory: 300Mi
+      memory: {{memory}}
     requests:
-      cpu: 50m
-      memory: 170Mi
+      cpu: {{cpu}}
+      memory: {{memory}}
   liveness:
     path: syk/sykepenger/api/internal/isAlive
   readiness:
