@@ -33,7 +33,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                     </Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
-            <Table.Body>
+            <Table.Body data-cy="dag-tabell-body">
                 {dager.map((dag, idx) => (
                     <Table.Row key={idx}>
                         <Table.DataCell>

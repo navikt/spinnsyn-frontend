@@ -9,7 +9,7 @@ describe('Redusert til 6G', () => {
 
     it('Laster startside', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get(`article a[href*=${vedtak.id}]`).click()
+        cy.get(`a[href*=${vedtak.id}]`).click()
     })
 
     it('Utbetalingsoversikt', () => {

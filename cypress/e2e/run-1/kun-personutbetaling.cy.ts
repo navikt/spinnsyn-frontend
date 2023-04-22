@@ -12,7 +12,7 @@ describe('Kun personutbetaling', () => {
     })
 
     it('Viser info om utbetaling til person', () => {
-        cy.get(`article a[href*=${vedtak.id}]`).click()
+        cy.get(`a[href*=${vedtak.id}]`).click()
         cy.contains(
             'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
         ).should('not.exist')

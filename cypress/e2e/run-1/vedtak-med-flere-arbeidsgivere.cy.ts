@@ -7,7 +7,7 @@ describe('Vedtak med flere arbeidsgivere', () => {
 
     it('Laster startside', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
-        cy.get(`article a[href*=${vedtakMedFlereArbeidsgivere.id}]`).click()
+        cy.get(`a[href*=${vedtakMedFlereArbeidsgivere.id}]`).click()
     })
 
     it('Inntekter', () => {
