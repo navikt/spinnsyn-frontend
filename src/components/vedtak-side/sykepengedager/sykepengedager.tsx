@@ -20,17 +20,18 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
 
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
     const sluttPaAktuelleVedtaksPeriode = tilLesbarDatoMedArstall(vedtak.vedtak.tom)
-    const graa = vedtak.annullert || vedtak.revurdert
+    const ugyldig = vedtak.annullert || vedtak.revurdert
 
     return (
         <ExpansionCard
             aria-label="Antall sykepengedager som gjenstår"
             defaultOpen={arkivering}
             className={'mt-4'}
+            data-cy={ugyldig ? 'sykepengedager-ec-ugyldig' : 'sykepengedager-ec'}
             style={
                 {
-                    '--ac-expansioncard-bg': graa ? 'var(--a-gray-100)' : 'var(--a-blue-50)',
-                    '--ac-expansioncard-border-color': graa ? 'var(--a-gray-100)' : 'var(--a-blue-50)',
+                    '--ac-expansioncard-bg': ugyldig ? 'var(--a-gray-100)' : 'var(--a-blue-50)',
+                    '--ac-expansioncard-border-color': ugyldig ? 'var(--a-gray-100)' : 'var(--a-blue-50)',
                 } as React.CSSProperties
             }
         >

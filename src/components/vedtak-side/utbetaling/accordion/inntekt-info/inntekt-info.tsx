@@ -44,7 +44,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
         <Vis
             hvis={inntektMnd && inntektAr}
             render={() => (
-                <Accordion className="inntekt__info">
+                <Accordion>
                     <Accordion.Item open={open} ref={accordionRef}>
                         <Accordion.Header onClick={onButtonClick}>
                             <Heading size="small" level="3">
@@ -52,10 +52,13 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                             </Heading>
                         </Accordion.Header>
                         <Accordion.Content className={'bg-white'}>
-                            <article>
+                            <article data-cy={'inntekt-info-article'}>
                                 <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
-                                <section className={'arkivering-flex-fix flex justify-between'}>
+                                <section
+                                    data-cy="beregnet-månedslønn"
+                                    className={'arkivering-flex-fix flex justify-between'}
+                                >
                                     <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.beregnet')}
                                     </BodyShort>
@@ -64,7 +67,10 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     </BodyShort>
                                 </section>
 
-                                <section className={'arkivering-flex-fix flex justify-between'}>
+                                <section
+                                    data-cy="beregnet-årslønn"
+                                    className={'arkivering-flex-fix flex justify-between'}
+                                >
                                     <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.omregnet')}
                                     </BodyShort>
@@ -79,7 +85,10 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <>
                                             <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
 
-                                            <section className="arkivering-flex-fix mt-4 flex justify-between border-t border-gray-400 pt-4">
+                                            <section
+                                                data-cy="samlet-årslønn"
+                                                className="arkivering-flex-fix mt-4 flex justify-between border-t border-gray-400 pt-4"
+                                            >
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.inntekt.samlet.årslønn')}
                                                 </Label>
@@ -95,7 +104,10 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     hvis={skalViseSykepengegrunnlag}
                                     render={() => (
                                         <>
-                                            <section className={'arkivering-flex-fix flex justify-between'}>
+                                            <section
+                                                data-cy="sykepengegrunnlag"
+                                                className={'arkivering-flex-fix flex justify-between'}
+                                            >
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>

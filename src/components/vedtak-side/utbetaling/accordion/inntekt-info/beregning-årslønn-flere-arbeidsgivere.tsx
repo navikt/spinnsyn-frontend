@@ -14,8 +14,11 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
         <>
             {arbeidsgivere.map((arbeidsgiverNavn, idx) => (
                 <div key={idx}>
-                    <Label>{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
-                    <section className={'arkivering-flex-fix flex justify-between'}>
+                    <Label data-cy={`annen-arbeidsgiver-${idx}`}>{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
+                    <section
+                        className={'arkivering-flex-fix flex justify-between'}
+                        data-cy={`annen-arbeidsgiver-årslønn-${idx}`}
+                    >
                         <BodyShort as="div" size="small">
                             {tekst('utbetaling.inntekt.årslønn')}
                         </BodyShort>

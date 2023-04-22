@@ -1,4 +1,5 @@
 import { vedtakMedFlereArbeidsgivere } from '../../../src/data/testdata/data/vedtakMedFlereArbeidsgivere'
+import { formaterValuta } from '../../../src/utils/valuta-utils'
 
 describe('Vedtak med flere arbeidsgivere', () => {
     before(() => {
@@ -15,20 +16,26 @@ describe('Vedtak med flere arbeidsgivere', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('Beregnet månedslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('41 958 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedslønn"]')
+            .should('contain', 'Beregnet månedslønn')
+            .should('contain', formaterValuta(41958))
 
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(1).contains('Beregnet årslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(1).contains('503 504 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årslønn"]')
+            .should('contain', 'Beregnet årslønn')
+            .should('contain', formaterValuta(503504))
 
-        cy.get('.inntekt__info .arbgiver_navn').contains('Den Andre Sjappa')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(2).contains('Årslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(2).contains('406 252 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-0"]').contains('Den Andre Sjappa')
 
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(3).contains('Samlet årslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(3).contains('909 757 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-årslønn-0"]')
+            .should('contain', 'Årslønn')
+            .should('contain', formaterValuta(406252))
 
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('Sykepengegrunnlag')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('638 394 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="samlet-årslønn"]')
+            .should('contain', 'Samlet årslønn')
+            .should('contain', formaterValuta(909757))
+
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
+            .should('contain', 'Sykepengegrunnlag')
+            .should('contain', formaterValuta(638394))
     })
 })

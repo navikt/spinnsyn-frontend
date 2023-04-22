@@ -21,7 +21,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
         >
             <div className={'mb-4'}>{props.tittel}</div>
 
-            <div>{props.children}</div>
+            {props.children}
         </Panel>
     )
 }
