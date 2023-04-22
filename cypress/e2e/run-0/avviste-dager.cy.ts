@@ -15,18 +15,18 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', () => {
-        cy.get(`article a[href*=${vedtakMed40Grad.id}]`).click({ force: true })
+        cy.get(`a[href*=${vedtakMed40Grad.id}]`).click({ force: true })
 
-        cy.get('.ekspanderbar.gul').should('not.exist')
+        cy.get('[data-cy="avviste-dager-card"]').should('not.exist')
     })
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click({
+        cy.get(`a[href*=${integrasjonsVedtak.id}]`).click({
             force: true,
         })
 
-        cy.get('.ekspanderbar.gul')
+        cy.get('[data-cy="avviste-dager-card"]')
             .should('contain', '15 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
@@ -35,9 +35,9 @@ describe('Avviste dager', () => {
             'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
-        cy.get('.avvistedageroversikt').should('contain', 'Dager NAV ikke utbetaler').click()
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
 
-        cy.get('.ekspanderbar.gul .tabell--dag').within(() => {
+        cy.get('[data-cy="avviste-dager-card"] [data-cy="dag-tabell-body"]').within(() => {
             cy.contains('30.jan.').should('not.exist')
             cy.contains('31.jan.').should('not.exist')
             cy.contains('01.feb.').should('not.exist')
@@ -65,21 +65,19 @@ describe('Avviste dager', () => {
         })
 
         cy.get('.navds-heading:first-child').contains('Forklaring')
-        cy.get('.navds-body-short:nth-child(2)').contains(
-            'Du får ikke sykepenger for dager du har ferie eller permisjon.',
-        )
-        cy.get('p.navds-body-short').contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
+        cy.contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
+        cy.contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
 
-        cy.get('.ekspanderbar.gul').contains('Mer om beregningen').should('not.exist')
+        cy.get('[data-cy="avviste-dager-card"]').contains('Mer om beregningen').should('not.exist')
     })
 
     it('Vedtak med avviste dager og ingen utbetaling', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get(`article a[href*=${avvistVedtak.id}]`).click({ force: true })
+        cy.get(`a[href*=${avvistVedtak.id}]`).click({ force: true })
 
         cy.get('.ekspanderbar.gronn').should('not.exist')
 
-        cy.get('.ekspanderbar.gul')
+        cy.get('[data-cy="avviste-dager-card"]')
             .should('contain', '4 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
@@ -90,9 +88,9 @@ describe('Avviste dager', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').should('not.exist')
 
-        cy.get('.avvistedageroversikt').should('contain', 'Dager NAV ikke utbetaler').click()
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
 
-        cy.get('.tabell--dag').within(() => {
+        cy.get('[data-cy="avviste-dager-card"] [data-cy="dag-tabell-body"]').within(() => {
             cy.contains('17.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
             cy.contains('18.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
             cy.contains('19.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
@@ -104,13 +102,13 @@ describe('Avviste dager', () => {
 
     it('Vedtak med avviste dager og lav inntekt', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get(`article a[href*=${avvistVedtakMedLavInntekt.id}]`).click({
+        cy.get(`a[href*=${avvistVedtakMedLavInntekt.id}]`).click({
             force: true,
         })
 
         cy.get('.ekspanderbar.gronn').should('not.exist')
 
-        cy.get('.ekspanderbar.gul')
+        cy.get('[data-cy="avviste-dager-card"]')
             .should('contain', '5 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
@@ -121,9 +119,9 @@ describe('Avviste dager', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene')
 
-        cy.get('.avvistedageroversikt').should('contain', 'Dager NAV ikke utbetaler').click()
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
 
-        cy.get('.tabell--dag').within(() => {
+        cy.get('[data-cy="avviste-dager-card"] [data-cy="dag-tabell-body"]').within(() => {
             cy.contains('17.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
             cy.contains('18.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
             cy.contains('19.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
@@ -131,14 +129,18 @@ describe('Avviste dager', () => {
             cy.contains('21.aug.').parent().parent().should('contain', 'Etter\u00a0dødsfall').and('contain', '-')
         })
 
-        cy.get('.beregning').should('contain', 'Mer om beregningen').click()
+        cy.get('[data-cy="avviste-dager-card"] [data-cy="mer-om-beregningen"]')
+            .should('contain', 'Mer om beregningen')
 
-        cy.get('.tekstinfo').should('contain', 'Månedslønnen')
-        cy.get('.tekstinfo').should('contain', 'Årslønn')
-        cy.get('.tekstinfo').should('contain', 'Sykepengegrunnlag')
-        cy.get('.tekstinfo').should('not.contain', 'Sykepenger per dag')
-        cy.get('.tekstinfo').should('not.contain', 'Totalbeløp')
-        cy.get('.tekstinfo').should('not.contain', 'Utbetalingsdager')
-        cy.get('.tekstinfo').should('not.contain', 'Utbetaling')
+            .click()
+
+        cy.get('[data-cy="avviste-dager-card"] [data-cy="mer-om-beregningen"]')
+            .should('contain', 'Månedslønnen')
+            .should('contain', 'Årslønn')
+            .should('contain', 'Sykepengegrunnlag')
+            .should('not.contain', 'Sykepenger per dag')
+            .should('not.contain', 'Totalbeløp')
+            .should('not.contain', 'Utbetalingsdager')
+            .should('not.contain', 'Utbetaling')
     })
 })

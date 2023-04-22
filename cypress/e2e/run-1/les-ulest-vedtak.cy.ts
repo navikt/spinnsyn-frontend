@@ -15,12 +15,12 @@ describe('Les uleste vedtak', () => {
 
     it('Det er 2 ulest vedtak og 9 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 2)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9)
+        cy.get('.vedtak--uleste > > .inngangspanel').should('have.length', 2)
+        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
-        cy.get('.vedtak--uleste').get(`article a[href*=${ulestVedtakUtenUtbetalingsdager.id}]`).click()
+        cy.get('.vedtak--uleste').get(`a[href*=${ulestVedtakUtenUtbetalingsdager.id}]`).click()
 
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${ulestVedtakUtenUtbetalingsdager.id}`)
 
@@ -70,12 +70,12 @@ describe('Les uleste vedtak', () => {
 
     it('Det er 2 uleste vedtak og 9 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get('.vedtak--uleste > article > .inngangspanel').should('have.length', 2)
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9)
+        cy.get('.vedtak--uleste > > .inngangspanel').should('have.length', 2)
+        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9)
     })
 
     it('Vi åpner et annullert vedtak', () => {
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9).eq(3).click({ force: true })
+        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
@@ -88,7 +88,7 @@ describe('Les uleste vedtak', () => {
 
     it('Vi åpner et revurdert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get('.vedtak--leste > article > .inngangspanel').should('have.length', 9).eq(4).click({ force: true })
+        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9).eq(4).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 

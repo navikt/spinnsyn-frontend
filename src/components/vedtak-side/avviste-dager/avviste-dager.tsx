@@ -37,6 +37,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     return (
         <ExpansionCard
             className={'mt-4'}
+            data-cy={'avviste-dager-card'}
             aria-label="Avviste sykepengedager"
             defaultOpen={arkivering}
             style={
@@ -60,7 +61,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                 <Vis hvis={heltAvvist && harMinstEnForLavInntektDag} render={() => <InntektInfo vedtak={vedtak} />} />
 
                 <Accordion>
-                    <Accordion.Item ref={accordionRef} open={open} className="avvistedageroversikt">
+                    <Accordion.Item ref={accordionRef} open={open} data-cy="avvistedageroversikt">
                         <Accordion.Header onClick={onButtonClick}>
                             <Heading size="small" level="3">
                                 Dager NAV ikke utbetaler

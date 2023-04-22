@@ -9,7 +9,7 @@ describe('Utbetalingsoversikt', () => {
 
     it('Laster startside', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get(`article a[href*=${vedtak.id}]`).click()
+        cy.get(`a[href*=${vedtak.id}]`).click()
     })
 
     it('Utbetalingsoversikt', () => {
@@ -60,7 +60,7 @@ describe('Utbetalingsoversikt', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('.sidebanner__tittel').should('be.visible').and('have.text', 'Svar på søknader')
 
-        cy.get(`article a[href*=${integrasjonsVedtak.id}]`).click()
+        cy.get(`a[href*=${integrasjonsVedtak.id}]`).click()
 
         cy.contains('Sykepenger per dag').click({ force: true })
 
