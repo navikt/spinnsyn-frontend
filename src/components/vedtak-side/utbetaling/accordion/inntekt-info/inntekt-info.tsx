@@ -1,12 +1,11 @@
 import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../../context/arkivering-context'
 import { harFlereArbeidsgivere } from '../../../../../utils/har-flere-arbeidsgivere'
 import { storeTilStoreOgSmå } from '../../../../../utils/store-små'
 import { tekst } from '../../../../../utils/tekster'
 import { formaterValuta } from '../../../../../utils/valuta-utils'
-import { ekspanderbarKlikk } from '../../../../ekspanderbar/ekspander-utils'
 import Vis from '../../../../vis'
 import { VedtakProps } from '../../../vedtak'
 import { parserWithReplace } from '../../../../../utils/html-react-parser-utils'
@@ -16,7 +15,6 @@ import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-ar
 const InntektInfo = ({ vedtak }: VedtakProps) => {
     const isServer = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(isServer)
-    const accordionRef = useRef(null)
 
     const finnRiktigInntekt = () => {
         const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
@@ -36,7 +34,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Inntekter lagt til grunn for sykepengene')
         setOpen(!open)
     }
 
@@ -45,7 +42,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
             hvis={inntektMnd && inntektAr}
             render={() => (
                 <Accordion>
-                    <Accordion.Item open={open} ref={accordionRef}>
+                    <Accordion.Item open={open}>
                         <Accordion.Header onClick={onButtonClick}>
                             <Heading size="small" level="3">
                                 {tekst('utbetaling.inntekt.info.tittel')}

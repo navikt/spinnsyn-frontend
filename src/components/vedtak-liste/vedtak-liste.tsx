@@ -27,12 +27,14 @@ const VedtakListe = () => {
             </header>
 
             <Teasere
+                dataCy={'uleste-vedtak'}
                 vedtak={uleste}
                 tittel={tekst('spinnsyn.teaser.uleste')}
                 tomListeTekst={tekst('vedtak-liste.ingen-nye-soknader')}
             />
 
             <Teasere
+                dataCy={'leste-vedtak'}
                 vedtak={leste}
                 tittel={tekst('spinnsyn.teaser.leste')}
                 tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}

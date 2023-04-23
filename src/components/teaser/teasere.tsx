@@ -10,12 +10,13 @@ interface SoknaderTeasereProps {
     vedtak: RSVedtakWrapper[]
 
     tittel: string
+    dataCy: string
     tomListeTekst?: string
 }
 
-const Teasere = ({ vedtak, tittel, tomListeTekst }: SoknaderTeasereProps) => {
+const Teasere = ({ vedtak, tittel, tomListeTekst, dataCy }: SoknaderTeasereProps) => {
     return (
-        <div className={'mb-12'}>
+        <div className={'mb-12'} data-cy={dataCy}>
             <header>
                 <Heading spacing size="medium" level="2">
                     {tittel}

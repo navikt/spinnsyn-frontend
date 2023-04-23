@@ -7,6 +7,7 @@ import Vis from '../vis'
 import { parserWithReplace } from '../../utils/html-react-parser-utils'
 
 import DagLabel from './dag-label'
+import { dataCyBeskrivelse } from './dag-data-cy-util'
 
 interface DagBeskrivelseProps {
     dager: RSDag[]
@@ -26,7 +27,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         const lovhjemmelTekst = lovhjemmel(dag)
 
         return (
-            <div className={'pt-1'}>
+            <div className={'pt-1'} data-cy={dataCyBeskrivelse(dag)}>
                 <Vis
                     hvis={dag.dagtype !== 'AvvistDag'}
                     render={() => <BodyShort>{tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}</BodyShort>}
@@ -78,7 +79,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     }
 
     return (
-        <div className={'p-3'}>
+        <div className={'p-3'} data-cy="dagtabell-forklaring">
             <Heading size="xsmall" spacing level="4">
                 {tekst('utbetaling.tabell.dagtyper')}
             </Heading>

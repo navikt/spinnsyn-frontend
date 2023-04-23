@@ -1,12 +1,11 @@
 import { Accordion, BodyLong, BodyShort, ExpansionCard, Heading } from '@navikt/ds-react'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
-import { ekspanderbarKlikk } from '../../ekspanderbar/ekspander-utils'
 import Vis from '../../vis'
 import BeregningInfo from '../utbetaling/accordion/beregning-info'
 import InntektInfo from '../utbetaling/accordion/inntekt-info/inntekt-info'
@@ -20,7 +19,6 @@ interface AvvisteDagerProps {
 const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) => {
     const arkivering = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(arkivering)
-    const accordionRef = useRef(null)
 
     const harMinstEnForLavInntektDag =
         avvisteDager.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
@@ -28,7 +26,6 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
     const avvisteDagerTekst = avvisteDager.length === 1 ? ' sykepengedag' : ' sykepengedager'
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Dager NAV ikke utbetaler')
         setOpen(!open)
     }
 
@@ -61,7 +58,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                 <Vis hvis={heltAvvist && harMinstEnForLavInntektDag} render={() => <InntektInfo vedtak={vedtak} />} />
 
                 <Accordion>
-                    <Accordion.Item ref={accordionRef} open={open} data-cy="avvistedageroversikt">
+                    <Accordion.Item open={open} data-cy="avvistedageroversikt">
                         <Accordion.Header onClick={onButtonClick}>
                             <Heading size="small" level="3">
                                 Dager NAV ikke utbetaler

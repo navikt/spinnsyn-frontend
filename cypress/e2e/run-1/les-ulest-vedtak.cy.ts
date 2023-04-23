@@ -15,12 +15,12 @@ describe('Les uleste vedtak', () => {
 
     it('Det er 2 ulest vedtak og 9 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get('.vedtak--uleste > > .inngangspanel').should('have.length', 2)
-        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9)
+        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 2)
+        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 9)
     })
 
     it('Vi åpner det uleste vedtaket', () => {
-        cy.get('.vedtak--uleste').get(`a[href*=${ulestVedtakUtenUtbetalingsdager.id}]`).click()
+        cy.get('[data-cy="uleste-vedtak"] a').get(`a[href*=${ulestVedtakUtenUtbetalingsdager.id}]`).click()
 
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${ulestVedtakUtenUtbetalingsdager.id}`)
 
@@ -39,17 +39,22 @@ describe('Les uleste vedtak', () => {
         cy.contains('folketrygdloven § 8-28').should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
-        cy.get('.inntekt__info')
+
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedslønn"]')
             .should('contain', 'Beregnet månedslønn')
-            .and('contain', '37\u00a0500 kr')
+            .should('contain', '37\u00a0500 kr')
+
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årslønn"]')
             .should('contain', 'Beregnet årslønn')
-            .and('contain', '450\u00a0000 kr')
+            .should('contain', '450\u00a0000 kr')
+
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
             .should('contain', 'Sykepengegrunnlag')
-            .and('contain', '455\u00a0000 kr')
+            .should('contain', '455\u00a0000 kr')
     })
 
     it('Den blå boksen har riktig innhold', () => {
-        cy.get('.ekspanderbar.bla')
+        cy.get('[data-cy="sykepengedager-ec"]')
             .should('contain', '15 sykepengedager')
             .and('contain', 'Brukt per 9. april 2021')
             .click()
@@ -61,25 +66,22 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(1000)
         cy.visit('http://localhost:8080/syk/sykepenger')
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(1000)
+        cy.get('[data-cy="uleste-vedtak"] a')
     })
 
     it('Det er 2 uleste vedtak og 9 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get('.vedtak--uleste > > .inngangspanel').should('have.length', 2)
-        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9)
+        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 2)
+        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 9)
     })
 
     it('Vi åpner et annullert vedtak', () => {
-        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9).eq(3).click({ force: true })
+        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 9).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
-        cy.get('.annullering .info')
+        cy.get('[data-cy="annullering-info"]')
             .should('not.contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('not.contain', 'Hvem har sendt opplysningene?')
             .and('not.contain', 'Hvorfor behandles vedtaket på nytt?')
@@ -88,11 +90,11 @@ describe('Les uleste vedtak', () => {
 
     it('Vi åpner et revurdert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get('.vedtak--leste > > .inngangspanel').should('have.length', 9).eq(4).click({ force: true })
+        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 9).eq(4).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
-        cy.get('.annullering .info')
+        cy.get('[data-cy="annullering-info"]')
             .should('contain', 'Vil dette ha noe å si for pengene jeg får?')
             .and('contain', 'Hvem har sendt opplysningene?')
             .and('contain', 'Hvorfor behandles vedtaket på nytt?')
@@ -100,7 +102,7 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
-        cy.get('.ekspanderbar.ugyldig')
+        cy.get('[data-cy="sykepengedager-ec-ugyldig"]')
             .eq(0)
             .should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
