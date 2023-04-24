@@ -83,11 +83,10 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 hvis={!annullertEllerRevurdert}
                 render={() => (
                     <>
-                        <BodyLong size="medium">{tekst('vedtak.velkommen.tekst1')}</BodyLong>
-                        <Vis
-                            hvis={erSP && erSPREF}
-                            render={() => <BodyLong size="medium">{tekst('vedtak.velkommen.tekst2')}</BodyLong>}
-                        />
+                        <BodyLong size="medium">
+                            {tekst('vedtak.velkommen.tekst1')}
+                            {erSP && erSPREF && tekst('vedtak.velkommen.tekst2')}
+                        </BodyLong>
                     </>
                 )}
             />
