@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import { RedirectTilForsiden } from '../components/redirect'
-import VedtakListe from '../components/vedtak-liste/vedtak-liste'
+import Listevisning from '../components/listevisning/listevisning'
 import VedtakSide from '../components/vedtak-side/vedtak-side'
 import { ArkiveringContext } from '../context/arkivering-context'
 import useVedtak from '../hooks/useVedtak'
@@ -54,7 +54,7 @@ const IndexMedData = ({ children }: { children?: React.ReactNode }) => {
     return (
         <ArkiveringContextOgMain>
             {children}
-            <VedtakListe />
+            <Listevisning />
         </ArkiveringContextOgMain>
     )
 }

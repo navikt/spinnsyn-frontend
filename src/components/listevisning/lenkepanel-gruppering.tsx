@@ -4,7 +4,7 @@ import React from 'react'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import Vis from '../vis'
 
-import Teaser from './teaser'
+import ListevisningLenkepanel from './listevisning-lenkepanel'
 
 interface SoknaderTeasereProps {
     vedtak: RSVedtakWrapper[]
@@ -14,7 +14,7 @@ interface SoknaderTeasereProps {
     tomListeTekst?: string
 }
 
-const Teasere = ({ vedtak, tittel, tomListeTekst, dataCy }: SoknaderTeasereProps) => {
+const LenkepanelGruppering = ({ vedtak, tittel, tomListeTekst, dataCy }: SoknaderTeasereProps) => {
     return (
         <div className={'mb-12'} data-cy={dataCy}>
             <header>
@@ -24,7 +24,7 @@ const Teasere = ({ vedtak, tittel, tomListeTekst, dataCy }: SoknaderTeasereProps
             </header>
 
             {vedtak.map((v, idx) => {
-                return <Teaser key={idx} vedtak={v} />
+                return <ListevisningLenkepanel key={idx} vedtak={v} />
             })}
 
             <Vis hvis={vedtak.length === 0} render={() => <BodyShort>{tomListeTekst}</BodyShort>} />
@@ -32,4 +32,4 @@ const Teasere = ({ vedtak, tittel, tomListeTekst, dataCy }: SoknaderTeasereProps
     )
 }
 
-export default Teasere
+export default LenkepanelGruppering

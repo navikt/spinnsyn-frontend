@@ -10,7 +10,7 @@ import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../amplitude/amplitude'
 import { cn } from '../../utils/tw-utils'
 
-const Teaser = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
+const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const router = useRouter()
 
@@ -78,4 +78,4 @@ const Etikett = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     return null
 }
 
-export default Teaser
+export default ListevisningLenkepanel

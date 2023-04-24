@@ -7,9 +7,10 @@ import { arkiverteVedtakUrl } from '../../utils/environment'
 import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
-import Teasere from '../teaser/teasere'
 
-const VedtakListe = () => {
+import LenkepanelGruppering from './lenkepanel-gruppering'
+
+const Listevisning = () => {
     const { data: vedtak } = useVedtak()
 
     useUpdateBreadcrumbs(() => [], [])
@@ -26,14 +27,14 @@ const VedtakListe = () => {
                 <Person />
             </header>
 
-            <Teasere
+            <LenkepanelGruppering
                 dataCy={'uleste-vedtak'}
                 vedtak={uleste}
                 tittel={tekst('spinnsyn.teaser.uleste')}
                 tomListeTekst={tekst('vedtak-liste.ingen-nye-soknader')}
             />
 
-            <Teasere
+            <LenkepanelGruppering
                 dataCy={'leste-vedtak'}
                 vedtak={leste}
                 tittel={tekst('spinnsyn.teaser.leste')}
@@ -45,4 +46,4 @@ const VedtakListe = () => {
     )
 }
 
-export default VedtakListe
+export default Listevisning
