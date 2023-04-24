@@ -137,7 +137,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <Sykepengedager vedtak={vedtak} />
 
                 <Vis
-                    hvis={!erArkivering && studyActive}
+                    hvis={!erArkivering && erSP && studyActive}
                     render={() => <UxSignalsWidget study={studyKey} demo={!isProd()} />}
                 />
 
