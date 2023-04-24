@@ -64,7 +64,6 @@ describe('Kombinasjonutbetaling keyboard', () => {
 
     it('Viser info om sykepengedager brukt', () => {
         cy.realPress('Tab')
-        cy.focused().contains('12 sykepengedager')
         cy.realPress('Enter')
         cy.get('h3').contains('248 sykepengedager')
     })

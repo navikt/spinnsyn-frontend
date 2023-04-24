@@ -1,12 +1,11 @@
 import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../../context/arkivering-context'
 import { harFlereArbeidsgivere } from '../../../../../utils/har-flere-arbeidsgivere'
 import { storeTilStoreOgSmå } from '../../../../../utils/store-små'
 import { tekst } from '../../../../../utils/tekster'
 import { formaterValuta } from '../../../../../utils/valuta-utils'
-import { ekspanderbarKlikk } from '../../../../ekspanderbar/ekspander-utils'
 import Vis from '../../../../vis'
 import { VedtakProps } from '../../../vedtak'
 import { parserWithReplace } from '../../../../../utils/html-react-parser-utils'
@@ -16,7 +15,6 @@ import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-ar
 const InntektInfo = ({ vedtak }: VedtakProps) => {
     const isServer = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(isServer)
-    const accordionRef = useRef(null)
 
     const finnRiktigInntekt = () => {
         const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
@@ -36,7 +34,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Inntekter lagt til grunn for sykepengene')
         setOpen(!open)
     }
 
@@ -44,28 +41,34 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
         <Vis
             hvis={inntektMnd && inntektAr}
             render={() => (
-                <Accordion className="inntekt__info">
-                    <Accordion.Item open={open} ref={accordionRef}>
+                <Accordion>
+                    <Accordion.Item open={open}>
                         <Accordion.Header onClick={onButtonClick}>
                             <Heading size="small" level="3">
                                 {tekst('utbetaling.inntekt.info.tittel')}
                             </Heading>
                         </Accordion.Header>
-                        <Accordion.Content>
-                            <article className="arbgiver_inntekt">
-                                <Label className="arbgiver_navn">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
+                        <Accordion.Content className={'bg-white'}>
+                            <article data-cy={'inntekt-info-article'}>
+                                <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
-                                <section>
-                                    <BodyShort as="div" size="small">
+                                <section
+                                    data-cy="beregnet-månedslønn"
+                                    className={'arkivering-flex-fix flex justify-between'}
+                                >
+                                    <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.beregnet')}
                                     </BodyShort>
-                                    <BodyShort as="div" size="small">
+                                    <BodyShort as="div" size="small" spacing>
                                         {inntektMnd}
                                     </BodyShort>
                                 </section>
 
-                                <section>
-                                    <BodyShort as="div" size="small">
+                                <section
+                                    data-cy="beregnet-årslønn"
+                                    className={'arkivering-flex-fix flex justify-between'}
+                                >
+                                    <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.omregnet')}
                                     </BodyShort>
                                     <BodyShort as="div" size="small">
@@ -79,7 +82,10 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <>
                                             <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
 
-                                            <section className="arbgiver">
+                                            <section
+                                                data-cy="samlet-årslønn"
+                                                className="arkivering-flex-fix mt-4 flex justify-between border-t border-gray-400 pt-4"
+                                            >
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.inntekt.samlet.årslønn')}
                                                 </Label>
@@ -95,7 +101,10 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     hvis={skalViseSykepengegrunnlag}
                                     render={() => (
                                         <>
-                                            <section>
+                                            <section
+                                                data-cy="sykepengegrunnlag"
+                                                className={'arkivering-flex-fix flex justify-between'}
+                                            >
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.sykepengegrunnlag')}
                                                 </Label>
@@ -107,7 +116,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                             <Vis
                                                 hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'}
                                                 render={() => (
-                                                    <div className="redusert_sykepengegrunnlag">
+                                                    <div className="mt-8 bg-orange-50 p-4">
                                                         <BodyLong size="small">
                                                             {parserWithReplace(tekst('utbetaling.redusert6G.tekst'))}
                                                         </BodyLong>

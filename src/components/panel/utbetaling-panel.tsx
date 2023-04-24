@@ -1,8 +1,6 @@
 import { Panel } from '@navikt/ds-react'
 import React from 'react'
 
-import styles from './utbetaling-panel.module.css'
-
 interface UtbetalingPanelProps {
     tittel: React.ReactNode
     erUgyldig: boolean
@@ -11,28 +9,19 @@ interface UtbetalingPanelProps {
 }
 
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
-    function erUgyldig() {
-        if (props.erUgyldig) {
-            return ` ${styles.ugyldig}`
-        }
-        return ''
-    }
-
     return (
         <Panel
-            className={styles.panelWrapper + erUgyldig()}
-            data-cy={`${props.erUgyldig && 'ugyldig'} ${props.dataCy}`}
+            className={`mt-4 rounded-md`}
+            data-cy={`utbetaling-panel-${props.dataCy}${props.erUgyldig ? '-ugyldig' : ''}`}
+            style={
+                {
+                    '--ac-panel-bg': props.erUgyldig ? 'var(--a-gray-100)' : 'var(--a-green-100)',
+                } as React.CSSProperties
+            }
         >
-            <div className={styles.heading}>
-                <img
-                    aria-hidden="true"
-                    src="/syk/sykepenger/static/img/ikon-ekspander-gronn.svg"
-                    alt=""
-                    className={styles.image}
-                />
-                <div>{props.tittel}</div>
-            </div>
-            <div className={styles.content}>{props.children}</div>
+            <div className={'mb-4'}>{props.tittel}</div>
+
+            {props.children}
         </Panel>
     )
 }

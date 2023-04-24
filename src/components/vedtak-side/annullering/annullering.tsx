@@ -1,8 +1,8 @@
-import { Alert, BodyLong, BodyShort, Heading, Label, Link } from '@navikt/ds-react'
+import { Alert, BodyLong, BodyShort, Heading, Label, Link, ReadMore } from '@navikt/ds-react'
 import React from 'react'
+import { Chat2Icon } from '@navikt/aksel-icons'
 
 import { tekst } from '../../../utils/tekster'
-import EkspanderbarInfo from '../../ekspanderbar/ekspanderbar-info'
 import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
@@ -43,36 +43,36 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
     }
 
     return (
-        <div className="annullering">
+        <>
             <Vis hvis={vedtak.revurdert} render={() => <RevurdertAlert />} />
 
             <Vis hvis={vedtak.annullert} render={() => <AnnullertAlert />} />
 
-            <EkspanderbarInfo erApen={false} tittel={tekst('annullert.info.header')}>
-                {vedtak.revurdert && (
-                    <>
-                        <Label>{tekst('annullert.info.header1')}</Label>
-                        <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>
+            <ReadMore className={'my-10'} header={tekst('annullert.info.header')}>
+                <div className={'pt-4'} data-cy={'annullering-info'}>
+                    {vedtak.revurdert && (
+                        <>
+                            <Label>{tekst('annullert.info.header1')}</Label>
+                            <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>
 
-                        <Label>{tekst('annullert.info.header2')}</Label>
-                        <BodyLong spacing>{bodyFraUtbetalingstype()}</BodyLong>
+                            <Label>{tekst('annullert.info.header2')}</Label>
+                            <BodyLong spacing>{bodyFraUtbetalingstype()}</BodyLong>
 
-                        <Label>{tekst('annullert.info.header3')}</Label>
-                        <BodyLong spacing>{tekst('annullert.info.body3')}</BodyLong>
-                    </>
-                )}
+                            <Label>{tekst('annullert.info.header3')}</Label>
+                            <BodyLong spacing>{tekst('annullert.info.body3')}</BodyLong>
+                        </>
+                    )}
 
-                <Label>{tekst('annullert.info.header4')}</Label>
-                <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
+                    <Label>{tekst('annullert.info.header4')}</Label>
+                    <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
 
-                <div className="link__med__ikon">
-                    <img alt="" src={'/syk/sykepenger/static/img/ikon-skriv-til-oss.svg'} />
-                    <Link href={tekst('behandling.lenke.url')}>
-                        <BodyShort as="span">{tekst('annullert.info.skriv-til-oss')}</BodyShort>
+                    <Link href={tekst('behandling.lenke.url')} target={'_blank'}>
+                        <Chat2Icon className={'inline'} fontSize={'var(--a-font-size-large)'} />
+                        {tekst('annullert.info.skriv-til-oss')}
                     </Link>
                 </div>
-            </EkspanderbarInfo>
-        </div>
+            </ReadMore>
+        </>
     )
 }
 

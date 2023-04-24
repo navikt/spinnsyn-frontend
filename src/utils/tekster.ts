@@ -1,7 +1,6 @@
 import BannerTekster from '../components/banner/banner-tekster'
-import TeaserTekster from '../components/teaser/teaser-tekster'
+import ListevisningTekster from '../components/listevisning/listevisning-tekster'
 import VedtakArkiveringTekster from '../components/vedtak-arkivering/vedtak-arkivering-tekster'
-import VedtakListeTekster from '../components/vedtak-liste/vedtak-liste-tekster'
 import AnnulleringTekster from '../components/vedtak-side/annullering/annullering-tekster'
 import AvvisteDagerTekster from '../components/vedtak-side/avviste-dager/avviste-dager-tekster'
 import BehandlingTekster from '../components/vedtak-side/behandling/behandling-tekster'
@@ -12,8 +11,7 @@ import VedtakTekster from '../components/vedtak-side/vedtak-tekster'
 
 const tekster = {
     ...BannerTekster,
-    ...VedtakListeTekster,
-    ...TeaserTekster,
+    ...ListevisningTekster,
     ...VedtakTekster,
     ...VedtakArkiveringTekster,
     ...UtbetalingTekster,
@@ -26,8 +24,7 @@ const tekster = {
 
 type TekstKeys =
     | keyof typeof BannerTekster
-    | keyof typeof VedtakListeTekster
-    | keyof typeof TeaserTekster
+    | keyof typeof ListevisningTekster
     | keyof typeof VedtakTekster
     | keyof typeof VedtakArkiveringTekster
     | keyof typeof UtbetalingTekster

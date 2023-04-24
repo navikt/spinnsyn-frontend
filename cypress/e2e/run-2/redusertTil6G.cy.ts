@@ -1,4 +1,5 @@
 import { vedtakMedDetMeste } from '../../../src/data/testdata/data/rs-vedtak'
+import { formaterValuta } from '../../../src/utils/valuta-utils'
 
 describe('Redusert til 6G', () => {
     const vedtak = vedtakMedDetMeste
@@ -9,7 +10,7 @@ describe('Redusert til 6G', () => {
 
     it('Laster startside', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get(`article a[href*=${vedtak.id}]`).click()
+        cy.get(`a[href*=${vedtak.id}]`).click()
     })
 
     it('Utbetalingsoversikt', () => {
@@ -19,21 +20,31 @@ describe('Redusert til 6G', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('Beregnet månedslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(0).contains('74 675 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedslønn"]')
+            .should('contain', 'Beregnet månedslønn')
+            .should('contain', formaterValuta(74675))
 
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(1).contains('Beregnet årslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(1).contains('896 100 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årslønn"]')
+            .should('contain', 'Beregnet årslønn')
+            .should('contain', formaterValuta(896100))
 
-        cy.get('.inntekt__info .arbgiver_navn').contains('The Ministry Of Magic AS')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(2).contains('Årslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(2).contains('195 781 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-0"]').contains('The Ministry Of Magic AS')
 
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(3).contains('Samlet årslønn')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(3).contains('1 091 881 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-årslønn-0"]')
+            .should('contain', 'Årslønn')
+            .should('contain', formaterValuta(195781))
 
-        // Sjekker om sykepengegrunnlaget er redusert
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('Sykepengegrunnlag')
-        cy.get('.inntekt__info .arbgiver_inntekt section').eq(4).contains('638 394 kr')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="samlet-årslønn"]')
+            .should('contain', 'Samlet årslønn')
+            .should('contain', formaterValuta(1091881))
+
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
+            .should('contain', 'Sykepengegrunnlag')
+            .should('contain', formaterValuta(638394))
+
+        cy.get('[data-cy="inntekt-info-article"]').should(
+            'contain',
+            'Du får ikke sykepenger fra NAV for den delen av årsinntekten som er mer enn seks ganger grunnbeløpet.',
+        )
     })
 })

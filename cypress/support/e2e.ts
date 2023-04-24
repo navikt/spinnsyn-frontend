@@ -17,7 +17,11 @@ import './commands'
 import 'cypress-axe'
 
 afterEach(() => {
-    cy.get('h1') // avventer at element som finnes på alle sider dukker opp
+    if (Cypress.currentTest.titlePath[0] == 'Server vedtak') {
+        cy.get('[data-cy="utbetaling-panel-refusjon"]')
+    } else {
+        cy.get('h1') // avventer at element som finnes på alle sider dukker opp
+    }
     cy.injectAxe()
 
     const rules = (testTittel: string) => {
@@ -25,7 +29,7 @@ afterEach(() => {
             // SSR rendret har noen quirks
             return {
                 rules: [
-                    { id: 'heading-order', enabled: false },
+                    { id: 'page-has-heading-one', enabled: false },
                     { id: 'landmark-one-main', enabled: false },
                     { id: 'region', enabled: false },
                 ],
@@ -34,7 +38,7 @@ afterEach(() => {
         return {
             // prettier-ignore
             rules: [
-                { id: 'svg-img-alt', enabled: false },  // Trenger ikke alt tekst på bilder
+                { id: "svg-img-alt", enabled: false }  // Trenger ikke alt tekst på bilder
             ],
         }
     }

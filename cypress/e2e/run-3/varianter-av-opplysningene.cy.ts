@@ -2,8 +2,10 @@ describe('Tester logikk i behandling.tsx', () => {
     it('Automatisk behandlet', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=a147e9a9-0aa2-4f5f-a8e3-c16c901e4071')
 
-        cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden er behandlet automatisk').and('be.visible')
-        cy.get('.behandling').contains(
+        cy.get('[data-cy="behandling-header"]')
+            .should('have.text', 'Søknaden er behandlet automatisk')
+            .and('be.visible')
+        cy.get('[data-cy="behandling-body"]').contains(
             'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
@@ -13,13 +15,12 @@ describe('Tester logikk i behandling.tsx', () => {
     it('Varianter av opplysningene', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?id=99f389f2-0084-481b-bed8-47f6ac3491d4')
 
-        cy.get('.behandling > .navds-heading')
+        cy.get('[data-cy="behandling-header"]')
             .should('have.text', 'Søknaden er behandlet av en saksbehandler')
             .and('be.visible')
-        cy.get('.behandling').contains(
+        cy.get('[data-cy="behandling-body"]').contains(
             'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
-
         cy.get('[data-cy*="ugyldig"]').should('not.exist')
     })
 
@@ -32,13 +33,13 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-alert').contains('Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.')
         cy.get('.navds-alert').should('not.contain', 'Du finner det nye vedtaket i listen over svar på søknader')
 
-        cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet automatisk')
-        cy.get('.behandling').contains(
+        cy.get('[data-cy="behandling-header"]').should('have.text', 'Søknaden ble behandlet automatisk')
+        cy.get('[data-cy="behandling-body"]').contains(
             'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('[data-cy*="ugyldig"]').should('have.length', 1)
-        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 1)
+        cy.get('[data-cy*="ugyldig"]').should('have.length', 2)
+        cy.get('[data-cy="sykepengedager-ec-ugyldig"]').should('have.length', 1)
     })
 
     it('Manuelt behandlet revurdert vedtak', () => {
@@ -52,13 +53,13 @@ describe('Tester logikk i behandling.tsx', () => {
             'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
         )
 
-        cy.get('.behandling > .navds-heading').should('have.text', 'Søknaden ble behandlet av en saksbehandler')
-        cy.get('.behandling').contains(
+        cy.get('[data-cy="behandling-header"]').should('have.text', 'Søknaden ble behandlet av en saksbehandler')
+        cy.get('[data-cy="behandling-body"]').contains(
             'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('[data-cy*="ugyldig"]').should('have.length', 1)
-        cy.get('.navds-accordion__item.ekspanderbar.ugyldig').should('have.length', 1)
+        cy.get('[data-cy*="ugyldig"]').should('have.length', 2)
+        cy.get('[data-cy="sykepengedager-ec-ugyldig"]').should('have.length', 1)
     })
 
     it('Revurdert vedtak med direkte utbetaling', () => {

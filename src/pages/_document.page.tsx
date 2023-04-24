@@ -4,8 +4,10 @@ import { Components, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler
 import getConfig from 'next/config'
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
+import { Header } from '@navikt/ds-react-internal'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
+import { spinnsynFrontendInterne } from '../utils/environment'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -17,6 +19,8 @@ const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) 
 interface Props {
     Decorator?: Components
     language: string
+    internheader: boolean
+    ctx: DocumentContext
 }
 
 class MyDocument extends Document<Props> {
@@ -24,8 +28,14 @@ class MyDocument extends Document<Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
         const language = getDocumentParameter(initialProps, 'lang')
+        const internheader = spinnsynFrontendInterne()
 
-        const props: DocumentInitialProps & Props = { ...initialProps, language }
+        const props: DocumentInitialProps & Props = {
+            ...initialProps,
+            language,
+            internheader,
+            ctx,
+        }
 
         const showDecorator = serverRuntimeConfig.noDecorator != 'true'
         if (showDecorator) {
@@ -43,14 +53,31 @@ class MyDocument extends Document<Props> {
     }
 
     render(): JSX.Element {
-        const { Decorator, language } = this.props
+        const { Decorator, language, internheader, ctx } = this.props
+        const arkivering = ctx.pathname.includes('vedtak/arkivering')
+        const visDekorator = Decorator != null && !arkivering && !internheader
+
+        function header() {
+            if (internheader) {
+                return (
+                    <Header>
+                        <Header.Title as="h1">Svar på søknad om sykepenger</Header.Title>
+                    </Header>
+                )
+            }
+            if (visDekorator) {
+                return <Decorator.Header />
+            }
+            return null
+        }
+
         return (
             <Html lang={language || 'no'}>
-                <Head>{Decorator && <Decorator.Styles />}</Head>
+                <Head>{visDekorator && <Decorator.Styles />}</Head>
                 <body>
-                    {Decorator && <Decorator.Header />}
+                    {header()}
                     <Main />
-                    {Decorator && (
+                    {visDekorator && (
                         <>
                             <Decorator.Footer />
                             <Decorator.Scripts />

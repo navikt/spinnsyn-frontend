@@ -9,7 +9,7 @@ describe('Personutbetaling uten kontonummer', () => {
 
     it('Laster startside', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
-        cy.get(`article a[href*=${vedtak.id}]`).click()
+        cy.get(`a[href*=${vedtak.id}]`).click()
     })
 
     it('Viser info om at kontonummer mangler', () => {

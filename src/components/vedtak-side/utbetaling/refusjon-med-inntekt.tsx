@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -20,9 +20,9 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     return (
         <UtbetalingPanel
             tittel={
-                <Heading size="large" level="2">
+                <Heading level="2" size="large">
                     <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
-                    <BodyShort as="span">
+                    <BodyShort as="span" className={'block'}>
                         {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                             '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
                         })}
@@ -32,17 +32,11 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="refusjon"
         >
-            <>
-                <VedtakPeriode vedtak={vedtak} />
-
-                <ArbeidsgiverInfo vedtak={vedtak} />
-
-                <Accordion>
-                    <InntektInfo vedtak={vedtak} />
-                    <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} />
-                    <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
-                </Accordion>
-            </>
+            <VedtakPeriode vedtak={vedtak} />
+            <ArbeidsgiverInfo vedtak={vedtak} />
+            <InntektInfo vedtak={vedtak} />
+            <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} />
+            <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
         </UtbetalingPanel>
     )
 }

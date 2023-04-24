@@ -1,11 +1,10 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../../utils/tekster'
-import { ekspanderbarKlikk } from '../../../ekspanderbar/ekspander-utils'
 import Vis from '../../../vis'
 import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
 
@@ -18,7 +17,6 @@ export interface BeregningInfoProps {
 const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => {
     const isServer = useContext(ArkiveringContext)
     const [open, setOpen] = useState<boolean>(isServer)
-    const accordionRef = useRef<HTMLDivElement>(null)
 
     const harMinstEnForLavInntektDag =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
@@ -38,19 +36,18 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
     }
 
     const onButtonClick = () => {
-        ekspanderbarKlikk(open, accordionRef, 'Mer om beregningen')
         setOpen(!open)
     }
 
     return (
-        <Accordion.Item ref={accordionRef} open={open} className="beregning">
+        <Accordion.Item open={open} data-cy={'mer-om-beregningen'}>
             <Accordion.Header onClick={onButtonClick}>
                 <Heading size="small" level="3">
                     {tekst('utbetaling.beregning.tittel')}
                 </Heading>
             </Accordion.Header>
 
-            <Accordion.Content className="tekstinfo">
+            <Accordion.Content className={'bg-white'}>
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>

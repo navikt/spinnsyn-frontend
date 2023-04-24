@@ -50,15 +50,15 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     }
 
     return (
-        <div className="behandling">
-            <Heading size="small" level="2">
+        <>
+            <Heading data-cy="behandling-header" size="small" level="2" className={'mt-4'}>
                 {tekst(tittelNokkel())}
             </Heading>
-            <BodyLong spacing>
+            <BodyLong data-cy="behandling-body" spacing>
                 {behandlingInfoTekst()}
                 <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
                 {tekst('behandling.se-opplysningene')}
             </BodyLong>
-        </div>
+        </>
     )
 }

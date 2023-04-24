@@ -9,7 +9,7 @@ describe('Kombinasjonutbetaling', () => {
 
     it('Laster startside', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
-        cy.get(`article a[href*=${vedtak.id}]`).click()
+        cy.get(`a[href*=${vedtak.id}]`).click()
     })
 
     it('Viser info om utbetaling til personen', () => {
