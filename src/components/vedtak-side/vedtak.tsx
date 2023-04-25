@@ -11,6 +11,7 @@ import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import Vis from '../vis'
 import { isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
+import { Feedback } from '../feedback/feedback'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -137,6 +138,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Behandling vedtak={vedtak} />
 
             <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
+
+            <Feedback></Feedback>
         </>
     )
 }
