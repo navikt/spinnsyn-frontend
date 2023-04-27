@@ -6,7 +6,7 @@
         "@navikt/aksel-icons": "^2.8.14",
         "@navikt/ds-css": "^2.8.16",
         "@navikt/ds-css-internal": "^2.8.16",
-        "@navikt/ds-react": "^2.8.14",
+        "@navikt/ds-react": "^2.9.0",
         "@navikt/ds-react-internal": "^2.8.16",
         "@navikt/ds-tailwind": "^2.8.16",
         "@navikt/ds-tokens": "^2.8.16",
