@@ -19,9 +19,9 @@ spec:
   readiness:
     path: syk/sykepenger/api/internal/isReady
   accessPolicy:
-    outbound:
-      external:
-        - host: www.nav.no
+    rules:
+      - application: nav-dekoratoren
+        namespace: personbruker
   env:
     - name: ENVIRONMENT
       value: "labs"
