@@ -3,7 +3,7 @@
     "version": "0.1.1",
     "private": true,
     "dependencies": {
-        "@navikt/aksel-icons": "^2.8.14",
+        "@navikt/aksel-icons": "^2.9.2",
         "@navikt/ds-css": "^2.9.0",
         "@navikt/ds-css-internal": "^2.9.2",
         "@navikt/ds-react": "^2.9.0",
