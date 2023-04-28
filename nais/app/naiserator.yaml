@@ -39,9 +39,8 @@ spec:
         - application: flex-hotjar-emotions
         - application: sokos-kontoregister-person
           namespace: okonomi
-      external:
-        - host: www.nav.no                      # for prod
-        - host: dekoratoren.ekstern.dev.nav.no  # for dev
+        - application: nav-dekoratoren
+          namespace: personbruker
   tokenx:
     enabled: true
   env:
