@@ -7,7 +7,7 @@
         "@navikt/ds-css": "^2.9.2",
         "@navikt/ds-css-internal": "^2.9.2",
         "@navikt/ds-react": "^2.9.2",
-        "@navikt/ds-react-internal": "^2.9.0",
+        "@navikt/ds-react-internal": "^2.9.2",
         "@navikt/ds-tailwind": "^2.9.2",
         "@navikt/ds-tokens": "^2.9.2",
         "@navikt/nav-dekoratoren-moduler": "^1.9.0",
