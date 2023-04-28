@@ -1,4 +1,4 @@
-FROM gcr.io/distroless/nodejs18@sha256:c6163adfda796463a5691fc9f29733320ca2846985ba3708e0d490fbcbdc66f8
+FROM gcr.io/distroless/nodejs18:latest
 
 ENV NODE_ENV production
 
