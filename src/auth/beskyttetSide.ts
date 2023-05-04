@@ -3,6 +3,7 @@ import { NextPageContext } from 'next'
 
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { AuthenticationError } from '../utils/fetch'
 
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
@@ -36,7 +37,9 @@ export function beskyttetSide(handler: PageHandler) {
         try {
             await verifyIdportenAccessToken(bearerToken)
         } catch (e) {
-            logger.error(e, 'Kunne ikke validere idporten token på beskyttetSide.')
+            if (!(e instanceof AuthenticationError)) {
+                logger.warn(`Kunne ikke validere token fra ID-porten i beskyttetSide. Error: ${e}.`)
+            }
             return wonderwallRedirect
         }
         return handler(context)
