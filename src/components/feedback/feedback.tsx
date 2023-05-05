@@ -19,15 +19,13 @@ export const Feedback = () => {
     const [errorMsg, setErrorMsg] = useState<string | null>(null)
     const [thanksFeedback, setThanksFeedback] = useState<boolean>(false)
     const textAreaRef = useRef(null)
-    const [, setHasLoggedFeedback] = useState(false)
 
     const FeedbackButton = (props: FeedbackButtonProps) => {
         return (
             <Button
-                variant={'secondary-neutral'}
-                size={'small'}
+                variant={'primary-neutral'}
                 className={cn({
-                    'bg-gray-800 text-text-on-inverted': activeState === props.feedbacktype,
+                    'bg-surface-neutral-active text-text-on-inverted': activeState === props.feedbacktype,
                 })}
                 onClick={() => setActiveState((x) => (x === props.feedbacktype ? null : props.feedbacktype))}
                 {...props}
@@ -44,8 +42,6 @@ export const Feedback = () => {
             return
         }
         setErrorMsg(null)
-
-        setHasLoggedFeedback(true)
 
         setActiveState(null)
         setTextValue('')
@@ -76,40 +72,36 @@ export const Feedback = () => {
 
     return (
         <div className={"'scroll-my-[30vh] toc-ignore mb-28 mt-12"}>
-            {!thanksFeedback && (
-                <div className={'flex w-full flex-col gap-4'}>
-                    <Heading size="small" level="2">
-                        Var denne siden nyttig?
-                    </Heading>
-                    <div className={'flex w-full gap-4'}>
-                        <FeedbackButton feedbacktype={Feedbacktype.JA}>Ja</FeedbackButton>
-                        <FeedbackButton feedbacktype={Feedbacktype.NEI}>Nei</FeedbackButton>
-                        <FeedbackButton feedbacktype={Feedbacktype.FORBEDRING}>Foreslå forbedring</FeedbackButton>
-                    </div>
-                    {activeState !== null && (
-                        <form className={'animate-fadeIn mt-4 flex w-full max-w-sm flex-col gap-4'}>
-                            <Textarea
-                                ref={textAreaRef}
-                                error={errorMsg}
-                                label={getPlaceholder()}
-                                value={textValue}
-                                onChange={(e) => setTextValue(e.target.value)}
-                                maxLength={600}
-                                minRows={3}
-                                description="Ikke skriv inn navn eller andre personopplysninger"
-                            />
-                            <Button
-                                className="mr-auto"
-                                variant={'secondary-neutral'}
-                                size={'small'}
-                                onClick={handleSend}
-                            >
-                                Send inn svar
-                            </Button>
-                        </form>
-                    )}
+            <div className={'flex w-full flex-col gap-4'}>
+                <Heading size="small" level="2">
+                    Var denne siden nyttig?
+                </Heading>
+                <div className={'flex w-full gap-4'}>
+                    <FeedbackButton feedbacktype={Feedbacktype.JA}>Ja</FeedbackButton>
+                    <FeedbackButton feedbacktype={Feedbacktype.NEI}>Nei</FeedbackButton>
+                    <FeedbackButton feedbacktype={Feedbacktype.FORBEDRING}>Foreslå forbedring</FeedbackButton>
                 </div>
-            )}
+                {activeState !== null && (
+                    <form className={'animate-fadeIn mt-4 flex w-full max-w-sm flex-col gap-4'}>
+                        <Textarea
+                            ref={textAreaRef}
+                            error={errorMsg}
+                            label={getPlaceholder()}
+                            value={textValue}
+                            onChange={(e) => {
+                                setThanksFeedback(false)
+                                setTextValue(e.target.value)
+                            }}
+                            maxLength={600}
+                            minRows={3}
+                            description="Ikke skriv inn navn eller andre personopplysninger"
+                        />
+                        <Button className="mr-auto" variant={'primary-neutral'} onClick={handleSend}>
+                            Send inn svar
+                        </Button>
+                    </form>
+                )}
+            </div>
             <div aria-live="polite">
                 {thanksFeedback && (
                     <Heading size="small" as="p" className="mt-8">
