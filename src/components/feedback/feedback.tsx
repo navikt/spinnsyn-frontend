@@ -75,7 +75,8 @@ export const Feedback = ({
                 data-cy={'feedback-' + props.feedbacktype}
                 variant={'secondary-neutral'}
                 className={cn({
-                    'bg-surface-neutral-active text-text-on-inverted': activeState === props.feedbacktype,
+                    'bg-surface-neutral-active text-text-on-inverted hover:bg-surface-neutral-active':
+                        activeState === props.feedbacktype,
                 })}
                 onClick={() => {
                     setThanksFeedback(false)
