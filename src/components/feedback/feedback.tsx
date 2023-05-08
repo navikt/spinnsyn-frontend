@@ -72,6 +72,7 @@ export const Feedback = ({
     const FeedbackButton = (props: FeedbackButtonProps) => {
         return (
             <Button
+                data-cy={'feedback-' + props.feedbacktype}
                 variant={'secondary-neutral'}
                 className={cn({
                     'bg-surface-neutral-active text-text-on-inverted': activeState === props.feedbacktype,
@@ -128,6 +129,7 @@ export const Feedback = ({
                 {activeState !== null && (
                     <form className={'animate-fadeIn mt-4 flex w-full max-w-sm flex-col gap-4'}>
                         <Textarea
+                            data-cy={'feedback-textarea'}
                             ref={textAreaRef}
                             error={errorMsg}
                             label={getPlaceholder()}
@@ -140,7 +142,12 @@ export const Feedback = ({
                             minRows={3}
                             description="Ikke skriv inn navn eller andre personopplysninger"
                         />
-                        <Button className="mr-auto" variant={'secondary-neutral'} onClick={handleSend}>
+                        <Button
+                            data-cy="send-feedback"
+                            className="mr-auto"
+                            variant={'secondary-neutral'}
+                            onClick={handleSend}
+                        >
                             Send inn svar
                         </Button>
                     </form>
