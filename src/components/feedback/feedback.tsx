@@ -3,22 +3,57 @@ import { useEffect, useRef, useState, MouseEvent } from 'react'
 
 import { cn } from '../../utils/tw-utils'
 
-export enum Feedbacktype {
-    'JA' = 'ja',
-    'NEI' = 'nei',
-    'FORBEDRING' = 'forbedring',
+enum Feedbacktype {
+    'JA' = 'JA',
+    'NEI' = 'NEI',
+    'FORBEDRING' = 'FORBEDRING',
 }
 
 interface FeedbackButtonProps extends ButtonProps {
     feedbacktype: Feedbacktype
 }
 
-export const Feedback = () => {
+export const Feedback = ({
+    erDirekteutbetaling,
+    erRefusjon,
+    harAvvisteDager,
+    annullert,
+    revurdert,
+}: {
+    erRefusjon: boolean
+    erDirekteutbetaling: boolean
+    harAvvisteDager: boolean
+    annullert: boolean
+    revurdert: boolean
+}) => {
     const [textValue, setTextValue] = useState('')
     const [activeState, setActiveState] = useState<Feedbacktype | null>(null)
     const [errorMsg, setErrorMsg] = useState<string | null>(null)
     const [thanksFeedback, setThanksFeedback] = useState<boolean>(false)
     const textAreaRef = useRef(null)
+
+    const fetchFeedback = async (): Promise<void> => {
+        if (activeState === null) {
+            return
+        }
+
+        const body = {
+            feedback: textValue,
+            feedbackId: 'spinnsyn-vedtak',
+            svar: activeState,
+            app: 'spinsyn-frontend',
+            erRefusjon,
+            harAvvisteDager,
+            erDirekteutbetaling,
+            annullert,
+            revurdert,
+        }
+
+        await fetch('/syk/sykepenger/api/flexjar-backend/api/v1/feedback', {
+            method: 'POST',
+            body: JSON.stringify(body),
+        })
+    }
 
     const FeedbackButton = (props: FeedbackButtonProps) => {
         return (
@@ -37,13 +72,14 @@ export const Feedback = () => {
             </Button>
         )
     }
-    const handleSend = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleSend = async (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
 
         if (activeState === Feedbacktype.FORBEDRING && textValue === '') {
             setErrorMsg('Tilbakemeldingen kan ikke være tom. Legg til tekst i feltet.')
             return
         }
+        await fetchFeedback()
         setErrorMsg(null)
 
         setActiveState(null)
