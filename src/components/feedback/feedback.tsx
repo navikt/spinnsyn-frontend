@@ -1,7 +1,9 @@
 import { Button, ButtonProps, Heading, Textarea } from '@navikt/ds-react'
-import { useEffect, useRef, useState, MouseEvent } from 'react'
+import { useEffect, useRef, useState, MouseEvent, useContext } from 'react'
 
 import { cn } from '../../utils/tw-utils'
+import { ArkiveringContext } from '../../context/arkivering-context'
+import { spinnsynFrontendInterne } from '../../utils/environment'
 
 enum Feedbacktype {
     'JA' = 'JA',
@@ -26,12 +28,24 @@ export const Feedback = ({
     annullert: boolean
     revurdert: boolean
 }) => {
+    const arkivering = useContext(ArkiveringContext)
+
     const [textValue, setTextValue] = useState('')
     const [activeState, setActiveState] = useState<Feedbacktype | null>(null)
     const [errorMsg, setErrorMsg] = useState<string | null>(null)
     const [thanksFeedback, setThanksFeedback] = useState<boolean>(false)
     const textAreaRef = useRef(null)
 
+    useEffect(() => {
+        textValue && errorMsg && setErrorMsg(null)
+    }, [textValue, errorMsg])
+
+    useEffect(() => {
+        activeState && textAreaRef.current && (textAreaRef.current as any).focus()
+        setErrorMsg(null)
+    }, [activeState])
+
+    if (arkivering || spinnsynFrontendInterne()) return null
     const fetchFeedback = async (): Promise<void> => {
         if (activeState === null) {
             return
@@ -86,15 +100,6 @@ export const Feedback = ({
         setTextValue('')
         setThanksFeedback(true)
     }
-
-    useEffect(() => {
-        textValue && errorMsg && setErrorMsg(null)
-    }, [textValue, errorMsg])
-
-    useEffect(() => {
-        activeState && textAreaRef.current && (textAreaRef.current as any).focus()
-        setErrorMsg(null)
-    }, [activeState])
 
     const getPlaceholder = (): string => {
         switch (activeState) {
