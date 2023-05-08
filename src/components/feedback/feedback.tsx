@@ -27,7 +27,10 @@ export const Feedback = () => {
                 className={cn({
                     'bg-surface-neutral-active text-text-on-inverted': activeState === props.feedbacktype,
                 })}
-                onClick={() => setActiveState((x) => (x === props.feedbacktype ? null : props.feedbacktype))}
+                onClick={() => {
+                    setThanksFeedback(false)
+                    setActiveState((x) => (x === props.feedbacktype ? null : props.feedbacktype))
+                }}
                 {...props}
             >
                 {props.children}
@@ -71,7 +74,7 @@ export const Feedback = () => {
     }
 
     return (
-        <div className={"'scroll-my-[30vh] toc-ignore mb-28 mt-12"}>
+        <div className={'toc-ignore mb-28 mt-12 scroll-my-[30vh]'}>
             <div className={'flex w-full flex-col gap-4'}>
                 <Heading size="small" level="2">
                     Var denne siden nyttig?
