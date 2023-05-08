@@ -117,7 +117,7 @@ export const Feedback = ({
     }
 
     return (
-        <div className={'toc-ignore mb-28 mt-12 scroll-my-[30vh]'}>
+        <div className={'toc-ignore mb-16 mt-24'}>
             <div className={'flex w-full flex-col gap-4'}>
                 <Heading size="small" level="2">
                     Var denne siden nyttig?
