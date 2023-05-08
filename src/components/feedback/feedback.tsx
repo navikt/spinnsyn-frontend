@@ -72,7 +72,7 @@ export const Feedback = ({
     const FeedbackButton = (props: FeedbackButtonProps) => {
         return (
             <Button
-                variant={'primary-neutral'}
+                variant={'secondary-neutral'}
                 className={cn({
                     'bg-surface-neutral-active text-text-on-inverted': activeState === props.feedbacktype,
                 })}
@@ -140,7 +140,7 @@ export const Feedback = ({
                             minRows={3}
                             description="Ikke skriv inn navn eller andre personopplysninger"
                         />
-                        <Button className="mr-auto" variant={'primary-neutral'} onClick={handleSend}>
+                        <Button className="mr-auto" variant={'secondary-neutral'} onClick={handleSend}>
                             Send inn svar
                         </Button>
                     </form>
