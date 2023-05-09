@@ -11,6 +11,7 @@ import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import Vis from '../vis'
 import { isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
+import { Feedback } from '../feedback/feedback'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -47,9 +48,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
-    const erSP = vedtak.sykepengebelopPerson > 0
-    const erSPREF = vedtak.sykepengebelopArbeidsgiver > 0
-    const erAvvist = avvisteDager.length > 0
+    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const harAvvisteDager = avvisteDager.length > 0
 
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
 
@@ -85,7 +86,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     <>
                         <BodyLong size="medium">
                             {tekst('vedtak.velkommen.tekst1')}
-                            {erSP && erSPREF && tekst('vedtak.velkommen.tekst2')}
+                            {erDirekteutbetaling && erRefusjon && tekst('vedtak.velkommen.tekst2')}
                         </BodyLong>
                     </>
                 )}
@@ -115,28 +116,45 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 )}
             />
 
-            <Vis hvis={erSP} render={() => <PersonutbetalingMedInntekt vedtak={vedtak} />} />
+            <Vis hvis={erDirekteutbetaling} render={() => <PersonutbetalingMedInntekt vedtak={vedtak} />} />
             <Vis
-                hvis={erSPREF || (!erSP && !erSPREF && !erAvvist) /* vedtak med bare arbeidsgiverperiode dager */}
+                hvis={
+                    erRefusjon ||
+                    (!erDirekteutbetaling &&
+                        !erRefusjon &&
+                        !harAvvisteDager) /* vedtak med bare arbeidsgiverperiode dager */
+                }
                 render={() => <RefusjonMedInntekt vedtak={vedtak} />}
             />
             <Vis
-                hvis={erAvvist}
+                hvis={harAvvisteDager}
                 render={() => (
-                    <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} heltAvvist={!erSP && !erSPREF} />
+                    <AvvisteDager
+                        avvisteDager={avvisteDager}
+                        vedtak={vedtak}
+                        heltAvvist={!erDirekteutbetaling && !erRefusjon}
+                    />
                 )}
             />
 
             <Sykepengedager vedtak={vedtak} />
 
             <Vis
-                hvis={!erArkivering && erSP && studyActive}
+                hvis={!erArkivering && erDirekteutbetaling && studyActive}
                 render={() => <UxSignalsWidget study={studyKey} demo={!isProd()} />}
             />
 
             <Behandling vedtak={vedtak} />
 
             <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
+
+            <Feedback
+                erDirekteutbetaling={erDirekteutbetaling}
+                erRefusjon={erRefusjon}
+                harAvvisteDager={harAvvisteDager}
+                annullert={vedtak.annullert}
+                revurdert={vedtak.revurdert}
+            ></Feedback>
         </>
     )
 }

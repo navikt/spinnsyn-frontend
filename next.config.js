@@ -65,6 +65,7 @@ const nextConfig = {
         tokenXWellKnownUrl: process.env.TOKEN_X_WELL_KNOWN_URL,
         tokenXPrivateJwk: process.env.TOKEN_X_PRIVATE_JWK,
         tokenXClientId: process.env.TOKEN_X_CLIENT_ID,
+        flexjarBackendTokenxClientId: process.env.FLEXJAR_BACKEND_TOKENX_CLIENT_ID,
     },
     publicRuntimeConfig: {
         // Will be available on both server and client
