@@ -1,9 +1,10 @@
 import { Button, ButtonProps, Heading, Textarea } from '@navikt/ds-react'
-import { useEffect, useRef, useState, MouseEvent, useContext } from 'react'
+import { MouseEvent, useContext, useEffect, useRef, useState } from 'react'
 
 import { cn } from '../../utils/tw-utils'
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { spinnsynFrontendInterne } from '../../utils/environment'
+import UseFlexjarFeedback from '../../hooks/useFlexjarFeedback'
 
 enum Feedbacktype {
     'JA' = 'JA',
@@ -35,6 +36,7 @@ export const Feedback = ({
     const [errorMsg, setErrorMsg] = useState<string | null>(null)
     const [thanksFeedback, setThanksFeedback] = useState<boolean>(false)
     const textAreaRef = useRef(null)
+    const { mutate: giFeedback } = UseFlexjarFeedback()
 
     useEffect(() => {
         textValue && errorMsg && setErrorMsg(null)
@@ -55,7 +57,7 @@ export const Feedback = ({
             feedback: textValue,
             feedbackId: 'spinnsyn-vedtak',
             svar: activeState,
-            app: 'spinsyn-frontend',
+            app: 'spinnsyn-frontend',
             erRefusjon,
             harAvvisteDager,
             erDirekteutbetaling,
@@ -63,10 +65,7 @@ export const Feedback = ({
             revurdert,
         }
 
-        await fetch('/syk/sykepenger/api/flexjar-backend/api/v1/feedback', {
-            method: 'POST',
-            body: JSON.stringify(body),
-        })
+        await giFeedback(body)
     }
 
     const FeedbackButton = (props: FeedbackButtonProps) => {
