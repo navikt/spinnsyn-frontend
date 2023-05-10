@@ -3,7 +3,7 @@ import { MouseEvent, useContext, useEffect, useRef, useState } from 'react'
 
 import { cn } from '../../utils/tw-utils'
 import { ArkiveringContext } from '../../context/arkivering-context'
-import { spinnsynFrontendInterne } from '../../utils/environment'
+import { isProd, spinnsynFrontendInterne } from '../../utils/environment'
 import UseFlexjarFeedback from '../../hooks/useFlexjarFeedback'
 
 enum Feedbacktype {
@@ -47,6 +47,7 @@ export const Feedback = ({
         setErrorMsg(null)
     }, [activeState])
 
+    if (isProd()) return null
     if (arkivering || spinnsynFrontendInterne()) return null
     const fetchFeedback = async (): Promise<void> => {
         if (activeState === null) {
