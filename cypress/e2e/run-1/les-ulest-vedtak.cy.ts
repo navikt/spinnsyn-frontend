@@ -36,7 +36,11 @@ describe('Les uleste vedtak', () => {
         cy.contains('21 060 kroner').parent().contains('Utbetales til Pengeløs Sparebank')
 
         cy.contains('Mer om beregningen').click()
-        cy.contains('folketrygdloven § 8-28').should('have.attr', 'href', 'https://lovdata.no/lov/1997-02-28-19/§8-28')
+        cy.contains('folketrygdloven § 8-28').should(
+            'have.attr',
+            'href',
+            'https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-28',
+        )
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
