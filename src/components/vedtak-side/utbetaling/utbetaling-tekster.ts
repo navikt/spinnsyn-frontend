@@ -32,7 +32,7 @@ const UtbetalingTekster = {
     'utbetaling.beregning.tittel': 'Mer om beregningen',
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
     'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
-    'utbetaling.beregning.lenke.url': 'https://lovdata.no/lov/1997-02-28-19/§8-28',
+    'utbetaling.beregning.lenke.url': 'https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-28',
     'utbetaling.info.tittel': 'Utbetaling',
     'utbetaling.info.innhold':
         'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Da kan du se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
