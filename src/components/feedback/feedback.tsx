@@ -72,7 +72,7 @@ export const Feedback = ({
         return (
             <Button
                 data-cy={'feedback-' + props.feedbacktype}
-                variant={'secondary-neutral'}
+                variant="secondary-neutral"
                 className={cn({
                     'bg-surface-neutral-active text-text-on-inverted hover:bg-surface-neutral-active':
                         activeState === props.feedbacktype,
@@ -116,20 +116,20 @@ export const Feedback = ({
     }
 
     return (
-        <div className={'toc-ignore mb-16 mt-24'}>
-            <div className={'flex w-full flex-col gap-4'}>
+        <div className="toc-ignore mb-16 mt-24">
+            <div className="flex w-full flex-col gap-4">
                 <Heading size="small" level="2">
                     Var denne siden nyttig?
                 </Heading>
-                <div className={'flex w-full gap-4'}>
+                <div className="flex w-full gap-4">
                     <FeedbackButton feedbacktype={Feedbacktype.JA}>Ja</FeedbackButton>
                     <FeedbackButton feedbacktype={Feedbacktype.NEI}>Nei</FeedbackButton>
                     <FeedbackButton feedbacktype={Feedbacktype.FORBEDRING}>Foreslå forbedring</FeedbackButton>
                 </div>
                 {activeState !== null && (
-                    <form className={'animate-fadeIn mt-4 flex w-full max-w-sm flex-col gap-4'}>
+                    <form className="animate-fadeIn mt-4 flex w-full max-w-sm flex-col gap-4">
                         <Textarea
-                            data-cy={'feedback-textarea'}
+                            data-cy="feedback-textarea"
                             ref={textAreaRef}
                             error={errorMsg}
                             label={getPlaceholder()}
@@ -145,7 +145,7 @@ export const Feedback = ({
                         <Button
                             data-cy="send-feedback"
                             className="mr-auto"
-                            variant={'secondary-neutral'}
+                            variant="secondary-neutral"
                             onClick={handleSend}
                         >
                             Send inn svar

@@ -29,7 +29,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             tittel={
                 <Heading data-cy="header-sykepenger-til-deg" level="2" size="large">
                     <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
-                    <BodyShort as="span" className={'block'}>
+                    <BodyShort as="span" className="block">
                         {tekst('utbetaling.person.systemtittel')}
                     </BodyShort>
                 </Heading>
@@ -43,7 +43,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <SykepengerNar />
             <InntektInfo vedtak={vedtak} />
             <SykepengerPerDag dager={vedtak.dagerPerson} />
-            <BeregningInfo vedtak={vedtak} mottaker={'person'} />
+            <BeregningInfo vedtak={vedtak} mottaker="person" />
         </UtbetalingPanel>
     )
 }

@@ -30,7 +30,7 @@ export const SykepengerPerDag = ({ dager }: SykepengerPerDagProps) => {
                             {tekst('utbetaling.inntekt.info.dagsats')}
                         </Heading>
                     </Accordion.Header>
-                    <Accordion.Content className={'bg-white p-0'}>
+                    <Accordion.Content className="bg-white p-0">
                         <DagTabell dager={dager} />
 
                         <DagBeskrivelse dager={dager} />

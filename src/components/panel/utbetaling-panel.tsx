@@ -11,7 +11,7 @@ interface UtbetalingPanelProps {
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
     return (
         <Panel
-            className={`mt-4 rounded-md`}
+            className="mt-4 rounded-md"
             data-cy={`utbetaling-panel-${props.dataCy}${props.erUgyldig ? '-ugyldig' : ''}`}
             style={
                 {
@@ -19,7 +19,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
                 } as React.CSSProperties
             }
         >
-            <div className={'mb-4'}>{props.tittel}</div>
+            <div className="mb-4">{props.tittel}</div>
 
             {props.children}
         </Panel>

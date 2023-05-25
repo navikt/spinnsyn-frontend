@@ -19,7 +19,7 @@ const RevurdertAlert = () => {
 const AnnullertAlert = () => {
     return (
         <Alert variant="warning">
-            <Heading spacing level={'2'} size={'small'}>
+            <Heading spacing level="2" size="small">
                 {parserWithReplace(tekst('annullert.alert.header'))}
             </Heading>
             <BodyShort spacing>{parserWithReplace(tekst('annulert.alert.tekst'))}</BodyShort>
@@ -48,8 +48,8 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
 
             <Vis hvis={vedtak.annullert} render={() => <AnnullertAlert />} />
 
-            <ReadMore className={'my-10'} header={tekst('annullert.info.header')}>
-                <div className={'pt-4'} data-cy={'annullering-info'}>
+            <ReadMore className="my-10" header={tekst('annullert.info.header')}>
+                <div className="pt-4" data-cy="annullering-info">
                     {vedtak.revurdert && (
                         <>
                             <Label>{tekst('annullert.info.header1')}</Label>
@@ -66,8 +66,8 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                     <Label>{tekst('annullert.info.header4')}</Label>
                     <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
 
-                    <Link href={tekst('behandling.lenke.url')} target={'_blank'}>
-                        <Chat2Icon className={'inline'} fontSize={'var(--a-font-size-large)'} />
+                    <Link href={tekst('behandling.lenke.url')} target="_blank">
+                        <Chat2Icon className="inline" fontSize="var(--a-font-size-large)" />
                         {tekst('annullert.info.skriv-til-oss')}
                     </Link>
                 </div>
