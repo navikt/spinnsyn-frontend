@@ -26,7 +26,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
         <ExpansionCard
             aria-label="Antall sykepengedager som gjenstår"
             defaultOpen={arkivering}
-            className={'mt-4'}
+            className="mt-4"
             data-cy={ugyldig ? 'sykepengedager-ec-ugyldig' : 'sykepengedager-ec'}
             style={
                 {
@@ -38,7 +38,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             <ExpansionCard.Header>
                 <Heading level="2" size="large">
                     {vedtak.vedtak.utbetaling.forbrukteSykedager} {tekst('sykepengedager.sykepengedager')}
-                    <BodyShort as="span" className={'block'}>
+                    <BodyShort as="span" className="block">
                         {getLedetekst(tekst('sykepengedager.hittil'), {
                             '%DATO%': sluttPaAktuelleVedtaksPeriode,
                         })}
@@ -49,7 +49,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
                 <Heading spacing size="medium" level="3">
                     {vedtak.vedtak.utbetaling.gjenståendeSykedager} {tekst('sykepengedager.sykepengedager')}
-                    <BodyShort as="span" className={'block'}>
+                    <BodyShort as="span" className="block">
                         {getLedetekst(tekst('sykepengedager.gjenstar'), {
                             '%DATO%': sluttPaAktuelleVedtaksPeriode,
                         })}
@@ -61,7 +61,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
 
                 <Heading spacing size="medium" level="3" className="primo">
                     {sluttdato}
-                    <BodyShort as="span" className={'block'}>
+                    <BodyShort as="span" className="block">
                         {getLedetekst(tekst('sykepengedager.sluttdato'), {
                             '%DATO%': sluttPaAktuelleVedtaksPeriode,
                         })}

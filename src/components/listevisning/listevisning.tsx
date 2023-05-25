@@ -28,14 +28,14 @@ const Listevisning = () => {
             </header>
 
             <LenkepanelGruppering
-                dataCy={'uleste-vedtak'}
+                dataCy="uleste-vedtak"
                 vedtak={uleste}
                 tittel={tekst('spinnsyn.teaser.uleste')}
                 tomListeTekst={tekst('vedtak-liste.ingen-nye-soknader')}
             />
 
             <LenkepanelGruppering
-                dataCy={'leste-vedtak'}
+                dataCy="leste-vedtak"
                 vedtak={leste}
                 tittel={tekst('spinnsyn.teaser.leste')}
                 tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}

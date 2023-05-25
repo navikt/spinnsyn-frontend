@@ -48,13 +48,13 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                 {tekst('utbetaling.inntekt.info.tittel')}
                             </Heading>
                         </Accordion.Header>
-                        <Accordion.Content className={'bg-white'}>
-                            <article data-cy={'inntekt-info-article'}>
+                        <Accordion.Content className="bg-white">
+                            <article data-cy="inntekt-info-article">
                                 <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
                                 <section
                                     data-cy="beregnet-månedslønn"
-                                    className={'arkivering-flex-fix flex justify-between'}
+                                    className="arkivering-flex-fix flex justify-between"
                                 >
                                     <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.beregnet')}
@@ -66,7 +66,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
 
                                 <section
                                     data-cy="beregnet-årslønn"
-                                    className={'arkivering-flex-fix flex justify-between'}
+                                    className="arkivering-flex-fix flex justify-between"
                                 >
                                     <BodyShort as="div" size="small" spacing>
                                         {tekst('utbetaling.inntekt.info.omregnet')}
@@ -103,7 +103,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                         <>
                                             <section
                                                 data-cy="sykepengegrunnlag"
-                                                className={'arkivering-flex-fix flex justify-between'}
+                                                className="arkivering-flex-fix flex justify-between"
                                             >
                                                 <Label as="div" size="small">
                                                     {tekst('utbetaling.sykepengegrunnlag')}

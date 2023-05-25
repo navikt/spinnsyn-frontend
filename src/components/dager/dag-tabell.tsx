@@ -16,17 +16,17 @@ const DagTabell = ({ dager }: DagTabellProps) => {
         <Table zebraStripes={true} className="bg-white" size="medium">
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell className={'p-3 md:p-4'}>
+                    <Table.HeaderCell className="p-3 md:p-4">
                         <Label spacing as="span" size="small">
                             Dato
                         </Label>
                     </Table.HeaderCell>
-                    <Table.HeaderCell className={'p-3 text-right md:p-4'}>
+                    <Table.HeaderCell className="p-3 text-right md:p-4">
                         <Label spacing as="span" size="small">
                             Sum
                         </Label>
                     </Table.HeaderCell>
-                    <Table.HeaderCell className={'p-3 text-right md:p-4'}>
+                    <Table.HeaderCell className="p-3 text-right md:p-4">
                         <Label spacing as="span" size="small">
                             Dagtype
                         </Label>
@@ -50,7 +50,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                                     : '-'}
                             </BodyShort>
                         </Table.DataCell>
-                        <Table.DataCell className={'text-right'}>
+                        <Table.DataCell className="text-right">
                             <DagLabel dag={dag} skalViseProsent={true} />
                         </Table.DataCell>
                     </Table.Row>

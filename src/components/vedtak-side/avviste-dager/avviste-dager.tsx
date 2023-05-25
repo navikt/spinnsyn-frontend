@@ -33,8 +33,8 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
 
     return (
         <ExpansionCard
-            className={'mt-4'}
-            data-cy={'avviste-dager-card'}
+            className="mt-4"
+            data-cy="avviste-dager-card"
             aria-label="Avviste sykepengedager"
             defaultOpen={arkivering}
             style={
@@ -47,7 +47,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
             <ExpansionCard.Header>
                 <Heading level="2" size="large">
                     {avvisteDager.length + avvisteDagerTekst}
-                    <BodyShort as="span" className={'block'}>
+                    <BodyShort as="span" className="block">
                         {tekst('avviste.dager.dekkes.ikke')}
                     </BodyShort>
                 </Heading>
@@ -64,7 +64,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
                                 Dager NAV ikke utbetaler
                             </Heading>
                         </Accordion.Header>
-                        <Accordion.Content className={'bg-white p-0'}>
+                        <Accordion.Content className="bg-white p-0">
                             <DagTabell dager={avvisteDager} />
 
                             <DagBeskrivelse dager={avvisteDager} />
@@ -73,7 +73,7 @@ const AvvisteDager = ({ avvisteDager, vedtak, heltAvvist }: AvvisteDagerProps) =
 
                     <Vis
                         hvis={heltAvvist && harMinstEnForLavInntektDag}
-                        render={() => <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} heltAvvist={heltAvvist} />}
+                        render={() => <BeregningInfo vedtak={vedtak} mottaker="refusjon" heltAvvist={heltAvvist} />}
                     />
                 </Accordion>
             </ExpansionCard.Content>

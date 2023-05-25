@@ -45,11 +45,11 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
                     })
                 }
             >
-                <div className={'flex gap-3 max-[560px]:flex-col'}>
+                <div className="flex gap-3 max-[560px]:flex-col">
                     <div className="grow">
                         <header>
                             <Detail>{vedtakPeriode}</Detail>
-                            <Heading size="small" level="3" className={'my-1'}>
+                            <Heading size="small" level="3" className="my-1">
                                 {vedtakTittel}
                             </Heading>
                         </header>

@@ -16,7 +16,7 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
                 <div key={idx}>
                     <Label data-cy={`annen-arbeidsgiver-${idx}`}>{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
                     <section
-                        className={'arkivering-flex-fix flex justify-between'}
+                        className="arkivering-flex-fix flex justify-between"
                         data-cy={`annen-arbeidsgiver-årslønn-${idx}`}
                     >
                         <BodyShort as="div" size="small">

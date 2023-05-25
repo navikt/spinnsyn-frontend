@@ -22,7 +22,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             tittel={
                 <Heading level="2" size="large">
                     <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
-                    <BodyShort as="span" className={'block'}>
+                    <BodyShort as="span" className="block">
                         {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                             '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
                         })}
@@ -36,7 +36,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             <ArbeidsgiverInfo vedtak={vedtak} />
             <InntektInfo vedtak={vedtak} />
             <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} />
-            <BeregningInfo vedtak={vedtak} mottaker={'refusjon'} />
+            <BeregningInfo vedtak={vedtak} mottaker="refusjon" />
         </UtbetalingPanel>
     )
 }
