@@ -65,22 +65,25 @@ jobs:
           }
           console.log(`::set-output name=isMajor::${isMajor}`);
           "
-
+      - run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'github-action@github.com'
+      - run: git status
+      - run: git add package.json package-lock.json
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --staged --quiet; then
+            echo "No changes in dependencies. Exiting."
+            exit 1
+          fi
       - name: Create New Branch and PR
         id: create-pr
         run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'github-action@github.com'
           git checkout -b demo-designsystem-${{ steps.verify-version.outputs.version }}
-          git add package.json package-lock.json
-          if ! git diff --quiet && git diff --staged --quiet; then
-            git commit -m "Upgraded dependencies"
-            git push --set-upstream origin demo-designsystem-${{ steps.verify-version.outputs.version }}
-            echo "github_token: ${{ secrets.GITHUB_TOKEN }}" > ~/.config/gh/hosts.yml
-            pr_number=$(gh pr create --title "Upgraded Dependencies" --body "Automated changes by GitHub action" --base master --head demo-designsystem-${{ steps.verify-version.outputs.version }} --repo ${{ github.repository }} --confirm | grep -oP 'github.com/.+/pull/\K[0-9]+')
-            if [ "${{ steps.verify-version.outputs.isMajor }}" == "true" ]; then
-              gh pr update $pr_number --add-label "major update"
-            fi
-          else
-            echo "No changes in dependencies. Skipping PR creation."
+          git commit -m "Upgraded dependencies"
+          git push --set-upstream origin demo-designsystem-${{ steps.verify-version.outputs.version }}
+          pr_number=$(gh pr create --title "Upgraded Dependencies" --body "Automated changes by GitHub action" --base master --head demo-designsystem-${{ steps.verify-version.outputs.version }} | grep -oP 'github.com/.+/pull/\K[0-9]+')
+          if [ "${{ steps.verify-version.outputs.isMajor }}" == "true" ]; then
+            gh pr update $pr_number --add-label "major update"
           fi
