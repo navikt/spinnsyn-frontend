@@ -1,9 +1,124 @@
 name: designsystem-bump
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 12 * * 1'
+  push:
 
 jobs:
-  merge-dependabot-pr:
-    uses: navikt/flex-github-actions-workflows/.github/workflows/designsystem-bump.yml@master
+  upgrade:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Skap SHORT_SHA
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
+      - name: Store current versions
+        id: store-versions
+        run: |
+          node - e "
+          const fs = require("fs");
+          const packageJson = require("./package.json");
+          const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
+          let minVersion = null;
+          for (const [pkg, version] of Object.entries(dependencies)) {
+            if (pkg.startsWith("@navikt/aksel") || pkg.startsWith("@navikt/ds")) {
+              if (minVersion === null || compareVersions(version, minVersion) < 0) {
+                minVersion = version;
+              }
+            }
+          }
+          console.log(`OLD_VERSION=${minVersion}`);
+
+          function compareVersions(version1, version2) {
+            const v1parts = version1.split(".");
+            const v2parts = version2.split(".");
+            for (let i = 0; i < v1parts.length; ++i) {
+              if (parseInt(v1parts[i], 10) < parseInt(v2parts[i], 10)) {
+                return -1;
+              }
+              if (parseInt(v1parts[i], 10) > parseInt(v2parts[i], 10)) {
+                return 1;
+              }
+            }
+            return 0;
+          }
+
+          " >> $GITHUB_ENV
+      - run: echo "oldversion=${{ env.OLD_VERSION }}"
+      - run: echo "SHORT_SHA=${{ env.SHORT_SHA }}"
+
+      - name: Upgrade dependencies
+        run: npx npm-check-updates '@navikt/aksel*' '@navikt/ds*' -u && npm install
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify same version and set output
+        id: verify-version
+        run: |
+          node - e "
+          const fs = require("fs");
+          const packageJson = require("./package.json");
+          const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
+          let newVersion = null;
+          for (const [pkg, version] of Object.entries(dependencies)) {
+            if (pkg.startsWith("@navikt/aksel") || pkg.startsWith("@navikt/ds")) {
+              if (newVersion === null) {
+                newVersion = version;
+              } else if (newVersion !== version) {
+                throw new Error("All @navikt/aksel and @navikt/ds dependencies must have the same version");
+              }
+            }
+          }
+
+          console.log(`NEW_VERSION=${newVersion}`);
+
+          " >> $GITHUB_ENV
+      - name: Check for major upgrade
+        id: check-major
+        run: |
+          node -e "
+          const fs = require('fs');
+          const oldVersion = process.env.OLD_VERSION;
+          const newVersion = process.env.NEW_VERSION;
+          const isMajor = parseInt(oldVersion.split('.')[0], 10) < parseInt(newVersion.split('.')[0], 10);
+          console.log(`IS_MAJOR=${isMajor}`);
+          " >> $GITHUB_ENV
+        env:
+          OLD_VERSION: ${{ env.OLD_VERSION }}
+          NEW_VERSION: ${{ env.NEW_VERSION }}
+      - run: echo "isMajor=${{ env.IS_MAJOR }}"
+      - run: git add package.json package-lock.json
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --staged --quiet; then
+            echo "No changes in dependencies. Exiting."
+            exit 1
+          fi
+      - run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'github-action@github.com'
+      - name: Lag pull request
+        run: |
+          git checkout -b demo-designsystem-${{env.SHORT_SHA}}
+          git commit -m "Upgraded dependencies"
+          git push --set-upstream origin demo-designsystem-${{env.SHORT_SHA}}
+          pr_number=$(gh pr create --title "Upgraded Dependencies" --body "Automated changes by GitHub action" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Trigg workflow
+        run: gh workflow run workflow.yml --ref demo-designsystem-${{env.SHORT_SHA}}
+        env:
+          GH_TOKEN: ${{ github.token }}
