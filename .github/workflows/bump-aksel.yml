@@ -1,0 +1,79 @@
+name: Oppgradere Aksel og DS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14 # Eller hvilken som helst annen versjon du vil bruke
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Store current versions
+        id: store-versions
+        run: |
+          node -e "
+          const packageJson = require('./package.json');
+          const dependencies = {...packageJson.dependencies, ...packageJson.devDependencies};
+          const versions = {};
+          for (const [pkg, version] of Object.entries(dependencies)) {
+            if (pkg.startsWith('@navikt/aksel') || pkg.startsWith('@navikt/ds')) {
+              versions[pkg] = version;
+            }
+          }
+          console.log(`::set-output name=versions::${JSON.stringify(versions)}`);
+          "
+
+      - name: Upgrade dependencies
+        run: npx npm-check-updates '@navikt/aksel*' '@navikt/ds*' -u && npm install
+
+      - name: Verify same version, major upgrade, and set output
+        id: verify-version
+        run: |
+          node -e "
+          const packageJson = require('./package.json');
+          const dependencies = {...packageJson.dependencies, ...packageJson.devDependencies};
+          const originalVersions = JSON.parse('${{ steps.store-versions.outputs.versions }}');
+          let isMajor = false;
+          for (const [pkg, version] of Object.entries(dependencies)) {
+            if (pkg.startsWith('@navikt/aksel') || pkg.startsWith('@navikt/ds')) {
+              const majorVersion = parseInt(version.split('.')[0], 10);
+              const originalMajorVersion = parseInt(originalVersions[pkg].split('.')[0], 10);
+              if (majorVersion > originalMajorVersion) {
+                isMajor = true;
+                break;
+              }
+            }
+          }
+          console.log(`::set-output name=isMajor::${isMajor}`);
+          "
+
+
+      - name: Create New Branch and PR
+        id: create-pr
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'github-action@github.com'
+          git checkout -b demo-designsystem-${{ steps.verify-version.outputs.version }}
+          git add package.json package-lock.json
+          if ! git diff --quiet && git diff --staged --quiet; then
+            git commit -m "Upgraded dependencies"
+            git push --set-upstream origin demo-designsystem-${{ steps.verify-version.outputs.version }}
+            echo "github_token: ${{ secrets.GITHUB_TOKEN }}" > ~/.config/gh/hosts.yml
+            pr_number=$(gh pr create --title "Upgraded Dependencies" --body "Automated changes by GitHub action" --base main --head demo-designsystem-${{ steps.verify-version.outputs.version }} --repo ${{ github.repository }} --confirm | grep -oP 'github.com/.+/pull/\K[0-9]+')
+            if [ "${{ steps.verify-version.outputs.isMajor }}" == "true" ]; then
+              gh pr update $pr_number --add-label "major update"
+            fi
+          else
+            echo "No changes in dependencies. Skipping PR creation."
+          fi
