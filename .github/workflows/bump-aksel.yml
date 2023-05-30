@@ -22,6 +22,8 @@ jobs:
         env:
           NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
       - name: Store current versions
         id: store-versions
         run: |
@@ -77,13 +79,15 @@ jobs:
             echo "No changes in dependencies. Exiting."
             exit 1
           fi
-      - name: Create New Branch and PR
-        id: create-pr
+      - name: Lag PR
         run: |
-          git checkout -b demo-designsystem-${{ steps.verify-version.outputs.version }}
+          git checkout -b demo-designsystem-${{env.SHORT_SHA}}
           git commit -m "Upgraded dependencies"
-          git push --set-upstream origin demo-designsystem-${{ steps.verify-version.outputs.version }}
-          pr_number=$(gh pr create --title "Upgraded Dependencies" --body "Automated changes by GitHub action" --base master --head demo-designsystem-${{ steps.verify-version.outputs.version }} | grep -oP 'github.com/.+/pull/\K[0-9]+')
-          if [ "${{ steps.verify-version.outputs.isMajor }}" == "true" ]; then
-            gh pr update $pr_number --add-label "major update"
-          fi
+          git push --set-upstream origin demo-designsystem-${{env.SHORT_SHA}}
+          pr_number=$(gh pr create --title "Upgraded Dependencies" --body "Automated changes by GitHub action" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Trigg workflow
+        run: gh workflow run workflow.yml --ref demo-designsystem-${{env.SHORT_SHA}}
+        env:
+          GH_TOKEN: ${{ github.token }}
