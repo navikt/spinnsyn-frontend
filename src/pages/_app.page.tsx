@@ -8,7 +8,6 @@ import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import { LabsWarning } from '../components/labs-warning/LabsWarning'
 import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
 
 interface AppProps extends Omit<NextAppProps, 'pageProps'> {
@@ -52,10 +51,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             </Head>
             <QueryClientProvider client={queryClient}>
                 <Hydrate state={pageProps.dehydratedState}>
-                    <div id="root" className="mx-auto max-w-2xl p-4 pb-32">
-                        <LabsWarning />
-                        <Component {...pageProps} />
-                    </div>
+                    <Component {...pageProps} />
                 </Hydrate>
             </QueryClientProvider>
         </>

@@ -37,7 +37,7 @@ class MyDocument extends Document<Props> {
             ctx,
         }
 
-        const showDecorator = serverRuntimeConfig.noDecorator != 'true'
+        const showDecorator = false
         if (showDecorator) {
             props.Decorator = await fetchDecoratorReact({
                 env: serverRuntimeConfig.decoratorEnv,
