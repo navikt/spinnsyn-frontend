@@ -107,6 +107,7 @@ jobs:
         run: |
           git checkout -b demo-designsystem-bump-${{env.SHORT_SHA}}
           git commit -m "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}"
+          git config --global push.default current
           git push
           pr_number=$(gh pr create --title "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
         env:
