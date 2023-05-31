@@ -7,11 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'npm'
@@ -19,8 +17,7 @@ jobs:
       - name: Skap SHORT_SHA
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
 
-      - name: Store current versions
-        id: store-versions
+      - name: Lagre gjeldende versjon
         run: |
           node -e "
           const packageJson = require('./package.json');
@@ -53,13 +50,12 @@ jobs:
       - run: echo "oldversion=${{ env.OLD_VERSION }}"
       - run: echo "SHORT_SHA=${{ env.SHORT_SHA }}"
 
-      - name: Upgrade dependencies
+      - name: Oppgrader designsystem dependencies
         run: npx npm-check-updates '@navikt/aksel*' '@navikt/ds*' -u && npm install
         env:
           NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify same version and set output
-        id: verify-version
         run: |
           node -e "
           const packageJson = require('./package.json');
@@ -82,7 +78,6 @@ jobs:
           " >> $GITHUB_ENV
       - run: echo "NEW_VERSION=${{ env.NEW_VERSION }}"
       - name: Check for major upgrade
-        id: check-major
         run: |
           node -e "
           const oldVersion = process.env.OLD_VERSION;
@@ -91,18 +86,18 @@ jobs:
           console.log('IS_MAJOR=' + isMajor);
           " >> $GITHUB_ENV
       - run: echo "isMajor=${{ env.IS_MAJOR }}"
-      - run: git add package.json package-lock.json
-      - name: Check for changes
-        id: check-changes
+      - run: git add package.json
+      - name: Sjekk om det var noen endringer
         run: |
           if git diff --staged --quiet; then
-            echo "No changes in dependencies. Exiting."
+            echo "Ingen endringer. Avslutter."
             exit 1
           fi
-      - name: Install Dependencies
-        run: npm ci
+      - name: Installer dependencies
+        run: npm i
         env:
           NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - run: git add package-lock.json
 
       - run: |
@@ -112,8 +107,8 @@ jobs:
         run: |
           git checkout -b demo-designsystem-bump-${{env.SHORT_SHA}}
           git commit -m "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}"
-          git push --set-upstream origin demo-designsystem-${{env.SHORT_SHA}}
-          pr_number=$(gh pr create --title "Upgraded Dependencies" --body "Automated changes by GitHub action" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
+          git push
+          pr_number=$(gh pr create --title "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
         env:
           GH_TOKEN: ${{ github.token }}
 
