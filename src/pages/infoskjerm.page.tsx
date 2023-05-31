@@ -25,21 +25,34 @@ const Index = () => {
         return weekdayCount
     }
 
+    function numberToEmoji(n: number): string {
+        const emojiNumbers = ['0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣']
+        let emojiString = ''
+
+        const numberString = n.toString()
+        for (let i = 0; i < numberString.length; i++) {
+            const digit = parseInt(numberString[i])
+            emojiString += emojiNumbers[digit]
+        }
+
+        return emojiString
+    }
+
     const targetDate = '2023-09-01'
-    const dagerIgjen = countWeekdaysUntil(targetDate)
+    const dagerIgjen = numberToEmoji(countWeekdaysUntil(targetDate))
 
     return (
         <div className="w-100 max-w-90 h-screen bg-gray-900 pt-10 text-center leading-none text-white">
-            <h1 className="text-7xl">Tertial 2 - 2023 💪</h1>
+            <h1 className="text-8xl">Team Flex - T2 - 2023 💪</h1>
 
-            <BodyShort className="mt-30 mt-20 text-6xl">
-                Brukerne kan gi den informasjonen og de opplysningene NAV trenger med en gang
+            <BodyShort className="mt-30 mt-20 text-5xl">
+                ℹ️ Brukerne kan gi den informasjonen og de opplysningene NAV trenger med en gang
             </BodyShort>
-            <BodyShort className="mt-30 mt-20 text-6xl">
-                De sykmeldte får en fin og gyldig forklaring på NAV sin beslutning
+            <BodyShort className="mt-30 mt-20 text-5xl">
+                💌 De sykmeldte får en fin og gyldig forklaring på NAV sin beslutning
             </BodyShort>
-            <BodyShort className="mt-30 mt-20  text-6xl" spacing>
-                Den sykmeldte vet hva som skjer i sin sak og kan hjelpe seg selv
+            <BodyShort className="mt-30 mt-20  text-5xl" spacing>
+                🤩 Den sykmeldte vet hva som skjer i sin sak og kan hjelpe seg selv
             </BodyShort>
             <BodyShort className="mt-20 block  text-7xl">{`Det er ${dagerIgjen} arbeidsdager igjen`}</BodyShort>
         </div>
