@@ -5,5 +5,5 @@ on:
     - cron: '0 12 * * 1'
 
 jobs:
-  merge-dependabot-pr:
+  designsystem-bump:
     uses: navikt/flex-github-actions-workflows/.github/workflows/designsystem-bump.yml@master
