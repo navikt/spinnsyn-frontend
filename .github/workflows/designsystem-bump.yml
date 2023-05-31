@@ -47,8 +47,6 @@ jobs:
             return 0;
           }
           " >> $GITHUB_ENV
-      - run: echo "oldversion=${{ env.OLD_VERSION }}"
-      - run: echo "SHORT_SHA=${{ env.SHORT_SHA }}"
 
       - name: Oppgrader designsystem dependencies
         run: npx npm-check-updates '@navikt/aksel*' '@navikt/ds*' -u && npm install
@@ -76,8 +74,8 @@ jobs:
 
 
           " >> $GITHUB_ENV
-      - run: echo "NEW_VERSION=${{ env.NEW_VERSION }}"
-      - name: Check for major upgrade
+
+      - name: Se om det er major upgrade
         run: |
           node -e "
           const oldVersion = process.env.OLD_VERSION;
@@ -85,14 +83,16 @@ jobs:
           const isMajor = parseInt(oldVersion.split('.')[0], 10) < parseInt(newVersion.split('.')[0], 10);
           console.log('IS_MAJOR=' + isMajor);
           " >> $GITHUB_ENV
-      - run: echo "isMajor=${{ env.IS_MAJOR }}"
+
       - run: git add package.json
+
       - name: Sjekk om det var noen endringer
         run: |
           if git diff --staged --quiet; then
             echo "Ingen endringer. Avslutter."
             exit 1
           fi
+
       - name: Installer dependencies
         run: npm i
         env:
@@ -103,16 +103,17 @@ jobs:
       - run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'github-action@github.com'
+
       - name: Lag pull request
         run: |
           git checkout -b demo-designsystem-bump-${{env.SHORT_SHA}}
           git commit -m "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}"
           git config --global push.default current
           git push
-          pr_number=$(gh pr create --title "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
+          pr_number=$(gh pr create --title "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}" --body "Automatisk lagd i GitHub actions" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Trigg workflow
-        run: gh workflow run workflow.yml --ref demo-designsystem-${{env.SHORT_SHA}}
+        run: gh workflow run workflow.yml --ref demo-designsystem-bump-${{env.SHORT_SHA}}
 
