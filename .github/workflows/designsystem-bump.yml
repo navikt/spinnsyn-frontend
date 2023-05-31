@@ -104,16 +104,25 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'github-action@github.com'
 
+      - name: Lag labeler
+        run: |
+          if [ "${{ env.IS_MAJOR }}" = "false" ]; then
+            echo "LABELS=automerge,designsystemet" >> $GITHUB_ENV
+          else
+            echo "LABELS=designsystemet" >> $GITHUB_ENV
+          fi
+
       - name: Lag pull request
         run: |
           git checkout -b demo-designsystem-bump-${{env.SHORT_SHA}}
           git commit -m "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}"
           git config --global push.default current
           git push
-          pr_number=$(gh pr create --title "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}" --body "Automatisk lagd i GitHub actions" --base master | grep -oP 'github.com/.+/pull/\K[0-9]+')
+          gh pr create --title "Oppgradert designsystemet fra ${{env.OLD_VERSION}} til ${{env.NEW_VERSION}}" --body "Automatisk lagd i GitHub actions" --base master --label "${{ env.LABELS }}"
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Trigg workflow
         run: gh workflow run workflow.yml --ref demo-designsystem-bump-${{env.SHORT_SHA}}
-
+        env:
+          GH_TOKEN: ${{ github.token }}
