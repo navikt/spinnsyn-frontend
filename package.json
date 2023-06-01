@@ -14,7 +14,7 @@
         "@navikt/next-api-proxy": "^3.2.0",
         "@navikt/next-logger": "^1.19.0",
         "@sentry/nextjs": "^7.53.1",
-        "@tanstack/react-query": "^4.29.7",
+        "@tanstack/react-query": "^4.29.12",
         "cookie": "^0.5.0",
         "dayjs": "^1.11.7",
         "html-react-parser": "^3.0.16",
