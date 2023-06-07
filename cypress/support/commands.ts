@@ -25,3 +25,23 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import 'cypress-real-events'
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace Cypress {
+        interface Chainable {
+            besok: (url: string) => void
+        }
+    }
+}
+
+Cypress.Commands.add('besok', (url: string) => {
+    cy.visit(url, {
+        onBeforeLoad(win) {
+            win.document.head.appendChild(win.document.createElement('link')).rel = 'stylesheet'
+            win.document.head.appendChild(win.document.createElement('link')).href =
+                '/syk/sykepenger/static/disable-animations.css'
+        },
+    })
+    cy.get('h1') // avventer at element som finnes på alle sider dukker opp
+})

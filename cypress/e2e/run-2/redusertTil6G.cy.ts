@@ -5,7 +5,7 @@ describe('Redusert til 6G', () => {
     const vedtak = vedtakMedDetMeste
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.besok('http://localhost:8080/syk/sykepenger')
     })
 
     it('Laster startside', () => {

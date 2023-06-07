@@ -4,7 +4,7 @@ describe('Utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.besok('http://localhost:8080/syk/sykepenger')
     })
 
     it('Laster startside', () => {
@@ -57,7 +57,7 @@ describe('Utbetalingsoversikt', () => {
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.besok('http://localhost:8080/syk/sykepenger')
         cy.get('h1').should('be.visible').and('have.text', 'Svar på søknader')
 
         cy.get(`a[href*=${integrasjonsVedtak.id}]`).click()

@@ -4,7 +4,7 @@ describe('Kombinasjonutbetaling', () => {
     const vedtak = kombinertDirekteOgRefusjon
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.besok('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
     })
 
     it('Laster startside', () => {
