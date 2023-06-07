@@ -15,15 +15,28 @@ export const SykepengerNar = () => {
     }
 
     return (
-        <Accordion.Item open={open} className="beregning">
+        <Accordion.Item
+            open={open}
+            className="beregning"
+            style={
+                {
+                    '--ac-accordion-header-bg': open
+                        ? 'var(--a-surface-action-subtle)'
+                        : 'var(--a-surface-transparent)',
+                    '--ac-accordion-header-bg-hover': open
+                        ? 'var(--a-surface-action-subtle)'
+                        : 'var(--a-surface-hover)',
+                } as React.CSSProperties
+            }
+        >
             <Accordion.Header onClick={onButtonClick}>
                 <Heading size="small" level="3">
                     {tekst('utbetaling.person.når')}
                 </Heading>
             </Accordion.Header>
 
-            <Accordion.Content className="bg-white pb-0">
-                <BodyLong spacing>
+            <Accordion.Content className="bg-white py-4">
+                <BodyLong>
                     {parserWithReplace(tekst('utbetaling.person.når.innhold'))}
                     <LenkeMedAmplitude
                         url={tekst('utbetaling.person.når.lenke.url')}

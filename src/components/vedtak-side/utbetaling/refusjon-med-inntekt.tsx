@@ -1,4 +1,4 @@
-import { BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -34,9 +34,11 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <VedtakPeriode vedtak={vedtak} />
             <ArbeidsgiverInfo vedtak={vedtak} />
-            <InntektInfo vedtak={vedtak} />
-            <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} />
-            <BeregningInfo vedtak={vedtak} mottaker="refusjon" />
+            <Accordion>
+                <InntektInfo vedtak={vedtak} />
+                <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} />
+                <BeregningInfo vedtak={vedtak} mottaker="refusjon" />
+            </Accordion>
         </UtbetalingPanel>
     )
 }
