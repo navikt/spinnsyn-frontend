@@ -6,7 +6,7 @@ import {
 
 describe('Les uleste vedtak', () => {
     before(() => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Laster startside', () => {
@@ -70,7 +70,7 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('[data-cy="uleste-vedtak"] a')
     })
 
@@ -93,7 +93,7 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vi åpner et revurdert vedtak', () => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('[data-cy="leste-vedtak"] a').should('have.length', 9).eq(4).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()

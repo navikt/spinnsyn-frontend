@@ -4,7 +4,7 @@ describe('Utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad
 
     before(() => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Laster startside', () => {
@@ -46,18 +46,22 @@ describe('Utbetalingsoversikt', () => {
         cy.get('[data-cy="dagtabell-forklaring"]').children('.navds-heading').should('have.text', 'Forklaring')
         cy.get('[data-cy="dagtabell-forklaring"]')
             .find('.navds-body-short')
+            .eq(1)
             .should(
                 'have.text',
-                'Du får sykepenger for den delen av arbeidstiden du ikke jobber. ' +
-                    'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.' +
-                    'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, ' +
-                    'blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, ' +
-                    'blir fordelt på ukedagene.',
+                'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
+            )
+        cy.get('[data-cy="dagtabell-forklaring"]')
+            .find('.navds-body-short')
+            .eq(3)
+            .should(
+                'have.text',
+                'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
             )
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('h1').should('be.visible').and('have.text', 'Svar på søknader')
 
         cy.get(`a[href*=${integrasjonsVedtak.id}]`).click()

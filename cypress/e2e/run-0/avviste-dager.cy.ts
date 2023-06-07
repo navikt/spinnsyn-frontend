@@ -7,7 +7,7 @@ import {
 
 describe('Avviste dager', () => {
     before(() => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
     })
 
     it('Laster startside', () => {
@@ -21,7 +21,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`a[href*=${integrasjonsVedtak.id}]`).click({
             force: true,
         })
@@ -72,7 +72,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med avviste dager og ingen utbetaling', () => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`a[href*=${avvistVedtak.id}]`).click({ force: true })
 
         cy.get('.ekspanderbar.gronn').should('not.exist')
@@ -101,7 +101,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med avviste dager og lav inntekt', () => {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`a[href*=${avvistVedtakMedLavInntekt.id}]`).click({
             force: true,
         })
@@ -142,8 +142,5 @@ describe('Avviste dager', () => {
             .should('not.contain', 'Totalbeløp')
             .should('not.contain', 'Utbetalingsdager')
             .should('not.contain', 'Utbetaling')
-
-        //   cy.contains('folketrygdloven § 8-10').should('have.css', 'color', 'rgb(0, 103, 197)')
-        //   cy.contains('folketrygdloven § 8-10').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
     })
 })

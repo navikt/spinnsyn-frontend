@@ -1,6 +1,6 @@
 describe('Server vedtak', () => {
     it('laster siden med alt ekspandert ', () => {
-        cy.besok('http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering')
+        cy.visit('http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering')
 
         cy.contains('Du kan lese mer om hvordan sykepengene beregnes i')
         cy.contains(

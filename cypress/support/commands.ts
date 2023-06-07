@@ -26,22 +26,22 @@
 
 import 'cypress-real-events'
 
-declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace Cypress {
-        interface Chainable {
-            besok: (url: string) => void
-        }
+function disableAnimations(win: Cypress.AUTWindow) {
+    const injectedStyleEl = win.document.getElementById('__cy_disable_animations__')
+    if (injectedStyleEl) {
+        return
     }
+    win.document.head.insertAdjacentHTML(
+        'beforeend',
+        `
+    <style id="__cy_disable_animations__">
+      *, *::before, *::after { transition: none !important; }
+      *, *::before, *::after { animation: none !important; }
+    </style>
+  `.trim(),
+    )
 }
 
-Cypress.Commands.add('besok', (url: string) => {
-    cy.visit(url, {
-        onBeforeLoad(win) {
-            win.document.head.appendChild(win.document.createElement('link')).rel = 'stylesheet'
-            win.document.head.appendChild(win.document.createElement('link')).href =
-                '/syk/sykepenger/static/disable-animations.css'
-        },
-    })
-    cy.get('h1') // avventer at element som finnes på alle sider dukker opp
+Cypress.on('window:before:load', (cyWindow) => {
+    disableAnimations(cyWindow)
 })

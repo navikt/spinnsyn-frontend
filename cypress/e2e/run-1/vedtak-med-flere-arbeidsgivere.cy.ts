@@ -3,7 +3,7 @@ import { formaterValuta } from '../../../src/utils/valuta-utils'
 
 describe('Vedtak med flere arbeidsgivere', () => {
     before(() => {
-        cy.besok('http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
     })
 
     it('Laster startside', () => {

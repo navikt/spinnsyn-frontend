@@ -1,6 +1,6 @@
 describe('Kombinasjonutbetaling keyboard', () => {
     before(() => {
-        cy.besok('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
     })
 
     it('Finner vedtaket i listevisningen', () => {

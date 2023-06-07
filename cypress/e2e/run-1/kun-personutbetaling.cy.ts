@@ -4,7 +4,7 @@ describe('Kun personutbetaling', () => {
     const vedtak = kunDirekte
 
     before(() => {
-        cy.besok('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
     })
 
     it('Laster startside', () => {

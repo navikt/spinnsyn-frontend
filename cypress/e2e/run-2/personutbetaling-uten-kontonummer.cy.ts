@@ -4,7 +4,7 @@ describe('Personutbetaling uten kontonummer', () => {
     const vedtak = kunDirekte
 
     before(() => {
-        cy.besok('http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
     })
 
     it('Laster startside', () => {

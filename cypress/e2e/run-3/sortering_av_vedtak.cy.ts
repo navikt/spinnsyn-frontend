@@ -13,7 +13,7 @@ const lenkeTilVedtak = (lenker: any) => {
 
 describe('Sortering av vedtak', () => {
     it('Laster startside', function () {
-        cy.besok('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('h1').should('be.visible').and('have.text', 'Svar på søknader')
     })
 
