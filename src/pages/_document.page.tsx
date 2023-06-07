@@ -4,7 +4,7 @@ import { DecoratorComponents, fetchDecoratorReact } from '@navikt/nav-dekoratore
 import getConfig from 'next/config'
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
-import { Header } from '@navikt/ds-react-internal'
+import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
 import { spinnsynFrontendInterne } from '../utils/environment'
@@ -60,9 +60,9 @@ class MyDocument extends Document<Props> {
         function header() {
             if (internheader) {
                 return (
-                    <Header>
-                        <Header.Title as="h1">Svar på søknad om sykepenger</Header.Title>
-                    </Header>
+                    <InternalHeader>
+                        <InternalHeader.Title as="h1">Svar på søknad om sykepenger</InternalHeader.Title>
+                    </InternalHeader>
                 )
             }
             if (visDekorator) {
