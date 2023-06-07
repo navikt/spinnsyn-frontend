@@ -142,5 +142,8 @@ describe('Avviste dager', () => {
             .should('not.contain', 'Totalbeløp')
             .should('not.contain', 'Utbetalingsdager')
             .should('not.contain', 'Utbetaling')
+
+        cy.contains('folketrygdloven § 8-10').should('have.css', 'color', 'rgb(0, 103, 197)')
+        cy.contains('folketrygdloven § 8-10').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
     })
 })
