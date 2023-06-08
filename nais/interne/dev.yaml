@@ -1,6 +1,6 @@
 ingress: https://spinnsyn-frontend-interne.intern.dev.nav.no/syk/sykepenger
 cpu: 100m
-memory: 200Mi
+memory: 300Mi
 external-host:
   - modiacontextholder-q1.dev-fss-pub.nais.io
 env:
