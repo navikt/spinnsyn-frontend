@@ -1,4 +1,4 @@
-import { BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -40,10 +40,12 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <VedtakPeriode vedtak={vedtak} />
             <SykepengerTrekk />
             <Vis hvis={!erInterne && !erArkivering} render={() => <Kontonummer />} />
-            <SykepengerNar />
-            <InntektInfo vedtak={vedtak} />
-            <SykepengerPerDag dager={vedtak.dagerPerson} />
-            <BeregningInfo vedtak={vedtak} mottaker="person" />
+            <Accordion>
+                <SykepengerNar />
+                <InntektInfo vedtak={vedtak} />
+                <SykepengerPerDag dager={vedtak.dagerPerson} />
+                <BeregningInfo vedtak={vedtak} mottaker="person" />
+            </Accordion>
         </UtbetalingPanel>
     )
 }

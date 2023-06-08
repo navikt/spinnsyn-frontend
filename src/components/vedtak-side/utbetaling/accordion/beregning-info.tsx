@@ -40,14 +40,27 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
     }
 
     return (
-        <Accordion.Item open={open} data-cy="mer-om-beregningen">
+        <Accordion.Item
+            open={open}
+            data-cy="mer-om-beregningen"
+            style={
+                {
+                    '--ac-accordion-header-bg': open
+                        ? 'var(--a-surface-action-subtle)'
+                        : 'var(--a-surface-transparent)',
+                    '--ac-accordion-header-bg-hover': open
+                        ? 'var(--a-surface-action-subtle)'
+                        : 'var(--a-surface-hover)',
+                } as React.CSSProperties
+            }
+        >
             <Accordion.Header onClick={onButtonClick}>
                 <Heading size="small" level="3">
                     {tekst('utbetaling.beregning.tittel')}
                 </Heading>
             </Accordion.Header>
 
-            <Accordion.Content className="bg-white">
+            <Accordion.Content className="bg-white py-4">
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>

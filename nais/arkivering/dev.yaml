@@ -1,5 +1,7 @@
 cpu: 100m
-memory: 200Mi
+memory: 300Mi
+min: 1
+max: 2
 env:
   FLEX_GATEWAY_ROOT: https://flex-gateway.dev.nav.no
   MOCK_BACKEND: false

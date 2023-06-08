@@ -24,7 +24,19 @@ export const SykepengerPerDag = ({ dager }: SykepengerPerDagProps) => {
         <Vis
             hvis={dager.length > 0}
             render={() => (
-                <Accordion.Item open={open} className="">
+                <Accordion.Item
+                    open={open}
+                    style={
+                        {
+                            '--ac-accordion-header-bg': open
+                                ? 'var(--a-surface-action-subtle)'
+                                : 'var(--a-surface-transparent)',
+                            '--ac-accordion-header-bg-hover': open
+                                ? 'var(--a-surface-action-subtle)'
+                                : 'var(--a-surface-hover)',
+                        } as React.CSSProperties
+                    }
+                >
                     <Accordion.Header onClick={onButtonClick}>
                         <Heading size="small" level="3">
                             {tekst('utbetaling.inntekt.info.dagsats')}

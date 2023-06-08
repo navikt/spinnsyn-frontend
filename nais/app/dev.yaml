@@ -1,6 +1,6 @@
 ingress: https://www.ekstern.dev.nav.no/syk/sykepenger
 cpu: 100m
-memory: 200Mi
+memory: 300Mi
 env:
   FLEX_GATEWAY_ROOT: "https://flex-gateway.dev.nav.no"
   MOCK_BACKEND: "false"
