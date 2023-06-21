@@ -4,9 +4,9 @@ import React from 'react'
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import useVedtak from '../../hooks/useVedtak'
 import { arkiverteVedtakUrl } from '../../utils/environment'
-import { sorterEtterNyesteTom } from '../../utils/sorter-vedtak'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
+import { sorterEtterNyesteFom } from '../../utils/sorter-vedtak'
 
 import LenkepanelGruppering from './lenkepanel-gruppering'
 
@@ -15,8 +15,8 @@ const Listevisning = () => {
 
     useUpdateBreadcrumbs(() => [], [])
 
-    const uleste = vedtak!.filter((v) => !v.lest)
-    const leste = vedtak!.filter((v) => v.lest).sort(sorterEtterNyesteTom)
+    const uleste = vedtak!.filter((v) => !v.lest).sort(sorterEtterNyesteFom)
+    const leste = vedtak!.filter((v) => v.lest).sort(sorterEtterNyesteFom)
 
     return (
         <>
