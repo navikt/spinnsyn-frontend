@@ -19,10 +19,10 @@ export const sorterEtterNyesteTom = (vedtak1: RSVedtakWrapper, vedtak2: RSVedtak
 }
 
 export const sorterEtterNyesteFom = (vedtak1: RSVedtakWrapper, vedtak2: RSVedtakWrapper) => {
-    const tom1 = dayjs(vedtak1.vedtak.fom).unix()
-    const tom2 = dayjs(vedtak2.vedtak.fom).unix()
+    const fom1 = dayjs(vedtak1.vedtak.fom).unix()
+    const fom2 = dayjs(vedtak2.vedtak.fom).unix()
 
-    const diff = tom2 - tom1
+    const diff = fom2 - fom1
     if (diff == 0) {
         if (vedtak1.revurdert || vedtak1.annullert) {
             return 1
