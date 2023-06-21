@@ -14,6 +14,7 @@ jobs:
 
   arkivering-deploy:
     needs: felles-workflow
+    if: always() && needs.felles-workflow.outputs.image
     uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
     with:
       image: ${{ needs.felles-workflow.outputs.image }}
@@ -25,6 +26,7 @@ jobs:
 
   interne-deploy:
     needs: felles-workflow
+    if: always() && needs.felles-workflow.outputs.image
     uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
     with:
       image: ${{ needs.felles-workflow.outputs.image }}
