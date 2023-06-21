@@ -5,7 +5,7 @@ on:
 
 jobs:
   felles-workflow:
-    uses: navikt/flex-github-actions-workflows/.github/workflows/next-js.yml@trivy-docker
+    uses: navikt/flex-github-actions-workflows/.github/workflows/next-js.yml@master
     secrets: inherit
     with:
       base-path: syk/sykepenger
@@ -15,7 +15,7 @@ jobs:
   arkivering-deploy:
     needs: felles-workflow
     if: always() && needs.felles-workflow.outputs.image
-    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@trivy-docker
+    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
     with:
       image: ${{ needs.felles-workflow.outputs.image }}
       app: spinnsyn-arkivering
@@ -27,7 +27,7 @@ jobs:
   interne-deploy:
     needs: felles-workflow
     if: always() && needs.felles-workflow.outputs.image
-    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@trivy-docker
+    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
     with:
       image: ${{ needs.felles-workflow.outputs.image }}
       app: spinnsyn-interne
