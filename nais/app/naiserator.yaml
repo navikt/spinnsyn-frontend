@@ -32,6 +32,9 @@ spec:
   startup:
     path: syk/sykepenger/api/internal/isAlive
     initialDelay: 30
+  frontend:
+    generatedConfig:
+      mountPath: /usr/share/nginx/html/js/nais.js
   accessPolicy:
     outbound:
       rules:

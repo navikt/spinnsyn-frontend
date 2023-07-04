@@ -3,7 +3,7 @@ import { logger } from '@navikt/next-logger'
 import { useRouter } from 'next/router'
 import { DependencyList, useCallback, useEffect, useRef } from 'react'
 
-import { minSideUrl, publicPath, spinnsynFrontendInterne, sykefravaerUrl } from '../utils/environment'
+import { minSideUrl, basePath, spinnsynFrontendInterne, sykefravaerUrl } from '../utils/environment'
 import { tekst } from '../utils/tekster'
 
 type Breadcrumb = { title: string; url: string }
@@ -17,14 +17,14 @@ const baseCrumb: CompleteCrumb[] = [
         handleInApp: false,
     },
     { title: 'Ditt sykefravær', url: sykefravaerUrl(), handleInApp: false },
-    { title: tekst('vedtak-liste.sidetittel'), url: publicPath(), handleInApp: true },
+    { title: tekst('vedtak-liste.sidetittel'), url: basePath(), handleInApp: true },
 ]
 
 function createCompleteCrumbs(breadcrumbs: [...Breadcrumb[], LastCrumb] | []): CompleteCrumb[] {
     const prefixedCrumbs: CompleteCrumb[] = breadcrumbs.map(
         (it): CompleteCrumb => ({
             ...it,
-            url: 'url' in it ? `${publicPath()}${it.url}` : '/',
+            url: 'url' in it ? `${basePath()}${it.url}` : '/',
             handleInApp: true,
         }),
     )
@@ -64,7 +64,7 @@ export function useHandleDecoratorClicks(): void {
     const callback = useCallback(
         (breadcrumb: Breadcrumb) => {
             // router.push automatically pre-pends the base route of the application
-            router.push(breadcrumb.url.replace(publicPath() || '', '') || '/')
+            router.push(breadcrumb.url.replace(basePath() || '', '') || '/')
         },
         [router],
     )

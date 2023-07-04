@@ -22,10 +22,6 @@ export function minSideUrl() {
     return publicRuntimeConfig.minSideUrl
 }
 
-export function publicPath() {
-    return publicRuntimeConfig.publicPath
-}
-
 export function amplitudeEnabled() {
     return publicRuntimeConfig.amplitudeEnabled === 'true'
 }
@@ -36,4 +32,20 @@ export function spinnsynFrontendInterne() {
 
 export function arkiverteVedtakUrl() {
     return publicRuntimeConfig.arkiverteVedtakUrl
+}
+
+export function telemetryCollectorURL() {
+    return publicRuntimeConfig.telemetryCollectorURL
+}
+
+export function naisAppImage() {
+    return publicRuntimeConfig.naisAppImage
+}
+
+export function naisAppName() {
+    return publicRuntimeConfig.naisAppName
+}
+
+export function basePath() {
+    return publicRuntimeConfig.basePath
 }
