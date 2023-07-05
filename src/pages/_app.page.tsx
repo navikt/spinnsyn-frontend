@@ -8,6 +8,8 @@ import Head from 'next/head'
 import React, { PropsWithChildren, useState } from 'react'
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
+import { getFaro, initInstrumentation, pinoLevelToFaroLevel } from '../faro/faro'
+import { basePath } from '../utils/environment'
 import { LabsWarning } from '../components/labs-warning/LabsWarning'
 import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
 
@@ -22,8 +24,13 @@ dayjs.locale({
     weekStart: 1,
 })
 
+initInstrumentation()
 configureLogger({
-    basePath: '/syk/sykepenger',
+    basePath: basePath(),
+    onLog: (log) =>
+        getFaro()?.api.pushLog(log.messages, {
+            level: pinoLevelToFaroLevel(log.level.label),
+        }),
 })
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

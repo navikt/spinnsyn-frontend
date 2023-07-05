@@ -69,7 +69,7 @@ const nextConfig = {
     },
     publicRuntimeConfig: {
         // Will be available on both server and client
-        publicPath: '/syk/sykepenger',
+        basePath: '/syk/sykepenger',
         flexGatewayRoot: process.env.FLEX_GATEWAY_ROOT,
         mockBackend: process.env.MOCK_BACKEND,
         opplaering: process.env.OPPLAERING,
@@ -79,6 +79,9 @@ const nextConfig = {
         environment: process.env.ENVIRONMENT,
         spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE,
         arkiverteVedtakUrl: process.env.ARKIVERTE_VEDTAK_URL,
+        telemetryCollectorURL: process.env.NAIS_FRONTEND_TELEMETRY_COLLECTOR_URL,
+        naisAppImage: process.env.NAIS_APP_IMAGE,
+        naisAppName: process.env.NAIS_APP_NAME,
     },
 }
 
