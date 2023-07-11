@@ -38,8 +38,9 @@ describe('Tester logikk i behandling.tsx', () => {
             'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('[data-cy*="ugyldig"]').should('have.length', 2)
-        cy.get('[data-cy="sykepengedager-ec-ugyldig"]').should('have.length', 1)
+        cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
+            .eq(0)
+            .should('have.css', 'background-color', 'rgb(241, 241, 241)' /* grå */)
     })
 
     it('Manuelt behandlet revurdert vedtak', () => {
@@ -58,8 +59,9 @@ describe('Tester logikk i behandling.tsx', () => {
             'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
 
-        cy.get('[data-cy*="ugyldig"]').should('have.length', 2)
-        cy.get('[data-cy="sykepengedager-ec-ugyldig"]').should('have.length', 1)
+        cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
+            .eq(0)
+            .should('have.css', 'background-color', 'rgb(241, 241, 241)' /* grå */)
     })
 
     it('Revurdert vedtak med direkte utbetaling', () => {

@@ -44,6 +44,8 @@ interface RSVedtak {
     begrensning?: Begrensning
     utbetaling: RSUtbetalingUtbetalt
     vedtakFattetTidspunkt?: string
+    sykepengegrunnlagsfakta?: Sykepengegrunnlagsfakta | null
+    begrunnelser?: Begrunnelse[]
 }
 
 interface RSUtbetalingUtbetalt {
@@ -86,4 +88,47 @@ export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 export interface Dokument {
     dokumentId: string
     type: 'Sykmelding' | 'Søknad' | 'Inntektsmelding'
+}
+
+type Sykepengegrunnlagsfakta =
+    | {
+          fastsatt: 'IInfotrygd'
+          omregnetÅrsinntekt: number
+      }
+    | {
+          fastsatt: 'EtterHovedregel'
+          arbeidsgivere: Arbeidsgiver[]
+      }
+    | ({
+          fastsatt: 'EtterSkjønn'
+          skjønnsfastsatt: number
+          arbeidsgivere: ArbeidsgiverMedSkjønn[]
+      } & SpleisSykepengegrunnlag)
+
+type Arbeidsgiver = {
+    arbeidsgiver: string
+    omregnetÅrsinntekt: number
+}
+
+type ArbeidsgiverMedSkjønn = Arbeidsgiver & {
+    skjønnsfastsatt: number
+}
+
+export type SpleisSykepengegrunnlag = {
+    omregnetÅrsinntekt: number
+    innrapportertÅrsinntekt: number
+    avviksprosent: number
+    '6G': number
+    tags: '6GBegrenset'[]
+}
+
+type Begrunnelse = {
+    årsak: 'SkjønnsfastsattSykepengegrunnlag'
+    begrunnelse: string
+    perioder: Periode[]
+}
+
+type Periode = {
+    fom: string
+    tom: string
 }

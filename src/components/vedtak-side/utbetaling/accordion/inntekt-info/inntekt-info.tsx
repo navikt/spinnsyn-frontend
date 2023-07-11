@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
+import { Accordion, Alert, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
 import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../../context/arkivering-context'
@@ -37,6 +37,9 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
         setOpen(!open)
     }
 
+    const over25prosentAvvik =
+        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' &&
+        vedtak.vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
     return (
         <Vis
             hvis={inntektMnd && inntektAr}
@@ -80,6 +83,37 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     {inntektAr}
                                 </BodyShort>
                             </section>
+
+                            {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' && (
+                                <>
+                                    <section className="arkivering-flex-fix flex justify-between">
+                                        <BodyShort as="div" size="small" spacing>
+                                            Innrapportert årsinntekt
+                                        </BodyShort>
+                                        <BodyShort as="div" size="small">
+                                            {formaterValuta(
+                                                vedtak.vedtak.sykepengegrunnlagsfakta.innrapportertÅrsinntekt,
+                                            )}
+                                        </BodyShort>
+                                    </section>
+                                    <section className="arkivering-flex-fix flex justify-between">
+                                        <BodyShort as="div" size="small" spacing>
+                                            Utregnet avvik
+                                        </BodyShort>
+                                        <BodyShort as="div" size="small">
+                                            {formatOneDecimal(vedtak.vedtak.sykepengegrunnlagsfakta.avviksprosent)} %
+                                        </BodyShort>
+                                    </section>
+                                    <section className="arkivering-flex-fix flex justify-between">
+                                        <BodyShort as="div" size="small" spacing>
+                                            Total skjønnsfastsatt årsinntekt
+                                        </BodyShort>
+                                        <BodyShort as="div" size="small">
+                                            {formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.skjønnsfastsatt)}{' '}
+                                        </BodyShort>
+                                    </section>
+                                </>
+                            )}
 
                             <Vis
                                 hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
@@ -131,12 +165,22 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                                     </>
                                 )}
                             />
+                            {over25prosentAvvik && (
+                                <Alert variant="info" className="mt-4">
+                                    Siden det er mer enn 25% avvik mellom beregnet årslønn og innrapportert årsinntekt
+                                    blir inntekten skjønnsfastsatt
+                                </Alert>
+                            )}
                         </article>
                     </Accordion.Content>
                 </Accordion.Item>
             )}
         />
     )
+}
+
+function formatOneDecimal(value: number) {
+    return value.toFixed(1).replace('.', ',')
 }
 
 export default InntektInfo

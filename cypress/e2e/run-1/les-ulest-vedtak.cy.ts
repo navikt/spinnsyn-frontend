@@ -58,7 +58,8 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Den blå boksen har riktig innhold', () => {
-        cy.get('[data-cy="sykepengedager-ec"]')
+        cy.get('h1') // Kan ikke bruke testinglibrary med en gang?
+        cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .should('contain', '15 sykepengedager')
             .and('contain', 'Brukt per 9. april 2021')
             .click()
@@ -106,10 +107,12 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
-        cy.get('[data-cy="sykepengedager-ec-ugyldig"]')
+        cy.get('h1') // Kan ikke bruke testinglibrary med en gang?
+        cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .eq(0)
             .should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
+            .and('have.css', 'background-color', 'rgb(241, 241, 241)' /* grå */)
             .click()
 
         cy.should('contain', '186 sykepengedager').and('contain', 'Gjenstår per 3. mai 2021')
