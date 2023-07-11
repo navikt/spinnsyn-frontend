@@ -12,7 +12,11 @@ import {
     utenData,
 } from './data/personas'
 import { kunAgPeriode } from './data/rs-vedtak'
-import { skjønnsfastsattBrukerutbetaling } from './data/skjønnsfastsatt'
+import {
+    skjønnsfastsattBrukerutbetaling,
+    skjønnsfastsattFlereArbeidsgivere,
+    skjønnsfastsattRefusjon,
+} from './data/skjønnsfastsatt'
 
 export interface StringFunctionMap {
     [index: string]: () => Persona
@@ -30,5 +34,7 @@ export const personas: StringFunctionMap = {
     kombinasjon: () => kombinasjonPerson,
     'kun-ag-periode': () => ({ vedtak: [kunAgPeriode] }),
     'slutter-med-delvis-refusjon': () => slutterMedDelvisRefusjon,
-    'brukerutbetaling-skjønnsfastsatt': () => ({ vedtak: [skjønnsfastsattBrukerutbetaling] }),
+    'skjønnsfastsatt-brukerutbetaling': () => ({ vedtak: [skjønnsfastsattBrukerutbetaling] }),
+    'skjønnsfastsatt-refusjon': () => ({ vedtak: [skjønnsfastsattRefusjon] }),
+    'skjønnsfastsatt-flere-arbeidsgivere': () => ({ vedtak: [skjønnsfastsattFlereArbeidsgivere] }),
 }
