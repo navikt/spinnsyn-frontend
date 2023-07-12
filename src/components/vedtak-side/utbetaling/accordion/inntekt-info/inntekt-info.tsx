@@ -10,6 +10,7 @@ import { VedtakProps } from '../../../vedtak'
 import { parserWithReplace } from '../../../../../utils/html-react-parser-utils'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
+import { InfoSection } from './info-seksjon'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
     const isServer = useContext(ArkiveringContext)
@@ -29,8 +30,6 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const inntekt = finnRiktigInntekt()
     const inntektMnd = inntekt ? formaterValuta(inntekt) : undefined
     const inntektAr = inntekt ? formaterValuta(inntekt * 12) : undefined
-
-    const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
 
     const onButtonClick = () => {
         setOpen(!open)
@@ -66,80 +65,51 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                 <article data-cy="inntekt-info-article">
                     <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
-                    <section data-cy="beregnet-månedsinntekt" className="arkivering-flex-fix flex justify-between">
-                        <BodyShort as="div" size="small" spacing>
-                            {tekst('utbetaling.inntekt.info.beregnet')}
-                        </BodyShort>
-                        <BodyShort as="div" size="small" spacing>
-                            {inntektMnd}
-                        </BodyShort>
-                    </section>
+                    <InfoSection label={tekst('utbetaling.inntekt.info.beregnet')} value={inntektMnd} />
 
-                    <section data-cy="beregnet-årsinntekt" className="arkivering-flex-fix flex justify-between">
-                        <BodyShort as="div" size="small" spacing>
-                            {tekst('utbetaling.inntekt.info.omregnet')}
-                        </BodyShort>
-                        <BodyShort as="div" size="small">
-                            {inntektAr}
-                        </BodyShort>
-                    </section>
+                    <InfoSection label={tekst('utbetaling.inntekt.info.omregnet')} value={inntektAr} />
 
                     {harFlereArbeidsgivere(vedtak) === 'ja' && (
                         <>
                             <BeregningÅrsinntektFlereArbeidsgivere vedtak={vedtak} />
 
-                            <section
-                                data-cy="samlet-årsinntekt"
-                                className="arkivering-flex-fix mt-4 flex justify-between border-t border-gray-400 pt-4"
-                            >
-                                <Label as="div" size="small" spacing>
-                                    {tekst('utbetaling.inntekt.samlet.årsinntekt')}
-                                </Label>
-                                <Label as="div" size="small">
-                                    {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
-                                </Label>
-                            </section>
+                            <InfoSection
+                                className="mt-4 border-t border-gray-400 pt-4"
+                                bold
+                                label={tekst('utbetaling.inntekt.samlet.årsinntekt')}
+                                value={formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
+                            />
                         </>
                     )}
 
                     {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' && (
                         <>
-                            <section className="arkivering-flex-fix flex justify-between">
-                                <Label as="div" size="small" spacing>
-                                    Årsinntekt fra A-ordningen
-                                </Label>
-                                <Label as="div" size="small">
-                                    {formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.innrapportertÅrsinntekt)}
-                                </Label>
-                            </section>
-                            <section className="arkivering-flex-fix flex justify-between">
-                                <Label as="div" size="small" spacing>
-                                    Utregnet avvik
-                                </Label>
-                                <Label as="div" size="small">
-                                    {formatOneDecimal(vedtak.vedtak.sykepengegrunnlagsfakta.avviksprosent)} %
-                                </Label>
-                            </section>
-                            <section className="arkivering-flex-fix flex justify-between">
-                                <Label as="div" size="small" spacing>
-                                    Skjønnsfastsatt årsinntekt
-                                </Label>
-                                <Label as="div" size="small">
-                                    {formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.skjønnsfastsatt)}
-                                </Label>
-                            </section>
+                            <InfoSection
+                                label="Årsinntekt fra A-ordningen"
+                                value={formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.innrapportertÅrsinntekt)}
+                            />
+                            <InfoSection
+                                label="Utregnet avvik"
+                                value={`${formatOneDecimal(vedtak.vedtak.sykepengegrunnlagsfakta.avviksprosent)} %`}
+                            />
+                            <InfoSection
+                                label="Skjønnsfastsatt årsinntekt"
+                                value={formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.skjønnsfastsatt)}
+                            />
                         </>
                     )}
 
-                    {skalViseSykepengegrunnlag && (
-                        <section data-cy="sykepengegrunnlag" className="arkivering-flex-fix flex justify-between">
-                            <Label as="div" size="small">
-                                {tekst('utbetaling.sykepengegrunnlag')}
-                            </Label>
-                            <Label as="div" size="small">
-                                {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
-                            </Label>
-                        </section>
+                    {vedtak.vedtak.sykepengegrunnlag && (
+                        <InfoSection
+                            bold
+                            className={
+                                vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+                                    ? 'mt-4 border-t border-gray-400 pt-4'
+                                    : ''
+                            }
+                            label={tekst('utbetaling.sykepengegrunnlag')}
+                            value={formaterValuta(vedtak.vedtak.sykepengegrunnlag)}
+                        />
                     )}
 
                     {(over25prosentAvvik || vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET') && (
