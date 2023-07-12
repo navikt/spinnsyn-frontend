@@ -62,7 +62,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                 </Heading>
             </Accordion.Header>
             <Accordion.Content className="bg-white pl-4 pt-4">
-                <article data-cy="inntekt-info-article">
+                <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
                     <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
                     <InfoSection label={tekst('utbetaling.inntekt.info.beregnet')} value={inntektMnd} />

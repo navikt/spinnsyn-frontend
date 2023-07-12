@@ -7,6 +7,9 @@ import {
 describe('Les uleste vedtak', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.contains('Svar på søknader')
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(100)
     })
 
     it('Laster startside', () => {
@@ -44,15 +47,18 @@ describe('Les uleste vedtak', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedsinntekt"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', '37\u00a0500 kr')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årsinntekt"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Omregnet til årsinntekt' })
             .should('contain', 'Omregnet til årsinntekt')
             .should('contain', '450\u00a0000 kr')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Sykepengegrunnlag' })
             .should('contain', 'Sykepengegrunnlag')
             .should('contain', '455\u00a0000 kr')
     })
@@ -72,6 +78,8 @@ describe('Les uleste vedtak', () => {
 
     it('Vi går tilbake til oversikten', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(100)
         cy.get('[data-cy="uleste-vedtak"] a')
     })
 
