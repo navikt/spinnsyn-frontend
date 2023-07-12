@@ -44,12 +44,12 @@ describe('Les uleste vedtak', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedslønn"]')
-            .should('contain', 'Beregnet månedslønn')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedsinntekt"]')
+            .should('contain', 'Beregnet månedsinntekt')
             .should('contain', '37\u00a0500 kr')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årslønn"]')
-            .should('contain', 'Beregnet årslønn')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årsinntekt"]')
+            .should('contain', 'Omregnet til årsinntekt')
             .should('contain', '450\u00a0000 kr')
 
         cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')

@@ -6,7 +6,7 @@ import { tekst } from '../../../../../utils/tekster'
 import { formaterValuta } from '../../../../../utils/valuta-utils'
 import { VedtakProps } from '../../../vedtak'
 
-const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
+const BeregningÅrsinntektFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
     const alleÅrsLønn = vedtak.andreArbeidsgivere
     const arbeidsgivere = Object.keys(alleÅrsLønn!)
 
@@ -17,10 +17,10 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
                     <Label data-cy={`annen-arbeidsgiver-${idx}`}>{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
                     <section
                         className="arkivering-flex-fix flex justify-between"
-                        data-cy={`annen-arbeidsgiver-årslønn-${idx}`}
+                        data-cy={`annen-arbeidsgiver-årsinntekt-${idx}`}
                     >
                         <BodyShort as="div" size="small">
-                            {tekst('utbetaling.inntekt.årslønn')}
+                            {tekst('utbetaling.inntekt.årsinntekt')}
                         </BodyShort>
                         <BodyShort as="div" size="small">
                             {formaterValuta(alleÅrsLønn![arbeidsgiverNavn])}
@@ -32,4 +32,4 @@ const BeregningÅrslønnFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
     )
 }
 
-export default BeregningÅrslønnFlereArbeidsgivere
+export default BeregningÅrsinntektFlereArbeidsgivere

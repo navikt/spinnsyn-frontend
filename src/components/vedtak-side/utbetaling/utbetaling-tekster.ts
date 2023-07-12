@@ -1,18 +1,18 @@
 const UtbetalingTekster = {
-    'utbetaling.mndlonn.tittel': 'Månedslønnen',
+    'utbetaling.mndlonn.tittel': 'Månedsinntekt',
     'utbetaling.person.mndlonn.innhold':
         'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
     'utbetaling.mndlonn.innhold':
-        'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. <a href="https://www.nav.no/arbeidsgiver/inntektsmelding#manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med.</a> Hvis du er usikker på om månedslønnen er riktig, kontakt arbeidsgiveren din. ',
-    'utbetaling.arslonn.tittel': 'Årslønn',
-    'utbetaling.arslonn.innhold.del1': 'Så blir månedslønnen regnet om til årslønn ved å gange den med 12. ',
+        'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. <a href="https://www.nav.no/arbeidsgiver/inntektsmelding#manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med.</a> Hvis du er usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din. ',
+    'utbetaling.arslonn.tittel': 'Årsinntekt',
+    'utbetaling.arslonn.innhold.del1': 'Så blir månedsinntekten regnet om til årsinntekt ved å gange den med 12. ',
     'utbetaling.arslonn.innhold.del2':
-        'Siden du har flere arbeidsgivere, legger vi sammen lønnen fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er.',
+        'Siden du har flere arbeidsgivere, legger vi sammen inntekten fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er.',
     'utbetaling.sykepengegrunnlag.tittel': 'Sykepengegrunnlag',
     'utbetaling.sykepengegrunnlag.under6g.innhold':
-        'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årslønnen din. Derfor vil sykepengegrunnlaget og den samlede årslønnen ofte være det samme.',
+        'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din. Derfor vil sykepengegrunnlaget og den samlede årsinntekten ofte være det samme.',
     'utbetaling.sykepengegrunnlag.over6g.innhold':
-        'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årslønnen din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Denne regelen står i <a href="https://lovdata.no/nav/folketrygdloven/kap8" target="_blank">folketrygdloven § 8-10</a>.',
+        'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Denne regelen står i <a href="https://lovdata.no/nav/folketrygdloven/kap8" target="_blank">folketrygdloven § 8-10</a>.',
     'utbetaling.sykepengegrunnlag.skjønn':
         'I noen saker må NAV fastsette sykepengegrunnlaget ved å bruke skjønn. Da ser en saksbehandler på saken din og vurderer hva som er det riktige sykepengegrunnlaget. Hvis NAV har brukt skjønn til å fastsette sykepengegrunnlaget ditt, og resultatet ble et annet enn vi tror du forventet, skal du ha fått et eget brev om det. ',
     'utbetaling.dagligbelop.tittel': 'Sykepenger per dag',
@@ -38,10 +38,10 @@ const UtbetalingTekster = {
         'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Da kan du se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
 
     'utbetaling.inntekt.info.tittel': 'Inntekter lagt til grunn for sykepengene',
-    'utbetaling.inntekt.info.beregnet': 'Beregnet månedslønn',
-    'utbetaling.inntekt.info.omregnet': 'Beregnet årslønn',
-    'utbetaling.inntekt.årslønn': 'Årslønn',
-    'utbetaling.inntekt.samlet.årslønn': 'Samlet årslønn',
+    'utbetaling.inntekt.info.beregnet': 'Beregnet månedsinntekt',
+    'utbetaling.inntekt.info.omregnet': 'Omregnet til årsinntekt',
+    'utbetaling.inntekt.årsinntekt': 'Årsinntekt',
+    'utbetaling.inntekt.samlet.årsinntekt': 'Samlet årsinntekt',
     'utbetaling.inntekt.info.dagsats': 'Sykepenger per dag',
     'utbetaling.sykepengegrunnlag': 'Sykepengegrunnlag',
     'utbetaling.redusert6G.tekst':

@@ -157,8 +157,8 @@ describe('Avviste dager', () => {
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="mer-om-beregningen"]')
-                .should('contain', 'Månedslønnen')
-                .should('contain', 'Årslønn')
+                .should('contain', 'Månedsinntekt')
+                .should('contain', 'Årsinntekt')
                 .should('contain', 'Sykepengegrunnlag')
                 .should('not.contain', 'Sykepenger per dag')
                 .should('not.contain', 'Totalbeløp')

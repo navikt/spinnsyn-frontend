@@ -16,22 +16,22 @@ describe('Vedtak med flere arbeidsgivere', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedslønn"]')
-            .should('contain', 'Beregnet månedslønn')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedsinntekt"]')
+            .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(41958))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årslønn"]')
-            .should('contain', 'Beregnet årslønn')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årsinntekt"]')
+            .should('contain', 'Omregnet til årsinntekt')
             .should('contain', formaterValuta(503504))
 
         cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-0"]').contains('Den Andre Sjappa')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-årslønn-0"]')
-            .should('contain', 'Årslønn')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-årsinntekt-0"]')
+            .should('contain', 'Årsinntekt')
             .should('contain', formaterValuta(406252))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="samlet-årslønn"]')
-            .should('contain', 'Samlet årslønn')
+        cy.get('[data-cy="inntekt-info-article"] [data-cy="samlet-årsinntekt"]')
+            .should('contain', 'Samlet årsinntekt')
             .should('contain', formaterValuta(909757))
 
         cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
