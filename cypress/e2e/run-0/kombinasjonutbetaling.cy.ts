@@ -5,6 +5,7 @@ describe('Kombinasjonutbetaling', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 2)
     })
 
     it('Laster startside', () => {

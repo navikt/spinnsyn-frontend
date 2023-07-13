@@ -108,7 +108,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Vis
                 hvis={nyesteRevudering}
                 render={() => (
-                    <Alert variant="info">
+                    <Alert variant="info" className="mt-4">
                         <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
                         <Link href={tekst('revurdert.alert.link.url')}>
                             {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}

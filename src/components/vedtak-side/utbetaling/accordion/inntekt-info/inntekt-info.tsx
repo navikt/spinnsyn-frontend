@@ -11,6 +11,7 @@ import { parserWithReplace } from '../../../../../utils/html-react-parser-utils'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
+import { inntektInfoTekster } from './inntekt-info-tekster'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
     const isServer = useContext(ArkiveringContext)
@@ -115,10 +116,7 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
                     {(over25prosentAvvik || vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET') && (
                         <Alert variant="info" className="mt-8">
                             {over25prosentAvvik && (
-                                <BodyShort spacing>
-                                    Siden det er mer enn 25% avvik mellom beregnet årsinntekt og innrapportert
-                                    årsinntekt blir inntekten skjønnsfastsatt.
-                                </BodyShort>
+                                <BodyShort spacing>{inntektInfoTekster['25%avvik-skjønnsfastsatt']}</BodyShort>
                             )}
                             {parserWithReplace(tekst('utbetaling.redusert6G.tekst'))}
                         </Alert>

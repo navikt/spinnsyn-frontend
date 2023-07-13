@@ -5,6 +5,7 @@ describe('Kun personutbetaling', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
+        cy.findByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 
     it('Laster startside', () => {

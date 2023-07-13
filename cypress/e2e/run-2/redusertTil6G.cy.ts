@@ -6,6 +6,7 @@ describe('Redusert til 6G', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Laster startside', () => {
@@ -20,29 +21,36 @@ describe('Redusert til 6G', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedsinntekt"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(74675))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årsinntekt"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Omregnet til årsinntekt' })
             .should('contain', 'Omregnet til årsinntekt')
             .should('contain', formaterValuta(896100))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-0"]').contains('The Ministry Of Magic AS')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .get('[data-cy="annen-arbeidsgiver-0"]')
+            .contains('The Ministry Of Magic AS')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-årsinntekt-0"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'The Ministry Of Magic AS Årsinntekt' })
             .should('contain', 'Årsinntekt')
             .should('contain', formaterValuta(195781))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="samlet-årsinntekt"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Samlet årsinntekt' })
             .should('contain', 'Samlet årsinntekt')
             .should('contain', formaterValuta(1091881))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Sykepengegrunnlag' })
             .should('contain', 'Sykepengegrunnlag')
             .should('contain', formaterValuta(638394))
 
-        cy.get('[data-cy="inntekt-info-article"]').should(
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' }).should(
             'contain',
             'Du får ikke sykepenger fra NAV for den delen av årsinntekten som er mer enn seks ganger grunnbeløpet.',
         )

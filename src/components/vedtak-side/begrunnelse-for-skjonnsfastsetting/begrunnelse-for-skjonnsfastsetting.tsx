@@ -5,6 +5,8 @@ import { EnvelopeOpenIcon } from '@navikt/aksel-icons'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 
+import { begrunnelseForSkjønnsfastsettingTekster } from './begrunnelse-for-skjonnsfastsetting-tekster'
+
 export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
     const begrunnelse = vedtak.vedtak.begrunnelser?.find((b) => b.årsak === 'SkjønnsfastsattSykepengegrunnlag')
     if (!begrunnelse) return null
@@ -15,21 +17,14 @@ export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
         <VedtakExpansionCard tittel="Begrunnelse for skjønnsfastsetting" vedtak={vedtak}>
             {har25prosenAvvikt && (
                 <>
-                    <BodyLong spacing>
-                        Når årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt, skal NAV fastsette
-                        sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du
-                        ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.
-                    </BodyLong>
-                    <BodyLong spacing>
-                        Beløpet vi har kommet frem til er årsinntekten vi mener du ville hatt hvis du ikke hadde blitt
-                        syk.
-                    </BodyLong>
+                    <BodyLong spacing>{begrunnelseForSkjønnsfastsettingTekster['25%-del-1']}</BodyLong>
+                    <BodyLong spacing>{begrunnelseForSkjønnsfastsettingTekster['25%-del-2']}</BodyLong>
                 </>
             )}
 
             <Heading level="3" size="small">
-                <EnvelopeOpenIcon aria-hidden={true} className="mr-2 inline" />
-                Nærmere begrunnelse fra saksbehandler
+                <EnvelopeOpenIcon aria-hidden className="mr-2 inline" />
+                {begrunnelseForSkjønnsfastsettingTekster['nærmere-begrunnelse-fra-saksbehandler']}
             </Heading>
             <BodyShort className="bg-surface-subtle p-4">{begrunnelse.begrunnelse}</BodyShort>
         </VedtakExpansionCard>

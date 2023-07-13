@@ -7,9 +7,7 @@ import {
 describe('Les uleste vedtak', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.contains('Svar på søknader')
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(100)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Laster startside', () => {
@@ -64,8 +62,8 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Den blå boksen har riktig innhold', () => {
-        cy.get('h1') // Kan ikke bruke testinglibrary med en gang?
-        cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
+        cy.get('main')
+            .findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .should('contain', '15 sykepengedager')
             .and('contain', 'Brukt per 9. april 2021')
             .click()
@@ -78,9 +76,7 @@ describe('Les uleste vedtak', () => {
 
     it('Vi går tilbake til oversikten', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(100)
-        cy.get('[data-cy="uleste-vedtak"] a')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Det er 2 uleste vedtak og 9 leste', () => {
@@ -115,8 +111,8 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
-        cy.get('h1') // Kan ikke bruke testinglibrary med en gang?
-        cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
+        cy.get('main')
+            .findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .eq(0)
             .should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')

@@ -8,6 +8,7 @@ import {
 describe('Avviste dager', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Laster startside', () => {
