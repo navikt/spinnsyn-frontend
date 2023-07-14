@@ -28,7 +28,7 @@ export const VedtakExpansionCard = ({ vedtak, tittel, undertittel, children, ari
                 } as React.CSSProperties
             }
         >
-            <ExpansionCard.Header>
+            <ExpansionCard.Header className="flex-arkivering-ignore flex items-center">
                 <Heading level="2" size="medium">
                     {tittel}
                     {undertittel && (
