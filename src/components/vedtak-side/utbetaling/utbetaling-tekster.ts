@@ -81,7 +81,8 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.NavHelgDag':
         'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
-    'utbetaling.tabell.label.Feriedag': 'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. I ferien stoppes sykepengene.',
+    'utbetaling.tabell.label.Feriedag':
+        'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. I ferien stoppes sykepengene.',
     'utbetaling.tabell.label.Permisjonsdag':
         'Du har oppgitt i søknaden at du hadde permisjon. Du får ikke sykepenger for dager du har permisjon. ',
     'utbetaling.tabell.label.ForeldetDag':
