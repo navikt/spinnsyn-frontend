@@ -139,7 +139,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Feriedag"]').contains('Ferie')
                 cy.get('[data-cy="dag-beskrivelse-Feriedag"]').contains(
-                    'Du har oppgitt i søknaden at du hadde ferie. I ferien stoppes sykepengene.',
+                    'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. I ferien stoppes sykepengene.',
                 )
 
                 cy.get('[data-cy="dag-label-ForeldetDag"]').contains('Søkt for sent')
