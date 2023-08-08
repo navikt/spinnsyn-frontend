@@ -138,7 +138,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     <AvvisteDager
                         avvisteDager={avvisteDager}
                         vedtak={vedtak}
-                        heltAvvist={!erDirekteutbetaling && !erRefusjon}
                     />
                 )}
             />

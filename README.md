@@ -1,5 +1,4 @@
 # spinnsyn-frontend
-Hovedvarianten av denne applikasjonen.
 Applikasjon som viser vedtak mottatt fra `Speil` til sluttbruker på nav.no. Henter data fra [spinnsyn-backend](https://github.com/navikt/spinnsyn-backend).
 
 Lever under:

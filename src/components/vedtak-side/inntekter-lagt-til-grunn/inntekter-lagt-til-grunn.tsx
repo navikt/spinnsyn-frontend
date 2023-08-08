@@ -74,7 +74,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         />
                         {over25prosentAvvik && (
                             <Alert variant="info" className="my-2">
-                                <BodyShort>{inntektInfoTekster['25%avvik-skjønnsfastsatt']}</BodyShort>
+                                <BodyShort size="small">{inntektInfoTekster['25%avvik-skjønnsfastsatt']}</BodyShort>
                             </Alert>
                         )}
                         <InfoSection
