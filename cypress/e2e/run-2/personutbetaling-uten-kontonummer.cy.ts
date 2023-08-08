@@ -5,6 +5,7 @@ describe('Personutbetaling uten kontonummer', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 
     it('Laster startside', () => {

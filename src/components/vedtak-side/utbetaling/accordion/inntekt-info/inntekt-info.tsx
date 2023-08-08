@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, BodyShort, Heading, Label } from '@navikt/ds-react'
+import { Accordion, Alert, BodyShort, Heading, Label } from '@navikt/ds-react'
 import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../../context/arkivering-context'
@@ -6,11 +6,12 @@ import { harFlereArbeidsgivere } from '../../../../../utils/har-flere-arbeidsgiv
 import { storeTilStoreOgSmå } from '../../../../../utils/store-små'
 import { tekst } from '../../../../../utils/tekster'
 import { formaterValuta } from '../../../../../utils/valuta-utils'
-import Vis from '../../../../vis'
 import { VedtakProps } from '../../../vedtak'
 import { parserWithReplace } from '../../../../../utils/html-react-parser-utils'
 
-import BeregningÅrslønnFlereArbeidsgivere from './beregning-årslønn-flere-arbeidsgivere'
+import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
+import { InfoSection } from './info-seksjon'
+import { inntektInfoTekster } from './inntekt-info-tekster'
 
 const InntektInfo = ({ vedtak }: VedtakProps) => {
     const isServer = useContext(ArkiveringContext)
@@ -31,112 +32,103 @@ const InntektInfo = ({ vedtak }: VedtakProps) => {
     const inntektMnd = inntekt ? formaterValuta(inntekt) : undefined
     const inntektAr = inntekt ? formaterValuta(inntekt * 12) : undefined
 
-    const skalViseSykepengegrunnlag = vedtak.vedtak.sykepengegrunnlag
-
     const onButtonClick = () => {
         setOpen(!open)
     }
 
+    const over25prosentAvvik =
+        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' &&
+        vedtak.vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
+
+    if (!(inntektMnd && inntektAr)) {
+        return null
+    }
     return (
-        <Vis
-            hvis={inntektMnd && inntektAr}
-            render={() => (
-                <Accordion.Item
-                    open={open}
-                    style={
-                        {
-                            '--ac-accordion-header-bg': open
-                                ? 'var(--a-surface-action-subtle)'
-                                : 'var(--a-surface-transparent)',
-                            '--ac-accordion-header-bg-hover': open
-                                ? 'var(--a-surface-action-subtle)'
-                                : 'var(--a-surface-hover)',
-                        } as React.CSSProperties
-                    }
-                >
-                    <Accordion.Header onClick={onButtonClick}>
-                        <Heading size="small" level="3">
-                            {tekst('utbetaling.inntekt.info.tittel')}
-                        </Heading>
-                    </Accordion.Header>
-                    <Accordion.Content className="bg-white pt-4">
-                        <article data-cy="inntekt-info-article">
-                            <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
+        <Accordion.Item
+            open={open}
+            style={
+                {
+                    '--ac-accordion-header-bg': open
+                        ? 'var(--a-surface-action-subtle)'
+                        : 'var(--a-surface-transparent)',
+                    '--ac-accordion-header-bg-hover': open
+                        ? 'var(--a-surface-action-subtle)'
+                        : 'var(--a-surface-hover)',
+                } as React.CSSProperties
+            }
+        >
+            <Accordion.Header onClick={onButtonClick}>
+                <Heading size="small" level="3">
+                    {tekst('utbetaling.inntekt.info.tittel')}
+                </Heading>
+            </Accordion.Header>
+            <Accordion.Content className="bg-white pl-4 pt-4">
+                <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
+                    <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
 
-                            <section data-cy="beregnet-månedslønn" className="arkivering-flex-fix flex justify-between">
-                                <BodyShort as="div" size="small" spacing>
-                                    {tekst('utbetaling.inntekt.info.beregnet')}
-                                </BodyShort>
-                                <BodyShort as="div" size="small" spacing>
-                                    {inntektMnd}
-                                </BodyShort>
-                            </section>
+                    <InfoSection label={tekst('utbetaling.inntekt.info.beregnet')} value={inntektMnd} />
 
-                            <section data-cy="beregnet-årslønn" className="arkivering-flex-fix flex justify-between">
-                                <BodyShort as="div" size="small" spacing>
-                                    {tekst('utbetaling.inntekt.info.omregnet')}
-                                </BodyShort>
-                                <BodyShort as="div" size="small">
-                                    {inntektAr}
-                                </BodyShort>
-                            </section>
+                    <InfoSection label={tekst('utbetaling.inntekt.info.omregnet')} value={inntektAr} />
 
-                            <Vis
-                                hvis={harFlereArbeidsgivere(vedtak) === 'ja'}
-                                render={() => (
-                                    <>
-                                        <BeregningÅrslønnFlereArbeidsgivere vedtak={vedtak} />
+                    {harFlereArbeidsgivere(vedtak) === 'ja' && (
+                        <>
+                            <BeregningÅrsinntektFlereArbeidsgivere vedtak={vedtak} />
 
-                                        <section
-                                            data-cy="samlet-årslønn"
-                                            className="arkivering-flex-fix mt-4 flex justify-between border-t border-gray-400 pt-4"
-                                        >
-                                            <Label as="div" size="small">
-                                                {tekst('utbetaling.inntekt.samlet.årslønn')}
-                                            </Label>
-                                            <Label as="div" size="small">
-                                                {formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
-                                            </Label>
-                                        </section>
-                                    </>
-                                )}
+                            <InfoSection
+                                className="mt-4 border-t border-gray-400 pt-4"
+                                bold
+                                label={tekst('utbetaling.inntekt.samlet.årsinntekt')}
+                                value={formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
                             />
+                        </>
+                    )}
 
-                            <Vis
-                                hvis={skalViseSykepengegrunnlag}
-                                render={() => (
-                                    <>
-                                        <section
-                                            data-cy="sykepengegrunnlag"
-                                            className="arkivering-flex-fix flex justify-between"
-                                        >
-                                            <Label as="div" size="small">
-                                                {tekst('utbetaling.sykepengegrunnlag')}
-                                            </Label>
-                                            <Label as="div" size="small">
-                                                {formaterValuta(vedtak.vedtak.sykepengegrunnlag!)}
-                                            </Label>
-                                        </section>
-
-                                        <Vis
-                                            hvis={vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET'}
-                                            render={() => (
-                                                <div className="mt-8 bg-orange-50 p-4">
-                                                    <BodyLong size="small">
-                                                        {parserWithReplace(tekst('utbetaling.redusert6G.tekst'))}
-                                                    </BodyLong>
-                                                </div>
-                                            )}
-                                        />
-                                    </>
-                                )}
+                    {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' && (
+                        <>
+                            <InfoSection
+                                label="Årsinntekt fra A-ordningen"
+                                value={formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.innrapportertÅrsinntekt)}
                             />
-                        </article>
-                    </Accordion.Content>
-                </Accordion.Item>
-            )}
-        />
+                            <InfoSection
+                                label="Utregnet avvik"
+                                value={`${formatOneDecimal(vedtak.vedtak.sykepengegrunnlagsfakta.avviksprosent)} %`}
+                            />
+                            <InfoSection
+                                label="Skjønnsfastsatt årsinntekt"
+                                value={formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.skjønnsfastsatt)}
+                            />
+                        </>
+                    )}
+
+                    {vedtak.vedtak.sykepengegrunnlag && (
+                        <InfoSection
+                            bold
+                            className={
+                                vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+                                    ? 'mt-4 border-t border-gray-400 pt-4'
+                                    : ''
+                            }
+                            label={tekst('utbetaling.sykepengegrunnlag')}
+                            value={formaterValuta(vedtak.vedtak.sykepengegrunnlag)}
+                        />
+                    )}
+
+                    {(over25prosentAvvik || vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET') && (
+                        <Alert variant="info" className="mt-8">
+                            {over25prosentAvvik && (
+                                <BodyShort spacing>{inntektInfoTekster['25%avvik-skjønnsfastsatt']}</BodyShort>
+                            )}
+                            {parserWithReplace(tekst('utbetaling.redusert6G.tekst'))}
+                        </Alert>
+                    )}
+                </article>
+            </Accordion.Content>
+        </Accordion.Item>
     )
+}
+
+function formatOneDecimal(value: number) {
+    return value.toFixed(1).replace('.', ',')
 }
 
 export default InntektInfo

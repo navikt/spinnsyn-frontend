@@ -5,6 +5,10 @@ import React from 'react'
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { integrasjonsVedtak } from '../../../data/testdata/data/rs-vedtak'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import {
+    skjønnsfastsattBrukerutbetaling,
+    skjønnsfastsattFlereArbeidsgivere,
+} from '../../../data/testdata/data/skjønnsfastsatt'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -21,7 +25,17 @@ const UtviklingArkiveringPage = ({ vedtak, enabled }: DevVedtakProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx) => {
-    const vedtak = integrasjonsVedtak
+    const finnVedtak = () => {
+        if (ctx.query.testperson === 'skjønnsfastsatt-brukerutbetaling') {
+            return skjønnsfastsattBrukerutbetaling
+        }
+        if (ctx.query.testperson === 'skjønnsfastsatt-flere-arbeidsgivere') {
+            return skjønnsfastsattFlereArbeidsgivere
+        }
+        return integrasjonsVedtak
+    }
+
+    const vedtak = finnVedtak()
 
     ctx.res.setHeader('x-nais-app-image', 'testtest')
     ctx.res.setHeader('x-vedtak-fom', vedtak.vedtak.fom)

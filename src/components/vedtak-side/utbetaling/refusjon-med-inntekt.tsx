@@ -19,6 +19,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
 
     return (
         <UtbetalingPanel
+            sectionLabel="Refusjon til arbeidsgiver"
             tittel={
                 <Heading level="2" size="large">
                     <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>

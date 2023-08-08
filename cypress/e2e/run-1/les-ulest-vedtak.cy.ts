@@ -7,6 +7,7 @@ import {
 describe('Les uleste vedtak', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Laster startside', () => {
@@ -44,21 +45,25 @@ describe('Les uleste vedtak', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedslønn"]')
-            .should('contain', 'Beregnet månedslønn')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt' })
+            .should('contain', 'Beregnet månedsinntekt')
             .should('contain', '37\u00a0500 kr')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årslønn"]')
-            .should('contain', 'Beregnet årslønn')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Omregnet til årsinntekt' })
+            .should('contain', 'Omregnet til årsinntekt')
             .should('contain', '450\u00a0000 kr')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Sykepengegrunnlag' })
             .should('contain', 'Sykepengegrunnlag')
             .should('contain', '455\u00a0000 kr')
     })
 
     it('Den blå boksen har riktig innhold', () => {
-        cy.get('[data-cy="sykepengedager-ec"]')
+        cy.get('main')
+            .findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .should('contain', '15 sykepengedager')
             .and('contain', 'Brukt per 9. april 2021')
             .click()
@@ -71,7 +76,7 @@ describe('Les uleste vedtak', () => {
 
     it('Vi går tilbake til oversikten', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get('[data-cy="uleste-vedtak"] a')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Det er 2 uleste vedtak og 9 leste', () => {
@@ -106,10 +111,12 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vedtaket viser beregnet sluttdato sendt fra bømlo', () => {
-        cy.get('[data-cy="sykepengedager-ec-ugyldig"]')
+        cy.get('main')
+            .findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .eq(0)
             .should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
+            .and('have.css', 'background-color', 'rgb(241, 241, 241)' /* grå */)
             .click()
 
         cy.should('contain', '186 sykepengedager').and('contain', 'Gjenstår per 3. mai 2021')

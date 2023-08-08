@@ -4,6 +4,7 @@ import { formaterValuta } from '../../../src/utils/valuta-utils'
 describe('Vedtak med flere arbeidsgivere', () => {
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 
     it('Laster startside', () => {
@@ -16,25 +17,32 @@ describe('Vedtak med flere arbeidsgivere', () => {
 
         cy.contains('Inntekter lagt til grunn for sykepengene').click()
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-månedslønn"]')
-            .should('contain', 'Beregnet månedslønn')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt' })
+            .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(41958))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="beregnet-årslønn"]')
-            .should('contain', 'Beregnet årslønn')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Omregnet til årsinntekt' })
+            .should('contain', 'Omregnet til årsinntekt')
             .should('contain', formaterValuta(503504))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-0"]').contains('Den Andre Sjappa')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .get('[data-cy="annen-arbeidsgiver-0"]')
+            .contains('Den Andre Sjappa')
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="annen-arbeidsgiver-årslønn-0"]')
-            .should('contain', 'Årslønn')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Den Andre Sjappa Årsinntekt' })
+            .should('contain', 'Årsinntekt')
             .should('contain', formaterValuta(406252))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="samlet-årslønn"]')
-            .should('contain', 'Samlet årslønn')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Samlet årsinntekt' })
+            .should('contain', 'Samlet årsinntekt')
             .should('contain', formaterValuta(909757))
 
-        cy.get('[data-cy="inntekt-info-article"] [data-cy="sykepengegrunnlag"]')
+        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            .findByRole('region', { name: 'Sykepengegrunnlag' })
             .should('contain', 'Sykepengegrunnlag')
             .should('contain', formaterValuta(638394))
     })

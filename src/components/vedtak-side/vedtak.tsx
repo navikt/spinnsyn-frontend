@@ -20,6 +20,7 @@ import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
+import { BegrunnelseForSkjonnsfastsetting } from './begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
 
 const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
 
@@ -107,7 +108,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Vis
                 hvis={nyesteRevudering}
                 render={() => (
-                    <Alert variant="info">
+                    <Alert variant="info" className="mt-4">
                         <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
                         <Link href={tekst('revurdert.alert.link.url')}>
                             {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
@@ -126,6 +127,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 }
                 render={() => <RefusjonMedInntekt vedtak={vedtak} />}
             />
+
+            <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
+
             <Vis
                 hvis={harAvvisteDager}
                 render={() => (
