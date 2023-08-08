@@ -44,8 +44,6 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.samlet.årsinntekt': 'Samlet årsinntekt',
     'utbetaling.inntekt.info.dagsats': 'Sykepenger per dag',
     'utbetaling.sykepengegrunnlag': 'Sykepengegrunnlag',
-    'utbetaling.redusert6G.tekst':
-        'Du får ikke sykepenger fra NAV for den delen av årsinntekten som er mer enn <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">seks ganger grunnbeløpet.</a>',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',

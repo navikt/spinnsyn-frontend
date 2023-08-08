@@ -1,10 +1,10 @@
 import { Label } from '@navikt/ds-react'
 import React from 'react'
 
-import { storeTilStoreOgSmå } from '../../../../../utils/store-små'
-import { tekst } from '../../../../../utils/tekster'
-import { formaterValuta } from '../../../../../utils/valuta-utils'
-import { VedtakProps } from '../../../vedtak'
+import { storeTilStoreOgSmå } from '../../../utils/store-små'
+import { tekst } from '../../../utils/tekster'
+import { formaterValuta } from '../../../utils/valuta-utils'
+import { VedtakProps } from '../vedtak'
 
 import { InfoSection } from './info-seksjon'
 

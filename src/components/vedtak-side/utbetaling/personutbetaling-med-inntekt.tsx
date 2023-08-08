@@ -10,9 +10,7 @@ import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 
-import BeregningInfo from './accordion/beregning-info'
 import { SykepengerTrekk } from './sykepenger-trekk'
-import InntektInfo from './accordion/inntekt-info/inntekt-info'
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
 import { SykepengerPerDag } from './accordion/sykepenger-per-dag'
@@ -43,9 +41,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <Vis hvis={!erInterne && !erArkivering} render={() => <Kontonummer />} />
             <Accordion>
                 <SykepengerNar />
-                <InntektInfo vedtak={vedtak} />
                 <SykepengerPerDag dager={vedtak.dagerPerson} />
-                <BeregningInfo vedtak={vedtak} mottaker="person" />
             </Accordion>
         </UtbetalingPanel>
     )
