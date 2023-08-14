@@ -1,4 +1,5 @@
-import { integrasjonsVedtak, vedtakMed40Grad } from '../../../src/data/testdata/data/rs-vedtak'
+import { vedtakMed40Grad } from '../../../src/data/testdata/data/rs-vedtak'
+import { alleAvvisteDager } from '../../../src/data/testdata/data/alleAvvisteDager'
 
 describe('Utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad
@@ -65,7 +66,7 @@ describe('Utbetalingsoversikt', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get('h1').should('be.visible').and('have.text', 'Svar på søknader')
 
-        cy.get(`a[href*=${integrasjonsVedtak.id}]`).click()
+        cy.get(`a[href*=${alleAvvisteDager.id}]`).click()
 
         cy.contains('Sykepenger per dag').click({ force: true })
 

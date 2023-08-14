@@ -1,9 +1,5 @@
-import {
-    avvistVedtak,
-    avvistVedtakMedLavInntekt,
-    integrasjonsVedtak,
-    vedtakMed40Grad,
-} from '../../../src/data/testdata/data/rs-vedtak'
+import { avvistVedtak, avvistVedtakMedLavInntekt, vedtakMed40Grad } from '../../../src/data/testdata/data/rs-vedtak'
+import { alleAvvisteDager } from '../../../src/data/testdata/data/alleAvvisteDager'
 
 describe('Avviste dager', () => {
     before(() => {
@@ -23,12 +19,12 @@ describe('Avviste dager', () => {
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get(`a[href*=${integrasjonsVedtak.id}]`).click({
+        cy.get(`a[href*=${alleAvvisteDager.id}]`).click({
             force: true,
         })
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
-            .should('contain', '15 sykepengedager')
+            .should('contain', '22 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
             .click()
 
@@ -76,6 +72,13 @@ describe('Avviste dager', () => {
                 cy.contains('20.feb.').parent().parent().should('contain', 'Ikke\u00a0medlem').and('contain', '-')
                 cy.contains('21.feb.').parent().parent().should('contain', 'Etter\u00a0dødsfall').and('contain', '-')
                 cy.contains('22.feb.').parent().parent().should('contain', 'Ukjent').and('contain', '-')
+                cy.contains('27.feb.').parent().parent().should('contain', 'Arbeidsavklaringspenger')
+                cy.contains('28.feb.').parent().parent().should('contain', 'Dagpenger')
+                cy.contains('01.mars').parent().parent().should('contain', 'Foreldrepenger')
+                cy.contains('02.mars').parent().parent().should('contain', 'Omsorgspenger')
+                cy.contains('03.mars').parent().parent().should('contain', 'Opplæringspenger')
+                cy.contains('04.mars').parent().parent().should('contain', 'Pleiepenger')
+                cy.contains('05.mars').parent().parent().should('contain', 'Svangerskapspenger')
             })
         })
 

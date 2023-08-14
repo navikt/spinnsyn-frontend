@@ -152,13 +152,14 @@ const UtbetalingTekster = {
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOmsorgspenger': 'Dette følger av lang og sikker rettspraksis',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOpplaringspenger': 'Dette følger av lang og sikker rettspraksis',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserPleiepenger': 'Dette følger av lang og sikker rettspraksis',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserSvangerskapspenger': 'Dette følger av lang og sikker rettspraksis',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOmsorgspenger': 'Dette følger av lang og sikker rettspraksis.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOpplaringspenger': 'Dette følger av lang og sikker rettspraksis.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserPleiepenger': 'Dette følger av lang og sikker rettspraksis.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserSvangerskapspenger':
+        'Dette følger av lang og sikker rettspraksis.',
 
     'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
 }
