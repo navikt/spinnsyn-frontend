@@ -3,12 +3,12 @@ import getConfig from 'next/config'
 import React from 'react'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
-import { integrasjonsVedtak } from '../../../data/testdata/data/rs-vedtak'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
 } from '../../../data/testdata/data/skjønnsfastsatt'
+import { alleAvvisteDager } from '../../../data/testdata/data/alleAvvisteDager'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx
         if (ctx.query.testperson === 'skjønnsfastsatt-flere-arbeidsgivere') {
             return skjønnsfastsattFlereArbeidsgivere
         }
-        return integrasjonsVedtak
+        return alleAvvisteDager
     }
 
     const vedtak = finnVedtak()

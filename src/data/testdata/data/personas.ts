@@ -3,7 +3,6 @@ import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import {
     avvistVedtak,
     avvistVedtakMedLavInntekt,
-    integrasjonsVedtak,
     kombinertDirekteOgRefusjon,
     kunDirekte,
     ulestGammeltVedtak,
@@ -19,6 +18,7 @@ import {
 } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from './vedtakDerDetSluttesMedDelvisRefusjon'
+import { alleAvvisteDager } from './alleAvvisteDager'
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
@@ -42,7 +42,7 @@ export const diverseData: Persona = {
         vedtakRevurdert,
         vedtakRevurdertDirekte,
         vedtakRevurdertKombinasjon,
-        integrasjonsVedtak,
+        alleAvvisteDager,
         avvistVedtak,
         avvistVedtakMedLavInntekt,
         vedtakRedusertTil6G,
@@ -58,7 +58,7 @@ export const eldgammelt: Persona = {
 }
 
 export const avvistPerson: Persona = {
-    vedtak: [integrasjonsVedtak, avvistVedtak, avvistVedtakMedLavInntekt],
+    vedtak: [alleAvvisteDager, avvistVedtak, avvistVedtakMedLavInntekt],
 }
 
 export const kunDirektePerson: Persona = {

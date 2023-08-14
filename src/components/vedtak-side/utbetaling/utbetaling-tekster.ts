@@ -110,6 +110,20 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.ManglerMedlemskap':
         'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.',
     'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
+    'utbetaling.tabell.avvist.AndreYtelserAap':
+        'Du har mottatt arbeidsavklaringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+    'utbetaling.tabell.avvist.AndreYtelserDagpenger':
+        'Du har mottatt dagpenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+    'utbetaling.tabell.avvist.AndreYtelserForeldrepenger':
+        'Du har mottatt foreldrepenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+    'utbetaling.tabell.avvist.AndreYtelserOmsorgspenger':
+        'Du har mottatt omsorgspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+    'utbetaling.tabell.avvist.AndreYtelserOpplaringspenger':
+        'Du har mottatt opplæringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+    'utbetaling.tabell.avvist.AndreYtelserPleiepenger':
+        'Du har mottatt pleiepenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+    'utbetaling.tabell.avvist.AndreYtelserSvangerskapspenger':
+        'Du har mottatt svangerskapspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':
@@ -138,6 +152,14 @@ const UtbetalingTekster = {
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOmsorgspenger': 'Dette følger av lang og sikker rettspraksis',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOpplaringspenger': 'Dette følger av lang og sikker rettspraksis',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserPleiepenger': 'Dette følger av lang og sikker rettspraksis',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserSvangerskapspenger': 'Dette følger av lang og sikker rettspraksis',
+
     'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
 }
 
