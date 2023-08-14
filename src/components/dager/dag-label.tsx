@@ -159,7 +159,48 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                         Etter&nbsp;dødsfall
                     </Tag>
                 )
-
+            case 'AndreYtelserAap':
+                return (
+                    <Tag size="small" variant="warning" key={idx}>
+                        Arbeidsavklaringspenger
+                    </Tag>
+                )
+            case 'AndreYtelserDagpenger':
+                return (
+                    <Tag size="small" variant="warning" key={idx}>
+                        Dagpenger
+                    </Tag>
+                )
+            case 'AndreYtelserForeldrepenger':
+                return (
+                    <Tag size="small" variant="warning" key={idx}>
+                        Foreldrepenger
+                    </Tag>
+                )
+            case 'AndreYtelserOmsorgspenger':
+                return (
+                    <Tag size="small" variant="warning" key={idx}>
+                        Omsorgspenger
+                    </Tag>
+                )
+            case 'AndreYtelserOpplaringspenger':
+                return (
+                    <Tag size="small" variant="warning" key={idx}>
+                        Opplæringspenger
+                    </Tag>
+                )
+            case 'AndreYtelserPleiepenger':
+                return (
+                    <Tag size="small" variant="warning" key={idx}>
+                        Pleiepenger
+                    </Tag>
+                )
+            case 'AndreYtelserSvangerskapspenger':
+                return (
+                    <Tag size="small" variant="warning" key={idx}>
+                        Svangerskapspenger
+                    </Tag>
+                )
             case 'UKJENT':
             default:
                 logger.warn(`Har ingen begrunnelse for: ${begrunnelse}.`)

@@ -17,6 +17,7 @@ import {
     skjønnsfastsattFlereArbeidsgivere,
     skjønnsfastsattRefusjon,
 } from './data/skjønnsfastsatt'
+import { alleAvvisteDager } from './data/alleAvvisteDager'
 
 export interface StringFunctionMap {
     [index: string]: () => Persona
@@ -37,4 +38,5 @@ export const personas: StringFunctionMap = {
     'skjønnsfastsatt-brukerutbetaling': () => ({ vedtak: [skjønnsfastsattBrukerutbetaling] }),
     'skjønnsfastsatt-refusjon': () => ({ vedtak: [skjønnsfastsattRefusjon] }),
     'skjønnsfastsatt-flere-arbeidsgivere': () => ({ vedtak: [skjønnsfastsattFlereArbeidsgivere] }),
+    'alle-avviste-dager': () => ({ vedtak: [alleAvvisteDager] }),
 }

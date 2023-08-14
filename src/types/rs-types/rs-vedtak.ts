@@ -69,6 +69,13 @@ export type RSBegrunnelse =
     | 'ManglerMedlemskap'
     | 'Over70'
     | 'EtterDødsdato'
+    | 'AndreYtelserAap'
+    | 'AndreYtelserDagpenger'
+    | 'AndreYtelserForeldrepenger'
+    | 'AndreYtelserOmsorgspenger'
+    | 'AndreYtelserOpplaringspenger'
+    | 'AndreYtelserPleiepenger'
+    | 'AndreYtelserSvangerskapspenger'
     | 'UKJENT'
 
 export type RSDagType =
