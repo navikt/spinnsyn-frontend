@@ -18,6 +18,11 @@ skjønnsfastsattBrukerutbetaling.vedtak.begrunnelser = [
         type: 'SkjønnsfastsattSykepengegrunnlagMal',
         perioder: [],
     },
+    {
+        begrunnelse: 'Dette er konklusjonen fra speil. 200 000kr er et skjønnsfastsatt beløp.',
+        type: 'SkjønnsfastsattSykepengegrunnlagKonklusjon',
+        perioder: [],
+    },
 ]
 const omregnetÅrsinntekt = skjønnsfastsattBrukerutbetaling.vedtak.inntekt! * 12
 const skjønnsbelop = omregnetÅrsinntekt
