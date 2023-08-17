@@ -9,7 +9,13 @@ skjønnsfastsattBrukerutbetaling.vedtak.begrunnelser = [
     {
         begrunnelse:
             'Dette er en tekstlig begrunnelse fra saksbehandleren din. Jeg brukte skjønn og kom frem hva vi tror du ville tjent om et år gitt omstendigheter lorem ipsum hei og hå',
-        årsak: 'SkjønnsfastsattSykepengegrunnlag',
+        type: 'SkjønnsfastsattSykepengegrunnlagFritekst',
+        perioder: [],
+    },
+    {
+        begrunnelse:
+            'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultrices ultrices, nunc nisl aliquam nunc, eget aliquet nis',
+        type: 'SkjønnsfastsattSykepengegrunnlagMal',
         perioder: [],
     },
 ]

@@ -1,6 +1,5 @@
 import { formaterValuta } from '../../../src/utils/valuta-utils'
 import { inntektInfoTekster } from '../../../src/components/vedtak-side/utbetaling/accordion/inntekt-info/inntekt-info-tekster'
-import { begrunnelseForSkjønnsfastsettingTekster } from '../../../src/components/vedtak-side/begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting-tekster'
 
 describe('Skjønnsfastsatt sykepengegrunnlag', () => {
     describe('Direkteutbetaling skjønnsfastsatt over 6G', () => {
@@ -39,9 +38,9 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
 
             cy.findByRole('region', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .should('contain', 'Begrunnelse for skjønnsfastsetting')
-                .and('contain', begrunnelseForSkjønnsfastsettingTekster['25%-del-1'])
-                .and('contain', begrunnelseForSkjønnsfastsettingTekster['25%-del-2'])
-                .and('contain', begrunnelseForSkjønnsfastsettingTekster['nærmere-begrunnelse-fra-saksbehandler'])
+                .and('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
+                .and('contain', 'Nulla euismod, nisl eget ultrices ultrices')
+                .and('contain', 'Nærmere begrunnelse fra saksbehandler')
                 .and(
                     'contain',
                     'Dette er en tekstlig begrunnelse fra saksbehandleren din. Jeg brukte skjønn og kom frem hva vi tror du ville tjent om et år gitt omstendigheter lorem ipsum hei og hå',
@@ -85,9 +84,9 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
 
             cy.findByRole('region', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .should('contain', 'Begrunnelse for skjønnsfastsetting')
-                .and('contain', begrunnelseForSkjønnsfastsettingTekster['25%-del-1'])
-                .and('contain', begrunnelseForSkjønnsfastsettingTekster['25%-del-2'])
-                .and('contain', begrunnelseForSkjønnsfastsettingTekster['nærmere-begrunnelse-fra-saksbehandler'])
+                .and('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
+                .and('contain', 'Nulla euismod, nisl eget ultrices ultrices')
+                .and('contain', 'Nærmere begrunnelse fra saksbehandler')
                 .and('contain', 'Begrunnelse fra saksbehandler ved flere arbeidsgivere')
         })
     })
