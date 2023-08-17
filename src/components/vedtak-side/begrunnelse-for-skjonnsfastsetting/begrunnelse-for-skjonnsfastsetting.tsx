@@ -13,6 +13,7 @@ export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
     const fritekstBegrunnelse = vedtak.vedtak.begrunnelser?.find(
         (b) => b.type === 'SkjønnsfastsattSykepengegrunnlagFritekst',
     )
+    const konklusjon = vedtak.vedtak.begrunnelser?.find((b) => b.type === 'SkjønnsfastsattSykepengegrunnlagKonklusjon')
     return (
         <VedtakExpansionCard tittel="Begrunnelse for skjønnsfastsetting" vedtak={vedtak}>
             {malBegrunnelse.begrunnelse.split('\n').map((tekst, idx) => (
@@ -28,6 +29,15 @@ export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
                     </Heading>
                     <BodyShort className="bg-surface-subtle p-4">{fritekstBegrunnelse.begrunnelse}</BodyShort>
                 </>
+            )}
+            {konklusjon && konklusjon.begrunnelse && (
+                <div className="mt-8">
+                    {konklusjon.begrunnelse.split('\n').map((tekst, idx) => (
+                        <BodyLong spacing key={idx}>
+                            {tekst}
+                        </BodyLong>
+                    ))}
+                </div>
             )}
         </VedtakExpansionCard>
     )
