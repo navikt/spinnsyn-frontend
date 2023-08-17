@@ -18,7 +18,9 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
 
     const harMinstEnForLavInntektDag =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
-
+    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const erBegge = erDirekteutbetaling && erRefusjon
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
             return 'utbetaling.sykepengegrunnlag.under6g.innhold'
@@ -26,17 +28,25 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
         return 'utbetaling.sykepengegrunnlag.over6g.innhold'
     }
 
-    const totalbelopInnholdKey = () => {
-        //TODO fikse!!   if (mottaker == 'person') {
-        //return 'utbetaling.person.totalbelop.innhold'
-        // }
-        return 'utbetaling.totalbelop.innhold' as any
+    const totalbelopInnhold = () => {
+        const tilSluttTekst = 'Til slutt summerer vi alle dagene.'
+        const direkteTekst =
+            'Når du får utbetalt sykepenger fra NAV viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
+        const refusjonTekst =
+            'Når du får utbetalt sykepenger fra arbeidsgiveren din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.'
+        if (erBegge) {
+            return `${tilSluttTekst} ${direkteTekst} ${refusjonTekst}`
+        }
+        if (erDirekteutbetaling) {
+            return `${tilSluttTekst} ${direkteTekst}`
+        }
+        return `${tilSluttTekst} ${refusjonTekst}`
     }
 
     return (
         <Accordion.Item defaultOpen={isServer}>
             <Accordion.Header>Mer om beregningen</Accordion.Header>
-            <Accordion.Content>
+            <Accordion.Content className="mt-4">
                 <Heading spacing size="xsmall" level="4">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
@@ -72,9 +82,7 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
                             <Heading spacing size="xsmall" level="4">
                                 {tekst('utbetaling.totalbelop.tittel')}
                             </Heading>
-                            <BodyLong spacing className="totalbelop">
-                                {tekst(totalbelopInnholdKey())}
-                            </BodyLong>
+                            <BodyLong spacing>{totalbelopInnhold()}</BodyLong>
 
                             <Vis
                                 hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
@@ -100,10 +108,14 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
                                 </Link>
                             </BodyLong>
 
-                            <Heading spacing size="xsmall" level="4">
-                                {tekst('utbetaling.info.tittel')}
-                            </Heading>
-                            <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>
+                            {erDirekteutbetaling && (
+                                <>
+                                    <Heading spacing size="xsmall" level="4">
+                                        {tekst('utbetaling.info.tittel')}
+                                    </Heading>
+                                    <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>
+                                </>
+                            )}
                         </>
                     )}
                 />

@@ -45,9 +45,8 @@ export const SykepengerPerDag = ({ tittel, dager }: SykepengerPerDagProps) => {
                     {tittel || 'Sykepenger per dag'}
                 </Heading>
             </Accordion.Header>
-            <Accordion.Content className="bg-white">
+            <Accordion.Content className="bg-white px-0">
                 <DagTabell dager={dager} />
-
                 <DagBeskrivelse dager={dager} />
             </Accordion.Content>
         </Accordion.Item>

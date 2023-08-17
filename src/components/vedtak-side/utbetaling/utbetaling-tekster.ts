@@ -19,10 +19,7 @@ const UtbetalingTekster = {
     'utbetaling.dagligbelop.innhold':
         'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
-    'utbetaling.totalbelop.innhold':
-        'Til slutt summerer vi alle dagene. Når du får utbetalt sykepenger fra arbeidsgiveren din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
-    'utbetaling.person.totalbelop.innhold':
-        'Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
+
     'utbetaling.flere-arbeidsforhold.tittel': 'Flere arbeidsforhold',
     'utbetaling.flere-arbeidsforhold.innhold':
         'Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.',
