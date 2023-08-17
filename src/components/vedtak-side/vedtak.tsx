@@ -132,15 +132,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
             <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
 
-            <Vis
-                hvis={harAvvisteDager}
-                render={() => (
-                    <AvvisteDager
-                        avvisteDager={avvisteDager}
-                        vedtak={vedtak}
-                    />
-                )}
-            />
+            <Vis hvis={harAvvisteDager} render={() => <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />} />
 
             <Sykepengedager vedtak={vedtak} />
 

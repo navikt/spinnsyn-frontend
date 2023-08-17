@@ -1,5 +1,5 @@
 import { formaterValuta } from '../../../src/utils/valuta-utils'
-import { inntektInfoTekster } from '../../../src/components/vedtak-side/utbetaling/accordion/inntekt-info/inntekt-info-tekster'
+import { inntektInfoTekster } from '../../../src/components/vedtak-side/inntekter-lagt-til-grunn/inntekt-info-tekster'
 
 describe('Skjønnsfastsatt sykepengegrunnlag', () => {
     describe('Direkteutbetaling skjønnsfastsatt over 6G', () => {
