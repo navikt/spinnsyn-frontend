@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -9,7 +9,6 @@ import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
-import { SykepengerPerDag } from './accordion/sykepenger-per-dag'
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
@@ -33,9 +32,6 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <VedtakPeriode vedtak={vedtak} />
             <ArbeidsgiverInfo vedtak={vedtak} />
-            <Accordion>
-                <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} />
-            </Accordion>
         </UtbetalingPanel>
     )
 }

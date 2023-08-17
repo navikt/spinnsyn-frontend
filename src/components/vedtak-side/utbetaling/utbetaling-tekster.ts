@@ -37,7 +37,7 @@ const UtbetalingTekster = {
     'utbetaling.info.innhold':
         'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Da kan du se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
 
-    'utbetaling.inntekt.info.tittel': 'Inntekter lagt til grunn for sykepengene',
+    'utbetaling.inntekt.info.tittel': 'Beregning av sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedsinntekt',
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årsinntekt',
     'utbetaling.inntekt.årsinntekt': 'Årsinntekt',
@@ -59,7 +59,7 @@ const UtbetalingTekster = {
         'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller NAV innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
     'utbetaling.person.når': 'Når får du sykepengene?',
     'utbetaling.person.når.innhold':
-        'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
+        'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to. ',
     'utbetaling.person.når.lenke.tekst': 'Les mer om når du kan forvente å få pengene.',
     'utbetaling.person.når.lenke.url':
         'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap',

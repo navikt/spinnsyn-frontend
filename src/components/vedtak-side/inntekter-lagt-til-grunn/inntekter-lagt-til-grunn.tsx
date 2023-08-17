@@ -1,4 +1,4 @@
-import { Alert, BodyShort, Label } from '@navikt/ds-react'
+import { Accordion, Alert, BodyShort, Label } from '@navikt/ds-react'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
@@ -7,11 +7,12 @@ import { tekst } from '../../../utils/tekster'
 import { formaterValuta } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
+import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
 import { inntektInfoTekster } from './inntekt-info-tekster'
-import { Begrepsforklaringer } from './begrepsforklaringer'
+import { MerOmBergningen } from './mer-om-bergningen'
 
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const finnRiktigInntekt = () => {
@@ -108,7 +109,10 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                     </>
                 )}
 
-                <Begrepsforklaringer vedtak={vedtak} />
+                <Accordion className="mt-8" indent={false}>
+                    <AlleSykepengerPerDag vedtak={vedtak} />
+                    <MerOmBergningen vedtak={vedtak} />
+                </Accordion>
             </article>
         </VedtakExpansionCard>
     )
