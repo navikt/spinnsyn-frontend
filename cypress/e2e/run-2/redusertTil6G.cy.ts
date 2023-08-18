@@ -19,38 +19,38 @@ describe('Redusert til 6G', () => {
 
         cy.contains('Mer om beregningen').click({ force: true })
 
-        cy.contains('Inntekter lagt til grunn for sykepengene').click()
+        cy.contains('Beregning av sykepengene').click()
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Beregnet månedsinntekt' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(74675))
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Omregnet til årsinntekt' })
             .should('contain', 'Omregnet til årsinntekt')
             .should('contain', formaterValuta(896100))
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .get('[data-cy="annen-arbeidsgiver-0"]')
             .contains('The Ministry Of Magic AS')
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'The Ministry Of Magic AS Årsinntekt' })
             .should('contain', 'Årsinntekt')
             .should('contain', formaterValuta(195781))
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Samlet årsinntekt' })
             .should('contain', 'Samlet årsinntekt')
             .should('contain', formaterValuta(1091881))
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Sykepengegrunnlag' })
             .should('contain', 'Sykepengegrunnlag')
             .should('contain', formaterValuta(638394))
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' }).should(
+        cy.findByRole('article', { name: 'Beregning av sykepengene' }).should(
             'contain',
             'Du får ikke sykepenger fra NAV for den delen av årsinntekten som er mer enn seks ganger grunnbeløpet.',
         )

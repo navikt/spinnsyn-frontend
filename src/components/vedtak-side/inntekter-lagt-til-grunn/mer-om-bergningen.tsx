@@ -10,10 +10,9 @@ import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper
-    heltAvvist?: boolean
 }
 
-export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
+export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const isServer = useContext(ArkiveringContext)
 
     const harMinstEnForLavInntektDag =
@@ -21,6 +20,7 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBegge = erDirekteutbetaling && erRefusjon
+    const heltAvvist = !erDirekteutbetaling && !erRefusjon
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
             return 'utbetaling.sykepengegrunnlag.under6g.innhold'
@@ -44,15 +44,15 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
     }
 
     return (
-        <Accordion.Item defaultOpen={isServer}>
+        <Accordion.Item data-cy="mer-om-beregningen" defaultOpen={isServer}>
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
-                <Heading spacing size="xsmall" level="4">
+                <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
                 <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold'))}</BodyLong>
 
-                <Heading spacing size="xsmall" level="4">
+                <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Heading>
                 <BodyLong spacing>
@@ -63,7 +63,7 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
                     />
                 </BodyLong>
 
-                <Heading spacing size="xsmall" level="4">
+                <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
                 <BodyLong spacing>{parserWithReplace(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
@@ -74,12 +74,12 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
                     hvis={!heltAvvist || !harMinstEnForLavInntektDag}
                     render={() => (
                         <>
-                            <Heading spacing size="xsmall" level="4">
+                            <Heading spacing size="xsmall" level="3">
                                 {tekst('utbetaling.dagligbelop.tittel')}
                             </Heading>
                             <BodyLong spacing>{tekst('utbetaling.dagligbelop.innhold')}</BodyLong>
 
-                            <Heading spacing size="xsmall" level="4">
+                            <Heading spacing size="xsmall" level="3">
                                 {tekst('utbetaling.totalbelop.tittel')}
                             </Heading>
                             <BodyLong spacing>{totalbelopInnhold()}</BodyLong>
@@ -88,7 +88,7 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
                                 hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                                 render={() => (
                                     <>
-                                        <Heading spacing size="xsmall" level="4">
+                                        <Heading spacing size="xsmall" level="3">
                                             {tekst('utbetaling.flere-arbeidsforhold.tittel')}
                                         </Heading>
                                         <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
@@ -96,7 +96,7 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
                                 )}
                             />
 
-                            <Heading spacing size="xsmall" level="4">
+                            <Heading spacing size="xsmall" level="3">
                                 {tekst('utbetaling.utbetalingsdager.tittel')}
                             </Heading>
                             <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
@@ -110,7 +110,7 @@ export const MerOmBergningen = ({ vedtak, heltAvvist }: BeregningInfoProps) => {
 
                             {erDirekteutbetaling && (
                                 <>
-                                    <Heading spacing size="xsmall" level="4">
+                                    <Heading spacing size="xsmall" level="3">
                                         {tekst('utbetaling.info.tittel')}
                                     </Heading>
                                     <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>

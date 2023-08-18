@@ -104,7 +104,7 @@ describe('Avviste dager', () => {
             'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
-        cy.contains('Inntekter lagt til grunn for sykepengene').should('not.exist')
+        cy.contains('Beregning av sykepengene').should('not.exist')
 
         cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
 
@@ -126,8 +126,6 @@ describe('Avviste dager', () => {
             force: true,
         })
 
-        cy.get('.ekspanderbar.gronn').should('not.exist')
-
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
             .should('contain', '5 sykepengedager')
             .and('contain', 'Utbetales ikke av NAV')
@@ -137,7 +135,7 @@ describe('Avviste dager', () => {
             'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
-        cy.contains('Inntekter lagt til grunn for sykepengene')
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
 
@@ -155,11 +153,11 @@ describe('Avviste dager', () => {
             })
         })
 
-        cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
             cy.get('[data-cy="mer-om-beregningen"]').should('contain', 'Mer om beregningen').click()
         })
 
-        cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
             cy.get('[data-cy="mer-om-beregningen"]')
                 .should('contain', 'Månedsinntekt')
                 .should('contain', 'Årsinntekt')

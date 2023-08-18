@@ -31,7 +31,7 @@ describe('Utbetalingsoversikt', () => {
     it('Mer om beregningen har riktig sykepengegrunnlag', () => {
         cy.contains('Mer om beregningen').click({ force: true })
 
-        cy.contains('Inntekter lagt til grunn for sykepengene').click()
+        cy.contains('Beregning av sykepengene').click()
 
         cy.contains('Sykepengegrunnlag').siblings().contains('582 161 kr')
 
