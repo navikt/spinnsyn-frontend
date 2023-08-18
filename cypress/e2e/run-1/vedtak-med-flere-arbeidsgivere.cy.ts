@@ -15,7 +15,7 @@ describe('Vedtak med flere arbeidsgivere', () => {
     it('Inntekter', () => {
         cy.contains('1 359 kroner').parent().contains('Utbetales til Industrifabrikken AS')
 
-        cy.contains('Beregning av sykepengene').click()
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Beregnet månedsinntekt' })

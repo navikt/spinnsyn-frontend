@@ -35,6 +35,7 @@ describe('Les uleste vedtak', () => {
 
     it('Den grønne boksen har riktig innhold', () => {
         cy.contains('21 060 kroner').parent().contains('Utbetales til Pengeløs Sparebank')
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.contains('Mer om beregningen').click()
         cy.contains('folketrygdloven § 8-28').should(
@@ -42,8 +43,6 @@ describe('Les uleste vedtak', () => {
             'href',
             'https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-28',
         )
-
-        cy.contains('Beregning av sykepengene').click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Beregnet månedsinntekt' })
