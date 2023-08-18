@@ -10,7 +10,7 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             cy.findByRole('heading', { level: 1 }).should('exist').and('contain.text', 'Svar på søknad om sykepenger')
         })
         it('Åpner Beregning av sykepengene', () => {
-            cy.get('main').findByRole('button', { name: 'Beregning av sykepengene' }).click()
+            cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
             cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Årsinntekt fra A-ordningen' })
@@ -56,7 +56,7 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             cy.findByRole('heading', { level: 1 }).should('exist').and('contain.text', 'Svar på søknad om sykepenger')
         })
         it('Åpner Beregning av sykepengene', () => {
-            cy.get('main').findByRole('button', { name: 'Beregning av sykepengene' }).click()
+            cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
             cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Årsinntekt fra A-ordningen' })
