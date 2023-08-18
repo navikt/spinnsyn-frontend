@@ -17,9 +17,9 @@ describe('Redusert til 6G', () => {
     it('Utbetalingsoversikt', () => {
         cy.contains('3 021 kroner').parent().contains('til Posten Norge AS, Bærum')
 
-        cy.contains('Mer om beregningen').click({ force: true })
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-        cy.contains('Beregning av sykepengene').click()
+        cy.contains('Mer om beregningen').click({ force: true })
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Beregnet månedsinntekt' })
@@ -50,9 +50,8 @@ describe('Redusert til 6G', () => {
             .should('contain', 'Sykepengegrunnlag')
             .should('contain', formaterValuta(638394))
 
-        cy.findByRole('article', { name: 'Beregning av sykepengene' }).should(
-            'contain',
-            'Du får ikke sykepenger fra NAV for den delen av årsinntekten som er mer enn seks ganger grunnbeløpet.',
-        )
+        cy.findByRole('article', { name: 'Beregning av sykepengene' }).within(() => {
+            cy.contains('Sykepengegrunnlaget er begrenset til 6G')
+        })
     })
 })
