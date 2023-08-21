@@ -29,22 +29,13 @@ describe('Kombinasjonutbetaling', () => {
                 'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn ' +
                     'på Min side slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
             )
+            cy.findByRole('button', { name: 'Når får du sykepengene?' }).click()
 
-            cy.get('.navds-accordion__item').contains('Når får du sykepengene?').click()
-            cy.get('.navds-accordion__item')
+            cy.get('.navds-read-more--open')
                 .contains(
                     'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
                         'eller innen fem dager etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder ' +
                         'dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
-                )
-                .should('be.visible')
-
-            cy.get('.navds-accordion__item').contains('Mer om beregningen').click({ force: true })
-            cy.get('.navds-accordion__item').contains('Totalbeløp').should('be.visible')
-            cy.get('.navds-accordion__item')
-                .contains(
-                    'Til slutt summerer vi alle dagene. ' +
-                        'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
                 )
                 .should('be.visible')
         })
@@ -58,21 +49,6 @@ describe('Kombinasjonutbetaling', () => {
 
         cy.get('[data-cy*="refusjon"]').within(() => {
             cy.contains('Når får du sykepengene?').should('not.exist')
-            cy.contains(
-                'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
-                    'eller innen fem dager etter at vi har sendt deg svar på søknaden din.',
-            ).should('not.be.visible')
-
-            cy.get('.navds-accordion__item').contains('Mer om beregningen').click({ force: true })
-
-            cy.get('.navds-accordion__item').contains('Totalbeløp').should('be.visible')
-
-            cy.get('.navds-accordion__item')
-                .contains(
-                    'Til slutt summerer vi alle dagene. Når du får utbetalt sykepenger fra arbeidsgiveren ' +
-                        'din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
-                )
-                .should('be.visible')
         })
     })
 })

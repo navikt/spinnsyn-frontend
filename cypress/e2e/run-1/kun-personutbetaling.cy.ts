@@ -27,18 +27,21 @@ describe('Kun personutbetaling', () => {
             cy.get('h3').contains('Sykepenger utbetales til kontonummer:')
             cy.contains('1001 11 10011')
 
-            cy.get('.navds-accordion__item').first().contains('Når får du sykepengene?').click()
+            cy.contains('Når får du sykepengene?').click()
             cy.contains(
                 'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, ' +
                     'eller innen fem dager etter at vi har sendt deg svar på søknaden din. ' +
                     'Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
             )
+        })
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-            cy.contains('Mer om beregningen').click({ force: true })
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
+            cy.contains('Mer om beregningen').click()
             cy.get('.navds-accordion__item').contains('Totalbeløp')
             cy.get('.navds-accordion__item').contains(
                 'Til slutt summerer vi alle dagene. ' +
-                    'Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
+                    'Når du får utbetalt sykepenger fra NAV viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
             )
         })
     })

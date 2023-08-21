@@ -35,6 +35,7 @@ describe('Les uleste vedtak', () => {
 
     it('Den grønne boksen har riktig innhold', () => {
         cy.contains('21 060 kroner').parent().contains('Utbetales til Pengeløs Sparebank')
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.contains('Mer om beregningen').click()
         cy.contains('folketrygdloven § 8-28').should(
@@ -43,19 +44,17 @@ describe('Les uleste vedtak', () => {
             'https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-28',
         )
 
-        cy.contains('Inntekter lagt til grunn for sykepengene').click()
-
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Beregnet månedsinntekt' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', '37\u00a0500 kr')
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Omregnet til årsinntekt' })
             .should('contain', 'Omregnet til årsinntekt')
             .should('contain', '450\u00a0000 kr')
 
-        cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Sykepengegrunnlag' })
             .should('contain', 'Sykepengegrunnlag')
             .should('contain', '455\u00a0000 kr')

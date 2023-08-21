@@ -1,7 +1,7 @@
 import React from 'react'
 import { BodyShort } from '@navikt/ds-react'
 
-import { cn } from '../../../../../utils/tw-utils'
+import { cn } from '../../../utils/tw-utils'
 
 interface InfoSectionProps {
     label: string

@@ -1,26 +1,26 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
-import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
-import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
-import { tekst } from '../../../../utils/tekster'
-import Vis from '../../../vis'
-import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
+import { ArkiveringContext } from '../../../context/arkivering-context'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
+import { tekst } from '../../../utils/tekster'
+import Vis from '../../vis'
+import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapper
-    mottaker: 'person' | 'refusjon'
-    heltAvvist?: boolean
 }
 
-const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => {
+export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const isServer = useContext(ArkiveringContext)
-    const [open, setOpen] = useState<boolean>(isServer)
 
     const harMinstEnForLavInntektDag =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
-
+    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const erBegge = erDirekteutbetaling && erRefusjon
+    const heltAvvist = !erDirekteutbetaling && !erRefusjon
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
             return 'utbetaling.sykepengegrunnlag.under6g.innhold'
@@ -28,45 +28,31 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
         return 'utbetaling.sykepengegrunnlag.over6g.innhold'
     }
 
-    const totalbelopInnholdKey = () => {
-        if (mottaker == 'person') {
-            return 'utbetaling.person.totalbelop.innhold'
+    const totalbelopInnhold = () => {
+        const tilSluttTekst = 'Til slutt summerer vi alle dagene.'
+        const direkteTekst =
+            'Når du får utbetalt sykepenger fra NAV viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
+        const refusjonTekst =
+            'Når du får utbetalt sykepenger fra arbeidsgiveren din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.'
+        if (erBegge) {
+            return `${tilSluttTekst} ${direkteTekst} ${refusjonTekst}`
         }
-        return 'utbetaling.totalbelop.innhold'
-    }
-
-    const onButtonClick = () => {
-        setOpen(!open)
+        if (erDirekteutbetaling) {
+            return `${tilSluttTekst} ${direkteTekst}`
+        }
+        return `${tilSluttTekst} ${refusjonTekst}`
     }
 
     return (
-        <Accordion.Item
-            open={open}
-            data-cy="mer-om-beregningen"
-            style={
-                {
-                    '--ac-accordion-header-bg': open
-                        ? 'var(--a-surface-action-subtle)'
-                        : 'var(--a-surface-transparent)',
-                    '--ac-accordion-header-bg-hover': open
-                        ? 'var(--a-surface-action-subtle)'
-                        : 'var(--a-surface-hover)',
-                } as React.CSSProperties
-            }
-        >
-            <Accordion.Header onClick={onButtonClick}>
-                <Heading size="small" level="3">
-                    {tekst('utbetaling.beregning.tittel')}
-                </Heading>
-            </Accordion.Header>
-
-            <Accordion.Content className="bg-white py-4">
-                <Heading spacing size="xsmall" level="4">
+        <Accordion.Item data-cy="mer-om-beregningen" defaultOpen={isServer}>
+            <Accordion.Header>Mer om beregningen</Accordion.Header>
+            <Accordion.Content className="mt-4">
+                <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
                 <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold'))}</BodyLong>
 
-                <Heading spacing size="xsmall" level="4">
+                <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.arslonn.tittel')}
                 </Heading>
                 <BodyLong spacing>
@@ -77,7 +63,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                     />
                 </BodyLong>
 
-                <Heading spacing size="xsmall" level="4">
+                <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
                 <BodyLong spacing>{parserWithReplace(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
@@ -88,23 +74,21 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                     hvis={!heltAvvist || !harMinstEnForLavInntektDag}
                     render={() => (
                         <>
-                            <Heading spacing size="xsmall" level="4">
+                            <Heading spacing size="xsmall" level="3">
                                 {tekst('utbetaling.dagligbelop.tittel')}
                             </Heading>
                             <BodyLong spacing>{tekst('utbetaling.dagligbelop.innhold')}</BodyLong>
 
-                            <Heading spacing size="xsmall" level="4">
+                            <Heading spacing size="xsmall" level="3">
                                 {tekst('utbetaling.totalbelop.tittel')}
                             </Heading>
-                            <BodyLong spacing className="totalbelop">
-                                {tekst(totalbelopInnholdKey())}
-                            </BodyLong>
+                            <BodyLong spacing>{totalbelopInnhold()}</BodyLong>
 
                             <Vis
                                 hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
                                 render={() => (
                                     <>
-                                        <Heading spacing size="xsmall" level="4">
+                                        <Heading spacing size="xsmall" level="3">
                                             {tekst('utbetaling.flere-arbeidsforhold.tittel')}
                                         </Heading>
                                         <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
@@ -112,7 +96,7 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                                 )}
                             />
 
-                            <Heading spacing size="xsmall" level="4">
+                            <Heading spacing size="xsmall" level="3">
                                 {tekst('utbetaling.utbetalingsdager.tittel')}
                             </Heading>
                             <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
@@ -124,10 +108,14 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
                                 </Link>
                             </BodyLong>
 
-                            <Heading spacing size="xsmall" level="4">
-                                {tekst('utbetaling.info.tittel')}
-                            </Heading>
-                            <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>
+                            {erDirekteutbetaling && (
+                                <>
+                                    <Heading spacing size="xsmall" level="3">
+                                        {tekst('utbetaling.info.tittel')}
+                                    </Heading>
+                                    <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>
+                                </>
+                            )}
                         </>
                     )}
                 />
@@ -135,5 +123,3 @@ const BeregningInfo = ({ vedtak, mottaker, heltAvvist }: BeregningInfoProps) => 
         </Accordion.Item>
     )
 }
-
-export default BeregningInfo

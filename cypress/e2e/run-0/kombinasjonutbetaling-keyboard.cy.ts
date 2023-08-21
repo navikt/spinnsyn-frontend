@@ -1,5 +1,6 @@
 describe('Kombinasjonutbetaling keyboard', () => {
     before(() => {
+        cy.clearCookies()
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 2)
     })
@@ -29,53 +30,49 @@ describe('Kombinasjonutbetaling keyboard', () => {
         cy.get('h3').contains('Kontonummer for utbetaling')
 
         cy.realPress('Tab') // Min side link
+        cy.focused().contains('Min side')
+
         cy.realPress('Tab') // Når får du sykepengene?
+        cy.focused().contains('Når får du sykepengene?')
 
+        cy.realPress('Enter') // Når får du sykepengene?
         cy.realPress('Tab')
-        cy.focused().contains('Inntekter lagt til grunn for sykepengene')
-        cy.realPress('Enter')
 
-        cy.realPress('Tab') // 6G link
-
+        cy.focused().contains('Les mer om når du kan forvente')
         cy.realPress('Tab')
-        cy.focused().contains('Sykepenger per dag')
-        cy.realPress('Enter')
-
-        cy.realPress('Tab')
-        cy.focused().contains('Mer om beregningen')
-        cy.realPress('Enter')
-
-        cy.realPress('Tab') // Inntekter som tas med link
-        cy.realPress('Tab') // 6G link
-        cy.realPress('Tab') // Sykeoengegrunnlag paragraf link
-        cy.realPress('Tab') // Sykepengeberegning paragraf link
-        cy.realPress('Tab') // Din utbetalingsoversikt link
     })
 
-    it('Viser info om utbetaling til arbeidsgiveren', () => {
-        cy.get('h3').contains('Beløpet går til arbeidsgiveren din')
+    it('Tabber gjennom beregning av sykepengene', () => {
+        cy.focused().should('have.class', 'navds-expansioncard__header-button')
+        cy.realPress('Enter')
 
         cy.realPress('Tab')
-        cy.focused().contains('Inntekter lagt til grunn for sykepengene')
+        cy.focused().contains('Sykepenger per dag til deg')
+
         cy.realPress('Tab')
-        cy.focused().contains('Sykepenger per dag')
+        cy.focused().contains('Sykepenger per dag til arbeidsgiver')
+
         cy.realPress('Tab')
         cy.focused().contains('Mer om beregningen')
     })
 
     it('Viser info om sykepengedager brukt', () => {
         cy.realPress('Tab')
+        cy.get('h3').contains('248 sykepengedager').and('is.not.visible')
+        cy.focused().should('have.class', 'navds-expansioncard__header-button')
         cy.realPress('Enter')
-        cy.get('h3').contains('248 sykepengedager')
+        cy.get('h3').contains('248 sykepengedager').and('is.visible')
     })
 
     it('Annen info i bunnen av vedtaket', () => {
         cy.realPress('Tab') // Kontakt oss link
-        cy.realPress('Tab') // Retten til å klage link
-        cy.realPress('Tab') // Klageveilederen link
+        cy.focused().contains('Kontakt oss')
 
-        cy.get('h2').contains('Søknaden er behandlet automatisk')
-        cy.get('h2').contains('Du har rett til å klage')
+        cy.realPress('Tab') // Retten til å klage link
+        cy.focused().contains('retten til å klage')
+
+        cy.realPress('Tab') // Klageveilederen link
+        cy.focused().contains('klageveilederen')
     })
 })
 

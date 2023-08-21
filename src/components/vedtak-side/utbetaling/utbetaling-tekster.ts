@@ -19,10 +19,7 @@ const UtbetalingTekster = {
     'utbetaling.dagligbelop.innhold':
         'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
     'utbetaling.totalbelop.tittel': 'Totalbeløp',
-    'utbetaling.totalbelop.innhold':
-        'Til slutt summerer vi alle dagene. Når du får utbetalt sykepenger fra arbeidsgiveren din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.',
-    'utbetaling.person.totalbelop.innhold':
-        'Til slutt summerer vi alle dagene. Totalbeløp viser beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
+
     'utbetaling.flere-arbeidsforhold.tittel': 'Flere arbeidsforhold',
     'utbetaling.flere-arbeidsforhold.innhold':
         'Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G, blir reduksjonen fordelt slik at det tilsvarer forholdet mellom inntektene.',
@@ -37,15 +34,13 @@ const UtbetalingTekster = {
     'utbetaling.info.innhold':
         'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Da kan du se beløpet i <a href="https://tjenester.nav.no/utbetalingsoversikt" target="_blank">Din utbetalingsoversikt</a> med skattetrekk og eventuelle andre trekk.',
 
-    'utbetaling.inntekt.info.tittel': 'Inntekter lagt til grunn for sykepengene',
+    'utbetaling.inntekt.info.tittel': 'Beregning av sykepengene',
     'utbetaling.inntekt.info.beregnet': 'Beregnet månedsinntekt',
     'utbetaling.inntekt.info.omregnet': 'Omregnet til årsinntekt',
     'utbetaling.inntekt.årsinntekt': 'Årsinntekt',
     'utbetaling.inntekt.samlet.årsinntekt': 'Samlet årsinntekt',
     'utbetaling.inntekt.info.dagsats': 'Sykepenger per dag',
     'utbetaling.sykepengegrunnlag': 'Sykepengegrunnlag',
-    'utbetaling.redusert6G.tekst':
-        'Du får ikke sykepenger fra NAV for den delen av årsinntekten som er mer enn <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">seks ganger grunnbeløpet.</a>',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
@@ -61,7 +56,7 @@ const UtbetalingTekster = {
         'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller NAV innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
     'utbetaling.person.når': 'Når får du sykepengene?',
     'utbetaling.person.når.innhold':
-        'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
+        'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to. ',
     'utbetaling.person.når.lenke.tekst': 'Les mer om når du kan forvente å få pengene.',
     'utbetaling.person.når.lenke.url':
         'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap',

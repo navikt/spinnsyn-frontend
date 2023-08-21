@@ -21,6 +21,7 @@ import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 import { BegrunnelseForSkjonnsfastsetting } from './begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
+import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn'
 
 const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
 
@@ -127,19 +128,11 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 }
                 render={() => <RefusjonMedInntekt vedtak={vedtak} />}
             />
+            <InntekterLagtTilGrunn vedtak={vedtak} />
 
             <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
 
-            <Vis
-                hvis={harAvvisteDager}
-                render={() => (
-                    <AvvisteDager
-                        avvisteDager={avvisteDager}
-                        vedtak={vedtak}
-                        heltAvvist={!erDirekteutbetaling && !erRefusjon}
-                    />
-                )}
-            />
+            <Vis hvis={harAvvisteDager} render={() => <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />} />
 
             <Sykepengedager vedtak={vedtak} />
 

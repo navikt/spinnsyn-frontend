@@ -1,5 +1,5 @@
 import { formaterValuta } from '../../../src/utils/valuta-utils'
-import { inntektInfoTekster } from '../../../src/components/vedtak-side/utbetaling/accordion/inntekt-info/inntekt-info-tekster'
+import { inntektInfoTekster } from '../../../src/components/vedtak-side/inntekter-lagt-til-grunn/inntekt-info-tekster'
 
 describe('Skjønnsfastsatt sykepengegrunnlag', () => {
     describe('Direkteutbetaling skjønnsfastsatt over 6G', () => {
@@ -9,25 +9,25 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             )
             cy.findByRole('heading', { level: 1 }).should('exist').and('contain.text', 'Svar på søknad om sykepenger')
         })
-        it('Åpner inntekter lagt til grunn for sykepengene', () => {
-            cy.get('main').findByRole('button', { name: 'Inntekter lagt til grunn for sykepengene' }).click()
+        it('Åpner Beregning av sykepengene', () => {
+            cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Årsinntekt fra A-ordningen' })
                 .should('contain', 'Årsinntekt fra A-ordningen')
                 .should('contain', formaterValuta(350000))
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Utregnet avvik' })
                 .should('contain', 'Utregnet avvik')
                 .should('contain', '61,4 %')
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Skjønnsfastsatt årsinntekt' })
                 .should('contain', 'Skjønnsfastsatt årsinntekt')
                 .should('contain', formaterValuta(660000))
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' }).should(
+            cy.findByRole('article', { name: 'Beregning av sykepengene' }).should(
                 'contain',
                 inntektInfoTekster['25%avvik-skjønnsfastsatt'],
             )
@@ -55,25 +55,25 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             )
             cy.findByRole('heading', { level: 1 }).should('exist').and('contain.text', 'Svar på søknad om sykepenger')
         })
-        it('Åpner inntekter lagt til grunn for sykepengene', () => {
-            cy.get('main').findByRole('button', { name: 'Inntekter lagt til grunn for sykepengene' }).click()
+        it('Åpner Beregning av sykepengene', () => {
+            cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Årsinntekt fra A-ordningen' })
                 .should('contain', 'Årsinntekt fra A-ordningen')
                 .should('contain', formaterValuta(350000))
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Utregnet avvik' })
                 .should('contain', 'Utregnet avvik')
                 .should('contain', '61,4 %')
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' })
+            cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Skjønnsfastsatt årsinntekt' })
                 .should('contain', 'Skjønnsfastsatt årsinntekt')
                 .should('contain', formaterValuta(660000))
 
-            cy.findByRole('article', { name: 'Inntekter lagt til grunn for sykepengene' }).should(
+            cy.findByRole('article', { name: 'Beregning av sykepengene' }).should(
                 'contain',
                 inntektInfoTekster['25%avvik-skjønnsfastsatt'],
             )
