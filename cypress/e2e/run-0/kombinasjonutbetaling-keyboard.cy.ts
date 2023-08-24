@@ -1,3 +1,4 @@
+/* eslint-disable cypress/unsafe-to-chain-command */
 describe('Kombinasjonutbetaling keyboard', () => {
     before(() => {
         cy.clearCookies()

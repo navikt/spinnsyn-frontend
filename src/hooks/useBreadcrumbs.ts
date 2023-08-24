@@ -3,7 +3,7 @@ import { logger } from '@navikt/next-logger'
 import { useRouter } from 'next/router'
 import { DependencyList, useCallback, useEffect, useRef } from 'react'
 
-import { minSideUrl, basePath, spinnsynFrontendInterne, sykefravaerUrl } from '../utils/environment'
+import { basePath, minSideUrl, spinnsynFrontendInterne, sykefravaerUrl } from '../utils/environment'
 import { tekst } from '../utils/tekster'
 
 type Breadcrumb = { title: string; url: string }
@@ -80,7 +80,6 @@ export function useHandleDecoratorClicks(): void {
 export const vedtakBreadcrumb = { title: tekst('vedtak.sidetittel') }
 
 export enum SsrPathVariants {
-    Root = '/',
     NotFound = '/404',
     ServerError = '/500',
     VedtakListe = '/',
@@ -90,7 +89,6 @@ export enum SsrPathVariants {
 
 export function createInitialServerSideBreadcrumbs(pathname: SsrPathVariants | string): CompleteCrumb[] {
     switch (pathname) {
-        case SsrPathVariants.Root:
         case SsrPathVariants.NotFound:
         case SsrPathVariants.ServerError:
         case SsrPathVariants.VedtakArkivering:

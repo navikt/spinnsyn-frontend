@@ -115,7 +115,7 @@ describe('Les uleste vedtak', () => {
             .eq(0)
             .should('contain', '9 sykepengedager')
             .and('contain', 'Brukt per 3. mai 2021')
-            .and('have.css', 'background-color', 'rgb(241, 241, 241)' /* grå */)
+            .and('have.css', 'background-color', 'rgb(236, 238, 240)' /* grå */)
             .click()
 
         cy.should('contain', '186 sykepengedager').and('contain', 'Gjenstår per 3. mai 2021')
