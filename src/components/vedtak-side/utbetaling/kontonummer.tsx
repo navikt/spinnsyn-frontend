@@ -2,7 +2,6 @@ import { BodyLong, Heading, Skeleton } from '@navikt/ds-react'
 import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
-import Vis from '../../vis'
 import { UseKontonummer } from '../../../hooks/useKontonummer'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 
@@ -19,38 +18,27 @@ export const Kontonummer = () => {
         )
     }
 
+    if (!isSuccess) {
+        return null
+    }
     return (
-        <Vis
-            hvis={isSuccess}
-            render={() => (
+        <>
+            {kontonummer && (
                 <>
-                    <Vis
-                        hvis={kontonummer}
-                        render={() => (
-                            <>
-                                <Heading level="3" size="xsmall">
-                                    {tekst('utbetaling.kontonummer.utbetales')}
-                                </Heading>
-                                <BodyLong spacing>{formaterKontonummer(kontonummer!)}</BodyLong>
-                            </>
-                        )}
-                    />
-
-                    <Vis
-                        hvis={!kontonummer}
-                        render={() => (
-                            <>
-                                <Heading level="3" size="xsmall">
-                                    {tekst('utbetaling.kontonummer.tittel')}
-                                </Heading>
-                                <BodyLong spacing>
-                                    {parserWithReplace(tekst('utbetaling.kontonummer.mangler'))}
-                                </BodyLong>
-                            </>
-                        )}
-                    />
+                    <Heading level="3" size="xsmall">
+                        {tekst('utbetaling.kontonummer.utbetales')}
+                    </Heading>
+                    <BodyLong spacing>{formaterKontonummer(kontonummer!)}</BodyLong>
                 </>
             )}
-        />
+            {!kontonummer && (
+                <>
+                    <Heading level="3" size="xsmall">
+                        {tekst('utbetaling.kontonummer.tittel')}
+                    </Heading>
+                    <BodyLong spacing>{parserWithReplace(tekst('utbetaling.kontonummer.mangler'))}</BodyLong>
+                </>
+            )}
+        </>
     )
 }

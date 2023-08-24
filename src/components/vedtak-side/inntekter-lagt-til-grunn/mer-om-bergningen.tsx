@@ -5,7 +5,6 @@ import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
-import Vis from '../../vis'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 
 export interface BeregningInfoProps {
@@ -57,10 +56,9 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                 </Heading>
                 <BodyLong spacing>
                     {parserWithReplace(tekst('utbetaling.arslonn.innhold.del1'))}
-                    <Vis
-                        hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                        render={() => <>{parserWithReplace(tekst('utbetaling.arslonn.innhold.del2'))}</>}
-                    />
+                    {harFlereArbeidsgivere(vedtak) == 'ja' && (
+                        <>{parserWithReplace(tekst('utbetaling.arslonn.innhold.del2'))}</>
+                    )}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="3">
@@ -70,55 +68,44 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
 
                 <BodyLong spacing>{parserWithReplace(tekst('utbetaling.sykepengegrunnlag.skjønn'))}</BodyLong>
 
-                <Vis
-                    hvis={!heltAvvist || !harMinstEnForLavInntektDag}
-                    render={() => (
-                        <>
-                            <Heading spacing size="xsmall" level="3">
-                                {tekst('utbetaling.dagligbelop.tittel')}
-                            </Heading>
-                            <BodyLong spacing>{tekst('utbetaling.dagligbelop.innhold')}</BodyLong>
-
-                            <Heading spacing size="xsmall" level="3">
-                                {tekst('utbetaling.totalbelop.tittel')}
-                            </Heading>
-                            <BodyLong spacing>{totalbelopInnhold()}</BodyLong>
-
-                            <Vis
-                                hvis={harFlereArbeidsgivere(vedtak) == 'ja'}
-                                render={() => (
-                                    <>
-                                        <Heading spacing size="xsmall" level="3">
-                                            {tekst('utbetaling.flere-arbeidsforhold.tittel')}
-                                        </Heading>
-                                        <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
-                                    </>
-                                )}
-                            />
-
-                            <Heading spacing size="xsmall" level="3">
-                                {tekst('utbetaling.utbetalingsdager.tittel')}
-                            </Heading>
-                            <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
-
-                            <BodyLong spacing>
-                                {tekst('utbetaling.beregning.les.mer')}
-                                <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
-                                    {tekst('utbetaling.beregning.lenke.tekst')}
-                                </Link>
-                            </BodyLong>
-
-                            {erDirekteutbetaling && (
-                                <>
-                                    <Heading spacing size="xsmall" level="3">
-                                        {tekst('utbetaling.info.tittel')}
-                                    </Heading>
-                                    <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>
-                                </>
-                            )}
-                        </>
-                    )}
-                />
+                {(!heltAvvist || !harMinstEnForLavInntektDag) && (
+                    <>
+                        <Heading spacing size="xsmall" level="3">
+                            {tekst('utbetaling.dagligbelop.tittel')}
+                        </Heading>
+                        <BodyLong spacing>{tekst('utbetaling.dagligbelop.innhold')}</BodyLong>
+                        <Heading spacing size="xsmall" level="3">
+                            {tekst('utbetaling.totalbelop.tittel')}
+                        </Heading>
+                        <BodyLong spacing>{totalbelopInnhold()}</BodyLong>
+                        {harFlereArbeidsgivere(vedtak) == 'ja' && (
+                            <>
+                                <Heading spacing size="xsmall" level="3">
+                                    {tekst('utbetaling.flere-arbeidsforhold.tittel')}
+                                </Heading>
+                                <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
+                            </>
+                        )}
+                        <Heading spacing size="xsmall" level="3">
+                            {tekst('utbetaling.utbetalingsdager.tittel')}
+                        </Heading>
+                        ;<BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>;
+                        <BodyLong spacing>
+                            {tekst('utbetaling.beregning.les.mer')}
+                            <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
+                                {tekst('utbetaling.beregning.lenke.tekst')}
+                            </Link>
+                        </BodyLong>
+                        {erDirekteutbetaling && (
+                            <>
+                                <Heading spacing size="xsmall" level="3">
+                                    {tekst('utbetaling.info.tittel')}
+                                </Heading>
+                                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.info.innhold'))}</BodyLong>
+                            </>
+                        )}
+                    </>
+                )}
             </Accordion.Content>
         </Accordion.Item>
     )

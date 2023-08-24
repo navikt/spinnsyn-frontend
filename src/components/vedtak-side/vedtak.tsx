@@ -8,7 +8,6 @@ import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
-import Vis from '../vis'
 import { isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { Feedback } from '../feedback/feedback'
@@ -67,83 +66,67 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             query[key] = router.query[key]
         }
     }
+    const vedtakMedBareArbeidsgiverperiodedager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
+    const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
 
     return (
         <>
-            <Vis
-                hvis={!erArkivering}
-                render={() => (
-                    <header className="mt-4 flex items-center justify-between pb-8 ">
-                        <Heading size="xlarge" level="1">
-                            {tekst('spinnsyn.sidetittel.vedtak')}
-                        </Heading>
-                        <Person />
-                    </header>
-                )}
-            />
+            {!erArkivering && (
+                <header className="mt-4 flex items-center justify-between pb-8 ">
+                    <Heading size="xlarge" level="1">
+                        {tekst('spinnsyn.sidetittel.vedtak')}
+                    </Heading>
+                    <Person />
+                </header>
+            )}
 
-            <Vis
-                hvis={!annullertEllerRevurdert}
-                render={() => (
-                    <>
-                        <BodyLong size="medium">
-                            {tekst('vedtak.velkommen.tekst1')}
-                            {erDirekteutbetaling && erRefusjon && tekst('vedtak.velkommen.tekst2')}
-                        </BodyLong>
-                    </>
-                )}
-            />
+            {!annullertEllerRevurdert && (
+                <>
+                    <BodyLong size="medium">
+                        {tekst('vedtak.velkommen.tekst1')}
+                        {erDirekteutbetaling && erRefusjon && tekst('vedtak.velkommen.tekst2')}
+                    </BodyLong>
+                </>
+            )}
 
-            <Vis
-                hvis={annullertEllerRevurdert}
-                render={() => (
-                    <>
-                        <AnnulleringsInfo vedtak={vedtak} />
-                        <Heading spacing size="large" level="2" className="tidligere__beslutning">
-                            {tekst('annullert.se-tidligere-beslutning')}
-                        </Heading>
-                    </>
-                )}
-            />
+            {annullertEllerRevurdert && (
+                <>
+                    <AnnulleringsInfo vedtak={vedtak} />
+                    <Heading spacing size="large" level="2" className="tidligere__beslutning">
+                        {tekst('annullert.se-tidligere-beslutning')}
+                    </Heading>
+                </>
+            )}
 
-            <Vis
-                hvis={nyesteRevudering}
-                render={() => (
-                    <Alert variant="info" className="mt-4">
-                        <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
-                        <Link href={tekst('revurdert.alert.link.url')}>
-                            {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
-                        </Link>
-                    </Alert>
-                )}
-            />
+            {nyesteRevudering && (
+                <Alert variant="info" className="mt-4">
+                    <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
+                    <Link href={tekst('revurdert.alert.link.url')}>
+                        {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
+                    </Link>
+                </Alert>
+            )}
 
-            <Vis hvis={erDirekteutbetaling} render={() => <PersonutbetalingMedInntekt vedtak={vedtak} />} />
-            <Vis
-                hvis={
-                    erRefusjon ||
-                    (!erDirekteutbetaling &&
-                        !erRefusjon &&
-                        !harAvvisteDager) /* vedtak med bare arbeidsgiverperiode dager */
-                }
-                render={() => <RefusjonMedInntekt vedtak={vedtak} />}
-            />
+            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
+            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
+
             <InntekterLagtTilGrunn vedtak={vedtak} />
 
-            <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
+            {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
+                <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
+            )}
 
-            <Vis hvis={harAvvisteDager} render={() => <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />} />
+            {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
 
             <Sykepengedager vedtak={vedtak} />
 
-            <Vis
-                hvis={!erArkivering && erDirekteutbetaling && studyActive}
-                render={() => <UxSignalsWidget study={studyKey} demo={!isProd()} />}
-            />
+            {!erArkivering && erDirekteutbetaling && studyActive && (
+                <UxSignalsWidget study={studyKey} demo={!isProd()} />
+            )}
 
             <Behandling vedtak={vedtak} />
 
-            <Vis hvis={!annullertEllerRevurdert} render={() => <Uenig vedtak={vedtak} />} />
+            {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
 
             <Feedback
                 erDirekteutbetaling={erDirekteutbetaling}

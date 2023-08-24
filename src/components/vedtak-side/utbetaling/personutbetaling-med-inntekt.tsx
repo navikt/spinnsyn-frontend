@@ -4,7 +4,6 @@ import React, { useContext } from 'react'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
@@ -37,7 +36,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <VedtakPeriode vedtak={vedtak} />
             <SykepengerTrekk />
-            <Vis hvis={!erInterne && !erArkivering} render={() => <Kontonummer />} />
+            {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />
         </UtbetalingPanel>
     )

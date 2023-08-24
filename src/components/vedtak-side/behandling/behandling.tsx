@@ -5,7 +5,6 @@ import React from 'react'
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
-import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 
 export const Behandling = ({ vedtak }: VedtakProps) => {
@@ -30,16 +29,14 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const behandlingInfoTekst = () => {
         return (
             <>
-                <Vis
-                    hvis={vedtaksDato}
-                    render={() => (
-                        <>
-                            {getLedetekst(tekst('behandling.dato-fattet'), {
-                                '%DATO%': tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()),
-                            })}
-                        </>
-                    )}
-                />
+                {vedtaksDato && (
+                    <>
+                        {getLedetekst(tekst('behandling.dato-fattet'), {
+                            '%DATO%': tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()),
+                        })}
+                    </>
+                )}
+
                 {tekst(
                     annullertEllerRevurdert
                         ? 'behandling.opplysningene.preteritum'
