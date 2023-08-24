@@ -3,7 +3,6 @@ import React from 'react'
 import { Chat2Icon } from '@navikt/aksel-icons'
 
 import { tekst } from '../../../utils/tekster'
-import Vis from '../../vis'
 import { VedtakProps } from '../vedtak'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 
@@ -44,9 +43,9 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
 
     return (
         <>
-            <Vis hvis={vedtak.revurdert} render={() => <RevurdertAlert />} />
+            {vedtak.revurdert && <RevurdertAlert />}
 
-            <Vis hvis={vedtak.annullert} render={() => <AnnullertAlert />} />
+            {vedtak.annullert && <AnnullertAlert />}
 
             <ReadMore className="my-10" header={tekst('annullert.info.header')}>
                 <div className="pt-4" data-cy="annullering-info">

@@ -3,7 +3,6 @@ import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
-import Vis from '../vis'
 import { parserWithReplace } from '../../utils/html-react-parser-utils'
 
 import DagLabel from './dag-label'
@@ -28,24 +27,17 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
         return (
             <div className="pt-1" data-cy={dataCyBeskrivelse(dag)}>
-                <Vis
-                    hvis={dag.dagtype !== 'AvvistDag'}
-                    render={() => <BodyShort>{tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}</BodyShort>}
-                />
+                {dag.dagtype !== 'AvvistDag' && (
+                    <BodyShort>{tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}</BodyShort>
+                )}
 
-                <Vis
-                    hvis={dag.dagtype === 'AvvistDag'}
-                    render={() => (
-                        <BodyShort>
-                            {parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
-                        </BodyShort>
-                    )}
-                />
+                {dag.dagtype === 'AvvistDag' && (
+                    <BodyShort>
+                        {parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
+                    </BodyShort>
+                )}
 
-                <Vis
-                    hvis={lovhjemmelTekst !== ''}
-                    render={() => <BodyShort className="avvist-lovhjemmel">{lovhjemmelTekst}</BodyShort>}
-                />
+                {lovhjemmelTekst !== '' && <BodyShort className="avvist-lovhjemmel">{lovhjemmelTekst}</BodyShort>}
             </div>
         )
     }

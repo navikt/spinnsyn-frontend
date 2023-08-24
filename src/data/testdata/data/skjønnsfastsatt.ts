@@ -14,7 +14,7 @@ skjønnsfastsattBrukerutbetaling.vedtak.begrunnelser = [
     },
     {
         begrunnelse:
-            'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultrices ultrices, nunc nisl aliquam nunc, eget aliquet nis',
+            'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultrices ultrices, nunc nisl aliquam nunc, eget aliquet nis',
         type: 'SkjønnsfastsattSykepengegrunnlagMal',
         perioder: [],
     },

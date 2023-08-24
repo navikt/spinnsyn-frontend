@@ -1,44 +1,57 @@
-import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import React from 'react'
-import { EnvelopeOpenIcon } from '@navikt/aksel-icons'
 
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
 export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
-    const malBegrunnelse = vedtak.vedtak.begrunnelser?.find((b) => b.type === 'SkjønnsfastsattSykepengegrunnlagMal')
-    if (!malBegrunnelse) return null
-    if (vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt != 'EtterSkjønn') return null
-
-    const fritekstBegrunnelse = vedtak.vedtak.begrunnelser?.find(
-        (b) => b.type === 'SkjønnsfastsattSykepengegrunnlagFritekst',
-    )
-    const konklusjon = vedtak.vedtak.begrunnelser?.find((b) => b.type === 'SkjønnsfastsattSykepengegrunnlagKonklusjon')
     return (
         <VedtakExpansionCard tittel="Begrunnelse for skjønnsfastsetting" vedtak={vedtak}>
-            {malBegrunnelse.begrunnelse.split('\n').map((tekst, idx) => (
-                <BodyLong spacing key={idx}>
-                    {tekst}
-                </BodyLong>
-            ))}
-            {fritekstBegrunnelse && fritekstBegrunnelse.begrunnelse && (
-                <>
-                    <Heading level="3" size="small">
-                        <EnvelopeOpenIcon aria-hidden className="mr-2 inline" />
-                        Nærmere begrunnelse fra saksbehandler
-                    </Heading>
-                    <BodyShort className="bg-surface-subtle p-4">{fritekstBegrunnelse.begrunnelse}</BodyShort>
-                </>
-            )}
-            {konklusjon && konklusjon.begrunnelse && (
-                <div className="mt-8">
-                    {konklusjon.begrunnelse.split('\n').map((tekst, idx) => (
-                        <BodyLong spacing key={idx}>
-                            {tekst}
-                        </BodyLong>
-                    ))}
-                </div>
-            )}
+            <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagMal" />
+            <BegrunnelseMedHeading
+                vedtak={vedtak}
+                begrunnelseKey="SkjønnsfastsattSykepengegrunnlagFritekst"
+                heading="Nærmere begrunnelse fra saksbehandler"
+            />
+            <BegrunnelseMedHeading
+                vedtak={vedtak}
+                begrunnelseKey="SkjønnsfastsattSykepengegrunnlagKonklusjon"
+                heading="Konklusjon"
+            />
         </VedtakExpansionCard>
     )
+}
+
+const BegrunnelseMedHeading = ({
+    vedtak,
+    begrunnelseKey,
+    heading,
+}: {
+    vedtak: RSVedtakWrapper
+    begrunnelseKey: string
+    heading?: string
+}) => {
+    const tekst = vedtak.vedtak.begrunnelser
+        ?.find((b) => b.type === begrunnelseKey)
+        ?.begrunnelse?.split('\n')
+        .filter((tekst) => tekst)
+        .map((tekst, idx) => (
+            <BodyLong spacing key={idx}>
+                {tekst}
+            </BodyLong>
+        ))
+    if (!tekst || tekst.length === 0) return null
+    if (heading) {
+        return (
+            <>
+                <Heading size="xsmall" level="3" spacing>
+                    {heading}
+                </Heading>
+                {tekst}
+            </>
+        )
+    }
+
+    return <>{tekst}</>
 }
