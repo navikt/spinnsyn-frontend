@@ -40,7 +40,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .eq(0)
-            .should('have.css', 'background-color', 'rgb(241, 241, 241)' /* grå */)
+            .should('have.css', 'background-color', 'rgb(236, 238, 240)' /* grå */)
     })
 
     it('Manuelt behandlet revurdert vedtak', () => {
@@ -61,7 +61,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
             .eq(0)
-            .should('have.css', 'background-color', 'rgb(241, 241, 241)' /* grå */)
+            .should('have.css', 'background-color', 'rgb(236, 238, 240)' /* grå */)
     })
 
     it('Revurdert vedtak med direkte utbetaling', () => {
