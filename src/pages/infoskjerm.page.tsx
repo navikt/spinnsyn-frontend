@@ -38,21 +38,14 @@ const Index = () => {
         return emojiString
     }
 
-    const targetDate = '2023-09-01'
+    const targetDate = '2024-01-01'
     const dagerIgjen = numberToEmoji(countWeekdaysUntil(targetDate))
 
     return (
         <div className="w-100 max-w-90 h-screen bg-gray-900 pt-10 text-center leading-none text-white">
-            <h1 className="text-8xl">Team Flex - T2 - 2023 💪</h1>
-
+            <h1 className="text-8xl">Team Flex - T3 - 2023 💪</h1>
             <BodyShort className="mt-30 mt-20 text-5xl">
-                ℹ️ Brukerne kan gi den informasjonen og de opplysningene NAV trenger med en gang
-            </BodyShort>
-            <BodyShort className="mt-30 mt-20 text-5xl">
-                💌 De sykmeldte får en fin og gyldig forklaring på NAV sin beslutning
-            </BodyShort>
-            <BodyShort className="mt-30 mt-20  text-5xl" spacing>
-                🤩 Den sykmeldte vet hva som skjer i sin sak og kan hjelpe seg selv
+                ℹ️ Bidra til at saker med flere inntektskilder kan tas inn og beholdes i speil
             </BodyShort>
             <BodyShort className="mt-20 block  text-7xl">{`Det er ${dagerIgjen} arbeidsdager igjen`}</BodyShort>
         </div>
