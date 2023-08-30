@@ -38,7 +38,7 @@ const Index = () => {
         return emojiString
     }
 
-    const targetDate = '2024-01-01'
+    const targetDate = '2023-12-22'
     const dagerIgjen = numberToEmoji(countWeekdaysUntil(targetDate))
 
     return (
@@ -47,7 +47,7 @@ const Index = () => {
             <BodyShort className="mt-30 mt-20 text-5xl">
                 ℹ️ Bidra til at saker med flere inntektskilder kan tas inn og beholdes i speil
             </BodyShort>
-            <BodyShort className="mt-20 block  text-7xl">{`Det er ${dagerIgjen} arbeidsdager igjen`}</BodyShort>
+            <BodyShort className="mt-20 block  text-7xl">{`Det er ${dagerIgjen} arbeidsdager igjen til ${targetDate}`}</BodyShort>
         </div>
     )
 }
