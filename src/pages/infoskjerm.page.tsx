@@ -42,7 +42,7 @@ const Index = () => {
     const dagerIgjen = numberToEmoji(countWeekdaysUntil(targetDate))
 
     return (
-        <div className="w-100 max-w-90 flex h-screen flex-col justify-between bg-gray-900 py-20 text-center leading-none text-white">
+        <div className="w-100 max-w-90 flex h-screen flex-col justify-between bg-gray-900 pb-20 pt-10 text-center leading-none text-white">
             <h1 className="text-8xl">Team Flex - T3 - 2023 💪</h1>
             <BodyShort className="text-6xl">
                 ℹ️ Bidra til at saker med flere inntektskilder kan tas inn og beholdes i speil
