@@ -47,7 +47,7 @@ const Index = () => {
             <BodyShort className="text-6xl">
                 ℹ️ Bidra til at saker med flere inntektskilder kan tas inn og beholdes i speil
             </BodyShort>
-            <BodyShort className="block text-5xl">{`Det er ${dagerIgjen} arbeidsdager igjen til jul`}</BodyShort>
+            <BodyShort className="block pb-20 text-5xl">{`Det er ${dagerIgjen} arbeidsdager igjen til jul`}</BodyShort>
         </div>
     )
 }
