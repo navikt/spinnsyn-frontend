@@ -1,46 +1,108 @@
-import { Link, Popover } from '@navikt/ds-react'
-import React, { useRef, useState } from 'react'
-import { PersonCircleIcon } from '@navikt/aksel-icons'
+import { BodyShort, Button, Heading, LinkPanel, Modal, Popover, Tooltip } from '@navikt/ds-react'
+import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
+import { SandboxIcon } from '@navikt/aksel-icons'
 
-import { isMockBackend, isOpplaering } from '../../utils/environment'
-import { testpersoner } from '../../data/testdata/testperson'
+import { PersonaData, PersonaGroupKey, testpersonerGruppert } from '../../data/testdata/testperson'
 
-const Person = () => {
-    const [open, setOpen] = useState<boolean>(false)
-    const person = useRef<HTMLButtonElement>(null)
-    const kanVelgePerson = isMockBackend() || isOpplaering()
+export default function Person() {
+    const [showHint, setShowHint] = useState(false)
+    const buttonRef = useRef<HTMLButtonElement>(null)
+    const [openState, setOpenState] = useState(false)
 
-    if (!kanVelgePerson) return null
+    const dismissHint = useCallback(() => {
+        localStorage.setItem('devtools-hint', 'false')
+        setShowHint(false)
+    }, [])
+
+    useEffect(() => {
+        if (localStorage.getItem('devtools-hint') === null) {
+            localStorage.setItem('devtools-hint', 'true')
+        }
+
+        setTimeout(() => {
+            if (localStorage.getItem('devtools-hint') === 'true') {
+                setShowHint(true)
+            }
+        }, 1000)
+    }, [])
 
     return (
-        <div className="hidden cursor-pointer md:block">
-            <button aria-label="Velg testperson" ref={person}>
-                <PersonCircleIcon
-                    onClick={() => {
-                        setOpen(!open)
-                    }}
-                    aria-label="Velg testperson"
-                    className="h-12 w-12"
-                />
-            </button>
-            <Popover
-                open={open}
-                anchorEl={person.current as HTMLElement}
-                placement="bottom"
-                onClose={() => setOpen(false)}
+        <>
+            <div hidden={openState}>
+                <Tooltip content="Verktøy for testing">
+                    <Button
+                        ref={buttonRef}
+                        onClick={() => setOpenState((b) => !b)}
+                        icon={<SandboxIcon title="Åpne testdataverktøy" />}
+                        variant="tertiary-neutral"
+                    />
+                </Tooltip>
+                <div
+                    style={
+                        {
+                            '--ac-popover-bg': 'var(--a-surface-info-subtle)',
+                            '--ac-popover-border': 'var(--a-border-info)',
+                        } as CSSProperties
+                    }
+                >
+                    <Popover open={showHint} onClose={() => void 0} placement="bottom-end" anchorEl={buttonRef.current}>
+                        <Popover.Content>
+                            <Heading size="small" level="3" className="motion-safe:animate-bounce">
+                                Tips!
+                            </Heading>
+                            <div className="w-[220px]">
+                                Her finner du verktøy for å endre mellom forskjellige brukere
+                            </div>
+                            <Button onClick={dismissHint} className="mt-2" variant="secondary-neutral" size="small">
+                                OK!
+                            </Button>
+                        </Popover.Content>
+                    </Popover>
+                </div>
+            </div>
+            <Modal
+                open={openState}
+                onClose={() => {
+                    if (showHint) dismissHint()
+                    setOpenState(false)
+                }}
+                className="h-screen max-h-max max-w-[369px] rounded-none p-0 left-auto m-0"
+                header={{ heading: 'Testdataverktøy' }}
             >
-                <Popover.Content>
-                    <ul>
-                        {Object.keys(testpersoner()).map((p, idx) => (
-                            <li key={idx}>
-                                <Link href={`?testperson=${p}`}>{p}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </Popover.Content>
-            </Popover>
-        </div>
+                <Modal.Body>
+                    {Object.entries(testpersonerGruppert).map(([gruppe, personer]) => (
+                        <PersonGruppeVisning gruppe={gruppe as PersonaGroupKey} personer={personer} key={gruppe} />
+                    ))}
+                </Modal.Body>
+            </Modal>
+        </>
     )
 }
 
-export default Person
+function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; personer: PersonaData }) {
+    function heading() {
+        switch (gruppe) {
+            case 'blanding': {
+                return 'God blanding'
+            }
+            default: {
+                throw Error(`mangler testperson gruppe heading for ${gruppe}`)
+            }
+        }
+    }
+
+    return (
+        <>
+            <Heading size="small" level="4" className="mt-2">
+                {heading()}
+            </Heading>
+            <ul className="mt-2 flex flex-col gap-2">
+                {Object.entries(personer).map(([key]) => (
+                    <LinkPanel key={key} className="w-full text-start" href={`/syk/sykepenger?testperson=${key}`}>
+                        <BodyShort>{key}</BodyShort>
+                    </LinkPanel>
+                ))}
+            </ul>
+        </>
+    )
+}

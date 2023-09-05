@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import useVedtak from '../../hooks/useVedtak'
-import { arkiverteVedtakUrl } from '../../utils/environment'
+import { arkiverteVedtakUrl, isMockBackend, isOpplaering } from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { sorterEtterNyesteFom } from '../../utils/sorter-vedtak'
@@ -17,6 +17,7 @@ const Listevisning = () => {
 
     const uleste = vedtak!.filter((v) => !v.lest).sort(sorterEtterNyesteFom)
     const leste = vedtak!.filter((v) => v.lest).sort(sorterEtterNyesteFom)
+    const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
         <>
@@ -24,7 +25,7 @@ const Listevisning = () => {
                 <Heading size="xlarge" level="1">
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
-                <Person />
+                {kanVelgePerson && <Person />}
             </header>
 
             <LenkepanelGruppering
