@@ -4,7 +4,7 @@ import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { isMockBackend } from '../utils/environment'
 
-import { diverseData } from './testdata/data/personas'
+import { diverseData } from './testdata/data/personas/personas'
 
 const { serverRuntimeConfig } = getConfig()
 

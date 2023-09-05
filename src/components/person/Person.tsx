@@ -2,8 +2,8 @@ import { Link, Popover } from '@navikt/ds-react'
 import React, { useRef, useState } from 'react'
 import { PersonCircleIcon } from '@navikt/aksel-icons'
 
-import { personas } from '../../data/testdata/testperson'
 import { isMockBackend, isOpplaering } from '../../utils/environment'
+import { testpersoner } from '../../data/testdata/testperson'
 
 const Person = () => {
     const [open, setOpen] = useState<boolean>(false)
@@ -31,7 +31,7 @@ const Person = () => {
             >
                 <Popover.Content>
                     <ul>
-                        {Object.keys(personas).map((p, idx) => (
+                        {Object.keys(testpersoner()).map((p, idx) => (
                             <li key={idx}>
                                 <Link href={`?testperson=${p}`}>{p}</Link>
                             </li>

@@ -1,5 +1,9 @@
-import { avvistVedtak, avvistVedtakMedLavInntekt, vedtakMed40Grad } from '../../../src/data/testdata/data/rs-vedtak'
-import { alleAvvisteDager } from '../../../src/data/testdata/data/alleAvvisteDager'
+import {
+    avvistVedtak,
+    avvistVedtakMedLavInntekt,
+    vedtakMed40Grad,
+} from '../../../src/data/testdata/data/vedtak/rs-vedtak'
+import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
 
 describe('Avviste dager', () => {
     before(() => {

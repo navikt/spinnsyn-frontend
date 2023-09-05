@@ -1,4 +1,4 @@
-import { kombinertDirekteOgRefusjon } from '../../../src/data/testdata/data/rs-vedtak'
+import { kombinertDirekteOgRefusjon } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 
 describe('Kombinasjonutbetaling', () => {
     const vedtak = kombinertDirekteOgRefusjon

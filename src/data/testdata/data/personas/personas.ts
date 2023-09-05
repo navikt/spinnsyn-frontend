@@ -1,5 +1,4 @@
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-
+import { Persona } from '../../testperson'
 import {
     avvistVedtak,
     avvistVedtakMedLavInntekt,
@@ -15,15 +14,16 @@ import {
     vedtakRevurdertDirekte,
     vedtakRevurdertKombinasjon,
     slutterMedRefusjon,
-} from './rs-vedtak'
-import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
-import { vedtakDerDetSluttesMedDelvisRefusjon } from './vedtakDerDetSluttesMedDelvisRefusjon'
-import { alleAvvisteDager } from './alleAvvisteDager'
-
-export interface Persona {
-    vedtak: RSVedtakWrapper[]
-    kontonummer?: string
-}
+    kunAgPeriode,
+} from '../vedtak/rs-vedtak'
+import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
+import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
+import { alleAvvisteDager } from '../vedtak/alleAvvisteDager'
+import {
+    skjønnsfastsattBrukerutbetaling,
+    skjønnsfastsattFlereArbeidsgivere,
+    skjønnsfastsattRefusjon,
+} from '../vedtak/skjønnsfastsatt'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -76,4 +76,24 @@ export const kombinasjonPerson: Persona = {
 
 export const slutterMedDelvisRefusjon: Persona = {
     vedtak: [vedtakDerDetSluttesMedDelvisRefusjon],
+}
+
+export const kunArbedisgiverPerioder: Persona = {
+    vedtak: [kunAgPeriode],
+}
+
+export const skjønnsfastsattBrukerutbetalingPerson: Persona = {
+    vedtak: [skjønnsfastsattBrukerutbetaling],
+}
+
+export const skjønnsfastsattRefusjonPerson: Persona = {
+    vedtak: [skjønnsfastsattRefusjon],
+}
+
+export const skjønnsfastsattFlereArbeidsgiverePerson: Persona = {
+    vedtak: [skjønnsfastsattFlereArbeidsgivere],
+}
+
+export const alleAvvisteDagerPerson: Persona = {
+    vedtak: [alleAvvisteDager],
 }

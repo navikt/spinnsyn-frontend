@@ -1,5 +1,5 @@
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-import { jsonDeepCopy } from '../../../utils/json-deep-copy'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
 export const vedtakMedDetMeste: RSVedtakWrapper = {
     id: 'a147e9a9-0aa2-4f5f-a8e3-c16c901e4071',

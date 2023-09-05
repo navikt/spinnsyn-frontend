@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 
 export const alleAvvisteDager: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-fwefwwef',

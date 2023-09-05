@@ -1,4 +1,4 @@
-import { diverseData } from '../../../src/data/testdata/data/personas'
+import { diverseData } from '../../../src/data/testdata/data/personas/personas'
 import { RSVedtakWrapper } from '../../../src/types/rs-types/rs-vedtak'
 
 const lenkeTilVedtak = (lenker: any) => {
