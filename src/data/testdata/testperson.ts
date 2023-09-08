@@ -4,7 +4,7 @@ import { jsonDeepCopy } from '../../utils/json-deep-copy'
 import {
     alleAvvisteDagerPerson,
     annullert,
-    avvistPerson,
+    forLavInntektPerson,
     direkteUtenKontonummerPerson,
     diverseData,
     eldgammelt,
@@ -21,6 +21,7 @@ import {
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
+    beskrivelse: string
     kontonummer?: string
 }
 
@@ -43,26 +44,30 @@ export type PersonaKey =
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
-export type PersonaGroupKey = 'blanding'
+export type PersonaGroupKey = 'mottaker' | 'vedtak-innhold' | 'testing'
 type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
-    ['blanding']: {
-        ['uten-data']: jsonDeepCopy(utenData),
-        ['diverse-data']: jsonDeepCopy(diverseData),
-        ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
-        ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
-        ['veldig-gammelt-vedtak']: jsonDeepCopy(eldgammelt),
-        ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(avvistPerson),
+    ['mottaker']: {
         ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
-        ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
+        ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
-        ['kun-ag-periode']: jsonDeepCopy(kunArbedisgiverPerioder),
-        ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
+    },
+    ['vedtak-innhold']: {
+        ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
         ['skjønnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
         ['skjønnsfastsatt-refusjon']: jsonDeepCopy(skjønnsfastsattRefusjonPerson),
         ['skjønnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePerson),
-        ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
+        ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
+        ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
+        ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
+        ['kun-ag-periode']: jsonDeepCopy(kunArbedisgiverPerioder),
+    },
+    ['testing']: {
+        ['uten-data']: jsonDeepCopy(utenData),
+        ['diverse-data']: jsonDeepCopy(diverseData),
+        ['veldig-gammelt-vedtak']: jsonDeepCopy(eldgammelt),
+        ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
     },
 }
 

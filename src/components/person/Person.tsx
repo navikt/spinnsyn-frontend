@@ -82,8 +82,14 @@ export default function Person() {
 function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; personer: PersonaData }) {
     function heading() {
         switch (gruppe) {
-            case 'blanding': {
-                return 'God blanding'
+            case 'mottaker': {
+                return 'Brukerutbetaling og refusjon'
+            }
+            case 'vedtak-innhold': {
+                return 'Vedtak med forskjellig innhold'
+            }
+            case 'testing': {
+                return 'Vedtak brukt til testing'
             }
             default: {
                 throw Error(`mangler testperson gruppe heading for ${gruppe}`)
@@ -97,9 +103,9 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
                 {heading()}
             </Heading>
             <ul className="mt-2 flex flex-col gap-2">
-                {Object.entries(personer).map(([key]) => (
+                {Object.entries(personer).map(([key, person]) => (
                     <LinkPanel key={key} className="w-full text-start" href={`/syk/sykepenger?testperson=${key}`}>
-                        <BodyShort>{key}</BodyShort>
+                        <BodyShort>{person.beskrivelse}</BodyShort>
                     </LinkPanel>
                 ))}
             </ul>

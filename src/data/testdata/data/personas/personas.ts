@@ -27,10 +27,12 @@ import {
 
 export const utenData: Persona = {
     vedtak: [],
+    beskrivelse: 'Ingen vedtak fattet',
 }
 
 export const etVedtakFlereArbeidsgivere: Persona = {
     vedtak: [vedtakMedFlereArbeidsgivere],
+    beskrivelse: 'Refusjon til arbeidsgiver og ansatt 2 steder',
 }
 
 export const diverseData: Persona = {
@@ -47,53 +49,66 @@ export const diverseData: Persona = {
         avvistVedtakMedLavInntekt,
         vedtakRedusertTil6G,
     ],
+    beskrivelse: 'Diverse vedtak brukt til testing',
 }
 
 export const annullert: Persona = {
     vedtak: [vedtakAnnullert],
+    beskrivelse: 'Annullert vedtak',
 }
 
 export const eldgammelt: Persona = {
     vedtak: [ulestGammeltVedtak],
+    beskrivelse: 'Veldig gammelt vedtak',
 }
 
-export const avvistPerson: Persona = {
-    vedtak: [alleAvvisteDager, avvistVedtak, avvistVedtakMedLavInntekt],
+export const forLavInntektPerson: Persona = {
+    vedtak: [avvistVedtakMedLavInntekt],
+    beskrivelse: 'Avvist på grunn av for lav inntekt',
 }
 
 export const kunDirektePerson: Persona = {
     vedtak: [kunDirekte],
     kontonummer: '10011110011',
+    beskrivelse: 'Utbetaling til sykmeldt',
 }
 
 export const direkteUtenKontonummerPerson: Persona = {
     vedtak: [kunDirekte],
+    beskrivelse: 'Utbetaling til sykmeldt uten kontonummer',
 }
 
 export const kombinasjonPerson: Persona = {
     vedtak: [kombinertDirekteOgRefusjon, slutterMedRefusjon],
+    beskrivelse: 'Både refusjon og brukerutbetaling',
 }
 
 export const slutterMedDelvisRefusjon: Persona = {
     vedtak: [vedtakDerDetSluttesMedDelvisRefusjon],
+    beskrivelse: 'Arbeidsgiver slutter med refusjon midt i perioden',
 }
 
 export const kunArbedisgiverPerioder: Persona = {
     vedtak: [kunAgPeriode],
+    beskrivelse: 'Vedtak som bare gjelder innenfor arbeidsgiverperioden',
 }
 
 export const skjønnsfastsattBrukerutbetalingPerson: Persona = {
     vedtak: [skjønnsfastsattBrukerutbetaling],
+    beskrivelse: 'Skjønnsfastsatt inntekt med brukerutbetaling',
 }
 
 export const skjønnsfastsattRefusjonPerson: Persona = {
     vedtak: [skjønnsfastsattRefusjon],
+    beskrivelse: 'Skjønnsfastsatt inntekt med refusjon til arbeidsgiver',
 }
 
 export const skjønnsfastsattFlereArbeidsgiverePerson: Persona = {
     vedtak: [skjønnsfastsattFlereArbeidsgivere],
+    beskrivelse: 'Skjønnsfastsatt inntekt med refusjon og flere arbeidsforhold',
 }
 
 export const alleAvvisteDagerPerson: Persona = {
     vedtak: [alleAvvisteDager],
+    beskrivelse: 'Inneholder alle avviste dager vi har støtte for',
 }
