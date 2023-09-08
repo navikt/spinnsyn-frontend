@@ -14,7 +14,7 @@ const lenkeTilVedtak = (lenker: any) => {
 describe('Sortering av vedtak', () => {
     it('Laster startside', function () {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get('h1').should('be.visible').and('have.text', 'Svar på søknader')
+        cy.findByRole('heading', { level: 1 }).contains('Svar på søknader')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
