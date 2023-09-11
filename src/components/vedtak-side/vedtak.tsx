@@ -127,7 +127,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
             <Behandling vedtak={vedtak} />
 
-            {!annullertEllerRevurdert && <SporsmalEllerFeil />}
+            {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
 
             <Feedback

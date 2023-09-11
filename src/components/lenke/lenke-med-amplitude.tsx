@@ -6,16 +6,17 @@ import { logEvent } from '../amplitude/amplitude'
 interface LenkeMedAmplitudeProps {
     tekst: string
     url: string
+    cleanUrl?: string
 }
 
-export const LenkeMedAmplitude = ({ tekst, url }: LenkeMedAmplitudeProps) => (
+export const LenkeMedAmplitude = ({ tekst, url, cleanUrl }: LenkeMedAmplitudeProps) => (
     <Link
         href={url}
         rel="noopener noreferrer"
         target="_blank"
         onClick={() =>
             logEvent('navigere', {
-                destinasjon: url,
+                destinasjon: cleanUrl ?? url,
                 skjemanavn: 'vedtak',
                 lenketekst: tekst,
             })
