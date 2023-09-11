@@ -89,7 +89,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                         <Heading spacing size="xsmall" level="3">
                             {tekst('utbetaling.utbetalingsdager.tittel')}
                         </Heading>
-                        ;<BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>;
+                        <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
                         <BodyLong spacing>
                             {tekst('utbetaling.beregning.les.mer')}
                             <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
