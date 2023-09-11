@@ -4,7 +4,7 @@ import getConfig from 'next/config'
 import { beskyttetApi } from '../../../auth/beskyttetApi'
 import { proxyKallTilBackend } from '../../../proxy/backendproxy'
 import { isMockBackend } from '../../../utils/environment'
-import { personas } from '../../../data/testdata/testperson'
+import { PersonaKey, testpersoner } from '../../../data/testdata/testperson'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -16,8 +16,8 @@ const handler = beskyttetApi(async (req: NextApiRequest, res: NextApiResponse) =
             const parsetUrl = new URL(`https://test${req.url}`)
 
             const testperson = parsetUrl.searchParams.get('testperson')
-            if (testperson && personas[testperson] && personas[testperson]().kontonummer) {
-                res.json({ kontonummer: personas[testperson]().kontonummer })
+            if (testperson && testpersoner[testperson as PersonaKey]?.kontonummer) {
+                res.json({ kontonummer: testpersoner[testperson as PersonaKey]!.kontonummer })
                 res.end()
                 return
             }

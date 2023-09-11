@@ -1,4 +1,4 @@
-import { kunDirekte } from '../../../src/data/testdata/data/rs-vedtak'
+import { kunDirekte } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 
 describe('Inline feedback', () => {
     const vedtak = kunDirekte

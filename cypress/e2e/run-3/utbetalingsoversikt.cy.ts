@@ -1,5 +1,5 @@
-import { vedtakMed40Grad } from '../../../src/data/testdata/data/rs-vedtak'
-import { alleAvvisteDager } from '../../../src/data/testdata/data/alleAvvisteDager'
+import { vedtakMed40Grad } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
+import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
 
 describe('Utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad
@@ -63,7 +63,7 @@ describe('Utbetalingsoversikt', () => {
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get('h1').should('be.visible').and('have.text', 'Svar på søknader')
+        cy.findByRole('heading', { level: 1 }).should('be.visible').contains('Svar på søknader')
 
         cy.get(`a[href*=${alleAvvisteDager.id}]`).click()
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()

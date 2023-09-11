@@ -16,6 +16,13 @@
 import './commands'
 import 'cypress-axe'
 
+before(() => {
+    // Skjuler hint så den ikke ligger over andre elementer
+    localStorage.setItem('devtools-hint', 'false')
+    // Resetter cookies / leste vedtak før hver test
+    cy.clearCookies()
+})
+
 afterEach(() => {
     if (Cypress.currentTest.titlePath[0] == 'Vedtak for arkivering') {
         cy.contains('Svaret på søknaden er vedtaket i saken din')

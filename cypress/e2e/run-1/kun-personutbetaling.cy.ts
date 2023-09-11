@@ -1,4 +1,4 @@
-import { kunDirekte } from '../../../src/data/testdata/data/rs-vedtak'
+import { kunDirekte } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 
 describe('Kun personutbetaling', () => {
     const vedtak = kunDirekte

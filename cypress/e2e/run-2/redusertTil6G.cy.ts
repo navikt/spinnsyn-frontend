@@ -1,4 +1,4 @@
-import { vedtakMedDetMeste } from '../../../src/data/testdata/data/rs-vedtak'
+import { vedtakMedDetMeste } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 import { formaterValuta } from '../../../src/utils/valuta-utils'
 
 describe('Redusert til 6G', () => {

@@ -8,7 +8,7 @@ import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
-import { isProd } from '../../utils/environment'
+import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { Feedback } from '../feedback/feedback'
 
@@ -69,6 +69,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     }
     const vedtakMedBareArbeidsgiverperiodedager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
     const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
+    const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
         <>
@@ -77,7 +78,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     <Heading size="xlarge" level="1">
                         {tekst('spinnsyn.sidetittel.vedtak')}
                     </Heading>
-                    <Person />
+                    {kanVelgePerson && <Person />}
                 </header>
             )}
 

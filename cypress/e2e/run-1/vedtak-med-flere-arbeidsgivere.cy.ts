@@ -1,4 +1,4 @@
-import { vedtakMedFlereArbeidsgivere } from '../../../src/data/testdata/data/vedtakMedFlereArbeidsgivere'
+import { vedtakMedFlereArbeidsgivere } from '../../../src/data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
 import { formaterValuta } from '../../../src/utils/valuta-utils'
 
 describe('Vedtak med flere arbeidsgivere', () => {

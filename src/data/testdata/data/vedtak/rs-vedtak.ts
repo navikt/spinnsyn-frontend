@@ -1,5 +1,5 @@
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-import { jsonDeepCopy } from '../../../utils/json-deep-copy'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
 export const vedtakMedDetMeste: RSVedtakWrapper = {
     id: 'a147e9a9-0aa2-4f5f-a8e3-c16c901e4071',
@@ -1459,7 +1459,7 @@ export const avvistVedtak: RSVedtakWrapper = {
 
 export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
     id: '55d8b14f-e1a6-45a8-ac64-b7af1e845b68',
-    lest: true,
+    lest: false,
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},

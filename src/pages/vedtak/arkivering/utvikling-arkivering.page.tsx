@@ -7,8 +7,8 @@ import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
-} from '../../../data/testdata/data/skjønnsfastsatt'
-import { alleAvvisteDager } from '../../../data/testdata/data/alleAvvisteDager'
+} from '../../../data/testdata/data/vedtak/skjønnsfastsatt'
+import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/alleAvvisteDager'
 
 const { serverRuntimeConfig } = getConfig()
 

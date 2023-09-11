@@ -1,4 +1,4 @@
-import { jsonDeepCopy } from '../../../utils/json-deep-copy'
+import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
 import { kunDirekte } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
