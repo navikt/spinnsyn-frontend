@@ -21,6 +21,7 @@ import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-in
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 import { BegrunnelseForSkjonnsfastsetting } from './begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
 import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn'
+import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 
 const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
 
@@ -127,6 +128,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
             <Behandling vedtak={vedtak} />
 
+            {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
 
             <Feedback

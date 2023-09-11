@@ -8,7 +8,7 @@ export const vedtakMedDetMeste: RSVedtakWrapper = {
         organisasjonsnummer: '123456789',
         fom: '2021-10-04',
         tom: '2021-10-23',
-        dokumenter: [],
+        dokumenter: [{ dokumentId: 'faba11f5-c4f2-4647-8c8a-58b28ce2f3ef', type: 'Søknad' }],
         inntekt: 74675,
         vedtakFattetTidspunkt: '2021-10-23',
         sykepengegrunnlag: 638394,
