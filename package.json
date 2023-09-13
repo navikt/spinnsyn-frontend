@@ -27,7 +27,7 @@
         "react-dom": "^18.2.0",
         "tailwind-merge": "^1.14.0",
         "typescript": "^5.2.2",
-        "uuid": "^9.0.0"
+        "uuid": "^9.0.1"
     },
     "devDependencies": {
         "@cypress/webpack-preprocessor": "^5.17.1",
