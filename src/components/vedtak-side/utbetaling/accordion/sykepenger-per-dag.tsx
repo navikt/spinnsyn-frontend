@@ -51,7 +51,7 @@ export const SykepengerPerDag = ({ tittel, dager }: SykepengerPerDagProps) => {
                         'Arbeidsgiver har tidligere utbetalt sykepenger i en full arbeidsgiverperiode. Etter dette har vi vurdert at du ikke har gjenopptatt arbeidet i mer enn 16 dager. NAV har derfor utbetalt sykepenger fra første dag du ble sykmeldt. Vi har brukt '
                     }
                     <Link target="_blank" href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-19">
-                        folketrygdloven 8-19 fjerde ledd
+                        folketrygdloven §8-19 fjerde ledd
                     </Link>
                     {' når vi har behandlet saken din.'}
                 </BodyLong>
