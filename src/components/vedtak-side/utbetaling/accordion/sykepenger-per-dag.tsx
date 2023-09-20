@@ -1,4 +1,4 @@
-import { Accordion, Heading } from '@navikt/ds-react'
+import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import DagTabell from '../../../dager/dag-tabell'
@@ -46,6 +46,15 @@ export const SykepengerPerDag = ({ tittel, dager }: SykepengerPerDagProps) => {
                 </Heading>
             </Accordion.Header>
             <Accordion.Content className="bg-white px-0">
+                <BodyLong spacing>
+                    {
+                        'Arbeidsgiver har tidligere utbetalt sykepenger i en full arbeidsgiverperiode. Etter dette har vi vurdert at du ikke har gjenopptatt arbeidet i mer enn 16 dager. NAV har derfor utbetalt sykepenger fra første dag du ble sykmeldt. Vi har brukt '
+                    }
+                    <Link target="_blank" href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-19">
+                        folketrygdloven 8-19 fjerde ledd
+                    </Link>
+                    {' når vi har behandlet saken din.'}
+                </BodyLong>
                 <DagTabell dager={dager} />
                 <DagBeskrivelse dager={dager} />
             </Accordion.Content>
