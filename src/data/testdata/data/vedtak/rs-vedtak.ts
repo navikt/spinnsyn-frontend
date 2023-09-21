@@ -1934,6 +1934,7 @@ export const kunDirekte: RSVedtakWrapper = {
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
         },
+        tags: ['IngenNyArbeidsgiverperiode'],
     },
     opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,

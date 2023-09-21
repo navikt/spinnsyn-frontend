@@ -46,6 +46,7 @@ interface RSVedtak {
     vedtakFattetTidspunkt?: string
     sykepengegrunnlagsfakta?: Sykepengegrunnlagsfakta | null
     begrunnelser?: Begrunnelse[]
+    tags?: string[]
 }
 
 interface RSUtbetalingUtbetalt {
