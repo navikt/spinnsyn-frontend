@@ -64,7 +64,7 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
                 {ingenNyArbeidsgiverperiode && (
                     <BodyLong spacing>
                         {
-                            'En hel arbeidsgiverperiode ble utbetalt ved forrige sykemelding. Etter dette har vi evaluert at det ikke har gått mer enn 16 dager fra du gjenopptok arbeidet til du ble sykemeldt på nytt. NAV har derfor utbetalt sykepenger fra første dag av denne sykemeldingen. Vi har brukt '
+                            'En hel arbeidsgiverperiode ble utbetalt ved forrige sykmelding. Etter dette har vi evaluert at det ikke har gått mer enn 16 dager fra du gjenopptok arbeidet til du ble sykemeldt på nytt. NAV har derfor utbetalt sykepenger fra første dag av denne sykmeldingen. Vi har brukt '
                         }
                         <Link target="_blank" href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-19">
                             folketrygdloven §8-19 fjerde ledd
