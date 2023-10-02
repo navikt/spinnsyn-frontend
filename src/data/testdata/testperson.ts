@@ -4,14 +4,15 @@ import { jsonDeepCopy } from '../../utils/json-deep-copy'
 import {
     alleAvvisteDagerPerson,
     annullert,
-    forLavInntektPerson,
     direkteUtenKontonummerPerson,
     diverseData,
     eldgammelt,
     etVedtakFlereArbeidsgivere,
+    forLavInntektPerson,
     kombinasjonPerson,
     kunArbedisgiverPerioder,
     kunDirektePerson,
+    revurdertOgAnnullert,
     skjønnsfastsattBrukerutbetalingPerson,
     skjønnsfastsattFlereArbeidsgiverePerson,
     skjønnsfastsattRefusjonPerson,
@@ -41,6 +42,7 @@ export type PersonaKey =
     | 'skjønnsfastsatt-refusjon'
     | 'skjønnsfastsatt-flere-arbeidsgivere'
     | 'alle-avviste-dager'
+    | 'revurdert-og-annullert'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -68,6 +70,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['diverse-data']: jsonDeepCopy(diverseData),
         ['veldig-gammelt-vedtak']: jsonDeepCopy(eldgammelt),
         ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
+        ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
     },
 }
 
