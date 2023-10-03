@@ -3,7 +3,9 @@ import {
     avvistVedtak,
     avvistVedtakMedLavInntekt,
     kombinertDirekteOgRefusjon,
+    kunAgPeriode,
     kunDirekte,
+    slutterMedRefusjon,
     ulestGammeltVedtak,
     ulestVedtakUtenUtbetalingsdager,
     vedtakAnnullert,
@@ -13,8 +15,6 @@ import {
     vedtakRevurdert,
     vedtakRevurdertDirekte,
     vedtakRevurdertKombinasjon,
-    slutterMedRefusjon,
-    kunAgPeriode,
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
@@ -24,6 +24,7 @@ import {
     skjønnsfastsattFlereArbeidsgivere,
     skjønnsfastsattRefusjon,
 } from '../vedtak/skjønnsfastsatt'
+import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -111,4 +112,9 @@ export const skjønnsfastsattFlereArbeidsgiverePerson: Persona = {
 export const alleAvvisteDagerPerson: Persona = {
     vedtak: [alleAvvisteDager],
     beskrivelse: 'Inneholder alle avviste dager vi har støtte for',
+}
+
+export const revurdertOgAnnullert: Persona = {
+    vedtak: [revurdertOgAnnullertVedtak],
+    beskrivelse: 'Vedtak som både er revurdert og senere annulert',
 }

@@ -41,15 +41,16 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
         }
     }
 
+    const revurdertOgIkkeAnnullert = vedtak.revurdert && !vedtak.annullert
     return (
         <>
-            {vedtak.revurdert && <RevurdertAlert />}
+            {revurdertOgIkkeAnnullert && <RevurdertAlert />}
 
             {vedtak.annullert && <AnnullertAlert />}
 
             <ReadMore className="my-10" header={tekst('annullert.info.header')}>
                 <div className="pt-4" data-cy="annullering-info">
-                    {vedtak.revurdert && (
+                    {revurdertOgIkkeAnnullert && (
                         <>
                             <Label>{tekst('annullert.info.header1')}</Label>
                             <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>

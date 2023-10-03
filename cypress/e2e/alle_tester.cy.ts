@@ -1,6 +1,7 @@
 import './run-0/avviste-dager.cy'
 import './run-0/kombinasjonutbetaling.cy'
 import './run-0/kombinasjonutbetaling-keyboard.cy'
+import './run-0/revurdert-og-annullert.cy'
 import './run-1/kun-personutbetaling.cy'
 import './run-1/les-ulest-vedtak.cy'
 import './run-1/skjønnsfastsatt-sykepengegrunnlag.cy'
