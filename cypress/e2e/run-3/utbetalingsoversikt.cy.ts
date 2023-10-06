@@ -155,7 +155,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Feriedag"]').contains('Ferie')
                 cy.get('[data-cy="dag-beskrivelse-Feriedag"]').contains(
-                    'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. I ferien stoppes sykepengene.',
+                    'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra NAV for dager du har ferie',
                 )
 
                 cy.get('[data-cy="dag-label-ForeldetDag"]').contains('Søkt for sent')
@@ -170,8 +170,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Permisjonsdag"]').contains('Permisjon')
                 cy.get('[data-cy="dag-beskrivelse-Permisjonsdag"]').contains(
-                    'Du har oppgitt i søknaden at du hadde permisjon. ' +
-                        'Du får ikke sykepenger for dager du har permisjon.',
+                    'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra NAV for dager du har permisjon',
                 )
 
                 cy.get('[data-cy="dag-label-SykepengedagerOppbrukt"]').contains('Maks antall dager')

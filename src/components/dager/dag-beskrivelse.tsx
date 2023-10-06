@@ -28,7 +28,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         return (
             <div className="pt-1" data-cy={dataCyBeskrivelse(dag)}>
                 {dag.dagtype !== 'AvvistDag' && (
-                    <BodyShort>{tekst(`utbetaling.tabell.label.${dag.dagtype}` as any)}</BodyShort>
+                    <BodyShort>{parserWithReplace(tekst(`utbetaling.tabell.label.${dag.dagtype}` as any))}</BodyShort>
                 )}
 
                 {dag.dagtype === 'AvvistDag' && (
