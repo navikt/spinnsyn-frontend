@@ -77,9 +77,9 @@ const UtbetalingTekster = {
         'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
     'utbetaling.tabell.label.Feriedag':
-        'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. I ferien stoppes sykepengene.',
+        'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra NAV for dager du har ferie, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.Permisjonsdag':
-        'Du har oppgitt i søknaden at du hadde permisjon. Du får ikke sykepenger for dager du har permisjon. ',
+        'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra NAV for dager du har permisjon, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.ForeldetDag':
         'Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.',
     'utbetaling.tabell.label.UkjentDag':
@@ -125,10 +125,8 @@ const UtbetalingTekster = {
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.Over70':
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
-    'utbetaling.tabell.avvist.lovhjemmel.Feriedag':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a> når vi har behandlet saken din.',
-    'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
+    'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt':
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67':
