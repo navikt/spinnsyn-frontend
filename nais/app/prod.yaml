@@ -1,6 +1,8 @@
 ingress: https://www.nav.no/syk/sykepenger
 cpu: 200m
 memory: 500Mi
+external-host:
+  - flex-unleash-api.nav.cloud.nais.io
 env:
   FLEX_GATEWAY_ROOT: "https://flex-gateway.nav.no"
   MOCK_BACKEND: "false"

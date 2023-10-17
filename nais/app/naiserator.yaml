@@ -45,12 +45,16 @@ spec:
           namespace: okonomi
         - application: nav-dekoratoren
           namespace: personbruker
+      external:
+  {{#each external-host}}
+        - host: {{this}}
+  {{/each}}
   tokenx:
     enabled: true
+  envFrom:
+    - secret: spinnsyn-frontend-unleash-api-token
   env:
   {{#each env}}
      - name: {{@key}}
        value: "{{this}}"
   {{/each}}
-
-
