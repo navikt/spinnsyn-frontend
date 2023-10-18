@@ -11,6 +11,7 @@ import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { Feedback } from '../feedback/feedback'
+import { useToggle } from '../../toggles/context'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -54,6 +55,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const harAvvisteDager = avvisteDager.length > 0
 
+    const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
 
     useEffect(() => {
@@ -131,13 +133,15 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
 
-            <Feedback
-                erDirekteutbetaling={erDirekteutbetaling}
-                erRefusjon={erRefusjon}
-                harAvvisteDager={harAvvisteDager}
-                annullert={vedtak.annullert}
-                revurdert={vedtak.revurdert}
-            ></Feedback>
+            {flexjarToggle.enabled && (
+                <Feedback
+                    erDirekteutbetaling={erDirekteutbetaling}
+                    erRefusjon={erRefusjon}
+                    harAvvisteDager={harAvvisteDager}
+                    annullert={vedtak.annullert}
+                    revurdert={vedtak.revurdert}
+                ></Feedback>
+            )}
         </>
     )
 }

@@ -30,6 +30,10 @@ export function spinnsynFrontendInterne() {
     return publicRuntimeConfig.spinnsynFrontendInterne === 'true'
 }
 
+export function spinnsynFrontendArkivering() {
+    return publicRuntimeConfig.spinnsynFrontendArkivering === 'true'
+}
+
 export function arkiverteVedtakUrl() {
     return publicRuntimeConfig.arkiverteVedtakUrl
 }

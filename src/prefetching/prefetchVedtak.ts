@@ -1,5 +1,6 @@
 import getConfig from 'next/config'
-import { QueryClient, dehydrate } from '@tanstack/react-query'
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+import { IToggle } from '@unleash/nextjs'
 
 import { beskyttetSide } from '../auth/beskyttetSide'
 import { getOboAccessToken } from '../auth/getOboAccessToken'
@@ -8,12 +9,14 @@ import { hentVedtak } from '../data/hentVedtak'
 import { hentVedtakFraSpinnsynBackendForInterne } from '../data/hentVedtakForInterne'
 import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { spinnsynFrontendInterne } from '../utils/environment'
+import { getFlagsServerSide } from '../toggles/ssr'
 
 const { serverRuntimeConfig } = getConfig()
 
 export const prefetchVedtak = beskyttetSide(async (ctx): Promise<GetServerSidePropsPrefetchResult> => {
     let sykmeldtFnr: string | null = null
     const queryClient = new QueryClient()
+    const toggles = [] as IToggle[]
     if (spinnsynFrontendInterne()) {
         sykmeldtFnr = await hentModiaContext(ctx.req!)
 
@@ -35,10 +38,12 @@ export const prefetchVedtak = beskyttetSide(async (ctx): Promise<GetServerSidePr
                 return hentVedtak(ctx.req!)
             },
         })
+        toggles.push(...(await getFlagsServerSide(ctx.req!, ctx.res)).toggles)
     }
     return {
         props: {
             dehydratedState: dehydrate(queryClient),
+            toggles,
             sykmeldtFnr,
         },
     }

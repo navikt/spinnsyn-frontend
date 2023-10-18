@@ -1,17 +1,26 @@
 import { logger } from '@navikt/next-logger'
-import { NextPageContext } from 'next'
+import { GetServerSidePropsContext } from 'next/types'
+import { GetServerSidePropsResult } from 'next'
+import { IToggle } from '@unleash/nextjs'
+import { DehydratedState } from '@tanstack/react-query'
 
-import { GetServerSidePropsPrefetchResult } from '../types/prefecthing'
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 import { AuthenticationError } from '../utils/fetch'
 
 import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 
-type PageHandler = (context: NextPageContext) => void | Promise<GetServerSidePropsPrefetchResult>
+type PageHandler = (context: GetServerSidePropsContext) => Promise<GetServerSidePropsResult<ServerSidePropsResult>>
+
+export interface ServerSidePropsResult {
+    toggles: IToggle[]
+    dehydratedState: DehydratedState
+}
 
 export function beskyttetSide(handler: PageHandler) {
-    return async function withBearerTokenHandler(context: NextPageContext): Promise<ReturnType<typeof handler>> {
+    return async function withBearerTokenHandler(
+        context: GetServerSidePropsContext,
+    ): Promise<ReturnType<typeof handler>> {
         if (isMockBackend()) {
             return handler(context)
         }
@@ -45,7 +54,7 @@ export function beskyttetSide(handler: PageHandler) {
         return handler(context)
     }
 
-    async function beskyttetSideInterne(context: NextPageContext): Promise<ReturnType<typeof handler>> {
+    async function beskyttetSideInterne(context: GetServerSidePropsContext): Promise<ReturnType<typeof handler>> {
         const request = context.req
         if (request == null) {
             throw new Error('Context is missing request. This should not happen')

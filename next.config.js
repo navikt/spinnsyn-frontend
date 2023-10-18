@@ -78,6 +78,7 @@ const nextConfig = {
         amplitudeEnabled: process.env.AMPLITUDE_ENABLED,
         environment: process.env.ENVIRONMENT,
         spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE,
+        spinnsynFrontendArkivering: process.env.ARKIVERING,
         arkiverteVedtakUrl: process.env.ARKIVERTE_VEDTAK_URL,
         telemetryCollectorURL: process.env.NAIS_FRONTEND_TELEMETRY_COLLECTOR_URL,
         naisAppImage: process.env.NAIS_APP_IMAGE,
