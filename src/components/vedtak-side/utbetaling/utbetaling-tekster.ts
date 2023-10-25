@@ -85,7 +85,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.Over70':
-        'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, første avsnitt.',
+        'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, første avsnitt.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt':
         'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
     'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67':

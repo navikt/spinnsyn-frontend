@@ -223,7 +223,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Over70"]').contains('Over 70 år')
                 cy.get('[data-cy="dag-beskrivelse-Over70"]').contains(
-                    'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV,',
+                    'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV',
                 )
             })
     })
