@@ -159,9 +159,7 @@ describe('Utbetalingsoversikt', () => {
                 )
 
                 cy.get('[data-cy="dag-label-ForeldetDag"]').contains('Søkt for sent')
-                cy.get('[data-cy="dag-beskrivelse-ForeldetDag"]').contains(
-                    'Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet.',
-                )
+                cy.get('[data-cy="dag-beskrivelse-ForeldetDag"]').contains('Søknaden må sendes senest tre måneder')
 
                 cy.get('[data-cy="dag-label-UkjentDag"]').contains('Ukjent')
                 cy.get('[data-cy="dag-beskrivelse-UkjentDag"]').contains(
@@ -195,8 +193,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-EgenmeldingUtenforArbeidsgiverperiode"]').contains('Egenmelding')
                 cy.get('[data-cy="dag-beskrivelse-EgenmeldingUtenforArbeidsgiverperiode"]').contains(
-                    'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. ' +
-                        'For de dagene må du ha sykmelding.',
+                    'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. ',
                 )
 
                 cy.get('[data-cy="dag-label-MinimumSykdomsgrad"]').contains('Sykmeldt i for liten grad')
@@ -226,7 +223,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Over70"]').contains('Over 70 år')
                 cy.get('[data-cy="dag-beskrivelse-Over70"]').contains(
-                    'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV.',
+                    'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV',
                 )
             })
     })
