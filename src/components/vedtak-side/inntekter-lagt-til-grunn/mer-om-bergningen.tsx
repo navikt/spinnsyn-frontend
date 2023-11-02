@@ -19,7 +19,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBegge = erDirekteutbetaling && erRefusjon
-    const heltAvvist = !erDirekteutbetaling && !erRefusjon
+    const heltAvvist = !erDirekteutbetaling && !erRefusjon // kan brukes
     const sykepengegrunnlagInnholdKey = () => {
         if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
             return 'utbetaling.sykepengegrunnlag.under6g.innhold'

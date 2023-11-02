@@ -19,6 +19,10 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const sluttdato = finnSluttdato().format('D. MMM YYYY')
     const sluttPaAktuelleVedtaksPeriode = tilLesbarDatoMedArstall(vedtak.vedtak.tom)
 
+    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const heltAvvist = !erDirekteutbetaling && !erRefusjon // kan brukes
+
     return (
         <VedtakExpansionCard
             ariaLabel="Antall sykepengedager som gjenstår"
@@ -40,15 +44,16 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             <BodyLong spacing className="sykepengedager-forste-avsnitt">
                 {tekst('sykepengedager.sluttdato.tekst2')}
             </BodyLong>
-
-            <Heading spacing size="medium" level="3" className="primo">
-                {sluttdato}
-                <BodyShort as="span" className="block">
-                    {getLedetekst(tekst('sykepengedager.sluttdato'), {
-                        '%DATO%': sluttPaAktuelleVedtaksPeriode,
-                    })}
-                </BodyShort>
-            </Heading>
+            {!heltAvvist && (
+                <Heading spacing size="medium" level="3" className="primo">
+                    {sluttdato}
+                    <BodyShort as="span" className="block">
+                        {getLedetekst(tekst('sykepengedager.sluttdato'), {
+                            '%DATO%': sluttPaAktuelleVedtaksPeriode,
+                        })}
+                    </BodyShort>
+                </Heading>
+            )}
             <BodyLong spacing className="sykepengedager-forste-avsnitt">
                 {tekst('sykepengedager.sluttdato.tekst3')}
             </BodyLong>
