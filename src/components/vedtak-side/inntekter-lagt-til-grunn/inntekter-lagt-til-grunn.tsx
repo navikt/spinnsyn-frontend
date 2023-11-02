@@ -1,4 +1,4 @@
-import { Accordion, Alert, BodyShort, Label } from '@navikt/ds-react'
+import {Accordion, Alert, BodyShort, Label, Link} from '@navikt/ds-react'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
@@ -13,7 +13,6 @@ import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-fler
 import { InfoSection } from './info-seksjon'
 import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
-
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const finnRiktigInntekt = () => {
         const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
@@ -84,6 +83,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         />
                     </>
                 )}
+
                 {vedtak.vedtak.sykepengegrunnlag && (
                     <InfoSection
                         bold
@@ -105,6 +105,29 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         </BodyShort>
                         <BodyShort size="small">
                             {`Grunnbeløpet i folketrygden (G): ${formaterValuta(vedtak.vedtak.sykepengegrunnlag / 6)}`}
+                        </BodyShort>
+                    </>
+                )}
+
+
+
+
+                { vedtak.vedtak.tags && vedtak.vedtak.tags.includes('SykepengegrunnlagUnder2G') }
+                    <>
+                        <BodyShort size="small" spacing>
+                            Sykepengegrunnlaget ditt er mindre enn to ganger grunnbeløpet. Hvis du også oppfyller
+                            kravene for arbeidsavklaringspenger, kan du velge å få det isteden.
+                        </BodyShort>
+                        <BodyShort size="small" spacing>
+                            Sykepenger og
+                            arbeidsavklaringspenger beregnes på forskjellige måter. Derfor kan grunnlaget du kan få for
+                            arbeidsavklaringspenger være høyere enn det du kan få for sykepenger.
+                        </BodyShort>
+                        <BodyShort size="small" spacing>
+                            Hvis du ønsker mer
+                            informasjon om arbeidsavklaringspenger, ber vi deg <Link href={tekst('behandling.lenke.url')} target="_blank">
+                            kontakte NAV
+                    </Link>.
                         </BodyShort>
                     </>
                 )}
