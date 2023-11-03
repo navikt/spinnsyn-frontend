@@ -1,6 +1,6 @@
 import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
-import { kunDirekte } from './rs-vedtak'
+import { inntektUnder2g, kunDirekte } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 
 export const skjønnsfastsattBrukerutbetaling = jsonDeepCopy(kunDirekte)

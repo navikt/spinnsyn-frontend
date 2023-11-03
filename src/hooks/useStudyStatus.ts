@@ -11,7 +11,6 @@ export function useStudyStatus(id: string) {
             }
 
             const response = await fetchResult.json()
-
             return response.active
         },
     })
