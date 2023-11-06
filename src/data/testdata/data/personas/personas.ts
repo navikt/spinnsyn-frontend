@@ -1,7 +1,8 @@
 import { Persona } from '../../testperson'
 import {
     avvistVedtak,
-    avvistVedtakMedLavInntekt, inntektUnder2g,
+    avvistVedtakMedLavInntekt,
+    inntektUnder2g,
     kombinertDirekteOgRefusjon,
     kunAgPeriode,
     kunDirekte,
@@ -118,7 +119,6 @@ export const revurdertOgAnnullert: Persona = {
     vedtak: [revurdertOgAnnullertVedtak],
     beskrivelse: 'Vedtak som både er revurdert og senere annulert',
 }
-
 
 export const under2gInntekt: Persona = {
     vedtak: [inntektUnder2g],

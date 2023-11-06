@@ -16,10 +16,10 @@ import {
     skjønnsfastsattBrukerutbetalingPerson,
     skjønnsfastsattFlereArbeidsgiverePerson,
     skjønnsfastsattRefusjonPerson,
-    slutterMedDelvisRefusjon, under2gInntekt,
+    slutterMedDelvisRefusjon,
+    under2gInntekt,
     utenData,
 } from './data/personas/personas'
-import {inntektUnder2g} from "./data/vedtak/rs-vedtak";
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
@@ -66,7 +66,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
         ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
         ['kun-ag-periode']: jsonDeepCopy(kunArbedisgiverPerioder),
-        ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt)
+        ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
     },
     ['testing']: {
         ['uten-data']: jsonDeepCopy(utenData),
