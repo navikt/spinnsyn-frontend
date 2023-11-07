@@ -1,4 +1,4 @@
-import { Accordion, Alert, BodyShort, Label, Link } from '@navikt/ds-react'
+import {Accordion, Alert, BodyShort, Detail, Label, Link, Panel} from '@navikt/ds-react'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
@@ -111,21 +111,21 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
 
                 {vedtak.vedtak.tags && vedtak.vedtak.tags.includes('SykepengegrunnlagUnder2G') && (
                     <>
-                        <BodyShort size="small" className="mt-4 border-t border-gray-400 pt-4" spacing>
+                        <Detail className="mt-4 border-t border-gray-400 pt-4" spacing>
                             Sykepengegrunnlaget ditt er mindre enn to ganger grunnbeløpet. Hvis du også oppfyller
                             kravene for arbeidsavklaringspenger, kan du velge å få det isteden.
-                        </BodyShort>
-                        <BodyShort size="small" spacing>
+                        </Detail>
+                        <Detail spacing>
                             Sykepenger og arbeidsavklaringspenger beregnes på forskjellige måter. Derfor kan grunnlaget
                             du kan få for arbeidsavklaringspenger være høyere enn det du kan få for sykepenger.
-                        </BodyShort>
-                        <BodyShort size="small" spacing>
+                        </Detail>
+                        <Detail spacing>
                             Hvis du ønsker mer informasjon om arbeidsavklaringspenger, ber vi deg{' '}
                             <Link href={tekst('behandling.lenke.url')} target="_blank">
                                 kontakte NAV
                             </Link>
                             .
-                        </BodyShort>
+                        </Detail>
                     </>
                 )}
 
