@@ -111,7 +111,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
 
                 {vedtak.vedtak.tags && vedtak.vedtak.tags.includes('SykepengegrunnlagUnder2G') && (
                     <>
-                        <BodyShort size="small" spacing>
+                        <BodyShort size="small" className="mt-4 border-t border-gray-400 pt-4" spacing>
                             Sykepengegrunnlaget ditt er mindre enn to ganger grunnbeløpet. Hvis du også oppfyller
                             kravene for arbeidsavklaringspenger, kan du velge å få det isteden.
                         </BodyShort>
