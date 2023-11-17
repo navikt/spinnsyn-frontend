@@ -3,7 +3,7 @@
     "version": "0.1.1",
     "private": true,
     "dependencies": {
-        "@grafana/faro-web-sdk": "^1.2.3",
+        "@grafana/faro-web-sdk": "^1.2.7",
         "@navikt/aksel-icons": "^5.10.2",
         "@navikt/ds-css": "^5.10.2",
         "@navikt/ds-react": "^5.10.2",
