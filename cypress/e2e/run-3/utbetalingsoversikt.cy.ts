@@ -181,15 +181,11 @@ describe('Utbetalingsoversikt', () => {
                 cy.get('[data-cy="dag-beskrivelse-MinimumInntekt"]')
                     .contains(
                         'Du har et sykepengegrunnlag på mindre enn et halvt grunnbeløp i året. ' +
-                            'Det betyr at du ikke kan få sykepenger.',
+                            'Det betyr at du ikke kan få sykepenger,',
                     )
                     .get('a')
                     .contains('grunnbeløp')
-                    .should(
-                        'have.attr',
-                        'href',
-                        'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden',
-                    )
+                    .should('have.attr', 'href', 'https://www.nav.no/grunnbelopet')
 
                 cy.get('[data-cy="dag-label-EgenmeldingUtenforArbeidsgiverperiode"]').contains('Egenmelding')
                 cy.get('[data-cy="dag-beskrivelse-EgenmeldingUtenforArbeidsgiverperiode"]').contains(
@@ -198,7 +194,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-MinimumSykdomsgrad"]').contains('Sykmeldt i for liten grad')
                 cy.get('[data-cy="dag-beskrivelse-MinimumSykdomsgrad"]').contains(
-                    'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
+                    'Du har oppgitt at du har jobbet mer enn sykmeldingsgraden i sykmeldingen. Du må være minst 20 prosent borte fra jobb på grunn av sykdom eller skade for å få sykepenger',
                 )
 
                 cy.get('[data-cy="dag-label-ManglerOpptjening"]').contains('Jobbet for kort')

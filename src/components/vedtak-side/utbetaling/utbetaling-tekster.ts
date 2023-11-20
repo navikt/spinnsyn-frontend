@@ -12,7 +12,7 @@ const UtbetalingTekster = {
     'utbetaling.sykepengegrunnlag.under6g.innhold':
         'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din. Derfor vil sykepengegrunnlaget og den samlede årsinntekten ofte være det samme.',
     'utbetaling.sykepengegrunnlag.over6g.innhold':
-        'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Denne regelen står i <a href="https://lovdata.no/nav/folketrygdloven/kap8" target="_blank">folketrygdloven § 8-10</a>.',
+        'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Denne regelen står i <a href="https://lovdata.no/nav/folketrygdloven/kap8" target="_blank">folketrygdloven § 8-10</a>.',
     'utbetaling.sykepengegrunnlag.skjønn':
         'I noen saker må NAV fastsette sykepengegrunnlaget ved å bruke skjønn. Da ser en saksbehandler på saken din og vurderer hva som er det riktige sykepengegrunnlaget. Hvis NAV har brukt skjønn til å fastsette sykepengegrunnlaget ditt, og resultatet ble et annet enn vi tror du forventet, skal du ha fått et eget brev om det. ',
     'utbetaling.dagligbelop.tittel': 'Sykepenger per dag',
@@ -92,15 +92,16 @@ const UtbetalingTekster = {
         'Etter at du har fylt 67 år, får du ikke sykepenger fra NAV i mer enn 60 dager.',
     'utbetaling.tabell.avvist.MinimumInntekt':
         'Du har et sykepengegrunnlag på mindre enn et halvt ' +
-        '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
-        ' i året. Det betyr at du ikke kan få sykepenger.',
+        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
+        ' i året. Det betyr at du ikke kan få sykepenger, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, andre avsnitt.',
     'utbetaling.tabell.avvist.MinimumInntektOver67':
         'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to  ' +
-        '<a href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden" target="_blank">grunnbeløp</a> ' +
+        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
         ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet.',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
         'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
-    'utbetaling.tabell.avvist.MinimumSykdomsgrad': 'Du må være minst 20 prosent sykmeldt for å få sykepenger.',
+    'utbetaling.tabell.avvist.MinimumSykdomsgrad':
+        'Du har oppgitt at du har jobbet mer enn sykmeldingsgraden i sykmeldingen. Du må være minst 20 prosent borte fra jobb på grunn av sykdom eller skade for å få sykepenger, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
         'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.',
     'utbetaling.tabell.avvist.ManglerMedlemskap':
@@ -131,13 +132,11 @@ const UtbetalingTekster = {
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67':
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67':
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': '',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a> når vi har behandlet saken din.',
+    'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening':
         'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a> når vi har behandlet saken din.',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap':
