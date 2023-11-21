@@ -106,6 +106,11 @@ type Sykepengegrunnlagsfakta =
     | {
           fastsatt: 'EtterHovedregel'
           arbeidsgivere: Arbeidsgiver[]
+          omregnetÅrsinntekt: number
+          innrapportertÅrsinntekt: number
+          avviksprosent: number
+          '6G': number
+          tags: string[]
       }
     | ({
           fastsatt: 'EtterSkjønn'
