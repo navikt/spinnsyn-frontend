@@ -28,7 +28,7 @@
         "react-dom": "^18.2.0",
         "remeda": "^1.29.0",
         "tailwind-merge": "^2.0.0",
-        "typescript": "^5.2.2",
+        "typescript": "^5.3.2",
         "uuid": "^9.0.1"
     },
     "devDependencies": {
