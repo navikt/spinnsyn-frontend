@@ -10,7 +10,7 @@ import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
-import { Feedback } from '../feedback/feedback'
+import { Flexjar } from '../flexjar/flexjar'
 import { useToggle } from '../../toggles/context'
 
 import AnnulleringsInfo from './annullering/annullering'
@@ -134,13 +134,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
 
             {flexjarToggle.enabled && (
-                <Feedback
+                <Flexjar
                     erDirekteutbetaling={erDirekteutbetaling}
                     erRefusjon={erRefusjon}
                     harAvvisteDager={harAvvisteDager}
                     annullert={vedtak.annullert}
                     revurdert={vedtak.revurdert}
-                ></Feedback>
+                ></Flexjar>
             )}
         </>
     )
