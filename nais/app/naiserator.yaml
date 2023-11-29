@@ -18,7 +18,9 @@ spec:
   replicas:
     min: 2
     max: 4
-    cpuThresholdPercentage: 90
+    scalingStrategy:
+      cpu:
+        thresholdPercentage: 90
   resources:
     limits:
       memory: {{memory}}
