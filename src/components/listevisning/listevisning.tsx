@@ -21,12 +21,12 @@ const Listevisning = () => {
 
     return (
         <>
-            <header className="mt-4 flex items-center justify-between pb-8 ">
+            <div className="mt-4 flex items-center justify-between pb-8 ">
                 <Heading size="xlarge" level="1">
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
                 {kanVelgePerson && <Person />}
-            </header>
+            </div>
 
             <LenkepanelGruppering
                 dataCy="uleste-vedtak"

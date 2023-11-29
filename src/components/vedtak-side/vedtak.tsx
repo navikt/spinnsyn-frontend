@@ -78,12 +78,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     return (
         <>
             {!erArkivering && (
-                <header className="mt-4 flex items-center justify-between pb-8 ">
+                <div className="mt-4 flex items-center justify-between pb-8 ">
                     <Heading size="xlarge" level="1">
                         {tekst('spinnsyn.sidetittel.vedtak')}
                     </Heading>
                     {kanVelgePerson && <Person />}
-                </header>
+                </div>
             )}
 
             {!annullertEllerRevurdert && (
