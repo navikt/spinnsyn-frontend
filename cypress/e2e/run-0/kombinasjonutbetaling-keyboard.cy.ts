@@ -74,6 +74,8 @@ describe('Kombinasjonutbetaling keyboard', () => {
 
         cy.realPress('Tab')
         cy.focused().contains('endre svarene i søknaden')
+        cy.realPress('Tab')
+        cy.focused().contains('inntektsmelding')
 
         cy.realPress('Tab') // Retten til å klage link
         cy.focused().contains('retten til å klage')
