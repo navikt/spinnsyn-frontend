@@ -27,6 +27,11 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                 {' Har du funnet en feil i vedtaket som skyldes feil i søknaden kan du endre dette selv ved å '}
                 <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />.
             </BodyLong>
+            <BodyLong spacing>
+                {'Hvis du er usikker på om opplysningene om deg i '}
+                <LenkeMedAmplitude url="/syk/sykefravaer/inntektsmeldinger" tekst="inntektsmeldingen" />
+                {' fra arbeidsgiveren din er riktig, kontakt arbeidsgiveren din.'}
+            </BodyLong>
         </>
     )
 }
