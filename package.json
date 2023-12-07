@@ -9,7 +9,7 @@
         "@navikt/ds-react": "^5.11.4",
         "@navikt/ds-tailwind": "^5.11.4",
         "@navikt/ds-tokens": "^5.7.6",
-        "@navikt/nav-dekoratoren-moduler": "^2.1.4",
+        "@navikt/nav-dekoratoren-moduler": "^2.1.5",
         "@navikt/next-api-proxy": "^3.4.0",
         "@navikt/next-logger": "^1.21.0",
         "@sentry/nextjs": "^7.77.0",
