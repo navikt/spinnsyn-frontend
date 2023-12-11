@@ -26,6 +26,7 @@ import {
     skjønnsfastsattRefusjon,
 } from '../vedtak/skjønnsfastsatt'
 import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
+import { julesoknadVedtak } from '../vedtak/julesoknad'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -73,6 +74,12 @@ export const kunDirektePerson: Persona = {
     vedtak: [kunDirekte],
     kontonummer: '10011110011',
     beskrivelse: 'Utbetaling til sykmeldt',
+}
+
+export const julesoknadPerson: Persona = {
+    vedtak: [julesoknadVedtak],
+    kontonummer: '10011110011',
+    beskrivelse: 'Julesøknad med advarsel',
 }
 
 export const direkteUtenKontonummerPerson: Persona = {

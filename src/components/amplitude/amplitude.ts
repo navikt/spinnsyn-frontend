@@ -3,7 +3,13 @@ import { logger } from '@navikt/next-logger'
 
 import { amplitudeEnabled } from '../../utils/environment'
 
-export type validEventNames = 'navigere' | 'accordion lukket' | 'accordion åpnet' | 'skjema åpnet' | 'knapp klikket' //Bruk kun navn fra taksonomien
+export type validEventNames =
+    | 'navigere'
+    | 'accordion lukket'
+    | 'accordion åpnet'
+    | 'skjema åpnet'
+    | 'knapp klikket'
+    | 'alert vist' //Bruk kun navn fra taksonomien
 
 export const logEvent = (eventName: validEventNames, eventData: Record<string, string | boolean>) => {
     if (window) {

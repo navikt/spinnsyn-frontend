@@ -9,6 +9,7 @@ import {
     eldgammelt,
     etVedtakFlereArbeidsgivere,
     forLavInntektPerson,
+    julesoknadPerson,
     kombinasjonPerson,
     kunArbedisgiverPerioder,
     kunDirektePerson,
@@ -45,6 +46,7 @@ export type PersonaKey =
     | 'alle-avviste-dager'
     | 'revurdert-og-annullert'
     | 'under-2g-beskjed'
+    | 'julesoknad'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -67,6 +69,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
         ['kun-ag-periode']: jsonDeepCopy(kunArbedisgiverPerioder),
         ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
+        ['julesoknad']: jsonDeepCopy(julesoknadPerson),
     },
     ['testing']: {
         ['uten-data']: jsonDeepCopy(utenData),

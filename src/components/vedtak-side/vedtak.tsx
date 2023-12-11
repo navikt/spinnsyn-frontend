@@ -23,6 +23,8 @@ import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 import { BegrunnelseForSkjonnsfastsetting } from './begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
 import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn'
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
+import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
+import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 
 const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
 
@@ -92,6 +94,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </BodyLong>
                 </>
             )}
+            {skalViseJulesoknadWarning(vedtak) && <JulesoknadWarning />}
 
             {annullertEllerRevurdert && (
                 <>
