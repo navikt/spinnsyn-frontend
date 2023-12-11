@@ -10,6 +10,7 @@ import UtbetalingPanel from '../../panel/utbetaling-panel'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 
+// det er denne vi endrer på
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
