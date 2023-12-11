@@ -5,7 +5,7 @@ import { logEvent } from '../../amplitude/amplitude'
 
 export const JulesoknadWarning = () => {
     useEffect(() => {
-        logEvent('alert vist', { komponent: 'julesoknad warning' })
+        logEvent('alert vist', { variant: 'warning', tekst: 'julesøknad utbetaling advarsel' })
     }, [])
     return (
         <Alert variant="warning" className="mt-4">
