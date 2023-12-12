@@ -18,6 +18,7 @@ import {
     skjønnsfastsattRefusjonPerson,
     slutterMedDelvisRefusjon,
     under2gInntekt,
+    vedtakMed0UtbetalingPerson,
     utenData,
 } from './data/personas/personas'
 
@@ -45,6 +46,7 @@ export type PersonaKey =
     | 'alle-avviste-dager'
     | 'revurdert-og-annullert'
     | 'under-2g-beskjed'
+    | 'vedtak-med-0-utbetaling'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -67,6 +69,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
         ['kun-ag-periode']: jsonDeepCopy(kunArbedisgiverPerioder),
         ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
+        ['vedtak-med-0-utbetaling']: jsonDeepCopy(vedtakMed0UtbetalingPerson),
     },
     ['testing']: {
         ['uten-data']: jsonDeepCopy(utenData),

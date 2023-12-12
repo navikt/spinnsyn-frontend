@@ -9,7 +9,7 @@ import {
     slutterMedRefusjon,
     ulestGammeltVedtak,
     ulestVedtakUtenUtbetalingsdager,
-    vedtakAnnullert,
+    vedtakAnnullert, vedtakMed0Utbetaling,
     vedtakMed40Grad,
     vedtakMedDetMeste,
     vedtakRedusertTil6G,
@@ -123,4 +123,9 @@ export const revurdertOgAnnullert: Persona = {
 export const under2gInntekt: Persona = {
     vedtak: [inntektUnder2g],
     beskrivelse: 'Vedtak for bruker under 2g i inntekt som dermed får en ekstra beskjed',
+}
+
+export const vedtakMed0UtbetalingPerson: Persona = {
+    vedtak: [vedtakMed0Utbetaling],
+    beskrivelse: 'Vedtak for bruker med null i utbetaling',
 }
