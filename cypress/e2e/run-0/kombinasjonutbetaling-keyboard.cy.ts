@@ -19,8 +19,8 @@ describe('Kombinasjonutbetaling keyboard', () => {
 
         cy.realPress('Tab')
         cy.focused().within(() => {
-            cy.get('h3').contains('Svar på søknad om sykepenger')
-            cy.get('p').contains('Sykmeldt fra Matbutikken AS')
+            cy.get('div').contains('Svar på søknad om sykepenger')
+            cy.get('div').contains('Sykmeldt fra Matbutikken AS')
         })
         cy.realPress('Enter')
     })
