@@ -16,32 +16,32 @@ const DagTabell = ({ dager }: DagTabellProps) => {
         <Table zebraStripes={true} className="bg-white" size="medium">
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell className="p-3 md:p-4">
+                    <Table.ColumnHeader scope="col">
                         <Label spacing as="span" size="small">
                             Dato
                         </Label>
-                    </Table.HeaderCell>
-                    <Table.HeaderCell className="p-3 text-right md:p-4">
+                    </Table.ColumnHeader>
+                    <Table.ColumnHeader scope="col" align="right">
                         <Label spacing as="span" size="small">
                             Sum
                         </Label>
-                    </Table.HeaderCell>
-                    <Table.HeaderCell className="p-3 text-right md:p-4">
+                    </Table.ColumnHeader>
+                    <Table.ColumnHeader scope="col" align="right">
                         <Label spacing as="span" size="small">
                             Dagtype
                         </Label>
-                    </Table.HeaderCell>
+                    </Table.ColumnHeader>
                 </Table.Row>
             </Table.Header>
             <Table.Body data-cy="dag-tabell-body">
                 {dager.map((dag, idx) => (
                     <Table.Row key={idx}>
-                        <Table.DataCell>
+                        <Table.HeaderCell scope="row">
                             <BodyShort size="small" as="span">
                                 {dayjs(dag.dato).format('DD.MMM')}
                             </BodyShort>
-                        </Table.DataCell>
-                        <Table.DataCell className="whitespace-nowrap text-right">
+                        </Table.HeaderCell>
+                        <Table.DataCell align="right" className="whitespace-nowrap">
                             <BodyShort size="small" as="span">
                                 {dag.dagtype === 'NavDag' ||
                                 dag.dagtype === 'NavDagSyk' ||
@@ -50,7 +50,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                                     : '-'}
                             </BodyShort>
                         </Table.DataCell>
-                        <Table.DataCell className="text-right">
+                        <Table.DataCell align="right">
                             <DagLabel dag={dag} skalViseProsent={true} />
                         </Table.DataCell>
                     </Table.Row>
