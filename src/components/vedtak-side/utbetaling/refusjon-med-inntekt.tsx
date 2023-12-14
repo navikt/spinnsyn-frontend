@@ -22,9 +22,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                     {annullertEllerRevurdert ? (
                         <del>
                             {belop + ' kroner'}
-                            <span className="absolute w-1 h-1 overflow-hidden -m-1 p-0 border-0 clip-[rect(0,0,0,0)]">
-                                (annullert eller revidert)
-                            </span>
+                            <span className="sr-only">(annullert eller revudert)</span>
                         </del>
                     ) : (
                         <span>{belop + ' kroner'}</span>
