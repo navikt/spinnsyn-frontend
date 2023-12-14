@@ -26,11 +26,11 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                             Sum
                         </Label>
                     </Table.ColumnHeader>
-                    <Table.HeaderCell scope="col" align="right">
+                    <Table.ColumnHeader scope="col" align="right">
                         <Label spacing as="span" size="small">
                             Dagtype
                         </Label>
-                    </Table.HeaderCell>
+                    </Table.ColumnHeader>
                 </Table.Row>
             </Table.Header>
             <Table.Body data-cy="dag-tabell-body">
