@@ -19,7 +19,14 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             sectionLabel="Refusjon til arbeidsgiver"
             tittel={
                 <Heading level="2" size="large">
-                    <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
+                    <del className={annullertEllerRevurdert ? 'line-through' : undefined}>
+                        {belop + ' kroner'}
+                        {annullertEllerRevurdert && (
+                            <span className="absolute w-1 h-1 overflow-hidden -m-1 p-0 border-0 clip-[rect(0,0,0,0)]">
+                                (annullert eller revudert)
+                            </span>
+                        )}
+                    </del>
                     <BodyShort as="span" className="block">
                         {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                             '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
