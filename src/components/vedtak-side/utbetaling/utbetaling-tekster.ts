@@ -67,8 +67,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag':
         'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
-    'utbetaling.tabell.label.Arbeidsdag':
-        'Du får ikke sykepenger for hele dager du har vært på jobb. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',
+    'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
     'utbetaling.tabell.label.NavDag': '',
     'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
     'utbetaling.tabell.label.NavDagDelvisSyk':

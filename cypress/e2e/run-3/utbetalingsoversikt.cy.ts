@@ -73,7 +73,11 @@ describe('Utbetalingsoversikt', () => {
         cy.get('[data-cy="dag-tabell-body"]')
             .first()
             .within(() => {
-                cy.contains('30.jan.').parent().parent().should('contain', 'Arbeidsdag').and('contain', '-')
+                cy.contains('30.jan.')
+                    .parent()
+                    .parent()
+                    .should('contain', 'Ikke brukt sykmeldingen')
+                    .and('contain', '-')
                 cy.contains('31.jan.')
                     .parent()
                     .parent()
@@ -124,10 +128,9 @@ describe('Utbetalingsoversikt', () => {
                     'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
                 )
 
-                cy.get('[data-cy="dag-label-Arbeidsdag"]').contains('Arbeidsdag')
+                cy.get('[data-cy="dag-label-Arbeidsdag"]').contains('Ikke brukt sykmeldingen')
                 cy.get('[data-cy="dag-beskrivelse-Arbeidsdag"]').contains(
-                    'Du får ikke sykepenger for hele dager du har vært på jobb. ' +
-                        'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet.',
+                    'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
                 )
 
                 cy.get('[data-cy="dag-label-NavDagSyk"]').contains('Syk')
