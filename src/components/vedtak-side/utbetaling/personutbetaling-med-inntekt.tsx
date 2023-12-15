@@ -28,7 +28,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                     {annullertEllerRevurdert ? (
                         <del>
                             {belop + ' kroner'}
-                            <span className="sr-only">(annullert eller revurdert)</span>
+                            <span className="sr-only">(ikke gjeldende)</span>
                         </del>
                     ) : (
                         <span>{belop + ' kroner'}</span>
