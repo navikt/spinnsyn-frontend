@@ -25,7 +25,14 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             sectionLabel="Utbetaling til deg"
             tittel={
                 <Heading data-cy="header-sykepenger-til-deg" level="2" size="large">
-                    <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
+                    {annullertEllerRevurdert ? (
+                        <del>
+                            {belop + ' kroner'}
+                            <span className="sr-only">(ikke gjeldende)</span>
+                        </del>
+                    ) : (
+                        <span>{belop + ' kroner'}</span>
+                    )}
                     <BodyShort as="span" className="block">
                         {tekst('utbetaling.person.systemtittel')}
                     </BodyShort>

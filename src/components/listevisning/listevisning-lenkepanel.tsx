@@ -1,4 +1,4 @@
-import { BodyLong, Detail, Heading, LinkPanel, Tag } from '@navikt/ds-react'
+import { LinkPanel, Tag, BodyShort } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 import Link from 'next/link'
@@ -47,14 +47,13 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
             >
                 <div className="flex gap-3 max-[560px]:flex-col">
                     <div className="grow">
-                        <header>
-                            <Detail>{vedtakPeriode}</Detail>
-                            <Heading size="small" level="3" className="my-1">
-                                {vedtakTittel}
-                            </Heading>
-                        </header>
-
-                        <BodyLong>{arbeidsgiverTekst}</BodyLong>
+                        <LinkPanel.Title>
+                            <BodyShort size="small" spacing>
+                                {vedtakPeriode}
+                            </BodyShort>
+                            {vedtakTittel}
+                        </LinkPanel.Title>
+                        <LinkPanel.Description>{arbeidsgiverTekst}</LinkPanel.Description>
                     </div>
 
                     <div className="flex shrink-0 items-center">

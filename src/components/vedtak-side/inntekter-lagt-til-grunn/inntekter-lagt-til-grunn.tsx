@@ -1,4 +1,4 @@
-import { Accordion, Alert, BodyShort, Detail, Label, Link } from '@navikt/ds-react'
+import { Accordion, Alert, BodyShort, Detail, Link } from '@navikt/ds-react'
 import React from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
@@ -46,7 +46,9 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     return (
         <VedtakExpansionCard vedtak={vedtak} tittel={tekst('utbetaling.inntekt.info.tittel')}>
             <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
-                <Label className="w-full">{storeTilStoreOgSmå(vedtak.orgnavn)}</Label>
+                <BodyShort weight="semibold" className="w-full">
+                    {storeTilStoreOgSmå(vedtak.orgnavn)}
+                </BodyShort>
                 <InfoSection label={tekst('utbetaling.inntekt.info.beregnet')} value={inntektMnd} />
                 <InfoSection label={tekst('utbetaling.inntekt.info.omregnet')} value={inntektAr} />
                 {harFlereArbeidsgivere(vedtak) === 'ja' && (

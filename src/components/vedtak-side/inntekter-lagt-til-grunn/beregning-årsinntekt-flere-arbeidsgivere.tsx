@@ -1,4 +1,4 @@
-import { Label } from '@navikt/ds-react'
+import { BodyShort } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -16,7 +16,9 @@ const BeregningÅrsinntektFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
         <>
             {arbeidsgivere.map((arbeidsgiverNavn, idx) => (
                 <div key={idx}>
-                    <Label data-cy={`annen-arbeidsgiver-${idx}`}>{storeTilStoreOgSmå(arbeidsgiverNavn)}</Label>
+                    <BodyShort weight="semibold" data-cy={`annen-arbeidsgiver-${idx}`}>
+                        {storeTilStoreOgSmå(arbeidsgiverNavn)}
+                    </BodyShort>
                     <InfoSection
                         ariaLabel={`${storeTilStoreOgSmå(arbeidsgiverNavn)} ${tekst('utbetaling.inntekt.årsinntekt')}`}
                         label={tekst('utbetaling.inntekt.årsinntekt')}
