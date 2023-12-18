@@ -22,6 +22,8 @@ jobs:
     needs: felles-workflow
     if: always() && needs.felles-workflow.outputs.image
     uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
+    permissions:
+      id-token: write
     with:
       image: ${{ needs.felles-workflow.outputs.image }}
       app: spinnsyn-arkivering
@@ -34,6 +36,8 @@ jobs:
     needs: felles-workflow
     if: always() && needs.felles-workflow.outputs.image
     uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@master
+    permissions:
+      id-token: write
     with:
       image: ${{ needs.felles-workflow.outputs.image }}
       app: spinnsyn-interne
