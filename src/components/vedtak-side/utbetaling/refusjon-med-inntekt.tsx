@@ -11,6 +11,7 @@ import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 
 // det er denne vi endrer på
+// http://localhost:8080/syk/sykepenger?testperson=vedtak-med-0-utbetaling&id=b40ac0ce-8ff3-4218-b981-825f2e139ab1
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
@@ -21,17 +22,22 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             tittel={
                 <Heading level="2" size="large">
                     <span className={annullertEllerRevurdert ? 'line-through' : undefined}>{belop + ' kroner'}</span>
-                    <BodyShort as="span" className="block">
-                        {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
-                            '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
-                        })}
-                    </BodyShort>
+                    {vedtak.sykepengebelopArbeidsgiver > 0 && (
+                        <BodyShort as="span" className="block">
+                            {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
+                                '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
+                            })}
+                        </BodyShort>
+                    )}
                 </Heading>
+
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="refusjon"
         >
             <VedtakPeriode vedtak={vedtak} />
+            {  vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} /> }
+            <div>gammel</div>
             <ArbeidsgiverInfo vedtak={vedtak} />
         </UtbetalingPanel>
     )

@@ -13,6 +13,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
     return (
         <section aria-label={props.sectionLabel}>
             <Panel
+
                 className="mt-4 rounded-md"
                 border
                 data-cy={`utbetaling-panel-${props.dataCy}${props.erUgyldig ? '-ugyldig' : ''}`}

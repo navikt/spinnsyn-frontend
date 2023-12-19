@@ -71,7 +71,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     }
 
     const vedtakMedBareArbeidsgiverperiodedager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
-    const skalViseRefusjon = ( erRefusjon || vedtakMedBareArbeidsgiverperiodedager) && !(vedtak.sykepengebelopArbeidsgiver > 0) // dette fjerner vedtak her, http://localhost:8080/syk/sykepenger?testperson=vedtak-med-0-utbetaling&id=b40ac0ce-8ff3-4218-b981-825f2e139ab1
+    const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
+    // const skalViseRefusjon = ( erRefusjon || vedtakMedBareArbeidsgiverperiodedager) && !(vedtak.sykepengebelopArbeidsgiver > 0) // dette fjerner vedtak her, http://localhost:8080/syk/sykepenger?testperson=vedtak-med-0-utbetaling&id=b40ac0ce-8ff3-4218-b981-825f2e139ab1
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
