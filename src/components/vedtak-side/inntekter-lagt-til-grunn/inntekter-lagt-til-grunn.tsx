@@ -13,8 +13,12 @@ import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-fler
 import { InfoSection } from './info-seksjon'
 import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
+
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const finnRiktigInntekt = () => {
+        const spGrunnlagFaktaOmregnetAarsinntekt = vedtak.vedtak.sykepengegrunnlagsfakta?.omregnetÅrsinntekt
+        if (spGrunnlagFaktaOmregnetAarsinntekt) return spGrunnlagFaktaOmregnetAarsinntekt / 12
+
         const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
         if (grunnlagPerAg && vedtak.vedtak.organisasjonsnummer) {
             const inntektFraGrunnlagPerAg = grunnlagPerAg[vedtak.vedtak.organisasjonsnummer]

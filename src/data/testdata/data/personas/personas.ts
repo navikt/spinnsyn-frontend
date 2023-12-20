@@ -27,6 +27,7 @@ import {
 } from '../vedtak/skjønnsfastsatt'
 import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
 import { julesoknadVedtak } from '../vedtak/julesoknad'
+import { skjonnsfastsattRiktigAarsinntekt } from '../vedtak/skjonnsfastsattRiktigAarsinntekt'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -130,4 +131,8 @@ export const revurdertOgAnnullert: Persona = {
 export const under2gInntekt: Persona = {
     vedtak: [inntektUnder2g],
     beskrivelse: 'Vedtak for bruker under 2g i inntekt som dermed får en ekstra beskjed',
+}
+export const skjonnsfastsattRiktigAarsinntektPersona: Persona = {
+    vedtak: skjonnsfastsattRiktigAarsinntekt,
+    beskrivelse: 'Test av skjønnsfastsatt inntekt med riktig årsinntekt',
 }
