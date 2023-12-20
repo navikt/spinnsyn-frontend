@@ -14,6 +14,7 @@ import {
     kunArbedisgiverPerioder,
     kunDirektePerson,
     revurdertOgAnnullert,
+    skjonnsfastsattRiktigAarsinntektPersona,
     skjønnsfastsattBrukerutbetalingPerson,
     skjønnsfastsattFlereArbeidsgiverePerson,
     skjønnsfastsattRefusjonPerson,
@@ -47,6 +48,7 @@ export type PersonaKey =
     | 'revurdert-og-annullert'
     | 'under-2g-beskjed'
     | 'julesoknad'
+    | 'skjonnsfastsatt-riktig-aarsinntekt'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -77,6 +79,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['veldig-gammelt-vedtak']: jsonDeepCopy(eldgammelt),
         ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
         ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
+        ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
     },
 }
 
