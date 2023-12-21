@@ -3,6 +3,7 @@ import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 export const alleAvvisteDager: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-93gh93rugh93',
     lest: false,
+    organisasjoner: {},
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'INTEGRASJON AS',
     andreArbeidsgivere: {},

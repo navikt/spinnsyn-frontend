@@ -4,6 +4,7 @@ import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 export const vedtakMedDetMeste: RSVedtakWrapper = {
     id: 'a147e9a9-0aa2-4f5f-a8e3-c16c901e4071',
     lest: false,
+    organisasjoner: {},
     vedtak: {
         organisasjonsnummer: '123456789',
         fom: '2021-10-04',
@@ -297,6 +298,7 @@ export const vedtakMedDetMeste: RSVedtakWrapper = {
 export const kunAgPeriode: RSVedtakWrapper = {
     id: '4e044d03-2dfe-45e9-a904-77777723',
     lest: false,
+    organisasjoner: {},
     vedtak: {
         organisasjonsnummer: '123456789',
         fom: '2021-10-04',
@@ -562,6 +564,7 @@ export const kunAgPeriode: RSVedtakWrapper = {
 export const vedtakMed40Grad: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946af',
     lest: true,
+    organisasjoner: {},
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'PENGELØS SPAREBANK',
     andreArbeidsgivere: {},
@@ -704,6 +707,7 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
 export const ulestVedtakUtenUtbetalingsdager: RSVedtakWrapper = {
     id: '99f389f2-0084-481b-bed8-47f6ac3491d4',
     lest: false,
+    organisasjoner: {},
     orgnavn: 'PENGELØS SPAREBANK',
     andreArbeidsgivere: {},
     vedtak: {
@@ -888,6 +892,7 @@ delete ulestGammeltVedtak.vedtak.inntekt
 export const vedtakAnnullert: RSVedtakWrapper = {
     id: '9ae82dd2-dcf1-4c16-9e12-35cb6d634337',
     lest: true,
+    organisasjoner: {},
     lestDato: '2021-05-05T11:50:56.812287Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
@@ -991,6 +996,7 @@ export const vedtakAnnullert: RSVedtakWrapper = {
 export const vedtakRevurdert: RSVedtakWrapper = {
     id: '9ae82dd2-dcf1-4c16-9e12-35cb6d634338',
     lest: true,
+    organisasjoner: {},
     lestDato: '2021-05-03T11:50:56.812287Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
@@ -1087,6 +1093,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
 export const vedtakRevurdertDirekte: RSVedtakWrapper = {
     id: '21eac584-d8ea-4e4b-bf9a-ae0a400009c4',
     lest: true,
+    organisasjoner: {},
     lestDato: '2021-05-03T11:50:56.812287Z',
     orgnavn: 'FLYBUTIKKEN, OSLO',
     andreArbeidsgivere: {},
@@ -1183,6 +1190,7 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
 export const vedtakRevurdertKombinasjon: RSVedtakWrapper = {
     id: '85f25c03-faa8-4a99-8f15-971e9406f64f',
     lest: true,
+    organisasjoner: {},
     lestDato: '2021-05-03T11:50:56.812287Z',
     orgnavn: 'HALVVEIS AS, ALTA',
     andreArbeidsgivere: {},
@@ -1279,6 +1287,7 @@ export const vedtakRevurdertKombinasjon: RSVedtakWrapper = {
 export const avvistVedtak: RSVedtakWrapper = {
     id: '55d8b14f-e1a6-45a8-ac64-b7af1e845b06',
     lest: true,
+    organisasjoner: {},
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
@@ -1460,6 +1469,7 @@ export const avvistVedtak: RSVedtakWrapper = {
 export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
     id: '55d8b14f-e1a6-45a8-ac64-b7af1e845b68',
     lest: false,
+    organisasjoner: {},
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
@@ -1648,6 +1658,7 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
 export const vedtakRedusertTil6G: RSVedtakWrapper = {
     id: '1ae568bd-71ff-4e31-b73f-c0c4ed85e01b',
     lest: true,
+    organisasjoner: {},
     lestDato: '2020-11-02T10:17:38.197496+01:00',
     vedtak: {
         organisasjonsnummer: '12345725',
@@ -1747,6 +1758,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
 export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946df',
     lest: false,
+    organisasjoner: {},
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     vedtak: {
@@ -1904,6 +1916,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
 export const kunDirekte: RSVedtakWrapper = {
     id: '348a5462-456a-4bfc-9b54-11cd77a9937f',
     lest: false,
+    organisasjoner: {},
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     vedtak: {
@@ -2047,6 +2060,7 @@ export const kunDirekte: RSVedtakWrapper = {
 export const slutterMedRefusjon: RSVedtakWrapper = {
     id: '27c0a72f-ec1b-42d1-8961-2ac71ff5fa14',
     lest: true,
+    organisasjoner: {},
     lestDato: '2023-01-17T09:31:55.962938+01:00',
     vedtak: {
         organisasjonsnummer: '112233445',
@@ -2922,6 +2936,7 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
 export const inntektUnder2g: RSVedtakWrapper = {
     id: 'c6bc3796-16cd-4a6a-8e64-7995787b4a45',
     lest: true,
+    organisasjoner: {},
     lestDato: '2023-11-03T14:59:04.026618+01:00',
     vedtak: {
         organisasjonsnummer: '896929119',

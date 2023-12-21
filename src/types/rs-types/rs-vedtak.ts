@@ -12,6 +12,7 @@ export interface RSVedtakWrapper {
     dagerPerson: RSDag[]
     sykepengebelopArbeidsgiver: number
     sykepengebelopPerson: number
+    organisasjoner: Record<string, string>
 }
 
 export interface RSDag {

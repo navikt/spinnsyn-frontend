@@ -3,6 +3,7 @@ import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
     id: '731f152b-6b70-4f07-9d1d-6e2ad6aea4de',
     lest: false,
+    organisasjoner: {},
     lestDato: null,
     vedtak: {
         organisasjonsnummer: '998844551',
