@@ -66,8 +66,6 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                 </Heading>
                 <BodyLong spacing>{parserWithReplace(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
 
-                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.sykepengegrunnlag.skjønn'))}</BodyLong>
-
                 {(!heltAvvist || !harMinstEnForLavInntektDag) && (
                     <>
                         <Heading spacing size="xsmall" level="3">
