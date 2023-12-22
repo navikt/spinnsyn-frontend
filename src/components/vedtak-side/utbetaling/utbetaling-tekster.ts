@@ -13,8 +13,6 @@ const UtbetalingTekster = {
         'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din. Derfor vil sykepengegrunnlaget og den samlede årsinntekten ofte være det samme.',
     'utbetaling.sykepengegrunnlag.over6g.innhold':
         'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Denne regelen står i <a href="https://lovdata.no/nav/folketrygdloven/kap8" target="_blank">folketrygdloven § 8-10</a>.',
-    'utbetaling.sykepengegrunnlag.skjønn':
-        'I noen saker må NAV fastsette sykepengegrunnlaget ved å bruke skjønn. Da ser en saksbehandler på saken din og vurderer hva som er det riktige sykepengegrunnlaget. Hvis NAV har brukt skjønn til å fastsette sykepengegrunnlaget ditt, og resultatet ble et annet enn vi tror du forventet, skal du ha fått et eget brev om det. ',
     'utbetaling.dagligbelop.tittel': 'Sykepenger per dag',
     'utbetaling.dagligbelop.innhold':
         'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
