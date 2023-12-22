@@ -16,8 +16,17 @@ import { MerOmBergningen } from './mer-om-bergningen'
 
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const finnRiktigInntekt = () => {
-        const spGrunnlagFaktaOmregnetAarsinntekt = vedtak.vedtak.sykepengegrunnlagsfakta?.omregnetÅrsinntekt
-        if (spGrunnlagFaktaOmregnetAarsinntekt) return spGrunnlagFaktaOmregnetAarsinntekt / 12
+        if (
+            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterHovedregel' ||
+            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+        ) {
+            const arbeidsgiveren = vedtak.vedtak.sykepengegrunnlagsfakta.arbeidsgivere.find((a) => {
+                return a.arbeidsgiver == vedtak.vedtak.organisasjonsnummer
+            })
+            if (arbeidsgiveren) {
+                return arbeidsgiveren.omregnetÅrsinntekt / 12
+            }
+        }
 
         const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
         if (grunnlagPerAg && vedtak.vedtak.organisasjonsnummer) {
@@ -63,7 +72,10 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                             className="mt-4 border-t border-gray-400 pt-4"
                             bold
                             label={tekst('utbetaling.inntekt.samlet.årsinntekt')}
-                            value={formaterValuta(vedtak.vedtak.grunnlagForSykepengegrunnlag!)}
+                            value={formaterValuta(
+                                vedtak.vedtak.sykepengegrunnlagsfakta?.omregnetÅrsinntekt ||
+                                    vedtak.vedtak.grunnlagForSykepengegrunnlag!,
+                            )}
                         />
                     </>
                 )}

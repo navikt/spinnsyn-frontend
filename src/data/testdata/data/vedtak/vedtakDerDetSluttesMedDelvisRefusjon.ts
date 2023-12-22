@@ -3,6 +3,7 @@ import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 export const vedtakDerDetSluttesMedDelvisRefusjon: RSVedtakWrapper = {
     id: 'd88a1d11-affe-47de-8a47-d308e1b236d1',
     lest: false,
+    organisasjoner: {},
     lestDato: null,
     vedtak: {
         organisasjonsnummer: '967170232',
