@@ -46,7 +46,6 @@ spec:
       rules:
         - application: spinnsyn-backend
         - application: flexjar-backend
-        - application: flex-hotjar-emotions
         - application: sokos-kontoregister-person
           namespace: okonomi
         - application: nav-dekoratoren
