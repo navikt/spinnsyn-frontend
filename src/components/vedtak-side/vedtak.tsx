@@ -71,8 +71,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             query[key] = router.query[key]
         }
     }
+
     const vedtakMedBareArbeidsgiverperiodedager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
-    const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
+    const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager || vedtak.sykepengebelopArbeidsgiver > 0
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
