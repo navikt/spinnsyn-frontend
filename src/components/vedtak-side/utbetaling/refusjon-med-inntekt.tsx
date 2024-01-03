@@ -37,8 +37,6 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         >
             <VedtakPeriode vedtak={vedtak} />
             {  vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} /> }
-            <div>gammel</div>
-            <ArbeidsgiverInfo vedtak={vedtak} />
         </UtbetalingPanel>
     )
 }
