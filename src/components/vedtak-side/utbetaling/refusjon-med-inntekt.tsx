@@ -12,7 +12,15 @@ import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 
 // det er denne vi endrer på
 // http://localhost:8080/syk/sykepenger?testperson=vedtak-med-0-utbetaling&id=b40ac0ce-8ff3-4218-b981-825f2e139ab1
-const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
+
+// ts interface which extends VedtakProps
+interface RefusjonMedInntektProps extends VedtakProps {
+    skalViseRefusjonsMottaker: boolean
+}
+
+
+
+const RefusjonMedInntekt = ({ vedtak, skalViseRefusjonsMottaker }: RefusjonMedInntektProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
@@ -41,7 +49,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="refusjon"
         >
-            <VedtakPeriode vedtak={vedtak} />
+            <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={skalViseRefusjonsMottaker}/>
             {vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} />}
         </UtbetalingPanel>
     )
