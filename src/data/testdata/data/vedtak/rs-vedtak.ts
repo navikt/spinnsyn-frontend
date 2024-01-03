@@ -3021,6 +3021,7 @@ export const vedtakMed0Utbetaling: RSVedtakWrapper = {
     id: 'b40ac0ce-8ff3-4218-b981-825f2e139ab1',
     lest: true,
     lestDato: '2023-11-19T20:32:04.858958+01:00',
+    organisasjoner: {},
     vedtak: {
         organisasjonsnummer: '999999999',
         fom: '2023-11-11',

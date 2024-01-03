@@ -30,7 +30,6 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                         <span>{belop + ' kroner'}</span>
                     )}
                     {vedtak.sykepengebelopArbeidsgiver > 0 && (
-
                         <BodyShort as="span" className="block">
                             {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                                 '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
@@ -38,13 +37,12 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                         </BodyShort>
                     )}
                 </Heading>
-
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="refusjon"
         >
             <VedtakPeriode vedtak={vedtak} />
-            {  vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} /> }
+            {vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} />}
         </UtbetalingPanel>
     )
 }
