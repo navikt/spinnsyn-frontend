@@ -30,8 +30,9 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                         <span>{belop + ' kroner'}</span>
                     )}
                     {vedtak.sykepengebelopArbeidsgiver > 0 && (
-                            {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
+
                         <BodyShort as="span" className="block">
+                            {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
                                 '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
                             })}
                         </BodyShort>
