@@ -41,7 +41,8 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="personutbetaling"
         >
-            <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true}/> {/* skalViseRefusjonsMottaker={true}  tror dette blir riktig fordi vi ikke har noen spesiell logikk for null utbetaling her*/}
+            <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />{' '}
+            {/* skalViseRefusjonsMottaker={true}  tror dette blir riktig fordi vi ikke har noen spesiell logikk for null utbetaling her*/}
             <SykepengerTrekk />
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />

@@ -117,7 +117,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             )}
 
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
-            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} skalViseRefusjonsMottaker={skalViseRefusjon}/>}
+            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} skalViseRefusjonsMottaker={skalViseRefusjon} />}
 
             <InntekterLagtTilGrunn vedtak={vedtak} />
 
