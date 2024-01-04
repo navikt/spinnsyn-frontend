@@ -73,8 +73,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     }
 
     const vedtakMedBareArbeidsgiverperiodedager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
-    const skalViseRefusjon =
-        erRefusjon || vedtakMedBareArbeidsgiverperiodedager || vedtak.sykepengebelopArbeidsgiver > 0
+    const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
