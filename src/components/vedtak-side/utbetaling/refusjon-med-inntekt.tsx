@@ -10,10 +10,6 @@ import UtbetalingPanel from '../../panel/utbetaling-panel'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 
-// det er denne vi endrer på
-// http://localhost:8080/syk/sykepenger?testperson=vedtak-med-0-utbetaling&id=b40ac0ce-8ff3-4218-b981-825f2e139ab1
-
-// ts interface which extends VedtakProps
 interface RefusjonMedInntektProps extends VedtakProps {
     skalViseRefusjonsMottaker: boolean
 }
