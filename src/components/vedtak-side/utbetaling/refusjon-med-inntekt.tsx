@@ -10,11 +10,7 @@ import UtbetalingPanel from '../../panel/utbetaling-panel'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 
-interface RefusjonMedInntektProps extends VedtakProps {
-    skalViseRefusjonsMottaker: boolean
-}
-
-const RefusjonMedInntekt = ({ vedtak, skalViseRefusjonsMottaker }: RefusjonMedInntektProps) => {
+const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
@@ -43,7 +39,7 @@ const RefusjonMedInntekt = ({ vedtak, skalViseRefusjonsMottaker }: RefusjonMedIn
             erUgyldig={vedtak.revurdert || vedtak.annullert}
             dataCy="refusjon"
         >
-            <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={skalViseRefusjonsMottaker} />
+            <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={vedtak.sykepengebelopArbeidsgiver > 0} />
             {vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} />}
         </UtbetalingPanel>
     )
