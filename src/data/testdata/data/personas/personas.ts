@@ -10,6 +10,7 @@ import {
     ulestGammeltVedtak,
     ulestVedtakUtenUtbetalingsdager,
     vedtakAnnullert,
+    vedtakMed0Utbetaling,
     vedtakMed40Grad,
     vedtakMedDetMeste,
     vedtakRedusertTil6G,
@@ -135,4 +136,9 @@ export const under2gInntekt: Persona = {
 export const skjonnsfastsattRiktigAarsinntektPersona: Persona = {
     vedtak: skjonnsfastsattRiktigAarsinntekt,
     beskrivelse: 'Test av skjønnsfastsatt inntekt med riktig årsinntekt',
+}
+
+export const vedtakMed0UtbetalingPerson: Persona = {
+    vedtak: [vedtakMed0Utbetaling],
+    beskrivelse: 'Vedtak for bruker med null i utbetaling',
 }
