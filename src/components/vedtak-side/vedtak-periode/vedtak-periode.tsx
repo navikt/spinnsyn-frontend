@@ -8,14 +8,19 @@ import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 
 interface VedtakPeriodeProps extends VedtakProps {
-    skalViseRefusjonsMottaker: boolean
+    skalViseRefusjonsMottaker?: boolean
 }
 
 const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker }: VedtakPeriodeProps) => {
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
 
     return (
-        <div className={cn({ 'mb-2': !skalViseRefusjonsMottaker, 'mb-8 border-b border-gray-400': skalViseRefusjonsMottaker }, 'pb-2')}>
+        <div
+            className={cn(
+                { 'mb-2': !skalViseRefusjonsMottaker, 'mb-8 border-b border-gray-400': skalViseRefusjonsMottaker },
+                'pb-2',
+            )}
+        >
             <BodyShort>
                 {getLedetekst(tekst('utbetaling.person.fra'), {
                     '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
