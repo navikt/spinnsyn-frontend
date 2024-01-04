@@ -14,7 +14,9 @@ export default function UseMerkVedtakSomLest() {
             })
         },
         onSuccess: async (_, vedtaksId) => {
-            await queryClient.invalidateQueries(['vedtak'])
+            await queryClient.invalidateQueries({
+                queryKey: ['vedtak'],
+            })
             logger.info(`vedtak ${vedtaksId} ble lest`)
         },
     })
