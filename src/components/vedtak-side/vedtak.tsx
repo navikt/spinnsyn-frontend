@@ -10,8 +10,8 @@ import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
 import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
-import { Flexjar } from '../flexjar/flexjar'
 import { useToggle } from '../../toggles/context'
+import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetrikk'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -136,16 +136,28 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
-
-            {flexjarToggle.enabled && (
-                <Flexjar
-                    erDirekteutbetaling={erDirekteutbetaling}
-                    erRefusjon={erRefusjon}
-                    harAvvisteDager={harAvvisteDager}
-                    annullert={vedtak.annullert}
-                    revurdert={vedtak.revurdert}
-                ></Flexjar>
-            )}
+            {
+                /* {
+                    flexjarToggle.enabled && (
+                        <FlexjarVarSidenNyttig
+                            erDirekteutbetaling={erDirekteutbetaling}
+                            erRefusjon={erRefusjon}
+                            harAvvisteDager={harAvvisteDager}
+                            annullert={vedtak.annullert}
+                            revurdert={vedtak.revurdert}
+                        />
+                    )
+                }*/
+                flexjarToggle.enabled && (
+                    <FlexjarPohelseHelsemetrikk
+                        erDirekteutbetaling={erDirekteutbetaling}
+                        erRefusjon={erRefusjon}
+                        harAvvisteDager={harAvvisteDager}
+                        annullert={vedtak.annullert}
+                        revurdert={vedtak.revurdert}
+                    />
+                )
+            }
         </>
     )
 }
