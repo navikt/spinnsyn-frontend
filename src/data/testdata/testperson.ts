@@ -8,6 +8,7 @@ import {
     diverseData,
     eldgammelt,
     etVedtakFlereArbeidsgivere,
+    flexjarPoHelseHelsemetrikk,
     forLavInntektPerson,
     julesoknadPerson,
     kombinasjonPerson,
@@ -20,14 +21,16 @@ import {
     skjønnsfastsattRefusjonPerson,
     slutterMedDelvisRefusjon,
     under2gInntekt,
-    vedtakMed0UtbetalingPerson,
     utenData,
+    vedtakMed0UtbetalingPerson,
 } from './data/personas/personas'
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
     beskrivelse: string
     kontonummer?: string
+    togglesOn?: string[]
+    togglesOff?: string[]
 }
 
 export type PersonaKey =
@@ -51,6 +54,7 @@ export type PersonaKey =
     | 'julesoknad'
     | 'skjonnsfastsatt-riktig-aarsinntekt'
     | 'vedtak-med-0-utbetaling'
+    | 'flexjar-pohelse'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -75,6 +79,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
         ['julesoknad']: jsonDeepCopy(julesoknadPerson),
         ['vedtak-med-0-utbetaling']: jsonDeepCopy(vedtakMed0UtbetalingPerson),
+        ['flexjar-pohelse']: jsonDeepCopy(flexjarPoHelseHelsemetrikk),
     },
     ['testing']: {
         ['uten-data']: jsonDeepCopy(utenData),

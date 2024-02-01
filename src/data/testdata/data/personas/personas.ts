@@ -78,6 +78,14 @@ export const kunDirektePerson: Persona = {
     beskrivelse: 'Utbetaling til sykmeldt',
 }
 
+export const flexjarPoHelseHelsemetrikk: Persona = {
+    vedtak: [kunDirekte],
+    kontonummer: '10011110011',
+    beskrivelse: 'Viser flexjaren PO Helse helsemetrikk',
+    togglesOn: ['flexjar-spinnsyn-pohelse-helsemetrikk'],
+    togglesOff: ['flexjar-spinnsyn-frontend'],
+}
+
 export const julesoknadPerson: Persona = {
     vedtak: [julesoknadVedtak],
     kontonummer: '10011110011',

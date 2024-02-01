@@ -103,11 +103,21 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
                 {heading()}
             </Heading>
             <ul className="mt-2 flex flex-col gap-2">
-                {Object.entries(personer).map(([key, person]) => (
-                    <LinkPanel key={key} className="w-full text-start" href={`/syk/sykepenger?testperson=${key}`}>
-                        <BodyShort>{person.beskrivelse}</BodyShort>
-                    </LinkPanel>
-                ))}
+                {Object.entries(personer).map(([key, person]) => {
+                    let href = `/syk/sykepenger?testperson=${key}`
+                    person?.togglesOn?.forEach((toggle) => {
+                        href += `&${toggle}=true`
+                    })
+                    person?.togglesOff?.forEach((toggle) => {
+                        href += `&${toggle}=false`
+                    })
+
+                    return (
+                        <LinkPanel key={key} className="w-full text-start" href={href}>
+                            <BodyShort>{person.beskrivelse}</BodyShort>
+                        </LinkPanel>
+                    )
+                })}
             </ul>
         </>
     )
