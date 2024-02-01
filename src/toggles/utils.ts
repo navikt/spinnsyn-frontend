@@ -11,7 +11,7 @@ export function localDevelopmentToggles(url: string | undefined): IToggle[] {
     return EXPECTED_TOGGLES.map(
         (it): IToggle => ({
             name: it,
-            enabled: params.has(it) ? params.get(it) === 'true' : false,
+            enabled: params.has(it) ? params.get(it) === 'true' : true,
             impressionData: false,
             variant: {
                 name: 'disabled',
