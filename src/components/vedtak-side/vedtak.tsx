@@ -12,6 +12,7 @@ import { isMockBackend, isOpplaering, isProd } from '../../utils/environment'
 import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { useToggle } from '../../toggles/context'
 import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetrikk'
+import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -58,6 +59,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const harAvvisteDager = avvisteDager.length > 0
 
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
+    const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
+
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
 
     useEffect(() => {
@@ -86,7 +89,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     {kanVelgePerson && <Person />}
                 </div>
             )}
-
             {!annullertEllerRevurdert && (
                 <>
                     <BodyLong size="medium">
@@ -96,7 +98,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 </>
             )}
             {skalViseJulesoknadWarning(vedtak) && <JulesoknadWarning />}
-
             {annullertEllerRevurdert && (
                 <>
                     <AnnulleringsInfo vedtak={vedtak} />
@@ -105,7 +106,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Heading>
                 </>
             )}
-
             {nyesteRevudering && (
                 <Alert variant="info" className="mt-4">
                     <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
@@ -114,50 +114,38 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
             {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
-
             <InntekterLagtTilGrunn vedtak={vedtak} />
-
             {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
                 <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
             )}
-
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
-
             <Sykepengedager vedtak={vedtak} />
-
             {!erArkivering && erDirekteutbetaling && studyActive && (
                 <UxSignalsWidget study={studyKey} demo={!isProd()} />
             )}
-
             <Behandling vedtak={vedtak} />
-
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
-            {
-                /* {
-                    flexjarToggle.enabled && (
-                        <FlexjarVarSidenNyttig
-                            erDirekteutbetaling={erDirekteutbetaling}
-                            erRefusjon={erRefusjon}
-                            harAvvisteDager={harAvvisteDager}
-                            annullert={vedtak.annullert}
-                            revurdert={vedtak.revurdert}
-                        />
-                    )
-                }*/
-                flexjarToggle.enabled && (
-                    <FlexjarPohelseHelsemetrikk
-                        erDirekteutbetaling={erDirekteutbetaling}
-                        erRefusjon={erRefusjon}
-                        harAvvisteDager={harAvvisteDager}
-                        annullert={vedtak.annullert}
-                        revurdert={vedtak.revurdert}
-                    />
-                )
-            }
+            {flexjarToggle.enabled && (
+                <FlexjarVarSidenNyttig
+                    erDirekteutbetaling={erDirekteutbetaling}
+                    erRefusjon={erRefusjon}
+                    harAvvisteDager={harAvvisteDager}
+                    annullert={vedtak.annullert}
+                    revurdert={vedtak.revurdert}
+                />
+            )}
+            {!flexjarToggle.enabled && flexjarPohelseHelsemetrikkToggle.enabled && (
+                <FlexjarPohelseHelsemetrikk
+                    erDirekteutbetaling={erDirekteutbetaling}
+                    erRefusjon={erRefusjon}
+                    harAvvisteDager={harAvvisteDager}
+                    annullert={vedtak.annullert}
+                    revurdert={vedtak.revurdert}
+                />
+            )}
         </>
     )
 }
