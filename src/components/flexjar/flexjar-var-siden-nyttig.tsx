@@ -5,7 +5,7 @@ import { spinnsynFrontendInterne } from '../../utils/environment'
 
 import { FeedbackButton, FlexjarFelles } from './flexjar-felles'
 
-export const Flexjar = ({
+export const FlexjarVarSidenNyttig = ({
     erDirekteutbetaling,
     erRefusjon,
     harAvvisteDager,
