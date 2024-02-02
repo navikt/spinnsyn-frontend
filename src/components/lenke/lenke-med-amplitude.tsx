@@ -7,9 +7,10 @@ interface LenkeMedAmplitudeProps {
     tekst: string
     url: string
     cleanUrl?: string
+    skjønnsfastsatt?: boolean
 }
 
-export const LenkeMedAmplitude = ({ tekst, url, cleanUrl }: LenkeMedAmplitudeProps) => (
+export const LenkeMedAmplitude = ({ tekst, url, cleanUrl, skjønnsfastsatt }: LenkeMedAmplitudeProps) => (
     <Link
         href={url}
         rel="noopener noreferrer"
@@ -19,6 +20,7 @@ export const LenkeMedAmplitude = ({ tekst, url, cleanUrl }: LenkeMedAmplitudePro
                 destinasjon: cleanUrl ?? url,
                 skjemanavn: 'vedtak',
                 lenketekst: tekst,
+                skjønnsfastsatt: skjønnsfastsatt ?? false,
             })
         }
     >

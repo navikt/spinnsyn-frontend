@@ -11,6 +11,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
+    const skjønnsfastsatt = vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt?.toString() === 'EtterSkjønn'
 
     const tittelNokkel = () => {
         if (annullertEllerRevurdert) {
@@ -53,8 +54,8 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             </Heading>
             <BodyLong data-cy="behandling-body" spacing>
                 {behandlingInfoTekst()}
-                <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
                 {tekst('behandling.se-opplysningene')}
+                <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} skjønnsfastsatt={skjønnsfastsatt} />
             </BodyLong>
         </>
     )
