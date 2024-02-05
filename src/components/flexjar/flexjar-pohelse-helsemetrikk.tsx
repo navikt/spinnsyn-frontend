@@ -29,7 +29,6 @@ export const FlexjarPohelseHelsemetrikk = ({
             getPlaceholder={() => 'Fortell oss om din opplevelse (valgfritt)'}
             flexjarsporsmal="Hvordan opplevde du saksbehandlingen i denne saken?"
             flexjartittel="Hjelp oss med å gjøre tjenesten bedre"
-            app="spinnsyn-frontend"
             feedbackProps={{
                 erRefusjon,
                 harAvvisteDager,

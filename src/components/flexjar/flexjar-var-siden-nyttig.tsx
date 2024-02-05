@@ -54,7 +54,6 @@ export const FlexjarVarSidenNyttig = ({
             thanksFeedback={thanksFeedback}
             setThanksFeedback={setThanksFeedback}
             getPlaceholder={getPlaceholder}
-            app="spinnsyn-frontend"
             feedbackProps={{
                 erRefusjon,
                 harAvvisteDager,
