@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 
-import fetchMedRequestId from '../../../utils/fetch'
 import { basePath } from '../../../utils/environment'
+import { fetchMedRequestId } from '../../../utils/fetch'
 
 export function UseOppdaterFlexjarFeedback() {
     return useMutation<unknown, Error, OppdaterFlexjarFeedbackRequest>({
