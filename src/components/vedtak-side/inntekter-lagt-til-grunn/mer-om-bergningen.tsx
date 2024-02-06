@@ -59,6 +59,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                     {harFlereArbeidsgivere(vedtak) == 'ja' && (
                         <>{parserWithReplace(tekst('utbetaling.arslonn.innhold.del2'))}</>
                     )}
+                    {parserWithReplace(tekst('utbetaling.arslonn.innhold.del3'))}
                 </BodyLong>
 
                 <Heading spacing size="xsmall" level="3">
