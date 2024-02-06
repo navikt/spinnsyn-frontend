@@ -6,7 +6,7 @@ const UenigTekster = {
     'uenig.lenke1.url': 'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter',
     'uenig.tekst3': ' eller gå rett til ',
     'uenig.lenke2': 'klageveilederen',
-    'uenig.lenke2.url': 'https://klage.nav.no/nb/helse/sykepenger',
+    'uenig.lenke2.url': 'https://www.nav.no/klage#sykepenger',
 }
 
 export default UenigTekster
