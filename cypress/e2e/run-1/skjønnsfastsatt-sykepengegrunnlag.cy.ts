@@ -5,7 +5,7 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
     describe('Direkteutbetaling skjønnsfastsatt over 6G', () => {
         it('Åpner vedtaket', () => {
             cy.visit(
-                'http://localhost:8080/syk/sykepenger?testperson=skj%C3%B8nnsfastsatt-brukerutbetaling&id=6aa63aa6-a932-4ba4-b1b3-bc3722b0eb1e',
+                'http://localhost:8080/syk/sykepenger?testperson=skjonnsfastsatt-brukerutbetaling&id=6aa63aa6-a932-4ba4-b1b3-bc3722b0eb1e',
             )
             cy.findByRole('heading', { level: 1 }).should('exist').and('contain.text', 'Svar på søknad om sykepenger')
         })
