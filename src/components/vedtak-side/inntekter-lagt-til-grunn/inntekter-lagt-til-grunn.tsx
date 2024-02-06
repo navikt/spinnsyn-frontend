@@ -83,7 +83,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                     <>
                         <InfoSection
                             className="mt-4 border-t border-gray-400 pt-4"
-                            label="Årsinntekt fra A-ordningen"
+                            label="Årsinntekt rapportert til skatteetaten"
                             value={formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.innrapportertÅrsinntekt)}
                         />
                         <InfoSection
