@@ -11,7 +11,7 @@ describe('Vedtak for arkivering', () => {
 
     it('Skjønnsfastsatt brukerutbetaling', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering?testperson=skjønnsfastsatt-brukerutbetaling',
+            'http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering?testperson=skjonnsfastsatt-brukerutbetaling',
         )
 
         cy.contains('Du kan lese mer om hvordan sykepengene beregnes i')

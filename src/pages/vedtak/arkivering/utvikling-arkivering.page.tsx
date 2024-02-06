@@ -26,7 +26,7 @@ const UtviklingArkiveringPage = ({ vedtak, enabled }: DevVedtakProps) => {
 
 export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx) => {
     const finnVedtak = () => {
-        if (ctx.query.testperson === 'skjønnsfastsatt-brukerutbetaling') {
+        if (ctx.query.testperson === 'skjonnsfastsatt-brukerutbetaling') {
             return skjønnsfastsattBrukerutbetaling
         }
         if (ctx.query.testperson === 'skjønnsfastsatt-flere-arbeidsgivere') {

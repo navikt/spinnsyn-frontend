@@ -45,7 +45,7 @@ export type PersonaKey =
     | 'kombinasjon'
     | 'kun-ag-periode'
     | 'slutter-med-delvis-refusjon'
-    | 'skjønnsfastsatt-brukerutbetaling'
+    | 'skjonnsfastsatt-brukerutbetaling'
     | 'skjønnsfastsatt-refusjon'
     | 'skjønnsfastsatt-flere-arbeidsgivere'
     | 'alle-avviste-dager'
@@ -69,7 +69,7 @@ export const testpersonerGruppert: PersonaGroup = {
     },
     ['vedtak-innhold']: {
         ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
-        ['skjønnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
+        ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
         ['skjønnsfastsatt-refusjon']: jsonDeepCopy(skjønnsfastsattRefusjonPerson),
         ['skjønnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePerson),
         ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
