@@ -13,8 +13,8 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
             cy.findByRole('article', { name: 'Beregning av sykepengene' })
-                .findByRole('region', { name: 'Årsinntekt fra A-ordningen' })
-                .should('contain', 'Årsinntekt fra A-ordningen')
+                .findByRole('region', { name: 'Årsinntekt rapportert til skatteetaten' })
+                .should('contain', 'Årsinntekt rapportert til skatteetaten')
                 .should('contain', formaterValuta(350000))
 
             cy.findByRole('article', { name: 'Beregning av sykepengene' })
@@ -59,8 +59,8 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
             cy.findByRole('article', { name: 'Beregning av sykepengene' })
-                .findByRole('region', { name: 'Årsinntekt fra A-ordningen' })
-                .should('contain', 'Årsinntekt fra A-ordningen')
+                .findByRole('region', { name: 'Årsinntekt rapportert til skatteetaten' })
+                .should('contain', 'Årsinntekt rapportert til skatteetaten')
                 .should('contain', formaterValuta(350000))
 
             cy.findByRole('article', { name: 'Beregning av sykepengene' })
