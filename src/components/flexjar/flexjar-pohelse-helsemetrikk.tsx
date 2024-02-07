@@ -27,8 +27,8 @@ export const FlexjarPohelseHelsemetrikk = ({
             thanksFeedback={thanksFeedback}
             setThanksFeedback={setThanksFeedback}
             getPlaceholder={() => 'Fortell oss om din opplevelse (valgfritt)'}
-            flexjarsporsmal="Hvordan opplevde du saksbehandlingen i denne saken?"
-            flexjartittel="Hjelp oss med å gjøre tjenesten bedre"
+            flexjarsporsmal="Hvordan opplevde du å søke og å få svar på søknaden om sykepenger?"
+            flexjartittel="Hva synes du?"
             feedbackProps={{
                 erRefusjon,
                 harAvvisteDager,

@@ -53,8 +53,8 @@ describe('Flexjar', () => {
         cy.visit(
             'http://localhost:8080/syk/sykepenger?testperson=flexjar-pohelse&flexjar-spinnsyn-pohelse-helsemetrikk=true&flexjar-spinnsyn-frontend=false&id=348a5462-456a-4bfc-9b54-11cd77a9937f',
         )
-        cy.contains('Hvordan opplevde du saksbehandlingen i denne saken?')
-        heading('Hjelp oss med å gjøre tjenesten bedre')
+        cy.contains('Hvordan opplevde du å søke og å få svar på søknaden om sykepenger?')
+        heading('Hva synes du?')
             .closest('section')
             .within(() => {
                 cy.findByRole('button', {
