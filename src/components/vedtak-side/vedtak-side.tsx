@@ -19,6 +19,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
             brukerutbetaling: brukerutbetaling,
             refusjon: refusjon,
             flereVedtak: vedtakene?.length !== 1,
+            sykepengegrunnlagFastsatt: vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt || 'ukjent',
         })
         // eslint-disable-next-line
     }, [])
