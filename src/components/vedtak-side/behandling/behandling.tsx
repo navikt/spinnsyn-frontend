@@ -14,8 +14,6 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const fastsatt = vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt
     const vedtakFastsattMed = fastsatt ? fastsatt.toString() : ''
 
-        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt?.toString() === 'EtterSkjønn'
-
     const tittelNokkel = () => {
         if (annullertEllerRevurdert) {
             if (automatisk) {
