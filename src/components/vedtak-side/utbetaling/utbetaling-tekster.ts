@@ -7,9 +7,9 @@ const UtbetalingTekster = {
     'utbetaling.arslonn.tittel': 'Årsinntekt',
     'utbetaling.arslonn.innhold.del1': 'Så blir månedsinntekten regnet om til årsinntekt ved å gange den med 12. ',
     'utbetaling.arslonn.innhold.del2':
-        'Siden du har flere arbeidsgivere, legger vi sammen inntekten fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er.',
+        'Siden du har flere arbeidsgivere, legger vi sammen inntekten fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er. ',
     'utbetaling.arslonn.innhold.del3':
-        'Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-30" target="_blank">folketrygdloven § 8-30 første avsnitt</a>.',
+        '<br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-30" target="_blank">folketrygdloven § 8-30 første avsnitt</a>.',
     'utbetaling.sykepengegrunnlag.tittel': 'Sykepengegrunnlag',
     'utbetaling.sykepengegrunnlag.under6g.innhold':
         'Deretter fastsetter NAV sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din. Derfor vil sykepengegrunnlaget og den samlede årsinntekten ofte være det samme.',
