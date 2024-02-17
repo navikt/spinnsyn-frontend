@@ -17,6 +17,8 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
                 .should('contain', 'Årsinntekt rapportert til skatteetaten')
                 .should('contain', formaterValuta(350000))
 
+            cy.contains('Årsinntekten din er skjønnsfastsatt. Se begrunnelse for skjønnsfastsetting under.')
+
             cy.findByRole('article', { name: 'Beregning av sykepengene' })
                 .findByRole('region', { name: 'Utregnet avvik' })
                 .should('contain', 'Utregnet avvik')
