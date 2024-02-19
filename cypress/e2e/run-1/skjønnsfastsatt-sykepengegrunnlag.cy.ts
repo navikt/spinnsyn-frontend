@@ -42,7 +42,6 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
                 .should('contain', 'Begrunnelse for skjønnsfastsetting')
                 .and('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
                 .and('contain', 'Nulla euismod, nisl eget ultrices ultrices')
-                .and('contain', 'Nærmere begrunnelse fra saksbehandler')
                 .and(
                     'contain',
                     'Dette er en tekstlig begrunnelse fra saksbehandleren din. Jeg brukte skjønn og kom frem hva vi tror du ville tjent om et år gitt omstendigheter lorem ipsum hei og hå',
@@ -88,7 +87,6 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
                 .should('contain', 'Begrunnelse for skjønnsfastsetting')
                 .and('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
                 .and('contain', 'Nulla euismod, nisl eget ultrices ultrices')
-                .and('contain', 'Nærmere begrunnelse fra saksbehandler')
                 .and('contain', 'Begrunnelse fra saksbehandler ved flere arbeidsgivere')
         })
     })

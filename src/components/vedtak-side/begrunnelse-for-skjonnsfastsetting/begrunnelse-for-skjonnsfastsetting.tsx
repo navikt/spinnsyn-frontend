@@ -9,11 +9,7 @@ export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
     return (
         <VedtakExpansionCard tittel="Begrunnelse for skjønnsfastsetting" vedtak={vedtak}>
             <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagMal" />
-            <BegrunnelseMedHeading
-                vedtak={vedtak}
-                begrunnelseKey="SkjønnsfastsattSykepengegrunnlagFritekst"
-                heading="Nærmere begrunnelse fra saksbehandler"
-            />
+            <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagFritekst" />
             <BegrunnelseMedHeading
                 vedtak={vedtak}
                 begrunnelseKey="SkjønnsfastsattSykepengegrunnlagKonklusjon"
