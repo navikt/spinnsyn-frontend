@@ -36,11 +36,12 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
         })
 
         it('Åpner begrunnelse for skjønnsfastsetting', () => {
-            cy.get('main').findByRole('region', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+            cy.get('main').findByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
 
-            cy.findByRole('region', { name: 'Begrunnelse for skjønnsfastsetting' })
+            cy.findByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .should('contain', 'Begrunnelse for skjønnsfastsetting')
-                .and('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
+                .siblings('div')
+                .should('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
                 .and('contain', 'Nulla euismod, nisl eget ultrices ultrices')
                 .and(
                     'contain',
@@ -81,11 +82,12 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
         })
 
         it('Åpner begrunnelse for skjønnsfastsetting', () => {
-            cy.get('main').findByRole('region', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+            cy.get('main').findByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
 
-            cy.findByRole('region', { name: 'Begrunnelse for skjønnsfastsetting' })
+            cy.findByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .should('contain', 'Begrunnelse for skjønnsfastsetting')
-                .and('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
+                .siblings('div')
+                .should('contain', 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.')
                 .and('contain', 'Nulla euismod, nisl eget ultrices ultrices')
                 .and('contain', 'Begrunnelse fra saksbehandler ved flere arbeidsgivere')
         })

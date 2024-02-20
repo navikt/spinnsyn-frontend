@@ -8,6 +8,7 @@ import { formaterValuta } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
+import { BegrunnelseForSkjonnsfastsetting } from '../begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -146,6 +147,9 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 )}
 
                 <Accordion className="mt-8" indent={false}>
+                    {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
+                        <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
+                    )}
                     <AlleSykepengerPerDag vedtak={vedtak} />
                     <MerOmBergningen vedtak={vedtak} />
                 </Accordion>

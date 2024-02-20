@@ -1,21 +1,27 @@
-import { BodyLong, Heading } from '@navikt/ds-react'
+import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { VedtakProps } from '../vedtak'
-import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
 export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
     return (
-        <VedtakExpansionCard tittel="Begrunnelse for skjønnsfastsetting" vedtak={vedtak}>
-            <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagMal" />
-            <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagFritekst" />
-            <BegrunnelseMedHeading
-                vedtak={vedtak}
-                begrunnelseKey="SkjønnsfastsattSykepengegrunnlagKonklusjon"
-                heading="Konklusjon"
-            />
-        </VedtakExpansionCard>
+        <Accordion.Item data-cy="begrunnelse-for-skjønnsfastsetting">
+            <Accordion.Header>
+                <Heading size="small" level="3">
+                    Begrunnelse for skjønnsfastsetting
+                </Heading>
+            </Accordion.Header>
+            <Accordion.Content className="mt-4">
+                <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagMal" />
+                <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagFritekst" />
+                <BegrunnelseMedHeading
+                    vedtak={vedtak}
+                    begrunnelseKey="SkjønnsfastsattSykepengegrunnlagKonklusjon"
+                    heading="Konklusjon"
+                />
+            </Accordion.Content>
+        </Accordion.Item>
     )
 }
 

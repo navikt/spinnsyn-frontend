@@ -21,7 +21,6 @@ import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
-import { BegrunnelseForSkjonnsfastsetting } from './begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
 import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn'
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
@@ -117,9 +116,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
             {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
             <InntekterLagtTilGrunn vedtak={vedtak} />
-            {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
-                <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
-            )}
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
             {!erArkivering && erDirekteutbetaling && studyActive && (
