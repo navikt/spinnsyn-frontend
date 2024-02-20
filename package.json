@@ -32,6 +32,7 @@
         "remeda": "^1.36.0",
         "tailwind-merge": "^2.2.1",
         "typescript": "^5.3.3",
+        "unleash-client": "^5.5.1",
         "uuid": "^9.0.1"
     },
     "devDependencies": {
