@@ -12,8 +12,8 @@ describe('Tidligere utbetalt hel arbeidsgiverperiode', () => {
     it('Åpner beregning av sykepengene', () => {
         cy.get('body').findByRole('region', { name: 'Beregning av sykepengene' }).click()
         cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
-            cy.contains('Sykepenger per dag').should('be.visible')
-            cy.findByRole('button', { name: 'Sykepenger per dag' }).click()
+            cy.contains('Dine sykepenger per dag').should('be.visible')
+            cy.findByRole('button', { name: 'Dine sykepenger per dag' }).click()
             cy.contains(
                 'Det er tidligere utbetalt en hel arbeidsgiverperiode. Etter dette har vi vurdert at du ikke har gjenopptatt arbeidet og deretter vært friskmeldt i mer enn 16 dager. NAV har derfor utbetalt sykepenger fra første dag du ble sykmeldt.',
             ).should('be.visible')

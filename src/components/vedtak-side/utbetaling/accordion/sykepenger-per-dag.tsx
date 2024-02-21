@@ -57,7 +57,7 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
         <Accordion.Item defaultOpen={isServer}>
             <Accordion.Header>
                 <Heading size="small" level="3">
-                    {tittel || 'Sykepenger per dag'}
+                    {tittel || 'Dine sykepenger per dag'}
                 </Heading>
             </Accordion.Header>
             <Accordion.Content className="bg-white px-0">
