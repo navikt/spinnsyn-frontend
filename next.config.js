@@ -27,6 +27,10 @@ const nextConfig = {
                         key: 'Content-Security-Policy',
                         value: csp,
                     },
+                    {
+                        key: 'Referrer-Policy',
+                        value: 'no-referrer',
+                    },
                 ],
             },
             {
