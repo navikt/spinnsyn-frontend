@@ -1,12 +1,15 @@
 import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { VedtakProps } from '../vedtak'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { ArkiveringContext } from '../../../context/arkivering-context'
 
 export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
+    const arkivering = useContext(ArkiveringContext)
+
     return (
-        <Accordion.Item data-cy="begrunnelse-for-skjønnsfastsetting">
+        <Accordion.Item data-cy="begrunnelse-for-skjønnsfastsetting" defaultOpen={arkivering}>
             <Accordion.Header>
                 <Heading size="small" level="3">
                     Begrunnelse for skjønnsfastsetting
