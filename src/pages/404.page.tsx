@@ -1,4 +1,4 @@
-import { ContentContainer } from '@navikt/ds-react'
+import { Page } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
 import { useUpdateBreadcrumbs } from '../hooks/useBreadcrumbs'
@@ -13,9 +13,11 @@ function NotFound(): JSX.Element | boolean {
     }, [])
 
     return (
-        <ContentContainer>
-            <h1>Fant ikke siden</h1>
-        </ContentContainer>
+        <Page>
+            <Page.Block width="xl">
+                <div>Fant ikke siden</div>
+            </Page.Block>
+        </Page>
     )
 }
 
