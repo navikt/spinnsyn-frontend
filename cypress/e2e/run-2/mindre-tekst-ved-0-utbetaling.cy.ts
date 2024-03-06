@@ -12,7 +12,7 @@ describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som får nu
     })
 
     it('Inntekter', () => {
-        cy.contains('Gjelder sykefravær fra Coop Extra Brummundal').parent().parent().contains('0 kroner')
+        cy.contains('Gjelder sykefravær fra Coop Extra Brumunddal').parent().parent().contains('0 kroner')
         cy.get('body').should('not.contain', 'Beløpet går til arbeidsgiveren din')
     })
 })
