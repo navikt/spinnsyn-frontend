@@ -3071,7 +3071,7 @@ export const vedtakMed0Utbetaling: RSVedtakWrapper = {
         tags: [],
     },
     opprettetTimestamp: '2023-11-19T19:30:23.752180Z',
-    orgnavn: 'Coop Extra Brummundal',
+    orgnavn: 'Coop Extra Brumunddal',
     annullert: false,
     revurdert: false,
     dagerArbeidsgiver: [],
