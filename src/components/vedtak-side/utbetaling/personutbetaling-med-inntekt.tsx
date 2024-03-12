@@ -1,10 +1,10 @@
-import { BodyShort, Heading } from '@navikt/ds-react'
+import { BodyShort, Heading, List } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import { VedtakProps } from '../vedtak'
+import { Utbetalingsdager, VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
@@ -13,11 +13,16 @@ import { SykepengerTrekk } from './sykepenger-trekk'
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
 
-export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
+export const PersonutbetalingMedInntekt = ({
+    vedtak,
+    utbetalingsdager,
+}: VedtakProps & {
+    utbetalingsdager: Utbetalingsdager
+}) => {
     const erArkivering = useContext(ArkiveringContext)
     const erInterne = spinnsynFrontendInterne()
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-
+    const erDelvisInnvilget = utbetalingsdager.avvisteDager > 0
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
 
     return (
@@ -42,6 +47,18 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             dataCy="personutbetaling"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
+            {erDelvisInnvilget && (
+                <List as="ul" title="Delvis innvilget vedtak">
+                    <List.Item>
+                        {utbetalingsdager.antallDager - utbetalingsdager.avvisteDager} av {utbetalingsdager.antallDager}{' '}
+                        sykepengedager utbetales av NAV.
+                    </List.Item>
+                    <List.Item>
+                        {utbetalingsdager.avvisteDager} av {utbetalingsdager.antallDager} sykepengedager utbetales ikke
+                        av NAV.
+                    </List.Item>
+                </List>
+            )}
             <SykepengerTrekk />
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />
