@@ -2,7 +2,7 @@ import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
 import { kunDirekte } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
-import { noenAvvisteDagerDirekte } from './alleAvvisteDager'
+import { noenAvvisteDagerDirekte } from './avvisteDager'
 
 const diffInPercentage = (a: number, b: number) => {
     return Math.abs((a - b) / ((a + b) / 2)) * 100

@@ -3,7 +3,7 @@ import {
     avvistVedtakMedLavInntekt,
     vedtakMed40Grad,
 } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
-import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
+import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/avvisteDager'
 
 describe('Avviste dager', () => {
     before(() => {

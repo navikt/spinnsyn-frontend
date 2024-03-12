@@ -13,7 +13,7 @@ import {
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
-import { noenAvvisteDagerDirekte, noenAvvisteDagerRefusjon } from '../vedtak/alleAvvisteDager'
+import { noenAvvisteDagerDirekte, noenAvvisteDagerRefusjon } from '../vedtak/avvisteDager'
 import {
     skjønnsfastsattBrukerutbetaling, skjønnsfastsattBrukerutbetalingDelvisInnvilget,
     skjønnsfastsattFlereArbeidsgivere,

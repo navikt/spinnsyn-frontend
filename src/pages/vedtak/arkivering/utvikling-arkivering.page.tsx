@@ -8,7 +8,7 @@ import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
 } from '../../../data/testdata/data/vedtak/skjønnsfastsatt'
-import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/alleAvvisteDager'
+import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/avvisteDager'
 
 const { serverRuntimeConfig } = getConfig()
 
