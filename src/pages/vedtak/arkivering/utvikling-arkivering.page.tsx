@@ -8,7 +8,7 @@ import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
 } from '../../../data/testdata/data/vedtak/skjønnsfastsatt'
-import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/avvisteDager'
+import { avvisteDagerRefusjon } from '../../../data/testdata/data/vedtak/avvisteDager'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx
         if (ctx.query.testperson === 'skjønnsfastsatt-flere-arbeidsgivere') {
             return skjønnsfastsattFlereArbeidsgivere
         }
-        return alleAvvisteDager
+        return avvisteDagerRefusjon
     }
 
     const vedtak = finnVedtak()
