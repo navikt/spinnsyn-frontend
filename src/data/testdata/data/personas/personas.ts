@@ -13,7 +13,7 @@ import {
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
-import { alleAvvisteDager } from '../vedtak/alleAvvisteDager'
+import { noenAvvisteDagerDirekte, noenAvvisteDagerRefusjon } from '../vedtak/alleAvvisteDager'
 import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
@@ -39,8 +39,8 @@ export const etVedtakEnArbeidsgivere: Persona = {
 }
 
 export const delvisAvvistVedtakPerson: Persona = {
-    vedtak: [alleAvvisteDager],
-    beskrivelse: 'Noen dager avvist',
+    vedtak: [noenAvvisteDagerRefusjon, noenAvvisteDagerDirekte],
+    beskrivelse: 'Delvis avvist vedtak (direkte og refusjon)',
 }
 
 export const diverseData: Persona = {
@@ -60,13 +60,13 @@ export const eldgammelt: Persona = {
 
 export const forLavInntektPerson: Persona = {
     vedtak: [avvistVedtakMedLavInntekt],
-    beskrivelse: 'Alle dager avvist',
+    beskrivelse: 'Avvist vedtak ',
 }
 
 export const direkteOgRefusjon: Persona = {
     vedtak: [kunDirekte, ulestVedtakUtenUtbetalingsdager],
     kontonummer: '10011110011',
-    beskrivelse: 'Innvilget med direkte og refusjon',
+    beskrivelse: 'Innvilget vedtak (direkte og refusjon)',
 }
 
 export const ingenVedtakPerson: Persona = {
@@ -122,11 +122,6 @@ export const skjønnsfastsattRefusjonPerson: Persona = {
 export const skjønnsfastsattFlereArbeidsgiverePerson: Persona = {
     vedtak: [skjønnsfastsattFlereArbeidsgivere],
     beskrivelse: 'Skjønnsfastsatt inntekt med refusjon og flere arbeidsforhold',
-}
-
-export const alleAvvisteDagerPerson: Persona = {
-    vedtak: [alleAvvisteDager],
-    beskrivelse: 'Inneholder alle avviste dager vi har støtte for',
 }
 
 export const revurdertOgAnnullert: Persona = {
