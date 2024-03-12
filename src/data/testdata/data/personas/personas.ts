@@ -1,6 +1,5 @@
 import { Persona } from '../../testperson'
 import {
-    avvistVedtak,
     avvistVedtakMedLavInntekt,
     inntektUnder2g,
     kombinertDirekteOgRefusjon,
@@ -11,12 +10,6 @@ import {
     ulestVedtakUtenUtbetalingsdager,
     vedtakAnnullert,
     vedtakMed0Utbetaling,
-    vedtakMed40Grad,
-    vedtakMedDetMeste,
-    vedtakRedusertTil6G,
-    vedtakRevurdert,
-    vedtakRevurdertDirekte,
-    vedtakRevurdertKombinasjon,
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
@@ -40,20 +33,18 @@ export const etVedtakFlereArbeidsgivere: Persona = {
     beskrivelse: 'Refusjon til arbeidsgiver og ansatt 2 steder',
 }
 
+export const etVedtakEnArbeidsgivere: Persona = {
+    vedtak: [ulestVedtakUtenUtbetalingsdager],
+    beskrivelse: 'Refusjon til arbeidsgiver',
+}
+
+export const delvisAvvistVedtakPerson: Persona = {
+    vedtak: [alleAvvisteDager],
+    beskrivelse: 'Noen dager avvist',
+}
+
 export const diverseData: Persona = {
-    vedtak: [
-        vedtakMedDetMeste,
-        vedtakMed40Grad,
-        ulestVedtakUtenUtbetalingsdager,
-        vedtakAnnullert,
-        vedtakRevurdert,
-        vedtakRevurdertDirekte,
-        vedtakRevurdertKombinasjon,
-        alleAvvisteDager,
-        avvistVedtak,
-        avvistVedtakMedLavInntekt,
-        vedtakRedusertTil6G,
-    ],
+    vedtak: [],
     beskrivelse: 'Diverse vedtak brukt til testing',
 }
 
@@ -69,13 +60,19 @@ export const eldgammelt: Persona = {
 
 export const forLavInntektPerson: Persona = {
     vedtak: [avvistVedtakMedLavInntekt],
-    beskrivelse: 'Avvist på grunn av for lav inntekt',
+    beskrivelse: 'Alle dager avvist',
 }
 
 export const kunDirektePerson: Persona = {
     vedtak: [kunDirekte],
     kontonummer: '10011110011',
-    beskrivelse: 'Utbetaling til sykmeldt',
+    beskrivelse: 'Innvilget vedtak',
+}
+
+export const ingenVedtakPerson: Persona = {
+    vedtak: [],
+    kontonummer: '10011110011',
+    beskrivelse: 'Person uten vedtak',
 }
 
 export const flexjarPoHelseHelsemetrikk: Persona = {
@@ -114,7 +111,7 @@ export const kunArbedisgiverPerioder: Persona = {
 
 export const skjønnsfastsattBrukerutbetalingPerson: Persona = {
     vedtak: [skjønnsfastsattBrukerutbetaling],
-    beskrivelse: 'Skjønnsfastsatt inntekt med brukerutbetaling',
+    beskrivelse: 'Skjønnsfastsatt inntekt',
 }
 
 export const skjønnsfastsattRefusjonPerson: Persona = {

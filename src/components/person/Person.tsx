@@ -82,14 +82,11 @@ export default function Person() {
 function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; personer: PersonaData }) {
     function heading() {
         switch (gruppe) {
-            case 'mottaker': {
-                return 'Brukerutbetaling og refusjon'
+            case 'vedtak-avslag': {
+                return 'Vedtak med forskjellige resultat'
             }
-            case 'vedtak-innhold': {
-                return 'Vedtak med forskjellig innhold'
-            }
-            case 'testing': {
-                return 'Vedtak brukt til testing'
+            case 'ingen-vedtak': {
+                return 'Person uten vedtak'
             }
             default: {
                 throw Error(`mangler testperson gruppe heading for ${gruppe}`)

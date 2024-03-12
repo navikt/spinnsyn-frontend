@@ -12,7 +12,7 @@ export function hentTestdata(url?: string) {
     if (testperson && Object.prototype.hasOwnProperty.call(testpersoner, testperson)) {
         return jsonDeepCopy(testpersoner[testperson as PersonaKey]!.vedtak)
     } else {
-        return jsonDeepCopy(testpersoner['diverse-data']!.vedtak)
+        return jsonDeepCopy(testpersoner['uten-data']!.vedtak)
     }
 }
 
