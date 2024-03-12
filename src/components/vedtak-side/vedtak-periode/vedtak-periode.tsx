@@ -11,7 +11,7 @@ interface VedtakPeriodeProps extends VedtakProps {
     skalViseRefusjonsMottaker?: boolean
 }
 
-const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker }: VedtakPeriodeProps) => {
+const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker = false }: VedtakPeriodeProps) => {
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
 
     return (
