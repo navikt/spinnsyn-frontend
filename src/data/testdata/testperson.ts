@@ -3,9 +3,9 @@ import { jsonDeepCopy } from '../../utils/json-deep-copy'
 
 import {
     delvisAvvistVedtakPerson,
+    direkteOgRefusjon,
     forLavInntektPerson,
     ingenVedtakPerson,
-    kunDirektePerson,
     skjønnsfastsattBrukerutbetalingPerson,
 } from './data/personas/personas'
 
@@ -47,7 +47,7 @@ type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
     ['vedtak-avslag']: {
-        ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
+        ['kun-direkte']: jsonDeepCopy(direkteOgRefusjon),
         ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
         ['alle-avviste-dager']: jsonDeepCopy(delvisAvvistVedtakPerson),
         ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),

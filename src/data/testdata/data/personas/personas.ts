@@ -63,10 +63,10 @@ export const forLavInntektPerson: Persona = {
     beskrivelse: 'Alle dager avvist',
 }
 
-export const kunDirektePerson: Persona = {
-    vedtak: [kunDirekte],
+export const direkteOgRefusjon: Persona = {
+    vedtak: [kunDirekte, ulestVedtakUtenUtbetalingsdager],
     kontonummer: '10011110011',
-    beskrivelse: 'Innvilget vedtak',
+    beskrivelse: 'Innvilget med direkte og refusjon',
 }
 
 export const ingenVedtakPerson: Persona = {
