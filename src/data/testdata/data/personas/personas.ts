@@ -13,9 +13,10 @@ import {
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
-import { noenAvvisteDagerDirekte, noenAvvisteDagerRefusjon } from '../vedtak/avvisteDager'
+import { avvisteDagerDirekte, avvisteDagerRefusjon } from '../vedtak/avvisteDager'
 import {
-    skjønnsfastsattBrukerutbetaling, skjønnsfastsattBrukerutbetalingDelvisInnvilget,
+    skjønnsfastsattBrukerutbetaling,
+    skjønnsfastsattBrukerutbetalingDelvisInnvilget,
     skjønnsfastsattFlereArbeidsgivere,
     skjønnsfastsattRefusjon,
 } from '../vedtak/skjønnsfastsatt'
@@ -39,7 +40,7 @@ export const etVedtakEnArbeidsgivere: Persona = {
 }
 
 export const delvisAvvistVedtak: Persona = {
-    vedtak: [noenAvvisteDagerRefusjon, noenAvvisteDagerDirekte],
+    vedtak: [avvisteDagerRefusjon, avvisteDagerDirekte],
     beskrivelse: 'Delvis avvist vedtak (direkte og refusjon)',
 }
 

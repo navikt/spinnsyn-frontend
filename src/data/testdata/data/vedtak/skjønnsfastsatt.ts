@@ -2,13 +2,13 @@ import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
 import { kunDirekte } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
-import { noenAvvisteDagerDirekte } from './avvisteDager'
+import { avvisteDagerDirekte } from './avvisteDager'
 
 const diffInPercentage = (a: number, b: number) => {
     return Math.abs((a - b) / ((a + b) / 2)) * 100
 }
 
-export const skjønnsfastsattBrukerutbetalingDelvisInnvilget = jsonDeepCopy(noenAvvisteDagerDirekte)
+export const skjønnsfastsattBrukerutbetalingDelvisInnvilget = jsonDeepCopy(avvisteDagerDirekte)
 skjønnsfastsattBrukerutbetalingDelvisInnvilget.id = '2ab1b1b7-8781-40a2-a1e3-c0950042a600'
 skjønnsfastsattBrukerutbetalingDelvisInnvilget.vedtak.begrunnelser = [
     {

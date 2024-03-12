@@ -1,6 +1,6 @@
 import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 
-export const noenAvvisteDagerRefusjon: RSVedtakWrapper = {
+export const avvisteDagerRefusjon: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-93gh93rugh93',
     lest: false,
     organisasjoner: {},
@@ -57,34 +57,6 @@ export const noenAvvisteDagerRefusjon: RSVedtakWrapper = {
             begrunnelser: [],
         },
         {
-            dato: '2021-01-28',
-            belop: 0,
-            grad: 0,
-            dagtype: 'Arbeidsdag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-29',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-30',
-            belop: 0,
-            grad: 0,
-            dagtype: 'Arbeidsdag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-31',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
             dato: '2021-02-01',
             belop: 1000,
             grad: 100.0,
@@ -107,13 +79,6 @@ export const noenAvvisteDagerRefusjon: RSVedtakWrapper = {
         },
         {
             dato: '2021-02-04',
-            belop: 1000,
-            grad: 100.0,
-            dagtype: 'NavDagSyk',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-02-05',
             belop: 1000,
             grad: 100.0,
             dagtype: 'NavDagSyk',
@@ -197,20 +162,6 @@ export const noenAvvisteDagerRefusjon: RSVedtakWrapper = {
             begrunnelser: ['MinimumInntekt'],
         },
         {
-            dato: '2021-02-17',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['EgenmeldingUtenforArbeidsgiverperiode'],
-        },
-        {
-            dato: '2021-02-18',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['MinimumSykdomsgrad'],
-        },
-        {
             dato: '2021-02-19',
             belop: 0,
             grad: 0,
@@ -230,13 +181,6 @@ export const noenAvvisteDagerRefusjon: RSVedtakWrapper = {
             grad: 0,
             dagtype: 'AvvistDag',
             begrunnelser: ['EtterDødsdato'],
-        },
-        {
-            dato: '2021-02-22',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['UKJENT'],
         },
         {
             dato: '2021-02-23',
@@ -266,66 +210,13 @@ export const noenAvvisteDagerRefusjon: RSVedtakWrapper = {
             dagtype: 'Permisjonsdag',
             begrunnelser: [],
         },
-        {
-            dato: '2021-02-27',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['AndreYtelserAap'],
-        },
-        {
-            dato: '2021-02-28',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['AndreYtelserDagpenger'],
-        },
-        {
-            dato: '2021-03-01',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['AndreYtelserForeldrepenger'],
-        },
-
-        {
-            dato: '2021-03-02',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['AndreYtelserOmsorgspenger'],
-        },
-
-        {
-            dato: '2021-03-03',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['AndreYtelserOpplaringspenger'],
-        },
-
-        {
-            dato: '2021-03-04',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['AndreYtelserPleiepenger'],
-        },
-
-        {
-            dato: '2021-03-05',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['AndreYtelserSvangerskapspenger'],
-        },
     ],
     dagerPerson: [],
     sykepengebelopPerson: 0,
     sykepengebelopArbeidsgiver: 6200,
 }
 
-export const noenAvvisteDagerDirekte: RSVedtakWrapper = {
+export const avvisteDagerDirekte: RSVedtakWrapper = {
     id: 'd636daab-ba30-4a45-96df-9c383a124415',
     lest: false,
     organisasjoner: {},
@@ -359,7 +250,7 @@ export const noenAvvisteDagerDirekte: RSVedtakWrapper = {
     opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
-    dagerArbeidsgiver: [
+    dagerPerson: [
         {
             dato: '2021-01-25',
             belop: 0,
@@ -369,41 +260,6 @@ export const noenAvvisteDagerDirekte: RSVedtakWrapper = {
         },
         {
             dato: '2021-01-26',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-27',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-28',
-            belop: 0,
-            grad: 0,
-            dagtype: 'Arbeidsdag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-29',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-30',
-            belop: 0,
-            grad: 0,
-            dagtype: 'Arbeidsdag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-01-31',
             belop: 0,
             grad: 0,
             dagtype: 'ArbeidsgiverperiodeDag',
@@ -501,13 +357,6 @@ export const noenAvvisteDagerDirekte: RSVedtakWrapper = {
             begrunnelser: [],
         },
         {
-            dato: '2021-02-14',
-            belop: 0,
-            grad: 0,
-            dagtype: 'UkjentDag',
-            begrunnelser: [],
-        },
-        {
             dato: '2021-02-15',
             belop: 0,
             grad: 0,
@@ -557,13 +406,6 @@ export const noenAvvisteDagerDirekte: RSVedtakWrapper = {
             begrunnelser: ['EtterDødsdato'],
         },
         {
-            dato: '2021-02-22',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['UKJENT'],
-        },
-        {
             dato: '2021-02-23',
             belop: 0,
             grad: 0,
@@ -602,7 +444,7 @@ export const noenAvvisteDagerDirekte: RSVedtakWrapper = {
             begrunnelser: ['AndreYtelserSvangerskapspenger'],
         },
     ],
-    dagerPerson: [],
+    dagerArbeidsgiver: [],
     sykepengebelopPerson: 9000,
     sykepengebelopArbeidsgiver: 0,
 }

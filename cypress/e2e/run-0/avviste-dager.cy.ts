@@ -3,7 +3,7 @@ import {
     avvistVedtakMedLavInntekt,
     vedtakMed40Grad,
 } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
-import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/avvisteDager'
+import { avvisteDagerRefusjon } from '../../../src/data/testdata/data/vedtak/avvisteDager'
 
 describe('Avviste dager', () => {
     before(() => {
@@ -23,7 +23,7 @@ describe('Avviste dager', () => {
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get(`a[href*=${alleAvvisteDager.id}]`).click({
+        cy.get(`a[href*=${avvisteDagerRefusjon.id}]`).click({
             force: true,
         })
 
