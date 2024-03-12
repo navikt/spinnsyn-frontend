@@ -15,7 +15,7 @@ import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgive
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
 import { noenAvvisteDagerDirekte, noenAvvisteDagerRefusjon } from '../vedtak/alleAvvisteDager'
 import {
-    skjønnsfastsattBrukerutbetaling,
+    skjønnsfastsattBrukerutbetaling, skjønnsfastsattBrukerutbetalingDelvisInnvilget,
     skjønnsfastsattFlereArbeidsgivere,
     skjønnsfastsattRefusjon,
 } from '../vedtak/skjønnsfastsatt'
@@ -38,7 +38,7 @@ export const etVedtakEnArbeidsgivere: Persona = {
     beskrivelse: 'Refusjon til arbeidsgiver',
 }
 
-export const delvisAvvistVedtakPerson: Persona = {
+export const delvisAvvistVedtak: Persona = {
     vedtak: [noenAvvisteDagerRefusjon, noenAvvisteDagerDirekte],
     beskrivelse: 'Delvis avvist vedtak (direkte og refusjon)',
 }
@@ -58,12 +58,12 @@ export const eldgammelt: Persona = {
     beskrivelse: 'Veldig gammelt vedtak',
 }
 
-export const forLavInntektPerson: Persona = {
+export const avvistVedtak: Persona = {
     vedtak: [avvistVedtakMedLavInntekt],
     beskrivelse: 'Avvist vedtak ',
 }
 
-export const direkteOgRefusjon: Persona = {
+export const innvilgetVedtak: Persona = {
     vedtak: [kunDirekte, ulestVedtakUtenUtbetalingsdager],
     kontonummer: '10011110011',
     beskrivelse: 'Innvilget vedtak (direkte og refusjon)',
@@ -109,9 +109,9 @@ export const kunArbedisgiverPerioder: Persona = {
     beskrivelse: 'Vedtak som bare gjelder innenfor arbeidsgiverperioden',
 }
 
-export const skjønnsfastsattBrukerutbetalingPerson: Persona = {
-    vedtak: [skjønnsfastsattBrukerutbetaling],
-    beskrivelse: 'Skjønnsfastsatt inntekt',
+export const skjønnsfastsattVedtak: Persona = {
+    vedtak: [skjønnsfastsattBrukerutbetaling, skjønnsfastsattBrukerutbetalingDelvisInnvilget],
+    beskrivelse: 'Skjønnsfastsatt vedtak (helt og delvis innvilget)',
 }
 
 export const skjønnsfastsattRefusjonPerson: Persona = {

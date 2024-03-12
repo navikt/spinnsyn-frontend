@@ -2,6 +2,22 @@ import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
 import { kunDirekte } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
+import { noenAvvisteDagerDirekte } from './alleAvvisteDager'
+
+const diffInPercentage = (a: number, b: number) => {
+    return Math.abs((a - b) / ((a + b) / 2)) * 100
+}
+
+export const skjønnsfastsattBrukerutbetalingDelvisInnvilget = jsonDeepCopy(noenAvvisteDagerDirekte)
+skjønnsfastsattBrukerutbetalingDelvisInnvilget.id = '2ab1b1b7-8781-40a2-a1e3-c0950042a600'
+skjønnsfastsattBrukerutbetalingDelvisInnvilget.vedtak.begrunnelser = [
+    {
+        begrunnelse:
+            'Dette er en tekstlig begrunnelse fra saksbehandleren din. Jeg brukte skjønn og kom frem hva vi tror du ville tjent om et år gitt omstendigheter lorem ipsum hei og hå',
+        type: 'SkjønnsfastsattSykepengegrunnlagFritekst',
+        perioder: [],
+    },
+]
 
 export const skjønnsfastsattBrukerutbetaling = jsonDeepCopy(kunDirekte)
 skjønnsfastsattBrukerutbetaling.id = '6aa63aa6-a932-4ba4-b1b3-bc3722b0eb1e'
@@ -28,16 +44,29 @@ const omregnetÅrsinntekt = skjønnsfastsattBrukerutbetaling.vedtak.inntekt! * 1
 const skjønnsbelop = omregnetÅrsinntekt
 const innrapportertÅrsinntekt = 350000
 
-const diffInPercentage = (a: number, b: number) => {
-    return Math.abs((a - b) / ((a + b) / 2)) * 100
-}
-
 skjønnsfastsattBrukerutbetaling.vedtak.sykepengegrunnlagsfakta = {
     fastsatt: 'EtterSkjønn',
     skjønnsfastsatt: skjønnsbelop,
     arbeidsgivere: [
         {
             arbeidsgiver: skjønnsfastsattBrukerutbetaling.vedtak.organisasjonsnummer!,
+            omregnetÅrsinntekt: omregnetÅrsinntekt,
+            skjønnsfastsatt: skjønnsbelop,
+        },
+    ],
+    omregnetÅrsinntekt: omregnetÅrsinntekt,
+    innrapportertÅrsinntekt: innrapportertÅrsinntekt,
+    avviksprosent: diffInPercentage(omregnetÅrsinntekt, innrapportertÅrsinntekt),
+    '6G': 668862.0,
+    tags: ['6GBegrenset'],
+}
+
+skjønnsfastsattBrukerutbetalingDelvisInnvilget.vedtak.sykepengegrunnlagsfakta = {
+    fastsatt: 'EtterSkjønn',
+    skjønnsfastsatt: skjønnsbelop,
+    arbeidsgivere: [
+        {
+            arbeidsgiver: skjønnsfastsattBrukerutbetalingDelvisInnvilget.vedtak.organisasjonsnummer!,
             omregnetÅrsinntekt: omregnetÅrsinntekt,
             skjønnsfastsatt: skjønnsbelop,
         },

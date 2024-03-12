@@ -2,11 +2,11 @@ import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { jsonDeepCopy } from '../../utils/json-deep-copy'
 
 import {
-    delvisAvvistVedtakPerson,
-    direkteOgRefusjon,
-    forLavInntektPerson,
+    delvisAvvistVedtak,
+    innvilgetVedtak,
+    avvistVedtak,
     ingenVedtakPerson,
-    skjønnsfastsattBrukerutbetalingPerson,
+    skjønnsfastsattVedtak,
 } from './data/personas/personas'
 
 export interface Persona {
@@ -39,6 +39,7 @@ export type PersonaKey =
     | 'skjonnsfastsatt-riktig-aarsinntekt'
     | 'vedtak-med-0-utbetaling'
     | 'flexjar-pohelse'
+    | 'innvilget-vedtak'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -47,10 +48,10 @@ type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
     ['vedtak-avslag']: {
-        ['kun-direkte']: jsonDeepCopy(direkteOgRefusjon),
-        ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
-        ['alle-avviste-dager']: jsonDeepCopy(delvisAvvistVedtakPerson),
-        ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
+        ['innvilget-vedtak']: jsonDeepCopy(innvilgetVedtak),
+        ['alle-avviste-dager']: jsonDeepCopy(avvistVedtak),
+        ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(delvisAvvistVedtak),
+        ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattVedtak),
     },
     ['ingen-vedtak']: {
         ['uten-data']: jsonDeepCopy(ingenVedtakPerson),
