@@ -3,7 +3,6 @@ import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 import React from 'react'
 
-import { getAzureAdAccessToken } from '../../../auth/getAzureAdAccessToken'
 import { verifyAzureAccessTokenVedArkivering } from '../../../auth/verifyAzureAccessTokenVedArkivering'
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { hentVedtakForArkivering } from '../../../data/hentVedtakForArkivering'

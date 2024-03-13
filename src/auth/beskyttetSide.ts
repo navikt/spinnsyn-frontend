@@ -3,11 +3,12 @@ import { GetServerSidePropsContext } from 'next/types'
 import { GetServerSidePropsResult } from 'next'
 import { IToggle } from '@unleash/nextjs'
 import { DehydratedState } from '@tanstack/react-query'
+import { getToken } from '@navikt/oasis'
+import { validateAzureToken } from '@navikt/oasis/dist/validate'
 
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 import { AuthenticationError } from '../utils/fetch'
 
-import { verifyAzureAccessTokenSpinnsynInterne } from './verifyAzureAccessTokenVedArkivering'
 import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 
 type PageHandler = (context: GetServerSidePropsContext) => Promise<GetServerSidePropsResult<ServerSidePropsResult>>
@@ -66,16 +67,17 @@ export function beskyttetSide(handler: PageHandler) {
                 permanent: false,
             },
         }
-        const bearerToken: string | null | undefined = request.headers['authorization']
-        if (!bearerToken) {
+        const token = getToken(context.req)
+
+        if (!token) {
             return wonderwallRedirect
         }
-        try {
-            await verifyAzureAccessTokenSpinnsynInterne(bearerToken)
-        } catch (e) {
-            logger.error(e, 'Kunne ikke autentisere.')
+        const verified = await validateAzureToken(token)
+        if (!verified.ok) {
+            logger.error('Kunne ikke autentisere.')
             return wonderwallRedirect
         }
+
         return handler(context)
     }
 }
