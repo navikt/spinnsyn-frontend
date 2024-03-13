@@ -1,8 +1,9 @@
 import { IncomingMessage } from 'http'
 
 import { logger } from '@navikt/next-logger'
+import { getToken } from '@navikt/oasis'
+import { requestAzureOboToken } from '@navikt/oasis/dist/obo'
 
-import { getOboAccessToken } from '../auth/getOboAccessToken'
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { isMockBackend } from '../utils/environment'
 
@@ -10,14 +11,19 @@ export async function hentModiaContext(incomingMessage: IncomingMessage): Promis
     if (isMockBackend()) {
         return '01019012345'
     }
-    const accessToken = incomingMessage.headers.authorization!.split(' ')[1]
-
-    const modiaOboToken = await getOboAccessToken(accessToken, process.env.MODIACONTEXTHOLDER_SCOPE!)
-
+    const accessToken = getToken(incomingMessage)
+    if (!accessToken) {
+        throw new ErrorMedStatus('Mangler accessToken', 401)
+    }
+    const modiaOboToken = await requestAzureOboToken(accessToken, process.env.MODIACONTEXTHOLDER_SCOPE!)
+    if (!modiaOboToken.ok) {
+        logger.warn('Kunne ikke hente modiaOboToken.')
+        throw new ErrorMedStatus('Kunne ikke hente modiaOboToken.', 500)
+    }
     const response = await fetch(`${process.env.MODIACONTEXTHOLDER_URL}/modiacontextholder/api/context/aktivbruker`, {
         method: 'GET',
         headers: {
-            Authorization: `Bearer ${modiaOboToken}`,
+            Authorization: `Bearer ${modiaOboToken.token}`,
         },
     })
 
