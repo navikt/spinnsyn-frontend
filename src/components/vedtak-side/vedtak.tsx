@@ -25,6 +25,7 @@ import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
+import IngenUtbetaling from './utbetaling/ingen-utbetaling'
 
 const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
 
@@ -55,6 +56,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const ingenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
     const harAvvisteDager = avvisteDager.length > 0
 
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
@@ -115,6 +117,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             )}
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
             {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
+            {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
+
             <InntekterLagtTilGrunn vedtak={vedtak} />
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
