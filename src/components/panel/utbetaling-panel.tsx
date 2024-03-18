@@ -18,12 +18,11 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
                 data-cy={`utbetaling-panel-${props.dataCy}${props.erUgyldig ? '-ugyldig' : ''}`}
                 style={
                     {
-                        '--ac-panel-bg': props.erUgyldig ? 'var(--a-gray-100)' : 'var(--a-green-100)',
+                        '--ac-panel-bg': props.erUgyldig ? 'var(--a-gray-100)' : 'var(--a-lightblue-100)',
                     } as React.CSSProperties
                 }
             >
                 <div className="mb-4">{props.tittel}</div>
-
                 {props.children}
             </Panel>
         </section>
