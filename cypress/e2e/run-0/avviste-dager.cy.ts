@@ -96,8 +96,7 @@ describe('Avviste dager', () => {
     it('Vedtak med avviste dager og ingen utbetaling', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`a[href*=${avvistVedtak.id}]`).click({ force: true })
-
-        cy.get('.ekspanderbar.gronn').should('not.exist')
+        cy.contains('Ingen utbetaling')
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
             .should('contain', '4 sykepengedager')
@@ -129,6 +128,7 @@ describe('Avviste dager', () => {
         cy.get(`a[href*=${avvistVedtakMedLavInntekt.id}]`).click({
             force: true,
         })
+        cy.contains('Ingen utbetaling')
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
             .should('contain', '5 sykepengedager')
