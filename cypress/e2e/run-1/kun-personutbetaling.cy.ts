@@ -23,6 +23,10 @@ describe('Kun personutbetaling', () => {
 
         cy.get('[data-cy="header-sykepenger-til-deg"]').contains('sykepenger til deg')
 
+        cy.get('[data-cy="utbetaling-panel-personutbetaling"]')
+            .should('exist')
+            .and('have.css', 'background-color', 'rgb(216, 249, 255)') // --a-lightblue-100
+
         cy.get('[data-cy*="personutbetaling"]').within(() => {
             cy.get('h3').contains('Sykepenger utbetales til kontonummer:')
             cy.contains('1001 11 10011')
