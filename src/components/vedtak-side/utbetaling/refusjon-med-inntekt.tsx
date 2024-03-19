@@ -1,18 +1,26 @@
-import { BodyShort, Heading } from '@navikt/ds-react'
+import { BodyShort, Heading, List } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import { VedtakProps } from '../vedtak'
+import { Utbetalingsdager, VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
+import { DelvisUtbetaling } from './delvis-utbetaling'
 
-const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
+export const RefusjonMedInntekt = ({
+    vedtak,
+    utbetalingsdager,
+}: VedtakProps & {
+    utbetalingsdager: Utbetalingsdager
+}) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+    const erDelvisInnvilget = utbetalingsdager.avvisteDager > 0
+    const etterSkjønn = vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
 
     return (
         <UtbetalingPanel
@@ -40,6 +48,11 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             dataCy="refusjon"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={vedtak.sykepengebelopArbeidsgiver > 0} />
+            <DelvisUtbetaling
+                erDelvisInnvilget={erDelvisInnvilget}
+                etterSkjønn={etterSkjønn}
+                utbetalingsdager={utbetalingsdager}
+            ></DelvisUtbetaling>
             {vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} />}
         </UtbetalingPanel>
     )
