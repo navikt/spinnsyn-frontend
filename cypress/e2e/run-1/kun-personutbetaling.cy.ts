@@ -4,12 +4,12 @@ describe('Kun personutbetaling', () => {
     const vedtak = kunDirekte
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
-        cy.findByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=direkte-og-refusjon')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 2)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
+        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=direkte-og-refusjon')
     })
 
     it('Viser info om utbetaling til person', () => {
