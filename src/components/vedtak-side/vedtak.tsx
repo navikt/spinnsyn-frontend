@@ -15,7 +15,6 @@ import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetr
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 
 import AnnulleringsInfo from './annullering/annullering'
-import AvvisteDager from './avviste-dager/avviste-dager'
 import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
@@ -120,7 +119,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
 
             <InntekterLagtTilGrunn vedtak={vedtak} />
-            {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
             {!erArkivering && erDirekteutbetaling && studyActive && (
                 <UxSignalsWidget study={studyKey} demo={!isProd()} />
