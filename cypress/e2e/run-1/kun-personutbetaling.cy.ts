@@ -17,10 +17,11 @@ describe('Kun personutbetaling', () => {
         cy.contains(
             'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
         ).should('not.exist')
+
+        cy.contains('Pengene utbetales til deg')
         cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
         cy.get('[data-cy="header-sykepenger-til-deg"]').contains('24 550 kroner')
-
         cy.get('[data-cy="header-sykepenger-til-deg"]').contains('sykepenger til deg')
 
         cy.get('[data-cy="utbetaling-panel-personutbetaling"]')
