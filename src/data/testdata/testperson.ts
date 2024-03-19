@@ -42,7 +42,7 @@ export type PersonaKey =
     | 'annulert-og-overført-infotrygd'
     | 'veldig-gammelt-vedtak'
     | 'delvis-og-helt-avviste-vedtak'
-    | 'kun-direkte'
+    | 'direkte-og-refusjon'
     | 'direkte-uten-kontonummer'
     | 'kombinasjon'
     | 'kun-ag-periode'
@@ -65,7 +65,7 @@ type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
     ['mottaker']: {
-        ['kun-direkte']: jsonDeepCopy(direkteOgRefusjon),
+        ['direkte-og-refusjon']: jsonDeepCopy(direkteOgRefusjon),
         ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
     },
@@ -92,7 +92,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
     },
     ['vedtak-avslag']: {
-        ['kun-direkte']: jsonDeepCopy(direkteOgRefusjon),
+        ['direkte-og-refusjon']: jsonDeepCopy(direkteOgRefusjon),
         ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
         ['alle-avviste-dager']: jsonDeepCopy(delvisAvvistVedtakPerson),
         ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),

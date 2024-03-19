@@ -1,11 +1,16 @@
+import { kunDirekte } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
+
 describe('Tidligere utbetalt hel arbeidsgiverperiode', () => {
+    const vedtak = kunDirekte
+
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=direkte-og-refusjon')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 2)
     })
 
     it('Åpner vedtak', () => {
-        cy.findByRole('link', { name: /Sykmeldt fra /i }).click()
+        cy.get(`a[href*=${vedtak.id}]`).click()
+
         cy.contains('Svar på søknad om sykepenger').should('be.visible')
     })
 
