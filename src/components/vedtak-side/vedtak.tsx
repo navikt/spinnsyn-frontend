@@ -32,6 +32,11 @@ export interface VedtakProps {
     vedtak: RSVedtakWrapper
 }
 
+export interface Utbetalingsdager {
+    avvisteDager: number
+    antallDager: number
+}
+
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
@@ -50,6 +55,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             return list
         }, avvisteDagerArbeidsgiver)
         .sort((a, b) => (a.dato < b.dato ? -1 : 1))
+
+    const antallDager = vedtak.dagerArbeidsgiver.length + vedtak.dagerPerson.length
+
+    const utbetalingsdager: Utbetalingsdager = {
+        avvisteDager: avvisteDager.length,
+        antallDager: antallDager,
+    }
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
@@ -114,8 +126,10 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
-            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
+
+            {/*send inn utbetalingsdager*/}
+            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdager} />}
+            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdager} />}
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
 
             <InntekterLagtTilGrunn vedtak={vedtak} />

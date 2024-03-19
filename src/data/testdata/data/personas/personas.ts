@@ -40,6 +40,16 @@ export const etVedtakFlereArbeidsgivere: Persona = {
     beskrivelse: 'Refusjon til arbeidsgiver og ansatt 2 steder',
 }
 
+export const etVedtakEnArbeidsgivere: Persona = {
+    vedtak: [ulestVedtakUtenUtbetalingsdager],
+    beskrivelse: 'Refusjon til arbeidsgiver',
+}
+
+export const delvisAvvistVedtakPerson: Persona = {
+    vedtak: [alleAvvisteDager],
+    beskrivelse: 'Noen dager avvist',
+}
+
 export const diverseData: Persona = {
     vedtak: [
         vedtakMedDetMeste,
@@ -69,13 +79,19 @@ export const eldgammelt: Persona = {
 
 export const forLavInntektPerson: Persona = {
     vedtak: [avvistVedtakMedLavInntekt],
-    beskrivelse: 'Avvist på grunn av for lav inntekt',
+    beskrivelse: 'Alle dager avvist lav inntekt',
 }
 
-export const kunDirektePerson: Persona = {
-    vedtak: [kunDirekte],
+export const direkteOgRefusjon: Persona = {
+    vedtak: [kunDirekte, ulestVedtakUtenUtbetalingsdager],
     kontonummer: '10011110011',
-    beskrivelse: 'Utbetaling til sykmeldt',
+    beskrivelse: 'Innvilget med direkte og refusjon',
+}
+
+export const ingenVedtakPerson: Persona = {
+    vedtak: [],
+    kontonummer: '10011110011',
+    beskrivelse: 'Person uten vedtak',
 }
 
 export const flexjarPoHelseHelsemetrikk: Persona = {
@@ -114,7 +130,7 @@ export const kunArbedisgiverPerioder: Persona = {
 
 export const skjønnsfastsattBrukerutbetalingPerson: Persona = {
     vedtak: [skjønnsfastsattBrukerutbetaling],
-    beskrivelse: 'Skjønnsfastsatt inntekt med brukerutbetaling',
+    beskrivelse: 'Skjønnsfastsatt inntekt',
 }
 
 export const skjønnsfastsattRefusjonPerson: Persona = {
