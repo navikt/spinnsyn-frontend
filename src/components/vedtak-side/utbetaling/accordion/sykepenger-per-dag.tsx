@@ -45,7 +45,7 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
             />
         )
     }
-    return null
+    return <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode} />
 }
 
 export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
@@ -54,7 +54,7 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
     if (dager.length == 0) return null
 
     return (
-        <Accordion.Item defaultOpen={isServer}>
+        <Accordion.Item data-cy="sykepenger-per-dag" defaultOpen={isServer}>
             <Accordion.Header>
                 <Heading size="small" level="3">
                     {tittel || 'Dine sykepenger per dag'}
