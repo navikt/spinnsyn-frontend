@@ -24,6 +24,7 @@ describe('Kombinasjonutbetaling', () => {
             cy.contains(
                 'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller NAV innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
             )
+            cy.contains('Pengene utbetales til deg')
 
             cy.contains(
                 'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn ' +
@@ -45,6 +46,7 @@ describe('Kombinasjonutbetaling', () => {
     })
 
     it('Viser info om utbetaling til arbeidsgiveren', () => {
+        cy.contains('Pengene utbetales til arbeidsgiveren din')
         cy.contains('4 910 kroner').parent().contains('Utbetales til Matbutikken AS')
 
         cy.get('[data-cy*="refusjon"]').within(() => {
