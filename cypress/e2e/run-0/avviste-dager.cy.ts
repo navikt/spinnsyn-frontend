@@ -46,7 +46,7 @@ describe('Avviste dager', () => {
 
         cy.findByRole('region', { name: 'Beregning av sykepengene' }).click()
         cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
-            cy.get('[data-cy="sykepenger-per-dag"]').should('contain', 'Dine sykepenger per dag').click()
+            cy.get('[data-cy="sykepenger-per-dag"]').should('contain', 'Sykepenger per dag til arbeidsgiver').click()
         })
     })
 
@@ -59,7 +59,7 @@ describe('Avviste dager', () => {
 
         cy.findByRole('region', { name: 'Beregning av sykepengene' }).click()
         cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
-            cy.get('[data-cy="sykepenger-per-dag"]').should('contain', 'Dine sykepenger per dag').click()
+            cy.get('[data-cy="sykepenger-per-dag"]').should('contain', 'Sykepenger per dag til arbeidsgiver').click()
         })
 
         cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {

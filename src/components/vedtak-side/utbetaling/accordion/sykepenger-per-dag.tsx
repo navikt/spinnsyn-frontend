@@ -14,38 +14,22 @@ interface SykepengerPerDagProps {
 }
 
 export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
-    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
-    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
-    const erBegge = erDirekteutbetaling && erRefusjon
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
-    if (erBegge) {
-        return (
-            <>
-                <SykepengerPerDag
-                    tittel="Sykepenger per dag til deg"
-                    dager={vedtak.dagerPerson}
-                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                />
-                <SykepengerPerDag
-                    tittel="Sykepenger per dag til arbeidsgiver"
-                    dager={vedtak.dagerArbeidsgiver}
-                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                />
-            </>
-        )
-    }
-    if (erDirekteutbetaling) {
-        return <SykepengerPerDag dager={vedtak.dagerPerson} ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode} />
-    }
-    if (erRefusjon) {
-        return (
+
+    return (
+        <>
             <SykepengerPerDag
+                tittel="Sykepenger per dag til deg"
+                dager={vedtak.dagerPerson}
+                ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+            />
+            <SykepengerPerDag
+                tittel="Sykepenger per dag til arbeidsgiver"
                 dager={vedtak.dagerArbeidsgiver}
                 ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
             />
-        )
-    }
-    return <SykepengerPerDag dager={vedtak.dagerArbeidsgiver} ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode} />
+        </>
+    )
 }
 
 export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {

@@ -17,7 +17,10 @@ describe('Utbetalingsoversikt', () => {
     it('Utbetalingsoversikt', () => {
         cy.contains('8 960 kroner').parent().contains('Utbetales til Pengeløs Sparebank')
 
-        cy.contains('Dine sykepenger per dag').click({ force: true })
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).click()
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
+            cy.get('[data-cy="sykepenger-per-dag"]').should('contain', 'Sykepenger per dag til arbeidsgiver').click()
+        })
 
         // Dager utenfor vedtak fom og tom
         cy.contains('21.01.21').should('not.exist')
@@ -68,7 +71,10 @@ describe('Utbetalingsoversikt', () => {
         cy.get(`a[href*=${alleAvvisteDager.id}]`).click()
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-        cy.contains('Dine sykepenger per dag').click({ force: true })
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).click()
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
+            cy.get('[data-cy="sykepenger-per-dag"]').should('contain', 'Sykepenger per dag til arbeidsgiver').click()
+        })
 
         cy.get('[data-cy="dag-tabell-body"]')
             .first()
