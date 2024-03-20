@@ -41,6 +41,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
 
         const token = getToken(req)
         if (!token) {
+            logger.warn('Ingen token mottatt i beskyttetApi')
             return send401()
         }
         const result = await validateIdportenToken(token)
