@@ -1,9 +1,10 @@
 import getConfig from 'next/config'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { IToggle } from '@unleash/nextjs'
+import { requestAzureOboToken } from '@navikt/oasis/dist/obo'
+import { getToken } from '@navikt/oasis'
 
 import { beskyttetSide } from '../auth/beskyttetSide'
-import { getOboAccessToken } from '../auth/getOboAccessToken'
 import { hentModiaContext } from '../data/hentModiaContext'
 import { hentVedtak } from '../data/hentVedtak'
 import { hentVedtakFraSpinnsynBackendForInterne } from '../data/hentVedtakForInterne'
@@ -20,15 +21,19 @@ export const prefetchVedtak = beskyttetSide(async (ctx): Promise<GetServerSidePr
     if (spinnsynFrontendInterne()) {
         sykmeldtFnr = await hentModiaContext(ctx.req!)
 
+        const token = getToken(ctx.req)
+        if (!token) {
+            throw new Error('Fant ikke token')
+        }
         if (sykmeldtFnr) {
-            const oboSpinnsynBackend = await getOboAccessToken(
-                ctx.req?.headers.authorization?.split(' ')[1],
-                serverRuntimeConfig.spinnsynBackendClientId,
-            )
+            const oboSpinnsynBackend = await requestAzureOboToken(token, serverRuntimeConfig.spinnsynBackendClientId)
+            if (!oboSpinnsynBackend.ok) {
+                throw new Error('Kunne ikke hente token ' + oboSpinnsynBackend.error.message)
+            }
 
             await queryClient.prefetchQuery({
                 queryKey: ['vedtak'],
-                queryFn: () => hentVedtakFraSpinnsynBackendForInterne(oboSpinnsynBackend, sykmeldtFnr!),
+                queryFn: () => hentVedtakFraSpinnsynBackendForInterne(oboSpinnsynBackend.token, sykmeldtFnr!),
             })
         }
     } else {

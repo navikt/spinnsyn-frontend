@@ -2,12 +2,13 @@ import { logger } from '@navikt/next-logger'
 import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 import React from 'react'
+import { getToken, validateAzureToken } from '@navikt/oasis'
 
-import { verifyAzureAccessTokenVedArkivering } from '../../../auth/verifyAzureAccessTokenVedArkivering'
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { hentVedtakForArkivering } from '../../../data/hentVedtakForArkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { requestAzureClientCredentialsToken } from '../../../auth/oasis-wip/client-credentials'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -32,20 +33,23 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             throw new ErrorMedStatus('Arkivering ikke enablet', 400)
         }
 
-        const authHeader = ctx.req.headers.authorization
-
-        if (!authHeader) {
+        const tokenInn = getToken(ctx.req)
+        if (!tokenInn) {
             throw new ErrorMedStatus('Ingen auth header', 401)
         }
-        const tokenInn = authHeader.split(' ')[1]
-        await verifyAzureAccessTokenVedArkivering(tokenInn)
-
+        const tokenResult = await validateAzureToken(tokenInn)
+        if (!tokenResult.ok) {
+            throw new ErrorMedStatus('Kunne ikke validere token ' + tokenResult.errorType, 401)
+        }
         const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
 
-        const token = await getAzureAdAccessToken(serverRuntimeConfig.spinnsynBackendClientId)
+        const token = await requestAzureClientCredentialsToken(serverRuntimeConfig.spinnsynBackendClientId)
+        if (!token.ok) {
+            throw new ErrorMedStatus('Kunne ikke hente token: ' + token.error, 500)
+        }
 
-        const vedtak = await hentVedtakForArkivering(fnr, token.access_token!)
+        const vedtak = await hentVedtakForArkivering(fnr, token.token)
         const vedtaket = vedtak.find((i) => i.id == utbetalingId)
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
