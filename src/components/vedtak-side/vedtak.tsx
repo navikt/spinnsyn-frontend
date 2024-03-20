@@ -132,7 +132,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdager} />}
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
 
-            <pre>{JSON.stringify(vedtak.dagerArbeidsgiver.length, null, 2)}</pre>
             <InntekterLagtTilGrunn vedtak={vedtak} />
             <Sykepengedager vedtak={vedtak} />
             {!erArkivering && erDirekteutbetaling && studyActive && (
