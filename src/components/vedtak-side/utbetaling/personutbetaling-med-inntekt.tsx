@@ -1,4 +1,4 @@
-import { BodyShort, Heading, List } from '@navikt/ds-react'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
