@@ -24,7 +24,6 @@ export async function proxyKallTilBackend(opts: Opts) {
         opts.res.send(null)
         return
     }
-    logger.info('Proxy til backend kalt ' + opts.req.url)
 
     async function bearerToken(): Promise<string | undefined> {
         if (opts.backendClientId) {
