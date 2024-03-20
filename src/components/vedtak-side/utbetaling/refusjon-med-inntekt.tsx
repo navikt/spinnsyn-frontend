@@ -1,4 +1,4 @@
-import { BodyShort, Heading, List } from '@navikt/ds-react'
+import { BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
