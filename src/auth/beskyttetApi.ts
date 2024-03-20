@@ -15,22 +15,20 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         if (isMockBackend()) {
             return handler(req, res)
         }
-
-        if (spinnsynFrontendInterne()) {
-            return beskyttetApiInterne(req, res)
-        }
-
         function send401() {
             metrics.apiUnauthorized.inc({ path: cleanPath }, 1)
-
             res.status(401).json({ message: 'Access denied' })
         }
 
-        async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse) {
-            const token = getToken(req)
-            if (!token) {
-                return send401()
-            }
+        const token = getToken(req)
+        if (!token) {
+            return send401()
+        }
+        if (spinnsynFrontendInterne()) {
+            return beskyttetApiInterne(req, res, token)
+        }
+
+        async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse, token: string) {
             const verified = await validateAzureToken(token)
             if (!verified.ok) {
                 logger.warn('kunne ikke validere azuretoken i beskyttetApi')
@@ -39,10 +37,6 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             return handler(req, res)
         }
 
-        const token = getToken(req)
-        if (!token) {
-            return send401()
-        }
         const result = await validateIdportenToken(token)
         if (!result.ok) {
             logger.warn('kunne ikke validere idportentoken i beskyttetApi')
