@@ -3,13 +3,10 @@ import { GetServerSidePropsContext } from 'next/types'
 import { GetServerSidePropsResult } from 'next'
 import { IToggle } from '@unleash/nextjs'
 import { DehydratedState } from '@tanstack/react-query'
-import { getToken } from '@navikt/oasis'
+import { getToken, validateIdportenToken } from '@navikt/oasis'
 import { validateAzureToken } from '@navikt/oasis/dist/validate'
 
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
-import { AuthenticationError } from '../utils/fetch'
-
-import { verifyIdportenAccessToken } from './verifyIdportenAccessToken'
 
 type PageHandler = (context: GetServerSidePropsContext) => Promise<GetServerSidePropsResult<ServerSidePropsResult>>
 
@@ -40,16 +37,23 @@ export function beskyttetSide(handler: PageHandler) {
                 permanent: false,
             },
         }
-        const bearerToken: string | null | undefined = request.headers['authorization']
-        if (!bearerToken) {
+        const token = getToken(context.req)
+        if (!token) {
             return wonderwallRedirect
         }
-        try {
-            await verifyIdportenAccessToken(bearerToken)
-        } catch (e) {
-            if (!(e instanceof AuthenticationError)) {
-                logger.warn(`Kunne ikke validere token fra ID-porten i beskyttetSide. Error: ${e}.`)
+        const validationResult = await validateIdportenToken(token)
+        if (!validationResult.ok) {
+            const error = new Error(
+                `Invalid JWT token found (cause: ${validationResult.error.message}, redirecting to login.`,
+                { cause: validationResult.error },
+            )
+
+            if (validationResult.errorType === 'token expired') {
+                logger.warn(error)
+            } else {
+                logger.error(error)
             }
+
             return wonderwallRedirect
         }
         return handler(context)
