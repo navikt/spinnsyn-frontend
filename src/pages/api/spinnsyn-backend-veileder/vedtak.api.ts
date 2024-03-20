@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import getConfig from 'next/config'
 import { getToken, validateAzureToken } from '@navikt/oasis'
-import { logger } from '@navikt/next-logger'
 import { requestAzureOboToken } from '@navikt/oasis/dist/obo'
 
 import { hentModiaContext } from '../../../data/hentModiaContext'
@@ -21,7 +20,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const spinnsynObo = await requestAzureOboToken(accessToken, serverRuntimeConfig.spinnsynBackendClientId)
     if (!spinnsynObo.ok) {
-        logger.warn('Kunne ikke hente spinnsynObo.')
         return res.status(401).json({ message: 'Kunne ikke hente spinnsyn obo token' })
     }
 
