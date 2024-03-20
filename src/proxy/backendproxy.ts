@@ -1,8 +1,8 @@
 import { proxyApiRouteRequest } from '@navikt/next-api-proxy'
 import { logger } from '@navikt/next-logger'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { getToken, requestOboToken } from '@navikt/oasis'
 
-import { getTokenxToken } from '../auth/getTokenxToken'
 import { cleanPathForMetric } from '../metrics/metrics'
 
 interface Opts {
@@ -27,8 +27,19 @@ export async function proxyKallTilBackend(opts: Opts) {
 
     async function bearerToken(): Promise<string | undefined> {
         if (opts.backendClientId) {
-            const idportenToken = opts.req.headers.authorization!.split(' ')[1]
-            return await getTokenxToken(idportenToken, opts.backendClientId)
+            const idportenToken = getToken(opts.req)
+            if (!idportenToken) {
+                throw new Error('Mangler authorization header')
+            }
+            const tokenX = await requestOboToken(idportenToken, opts.backendClientId)
+            if (!tokenX.ok) {
+                throw new Error(
+                    `Unable to exchange token for ${opts.backendClientId} token,reason: ${tokenX.error.message}`,
+                    {
+                        cause: tokenX.error,
+                    },
+                )
+            }
         }
         return undefined
     }
