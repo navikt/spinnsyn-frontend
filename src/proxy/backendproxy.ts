@@ -41,6 +41,7 @@ export async function proxyKallTilBackend(opts: Opts) {
                     },
                 )
             }
+            return tokenX.token
         }
         return undefined
     }
