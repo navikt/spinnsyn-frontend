@@ -38,6 +38,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             }
             return handler(req, res)
         }
+        logger.info('Beskyttet api blir kalt ' + req.url)
 
         const token = getToken(req)
         if (!token) {
