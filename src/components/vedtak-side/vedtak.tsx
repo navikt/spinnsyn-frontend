@@ -56,7 +56,11 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         }, avvisteDagerArbeidsgiver)
         .sort((a, b) => (a.dato < b.dato ? -1 : 1))
 
-    const antallDager = vedtak.dagerArbeidsgiver.length + vedtak.dagerPerson.length
+    const unikeDatoerKombinert = new Set([
+        ...vedtak.dagerArbeidsgiver.map((dag) => dag.dato),
+        ...vedtak.dagerPerson.map((dag) => dag.dato),
+    ])
+    const antallDager = unikeDatoerKombinert.size
 
     const utbetalingsdager: Utbetalingsdager = {
         avvisteDager: avvisteDager.length,
