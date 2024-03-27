@@ -4,12 +4,12 @@ describe('Kun personutbetaling', () => {
     const vedtak = kunDirekte
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
-        cy.findByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=direkte-og-refusjon')
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 2)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
+        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=direkte-og-refusjon')
     })
 
     it('Viser info om utbetaling til person', () => {
@@ -17,11 +17,16 @@ describe('Kun personutbetaling', () => {
         cy.contains(
             'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
         ).should('not.exist')
+
+        cy.contains('Pengene utbetales til deg')
         cy.contains('Utbetales til Matbutikken AS').should('not.exist')
 
         cy.get('[data-cy="header-sykepenger-til-deg"]').contains('24 550 kroner')
-
         cy.get('[data-cy="header-sykepenger-til-deg"]').contains('sykepenger til deg')
+
+        cy.get('[data-cy="utbetaling-panel-personutbetaling"]')
+            .should('exist')
+            .and('have.css', 'background-color', 'rgb(216, 249, 255)') // --a-lightblue-100
 
         cy.get('[data-cy*="personutbetaling"]').within(() => {
             cy.get('h3').contains('Sykepenger utbetales til kontonummer:')

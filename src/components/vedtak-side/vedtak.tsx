@@ -15,7 +15,6 @@ import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetr
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 
 import AnnulleringsInfo from './annullering/annullering'
-import AvvisteDager from './avviste-dager/avviste-dager'
 import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
@@ -25,11 +24,17 @@ import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
+import IngenUtbetaling from './utbetaling/ingen-utbetaling'
 
 const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
 
 export interface VedtakProps {
     vedtak: RSVedtakWrapper
+}
+
+export interface Utbetalingsdager {
+    avvisteDager: number
+    antallDager: number
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
@@ -51,10 +56,22 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         }, avvisteDagerArbeidsgiver)
         .sort((a, b) => (a.dato < b.dato ? -1 : 1))
 
+    const unikeDatoerKombinert = new Set([
+        ...vedtak.dagerArbeidsgiver.map((dag) => dag.dato),
+        ...vedtak.dagerPerson.map((dag) => dag.dato),
+    ])
+    const antallDager = unikeDatoerKombinert.size
+
+    const utbetalingsdager: Utbetalingsdager = {
+        avvisteDager: avvisteDager.length,
+        antallDager: antallDager,
+    }
+
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const ingenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
     const harAvvisteDager = avvisteDager.length > 0
 
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
@@ -113,10 +130,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
-            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
+
+            {/*send inn utbetalingsdager*/}
+            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdager} />}
+            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdager} />}
+            {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
+
             <InntekterLagtTilGrunn vedtak={vedtak} />
-            {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
             {!erArkivering && erDirekteutbetaling && studyActive && (
                 <UxSignalsWidget study={studyKey} demo={!isProd()} />

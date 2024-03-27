@@ -88,6 +88,12 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
             case 'vedtak-innhold': {
                 return 'Vedtak med forskjellig innhold'
             }
+            case 'vedtak-avslag': {
+                return 'Vedtak med avslag'
+            }
+            case 'ingen-vedtak': {
+                return 'Uten vedtak'
+            }
             case 'testing': {
                 return 'Vedtak brukt til testing'
             }

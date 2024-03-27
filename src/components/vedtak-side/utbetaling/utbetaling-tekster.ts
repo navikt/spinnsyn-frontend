@@ -44,7 +44,8 @@ const UtbetalingTekster = {
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
-    'utbetaling.arbeidsgiver.tittel': 'Beløpet går til arbeidsgiveren din',
+    'utbetaling.arbeidsgiver.tittel': 'Pengene utbetales til arbeidsgiveren din',
+    'utbetaling.refusjon.tittel': 'Pengene utbetales til deg',
     'utbetaling.arbeidsgiver.systemtittel': 'Utbetales til %ARBEIDSGIVER%',
     'utbetaling.arbeidsgiver.tekst':
         'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',

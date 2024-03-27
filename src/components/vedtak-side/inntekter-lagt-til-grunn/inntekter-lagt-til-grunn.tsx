@@ -50,12 +50,6 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     if (!(inntektMnd && inntektAr)) {
         return null
     }
-    const harIngenUtbetaling = vedtak.sykepengebelopPerson == 0 && vedtak.sykepengebelopArbeidsgiver == 0
-    const harMinstEnForLavInntektDag =
-        vedtak.dagerPerson.concat(vedtak.dagerArbeidsgiver).filter((dag) => dag.begrunnelser.includes('MinimumInntekt'))
-            .length > 0
-
-    if (harIngenUtbetaling && !harMinstEnForLavInntektDag) return null
 
     return (
         <VedtakExpansionCard vedtak={vedtak} tittel={tekst('utbetaling.inntekt.info.tittel')}>
