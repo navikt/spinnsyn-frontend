@@ -10,11 +10,10 @@ import UtbetalingPanel from '../../panel/utbetaling-panel'
 const IngenUtbetaling = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
-    const utbetalingsType = vedtak.sykepengebelopPerson > 0 ? 'personutbetaling' : 'refusjon'
 
     return (
         <UtbetalingPanel
-            sectionLabel="Ingen utbetaling"
+            sectionLabel={ingenUtbetalingTittel}
             tittel={
                 <Heading level="2" size="large">
                     {annullertEllerRevurdert ? (
@@ -35,7 +34,7 @@ const IngenUtbetaling = ({ vedtak }: VedtakProps) => {
                 </Heading>
             }
             erUgyldig={annullertEllerRevurdert}
-            dataCy={utbetalingsType}
+            dataCy="ingenUtbetaling"
         >
             <VedtakPeriode vedtak={vedtak} />
         </UtbetalingPanel>

@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
-import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -44,38 +44,32 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const { data: studyActive } = useStudyStatus(studyKey)
     const query: NodeJS.Dict<string | string[]> = {}
 
-    // unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
+    const erAnnullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+    const erNyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+
     const avvisteDagerArbeidsgiver = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const avvisteDagerPerson = vedtak.dagerPerson.filter((dag) => dagErAvvist.includes(dag.dagtype))
-    const avvisteDager = avvisteDagerPerson
-        .reduce((list: RSDag[], dag: RSDag) => {
-            if (list.find((d) => d.dato === dag.dato) === undefined) {
-                list.push(dag)
-            }
-            return list
-        }, avvisteDagerArbeidsgiver)
-        .sort((a, b) => (a.dato < b.dato ? -1 : 1))
-
-    const unikeDatoerKombinert = new Set([
-        ...vedtak.dagerArbeidsgiver.map((dag) => dag.dato),
-        ...vedtak.dagerPerson.map((dag) => dag.dato),
-    ])
-    const antallDager = unikeDatoerKombinert.size
-
-    const utbetalingsdager: Utbetalingsdager = {
-        avvisteDager: avvisteDager.length,
-        antallDager: antallDager,
-    }
-
-    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+    const harIngenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
+    const harAvvisteDager = avvisteDagerArbeidsgiver.length > 0 || avvisteDagerPerson.length > 0
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
-    const ingenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
-    const harAvvisteDager = avvisteDager.length > 0
+
+    const harBareArbeidsgiverPeriodeDager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
+    const skalViseRefusjon = erRefusjon || harBareArbeidsgiverPeriodeDager
 
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
+
+    // TODO: Kan med fordel forenkles sånn at vi har ett objekt.
+    const utbetalingsdagerPerson: Utbetalingsdager = {
+        avvisteDager: avvisteDagerPerson.length,
+        antallDager: vedtak.dagerPerson.length,
+    }
+
+    const utbetalingsdagerRefusjon: Utbetalingsdager = {
+        avvisteDager: avvisteDagerArbeidsgiver.length,
+        antallDager: vedtak.dagerArbeidsgiver.length,
+    }
 
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
 
@@ -90,9 +84,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             query[key] = router.query[key]
         }
     }
-
-    const vedtakMedBareArbeidsgiverperiodedager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
-    const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
@@ -105,7 +96,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     {kanVelgePerson && <Person />}
                 </div>
             )}
-            {!annullertEllerRevurdert && (
+            {!erAnnullertEllerRevurdert && (
                 <>
                     <BodyLong size="medium">
                         {tekst('vedtak.velkommen.tekst1')}
@@ -114,7 +105,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 </>
             )}
             {skalViseJulesoknadWarning(vedtak) && <JulesoknadWarning />}
-            {annullertEllerRevurdert && (
+            {erAnnullertEllerRevurdert && (
                 <>
                     <AnnulleringsInfo vedtak={vedtak} />
                     <Heading spacing size="large" level="2" className="tidligere__beslutning">
@@ -122,7 +113,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Heading>
                 </>
             )}
-            {nyesteRevudering && (
+            {erNyesteRevurdering && (
                 <Alert variant="info" className="mt-4">
                     <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
                     <Link href={tekst('revurdert.alert.link.url')}>
@@ -131,10 +122,11 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 </Alert>
             )}
 
-            {/*send inn utbetalingsdager*/}
-            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdager} />}
-            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdager} />}
-            {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
+            {erDirekteutbetaling && (
+                <PersonutbetalingMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdagerRefusjon} />
+            )}
+            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} utbetalingsdager={utbetalingsdagerPerson} />}
+            {harIngenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
 
             <InntekterLagtTilGrunn vedtak={vedtak} />
             <Sykepengedager vedtak={vedtak} />
@@ -142,8 +134,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <UxSignalsWidget study={studyKey} demo={!isProd()} />
             )}
             <Behandling vedtak={vedtak} />
-            {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
-            {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
+            {!erAnnullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
+            {!erAnnullertEllerRevurdert && <Uenig vedtak={vedtak} />}
             {flexjarToggle.enabled && (
                 <FlexjarVarSidenNyttig
                     erDirekteutbetaling={erDirekteutbetaling}

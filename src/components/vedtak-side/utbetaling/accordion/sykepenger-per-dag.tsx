@@ -14,22 +14,39 @@ interface SykepengerPerDagProps {
 }
 
 export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
+    // TODO: Det må verifiseres at 'length' fungerer i stedet for utbetalingssum.
+    const harDagerMedPersonutbetaling = vedtak.dagerPerson.length > 0
+    const harDagerMedRefusjon = vedtak.dagerArbeidsgiver.length > 0
+    const erBegge = harDagerMedPersonutbetaling && harDagerMedRefusjon
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
-
-    return (
-        <>
+    if (erBegge) {
+        return (
+            <>
+                <SykepengerPerDag
+                    tittel="Sykepenger per dag til deg"
+                    dager={vedtak.dagerPerson}
+                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                />
+                <SykepengerPerDag
+                    tittel="Sykepenger per dag til arbeidsgiver"
+                    dager={vedtak.dagerArbeidsgiver}
+                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                />
+            </>
+        )
+    }
+    if (harDagerMedPersonutbetaling) {
+        return <SykepengerPerDag dager={vedtak.dagerPerson} ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode} />
+    }
+    if (harDagerMedRefusjon) {
+        return (
             <SykepengerPerDag
-                tittel="Sykepenger per dag til deg"
-                dager={vedtak.dagerPerson}
-                ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-            />
-            <SykepengerPerDag
-                tittel="Sykepenger per dag til arbeidsgiver"
                 dager={vedtak.dagerArbeidsgiver}
                 ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
             />
-        </>
-    )
+        )
+    }
+    return null
 }
 
 export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
@@ -38,7 +55,7 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
     if (dager.length == 0) return null
 
     return (
-        <Accordion.Item data-cy="sykepenger-per-dag" defaultOpen={isServer}>
+        <Accordion.Item defaultOpen={isServer}>
             <Accordion.Header>
                 <Heading size="small" level="3">
                     {tittel || 'Dine sykepenger per dag'}
