@@ -27,7 +27,14 @@ import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-war
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import IngenUtbetaling from './utbetaling/ingen-utbetaling'
 
-const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Fridag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag']
+const dagErAvvist: RSDagTypeKomplett[] = [
+    'AvvistDag',
+    'Fridag',
+    'Feriedag',
+    'Permisjonsdag',
+    'ForeldetDag',
+    'AndreYtelser',
+]
 
 export interface VedtakProps {
     vedtak: RSVedtakWrapper

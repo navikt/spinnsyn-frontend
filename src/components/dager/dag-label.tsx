@@ -87,6 +87,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 )
 
             case 'AvvistDag':
+            case 'AndreYtelser':
                 return dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))
 
             case 'UkjentDag':

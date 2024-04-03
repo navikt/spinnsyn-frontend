@@ -90,6 +90,7 @@ export type RSDagType =
     | 'Permisjonsdag'
     | 'AvvistDag'
     | 'ForeldetDag'
+    | 'AndreYtelser'
     | 'UkjentDag'
 export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
