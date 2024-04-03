@@ -317,7 +317,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
             dato: '2021-03-05',
             belop: 0,
             grad: 0,
-            dagtype: 'AvvistDag',
+            dagtype: 'AndreYtelser',
             begrunnelser: ['AndreYtelserSvangerskapspenger'],
         },
     ],

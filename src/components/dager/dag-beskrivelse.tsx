@@ -22,16 +22,20 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         } else return ''
     }
 
+    const erAvvistEllerAndreYtelser = (dag: RSDag) => {
+        return dag.dagtype === 'AvvistDag' || dag.dagtype === 'AndreYtelser'
+    }
+
     const lagBeskrivelseForUnikDag = (dag: RSDag) => {
         const lovhjemmelTekst = lovhjemmel(dag)
 
         return (
             <div className="pt-1" data-cy={dataCyBeskrivelse(dag)}>
-                {dag.dagtype !== 'AvvistDag' && (
+                {!erAvvistEllerAndreYtelser(dag) && (
                     <BodyShort>{parserWithReplace(tekst(`utbetaling.tabell.label.${dag.dagtype}` as any))}</BodyShort>
                 )}
 
-                {dag.dagtype === 'AvvistDag' && (
+                {erAvvistEllerAndreYtelser(dag) && (
                     <BodyShort>
                         {parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
                     </BodyShort>
@@ -44,14 +48,14 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     const unikeDager = (): RSDag[] => {
         const unikeDagtyper = dager.reduce((list: RSDag[], dag) => {
-            if (dag.dagtype !== 'AvvistDag' && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
+            if (!erAvvistEllerAndreYtelser(dag) && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
                 list.push(dag)
             }
             return list
         }, [])
 
         const unikeBegrunnelser = dager.reduce((list: RSDag[], dag) => {
-            if (dag.dagtype === 'AvvistDag') {
+            if (erAvvistEllerAndreYtelser(dag)) {
                 dag.begrunnelser?.forEach((begrunnelse: RSBegrunnelse) => {
                     if (!list.find((d: RSDag) => d.begrunnelser?.includes(begrunnelse))) {
                         list.push({
