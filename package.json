@@ -16,7 +16,7 @@
         "@navikt/next-api-proxy": "^3.4.0",
         "@navikt/next-logger": "^1.23.0",
         "@navikt/oasis": "^3.2.3",
-        "@sentry/nextjs": "^7.103.0",
+        "@sentry/nextjs": "^7.109.0",
         "@tanstack/react-query": "^5.24.1",
         "@testing-library/cypress": "^10.0.1",
         "@unleash/nextjs": "^1.4.1",
