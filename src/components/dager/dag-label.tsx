@@ -27,7 +27,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                     const grad = dag.grad.toString()
                     return (
                         <Tag variant="success" size="small">
-                            {grad}% syk
+                            {grad} % syk
                         </Tag>
                     )
                 }
