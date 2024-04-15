@@ -162,7 +162,9 @@ describe('Utbetalingsoversikt', () => {
                 )
 
                 cy.get('[data-cy="dag-label-ForeldetDag"]').contains('Søkt for sent')
-                cy.get('[data-cy="dag-beskrivelse-ForeldetDag"]').contains('Søknaden må sendes senest tre måneder')
+                cy.get('[data-cy="dag-beskrivelse-ForeldetDag"]').contains(
+                    'Du kan bare få sykepenger opptil tre måneder før den måneden du sendte søknaden',
+                )
 
                 cy.get('[data-cy="dag-label-UkjentDag"]').contains('Ukjent')
                 cy.get('[data-cy="dag-beskrivelse-UkjentDag"]').contains(
