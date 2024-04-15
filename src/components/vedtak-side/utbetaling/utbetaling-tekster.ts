@@ -81,7 +81,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.Permisjonsdag':
         'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra NAV for dager du har permisjon, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.ForeldetDag':
-        'Søknaden må sendes senest tre måneder etter den måneden hver enkelt sykmelding startet, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a>, tredje avsnitt.',
+        'Du kan bare få sykepenger opptil tre måneder før den måneden du sendte søknaden, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a>, tredje avsnitt.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.Over70':
@@ -124,7 +124,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':
-        'Vi har vurdert at unntaksregelen ikke er oppfylt i din sak, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
+        'Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.Over70': '',
     'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
     'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
