@@ -19,7 +19,7 @@
         "@sentry/nextjs": "^7.103.0",
         "@tanstack/react-query": "^5.24.1",
         "@testing-library/cypress": "^10.0.1",
-        "@unleash/nextjs": "^1.4.1",
+        "@unleash/nextjs": "^1.4.2",
         "cookie": "^0.6.0",
         "dayjs": "^1.11.10",
         "html-react-parser": "^5.1.10",
