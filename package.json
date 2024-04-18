@@ -30,7 +30,7 @@
         "prom-client": "^15.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "remeda": "^1.45.2",
+        "remeda": "^1.60.1",
         "tailwind-merge": "^2.2.2",
         "typescript": "^5.4.5",
         "uuid": "^9.0.1"
