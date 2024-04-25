@@ -20,7 +20,7 @@ const Listevisning = ({ vedtak }: { vedtak?: RSVedtakWrapper[] }) => {
     return (
         <>
             <div className="mt-4 flex items-center justify-between pb-8 ">
-                <Heading size="xlarge" level="1" as={vedtak ? 'h2' : Skeleton}>
+                <Heading size="xlarge" level="1">
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
                 {kanVelgePerson && <Person />}

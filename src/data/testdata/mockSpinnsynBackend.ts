@@ -31,7 +31,9 @@ async function sleep(ms: number) {
 }
 
 export async function mockSpinnsynBackend(req: NextApiRequest, res: NextApiResponse) {
-    await sleep(1000)
+    // sleep random between 0 and 1 seconds
+    await sleep(Math.floor(Math.random() * 1000))
+
     const api = `${req.method} ${cleanPathForMetric(req.url!.replace('/api/spinnsyn-backend', ''))}`
 
     if (api.startsWith('POST /api/v3/vedtak/[uuid]/les')) {
