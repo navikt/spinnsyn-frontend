@@ -25,11 +25,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const sykmeldtFnr = await hentModiaContext(req)
     if (!sykmeldtFnr) {
-        return res.status(404).json({ message: 'Ingen person i modia' })
+        return res.status(200).json({ vedtakene: [], sykmeldtFnr: null })
     }
 
-    const vedtekene = await hentVedtakFraSpinnsynBackendForInterne(spinnsynObo.token, sykmeldtFnr)
-    return res.status(200).json(vedtekene)
+    const vedtakene = await hentVedtakFraSpinnsynBackendForInterne(spinnsynObo.token, sykmeldtFnr)
+    return res.status(200).json({ vedtakene, sykmeldtFnr })
 }
 
 export default handler

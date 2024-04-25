@@ -26,7 +26,12 @@ function hentVedtak(req: NextApiRequest, res: NextApiResponse) {
     res.end()
 }
 
-export function mockSpinnsynBackend(req: NextApiRequest, res: NextApiResponse) {
+async function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+export async function mockSpinnsynBackend(req: NextApiRequest, res: NextApiResponse) {
+    await sleep(1000)
     const api = `${req.method} ${cleanPathForMetric(req.url!.replace('/api/spinnsyn-backend', ''))}`
 
     if (api.startsWith('POST /api/v3/vedtak/[uuid]/les')) {

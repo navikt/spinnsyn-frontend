@@ -1,7 +1,25 @@
 import { Alert } from '@navikt/ds-react'
 import React from 'react'
 
-export function InterneInfo({ fnr }: { fnr: string }): JSX.Element {
-    const fnrForVisning = `${fnr.slice(0, 6)} ${fnr.slice(6)}`
+import useVedtak from '../../hooks/useVedtak'
+import { spinnsynFrontendInterne } from '../../utils/environment'
+
+export function InterneInfo(): React.JSX.Element | null {
+    const { data, isLoading } = useVedtak()
+
+    if (!spinnsynFrontendInterne()) {
+        return null
+    }
+    if (!data || isLoading) {
+        return <Alert variant="info">Henter data...</Alert>
+    }
+    if (!data.sykmeldtFnr) {
+        return (
+            <Alert variant="warning">
+                Du har ingen aktiv person åpen i modia. Åpne en person i modia og refresh denne siden.
+            </Alert>
+        )
+    }
+    const fnrForVisning = `${data.sykmeldtFnr.slice(0, 6)} ${data.sykmeldtFnr.slice(6)}`
     return <Alert variant="info">{`Slik ser svar på søknader ut for ${fnrForVisning}`}</Alert>
 }

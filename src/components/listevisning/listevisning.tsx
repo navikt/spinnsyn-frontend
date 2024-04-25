@@ -1,28 +1,26 @@
-import { Heading, Link } from '@navikt/ds-react'
+import { Heading, Link, Skeleton } from '@navikt/ds-react'
 import React from 'react'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
-import useVedtak from '../../hooks/useVedtak'
 import { arkiverteVedtakUrl, isMockBackend, isOpplaering } from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { sorterEtterNyesteFom } from '../../utils/sorter-vedtak'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 
 import LenkepanelGruppering from './lenkepanel-gruppering'
 
-const Listevisning = () => {
-    const { data: vedtak } = useVedtak()
-
+const Listevisning = ({ vedtak }: { vedtak?: RSVedtakWrapper[] }) => {
     useUpdateBreadcrumbs(() => [], [])
 
-    const uleste = vedtak!.filter((v) => !v.lest).sort(sorterEtterNyesteFom)
-    const leste = vedtak!.filter((v) => v.lest).sort(sorterEtterNyesteFom)
+    const uleste = vedtak?.filter((v) => !v.lest).sort(sorterEtterNyesteFom)
+    const leste = vedtak?.filter((v) => v.lest).sort(sorterEtterNyesteFom)
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
         <>
             <div className="mt-4 flex items-center justify-between pb-8 ">
-                <Heading size="xlarge" level="1">
+                <Heading size="xlarge" level="1" as={vedtak ? 'h2' : Skeleton}>
                     {tekst('spinnsyn.sidetittel.liste')}
                 </Heading>
                 {kanVelgePerson && <Person />}
@@ -42,7 +40,9 @@ const Listevisning = () => {
                 tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
             />
 
-            <Link href={arkiverteVedtakUrl()}>{tekst('vedtak-liste.lenke-arkiverte-vedtak')}</Link>
+            <Link as={vedtak ? 'a' : Skeleton} href={arkiverteVedtakUrl()}>
+                {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
+            </Link>
         </>
     )
 }

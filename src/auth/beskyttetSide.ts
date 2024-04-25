@@ -2,17 +2,16 @@ import { logger } from '@navikt/next-logger'
 import { GetServerSidePropsContext } from 'next/types'
 import { GetServerSidePropsResult } from 'next'
 import { IToggle } from '@unleash/nextjs'
-import { DehydratedState } from '@tanstack/react-query'
 import { getToken, validateIdportenToken } from '@navikt/oasis'
 import { validateAzureToken } from '@navikt/oasis/dist/validate'
 
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { getFlagsServerSide } from '../toggles/ssr'
 
 type PageHandler = (context: GetServerSidePropsContext) => Promise<GetServerSidePropsResult<ServerSidePropsResult>>
 
 export interface ServerSidePropsResult {
     toggles: IToggle[]
-    dehydratedState: DehydratedState
 }
 
 export function beskyttetSide(handler: PageHandler) {
@@ -85,3 +84,11 @@ export function beskyttetSide(handler: PageHandler) {
         return handler(context)
     }
 }
+
+export const beskyttetSideUtenProps = beskyttetSide(async (context): Promise<{ props: ServerSidePropsResult }> => {
+    const flags = await getFlagsServerSide(context.req, context.res)
+
+    return {
+        props: { toggles: flags.toggles },
+    }
+})
