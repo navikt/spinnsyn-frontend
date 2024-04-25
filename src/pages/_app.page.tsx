@@ -6,7 +6,7 @@ import nb from 'dayjs/locale/nb'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React, { ReactElement, useState } from 'react'
-import { HydrationBoundary, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { getFaro, initInstrumentation, pinoLevelToFaroLevel } from '../faro/faro'
 import { basePath } from '../utils/environment'
@@ -55,12 +55,10 @@ function MyApp({ Component, pageProps }: AppProps<ServerSidePropsResult>): React
             </Head>
             <FlagProvider toggles={pageProps.toggles}>
                 <QueryClientProvider client={queryClient}>
-                    <HydrationBoundary state={pageProps.dehydratedState}>
-                        <div id="root" className="mx-auto max-w-2xl p-4 pb-32">
-                            <LabsWarning />
-                            <Component {...pageProps} />
-                        </div>
-                    </HydrationBoundary>
+                    <div id="root" className="mx-auto max-w-2xl p-4 pb-32">
+                        <LabsWarning />
+                        <Component {...pageProps} />
+                    </div>
                 </QueryClientProvider>
             </FlagProvider>
         </>

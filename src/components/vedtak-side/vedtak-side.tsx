@@ -18,7 +18,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
             skjemanavn: 'vedtak',
             brukerutbetaling: brukerutbetaling,
             refusjon: refusjon,
-            flereVedtak: vedtakene?.length !== 1,
+            flereVedtak: vedtakene?.vedtak?.length !== 1,
             sykepengegrunnlagFastsatt: vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt || 'ukjent',
         })
         // eslint-disable-next-line
