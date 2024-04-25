@@ -20,7 +20,7 @@ export default function UseVedtak() {
         queryFn: async () => {
             if (spinnsynFrontendInterne()) {
                 const vedtak: VedtakOgFnr = await fetchJsonMedRequestId(
-                    '/syk/sykepenger/api/spinnsyn-backend-veileder/api/v3/vedtak' + query(),
+                    '/syk/sykepenger/api/spinnsyn-backend-veileder/vedtak' + query(),
                 )
                 return vedtak
             }
