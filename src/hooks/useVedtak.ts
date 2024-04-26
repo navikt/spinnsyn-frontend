@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { fetchJsonMedRequestId } from '../utils/fetch'
+import { spinnsynFrontendInterne } from '../utils/environment'
 
 export default function UseVedtak() {
     const router = useRouter()
@@ -14,8 +15,24 @@ export default function UseVedtak() {
         }
         return ''
     }
-    return useQuery<RSVedtakWrapper[], Error>({
+    return useQuery<VedtakOgFnr, Error>({
         queryKey: ['vedtak'],
-        queryFn: () => fetchJsonMedRequestId('/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query()),
+        queryFn: async () => {
+            if (spinnsynFrontendInterne()) {
+                const vedtak: VedtakOgFnr = await fetchJsonMedRequestId(
+                    '/syk/sykepenger/api/spinnsyn-backend-veileder/vedtak' + query(),
+                )
+                return vedtak
+            }
+            const vedtak: RSVedtakWrapper[] = await fetchJsonMedRequestId(
+                '/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query(),
+            )
+            return { vedtak, sykmeldtFnr: null }
+        },
     })
+}
+
+interface VedtakOgFnr {
+    vedtak: RSVedtakWrapper[]
+    sykmeldtFnr: string | null
 }

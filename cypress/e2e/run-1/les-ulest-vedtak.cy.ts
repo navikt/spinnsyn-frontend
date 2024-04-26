@@ -78,15 +78,14 @@ describe('Les uleste vedtak', () => {
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
-    // TODO: Lest logikken funker ikke?
-    it('Det er 4 uleste vedtak og 7 leste', () => {
+    it('Det er 3 uleste vedtak og 8 leste', () => {
         cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
-        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 4)
-        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 7)
+        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 3)
+        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 8)
     })
 
     it('Vi åpner et annullert vedtak', () => {
-        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 7).eq(2).click({ force: true })
+        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 8).eq(2).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
@@ -99,7 +98,7 @@ describe('Les uleste vedtak', () => {
 
     it('Vi åpner et revurdert vedtak', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 7).eq(3).click({ force: true })
+        cy.get('[data-cy="leste-vedtak"] a').should('have.length', 8).eq(3).click({ force: true })
         cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 

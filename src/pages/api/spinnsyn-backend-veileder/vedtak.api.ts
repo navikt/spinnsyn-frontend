@@ -5,10 +5,16 @@ import { requestAzureOboToken } from '@navikt/oasis/dist/obo'
 
 import { hentModiaContext } from '../../../data/hentModiaContext'
 import { hentVedtakFraSpinnsynBackendForInterne } from '../../../data/hentVedtakForInterne'
+import { isMockBackend } from '../../../utils/environment'
+import { kunDirektePerson } from '../../../data/testdata/data/personas/personas'
 
 const { serverRuntimeConfig } = getConfig()
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    if (isMockBackend()) {
+        return res.status(200).json({ vedtak: kunDirektePerson.vedtak, sykmeldtFnr: '12345783482' })
+    }
+
     const accessToken = getToken(req)
     if (!accessToken) {
         return res.status(401).json({ message: 'Mangler autorisasjonstoken.' })
@@ -25,11 +31,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const sykmeldtFnr = await hentModiaContext(req)
     if (!sykmeldtFnr) {
-        return res.status(404).json({ message: 'Ingen person i modia' })
+        return res.status(200).json({ vedtak: [], sykmeldtFnr: null })
     }
 
-    const vedtekene = await hentVedtakFraSpinnsynBackendForInterne(spinnsynObo.token, sykmeldtFnr)
-    return res.status(200).json(vedtekene)
+    const vedtakene = await hentVedtakFraSpinnsynBackendForInterne(spinnsynObo.token, sykmeldtFnr)
+    return res.status(200).json({ vedtak: vedtakene, sykmeldtFnr })
 }
 
 export default handler
