@@ -6,9 +6,9 @@ import { logger } from '@navikt/next-logger'
 import { GetServerSidePropsContext } from 'next/types'
 import * as R from 'remeda'
 
-import { isMockBackend } from '../utils/environment'
+import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 
-import { getUnleashEnvironment, localDevelopmentToggles } from './utils'
+import { disabledToggles, getUnleashEnvironment, localDevelopmentToggles } from './utils'
 import { EXPECTED_TOGGLES } from './toggles'
 
 export async function getFlagsServerSide(
@@ -19,7 +19,9 @@ export async function getFlagsServerSide(
         logger.warn('Running in local or demo mode, falling back to development toggles.')
         return { toggles: localDevelopmentToggles(req.url) }
     }
-
+    if (spinnsynFrontendInterne()) {
+        return { toggles: disabledToggles() }
+    }
     try {
         const { sessionId, userId } = handleUnleashIds(req, res)
         const definitions = await getAndValidateDefinitions()
