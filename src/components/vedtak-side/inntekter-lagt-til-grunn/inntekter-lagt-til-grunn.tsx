@@ -40,18 +40,16 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     }
 
     const inntekt = finnRiktigInntekt()
-    const inntektIsUndefined = inntekt === undefined
-    const inntektIsDefined = !inntektIsUndefined
-    const inntektMnd = inntektIsDefined ? formaterValuta(inntekt) : undefined
-    const inntektAr = inntektIsDefined ? formaterValuta(inntekt * 12) : undefined
+    if (inntekt === undefined) {
+        return null
+    }
+    const inntektMnd = formaterValuta(inntekt)
+    const inntektAr = formaterValuta(inntekt * 12)
 
     const over25prosentAvvik =
         vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' &&
         vedtak.vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
 
-    if (inntektIsUndefined) {
-        return null
-    }
     const harIngenUtbetaling = vedtak.sykepengebelopPerson == 0 && vedtak.sykepengebelopArbeidsgiver == 0
     const harMinstEnForLavInntektDag =
         vedtak.dagerPerson.concat(vedtak.dagerArbeidsgiver).filter((dag) => dag.begrunnelser.includes('MinimumInntekt'))
