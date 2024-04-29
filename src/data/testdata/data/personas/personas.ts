@@ -29,6 +29,7 @@ import {
 import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
 import { julesoknadVedtak } from '../vedtak/julesoknad'
 import { skjonnsfastsattRiktigAarsinntekt } from '../vedtak/skjonnsfastsattRiktigAarsinntekt'
+import { nullOmregnetAarsinntekt } from '../vedtak/nullOmregnetAarsinntekt'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -149,4 +150,8 @@ export const skjonnsfastsattRiktigAarsinntektPersona: Persona = {
 export const vedtakMed0UtbetalingPerson: Persona = {
     vedtak: [vedtakMed0Utbetaling],
     beskrivelse: 'Vedtak for bruker med null i utbetaling',
+}
+export const vedtakMedNullOmregnetAarsinngtekt: Persona = {
+    vedtak: [nullOmregnetAarsinntekt],
+    beskrivelse: 'Vedtak for bruker med 0 i årsinntekt',
 }

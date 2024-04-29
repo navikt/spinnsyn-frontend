@@ -23,6 +23,7 @@ import {
     under2gInntekt,
     utenData,
     vedtakMed0UtbetalingPerson,
+    vedtakMedNullOmregnetAarsinngtekt,
 } from './data/personas/personas'
 
 export interface Persona {
@@ -55,6 +56,7 @@ export type PersonaKey =
     | 'skjonnsfastsatt-riktig-aarsinntekt'
     | 'vedtak-med-0-utbetaling'
     | 'flexjar-pohelse'
+    | 'null-omregnet-aarsinntekt'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -88,6 +90,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
         ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
         ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
+        ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
     },
 }
 

@@ -40,14 +40,15 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     }
 
     const inntekt = finnRiktigInntekt()
-    const inntektMnd = inntekt ? formaterValuta(inntekt) : undefined
-    const inntektAr = inntekt ? formaterValuta(inntekt * 12) : undefined
+    const inntektIsDefined = inntekt !== undefined
+    const inntektMnd = inntektIsDefined ? formaterValuta(inntekt) : undefined
+    const inntektAr = inntektIsDefined ? formaterValuta(inntekt * 12) : undefined
 
     const over25prosentAvvik =
         vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' &&
         vedtak.vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
 
-    if (!(inntektMnd && inntektAr)) {
+    if (!(inntektMnd && inntektAr) || !inntektIsDefined) {
         return null
     }
     const harIngenUtbetaling = vedtak.sykepengebelopPerson == 0 && vedtak.sykepengebelopArbeidsgiver == 0
