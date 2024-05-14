@@ -85,6 +85,9 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
             case 'mottaker': {
                 return 'Brukerutbetaling og refusjon'
             }
+            case 'avvist-delvis-innvilget': {
+                return 'Avvist eller delvis innvilget vedtak'
+            }
             case 'vedtak-innhold': {
                 return 'Vedtak med forskjellig innhold'
             }
