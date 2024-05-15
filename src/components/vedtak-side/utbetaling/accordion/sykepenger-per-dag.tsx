@@ -22,13 +22,13 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
         return (
             <>
                 <SykepengerPerDag
-                    tittel="Sykepenger per dag til deg"
-                    dager={vedtak.dagerPerson}
+                    tittel="Sykepenger per dag til arbeidsgiver"
+                    dager={vedtak.dagerArbeidsgiver}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                 />
                 <SykepengerPerDag
-                    tittel="Sykepenger per dag til arbeidsgiver"
-                    dager={vedtak.dagerArbeidsgiver}
+                    tittel="Sykepenger per dag til deg"
+                    dager={vedtak.dagerPerson}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                 />
             </>
