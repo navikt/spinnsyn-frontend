@@ -142,6 +142,8 @@ type Begrunnelse = {
         | 'SkjønnsfastsattSykepengegrunnlagFritekst'
         | 'SkjønnsfastsattSykepengegrunnlagMal'
         | 'SkjønnsfastsattSykepengegrunnlagKonklusjon'
+        | 'Avslag'
+        | 'DelvisInnvilget'
     begrunnelse: string
     perioder: Periode[]
 }

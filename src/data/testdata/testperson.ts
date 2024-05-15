@@ -18,6 +18,7 @@ import {
     skjonnsfastsattRiktigAarsinntektPersona,
     skjønnsfastsattBrukerutbetalingPerson,
     skjønnsfastsattFlereArbeidsgiverePerson,
+    skjønnsfastsattKombinasjonPerson,
     skjønnsfastsattRefusjonPerson,
     slutterMedDelvisRefusjon,
     under2gInntekt,
@@ -57,10 +58,11 @@ export type PersonaKey =
     | 'vedtak-med-0-utbetaling'
     | 'flexjar-pohelse'
     | 'null-omregnet-aarsinntekt'
+    | 'kombinasjon-avvist-og-skjønnsfastsatt'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
-export type PersonaGroupKey = 'mottaker' | 'vedtak-innhold' | 'testing'
+export type PersonaGroupKey = 'mottaker' | 'avvist-delvis-innvilget' | 'vedtak-innhold' | 'testing'
 type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
@@ -68,6 +70,9 @@ export const testpersonerGruppert: PersonaGroup = {
         ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
         ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
+    },
+    ['avvist-delvis-innvilget']: {
+        ['kombinasjon-avvist-og-skjønnsfastsatt']: jsonDeepCopy(skjønnsfastsattKombinasjonPerson),
     },
     ['vedtak-innhold']: {
         ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
