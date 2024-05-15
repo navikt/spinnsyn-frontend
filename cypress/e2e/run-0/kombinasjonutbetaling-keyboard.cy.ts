@@ -48,10 +48,10 @@ describe('Kombinasjonutbetaling keyboard', () => {
         cy.realPress('Enter')
 
         cy.realPress('Tab')
-        cy.focused().contains('Sykepenger per dag til deg')
+        cy.focused().contains('Sykepenger per dag til arbeidsgiver')
 
         cy.realPress('Tab')
-        cy.focused().contains('Sykepenger per dag til arbeidsgiver')
+        cy.focused().contains('Sykepenger per dag til deg')
 
         cy.realPress('Tab')
         cy.focused().contains('Mer om beregningen')
