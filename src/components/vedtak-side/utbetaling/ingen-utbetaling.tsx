@@ -6,15 +6,18 @@ import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
+import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 const IngenUtbetaling = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
     const utbetalingsType = vedtak.sykepengebelopPerson > 0 ? 'personutbetaling' : 'refusjon'
+    const avslag = hentBegrunnelse(vedtak, 'Avslag')
 
     return (
         <UtbetalingPanel
             sectionLabel="Ingen utbetaling"
+            avslag={avslag !== undefined}
             tittel={
                 <Heading level="2" size="large">
                     {annullertEllerRevurdert ? (

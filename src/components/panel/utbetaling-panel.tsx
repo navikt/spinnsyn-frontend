@@ -1,4 +1,4 @@
-import { Panel } from '@navikt/ds-react'
+import { BodyShort, Panel } from '@navikt/ds-react'
 import React from 'react'
 
 interface UtbetalingPanelProps {
@@ -7,6 +7,8 @@ interface UtbetalingPanelProps {
     children: React.ReactNode
     sectionLabel: string
     dataCy?: string
+    avslag?: boolean
+    delvisInnvilgelse?: boolean
 }
 
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
@@ -22,7 +24,19 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
                     } as React.CSSProperties
                 }
             >
-                <div className="mb-4">{props.tittel}</div>
+                <div className="mb-4">
+                    {props.avslag && (
+                        <BodyShort size="small" weight="semibold">
+                            Avslått vedtak
+                        </BodyShort>
+                    )}
+                    {props.delvisInnvilgelse && (
+                        <BodyShort size="small" weight="semibold">
+                            Delvis innvilget vedtak
+                        </BodyShort>
+                    )}
+                    {props.tittel}
+                </div>
                 {props.children}
             </Panel>
         </section>
