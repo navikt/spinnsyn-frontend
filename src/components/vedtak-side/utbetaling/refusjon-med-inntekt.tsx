@@ -10,6 +10,7 @@ import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
+import { OppsumertAvslagListe } from './oppsumert-avslag-liste'
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
@@ -43,6 +44,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             dataCy="refusjon"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={vedtak.sykepengebelopArbeidsgiver > 0} />
+            <OppsumertAvslagListe vedtak={vedtak} dager="dagerArbeidsgiver"></OppsumertAvslagListe>
             {vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} />}
         </UtbetalingPanel>
     )
