@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 
-import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { Begrunnelse, BegrunnelseType, RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 
 import { erHelg } from './dato-utils'
 
@@ -15,4 +15,8 @@ export const fallbackEstimertSluttdato = (vedtakWrapper: RSVedtakWrapper): Dayjs
         x++
     }
     return slutt
+}
+
+export const hentBegrunnelse = (vedtak: RSVedtakWrapper, begrunnelse: BegrunnelseType): Begrunnelse | undefined => {
+    return vedtak.vedtak.begrunnelser?.find((b) => b.type === begrunnelse)
 }

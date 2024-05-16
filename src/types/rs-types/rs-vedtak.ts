@@ -160,13 +160,15 @@ export type SpleisSykepengegrunnlag = {
     tags: '6GBegrenset'[]
 }
 
-type Begrunnelse = {
-    type:
-        | 'SkjønnsfastsattSykepengegrunnlagFritekst'
-        | 'SkjønnsfastsattSykepengegrunnlagMal'
-        | 'SkjønnsfastsattSykepengegrunnlagKonklusjon'
-        | 'Avslag'
-        | 'DelvisInnvilget'
+export type BegrunnelseType =
+    | 'SkjønnsfastsattSykepengegrunnlagFritekst'
+    | 'SkjønnsfastsattSykepengegrunnlagMal'
+    | 'SkjønnsfastsattSykepengegrunnlagKonklusjon'
+    | 'Avslag'
+    | 'DelvisInnvilget'
+
+export type Begrunnelse = {
+    type: BegrunnelseType
     begrunnelse: string
     perioder: Periode[]
 }

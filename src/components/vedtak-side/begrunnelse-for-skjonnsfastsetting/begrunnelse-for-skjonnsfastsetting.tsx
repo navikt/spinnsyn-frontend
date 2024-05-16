@@ -2,8 +2,9 @@ import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import { VedtakProps } from '../vedtak'
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { BegrunnelseType, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { ArkiveringContext } from '../../../context/arkivering-context'
+import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)
@@ -16,11 +17,11 @@ export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
                 </Heading>
             </Accordion.Header>
             <Accordion.Content className="mt-4">
-                <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagMal" />
-                <BegrunnelseMedHeading vedtak={vedtak} begrunnelseKey="SkjønnsfastsattSykepengegrunnlagFritekst" />
+                <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="SkjønnsfastsattSykepengegrunnlagMal" />
+                <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="SkjønnsfastsattSykepengegrunnlagFritekst" />
                 <BegrunnelseMedHeading
                     vedtak={vedtak}
-                    begrunnelseKey="SkjønnsfastsattSykepengegrunnlagKonklusjon"
+                    begrunnelseType="SkjønnsfastsattSykepengegrunnlagKonklusjon"
                     heading="Konklusjon"
                 />
             </Accordion.Content>
@@ -30,18 +31,17 @@ export const BegrunnelseForSkjonnsfastsetting = ({ vedtak }: VedtakProps) => {
 
 const BegrunnelseMedHeading = ({
     vedtak,
-    begrunnelseKey,
+    begrunnelseType,
     heading,
 }: {
     vedtak: RSVedtakWrapper
-    begrunnelseKey: string
+    begrunnelseType: BegrunnelseType
     heading?: string
 }) => {
-    const tekst = vedtak.vedtak.begrunnelser
-        ?.find((b) => b.type === begrunnelseKey)
+    const tekst = hentBegrunnelse(vedtak, begrunnelseType)
         ?.begrunnelse?.split('\n')
-        .filter((tekst) => tekst)
-        .map((tekst, idx) => (
+        .filter((tekst: string) => tekst)
+        .map((tekst: string, idx: number) => (
             <BodyLong spacing key={idx}>
                 {tekst}
             </BodyLong>
