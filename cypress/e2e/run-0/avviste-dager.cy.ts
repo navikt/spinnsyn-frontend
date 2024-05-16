@@ -4,6 +4,10 @@ import {
     vedtakMed40Grad,
 } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
+import {
+    avslåttOgSkjønnsfastsattKombinasjon,
+    delvisInnvilgetOgSkjønnsfastsattKombinasjon,
+} from '../../../src/data/testdata/data/vedtak/avslagOgDelvisInnvilget'
 
 describe('Avviste dager', () => {
     before(() => {
@@ -171,5 +175,24 @@ describe('Avviste dager', () => {
                 .should('not.contain', 'Utbetalingsdager')
                 .should('not.contain', 'Utbetaling')
         })
+    })
+
+    it('Vedtak med delvisInnvilget begrunnelse fra Bømlo', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon-delvisInnvilget-og-skj%C3%B8nnsfastsatt')
+        cy.get(`a[href*=${delvisInnvilgetOgSkjønnsfastsattKombinasjon.id}]`).click({
+            force: true,
+        })
+
+        cy.contains('Delvis innvilget vedtak')
+    })
+
+    it('Vedtak med avslag begrunnelse fra Bømlo', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon-avvist-og-skj%C3%B8nnsfastsatt')
+        cy.get(`a[href*=${avslåttOgSkjønnsfastsattKombinasjon.id}]`).click({
+            force: true,
+        })
+
+        cy.contains('Avslått vedtak')
+        cy.contains('Ingen utbetaling')
     })
 })

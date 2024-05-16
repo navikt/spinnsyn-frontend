@@ -2,7 +2,7 @@ import { expect } from '@jest/globals'
 import dayjs from 'dayjs'
 
 import { ulestVedtakUtenUtbetalingsdager } from '../data/testdata/data/vedtak/rs-vedtak'
-import { avvistSkjønnsfastsattKombinasjon } from '../data/testdata/data/vedtak/avslagOgDelvisInnvilget'
+import { delvisInnvilgetOgSkjønnsfastsattKombinasjon } from '../data/testdata/data/vedtak/avslagOgDelvisInnvilget'
 
 import { jsonDeepCopy } from './json-deep-copy'
 import { fallbackEstimertSluttdato, hentBegrunnelse } from './vedtak-utils'
@@ -74,7 +74,7 @@ describe('Tester estimering av sluttdato', () => {
     })
 
     it('Tester at vi finner begrunnelse i vedtak', () => {
-        const delvisInnvilglseVedtak = jsonDeepCopy(avvistSkjønnsfastsattKombinasjon)
+        const delvisInnvilglseVedtak = jsonDeepCopy(delvisInnvilgetOgSkjønnsfastsattKombinasjon)
         const begrunnelse = hentBegrunnelse(delvisInnvilglseVedtak, 'DelvisInnvilget')
         expect(begrunnelse?.type).toEqual('DelvisInnvilget')
         expect(begrunnelse?.begrunnelse).toEqual('Devlis innvilgelse.\n\nNy linje.')

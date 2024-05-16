@@ -1,6 +1,6 @@
 import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 
-export const avvistSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
+export const delvisInnvilgetOgSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59219',
     lest: false,
     vedtak: {
@@ -101,6 +101,111 @@ export const avvistSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
     dagerPerson: [{ dato: '2024-02-23', belop: 1939, grad: 100.0, dagtype: 'NavDagSyk', begrunnelser: [] }],
     sykepengebelopArbeidsgiver: 5817,
     sykepengebelopPerson: 1939,
+    andreArbeidsgivere: {},
+    organisasjoner: {
+        '810007842': 'Realistisk Kontorbygg',
+    },
+}
+
+//TODO: Sjekk at dette er et reelt vedtak ved å generere i dev
+export const avslåttOgSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
+    id: '3de11b09-51b3-4d44-8dcc-d35fe3c59224',
+    lest: false,
+    vedtak: {
+        organisasjonsnummer: '810007842',
+        fom: '2024-02-01',
+        tom: '2024-02-19',
+        dokumenter: [
+            { dokumentId: '06eeee16-c400-47ce-a1de-124759afc806', type: 'Søknad' },
+            { dokumentId: 'a2bfcd80-ca98-4ffc-b66c-a936c82eb735', type: 'Sykmelding' },
+            { dokumentId: 'cc125bab-ef92-4a51-8031-3620fe01cdaa', type: 'Inntektsmelding' },
+        ],
+        inntekt: 42001.0,
+        sykepengegrunnlag: 504012.0,
+        utbetaling: {
+            organisasjonsnummer: '810007842',
+            utbetalingId: 'd1f31e36-a74a-4641-a052-6262d463ace5',
+            forbrukteSykedager: 4,
+            gjenståendeSykedager: 244,
+            automatiskBehandling: false,
+            foreløpigBeregnetSluttPåSykepenger: '2025-01-30',
+            utbetalingType: 'UTBETALING',
+        },
+        grunnlagForSykepengegrunnlag: 504012.0,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
+            '810007842': 504012.0,
+        },
+        begrensning: 'ER_IKKE_6G_BEGRENSET',
+        vedtakFattetTidspunkt: '2024-05-14',
+        sykepengegrunnlagsfakta: {
+            fastsatt: 'EtterSkjønn',
+            omregnetÅrsinntekt: 504012.0,
+            innrapportertÅrsinntekt: 135000.0,
+            skjønnsfastsatt: 504012.0,
+            avviksprosent: 273.34,
+            '6G': 711720.0,
+            tags: [],
+            arbeidsgivere: [
+                {
+                    arbeidsgiver: '810007842',
+                    omregnetÅrsinntekt: 504012.0,
+                    skjønnsfastsatt: 504012.0,
+                },
+            ],
+        },
+        begrunnelser: [
+            {
+                type: 'SkjønnsfastsattSykepengegrunnlagMal',
+                begrunnelse:
+                    'Månedsinntekten som er beregnet for arbeidsforholdet ditt er totalt 42 001,00 kroner. Regnet om til årsinntekt blir det 504 012,00 kroner. Denne årsinntekten avviker med mer enn 25 prosent fra inntekten som er rapportert til Skatteetaten på 135 000,00 kroner de siste tolv månedene før måneden du ble syk.\n\nNår årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt, skal sykepengegrunnlaget fastsettes ved skjønn ut fra den årsinntekten som kan sannsynliggjøres på det tidspunktet du ble syk. Se folketrygdloven § 8-30 andre avsnitt.\n\nNår vi fastsetter sykepengegrunnlaget ditt ved skjønn, legger vi vekt på om avviket skyldes endringer i arbeidssituasjonen din. Målet med den skjønnsmessige vurderingen er å komme frem til inntekten du ville hatt om du ikke hadde blitt syk.',
+                perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
+            },
+            {
+                type: 'SkjønnsfastsattSykepengegrunnlagFritekst',
+                begrunnelse: 'skjønnsfastsatt',
+                perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
+            },
+            {
+                type: 'SkjønnsfastsattSykepengegrunnlagKonklusjon',
+                begrunnelse: 'Vi har skjønnsfastsatt årsinntekten din til 504 012,00 kroner.',
+                perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
+            },
+            {
+                type: 'Avslag',
+                begrunnelse: 'Avslått vedtak.\n\nNy linje.',
+                perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
+            },
+        ],
+        tags: [],
+    },
+    opprettetTimestamp: '2024-05-14T11:54:15.659994Z',
+    orgnavn: 'Realistisk Kontorbygg',
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
+        { dato: '2024-02-01', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-02', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-03', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-04', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-05', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-06', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-07', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-08', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-09', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-10', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-11', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-12', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-13', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-14', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-15', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-16', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
+        { dato: '2024-02-17', belop: 0, grad: 0.0, dagtype: 'NavHelgDag', begrunnelser: [] },
+        { dato: '2024-02-18', belop: 0, grad: 0.0, dagtype: 'NavHelgDag', begrunnelser: [] },
+        { dato: '2024-02-19', belop: 0, grad: 0.0, dagtype: 'AvvistDag', begrunnelser: ['MinimumSykdomsgrad'] },
+    ],
+    dagerPerson: [],
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopPerson: 0,
     andreArbeidsgivere: {},
     organisasjoner: {
         '810007842': 'Realistisk Kontorbygg',
