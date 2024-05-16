@@ -8,6 +8,8 @@ import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
+import { OppsumertAvslagListe } from './oppsumert-avslag-liste'
+
 const IngenUtbetaling = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
@@ -41,6 +43,7 @@ const IngenUtbetaling = ({ vedtak }: VedtakProps) => {
             dataCy={utbetalingsType}
         >
             <VedtakPeriode vedtak={vedtak} />
+            <OppsumertAvslagListe vedtak={vedtak} dager="alleDager"></OppsumertAvslagListe>
         </UtbetalingPanel>
     )
 }

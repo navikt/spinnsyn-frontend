@@ -13,6 +13,7 @@ import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { SykepengerTrekk } from './sykepenger-trekk'
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
+import { OppsumertAvslagListe } from './oppsumert-avslag-liste'
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
@@ -45,6 +46,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             dataCy="personutbetaling"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
+            <OppsumertAvslagListe vedtak={vedtak} dager="dagerPerson"></OppsumertAvslagListe>
             <SykepengerTrekk />
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />

@@ -24,7 +24,7 @@ import {
     delvisInnvilgetOgSkjønnsfastsattKombinasjon,
 } from '../vedtak/avslagOgDelvisInnvilget'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
-import { alleAvvisteDager } from '../vedtak/alleAvvisteDager'
+import { alleAvvisteDager, alleAvvisteDagerFraBomlo } from '../vedtak/alleAvvisteDager'
 import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
@@ -145,7 +145,7 @@ export const skjønnsfastsattFlereArbeidsgiverePerson: Persona = {
 }
 
 export const alleAvvisteDagerPerson: Persona = {
-    vedtak: [alleAvvisteDager],
+    vedtak: [alleAvvisteDager, alleAvvisteDagerFraBomlo],
     beskrivelse: 'Inneholder alle avviste dager vi har støtte for',
 }
 

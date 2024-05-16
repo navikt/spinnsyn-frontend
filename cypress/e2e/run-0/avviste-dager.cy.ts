@@ -184,6 +184,10 @@ describe('Avviste dager', () => {
         })
 
         cy.contains('Delvis innvilget vedtak')
+        cy.contains('Hvorfor er vedtaket delvis innvilget?')
+        cy.contains('Du har ikke fått innvilget penger for')
+        cy.contains('li', 'Sykmeldt i for liten grad')
+        cy.contains('a', 'Se nærmere begrunnelse her')
     })
 
     it('Vedtak med avslag begrunnelse fra Bømlo', () => {
@@ -194,5 +198,9 @@ describe('Avviste dager', () => {
 
         cy.contains('Avslått vedtak')
         cy.contains('Ingen utbetaling')
+        cy.contains('Hvorfor er vedtaket avslått?')
+        cy.contains('Du har fått avvist vedtak på søknaden fordi')
+        cy.contains('li', 'Sykmeldt i for liten grad')
+        cy.contains('a', 'Se nærmere begrunnelse her')
     })
 })
