@@ -8,7 +8,7 @@ import { formaterValuta } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
-import { BegrunnelseEkspanderbar } from '../begrunnelse-for-skjonnsfastsetting/begrunnelse-ekspanderbar'
+import { BegrunnelseEkspanderbar } from '../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { oppsumertAvslagBegrunnelser } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { useScroll } from '../../../context/scroll-context'
 
 export const OppsumertAvslagListe = ({
     vedtak,
@@ -11,8 +12,10 @@ export const OppsumertAvslagListe = ({
     vedtak: RSVedtakWrapper
     dager: 'dagerArbeidsgiver' | 'dagerPerson' | 'alleDager'
 }) => {
-    let description: string
+    const { blaTilElement } = useScroll()
+
     let title: string
+    let description: string
     let oppsumertAvslag: Set<string>
     if (dager === 'alleDager') {
         title = 'Hvorfor er vedtaket avslått?'
@@ -38,7 +41,9 @@ export const OppsumertAvslagListe = ({
             <List as="ul" title={title} description={description}>
                 {alleAvslag}
             </List>
-            <Link href="#">Se nærmere begrunnelse her</Link>
+            <Link className="cursor-pointer" onClick={blaTilElement}>
+                Se nærmere begrunnelse her
+            </Link>
         </section>
     )
 }
