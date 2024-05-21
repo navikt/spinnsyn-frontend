@@ -8,7 +8,8 @@ import { formaterValuta } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
-import { BegrunnelseForSkjonnsfastsetting } from '../begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
+import { BegrunnelseEkspanderbar } from '../begrunnelse-for-skjonnsfastsetting/begrunnelse-ekspanderbar'
+import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -56,6 +57,9 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
             .length > 0
 
     if (harIngenUtbetaling && !harMinstEnForLavInntektDag) return null
+
+    const avslag = hentBegrunnelse(vedtak, 'Avslag')
+    const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilget')
 
     return (
         <VedtakExpansionCard vedtak={vedtak} tittel={tekst('utbetaling.inntekt.info.tittel')}>
@@ -148,8 +152,10 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
 
                 <Accordion className="mt-8" indent={false}>
                     {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
-                        <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
+                        <BegrunnelseEkspanderbar vedtak={vedtak} />
                     )}
+                    {avslag && <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="Avslag" />}
+                    {delvisInnvilgelse && <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="DelvisInnvilget" />}
                     <AlleSykepengerPerDag vedtak={vedtak} />
                     <MerOmBergningen vedtak={vedtak} />
                 </Accordion>
