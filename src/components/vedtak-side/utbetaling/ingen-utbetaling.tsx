@@ -3,14 +3,14 @@ import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
-import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
 import { OppsumertAvslagListe } from './oppsumert-avslag-liste'
 
-const IngenUtbetaling = ({ vedtak }: VedtakProps) => {
+const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
     const utbetalingsType = vedtak.sykepengebelopPerson > 0 ? 'personutbetaling' : 'refusjon'

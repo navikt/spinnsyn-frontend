@@ -1,9 +1,10 @@
 import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { BegrunnelseType, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { useScroll } from '../../../context/scroll-context'
 
 export const BegrunnelseEkspanderbar = ({
     vedtak,
@@ -13,6 +14,23 @@ export const BegrunnelseEkspanderbar = ({
     begrunnelse?: BegrunnelseType
 }) => {
     const arkivering = useContext(ArkiveringContext)
+    const { registrerElement, erApenAccordion } = useScroll()
+    const elementRef = useRef<HTMLDivElement>(null)
+    const elementId = `begrunnelse-for-${begrunnelse || 'skjønnsfastsetting'}`
+    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (elementRef.current) {
+            registrerElement(elementRef)
+        }
+    }, [elementId, registrerElement])
+
+    useEffect(() => {
+        if (erApenAccordion) {
+            setVisBegrunnelse(true)
+        }
+    }, [erApenAccordion])
+
     const hentBegrunnelseTittel = () => {
         switch (begrunnelse) {
             case 'Avslag': {
@@ -27,10 +45,15 @@ export const BegrunnelseEkspanderbar = ({
         }
     }
 
-    const cypressTag = `begrunnelse-for-${begrunnelse || 'skjønnsfastsetting'}`
-
     return (
-        <Accordion.Item data-cy={cypressTag} defaultOpen={arkivering}>
+        <Accordion.Item
+            data-cy={elementId}
+            defaultOpen={arkivering}
+            open={visBegrunnelse}
+            onOpenChange={() => setVisBegrunnelse(!visBegrunnelse)}
+            id={elementId}
+            ref={elementRef}
+        >
             <Accordion.Header>
                 <Heading size="small" level="3">
                     {hentBegrunnelseTittel()}
