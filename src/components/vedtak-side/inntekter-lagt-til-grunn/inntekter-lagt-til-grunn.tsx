@@ -19,11 +19,11 @@ import { MerOmBergningen } from './mer-om-bergningen'
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const finnRiktigInntekt = () => {
         if (
-            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterHovedregel' ||
-            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterHovedregel' ||
+            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
         ) {
             const arbeidsgiveren = vedtak.vedtak.sykepengegrunnlagsfakta.arbeidsgivere.find((a) => {
-                return a.arbeidsgiver == vedtak.vedtak.organisasjonsnummer
+                return a.arbeidsgiver === vedtak.vedtak.organisasjonsnummer
             })
             if (arbeidsgiveren) {
                 return arbeidsgiveren.omregnetÅrsinntekt / 12
@@ -48,10 +48,10 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const inntektAr = formaterValuta(inntekt * 12)
 
     const over25prosentAvvik =
-        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' &&
+        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' &&
         vedtak.vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
 
-    const harIngenUtbetaling = vedtak.sykepengebelopPerson == 0 && vedtak.sykepengebelopArbeidsgiver == 0
+    const harIngenUtbetaling = vedtak.sykepengebelopPerson === 0 && vedtak.sykepengebelopArbeidsgiver === 0
     const harMinstEnForLavInntektDag =
         vedtak.dagerPerson.concat(vedtak.dagerArbeidsgiver).filter((dag) => dag.begrunnelser.includes('MinimumInntekt'))
             .length > 0
@@ -72,7 +72,6 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 {harFlereArbeidsgivere(vedtak) === 'ja' && (
                     <>
                         <BeregningÅrsinntektFlereArbeidsgivere vedtak={vedtak} />
-
                         <InfoSection
                             className="mt-4 border-t border-gray-400 pt-4"
                             bold
@@ -84,7 +83,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         />
                     </>
                 )}
-                {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' && (
+                {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
                     <>
                         <InfoSection
                             className="mt-4 border-t border-gray-400 pt-4"
@@ -106,12 +105,11 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         />
                     </>
                 )}
-
                 {vedtak.vedtak.sykepengegrunnlag && (
                     <InfoSection
                         bold
                         className={
-                            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+                            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
                                 ? 'mt-4 border-t border-gray-400 pt-4'
                                 : ''
                         }
@@ -131,7 +129,6 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         </BodyShort>
                     </>
                 )}
-
                 {vedtak.vedtak.tags && vedtak.vedtak.tags.includes('SykepengegrunnlagUnder2G') && (
                     <>
                         <Detail className="mt-4 border-t border-gray-400 pt-4 text-sm text-gray-700">
@@ -149,7 +146,6 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         </Detail>
                     </>
                 )}
-
                 <Accordion className="mt-8" indent={false}>
                     {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
                         <BegrunnelseEkspanderbar vedtak={vedtak} />
