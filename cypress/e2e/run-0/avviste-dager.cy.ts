@@ -187,7 +187,16 @@ describe('Avviste dager', () => {
         cy.contains('Hvorfor er vedtaket delvis innvilget?')
         cy.contains('Du har ikke fått innvilget penger for')
         cy.contains('li', 'Sykmeldt i for liten grad')
-        cy.contains('a', 'Se nærmere begrunnelse her')
+        cy.contains('a', 'Se nærmere begrunnelse her') //TODO click
+
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
+        cy.get('main').findByRole('button', { name: 'Begrunnelse for delvis innvilget vedtak' }).click()
+
+        cy.findByRole('button', { name: 'Begrunnelse for delvis innvilget vedtak' })
+            .should('contain', 'Begrunnelse for delvis innvilget vedtak')
+            .siblings('div')
+            .should('contain', 'Devlis innvilgelse.')
+            .and('contain', 'Ny linje.')
     })
 
     it('Vedtak med avslag begrunnelse fra Bømlo', () => {
@@ -201,6 +210,16 @@ describe('Avviste dager', () => {
         cy.contains('Hvorfor er vedtaket avslått?')
         cy.contains('Du har fått avvist vedtak på søknaden fordi')
         cy.contains('li', 'Sykmeldt i for liten grad')
-        cy.contains('a', 'Se nærmere begrunnelse her')
+        cy.contains('a', 'Se nærmere begrunnelse her') //TODO click
+
+        //TODO når vi viser beregning på avslått vedtak:
+        // cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
+        // cy.get('main').findByRole('button', { name: 'Begrunnelse for avslått vedtak' }).click()
+        //
+        // cy.findByRole('button', { name: 'Begrunnelse for avslått vedtak' })
+        //     .should('contain', 'Begrunnelse for avslått vedtak')
+        //     .siblings('div')
+        //     .should('contain', 'Avslått vedtak.')
+        //     .and('contain', 'Ny linje.')
     })
 })
