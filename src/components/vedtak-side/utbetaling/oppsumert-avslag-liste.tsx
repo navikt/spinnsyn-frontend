@@ -41,7 +41,7 @@ export const OppsumertAvslagListe = ({
             <List as="ul" title={title} description={description}>
                 {alleAvslag}
             </List>
-            <Link className="cursor-pointer" onClick={blaTilElement}>
+            <Link as="button" type="button" className="cursor-pointer" onClick={blaTilElement}>
                 Se nærmere begrunnelse her
             </Link>
         </section>

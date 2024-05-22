@@ -187,7 +187,7 @@ describe('Avviste dager', () => {
         cy.contains('Hvorfor er vedtaket delvis innvilget?')
         cy.contains('Du har ikke fått innvilget penger for')
         cy.contains('li', 'Sykmeldt i for liten grad')
-        cy.contains('a', 'Se nærmere begrunnelse her').click()
+        cy.contains('button', 'Se nærmere begrunnelse her').click()
 
         cy.findByRole('button', { name: 'Begrunnelse for delvis innvilget vedtak' })
             .should('contain', 'Begrunnelse for delvis innvilget vedtak')
@@ -207,7 +207,7 @@ describe('Avviste dager', () => {
         cy.contains('Hvorfor er vedtaket avslått?')
         cy.contains('Du har fått avvist vedtak på søknaden fordi')
         cy.contains('li', 'Sykmeldt i for liten grad')
-        cy.contains('a', 'Se nærmere begrunnelse her').click()
+        cy.contains('button', 'Se nærmere begrunnelse her').click()
 
         //TODO når vi viser beregning på avslått vedtak:
         // cy.findByRole('button', { name: 'Begrunnelse for avslått vedtak' })
