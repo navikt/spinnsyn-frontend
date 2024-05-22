@@ -1,35 +1,24 @@
 import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { RefObject, useContext } from 'react'
 
 import { BegrunnelseType, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
-import { useScroll } from '../../../context/scroll-context'
 
 export const BegrunnelseEkspanderbar = ({
     vedtak,
     begrunnelse,
+    apne,
+    setApne,
+    elementRef,
 }: {
     vedtak: RSVedtakWrapper
     begrunnelse?: BegrunnelseType
+    apne?: boolean
+    setApne?: (apne: boolean) => void
+    elementRef?: RefObject<HTMLDivElement>
 }) => {
     const arkivering = useContext(ArkiveringContext)
-    const { registrerElement, erApenAccordion } = useScroll()
-    const elementRef = useRef<HTMLDivElement>(null)
-    const elementId = `begrunnelse-for-${begrunnelse || 'skjønnsfastsetting'}`
-    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
-
-    useEffect(() => {
-        if (elementRef.current) {
-            registrerElement(elementRef)
-        }
-    }, [elementId, registrerElement])
-
-    useEffect(() => {
-        if (erApenAccordion) {
-            setVisBegrunnelse(true)
-        }
-    }, [erApenAccordion])
 
     const hentBegrunnelseTittel = () => {
         switch (begrunnelse) {
@@ -47,11 +36,9 @@ export const BegrunnelseEkspanderbar = ({
 
     return (
         <Accordion.Item
-            data-cy={elementId}
             defaultOpen={arkivering}
-            open={visBegrunnelse}
-            onOpenChange={() => setVisBegrunnelse(!visBegrunnelse)}
-            id={elementId}
+            open={apne}
+            onOpenChange={() => (setApne ? setApne(!apne) : false)}
             ref={elementRef}
         >
             <Accordion.Header>

@@ -1,9 +1,8 @@
 import { BodyShort, ExpansionCard, Heading } from '@navikt/ds-react'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
-import { useScroll } from '../../context/scroll-context'
 
 export interface VedtakExpansionCard {
     vedtak: RSVedtakWrapper
@@ -11,26 +10,28 @@ export interface VedtakExpansionCard {
     undertittel?: string
     ariaLabel?: string
     children: React.ReactNode | React.ReactNode[]
+    apne?: boolean
+    setApne?: (apne: boolean) => void
 }
 
-export const VedtakExpansionCard = ({ vedtak, tittel, undertittel, children, ariaLabel }: VedtakExpansionCard) => {
+export const VedtakExpansionCard = ({
+    vedtak,
+    tittel,
+    undertittel,
+    children,
+    ariaLabel,
+    apne,
+    setApne,
+}: VedtakExpansionCard) => {
     const arkivering = useContext(ArkiveringContext)
-    const { erApenAccordion } = useScroll()
-    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
-
-    useEffect(() => {
-        if (erApenAccordion) {
-            setVisBegrunnelse(true)
-        }
-    }, [erApenAccordion])
 
     const ugyldig = vedtak.annullert || vedtak.revurdert
     return (
         <ExpansionCard
             aria-label={ariaLabel ?? tittel}
             defaultOpen={arkivering}
-            open={visBegrunnelse}
-            onToggle={() => setVisBegrunnelse(!visBegrunnelse)}
+            open={apne}
+            onToggle={() => (setApne ? setApne(!apne) : null)}
             className="mt-4"
             style={
                 {

@@ -30,6 +30,7 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
         if (erApenAccordion && element) {
             window.setTimeout(() => {
                 element.scrollIntoView({ behavior: 'smooth' })
+                setErApenAccordion(false)
             }, 50)
         }
     }, [element, erApenAccordion])

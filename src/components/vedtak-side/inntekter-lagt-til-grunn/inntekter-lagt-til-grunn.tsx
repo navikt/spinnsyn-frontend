@@ -1,5 +1,5 @@
 import { Accordion, Alert, BodyShort, Detail, Link } from '@navikt/ds-react'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -10,6 +10,7 @@ import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
 import { BegrunnelseEkspanderbar } from '../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { useScroll } from '../../../context/scroll-context'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -17,6 +18,24 @@ import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
 
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
+    const { erApenAccordion, registrerElement } = useScroll()
+    const [visBeregning, setVisBeregning] = useState<boolean>(false)
+    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
+    const elementRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (erApenAccordion) {
+            setVisBegrunnelse(true)
+            setVisBeregning(true)
+        }
+    }, [erApenAccordion])
+
+    useEffect(() => {
+        if (elementRef.current) {
+            registrerElement(elementRef)
+        }
+    }, [registrerElement])
+
     const finnRiktigInntekt = () => {
         if (
             vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterHovedregel' ||
@@ -62,7 +81,12 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilget')
 
     return (
-        <VedtakExpansionCard vedtak={vedtak} tittel={tekst('utbetaling.inntekt.info.tittel')}>
+        <VedtakExpansionCard
+            apne={visBeregning}
+            setApne={setVisBeregning}
+            vedtak={vedtak}
+            tittel={tekst('utbetaling.inntekt.info.tittel')}
+        >
             <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
                 <BodyShort weight="semibold" className="w-full">
                     {storeTilStoreOgSmå(vedtak.orgnavn)}
@@ -150,8 +174,24 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                     {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
                         <BegrunnelseEkspanderbar vedtak={vedtak} />
                     )}
-                    {avslag && <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="Avslag" />}
-                    {delvisInnvilgelse && <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="DelvisInnvilget" />}
+                    {avslag && (
+                        <BegrunnelseEkspanderbar
+                            elementRef={elementRef}
+                            vedtak={vedtak}
+                            begrunnelse="Avslag"
+                            apne={visBegrunnelse}
+                            setApne={setVisBegrunnelse}
+                        />
+                    )}
+                    {delvisInnvilgelse && (
+                        <BegrunnelseEkspanderbar
+                            elementRef={elementRef}
+                            vedtak={vedtak}
+                            begrunnelse="DelvisInnvilget"
+                            apne={visBegrunnelse}
+                            setApne={setVisBegrunnelse}
+                        />
+                    )}
                     <AlleSykepengerPerDag vedtak={vedtak} />
                     <MerOmBergningen vedtak={vedtak} />
                 </Accordion>
