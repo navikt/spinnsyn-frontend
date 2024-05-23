@@ -27,7 +27,7 @@ interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
     [orgnummer: string]: number
 }
 
-interface AndreArbeidsgivere {
+export interface AndreArbeidsgivere {
     [organisasjonsnavn: string]: number
 }
 
