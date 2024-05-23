@@ -8,12 +8,12 @@ import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { finnOppsumertAvslag } from '../../../utils/vedtak-utils'
 
 import { SykepengerTrekk } from './sykepenger-trekk'
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
-import { OppsumertAvslagListe } from './oppsumert-avslag-liste'
+import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
@@ -21,12 +21,12 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
-    const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilget')
+    const oppsumertAvslagObject: OppsumertAvslagListeProps = finnOppsumertAvslag(vedtak, 'dagerPerson')
 
     return (
         <UtbetalingPanel
             sectionLabel="Utbetaling til deg"
-            delvisInnvilgelse={delvisInnvilgelse !== undefined}
+            delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             tittel={
                 <Heading data-cy="header-sykepenger-til-deg" level="2" size="large">
                     {annullertEllerRevurdert ? (
@@ -46,7 +46,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             dataCy="personutbetaling"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
-            <OppsumertAvslagListe vedtak={vedtak} dager="dagerPerson"></OppsumertAvslagListe>
+            <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
             <SykepengerTrekk />
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />

@@ -183,11 +183,21 @@ describe('Avviste dager', () => {
             force: true,
         })
 
-        cy.contains('Delvis innvilget vedtak')
-        cy.contains('Hvorfor er vedtaket delvis innvilget?')
-        cy.contains('Du har ikke fått innvilget penger for')
-        cy.contains('li', 'Sykmeldt i for liten grad')
-        cy.contains('button', 'Se nærmere begrunnelse her').click()
+        cy.get('[data-cy="utbetaling-panel-personutbetaling"]').within(() => {
+            cy.contains('Delvis innvilget vedtak').should('not.exist')
+            cy.contains('Hvorfor er vedtaket delvis innvilget?').should('not.exist')
+            cy.contains('Du har ikke fått innvilget penger for').should('not.exist')
+            cy.contains('Sykmeldt i for liten grad').should('not.exist')
+        })
+
+        cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
+            cy.contains('Delvis innvilget vedtak').should('exist')
+            cy.contains('Hvorfor er vedtaket delvis innvilget?').should('exist')
+            cy.contains('Du har ikke fått innvilget penger for').should('exist')
+            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+
+            cy.contains('button', 'Se nærmere begrunnelse her').click()
+        })
 
         cy.findByRole('button', { name: 'Begrunnelse for delvis innvilget vedtak' })
             .should('contain', 'Begrunnelse for delvis innvilget vedtak')
@@ -202,12 +212,14 @@ describe('Avviste dager', () => {
             force: true,
         })
 
-        cy.contains('Avslått vedtak')
-        cy.contains('Ingen utbetaling')
-        cy.contains('Hvorfor er vedtaket avslått?')
-        cy.contains('Du har fått avvist vedtak på søknaden fordi')
-        cy.contains('li', 'Sykmeldt i for liten grad')
-        cy.contains('button', 'Se nærmere begrunnelse her').click()
+        cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
+            cy.contains('Avslått vedtak').should('exist')
+            cy.contains('Hvorfor er vedtaket avslått?').should('exist')
+            cy.contains('Du har fått avvist vedtak på søknaden fordi').should('exist')
+            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+
+            cy.contains('button', 'Se nærmere begrunnelse her').click()
+        })
 
         cy.findByRole('button', { name: 'Begrunnelse for avslått vedtak' })
             .should('contain', 'Begrunnelse for avslått vedtak')

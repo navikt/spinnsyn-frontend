@@ -7,19 +7,19 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { finnOppsumertAvslag } from '../../../utils/vedtak-utils'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
-import { OppsumertAvslagListe } from './oppsumert-avslag-liste'
+import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilget')
+    const oppsumertAvslagObject: OppsumertAvslagListeProps = finnOppsumertAvslag(vedtak, 'dagerArbeidsgiver')
 
     return (
         <UtbetalingPanel
-            delvisInnvilgelse={delvisInnvilgelse !== undefined}
+            delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             sectionLabel="Refusjon til arbeidsgiver"
             tittel={
                 <Heading level="2" size="large">
@@ -44,7 +44,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             dataCy="refusjon"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={vedtak.sykepengebelopArbeidsgiver > 0} />
-            <OppsumertAvslagListe vedtak={vedtak} dager="dagerArbeidsgiver"></OppsumertAvslagListe>
+            <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
             {vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} />}
         </UtbetalingPanel>
     )

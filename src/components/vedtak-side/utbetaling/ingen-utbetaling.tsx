@@ -5,21 +5,21 @@ import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { finnOppsumertAvslag } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 
-import { OppsumertAvslagListe } from './oppsumert-avslag-liste'
+import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
 const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
     const utbetalingsType = vedtak.sykepengebelopPerson > 0 ? 'personutbetaling' : 'refusjon'
-    const avslag = hentBegrunnelse(vedtak, 'Avslag')
+    const oppsumertAvslagObject: OppsumertAvslagListeProps = finnOppsumertAvslag(vedtak, 'alleDager')
 
     return (
         <UtbetalingPanel
             sectionLabel="Ingen utbetaling"
-            avslag={avslag !== undefined}
+            avslag={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             tittel={
                 <Heading level="2" size="large">
                     {annullertEllerRevurdert ? (
@@ -43,7 +43,7 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
             dataCy={utbetalingsType}
         >
             <VedtakPeriode vedtak={vedtak} />
-            <OppsumertAvslagListe vedtak={vedtak} dager="alleDager"></OppsumertAvslagListe>
+            <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
         </UtbetalingPanel>
     )
 }
