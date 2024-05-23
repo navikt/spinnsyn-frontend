@@ -5,7 +5,7 @@ import {
 } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
 import {
-    avslåttOgSkjønnsfastsattKombinasjon,
+    avslåttFraBømlo,
     delvisInnvilgetOgSkjønnsfastsattKombinasjon,
 } from '../../../src/data/testdata/data/vedtak/avslagOgDelvisInnvilget'
 
@@ -198,7 +198,7 @@ describe('Avviste dager', () => {
 
     it('Vedtak med avslag begrunnelse fra Bømlo', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon-avvist-og-skj%C3%B8nnsfastsatt')
-        cy.get(`a[href*=${avslåttOgSkjønnsfastsattKombinasjon.id}]`).click({
+        cy.get(`a[href*=${avslåttFraBømlo.id}]`).click({
             force: true,
         })
 

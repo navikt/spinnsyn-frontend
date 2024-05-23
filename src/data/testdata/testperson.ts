@@ -19,7 +19,7 @@ import {
     skjønnsfastsattBrukerutbetalingPerson,
     skjønnsfastsattFlereArbeidsgiverePerson,
     delvisInnvilgetOgSkjønnsfastsattKombinasjonPerson,
-    avslåttOgSkjønnsfastsattKombinasjonPerson,
+    avslåttFraBømloPerson,
     skjønnsfastsattRefusjonPerson,
     slutterMedDelvisRefusjon,
     under2gInntekt,
@@ -74,7 +74,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
     },
     ['avvist-delvis-innvilget-bømlo']: {
-        ['kombinasjon-avvist-og-skjønnsfastsatt']: jsonDeepCopy(avslåttOgSkjønnsfastsattKombinasjonPerson),
+        ['kombinasjon-avvist-og-skjønnsfastsatt']: jsonDeepCopy(avslåttFraBømloPerson),
         ['kombinasjon-delvisInnvilget-og-skjønnsfastsatt']: jsonDeepCopy(
             delvisInnvilgetOgSkjønnsfastsattKombinasjonPerson,
         ),

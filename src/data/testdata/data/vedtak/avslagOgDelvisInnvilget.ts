@@ -107,8 +107,7 @@ export const delvisInnvilgetOgSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
     },
 }
 
-//TODO: Sjekk at dette er et reelt vedtak ved å generere i dev
-export const avslåttOgSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
+export const avslåttFraBømlo: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59224',
     lest: false,
     vedtak: {
@@ -154,22 +153,6 @@ export const avslåttOgSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
             ],
         },
         begrunnelser: [
-            {
-                type: 'SkjønnsfastsattSykepengegrunnlagMal',
-                begrunnelse:
-                    'Månedsinntekten som er beregnet for arbeidsforholdet ditt er totalt 42 001,00 kroner. Regnet om til årsinntekt blir det 504 012,00 kroner. Denne årsinntekten avviker med mer enn 25 prosent fra inntekten som er rapportert til Skatteetaten på 135 000,00 kroner de siste tolv månedene før måneden du ble syk.\n\nNår årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt, skal sykepengegrunnlaget fastsettes ved skjønn ut fra den årsinntekten som kan sannsynliggjøres på det tidspunktet du ble syk. Se folketrygdloven § 8-30 andre avsnitt.\n\nNår vi fastsetter sykepengegrunnlaget ditt ved skjønn, legger vi vekt på om avviket skyldes endringer i arbeidssituasjonen din. Målet med den skjønnsmessige vurderingen er å komme frem til inntekten du ville hatt om du ikke hadde blitt syk.',
-                perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
-            },
-            {
-                type: 'SkjønnsfastsattSykepengegrunnlagFritekst',
-                begrunnelse: 'skjønnsfastsatt',
-                perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
-            },
-            {
-                type: 'SkjønnsfastsattSykepengegrunnlagKonklusjon',
-                begrunnelse: 'Vi har skjønnsfastsatt årsinntekten din til 504 012,00 kroner.',
-                perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
-            },
             {
                 type: 'Avslag',
                 begrunnelse: 'Avslått vedtak.\n\nNy linje.',

@@ -19,10 +19,7 @@ import {
     vedtakRevurdertKombinasjon,
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
-import {
-    avslåttOgSkjønnsfastsattKombinasjon,
-    delvisInnvilgetOgSkjønnsfastsattKombinasjon,
-} from '../vedtak/avslagOgDelvisInnvilget'
+import { avslåttFraBømlo, delvisInnvilgetOgSkjønnsfastsattKombinasjon } from '../vedtak/avslagOgDelvisInnvilget'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
 import { alleAvvisteDager, alleAvvisteDagerFraBomlo } from '../vedtak/alleAvvisteDager'
 import {
@@ -86,13 +83,13 @@ export const kunDirektePerson: Persona = {
 export const delvisInnvilgetOgSkjønnsfastsattKombinasjonPerson: Persona = {
     vedtak: [delvisInnvilgetOgSkjønnsfastsattKombinasjon],
     kontonummer: '10011110011',
-    beskrivelse: 'Delvis Innvilget og Skjønnsfastsatt vedtak med refusjon og brukerutbetaling',
+    beskrivelse: 'Delvis Innvilget og Skjønnsfastsatt vedtak med refusjon og brukerutbetaling fra Bømlo',
 }
 
-export const avslåttOgSkjønnsfastsattKombinasjonPerson: Persona = {
-    vedtak: [avslåttOgSkjønnsfastsattKombinasjon],
+export const avslåttFraBømloPerson: Persona = {
+    vedtak: [avslåttFraBømlo],
     kontonummer: '10011110011',
-    beskrivelse: 'Avslått og Skjønnsfastsatt vedtak uten utbetaling',
+    beskrivelse: 'Avslått vedtak uten utbetaling fra Bømlo',
 }
 
 export const flexjarPoHelseHelsemetrikk: Persona = {
