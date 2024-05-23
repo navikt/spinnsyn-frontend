@@ -23,7 +23,7 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsumertAvslagListeProps)
             <List as="ul" title={oppsumertAvslag.title} description={oppsumertAvslag.description}>
                 {alleAvslag}
             </List>
-            <Link as="button" type="button" className="cursor-pointer" onClick={blaTilElement}>
+            <Link as="button" type="button" className="cursor-pointer" onClick={() => blaTilElement('begrunnelse')}>
                 Se nærmere begrunnelse her
             </Link>
         </section>

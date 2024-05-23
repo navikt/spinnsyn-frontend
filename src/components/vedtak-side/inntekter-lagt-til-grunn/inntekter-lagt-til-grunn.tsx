@@ -18,23 +18,23 @@ import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
 
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
-    const { erApenAccordion, registrerElement } = useScroll()
+    const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(false)
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
     const elementRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        if (erApenAccordion) {
+        if (apneElementMedId !== '') {
             setVisBegrunnelse(true)
             setVisBeregning(true)
         }
-    }, [erApenAccordion])
+    }, [apneElementMedId])
 
     useEffect(() => {
-        if (elementRef.current) {
-            registrerElement(elementRef)
+        if (elementRef.current !== null) {
+            registrerElement('begrunnelse', elementRef)
         }
-    }, [registrerElement])
+    }, [elementRef?.current?.id, registrerElement])
 
     const finnRiktigInntekt = () => {
         if (
