@@ -209,11 +209,10 @@ describe('Avviste dager', () => {
         cy.contains('li', 'Sykmeldt i for liten grad')
         cy.contains('button', 'Se nærmere begrunnelse her').click()
 
-        //TODO når vi viser beregning på avslått vedtak:
-        // cy.findByRole('button', { name: 'Begrunnelse for avslått vedtak' })
-        //     .should('contain', 'Begrunnelse for avslått vedtak')
-        //     .siblings('div')
-        //     .should('contain', 'Avslått vedtak.')
-        //     .and('contain', 'Ny linje.')
+        cy.findByRole('button', { name: 'Begrunnelse for avslått vedtak' })
+            .should('contain', 'Begrunnelse for avslått vedtak')
+            .siblings('div')
+            .should('contain', 'Avslått vedtak.')
+            .and('contain', 'Ny linje.')
     })
 })

@@ -75,10 +75,9 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
         vedtak.dagerPerson.concat(vedtak.dagerArbeidsgiver).filter((dag) => dag.begrunnelser.includes('MinimumInntekt'))
             .length > 0
 
-    if (harIngenUtbetaling && !harMinstEnForLavInntektDag) return null
-
     const avslag = hentBegrunnelse(vedtak, 'Avslag')
     const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilget')
+    if (harIngenUtbetaling && !harMinstEnForLavInntektDag && !(avslag || delvisInnvilgelse)) return null
 
     return (
         <VedtakExpansionCard
