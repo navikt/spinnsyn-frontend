@@ -165,7 +165,7 @@ export type BegrunnelseType =
     | 'SkjønnsfastsattSykepengegrunnlagMal'
     | 'SkjønnsfastsattSykepengegrunnlagKonklusjon'
     | 'Avslag'
-    | 'DelvisInnvilget'
+    | 'DelvisInnvilgelse'
 
 export type Begrunnelse = {
     type: BegrunnelseType

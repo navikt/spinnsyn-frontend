@@ -359,7 +359,7 @@ export const alleAvvisteDagerFraBomlo: RSVedtakWrapper = {
         },
         begrunnelser: [
             {
-                type: 'DelvisInnvilget',
+                type: 'DelvisInnvilgelse',
                 begrunnelse: 'Avslått fordi det er for mange grunner.\n\nNy linje.',
                 perioder: [{ fom: '2021-01-30', tom: '2021-02-22' }],
             },

@@ -18,7 +18,7 @@ import {
     skjonnsfastsattRiktigAarsinntektPersona,
     skjønnsfastsattBrukerutbetalingPerson,
     skjønnsfastsattFlereArbeidsgiverePerson,
-    delvisInnvilgetOgSkjønnsfastsattKombinasjonPerson,
+    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
     avslåttFraBømloPerson,
     skjønnsfastsattRefusjonPerson,
     slutterMedDelvisRefusjon,
@@ -59,12 +59,12 @@ export type PersonaKey =
     | 'vedtak-med-0-utbetaling'
     | 'flexjar-pohelse'
     | 'null-omregnet-aarsinntekt'
-    | 'kombinasjon-avvist-og-skjønnsfastsatt'
-    | 'kombinasjon-delvisInnvilget-og-skjønnsfastsatt'
+    | 'avvist-fra-bomlo'
+    | 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
-export type PersonaGroupKey = 'mottaker' | 'avvist-delvis-innvilget-bømlo' | 'vedtak-innhold' | 'testing'
+export type PersonaGroupKey = 'mottaker' | 'avvist-delvis-innvilgelse-bømlo' | 'vedtak-innhold' | 'testing'
 type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
@@ -73,10 +73,10 @@ export const testpersonerGruppert: PersonaGroup = {
         ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
     },
-    ['avvist-delvis-innvilget-bømlo']: {
-        ['kombinasjon-avvist-og-skjønnsfastsatt']: jsonDeepCopy(avslåttFraBømloPerson),
-        ['kombinasjon-delvisInnvilget-og-skjønnsfastsatt']: jsonDeepCopy(
-            delvisInnvilgetOgSkjønnsfastsattKombinasjonPerson,
+    ['avvist-delvis-innvilgelse-bømlo']: {
+        ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
+        ['kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo']: jsonDeepCopy(
+            delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
         ),
     },
     ['vedtak-innhold']: {

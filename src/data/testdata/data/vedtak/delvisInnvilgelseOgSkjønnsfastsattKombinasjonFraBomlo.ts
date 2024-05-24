@@ -1,6 +1,6 @@
 import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 
-export const delvisInnvilgetOgSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
+export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59219',
     lest: false,
     vedtak: {
@@ -63,7 +63,7 @@ export const delvisInnvilgetOgSkjønnsfastsattKombinasjon: RSVedtakWrapper = {
                 perioder: [{ fom: '2024-02-01', tom: '2024-02-23' }],
             },
             {
-                type: 'DelvisInnvilget',
+                type: 'DelvisInnvilgelse',
                 begrunnelse: 'Devlis innvilgelse.\n\nNy linje.',
                 perioder: [{ fom: '2024-02-01', tom: '2024-02-23' }],
             },

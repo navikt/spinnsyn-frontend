@@ -21,7 +21,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
-    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilget') !== undefined
+    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'dagerPerson'),
         harBegrunnelseFraBomlo,

@@ -19,7 +19,10 @@ import {
     vedtakRevurdertKombinasjon,
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
-import { avslåttFraBømlo, delvisInnvilgetOgSkjønnsfastsattKombinasjon } from '../vedtak/avslagOgDelvisInnvilget'
+import {
+    avslåttFraBømlo,
+    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
+} from '../vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
 import { alleAvvisteDager, alleAvvisteDagerFraBomlo } from '../vedtak/alleAvvisteDager'
 import {
@@ -80,8 +83,8 @@ export const kunDirektePerson: Persona = {
     beskrivelse: 'Utbetaling til sykmeldt',
 }
 
-export const delvisInnvilgetOgSkjønnsfastsattKombinasjonPerson: Persona = {
-    vedtak: [delvisInnvilgetOgSkjønnsfastsattKombinasjon],
+export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson: Persona = {
+    vedtak: [delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo],
     kontonummer: '10011110011',
     beskrivelse: 'Delvis Innvilget og Skjønnsfastsatt vedtak med refusjon og brukerutbetaling fra Bømlo',
 }

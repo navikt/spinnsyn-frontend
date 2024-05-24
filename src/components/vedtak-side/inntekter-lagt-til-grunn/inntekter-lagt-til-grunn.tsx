@@ -76,7 +76,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
             .length > 0
 
     const avslag = hentBegrunnelse(vedtak, 'Avslag')
-    const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilget')
+    const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilgelse')
     if (harIngenUtbetaling && !harMinstEnForLavInntektDag && !(avslag || delvisInnvilgelse)) return null
 
     return (
@@ -186,7 +186,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         <BegrunnelseEkspanderbar
                             elementRef={elementRef}
                             vedtak={vedtak}
-                            begrunnelse="DelvisInnvilget"
+                            begrunnelse="DelvisInnvilgelse"
                             apne={visBegrunnelse}
                             setApne={setVisBegrunnelse}
                         />

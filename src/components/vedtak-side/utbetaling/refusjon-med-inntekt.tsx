@@ -15,7 +15,7 @@ import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avs
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilget') !== undefined
+    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'dagerArbeidsgiver'),
         harBegrunnelseFraBomlo,

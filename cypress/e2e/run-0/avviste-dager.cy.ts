@@ -6,8 +6,8 @@ import {
 import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
 import {
     avslåttFraBømlo,
-    delvisInnvilgetOgSkjønnsfastsattKombinasjon,
-} from '../../../src/data/testdata/data/vedtak/avslagOgDelvisInnvilget'
+    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
+} from '../../../src/data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 
 describe('Avviste dager', () => {
     before(() => {
@@ -210,7 +210,7 @@ describe('Avviste dager', () => {
 
     it('Vedtak med delvisInnvilget begrunnelse fra Bømlo', () => {
         cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon-delvisInnvilget-og-skj%C3%B8nnsfastsatt')
-        cy.get(`a[href*=${delvisInnvilgetOgSkjønnsfastsattKombinasjon.id}]`).click({
+        cy.get(`a[href*=${delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id}]`).click({
             force: true,
         })
 
