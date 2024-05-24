@@ -48,25 +48,21 @@ export const finnOppsumertAvslag = (
     dager: 'dagerArbeidsgiver' | 'dagerPerson' | 'alleDager',
 ) => {
     let title: string
-    let description: string
     let oppsumertAvslag: Set<string>
     if (dager === 'alleDager') {
-        title = 'Hvorfor er vedtaket avslått?'
-        description = 'Du har fått avvist vedtak på søknaden fordi'
+        title = 'Vedtaket er avslått fordi:'
         oppsumertAvslag = new Set<string>([
             ...oppsumertAvslagBegrunnelser(vedtak, 'dagerArbeidsgiver'),
             ...oppsumertAvslagBegrunnelser(vedtak, 'dagerPerson'),
         ])
     } else {
-        title = 'Hvorfor er vedtaket delvis innvilget?'
-        description = 'Du har ikke fått innvilget penger for'
+        title = 'Noen av dagene er ikke innvilget fordi:'
         oppsumertAvslag = oppsumertAvslagBegrunnelser(vedtak, dager)
     }
 
     return {
         oppsumertAvslag,
         title,
-        description,
     }
 }
 

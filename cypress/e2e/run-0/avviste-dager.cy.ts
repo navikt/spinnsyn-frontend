@@ -185,15 +185,13 @@ describe('Avviste dager', () => {
 
         cy.get('[data-cy="utbetaling-panel-personutbetaling"]').within(() => {
             cy.contains('Delvis innvilget vedtak').should('not.exist')
-            cy.contains('Hvorfor er vedtaket delvis innvilget?').should('not.exist')
-            cy.contains('Du har ikke fått innvilget penger for').should('not.exist')
+            cy.contains('Noen av dagene er ikke innvilget fordi:').should('not.exist')
             cy.contains('Sykmeldt i for liten grad').should('not.exist')
         })
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
             cy.contains('Delvis innvilget vedtak').should('exist')
-            cy.contains('Hvorfor er vedtaket delvis innvilget?').should('exist')
-            cy.contains('Du har ikke fått innvilget penger for').should('exist')
+            cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
             cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her').click()
@@ -214,8 +212,7 @@ describe('Avviste dager', () => {
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
             cy.contains('Avslått vedtak').should('exist')
-            cy.contains('Hvorfor er vedtaket avslått?').should('exist')
-            cy.contains('Du har fått avvist vedtak på søknaden fordi').should('exist')
+            cy.contains('Vedtaket er avslått fordi:').should('exist')
             cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her').click()
