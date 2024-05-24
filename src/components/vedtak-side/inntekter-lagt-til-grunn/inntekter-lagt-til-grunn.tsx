@@ -24,7 +24,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const elementRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        if (apneElementMedId !== '') {
+        if (apneElementMedId === 'begrunnelse_vedtak') {
             setVisBegrunnelse(true)
             setVisBeregning(true)
         }
@@ -32,7 +32,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
 
     useEffect(() => {
         if (elementRef.current !== null) {
-            registrerElement('begrunnelse', elementRef)
+            registrerElement('begrunnelse_vedtak', elementRef)
         }
     }, [elementRef?.current?.id, registrerElement])
 

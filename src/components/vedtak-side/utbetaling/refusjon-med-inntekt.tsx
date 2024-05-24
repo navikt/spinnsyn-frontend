@@ -7,7 +7,7 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { finnOppsumertAvslag } from '../../../utils/vedtak-utils'
+import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
@@ -15,8 +15,11 @@ import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avs
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const oppsumertAvslagObject: OppsumertAvslagListeProps = finnOppsumertAvslag(vedtak, 'dagerArbeidsgiver')
-
+    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilget') !== undefined
+    const oppsumertAvslagObject: OppsumertAvslagListeProps = {
+        ...finnOppsumertAvslag(vedtak, 'dagerArbeidsgiver'),
+        harBegrunnelseFraBomlo,
+    }
     return (
         <UtbetalingPanel
             delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}

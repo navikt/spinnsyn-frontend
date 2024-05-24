@@ -8,7 +8,7 @@ import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { finnOppsumertAvslag } from '../../../utils/vedtak-utils'
+import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { SykepengerTrekk } from './sykepenger-trekk'
 import { Kontonummer } from './kontonummer'
@@ -21,8 +21,11 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
-    const oppsumertAvslagObject: OppsumertAvslagListeProps = finnOppsumertAvslag(vedtak, 'dagerPerson')
-
+    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilget') !== undefined
+    const oppsumertAvslagObject: OppsumertAvslagListeProps = {
+        ...finnOppsumertAvslag(vedtak, 'dagerPerson'),
+        harBegrunnelseFraBomlo,
+    }
     return (
         <UtbetalingPanel
             sectionLabel="Utbetaling til deg"

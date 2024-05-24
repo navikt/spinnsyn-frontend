@@ -31,16 +31,34 @@ describe('Avviste dager', () => {
             force: true,
         })
 
-        cy.findByRole('region', { name: 'Avviste sykepengedager' })
-            .should('contain', '22 sykepengedager')
-            .and('contain', 'Utbetales ikke av NAV')
-            .click()
+        cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
+            cy.contains('Delvis innvilget vedtak').should('exist')
+            cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
+            cy.contains('li', 'Maks antall dager').should('exist')
+            cy.contains('li', 'For lav inntekt').should('exist')
+            cy.contains('li', 'Egenmelding').should('exist')
+            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+            cy.contains('li', 'Jobbet for kort').should('exist')
+            cy.contains('li', 'Ikke medlem').should('exist')
+            cy.contains('li', 'Etter dødsfall').should('exist')
+            cy.contains('li', 'Ukjent').should('exist')
+            cy.contains('li', 'Over 70 år').should('exist')
+            cy.contains('li', 'Arbeidsavklaringspenger').should('exist')
+            cy.contains('li', 'Dagpenger').should('exist')
+            cy.contains('li', 'Foreldrepenger').should('exist')
+            cy.contains('li', 'Omsorgspenger').should('exist')
+            cy.contains('li', 'Opplæringspenger').should('exist')
+            cy.contains('li', 'Pleiepenger').should('exist')
+            cy.contains('li', 'Svangerskapspenger').should('exist')
+
+            cy.contains('button', 'Se nærmere begrunnelse her').click()
+        })
 
         cy.contains(
             'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
-        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler')
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="dag-tabell-body"]').within(() => {
@@ -93,6 +111,19 @@ describe('Avviste dager', () => {
         cy.get('.navds-heading:first-child').contains('Forklaring')
         cy.contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
         cy.contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
+
+        //lukker og åpner "utbetales ikke av nav"
+        cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
+            cy.get('[data-cy="avvistedageroversikt"]')
+                .should('contain', 'Dager NAV ikke utbetaler')
+                .should('contain', 'Forklaring')
+            cy.get('[data-cy="avvistedageroversikt"] > .navds-accordion__header').click()
+        })
+        cy.findByRole('region', { name: 'Avviste sykepengedager' })
+        cy.findByRole('region', { name: 'Avviste sykepengedager' })
+            .should('contain', '22 sykepengedager')
+            .and('contain', 'Utbetales ikke av NAV')
+            .click()
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).contains('Mer om beregningen').should('not.exist')
     })

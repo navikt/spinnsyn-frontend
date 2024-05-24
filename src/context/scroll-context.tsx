@@ -1,9 +1,11 @@
 import React, { createContext, useContext, ReactNode, RefObject, useState, useEffect } from 'react'
 
+type ScrollElementType = 'begrunnelse_vedtak' | 'dager_ikke_nav' | ''
+
 interface ScrollContextType {
-    registrerElement: (elementId: string, ref: RefObject<HTMLElement>) => void
-    blaTilElement: (elementId: string) => void
-    apneElementMedId: string
+    registrerElement: (elementId: ScrollElementType, ref: RefObject<HTMLElement>) => void
+    blaTilElement: (elementId: ScrollElementType) => void
+    apneElementMedId: ScrollElementType
 }
 
 export const ScrollContext = createContext<ScrollContextType | undefined>(undefined)
@@ -13,12 +15,11 @@ interface ScrollProviderProps {
 }
 
 export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
-    const [elementer, setElementer] = useState<Map<string, HTMLElement>>(new Map())
-    const [apneElementMedId, setApneElementMedId] = useState('')
+    const [elementer, setElementer] = useState<Map<ScrollElementType, HTMLElement>>(new Map())
+    const [apneElementMedId, setApneElementMedId] = useState<ScrollElementType>('')
 
-    const registrerElement = (elementId: string, ref: RefObject<HTMLElement>) => {
+    const registrerElement = (elementId: ScrollElementType, ref: RefObject<HTMLElement>) => {
         if (ref.current !== null && !elementer.has(elementId)) {
-            console.log('registrerer element', elementId, ref.current)
             setElementer((prevElements) => {
                 const newElements = new Map(prevElements)
                 newElements.set(elementId, ref.current!)
@@ -27,14 +28,14 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
         }
     }
 
-    const blaTilElement = (id: string) => {
+    const blaTilElement = (id: ScrollElementType) => {
         setApneElementMedId(id)
     }
 
     useEffect(() => {
         if (apneElementMedId && elementer.has(apneElementMedId)) {
             const element = elementer.get(apneElementMedId)
-            if (apneElementMedId !== '' && element) {
+            if (element) {
                 window.setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth' })
                     setApneElementMedId('')
