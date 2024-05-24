@@ -12,10 +12,13 @@ export interface BeregningInfoProps {
 }
 
 export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
-    const isServer = useContext(ArkiveringContext)
+    const arkivering = useContext(ArkiveringContext)
 
-    const harMinstEnForLavInntektDag =
-        vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0
+    //TODO kan man ha ForLavInntektDagerPerson eller er det kun harMinstEnForLavInntektDagerArbeidsgiver?
+    const harMinstEnForLavInntektDagerArbeidsgiver =
+        vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
+    const harMinstEnForLavInntektDagerPerson =
+        vedtak.dagerPerson.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBegge = erDirekteutbetaling && erRefusjon
@@ -43,7 +46,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     }
 
     return (
-        <Accordion.Item data-cy="mer-om-beregningen" defaultOpen={isServer}>
+        <Accordion.Item data-cy="mer-om-beregningen" defaultOpen={arkivering}>
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
                 <Heading spacing size="xsmall" level="3">
@@ -67,7 +70,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                 </Heading>
                 <BodyLong spacing>{parserWithReplace(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
 
-                {(!heltAvvist || !harMinstEnForLavInntektDag) && (
+                {(!heltAvvist || !(harMinstEnForLavInntektDagerArbeidsgiver || harMinstEnForLavInntektDagerPerson)) && (
                     <>
                         <Heading spacing size="xsmall" level="3">
                             {tekst('utbetaling.dagligbelop.tittel')}

@@ -1,6 +1,7 @@
 import {
     avvistVedtak,
     avvistVedtakMedLavInntekt,
+    avvistVedtakMedLavInntektDirekteUtbetaling,
     vedtakMed40Grad,
 } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
@@ -158,7 +159,7 @@ describe('Avviste dager', () => {
         cy.contains('Mer om beregningen').should('not.exist')
     })
 
-    it('Vedtak med avviste dager og lav inntekt', () => {
+    it('Vedtak med avviste dager og lav inntekt, refusjon', () => {
         cy.visit('http://localhost:8080/syk/sykepenger')
         cy.get(`a[href*=${avvistVedtakMedLavInntekt.id}]`).click({
             force: true,
@@ -181,6 +182,63 @@ describe('Avviste dager', () => {
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="dag-tabell-body"]').within(() => {
                 cy.contains('17.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
+                cy.contains('18.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
+                cy.contains('19.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
+                cy.contains('20.aug.')
+                    .parent()
+                    .parent()
+                    .should('contain', 'For\u00a0lav\u00a0inntekt')
+                    .and('contain', '-')
+                cy.contains('21.aug.').parent().parent().should('contain', 'Etter\u00a0dødsfall').and('contain', '-')
+            })
+        })
+
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
+            cy.get('[data-cy="mer-om-beregningen"]').should('contain', 'Mer om beregningen').click()
+        })
+
+        cy.findByRole('region', { name: 'Beregning av sykepengene' }).within(() => {
+            cy.get('[data-cy="mer-om-beregningen"]')
+                .should('contain', 'Månedsinntekt')
+                .should('contain', 'Årsinntekt')
+                .should('contain', 'Sykepengegrunnlag')
+                .should('not.contain', 'Sykepenger per dag')
+                .should('not.contain', 'Totalbeløp')
+                .should('not.contain', 'Utbetalingsdager')
+                .should('not.contain', 'Utbetaling')
+        })
+    })
+
+    it('Vedtak med avviste dager og lav inntekt, direkte utbetaling', () => {
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=delvis-og-helt-avviste-vedtak')
+        cy.get(`a[href*=${avvistVedtakMedLavInntektDirekteUtbetaling.id}]`).click({
+            force: true,
+        })
+        cy.contains('Ingen utbetaling')
+
+        //TODO endre utbetaling-panel-refusjon til utbetaling-panel-personutbetaling når det er inhen utbetaling?
+        cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
+            cy.contains('Avslått vedtak').should('exist')
+            cy.contains('Vedtaket er avslått fordi:').should('exist')
+            cy.contains('li', 'For lav inntekt').should('exist')
+            cy.contains('li', 'Etter dødsfall').should('exist')
+        })
+
+        cy.findByRole('region', { name: 'Avviste sykepengedager' })
+            .should('contain', '4 sykepengedager')
+            .and('contain', 'Utbetales ikke av NAV')
+            .click()
+
+        cy.contains(
+            'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
+        )
+
+        cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
+
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
+
+        cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
+            cy.get('[data-cy="dag-tabell-body"]').within(() => {
                 cy.contains('18.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
                 cy.contains('19.aug.').parent().parent().should('contain', 'Fridag').and('contain', '-')
                 cy.contains('20.aug.')

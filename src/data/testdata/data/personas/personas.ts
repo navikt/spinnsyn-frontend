@@ -2,6 +2,7 @@ import { Persona } from '../../testperson'
 import {
     avvistVedtak,
     avvistVedtakMedLavInntekt,
+    avvistVedtakMedLavInntektDirekteUtbetaling,
     inntektUnder2g,
     kombinertDirekteOgRefusjon,
     kunAgPeriode,
@@ -73,7 +74,7 @@ export const eldgammelt: Persona = {
 }
 
 export const forLavInntektPerson: Persona = {
-    vedtak: [avvistVedtakMedLavInntekt],
+    vedtak: [avvistVedtakMedLavInntekt, avvistVedtakMedLavInntektDirekteUtbetaling],
     beskrivelse: 'Avvist på grunn av for lav inntekt',
 }
 

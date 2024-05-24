@@ -25,22 +25,14 @@ export const oppsumertAvslagBegrunnelser = (
     vedtak: RSVedtakWrapper,
     dager: 'dagerArbeidsgiver' | 'dagerPerson',
 ): Set<string> => {
-    if (dager === 'dagerArbeidsgiver') {
-        // Return unique begrunnelser for arbeidsgiver
-        return vedtak.dagerArbeidsgiver
-            .flatMap((dag) => dag.begrunnelser)
-            .reduce(
-                (alleBegrunnelser, begrunnelse) => alleBegrunnelser.add(finnBegrunnelseTekst(begrunnelse)),
-                new Set<string>(),
-            )
-    } else if (dager === 'dagerPerson') {
-        // Return unique begrunnelser for person
-        return vedtak.dagerPerson
-            .flatMap((dag) => dag.begrunnelser)
-            .reduce((acc, val) => acc.add(val), new Set<string>())
-    } else {
-        return new Set<string>()
-    }
+    const selectedDager = dager === 'dagerArbeidsgiver' ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson
+
+    return selectedDager
+        .flatMap((dag) => dag.begrunnelser)
+        .reduce(
+            (alleBegrunnelser, begrunnelse) => alleBegrunnelser.add(finnBegrunnelseTekst(begrunnelse)),
+            new Set<string>(),
+        )
 }
 
 export const finnOppsumertAvslag = (
