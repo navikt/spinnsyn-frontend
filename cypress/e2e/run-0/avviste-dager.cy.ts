@@ -209,10 +209,10 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med delvisInnvilget begrunnelse fra Bømlo', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon-delvisInnvilget-og-skj%C3%B8nnsfastsatt')
-        cy.get(`a[href*=${delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id}]`).click({
-            force: true,
-        })
+        cy.visit(
+            'http://localhost:8080/syk/sykepenger?testperson=kombinasjon-delvisInnvilgelse-og-skj%C3%B8nnsfastsatt-fra-bomlo',
+        )
+        cy.get(`a[href*=${delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id}]`).click({ force: true })
 
         cy.get('[data-cy="utbetaling-panel-personutbetaling"]').within(() => {
             cy.contains('Delvis innvilget vedtak').should('not.exist')
@@ -236,7 +236,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med avslag begrunnelse fra Bømlo', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon-avvist-og-skj%C3%B8nnsfastsatt')
+        cy.visit('http://localhost:8080/syk/sykepenger?testperson=avvist-fra-bomlo')
         cy.get(`a[href*=${avslåttFraBømlo.id}]`).click({
             force: true,
         })
