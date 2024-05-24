@@ -15,9 +15,10 @@ interface AvvisteDagerProps {
 }
 
 const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
+    const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
-    const [visBeregning, setVisBeregning] = useState<boolean>(false)
-    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
+    const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
+    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -33,7 +34,6 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
         }
     }, [elementRef?.current?.id, registrerElement])
 
-    const arkivering = useContext(ArkiveringContext)
     const avvisteDagerTekst = avvisteDager.length === 1 ? ' sykepengedag' : ' sykepengedager'
 
     return (
@@ -51,7 +51,6 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                 <Accordion.Item
                     ref={elementRef}
                     open={visBegrunnelse}
-                    defaultOpen={arkivering}
                     onOpenChange={() => setVisBegrunnelse(!visBegrunnelse)}
                     data-cy="avvistedageroversikt"
                 >

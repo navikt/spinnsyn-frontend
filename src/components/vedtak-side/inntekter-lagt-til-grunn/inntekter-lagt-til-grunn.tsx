@@ -1,5 +1,5 @@
 import { Accordion, Alert, BodyShort, Detail, Link } from '@navikt/ds-react'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -11,6 +11,7 @@ import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag
 import { BegrunnelseEkspanderbar } from '../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { useScroll } from '../../../context/scroll-context'
+import { ArkiveringContext } from '../../../context/arkivering-context'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -18,9 +19,10 @@ import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
 
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
+    const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
-    const [visBeregning, setVisBeregning] = useState<boolean>(false)
-    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
+    const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
+    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
