@@ -1,14 +1,18 @@
 import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import dayjs, { Dayjs } from 'dayjs'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
+import { ArkiveringContext } from '../../../context/arkivering-context'
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
+    const arkivering = useContext(ArkiveringContext)
+    const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
+
     const finnSluttdato = (): Dayjs => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
             return dayjs(vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger)
@@ -27,6 +31,8 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
                 '%DATO%': sluttPaAktuelleVedtaksPeriode,
             })}
             vedtak={vedtak}
+            apne={visBeregning}
+            setApne={setVisBeregning}
         >
             <BodyLong spacing>{tekst('sykepengedager.sluttdato.tekst1')}</BodyLong>
             <Heading spacing size="medium" level="3">
