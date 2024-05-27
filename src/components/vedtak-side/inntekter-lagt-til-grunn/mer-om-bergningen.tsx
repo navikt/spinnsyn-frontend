@@ -14,7 +14,6 @@ export interface BeregningInfoProps {
 export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
 
-    //TODO kan man ha ForLavInntektDagerPerson eller er det kun harMinstEnForLavInntektDagerArbeidsgiver?
     const harMinstEnForLavInntektDagerArbeidsgiver =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
     const harMinstEnForLavInntektDagerPerson =
