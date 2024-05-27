@@ -8,10 +8,12 @@ import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
+import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { SykepengerTrekk } from './sykepenger-trekk'
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
+import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
@@ -19,10 +21,15 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
-
+    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
+    const oppsumertAvslagObject: OppsumertAvslagListeProps = {
+        ...finnOppsumertAvslag(vedtak, 'dagerPerson'),
+        harBegrunnelseFraBomlo,
+    }
     return (
         <UtbetalingPanel
             sectionLabel="Utbetaling til deg"
+            delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             tittel={
                 <Heading data-cy="header-sykepenger-til-deg" level="2" size="large">
                     {annullertEllerRevurdert ? (
@@ -42,6 +49,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             dataCy="personutbetaling"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
+            <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
             <SykepengerTrekk />
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />

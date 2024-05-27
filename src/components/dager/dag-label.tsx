@@ -3,6 +3,7 @@ import { logger } from '@navikt/next-logger'
 import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
+import { finnBegrunnelseTekst } from '../../utils/vedtak-utils'
 
 import { dataCyLabel } from './dag-data-cy-util'
 
@@ -102,118 +103,24 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
     }
 
     const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelse, idx: number) => {
-        switch (begrunnelse) {
-            case 'SykepengedagerOppbrukt':
-            case 'SykepengedagerOppbruktOver67':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Maks&nbsp;antall&nbsp;dager
-                    </Tag>
-                )
-
-            case 'MinimumInntekt':
-            case 'MinimumInntektOver67':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        For&nbsp;lav&nbsp;inntekt
-                    </Tag>
-                )
-
-            case 'EgenmeldingUtenforArbeidsgiverperiode':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Egenmelding
-                    </Tag>
-                )
-
-            case 'MinimumSykdomsgrad':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Sykmeldt&nbsp;i&nbsp;for&nbsp;liten&nbsp;grad
-                    </Tag>
-                )
-
-            case 'ManglerOpptjening':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Jobbet&nbsp;for&nbsp;kort
-                    </Tag>
-                )
-
-            case 'ManglerMedlemskap':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Ikke&nbsp;medlem
-                    </Tag>
-                )
-
-            case 'Over70':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Over&nbsp;70&nbsp;år
-                    </Tag>
-                )
-
-            case 'EtterDødsdato':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Etter&nbsp;dødsfall
-                    </Tag>
-                )
-            case 'AndreYtelserAap':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Arbeidsavklaringspenger
-                    </Tag>
-                )
-            case 'AndreYtelserDagpenger':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Dagpenger
-                    </Tag>
-                )
-            case 'AndreYtelserForeldrepenger':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Foreldrepenger
-                    </Tag>
-                )
-            case 'AndreYtelserOmsorgspenger':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Omsorgspenger
-                    </Tag>
-                )
-            case 'AndreYtelserOpplaringspenger':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Opplæringspenger
-                    </Tag>
-                )
-            case 'AndreYtelserPleiepenger':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Pleiepenger
-                    </Tag>
-                )
-            case 'AndreYtelserSvangerskapspenger':
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Svangerskapspenger
-                    </Tag>
-                )
-            case 'UKJENT':
-            default:
-                logger.warn(`Har ingen begrunnelse for: ${begrunnelse}.`)
-                return (
-                    <Tag size="small" variant="warning" key={idx}>
-                        Ukjent
-                    </Tag>
-                )
+        const tagText = finnBegrunnelseTekst(begrunnelse)
+        if (tagText === 'Ukjent') {
+            logger.warn(`Har ingen begrunnelse for: ${begrunnelse}.`)
+            return (
+                <Tag size="small" variant="warning" key={idx}>
+                    Ukjent
+                </Tag>
+            )
         }
+        return (
+            <Tag size="small" variant="warning" key={idx}>
+                {tagText.split(' ').map((word, index) => (
+                    <React.Fragment key={index}>{word}&nbsp;</React.Fragment>
+                ))}
+            </Tag>
+        )
     }
 
     return <div data-cy={dataCyLabel(dag)}>{lagDagLabel(dag)}</div>
 }
-
 export default DagLabel

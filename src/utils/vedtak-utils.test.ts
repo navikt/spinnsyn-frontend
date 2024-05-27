@@ -2,9 +2,10 @@ import { expect } from '@jest/globals'
 import dayjs from 'dayjs'
 
 import { ulestVedtakUtenUtbetalingsdager } from '../data/testdata/data/vedtak/rs-vedtak'
+import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 
 import { jsonDeepCopy } from './json-deep-copy'
-import { fallbackEstimertSluttdato } from './vedtak-utils'
+import { fallbackEstimertSluttdato, hentBegrunnelse } from './vedtak-utils'
 
 describe('Tester estimering av sluttdato', () => {
     const testVedtak = ulestVedtakUtenUtbetalingsdager
@@ -64,10 +65,18 @@ describe('Tester estimering av sluttdato', () => {
         lørdagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 0 // Samme dag
         expect(fallbackEstimertSluttdato(lørdagsVedtak).format('D. MMM YYYY')).toEqual('6. Jun 2020')
     })
+
     it('Tester om vi regner likt som bømlo', () => {
         const lørdagsVedtak = jsonDeepCopy(testVedtak)
         lørdagsVedtak.vedtak.tom = '2021-11-10'
         lørdagsVedtak.vedtak.utbetaling.gjenståendeSykedager = 187
         expect(fallbackEstimertSluttdato(lørdagsVedtak).format('D. MMM YYYY')).toEqual('29. Jul 2022')
+    })
+
+    it('Tester at vi finner begrunnelse i vedtak', () => {
+        const delvisInnvilglseVedtak = jsonDeepCopy(delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo)
+        const begrunnelse = hentBegrunnelse(delvisInnvilglseVedtak, 'DelvisInnvilgelse')
+        expect(begrunnelse?.type).toEqual('DelvisInnvilgelse')
+        expect(begrunnelse?.begrunnelse).toEqual('Devlis innvilgelse.\n\nNy linje.')
     })
 })

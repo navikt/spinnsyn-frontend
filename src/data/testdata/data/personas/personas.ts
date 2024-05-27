@@ -2,6 +2,7 @@ import { Persona } from '../../testperson'
 import {
     avvistVedtak,
     avvistVedtakMedLavInntekt,
+    avvistVedtakMedLavInntektDirekteUtbetaling,
     inntektUnder2g,
     kombinertDirekteOgRefusjon,
     kunAgPeriode,
@@ -19,9 +20,12 @@ import {
     vedtakRevurdertKombinasjon,
 } from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
-import { avvistSkjønnsfastsattKombinasjon } from '../vedtak/avslagOgDelvisInnvilget'
+import {
+    avslåttFraBømlo,
+    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
+} from '../vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
-import { alleAvvisteDager } from '../vedtak/alleAvvisteDager'
+import { alleAvvisteDager, alleAvvisteDagerFraBomlo } from '../vedtak/alleAvvisteDager'
 import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
@@ -70,7 +74,7 @@ export const eldgammelt: Persona = {
 }
 
 export const forLavInntektPerson: Persona = {
-    vedtak: [avvistVedtakMedLavInntekt],
+    vedtak: [avvistVedtakMedLavInntekt, avvistVedtakMedLavInntektDirekteUtbetaling],
     beskrivelse: 'Avvist på grunn av for lav inntekt',
 }
 
@@ -80,10 +84,16 @@ export const kunDirektePerson: Persona = {
     beskrivelse: 'Utbetaling til sykmeldt',
 }
 
-export const skjønnsfastsattKombinasjonPerson: Persona = {
-    vedtak: [avvistSkjønnsfastsattKombinasjon],
+export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson: Persona = {
+    vedtak: [delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo],
     kontonummer: '10011110011',
-    beskrivelse: 'Delvis Innvilget og Skjønnsfastsatt vedtak med refusjon og brukerutbetaling',
+    beskrivelse: 'Delvis Innvilget og Skjønnsfastsatt vedtak med refusjon og brukerutbetaling fra Bømlo',
+}
+
+export const avslåttFraBømloPerson: Persona = {
+    vedtak: [avslåttFraBømlo],
+    kontonummer: '10011110011',
+    beskrivelse: 'Avslått vedtak uten utbetaling fra Bømlo',
 }
 
 export const flexjarPoHelseHelsemetrikk: Persona = {
@@ -136,7 +146,7 @@ export const skjønnsfastsattFlereArbeidsgiverePerson: Persona = {
 }
 
 export const alleAvvisteDagerPerson: Persona = {
-    vedtak: [alleAvvisteDager],
+    vedtak: [alleAvvisteDager, alleAvvisteDagerFraBomlo],
     beskrivelse: 'Inneholder alle avviste dager vi har støtte for',
 }
 

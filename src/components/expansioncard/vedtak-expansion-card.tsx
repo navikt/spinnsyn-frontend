@@ -1,7 +1,6 @@
 import { BodyShort, ExpansionCard, Heading } from '@navikt/ds-react'
-import React, { useContext } from 'react'
+import React from 'react'
 
-import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 
 export interface VedtakExpansionCard {
@@ -10,16 +9,25 @@ export interface VedtakExpansionCard {
     undertittel?: string
     ariaLabel?: string
     children: React.ReactNode | React.ReactNode[]
+    apne?: boolean
+    setApne?: (apne: boolean) => void
 }
 
-export const VedtakExpansionCard = ({ vedtak, tittel, undertittel, children, ariaLabel }: VedtakExpansionCard) => {
-    const arkivering = useContext(ArkiveringContext)
-
+export const VedtakExpansionCard = ({
+    vedtak,
+    tittel,
+    undertittel,
+    children,
+    ariaLabel,
+    apne,
+    setApne,
+}: VedtakExpansionCard) => {
     const ugyldig = vedtak.annullert || vedtak.revurdert
     return (
         <ExpansionCard
             aria-label={ariaLabel ?? tittel}
-            defaultOpen={arkivering}
+            open={apne}
+            onToggle={() => (setApne ? setApne(!apne) : null)}
             className="mt-4"
             style={
                 {

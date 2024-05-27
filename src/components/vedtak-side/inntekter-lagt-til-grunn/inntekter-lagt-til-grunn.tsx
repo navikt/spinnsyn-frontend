@@ -1,5 +1,5 @@
 import { Accordion, Alert, BodyShort, Detail, Link } from '@navikt/ds-react'
-import React from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
@@ -8,7 +8,10 @@ import { formaterValuta } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
-import { BegrunnelseForSkjonnsfastsetting } from '../begrunnelse-for-skjonnsfastsetting/begrunnelse-for-skjonnsfastsetting'
+import { BegrunnelseEkspanderbar } from '../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
+import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { useScroll } from '../../../context/scroll-context'
+import { ArkiveringContext } from '../../../context/arkivering-context'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -16,13 +19,32 @@ import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
 
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
+    const arkivering = useContext(ArkiveringContext)
+    const { apneElementMedId, registrerElement } = useScroll()
+    const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
+    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
+    const elementRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (apneElementMedId === 'begrunnelse_vedtak') {
+            setVisBegrunnelse(true)
+            setVisBeregning(true)
+        }
+    }, [apneElementMedId])
+
+    useEffect(() => {
+        if (elementRef.current !== null) {
+            registrerElement('begrunnelse_vedtak', elementRef)
+        }
+    }, [elementRef?.current?.id, registrerElement])
+
     const finnRiktigInntekt = () => {
         if (
-            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterHovedregel' ||
-            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterHovedregel' ||
+            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
         ) {
             const arbeidsgiveren = vedtak.vedtak.sykepengegrunnlagsfakta.arbeidsgivere.find((a) => {
-                return a.arbeidsgiver == vedtak.vedtak.organisasjonsnummer
+                return a.arbeidsgiver === vedtak.vedtak.organisasjonsnummer
             })
             if (arbeidsgiveren) {
                 return arbeidsgiveren.omregnetÅrsinntekt / 12
@@ -47,18 +69,25 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const inntektAr = formaterValuta(inntekt * 12)
 
     const over25prosentAvvik =
-        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' &&
+        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' &&
         vedtak.vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
 
-    const harIngenUtbetaling = vedtak.sykepengebelopPerson == 0 && vedtak.sykepengebelopArbeidsgiver == 0
+    const harIngenUtbetaling = vedtak.sykepengebelopPerson === 0 && vedtak.sykepengebelopArbeidsgiver === 0
     const harMinstEnForLavInntektDag =
         vedtak.dagerPerson.concat(vedtak.dagerArbeidsgiver).filter((dag) => dag.begrunnelser.includes('MinimumInntekt'))
             .length > 0
 
-    if (harIngenUtbetaling && !harMinstEnForLavInntektDag) return null
+    const avslag = hentBegrunnelse(vedtak, 'Avslag')
+    const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilgelse')
+    if (harIngenUtbetaling && !harMinstEnForLavInntektDag && !(avslag || delvisInnvilgelse)) return null
 
     return (
-        <VedtakExpansionCard vedtak={vedtak} tittel={tekst('utbetaling.inntekt.info.tittel')}>
+        <VedtakExpansionCard
+            apne={visBeregning}
+            setApne={setVisBeregning}
+            vedtak={vedtak}
+            tittel={tekst('utbetaling.inntekt.info.tittel')}
+        >
             <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
                 <BodyShort weight="semibold" className="w-full">
                     {storeTilStoreOgSmå(vedtak.orgnavn)}
@@ -68,7 +97,6 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 {harFlereArbeidsgivere(vedtak) === 'ja' && (
                     <>
                         <BeregningÅrsinntektFlereArbeidsgivere vedtak={vedtak} />
-
                         <InfoSection
                             className="mt-4 border-t border-gray-400 pt-4"
                             bold
@@ -80,7 +108,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         />
                     </>
                 )}
-                {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn' && (
+                {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
                     <>
                         <InfoSection
                             className="mt-4 border-t border-gray-400 pt-4"
@@ -102,12 +130,11 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         />
                     </>
                 )}
-
                 {vedtak.vedtak.sykepengegrunnlag && (
                     <InfoSection
                         bold
                         className={
-                            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+                            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
                                 ? 'mt-4 border-t border-gray-400 pt-4'
                                 : ''
                         }
@@ -127,7 +154,6 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         </BodyShort>
                     </>
                 )}
-
                 {vedtak.vedtak.tags && vedtak.vedtak.tags.includes('SykepengegrunnlagUnder2G') && (
                     <>
                         <Detail className="mt-4 border-t border-gray-400 pt-4 text-sm text-gray-700">
@@ -145,10 +171,27 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         </Detail>
                     </>
                 )}
-
                 <Accordion className="mt-8" indent={false}>
                     {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
-                        <BegrunnelseForSkjonnsfastsetting vedtak={vedtak} />
+                        <BegrunnelseEkspanderbar vedtak={vedtak} />
+                    )}
+                    {avslag && (
+                        <BegrunnelseEkspanderbar
+                            elementRef={elementRef}
+                            vedtak={vedtak}
+                            begrunnelse="Avslag"
+                            apne={visBegrunnelse}
+                            setApne={setVisBegrunnelse}
+                        />
+                    )}
+                    {delvisInnvilgelse && (
+                        <BegrunnelseEkspanderbar
+                            elementRef={elementRef}
+                            vedtak={vedtak}
+                            begrunnelse="DelvisInnvilgelse"
+                            apne={visBegrunnelse}
+                            setApne={setVisBegrunnelse}
+                        />
                     )}
                     <AlleSykepengerPerDag vedtak={vedtak} />
                     <MerOmBergningen vedtak={vedtak} />

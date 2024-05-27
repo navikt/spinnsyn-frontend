@@ -9,14 +9,17 @@ import { ArkiveringContext } from '../context/arkivering-context'
 import useVedtak from '../hooks/useVedtak'
 import { InterneInfo } from '../components/interne-info/InterneInfo'
 import { beskyttetSideUtenProps } from '../auth/beskyttetSide'
+import { ScrollProvider } from '../context/scroll-context'
 
 export default function Index() {
     return (
         <ArkiveringContext.Provider value={false}>
-            <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                <InterneInfo />
-                <Innhold />
-            </main>
+            <ScrollProvider>
+                <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
+                    <InterneInfo />
+                    <Innhold />
+                </main>
+            </ScrollProvider>
         </ArkiveringContext.Provider>
     )
 }

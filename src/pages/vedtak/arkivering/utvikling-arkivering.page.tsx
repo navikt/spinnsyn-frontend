@@ -9,6 +9,7 @@ import {
     skjønnsfastsattFlereArbeidsgivere,
 } from '../../../data/testdata/data/vedtak/skjønnsfastsatt'
 import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/alleAvvisteDager'
+import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../../../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -31,6 +32,9 @@ export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx
         }
         if (ctx.query.testperson === 'skjønnsfastsatt-flere-arbeidsgivere') {
             return skjønnsfastsattFlereArbeidsgivere
+        }
+        if (ctx.query.testperson === 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo') {
+            return delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo
         }
         return alleAvvisteDager
     }
