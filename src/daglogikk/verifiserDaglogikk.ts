@@ -61,6 +61,6 @@ export function verifiserDaglogikk(v: RSVedtakWrapper) {
     if (isDeepEqual(nyBeregning, opprinneligBeregning)) {
         logger.info(`Dager er lik for vedtak ${v.id}`)
     } else {
-        logger.error(`Dager er ulik for vedtak ${v.id}`)
+        logger.warn(`Dager er ulik for vedtak ${v.id}`)
     }
 }

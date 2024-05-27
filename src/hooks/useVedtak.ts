@@ -30,7 +30,7 @@ export default function UseVedtak() {
             )
 
             //if localhost
-            if (window.location.hostname === 'localhost') {
+            if (window.location.hostname === 'localhost' || window.location.hostname === 'www.ekstern.dev.nav.no') {
                 vedtak.forEach((v) => {
                     verifiserDaglogikk(v)
                 })
