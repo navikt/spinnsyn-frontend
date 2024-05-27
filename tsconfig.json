@@ -16,7 +16,7 @@
         "jsx": "preserve",
         "strictNullChecks": true,
         "noFallthroughCasesInSwitch": true,
-        "types": ["node"],
+        "types": ["node", "jest"],
         "incremental": true
     },
     "include": ["src"],
