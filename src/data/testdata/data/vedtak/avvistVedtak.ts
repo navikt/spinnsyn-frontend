@@ -30,12 +30,125 @@ export const avvistVedtak: RSVedtakWrapper = {
             forbrukteSykedager: 0,
             gjenståendeSykedager: 248,
             automatiskBehandling: false,
+            personOppdrag: {
+                utbetalingslinjer: [
+                    {
+                        fom: '2021-08-01',
+                        tom: '2021-08-20',
+                        dagsats: 0,
+                        grad: 0,
+                        stønadsdager: 20,
+                    },
+                ],
+            },
+            utbetalingsdager: [
+                {
+                    dato: '2021-08-01',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-02',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-03',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-04',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-05',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-06',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-07',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-08',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-09',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-10',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-11',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-12',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-13',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-14',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-15',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-16',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-17',
+                    type: 'Fridag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-18',
+                    type: 'Fridag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-19',
+                    type: 'Fridag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-20',
+                    type: 'AvvistDag',
+                    begrunnelser: ['EtterDødsdato'],
+                },
+            ],
         },
     },
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
-    dagerArbeidsgiver: [
+    dagerPerson: [
         {
             dato: '2021-08-01',
             belop: 0,
@@ -177,7 +290,7 @@ export const avvistVedtak: RSVedtakWrapper = {
             begrunnelser: ['EtterDødsdato'],
         },
     ],
-    dagerPerson: [],
+    dagerArbeidsgiver: [],
     sykepengebelopPerson: 0,
     sykepengebelopArbeidsgiver: 0,
 }

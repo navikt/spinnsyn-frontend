@@ -4,23 +4,22 @@ import { jsonDeepCopy } from '../../utils/json-deep-copy'
 import {
     alleAvvisteDagerPerson,
     annullert,
+    avslåttFraBømloPerson,
+    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
     direkteUtenKontonummerPerson,
     diverseData,
-    eldgammelt,
     etVedtakFlereArbeidsgivere,
     flexjarPoHelseHelsemetrikk,
     forLavInntektPerson,
     julesoknadPerson,
     kombinasjonPerson,
+    kombinertRevurdertPersona,
     kunArbedisgiverPerioder,
     kunDirektePerson,
     revurdertOgAnnullert,
     skjonnsfastsattRiktigAarsinntektPersona,
     skjønnsfastsattBrukerutbetalingPerson,
-    skjønnsfastsattFlereArbeidsgiverePerson,
-    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
-    avslåttFraBømloPerson,
-    skjønnsfastsattRefusjonPerson,
+    skjønnsfastsattFlereArbeidsgiverePersona,
     slutterMedDelvisRefusjon,
     under2gInntekt,
     utenData,
@@ -41,7 +40,6 @@ export type PersonaKey =
     | 'diverse-data'
     | 'et-vedtak-flere-arbeidsgivere'
     | 'annulert-og-overført-infotrygd'
-    | 'veldig-gammelt-vedtak'
     | 'delvis-og-helt-avviste-vedtak'
     | 'kun-direkte'
     | 'direkte-uten-kontonummer'
@@ -49,17 +47,17 @@ export type PersonaKey =
     | 'kun-ag-periode'
     | 'slutter-med-delvis-refusjon'
     | 'skjonnsfastsatt-brukerutbetaling'
-    | 'skjønnsfastsatt-refusjon'
-    | 'skjønnsfastsatt-flere-arbeidsgivere'
     | 'alle-avviste-dager'
     | 'revurdert-og-annullert'
     | 'under-2g-beskjed'
     | 'julesoknad'
     | 'skjonnsfastsatt-riktig-aarsinntekt'
+    | 'skjonnsfastsatt-flere-arbeidsgivere'
     | 'vedtak-med-0-utbetaling'
     | 'flexjar-pohelse'
     | 'null-omregnet-aarsinntekt'
     | 'avvist-fra-bomlo'
+    | 'kombinert-revurdert'
     | 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
@@ -82,8 +80,6 @@ export const testpersonerGruppert: PersonaGroup = {
     ['vedtak-innhold']: {
         ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
         ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
-        ['skjønnsfastsatt-refusjon']: jsonDeepCopy(skjønnsfastsattRefusjonPerson),
-        ['skjønnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePerson),
         ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
         ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
         ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
@@ -96,11 +92,12 @@ export const testpersonerGruppert: PersonaGroup = {
     ['testing']: {
         ['uten-data']: jsonDeepCopy(utenData),
         ['diverse-data']: jsonDeepCopy(diverseData),
-        ['veldig-gammelt-vedtak']: jsonDeepCopy(eldgammelt),
         ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
         ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
         ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
+        ['skjonnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePersona),
         ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
+        ['kombinert-revurdert']: jsonDeepCopy(kombinertRevurdertPersona),
     },
 }
 

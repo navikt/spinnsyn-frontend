@@ -33,6 +33,117 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '2022-12-27',
             utbetalingType: 'UTBETALING',
+            arbeidsgiverOppdrag: {
+                utbetalingslinjer: [
+                    {
+                        fom: '2022-01-14',
+                        tom: '2022-01-16',
+                        dagsats: 1359,
+                        grad: 100,
+                        stønadsdager: 3,
+                    },
+                ],
+            },
+            utbetalingsdager: [
+                {
+                    dato: '2021-12-29',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-12-30',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2021-12-31',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2022-01-02',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2022-01-03',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-04',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2022-01-05',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-06',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2022-01-07',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-08',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2022-01-09',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-10',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2022-01-11',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-12',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2022-01-13',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-14',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-15',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2022-01-16',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+            ],
         },
         grunnlagForSykepengegrunnlag: 909757.3200000001,
         grunnlagForSykepengegrunnlagPerArbeidsgiver: {
@@ -72,7 +183,7 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
             dato: '2022-01-01',
             belop: 0,
             grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
+            dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
         {
@@ -181,134 +292,7 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
             begrunnelser: [],
         },
     ],
-    dagerPerson: [
-        {
-            dato: '2021-12-29',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-12-30',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-12-31',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-01',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-02',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-03',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-04',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-05',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-06',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-07',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-08',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-09',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-10',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-11',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-12',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-13',
-            belop: 0,
-            grad: 0,
-            dagtype: 'ArbeidsgiverperiodeDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-15',
-            belop: 0,
-            grad: 0,
-            dagtype: 'NavHelgDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2022-01-16',
-            belop: 0,
-            grad: 0,
-            dagtype: 'NavHelgDag',
-            begrunnelser: [],
-        },
-    ],
+    dagerPerson: [],
     sykepengebelopArbeidsgiver: 1359,
     sykepengebelopPerson: 0,
     andreArbeidsgivere: { 'Den andre sjappa': 406252.44 },

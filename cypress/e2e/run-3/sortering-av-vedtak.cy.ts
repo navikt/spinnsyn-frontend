@@ -15,7 +15,7 @@ describe('Sortering av vedtak', () => {
     it('Laster startside', function () {
         cy.visit('http://localhost:8080/syk/sykepenger')
         cy.findByRole('heading', { level: 1 }).contains('Svar på søknader')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Tidligere vedtak sorteres etter tidligste tom dato', function () {

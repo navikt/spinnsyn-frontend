@@ -33,6 +33,89 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
+            arbeidsgiverOppdrag: {
+                utbetalingslinjer: [
+                    {
+                        fom: '2021-02-08',
+                        tom: '2021-02-21',
+                        dagsats: 896,
+                        stønadsdager: 10,
+                        grad: 40.0,
+                    },
+                ],
+            },
+            utbetalingsdager: [
+                {
+                    dato: '2021-02-08',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-09',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-10',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-11',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-12',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-13',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-14',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-15',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-16',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-17',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-18',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-19',
+                    type: 'NavDagDelvisSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-20',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-21',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+            ],
         },
     },
     opprettetTimestamp: '2021-05-06T12:42:42.000Z',
@@ -77,14 +160,14 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
         {
             dato: '2021-02-13',
             belop: 0,
-            grad: 40.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
         {
             dato: '2021-02-14',
             belop: 0,
-            grad: 40.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
@@ -126,14 +209,14 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
         {
             dato: '2021-02-20',
             belop: 0,
-            grad: 40.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
         {
             dato: '2021-02-21',
             belop: 0,
-            grad: 40.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },

@@ -6,7 +6,7 @@ describe('Utbetalingsoversikt', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/syk/sykepenger')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Laster startside', () => {
@@ -78,11 +78,7 @@ describe('Utbetalingsoversikt', () => {
                     .parent()
                     .should('contain', 'Ikke brukt sykmeldingen')
                     .and('contain', '-')
-                cy.contains('31.jan.')
-                    .parent()
-                    .parent()
-                    .should('contain', 'Arbeidsgiveren\u00a0betaler')
-                    .and('contain', '-')
+                cy.contains('31.jan.').parent().parent().should('contain', 'Helg').and('contain', '-')
                 cy.contains('01.feb.').parent().parent().should('contain', 'Syk').and('contain', '1\u00a0000 kr')
                 cy.contains('06.feb.').parent().parent().should('contain', 'Helg').and('contain', '-')
                 cy.contains('08.feb.').parent().parent().should('contain', '40 % syk').and('contain', '400 kr')
