@@ -8,11 +8,14 @@ export interface RSVedtakWrapper {
     andreArbeidsgivere: AndreArbeidsgivere
     annullert: boolean
     revurdert: boolean
+    organisasjoner: Record<string, string>
+}
+
+export interface RSVedtakWrapperUtvidet extends RSVedtakWrapper {
     dagerArbeidsgiver: RSDag[]
     dagerPerson: RSDag[]
     sykepengebelopArbeidsgiver: number
     sykepengebelopPerson: number
-    organisasjoner: Record<string, string>
 }
 
 export interface RSDag {

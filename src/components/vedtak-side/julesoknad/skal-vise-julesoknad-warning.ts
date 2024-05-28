@@ -1,8 +1,8 @@
 import dayjs from 'dayjs'
 
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
 
-export function skalViseJulesoknadWarning(vedtak: RSVedtakWrapper) {
+export function skalViseJulesoknadWarning(vedtak: RSVedtakWrapperUtvidet) {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
 
     const vedtakFattetFørTom = dayjs(vedtak.opprettetTimestamp).isBefore(dayjs(vedtak.vedtak.tom))

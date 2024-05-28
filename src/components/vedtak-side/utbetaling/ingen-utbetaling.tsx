@@ -6,11 +6,11 @@ import { getLedetekst, tekst } from '../../../utils/tekster'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
 
 import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
-const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
+const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
     const utbetalingsType = vedtak.sykepengebelopPerson > 0 ? 'personutbetaling' : 'refusjon'

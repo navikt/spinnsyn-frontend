@@ -2,13 +2,13 @@ import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 
 export interface BeregningInfoProps {
-    vedtak: RSVedtakWrapper
+    vedtak: RSVedtakWrapperUtvidet
 }
 
 export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {

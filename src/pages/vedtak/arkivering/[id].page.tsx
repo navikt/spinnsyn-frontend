@@ -9,7 +9,6 @@ import { hentVedtakForArkivering } from '../../../data/hentVedtakForArkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
 import { requestAzureClientCredentialsToken } from '../../../auth/oasis-wip/client-credentials'
-import { verifiserDaglogikk } from '../../../daglogikk/verifiserDaglogikk'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -55,8 +54,6 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
-
-        verifiserDaglogikk(vedtaket)
 
         ctx.res.setHeader('x-nais-app-image', serverRuntimeConfig.naisAppImage)
         ctx.res.setHeader('x-vedtak-fom', vedtaket.vedtak.fom)
