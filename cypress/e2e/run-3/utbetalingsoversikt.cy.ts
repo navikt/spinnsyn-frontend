@@ -1,5 +1,5 @@
-import { vedtakMed40Grad } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
+import { vedtakMed40Grad } from '../../../src/data/testdata/data/vedtak/gradert40'
 
 describe('Utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad

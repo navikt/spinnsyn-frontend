@@ -1,5 +1,5 @@
-import { vedtakMedDetMeste } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 import { formaterValuta } from '../../../src/utils/valuta-utils'
+import { vedtakMedDetMeste } from '../../../src/data/testdata/data/vedtak/medDetMeste'
 
 describe('Redusert til 6G', () => {
     const vedtak = vedtakMedDetMeste

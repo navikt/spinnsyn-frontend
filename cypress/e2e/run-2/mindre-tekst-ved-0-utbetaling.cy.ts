@@ -1,4 +1,4 @@
-import { vedtakMed0Utbetaling } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
+import { vedtakMed0Utbetaling } from '../../../src/data/testdata/data/vedtak/vedtakMed0Utbetaling'
 
 describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som får null kroner', () => {
     before(() => {

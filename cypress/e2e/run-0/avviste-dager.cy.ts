@@ -1,14 +1,12 @@
-import {
-    avvistVedtak,
-    avvistVedtakMedLavInntekt,
-    avvistVedtakMedLavInntektDirekteUtbetaling,
-    vedtakMed40Grad,
-} from '../../../src/data/testdata/data/vedtak/rs-vedtak'
 import { alleAvvisteDager } from '../../../src/data/testdata/data/vedtak/alleAvvisteDager'
 import {
     avslåttFraBømlo,
     delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
 } from '../../../src/data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
+import { vedtakMed40Grad } from '../../../src/data/testdata/data/vedtak/gradert40'
+import { avvistVedtak } from '../../../src/data/testdata/data/vedtak/avvistVedtak'
+import { avvistVedtakMedLavInntekt } from '../../../src/data/testdata/data/vedtak/avvistMedLavInntekt'
+import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../../../src/data/testdata/data/vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 
 describe('Avviste dager', () => {
     before(() => {

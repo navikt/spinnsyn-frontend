@@ -1,8 +1,6 @@
-import {
-    ulestVedtakUtenUtbetalingsdager,
-    vedtakAnnullert,
-    vedtakRevurdert,
-} from '../../../src/data/testdata/data/vedtak/rs-vedtak'
+import { ulestVedtakUtenUtbetalingsdager } from '../../../src/data/testdata/data/vedtak/utenUtbetalingsdager'
+import { vedtakAnnullert } from '../../../src/data/testdata/data/vedtak/annullert'
+import { vedtakRevurdert } from '../../../src/data/testdata/data/vedtak/revurdert'
 
 describe('Les uleste vedtak', () => {
     before(() => {
