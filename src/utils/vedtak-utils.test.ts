@@ -1,8 +1,8 @@
 import { expect } from '@jest/globals'
 import dayjs from 'dayjs'
 
-import { ulestVedtakUtenUtbetalingsdager } from '../data/testdata/data/vedtak/rs-vedtak'
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
+import { ulestVedtakUtenUtbetalingsdager } from '../data/testdata/data/vedtak/utenUtbetalingsdager'
 
 import { jsonDeepCopy } from './json-deep-copy'
 import { fallbackEstimertSluttdato, hentBegrunnelse } from './vedtak-utils'

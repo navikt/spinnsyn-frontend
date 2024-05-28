@@ -33,6 +33,91 @@ export const kunDirekte: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
+            personOppdrag: {
+                utbetalingslinjer: [
+                    {
+                        fom: '2021-02-08',
+                        tom: '2021-02-21',
+                        dagsats: 2455,
+                        grad: 100,
+                        stønadsdager: 10,
+                    },
+                ],
+            },
+            utbetalingsdager: [
+                {
+                    dato: '2021-02-08',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-09',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-10',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-11',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2021-02-12',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+
+                {
+                    dato: '2021-02-13',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-14',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-15',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-16',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-17',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-18',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-19',
+                    type: 'NavDagSyk',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-20',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-02-21',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+            ],
         },
         tags: ['IngenNyArbeidsgiverperiode', 'SykepengegrunnlagUnder2G'],
     },
@@ -79,14 +164,14 @@ export const kunDirekte: RSVedtakWrapper = {
         {
             dato: '2021-02-13',
             belop: 0,
-            grad: 100.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
         {
             dato: '2021-02-14',
             belop: 0,
-            grad: 100.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
@@ -128,14 +213,14 @@ export const kunDirekte: RSVedtakWrapper = {
         {
             dato: '2021-02-20',
             belop: 0,
-            grad: 100.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
         {
             dato: '2021-02-21',
             belop: 0,
-            grad: 100.0,
+            grad: 0,
             dagtype: 'NavHelgDag',
             begrunnelser: [],
         },
