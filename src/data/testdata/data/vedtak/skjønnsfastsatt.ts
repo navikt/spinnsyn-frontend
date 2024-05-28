@@ -1,6 +1,5 @@
 import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
-import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 import { kunDirekte } from './kunDirekte'
 
 export const skjønnsfastsattBrukerutbetaling = jsonDeepCopy(kunDirekte)
@@ -48,19 +47,3 @@ skjønnsfastsattBrukerutbetaling.vedtak.sykepengegrunnlagsfakta = {
     '6G': 668862.0,
     tags: ['6GBegrenset'],
 }
-
-export const skjønnsfastsattRefusjon = jsonDeepCopy(skjønnsfastsattBrukerutbetaling)
-skjønnsfastsattRefusjon.sykepengebelopArbeidsgiver = skjønnsfastsattRefusjon.sykepengebelopPerson
-skjønnsfastsattRefusjon.sykepengebelopPerson = 0
-skjønnsfastsattRefusjon.dagerArbeidsgiver = skjønnsfastsattRefusjon.dagerPerson
-skjønnsfastsattRefusjon.dagerPerson = []
-
-export const skjønnsfastsattFlereArbeidsgivere = jsonDeepCopy(vedtakMedFlereArbeidsgivere)
-skjønnsfastsattFlereArbeidsgivere.id = '6aa63aa6-a932-4ba4-b1b3-bc3722b0aaaa'
-skjønnsfastsattFlereArbeidsgivere.vedtak.begrunnelser = jsonDeepCopy(
-    skjønnsfastsattBrukerutbetaling.vedtak.begrunnelser,
-)
-skjønnsfastsattFlereArbeidsgivere.vedtak.sykepengegrunnlagsfakta =
-    skjønnsfastsattBrukerutbetaling.vedtak.sykepengegrunnlagsfakta
-skjønnsfastsattFlereArbeidsgivere.vedtak.begrunnelser[0].begrunnelse =
-    'Begrunnelse fra saksbehandler ved flere arbeidsgivere'

@@ -4,12 +4,10 @@ import React from 'react'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-import {
-    skjønnsfastsattBrukerutbetaling,
-    skjønnsfastsattFlereArbeidsgivere,
-} from '../../../data/testdata/data/vedtak/skjønnsfastsatt'
+import { skjønnsfastsattBrukerutbetaling } from '../../../data/testdata/data/vedtak/skjønnsfastsatt'
 import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/alleAvvisteDager'
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../../../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
+import { vedtakMedFlereArbeidsgivere } from '../../../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -30,8 +28,8 @@ export const getServerSideProps: GetServerSideProps<DevVedtakProps> = async (ctx
         if (ctx.query.testperson === 'skjonnsfastsatt-brukerutbetaling') {
             return skjønnsfastsattBrukerutbetaling
         }
-        if (ctx.query.testperson === 'skjønnsfastsatt-flere-arbeidsgivere') {
-            return skjønnsfastsattFlereArbeidsgivere
+        if (ctx.query.testperson === 'flere-arbeidsgivere') {
+            return vedtakMedFlereArbeidsgivere
         }
         if (ctx.query.testperson === 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo') {
             return delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo

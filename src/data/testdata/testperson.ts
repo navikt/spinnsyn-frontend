@@ -4,9 +4,10 @@ import { jsonDeepCopy } from '../../utils/json-deep-copy'
 import {
     alleAvvisteDagerPerson,
     annullert,
+    avslåttFraBømloPerson,
+    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
     direkteUtenKontonummerPerson,
     diverseData,
-    eldgammelt,
     etVedtakFlereArbeidsgivere,
     flexjarPoHelseHelsemetrikk,
     forLavInntektPerson,
@@ -17,10 +18,6 @@ import {
     revurdertOgAnnullert,
     skjonnsfastsattRiktigAarsinntektPersona,
     skjønnsfastsattBrukerutbetalingPerson,
-    skjønnsfastsattFlereArbeidsgiverePerson,
-    delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
-    avslåttFraBømloPerson,
-    skjønnsfastsattRefusjonPerson,
     slutterMedDelvisRefusjon,
     under2gInntekt,
     utenData,
@@ -41,7 +38,6 @@ export type PersonaKey =
     | 'diverse-data'
     | 'et-vedtak-flere-arbeidsgivere'
     | 'annulert-og-overført-infotrygd'
-    | 'veldig-gammelt-vedtak'
     | 'delvis-og-helt-avviste-vedtak'
     | 'kun-direkte'
     | 'direkte-uten-kontonummer'
@@ -49,8 +45,6 @@ export type PersonaKey =
     | 'kun-ag-periode'
     | 'slutter-med-delvis-refusjon'
     | 'skjonnsfastsatt-brukerutbetaling'
-    | 'skjønnsfastsatt-refusjon'
-    | 'skjønnsfastsatt-flere-arbeidsgivere'
     | 'alle-avviste-dager'
     | 'revurdert-og-annullert'
     | 'under-2g-beskjed'
@@ -82,8 +76,6 @@ export const testpersonerGruppert: PersonaGroup = {
     ['vedtak-innhold']: {
         ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
         ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
-        ['skjønnsfastsatt-refusjon']: jsonDeepCopy(skjønnsfastsattRefusjonPerson),
-        ['skjønnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePerson),
         ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
         ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
         ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
@@ -96,7 +88,6 @@ export const testpersonerGruppert: PersonaGroup = {
     ['testing']: {
         ['uten-data']: jsonDeepCopy(utenData),
         ['diverse-data']: jsonDeepCopy(diverseData),
-        ['veldig-gammelt-vedtak']: jsonDeepCopy(eldgammelt),
         ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
         ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
         ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),

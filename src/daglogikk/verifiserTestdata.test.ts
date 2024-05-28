@@ -1,4 +1,4 @@
-import { RSUtbetalingdag, RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 import { kunDirekte } from '../data/testdata/data/vedtak/kunDirekte'
 import { alleAvvisteDager } from '../data/testdata/data/vedtak/alleAvvisteDager'
 import { vedtakAnnullert } from '../data/testdata/data/vedtak/annullert'
@@ -9,6 +9,20 @@ import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/
 import { vedtakMed40Grad } from '../data/testdata/data/vedtak/gradert40'
 import { inntektUnder2g } from '../data/testdata/data/vedtak/inntektUnder2g'
 import { julesoknadVedtak } from '../data/testdata/data/vedtak/julesoknad'
+import { kombinertDirekteOgRefusjon } from '../data/testdata/data/vedtak/kombinert'
+import { kunAgPeriode } from '../data/testdata/data/vedtak/kunAgPeriode'
+import { vedtakMedDetMeste } from '../data/testdata/data/vedtak/medDetMeste'
+import { nullOmregnetAarsinntekt } from '../data/testdata/data/vedtak/nullOmregnetAarsinntekt'
+import { vedtakRedusertTil6G } from '../data/testdata/data/vedtak/redusertTil6g'
+import { vedtakRevurdert } from '../data/testdata/data/vedtak/revurdert'
+import { vedtakRevurdertDirekte } from '../data/testdata/data/vedtak/revurdertDirekte'
+import { revurdertOgAnnullertVedtak } from '../data/testdata/data/vedtak/revurdertOgAnnullert'
+import { skjonnsfastsattRiktigAarsinntekt } from '../data/testdata/data/vedtak/skjonnsfastsattRiktigAarsinntekt'
+import { skjønnsfastsattBrukerutbetaling } from '../data/testdata/data/vedtak/skjønnsfastsatt'
+import { slutterMedRefusjon } from '../data/testdata/data/vedtak/slutterMedRefusjon'
+import { vedtakDerDetSluttesMedDelvisRefusjon } from '../data/testdata/data/vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
+import { vedtakMed0Utbetaling } from '../data/testdata/data/vedtak/vedtakMed0Utbetaling'
+import { vedtakMedFlereArbeidsgivere } from '../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
 
 import { verifiserDaglogikk } from './verifiserDaglogikk'
 
@@ -17,10 +31,6 @@ describe('Verifisering av testdata', () => {
         const prossesertVedtak = verifiserDaglogikk(vedtak)
         expect(prossesertVedtak.nyBeregning).toEqual(prossesertVedtak.opprinneligBeregning)
     }
-
-    test('Kun direkte vedtak', () => {
-        verifiserTestdataVedtak(kunDirekte)
-    })
 
     test('Alle avviste dager', () => {
         verifiserTestdataVedtak(alleAvvisteDager)
@@ -54,27 +64,65 @@ describe('Verifisering av testdata', () => {
     test('julesoknadVedtak', () => {
         verifiserTestdataVedtak(julesoknadVedtak)
     })
+    test('kombinert', () => {
+        verifiserTestdataVedtak(kombinertDirekteOgRefusjon)
+    })
+    test('kunagp', () => {
+        verifiserTestdataVedtak(kunAgPeriode)
+    })
+    test('Kun direkte vedtak', () => {
+        verifiserTestdataVedtak(kunDirekte)
+    })
+    test('Med det meste', () => {
+        verifiserTestdataVedtak(vedtakMedDetMeste)
+    })
+    test('nullOmregnetAarsinntekt', () => {
+        verifiserTestdataVedtak(nullOmregnetAarsinntekt)
+    })
 
-    // eslint-disable-next-line
-    function skapOgLoggUtbetalingsdager(vedtak: RSVedtakWrapper) {
-        const utbetalingsdager: RSUtbetalingdag[] = []
+    test('vedtakRedusertTil6G', () => {
+        verifiserTestdataVedtak(vedtakRedusertTil6G)
+    })
 
-        vedtak.dagerPerson.forEach((dag) => {
-            utbetalingsdager.push({
-                dato: dag.dato,
-                type: dag.dagtype,
-                begrunnelser: dag.begrunnelser,
-            })
-        })
-        vedtak.dagerArbeidsgiver.forEach((dag) => {
-            utbetalingsdager.push({
-                dato: dag.dato,
-                type: dag.dagtype,
-                begrunnelser: dag.begrunnelser,
-            })
-        })
-        const sortert = utbetalingsdager.sort((a, b) => a.dato.localeCompare(b.dato))
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(sortert, null, 2))
-    }
+    test('revurdert', () => {
+        verifiserTestdataVedtak(vedtakRevurdert)
+    })
+
+    test('revurdertdirekte', () => {
+        verifiserTestdataVedtak(vedtakRevurdertDirekte)
+    })
+
+    test('revurdertOgAnnullertVedtak', () => {
+        verifiserTestdataVedtak(revurdertOgAnnullertVedtak)
+    })
+
+    test('skjonnsfastsattRiktigAarsinntekt', () => {
+        verifiserTestdataVedtak(skjonnsfastsattRiktigAarsinntekt[0])
+    })
+
+    test('skjonnsfastsattRiktigAarsinntekt1', () => {
+        verifiserTestdataVedtak(skjonnsfastsattRiktigAarsinntekt[1])
+    })
+    test('skjonnsfastsattRiktigAarsinntekt2', () => {
+        verifiserTestdataVedtak(skjonnsfastsattRiktigAarsinntekt[2])
+    })
+    test('skjonnsfastsattRiktigAarsinntekt3', () => {
+        verifiserTestdataVedtak(skjonnsfastsattRiktigAarsinntekt[3])
+    })
+    test('skjønnsfastsattBrukerutbetaling', () => {
+        verifiserTestdataVedtak(skjønnsfastsattBrukerutbetaling)
+    })
+    test('slutterMedRefusjon', () => {
+        verifiserTestdataVedtak(slutterMedRefusjon)
+    })
+
+    test('vedtakDerDetSluttesMedDelvisRefusjon', () => {
+        verifiserTestdataVedtak(vedtakDerDetSluttesMedDelvisRefusjon)
+    })
+    test('vedtakMed0Utbetaling', () => {
+        verifiserTestdataVedtak(vedtakMed0Utbetaling)
+    })
+    test('vedtakMedFlereArbeidsgivere', () => {
+        verifiserTestdataVedtak(vedtakMedFlereArbeidsgivere)
+    })
 })

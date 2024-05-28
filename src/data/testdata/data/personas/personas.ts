@@ -6,11 +6,7 @@ import {
 } from '../vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
 import { alleAvvisteDager, alleAvvisteDagerFraBomlo } from '../vedtak/alleAvvisteDager'
-import {
-    skjønnsfastsattBrukerutbetaling,
-    skjønnsfastsattFlereArbeidsgivere,
-    skjønnsfastsattRefusjon,
-} from '../vedtak/skjønnsfastsatt'
+import { skjønnsfastsattBrukerutbetaling } from '../vedtak/skjønnsfastsatt'
 import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
 import { julesoknadVedtak } from '../vedtak/julesoknad'
 import { skjonnsfastsattRiktigAarsinntekt } from '../vedtak/skjonnsfastsattRiktigAarsinntekt'
@@ -21,11 +17,9 @@ import { vedtakMed0Utbetaling } from '../vedtak/vedtakMed0Utbetaling'
 import { kunAgPeriode } from '../vedtak/kunAgPeriode'
 import { vedtakMedDetMeste } from '../vedtak/medDetMeste'
 import { vedtakMed40Grad } from '../vedtak/gradert40'
-import { ulestGammeltVedtak, ulestVedtakUtenUtbetalingsdager } from '../vedtak/utenUtbetalingsdager'
 import { vedtakAnnullert } from '../vedtak/annullert'
 import { vedtakRevurdert } from '../vedtak/revurdert'
 import { vedtakRevurdertDirekte } from '../vedtak/revurdertDirekte'
-import { vedtakRevurdertKombinasjon } from '../vedtak/revurdertKombinasjon'
 import { avvistVedtak } from '../vedtak/avvistVedtak'
 import { avvistVedtakMedLavInntekt } from '../vedtak/avvistMedLavInntekt'
 import { vedtakRedusertTil6G } from '../vedtak/redusertTil6g'
@@ -47,11 +41,9 @@ export const diverseData: Persona = {
     vedtak: [
         vedtakMedDetMeste,
         vedtakMed40Grad,
-        ulestVedtakUtenUtbetalingsdager,
         vedtakAnnullert,
         vedtakRevurdert,
         vedtakRevurdertDirekte,
-        vedtakRevurdertKombinasjon,
         alleAvvisteDager,
         avvistVedtak,
         avvistVedtakMedLavInntekt,
@@ -63,11 +55,6 @@ export const diverseData: Persona = {
 export const annullert: Persona = {
     vedtak: [vedtakAnnullert],
     beskrivelse: 'Annullert vedtak',
-}
-
-export const eldgammelt: Persona = {
-    vedtak: [ulestGammeltVedtak],
-    beskrivelse: 'Veldig gammelt vedtak',
 }
 
 export const forLavInntektPerson: Persona = {
@@ -130,16 +117,6 @@ export const kunArbedisgiverPerioder: Persona = {
 export const skjønnsfastsattBrukerutbetalingPerson: Persona = {
     vedtak: [skjønnsfastsattBrukerutbetaling],
     beskrivelse: 'Skjønnsfastsatt inntekt med brukerutbetaling',
-}
-
-export const skjønnsfastsattRefusjonPerson: Persona = {
-    vedtak: [skjønnsfastsattRefusjon],
-    beskrivelse: 'Skjønnsfastsatt inntekt med refusjon til arbeidsgiver',
-}
-
-export const skjønnsfastsattFlereArbeidsgiverePerson: Persona = {
-    vedtak: [skjønnsfastsattFlereArbeidsgivere],
-    beskrivelse: 'Skjønnsfastsatt inntekt med refusjon og flere arbeidsforhold',
 }
 
 export const alleAvvisteDagerPerson: Persona = {
