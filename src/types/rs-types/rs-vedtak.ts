@@ -77,7 +77,6 @@ export interface RSUtbetalingslinje {
     fom: string
     tom: string
     dagsats: number
-    totalbeløp: number
     grad: number
     stønadsdager: number
 }

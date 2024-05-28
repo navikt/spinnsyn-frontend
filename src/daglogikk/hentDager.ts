@@ -53,6 +53,7 @@ export function hentDager(
         if (!utbetalingsdagen) return dag
 
         const dayOfWeek = dayjs(dag.dato).day()
+        const erHelg = helg.includes(dayOfWeek)
         return {
             ...dag,
             begrunnelser: utbetalingsdagen.begrunnelser,
@@ -62,14 +63,14 @@ export function hentDager(
                         return dag.grad < 100 ? 'NavDagDelvisSyk' : 'NavDagSyk'
                     case 'ArbeidsgiverperiodeDag':
                         if (dag.belop === 0) return 'ArbeidsgiverperiodeDag'
-                        if (helg.includes(dayOfWeek)) return 'NavHelgDag'
+                        if (erHelg) return 'NavHelgDag'
                         return dag.grad < 100 ? 'NavDagDelvisSyk' : 'NavDagSyk'
                     default:
                         return utbetalingsdagen.type
                 }
             })(),
-            belop: helg.includes(dayOfWeek) ? 0 : dag.belop,
-            grad: helg.includes(dayOfWeek) ? 0.0 : dag.grad,
+            belop: erHelg ? 0 : dag.belop,
+            grad: erHelg ? 0.0 : dag.grad,
         }
     })
 
@@ -101,13 +102,17 @@ export function hentDager(
         .slice()
         .reverse()
         .findIndex((dag) => dag.belop > 0)
+
     if (sisteUtbetalteDag === -1) return dager
 
+    const sisteUtbetalteDagIndex = dager.length - sisteUtbetalteDag - 1
+
     const annenUtbetalingISlutten = dager
-        .slice(sisteUtbetalteDag)
+        .slice(sisteUtbetalteDagIndex + 1)
         .findIndex((dag) => dag.belop === 0 && dagtyperMedUtbetaling.includes(dag.dagtype))
+
     if (annenUtbetalingISlutten > -1) {
-        dager = dager.slice(0, sisteUtbetalteDag + annenUtbetalingISlutten)
+        dager = dager.slice(0, sisteUtbetalteDagIndex + 1 + annenUtbetalingISlutten)
     }
 
     const forsteUtbetalteDag = dager.findIndex((dag) => dag.belop > 0)
