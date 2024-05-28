@@ -9,7 +9,7 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '999999999',
-        fom: '2021-08-01',
+        fom: '2021-08-18',
         tom: '2021-08-21',
         dokumenter: [
             {
@@ -30,6 +30,28 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
             forbrukteSykedager: 0,
             gjenståendeSykedager: 248,
             automatiskBehandling: false,
+            utbetalingsdager: [
+                {
+                    dato: '2021-08-18',
+                    type: 'Fridag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-19',
+                    type: 'Fridag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-20',
+                    type: 'AvvistDag',
+                    begrunnelser: ['MinimumInntekt'],
+                },
+                {
+                    dato: '2021-08-21',
+                    type: 'AvvistDag',
+                    begrunnelser: ['EtterDødsdato'],
+                },
+            ],
         },
     },
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',

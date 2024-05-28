@@ -3,6 +3,8 @@ import { kunDirekte } from '../data/testdata/data/vedtak/kunDirekte'
 import { alleAvvisteDager } from '../data/testdata/data/vedtak/alleAvvisteDager'
 import { vedtakAnnullert } from '../data/testdata/data/vedtak/annullert'
 import { avvistVedtakMedLavInntekt } from '../data/testdata/data/vedtak/avvistMedLavInntekt'
+import { avvistVedtak } from '../data/testdata/data/vedtak/avvistVedtak'
+import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../data/testdata/data/vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 
 import { verifiserDaglogikk } from './verifiserDaglogikk'
 
@@ -23,9 +25,19 @@ describe('Verifisering av testdata', () => {
     test('Annullert', () => {
         verifiserTestdataVedtak(vedtakAnnullert)
     })
+
     test('avvistMedLavInntekt', () => {
         verifiserTestdataVedtak(avvistVedtakMedLavInntekt)
     })
+
+    test('avvistVedtak', () => {
+        verifiserTestdataVedtak(avvistVedtak)
+    })
+
+    test('avvistVedtakMedLavInntektDirekteUtbetaling', () => {
+        verifiserTestdataVedtak(avvistVedtakMedLavInntektDirekteUtbetaling)
+    })
+
     // eslint-disable-next-line
     function skapOgLoggUtbetalingsdager(vedtak: RSVedtakWrapper) {
         const utbetalingsdager: RSUtbetalingdag[] = []
