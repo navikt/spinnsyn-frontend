@@ -63,4 +63,5 @@ export function verifiserDaglogikk(v: RSVedtakWrapper) {
     } else {
         logger.warn(`Dager er ulik for vedtak ${v.id}`)
     }
+    return { nyBeregning, opprinneligBeregning }
 }
