@@ -5,6 +5,10 @@ import { vedtakAnnullert } from '../data/testdata/data/vedtak/annullert'
 import { avvistVedtakMedLavInntekt } from '../data/testdata/data/vedtak/avvistMedLavInntekt'
 import { avvistVedtak } from '../data/testdata/data/vedtak/avvistVedtak'
 import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../data/testdata/data/vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
+import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
+import { vedtakMed40Grad } from '../data/testdata/data/vedtak/gradert40'
+import { inntektUnder2g } from '../data/testdata/data/vedtak/inntektUnder2g'
+import { julesoknadVedtak } from '../data/testdata/data/vedtak/julesoknad'
 
 import { verifiserDaglogikk } from './verifiserDaglogikk'
 
@@ -36,6 +40,19 @@ describe('Verifisering av testdata', () => {
 
     test('avvistVedtakMedLavInntektDirekteUtbetaling', () => {
         verifiserTestdataVedtak(avvistVedtakMedLavInntektDirekteUtbetaling)
+    })
+
+    test('delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo', () => {
+        verifiserTestdataVedtak(delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo)
+    })
+    test('vedtakMed40Grad', () => {
+        verifiserTestdataVedtak(vedtakMed40Grad)
+    })
+    test('inntektUnder2g', () => {
+        verifiserTestdataVedtak(inntektUnder2g)
+    })
+    test('julesoknadVedtak', () => {
+        verifiserTestdataVedtak(julesoknadVedtak)
     })
 
     // eslint-disable-next-line
