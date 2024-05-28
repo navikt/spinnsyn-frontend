@@ -6,7 +6,7 @@ import {
 } from '../vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
 import { alleAvvisteDager, alleAvvisteDagerFraBomlo } from '../vedtak/alleAvvisteDager'
-import { skjønnsfastsattBrukerutbetaling } from '../vedtak/skjønnsfastsatt'
+import { skjønnsfastsattBrukerutbetaling, skjønnsfastsattFlereArbeidsgivere } from '../vedtak/skjønnsfastsatt'
 import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
 import { julesoknadVedtak } from '../vedtak/julesoknad'
 import { skjonnsfastsattRiktigAarsinntekt } from '../vedtak/skjonnsfastsattRiktigAarsinntekt'
@@ -136,6 +136,10 @@ export const under2gInntekt: Persona = {
 export const skjonnsfastsattRiktigAarsinntektPersona: Persona = {
     vedtak: skjonnsfastsattRiktigAarsinntekt,
     beskrivelse: 'Test av skjønnsfastsatt inntekt med riktig årsinntekt',
+}
+export const skjønnsfastsattFlereArbeidsgiverePersona: Persona = {
+    vedtak: [skjønnsfastsattFlereArbeidsgivere],
+    beskrivelse: 'Test av skjønnsfastsatt med flere arbeidsgivere',
 }
 
 export const vedtakMed0UtbetalingPerson: Persona = {

@@ -50,10 +50,10 @@ describe('Skjønnsfastsatt sykepengegrunnlag', () => {
         })
     })
 
-    xdescribe('Skjønnsfastsatt flere arbeidsgivere TODO trenger testdata', () => {
+    describe('Skjønnsfastsatt flere arbeidsgivere TODO trenger testdata', () => {
         it('Åpner vedtaket', () => {
             cy.visit(
-                'http://localhost:8080/syk/sykepenger?testperson=skj%C3%B8nnsfastsatt-flere-arbeidsgivere&id=6aa63aa6-a932-4ba4-b1b3-bc3722b0aaaa',
+                'http://localhost:8080/syk/sykepenger?testperson=skjonnsfastsatt-flere-arbeidsgivere&id=6aa63aa6-a932-4ba4-b1b3-bc3722b0aaaa',
             )
             cy.findByRole('heading', { level: 1 }).should('exist').and('contain.text', 'Svar på søknad om sykepenger')
         })

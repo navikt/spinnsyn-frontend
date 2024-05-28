@@ -18,6 +18,7 @@ import {
     revurdertOgAnnullert,
     skjonnsfastsattRiktigAarsinntektPersona,
     skjønnsfastsattBrukerutbetalingPerson,
+    skjønnsfastsattFlereArbeidsgiverePersona,
     slutterMedDelvisRefusjon,
     under2gInntekt,
     utenData,
@@ -50,6 +51,7 @@ export type PersonaKey =
     | 'under-2g-beskjed'
     | 'julesoknad'
     | 'skjonnsfastsatt-riktig-aarsinntekt'
+    | 'skjonnsfastsatt-flere-arbeidsgivere'
     | 'vedtak-med-0-utbetaling'
     | 'flexjar-pohelse'
     | 'null-omregnet-aarsinntekt'
@@ -91,6 +93,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
         ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
         ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
+        ['skjonnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePersona),
         ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
     },
 }

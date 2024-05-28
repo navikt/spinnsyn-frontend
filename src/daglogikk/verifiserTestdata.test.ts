@@ -18,7 +18,10 @@ import { vedtakRevurdert } from '../data/testdata/data/vedtak/revurdert'
 import { vedtakRevurdertDirekte } from '../data/testdata/data/vedtak/revurdertDirekte'
 import { revurdertOgAnnullertVedtak } from '../data/testdata/data/vedtak/revurdertOgAnnullert'
 import { skjonnsfastsattRiktigAarsinntekt } from '../data/testdata/data/vedtak/skjonnsfastsattRiktigAarsinntekt'
-import { skjønnsfastsattBrukerutbetaling } from '../data/testdata/data/vedtak/skjønnsfastsatt'
+import {
+    skjønnsfastsattBrukerutbetaling,
+    skjønnsfastsattFlereArbeidsgivere,
+} from '../data/testdata/data/vedtak/skjønnsfastsatt'
 import { slutterMedRefusjon } from '../data/testdata/data/vedtak/slutterMedRefusjon'
 import { vedtakDerDetSluttesMedDelvisRefusjon } from '../data/testdata/data/vedtak/vedtakDerDetSluttesMedDelvisRefusjon'
 import { vedtakMed0Utbetaling } from '../data/testdata/data/vedtak/vedtakMed0Utbetaling'
@@ -124,5 +127,8 @@ describe('Verifisering av testdata', () => {
     })
     test('vedtakMedFlereArbeidsgivere', () => {
         verifiserTestdataVedtak(vedtakMedFlereArbeidsgivere)
+    })
+    test('skjønnsfastsattFlereArbeidsgivere', () => {
+        verifiserTestdataVedtak(skjønnsfastsattFlereArbeidsgivere)
     })
 })
