@@ -1,4 +1,4 @@
-import { kunDirekte } from '../data/testdata/data/vedtak/rs-vedtak'
+import { kunDirekte } from '../data/testdata/data/vedtak/kunDirekte'
 
 import { verifiserDaglogikk } from './verifiserDaglogikk'
 

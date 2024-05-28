@@ -1,24 +1,4 @@
 import { Persona } from '../../testperson'
-import {
-    avvistVedtak,
-    avvistVedtakMedLavInntekt,
-    avvistVedtakMedLavInntektDirekteUtbetaling,
-    inntektUnder2g,
-    kombinertDirekteOgRefusjon,
-    kunAgPeriode,
-    kunDirekte,
-    slutterMedRefusjon,
-    ulestGammeltVedtak,
-    ulestVedtakUtenUtbetalingsdager,
-    vedtakAnnullert,
-    vedtakMed0Utbetaling,
-    vedtakMed40Grad,
-    vedtakMedDetMeste,
-    vedtakRedusertTil6G,
-    vedtakRevurdert,
-    vedtakRevurdertDirekte,
-    vedtakRevurdertKombinasjon,
-} from '../vedtak/rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from '../vedtak/vedtakMedFlereArbeidsgivere'
 import {
     avslåttFraBømlo,
@@ -35,6 +15,23 @@ import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
 import { julesoknadVedtak } from '../vedtak/julesoknad'
 import { skjonnsfastsattRiktigAarsinntekt } from '../vedtak/skjonnsfastsattRiktigAarsinntekt'
 import { nullOmregnetAarsinntekt } from '../vedtak/nullOmregnetAarsinntekt'
+import { slutterMedRefusjon } from '../vedtak/slutterMedRefusjon'
+import { inntektUnder2g } from '../vedtak/inntektUnder2g'
+import { vedtakMed0Utbetaling } from '../vedtak/vedtakMed0Utbetaling'
+import { kunAgPeriode } from '../vedtak/kunAgPeriode'
+import { vedtakMedDetMeste } from '../vedtak/medDetMeste'
+import { vedtakMed40Grad } from '../vedtak/gradert40'
+import { ulestGammeltVedtak, ulestVedtakUtenUtbetalingsdager } from '../vedtak/utenUtbetalingsdager'
+import { vedtakAnnullert } from '../vedtak/annullert'
+import { vedtakRevurdert } from '../vedtak/revurdert'
+import { vedtakRevurdertDirekte } from '../vedtak/revurdertDirekte'
+import { vedtakRevurdertKombinasjon } from '../vedtak/revurdertKombinasjon'
+import { avvistVedtak } from '../vedtak/avvistVedtak'
+import { avvistVedtakMedLavInntekt } from '../vedtak/avvistMedLavInntekt'
+import { vedtakRedusertTil6G } from '../vedtak/redusertTil6g'
+import { kunDirekte } from '../vedtak/kunDirekte'
+import { kombinertDirekteOgRefusjon } from '../vedtak/kombinert'
+import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 
 export const utenData: Persona = {
     vedtak: [],

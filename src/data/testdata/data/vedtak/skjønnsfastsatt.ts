@@ -1,7 +1,7 @@
 import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
-import { kunDirekte } from './rs-vedtak'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
+import { kunDirekte } from './kunDirekte'
 
 export const skjønnsfastsattBrukerutbetaling = jsonDeepCopy(kunDirekte)
 skjønnsfastsattBrukerutbetaling.id = '6aa63aa6-a932-4ba4-b1b3-bc3722b0eb1e'

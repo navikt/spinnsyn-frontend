@@ -1,4 +1,4 @@
-import { kunDirekte } from '../../../src/data/testdata/data/vedtak/rs-vedtak'
+import { kunDirekte } from '../../../src/data/testdata/data/vedtak/kunDirekte'
 
 describe('Personutbetaling uten kontonummer', () => {
     const vedtak = kunDirekte

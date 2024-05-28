@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 
 import { RSDag, RSDagTypeKomplett } from '../types/rs-types/rs-vedtak'
 import { jsonDeepCopy } from '../utils/json-deep-copy'
-import { vedtakMedDetMeste } from '../data/testdata/data/vedtak/rs-vedtak'
+import { vedtakMedDetMeste } from '../data/testdata/data/vedtak/medDetMeste'
 
 import { fjernArbeidIkkeGjenopptattDager } from './fjernArbeidIkkeGjenopptatt'
 import { finnFaktiskFom } from './finnFaktiskFom'

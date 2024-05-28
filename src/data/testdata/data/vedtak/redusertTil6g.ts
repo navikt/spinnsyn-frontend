@@ -1,0 +1,101 @@
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+
+export const vedtakRedusertTil6G: RSVedtakWrapper = {
+    id: '1ae568bd-71ff-4e31-b73f-c0c4ed85e01b',
+    lest: true,
+    organisasjoner: {},
+    lestDato: '2020-11-02T10:17:38.197496+01:00',
+    vedtak: {
+        organisasjonsnummer: '12345725',
+        fom: '2021-10-18',
+        tom: '2021-10-24',
+        dokumenter: [
+            {
+                dokumentId: 'TODO',
+                type: 'Søknad',
+            },
+            {
+                dokumentId: 'TODO',
+                type: 'Sykmelding',
+            },
+            {
+                dokumentId: 'TODO',
+                type: 'Inntektsmelding',
+            },
+        ],
+        inntekt: 67033,
+        sykepengegrunnlag: 638394,
+        vedtakFattetTidspunkt: '2021-02-24',
+        utbetaling: {
+            organisasjonsnummer: '12345725',
+            utbetalingId: '26dc7822-351d-469d-934f-a5e9e50c7ca6',
+            forbrukteSykedager: 10,
+            gjenståendeSykedager: 238,
+            automatiskBehandling: true,
+        },
+        grunnlagForSykepengegrunnlag: 804396,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
+            '12345725': 804396,
+        },
+        begrensning: 'ER_6G_BEGRENSET',
+    },
+    opprettetTimestamp: '2021-11-04T12:42:42.000Z',
+    orgnavn: 'JOBB AS',
+    andreArbeidsgivere: {},
+    annullert: false,
+    revurdert: false,
+    dagerArbeidsgiver: [
+        {
+            dato: '2021-10-18',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
+        },
+        {
+            dato: '2021-10-19',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
+        },
+        {
+            dato: '2021-10-20',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
+        },
+        {
+            dato: '2021-10-21',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
+        },
+        {
+            dato: '2021-10-22',
+            belop: 1964,
+            grad: 80,
+            dagtype: 'NavDagDelvisSyk',
+            begrunnelser: [],
+        },
+        {
+            dato: '2021-10-23',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: [],
+        },
+        {
+            dato: '2021-10-24',
+            belop: 0,
+            grad: 0,
+            dagtype: 'NavHelgDag',
+            begrunnelser: [],
+        },
+    ],
+    sykepengebelopArbeidsgiver: 9820,
+    dagerPerson: [],
+    sykepengebelopPerson: 0,
+}
