@@ -26,6 +26,7 @@ import { vedtakRedusertTil6G } from '../vedtak/redusertTil6g'
 import { kunDirekte } from '../vedtak/kunDirekte'
 import { kombinertDirekteOgRefusjon } from '../vedtak/kombinert'
 import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
+import { kombinertRevurdert } from '../vedtak/kombinertRevurdert'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -149,4 +150,8 @@ export const vedtakMed0UtbetalingPerson: Persona = {
 export const vedtakMedNullOmregnetAarsinngtekt: Persona = {
     vedtak: [nullOmregnetAarsinntekt],
     beskrivelse: 'Vedtak for bruker med 0 i årsinntekt',
+}
+export const kombinertRevurdertPersona: Persona = {
+    vedtak: [kombinertRevurdert],
+    beskrivelse: 'Kombinert som er revurdert. Har en egen spesiell tekst',
 }

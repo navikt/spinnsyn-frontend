@@ -12,14 +12,16 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('[data-cy*="ugyldig"]').should('not.exist')
     })
 
-    xit('Varianter av opplysningene', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?id=99f389f2-0084-481b-bed8-47f6ac3491d4')
+    it('Varianter av opplysningene', () => {
+        cy.visit(
+            'http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=731f152b-6b70-4f07-9d1d-6e2ad6aea4de',
+        )
 
         cy.get('[data-cy="behandling-header"]')
             .should('have.text', 'Søknaden er behandlet av en saksbehandler')
             .and('be.visible')
         cy.get('[data-cy="behandling-body"]').contains(
-            'Vi fattet vedtaket 12. april 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
+            'Vi fattet vedtaket 21. mars 2022. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
         )
         cy.get('[data-cy*="ugyldig"]').should('not.exist')
     })
@@ -73,8 +75,10 @@ describe('Tester logikk i behandling.tsx', () => {
             .contains('Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.')
     })
 
-    xit('Revurdert vedtak med kombinasjonsutbetaling TODO', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?id=85f25c03-faa8-4a99-8f15-971e9406f64f')
+    it('Revurdert vedtak med kombinasjonsutbetaling', () => {
+        cy.visit(
+            'http://localhost:8080/syk/sykepenger?testperson=kombinert-revurdert&id=dff11217-31ea-404a-86ab-b521a6a946df',
+        )
 
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').and('be.visible').click()
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing')

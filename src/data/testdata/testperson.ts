@@ -13,6 +13,7 @@ import {
     forLavInntektPerson,
     julesoknadPerson,
     kombinasjonPerson,
+    kombinertRevurdertPersona,
     kunArbedisgiverPerioder,
     kunDirektePerson,
     revurdertOgAnnullert,
@@ -56,6 +57,7 @@ export type PersonaKey =
     | 'flexjar-pohelse'
     | 'null-omregnet-aarsinntekt'
     | 'avvist-fra-bomlo'
+    | 'kombinert-revurdert'
     | 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
@@ -95,6 +97,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
         ['skjonnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePersona),
         ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
+        ['kombinert-revurdert']: jsonDeepCopy(kombinertRevurdertPersona),
     },
 }
 
