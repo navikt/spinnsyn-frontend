@@ -268,6 +268,103 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '2025-01-30',
             utbetalingType: 'UTBETALING',
+            utbetalingsdager: [
+                {
+                    dato: '2024-02-01',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-02',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-03',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-04',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-05',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-06',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-07',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-08',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-09',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-10',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-11',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-12',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-13',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-14',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-15',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-16',
+                    type: 'ArbeidsgiverperiodeDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-17',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-18',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2024-02-19',
+                    type: 'AvvistDag',
+                    begrunnelser: ['MinimumSykdomsgrad'],
+                },
+            ],
         },
         grunnlagForSykepengegrunnlag: 504012.0,
         grunnlagForSykepengegrunnlagPerArbeidsgiver: {
@@ -304,7 +401,7 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
     orgnavn: 'Realistisk Kontorbygg',
     annullert: false,
     revurdert: false,
-    dagerArbeidsgiver: [
+    dagerPerson: [
         { dato: '2024-02-01', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
         { dato: '2024-02-02', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
         { dato: '2024-02-03', belop: 0, grad: 0.0, dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [] },
@@ -325,7 +422,7 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
         { dato: '2024-02-18', belop: 0, grad: 0.0, dagtype: 'NavHelgDag', begrunnelser: [] },
         { dato: '2024-02-19', belop: 0, grad: 0.0, dagtype: 'AvvistDag', begrunnelser: ['MinimumSykdomsgrad'] },
     ],
-    dagerPerson: [],
+    dagerArbeidsgiver: [],
     sykepengebelopArbeidsgiver: 0,
     sykepengebelopPerson: 0,
     andreArbeidsgivere: {},
