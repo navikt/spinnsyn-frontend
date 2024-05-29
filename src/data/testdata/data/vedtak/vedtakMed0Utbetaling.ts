@@ -57,24 +57,5 @@ export const vedtakMed0Utbetaling: RSVedtakWrapper = {
     orgnavn: 'Coop Extra Brumunddal',
     annullert: false,
     revurdert: false,
-    dagerArbeidsgiver: [],
-    dagerPerson: [
-        {
-            dato: '2023-11-11',
-            belop: 0,
-            grad: 0,
-            dagtype: 'NavHelgDag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2023-11-12',
-            belop: 0,
-            grad: 0,
-            dagtype: 'NavHelgDag',
-            begrunnelser: [],
-        },
-    ],
-    sykepengebelopArbeidsgiver: 0,
-    sykepengebelopPerson: 0,
     andreArbeidsgivere: {},
 }

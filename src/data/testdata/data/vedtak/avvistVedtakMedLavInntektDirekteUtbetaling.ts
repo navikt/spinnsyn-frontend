@@ -57,37 +57,4 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
-    dagerArbeidsgiver: [],
-    dagerPerson: [
-        {
-            dato: '2021-08-18',
-            belop: 0,
-            grad: 0,
-            dagtype: 'Fridag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-08-19',
-            belop: 0,
-            grad: 0,
-            dagtype: 'Fridag',
-            begrunnelser: [],
-        },
-        {
-            dato: '2021-08-20',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['MinimumInntekt'],
-        },
-        {
-            dato: '2021-08-21',
-            belop: 0,
-            grad: 0,
-            dagtype: 'AvvistDag',
-            begrunnelser: ['EtterDødsdato'],
-        },
-    ],
-    sykepengebelopPerson: 0,
-    sykepengebelopArbeidsgiver: 0,
 }

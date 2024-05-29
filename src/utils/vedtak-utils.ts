@@ -1,6 +1,12 @@
 import dayjs, { Dayjs } from 'dayjs'
 
-import { Begrunnelse, BegrunnelseType, RSBegrunnelse, RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import {
+    Begrunnelse,
+    BegrunnelseType,
+    RSBegrunnelse,
+    RSVedtakWrapper,
+    RSVedtakWrapperUtvidet,
+} from '../types/rs-types/rs-vedtak'
 
 import { erHelg } from './dato-utils'
 
@@ -22,7 +28,7 @@ export const hentBegrunnelse = (vedtak: RSVedtakWrapper, begrunnelse: Begrunnels
 }
 
 export const oppsumertAvslagBegrunnelser = (
-    vedtak: RSVedtakWrapper,
+    vedtak: RSVedtakWrapperUtvidet,
     dager: 'dagerArbeidsgiver' | 'dagerPerson',
 ): Set<string> => {
     const selectedDager = dager === 'dagerArbeidsgiver' ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson
@@ -36,7 +42,7 @@ export const oppsumertAvslagBegrunnelser = (
 }
 
 export const finnOppsumertAvslag = (
-    vedtak: RSVedtakWrapper,
+    vedtak: RSVedtakWrapperUtvidet,
     dager: 'dagerArbeidsgiver' | 'dagerPerson' | 'alleDager',
 ) => {
     let title: string

@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
-import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { RSDag, RSDagTypeKomplett, RSVedtakWrapperUtvidet } from '../../types/rs-types/rs-vedtak'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -37,7 +37,7 @@ const dagErAvvist: RSDagTypeKomplett[] = [
 ]
 
 export interface VedtakProps {
-    vedtak: RSVedtakWrapper
+    vedtak: RSVedtakWrapperUtvidet
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {

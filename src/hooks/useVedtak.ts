@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 
-import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak'
 import { fetchJsonMedRequestId } from '../utils/fetch'
 import { spinnsynFrontendInterne } from '../utils/environment'
-import { verifiserDaglogikk } from '../daglogikk/verifiserDaglogikk'
+import { hentDagerPaaVedtak } from '../daglogikk/hentDagerPaaVedtak'
 
 export default function UseVedtak() {
     const router = useRouter()
@@ -20,28 +20,30 @@ export default function UseVedtak() {
         queryKey: ['vedtak'],
         queryFn: async () => {
             if (spinnsynFrontendInterne()) {
-                const vedtak: VedtakOgFnr = await fetchJsonMedRequestId(
+                const vedtak: VedtakOgFnrInterneResponse = await fetchJsonMedRequestId(
                     '/syk/sykepenger/api/spinnsyn-backend-veileder/vedtak' + query(),
                 )
-                return vedtak
+                const utvidedeVedtak = vedtak.vedtak.map((v) => hentDagerPaaVedtak(v))
+                return {
+                    vedtak: utvidedeVedtak,
+                    sykmeldtFnr: vedtak.sykmeldtFnr,
+                }
             }
             const vedtak: RSVedtakWrapper[] = await fetchJsonMedRequestId(
                 '/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query(),
             )
 
-            //if localhost
-            if (window.location.hostname === 'localhost' || window.location.hostname === 'www.ekstern.dev.nav.no') {
-                vedtak.forEach((v) => {
-                    verifiserDaglogikk(v)
-                })
-            }
-
-            return { vedtak, sykmeldtFnr: null }
+            return { vedtak: vedtak.map((v) => hentDagerPaaVedtak(v)), sykmeldtFnr: null }
         },
     })
 }
 
 interface VedtakOgFnr {
+    vedtak: RSVedtakWrapperUtvidet[]
+    sykmeldtFnr: string | null
+}
+
+interface VedtakOgFnrInterneResponse {
     vedtak: RSVedtakWrapper[]
     sykmeldtFnr: string | null
 }
