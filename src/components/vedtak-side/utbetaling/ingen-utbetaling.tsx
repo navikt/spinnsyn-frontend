@@ -4,7 +4,7 @@ import React from 'react'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
-import UtbetalingPanel from '../../panel/utbetaling-panel'
+import BlåttPanel from '../../panel/blått-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
 
@@ -21,7 +21,7 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     }
 
     return (
-        <UtbetalingPanel
+        <BlåttPanel
             sectionLabel="Ingen utbetaling"
             avslag={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             tittel={
@@ -48,7 +48,7 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
         >
             <VedtakPeriode vedtak={vedtak} />
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
-        </UtbetalingPanel>
+        </BlåttPanel>
     )
 }
 

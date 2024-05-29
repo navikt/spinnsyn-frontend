@@ -6,7 +6,7 @@ import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
-import UtbetalingPanel from '../../panel/utbetaling-panel'
+import BlåttPanel from '../../panel/blått-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
@@ -21,7 +21,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         harBegrunnelseFraBomlo,
     }
     return (
-        <UtbetalingPanel
+        <BlåttPanel
             delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             sectionLabel="Refusjon til arbeidsgiver"
             tittel={
@@ -49,7 +49,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={vedtak.sykepengebelopArbeidsgiver > 0} />
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
             {vedtak.sykepengebelopArbeidsgiver > 0 && <ArbeidsgiverInfo vedtak={vedtak} />}
-        </UtbetalingPanel>
+        </BlåttPanel>
     )
 }
 

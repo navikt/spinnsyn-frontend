@@ -1,7 +1,7 @@
 import { BodyShort, Panel } from '@navikt/ds-react'
 import React from 'react'
 
-interface UtbetalingPanelProps {
+const BlåttPanel = (props: {
     tittel: React.ReactNode
     erUgyldig: boolean
     children: React.ReactNode
@@ -9,9 +9,7 @@ interface UtbetalingPanelProps {
     dataCy?: string
     avslag?: boolean
     delvisInnvilgelse?: boolean
-}
-
-const UtbetalingPanel = (props: UtbetalingPanelProps) => {
+}) => {
     return (
         <section aria-label={props.sectionLabel}>
             <Panel
@@ -43,4 +41,4 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
     )
 }
 
-export default UtbetalingPanel
+export default BlåttPanel

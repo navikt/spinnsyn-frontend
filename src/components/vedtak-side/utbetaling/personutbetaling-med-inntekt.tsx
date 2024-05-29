@@ -7,7 +7,7 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
-import UtbetalingPanel from '../../panel/utbetaling-panel'
+import BlåttPanel from '../../panel/blått-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { SykepengerTrekk } from './sykepenger-trekk'
@@ -27,7 +27,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
         harBegrunnelseFraBomlo,
     }
     return (
-        <UtbetalingPanel
+        <BlåttPanel
             sectionLabel="Utbetaling til deg"
             delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             tittel={
@@ -53,6 +53,6 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             <SykepengerTrekk />
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />
-        </UtbetalingPanel>
+        </BlåttPanel>
     )
 }
