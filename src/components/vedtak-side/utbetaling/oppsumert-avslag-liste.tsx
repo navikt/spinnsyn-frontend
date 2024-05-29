@@ -9,7 +9,7 @@ export interface OppsumertAvslagListeProps {
     harBegrunnelseFraBomlo: boolean
 }
 
-export const OppsumertAvslagListe = (oppsumertAvslag: OppsumertAvslagListeProps) => {
+export const OppsumertAvslagListe = ({ oppsumertAvslag }: { oppsumertAvslag: OppsumertAvslagListeProps }) => {
     const { blaTilElement } = useScroll()
 
     if (oppsumertAvslag.oppsumertAvslag.size === 0) return null
