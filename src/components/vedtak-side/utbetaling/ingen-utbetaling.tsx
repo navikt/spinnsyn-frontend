@@ -20,14 +20,14 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'alleDager'),
-        oppsumertAvslag: vedtakObject.oppsumertAvslagBegrunnelser(),
+        oppsumertAvslag: vedtakObject.oppsumertAvslagBegrunnelser('ingen'),
         harBegrunnelseFraBomlo,
     }
 
     return (
         <UtbetalingPanel
             sectionLabel="Ingen utbetaling"
-            avslag={oppsumertAvslagObject.oppsumertAvslag.size > 0}
+            avslag={vedtakObject.erAvslag()}
             tittel={
                 <Heading level="2" size="large">
                     {annullertEllerRevurdert ? (

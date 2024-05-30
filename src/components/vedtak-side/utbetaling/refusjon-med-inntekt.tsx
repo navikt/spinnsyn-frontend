@@ -21,7 +21,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'dagerArbeidsgiver'),
-        oppsumertAvslag: vedtakObject.oppsumertAvslagBegrunnelser(),
+        oppsumertAvslag: vedtakObject.oppsumertAvslagBegrunnelser('refusjon'),
         harBegrunnelseFraBomlo,
     }
 
