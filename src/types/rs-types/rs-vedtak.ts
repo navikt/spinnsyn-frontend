@@ -36,7 +36,7 @@ export interface AndreArbeidsgivere {
 
 export type Begrensning = 'ER_6G_BEGRENSET' | 'ER_IKKE_6G_BEGRENSET' | 'VURDERT_I_INFOTRYGD' | 'VET_IKKE'
 
-interface RSVedtak {
+export interface RSVedtak {
     organisasjonsnummer?: string
     fom: string
     tom: string
