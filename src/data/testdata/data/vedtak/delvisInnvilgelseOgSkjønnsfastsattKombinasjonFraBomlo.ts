@@ -219,6 +219,7 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
     },
 }
 
+//NB manuelt redigert
 export const avslåttFraBømlo: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59224',
     lest: false,
@@ -346,10 +347,9 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
         begrensning: 'ER_IKKE_6G_BEGRENSET',
         vedtakFattetTidspunkt: '2024-05-14',
         sykepengegrunnlagsfakta: {
-            fastsatt: 'EtterSkjønn',
+            fastsatt: 'EtterHovedregel',
             omregnetÅrsinntekt: 504012.0,
             innrapportertÅrsinntekt: 135000.0,
-            skjønnsfastsatt: 504012.0,
             avviksprosent: 273.34,
             '6G': 711720.0,
             tags: [],
@@ -357,7 +357,6 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
                 {
                     arbeidsgiver: '810007842',
                     omregnetÅrsinntekt: 504012.0,
-                    skjønnsfastsatt: 504012.0,
                 },
             ],
         },

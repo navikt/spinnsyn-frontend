@@ -61,6 +61,12 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
         return vedtak.vedtak.inntekt
     }
 
+    const erSkjonnsfastsatt = vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
+    const harBegrunnelseForSkjonn =
+        hentBegrunnelse(vedtak, 'SkjønnsfastsattSykepengegrunnlagFritekst') &&
+        hentBegrunnelse(vedtak, 'SkjønnsfastsattSykepengegrunnlagKonklusjon') &&
+        hentBegrunnelse(vedtak, 'SkjønnsfastsattSykepengegrunnlagMal')
+
     const inntekt = finnRiktigInntekt()
     if (inntekt === undefined) {
         return null
@@ -172,9 +178,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                     </>
                 )}
                 <Accordion className="mt-8" indent={false}>
-                    {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
-                        <BegrunnelseEkspanderbar vedtak={vedtak} />
-                    )}
+                    {erSkjonnsfastsatt && harBegrunnelseForSkjonn && <BegrunnelseEkspanderbar vedtak={vedtak} />}
                     {avslag && (
                         <BegrunnelseEkspanderbar
                             elementRef={elementRef}
