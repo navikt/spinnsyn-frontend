@@ -364,7 +364,8 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
         begrunnelser: [
             {
                 type: 'Avslag',
-                begrunnelse: 'Avslått vedtak.\n\nNy linje.',
+                begrunnelse:
+                    'For å ha rett til sykepenger må arbeidsevnen din ha blitt redusert med minst 20 prosent. Tap av arbeidsevne beregnes ut fra tap av arbeidstid. Dette følger av folketrygdloven § 8-13.\n\nPå sykmeldingstidspunktet hadde du følgende inntektskilder:\n\nUnibuss as: 14,35 timer per uke = 2,87 timer per dag.\nOslo Taxibuss: 37,5 timer per uke = 7,5 timer per dag.\nTotal arbeidstid: 54,85 timer per uke = 10,37 timer per dag.\nOpplysningene er hentet fra Aa-registeret.\n\nPerioden 09.04.24 - 29.04.24 er 15 virkedager. Total arbeidstid i perioden er 155,55 timer\n15 x 10,37 = 155,55 timer.\n\nArbeidstid hos Unibuss er 43,05 timer\n15 x 2,87 = 43,05\n\nI perioden 09.04.24 - 29.04.24 er du bare 50 prosent sykmeldt fra Unibuss. Dette utgjør 21,53 timer.\n50 % / 100 x 43,05 = 21,53 timer sykmeldt.\n\nDu er 13,84 % sykmeldt av den totale arbeidstiden din.\n21,53 / 155,55 x 100 = 13,84 %.\n\nArbeidsevnen din er dermed ikke nedsatt med minst 20 %.\nDin søknad om sykepenger i perioden 09.04.24 - 29.04.24 er derfor avslått.',
                 perioder: [{ fom: '2024-02-01', tom: '2024-02-19' }],
             },
         ],

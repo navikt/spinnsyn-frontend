@@ -308,7 +308,40 @@ describe('Avviste dager', () => {
         cy.findByRole('button', { name: 'Begrunnelse for avslått vedtak' })
             .should('contain', 'Begrunnelse for avslått vedtak')
             .siblings('div')
-            .should('contain', 'Avslått vedtak.')
-            .and('contain', 'Ny linje.')
+            .within(() => {
+                cy.get('p')
+                    .eq(0)
+                    .should(
+                        'contain',
+                        'For å ha rett til sykepenger må arbeidsevnen din ha blitt redusert med minst 20 prosent. Tap av arbeidsevne beregnes ut fra tap av arbeidstid. Dette følger av folketrygdloven § 8-13.',
+                    )
+                cy.get('p').eq(1).should('contain', 'På sykmeldingstidspunktet hadde du følgende inntektskilder:')
+                cy.get('p').eq(2).should('contain', 'Unibuss as: 14,35 timer per uke = 2,87 timer per dag.')
+                cy.get('p').eq(2).should('contain', 'Oslo Taxibuss: 37,5 timer per uke = 7,5 timer per dag.')
+                cy.get('p').eq(2).should('contain', 'Total arbeidstid: 54,85 timer per uke = 10,37 timer per dag.')
+                cy.get('p').eq(2).should('contain', 'Opplysningene er hentet fra Aa-registeret.')
+                cy.get('p')
+                    .eq(3)
+                    .should(
+                        'contain',
+                        'Perioden 09.04.24 - 29.04.24 er 15 virkedager. Total arbeidstid i perioden er 155,55 timer',
+                    )
+                cy.get('p').eq(3).should('contain', '15 x 10,37 = 155,55 timer.')
+                cy.get('p').eq(4).should('contain', 'Arbeidstid hos Unibuss er 43,05 timer')
+                cy.get('p').eq(4).should('contain', '15 x 2,87 = 43,05')
+                cy.get('p')
+                    .eq(5)
+                    .should(
+                        'contain',
+                        'I perioden 09.04.24 - 29.04.24 er du bare 50 prosent sykmeldt fra Unibuss. Dette utgjør 21,53 timer.',
+                    )
+                cy.get('p').eq(5).should('contain', '50 % / 100 x 43,05 = 21,53 timer sykmeldt.')
+                cy.get('p').eq(6).should('contain', 'Du er 13,84 % sykmeldt av den totale arbeidstiden din.')
+                cy.get('p').eq(6).should('contain', '21,53 / 155,55 x 100 = 13,84 %.')
+                cy.get('p').eq(7).should('contain', 'Arbeidsevnen din er dermed ikke nedsatt med minst 20 %.')
+                cy.get('p')
+                    .eq(7)
+                    .should('contain', 'Din søknad om sykepenger i perioden 09.04.24 - 29.04.24 er derfor avslått.')
+            })
     })
 })
