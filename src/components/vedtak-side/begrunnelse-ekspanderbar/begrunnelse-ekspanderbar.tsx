@@ -79,25 +79,30 @@ const BegrunnelseMedHeading = ({
     begrunnelseType: BegrunnelseType
     heading?: string
 }) => {
-    const tekst = hentBegrunnelse(vedtak, begrunnelseType)
-        ?.begrunnelse?.split('\n')
-        .filter((tekst: string) => tekst)
-        .map((tekst: string, idx: number) => (
-            <BodyLong spacing key={idx}>
-                {tekst}
-            </BodyLong>
-        ))
-    if (!tekst || tekst.length === 0) return null
-    if (heading) {
-        return (
-            <>
+    const tekst = hentBegrunnelse(vedtak, begrunnelseType)?.begrunnelse || ''
+    const paragrafer = tekst.split('\n\n')
+
+    const fullstendigBegrunnelse = paragrafer.map((paragraf, index) => (
+        <BodyLong spacing key={index}>
+            {paragraf.split('\n').map((linje, linjeIndex, { length: paragrafListeLengde }) => (
+                <React.Fragment key={linjeIndex}>
+                    {linje}
+                    {linjeIndex < paragrafListeLengde - 1 && <br />}
+                </React.Fragment>
+            ))}
+        </BodyLong>
+    ))
+
+    if (fullstendigBegrunnelse.length === 0) return null
+
+    return (
+        <>
+            {heading && (
                 <Heading size="xsmall" level="3" spacing>
                     {heading}
                 </Heading>
-                {tekst}
-            </>
-        )
-    }
-
-    return <>{tekst}</>
+            )}
+            {fullstendigBegrunnelse}
+        </>
+    )
 }
