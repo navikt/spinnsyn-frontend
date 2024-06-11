@@ -18,6 +18,6 @@ describe('Tester estimering av sluttdato', () => {
         const delvisInnvilglseVedtak = jsonDeepCopy(delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo)
         const begrunnelse = hentBegrunnelse(delvisInnvilglseVedtak, 'DelvisInnvilgelse')
         expect(begrunnelse?.type).toEqual('DelvisInnvilgelse')
-        expect(begrunnelse?.begrunnelse).toEqual('Devlis innvilgelse.\n\nNy linje.')
+        expect(begrunnelse?.begrunnelse).toEqual('Delvis innvilgelse.\n\nNy linje.')
     })
 })

@@ -23,10 +23,10 @@ export const BegrunnelseEkspanderbar = ({
     const hentBegrunnelseTittel = () => {
         switch (begrunnelse) {
             case 'Avslag': {
-                return 'Begrunnelse for avslått vedtak'
+                return 'Begrunnelse for avslått søknad'
             }
             case 'DelvisInnvilgelse': {
-                return 'Begrunnelse for delvis innvilget vedtak'
+                return 'Begrunnelse for delvis innvilget søknad'
             }
             default: {
                 return 'Begrunnelse for skjønnsfastsetting'
