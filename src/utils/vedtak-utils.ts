@@ -48,7 +48,7 @@ export const finnOppsumertAvslag = (
     let title: string
     let oppsumertAvslag: Set<string>
     if (dager === 'alleDager') {
-        title = 'Vedtaket er avslått fordi:'
+        title = 'Søknaden er avslått fordi:'
         oppsumertAvslag = new Set<string>([
             ...oppsumertAvslagBegrunnelser(vedtak, 'dagerArbeidsgiver'),
             ...oppsumertAvslagBegrunnelser(vedtak, 'dagerPerson'),

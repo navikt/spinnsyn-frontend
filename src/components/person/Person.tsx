@@ -86,7 +86,7 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
                 return 'Brukerutbetaling og refusjon'
             }
             case 'avvist-delvis-innvilgelse-bømlo': {
-                return 'Avvist eller delvis innvilget vedtak'
+                return 'Avvist eller delvis innvilget søknad'
             }
             case 'vedtak-innhold': {
                 return 'Vedtak med forskjellig innhold'

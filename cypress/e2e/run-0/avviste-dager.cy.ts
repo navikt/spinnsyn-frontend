@@ -31,7 +31,7 @@ describe('Avviste dager', () => {
         })
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
-            cy.contains('Delvis innvilget vedtak').should('exist')
+            cy.contains('Delvis innvilget søknad').should('exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
             cy.contains('li', 'Maks antall dager').should('exist')
             cy.contains('li', 'For lav inntekt').should('exist')
@@ -214,10 +214,10 @@ describe('Avviste dager', () => {
         })
         cy.contains('Ingen utbetaling')
 
-        //TODO endre utbetaling-panel-refusjon til utbetaling-panel-personutbetaling når det er inhen utbetaling?
+        //TODO endre utbetaling-panel-refusjon til utbetaling-panel-personutbetaling når det er ingen utbetaling?
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
-            cy.contains('Avslått vedtak').should('exist')
-            cy.contains('Vedtaket er avslått fordi:').should('exist')
+            cy.contains('Avslått søknad').should('exist')
+            cy.contains('Søknaden er avslått fordi:').should('exist')
             cy.contains('li', 'For lav inntekt').should('exist')
             cy.contains('li', 'Etter dødsfall').should('exist')
         })
@@ -271,23 +271,23 @@ describe('Avviste dager', () => {
         cy.get(`a[href*=${delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id}]`).click({ force: true })
 
         cy.get('[data-cy="utbetaling-panel-personutbetaling"]').within(() => {
-            cy.contains('Delvis innvilget vedtak').should('not.exist')
+            cy.contains('Delvis innvilget søknad').should('not.exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('not.exist')
             cy.contains('Sykmeldt i for liten grad').should('not.exist')
         })
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
-            cy.contains('Delvis innvilget vedtak').should('exist')
+            cy.contains('Delvis innvilget søknad').should('exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
             cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her').click()
         })
 
-        cy.findByRole('button', { name: 'Begrunnelse for delvis innvilget vedtak' })
-            .should('contain', 'Begrunnelse for delvis innvilget vedtak')
+        cy.findByRole('button', { name: 'Begrunnelse for delvis innvilget søknad' })
+            .should('contain', 'Begrunnelse for delvis innvilget søknad')
             .siblings('div')
-            .should('contain', 'Devlis innvilgelse.')
+            .should('contain', 'Delvis innvilgelse.')
             .and('contain', 'Ny linje.')
     })
 
@@ -298,15 +298,15 @@ describe('Avviste dager', () => {
         })
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
-            cy.contains('Avslått vedtak').should('exist')
-            cy.contains('Vedtaket er avslått fordi:').should('exist')
+            cy.contains('Avslått søknad').should('exist')
+            cy.contains('Søknaden er avslått fordi:').should('exist')
             cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her').click()
         })
 
-        cy.findByRole('button', { name: 'Begrunnelse for avslått vedtak' })
-            .should('contain', 'Begrunnelse for avslått vedtak')
+        cy.findByRole('button', { name: 'Begrunnelse for avslått søknad' })
+            .should('contain', 'Begrunnelse for avslått søknad')
             .siblings('div')
             .within(() => {
                 cy.get('p')

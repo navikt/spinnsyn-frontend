@@ -6,7 +6,7 @@ describe('Vedtak for arkivering', () => {
         cy.get('.flex:not(.arkivering-flex-fix):not(.flex-arkivering-ignore)').should('have.length', 0)
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
-            cy.contains('Delvis innvilget vedtak').should('exist')
+            cy.contains('Delvis innvilget søknad').should('exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
             cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
 
@@ -98,7 +98,7 @@ describe('Vedtak for arkivering', () => {
         cy.get('.flex:not(.arkivering-flex-fix):not(.flex-arkivering-ignore)').should('have.length', 0)
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
-            cy.contains('Delvis innvilget vedtak').should('exist')
+            cy.contains('Delvis innvilget søknad').should('exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
             cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
 
@@ -119,10 +119,10 @@ describe('Vedtak for arkivering', () => {
                     cy.contains('Vi har skjønnsfastsatt årsinntekten din til 504 012,00 kroner.')
                 })
 
-            cy.findByRole('button', { name: 'Begrunnelse for delvis innvilget vedtak' })
-                .should('contain', 'Begrunnelse for delvis innvilget vedtak')
+            cy.findByRole('button', { name: 'Begrunnelse for delvis innvilget søknad' })
+                .should('contain', 'Begrunnelse for delvis innvilget søknad')
                 .siblings('div')
-                .should('contain', 'Devlis innvilgelse.')
+                .should('contain', 'Delvis innvilgelse.')
                 .and('contain', 'Ny linje.')
 
             cy.get('[data-cy="dag-tabell-body"]').as('dager').should('be.visible')

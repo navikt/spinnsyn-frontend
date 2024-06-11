@@ -203,7 +203,7 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
             },
             {
                 type: 'DelvisInnvilgelse',
-                begrunnelse: 'Devlis innvilgelse.\n\nNy linje.',
+                begrunnelse: 'Delvis innvilgelse.\n\nNy linje.',
                 perioder: [{ fom: '2024-02-01', tom: '2024-02-23' }],
             },
         ],
