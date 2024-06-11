@@ -80,12 +80,19 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
 
     const harIngenUtbetaling = vedtak.sykepengebelopPerson === 0 && vedtak.sykepengebelopArbeidsgiver === 0
     const harMinstEnForLavInntektDag =
-        vedtak.dagerPerson.concat(vedtak.dagerArbeidsgiver).filter((dag) => dag.begrunnelser.includes('MinimumInntekt'))
-            .length > 0
+        vedtak.dagerPerson
+            .concat(vedtak.dagerArbeidsgiver)
+            .filter(
+                (dag) =>
+                    dag.begrunnelser.includes('MinimumInntekt') || dag.begrunnelser.includes('MinimumInntektOver67'),
+            ).length > 0
 
     const avslag = hentBegrunnelse(vedtak, 'Avslag')
     const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilgelse')
-    if (harIngenUtbetaling && !harMinstEnForLavInntektDag && !(avslag || delvisInnvilgelse)) return null
+    const harIkkeEnForLavInntektDAg = !harMinstEnForLavInntektDag
+    const harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse = !(avslag || delvisInnvilgelse)
+    if (harIngenUtbetaling && harIkkeEnForLavInntektDAg && harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse)
+        return null
 
     return (
         <VedtakExpansionCard

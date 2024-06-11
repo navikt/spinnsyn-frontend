@@ -27,6 +27,7 @@ import { kunDirekte } from '../vedtak/kunDirekte'
 import { kombinertDirekteOgRefusjon } from '../vedtak/kombinert'
 import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 import { kombinertRevurdert } from '../vedtak/kombinertRevurdert'
+import { avslattMinimumInntektOver67 } from '../vedtak/avslattMinimumInntektOver67'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -61,6 +62,11 @@ export const annullert: Persona = {
 export const forLavInntektPerson: Persona = {
     vedtak: [avvistVedtakMedLavInntekt, avvistVedtakMedLavInntektDirekteUtbetaling],
     beskrivelse: 'Avvist på grunn av for lav inntekt',
+}
+
+export const forLavInntektPerson67: Persona = {
+    vedtak: [avslattMinimumInntektOver67],
+    beskrivelse: 'Avvist på grunn av for lav inntekt over 67',
 }
 
 export const kunDirektePerson: Persona = {
