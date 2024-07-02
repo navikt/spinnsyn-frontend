@@ -87,9 +87,9 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.Over70':
         'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, første avsnitt.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt':
-        'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
+        'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen',
     'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67':
-        'Etter at du har fylt 67 år, får du ikke sykepenger fra NAV i mer enn 60 dager.',
+        'Etter at du har fylt 67 år, får du ikke sykepenger fra NAV i mer enn 60 dager',
     'utbetaling.tabell.avvist.MinimumInntekt':
         'Du har et sykepengegrunnlag på mindre enn et halvt ' +
         '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
@@ -97,16 +97,16 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.MinimumInntektOver67':
         'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to  ' +
         '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
-        ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet.',
+        ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
         'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
         'Du har oppgitt at du har jobbet mer enn sykmeldingsgraden i sykmeldingen. Du må være minst 20 prosent borte fra jobb på grunn av sykdom eller skade for å få sykepenger, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
-        'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt.',
+        'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt',
     'utbetaling.tabell.avvist.ManglerMedlemskap':
-        'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge.',
-    'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
+        'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge',
+    'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet',
     'utbetaling.tabell.avvist.AndreYtelserAap':
         'Du har mottatt arbeidsavklaringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
     'utbetaling.tabell.avvist.AndreYtelserDagpenger':
@@ -124,25 +124,25 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':
-        'Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
+        ' Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.Over70': '',
     'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
     'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>, andre avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, andre avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a> når vi har behandlet saken din.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>, første avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a> når vi har behandlet saken din.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis.',
