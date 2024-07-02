@@ -124,7 +124,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':
-        'Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
+        ' Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.Over70': '',
     'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
     'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
