@@ -191,7 +191,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-MinimumSykdomsgrad"]').contains('Sykmeldt i for liten grad')
                 cy.get('[data-cy="dag-beskrivelse-MinimumSykdomsgrad"]').contains(
-                    'Du har oppgitt at du har jobbet mer enn sykmeldingsgraden i sykmeldingen. Du må være minst 20 prosent borte fra jobb på grunn av sykdom eller skade for å få sykepenger',
+                    'For å ha rett til sykepenger må du være borte fra jobb minst 20 prosent på grunn av sykdom eller skade.',
                 )
 
                 cy.get('[data-cy="dag-label-ManglerOpptjening"]').contains('Jobbet for kort')

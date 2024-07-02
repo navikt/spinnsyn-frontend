@@ -101,7 +101,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
         'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
-        'Du har oppgitt at du har jobbet mer enn sykmeldingsgraden i sykmeldingen. Du må være minst 20 prosent borte fra jobb på grunn av sykdom eller skade for å få sykepenger, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
+        'For å ha rett til sykepenger må du være borte fra jobb minst 20 prosent på grunn av sykdom eller skade. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
         'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt',
     'utbetaling.tabell.avvist.ManglerMedlemskap':
