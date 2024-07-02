@@ -109,7 +109,7 @@ describe('Avviste dager', () => {
 
         cy.get('.navds-heading:first-child').contains('Forklaring')
         cy.contains('Du får ikke sykepenger for dager du har ferie eller permisjon.')
-        cy.contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.')
+        cy.contains('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet,')
 
         //lukker og åpner "utbetales ikke av nav"
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {

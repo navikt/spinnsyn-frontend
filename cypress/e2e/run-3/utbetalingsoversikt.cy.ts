@@ -171,7 +171,7 @@ describe('Utbetalingsoversikt', () => {
                 cy.get('[data-cy="dag-label-SykepengedagerOppbrukt"]').contains('Maks antall dager')
                 cy.get('[data-cy="dag-beskrivelse-SykepengedagerOppbrukt"]').contains(
                     'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). ' +
-                        'Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen.',
+                        'Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen,',
                 )
 
                 cy.get('[data-cy="dag-label-MinimumInntekt"]').contains('For lav inntekt')
@@ -197,18 +197,18 @@ describe('Utbetalingsoversikt', () => {
                 cy.get('[data-cy="dag-label-ManglerOpptjening"]').contains('Jobbet for kort')
                 cy.get('[data-cy="dag-beskrivelse-ManglerOpptjening"]').contains(
                     'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, ' +
-                        'det vil si 28 dager fra og med dagen før du ble sykmeldt.',
+                        'det vil si 28 dager fra og med dagen før du ble sykmeldt,',
                 )
 
                 cy.get('[data-cy="dag-label-ManglerMedlemskap"]').contains('Ikke medlem')
                 cy.get('[data-cy="dag-beskrivelse-ManglerMedlemskap"]').contains(
                     'Du må være medlem i folketrygden for å få sykepenger. ' +
-                        'Du er medlem bare hvis du bor eller jobber i Norge.',
+                        'Du er medlem bare hvis du bor eller jobber i Norge,',
                 )
 
                 cy.get('[data-cy="dag-label-EtterDødsdato"]').contains('Etter dødsfall')
                 cy.get('[data-cy="dag-beskrivelse-EtterDødsdato"]').contains(
-                    'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet.',
+                    'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet,',
                 )
 
                 cy.get('[data-cy="dag-label-UKJENT"]').contains('Ukjent')
