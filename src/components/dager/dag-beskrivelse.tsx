@@ -31,17 +31,19 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
         return (
             <div className="pt-1" data-cy={dataCyBeskrivelse(dag)}>
-                {!erAvvistEllerAndreYtelser(dag) && (
-                    <BodyShort>{parserWithReplace(tekst(`utbetaling.tabell.label.${dag.dagtype}` as any))}</BodyShort>
-                )}
-
-                {erAvvistEllerAndreYtelser(dag) && (
-                    <BodyShort>
-                        {parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}` as any))}
-                    </BodyShort>
-                )}
-
-                {lovhjemmelTekst !== '' && <BodyShort className="avvist-lovhjemmel">{lovhjemmelTekst}</BodyShort>}
+                <BodyShort>
+                    {!erAvvistEllerAndreYtelser(dag) ? (
+                        <>
+                            {parserWithReplace(tekst(`utbetaling.tabell.label.${dag.dagtype}` as any))}
+                            {lovhjemmelTekst && <BodyShort as="span">{lovhjemmelTekst}</BodyShort>}
+                        </>
+                    ) : (
+                        <>
+                            {parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}`))}
+                            {lovhjemmelTekst && <BodyShort as="span">{lovhjemmelTekst}</BodyShort>}
+                        </>
+                    )}
+                </BodyShort>
             </div>
         )
     }
