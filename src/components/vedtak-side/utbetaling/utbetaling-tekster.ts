@@ -129,20 +129,20 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
     'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a> når vi har behandlet saken din.',
+        'Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
+        'Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a> når vi har behandlet saken din.',
+        'Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a> når vi har behandlet saken din.',
+        'Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a> når vi har behandlet saken din.',
+        'Se <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
-        'Vi har brukt <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a> når vi har behandlet saken din.',
+        'Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis.',
