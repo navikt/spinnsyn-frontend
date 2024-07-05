@@ -59,8 +59,7 @@ const UtbetalingTekster = {
     'utbetaling.person.når.innhold':
         'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to. ',
     'utbetaling.person.når.lenke.tekst': 'Les mer om når du kan forvente å få pengene.',
-    'utbetaling.person.når.lenke.url':
-        'https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/utbetalinger/utbetalingsdatoer-feriepenger-og-skattetrekk/sykepenger_kap',
+    'utbetaling.person.når.lenke.url': 'https://www.nav.no/utbetalingsdatoer#sykepenger',
     'utbetaling.kontonummer.tittel': 'Kontonummer for utbetaling',
     'utbetaling.kontonummer.utbetales': 'Sykepenger utbetales til kontonummer: ',
     'utbetaling.kontonummer.mangler':
