@@ -1,8 +1,6 @@
 ingress: https://spinnsyn-frontend-interne.intern.nav.no/syk/sykepenger
 cpu: 100m
 memory: 400Mi
-external-host:
-  - modiacontextholder.prod-fss-pub.nais.io
 env:
   MOCK_BACKEND: false
   ENVIRONMENT: prod
@@ -16,5 +14,5 @@ env:
   SPINNSYN_FRONTEND_INTERNE: true
   SPINNSYN_BACKEND_CLIENT_ID: api://prod-gcp.flex.spinnsyn-backend/.default
   ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend
-  MODIACONTEXTHOLDER_SCOPE: api://prod-fss.personoversikt.modiacontextholder/.default
-  MODIACONTEXTHOLDER_URL: https://modiacontextholder.prod-fss-pub.nais.io
+  MODIACONTEXTHOLDER_SCOPE: api://prod-gcp.personoversikt.modiacontextholder/.default
+  MODIACONTEXTHOLDER_URL: http://modiacontextholder.personoversikt
