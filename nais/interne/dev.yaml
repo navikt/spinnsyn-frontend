@@ -16,5 +16,5 @@ env:
   SPINNSYN_FRONTEND_INTERNE: true
   SPINNSYN_BACKEND_CLIENT_ID: api://dev-gcp.flex.spinnsyn-backend/.default
   ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend
-  MODIACONTEXTHOLDER_SCOPE: api://dev-fss.personoversikt.modiacontextholder-q1/.default
-  MODIACONTEXTHOLDER_URL: https://modiacontextholder-q1.dev-fss-pub.nais.io
+  MODIACONTEXTHOLDER_SCOPE: api://dev-gcp.personoversikt.modiacontextholder/.default
+  MODIACONTEXTHOLDER_URL: http://modiacontextholder.personoversikt

@@ -20,7 +20,7 @@ export async function hentModiaContext(incomingMessage: IncomingMessage): Promis
         logger.warn('Kunne ikke hente modiaOboToken.')
         throw new ErrorMedStatus('Kunne ikke hente modiaOboToken.', 500)
     }
-    const response = await fetch(`${process.env.MODIACONTEXTHOLDER_URL}/modiacontextholder/api/context/aktivbruker`, {
+    const response = await fetch(`${process.env.MODIACONTEXTHOLDER_URL}/api/context/aktivbruker`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${modiaOboToken.token}`,

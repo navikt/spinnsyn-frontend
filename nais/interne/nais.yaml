@@ -43,6 +43,8 @@ spec:
     outbound:
       rules:
         - application: spinnsyn-backend
+        - application: modiacontextholder
+          namespace: personoversikt
       external:
   {{#each external-host}}
         - host: {{this}}
