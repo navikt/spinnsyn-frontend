@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals'
+import { describe, it, expect } from 'vitest'
 import dayjs from 'dayjs'
 
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
