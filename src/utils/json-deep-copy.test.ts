@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals'
+import { it, expect } from 'vitest'
 
 import { jsonDeepCopy } from './json-deep-copy'
 

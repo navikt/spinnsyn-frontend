@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals'
+import { it, expect } from 'vitest'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
 
