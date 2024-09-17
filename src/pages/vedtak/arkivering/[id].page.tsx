@@ -2,13 +2,12 @@ import { logger } from '@navikt/next-logger'
 import { GetServerSideProps } from 'next'
 import getConfig from 'next/config'
 import React from 'react'
-import { getToken, validateAzureToken } from '@navikt/oasis'
+import { getToken, requestAzureClientCredentialsToken, validateAzureToken } from '@navikt/oasis'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { hentVedtakForArkivering } from '../../../data/hentVedtakForArkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
-import { requestAzureClientCredentialsToken } from '../../../auth/oasis-wip/client-credentials'
 
 const { serverRuntimeConfig } = getConfig()
 
