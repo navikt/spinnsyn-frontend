@@ -72,6 +72,8 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
     'utbetaling.tabell.label.NavDagDelvisSyk':
         'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
+    'utbetaling.tabell.label.NavDagDelvisSykUnder20':
+        'For å kunne få sykepenger må du være borte fra jobben minst 20 prosent av tiden på grunn av sykdom eller skade. Selv om inntektstapet ditt er mindre enn 20 prosent, har vi vurdert at arbeidstiden er redusert med minst 20 prosent. Se folketrygdloven § 8-13.',
     'utbetaling.tabell.label.NavHelgDag':
         'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
