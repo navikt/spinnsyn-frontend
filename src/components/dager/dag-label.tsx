@@ -23,6 +23,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                     </Tag>
                 )
 
+            case 'NavDagDelvisSykUnder20':
             case 'NavDagDelvisSyk':
                 if (skalViseProsent) {
                     const grad = dag.grad.toString()
@@ -32,9 +33,10 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                         </Tag>
                     )
                 }
+                const under20 = dag.dagtype == 'NavDagDelvisSykUnder20' ? ' under 20%' : ''
                 return (
                     <Tag variant="success" size="small">
-                        Delvis&nbsp;syk
+                        Delvis&nbsp;syk{under20}
                     </Tag>
                 )
 

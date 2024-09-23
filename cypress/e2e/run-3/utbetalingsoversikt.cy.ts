@@ -143,6 +143,13 @@ describe('Utbetalingsoversikt', () => {
                         'Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
                 )
 
+                cy.get('[data-cy="dag-label-NavDagDelvisSykUnder20"]').contains('Delvis syk under 20%')
+                cy.get('[data-cy="dag-beskrivelse-NavDagDelvisSykUnder20"]').contains(
+                    'For å kunne få sykepenger må du være borte fra jobben minst 20 prosent av tiden ' +
+                        'på grunn av sykdom eller skade. Selv om inntektstapet ditt er mindre enn 20 prosent, ' +
+                        'har vi vurdert at arbeidstiden er redusert med minst 20 prosent. Se folketrygdloven § 8-13.',
+                )
+
                 cy.get('[data-cy="dag-label-Fridag"]').contains('Fridag')
                 cy.get('[data-cy="dag-beskrivelse-Fridag"]').contains(
                     'Du får ikke sykepenger for dager du har ferie eller permisjon.',

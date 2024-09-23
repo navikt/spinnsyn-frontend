@@ -41,10 +41,17 @@ export const alleAvvisteDager: RSVedtakWrapper = {
                     },
                     {
                         fom: '2021-02-08',
-                        tom: '2021-02-10',
+                        tom: '2021-02-09',
                         dagsats: 400,
                         grad: 40,
                         stønadsdager: 2,
+                    },
+                    {
+                        fom: '2021-02-10',
+                        tom: '2021-02-10',
+                        dagsats: 400,
+                        grad: 17,
+                        stønadsdager: 1,
                     },
                 ],
             },

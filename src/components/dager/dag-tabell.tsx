@@ -34,27 +34,30 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                 </Table.Row>
             </Table.Header>
             <Table.Body data-cy="dag-tabell-body">
-                {dager.map((dag, idx) => (
-                    <Table.Row key={idx}>
-                        <Table.HeaderCell scope="row">
-                            <BodyShort size="small" as="span">
-                                {dayjs(dag.dato).format('DD.MMM')}
-                            </BodyShort>
-                        </Table.HeaderCell>
-                        <Table.DataCell align="right" className="whitespace-nowrap">
-                            <BodyShort size="small" as="span">
-                                {dag.dagtype === 'NavDag' ||
-                                dag.dagtype === 'NavDagSyk' ||
-                                dag.dagtype === 'NavDagDelvisSyk'
-                                    ? ValutaFormat.format(dag.belop) + ' kr'
-                                    : '-'}
-                            </BodyShort>
-                        </Table.DataCell>
-                        <Table.DataCell align="right">
-                            <DagLabel dag={dag} skalViseProsent={true} />
-                        </Table.DataCell>
-                    </Table.Row>
-                ))}
+                {dager.map((dag, idx) => {
+                    const dagMedBelop =
+                        dag.dagtype === 'NavDag' ||
+                        dag.dagtype === 'NavDagSyk' ||
+                        dag.dagtype === 'NavDagDelvisSykUnder20' ||
+                        dag.dagtype === 'NavDagDelvisSyk'
+                    return (
+                        <Table.Row key={idx}>
+                            <Table.HeaderCell scope="row">
+                                <BodyShort size="small" as="span">
+                                    {dayjs(dag.dato).format('DD.MMM')}
+                                </BodyShort>
+                            </Table.HeaderCell>
+                            <Table.DataCell align="right" className="whitespace-nowrap">
+                                <BodyShort size="small" as="span">
+                                    {dagMedBelop ? ValutaFormat.format(dag.belop) + ' kr' : '-'}
+                                </BodyShort>
+                            </Table.DataCell>
+                            <Table.DataCell align="right">
+                                <DagLabel dag={dag} skalViseProsent={true} />
+                            </Table.DataCell>
+                        </Table.Row>
+                    )
+                })}
             </Table.Body>
         </Table>
     )

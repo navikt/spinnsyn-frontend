@@ -117,7 +117,7 @@ export type RSDagType =
     | 'ArbeidIkkeGjenopptattDag'
     | 'AndreYtelser'
     | 'UkjentDag'
-export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk'
+export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk' | 'NavDagDelvisSykUnder20'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
 export interface Dokument {
