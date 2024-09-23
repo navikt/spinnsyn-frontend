@@ -51,7 +51,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
                         tom: '2021-02-10',
                         dagsats: 400,
                         grad: 17,
-                        stønadsdager: 2,
+                        stønadsdager: 1,
                     },
                 ],
             },
