@@ -10,6 +10,14 @@ spec:
   port: 8080
   ingresses:
     - {{ingress}}
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: nodejs
+    logging:
+      destinations:
+        - id: loki
+        - id: elastic
   azure:
     application:
       enabled: true
