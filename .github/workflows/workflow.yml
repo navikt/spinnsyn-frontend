@@ -15,8 +15,6 @@ jobs:
     secrets: inherit
     with:
       base-path: syk/sykepenger
-      sentry-project: spinnsyn
-      sentry-enabled: false
 
   arkivering-deploy:
     needs: felles-workflow
