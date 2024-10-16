@@ -1,14 +1,18 @@
-import { LinkPanel, Tag, BodyShort } from '@navikt/ds-react'
+import { BodyShort, Detail, LinkPanel, Tag } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { getLedetekst, tekst } from '../../utils/tekster'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../amplitude/amplitude'
 import { cn } from '../../utils/tw-utils'
+import { isProd } from '../../utils/environment'
+
+dayjs.extend(localizedFormat)
 
 const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
@@ -54,6 +58,11 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
                             {vedtakTittel}
                         </LinkPanel.Title>
                         <LinkPanel.Description>{arbeidsgiverTekst}</LinkPanel.Description>
+                        {!isProd() && (
+                            <Detail className="italic">
+                                Mottatt: {dayjs(vedtak.opprettetTimestamp).format('L LT')}
+                            </Detail>
+                        )}
                     </div>
 
                     <div className="flex shrink-0 items-center">
