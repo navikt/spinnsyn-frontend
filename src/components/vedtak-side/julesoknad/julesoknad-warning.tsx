@@ -9,9 +9,8 @@ export const JulesoknadWarning = () => {
     }, [])
     return (
         <Alert variant="warning" className="mt-4">
-            For å sikre at så mange som mulig skal få utbetalt sykepenger før jul, gjør vi det mulig for noen å sende
-            søknaden før sykmeldingsperioden er over. Vi gjør oppmerksom på at det kan bety at det kan gå noe tid fra
-            utbetalingen i desember til neste utbetaling.
+            Vi har utbetalt sykepengene dine tidligere enn vanlig. Vær derfor oppmerksom på at det kan ta litt tid før
+            en eventuell neste utbetaling.
         </Alert>
     )
 }
