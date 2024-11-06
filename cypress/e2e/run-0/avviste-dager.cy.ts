@@ -54,7 +54,7 @@ describe('Avviste dager', () => {
         })
 
         cy.contains(
-            'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
+            'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
         cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler')
@@ -138,7 +138,7 @@ describe('Avviste dager', () => {
             .click()
 
         cy.contains(
-            'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
+            'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
         cy.contains('Beregning av sykepengene').should('not.exist')
@@ -170,7 +170,7 @@ describe('Avviste dager', () => {
             .click()
 
         cy.contains(
-            'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
+            'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
@@ -228,7 +228,7 @@ describe('Avviste dager', () => {
             .click()
 
         cy.contains(
-            'Vi ser at du ikke har rett til sykepenger for én eller flere dagene i sykmeldingen. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
+            'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
