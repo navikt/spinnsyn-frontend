@@ -5,12 +5,12 @@ describe('Redusert til 6G', () => {
     const vedtak = vedtakMedDetMeste
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
         cy.get(`a[href*=${vedtak.id}]`).click()
     })
 

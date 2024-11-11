@@ -2,12 +2,12 @@ import { vedtakMed0Utbetaling } from '../../../src/data/testdata/data/vedtak/ved
 
 describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som får null kroner', () => {
     before(() => {
-        cy.visit('http://localhost:8080//syk/sykepenger?testperson=vedtak-med-0-utbetaling')
+        cy.visit('http://localhost:3000//syk/sykepenger?testperson=vedtak-med-0-utbetaling')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=vedtak-med-0-utbetaling')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger?testperson=vedtak-med-0-utbetaling')
         cy.get(`a[href*=${vedtakMed0Utbetaling.id}]`).click()
     })
 

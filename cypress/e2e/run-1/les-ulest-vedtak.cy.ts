@@ -3,16 +3,16 @@ import { vedtakRevurdert } from '../../../src/data/testdata/data/vedtak/revurder
 
 describe('Les uleste vedtak', () => {
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
     })
 
     it('Det er 3 ulest vedtak og 6 leste', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
         cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 3)
         cy.get('[data-cy="leste-vedtak"] a').should('have.length', 6)
     })
@@ -20,7 +20,7 @@ describe('Les uleste vedtak', () => {
     it('Vi åpner et ulest vedtaket', () => {
         cy.get('[data-cy="uleste-vedtak"] a').get(`a[href*=dff11217-31ea-404a-86ab-93gh93rugh93]`).click()
 
-        cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=dff11217-31ea-404a-86ab-93gh93rugh93`)
+        cy.url().should('equal', `http://localhost:3000/syk/sykepenger?id=dff11217-31ea-404a-86ab-93gh93rugh93`)
 
         cy.contains('Opplysningene')
         cy.contains(
@@ -69,19 +69,19 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vi går tilbake til oversikten', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Det er 3 uleste vedtak og 6 leste', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
         cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 3)
         cy.get('[data-cy="leste-vedtak"] a').should('have.length', 6)
     })
 
     it('Vi åpner et annullert vedtak', () => {
         cy.get('[data-cy="leste-vedtak"] a').should('have.length', 6).eq(2).click({ force: true })
-        cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakAnnullert.id}`)
+        cy.url().should('equal', `http://localhost:3000/syk/sykepenger?id=${vedtakAnnullert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
         cy.get('[data-cy="annullering-info"]')
@@ -92,9 +92,9 @@ describe('Les uleste vedtak', () => {
     })
 
     it('Vi åpner et revurdert vedtak', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.get('[data-cy="leste-vedtak"] a').should('have.length', 6).eq(3).click({ force: true })
-        cy.url().should('equal', `http://localhost:8080/syk/sykepenger?id=${vedtakRevurdert.id}`)
+        cy.url().should('equal', `http://localhost:3000/syk/sykepenger?id=${vedtakRevurdert.id}`)
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').click()
 
         cy.get('[data-cy="annullering-info"]')

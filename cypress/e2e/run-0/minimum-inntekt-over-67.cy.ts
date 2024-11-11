@@ -1,12 +1,12 @@
 describe('Minimum inntekt over 67', () => {
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Vedtak med avviste dager og ingen utbetaling grunnet minimum inntekt over 67', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=for-lav-inntekt-67&id=3ef1f882-4dbf-478d-bc98-5b878e7376ca',
+            'http://localhost:3000/syk/sykepenger?testperson=for-lav-inntekt-67&id=3ef1f882-4dbf-478d-bc98-5b878e7376ca',
         )
 
         cy.contains('Ingen utbetaling')

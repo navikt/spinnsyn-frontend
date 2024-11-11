@@ -33,7 +33,7 @@ For å teste lokalt
 npm run interne
 ```
 
-Og gå til http://localhost:8080/syk/sykepenger
+Og gå til http://localhost:3000/syk/sykepenger
 
 ## Tilgang til Github Package Registry
 

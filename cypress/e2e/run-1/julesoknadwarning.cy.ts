@@ -5,7 +5,7 @@ describe('Julesøknadwarning', () => {
     describe('vedtak med warning', () => {
         it('Laster vedtaket', () => {
             cy.visit(
-                'http://localhost:8080/syk/sykepenger?testperson=julesoknad&id=348a5462-456a-4bfc-9b54-11cd77a99bbb',
+                'http://localhost:3000/syk/sykepenger?testperson=julesoknad&id=348a5462-456a-4bfc-9b54-11cd77a99bbb',
             )
         })
 
@@ -17,7 +17,7 @@ describe('Julesøknadwarning', () => {
     describe('vedtak uten warning', () => {
         it('Laster vedtaket', () => {
             cy.visit(
-                'http://localhost:8080/syk/sykepenger?testperson=kun-direkte&id=348a5462-456a-4bfc-9b54-11cd77a99bbb',
+                'http://localhost:3000/syk/sykepenger?testperson=kun-direkte&id=348a5462-456a-4bfc-9b54-11cd77a99bbb',
             )
         })
 

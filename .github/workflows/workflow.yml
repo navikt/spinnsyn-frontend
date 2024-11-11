@@ -15,6 +15,7 @@ jobs:
     secrets: inherit
     with:
       base-path: syk/sykepenger
+      port: 3000
 
   arkivering-deploy:
     needs: felles-workflow

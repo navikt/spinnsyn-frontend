@@ -1,6 +1,6 @@
 describe('Vedtak for arkivering', () => {
     it('Vanlig vedtak med refusjon der alt er ekspandert', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering')
+        cy.visit('http://localhost:3000/syk/sykepenger/vedtak/arkivering/utvikling-arkivering')
 
         cy.contains('Du kan lese mer om hvordan sykepengene beregnes i')
         cy.get('.flex:not(.arkivering-flex-fix):not(.flex-arkivering-ignore)').should('have.length', 0)
@@ -43,7 +43,7 @@ describe('Vedtak for arkivering', () => {
 
     it('Skjønnsfastsatt brukerutbetaling der alt er ekspandert', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering?testperson=skjonnsfastsatt-brukerutbetaling',
+            'http://localhost:3000/syk/sykepenger/vedtak/arkivering/utvikling-arkivering?testperson=skjonnsfastsatt-brukerutbetaling',
         )
 
         cy.contains('Du kan lese mer om hvordan sykepengene beregnes i')
@@ -91,7 +91,7 @@ describe('Vedtak for arkivering', () => {
 
     it('Delvis innvilgelse fra bømlo der alt er ekspandert', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger/vedtak/arkivering/utvikling-arkivering?testperson=kombinasjon-delvisInnvilgelse-og-skj%C3%B8nnsfastsatt-fra-bomlo',
+            'http://localhost:3000/syk/sykepenger/vedtak/arkivering/utvikling-arkivering?testperson=kombinasjon-delvisInnvilgelse-og-skj%C3%B8nnsfastsatt-fra-bomlo',
         )
 
         cy.contains('Du kan lese mer om hvordan sykepengene beregnes i')

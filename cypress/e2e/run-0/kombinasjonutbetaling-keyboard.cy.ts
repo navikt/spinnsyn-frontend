@@ -2,12 +2,12 @@
 describe('Kombinasjonutbetaling keyboard', () => {
     before(() => {
         cy.clearCookies()
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 2)
     })
 
     it('Finner vedtaket i listevisningen', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
 
         cy.contains('Svar på søknader').and('is.visible')
         cy.get('#maincontent').focus()

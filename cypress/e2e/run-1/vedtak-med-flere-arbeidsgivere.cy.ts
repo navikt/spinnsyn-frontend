@@ -3,12 +3,12 @@ import { formaterValuta } from '../../../src/utils/valuta-utils'
 
 describe('Vedtak med flere arbeidsgivere', () => {
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
         cy.get(`a[href*=${vedtakMedFlereArbeidsgivere.id}]`).click()
     })
 

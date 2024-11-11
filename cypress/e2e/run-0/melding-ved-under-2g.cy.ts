@@ -4,7 +4,7 @@ describe('Melding ved 2g', () => {
     const vedtak = under2gInntekt.vedtak[0]
 
     before(() => {
-        cy.visit(`http://localhost:8080/syk/sykepenger?testperson=under-2g-beskjed&id=${vedtak.id}`)
+        cy.visit(`http://localhost:3000/syk/sykepenger?testperson=under-2g-beskjed&id=${vedtak.id}`)
         cy.contains('Svar på søknad om sykepenger')
     })
 

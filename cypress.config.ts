@@ -11,7 +11,7 @@ export default defineConfig({
         setupNodeEvents(on, config) {
             return require('./cypress/plugins/index.js')(on, config)
         },
-        baseUrl: 'http://localhost:8080/',
+        baseUrl: 'http://localhost:3000/',
         excludeSpecPattern: process.env.CI ? ['cypress/e2e/alle_tester.cy.ts'] : [],
         testIsolation: false,
     },

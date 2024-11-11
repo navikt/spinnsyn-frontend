@@ -1,7 +1,7 @@
 describe('Revurdert og annullert', () => {
     before(() => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=revurdert-og-annullert&id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337',
+            'http://localhost:3000/syk/sykepenger?testperson=revurdert-og-annullert&id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337',
         )
     })
 
