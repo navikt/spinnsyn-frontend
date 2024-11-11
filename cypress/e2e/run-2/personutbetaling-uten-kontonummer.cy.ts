@@ -4,12 +4,12 @@ describe('Personutbetaling uten kontonummer', () => {
     const vedtak = kunDirekte
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer')
         cy.get(`a[href*=${vedtak.id}]`).click()
     })
 

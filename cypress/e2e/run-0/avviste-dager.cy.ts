@@ -10,12 +10,12 @@ import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../../../src/data/te
 
 describe('Avviste dager', () => {
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
     })
 
     it('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', () => {
@@ -25,7 +25,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med delvis godkjente utbetalingsdager', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.get(`a[href*=${alleAvvisteDager.id}]`).click({
             force: true,
         })
@@ -128,7 +128,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med avviste dager og ingen utbetaling', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.get(`a[href*=${avvistVedtak.id}]`).click({ force: true })
         cy.contains('Ingen utbetaling')
 
@@ -158,7 +158,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med avviste dager og lav inntekt, refusjon', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.get(`a[href*=${avvistVedtakMedLavInntekt.id}]`).click({
             force: true,
         })
@@ -208,7 +208,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med avviste dager og lav inntekt, direkte utbetaling', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=delvis-og-helt-avviste-vedtak')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=delvis-og-helt-avviste-vedtak')
         cy.get(`a[href*=${avvistVedtakMedLavInntektDirekteUtbetaling.id}]`).click({
             force: true,
         })
@@ -266,7 +266,7 @@ describe('Avviste dager', () => {
 
     it('Vedtak med delvisInnvilget begrunnelse fra Bømlo', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=kombinasjon-delvisInnvilgelse-og-skj%C3%B8nnsfastsatt-fra-bomlo',
+            'http://localhost:3000/syk/sykepenger?testperson=kombinasjon-delvisInnvilgelse-og-skj%C3%B8nnsfastsatt-fra-bomlo',
         )
         cy.get(`a[href*=${delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id}]`).click({ force: true })
 
@@ -292,7 +292,7 @@ describe('Avviste dager', () => {
     })
 
     it('Vedtak med avslag begrunnelse fra Bømlo', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=avvist-fra-bomlo')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=avvist-fra-bomlo')
         cy.get(`a[href*=${avslåttFraBømlo.id}]`).click({
             force: true,
         })

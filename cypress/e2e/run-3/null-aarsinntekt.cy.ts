@@ -2,7 +2,7 @@ import { formaterValuta } from '../../../src/utils/valuta-utils'
 
 describe('Har null i årsinntekt', () => {
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=null-omregnet-aarsinntekt')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=null-omregnet-aarsinntekt')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 

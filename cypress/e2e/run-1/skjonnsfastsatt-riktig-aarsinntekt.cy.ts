@@ -3,7 +3,7 @@ import { formaterValuta } from '../../../src/utils/valuta-utils'
 describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
     it('Åpner vedtaket for sjokkerende elektriker', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=f8018350-05e1-4c03-9219-21b50229fc04',
+            'http://localhost:3000/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=f8018350-05e1-4c03-9219-21b50229fc04',
         )
     })
 
@@ -33,7 +33,7 @@ describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
 
     it('Åpner vedtaket for sauefabrikk', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=29ece7ee-e1de-443c-8011-431998b1ffab',
+            'http://localhost:3000/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=29ece7ee-e1de-443c-8011-431998b1ffab',
         )
     })
 

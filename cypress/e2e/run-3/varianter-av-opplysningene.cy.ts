@@ -1,6 +1,6 @@
 describe('Tester logikk i behandling.tsx', () => {
     it('Automatisk behandlet', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?id=a147e9a9-0aa2-4f5f-a8e3-c16c901e4071')
+        cy.visit('http://localhost:3000/syk/sykepenger?id=a147e9a9-0aa2-4f5f-a8e3-c16c901e4071')
 
         cy.get('[data-cy="behandling-header"]')
             .should('have.text', 'Søknaden er behandlet automatisk')
@@ -14,7 +14,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
     it('Varianter av opplysningene', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=731f152b-6b70-4f07-9d1d-6e2ad6aea4de',
+            'http://localhost:3000/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=731f152b-6b70-4f07-9d1d-6e2ad6aea4de',
         )
 
         cy.get('[data-cy="behandling-header"]')
@@ -27,7 +27,7 @@ describe('Tester logikk i behandling.tsx', () => {
     })
 
     it('Automatisk behandlet annullert vedtak', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337')
+        cy.visit('http://localhost:3000/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634337')
 
         cy.get('.navds-alert').contains('Til din informasjon').and('be.visible')
 
@@ -46,7 +46,7 @@ describe('Tester logikk i behandling.tsx', () => {
     })
 
     it('Manuelt behandlet revurdert vedtak', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634338')
+        cy.visit('http://localhost:3000/syk/sykepenger?id=9ae82dd2-dcf1-4c16-9e12-35cb6d634338')
 
         cy.get('.navds-alert').contains('Denne beslutningen er behandlet på nytt.').and('be.visible')
 
@@ -67,7 +67,7 @@ describe('Tester logikk i behandling.tsx', () => {
     })
 
     it('Revurdert vedtak med direkte utbetaling', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?id=21eac584-d8ea-4e4b-bf9a-ae0a400009c4')
+        cy.visit('http://localhost:3000/syk/sykepenger?id=21eac584-d8ea-4e4b-bf9a-ae0a400009c4')
 
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').and('be.visible').click()
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing')
@@ -77,7 +77,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
     it('Revurdert vedtak med kombinasjonsutbetaling', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=kombinert-revurdert&id=dff11217-31ea-404a-86ab-b521a6a946df',
+            'http://localhost:3000/syk/sykepenger?testperson=kombinert-revurdert&id=dff11217-31ea-404a-86ab-b521a6a946df',
         )
 
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').and('be.visible').click()
@@ -89,7 +89,7 @@ describe('Tester logikk i behandling.tsx', () => {
     })
 
     it('Revurdert vedtak får infoboks', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
         cy.get('.navds-tag--info').contains('Ny beslutning').click()
         cy.get('.navds-alert--info').contains('Dette er en ny beslutning som erstatter et tidligere svar.')
     })

@@ -1,6 +1,6 @@
 describe('Tidligere utbetalt hel arbeidsgiverperiode', () => {
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kun-direkte')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=kun-direkte')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 

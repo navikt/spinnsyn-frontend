@@ -4,12 +4,12 @@ describe('Flexjar', () => {
     const vedtak = kunDirekte
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 1)
     })
 
     it('Laster vedtaket', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=direkte-uten-kontonummer')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer')
         cy.get(`a[href*=${vedtak.id}]`).click()
     })
 
@@ -51,7 +51,7 @@ describe('Flexjar', () => {
 
     it('Har PO Helse helsemetrikk flexjar når det er riktige toggles', () => {
         cy.visit(
-            'http://localhost:8080/syk/sykepenger?testperson=flexjar-pohelse&flexjar-spinnsyn-pohelse-helsemetrikk=true&flexjar-spinnsyn-frontend=false&id=348a5462-456a-4bfc-9b54-11cd77a9937f',
+            'http://localhost:3000/syk/sykepenger?testperson=flexjar-pohelse&flexjar-spinnsyn-pohelse-helsemetrikk=true&flexjar-spinnsyn-frontend=false&id=348a5462-456a-4bfc-9b54-11cd77a9937f',
         )
         cy.contains('Hvordan opplevde du å søke og å få svar på søknaden om sykepenger?')
         heading('Hva synes du?')

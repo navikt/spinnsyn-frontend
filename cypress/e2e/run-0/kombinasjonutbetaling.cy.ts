@@ -4,12 +4,12 @@ describe('Kombinasjonutbetaling', () => {
     const vedtak = kombinertDirekteOgRefusjon
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.visit('http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 2)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger?testperson=kombinasjon')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
         cy.get(`a[href*=${vedtak.id}]`).click()
     })
 

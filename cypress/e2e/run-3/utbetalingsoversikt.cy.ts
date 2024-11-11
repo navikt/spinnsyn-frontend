@@ -5,12 +5,12 @@ describe('Utbetalingsoversikt', () => {
     const vedtak = vedtakMed40Grad
 
     before(() => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
     })
 
     it('Laster startside', () => {
-        cy.url().should('equal', 'http://localhost:8080/syk/sykepenger')
+        cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
         cy.get(`a[href*=${vedtak.id}]`).click()
     })
 
@@ -62,7 +62,7 @@ describe('Utbetalingsoversikt', () => {
     })
 
     it('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', () => {
-        cy.visit('http://localhost:8080/syk/sykepenger')
+        cy.visit('http://localhost:3000/syk/sykepenger')
         cy.findByRole('heading', { level: 1 }).should('be.visible').contains('Svar på søknader')
 
         cy.get(`a[href*=${alleAvvisteDager.id}]`).click()
