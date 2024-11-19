@@ -18,7 +18,7 @@ describe('Vedtak med flere arbeidsgivere', () => {
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(41958))
 

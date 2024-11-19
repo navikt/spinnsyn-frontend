@@ -37,7 +37,7 @@ describe('Vedtak for arkivering', () => {
         })
 
         cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' }).within(() => {
-            cy.contains('Det er bare dager NAV skal utbetale som er med i tellingen over')
+            cy.contains('Det er bare dager Nav skal utbetale som er med i tellingen over')
         })
     })
 
@@ -85,7 +85,7 @@ describe('Vedtak for arkivering', () => {
         })
 
         cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' }).within(() => {
-            cy.contains('Det er bare dager NAV skal utbetale som er med i tellingen over')
+            cy.contains('Det er bare dager Nav skal utbetale som er med i tellingen over')
         })
     })
 
@@ -161,7 +161,7 @@ describe('Vedtak for arkivering', () => {
         })
 
         cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' }).within(() => {
-            cy.contains('Det er bare dager NAV skal utbetale som er med i tellingen over')
+            cy.contains('Det er bare dager Nav skal utbetale som er med i tellingen over')
         })
     })
 })

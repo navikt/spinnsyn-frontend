@@ -11,7 +11,7 @@ describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(21000))
 
@@ -41,7 +41,7 @@ describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(15000))
 

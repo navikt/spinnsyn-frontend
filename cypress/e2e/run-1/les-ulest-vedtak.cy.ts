@@ -4,7 +4,7 @@ import { vedtakRevurdert } from '../../../src/data/testdata/data/vedtak/revurder
 describe('Les uleste vedtak', () => {
     before(() => {
         cy.visit('http://localhost:3000/syk/sykepenger')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 10)
     })
 
     it('Laster startside', () => {
@@ -13,7 +13,7 @@ describe('Les uleste vedtak', () => {
 
     it('Det er 3 ulest vedtak og 6 leste', () => {
         cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
-        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 3)
+        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 4)
         cy.get('[data-cy="leste-vedtak"] a').should('have.length', 6)
     })
 
@@ -40,7 +40,7 @@ describe('Les uleste vedtak', () => {
         )
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', '30\u00a0000 kr')
 
@@ -70,12 +70,12 @@ describe('Les uleste vedtak', () => {
 
     it('Vi går tilbake til oversikten', () => {
         cy.visit('http://localhost:3000/syk/sykepenger')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 10)
     })
 
     it('Det er 3 uleste vedtak og 6 leste', () => {
         cy.url().should('equal', 'http://localhost:3000/syk/sykepenger')
-        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 3)
+        cy.get('[data-cy="uleste-vedtak"] a').should('have.length', 4)
         cy.get('[data-cy="leste-vedtak"] a').should('have.length', 6)
     })
 
