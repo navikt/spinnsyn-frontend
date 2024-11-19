@@ -193,7 +193,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-EgenmeldingUtenforArbeidsgiverperiode"]').contains('Egenmelding')
                 cy.get('[data-cy="dag-beskrivelse-EgenmeldingUtenforArbeidsgiverperiode"]').contains(
-                    'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. ',
+                    'Du kan ikke bruke egenmelding de dagene Nav betaler sykepenger. ',
                 )
 
                 cy.get('[data-cy="dag-label-MinimumSykdomsgrad"]').contains('Sykmeldt i for liten grad')
@@ -223,7 +223,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Over70"]').contains('Over 70 år')
                 cy.get('[data-cy="dag-beskrivelse-Over70"]').contains(
-                    'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV',
+                    'Etter at du har fylt 70 år, får du ikke sykepenger fra Nav',
                 )
             })
     })

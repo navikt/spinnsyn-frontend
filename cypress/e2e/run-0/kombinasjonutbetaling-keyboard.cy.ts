@@ -70,7 +70,7 @@ describe('Kombinasjonutbetaling keyboard', () => {
         cy.focused().contains('Kontakt oss')
 
         cy.realPress('Tab')
-        cy.focused().contains('kontakte NAV')
+        cy.focused().contains('kontakte Nav')
 
         cy.realPress('Tab')
         cy.focused().contains('endre svarene i søknaden')

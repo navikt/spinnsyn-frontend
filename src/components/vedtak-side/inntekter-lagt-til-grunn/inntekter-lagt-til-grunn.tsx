@@ -185,7 +185,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                             du kan få for arbeidsavklaringspenger være høyere enn det du kan få for sykepenger. For mer
                             informasjon{' '}
                             <Link href={tekst('behandling.lenke.url')} target="_blank">
-                                kontakt NAV
+                                kontakt Nav
                             </Link>
                             .
                         </Detail>

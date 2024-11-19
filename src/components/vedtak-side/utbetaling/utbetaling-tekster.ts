@@ -3,7 +3,7 @@ const UtbetalingTekster = {
     'utbetaling.person.mndlonn.innhold':
         'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
     'utbetaling.mndlonn.innhold':
-        'Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste 3 månedene før du ble syk for å beregne sykepengene dine. <a href="https://www.nav.no/arbeidsgiver/inntektsmelding#manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med i beregningen.</a> <br><br> Hvis du har flere arbeidsforhold, men ikke er sykmeldt fra alle, vil NAV beregne månedsinntekten din for de arbeidsforholdene du ikke er sykmeldt fra. Det er fordi all pensjonsgivende inntekt skal være med i beregningen, selv om du ikke er sykmeldt fra alle arbeidsforholdene. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-28" target="_blank">folketrygdloven §§ 8-28 og 8-29</a>.',
+        'Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste 3 månedene før du ble syk for å beregne sykepengene dine. <a href="https://www.nav.no/arbeidsgiver/inntektsmelding#manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med i beregningen.</a> <br><br> Hvis du har flere arbeidsforhold, men ikke er sykmeldt fra alle, vil Nav beregne månedsinntekten din for de arbeidsforholdene du ikke er sykmeldt fra. Det er fordi all pensjonsgivende inntekt skal være med i beregningen, selv om du ikke er sykmeldt fra alle arbeidsforholdene. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-28" target="_blank">folketrygdloven §§ 8-28 og 8-29</a>.',
     'utbetaling.arslonn.tittel': 'Årsinntekt',
     'utbetaling.arslonn.innhold.del1': 'Så blir månedsinntekten regnet om til årsinntekt ved å gange den med 12. ',
     'utbetaling.arslonn.innhold.del2':
@@ -14,7 +14,7 @@ const UtbetalingTekster = {
     'utbetaling.sykepengegrunnlag.under6g.innhold':
         'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din. Derfor vil sykepengegrunnlaget og den samlede årsinntekten ofte være det samme.',
     'utbetaling.sykepengegrunnlag.over6g.innhold':
-        'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra NAV for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Hvis årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt til Skatteetaten de siste tolv månedene før du ble sykmeldt, skal sykepengegrunnlaget fastsettes ved skjønn. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-10" target="_blank">folketrygdloven §§ 8-10 og 8-30</a>.',
+        'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra Nav for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Hvis årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt til Skatteetaten de siste tolv månedene før du ble sykmeldt, skal sykepengegrunnlaget fastsettes ved skjønn. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-10" target="_blank">folketrygdloven §§ 8-10 og 8-30</a>.',
     'utbetaling.dagligbelop.tittel': 'Sykepenger per dag',
     'utbetaling.dagligbelop.innhold':
         'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
@@ -48,13 +48,13 @@ const UtbetalingTekster = {
     'utbetaling.refusjon.tittel': 'Pengene utbetales til deg',
     'utbetaling.arbeidsgiver.systemtittel': 'Utbetales til %ARBEIDSGIVER%',
     'utbetaling.arbeidsgiver.tekst':
-        'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra NAV. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
+        'Vi har registrert at du får sykepenger fra %ARBEIDSGIVER%, som skal ha pengene tilbake fra Nav. Selv om pengene går til arbeidsgiveren din, er vi forpliktet til å vise deg informasjonen fordi det handler om deg.',
 
     'utbetaling.person.systemtittel': 'sykepenger til deg',
     'utbetaling.person.fra': 'Gjelder sykefravær fra %ARBEIDSGIVER%',
     'utbetaling.person.trekk.heading': 'Beløpet er før skatt, kreditortrekk og tilbakebetalingskrav fra kommunen.',
     'utbetaling.person.trekk.innhold':
-        'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller NAV innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
+        'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller Nav innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
     'utbetaling.person.når': 'Når får du sykepengene?',
     'utbetaling.person.når.innhold':
         'Du får vanligvis utbetalt sykepengene enten <strong>innen den 25. i måneden</strong>, eller <strong>innen fem dager</strong> etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to. ',
@@ -78,19 +78,19 @@ const UtbetalingTekster = {
         'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
     'utbetaling.tabell.label.Feriedag':
-        'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra NAV for dager du har ferie, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
+        'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra Nav for dager du har ferie, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.Permisjonsdag':
-        'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra NAV for dager du har permisjon, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
+        'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra Nav for dager du har permisjon, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.ForeldetDag':
         'Du kan bare få sykepenger opptil tre måneder før den måneden du sendte søknaden, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a>, tredje avsnitt.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.Over70':
-        'Etter at du har fylt 70 år, får du ikke sykepenger fra NAV. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, første avsnitt.',
+        'Etter at du har fylt 70 år, får du ikke sykepenger fra Nav. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, første avsnitt.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt':
-        'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen',
+        'Du har fått sykepenger fra Nav i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen',
     'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67':
-        'Etter at du har fylt 67 år, får du ikke sykepenger fra NAV i mer enn 60 dager',
+        'Etter at du har fylt 67 år, får du ikke sykepenger fra Nav i mer enn 60 dager',
     'utbetaling.tabell.avvist.MinimumInntekt':
         'Du har et sykepengegrunnlag på mindre enn et halvt ' +
         '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
@@ -100,7 +100,7 @@ const UtbetalingTekster = {
         '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
         ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
-        'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. For de dagene må du ha sykmelding, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
+        'Du kan ikke bruke egenmelding de dagene Nav betaler sykepenger. For de dagene må du ha sykmelding, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
         'For å ha rett til sykepenger må du være borte fra jobb minst 20 prosent på grunn av sykdom eller skade. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':

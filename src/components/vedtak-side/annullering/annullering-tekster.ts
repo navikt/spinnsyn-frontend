@@ -15,11 +15,11 @@ const AnnulleringTekster = {
         'Når det kommer nye opplysninger i en sak er det en generell regel at en saksbehandler alltid ser på den.',
     'annullert.info.header2': 'Vil dette ha noe å si for pengene jeg får?',
     'annullert.info.body2.refusjon':
-        'Du får sykepenger fra arbeidsgiveren din. Den nye behandlingen kan påvirke hva NAV betaler til arbeidsgiveren din.',
+        'Du får sykepenger fra arbeidsgiveren din. Den nye behandlingen kan påvirke hva Nav betaler til arbeidsgiveren din.',
     'annullert.info.body2.delvis-refusjon':
-        'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.',
+        'Du får sykepenger både fra arbeidsgiveren din og direkte fra Nav. Den nye behandlingen kan påvirke hva Nav betaler både til deg og til arbeidsgiveren din.',
     'annullert.info.body2.brukerutbetaling':
-        'Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.',
+        'Du får sykepenger direkte fra Nav. Den nye behandlingen kan påvirke hva Nav utbetaler til deg.',
     'annullert.info.header3': 'Hvem har sendt opplysningene?',
     'annullert.info.body3': 'Vi får opplysninger enten fra deg, arbeidsgiveren din eller den som har sykmeldt deg.',
     'annullert.info.header4': 'Må jeg gjøre noe nå?',

@@ -15,14 +15,14 @@ describe('Kombinasjonutbetaling', () => {
 
     it('Viser info om utbetaling til personen', () => {
         cy.contains(
-            'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. ' +
-                'Arbeidsgiveren din får igjen pengene fra NAV senere.',
+            'Du får noen av sykepengene dine fra Nav og resten fra arbeidsgiveren din. ' +
+                'Arbeidsgiveren din får igjen pengene fra Nav senere.',
         )
 
         cy.get('[data-cy*="personutbetaling"]').within(() => {
             cy.contains('Beløpet er før skatt, kreditortrekk og tilbakebetalingskrav fra kommunen.')
             cy.contains(
-                'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller NAV innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
+                'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller Nav innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
             )
             cy.contains('Pengene utbetales til deg')
 
