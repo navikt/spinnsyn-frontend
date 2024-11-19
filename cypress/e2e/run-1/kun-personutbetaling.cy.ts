@@ -46,7 +46,7 @@ describe('Kun personutbetaling', () => {
             cy.get('.navds-accordion__item').contains('Totalbeløp')
             cy.get('.navds-accordion__item').contains(
                 'Til slutt summerer vi alle dagene. ' +
-                    'Når du får utbetalt sykepenger fra NAV viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
+                    'Når du får utbetalt sykepenger fra Nav viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
             )
         })
     })

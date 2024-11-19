@@ -157,7 +157,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Feriedag"]').contains('Ferie')
                 cy.get('[data-cy="dag-beskrivelse-Feriedag"]').contains(
-                    'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra NAV for dager du har ferie',
+                    'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra Nav for dager du har ferie',
                 )
 
                 cy.get('[data-cy="dag-label-ForeldetDag"]').contains('Søkt for sent')
@@ -172,12 +172,12 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-Permisjonsdag"]').contains('Permisjon')
                 cy.get('[data-cy="dag-beskrivelse-Permisjonsdag"]').contains(
-                    'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra NAV for dager du har permisjon',
+                    'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra Nav for dager du har permisjon',
                 )
 
                 cy.get('[data-cy="dag-label-SykepengedagerOppbrukt"]').contains('Maks antall dager')
                 cy.get('[data-cy="dag-beskrivelse-SykepengedagerOppbrukt"]').contains(
-                    'Du har fått sykepenger fra NAV i 248 dager (mandag-fredag). ' +
+                    'Du har fått sykepenger fra Nav i 248 dager (mandag-fredag). ' +
                         'Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen,',
                 )
 
