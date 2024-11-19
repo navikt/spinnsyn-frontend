@@ -24,6 +24,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
+    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
     useEffect(() => {
         if (apneElementMedId === 'begrunnelse_vedtak') {
@@ -107,9 +108,9 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 </BodyShort>
                 <InfoSection
                     label={
-                        vedtak.vedtak.utbetaling.inntektFraAordning
+                        inntektFraAOrdningLagtTilGrunn
                             ? tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra a-ordningen)'
-                            : tekst('utbetaling.inntekt.info.beregnet')
+                            : tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra inntektsmeldingen)'
                     }
                     value={inntektMnd}
                 />

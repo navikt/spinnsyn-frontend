@@ -16,6 +16,8 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
         return { url: '/syk/sykepengesoknad' }
     }
 
+    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
+
     return (
         <>
             <Heading size="small" level="2" spacing>
@@ -26,7 +28,7 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                 Du kan endre dette selv ved å <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />
                 . Da vil saken din bli vurdert på nytt.
             </BodyLong>
-            {vedtak.vedtak.utbetaling.inntektFraAordning ? (
+            {inntektFraAOrdningLagtTilGrunn ? (
                 <>
                     <BodyShort weight="semibold">Spørsmål til opplysninger hentet fra a-ordningen?</BodyShort>
                     <BodyLong spacing>

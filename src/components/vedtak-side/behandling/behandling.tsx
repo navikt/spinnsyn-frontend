@@ -10,7 +10,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
-    const inntektFraAordning = vedtak.vedtak.utbetaling.inntektFraAordning
+    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
     const tittelNokkel = () => {
         if (annullertEllerRevurdert) {
@@ -27,7 +27,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     }
 
     const behandlingOpplysningstekst = () => {
-        if (inntektFraAordning) {
+        if (inntektFraAOrdningLagtTilGrunn) {
             return annullertEllerRevurdert
                 ? 'behandling.opplysningene.aordning.preteritum'
                 : 'behandling.opplysningene.aordning.presens'
