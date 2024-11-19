@@ -1,4 +1,4 @@
-import { BodyLong, Heading } from '@navikt/ds-react'
+import { BodyLong, Heading, BodyShort } from '@navikt/ds-react'
 import React from 'react'
 
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
@@ -18,19 +18,30 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
 
     return (
         <>
-            <Heading size="small" level="2">
+            <Heading size="small" level="2" spacing>
                 Spørsmål eller feil
             </Heading>
+            <BodyShort weight="semibold">Feil i vedtaket på grunn av feil i søknaden din?</BodyShort>
             <BodyLong spacing>
-                {'Lurer du på noe eller har du funnet en feil i vedtaket, kan du '}
-                <LenkeMedAmplitude url="https://www.nav.no/kontaktoss" tekst="kontakte NAV" />.
-                {' Har du funnet en feil i vedtaket som skyldes feil i søknaden kan du endre dette selv ved å '}
-                <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />.
+                Du kan endre dette selv ved å <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />
+                . Da vil saken din bli vurdert på nytt.
             </BodyLong>
+            {vedtak.vedtak.utbetaling.inntektFraAordning ? (
+                <>
+                    <BodyShort weight="semibold">Spørsmål til opplysninger hentet fra a-ordningen?</BodyShort>
+                    <BodyLong spacing>
+                        <LenkeMedAmplitude url="https://www.nav.no/kontaktoss" tekst="Ta kontakt med Nav" />.
+                    </BodyLong>
+                </>
+            ) : (
+                <>
+                    <BodyShort weight="semibold">Spørsmål til opplysninger i inntektsmeldingen?</BodyShort>
+                    <BodyLong spacing>Ta kontakt med arbeidsgiveren din</BodyLong>
+                </>
+            )}
+            <BodyShort weight="semibold">Annet du lurer på?</BodyShort>
             <BodyLong spacing>
-                {'Hvis du er usikker på om opplysningene om deg i '}
-                <LenkeMedAmplitude url="/syk/sykefravaer/inntektsmeldinger" tekst="inntektsmeldingen" />
-                {' fra arbeidsgiveren din er riktig, kontakt arbeidsgiveren din.'}
+                <LenkeMedAmplitude url="https://www.nav.no/kontaktoss" tekst="Ta kontakt med Nav" />.
             </BodyLong>
         </>
     )

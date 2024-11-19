@@ -105,7 +105,14 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 <BodyShort weight="semibold" className="w-full">
                     {storeTilStoreOgSmå(vedtak.orgnavn)}
                 </BodyShort>
-                <InfoSection label={tekst('utbetaling.inntekt.info.beregnet')} value={inntektMnd} />
+                <InfoSection
+                    label={
+                        vedtak.vedtak.utbetaling.inntektFraAordning
+                            ? tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra a-ordningen)'
+                            : tekst('utbetaling.inntekt.info.beregnet')
+                    }
+                    value={inntektMnd}
+                />
                 <InfoSection label={tekst('utbetaling.inntekt.info.omregnet')} value={inntektAr} />
                 {harFlereArbeidsgivere(vedtak) === 'ja' && (
                     <>

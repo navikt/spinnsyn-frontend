@@ -8,9 +8,10 @@ const BehandlingTekster = {
         'Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. ',
     'behandling.opplysningene.preteritum':
         'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. ',
-    'behandling.lenke': 'Kontakt oss',
+    'behandling.opplysningene.aordning.presens': 'Opplysningene er hentet fra søknaden din og offentlige registre. ',
+    'behandling.opplysningene.aordning.preteritum':
+        'Opplysningene ble hentet fra søknaden din og offentlige registre. ',
     'behandling.lenke.url': 'https://innboks.nav.no/s/skriv-til-oss?category=Helse',
-    'behandling.se-opplysningene': ' om du ønsker å se opplysningene.',
 }
 
 export default BehandlingTekster
