@@ -12,6 +12,7 @@ export const inntektHentetFraAordningen: RSVedtakWrapper = {
         inntekt: 74675,
         vedtakFattetTidspunkt: '2021-10-23',
         sykepengegrunnlag: 638394,
+        tags: ['InntektFraAOrdningenLagtTilGrunn'],
         utbetaling: {
             organisasjonsnummer: '123456789',
             utbetalingId: '4f649298-b308-4057-9654-abcd123',
