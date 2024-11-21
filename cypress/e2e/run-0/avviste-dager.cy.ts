@@ -36,7 +36,7 @@ describe('Avviste dager', () => {
             cy.contains('li', 'Maks antall dager').should('exist')
             cy.contains('li', 'For lav inntekt').should('exist')
             cy.contains('li', 'Egenmelding').should('exist')
-            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+            cy.contains('li', 'For mye arbeid og/eller inntekt').should('exist')
             cy.contains('li', 'Jobbet for kort').should('exist')
             cy.contains('li', 'Ikke medlem').should('exist')
             cy.contains('li', 'Etter dødsfall').should('exist')
@@ -87,7 +87,7 @@ describe('Avviste dager', () => {
                 cy.contains('18.feb.')
                     .parent()
                     .parent()
-                    .should('contain', 'Sykmeldt\u00a0i\u00a0for\u00a0liten\u00a0grad')
+                    .should('contain', 'For\u00a0mye\u00a0arbeid\u00a0og/eller\u00a0inntekt')
                     .and('contain', '-')
                 cy.contains('19.feb.')
                     .parent()
@@ -273,13 +273,13 @@ describe('Avviste dager', () => {
         cy.get('[data-cy="utbetaling-panel-personutbetaling"]').within(() => {
             cy.contains('Delvis innvilget søknad').should('not.exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('not.exist')
-            cy.contains('Sykmeldt i for liten grad').should('not.exist')
+            cy.contains('For mye arbeid og/eller inntekt').should('not.exist')
         })
 
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
             cy.contains('Delvis innvilget søknad').should('exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
-            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+            cy.contains('li', 'For mye arbeid og/eller inntekt').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her').click()
         })
@@ -300,7 +300,7 @@ describe('Avviste dager', () => {
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
             cy.contains('Avslått søknad').should('exist')
             cy.contains('Søknaden er avslått fordi:').should('exist')
-            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+            cy.contains('li', 'For mye arbeid og/eller inntekt').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her').click()
         })
