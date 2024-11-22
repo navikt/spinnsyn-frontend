@@ -60,7 +60,6 @@ interface RSUtbetalingUtbetalt {
     forbrukteSykedager: number
     gjenståendeSykedager: number
     automatiskBehandling: boolean
-    inntektFraAordning?: boolean
     utbetalingType?: string
     arbeidsgiverOppdrag?: RSOppdrag
     personOppdrag?: RSOppdrag

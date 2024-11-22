@@ -19,7 +19,6 @@ export const inntektHentetFraAordningen: RSVedtakWrapper = {
             forbrukteSykedager: 4,
             gjenståendeSykedager: 244,
             automatiskBehandling: true,
-            inntektFraAordning: true,
             foreløpigBeregnetSluttPåSykepenger: '2022-09-30',
             arbeidsgiverOppdrag: {
                 utbetalingslinjer: [
