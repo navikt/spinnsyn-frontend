@@ -15,7 +15,7 @@ describe('Flexjar', () => {
 
     it('Kan gi ja feedback', () => {
         heading('Hjelp oss med å gjøre denne siden bedre')
-            .closest('section')
+            .closest('[role="region"]')
             .within(() => {
                 cy.findByRole('button', {
                     name: 'Ja',
@@ -27,13 +27,14 @@ describe('Flexjar', () => {
                 cy.findByRole('button', {
                     name: 'Send tilbakemelding',
                 }).click()
-                cy.contains('Takk for tilbakemeldingen din!')
             })
+        cy.contains('Takk for tilbakemeldingen!')
     })
 
     it('Kan gi nei feedback', () => {
+        cy.reload()
         heading('Hjelp oss med å gjøre denne siden bedre')
-            .closest('section')
+            .closest('[role="region"]')
             .within(() => {
                 cy.findByRole('button', {
                     name: 'Nei',
@@ -45,8 +46,8 @@ describe('Flexjar', () => {
                 cy.findByRole('button', {
                     name: 'Send tilbakemelding',
                 }).click()
-                cy.contains('Takk for tilbakemeldingen din!')
             })
+        cy.contains('Takk for tilbakemeldingen!')
     })
 
     it('Har PO Helse helsemetrikk flexjar når det er riktige toggles', () => {
@@ -55,7 +56,7 @@ describe('Flexjar', () => {
         )
         cy.contains('Hvordan opplevde du å søke og å få svar på søknaden om sykepenger?')
         heading('Hva synes du?')
-            .closest('section')
+            .closest('[role="region"]')
             .within(() => {
                 cy.findByRole('button', {
                     name: 'Bra',
@@ -69,8 +70,8 @@ describe('Flexjar', () => {
                 cy.findByRole('button', {
                     name: 'Send tilbakemelding',
                 }).click()
-                cy.contains('Takk for tilbakemeldingen din!')
             })
+        cy.contains('Takk for tilbakemeldingen!')
     })
 
     function heading(heading: string, level = 3) {
