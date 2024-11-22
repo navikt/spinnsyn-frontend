@@ -99,7 +99,7 @@ describe('Utbetalingsoversikt', () => {
                 cy.contains('18.feb.')
                     .parent()
                     .parent()
-                    .should('contain', 'Sykmeldt\u00a0i\u00a0for\u00a0liten\u00a0grad')
+                    .should('contain', 'For\u00a0mye\u00a0arbeid\u00a0og/eller\u00a0inntekt')
                     .and('contain', '-')
                 cy.contains('19.feb.')
                     .parent()
@@ -196,7 +196,7 @@ describe('Utbetalingsoversikt', () => {
                     'Du kan ikke bruke egenmelding de dagene NAV betaler sykepenger. ',
                 )
 
-                cy.get('[data-cy="dag-label-MinimumSykdomsgrad"]').contains('Sykmeldt i for liten grad')
+                cy.get('[data-cy="dag-label-MinimumSykdomsgrad"]').contains('For mye arbeid og/eller inntekt')
                 cy.get('[data-cy="dag-beskrivelse-MinimumSykdomsgrad"]').contains(
                     'For å ha rett til sykepenger må du være borte fra jobb minst 20 prosent på grunn av sykdom eller skade.',
                 )

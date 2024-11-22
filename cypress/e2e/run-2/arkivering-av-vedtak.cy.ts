@@ -8,7 +8,7 @@ describe('Vedtak for arkivering', () => {
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
             cy.contains('Delvis innvilget søknad').should('exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
-            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+            cy.contains('li', 'For mye arbeid og/eller inntekt').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her')
         })
@@ -100,7 +100,7 @@ describe('Vedtak for arkivering', () => {
         cy.get('[data-cy="utbetaling-panel-refusjon"]').within(() => {
             cy.contains('Delvis innvilget søknad').should('exist')
             cy.contains('Noen av dagene er ikke innvilget fordi:').should('exist')
-            cy.contains('li', 'Sykmeldt i for liten grad').should('exist')
+            cy.contains('li', 'For mye arbeid og/eller inntekt').should('exist')
 
             cy.contains('button', 'Se nærmere begrunnelse her').click()
         })
