@@ -15,7 +15,7 @@ describe('Kun personutbetaling', () => {
     it('Viser info om utbetaling til person', () => {
         cy.get(`a[href*=${vedtak.id}]`).click()
         cy.contains(
-            'Du får noen av sykepengene dine fra NAV og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
+            'Du får noen av sykepengene dine fra Nav og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
         ).should('not.exist')
 
         cy.contains('Pengene utbetales til deg')
@@ -46,7 +46,7 @@ describe('Kun personutbetaling', () => {
             cy.get('.navds-accordion__item').contains('Totalbeløp')
             cy.get('.navds-accordion__item').contains(
                 'Til slutt summerer vi alle dagene. ' +
-                    'Når du får utbetalt sykepenger fra NAV viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
+                    'Når du får utbetalt sykepenger fra Nav viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.',
             )
         })
     })

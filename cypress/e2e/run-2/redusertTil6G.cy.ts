@@ -6,7 +6,7 @@ describe('Redusert til 6G', () => {
 
     before(() => {
         cy.visit('http://localhost:3000/syk/sykepenger')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 10)
     })
 
     it('Laster startside', () => {
@@ -22,7 +22,7 @@ describe('Redusert til 6G', () => {
         cy.contains('Mer om beregningen').click({ force: true })
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt' })
+            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
             .should('contain', 'Beregnet månedsinntekt')
             .should('contain', formaterValuta(74675))
 

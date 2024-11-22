@@ -4,13 +4,13 @@ import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
-import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import { VedtakProps } from '../vedtak'
 
 export const Behandling = ({ vedtak }: VedtakProps) => {
     const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
+    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
     const tittelNokkel = () => {
         if (annullertEllerRevurdert) {
@@ -26,6 +26,16 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
         }
     }
 
+    const behandlingOpplysningstekst = () => {
+        if (inntektFraAOrdningLagtTilGrunn) {
+            return annullertEllerRevurdert
+                ? 'behandling.opplysningene.aordning.preteritum'
+                : 'behandling.opplysningene.aordning.presens'
+        } else {
+            return annullertEllerRevurdert ? 'behandling.opplysningene.preteritum' : 'behandling.opplysningene.presens'
+        }
+    }
+
     const behandlingInfoTekst = () => {
         return (
             <>
@@ -36,12 +46,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                         })}
                     </>
                 )}
-
-                {tekst(
-                    annullertEllerRevurdert
-                        ? 'behandling.opplysningene.preteritum'
-                        : 'behandling.opplysningene.presens',
-                )}
+                {tekst(behandlingOpplysningstekst())}
             </>
         )
     }
@@ -53,8 +58,6 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             </Heading>
             <BodyLong data-cy="behandling-body" spacing>
                 {behandlingInfoTekst()}
-                <LenkeMedAmplitude url={tekst('behandling.lenke.url')} tekst={tekst('behandling.lenke')} />
-                {tekst('behandling.se-opplysningene')}
             </BodyLong>
         </>
     )

@@ -56,7 +56,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                 >
                     <Accordion.Header>
                         <Heading size="small" level="3">
-                            Dager NAV ikke utbetaler
+                            Dager Nav ikke utbetaler
                         </Heading>
                     </Accordion.Header>
                     <Accordion.Content className="bg-white p-0">

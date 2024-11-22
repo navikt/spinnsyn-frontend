@@ -66,16 +66,10 @@ describe('Kombinasjonutbetaling keyboard', () => {
     })
 
     it('Annen info i bunnen av vedtaket', () => {
-        cy.realPress('Tab') // Kontakt oss link
-        cy.focused().contains('Kontakt oss')
-
-        cy.realPress('Tab')
-        cy.focused().contains('kontakte NAV')
-
         cy.realPress('Tab')
         cy.focused().contains('endre svarene i søknaden')
         cy.realPress('Tab')
-        cy.focused().contains('inntektsmelding')
+        cy.focused().contains('Ta kontakt med Nav')
 
         cy.realPress('Tab') // Retten til å klage link
         cy.focused().contains('retten til å klage')

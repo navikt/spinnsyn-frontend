@@ -32,7 +32,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const totalbelopInnhold = () => {
         const tilSluttTekst = 'Til slutt summerer vi alle dagene.'
         const direkteTekst =
-            'Når du får utbetalt sykepenger fra NAV viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
+            'Når du får utbetalt sykepenger fra Nav viser totalbeløp beregnet sykepenger før skatt og eventuelle andre påleggstrekk.'
         const refusjonTekst =
             'Når du får utbetalt sykepenger fra arbeidsgiveren din, er det trukket skatt og eventuelt andre faste trekk fra dette beløpet.'
         if (erBegge) {

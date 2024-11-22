@@ -24,6 +24,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
+    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
     useEffect(() => {
         if (apneElementMedId === 'begrunnelse_vedtak') {
@@ -105,7 +106,14 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 <BodyShort weight="semibold" className="w-full">
                     {storeTilStoreOgSmå(vedtak.orgnavn)}
                 </BodyShort>
-                <InfoSection label={tekst('utbetaling.inntekt.info.beregnet')} value={inntektMnd} />
+                <InfoSection
+                    label={
+                        inntektFraAOrdningLagtTilGrunn
+                            ? tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra a-ordningen)'
+                            : tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra inntektsmeldingen)'
+                    }
+                    value={inntektMnd}
+                />
                 <InfoSection label={tekst('utbetaling.inntekt.info.omregnet')} value={inntektAr} />
                 {harFlereArbeidsgivere(vedtak) === 'ja' && (
                     <>
@@ -178,7 +186,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                             du kan få for arbeidsavklaringspenger være høyere enn det du kan få for sykepenger. For mer
                             informasjon{' '}
                             <Link href={tekst('behandling.lenke.url')} target="_blank">
-                                kontakt NAV
+                                kontakt Nav
                             </Link>
                             .
                         </Detail>

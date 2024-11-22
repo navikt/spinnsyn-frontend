@@ -6,7 +6,7 @@ describe('Tester logikk i behandling.tsx', () => {
             .should('have.text', 'Søknaden er behandlet automatisk')
             .and('be.visible')
         cy.get('[data-cy="behandling-body"]').contains(
-            'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
+            'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
 
         cy.get('[data-cy*="ugyldig"]').should('not.exist')
@@ -21,7 +21,7 @@ describe('Tester logikk i behandling.tsx', () => {
             .should('have.text', 'Søknaden er behandlet av en saksbehandler')
             .and('be.visible')
         cy.get('[data-cy="behandling-body"]').contains(
-            'Vi fattet vedtaket 21. mars 2022. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
+            'Vi fattet vedtaket 21. mars 2022. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
         cy.get('[data-cy*="ugyldig"]').should('not.exist')
     })
@@ -37,7 +37,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.get('[data-cy="behandling-header"]').should('have.text', 'Søknaden ble behandlet automatisk')
         cy.get('[data-cy="behandling-body"]').contains(
-            'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
+            'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
 
         cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
@@ -58,7 +58,7 @@ describe('Tester logikk i behandling.tsx', () => {
 
         cy.get('[data-cy="behandling-header"]').should('have.text', 'Søknaden ble behandlet av en saksbehandler')
         cy.get('[data-cy="behandling-body"]').contains(
-            'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. Kontakt oss om du ønsker å se opplysningene.',
+            'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
 
         cy.findByRole('region', { name: 'Antall sykepengedager som gjenstår' })
@@ -72,7 +72,7 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.contains('Dette lurer mange på når vedtaket behandles på nytt').and('be.visible').click()
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing')
             .eq(1)
-            .contains('Du får sykepenger direkte fra NAV. Den nye behandlingen kan påvirke hva NAV utbetaler til deg.')
+            .contains('Du får sykepenger direkte fra Nav. Den nye behandlingen kan påvirke hva Nav utbetaler til deg.')
     })
 
     it('Revurdert vedtak med kombinasjonsutbetaling', () => {
@@ -84,7 +84,7 @@ describe('Tester logikk i behandling.tsx', () => {
         cy.get('.navds-body-long.navds-body-long.navds-typo--spacing')
             .eq(1)
             .contains(
-                'Du får sykepenger både fra arbeidsgiveren din og direkte fra NAV. Den nye behandlingen kan påvirke hva NAV betaler både til deg og til arbeidsgiveren din.',
+                'Du får sykepenger både fra arbeidsgiveren din og direkte fra Nav. Den nye behandlingen kan påvirke hva Nav betaler både til deg og til arbeidsgiveren din.',
             )
     })
 

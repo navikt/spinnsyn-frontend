@@ -266,7 +266,7 @@ describe('HentDagerTest', () => {
         expect(result).toEqual(expected)
     })
 
-    test('Arbeidsgiverperiode overtas av NAV midt i uka', () => {
+    test('Arbeidsgiverperiode overtas av Nav midt i uka', () => {
         const result = hentDager(
             mandag.format('YYYY-MM-DD'),
             mandag.add(17, 'day').format('YYYY-MM-DD'),
@@ -436,7 +436,7 @@ describe('HentDagerTest', () => {
         expect(result).toEqual(expected)
     })
 
-    test('Arbeidsgiverperiode overtas av NAV på mandag, da blir helgen før også overtatt og vises som helg', () => {
+    test('Arbeidsgiverperiode overtas av Nav på mandag, da blir helgen før også overtatt og vises som helg', () => {
         const result = hentDager(
             mandag.format('YYYY-MM-DD'),
             mandag.add(17, 'day').format('YYYY-MM-DD'),
@@ -838,7 +838,7 @@ describe('HentDagerTest', () => {
         expect(result).toEqual(expected)
     })
 
-    test('Arbeidsgiverperiode overtas av NAV og første dag er i helga', () => {
+    test('Arbeidsgiverperiode overtas av Nav og første dag er i helga', () => {
         const sondag = mandag.subtract(1, 'day')
 
         const result = hentDager(

@@ -15,7 +15,7 @@ describe('Tidligere utbetalt hel arbeidsgiverperiode', () => {
             cy.contains('Dine sykepenger per dag').should('be.visible')
             cy.findByRole('button', { name: 'Dine sykepenger per dag' }).click()
             cy.contains(
-                'Det er tidligere utbetalt en hel arbeidsgiverperiode. Etter dette har vi vurdert at du ikke har gjenopptatt arbeidet og deretter vært friskmeldt i mer enn 16 dager. NAV har derfor utbetalt sykepenger fra første dag du ble sykmeldt.',
+                'Det er tidligere utbetalt en hel arbeidsgiverperiode. Etter dette har vi vurdert at du ikke har gjenopptatt arbeidet og deretter vært friskmeldt i mer enn 16 dager. Nav har derfor utbetalt sykepenger fra første dag du ble sykmeldt.',
             ).should('be.visible')
         })
     })

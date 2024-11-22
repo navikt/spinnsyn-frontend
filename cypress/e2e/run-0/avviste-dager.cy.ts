@@ -11,7 +11,7 @@ import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../../../src/data/te
 describe('Avviste dager', () => {
     before(() => {
         cy.visit('http://localhost:3000/syk/sykepenger')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 9)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 10)
     })
 
     it('Laster startside', () => {
@@ -57,7 +57,7 @@ describe('Avviste dager', () => {
             'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.',
         )
 
-        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler')
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager Nav ikke utbetaler')
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="dag-tabell-body"]').within(() => {
@@ -114,14 +114,14 @@ describe('Avviste dager', () => {
         //lukker og åpner "utbetales ikke av nav"
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="avvistedageroversikt"]')
-                .should('contain', 'Dager NAV ikke utbetaler')
+                .should('contain', 'Dager Nav ikke utbetaler')
                 .should('contain', 'Forklaring')
             cy.get('[data-cy="avvistedageroversikt"] > .navds-accordion__header').click()
         })
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
             .should('contain', '22 sykepengedager')
-            .and('contain', 'Utbetales ikke av NAV')
+            .and('contain', 'Utbetales ikke av Nav')
             .click()
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).contains('Mer om beregningen').should('not.exist')
@@ -134,7 +134,7 @@ describe('Avviste dager', () => {
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
             .should('contain', '4 sykepengedager')
-            .and('contain', 'Utbetales ikke av NAV')
+            .and('contain', 'Utbetales ikke av Nav')
             .click()
 
         cy.contains(
@@ -143,7 +143,7 @@ describe('Avviste dager', () => {
 
         cy.contains('Beregning av sykepengene').should('not.exist')
 
-        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager Nav ikke utbetaler').click()
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="dag-tabell-body"]').within(() => {
@@ -166,7 +166,7 @@ describe('Avviste dager', () => {
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
             .should('contain', '5 sykepengedager')
-            .and('contain', 'Utbetales ikke av NAV')
+            .and('contain', 'Utbetales ikke av Nav')
             .click()
 
         cy.contains(
@@ -175,7 +175,7 @@ describe('Avviste dager', () => {
 
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager Nav ikke utbetaler').click()
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="dag-tabell-body"]').within(() => {
@@ -224,7 +224,7 @@ describe('Avviste dager', () => {
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' })
             .should('contain', '4 sykepengedager')
-            .and('contain', 'Utbetales ikke av NAV')
+            .and('contain', 'Utbetales ikke av Nav')
             .click()
 
         cy.contains(
@@ -233,7 +233,7 @@ describe('Avviste dager', () => {
 
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager NAV ikke utbetaler').click()
+        cy.get('[data-cy="avvistedageroversikt"]').should('contain', 'Dager Nav ikke utbetaler').click()
 
         cy.findByRole('region', { name: 'Avviste sykepengedager' }).within(() => {
             cy.get('[data-cy="dag-tabell-body"]').within(() => {
