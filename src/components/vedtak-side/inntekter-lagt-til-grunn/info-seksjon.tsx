@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { BodyShort } from '@navikt/ds-react'
 
 import { cn } from '../../../utils/tw-utils'
 
 interface InfoSectionProps {
-    label: string
+    label: ReactNode
     ariaLabel?: string
     value: string
     className?: string
@@ -13,7 +13,10 @@ interface InfoSectionProps {
 
 export const InfoSection: React.FC<InfoSectionProps> = ({ ariaLabel, label, value, className, bold = false }) => {
     return (
-        <section aria-label={ariaLabel || label} className={cn('arkivering-flex-fix flex justify-between', className)}>
+        <section
+            aria-label={ariaLabel || (typeof label === 'string' ? label : undefined)}
+            className={cn('arkivering-flex-fix flex justify-between', className)}
+        >
             <BodyShort as="div" size="small" spacing className={cn({ 'font-bold': bold })}>
                 {label}
             </BodyShort>

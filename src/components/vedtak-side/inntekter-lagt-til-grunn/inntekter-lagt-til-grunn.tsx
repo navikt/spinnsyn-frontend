@@ -108,12 +108,18 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 </BodyShort>
                 <InfoSection
                     label={
-                        inntektFraAOrdningLagtTilGrunn
-                            ? tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra a-ordningen)'
-                            : tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra inntektsmeldingen)'
+                        <>
+                            {tekst('utbetaling.inntekt.info.beregnet')}
+                            <span className="block mt-1 text-sm">
+                                {inntektFraAOrdningLagtTilGrunn
+                                    ? '(hentet fra a-ordningen)'
+                                    : '(hentet fra inntektsmeldingen)'}
+                            </span>
+                        </>
                     }
                     value={inntektMnd}
                 />
+
                 <InfoSection label={tekst('utbetaling.inntekt.info.omregnet')} value={inntektAr} />
                 {harFlereArbeidsgivere(vedtak) === 'ja' && (
                     <>
