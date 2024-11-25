@@ -110,11 +110,11 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                     label={
                         <>
                             {tekst('utbetaling.inntekt.info.beregnet')}
-                            <span className="block mt-1 text-sm">
+                            <BodyShort size="small">
                                 {inntektFraAOrdningLagtTilGrunn
                                     ? '(hentet fra a-ordningen)'
                                     : '(hentet fra inntektsmeldingen)'}
-                            </span>
+                            </BodyShort>
                         </>
                     }
                     value={inntektMnd}
