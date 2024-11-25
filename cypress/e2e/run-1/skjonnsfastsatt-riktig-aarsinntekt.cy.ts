@@ -11,9 +11,15 @@ describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
-            .should('contain', 'Beregnet månedsinntekt')
-            .should('contain', formaterValuta(21000))
+            .find('.navds-body-short.navds-body-short--small')
+            .contains('Beregnet månedsinntekt')
+            .should('be.visible')
+
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
+            .find('.navds-body-short.navds-body-short--small p')
+            .should('contain', '(hentet fra inntektsmeldingen)')
+
+        cy.findByRole('article', { name: 'Beregning av sykepengene' }).should('contain', formaterValuta(21000))
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Omregnet til årsinntekt' })
@@ -41,9 +47,15 @@ describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
-            .should('contain', 'Beregnet månedsinntekt')
-            .should('contain', formaterValuta(15000))
+            .find('.navds-body-short.navds-body-short--small')
+            .contains('Beregnet månedsinntekt')
+            .should('be.visible')
+
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
+            .find('.navds-body-short.navds-body-short--small p')
+            .should('contain', '(hentet fra inntektsmeldingen)')
+
+        cy.findByRole('article', { name: 'Beregning av sykepengene' }).should('contain', formaterValuta(15000))
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Omregnet til årsinntekt' })

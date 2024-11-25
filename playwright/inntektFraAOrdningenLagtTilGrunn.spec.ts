@@ -21,9 +21,15 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
 
         const beregningArticle = page.locator('role=article[name="Beregning av sykepengene"]')
 
-        await expect(
-            beregningArticle.locator('role=region[name="Beregnet månedsinntekt (hentet fra a-ordningen)"]'),
-        ).toContainText(formaterValuta(74675))
+        const beregnetMaanedsinntekt = beregningArticle.locator('.navds-body-short.navds-body-short--small', {
+            hasText: 'Beregnet månedsinntekt',
+        })
+        await expect(beregnetMaanedsinntekt).toBeVisible()
+
+        const hentetFraAOrdningen = beregningArticle.locator('.navds-body-short.navds-body-short--small p')
+        await expect(hentetFraAOrdningen).toHaveText('(hentet fra a-ordningen)')
+
+        await expect(beregningArticle).toContainText(formaterValuta(74675))
 
         await expect(beregningArticle.locator('role=region[name="Omregnet til årsinntekt"]')).toContainText(
             formaterValuta(896100),
