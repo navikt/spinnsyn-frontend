@@ -10,6 +10,7 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
 
     test('Sjekker informasjon relatert til inntekt fra a-ordningen', async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger?testperson=diverse-data')
+        await page.emulateMedia({ reducedMotion: 'reduce' })
         await page.locator(`a[href*="${vedtak.id}"]`).click()
 
         const header = page.locator('main').locator('h1').first()
