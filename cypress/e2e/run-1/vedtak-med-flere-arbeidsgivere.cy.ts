@@ -18,9 +18,15 @@ describe('Vedtak med flere arbeidsgivere', () => {
         cy.get('main').findByRole('region', { name: 'Beregning av sykepengene' }).click()
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
-            .should('contain', 'Beregnet månedsinntekt')
-            .should('contain', formaterValuta(41958))
+            .find('.navds-body-short.navds-body-short--small')
+            .contains('Beregnet månedsinntekt')
+            .should('be.visible')
+
+        cy.findByRole('article', { name: 'Beregning av sykepengene' })
+            .find('.navds-body-short.navds-body-short--small p')
+            .should('contain', '(hentet fra inntektsmeldingen)')
+
+        cy.findByRole('article', { name: 'Beregning av sykepengene' }).should('contain', formaterValuta(41958))
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Omregnet til årsinntekt' })
