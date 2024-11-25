@@ -21,7 +21,6 @@ interface FlexjarFellesProps {
     flexjarsporsmal: string
     flexjartittel: string
     feedbackProps: Record<string, string | undefined | boolean>
-    fullBredde?: boolean
 }
 
 export function FlexjarFelles({
@@ -36,7 +35,6 @@ export function FlexjarFelles({
     children,
     textRequired,
     feedbackProps,
-    fullBredde,
 }: FlexjarFellesProps) {
     const [textValue, setTextValue] = useState('')
     const [errorMsg, setErrorMsg] = useState<string | null>(null)
@@ -107,7 +105,7 @@ export function FlexjarFelles({
     }
 
     return (
-        <div role="region" className={`w-full ${fullBredde ? '' : 'mt-16 md:w-3/4'}`}>
+        <div role="region" className="w-full mt-16 md:w-3/4">
             <div>
                 {!thanksFeedback && (
                     <div className="mt-1 border-4 border-surface-subtle rounded-medium">
