@@ -11,12 +11,14 @@ export const FlexjarVarSidenNyttig = ({
     harAvvisteDager,
     annullert,
     revurdert,
+    julesoknad,
 }: {
     erRefusjon: boolean
     erDirekteutbetaling: boolean
     harAvvisteDager: boolean
     annullert: boolean
     revurdert: boolean
+    julesoknad: boolean
 }) => {
     const arkivering = useContext(ArkiveringContext)
 
@@ -46,6 +48,16 @@ export const FlexjarVarSidenNyttig = ({
         setActiveState,
     }
 
+    const feedbackProps: Record<string, string | undefined | boolean> = {
+        erRefusjon,
+        harAvvisteDager,
+        erDirekteutbetaling,
+        annullert,
+        revurdert,
+    }
+    if (julesoknad) {
+        feedbackProps['julesøknad'] = true
+    }
     return (
         <FlexjarFelles
             feedbackId={feedbackId}
@@ -54,13 +66,7 @@ export const FlexjarVarSidenNyttig = ({
             thanksFeedback={thanksFeedback}
             setThanksFeedback={setThanksFeedback}
             getPlaceholder={getPlaceholder}
-            feedbackProps={{
-                erRefusjon,
-                harAvvisteDager,
-                erDirekteutbetaling,
-                annullert,
-                revurdert,
-            }}
+            feedbackProps={feedbackProps}
             textRequired={activeState === 'FORBEDRING'}
             flexjartittel="Hjelp oss med å gjøre denne siden bedre"
             flexjarsporsmal="Var denne siden nyttig?"

@@ -87,6 +87,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
+    const julesoknad = skalViseJulesoknadWarning(vedtak)
     return (
         <>
             {!erArkivering && (
@@ -105,7 +106,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </BodyLong>
                 </>
             )}
-            {skalViseJulesoknadWarning(vedtak) && <JulesoknadWarning />}
+            {julesoknad && <JulesoknadWarning />}
             {annullertEllerRevurdert && (
                 <>
                     <AnnulleringsInfo vedtak={vedtak} />
@@ -135,16 +136,17 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             <Behandling vedtak={vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
-            {flexjarToggle.enabled && (
+            {(flexjarToggle.enabled || julesoknad) && (
                 <FlexjarVarSidenNyttig
                     erDirekteutbetaling={erDirekteutbetaling}
                     erRefusjon={erRefusjon}
                     harAvvisteDager={harAvvisteDager}
                     annullert={vedtak.annullert}
                     revurdert={vedtak.revurdert}
+                    julesoknad={julesoknad}
                 />
             )}
-            {!flexjarToggle.enabled && flexjarPohelseHelsemetrikkToggle.enabled && (
+            {!flexjarToggle.enabled && flexjarPohelseHelsemetrikkToggle.enabled && !julesoknad && (
                 <FlexjarPohelseHelsemetrikk
                     erDirekteutbetaling={erDirekteutbetaling}
                     erRefusjon={erRefusjon}
