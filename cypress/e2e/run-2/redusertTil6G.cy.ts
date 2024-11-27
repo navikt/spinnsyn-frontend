@@ -22,15 +22,9 @@ describe('Redusert til 6G', () => {
         cy.contains('Mer om beregningen').click({ force: true })
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .find('.navds-body-short.navds-body-short--small')
-            .contains('Beregnet månedsinntekt')
-            .should('be.visible')
-
-        cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .find('.navds-body-short.navds-body-short--small p')
-            .should('contain', '(hentet fra inntektsmeldingen)')
-
-        cy.findByRole('article', { name: 'Beregning av sykepengene' }).should('contain', formaterValuta(74675))
+            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
+            .should('contain', 'Beregnet månedsinntekt')
+            .should('contain', formaterValuta(74675))
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Omregnet til årsinntekt' })
