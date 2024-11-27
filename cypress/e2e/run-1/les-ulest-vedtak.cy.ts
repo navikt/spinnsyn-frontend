@@ -40,13 +40,9 @@ describe('Les uleste vedtak', () => {
         )
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .find('.navds-body-short.navds-body-short--small')
-            .contains('Beregnet månedsinntekt')
-            .should('be.visible')
-
-        cy.findByRole('article', { name: 'Beregning av sykepengene' })
-            .find('.navds-body-short.navds-body-short--small p')
-            .should('contain', '(hentet fra inntektsmeldingen)')
+            .findByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' })
+            .should('contain', 'Beregnet månedsinntekt')
+            .should('contain', '30\u00a0000 kr')
 
         cy.findByRole('article', { name: 'Beregning av sykepengene' })
             .findByRole('region', { name: 'Omregnet til årsinntekt' })

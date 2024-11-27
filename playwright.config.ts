@@ -67,9 +67,31 @@ export default defineConfig({
             use: { ...devices['Desktop Chrome'] },
         },
         {
-            name: 'firefox',
-            use: { ...devices['Desktop Firefox'] },
+            name: 'Mobile Chrome',
+            use: { ...devices['Pixel 5'] },
         },
+        // Safari seems broken, unable to scroll or record videos.
+        // TODO: Check if Safari is still being Safari after a few new versions.
+        ...(process.env.RUN_SAFARI
+            ? [
+                  {
+                      name: 'Mobile Safari',
+                      use: { ...devices['iPhone 12'] },
+                  },
+              ]
+            : []),
+        ...(!process.env.CI
+            ? [
+                  {
+                      name: 'firefox',
+                      use: { ...devices['Desktop Firefox'] },
+                  },
+                  {
+                      name: 'webkit',
+                      use: { ...devices['Desktop Safari'] },
+                  },
+              ]
+            : []),
     ],
     webServer: opts.server,
 })

@@ -12,6 +12,7 @@ import { BegrunnelseEkspanderbar } from '../begrunnelse-ekspanderbar/begrunnelse
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
+import { useWindowSize } from '../../../utils/useWindowSize'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -25,6 +26,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
     const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
+    const { mobile } = useWindowSize()
 
     useEffect(() => {
         if (apneElementMedId === 'begrunnelse_vedtak') {
@@ -108,14 +110,20 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 </BodyShort>
                 <InfoSection
                     label={
-                        <>
-                            {tekst('utbetaling.inntekt.info.beregnet')}
-                            <BodyShort size="small">
-                                {inntektFraAOrdningLagtTilGrunn
-                                    ? '(hentet fra a-ordningen)'
-                                    : '(hentet fra inntektsmeldingen)'}
-                            </BodyShort>
-                        </>
+                        mobile ? (
+                            <>
+                                {tekst('utbetaling.inntekt.info.beregnet')}
+                                <BodyShort size="small">
+                                    {inntektFraAOrdningLagtTilGrunn
+                                        ? '(hentet fra a-ordningen)'
+                                        : '(hentet fra inntektsmeldingen)'}
+                                </BodyShort>
+                            </>
+                        ) : inntektFraAOrdningLagtTilGrunn ? (
+                            tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra a-ordningen)'
+                        ) : (
+                            tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra inntektsmeldingen)'
+                        )
                     }
                     value={inntektMnd}
                 />
