@@ -26,6 +26,7 @@ import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import IngenUtbetaling from './utbetaling/ingen-utbetaling'
+import dayjs from "dayjs";
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -40,12 +41,34 @@ export interface VedtakProps {
     vedtak: RSVedtakWrapperUtvidet
 }
 
+function isWeekendPeriod(fom : string, tom : string): boolean {
+    const startDate = dayjs(fom);
+    const endDate = dayjs(tom);
+
+    const dates = [];
+    let currentDate = startDate;
+
+   while (currentDate.isSameOrBefore(endDate)) {
+        dates.push(currentDate);
+        currentDate = currentDate.add(1, 'day');
+    }
+
+    // Check if all dates are weekends using every() and a lambda
+    return dates.every(date => {
+        const dayOfWeek = date.day();
+        return dayOfWeek === 0 || dayOfWeek === 6; // 0 is Sunday, 6 is Saturday
+    });
+}
+
+
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
     const studyKey = 'study-hpyhgdokuq'
     const { data: studyActive } = useStudyStatus(studyKey)
     const query: NodeJS.Dict<string | string[]> = {}
+
+
 
     // unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
     const avvisteDagerArbeidsgiver = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
@@ -123,8 +146,12 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
+            1<br/>
+            {/* todo skjul denne om begge dagene er en helg */}
+            {skalViseRefusjon && !isWeekendPeriod(vedtak.vedtak.fom, vedtak.vedtak.tom) && <RefusjonMedInntekt vedtak={vedtak} />}
+            2<br/>
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
+            3<br/>
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
 
             <InntekterLagtTilGrunn vedtak={vedtak} />

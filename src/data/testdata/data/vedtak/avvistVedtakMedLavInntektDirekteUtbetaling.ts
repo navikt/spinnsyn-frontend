@@ -29,6 +29,7 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
             forbrukteSykedager: 0,
             gjenståendeSykedager: 172,
             automatiskBehandling: false,
+            // her må vi eventuelt ha en liste med avviste dager
             // utbetalingsdager: [
             //
             //     {
