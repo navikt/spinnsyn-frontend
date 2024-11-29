@@ -1,7 +1,4 @@
-import {RSVedtakWrapper} from '../../../../types/rs-types/rs-vedtak'
-
-
-
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 
 export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     id: '55d8b14f-e1a6-45a8-bc64-b7af2e845b68',
@@ -12,42 +9,52 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '999999999',
-        fom: "2024-10-26",
-        tom: "2024-10-27",
+        fom: '2021-08-18',
+        tom: '2021-08-21',
         dokumenter: [
             {
-        dokumentId: "6c45c273-934e-45d7-8988-3dc7ccf8e30a",
-        type: "Søknad"
-    }, {dokumentId: "221598e4-2721-43b1-ad1f-e4f9c02765aa", type: "Sykmelding"}
+                dokumentId: '1aaaf28e-af69-4c9d-8e91-d14a3906361f',
+                type: 'Sykmelding',
+            },
+            {
+                dokumentId: '6b1e5fff-3d99-48b9-8ddf-f121da4d88af',
+                type: 'Inntektsmelding',
+            },
         ],
-        inntekt: 56000,
-        sykepengegrunnlag: 670000,
+        inntekt: 20000,
+        sykepengegrunnlag: 240000,
         vedtakFattetTidspunkt: '2021-08-22',
         utbetaling: {
-            organisasjonsnummer: '999999999',
-            utbetalingId: 'b3f4d38e-a68e-3850-9d35-ee1bd6f37736',
+            organisasjonsnummer: '896929119',
+            utbetalingId: 'b3f4d38e-a68e-4951-9d35-ee1bd6f37736',
             forbrukteSykedager: 0,
-            gjenståendeSykedager: 172,
+            gjenståendeSykedager: 248,
             automatiskBehandling: false,
-            // her må vi eventuelt ha en liste med avviste dager
-            // utbetalingsdager: [
-            //
-            //     {
-            //         dato: '2021-08-21',
-            //         type: 'AvvistDag',
-            //         begrunnelser: ['MinimumInntekt'],
-            //     },
-            //     {
-            //         dato: '2021-08-22',
-            //         type: 'AvvistDag',
-            //         begrunnelser: ['EtterDødsdato'],
-            //     },
-            // ],
+            utbetalingsdager: [
+                {
+                    dato: '2021-08-18',
+                    type: 'Fridag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-19',
+                    type: 'Fridag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-08-20',
+                    type: 'AvvistDag',
+                    begrunnelser: ['MinimumInntekt'],
+                },
+                {
+                    dato: '2021-08-21',
+                    type: 'AvvistDag',
+                    begrunnelser: ['EtterDødsdato'],
+                },
+            ],
         },
     },
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
 }
-
-
