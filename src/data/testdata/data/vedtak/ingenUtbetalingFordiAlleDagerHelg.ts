@@ -1,5 +1,4 @@
-import {RSVedtakWrapper} from '../../../../types/rs-types/rs-vedtak'
-
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 
 export const ingenUtbetalingFordiAlleDagerHelg: RSVedtakWrapper = {
     id: '55d8b14f-e1a6-45a8-bc64-b7af2e845b68',
@@ -10,13 +9,14 @@ export const ingenUtbetalingFordiAlleDagerHelg: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     vedtak: {
         organisasjonsnummer: '999999999',
-        fom: "2024-10-26",
-        tom: "2024-10-27",
+        fom: '2024-10-26',
+        tom: '2024-10-27',
         dokumenter: [
             {
-        dokumentId: "6c45c273-934e-45d7-8988-3dc7ccf8e30a",
-        type: "Søknad"
-    }, {dokumentId: "221598e4-2721-43b1-ad1f-e4f9c02765aa", type: "Sykmelding"}
+                dokumentId: '6c45c273-934e-45d7-8988-3dc7ccf8e30a',
+                type: 'Søknad',
+            },
+            { dokumentId: '221598e4-2721-43b1-ad1f-e4f9c02765aa', type: 'Sykmelding' },
         ],
         inntekt: 56000,
         sykepengegrunnlag: 670000,
@@ -47,5 +47,3 @@ export const ingenUtbetalingFordiAlleDagerHelg: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
 }
-
-
