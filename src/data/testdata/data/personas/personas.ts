@@ -29,6 +29,7 @@ import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../vedtak/avvistVedt
 import { kombinertRevurdert } from '../vedtak/kombinertRevurdert'
 import { avslattMinimumInntektOver67 } from '../vedtak/avslattMinimumInntektOver67'
 import { inntektHentetFraAordningen } from '../vedtak/inntektHentetFraAordningen'
+import { ingenUtbetalingFordiAlleDagerHelg } from "../vedtak/ingenUtbetalingFordiAlleDagerHelg";
 
 export const utenData: Persona = {
     vedtak: [],
@@ -52,6 +53,7 @@ export const diverseData: Persona = {
         avvistVedtakMedLavInntekt,
         vedtakRedusertTil6G,
         inntektHentetFraAordningen,
+        ingenUtbetalingFordiAlleDagerHelg,
     ],
     beskrivelse: 'Diverse vedtak brukt til testing',
 }

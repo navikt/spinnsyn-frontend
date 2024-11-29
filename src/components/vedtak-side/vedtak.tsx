@@ -1,7 +1,6 @@
 import { Alert, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
-import dayjs from 'dayjs'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
@@ -27,6 +26,7 @@ import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import IngenUtbetaling from './utbetaling/ingen-utbetaling'
+import {isWeekendPeriod} from "../../utils/dato-utils";
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -41,24 +41,7 @@ export interface VedtakProps {
     vedtak: RSVedtakWrapperUtvidet
 }
 
-function isWeekendPeriod(fom: string, tom: string): boolean {
-    const startDate = dayjs(fom)
-    const endDate = dayjs(tom)
 
-    const dates = []
-    let currentDate = startDate
-
-    while (currentDate.isSameOrBefore(endDate)) {
-        dates.push(currentDate)
-        currentDate = currentDate.add(1, 'day')
-    }
-
-    // Check if all dates are weekends using every() and a lambda
-    return dates.every((date) => {
-        const dayOfWeek = date.day()
-        return dayOfWeek === 0 || dayOfWeek === 6 // 0 is Sunday, 6 is Saturday
-    })
-}
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()

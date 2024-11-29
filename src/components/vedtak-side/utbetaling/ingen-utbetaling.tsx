@@ -7,7 +7,7 @@ import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
-
+import { erWeekendPeriod } from '../../../utils/dato-utils'
 import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
 const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
@@ -20,6 +20,8 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
         harBegrunnelseFraBomlo,
     }
 
+
+    const erWeekendPeriode  = erWeekendPeriod(vedtak.vedtak.fom, vedtak.vedtak.tom)
     return (
         <UtbetalingPanel
             sectionLabel="Ingen utbetaling"
