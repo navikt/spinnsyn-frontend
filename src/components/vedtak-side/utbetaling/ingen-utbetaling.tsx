@@ -7,7 +7,8 @@ import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
-import { erWeekendPeriod } from '../../../utils/dato-utils'
+import { erWeekendPeriode } from '../../../utils/dato-utils'
+
 import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
 const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
@@ -20,8 +21,6 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
         harBegrunnelseFraBomlo,
     }
 
-
-    const erWeekendPeriode  = erWeekendPeriod(vedtak.vedtak.fom, vedtak.vedtak.tom)
     return (
         <UtbetalingPanel
             sectionLabel="Ingen utbetaling"
@@ -49,6 +48,14 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
             dataCy={utbetalingsType}
         >
             <VedtakPeriode vedtak={vedtak} />
+            {/*{JSON.toString()}*/}
+
+            {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
+                <BodyShort>
+                    Begge dagene er helg, du får derfor ikke utbetalt noe for disse dagene. Dette har ikke implikasjoner
+                    for dine rettigheter neste uke.
+                </BodyShort>
+            )}
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
         </UtbetalingPanel>
     )

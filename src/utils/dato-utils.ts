@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs'
 
 const maaneder = [
     'januar',
@@ -47,8 +47,7 @@ export const erHelg = (dato: Date) => {
     return dato.getDay() === 6 || dato.getDay() === 0
 }
 
-
-export function isWeekendPeriod(fom: string, tom: string): boolean {
+export function erWeekendPeriode(fom: string, tom: string): boolean {
     const startDate = dayjs(fom)
     const endDate = dayjs(tom)
 

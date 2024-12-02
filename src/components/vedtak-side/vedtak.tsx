@@ -13,6 +13,7 @@ import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { useToggle } from '../../toggles/context'
 import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetrikk'
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
+import { erWeekendPeriode } from '../../utils/dato-utils'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -26,7 +27,6 @@ import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import IngenUtbetaling from './utbetaling/ingen-utbetaling'
-import {isWeekendPeriod} from "../../utils/dato-utils";
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -40,8 +40,6 @@ const dagErAvvist: RSDagTypeKomplett[] = [
 export interface VedtakProps {
     vedtak: RSVedtakWrapperUtvidet
 }
-
-
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
@@ -128,7 +126,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             )}
             1<br />
             {/* todo skjul denne om begge dagene er en helg */}
-            {skalViseRefusjon && !isWeekendPeriod(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
+            {skalViseRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <RefusjonMedInntekt vedtak={vedtak} />
             )}
             2<br />

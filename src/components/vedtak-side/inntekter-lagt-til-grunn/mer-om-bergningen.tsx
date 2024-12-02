@@ -79,6 +79,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                             {tekst('utbetaling.totalbelop.tittel')}
                         </Heading>
                         <BodyLong spacing>{totalbelopInnhold()}</BodyLong>
+
                         {harFlereArbeidsgivere(vedtak) == 'ja' && (
                             <>
                                 <Heading spacing size="xsmall" level="3">
@@ -87,12 +88,18 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                                 <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
                             </>
                         )}
+
                         <Heading spacing size="xsmall" level="3">
-                            {tekst('utbetaling.utbetalingsdager.tittel')}
+                            Utbetalingsdager
                         </Heading>
-                        <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
                         <BodyLong spacing>
-                            {tekst('utbetaling.beregning.les.mer')}
+                            Nav betaler sykepenger for dager mandag til fredag og helligdager. Er du sykmeldt i en
+                            periode som inkluderer lørdag og søndag, får du sykepenger for disse dagene også, men de
+                            blir fordelt på ukedagene i utregningen. Hvis du kun har vært sykmeldt en lørdag og/eller
+                            søndag, får du ikke sykepenger for disse dagene.
+                        </BodyLong>
+                        <BodyLong spacing>
+                            Du kan lese mer om hvordan sykepengene beregnes i folketrygdloven
                             <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                                 {tekst('utbetaling.beregning.lenke.tekst')}
                             </Link>

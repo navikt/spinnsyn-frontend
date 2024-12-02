@@ -6,6 +6,7 @@ import DagBeskrivelse from '../../../dager/dag-beskrivelse'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak'
 import { VedtakProps } from '../../vedtak'
+import { erWeekendPeriode } from '../../../../utils/dato-utils'
 
 interface SykepengerPerDagProps {
     dager: RSDag[]
@@ -37,7 +38,7 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
     if (erDirekteutbetaling) {
         return <SykepengerPerDag dager={vedtak.dagerPerson} ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode} />
     }
-    if (erRefusjon) {
+    if (erRefusjon || erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom)) {
         return (
             <SykepengerPerDag
                 dager={vedtak.dagerArbeidsgiver}
