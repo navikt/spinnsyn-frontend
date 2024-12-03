@@ -1,5 +1,5 @@
-import { BodyShort, Heading, List } from '@navikt/ds-react'
-import React from 'react'
+import {BodyShort, Heading, Link, List} from '@navikt/ds-react'
+import React, {useEffect, useRef, useState} from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
@@ -21,7 +21,28 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
         ...finnOppsumertAvslag(vedtak, 'alleDager'),
         harBegrunnelseFraBomlo,
     }
-    const { apneElementMedId, registrerElement } = useScroll()
+    // const { registrerElement, apneElementMedId } = useScroll()
+    //
+    // const [visBeregning, setVisBeregning] = useState<boolean>(false)
+    // const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(false)
+    //     const elementRef = useRef<HTMLDivElement>(null)
+    //
+    //
+    // useEffect(() => {
+    //     if (apneElementMedId === 'dager_ikke_nav') {
+    //         setVisBegrunnelse(true)
+    //         setVisBeregning(true)
+    //     }
+    // }, [apneElementMedId])
+    //
+    // useEffect(() => {
+    //     if (elementRef.current !== null) {
+    //         registrerElement('dager_ikke_nav', elementRef)
+    //     }
+    // }, [elementRef?.current?.id, registrerElement])
+
+
+    const { blaTilElement} = useScroll()
 
     return (
         <UtbetalingPanel
@@ -54,12 +75,30 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
 
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
-                    <Heading level="3" size="small">
-                        Hvorfor får jeg ingen utbetaling
-                    </Heading>
+                    <List as="ul" title="Hvorfor får jeg ingen utbetaling">
 
-                    <List as="ul" title="Det kan også være aktuelt hvis du:">
-                        <List.Item>Helg</List.Item>
+                        <List.Item>
+                        {/*<Link                                         onClick={async (e) => {*/}
+                        {/*                    e.preventDefault()*/}
+
+                        {/*    apneElementMedId("utbetalingsdager")}*/}
+                        {/*}*/}
+                        {/*>*/}
+                        {/*        Helg*/}
+                        {/*</Link>*/}
+
+                                <Link
+                as="button"
+                type="button"
+                className="cursor-pointer"
+                onClick={() =>
+                    blaTilElement('begrunnelse_vedtak')
+                }
+            >
+                Se nærmere begrunnelse her
+            </Link>
+
+                        </List.Item>
                     </List>
                 </BodyShort>
             )}

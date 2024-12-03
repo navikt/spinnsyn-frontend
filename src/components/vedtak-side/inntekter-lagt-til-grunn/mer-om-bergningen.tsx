@@ -89,7 +89,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                             </>
                         )}
 
-                        <Heading spacing size="xsmall" level="3">
+                        <Heading id="utbetalingsdager" spacing size="xsmall" level="3">
                             Utbetalingsdager
                         </Heading>
                         <BodyLong spacing>
