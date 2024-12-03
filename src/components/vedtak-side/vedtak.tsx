@@ -13,6 +13,7 @@ import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { useToggle } from '../../toggles/context'
 import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetrikk'
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
+import { erWeekendPeriode } from '../../utils/dato-utils'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -123,10 +124,15 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
+            1<br />
+            {/* todo skjul denne om begge dagene er en helg */}
+            {skalViseRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
+                <RefusjonMedInntekt vedtak={vedtak} />
+            )}
+            2<br />
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
+            3<br />
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
-
             <InntekterLagtTilGrunn vedtak={vedtak} />
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />

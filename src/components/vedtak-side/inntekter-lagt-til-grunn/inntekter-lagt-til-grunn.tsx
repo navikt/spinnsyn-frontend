@@ -13,6 +13,7 @@ import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { useWindowSize } from '../../../utils/useWindowSize'
+import { erWeekendPeriode } from '../../../utils/dato-utils'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -94,8 +95,13 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilgelse')
     const harIkkeEnForLavInntektDAg = !harMinstEnForLavInntektDag
     const harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse = !(avslag || delvisInnvilgelse)
-    if (harIngenUtbetaling && harIkkeEnForLavInntektDAg && harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse)
-        return null
+    if (
+        harIngenUtbetaling &&
+        !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) &&
+        harIkkeEnForLavInntektDAg &&
+        harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse
+    )
+        return <div>hello</div>
 
     return (
         <VedtakExpansionCard
@@ -104,6 +110,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
             vedtak={vedtak}
             tittel={tekst('utbetaling.inntekt.info.tittel')}
         >
+            {/* todo legg inn */}
             <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
                 <BodyShort weight="semibold" className="w-full">
                     {storeTilStoreOgSmå(vedtak.orgnavn)}
