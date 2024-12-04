@@ -1,11 +1,12 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext } from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
+import {useScroll} from "../../../context/scroll-context";
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
@@ -13,6 +14,26 @@ export interface BeregningInfoProps {
 
 export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
+
+
+    const { apneElementMedId, registrerElement } = useScroll()
+    const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
+    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
+    const elementRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (apneElementMedId === 'mer_om_beregningen') {
+            setVisBegrunnelse(true)
+            setVisBeregning(true)
+        }
+    }, [apneElementMedId])
+
+    useEffect(() => {
+        if (elementRef.current !== null) {
+            registrerElement('mer_om_beregningen', elementRef)
+        }
+    }, [elementRef?.current?.id, registrerElement])
+
 
     const harMinstEnForLavInntektDagerArbeidsgiver =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
@@ -44,7 +65,10 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
         return `${tilSluttTekst} ${refusjonTekst}`
     }
 
+
+    // todo må nok ha noe åpne funksjonalitet her
     return (
+
         <Accordion.Item data-cy="mer-om-beregningen" defaultOpen={arkivering}>
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">

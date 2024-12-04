@@ -92,7 +92,7 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
                 type="button"
                 className="cursor-pointer"
                 onClick={() =>
-                    blaTilElement('begrunnelse_vedtak')
+                    blaTilElement('mer_om_beregningen')
                 }
             >
                 Se nærmere begrunnelse her
