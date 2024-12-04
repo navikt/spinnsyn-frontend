@@ -62,7 +62,7 @@ interface RSUtbetalingUtbetalt {
     automatiskBehandling: boolean
     utbetalingType?: string
     arbeidsgiverOppdrag?: RSOppdrag
-    personOppdrag?: RSOppdrag
+    personOppdrag?: RSOppdrag | null
     utbetalingsdager?: RSUtbetalingdag[]
 }
 
@@ -80,6 +80,7 @@ export interface RSUtbetalingslinje {
     fom: string
     tom: string
     dagsats: number
+    totalbeløp?: number
     grad: number
     stønadsdager: number
 }
@@ -168,6 +169,7 @@ export type BegrunnelseType =
     | 'SkjønnsfastsattSykepengegrunnlagKonklusjon'
     | 'Avslag'
     | 'DelvisInnvilgelse'
+    | 'Innvilgelse'
 
 export type Begrunnelse = {
     type: BegrunnelseType

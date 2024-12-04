@@ -12,6 +12,7 @@ import {
     flexjarPoHelseHelsemetrikk,
     forLavInntektPerson,
     forLavInntektPerson67,
+    innvilgelseMedBegrunnelsePerson,
     julesoknadPerson,
     kombinasjonPerson,
     kombinertRevurdertPersona,
@@ -61,6 +62,7 @@ export type PersonaKey =
     | 'kombinert-revurdert'
     | 'for-lav-inntekt-67'
     | 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo'
+    | 'innvilgelse'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -76,6 +78,7 @@ export const testpersonerGruppert: PersonaGroup = {
     ['avvist-delvis-innvilgelse-bømlo']: {
         ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
         ['for-lav-inntekt-67']: jsonDeepCopy(forLavInntektPerson67),
+        ['innvilgelse']: jsonDeepCopy(innvilgelseMedBegrunnelsePerson),
         ['kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo']: jsonDeepCopy(
             delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
         ),
