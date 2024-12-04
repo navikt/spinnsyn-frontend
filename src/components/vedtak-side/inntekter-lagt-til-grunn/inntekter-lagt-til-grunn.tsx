@@ -207,7 +207,9 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                     </>
                 )}
                 <Accordion className="mt-8" indent={false}>
-                    {erSkjonnsfastsatt && harBegrunnelseForSkjonn && <BegrunnelseEkspanderbar vedtak={vedtak} />}
+                    {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
+                        <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="skjonn" />
+                    )}
                     {avslag && (
                         <BegrunnelseEkspanderbar
                             elementRef={elementRef}
