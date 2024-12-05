@@ -84,10 +84,14 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
                         {/*    apneElementMedId("utbetalingsdager")}*/}
                         {/*}*/}
                         {/*>*/}
-                        {/*        Helg*/}
+                                Helg
                         {/*</Link>*/}
 
-                                <Link
+
+
+                        </List.Item>
+                    </List>
+                        <Link
                 as="button"
                 type="button"
                 className="cursor-pointer"
@@ -97,9 +101,6 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
             >
                 Se nærmere begrunnelse her
             </Link>
-
-                        </List.Item>
-                    </List>
                 </BodyShort>
             )}
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>

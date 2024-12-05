@@ -2,7 +2,7 @@ import { BodyShort } from '@navikt/ds-react'
 import React from 'react'
 import cn from 'classnames'
 
-import { tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
+import {erWeekendPeriode, tilLesbarPeriodeMedArstall} from '../../../utils/dato-utils'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
@@ -17,7 +17,7 @@ const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker }: VedtakPeriodeProps
     return (
         <div
             className={cn(
-                { 'mb-2': !skalViseRefusjonsMottaker, 'mb-8 border-b border-gray-400': skalViseRefusjonsMottaker },
+                { 'mb-2': !skalViseRefusjonsMottaker, 'mb-8 border-b border-gray-400': skalViseRefusjonsMottaker || erWeekendPeriode(vedtak.vedtak.tom, vedtak.vedtak.fom) },
                 'pb-2',
             )}
         >
