@@ -17,13 +17,13 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
-    const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
+    // const [setVisBegrunnelse] = useState<boolean>(arkivering) // visBegrunnelse kommentert ut
     const elementRef = useRef<HTMLDivElement>(null)
     // greier slutt
 
     useEffect(() => {
         if (apneElementMedId === 'mer_om_beregningen') {
-            setVisBegrunnelse(true)
+            // setVisBegrunnelse(true)
             setVisBeregning(true)
         }
     }, [apneElementMedId])
@@ -73,7 +73,6 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
             defaultOpen={arkivering}
             open={visBeregning}
             onOpenChange={(isOpen) => setVisBeregning?.(isOpen)}
-
         >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
@@ -120,7 +119,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
 
                         <Heading id="utbetalingsdager" spacing size="xsmall" level="3" ref={elementRef}>
                             Utbetalingsdager
-                        </Heading >
+                        </Heading>
                         <BodyLong spacing>
                             Nav betaler sykepenger for dager mandag til fredag og helligdager. Er du sykmeldt i en
                             periode som inkluderer lørdag og søndag, får du sykepenger for disse dagene også, men de

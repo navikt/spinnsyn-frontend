@@ -23,7 +23,7 @@ describe('Vedtak for arkivering', () => {
             })
 
             cy.contains(
-                'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
+                'Nav betaler sykepenger for dager mandag til fredag og helligdager. Er du sykmeldt i en periode som inkluderer lørdag og søndag, får du sykepenger for disse dagene også, men de blir fordelt på ukedagene i utregningen. Hvis du kun har vært sykmeldt en lørdag og/eller søndag, får du ikke sykepenger for disse dagene.',
             )
 
             cy.get('[data-cy="mer-om-beregningen"]')
@@ -71,7 +71,7 @@ describe('Vedtak for arkivering', () => {
 
             cy.contains('Forklaring')
             cy.contains(
-                'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
+                'Nav betaler sykepenger for dager mandag til fredag og helligdager. Er du sykmeldt i en periode som inkluderer lørdag og søndag, får du sykepenger for disse dagene også, men de blir fordelt på ukedagene i utregningen. Hvis du kun har vært sykmeldt en lørdag og/eller søndag, får du ikke sykepenger for disse dagene.',
             )
 
             cy.get('[data-cy="mer-om-beregningen"]')
@@ -138,7 +138,7 @@ describe('Vedtak for arkivering', () => {
                 })
             cy.contains('Forklaring')
             cy.contains(
-                'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
+                'Nav betaler sykepenger for dager mandag til fredag og helligdager. Er du sykmeldt i en periode som inkluderer lørdag og søndag, får du sykepenger for disse dagene også, men de blir fordelt på ukedagene i utregningen. Hvis du kun har vært sykmeldt en lørdag og/eller søndag, får du ikke sykepenger for disse dagene.',
             )
 
             cy.contains('Sykepenger per dag til deg')

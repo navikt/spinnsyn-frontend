@@ -75,9 +75,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
                     <List as="ul" title="Hvorfor får jeg ingen utbetaling">
-                        <List.Item>
-                            Helg
-                        </List.Item>
+                        <List.Item>Helg</List.Item>
                     </List>
                     <Link
                         as="button"
@@ -85,7 +83,8 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
                         className="cursor-pointer"
                         onClick={() => {
                             //console.log('blaTilElement')
-                            blaTilElement('mer_om_beregningen') }}
+                            blaTilElement('mer_om_beregningen')
+                        }}
                     >
                         Se nærmere begrunnelse her
                     </Link>
@@ -95,4 +94,3 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
         </UtbetalingPanel>
     )
 }
-

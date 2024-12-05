@@ -6,7 +6,7 @@ describe('Utbetalingsoversikt', () => {
 
     before(() => {
         cy.visit('http://localhost:3000/syk/sykepenger')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 10)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Laster startside', () => {
@@ -57,7 +57,7 @@ describe('Utbetalingsoversikt', () => {
             .eq(3)
             .should(
                 'have.text',
-                'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
+                'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten du har på helgedagene, fordeles på ukedagene. Hvis du derimot kun er sykmeldt en lørdag eller søndag, utbetales det ikke sykepenger. Se folketrygdloven § 8-11.',
             )
     })
 
@@ -132,9 +132,7 @@ describe('Utbetalingsoversikt', () => {
 
                 cy.get('[data-cy="dag-label-NavHelgDag"]').contains('Helg')
                 cy.get('[data-cy="dag-beskrivelse-NavHelgDag"]').contains(
-                    'Sykepenger betales bare for dagene mandag til fredag. ' +
-                        'Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. ' +
-                        'Inntekten som du har på helgedagene, blir fordelt på ukedagene.',
+                    'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten du har på helgedagene, fordeles på ukedagene. Hvis du derimot kun er sykmeldt en lørdag eller søndag, utbetales det ikke sykepenger.',
                 )
 
                 cy.get('[data-cy="dag-label-NavDagDelvisSyk"]').contains('Delvis syk')

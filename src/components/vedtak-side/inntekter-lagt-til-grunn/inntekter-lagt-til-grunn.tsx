@@ -37,7 +37,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
             setVisBeregning(true)
         }
         if (apneElementMedId === 'mer_om_beregningen') {
-                setVisBegrunnelse(true)
+            setVisBegrunnelse(true)
             setVisBeregning(true)
         }
     }, [apneElementMedId])
@@ -45,7 +45,6 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     useEffect(() => {
         if (elementRef.current !== null) {
             registrerElement('begrunnelse_vedtak', elementRef) // todo disse kræsjer
-
         }
     }, [elementRef?.current?.id, registrerElement])
 
