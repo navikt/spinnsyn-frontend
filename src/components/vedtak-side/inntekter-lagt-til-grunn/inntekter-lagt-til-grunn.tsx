@@ -32,10 +32,10 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const { mobile } = useWindowSize()
 
     useEffect(() => {
-        // if (apneElementMedId === 'begrunnelse_vedtak') {
-        //     setVisBegrunnelse(true)
-        //     setVisBeregning(true)
-        // }
+        if (apneElementMedId === 'begrunnelse_vedtak') {
+            setVisBegrunnelse(true)
+            setVisBeregning(true)
+        }
         if (apneElementMedId === 'mer_om_beregningen') {
                 setVisBegrunnelse(true)
             setVisBeregning(true)
@@ -44,8 +44,8 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
 
     useEffect(() => {
         if (elementRef.current !== null) {
-            // registrerElement('begrunnelse_vedtak', elementRef) // todo disse kræsjer
-            registrerElement('mer_om_beregningen', elementRef)
+            registrerElement('begrunnelse_vedtak', elementRef) // todo disse kræsjer
+
         }
     }, [elementRef?.current?.id, registrerElement])
 
