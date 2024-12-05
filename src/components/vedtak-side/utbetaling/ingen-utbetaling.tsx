@@ -84,7 +84,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
                         type="button"
                         className="cursor-pointer"
                         onClick={() => {
-                            console.log('blaTilElement')
+                            //console.log('blaTilElement')
                             blaTilElement('mer_om_beregningen') }}
                     >
                         Se nærmere begrunnelse her

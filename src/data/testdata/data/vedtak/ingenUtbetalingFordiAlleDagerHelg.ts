@@ -1,7 +1,7 @@
 import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
 
 export const ingenUtbetalingFordiAlleDagerHelg: RSVedtakWrapper = {
-    id: '55d8b14f-e1a6-45a8-bc64-b7af2e845b68',
+    id: '66d8b14f-e1a6-45a8-bc64-b7af2e845b68',
     lest: false,
     organisasjoner: {},
     lestDato: '2021-08-30T13:05:17.337442+02:00',

@@ -26,7 +26,7 @@ import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
-import IngenUtbetaling from './utbetaling/ingen-utbetaling'
+import {IngenUtbetaling }  from './utbetaling/ingen-utbetaling'
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
