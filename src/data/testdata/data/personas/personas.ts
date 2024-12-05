@@ -29,7 +29,7 @@ import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../vedtak/avvistVedt
 import { kombinertRevurdert } from '../vedtak/kombinertRevurdert'
 import { avslattMinimumInntektOver67 } from '../vedtak/avslattMinimumInntektOver67'
 import { inntektHentetFraAordningen } from '../vedtak/inntektHentetFraAordningen'
-import { innvilgelseMedBegrunnelseVedtak } from '../vedtak/innvilgelseBegrunnelse'
+import { innvilgelseMedBegrunnelseVedtak, innvilgelseMedTomBegrunnelseVedtak } from '../vedtak/innvilgelseBegrunnelse'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -82,6 +82,12 @@ export const innvilgelseMedBegrunnelsePerson: Persona = {
     vedtak: [innvilgelseMedBegrunnelseVedtak],
     kontonummer: '10011110011',
     beskrivelse: 'Innvilgelse med begrunnelse',
+}
+
+export const innvilgelseMedTomBegrunnelsePerson: Persona = {
+    vedtak: [innvilgelseMedTomBegrunnelseVedtak],
+    kontonummer: '10011110011',
+    beskrivelse: 'Innvilgelse med tom begrunnelse',
 }
 
 export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson: Persona = {
