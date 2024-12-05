@@ -28,6 +28,9 @@ export const BegrunnelseEkspanderbar = ({
             case 'DelvisInnvilgelse': {
                 return 'Begrunnelse for delvis innvilget søknad'
             }
+            case 'Innvilgelse': {
+                return 'Begrunnelse for innvilget søknad'
+            }
             case 'skjonn': {
                 return 'Begrunnelse for skjønnsfastsetting'
             }
@@ -61,10 +64,7 @@ export const BegrunnelseEkspanderbar = ({
                         />
                     </>
                 )}
-                {begrunnelse === 'Avslag' && <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="Avslag" />}
-                {begrunnelse === 'DelvisInnvilgelse' && (
-                    <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="DelvisInnvilgelse" />
-                )}
+                {begrunnelse !== 'skjonn' && <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType={begrunnelse} />}
             </Accordion.Content>
         </Accordion.Item>
     )
