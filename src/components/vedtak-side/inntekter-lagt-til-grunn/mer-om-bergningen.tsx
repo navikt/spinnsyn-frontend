@@ -1,25 +1,25 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, {useContext, useEffect, useRef, useState} from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
-import {useScroll} from "../../../context/scroll-context";
+import { useScroll } from '../../../context/scroll-context'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
 }
 
 export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
+    // greier
     const arkivering = useContext(ArkiveringContext)
-
-
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
+    // greier slutt
 
     useEffect(() => {
         if (apneElementMedId === 'mer_om_beregningen') {
@@ -33,7 +33,6 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
             registrerElement('mer_om_beregningen', elementRef)
         }
     }, [elementRef?.current?.id, registrerElement])
-
 
     const harMinstEnForLavInntektDagerArbeidsgiver =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
@@ -65,11 +64,17 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
         return `${tilSluttTekst} ${refusjonTekst}`
     }
 
-
     // todo må nok ha noe åpne funksjonalitet her
     return (
+        // setApne?: ((apne: boolean) => void) | undefined
+        // open?: boolean | undefined
+        <Accordion.Item
+            data-cy="mer-om-beregningen"
+            defaultOpen={arkivering}
+            open={visBeregning}
+            onOpenChange={(isOpen) => setVisBeregning?.(isOpen)}
 
-        <Accordion.Item data-cy="mer-om-beregningen" defaultOpen={arkivering}>
+        >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
                 <Heading spacing size="xsmall" level="3">
@@ -113,9 +118,9 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                             </>
                         )}
 
-                        <Heading id="utbetalingsdager" spacing size="xsmall" level="3">
+                        <Heading id="utbetalingsdager" spacing size="xsmall" level="3" ref={elementRef}>
                             Utbetalingsdager
-                        </Heading>
+                        </Heading >
                         <BodyLong spacing>
                             Nav betaler sykepenger for dager mandag til fredag og helligdager. Er du sykmeldt i en
                             periode som inkluderer lørdag og søndag, får du sykepenger for disse dagene også, men de

@@ -1,5 +1,5 @@
-import {BodyShort, Heading, Link, List} from '@navikt/ds-react'
-import React, {useEffect, useRef, useState} from 'react'
+import { BodyShort, Heading, Link, List } from '@navikt/ds-react'
+// import React, {useEffect, useRef, useState} from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
@@ -41,8 +41,7 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     //     }
     // }, [elementRef?.current?.id, registrerElement])
 
-
-    const { blaTilElement} = useScroll()
+    const { blaTilElement } = useScroll()
 
     return (
         <UtbetalingPanel
@@ -76,31 +75,20 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
                     <List as="ul" title="Hvorfor får jeg ingen utbetaling">
-
                         <List.Item>
-                        {/*<Link                                         onClick={async (e) => {*/}
-                        {/*                    e.preventDefault()*/}
-
-                        {/*    apneElementMedId("utbetalingsdager")}*/}
-                        {/*}*/}
-                        {/*>*/}
-                                Helg
-                        {/*</Link>*/}
-
-
-
+                            Helg
                         </List.Item>
                     </List>
-                        <Link
-                as="button"
-                type="button"
-                className="cursor-pointer"
-                onClick={() =>
-                    blaTilElement('mer_om_beregningen')
-                }
-            >
-                Se nærmere begrunnelse her
-            </Link>
+                    <Link
+                        as="button"
+                        type="button"
+                        className="cursor-pointer"
+                        onClick={() => {
+                            console.log('blaTilElement')
+                            blaTilElement('mer_om_beregningen') }}
+                    >
+                        Se nærmere begrunnelse her
+                    </Link>
                 </BodyShort>
             )}
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>

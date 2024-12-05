@@ -28,6 +28,7 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsumertAvslagListeProps)
                 as="button"
                 type="button"
                 className="cursor-pointer"
+                // todo dette er den likeste
                 onClick={() =>
                     blaTilElement(oppsumertAvslag.harBegrunnelseFraBomlo ? 'begrunnelse_vedtak' : 'dager_ikke_nav')
                 }

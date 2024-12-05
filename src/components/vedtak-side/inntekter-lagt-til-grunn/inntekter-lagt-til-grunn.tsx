@@ -21,24 +21,31 @@ import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
 
 export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
+    // greier
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
+    // greier slutt
     const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
     const { mobile } = useWindowSize()
 
     useEffect(() => {
-        if (apneElementMedId === 'begrunnelse_vedtak') {
-            setVisBegrunnelse(true)
+        // if (apneElementMedId === 'begrunnelse_vedtak') {
+        //     setVisBegrunnelse(true)
+        //     setVisBeregning(true)
+        // }
+        if (apneElementMedId === 'mer_om_beregningen') {
+                setVisBegrunnelse(true)
             setVisBeregning(true)
         }
     }, [apneElementMedId])
 
     useEffect(() => {
         if (elementRef.current !== null) {
-            registrerElement('begrunnelse_vedtak', elementRef)
+            // registrerElement('begrunnelse_vedtak', elementRef) // todo disse kræsjer
+            registrerElement('mer_om_beregningen', elementRef)
         }
     }, [elementRef?.current?.id, registrerElement])
 
@@ -102,6 +109,8 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
         harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse
     )
         return <div>hello</div>
+
+    // todo også relevant for ingen utbetaling arbeide, øverste nivå
 
     return (
         <VedtakExpansionCard
