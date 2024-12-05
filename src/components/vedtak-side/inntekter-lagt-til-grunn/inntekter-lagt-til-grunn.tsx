@@ -108,7 +108,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
         harIkkeEnForLavInntektDAg &&
         harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse
     )
-        return <div>hello</div>
+        return null
 
     // todo også relevant for ingen utbetaling arbeide, øverste nivå
 

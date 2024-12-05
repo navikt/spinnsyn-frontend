@@ -12,7 +12,7 @@ import { useScroll } from '../../../context/scroll-context'
 
 import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
 
-const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
+export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
     const utbetalingsType = vedtak.sykepengebelopPerson > 0 ? 'personutbetaling' : 'refusjon'
@@ -96,4 +96,3 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     )
 }
 
-export default IngenUtbetaling

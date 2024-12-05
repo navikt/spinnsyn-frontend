@@ -37,7 +37,7 @@ const dagErAvvist: RSDagTypeKomplett[] = [
     'AndreYtelser',
 ]
 
-export interface VedtakProps {
+ export interface VedtakProps {
     vedtak: RSVedtakWrapperUtvidet
 }
 
@@ -124,14 +124,14 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-            1<br />
+
             {/* todo skjul denne om begge dagene er en helg */}
             {skalViseRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <RefusjonMedInntekt vedtak={vedtak} />
             )}
-            2<br />
+
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
-            3<br />
+
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
             <InntekterLagtTilGrunn vedtak={vedtak} />
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
