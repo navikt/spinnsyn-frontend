@@ -18,6 +18,7 @@ const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'alleDager'),
         harBegrunnelseFraBomlo,
+        vedtak,
     }
 
     return (

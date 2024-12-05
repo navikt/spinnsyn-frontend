@@ -25,6 +25,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'dagerPerson'),
         harBegrunnelseFraBomlo,
+        vedtak,
     }
     return (
         <UtbetalingPanel

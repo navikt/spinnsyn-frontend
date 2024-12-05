@@ -310,7 +310,7 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
         begrunnelser: [
             {
                 type: 'Innvilgelse',
-                begrunnelse: 'edwdkejwekjjk',
+                begrunnelse: 'Her får du penger',
                 perioder: [
                     {
                         fom: '2024-10-16',

@@ -19,6 +19,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'dagerArbeidsgiver'),
         harBegrunnelseFraBomlo,
+        vedtak,
     }
     return (
         <UtbetalingPanel
