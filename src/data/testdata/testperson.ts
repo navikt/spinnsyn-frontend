@@ -13,6 +13,7 @@ import {
     forLavInntektPerson,
     forLavInntektPerson67,
     innvilgelseMedBegrunnelsePerson,
+    innvilgelseMedTomBegrunnelsePerson,
     julesoknadPerson,
     kombinasjonPerson,
     kombinertRevurdertPersona,
@@ -63,6 +64,7 @@ export type PersonaKey =
     | 'for-lav-inntekt-67'
     | 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo'
     | 'innvilgelse'
+    | 'innvilgelse-tom-begrunnelse'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -79,6 +81,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
         ['for-lav-inntekt-67']: jsonDeepCopy(forLavInntektPerson67),
         ['innvilgelse']: jsonDeepCopy(innvilgelseMedBegrunnelsePerson),
+        ['innvilgelse-tom-begrunnelse']: jsonDeepCopy(innvilgelseMedTomBegrunnelsePerson),
         ['kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo']: jsonDeepCopy(
             delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
         ),

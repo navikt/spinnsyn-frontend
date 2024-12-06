@@ -2,17 +2,21 @@ import { Link, List } from '@navikt/ds-react'
 import React from 'react'
 
 import { useScroll } from '../../../context/scroll-context'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 export interface OppsumertAvslagListeProps {
     oppsumertAvslag: Set<string>
     title: string
     harBegrunnelseFraBomlo: boolean
+    vedtak: RSVedtakWrapper
 }
 
 export const OppsumertAvslagListe = (oppsumertAvslag: OppsumertAvslagListeProps) => {
     const { blaTilElement } = useScroll()
 
-    if (oppsumertAvslag.oppsumertAvslag.size === 0) return null
+    const harInnvilgelseBegrunnelse = hentBegrunnelse(oppsumertAvslag.vedtak, 'Innvilgelse') !== undefined
+    if (oppsumertAvslag.oppsumertAvslag.size === 0 && !harInnvilgelseBegrunnelse) return null
 
     const alleAvslag: React.JSX.Element[] = []
     oppsumertAvslag.oppsumertAvslag?.forEach((begrunnelse) => {
@@ -21,16 +25,25 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsumertAvslagListeProps)
 
     return (
         <section className="mb-8">
-            <List as="ul" title={oppsumertAvslag.title}>
-                {alleAvslag}
-            </List>
+            {oppsumertAvslag.oppsumertAvslag.size > 0 && (
+                <List as="ul" title={oppsumertAvslag.title}>
+                    {alleAvslag}
+                </List>
+            )}
+
             <Link
                 as="button"
                 type="button"
                 className="cursor-pointer"
-                onClick={() =>
-                    blaTilElement(oppsumertAvslag.harBegrunnelseFraBomlo ? 'begrunnelse_vedtak' : 'dager_ikke_nav')
-                }
+                onClick={() => {
+                    if (oppsumertAvslag.harBegrunnelseFraBomlo) {
+                        blaTilElement('begrunnelse_vedtak')
+                    } else if (harInnvilgelseBegrunnelse) {
+                        blaTilElement('begrunnelse_vedtak')
+                    } else {
+                        blaTilElement('dager_ikke_nav')
+                    }
+                }}
             >
                 Se nærmere begrunnelse her
             </Link>

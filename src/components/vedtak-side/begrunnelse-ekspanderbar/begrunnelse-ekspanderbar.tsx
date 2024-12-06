@@ -13,7 +13,7 @@ export const BegrunnelseEkspanderbar = ({
     elementRef,
 }: {
     vedtak: RSVedtakWrapper
-    begrunnelse?: BegrunnelseType
+    begrunnelse: BegrunnelseType | 'skjonn'
     apne?: boolean
     setApne?: (apne: boolean) => void
     elementRef?: RefObject<HTMLDivElement>
@@ -28,7 +28,10 @@ export const BegrunnelseEkspanderbar = ({
             case 'DelvisInnvilgelse': {
                 return 'Begrunnelse for delvis innvilget søknad'
             }
-            default: {
+            case 'Innvilgelse': {
+                return 'Begrunnelse for innvilget søknad'
+            }
+            case 'skjonn': {
                 return 'Begrunnelse for skjønnsfastsetting'
             }
         }
@@ -47,7 +50,7 @@ export const BegrunnelseEkspanderbar = ({
                 </Heading>
             </Accordion.Header>
             <Accordion.Content className="mt-4">
-                {!(begrunnelse === 'Avslag' || begrunnelse === 'DelvisInnvilgelse') && (
+                {begrunnelse === 'skjonn' && (
                     <>
                         <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="SkjønnsfastsattSykepengegrunnlagMal" />
                         <BegrunnelseMedHeading
@@ -61,10 +64,7 @@ export const BegrunnelseEkspanderbar = ({
                         />
                     </>
                 )}
-                {begrunnelse === 'Avslag' && <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="Avslag" />}
-                {begrunnelse === 'DelvisInnvilgelse' && (
-                    <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="DelvisInnvilgelse" />
-                )}
+                {begrunnelse !== 'skjonn' && <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType={begrunnelse} />}
             </Accordion.Content>
         </Accordion.Item>
     )

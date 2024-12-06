@@ -1,4 +1,5 @@
 import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
 
 export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
     id: 'bcd7b2ec-fcc1-4a8b-816c-42256138d0c4',
@@ -310,7 +311,7 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
         begrunnelser: [
             {
                 type: 'Innvilgelse',
-                begrunnelse: 'edwdkejwekjjk',
+                begrunnelse: 'Her får du penger',
                 perioder: [
                     {
                         fom: '2024-10-16',
@@ -330,3 +331,7 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
         '896929119': 'Sauefabrikk',
     },
 }
+
+export const innvilgelseMedTomBegrunnelseVedtak = jsonDeepCopy(innvilgelseMedBegrunnelseVedtak)
+innvilgelseMedTomBegrunnelseVedtak.vedtak.begrunnelser?.forEach((b) => (b.begrunnelse = ''))
+innvilgelseMedTomBegrunnelseVedtak.id = 'bcd7b2ec-fcc1-4a8b-816c-42256138d088'
