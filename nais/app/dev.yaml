@@ -1,6 +1,6 @@
 ingress: https://www.ekstern.dev.nav.no/syk/sykepenger
-cpu: 100m
-memory: 400Mi
+cpu: 50m
+memory: 384Mi
 external-host:
   - flex-unleash-api.nav.cloud.nais.io
 env:
