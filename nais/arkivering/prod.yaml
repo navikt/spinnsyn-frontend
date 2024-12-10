@@ -1,5 +1,5 @@
 cpu: 100m
-memory: 400Mi
+memory: 256Mi
 min: 3
 max: 4
 env:
