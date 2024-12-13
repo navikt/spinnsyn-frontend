@@ -11,7 +11,7 @@ import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../../../src/data/te
 describe('Avviste dager', () => {
     before(() => {
         cy.visit('http://localhost:3000/syk/sykepenger')
-        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 10)
+        cy.findAllByRole('link', { name: /Sykmeldt fra /i }).should('have.length', 11)
     })
 
     it('Laster startside', () => {
