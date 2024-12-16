@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 const maaneder = [
     'januar',
     'februar',
@@ -43,4 +45,22 @@ export const tilLesbarPeriodeMedArstall = (fomArg: any, tomArg: any) => {
 
 export const erHelg = (dato: Date) => {
     return dato.getDay() === 6 || dato.getDay() === 0
+}
+
+export function erWeekendPeriode(fom: string, tom: string): boolean {
+    const startDate = dayjs(fom)
+    const endDate = dayjs(tom)
+
+    const dates = []
+    let currentDate = startDate
+
+    while (currentDate.isSameOrBefore(endDate)) {
+        dates.push(currentDate)
+        currentDate = currentDate.add(1, 'day')
+    }
+
+    return dates.every((date) => {
+        const dayOfWeek = date.day()
+        return dayOfWeek === 0 || dayOfWeek === 6 // 0 is Sunday, 6 is Saturday
+    })
 }

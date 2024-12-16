@@ -1,11 +1,12 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
+import { useScroll } from '../../../context/scroll-context'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
@@ -13,6 +14,21 @@ export interface BeregningInfoProps {
 
 export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
+    const { apneElementMedId, registrerElement } = useScroll()
+    const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
+    const elementRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (apneElementMedId === 'mer_om_beregningen') {
+            setVisBeregning(true)
+        }
+    }, [apneElementMedId])
+
+    useEffect(() => {
+        if (elementRef.current !== null) {
+            registrerElement('mer_om_beregningen', elementRef)
+        }
+    }, [elementRef?.current?.id, registrerElement])
 
     const harMinstEnForLavInntektDagerArbeidsgiver =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
@@ -45,7 +61,12 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
     }
 
     return (
-        <Accordion.Item data-cy="mer-om-beregningen" defaultOpen={arkivering}>
+        <Accordion.Item
+            data-cy="mer-om-beregningen"
+            defaultOpen={arkivering}
+            open={visBeregning}
+            onOpenChange={(isOpen) => setVisBeregning?.(isOpen)}
+        >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
                 <Heading spacing size="xsmall" level="3">
@@ -79,6 +100,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                             {tekst('utbetaling.totalbelop.tittel')}
                         </Heading>
                         <BodyLong spacing>{totalbelopInnhold()}</BodyLong>
+
                         {harFlereArbeidsgivere(vedtak) == 'ja' && (
                             <>
                                 <Heading spacing size="xsmall" level="3">
@@ -87,12 +109,18 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
                                 <BodyLong spacing>{tekst('utbetaling.flere-arbeidsforhold.innhold')}</BodyLong>
                             </>
                         )}
-                        <Heading spacing size="xsmall" level="3">
-                            {tekst('utbetaling.utbetalingsdager.tittel')}
+
+                        <Heading id="utbetalingsdager" spacing size="xsmall" level="3" ref={elementRef}>
+                            Utbetalingsdager
                         </Heading>
-                        <BodyLong spacing>{tekst('utbetaling.utbetalingsdager.innhold')}</BodyLong>
                         <BodyLong spacing>
-                            {tekst('utbetaling.beregning.les.mer')}
+                            Nav betaler sykepenger for dager mandag til fredag og helligdager. Er du sykmeldt i en
+                            periode som inkluderer lørdag og søndag, får du sykepenger for disse dagene også, men de
+                            blir fordelt på ukedagene i utregningen. Hvis du kun har vært sykmeldt en lørdag og/eller
+                            søndag, får du ikke sykepenger for disse dagene.
+                        </BodyLong>
+                        <BodyLong spacing>
+                            Du kan lese mer om hvordan sykepengene beregnes i folketrygdloven
                             <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                                 {tekst('utbetaling.beregning.lenke.tekst')}
                             </Link>

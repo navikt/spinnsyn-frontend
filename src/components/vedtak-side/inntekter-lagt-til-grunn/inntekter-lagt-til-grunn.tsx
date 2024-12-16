@@ -13,6 +13,7 @@ import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { useWindowSize } from '../../../utils/useWindowSize'
+import { erWeekendPeriode } from '../../../utils/dato-utils'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -30,6 +31,10 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
 
     useEffect(() => {
         if (apneElementMedId === 'begrunnelse_vedtak') {
+            setVisBegrunnelse(true)
+            setVisBeregning(true)
+        }
+        if (apneElementMedId === 'mer_om_beregningen') {
             setVisBegrunnelse(true)
             setVisBeregning(true)
         }
@@ -95,7 +100,12 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
     const innvilgelse = hentBegrunnelse(vedtak, 'Innvilgelse')
     const harIkkeEnForLavInntektDAg = !harMinstEnForLavInntektDag
     const harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse = !(avslag || delvisInnvilgelse)
-    if (harIngenUtbetaling && harIkkeEnForLavInntektDAg && harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse)
+    if (
+        harIngenUtbetaling &&
+        !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) &&
+        harIkkeEnForLavInntektDAg &&
+        harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse
+    )
         return null
 
     return (

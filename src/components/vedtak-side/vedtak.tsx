@@ -13,6 +13,7 @@ import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { useToggle } from '../../toggles/context'
 import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetrikk'
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
+import { erWeekendPeriode } from '../../utils/dato-utils'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -25,7 +26,7 @@ import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
-import IngenUtbetaling from './utbetaling/ingen-utbetaling'
+import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -123,10 +124,14 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-            {skalViseRefusjon && <RefusjonMedInntekt vedtak={vedtak} />}
-            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
-            {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
 
+            {skalViseRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
+                <RefusjonMedInntekt vedtak={vedtak} />
+            )}
+
+            {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
+
+            {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
             <InntekterLagtTilGrunn vedtak={vedtak} />
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
