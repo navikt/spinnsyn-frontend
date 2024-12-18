@@ -33,7 +33,7 @@ describe('Flexjar', () => {
 
     it('Kan gi nei feedback', () => {
         cy.reload()
-        heading('Hjelp oss med å gjøre denne siden bedre')
+        heading('Hjelp oss med å gjøre denne siden bedre', 2)
             .closest('[role="region"]')
             .within(() => {
                 cy.findByRole('button', {
