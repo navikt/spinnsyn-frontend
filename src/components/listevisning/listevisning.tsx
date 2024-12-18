@@ -2,7 +2,7 @@ import { Heading, Link, Skeleton } from '@navikt/ds-react'
 import React from 'react'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
-import { arkiverteVedtakUrl, isMockBackend, isOpplaering } from '../../utils/environment'
+import { arkiverteVedtakUrl, isMockBackend, isOpplaering, spinnsynFrontendInterne } from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { sorterEtterNyesteFom } from '../../utils/sorter-vedtak'
@@ -40,9 +40,11 @@ const Listevisning = ({ vedtak }: { vedtak?: RSVedtakWrapper[] }) => {
                 tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
             />
 
-            <Link as={vedtak ? 'a' : Skeleton} href={arkiverteVedtakUrl()}>
-                {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
-            </Link>
+            {!spinnsynFrontendInterne() && (
+                <Link as={vedtak ? 'a' : Skeleton} href={arkiverteVedtakUrl()}>
+                    {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
+                </Link>
+            )}
         </>
     )
 }
