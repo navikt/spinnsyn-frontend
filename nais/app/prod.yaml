@@ -9,7 +9,7 @@ env:
   ENVIRONMENT: "prod"
   SYKEFRAVAER_URL: "https://www.nav.no/syk/sykefravaer"
   MINSIDE_URL: "https://www.nav.no/minside/"
-  ARKIVERTE_VEDTAK_URL: "https://person.nav.no/mine-saker/tema/SYK"
+  ARKIVERTE_VEDTAK_URL: "https://www.nav.no/dokumentarkiv/tema/SYK"
   OPPLAERING: "false"
   AMPLITUDE_ENABLED: "true"
   DECORATOR_ENV: "prod"
