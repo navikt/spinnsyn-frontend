@@ -34,7 +34,7 @@ spec:
     - name: MINSIDE_URL
       value: "https://www.nav.no/minside/"
     - name: ARKIVERTE_VEDTAK_URL
-      value: "https://person.nav.no/mine-saker/tema/SYK"
+      value: "https://www.nav.no/dokumentarkiv/tema/SYK"
     - name: OPPLAERING
       value: "true"
     - name: MOCK_BACKEND
