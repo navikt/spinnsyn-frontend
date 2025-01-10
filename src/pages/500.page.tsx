@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useUpdateBreadcrumbs } from '../hooks/useBreadcrumbs'
 
-function ServerError(): JSX.Element | boolean {
+function ServerError() {
     useUpdateBreadcrumbs(() => [{ title: 'Ukjent feil' }])
 
     return (

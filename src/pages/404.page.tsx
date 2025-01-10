@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 import { useUpdateBreadcrumbs } from '../hooks/useBreadcrumbs'
 
-function NotFound(): JSX.Element | boolean {
+function NotFound() {
     useUpdateBreadcrumbs(() => [{ title: 'Ukjent side' }])
 
     useEffect(() => {

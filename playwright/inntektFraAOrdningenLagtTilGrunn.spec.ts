@@ -1,4 +1,4 @@
-import { test as base, expect } from '@playwright/test'
+import { expect, test as base } from '@playwright/test'
 
 import { inntektHentetFraAordningen } from '../src/data/testdata/data/vedtak/inntektHentetFraAordningen'
 import { formaterValuta } from '../src/utils/valuta-utils'
@@ -23,6 +23,7 @@ configurations.forEach(({ name, options }) => {
         page: async ({ browser }, use) => {
             const context = await browser.newContext(options)
             const page = await context.newPage()
+            // eslint-disable-next-line react-hooks/rules-of-hooks
             await use(page)
             await context.close()
         },
