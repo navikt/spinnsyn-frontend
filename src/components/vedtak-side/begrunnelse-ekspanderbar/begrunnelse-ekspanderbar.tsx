@@ -16,7 +16,7 @@ export const BegrunnelseEkspanderbar = ({
     begrunnelse: BegrunnelseType | 'skjonn'
     apne?: boolean
     setApne?: (apne: boolean) => void
-    elementRef?: RefObject<HTMLDivElement>
+    elementRef?: RefObject<HTMLDivElement | null>
 }) => {
     const arkivering = useContext(ArkiveringContext)
 

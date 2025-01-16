@@ -1,9 +1,9 @@
-import React, { createContext, useContext, ReactNode, RefObject, useState, useEffect } from 'react'
+import React, { createContext, ReactNode, RefObject, useContext, useEffect, useState } from 'react'
 
 type ScrollElementType = 'begrunnelse_vedtak' | 'dager_ikke_nav' | 'mer_om_beregningen' | ''
 
 interface ScrollContextType {
-    registrerElement: (elementId: ScrollElementType, ref: RefObject<HTMLElement>) => void
+    registrerElement: (elementId: ScrollElementType, ref: React.RefObject<HTMLDivElement | null>) => void
     blaTilElement: (elementId: ScrollElementType) => void
     apneElementMedId: ScrollElementType
 }
@@ -18,7 +18,7 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
     const [elementer, setElementer] = useState<Map<ScrollElementType, HTMLElement>>(new Map())
     const [apneElementMedId, setApneElementMedId] = useState<ScrollElementType>('')
 
-    const registrerElement = (elementId: ScrollElementType, ref: RefObject<HTMLElement>) => {
+    const registrerElement = (elementId: ScrollElementType, ref: RefObject<HTMLElement | null>) => {
         if (ref.current !== null && !elementer.has(elementId)) {
             setElementer((prevElements) => {
                 const newElements = new Map(prevElements)

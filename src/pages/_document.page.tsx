@@ -49,7 +49,7 @@ class MyDocument extends Document<Props> {
         return props
     }
 
-    render(): JSX.Element {
+    render() {
         const { Decorator, language, internheader, ctx } = this.props
         const arkivering = ctx.pathname.includes('vedtak/arkivering')
         const visDekorator = Decorator != null && !arkivering && !internheader
