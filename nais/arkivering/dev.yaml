@@ -1,4 +1,4 @@
-cpu: 100m
+cpu: 50m
 memory: 256Mi
 min: 1
 max: 2
