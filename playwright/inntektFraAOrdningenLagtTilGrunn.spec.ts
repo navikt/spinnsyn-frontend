@@ -74,10 +74,10 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
             await page.locator('text=Mer om beregningen').click({ force: true })
 
             await expect(
-                page.locator(
-                    'text=Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste 3 månedene før du ble syk for å beregne sykepengene dine.',
+                page.getByText(
+                    'Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste 3 månedene før du ble syk for å beregne sykepengene dine.',
                 ),
-            ).toBeVisible({ timeout: 10_000 })
+            ).toBeVisible()
 
             const link = page.locator('text=Her kan du lese mer om hvilke inntekter som tas med i beregningen.')
             await expect(link).toBeVisible()
