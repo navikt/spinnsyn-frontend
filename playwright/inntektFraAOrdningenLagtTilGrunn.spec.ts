@@ -45,15 +45,15 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
             await page.emulateMedia({ reducedMotion: 'reduce' })
             await page.locator(`a[href*="${vedtak.id}"]`).click()
 
-            const header = page.locator('main').locator('h1').first()
+            const header = page.getByRole('main').getByRole('heading', { level: 1 }).first()
             await expect(header).toBeVisible()
 
-            const beregningArticle = page.locator('role=article[name="Beregning av sykepengene"]')
-            await page.locator('main').locator('role=region[name="Beregning av sykepengene"]').click()
+            const beregningArticle = page.getByRole('article', { name: 'Beregning av sykepengene' })
+            await page.getByRole('main').getByRole('region', { name: 'Beregning av sykepengene' }).click()
 
             if (options.viewport?.width === 1920) {
                 await expect(
-                    beregningArticle.locator('role=region[name="Beregnet månedsinntekt (hentet fra a-ordningen)"]'),
+                    beregningArticle.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra a-ordningen)' }),
                 ).toContainText(formaterValuta(74675))
             } else {
                 const beregnetMaanedsinntekt = beregningArticle.locator('.navds-body-short.navds-body-short--small', {
@@ -67,7 +67,7 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
                 await expect(beregningArticle).toContainText(formaterValuta(74675))
             }
 
-            await expect(beregningArticle.locator('role=region[name="Omregnet til årsinntekt"]')).toContainText(
+            await expect(beregningArticle.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
                 formaterValuta(896100),
             )
 
@@ -79,7 +79,7 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
                 ),
             ).toBeVisible()
 
-            const link = page.locator('text=Her kan du lese mer om hvilke inntekter som tas med i beregningen.')
+            const link = page.getByText('Her kan du lese mer om hvilke inntekter som tas med i beregningen.')
             await expect(link).toBeVisible()
             await expect(link).toHaveAttribute(
                 'href',
@@ -87,8 +87,8 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
             )
 
             await expect(
-                page.locator(
-                    'text=Hvis du har flere arbeidsforhold, men ikke er sykmeldt fra alle, vil Nav beregne månedsinntekten din for de arbeidsforholdene du ikke er sykmeldt',
+                page.getByText(
+                    'Hvis du har flere arbeidsforhold, men ikke er sykmeldt fra alle, vil Nav beregne månedsinntekten din for de arbeidsforholdene du ikke er sykmeldt',
                 ),
             ).toBeVisible()
 
@@ -102,11 +102,11 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
             )
             expect(
                 page
-                    .locator('text=Feil i vedtaket på grunn av feil i søknaden din?')
+                    .getByText('Feil i vedtaket på grunn av feil i søknaden din?')
                     .locator('..')
-                    .locator('text=Du kan endre dette selv ved å'),
+                    .getByText('Du kan endre dette selv ved å'),
             )
-            expect(page.locator('text=Spørsmål til opplysninger hentet fra a-ordningen?'))
+            expect(page.getByText('Spørsmål til opplysninger hentet fra a-ordningen?'))
         })
     })
 })
