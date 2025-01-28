@@ -71,7 +71,7 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
                 formaterValuta(896100),
             )
 
-            await page.locator('text=Mer om beregningen').click({ force: true })
+            await page.getByText('Mer om beregningen').click()
 
             await expect(
                 page.getByText(
