@@ -1,4 +1,4 @@
-import { expect, test as base } from '@playwright/test'
+import { Browser, BrowserContextOptions, expect, Page, test as base } from '@playwright/test'
 
 import { inntektHentetFraAordningen } from '../src/data/testdata/data/vedtak/inntektHentetFraAordningen'
 import { formaterValuta } from '../src/utils/valuta-utils'
@@ -18,10 +18,18 @@ const configurations = [
     },
 ]
 
-configurations.forEach(({ name, options }) => {
-    const test = base.extend({
-        page: async ({ browser }, use) => {
-            const context = await browser.newContext(options)
+configurations.forEach(({ name, options }: { name: string; options: BrowserContextOptions }) => {
+    const test = base.extend<{
+        page: Page
+    }>({
+        page: async ({ browser }: { browser: Browser }, use: (page: Page) => Promise<void>) => {
+            const filteredOptions =
+                browser.browserType().name() === 'firefox'
+                    ? // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                      (({ isMobile, ...rest }) => rest)(options) // Inline destructuring to exclude `isMobile`
+                    : options
+
+            const context = await browser.newContext(filteredOptions)
             const page = await context.newPage()
             // eslint-disable-next-line react-hooks/rules-of-hooks
             await use(page)
@@ -43,7 +51,7 @@ configurations.forEach(({ name, options }) => {
             const beregningArticle = page.locator('role=article[name="Beregning av sykepengene"]')
             await page.locator('main').locator('role=region[name="Beregning av sykepengene"]').click()
 
-            if (options.viewport.width === 1920) {
+            if (options.viewport?.width === 1920) {
                 await expect(
                     beregningArticle.locator('role=region[name="Beregnet månedsinntekt (hentet fra a-ordningen)"]'),
                 ).toContainText(formaterValuta(74675))
