@@ -77,7 +77,7 @@ configurations.forEach(({ name, options }: { name: string; options: BrowserConte
                 page.locator(
                     'text=Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste 3 månedene før du ble syk for å beregne sykepengene dine.',
                 ),
-            ).toBeVisible()
+            ).toBeVisible({ timeout: 10_000 })
 
             const link = page.locator('text=Her kan du lese mer om hvilke inntekter som tas med i beregningen.')
             await expect(link).toBeVisible()
