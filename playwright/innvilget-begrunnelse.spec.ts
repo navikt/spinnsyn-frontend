@@ -16,8 +16,7 @@ test.describe('Begrunnelse', () => {
         const button = page.getByRole('button', { name: 'Begrunnelse for innvilget søknad' })
         await expect(button).toContainText('Begrunnelse for innvilget søknad')
 
-        const siblingDiv = button.locator('xpath=following-sibling::div')
-        await expect(siblingDiv).toContainText('Her får du penger')
+        await expect(page.getByText('Her får du penger')).toBeVisible()
     })
 
     test('Vedtak med innvilget tom tekst begrunnelse fra Bømlo', async ({ page }) => {
