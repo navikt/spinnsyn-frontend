@@ -32,7 +32,7 @@
         "react-dom": "^19.0.0",
         "remeda": "^2.21.0",
         "tailwind-merge": "^2.6.0",
-        "typescript": "^5.7.3",
+        "typescript": "^5.8.2",
         "uuid": "^11.0.5"
     },
     "devDependencies": {
