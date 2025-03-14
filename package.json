@@ -33,7 +33,7 @@
         "remeda": "^2.21.0",
         "tailwind-merge": "^2.6.0",
         "typescript": "^5.8.2",
-        "uuid": "^11.0.5"
+        "uuid": "^11.1.0"
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.10.1",
