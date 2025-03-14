@@ -1,4 +1,4 @@
-import { BodyLong, Heading, BodyShort } from '@navikt/ds-react'
+import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
@@ -32,7 +32,11 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                 <>
                     <BodyShort weight="semibold">Spørsmål til opplysninger hentet fra a-ordningen?</BodyShort>
                     <BodyLong spacing>
-                        <LenkeMedAmplitude url="https://www.nav.no/kontaktoss" tekst="Ta kontakt med Nav" />.
+                        <LenkeMedAmplitude
+                            url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                            tekst="Ta kontakt med Nav"
+                        />
+                        .
                     </BodyLong>
                 </>
             ) : (
@@ -43,7 +47,11 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
             )}
             <BodyShort weight="semibold">Annet du lurer på?</BodyShort>
             <BodyLong spacing>
-                <LenkeMedAmplitude url="https://www.nav.no/kontaktoss" tekst="Ta kontakt med Nav" />.
+                <LenkeMedAmplitude
+                    url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                    tekst="Ta kontakt med Nav"
+                />
+                .
             </BodyLong>
         </>
     )
