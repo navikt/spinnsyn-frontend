@@ -37,7 +37,7 @@
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.10.1",
-        "@cypress/webpack-preprocessor": "^6.0.2",
+        "@cypress/webpack-preprocessor": "^6.0.4",
         "@navikt/eslint-config-teamsykmelding": "^7.1.0",
         "@playwright/test": "^1.52.0",
         "@types/classnames": "^2.3.4",
