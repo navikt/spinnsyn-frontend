@@ -132,7 +132,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt':
         ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>, andre avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, andre avsnitt.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67':
         ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
