@@ -60,7 +60,7 @@
         "start-server-and-test": "^2.0.12",
         "tailwindcss": "^3.4.17",
         "ts-loader": "^9.5.2",
-        "vitest": "^3.1.2"
+        "vitest": "^3.2.2"
     },
     "scripts": {
         "dev": "MOCK_BACKEND=true next dev -p 3000 | pino-pretty",
