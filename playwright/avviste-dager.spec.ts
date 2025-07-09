@@ -18,6 +18,16 @@ test.describe('Avviste dager', () => {
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
     })
 
+    test.afterEach(async ({ uuOptions }) => {
+        if (webkit) {
+            // Er en bug med webkit som gir uu feil på color contrast
+            uuOptions.ignoreRules = [
+                { selector: '.navds-table', rules: ['color-contrast'] },
+                { selector: '.navds-accordion', rules: ['color-contrast'] },
+            ]
+        }
+    })
+
     test('Laster startside', async ({ page }) => {
         await expect(page).toHaveURL('/syk/sykepenger')
     })
