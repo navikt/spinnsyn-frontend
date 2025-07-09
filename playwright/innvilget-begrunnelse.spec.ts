@@ -1,10 +1,7 @@
 import { expect, test } from './fixtures'
 
 test.describe('Begrunnelse', () => {
-    test('Vedtak med innvilget begrunnelse fra Bømlo', async ({ page, uuOptions }) => {
-        //TODO fjern når vi har fikset fargekontrast
-        // uuOptions.disableRules = ['color-contrast']
-
+    test('Vedtak med innvilget begrunnelse fra Bømlo', async ({ page }) => {
         await page.goto(
             'http://localhost:3000/syk/sykepenger?testperson=innvilgelse&id=bcd7b2ec-fcc1-4a8b-816c-42256138d0c4',
         )
