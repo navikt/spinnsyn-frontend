@@ -1,35 +1,34 @@
-/* eslint-disable */
 import { test as base, expect } from '@playwright/test'
-import { AxeBuilder } from '@axe-core/playwright'
 
-export const test = base.extend({})
+import { validerAxe } from './uuvalidering'
 
-test.afterEach(async ({ page }, testInfo) => {
-    const results = await new AxeBuilder({ page }).analyze()
+// Definer options for UU-validering
+type UUOptions = {
+    skipUU?: boolean
+    disableRules?: string[]
+}
 
-    const { violations } = results
+// Utvid base test med UU-options
+export const test = base.extend<{ uuOptions: UUOptions }>({
+    uuOptions: [{ skipUU: false, disableRules: [] }, { option: true }],
+})
 
-    if (violations.length > 0) {
-        console.log('==================\n')
-        console.log(`${violations.length} accessibility violation${violations.length === 1 ? '' : 's'} detected:`)
-        console.log(`\nURL: ${page.url()}`)
-        console.log(`Test file: ${testInfo.file.replace('/home/runner/work', '.')}`)
-        console.log(`Test title: ${testInfo.title}`)
-        console.log(`URL: ${page.url()}`)
-
-        for (const violation of violations) {
-            console.log(`\nViolation ID: ${violation.id}`)
-            console.log(`Description: ${violation.description}`)
-            console.log(`Impact: ${violation.impact}`)
-            console.log(`Help: ${violation.help}`)
-            console.log(`Help URL: ${violation.helpUrl}`)
-
-            console.log('Affected Nodes:')
-            violation.nodes.forEach(({ target }) => {
-                console.log(`  - ${target.join(' ')}`)
-            })
-        }
-
-        expect(violations.length, 'Accessibility violations found').toBe(0)
+// Automatisk UU-validering for ALLE tester (med mindre eksplisitt skrudd av)
+test.afterEach(async ({ page, uuOptions }, testInfo) => {
+    if (!uuOptions.skipUU) {
+        await validerAxe(page, testInfo, uuOptions.disableRules)
     }
 })
+
+// Eksporter også expect for enkelhets skyld
+export { expect }
+
+// Convenience functions for spesielle tilfeller
+export const testUtenUU = base.extend<{ uuOptions: UUOptions }>({
+    uuOptions: [{ skipUU: true, disableRules: [] }, { option: true }],
+})
+
+export const testMedDisabledRules = (rules: string[]) =>
+    base.extend<{ uuOptions: UUOptions }>({
+        uuOptions: [{ skipUU: false, disableRules: rules }, { option: true }],
+    })
