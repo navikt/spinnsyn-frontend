@@ -1,15 +1,6 @@
-import { webkit } from '@playwright/test'
-
 import { expect, test } from './fixtures'
 
 test.describe('Begrunnelse', () => {
-    test.afterEach(async ({ uuOptions }) => {
-        if (webkit) {
-            // Er en bug med webkit som gir uu feil på color contrast
-            uuOptions.ignoreRules = [{ selector: '.navds-table', rules: ['color-contrast'] }]
-        }
-    })
-
     test('Vedtak med innvilget begrunnelse fra Bømlo', async ({ page, uuOptions }) => {
         await page.goto(
             'http://localhost:3000/syk/sykepenger?testperson=innvilgelse&id=bcd7b2ec-fcc1-4a8b-816c-42256138d0c4',
