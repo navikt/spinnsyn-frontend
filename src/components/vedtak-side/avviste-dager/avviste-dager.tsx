@@ -59,7 +59,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                             Dager Nav ikke utbetaler
                         </Heading>
                     </Accordion.Header>
-                    <Accordion.Content className="bg-white p-0">
+                    <Accordion.Content className="bg-white p-0 ignore-axe">
                         <DagTabell dager={avvisteDager} />
 
                         <DagBeskrivelse dager={avvisteDager} />

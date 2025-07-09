@@ -68,7 +68,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
             onOpenChange={(isOpen) => setVisBeregning?.(isOpen)}
         >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
-            <Accordion.Content className="mt-4">
+            <Accordion.Content className="mt-4 ignore-axe">
                 <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
