@@ -61,7 +61,7 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
                     {tittel || 'Dine sykepenger per dag'}
                 </Heading>
             </Accordion.Header>
-            <Accordion.Content className="bg-white px-0 ignore-axe">
+            <Accordion.Content className="bg-white px-0">
                 {ingenNyArbeidsgiverperiode && (
                     <BodyLong spacing>
                         {
