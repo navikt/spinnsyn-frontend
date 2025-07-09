@@ -1,8 +1,14 @@
 /* eslint-disable no-console */
 import { expect, Page, TestInfo } from '@playwright/test'
 import { AxeBuilder } from '@axe-core/playwright'
+import { Result } from 'axe-core'
 
-export async function validerAxe(page: Page, testInfo: TestInfo, disableRules: string[] = []) {
+export async function validerAxe(
+    page: Page,
+    testInfo: TestInfo,
+    disableRules: string[] = [],
+    ignoreRules: IgnoreRule[] = [],
+) {
     const axeBuilder = new AxeBuilder({ page }).exclude('.ignore-axe')
 
     // Skru av spesifikke regler hvis angitt
@@ -12,7 +18,18 @@ export async function validerAxe(page: Page, testInfo: TestInfo, disableRules: s
 
     const results = await axeBuilder.analyze()
 
-    const { violations } = results
+    // axe rapporterer alltid for overlappende elementer med transparent bakgrunnsfarge
+    const alltidIgnorerteRegler: IgnoreRule[] = [
+        {
+            selector: '.navds-accordion',
+            rules: ['color-contrast'],
+        },
+        {
+            selector: '.navds-link',
+            rules: ['color-contrast'],
+        },
+    ]
+    const violations = filterAxeViolations(results.violations, ignoreRules.concat(alltidIgnorerteRegler))
 
     if (violations.length > 0) {
         // Legg til annotations for hvert violation - vises i Playwright GUI
@@ -95,6 +112,50 @@ export async function validerAxe(page: Page, testInfo: TestInfo, disableRules: s
 
         expect(violations.length, `${violations.length} UU-violation(s) funnet:\n\n${errorMessage}`).toBe(0)
     }
+}
+
+// Define a type for the ignore rules to ensure type safety
+export interface IgnoreRule {
+    selector: string // The CSS selector to target (e.g., '.navds-accordion__item')
+    rules: string[] // An array of rule IDs to ignore for that selector (e.g., ['color-contrast'])
+}
+
+/**
+ * Filters a list of Axe violations based on a set of ignore rules.
+ * This is useful for ignoring known false positives in specific components.
+ *
+ * @param violations - The array of violations from an Axe analysis.
+ * @param ignoreRules - An array of objects, each specifying a selector and the rules to ignore for it.
+ * @returns A new array of violations with the ignored ones removed.
+ */
+function filterAxeViolations(violations: Result[], ignoreRules: IgnoreRule[]): Result[] {
+    // If there are no rules to ignore, return the original violations array immediately.
+    if (ignoreRules.length === 0) {
+        return violations
+    }
+
+    return violations.filter((violation) => {
+        // Check if the current violation should be ignored based on any of the ignoreRules.
+        const shouldIgnore = ignoreRules.some((ignoreRule) => {
+            // First, check if the violation's ID is one of the rules we want to ignore for this selector.
+            const ruleMatches = ignoreRule.rules.includes(violation.id)
+            if (!ruleMatches) {
+                return false // This ignore rule doesn't apply to this violation's rule ID.
+            }
+
+            // If the rule matches, check if ALL of the violation's nodes match the selector.
+            // We use `every` to ensure we only ignore violations where every single
+            // reported node is within the specified selector, making the exclusion safe.
+            return violation.nodes.every((node) =>
+                // A node's target is an array of selectors; we check if any part contains our target selector.
+                node.target.some((selectorPart) => selectorPart.includes(ignoreRule.selector)),
+            )
+        })
+
+        // If `shouldIgnore` is true, the filter returns `false` to REMOVE the violation.
+        // Otherwise, it returns `true` to KEEP it.
+        return !shouldIgnore
+    })
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

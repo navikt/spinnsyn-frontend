@@ -1,11 +1,12 @@
 import { test as base, expect } from '@playwright/test'
 
-import { validerAxe } from './uuvalidering'
+import { IgnoreRule, validerAxe } from './uuvalidering'
 
 // Definer options for UU-validering
 type UUOptions = {
     skipUU?: boolean
     disableRules?: string[]
+    ignoreRules?: IgnoreRule[]
 }
 
 // Utvid base test med UU-options
@@ -16,7 +17,7 @@ export const test = base.extend<{ uuOptions: UUOptions }>({
 // Automatisk UU-validering for ALLE tester (med mindre eksplisitt skrudd av)
 test.afterEach(async ({ page, uuOptions }, testInfo) => {
     if (!uuOptions.skipUU) {
-        await validerAxe(page, testInfo, uuOptions.disableRules)
+        await validerAxe(page, testInfo, uuOptions.disableRules, uuOptions.ignoreRules)
     }
 })
 
