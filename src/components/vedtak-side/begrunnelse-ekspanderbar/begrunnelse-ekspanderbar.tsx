@@ -49,7 +49,7 @@ export const BegrunnelseEkspanderbar = ({
                     {hentBegrunnelseTittel()}
                 </Heading>
             </Accordion.Header>
-            <Accordion.Content className="mt-4">
+            <Accordion.Content className="mt-4 ignore-axe">
                 {begrunnelse === 'skjonn' && (
                     <>
                         <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="SkjønnsfastsattSykepengegrunnlagMal" />
