@@ -24,9 +24,9 @@ test.beforeEach(async ({ context, page }) => {
 })
 
 // Automatisk UU-validering for ALLE tester (med mindre eksplisitt skrudd av)
-test.afterEach(async ({ page, uuOptions }, testInfo) => {
+test.afterEach(async ({ page, uuOptions, browserName }, testInfo) => {
     if (!uuOptions.skipUU) {
-        await validerAxe(page, testInfo, uuOptions.disableRules, uuOptions.ignoreRules)
+        await validerAxe(browserName, page, testInfo, uuOptions.disableRules, uuOptions.ignoreRules)
     }
 })
 
