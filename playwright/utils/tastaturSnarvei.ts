@@ -1,6 +1,7 @@
 import { Page, Locator, expect } from '@playwright/test'
 
 export async function tabUntilFocusedContainsText(
+    browserName: string,
     page: Page,
     expectedText: string | RegExp,
     options?: { maxTabs?: number; checkParent?: boolean },
@@ -12,7 +13,11 @@ export async function tabUntilFocusedContainsText(
     let focusedElement: Locator = page.locator(':focus')
 
     while (tabsAttempted < maxTabs) {
-        await page.keyboard.press('Tab')
+        if (browserName == 'webkit') {
+            await page.keyboard.press('Alt+Tab')
+        } else {
+            await page.keyboard.press('Tab')
+        }
         tabsAttempted++
 
         let currentFocused: Locator = page.locator(':focus')
