@@ -1,16 +1,17 @@
 /* eslint-disable no-console */
-import { expect, Page, TestInfo, webkit } from '@playwright/test'
+import { expect, Page, TestInfo } from '@playwright/test'
 import { AxeBuilder } from '@axe-core/playwright'
 import { Result } from 'axe-core'
 
 export async function validerAxe(
+    browserName: string,
     page: Page,
     testInfo: TestInfo,
     disableRules: string[] = [],
     ignoreRules: IgnoreRule[] = [],
 ) {
     const axeBuilder = new AxeBuilder({ page }).exclude('.ignore-axe')
-    if (webkit) {
+    if (browserName == 'webkit') {
         axeBuilder.disableRules('color-contrast') // Webkit har problemer med color-contrast-regelen
     }
 
