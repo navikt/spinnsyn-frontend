@@ -1,8 +1,9 @@
 import { Result } from 'axe-core'
 
 import { generateColorContrastHtml } from './color-utils'
+import { ScreenshotData } from './types'
 
-export function generateHtmlReport(violations: Result[], url: string): string {
+export function generateHtmlReport(violations: Result[], url: string, screenshots: ScreenshotData[] = []): string {
     const impactCounts = {
         critical: violations.filter((v) => v.impact === 'critical').length,
         serious: violations.filter((v) => v.impact === 'serious').length,
@@ -33,7 +34,7 @@ export function generateHtmlReport(violations: Result[], url: string): string {
         <p><strong>Minor:</strong> ${impactCounts.minor}</p>
     </div>
 
-    ${violations.map((violation) => generateViolationHtml(violation)).join('')}
+    ${violations.map((violation, index) => generateViolationHtml(violation, index, screenshots)).join('')}
 </body>
 </html>`
 }
@@ -163,12 +164,47 @@ function getReportStyles(): string {
             margin-left: 10px;
             color: #222;
             font-size: 11px;
-        }`
+        }
+        .screenshot-section {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
 }
 
-function generateViolationHtml(violation: Result): string {
+.screenshot-gallery {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.screenshot-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.screenshot-img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.screenshot-caption {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+`
+}
+
+function generateViolationHtml(violation: Result, index: number, screenshots: ScreenshotData[]): string {
     return `
-        <div class="violation">
+        <div class="violation" id="violation-${index}">
             <div class="violation-header">
                 <span class="impact-badge impact-${violation.impact || 'unknown'}">${(violation.impact || 'unknown').toUpperCase()}</span>
                 <h3>${violation.id}</h3>
@@ -179,7 +215,7 @@ function generateViolationHtml(violation: Result): string {
 
                 <h4>📍 Berørte elementer (${violation.nodes.length}):</h4>
                 <div class="element-list">
-                    ${violation.nodes.map((node) => generateNodeHtml(violation.id, node)).join('')}
+                    ${violation.nodes.map((node, nodeIndex) => generateNodeHtml(violation.id, node, nodeIndex, screenshots)).join('')}
                 </div>
 
                 <a href="${violation.helpUrl}" target="_blank" class="help-link">📚 Les mer om denne regelen</a>
@@ -187,9 +223,32 @@ function generateViolationHtml(violation: Result): string {
         </div>`
 }
 
-function generateNodeHtml(violationId: string, node: any): string {
+function generateNodeHtml(violationId: string, node: any, nodeIndex: number, screenshots: ScreenshotData[]): string {
     const colorDetails =
         violationId === 'color-contrast' && node.any?.[0]?.data ? generateColorContrastHtml(node.any[0].data) : ''
+
+    const nodeScreenshots = screenshots.filter((s) => s.violationId === violationId && s.nodeIndex === nodeIndex)
+    const screenshotSection =
+        nodeScreenshots.length > 0
+            ? `
+        <div class="screenshot-section">
+            <h5>📸 Screenshots</h5>
+            <div class="screenshot-gallery">
+                <div class="screenshot-item">
+                    <img src="data:image/png;base64,${nodeScreenshots[0].highlighted.toString('base64')}"
+                         alt="Highlighted element in context"
+                         class="screenshot-img">
+                    <p class="screenshot-caption">Element highlighted in context</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="data:image/png;base64,${nodeScreenshots[0].element.toString('base64')}"
+                         alt="Close-up of element"
+                         class="screenshot-img">
+                    <p class="screenshot-caption">Close-up of element</p>
+                </div>
+            </div>
+        </div>`
+            : ''
 
     const nodeDetails = `
         <table class="node-section-table">
@@ -216,7 +275,7 @@ function generateNodeHtml(violationId: string, node: any): string {
                 .join('')}
         </table>`
 
-    return `<div class="element">${node.target.join(' ')}${colorDetails}${nodeDetails}</div>`
+    return `<div class="element">${node.target.join(' ')}${colorDetails}${nodeDetails}${screenshotSection}</div>`
 }
 
 function generateCheckHtml(checks: any[]): string {

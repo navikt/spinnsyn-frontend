@@ -22,3 +22,10 @@ export interface ViolationContext {
     violations: Result[]
     url: string
 }
+
+export interface ScreenshotData {
+    violationId: string
+    nodeIndex: number
+    highlighted: Buffer
+    element: Buffer
+}

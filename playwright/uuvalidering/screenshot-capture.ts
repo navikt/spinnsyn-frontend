@@ -1,9 +1,17 @@
 import { Page, TestInfo } from '@playwright/test'
 import { Result } from 'axe-core'
 
+import { ScreenshotData } from './types'
+
 const MAX_SCREENSHOTS_PER_VIOLATION = 3
 
-export async function captureViolationScreenshots(page: Page, testInfo: TestInfo, violations: Result[]) {
+export async function captureViolationScreenshots(
+    page: Page,
+    testInfo: TestInfo,
+    violations: Result[],
+): Promise<ScreenshotData[]> {
+    const screenshots: ScreenshotData[] = []
+
     for (const violation of violations) {
         const nodesToCapture = violation.nodes.slice(0, MAX_SCREENSHOTS_PER_VIOLATION)
 
@@ -14,14 +22,18 @@ export async function captureViolationScreenshots(page: Page, testInfo: TestInfo
                 const element = page.locator(selectorString).first()
 
                 if (!(await element.isVisible())) continue
-
-                await element.highlight()
                 await page.waitForTimeout(100)
 
-                const [fullScreenshot, elementScreenshot] = await Promise.all([
-                    page.screenshot({ type: 'png', fullPage: false }),
-                    element.screenshot({ type: 'png' }),
-                ])
+                const elementScreenshot = await element.screenshot({ type: 'png' })
+                await element.highlight()
+                const fullScreenshot = await page.screenshot({ type: 'png', fullPage: false })
+
+                screenshots.push({
+                    violationId: violation.id,
+                    nodeIndex: j,
+                    highlighted: fullScreenshot,
+                    element: elementScreenshot,
+                })
 
                 await Promise.all([
                     testInfo.attach(`violation-${violation.id}-highlighted-${j + 1}.png`, {
@@ -38,4 +50,6 @@ export async function captureViolationScreenshots(page: Page, testInfo: TestInfo
             }
         }
     }
+
+    return screenshots
 }

@@ -27,10 +27,10 @@ export async function validerAxe(
 
     await addAnnotations(testInfo, violations)
 
-    const htmlReport = generateHtmlReport(violations, page.url())
-    await attachHtmlReport(testInfo, htmlReport)
+    const screenshots = await captureViolationScreenshots(page, testInfo, violations)
 
-    await captureViolationScreenshots(page, testInfo, violations)
+    const htmlReport = generateHtmlReport(violations, page.url(), screenshots)
+    await attachHtmlReport(testInfo, htmlReport)
 
     const errorMessage = formatErrorMessage(violations)
     console.log(`${violations.length} UU-violation(s) detected - se attachments i Playwright GUI for detaljer`)
