@@ -1,0 +1,42 @@
+import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
+
+import { test, expect } from './fixtures'
+
+test.describe('Kun personutbetaling', () => {
+    test.beforeEach(async ({ page }) => {
+        await page.goto('/syk/sykepenger?testperson=kun-direkte')
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
+        await page.locator(`a[href*="${kunDirekte.id}"]`).click()
+    })
+    test('Viser info om utbetaling til person', async ({ page }) => {
+        await expect(
+            page.getByText(
+                'Du får noen av sykepengene dine fra Nav og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
+            ),
+        ).not.toBeVisible()
+        await expect(page.getByText('Pengene utbetales til deg')).toBeVisible()
+        await expect(page.getByText('Utbetales til Matbutikken AS')).not.toBeVisible()
+
+        const header = page.locator('[data-cy="header-sykepenger-til-deg"]')
+        await expect(header).toContainText('24 550 kroner')
+        await expect(header).toContainText('sykepenger til deg')
+
+        const panel = page.locator('[data-cy="utbetaling-panel-personutbetaling"]')
+        await expect(panel).toHaveCSS('background-color', 'rgb(216, 249, 255)')
+        await expect(panel.getByRole('heading', { name: /Sykepenger utbetales til kontonummer:/ })).toBeVisible()
+        await expect(panel.getByText('1001 11 10011')).toBeVisible()
+        await panel.getByText('Når får du sykepengene?').click()
+        await expect(panel).toContainText('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden')
+
+        const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+        await beregningRegion.click()
+        await beregningRegion.getByText('Mer om beregningen').click()
+        await expect(beregningRegion).toContainText('Totalbeløp')
+        await expect(beregningRegion).toContainText('Når du får utbetalt sykepenger fra Nav viser totalbeløp')
+    })
+
+    test('Ekspanderer blått panel', async ({ page }) => {
+        await page.getByText('10 sykepengedager').click({ force: true })
+        await expect(page.getByText('238 sykepengedager')).toBeVisible()
+    })
+})
