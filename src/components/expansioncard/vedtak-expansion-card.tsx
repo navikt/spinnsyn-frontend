@@ -28,7 +28,7 @@ export const VedtakExpansionCard = ({
             aria-label={ariaLabel ?? tittel}
             open={apne}
             onToggle={() => (setApne ? setApne(!apne) : null)}
-            className="mt-4 bg-white"
+            className="mt-4"
             style={
                 {
                     '--ac-expansioncard-bg': ugyldig ? 'var(--a-gray-100)' : 'var(--a-surface-default)',
