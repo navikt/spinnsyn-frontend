@@ -202,15 +202,15 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                 )}
                 {vedtak.vedtak.tags && vedtak.vedtak.tags.includes('SykepengegrunnlagUnder2G') && (
                     <>
-                        <Detail className="mt-4 border-t border-gray-400 pt-4 text-sm text-gray-700">
+                        <Detail className="mt-4 border-t border-gray-700 pt-4 text-sm text-gray-900">
                             Sykepengegrunnlaget ditt er mindre enn to ganger grunnbeløpet. Hvis du også oppfyller
                             kravene for arbeidsavklaringspenger, kan du velge å få det isteden.
                         </Detail>
-                        <Detail className="text-sm text-gray-700">
+                        <Detail className="text-sm text-gray-900">
                             Sykepenger og arbeidsavklaringspenger beregnes på forskjellige måter. Derfor kan grunnlaget
                             du kan få for arbeidsavklaringspenger være høyere enn det du kan få for sykepenger. For mer
                             informasjon{' '}
-                            <Link href={tekst('behandling.lenke.url')} target="_blank">
+                            <Link href={tekst('behandling.lenke.url')} target="_blank" className="!text-blue-800">
                                 kontakt Nav
                             </Link>
                             .
