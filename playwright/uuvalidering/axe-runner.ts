@@ -6,10 +6,6 @@ import { ValidationOptions } from './types'
 export async function runAxeAnalysis(page: Page, options: ValidationOptions) {
     const axeBuilder = new AxeBuilder({ page }).exclude('.ignore-axe')
 
-    if (options.browserName === 'webkit') {
-        axeBuilder.disableRules('color-contrast')
-    }
-
     if (options.disableRules && options.disableRules.length > 0) {
         axeBuilder.disableRules(options.disableRules)
     }
