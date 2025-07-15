@@ -1,6 +1,7 @@
 import { kombinertDirekteOgRefusjon } from '../src/data/testdata/data/vedtak/kombinert'
 
 import { test, expect } from './fixtures'
+import { trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
 const vedtak = kombinertDirekteOgRefusjon
 const baseURL = 'http://localhost:3000/syk/sykepenger'
@@ -13,7 +14,7 @@ test.describe('Kombinasjonutbetaling', () => {
             await page.goto(`?testperson=kombinasjon`, { waitUntil: 'domcontentloaded' })
             await expect(page.locator('role=link[name=/Sykmeldt fra /i]')).toHaveCount(2)
             await expect(page).toHaveURL(`${baseURL}?testperson=kombinasjon`)
-            await page.locator(`a[href*=${vedtak.id}]`).click()
+            await trykkPaVedtakMedId(page, vedtak.id)
         })
     })
 

@@ -2,6 +2,7 @@ import { inntektHentetFraAordningen } from '../src/data/testdata/data/vedtak/inn
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { expect, test } from './fixtures'
+import { beregnetManedsinntektRegion, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
 test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
     test('Sjekker informasjon relatert til inntekt fra a-ordningen', async ({ page }) => {
@@ -9,7 +10,7 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
 
         await page.goto(`/syk/sykepenger?testperson=diverse-data`)
         await page.emulateMedia({ reducedMotion: 'reduce' })
-        await page.locator(`a[href*="${vedtak.id}"]`).click()
+        await trykkPaVedtakMedId(page, vedtak.id)
 
         const header = page.getByRole('main').getByRole('heading', { level: 1 }).first()
         await expect(header).toBeVisible()
@@ -17,23 +18,8 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
         const beregningArticle = page.getByRole('article', { name: 'Beregning av sykepengene' })
         await page.getByRole('main').getByRole('region', { name: 'Beregning av sykepengene' }).click()
 
-        const viewportWidth = page.viewportSize()?.width
-
-        if (viewportWidth === 1920) {
-            await expect(
-                beregningArticle.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra a-ordningen)' }),
-            ).toContainText(formaterValuta(74675))
-        } else {
-            const beregnetMaanedsinntekt = beregningArticle.locator('.navds-body-short.navds-body-short--small', {
-                hasText: 'Beregnet månedsinntekt',
-            })
-            await expect(beregnetMaanedsinntekt).toBeVisible()
-
-            const hentetFraAOrdningen = beregningArticle.locator('.navds-body-short.navds-body-short--small p')
-            await expect(hentetFraAOrdningen).toHaveText('(hentet fra a-ordningen)')
-
-            await expect(beregningArticle).toContainText(formaterValuta(74675))
-        }
+        const beregnetManedsInntekt = await beregnetManedsinntektRegion(page, 'a-ordningen')
+        await expect(beregnetManedsInntekt).toContainText(formaterValuta(74_675))
 
         await expect(beregningArticle.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
             formaterValuta(896100),
