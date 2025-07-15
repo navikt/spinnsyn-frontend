@@ -1,5 +1,3 @@
-import { Locator } from '@playwright/test'
-
 import { alleAvvisteDager } from '../src/data/testdata/data/vedtak/alleAvvisteDager'
 import {
     avslåttFraBømlo,
@@ -11,7 +9,7 @@ import { avvistVedtakMedLavInntekt } from '../src/data/testdata/data/vedtak/avvi
 import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../src/data/testdata/data/vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 
 import { test, expect } from './fixtures'
-import { trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { trykkPaVedtakMedId, verifyBeregningPanel, verifyDagTabellRows } from './utils/hjelpefunksjoner'
 
 test.describe('Avviste dager', () => {
     test.beforeEach(async ({ page }) => {
@@ -163,7 +161,7 @@ test.describe('Avviste dager', () => {
         ])
 
         const merOmBeregningen = beregningsRegion.locator('[data-cy="mer-om-beregningen"]')
-        await verifyBeregningPanel(merOmBeregningen)
+        await verifyBeregningPanel(merOmBeregningen, true)
     })
 
     test('Vedtak med avviste dager og lav inntekt, direkte utbetaling', async ({ page }) => {
@@ -201,7 +199,7 @@ test.describe('Avviste dager', () => {
         ])
 
         const merOmBeregningen = beregningsRegion.locator('[data-cy="mer-om-beregningen"]')
-        await verifyBeregningPanel(merOmBeregningen)
+        await verifyBeregningPanel(merOmBeregningen, true)
     })
 
     test('Vedtak med delvisInnvilget begrunnelse fra Bømlo', async ({ page }) => {
@@ -273,20 +271,3 @@ test.describe('Avviste dager', () => {
         }
     })
 })
-
-async function verifyDagTabellRows(dagTabellBody: Locator, rows: Array<[string, string]>) {
-    for (const [dag, reason] of rows) {
-        await expect(dagTabellBody.getByRole('row', { name: `${dag} - ${reason}` })).toBeVisible()
-    }
-}
-
-async function verifyBeregningPanel(merOmBeregningen: Locator) {
-    await merOmBeregningen.click()
-    await expect(merOmBeregningen).toContainText('Månedsinntekt')
-    await expect(merOmBeregningen).toContainText('Årsinntekt')
-    await expect(merOmBeregningen).toContainText('Sykepengegrunnlag')
-    await expect(merOmBeregningen).not.toContainText('Sykepenger per dag')
-    await expect(merOmBeregningen).not.toContainText('Totalbeløp')
-    await expect(merOmBeregningen).not.toContainText('Utbetalingsdager')
-    await expect(merOmBeregningen).not.toContainText('Utbetaling')
-}
