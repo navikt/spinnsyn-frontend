@@ -1,15 +1,13 @@
 import { vedtakMedFlereArbeidsgivere } from '../src/data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
-import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
 test.describe('Vedtak med flere arbeidsgivere', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
         await expect(page).toHaveURL(/syk\/sykepenger\?testperson=et-vedtak-flere-arbeidsgivere/)
-        await trykkPaVedtakMedId(page, vedtakMedFlereArbeidsgivere.id)
+        await page.locator(`a[href*="${vedtakMedFlereArbeidsgivere.id}"]`).click()
         await expect(page.getByRole('heading', { name: 'Svar på søknad om sykepenger' })).toBeVisible()
     })
 
@@ -20,8 +18,12 @@ test.describe('Vedtak med flere arbeidsgivere', () => {
         const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
         await beregning.click()
 
-        const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)
-        await expect(beregnetManedsinntekt).toContainText(formaterValuta(41_958))
+        await expect(
+            page.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' }),
+        ).toContainText('Beregnet månedsinntekt')
+        await expect(
+            page.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' }),
+        ).toContainText('41\u00a0958')
 
         await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
             'Omregnet til årsinntekt',
