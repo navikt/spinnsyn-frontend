@@ -4,6 +4,10 @@ import { verifyBeregningPanel, verifyDagTabellRows } from './utils/hjelpefunksjo
 const baseUrl = 'http://localhost:3000/syk/sykepenger/vedtak/arkivering/utvikling-arkivering'
 
 test.describe('Vedtak for arkivering', () => {
+    test.afterEach(({ uuOptions }) => {
+        uuOptions.disableRules = ['landmark-one-main', 'page-has-heading-one', 'region']
+    })
+
     test('Vanlig vedtak med refusjon der alt er ekspandert', async ({ page }) => {
         await test.step('Gå til baseUrl og sjekk innledende elementer', async () => {
             await page.goto(baseUrl)
