@@ -1,12 +1,13 @@
 import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
 
 import { test, expect } from './fixtures'
+import { trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
 test.describe('Kun personutbetaling', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=kun-direkte')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
-        await page.locator(`a[href*="${kunDirekte.id}"]`).click()
+        await trykkPaVedtakMedId(page, kunDirekte.id)
     })
     test('Viser info om utbetaling til person', async ({ page }) => {
         await expect(

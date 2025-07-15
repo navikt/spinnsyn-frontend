@@ -11,24 +11,21 @@ import { avvistVedtakMedLavInntekt } from '../src/data/testdata/data/vedtak/avvi
 import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../src/data/testdata/data/vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 
 import { test, expect } from './fixtures'
+import { trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
 test.describe('Avviste dager', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
     })
-    test('Laster startside', async ({ page }) => {
-        await expect(page).toHaveURL('/syk/sykepenger')
-    })
 
     test('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', async ({ page }) => {
-        await page.locator(`a[href*="${vedtakMed40Grad.id}"]`).click({ force: true })
+        await trykkPaVedtakMedId(page, vedtakMed40Grad.id)
         await expect(page.getByRole('region', { name: 'Avviste sykepengedager' })).not.toBeVisible()
     })
 
     test('Vedtak med delvis godkjente utbetalingsdager', async ({ page }) => {
-        await page.goto('/syk/sykepenger')
-        await page.locator(`a[href*="${alleAvvisteDager.id}"]`).click({ force: true })
+        await trykkPaVedtakMedId(page, alleAvvisteDager.id)
 
         const refusjonsPanel = page.locator('[data-cy="utbetaling-panel-refusjon"]')
         await expect(refusjonsPanel.getByText('Delvis innvilget søknad')).toBeVisible()
@@ -109,8 +106,7 @@ test.describe('Avviste dager', () => {
     })
 
     test('Vedtak med avviste dager og ingen utbetaling', async ({ page }) => {
-        await page.goto('/syk/sykepenger')
-        await page.locator(`a[href*="${avvistVedtak.id}"]`).click({ force: true })
+        await trykkPaVedtakMedId(page, avvistVedtak.id)
         await expect(page.getByText('Ingen utbetaling')).toBeVisible()
 
         const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
@@ -139,8 +135,7 @@ test.describe('Avviste dager', () => {
     })
 
     test('Vedtak med avviste dager og lav inntekt, refusjon', async ({ page }) => {
-        await page.goto('/syk/sykepenger')
-        await page.locator(`a[href*="${avvistVedtakMedLavInntekt.id}"]`).click({ force: true })
+        await trykkPaVedtakMedId(page, avvistVedtakMedLavInntekt.id)
         await expect(page.getByText('Ingen utbetaling')).toBeVisible()
 
         const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
@@ -173,7 +168,7 @@ test.describe('Avviste dager', () => {
 
     test('Vedtak med avviste dager og lav inntekt, direkte utbetaling', async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=delvis-og-helt-avviste-vedtak')
-        await page.locator(`a[href*="${avvistVedtakMedLavInntektDirekteUtbetaling.id}"]`).click({ force: true })
+        await trykkPaVedtakMedId(page, avvistVedtakMedLavInntektDirekteUtbetaling.id)
         await expect(page.getByText('Ingen utbetaling')).toBeVisible()
 
         const refusjonsPanel = page.locator('[data-cy="utbetaling-panel-refusjon"]')
@@ -211,9 +206,7 @@ test.describe('Avviste dager', () => {
 
     test('Vedtak med delvisInnvilget begrunnelse fra Bømlo', async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=kombinasjon-delvisInnvilgelse-og-skj%C3%B8nnsfastsatt-fra-bomlo')
-        await page
-            .locator(`a[href*="${delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id}"]`)
-            .click({ force: true })
+        await trykkPaVedtakMedId(page, delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id)
 
         const personutbetalingPanel = page.locator('[data-cy="utbetaling-panel-personutbetaling"]')
         await expect(personutbetalingPanel.getByText('Delvis innvilget søknad')).not.toBeVisible()
@@ -240,7 +233,7 @@ test.describe('Avviste dager', () => {
 
     test('Vedtak med avslag begrunnelse fra Bømlo', async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=avvist-fra-bomlo')
-        await page.locator(`a[href*="${avslåttFraBømlo.id}"]`).click({ force: true })
+        await trykkPaVedtakMedId(page, avslåttFraBømlo.id)
 
         const refusjonPanel = page.locator('[data-cy="utbetaling-panel-refusjon"]')
         await expect(refusjonPanel.getByText('Avslått søknad')).toBeVisible()

@@ -1,6 +1,8 @@
 import { skjonnsfastsattRiktigAarsinntekt } from '../src/data/testdata/data/vedtak/skjonnsfastsattRiktigAarsinntekt'
+import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
+import { beregnetManedsinntektRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
     const skjonnsfastsattRiktigAarsinntektVedtak = skjonnsfastsattRiktigAarsinntekt[3]
@@ -16,12 +18,8 @@ test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () 
             const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
             await beregning.click()
 
-            await expect(
-                page.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' }),
-            ).toContainText('Beregnet månedsinntekt')
-            await expect(
-                page.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' }),
-            ).toContainText('21\u00a0000')
+            const beregnetManedsInntekt = await beregnetManedsinntektRegion(page)
+            await expect(beregnetManedsInntekt).toContainText('21\u00a0000')
 
             await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
                 'Omregnet til årsinntekt',
@@ -49,27 +47,25 @@ test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () 
             const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
             await beregning.click()
 
-            await expect(
-                page.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' }),
-            ).toContainText('Beregnet månedsinntekt')
-            await expect(
-                page.getByRole('region', { name: 'Beregnet månedsinntekt (hentet fra inntektsmeldingen)' }),
-            ).toContainText('15\u00a0000')
+            const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)
+            await expect(beregnetManedsinntekt).toContainText(formaterValuta(15_000))
 
             await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
                 'Omregnet til årsinntekt',
             )
-            await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText('180\u00a0000')
+            await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
+                formaterValuta(180_000),
+            )
 
             await expect(page.getByRole('region', { name: 'Sjokkerende Elektriker Årsinntekt' })).toContainText(
                 'Årsinntekt',
             )
             await expect(page.getByRole('region', { name: 'Sjokkerende Elektriker Årsinntekt' })).toContainText(
-                '252\u00a0000',
+                formaterValuta(252_000),
             )
 
             await expect(page.getByRole('region', { name: 'Samlet årsinntekt' })).toContainText('Samlet årsinntekt')
-            await expect(page.getByRole('region', { name: 'Samlet årsinntekt' })).toContainText('432\u00a0000')
+            await expect(page.getByRole('region', { name: 'Samlet årsinntekt' })).toContainText(formaterValuta(432_000))
         })
     })
 })
