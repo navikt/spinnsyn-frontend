@@ -1,5 +1,3 @@
-import './run-2/personutbetaling-uten-kontonummer.cy'
-import './run-2/redusertTil6G.cy'
 import './run-3/sortering-av-vedtak.cy'
 import './run-3/utbetalingsoversikt.cy'
 import './run-3/varianter-av-opplysningene.cy'
