@@ -1,4 +1,3 @@
-import './run-1/les-ulest-vedtak.cy'
 import './run-1/skjønnsfastsatt-sykepengegrunnlag.cy'
 import './run-1/vedtak-med-flere-arbeidsgivere.cy'
 import './run-1/skjonnsfastsatt-riktig-aarsinntekt.cy'
