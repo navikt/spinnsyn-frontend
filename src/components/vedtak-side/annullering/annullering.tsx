@@ -67,7 +67,7 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                     <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
 
                     <Link href={tekst('behandling.lenke.url')} target="_blank">
-                        <Chat2Icon className="inline" fontSize="var(--a-font-size-large)" />
+                        <Chat2Icon title="Skriv til oss" className="inline" fontSize="var(--a-font-size-large)" />
                         {tekst('annullert.info.skriv-til-oss')}
                     </Link>
                 </div>
