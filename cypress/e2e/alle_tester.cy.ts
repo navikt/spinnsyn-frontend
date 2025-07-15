@@ -1,4 +1,3 @@
-import './run-2/flexjar.cy'
 import './run-2/personutbetaling-uten-kontonummer.cy'
 import './run-2/redusertTil6G.cy'
 import './run-2/arkivering-av-vedtak.cy'
