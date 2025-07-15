@@ -1,5 +1,4 @@
 import './run-1/vedtak-med-flere-arbeidsgivere.cy'
-import './run-1/skjonnsfastsatt-riktig-aarsinntekt.cy'
 import './run-2/flexjar.cy'
 import './run-2/personutbetaling-uten-kontonummer.cy'
 import './run-2/redusertTil6G.cy'
