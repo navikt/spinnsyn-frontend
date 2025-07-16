@@ -47,3 +47,10 @@ export const verifyBeregningPanel = async (merOmBeregningen: Locator, avvist: bo
         await expect(merOmBeregningen).toContainText('Utbetaling')
     }
 }
+
+export const visBeregningRegion = async (page: Page) => {
+    const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+    await beregningRegion.click()
+    await expect(beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' })).toBeVisible()
+    return beregningRegion
+}
