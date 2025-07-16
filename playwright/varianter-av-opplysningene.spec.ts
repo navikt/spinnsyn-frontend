@@ -1,0 +1,97 @@
+import { vedtakAnnullert } from '../src/data/testdata/data/vedtak/annullert'
+import { vedtakRevurdert } from '../src/data/testdata/data/vedtak/revurdert'
+import { vedtakRevurdertDirekte } from '../src/data/testdata/data/vedtak/revurdertDirekte'
+import { kombinertDirekteOgRefusjon } from '../src/data/testdata/data/vedtak/kombinert'
+import { vedtakMedFlereArbeidsgivere } from '../src/data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
+import { vedtakMedDetMeste } from '../src/data/testdata/data/vedtak/medDetMeste'
+
+import { test, expect } from './fixtures'
+
+test.describe('Tester logikk i behandling.tsx', () => {
+    test('Automatisk behandlet', async ({ page }) => {
+        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakMedDetMeste.id}`)
+        await expect(page.locator('[data-cy="behandling-header"]')).toHaveText('Søknaden er behandlet automatisk')
+        await expect(page.locator('[data-cy="behandling-body"]')).toContainText(
+            'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+        )
+        await expect(page.locator('[data-cy*="ugyldig"]')).toHaveCount(0)
+    })
+
+    test('Varianter av opplysningene', async ({ page }) => {
+        await page.goto(
+            `http://localhost:3000/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=${vedtakMedFlereArbeidsgivere.id}`,
+        )
+        await expect(page.locator('[data-cy="behandling-header"]')).toHaveText(
+            'Søknaden er behandlet av en saksbehandler',
+        )
+        await expect(page.locator('[data-cy="behandling-body"]')).toContainText(
+            'Vi fattet vedtaket 21. mars 2022. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+        )
+        await expect(page.locator('[data-cy*="ugyldig"]')).toHaveCount(0)
+    })
+
+    test('Automatisk behandlet annullert vedtak', async ({ page }) => {
+        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakAnnullert.id}`)
+        const alert = page.locator('.navds-alert')
+        await expect(alert).toContainText('Til din informasjon')
+        await expect(alert).toContainText(
+            'Av tekniske årsaker er saken din flyttet til et annet saksbehandlingssystem.',
+        )
+        await expect(alert).toContainText('Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.')
+        await expect(alert).not.toContainText('Du finner det nye vedtaket i listen over svar på søknader')
+        await expect(page.locator('[data-cy="behandling-header"]')).toHaveText('Søknaden ble behandlet automatisk')
+        await expect(page.locator('[data-cy="behandling-body"]')).toContainText(
+            'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+        )
+        await expect(page.getByRole('region', { name: 'Antall sykepengedager som gjenstår' }).first()).toHaveCSS(
+            'background-color',
+            'rgb(236, 238, 240)',
+        )
+    })
+
+    test('Manuelt behandlet revurdert vedtak', async ({ page }) => {
+        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakRevurdert.id}`)
+        const alert = page.locator('.navds-alert')
+        await expect(alert).toContainText('Denne beslutningen er behandlet på nytt.')
+        await expect(alert).toContainText('Nytt svar for denne perioden finner du her')
+        await expect(alert).not.toContainText(
+            'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
+        )
+        await expect(page.locator('[data-cy="behandling-header"]')).toHaveText(
+            'Søknaden ble behandlet av en saksbehandler',
+        )
+        await expect(page.locator('[data-cy="behandling-body"]')).toContainText(
+            'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+        )
+        await expect(page.getByRole('region', { name: 'Antall sykepengedager som gjenstår' }).first()).toHaveCSS(
+            'background-color',
+            'rgb(236, 238, 240)',
+        )
+    })
+
+    test('Revurdert vedtak med direkte utbetaling', async ({ page }) => {
+        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakRevurdertDirekte.id}`)
+        await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
+        await expect(page.locator('.navds-body-long.navds-body-long.navds-typo--spacing').nth(1)).toContainText(
+            'Du får sykepenger direkte fra Nav. Den nye behandlingen kan påvirke hva Nav utbetaler til deg.',
+        )
+    })
+
+    test('Revurdert vedtak med kombinasjonsutbetaling', async ({ page }) => {
+        await page.goto(
+            `http://localhost:3000/syk/sykepenger?testperson=kombinert-revurdert&id=${kombinertDirekteOgRefusjon.id}`,
+        )
+        await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
+        await expect(page.locator('.navds-body-long.navds-body-long.navds-typo--spacing').nth(1)).toContainText(
+            'Du får sykepenger både fra arbeidsgiveren din og direkte fra Nav. Den nye behandlingen kan påvirke hva Nav betaler både til deg og til arbeidsgiveren din.',
+        )
+    })
+
+    test('Revurdert vedtak får infoboks', async ({ page }) => {
+        await page.goto('http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
+        await page.getByText('Ny beslutning').click()
+        await expect(page.locator('.navds-alert--info')).toContainText(
+            'Dette er en ny beslutning som erstatter et tidligere svar.',
+        )
+    })
+})
