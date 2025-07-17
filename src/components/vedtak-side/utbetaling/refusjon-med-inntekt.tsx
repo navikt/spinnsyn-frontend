@@ -45,7 +45,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                 </Heading>
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
-            dataCy="refusjon"
+            dataTestId="refusjon"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={vedtak.sykepengebelopArbeidsgiver > 0} />
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>

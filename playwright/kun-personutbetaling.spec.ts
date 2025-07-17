@@ -18,9 +18,9 @@ test.describe('Kun personutbetaling', () => {
         await expect(page.getByText('Pengene utbetales til deg')).toBeVisible()
         await expect(page.getByText('Utbetales til Matbutikken AS')).not.toBeVisible()
 
-        const header = page.getByTestId('header-sykepenger-til-deg')
+        const header = page.getByRole('heading', { level: 2, name: 'sykepenger til deg' })
+        await expect(header).toBeVisible()
         await expect(header).toContainText('24 550 kroner')
-        await expect(header).toContainText('sykepenger til deg')
 
         const panel = page.getByTestId('utbetaling-panel-personutbetaling')
         await expect(panel).toHaveCSS('background-color', 'rgb(216, 249, 255)')

@@ -27,8 +27,7 @@ test.describe('Kombinasjonutbetaling', () => {
             ).toBeVisible()
         })
 
-        const personutbetalingSection = page.getByTestId('personutbetaling')
-
+        const personutbetalingSection = page.getByTestId(/personutbetaling/)
         await test.step('Sjekk detaljer om utbetaling', async () => {
             await expect(
                 personutbetalingSection.getByText(
@@ -60,8 +59,9 @@ test.describe('Kombinasjonutbetaling', () => {
         })
 
         await test.step('Sjekk headerbeløp', async () => {
-            await expect(page.getByTestId('header-sykepenger-til-deg')).toContainText('24 550 kroner')
-            await expect(page.getByTestId('header-sykepenger-til-deg')).toContainText('sykepenger til deg')
+            const header = page.getByRole('heading', { level: 2, name: 'sykepenger til deg' })
+            await expect(header).toBeVisible()
+            await expect(header).toContainText('24 550 kroner')
         })
     })
 
