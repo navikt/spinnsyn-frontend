@@ -1,3 +1,5 @@
+import { formaterValuta } from '../src/utils/valuta-utils'
+
 import { test, expect } from './fixtures'
 import { verifyBeregningPanel, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 
@@ -29,7 +31,7 @@ test.describe('Vedtak for arkivering', () => {
             const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.locator('[data-cy="dag-tabell-body"]')
             await verifyDagTabellRows(dager, [
-                ['01.feb.', 'Syk', '1\u00a0000 kr'],
+                ['01.feb.', 'Syk', formaterValuta(1_000)],
                 ['06.feb.', 'Helg', '-'],
             ])
         })
@@ -74,7 +76,7 @@ test.describe('Vedtak for arkivering', () => {
             const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.locator('[data-cy="dag-tabell-body"]')
             await verifyDagTabellRows(dager, [
-                ['08.feb.', 'Syk', '2\u00a0455 kr'],
+                ['08.feb.', 'Syk', formaterValuta(2_455)],
                 ['13.feb.', 'Helg', '-'],
             ])
         })
@@ -148,7 +150,7 @@ test.describe('Vedtak for arkivering', () => {
             const sykepengerTilArbeidsgiver = sykepengerTilArbeidsgiverKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilArbeidsgiver).toBeVisible()
             await verifyDagTabellRows(sykepengerTilArbeidsgiver, [
-                ['08.feb.', 'Arbeidsgiveren\u00a0betaler', '-'],
+                ['08.feb.', 'Arbeidsgiveren betaler', '-'],
                 ['20.feb.', 'Syk'],
             ])
         })

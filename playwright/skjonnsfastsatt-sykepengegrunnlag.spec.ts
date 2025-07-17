@@ -2,6 +2,7 @@ import {
     skjønnsfastsattBrukerutbetaling,
     skjønnsfastsattFlereArbeidsgivere,
 } from '../src/data/testdata/data/vedtak/skjønnsfastsatt'
+import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
 import { visBeregningRegion } from './utils/hjelpefunksjoner'
@@ -18,7 +19,7 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             const beregningRegion = await visBeregningRegion(page)
             await expect(
                 beregningRegion.getByRole('region', { name: /Årsinntekt rapportert til skatteetaten/ }),
-            ).toContainText('350\u00a0000')
+            ).toContainText(formaterValuta(350_000))
             await expect(beregningRegion.getByRole('region', { name: /Utregnet avvik/ })).toContainText('61,4 %')
             await expect(
                 beregningRegion.getByText(
@@ -26,7 +27,7 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
                 ),
             ).toBeVisible()
             await expect(beregningRegion.getByRole('region', { name: /Skjønnsfastsatt årsinntekt/ })).toContainText(
-                '660\u00a0000',
+                formaterValuta(660_000),
             )
         })
 
@@ -59,7 +60,7 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             await beregningRegion.click()
             await expect(
                 beregningRegion.getByRole('region', { name: /Årsinntekt rapportert til skatteetaten/ }),
-            ).toContainText('350\u00a0000')
+            ).toContainText(formaterValuta(350_000))
             await expect(beregningRegion.getByRole('region', { name: /Utregnet avvik/ })).toContainText('61,4 %')
             await expect(
                 beregningRegion.getByText(
@@ -67,7 +68,7 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
                 ),
             ).toBeVisible()
             await expect(beregningRegion.getByRole('region', { name: /Skjønnsfastsatt årsinntekt/ })).toContainText(
-                '660\u00a0000',
+                formaterValuta(660_000),
             )
         })
 
