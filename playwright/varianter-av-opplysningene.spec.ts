@@ -14,7 +14,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await expect(page.locator('[data-testid="behandling-body"]')).toContainText(
             'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
-        await expect(page.locator('[data-testid*="ugyldig"]')).toHaveCount(0)
+        await expect(page.getByTestId('ugyldig')).toHaveCount(0)
     })
 
     test('Varianter av opplysningene', async ({ page }) => {
@@ -27,7 +27,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await expect(page.locator('[data-testid="behandling-body"]')).toContainText(
             'Vi fattet vedtaket 21. mars 2022. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
-        await expect(page.locator('[data-testid*="ugyldig"]')).toHaveCount(0)
+        await expect(page.getByTestId('ugyldig')).toHaveCount(0)
     })
 
     test('Automatisk behandlet annullert vedtak', async ({ page }) => {
