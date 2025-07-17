@@ -17,7 +17,6 @@
         "@navikt/next-logger": "^1.35.0",
         "@navikt/oasis": "^3.8.0",
         "@tanstack/react-query": "^5.81.5",
-        "@testing-library/cypress": "^10.0.3",
         "@unleash/nextjs": "^1.6.2",
         "classnames": "^2.5.1",
         "cookie": "^1.0.2",
@@ -37,7 +36,6 @@
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.10.2",
-        "@cypress/webpack-preprocessor": "^6.0.4",
         "@navikt/eslint-config-teamsykmelding": "^7.1.0",
         "@playwright/test": "^1.53.1",
         "@types/classnames": "^2.3.4",
@@ -47,12 +45,8 @@
         "@types/uuid": "^10.0.0",
         "autoprefixer": "^10.4.21",
         "axe-core": "^4.10.3",
-        "cypress": "^13.17.0",
-        "cypress-axe": "^1.6.0",
-        "cypress-real-events": "^1.14.0",
         "eslint": "^8.57.0",
         "eslint-config-next": "^15.3.5",
-        "eslint-plugin-cypress": "^3.6.0",
         "next": "^15.3.5",
         "postcss": "^8.5.6",
         "prettier": "^3.6.2",
@@ -72,21 +66,18 @@
         "build": "next build",
         "test": "vitest",
         "test:ci": "vitest --run",
-        "cy:open": "cypress open --e2e",
         "play": "npx playwright test --ui",
         "play-headless": "npx playwright test",
-        "e2e": "NO_DECORATOR=true start-test dev http://localhost:3000/syk/sykepenger cy:open",
         "prettier:write": "prettier --write .",
         "prettier:check": "prettier --check .",
-        "lint": "eslint --ext=ts,tsx src cypress playwright",
-        "lint:fix": "eslint --ext=ts,tsx src cypress playwright --fix",
+        "lint": "eslint --ext=ts,tsx src playwright",
+        "lint:fix": "eslint --ext=ts,tsx src playwright --fix",
         "format": "npm run prettier:write && npm run lint:fix"
     },
     "eslintConfig": {
         "extends": [
             "@navikt/eslint-config-teamsykmelding",
-            "next/core-web-vitals",
-            "plugin:cypress/recommended"
+            "next/core-web-vitals"
         ],
         "rules": {
             "@typescript-eslint/explicit-function-return-type": "off",

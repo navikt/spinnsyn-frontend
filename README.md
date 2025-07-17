@@ -57,10 +57,10 @@ npm run dev
 npm run test
 ```
 
-## Cypress tester
+## Playwright tester
 
 ```sh
-npm run e2e
+npm run play
 ```
 
 ## Dette logges i Amplitude
