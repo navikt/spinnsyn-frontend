@@ -9,7 +9,12 @@ import { avvistVedtakMedLavInntekt } from '../src/data/testdata/data/vedtak/avvi
 import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../src/data/testdata/data/vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 
 import { test, expect } from './fixtures'
-import { trykkPaVedtakMedId, verifyBeregningPanel, verifyDagTabellRows } from './utils/hjelpefunksjoner'
+import {
+    trykkPaVedtakMedId,
+    verifyBeregningPanel,
+    verifyDagTabellRows,
+    visBeregningRegion,
+} from './utils/hjelpefunksjoner'
 
 test.describe('Avviste dager', () => {
     test.beforeEach(async ({ page }) => {
@@ -147,8 +152,7 @@ test.describe('Avviste dager', () => {
             ),
         ).toBeVisible()
 
-        const beregningsRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
-        await beregningsRegion.click()
+        const beregningRegion = await visBeregningRegion(page)
         await avvisteDagerRegion.locator('[data-cy="avvistedageroversikt"]').click()
 
         const dagTabellBody = avvisteDagerRegion.locator('[data-cy="dag-tabell-body"]')
@@ -160,7 +164,7 @@ test.describe('Avviste dager', () => {
             ['21.aug.', 'Etter dødsfall'],
         ])
 
-        const merOmBeregningen = beregningsRegion.locator('[data-cy="mer-om-beregningen"]')
+        const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
         await verifyBeregningPanel(merOmBeregningen, true)
     })
 
@@ -186,8 +190,7 @@ test.describe('Avviste dager', () => {
             ),
         ).toBeVisible()
 
-        const beregningsRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
-        await beregningsRegion.click()
+        const beregningRegion = await visBeregningRegion(page)
         await avvisteDagerRegion.locator('[data-cy="avvistedageroversikt"]').click()
 
         const dagTabellBody = avvisteDagerRegion.locator('[data-cy="dag-tabell-body"]')
@@ -198,7 +201,7 @@ test.describe('Avviste dager', () => {
             ['21.aug.', 'Etter dødsfall'],
         ])
 
-        const merOmBeregningen = beregningsRegion.locator('[data-cy="mer-om-beregningen"]')
+        const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
         await verifyBeregningPanel(merOmBeregningen, true)
     })
 

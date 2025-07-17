@@ -2,7 +2,7 @@ import { nullOmregnetAarsinntekt } from '../src/data/testdata/data/vedtak/nullOm
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Har null i årsinntekt', () => {
     test.beforeEach(async ({ page }) => {
@@ -13,21 +13,19 @@ test.describe('Har null i årsinntekt', () => {
     })
 
     test('Åpner beregning av sykepengene', async ({ page }) => {
-        await page.getByRole('region', { name: 'Beregning av sykepengene' }).click()
-        const artikkel = page.getByRole('article', { name: 'Beregning av sykepengene' })
+        const beregningRegion = await visBeregningRegion(page)
 
         const manedsinntekt = await beregnetManedsinntektRegion(page)
         await expect(manedsinntekt).toContainText(formaterValuta(0))
 
-        const aarsinntekt = artikkel.getByRole('region', { name: 'Omregnet til årsinntekt' })
+        const aarsinntekt = beregningRegion.getByRole('region', { name: 'Omregnet til årsinntekt' })
         await expect(aarsinntekt).toContainText('Omregnet til årsinntekt')
         await expect(aarsinntekt).toContainText(formaterValuta(0))
     })
 
     test('Åpner begrunnelse for skjønnsfastsetting', async ({ page }) => {
-        const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-        await beregning.click()
-        await beregning.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+        const beregningRegion = await visBeregningRegion(page)
+        await beregningRegion.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
         const begrunnelse = page
             .getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
             .locator('..')

@@ -1,7 +1,7 @@
 import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
 
 import { test, expect } from './fixtures'
-import { trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Kun personutbetaling', () => {
     test.beforeEach(async ({ page }) => {
@@ -29,8 +29,7 @@ test.describe('Kun personutbetaling', () => {
         await panel.getByText('Når får du sykepengene?').click()
         await expect(panel).toContainText('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden')
 
-        const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
-        await beregningRegion.click()
+        const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByText('Mer om beregningen').click()
         await expect(beregningRegion).toContainText('Totalbeløp')
         await expect(beregningRegion).toContainText('Når du får utbetalt sykepenger fra Nav viser totalbeløp')

@@ -1,5 +1,7 @@
+import { formaterValuta } from '../src/utils/valuta-utils'
+
 import { test, expect } from './fixtures'
-import { verifyBeregningPanel, verifyDagTabellRows } from './utils/hjelpefunksjoner'
+import { verifyBeregningPanel, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 const baseUrl = 'http://localhost:3000/syk/sykepenger/vedtak/arkivering/utvikling-arkivering'
 
@@ -26,17 +28,16 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser beregning region og dagtabell', async () => {
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregningRegion.click()
+            const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.locator('[data-cy="dag-tabell-body"]')
             await verifyDagTabellRows(dager, [
-                ['01.feb.', 'Syk', '1\u00a0000 kr'],
+                ['01.feb.', 'Syk', formaterValuta(1_000)],
                 ['06.feb.', 'Helg', '-'],
             ])
         })
 
         await test.step('Verifiser mer om beregningen panel', async () => {
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+            const beregningRegion = await visBeregningRegion(page)
             const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
             await verifyBeregningPanel(merOmBeregningen, false)
         })
@@ -61,7 +62,7 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser beregning region og innhold', async () => {
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+            const beregningRegion = await visBeregningRegion(page)
             await expect(
                 beregningRegion.getByRole('button', { name: /Begrunnelse for skjønnsfastsetting/ }),
             ).toBeVisible()
@@ -72,16 +73,16 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser dagtabell', async () => {
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+            const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.locator('[data-cy="dag-tabell-body"]')
             await verifyDagTabellRows(dager, [
-                ['08.feb.', 'Syk', '2\u00a0455 kr'],
+                ['08.feb.', 'Syk', formaterValuta(2_455)],
                 ['13.feb.', 'Helg', '-'],
             ])
         })
 
         await test.step('Verifiser mer om beregningen panel', async () => {
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+            const beregningRegion = await visBeregningRegion(page)
             const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
             await verifyBeregningPanel(merOmBeregningen, false)
         })
@@ -118,7 +119,7 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser beregning region og innhold', async () => {
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+            const beregningRegion = await visBeregningRegion(page)
             await expect(
                 beregningRegion.getByRole('button', { name: /Begrunnelse for skjønnsfastsetting/ }),
             ).toBeVisible()
@@ -149,7 +150,7 @@ test.describe('Vedtak for arkivering', () => {
             const sykepengerTilArbeidsgiver = sykepengerTilArbeidsgiverKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilArbeidsgiver).toBeVisible()
             await verifyDagTabellRows(sykepengerTilArbeidsgiver, [
-                ['08.feb.', 'Arbeidsgiveren\u00a0betaler', '-'],
+                ['08.feb.', 'Arbeidsgiveren betaler', '-'],
                 ['20.feb.', 'Syk'],
             ])
         })
@@ -160,14 +161,14 @@ test.describe('Vedtak for arkivering', () => {
             const sykepengerTilDeg = sykepengerTilDegKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilDeg).toBeVisible()
             await verifyDagTabellRows(sykepengerTilDeg, [['23.feb.', 'Syk']])
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+            const beregningRegion = await visBeregningRegion(page)
             await expect(beregningRegion).toContainText(
                 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
             )
         })
 
         await test.step('Verifiser mer om beregningen panel', async () => {
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
+            const beregningRegion = await visBeregningRegion(page)
             const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
             await verifyBeregningPanel(merOmBeregningen, false)
         })

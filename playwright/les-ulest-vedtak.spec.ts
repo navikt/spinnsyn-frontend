@@ -4,7 +4,7 @@ import { alleAvvisteDager } from '../src/data/testdata/data/vedtak/alleAvvisteDa
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Les uleste vedtak', () => {
     test.beforeEach(async ({ page }) => {
@@ -31,8 +31,7 @@ test.describe('Les uleste vedtak', () => {
         await test.step('Sjekk grønn boks', async () => {
             await expect(page.getByText('6 200 kroner')).toBeVisible()
             await expect(page.getByText('Utbetales til Integrasjon AS')).toBeVisible()
-            const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregningRegion.click()
+            const beregningRegion = await visBeregningRegion(page)
             await beregningRegion.getByText('Mer om beregningen').click()
             await expect(page.getByRole('link', { name: /folketrygdloven § 8-28/ })).toHaveAttribute(
                 'href',
@@ -40,8 +39,10 @@ test.describe('Les uleste vedtak', () => {
             )
             const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)
             await expect(beregnetManedsinntekt).toContainText(formaterValuta(30_000))
-            await expect(page.getByRole('region', { name: /Omregnet til årsinntekt/ })).toContainText('360\u00a0000 kr')
-            await expect(page.getByRole('region', { name: /Sykepengegrunnlag/ })).toContainText('370\u00a0000 kr')
+            await expect(page.getByRole('region', { name: /Omregnet til årsinntekt/ })).toContainText(
+                formaterValuta(360_000),
+            )
+            await expect(page.getByRole('region', { name: /Sykepengegrunnlag/ })).toContainText(formaterValuta(370_000))
         })
 
         await test.step('Sjekk blå boks', async () => {
