@@ -4,6 +4,7 @@ import {
 } from '../src/data/testdata/data/vedtak/skjønnsfastsatt'
 
 import { test, expect } from './fixtures'
+import { visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
     test.describe('Direkteutbetaling skjønnsfastsatt over 6G', () => {
@@ -13,27 +14,26 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             )
             await expect(page.getByRole('heading', { level: 1 })).toContainText('Svar på søknad om sykepenger')
         })
-        test('Åpner Beregning av sykepengene', async ({ page }) => {
-            const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregning.click()
+        test('Åpner beregningRegion av sykepengene', async ({ page }) => {
+            const beregningRegion = await visBeregningRegion(page)
             await expect(
-                beregning.getByRole('region', { name: /Årsinntekt rapportert til skatteetaten/ }),
+                beregningRegion.getByRole('region', { name: /Årsinntekt rapportert til skatteetaten/ }),
             ).toContainText('350\u00a0000')
-            await expect(beregning.getByRole('region', { name: /Utregnet avvik/ })).toContainText('61,4 %')
+            await expect(beregningRegion.getByRole('region', { name: /Utregnet avvik/ })).toContainText('61,4 %')
             await expect(
-                beregning.getByText(
+                beregningRegion.getByText(
                     'Årsinntekten din er skjønnsfastsatt. Se begrunnelse for skjønnsfastsetting under.',
                 ),
             ).toBeVisible()
-            await expect(beregning.getByRole('region', { name: /Skjønnsfastsatt årsinntekt/ })).toContainText(
+            await expect(beregningRegion.getByRole('region', { name: /Skjønnsfastsatt årsinntekt/ })).toContainText(
                 '660\u00a0000',
             )
         })
 
         test('Åpner begrunnelse for skjønnsfastsetting', async ({ page }) => {
-            const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregning.click()
-            await beregning.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+            const beregningRegion = await visBeregningRegion(page)
+            await beregningRegion.click()
+            await beregningRegion.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
             const begrunnelse = page
                 .getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .locator('..')
@@ -54,27 +54,27 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             await expect(page.getByRole('heading', { level: 1 })).toContainText('Svar på søknad om sykepenger')
         })
 
-        test('Åpner Beregning av sykepengene', async ({ page }) => {
-            const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregning.click()
+        test('Åpner beregningRegion av sykepengene', async ({ page }) => {
+            const beregningRegion = await visBeregningRegion(page)
+            await beregningRegion.click()
             await expect(
-                beregning.getByRole('region', { name: /Årsinntekt rapportert til skatteetaten/ }),
+                beregningRegion.getByRole('region', { name: /Årsinntekt rapportert til skatteetaten/ }),
             ).toContainText('350\u00a0000')
-            await expect(beregning.getByRole('region', { name: /Utregnet avvik/ })).toContainText('61,4 %')
+            await expect(beregningRegion.getByRole('region', { name: /Utregnet avvik/ })).toContainText('61,4 %')
             await expect(
-                beregning.getByText(
+                beregningRegion.getByText(
                     'Årsinntekten din er skjønnsfastsatt. Se begrunnelse for skjønnsfastsetting under.',
                 ),
             ).toBeVisible()
-            await expect(beregning.getByRole('region', { name: /Skjønnsfastsatt årsinntekt/ })).toContainText(
+            await expect(beregningRegion.getByRole('region', { name: /Skjønnsfastsatt årsinntekt/ })).toContainText(
                 '660\u00a0000',
             )
         })
 
         test('Åpner begrunnelse for skjønnsfastsetting', async ({ page }) => {
-            const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregning.click()
-            await beregning.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+            const beregningRegion = await visBeregningRegion(page)
+            await beregningRegion.click()
+            await beregningRegion.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
             const begrunnelse = page
                 .getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .locator('..')

@@ -2,7 +2,7 @@ import { skjonnsfastsattRiktigAarsinntekt } from '../src/data/testdata/data/vedt
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion } from './utils/hjelpefunksjoner'
+import { beregnetManedsinntektRegion, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () => {
     const skjonnsfastsattRiktigAarsinntektVedtak = skjonnsfastsattRiktigAarsinntekt[3]
@@ -15,8 +15,7 @@ test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () 
         })
 
         test('Åpner Beregning av sykepengene', async ({ page }) => {
-            const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregning.click()
+            await visBeregningRegion(page)
 
             const beregnetManedsInntekt = await beregnetManedsinntektRegion(page)
             await expect(beregnetManedsInntekt).toContainText('21\u00a0000')
@@ -44,8 +43,7 @@ test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () 
         })
 
         test('Åpner Beregning av sykepengene', async ({ page }) => {
-            const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-            await beregning.click()
+            await visBeregningRegion(page)
 
             const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)
             await expect(beregnetManedsinntekt).toContainText(formaterValuta(15_000))

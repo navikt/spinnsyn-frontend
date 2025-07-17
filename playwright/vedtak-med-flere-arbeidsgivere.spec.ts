@@ -2,7 +2,7 @@ import { vedtakMedFlereArbeidsgivere } from '../src/data/testdata/data/vedtak/ve
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Vedtak med flere arbeidsgivere', () => {
     test.beforeEach(async ({ page }) => {
@@ -17,8 +17,7 @@ test.describe('Vedtak med flere arbeidsgivere', () => {
         await expect(page.getByText('1 359 kroner')).toBeVisible()
         await expect(page.getByText('Utbetales til Industrifabrikken AS')).toBeVisible()
 
-        const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-        await beregning.click()
+        await visBeregningRegion(page)
 
         const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)
         await expect(beregnetManedsinntekt).toContainText(formaterValuta(41_958))

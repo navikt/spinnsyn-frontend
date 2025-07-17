@@ -2,7 +2,7 @@ import { nullOmregnetAarsinntekt } from '../src/data/testdata/data/vedtak/nullOm
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Har null i årsinntekt', () => {
     test.beforeEach(async ({ page }) => {
@@ -25,9 +25,8 @@ test.describe('Har null i årsinntekt', () => {
     })
 
     test('Åpner begrunnelse for skjønnsfastsetting', async ({ page }) => {
-        const beregning = page.getByRole('region', { name: 'Beregning av sykepengene' })
-        await beregning.click()
-        await beregning.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+        const beregningRegion = await visBeregningRegion(page)
+        await beregningRegion.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
         const begrunnelse = page
             .getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
             .locator('..')

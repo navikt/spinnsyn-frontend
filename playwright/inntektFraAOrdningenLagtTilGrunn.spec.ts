@@ -2,7 +2,7 @@ import { inntektHentetFraAordningen } from '../src/data/testdata/data/vedtak/inn
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { expect, test } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
     test('Sjekker informasjon relatert til inntekt fra a-ordningen', async ({ page }) => {
@@ -15,13 +15,12 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
         const header = page.getByRole('main').getByRole('heading', { level: 1 }).first()
         await expect(header).toBeVisible()
 
-        const beregningArticle = page.getByRole('article', { name: 'Beregning av sykepengene' })
-        await page.getByRole('main').getByRole('region', { name: 'Beregning av sykepengene' }).click()
+        const beregningRegion = await visBeregningRegion(page)
 
         const beregnetManedsInntekt = await beregnetManedsinntektRegion(page, 'a-ordningen')
         await expect(beregnetManedsInntekt).toContainText(formaterValuta(74_675))
 
-        await expect(beregningArticle.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
+        await expect(beregningRegion.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
             formaterValuta(896100),
         )
 
