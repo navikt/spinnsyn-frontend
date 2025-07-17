@@ -17,8 +17,8 @@ test.describe('Les uleste vedtak', () => {
     })
 
     test('Det er 5 uleste vedtak og 6 leste', async ({ page }) => {
-        await expect(page.locator('[data-testid="uleste-vedtak"] a')).toHaveCount(5)
-        await expect(page.locator('[data-testid="leste-vedtak"] a')).toHaveCount(6)
+        await expect(page.getByTestId('uleste-vedtak').getByRole('link')).toHaveCount(5)
+        await expect(page.getByTestId('leste-vedtak').getByRole('link')).toHaveCount(6)
     })
 
     test('Åpner et ulest vedtak og sjekker innhold', async ({ page }) => {
@@ -61,15 +61,15 @@ test.describe('Les uleste vedtak', () => {
     test('Vi går tilbake til oversikten og sjekker antall vedtak', async ({ page }) => {
         await page.goto('/syk/sykepenger')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
-        await expect(page.locator('[data-testid="uleste-vedtak"] a')).toHaveCount(5)
-        await expect(page.locator('[data-testid="leste-vedtak"] a')).toHaveCount(6)
+        await expect(page.getByTestId('uleste-vedtak').getByRole('link')).toHaveCount(5)
+        await expect(page.getByTestId('leste-vedtak').getByRole('link')).toHaveCount(6)
     })
 
     test('Åpner et annullert vedtak og sjekker info', async ({ page }) => {
         await trykkPaVedtakMedId(page, vedtakAnnullert.id)
         await test.step('Åpne info og sjekk innhold', async () => {
             await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
-            const info = page.locator('[data-testid="annullering-info"]')
+            const info = page.getByTestId('annullering-info')
             await expect(info).toContainText('Må jeg gjøre noe nå?')
             await expect(info).not.toContainText('Vil dette ha noe å si for pengene jeg får?')
             await expect(info).not.toContainText('Hvem har sendt opplysningene?')
@@ -81,7 +81,7 @@ test.describe('Les uleste vedtak', () => {
         await trykkPaVedtakMedId(page, vedtakRevurdert.id)
         await test.step('Åpne info og sjekk innhold', async () => {
             await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
-            const info = page.locator('[data-testid="annullering-info"]')
+            const info = page.getByTestId('annullering-info')
             await expect(info).toContainText('Vil dette ha noe å si for pengene jeg får?')
             await expect(info).toContainText('Hvem har sendt opplysningene?')
             await expect(info).toContainText('Hvorfor behandles vedtaket på nytt?')

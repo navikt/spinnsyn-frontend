@@ -60,8 +60,8 @@ test.describe('Kombinasjonutbetaling', () => {
         })
 
         await test.step('Sjekk headerbeløp', async () => {
-            await expect(page.locator('[data-testid="header-sykepenger-til-deg"]')).toContainText('24 550 kroner')
-            await expect(page.locator('[data-testid="header-sykepenger-til-deg"]')).toContainText('sykepenger til deg')
+            await expect(page.getByTestId('header-sykepenger-til-deg')).toContainText('24 550 kroner')
+            await expect(page.getByTestId('header-sykepenger-til-deg')).toContainText('sykepenger til deg')
         })
     })
 

@@ -11,7 +11,7 @@ test.describe('Personutbetaling uten kontonummer', () => {
     })
 
     test('Viser info om at kontonummer mangler', async ({ page }) => {
-        const header = page.locator('[data-testid="header-sykepenger-til-deg"]')
+        const header = page.getByTestId('header-sykepenger-til-deg')
         await expect(header).toContainText('24 550 kroner')
         await expect(header).toContainText('sykepenger til deg')
         const personutbetaling = page.getByTestId('personutbetaling')

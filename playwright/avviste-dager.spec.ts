@@ -30,7 +30,7 @@ test.describe('Avviste dager', () => {
     test('Vedtak med delvis godkjente utbetalingsdager', async ({ page }) => {
         await trykkPaVedtakMedId(page, alleAvvisteDager.id)
 
-        const refusjonsPanel = page.locator('[data-testid="utbetaling-panel-refusjon"]')
+        const refusjonsPanel = page.getByTestId('utbetaling-panel-refusjon')
         await expect(refusjonsPanel.getByText('Delvis innvilget søknad')).toBeVisible()
         await expect(refusjonsPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
 
@@ -62,10 +62,10 @@ test.describe('Avviste dager', () => {
                 'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
             ),
         ).toBeVisible()
-        await expect(page.locator('[data-testid="avvistedageroversikt"]')).toContainText('Dager Nav ikke utbetaler')
+        await expect(page.getByTestId('avvistedageroversikt')).toContainText('Dager Nav ikke utbetaler')
 
         const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
-        const dagTabellBody = avvisteDagerRegion.locator('[data-testid="dag-tabell-body"]')
+        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
 
         await verifyDagTabellRows(dagTabellBody, [
             ['11.feb.', 'Fridag'],
@@ -96,7 +96,7 @@ test.describe('Avviste dager', () => {
             avvisteDagerRegion.getByText('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet,'),
         ).toBeVisible()
 
-        const avvisteDagerOversikt = avvisteDagerRegion.locator('[data-testid="avvistedageroversikt"]')
+        const avvisteDagerOversikt = avvisteDagerRegion.getByTestId('avvistedageroversikt')
         await expect(avvisteDagerOversikt).toContainText('Dager Nav ikke utbetaler')
         await expect(avvisteDagerOversikt).toContainText('Forklaring')
 
@@ -124,10 +124,10 @@ test.describe('Avviste dager', () => {
         ).toBeVisible()
         await expect(page.getByRole('region', { name: 'Beregning av sykepengene' })).not.toBeVisible()
 
-        const avvisteDagerOversikt = avvisteDagerRegion.locator('[data-testid="avvistedageroversikt"]')
+        const avvisteDagerOversikt = avvisteDagerRegion.getByTestId('avvistedageroversikt')
         await avvisteDagerOversikt.click()
 
-        const dagTabellBody = avvisteDagerRegion.locator('[data-testid="dag-tabell-body"]')
+        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
             ['17.aug.', 'Fridag'],
             ['18.aug.', 'Fridag'],
@@ -153,9 +153,9 @@ test.describe('Avviste dager', () => {
         ).toBeVisible()
 
         const beregningRegion = await visBeregningRegion(page)
-        await avvisteDagerRegion.locator('[data-testid="avvistedageroversikt"]').click()
+        await avvisteDagerRegion.getByTestId('avvistedageroversikt').click()
 
-        const dagTabellBody = avvisteDagerRegion.locator('[data-testid="dag-tabell-body"]')
+        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
             ['17.aug.', 'Fridag'],
             ['18.aug.', 'Fridag'],
@@ -164,7 +164,7 @@ test.describe('Avviste dager', () => {
             ['21.aug.', 'Etter dødsfall'],
         ])
 
-        const merOmBeregningen = beregningRegion.locator('[data-testid="mer-om-beregningen"]')
+        const merOmBeregningen = beregningRegion.getByTestId('mer-om-beregningen')
         await verifyBeregningPanel(merOmBeregningen, true)
     })
 
@@ -173,7 +173,7 @@ test.describe('Avviste dager', () => {
         await trykkPaVedtakMedId(page, avvistVedtakMedLavInntektDirekteUtbetaling.id)
         await expect(page.getByText('Ingen utbetaling')).toBeVisible()
 
-        const refusjonsPanel = page.locator('[data-testid="utbetaling-panel-refusjon"]')
+        const refusjonsPanel = page.getByTestId('utbetaling-panel-refusjon')
         await expect(refusjonsPanel.getByText('Avslått søknad')).toBeVisible()
         await expect(refusjonsPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
         await expect(refusjonsPanel.getByRole('listitem').getByText('For lav inntekt')).toBeVisible()
@@ -191,9 +191,9 @@ test.describe('Avviste dager', () => {
         ).toBeVisible()
 
         const beregningRegion = await visBeregningRegion(page)
-        await avvisteDagerRegion.locator('[data-testid="avvistedageroversikt"]').click()
+        await avvisteDagerRegion.getByTestId('avvistedageroversikt').click()
 
-        const dagTabellBody = avvisteDagerRegion.locator('[data-testid="dag-tabell-body"]')
+        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
             ['18.aug.', 'Fridag'],
             ['19.aug.', 'Fridag'],
@@ -201,7 +201,7 @@ test.describe('Avviste dager', () => {
             ['21.aug.', 'Etter dødsfall'],
         ])
 
-        const merOmBeregningen = beregningRegion.locator('[data-testid="mer-om-beregningen"]')
+        const merOmBeregningen = beregningRegion.getByTestId('mer-om-beregningen')
         await verifyBeregningPanel(merOmBeregningen, true)
     })
 
@@ -209,12 +209,12 @@ test.describe('Avviste dager', () => {
         await page.goto('/syk/sykepenger?testperson=kombinasjon-delvisInnvilgelse-og-skj%C3%B8nnsfastsatt-fra-bomlo')
         await trykkPaVedtakMedId(page, delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id)
 
-        const personutbetalingPanel = page.locator('[data-testid="utbetaling-panel-personutbetaling"]')
+        const personutbetalingPanel = page.getByTestId('utbetaling-panel-personutbetaling')
         await expect(personutbetalingPanel.getByText('Delvis innvilget søknad')).not.toBeVisible()
         await expect(personutbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).not.toBeVisible()
         await expect(personutbetalingPanel.getByText('For mye arbeid og/eller inntekt')).not.toBeVisible()
 
-        const refusjonPanel = page.locator('[data-testid="utbetaling-panel-refusjon"]')
+        const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
         await expect(refusjonPanel.getByText('Delvis innvilget søknad')).toBeVisible()
         await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
         await expect(refusjonPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt')).toBeVisible()
@@ -236,7 +236,7 @@ test.describe('Avviste dager', () => {
         await page.goto('/syk/sykepenger?testperson=avvist-fra-bomlo')
         await trykkPaVedtakMedId(page, avslåttFraBømlo.id)
 
-        const refusjonPanel = page.locator('[data-testid="utbetaling-panel-refusjon"]')
+        const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
         await expect(refusjonPanel.getByText('Avslått søknad')).toBeVisible()
         await expect(refusjonPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
         await expect(refusjonPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt')).toBeVisible()
