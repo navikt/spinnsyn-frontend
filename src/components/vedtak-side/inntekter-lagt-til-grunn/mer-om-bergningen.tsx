@@ -62,7 +62,7 @@ export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
 
     return (
         <Accordion.Item
-            data-cy="mer-om-beregningen"
+            data-testid="mer-om-beregningen"
             defaultOpen={arkivering}
             open={visBeregning}
             onOpenChange={(isOpen) => setVisBeregning?.(isOpen)}

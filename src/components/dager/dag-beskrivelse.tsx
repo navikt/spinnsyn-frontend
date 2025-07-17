@@ -38,7 +38,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
         const lovhjemmelTekst = lovhjemmel(dag)
 
         return (
-            <div className="pt-1" data-cy={dataCyBeskrivelse(dag)}>
+            <div className="pt-1" data-testid={dataCyBeskrivelse(dag)}>
                 <BodyShort>
                     {!erAvvistEllerAndreYtelser(dag) ? (
                         <>
@@ -91,7 +91,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     }
 
     return (
-        <div className="p-3" data-cy="dagtabell-forklaring">
+        <div className="p-3" data-testid="dagtabell-forklaring">
             <Heading size="xsmall" spacing level="4">
                 {tekst('utbetaling.tabell.dagtyper')}
             </Heading>

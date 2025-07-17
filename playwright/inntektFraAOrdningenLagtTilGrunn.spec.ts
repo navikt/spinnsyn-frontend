@@ -42,11 +42,11 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
             ),
         ).toBeVisible()
 
-        const behandlingHeader = page.locator('[data-cy="behandling-header"]')
+        const behandlingHeader = page.locator('[data-testid="behandling-header"]')
         await expect(behandlingHeader).toHaveText('Søknaden er behandlet automatisk')
         await expect(behandlingHeader).toBeVisible()
 
-        const behandlingBody = page.locator('[data-cy="behandling-body"]')
+        const behandlingBody = page.locator('[data-testid="behandling-body"]')
         await expect(behandlingBody).toContainText(
             'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din og offentlige registre.',
         )

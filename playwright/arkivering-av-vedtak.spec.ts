@@ -18,7 +18,7 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser utbetaling panel', async () => {
-            const utbetalingPanel = page.locator('[data-cy="utbetaling-panel-refusjon"]')
+            const utbetalingPanel = page.locator('[data-testid="utbetaling-panel-refusjon"]')
             await expect(utbetalingPanel.getByText('Delvis innvilget søknad')).toBeVisible()
             await expect(utbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
             await expect(
@@ -29,7 +29,7 @@ test.describe('Vedtak for arkivering', () => {
 
         await test.step('Verifiser beregning region og dagtabell', async () => {
             const beregningRegion = await visBeregningRegion(page)
-            const dager = beregningRegion.locator('[data-cy="dag-tabell-body"]')
+            const dager = beregningRegion.locator('[data-testid="dag-tabell-body"]')
             await verifyDagTabellRows(dager, [
                 ['01.feb.', 'Syk', formaterValuta(1_000)],
                 ['06.feb.', 'Helg', '-'],
@@ -38,7 +38,7 @@ test.describe('Vedtak for arkivering', () => {
 
         await test.step('Verifiser mer om beregningen panel', async () => {
             const beregningRegion = await visBeregningRegion(page)
-            const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
+            const merOmBeregningen = beregningRegion.locator('[data-testid="mer-om-beregningen"]')
             await verifyBeregningPanel(merOmBeregningen, false)
         })
 
@@ -56,7 +56,7 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser utbetaling panel for personutbetaling', async () => {
-            const panel = page.locator('[data-cy="utbetaling-panel-personutbetaling"]')
+            const panel = page.locator('[data-testid="utbetaling-panel-personutbetaling"]')
             await expect(panel.getByRole('button', { name: /Når får du sykepengene/ })).toBeVisible()
             await expect(panel.getByRole('link', { name: /Les mer om når du kan forvente å få pengene/ })).toBeVisible()
         })
@@ -74,7 +74,7 @@ test.describe('Vedtak for arkivering', () => {
 
         await test.step('Verifiser dagtabell', async () => {
             const beregningRegion = await visBeregningRegion(page)
-            const dager = beregningRegion.locator('[data-cy="dag-tabell-body"]')
+            const dager = beregningRegion.locator('[data-testid="dag-tabell-body"]')
             await verifyDagTabellRows(dager, [
                 ['08.feb.', 'Syk', formaterValuta(2_455)],
                 ['13.feb.', 'Helg', '-'],
@@ -83,7 +83,7 @@ test.describe('Vedtak for arkivering', () => {
 
         await test.step('Verifiser mer om beregningen panel', async () => {
             const beregningRegion = await visBeregningRegion(page)
-            const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
+            const merOmBeregningen = beregningRegion.locator('[data-testid="mer-om-beregningen"]')
             await verifyBeregningPanel(merOmBeregningen, false)
         })
 
@@ -101,7 +101,7 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser refusjon panel', async () => {
-            const refusjonPanel = page.locator('[data-cy="utbetaling-panel-refusjon"]')
+            const refusjonPanel = page.locator('[data-testid="utbetaling-panel-refusjon"]')
             await expect(refusjonPanel.getByText('Delvis innvilget søknad')).toBeVisible()
             await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
             await expect(
@@ -111,7 +111,7 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser personutbetaling panel', async () => {
-            const personPanel = page.locator('[data-cy="utbetaling-panel-personutbetaling"]')
+            const personPanel = page.locator('[data-testid="utbetaling-panel-personutbetaling"]')
             await expect(personPanel.getByRole('button', { name: /Når får du sykepengene/ })).toBeVisible()
             await expect(
                 personPanel.getByRole('link', { name: /Les mer om når du kan forvente å få pengene/ }),
@@ -169,7 +169,7 @@ test.describe('Vedtak for arkivering', () => {
 
         await test.step('Verifiser mer om beregningen panel', async () => {
             const beregningRegion = await visBeregningRegion(page)
-            const merOmBeregningen = beregningRegion.locator('[data-cy="mer-om-beregningen"]')
+            const merOmBeregningen = beregningRegion.locator('[data-testid="mer-om-beregningen"]')
             await verifyBeregningPanel(merOmBeregningen, false)
         })
 

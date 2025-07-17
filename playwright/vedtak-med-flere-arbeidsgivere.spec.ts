@@ -29,7 +29,7 @@ test.describe('Vedtak med flere arbeidsgivere', () => {
             formaterValuta(503_504),
         )
 
-        await expect(page.locator('[data-cy="annen-arbeidsgiver-0"]')).toContainText('Den Andre Sjappa')
+        await expect(page.locator('[data-testid="annen-arbeidsgiver-0"]')).toContainText('Den Andre Sjappa')
 
         await expect(page.getByRole('region', { name: 'Den Andre Sjappa Årsinntekt' })).toContainText('Årsinntekt')
         await expect(page.getByRole('region', { name: 'Den Andre Sjappa Årsinntekt' })).toContainText(

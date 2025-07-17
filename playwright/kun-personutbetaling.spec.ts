@@ -18,11 +18,11 @@ test.describe('Kun personutbetaling', () => {
         await expect(page.getByText('Pengene utbetales til deg')).toBeVisible()
         await expect(page.getByText('Utbetales til Matbutikken AS')).not.toBeVisible()
 
-        const header = page.locator('[data-cy="header-sykepenger-til-deg"]')
+        const header = page.locator('[data-testid="header-sykepenger-til-deg"]')
         await expect(header).toContainText('24 550 kroner')
         await expect(header).toContainText('sykepenger til deg')
 
-        const panel = page.locator('[data-cy="utbetaling-panel-personutbetaling"]')
+        const panel = page.locator('[data-testid="utbetaling-panel-personutbetaling"]')
         await expect(panel).toHaveCSS('background-color', 'rgb(216, 249, 255)')
         await expect(panel.getByRole('heading', { name: /Sykepenger utbetales til kontonummer:/ })).toBeVisible()
         await expect(panel.getByText('1001 11 10011')).toBeVisible()

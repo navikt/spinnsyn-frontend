@@ -15,7 +15,7 @@ interface SoknaderTeasereProps {
 
 const LenkepanelGruppering = ({ vedtak, tittel, tomListeTekst, dataCy }: SoknaderTeasereProps) => {
     return (
-        <div className="mb-12" data-cy={dataCy}>
+        <div className="mb-12" data-testid={dataCy}>
             <Heading spacing size="medium" as={vedtak ? 'h2' : Skeleton}>
                 {tittel}
             </Heading>

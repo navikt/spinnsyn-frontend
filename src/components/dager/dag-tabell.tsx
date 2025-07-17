@@ -33,7 +33,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                     </Table.ColumnHeader>
                 </Table.Row>
             </Table.Header>
-            <Table.Body data-cy="dag-tabell-body">
+            <Table.Body data-testid="dag-tabell-body">
                 {dager.map((dag, idx) => {
                     const dagMedBelop =
                         dag.dagtype === 'NavDag' ||

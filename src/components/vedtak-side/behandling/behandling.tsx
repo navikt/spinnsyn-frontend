@@ -53,10 +53,10 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
 
     return (
         <>
-            <Heading data-cy="behandling-header" size="small" level="2" className="mt-4">
+            <Heading data-testid="behandling-header" size="small" level="2" className="mt-4">
                 {tekst(tittelNokkel())}
             </Heading>
-            <BodyLong data-cy="behandling-body" spacing>
+            <BodyLong data-testid="behandling-body" spacing>
                 {behandlingInfoTekst()}
             </BodyLong>
         </>

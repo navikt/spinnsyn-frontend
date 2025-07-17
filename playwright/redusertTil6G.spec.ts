@@ -25,7 +25,7 @@ test.describe('Redusert til 6G', () => {
             formaterValuta(896_100),
         )
 
-        await expect(beregningRegion.locator('[data-cy="annen-arbeidsgiver-0"]')).toContainText(
+        await expect(beregningRegion.locator('[data-testid="annen-arbeidsgiver-0"]')).toContainText(
             'The Ministry Of Magic AS',
         )
 
