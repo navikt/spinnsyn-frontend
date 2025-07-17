@@ -48,7 +48,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
                 </Heading>
             }
             erUgyldig={annullertEllerRevurdert}
-            dataCy={utbetalingsType}
+            dataTestId={utbetalingsType}
         >
             <VedtakPeriode vedtak={vedtak} />
 

@@ -32,7 +32,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             sectionLabel="Utbetaling til deg"
             delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
             tittel={
-                <Heading data-cy="header-sykepenger-til-deg" level="2" size="large">
+                <Heading level="2" size="large">
                     {annullertEllerRevurdert ? (
                         <del>
                             {belop + ' kroner'}
@@ -47,7 +47,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                 </Heading>
             }
             erUgyldig={vedtak.revurdert || vedtak.annullert}
-            dataCy="personutbetaling"
+            dataTestId="personutbetaling"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>

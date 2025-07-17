@@ -49,7 +49,7 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
             {vedtak.annullert && <AnnullertAlert />}
 
             <ReadMore className="my-10" header={tekst('annullert.info.header')}>
-                <div className="pt-4" data-cy="annullering-info">
+                <div className="pt-4" data-testid="annullering-info">
                     {revurdertOgIkkeAnnullert && (
                         <>
                             <Label>{tekst('annullert.info.header1')}</Label>

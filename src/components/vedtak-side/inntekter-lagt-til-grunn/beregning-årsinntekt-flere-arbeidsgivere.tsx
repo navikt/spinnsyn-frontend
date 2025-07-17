@@ -34,7 +34,7 @@ const BeregningÅrsinntektFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
         <>
             {andre.map((a, idx) => (
                 <div key={idx}>
-                    <BodyShort weight="semibold" data-cy={`annen-arbeidsgiver-${idx}`}>
+                    <BodyShort weight="semibold" data-testid={`annen-arbeidsgiver-${idx}`}>
                         {storeTilStoreOgSmå(a.navn)}
                     </BodyShort>
                     <InfoSection

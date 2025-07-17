@@ -6,7 +6,7 @@ interface UtbetalingPanelProps {
     erUgyldig: boolean
     children: React.ReactNode
     sectionLabel: string
-    dataCy?: string
+    dataTestId?: string
     avslag?: boolean
     delvisInnvilgelse?: boolean
 }
@@ -17,7 +17,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
             <Panel
                 className="mt-4 rounded-md"
                 border
-                data-cy={`utbetaling-panel-${props.dataCy}${props.erUgyldig ? '-ugyldig' : ''}`}
+                data-testid={`utbetaling-panel-${props.dataTestId}${props.erUgyldig ? '-ugyldig' : ''}`}
                 style={
                     {
                         '--ac-panel-bg': props.erUgyldig ? 'var(--a-gray-100)' : 'var(--a-lightblue-100)',

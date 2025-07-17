@@ -27,8 +27,7 @@ test.describe('Kombinasjonutbetaling', () => {
             ).toBeVisible()
         })
 
-        const personutbetalingSection = page.locator('[data-cy*="personutbetaling"]')
-
+        const personutbetalingSection = page.getByTestId(/personutbetaling/)
         await test.step('Sjekk detaljer om utbetaling', async () => {
             await expect(
                 personutbetalingSection.getByText(
@@ -60,8 +59,9 @@ test.describe('Kombinasjonutbetaling', () => {
         })
 
         await test.step('Sjekk headerbeløp', async () => {
-            await expect(page.locator('[data-cy="header-sykepenger-til-deg"]')).toContainText('24 550 kroner')
-            await expect(page.locator('[data-cy="header-sykepenger-til-deg"]')).toContainText('sykepenger til deg')
+            const header = page.getByRole('heading', { level: 2, name: 'sykepenger til deg' })
+            await expect(header).toBeVisible()
+            await expect(header).toContainText('24 550 kroner')
         })
     })
 
@@ -71,7 +71,7 @@ test.describe('Kombinasjonutbetaling', () => {
             await expect(page.getByText('4 910 kroner').locator('..')).toContainText('Utbetales til Matbutikken AS')
         })
 
-        const refusjonSection = page.locator('[data-cy*="refusjon"]')
+        const refusjonSection = page.getByTestId('refusjon')
         await test.step('Sjekk at "Når får du sykepengene?" ikke vises for arbeidsgiver', async () => {
             await expect(refusjonSection.getByText('Når får du sykepengene?')).not.toBeVisible()
         })

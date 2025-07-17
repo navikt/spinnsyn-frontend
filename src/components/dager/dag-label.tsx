@@ -123,6 +123,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         )
     }
 
-    return <div data-cy={dataCyLabel(dag)}>{lagDagLabel(dag)}</div>
+    return <div data-testid={dataCyLabel(dag)}>{lagDagLabel(dag)}</div>
 }
 export default DagLabel

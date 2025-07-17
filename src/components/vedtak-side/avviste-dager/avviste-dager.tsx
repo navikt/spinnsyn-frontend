@@ -52,7 +52,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                     ref={elementRef}
                     open={visBegrunnelse}
                     onOpenChange={() => setVisBegrunnelse(!visBegrunnelse)}
-                    data-cy="avvistedageroversikt"
+                    data-testid="avvistedageroversikt"
                 >
                     <Accordion.Header>
                         <Heading size="small" level="3">

@@ -22,7 +22,7 @@ test.describe('Sortering av vedtak', () => {
     })
 
     test('Tidligere vedtak sorteres etter tidligste tom dato', async ({ page }) => {
-        const vedtakLinks = await page.locator('[data-cy="leste-vedtak"] a').all()
+        const vedtakLinks = await page.getByTestId('leste-vedtak').getByRole('link').all()
         const hrefs = await Promise.all(vedtakLinks.map(async (l) => await l.getAttribute('href')))
         const vedtakene = lenkeTilVedtak(hrefs)
         let forrigeVedtak = vedtakene[0]

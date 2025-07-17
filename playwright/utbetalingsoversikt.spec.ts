@@ -28,7 +28,7 @@ test.describe('Utbetalingsoversikt', () => {
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
 
-        const dagTabell = page.locator('[data-cy="dag-tabell-body"]').first()
+        const dagTabell = page.getByTestId('dag-tabell-body').first()
         await verifyDagTabellRows(dagTabell, [
             ['08.feb.', '40 % syk', formaterValuta(896)],
             ['21.feb.', 'Helg', '-'],
@@ -52,7 +52,7 @@ test.describe('Utbetalingsoversikt', () => {
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
 
-        const forklaring = beregningRegion.locator('[data-cy="dagtabell-forklaring"]')
+        const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
         await expect(forklaring.locator('.navds-tag').nth(0)).toHaveText('Delvis syk')
         await expect(forklaring.locator('.navds-tag').nth(1)).toHaveText('Helg')
         await expect(forklaring.getByRole('heading', { name: 'Forklaring' })).toBeVisible()
@@ -67,7 +67,7 @@ test.describe('Utbetalingsoversikt', () => {
         await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
 
         await test.step('Sjekker dagtabell', async () => {
-            const dagTabell = page.locator('[data-cy="dag-tabell-body"]').first()
+            const dagTabell = page.getByTestId('dag-tabell-body').first()
             await verifyDagTabellRows(dagTabell, [
                 ['30.jan.', 'Ikke sykmeldt', '-'],
                 ['31.jan.', 'Helg', '-'],
@@ -90,11 +90,13 @@ test.describe('Utbetalingsoversikt', () => {
         })
 
         await test.step('Sjekker forklaring', async () => {
-            const forklaring = beregningRegion.locator('[data-cy="dagtabell-forklaring"]')
+            const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
 
             for (const [key, value] of Object.entries(DAGTYPE_FORKLARINGER)) {
-                await expect(forklaring.locator(`[data-cy="dag-label-${key}"]`)).toHaveText(value.label)
-                await expect(forklaring.locator(`[data-cy="dag-beskrivelse-${key}"]`)).toContainText(value.description)
+                await expect(forklaring.locator(`[data-testid="dag-label-${key}"]`)).toHaveText(value.label)
+                await expect(forklaring.locator(`[data-testid="dag-beskrivelse-${key}"]`)).toContainText(
+                    value.description,
+                )
             }
         })
     })
