@@ -18,18 +18,22 @@ test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () 
             await visBeregningRegion(page)
 
             const beregnetManedsInntekt = await beregnetManedsinntektRegion(page)
-            await expect(beregnetManedsInntekt).toContainText('21\u00a0000')
+            await expect(beregnetManedsInntekt).toContainText(formaterValuta(21_000))
 
             await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
                 'Omregnet til årsinntekt',
             )
-            await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText('252\u00a0000')
+            await expect(page.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
+                formaterValuta(252_000),
+            )
 
             await expect(page.getByRole('region', { name: 'Sauefabrikk Årsinntekt' })).toContainText('Årsinntekt')
-            await expect(page.getByRole('region', { name: 'Sauefabrikk Årsinntekt' })).toContainText('180\u00a0000')
+            await expect(page.getByRole('region', { name: 'Sauefabrikk Årsinntekt' })).toContainText(
+                formaterValuta(180_000),
+            )
 
             await expect(page.getByRole('region', { name: 'Samlet årsinntekt' })).toContainText('Samlet årsinntekt')
-            await expect(page.getByRole('region', { name: 'Samlet årsinntekt' })).toContainText('432\u00a0000')
+            await expect(page.getByRole('region', { name: 'Samlet årsinntekt' })).toContainText(formaterValuta(432_000))
         })
     })
 

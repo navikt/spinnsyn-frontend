@@ -40,8 +40,10 @@ test.describe('Les uleste vedtak', () => {
             )
             const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)
             await expect(beregnetManedsinntekt).toContainText(formaterValuta(30_000))
-            await expect(page.getByRole('region', { name: /Omregnet til årsinntekt/ })).toContainText('360\u00a0000 kr')
-            await expect(page.getByRole('region', { name: /Sykepengegrunnlag/ })).toContainText('370\u00a0000 kr')
+            await expect(page.getByRole('region', { name: /Omregnet til årsinntekt/ })).toContainText(
+                formaterValuta(360_000),
+            )
+            await expect(page.getByRole('region', { name: /Sykepengegrunnlag/ })).toContainText(formaterValuta(370_000))
         })
 
         await test.step('Sjekk blå boks', async () => {
