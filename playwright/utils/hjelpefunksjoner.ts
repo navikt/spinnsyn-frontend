@@ -50,7 +50,10 @@ export const verifyBeregningPanel = async (merOmBeregningen: Locator, avvist: bo
 
 export const visBeregningRegion = async (page: Page) => {
     const beregningRegion = page.getByRole('region', { name: 'Beregning av sykepengene' })
-    await beregningRegion.click()
-    await expect(beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' })).toBeVisible()
+    const grunnlagLabel = page.getByLabel('Sykepengegrunnlag')
+    if (!(await grunnlagLabel.isVisible())) {
+        await beregningRegion.click()
+    }
+    await expect(grunnlagLabel).toBeVisible()
     return beregningRegion
 }

@@ -13,13 +13,12 @@ test.describe('Har null i årsinntekt', () => {
     })
 
     test('Åpner beregning av sykepengene', async ({ page }) => {
-        await page.getByRole('region', { name: 'Beregning av sykepengene' }).click()
-        const artikkel = page.getByRole('article', { name: 'Beregning av sykepengene' })
+        const beregningRegion = await visBeregningRegion(page)
 
         const manedsinntekt = await beregnetManedsinntektRegion(page)
         await expect(manedsinntekt).toContainText(formaterValuta(0))
 
-        const aarsinntekt = artikkel.getByRole('region', { name: 'Omregnet til årsinntekt' })
+        const aarsinntekt = beregningRegion.getByRole('region', { name: 'Omregnet til årsinntekt' })
         await expect(aarsinntekt).toContainText('Omregnet til årsinntekt')
         await expect(aarsinntekt).toContainText(formaterValuta(0))
     })

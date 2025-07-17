@@ -37,7 +37,7 @@ test.describe('Utbetalingsoversikt', () => {
 
     test('Mer om beregningen har riktig sykepengegrunnlag', async ({ page }) => {
         await trykkPaVedtakMedId(page, vedtakMed40Grad.id)
-        await page.getByRole('region', { name: 'Beregning av sykepengene' }).click()
+        await visBeregningRegion(page)
         await page.getByRole('button', { name: 'Mer om beregningen' }).click()
         await expect(page.getByRole('region', { name: 'Sykepengegrunnlag' })).toContainText(formaterValuta(582_161))
         await expect(page.getByRole('heading', { name: 'Flere arbeidsforhold' })).not.toBeVisible()
