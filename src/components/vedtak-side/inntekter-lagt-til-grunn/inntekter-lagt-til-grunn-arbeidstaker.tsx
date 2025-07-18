@@ -1,4 +1,4 @@
-import { Accordion, Alert, BodyShort, Detail, Link } from '@navikt/ds-react'
+import { Accordion, BodyShort } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
@@ -14,13 +14,14 @@ import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { useWindowSize } from '../../../utils/useWindowSize'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
+import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-arbeidstaker'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
-import { inntektInfoTekster } from './inntekt-info-tekster'
 import { MerOmBergningen } from './mer-om-bergningen'
+import { EkstrainfoOmVedtaket } from './ekstrainfo-om-vedtaket'
 
-export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
+export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
@@ -46,27 +47,31 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
         }
     }, [elementRef?.current?.id, registrerElement])
 
-    const finnRiktigInntekt = () => {
+    if (vedtak.vedtak.vedtakstype !== 'ARBEIDSTAKER') {
+        return null
+    }
+
+    const finnRiktigInntekt = (vedtak: RSVedtakArbeidstaker) => {
         if (
-            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterHovedregel' ||
-            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
+            vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterHovedregel' ||
+            vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
         ) {
-            const arbeidsgiveren = vedtak.vedtak.sykepengegrunnlagsfakta.arbeidsgivere.find((a) => {
-                return a.arbeidsgiver === vedtak.vedtak.organisasjonsnummer
+            const arbeidsgiveren = vedtak.sykepengegrunnlagsfakta.arbeidsgivere.find((a) => {
+                return a.arbeidsgiver === vedtak.organisasjonsnummer
             })
             if (arbeidsgiveren) {
                 return arbeidsgiveren.omregnetÅrsinntekt / 12
             }
         }
 
-        const grunnlagPerAg = vedtak.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
-        if (grunnlagPerAg && vedtak.vedtak.organisasjonsnummer) {
-            const inntektFraGrunnlagPerAg = grunnlagPerAg[vedtak.vedtak.organisasjonsnummer]
+        const grunnlagPerAg = vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver
+        if (grunnlagPerAg && vedtak.organisasjonsnummer) {
+            const inntektFraGrunnlagPerAg = grunnlagPerAg[vedtak.organisasjonsnummer]
             if (inntektFraGrunnlagPerAg) {
                 return inntektFraGrunnlagPerAg / 12
             }
         }
-        return vedtak.vedtak.inntekt
+        return vedtak.inntekt
     }
 
     const erSkjonnsfastsatt = vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
@@ -75,16 +80,12 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
         hentBegrunnelse(vedtak, 'SkjønnsfastsattSykepengegrunnlagKonklusjon') &&
         hentBegrunnelse(vedtak, 'SkjønnsfastsattSykepengegrunnlagMal')
 
-    const inntekt = finnRiktigInntekt()
+    const inntekt = finnRiktigInntekt(vedtak.vedtak)
     if (inntekt === undefined) {
         return null
     }
     const inntektMnd = formaterValuta(inntekt)
     const inntektAr = formaterValuta(inntekt * 12)
-
-    const over25prosentAvvik =
-        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' &&
-        vedtak.vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
 
     const harIngenUtbetaling = vedtak.sykepengebelopPerson === 0 && vedtak.sykepengebelopArbeidsgiver === 0
     const harMinstEnForLavInntektDag =
@@ -154,69 +155,7 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
                         />
                     </>
                 )}
-                {vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
-                    <>
-                        <InfoSection
-                            className="mt-4 border-t border-gray-400 pt-4"
-                            label="Årsinntekt rapportert til skatteetaten"
-                            value={formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.innrapportertÅrsinntekt)}
-                        />
-                        <InfoSection
-                            label="Utregnet avvik"
-                            value={`${formatOneDecimal(vedtak.vedtak.sykepengegrunnlagsfakta.avviksprosent)} %`}
-                        />
-                        {over25prosentAvvik && (
-                            <Alert variant="info" className="my-2">
-                                <BodyShort size="small">{inntektInfoTekster['25%avvik-skjønnsfastsatt']}</BodyShort>
-                            </Alert>
-                        )}
-                        <InfoSection
-                            label="Skjønnsfastsatt årsinntekt"
-                            value={formaterValuta(vedtak.vedtak.sykepengegrunnlagsfakta.skjønnsfastsatt)}
-                        />
-                    </>
-                )}
-                {vedtak.vedtak.sykepengegrunnlag && (
-                    <InfoSection
-                        bold
-                        className={
-                            vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
-                                ? 'mt-4 border-t border-gray-400 pt-4'
-                                : ''
-                        }
-                        label={tekst('utbetaling.sykepengegrunnlag')}
-                        value={formaterValuta(vedtak.vedtak.sykepengegrunnlag)}
-                    />
-                )}
-                {vedtak.vedtak.begrensning === 'ER_6G_BEGRENSET' && vedtak.vedtak.sykepengegrunnlag && (
-                    <>
-                        <BodyShort size="small" className="mt-4 border-t border-gray-400 pt-4" spacing>
-                            {`Sykepengegrunnlaget  er begrenset til 6G: ${formaterValuta(
-                                vedtak.vedtak.sykepengegrunnlag,
-                            )}`}
-                        </BodyShort>
-                        <BodyShort size="small">
-                            {`Grunnbeløpet i folketrygden (G): ${formaterValuta(vedtak.vedtak.sykepengegrunnlag / 6)}`}
-                        </BodyShort>
-                    </>
-                )}
-                {vedtak.vedtak.tags && vedtak.vedtak.tags.includes('SykepengegrunnlagUnder2G') && (
-                    <>
-                        <Detail className="mt-4 border-t border-gray-700 pt-4 text-sm text-gray-900">
-                            Sykepengegrunnlaget ditt er mindre enn to ganger grunnbeløpet. Hvis du også oppfyller
-                            kravene for arbeidsavklaringspenger, kan du velge å få det isteden.
-                        </Detail>
-                        <Detail className="text-sm text-gray-900">
-                            Sykepenger og arbeidsavklaringspenger beregnes på forskjellige måter. Derfor kan grunnlaget
-                            du kan få for arbeidsavklaringspenger være høyere enn det du kan få for sykepenger. For mer
-                            informasjon{' '}
-                            <Link href={tekst('behandling.lenke.url')} target="_blank" className="!text-blue-800">
-                                kontakt Nav
-                            </Link>
-                            .
-                        </Detail>
-                    </>
-                )}
+                <EkstrainfoOmVedtaket vedtak={vedtak.vedtak} />
                 <Accordion className="mt-8" indent={false}>
                     {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
                         <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="skjonn" />
@@ -254,8 +193,4 @@ export const InntekterLagtTilGrunn = ({ vedtak }: VedtakProps) => {
             </article>
         </VedtakExpansionCard>
     )
-}
-
-function formatOneDecimal(value: number) {
-    return value.toFixed(1).replace('.', ',')
 }
