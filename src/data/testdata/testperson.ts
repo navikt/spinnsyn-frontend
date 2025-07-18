@@ -29,6 +29,7 @@ import {
     vedtakMed0UtbetalingPerson,
     vedtakMedNullOmregnetAarsinngtekt,
 } from './data/personas/personas'
+import { standardNaringsdrivendePersona } from './data/personas/naringsdrivendePersonas'
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
@@ -65,10 +66,16 @@ export type PersonaKey =
     | 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo'
     | 'innvilgelse'
     | 'innvilgelse-tom-begrunnelse'
+    | 'standard-naringsdrivende'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
-export type PersonaGroupKey = 'mottaker' | 'avvist-delvis-innvilgelse-bømlo' | 'vedtak-innhold' | 'testing'
+export type PersonaGroupKey =
+    | 'mottaker'
+    | 'naringsdrivende'
+    | 'avvist-delvis-innvilgelse-bømlo'
+    | 'vedtak-innhold'
+    | 'testing'
 type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
@@ -76,6 +83,9 @@ export const testpersonerGruppert: PersonaGroup = {
         ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
         ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
+    },
+    ['naringsdrivende']: {
+        ['standard-naringsdrivende']: jsonDeepCopy(standardNaringsdrivendePersona),
     },
     ['avvist-delvis-innvilgelse-bømlo']: {
         ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
