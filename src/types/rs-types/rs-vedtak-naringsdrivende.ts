@@ -1,8 +1,10 @@
-import { RSVedtakArbeidstaker } from './rs-vedtak-arbeidstaker'
+import { RSVedtakFelles } from './rs-vedtak-felles'
 
-export interface RSVedtakNaringsdrivende extends Omit<RSVedtakArbeidstaker, 'vedtakstype'> {
+export interface RSVedtakNaringsdrivende extends Omit<RSVedtakFelles, 'vedtakstype'> {
     vedtakstype: 'NARINGSDRIVENDE'
     inntekter: Arsinntekt[]
+    justertGjennomsnittligInntekt: number
+    sykepengegrunnlag: number
 }
 
 export interface Arsinntekt {
