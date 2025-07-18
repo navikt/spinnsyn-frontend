@@ -85,6 +85,9 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
             case 'mottaker': {
                 return 'Brukerutbetaling og refusjon'
             }
+            case 'naringsdrivende': {
+                return 'Næringsdrivende'
+            }
             case 'avvist-delvis-innvilgelse-bømlo': {
                 return 'Avvist eller delvis innvilget søknad'
             }
