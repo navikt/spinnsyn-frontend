@@ -7,6 +7,7 @@ export const julesoknadVedtak: RSVedtakWrapper = {
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '972674818',
         fom: '2023-12-01',
         tom: '2023-12-24',

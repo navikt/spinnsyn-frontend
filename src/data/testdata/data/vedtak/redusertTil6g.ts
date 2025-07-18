@@ -6,6 +6,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     organisasjoner: {},
     lestDato: '2020-11-02T10:17:38.197496+01:00',
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '12345725',
         fom: '2021-10-18',
         tom: '2021-10-24',

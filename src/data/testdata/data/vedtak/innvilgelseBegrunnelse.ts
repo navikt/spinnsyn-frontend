@@ -6,6 +6,7 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
     lest: true,
     lestDato: '2024-12-02T12:58:53.342144+01:00',
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '896929119',
         fom: '2024-10-16',
         tom: '2024-10-31',
