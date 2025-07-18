@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const vedtakMed0Utbetaling: RSVedtakWrapper = {
     id: 'b40ac0ce-8ff3-4218-b981-825f2e139ab1',

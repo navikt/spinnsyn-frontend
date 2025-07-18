@@ -1,7 +1,7 @@
 import getConfig from 'next/config'
 
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
-import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 import { isMockBackend } from '../utils/environment'
 
 import { diverseData } from './testdata/data/personas/personas'

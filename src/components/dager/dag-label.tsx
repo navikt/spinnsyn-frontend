@@ -2,7 +2,7 @@ import { Tag } from '@navikt/ds-react'
 import { logger } from '@navikt/next-logger'
 import React from 'react'
 
-import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
+import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { finnBegrunnelseTekst } from '../../utils/vedtak-utils'
 
 import { dataCyLabel } from './dag-data-cy-util'

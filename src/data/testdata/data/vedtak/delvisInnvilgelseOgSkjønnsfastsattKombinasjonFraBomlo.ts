@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59219',

@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import DagTabell from '../../../dager/dag-tabell'
 import DagBeskrivelse from '../../../dager/dag-beskrivelse'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { RSDag } from '../../../../types/rs-types/rs-vedtak'
+import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
 import { VedtakProps } from '../../vedtak'
 import { erWeekendPeriode } from '../../../../utils/dato-utils'
 

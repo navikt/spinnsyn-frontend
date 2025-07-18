@@ -5,7 +5,7 @@ import { getLedetekst, tekst } from '../../../utils/tekster'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
 import { useScroll } from '../../../context/scroll-context'
 

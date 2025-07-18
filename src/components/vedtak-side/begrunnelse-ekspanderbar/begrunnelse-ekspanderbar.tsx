@@ -1,7 +1,7 @@
 import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
 import React, { RefObject, useContext } from 'react'
 
-import { BegrunnelseType, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { BegrunnelseType, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 

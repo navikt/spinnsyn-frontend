@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const kunAgPeriode: RSVedtakWrapper = {
     id: '4e044d03-2dfe-45e9-a904-77777723',

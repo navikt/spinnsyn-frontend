@@ -2,7 +2,7 @@ import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
-import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { RSDag, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { tekst } from '../../../utils/tekster'
 import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'

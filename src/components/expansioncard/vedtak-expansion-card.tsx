@@ -1,7 +1,7 @@
 import { BodyShort, ExpansionCard, Heading } from '@navikt/ds-react'
 import React from 'react'
 
-import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 
 export interface VedtakExpansionCard {
     vedtak: RSVedtakWrapper

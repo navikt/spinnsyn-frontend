@@ -1,6 +1,6 @@
 import { it, expect } from 'vitest'
 
-import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 
 import { jsonDeepCopy } from './json-deep-copy'
 import { sorterEtterNyesteFom } from './sorter-vedtak'

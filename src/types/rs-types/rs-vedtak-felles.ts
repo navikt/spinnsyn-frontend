@@ -2,7 +2,7 @@ export interface RSVedtakWrapper {
     id: string
     lest: boolean
     lestDato?: string | null
-    vedtak: RSVedtak
+    vedtak: RsVedtakFelles
     opprettetTimestamp: string
     orgnavn: string
     andreArbeidsgivere: AndreArbeidsgivere
@@ -36,7 +36,7 @@ export interface AndreArbeidsgivere {
 
 export type Begrensning = 'ER_6G_BEGRENSET' | 'ER_IKKE_6G_BEGRENSET' | 'VURDERT_I_INFOTRYGD' | 'VET_IKKE'
 
-interface RSVedtak {
+interface RsVedtakFelles {
     organisasjonsnummer?: string
     fom: string
     tom: string

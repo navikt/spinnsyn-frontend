@@ -1,4 +1,4 @@
-import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak-felles'
 
 import { hentDager } from './hentDager'
 import { fjernArbeidIkkeGjenopptattDager } from './fjernArbeidIkkeGjenopptatt'
