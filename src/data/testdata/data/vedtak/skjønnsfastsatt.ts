@@ -4,6 +4,9 @@ import { kunDirekte } from './kunDirekte'
 import { vedtakMedFlereArbeidsgivere } from './vedtakMedFlereArbeidsgivere'
 
 export const skjønnsfastsattBrukerutbetaling = jsonDeepCopy(kunDirekte)
+if (skjønnsfastsattBrukerutbetaling.vedtak.vedtakstype !== 'ARBEIDSTAKER') {
+    throw new Error('Forventet at vedtakstype skulle være ARBEIDSTAKER')
+}
 skjønnsfastsattBrukerutbetaling.id = '6aa63aa6-a932-4ba4-b1b3-bc3722b0eb1e'
 skjønnsfastsattBrukerutbetaling.vedtak.begrunnelser = [
     {
