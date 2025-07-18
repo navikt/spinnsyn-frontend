@@ -23,6 +23,21 @@ export interface RSVedtakWrapperUtvidet extends RSVedtakWrapper {
     sykepengebelopPerson: number
 }
 
+export interface RSVedtakFelles {
+    vedtakstype: 'ARBEIDSTAKER' | 'NARINGSDRIVENDE'
+    fom: string
+    tom: string
+    dokumenter: Dokument[]
+    utbetaling: RSUtbetalingUtbetalt
+    sykepengegrunnlagsfakta?: Sykepengegrunnlagsfakta | null
+    sykepengegrunnlag?: number
+    grunnlagForSykepengegrunnlag?: number
+    begrensning?: Begrensning
+    vedtakFattetTidspunkt?: string
+    begrunnelser?: Begrunnelse[]
+    tags?: string[]
+}
+
 export interface RSDag {
     dato: string
     belop: number
