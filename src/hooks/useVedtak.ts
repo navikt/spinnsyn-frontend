@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 
-import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak-felles'
 import { fetchJsonMedRequestId } from '../utils/fetch'
 import { spinnsynFrontendInterne } from '../utils/environment'
 import { hentDagerPaaVedtak } from '../daglogikk/hentDagerPaaVedtak'

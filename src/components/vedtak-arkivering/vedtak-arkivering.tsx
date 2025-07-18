@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
-import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import Vedtak from '../vedtak-side/vedtak'
 import { ScrollProvider } from '../../context/scroll-context'
 import { hentDagerPaaVedtak } from '../../daglogikk/hentDagerPaaVedtak'

@@ -1,10 +1,11 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const kunAgPeriode: RSVedtakWrapper = {
     id: '4e044d03-2dfe-45e9-a904-77777723',
     lest: false,
     organisasjoner: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '123456789',
         fom: '2021-10-04',
         tom: '2021-10-19',

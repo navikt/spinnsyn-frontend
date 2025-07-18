@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const alleAvvisteDager: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-93gh93rugh93',
@@ -8,6 +8,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
     orgnavn: 'INTEGRASJON AS',
     andreArbeidsgivere: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999998',
         fom: '2021-01-25',
         tom: '2021-03-05',
@@ -272,6 +273,7 @@ export const alleAvvisteDagerFraBomlo: RSVedtakWrapper = {
     orgnavn: 'INTEGRASJON AS (BØMLO)',
     andreArbeidsgivere: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999998',
         fom: '2021-01-30',
         tom: '2021-02-22',

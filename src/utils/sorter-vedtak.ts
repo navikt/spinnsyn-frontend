@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 
 export const sorterEtterNyesteTom = (vedtak1: RSVedtakWrapper, vedtak2: RSVedtakWrapper) => {
     const tom1 = dayjs(vedtak1.vedtak.tom).unix()

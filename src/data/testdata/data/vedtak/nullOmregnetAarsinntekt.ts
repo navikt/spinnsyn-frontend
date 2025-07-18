@@ -1,10 +1,11 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
     id: 'e04b0ea9-ce61-4b69-92de-9f035ffb1616',
     lest: true,
     lestDato: '2024-04-24T14:00:25.052723+02:00',
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '998877445',
         fom: '2024-03-01',
         tom: '2024-03-20',

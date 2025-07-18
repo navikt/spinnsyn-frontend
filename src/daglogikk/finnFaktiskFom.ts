@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-import { RSDag } from '../types/rs-types/rs-vedtak'
+import { RSDag } from '../types/rs-types/rs-vedtak-felles'
 
 export function finnFaktiskFom({
     dagerArbeidsgiver,

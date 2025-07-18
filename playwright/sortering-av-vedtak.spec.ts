@@ -1,5 +1,5 @@
 import { diverseData } from '../src/data/testdata/data/personas/personas'
-import { RSVedtakWrapper } from '../src/types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../src/types/rs-types/rs-vedtak-felles'
 
 import { test, expect } from './fixtures'
 
