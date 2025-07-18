@@ -9,15 +9,17 @@ import { VedtakProps } from '../vedtak'
 import { InfoSection } from './info-seksjon'
 
 const BeregningÅrsinntektFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
+    if (vedtak.vedtak.vedtakstype !== 'ARBEIDSTAKER') {
+        return null
+    }
+    const arbeidstakerVedtak = vedtak.vedtak
     const andre = [] as { navn: string; årsinntekt: number }[]
     if (
-        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterHovedregel' ||
-        vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
+        arbeidstakerVedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterHovedregel' ||
+        arbeidstakerVedtak.sykepengegrunnlagsfakta?.fastsatt == 'EtterSkjønn'
     ) {
-        vedtak.vedtak.sykepengegrunnlagsfakta.arbeidsgivere
-            .filter((a) => {
-                return a.arbeidsgiver != vedtak.vedtak.organisasjonsnummer
-            })
+        arbeidstakerVedtak.sykepengegrunnlagsfakta.arbeidsgivere
+            .filter((a) => a.arbeidsgiver != arbeidstakerVedtak.organisasjonsnummer)
             .forEach((a) => {
                 andre.push({
                     navn: vedtak.organisasjoner[a.arbeidsgiver] || a.arbeidsgiver,
