@@ -3,7 +3,7 @@ import getConfig from 'next/config'
 import React from 'react'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { skjønnsfastsattBrukerutbetaling } from '../../../data/testdata/data/vedtak/skjønnsfastsatt'
 import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/alleAvvisteDager'
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../../../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'

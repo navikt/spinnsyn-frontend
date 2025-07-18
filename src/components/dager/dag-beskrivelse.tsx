@@ -1,7 +1,7 @@
 import { BodyShort, Heading } from '@navikt/ds-react'
 import React from 'react'
 
-import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak'
+import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { tekst } from '../../utils/tekster'
 import { parserWithReplace } from '../../utils/html-react-parser-utils'
 

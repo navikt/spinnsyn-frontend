@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { getLedetekst, tekst } from '../../utils/tekster'
-import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../amplitude/amplitude'
 import { cn } from '../../utils/tw-utils'

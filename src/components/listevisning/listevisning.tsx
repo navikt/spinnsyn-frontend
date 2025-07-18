@@ -6,7 +6,7 @@ import { arkiverteVedtakUrl, isMockBackend, isOpplaering, spinnsynFrontendIntern
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { sorterEtterNyesteFom } from '../../utils/sorter-vedtak'
-import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 
 import LenkepanelGruppering from './lenkepanel-gruppering'
 

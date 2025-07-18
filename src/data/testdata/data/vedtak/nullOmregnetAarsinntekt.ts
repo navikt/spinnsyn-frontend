@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
     id: 'e04b0ea9-ce61-4b69-92de-9f035ffb1616',

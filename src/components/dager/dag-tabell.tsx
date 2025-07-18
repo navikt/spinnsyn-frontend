@@ -2,7 +2,7 @@ import { BodyShort, Label, Table } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 
-import { RSDag } from '../../types/rs-types/rs-vedtak'
+import { RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { ValutaFormat } from '../../utils/valuta-utils'
 
 import DagLabel from './dag-label'

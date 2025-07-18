@@ -1,4 +1,4 @@
-import { RSDag } from '../../types/rs-types/rs-vedtak'
+import { RSDag } from '../../types/rs-types/rs-vedtak-felles'
 
 function dataCyDag(dag: RSDag) {
     if (dag.dagtype == 'AvvistDag') {

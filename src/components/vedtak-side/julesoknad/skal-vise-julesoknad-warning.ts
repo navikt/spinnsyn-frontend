@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
 export function skalViseJulesoknadWarning(vedtak: RSVedtakWrapperUtvidet) {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
