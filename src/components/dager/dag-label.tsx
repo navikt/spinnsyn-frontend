@@ -93,6 +93,13 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'AndreYtelser':
                 return dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))
 
+            case 'DekkesIkkeAvNav':
+                return (
+                    <Tag variant="warning" size="small">
+                        Dekkes ikke av NAV
+                    </Tag>
+                )
+
             case 'UkjentDag':
 
             default:
