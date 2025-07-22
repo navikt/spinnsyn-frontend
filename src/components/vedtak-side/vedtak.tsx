@@ -138,7 +138,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     case 'ARBEIDSTAKER':
                         return <InntekterLagtTilGrunnArbeidstaker vedtak={vedtak} />
                     case 'NARINGSDRIVENDE':
-                        console.log('InntekterLagtTilGrunnNaringsdrivende', vedtak)
                         return <InntekterLagtTilGrunnNaringsdrivende vedtak={vedtak} />
                 }
             })()}

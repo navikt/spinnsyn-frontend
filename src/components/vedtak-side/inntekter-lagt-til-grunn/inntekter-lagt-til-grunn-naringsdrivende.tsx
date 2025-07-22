@@ -142,7 +142,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                                 />
                             )}
                             <AlleSykepengerPerDag vedtak={vedtak} />
-                            <MerOmBergningenNargingsdrivende vedtak={vedtak} />
+                            <MerOmBergningenNargingsdrivende />
                         </Accordion>
                     </article>
                 </VedtakExpansionCard>
