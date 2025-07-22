@@ -40,11 +40,7 @@ export const EkstrainfoOmVedtaket = ({ vedtak }: { vedtak: RSVedtakFelles }) => 
             {vedtak.sykepengegrunnlag && (
                 <InfoSection
                     bold
-                    className={
-                        vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
-                            ? 'mt-4 border-t border-gray-400 pt-4'
-                            : ''
-                    }
+                    className="mt-4 border-t border-gray-400 pt-4"
                     label={tekst('utbetaling.sykepengegrunnlag')}
                     value={formaterValuta(vedtak.sykepengegrunnlag)}
                 />
