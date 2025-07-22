@@ -36,7 +36,7 @@ test.describe('Kun personutbetaling', () => {
     })
 
     test('Ekspanderer blått panel', async ({ page }) => {
-        await page.getByText('10 sykepengedager').click({ force: true })
+        await page.getByText('Gjenstående sykedager').click({ force: true })
         await expect(page.getByText('238 sykepengedager')).toBeVisible()
     })
 })

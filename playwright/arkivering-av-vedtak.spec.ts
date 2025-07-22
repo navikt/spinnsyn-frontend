@@ -43,8 +43,12 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser antall sykepengedager som gjenstår', async () => {
-            const gjenstar = page.getByRole('region', { name: 'Antall sykepengedager som gjenstår' })
-            await expect(gjenstar).toContainText('Det er bare dager Nav skal utbetale som er med i tellingen over')
+            const gjenstar = page.getByRole('region', { name: 'Gjenstående sykedager' })
+            await expect(
+                gjenstar.getByText(
+                    'Du kan vanligvis få sykepenger i opptil 248 dager. Hvis du bruker opp de 248 dagene, må det gå 26 uker før du kan ha rett til sykepenger igjen.',
+                ),
+            ).toBeVisible()
         })
     })
 
@@ -88,8 +92,12 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser antall sykepengedager som gjenstår', async () => {
-            const gjenstar = page.getByRole('region', { name: 'Antall sykepengedager som gjenstår' })
-            await expect(gjenstar).toContainText('Det er bare dager Nav skal utbetale som er med i tellingen over')
+            const gjenstar = page.getByRole('region', { name: 'Gjenstående sykedager' })
+            await expect(
+                gjenstar.getByText(
+                    'Du kan vanligvis få sykepenger i opptil 248 dager. Hvis du bruker opp de 248 dagene, må det gå 26 uker før du kan ha rett til sykepenger igjen.',
+                ),
+            ).toBeVisible()
         })
     })
 
@@ -174,8 +182,12 @@ test.describe('Vedtak for arkivering', () => {
         })
 
         await test.step('Verifiser antall sykepengedager som gjenstår', async () => {
-            const gjenstar = page.getByRole('region', { name: 'Antall sykepengedager som gjenstår' })
-            await expect(gjenstar).toContainText('Det er bare dager Nav skal utbetale som er med i tellingen over')
+            const gjenstar = page.getByRole('region', { name: 'Gjenstående sykedager' })
+            await expect(
+                gjenstar.getByText(
+                    'Du kan vanligvis få sykepenger i opptil 248 dager. Hvis du bruker opp de 248 dagene, må det gå 26 uker før du kan ha rett til sykepenger igjen.',
+                ),
+            ).toBeVisible()
         })
     })
 })
