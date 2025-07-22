@@ -147,7 +147,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 <UxSignalsWidget study={studyKey} demo={!isProd()} />
             )}
             <Behandling vedtak={vedtak} />
+            1
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
+            2
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
             {(flexjarToggle.enabled || julesoknad) && (
                 <FlexjarVarSidenNyttig

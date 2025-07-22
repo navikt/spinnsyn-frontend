@@ -1,6 +1,7 @@
 import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
 
 export const standardNaringsdrivende: RSVedtakWrapper = {
+    // TODO vurder å gjøre til uuid som de andre vedtakene
     id: 'standard-vedtak-naringsdrivende',
     orgnavn: 'Wooley Socks ENK',
     vedtak: {
@@ -29,7 +30,7 @@ export const standardNaringsdrivende: RSVedtakWrapper = {
             utbetalingId: 'utbetaling1',
             forbrukteSykedager: 23,
             gjenståendeSykedager: 248,
-            automatiskBehandling: true,
+            automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '2024-07-31',
             utbetalingType: 'UTBETALING',
             personOppdrag: {
@@ -85,7 +86,7 @@ export const standardNaringsdrivende: RSVedtakWrapper = {
     lest: false,
     organisasjoner: {},
     lestDato: null,
-    opprettetTimestamp: '',
+    opprettetTimestamp: '2024-07-01T12:52:49.722204Z',
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,

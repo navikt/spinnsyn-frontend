@@ -28,7 +28,7 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                 Du kan endre dette selv ved å <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />
                 . Da vil saken din bli vurdert på nytt.
             </BodyLong>
-            {inntektFraAOrdningLagtTilGrunn ? (
+            { vedtak.vedtak.vedtakstype === "ARBEIDSTAKER" && (inntektFraAOrdningLagtTilGrunn ? (
                 <>
                     <BodyShort weight="semibold">Spørsmål til opplysninger hentet fra a-ordningen?</BodyShort>
                     <BodyLong spacing>
@@ -44,7 +44,7 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                     <BodyShort weight="semibold">Spørsmål til opplysninger i inntektsmeldingen?</BodyShort>
                     <BodyLong spacing>Ta kontakt med arbeidsgiveren din</BodyLong>
                 </>
-            )}
+            ))}
             <BodyShort weight="semibold">Annet du lurer på?</BodyShort>
             <BodyLong spacing>
                 <LenkeMedAmplitude
