@@ -12,7 +12,7 @@ export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
 }
 
-export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
+export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)

@@ -18,7 +18,7 @@ import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-arbeidst
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
-import { MerOmBergningen } from './mer-om-bergningen'
+import { MerOmBergningenArbeidstaker } from './mer-om-bergningen-arbeidstaker'
 import { EkstrainfoOmVedtaket } from './ekstrainfo-om-vedtaket'
 
 export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
@@ -188,7 +188,7 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
                         />
                     )}
                     <AlleSykepengerPerDag vedtak={vedtak} />
-                    <MerOmBergningen vedtak={vedtak} />
+                    <MerOmBergningenArbeidstaker vedtak={vedtak} />
                 </Accordion>
             </article>
         </VedtakExpansionCard>
