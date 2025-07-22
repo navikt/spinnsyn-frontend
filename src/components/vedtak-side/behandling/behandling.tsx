@@ -46,9 +46,8 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                         })}
                     </>
                 )}
-                
+
                 {tekst(behandlingOpplysningstekst())}
-                
             </>
         )
     }
@@ -61,7 +60,6 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
             <BodyLong data-testid="behandling-body" spacing>
                 {behandlingInfoTekst()}
             </BodyLong>
-        
         </>
     )
 }

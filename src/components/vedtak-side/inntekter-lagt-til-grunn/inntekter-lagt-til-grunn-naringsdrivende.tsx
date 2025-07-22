@@ -100,14 +100,14 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
 
                         <InfoSection
                             className="mt-4"
-                            label="Juster gjennomsnittlig årsinntekt"
+                            label="Justert gjennomsnittlig årsinntekt"
                             value={formaterValuta(vedtak.vedtak.justertGjennomsnittligInntekt)}
                         />
 
                         <EkstrainfoOmVedtaket vedtak={vedtak.vedtak} />
                         <BodyShort size="small" className="mt-4 mb-4">
                             Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av
-                            sykepengegrunnlaget
+                            sykepengegrunnlaget.
                         </BodyShort>
 
                         <Accordion className="mt-8" indent={false}>

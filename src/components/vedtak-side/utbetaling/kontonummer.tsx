@@ -26,7 +26,7 @@ export const Kontonummer = () => {
             {kontonummer && (
                 <>
                     <Heading level="3" size="xsmall">
-                        {tekst('utbetaling.kontonummer.utbetales')}
+                        Kontonummer for utbetaling:
                     </Heading>
                     <BodyLong spacing>{formaterKontonummer(kontonummer!)}</BodyLong>
                 </>
