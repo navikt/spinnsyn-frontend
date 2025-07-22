@@ -29,6 +29,7 @@ export function hentDagerPaaVedtak(v: RSVedtakWrapper): RSVedtakWrapperUtvidet {
         dagerPerson: dagerPerson,
         opprinneligFom: v.vedtak.fom,
     })
+    nyttVedtak.vedtak.vedtakstype = v.vedtak.vedtakstype || 'ARBEIDSTAKER'
 
     return nyttVedtak
 }
