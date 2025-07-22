@@ -16,7 +16,7 @@ test.describe('Julesøknadwarning', () => {
         test('Har ikke advarsel', async ({ page }) => {
             await page.goto('/syk/sykepenger?testperson=kun-direkte&id=348a5462-456a-4bfc-9b54-11cd77a9937f')
             await expect(page).toHaveURL(/testperson=kun-direkte/)
-            await expect(page.getByText('24 550 kroner')).toBeVisible()
+            await expect(page.getByText('24 550 kr')).toBeVisible()
             await expect(page.getByText(advarseltekst)).not.toBeVisible()
         })
     })

@@ -29,17 +29,7 @@ test.describe('Kombinasjonutbetaling', () => {
 
         const personutbetalingSection = page.getByTestId(/personutbetaling/)
         await test.step('Sjekk detaljer om utbetaling', async () => {
-            await expect(
-                personutbetalingSection.getByText(
-                    'Beløpet er før skatt, kreditortrekk og tilbakebetalingskrav fra kommunen.',
-                ),
-            ).toBeVisible()
-            await expect(
-                personutbetalingSection.getByText(
-                    'Kreditortrekk kan være fra kemneren, Statens innkrevingssentral eller Nav innkreving. Tilbakebetalingskrav fra kommunen kan være i forbindelse med sosialhjelp.',
-                ),
-            ).toBeVisible()
-            await expect(personutbetalingSection.getByText('Pengene utbetales til deg')).toBeVisible()
+            await expect(personutbetalingSection.getByText('Du får utbetalt')).toBeVisible()
             await expect(
                 personutbetalingSection.getByText(
                     'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på Min side slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
@@ -59,9 +49,7 @@ test.describe('Kombinasjonutbetaling', () => {
         })
 
         await test.step('Sjekk headerbeløp', async () => {
-            const header = page.getByRole('heading', { level: 2, name: 'sykepenger til deg' })
-            await expect(header).toBeVisible()
-            await expect(header).toContainText('24 550 kroner')
+            await expect(page.getByRole('heading', { level: 2, name: '24 550 kr' })).toBeVisible()
         })
     })
 
