@@ -15,8 +15,8 @@ import { erWeekendPeriode } from '../../../utils/dato-utils'
 import { Arsinntekt } from '../../../types/rs-types/rs-vedtak-naringsdrivende'
 
 import { InfoSection } from './info-seksjon'
-import { MerOmBergningenArbeidstaker } from './mer-om-bergningen-arbeidstaker'
 import { EkstrainfoOmVedtaket } from './ekstrainfo-om-vedtaket'
+import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
 
 export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)
@@ -142,7 +142,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                                 />
                             )}
                             <AlleSykepengerPerDag vedtak={vedtak} />
-                            <MerOmBergningenArbeidstaker vedtak={vedtak} />
+                            <MerOmBergningenNargingsdrivende vedtak={vedtak} />
                         </Accordion>
                     </article>
                 </VedtakExpansionCard>
