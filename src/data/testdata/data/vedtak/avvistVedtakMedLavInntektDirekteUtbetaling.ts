@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     id: '55d8b14f-e1a6-45a8-bc64-b7af2e845b68',
@@ -8,6 +8,7 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     orgnavn: 'POSTEN NORGE AS, BÆRUM (direkte utbetaling)',
     andreArbeidsgivere: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
         fom: '2021-08-18',
         tom: '2021-08-21',

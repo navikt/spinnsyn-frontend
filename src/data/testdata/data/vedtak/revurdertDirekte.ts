@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const vedtakRevurdertDirekte: RSVedtakWrapper = {
     id: '21eac584-d8ea-4e4b-bf9a-ae0a400009c4',
@@ -8,6 +8,7 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
     orgnavn: 'FLYBUTIKKEN, OSLO',
     andreArbeidsgivere: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
         fom: '2021-04-26',
         tom: '2021-05-03',

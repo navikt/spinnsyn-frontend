@@ -25,10 +25,14 @@ const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker }: VedtakPeriodeProps
                 'pb-2',
             )}
         >
-            <BodyShort>
-                {getLedetekst(tekst('utbetaling.person.fra'), {
-                    '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
-                })}
+            <BodyShort className="mb-2">
+                {vedtak.vedtak.vedtakstype === 'ARBEIDSTAKER' &&
+                    getLedetekst(tekst('utbetaling.person.fra'), {
+                        '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
+                    })}
+
+                {vedtak.vedtak.vedtakstype === 'NARINGSDRIVENDE' &&
+                    'Gjelder sykefravær som selvstendig næringsdrivende.'}
             </BodyShort>
             <BodyShort>Periode: {periode}</BodyShort>
         </div>

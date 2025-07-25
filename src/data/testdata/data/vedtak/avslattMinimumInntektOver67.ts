@@ -1,10 +1,11 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const avslattMinimumInntektOver67: RSVedtakWrapper = {
     id: '3ef1f882-4dbf-478d-bc98-5b878e7376ca',
     lest: false,
     lestDato: null,
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '333888777',
         fom: '2024-05-04',
         tom: '2024-05-26',

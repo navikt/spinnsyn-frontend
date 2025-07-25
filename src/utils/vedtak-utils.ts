@@ -6,7 +6,7 @@ import {
     RSBegrunnelse,
     RSVedtakWrapper,
     RSVedtakWrapperUtvidet,
-} from '../types/rs-types/rs-vedtak'
+} from '../types/rs-types/rs-vedtak-felles'
 
 import { erHelg } from './dato-utils'
 

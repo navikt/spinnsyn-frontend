@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const vedtakRedusertTil6G: RSVedtakWrapper = {
     id: '1ae568bd-71ff-4e31-b73f-c0c4ed85e01b',
@@ -6,6 +6,7 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     organisasjoner: {},
     lestDato: '2020-11-02T10:17:38.197496+01:00',
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '12345725',
         fom: '2021-10-18',
         tom: '2021-10-24',

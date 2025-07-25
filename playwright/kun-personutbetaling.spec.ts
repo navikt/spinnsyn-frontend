@@ -10,21 +10,21 @@ test.describe('Kun personutbetaling', () => {
         await trykkPaVedtakMedId(page, kunDirekte.id)
     })
     test('Viser info om utbetaling til person', async ({ page }) => {
+        const personutbetalingSection = page.getByTestId(/personutbetaling/)
         await expect(
-            page.getByText(
+            personutbetalingSection.getByText(
                 'Du får noen av sykepengene dine fra Nav og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
             ),
         ).not.toBeVisible()
-        await expect(page.getByText('Pengene utbetales til deg')).toBeVisible()
         await expect(page.getByText('Utbetales til Matbutikken AS')).not.toBeVisible()
 
-        const header = page.getByRole('heading', { level: 2, name: 'sykepenger til deg' })
+        const header = page.getByRole('heading', { level: 2, name: '24 550 kr' })
         await expect(header).toBeVisible()
-        await expect(header).toContainText('24 550 kroner')
 
         const panel = page.getByTestId('utbetaling-panel-personutbetaling')
         await expect(panel).toHaveCSS('background-color', 'rgb(216, 249, 255)')
-        await expect(panel.getByRole('heading', { name: /Sykepenger utbetales til kontonummer:/ })).toBeVisible()
+
+        await expect(panel.getByRole('heading', { name: /Kontonummer for utbetaling:/ })).toBeVisible()
         await expect(panel.getByText('1001 11 10011')).toBeVisible()
         await panel.getByText('Når får du sykepengene?').click()
         await expect(panel).toContainText('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden')

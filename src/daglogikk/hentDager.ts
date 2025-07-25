@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 
-import { RSDag, RSOppdrag, RSUtbetalingdag } from '../types/rs-types/rs-vedtak'
+import { RSDag, RSOppdrag, RSUtbetalingdag } from '../types/rs-types/rs-vedtak-felles'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)

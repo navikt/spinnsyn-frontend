@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const vedtakRevurdert: RSVedtakWrapper = {
     id: '9ae82dd2-dcf1-4c16-9e12-35cb6d634338',
@@ -8,6 +8,7 @@ export const vedtakRevurdert: RSVedtakWrapper = {
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
         fom: '2021-04-26',
         tom: '2021-05-03',

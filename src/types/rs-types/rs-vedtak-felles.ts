@@ -1,8 +1,13 @@
+import { RSVedtakNaringsdrivende } from './rs-vedtak-naringsdrivende'
+import { RSVedtakArbeidstaker } from './rs-vedtak-arbeidstaker'
+
+export type RSVedtakUnion = RSVedtakArbeidstaker | RSVedtakNaringsdrivende
+
 export interface RSVedtakWrapper {
     id: string
     lest: boolean
     lestDato?: string | null
-    vedtak: RSVedtak
+    vedtak: RSVedtakUnion
     opprettetTimestamp: string
     orgnavn: string
     andreArbeidsgivere: AndreArbeidsgivere
@@ -18,6 +23,21 @@ export interface RSVedtakWrapperUtvidet extends RSVedtakWrapper {
     sykepengebelopPerson: number
 }
 
+export interface RSVedtakFelles {
+    vedtakstype: 'ARBEIDSTAKER' | 'NARINGSDRIVENDE'
+    fom: string
+    tom: string
+    dokumenter: Dokument[]
+    utbetaling: RSUtbetalingUtbetalt
+    sykepengegrunnlagsfakta?: Sykepengegrunnlagsfakta | null
+    sykepengegrunnlag?: number
+    grunnlagForSykepengegrunnlag?: number
+    begrensning?: Begrensning
+    vedtakFattetTidspunkt?: string
+    begrunnelser?: Begrunnelse[]
+    tags?: string[]
+}
+
 export interface RSDag {
     dato: string
     belop: number
@@ -26,34 +46,12 @@ export interface RSDag {
     begrunnelser: RSBegrunnelse[]
 }
 
-interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
-    [orgnummer: string]: number
-}
-
-export interface AndreArbeidsgivere {
+interface AndreArbeidsgivere {
     [organisasjonsnavn: string]: number
 }
 
 export type Begrensning = 'ER_6G_BEGRENSET' | 'ER_IKKE_6G_BEGRENSET' | 'VURDERT_I_INFOTRYGD' | 'VET_IKKE'
-
-interface RSVedtak {
-    organisasjonsnummer?: string
-    fom: string
-    tom: string
-    dokumenter: Dokument[]
-    inntekt?: number
-    sykepengegrunnlag?: number
-    grunnlagForSykepengegrunnlag?: number
-    grunnlagForSykepengegrunnlagPerArbeidsgiver?: GrunnlagForSykepengegrunnlagPerArbeidsgiver
-    begrensning?: Begrensning
-    utbetaling: RSUtbetalingUtbetalt
-    vedtakFattetTidspunkt?: string
-    sykepengegrunnlagsfakta?: Sykepengegrunnlagsfakta | null
-    begrunnelser?: Begrunnelse[]
-    tags?: string[]
-}
-
-interface RSUtbetalingUtbetalt {
+export interface RSUtbetalingUtbetalt {
     organisasjonsnummer?: string
     foreløpigBeregnetSluttPåSykepenger?: string
     utbetalingId?: string
@@ -118,6 +116,7 @@ export type RSDagType =
     | 'ArbeidIkkeGjenopptattDag'
     | 'AndreYtelser'
     | 'UkjentDag'
+    | 'DekkesIkkeAvNav'
 export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk' | 'NavDagDelvisSykUnder20'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
@@ -125,8 +124,7 @@ export interface Dokument {
     dokumentId: string
     type: 'Sykmelding' | 'Søknad' | 'Inntektsmelding'
 }
-
-type Sykepengegrunnlagsfakta =
+export type Sykepengegrunnlagsfakta =
     | {
           fastsatt: 'IInfotrygd'
           omregnetÅrsinntekt: number

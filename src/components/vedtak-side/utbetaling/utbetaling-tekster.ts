@@ -83,6 +83,8 @@ const UtbetalingTekster = {
         'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra Nav for dager du har permisjon, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.ForeldetDag':
         'Du kan bare få sykepenger opptil tre måneder før den måneden du sendte søknaden, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a>, tredje avsnitt.',
+    'utbetaling.tabell.label.DekkesIkkeAvNav':
+        'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller fra du gir beskjed til Nav om at du er syk og ikke kan jobbe.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.Over70':

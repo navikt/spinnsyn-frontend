@@ -2,7 +2,7 @@ import { Link, List } from '@navikt/ds-react'
 import React from 'react'
 
 import { useScroll } from '../../../context/scroll-context'
-import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 export interface OppsumertAvslagListeProps {

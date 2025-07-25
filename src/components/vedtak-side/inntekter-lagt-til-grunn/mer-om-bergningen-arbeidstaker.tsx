@@ -2,7 +2,7 @@ import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
@@ -12,7 +12,7 @@ export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
 }
 
-export const MerOmBergningen = ({ vedtak }: BeregningInfoProps) => {
+export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)

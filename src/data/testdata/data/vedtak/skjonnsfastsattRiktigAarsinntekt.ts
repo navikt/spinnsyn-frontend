@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
     {
@@ -6,6 +6,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         lest: true,
         lestDato: '2023-12-20T14:54:08.256248+01:00',
         vedtak: {
+            vedtakstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '896929119',
             fom: '2023-09-01',
             tom: '2023-09-30',
@@ -428,6 +429,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         lest: true,
         lestDato: '2023-12-20T15:03:00.985874+01:00',
         vedtak: {
+            vedtakstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '947064649',
             fom: '2023-09-01',
             tom: '2023-09-30',
@@ -850,6 +852,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         lest: true,
         lestDato: '2023-12-21T09:42:18.475392+01:00',
         vedtak: {
+            vedtakstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '896929119',
             fom: '2023-09-01',
             tom: '2023-09-30',
@@ -1272,6 +1275,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         lest: true,
         lestDato: '2023-12-21T09:27:46.355818+01:00',
         vedtak: {
+            vedtakstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '947064649',
             fom: '2023-09-01',
             tom: '2023-09-30',

@@ -1,4 +1,4 @@
-import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak-felles'
 
 import { hentDager } from './hentDager'
 import { fjernArbeidIkkeGjenopptattDager } from './fjernArbeidIkkeGjenopptatt'
@@ -29,6 +29,7 @@ export function hentDagerPaaVedtak(v: RSVedtakWrapper): RSVedtakWrapperUtvidet {
         dagerPerson: dagerPerson,
         opprinneligFom: v.vedtak.fom,
     })
+    nyttVedtak.vedtak.vedtakstype = v.vedtak.vedtakstype || 'ARBEIDSTAKER'
 
     return nyttVedtak
 }

@@ -46,6 +46,7 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
                         })}
                     </>
                 )}
+
                 {tekst(behandlingOpplysningstekst())}
             </>
         )

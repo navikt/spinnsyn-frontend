@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
-import { RSDag, RSDagTypeKomplett, RSVedtakWrapperUtvidet } from '../../types/rs-types/rs-vedtak'
+import { RSDag, RSDagTypeKomplett, RSVedtakWrapperUtvidet } from '../../types/rs-types/rs-vedtak-felles'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -22,11 +22,12 @@ import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
-import { InntekterLagtTilGrunn } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn'
+import { InntekterLagtTilGrunnArbeidstaker } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn-arbeidstaker'
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
+import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn-naringsdrivende'
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -125,14 +126,20 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 </Alert>
             )}
 
+            {/* her begynner refusjonstypene */}
             {skalViseRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <RefusjonMedInntekt vedtak={vedtak} />
             )}
-
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
-
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
-            <InntekterLagtTilGrunn vedtak={vedtak} />
+            {(() => {
+                switch (vedtak.vedtak.vedtakstype) {
+                    case 'ARBEIDSTAKER':
+                        return <InntekterLagtTilGrunnArbeidstaker vedtak={vedtak} />
+                    case 'NARINGSDRIVENDE':
+                        return <InntekterLagtTilGrunnNaringsdrivende vedtak={vedtak} />
+                }
+            })()}
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
             {!erArkivering && erDirekteutbetaling && studyActive && (

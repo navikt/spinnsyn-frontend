@@ -1,4 +1,4 @@
-import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     id: 'dff11217-31ea-404a-86ab-b521a6a946df',
@@ -7,6 +7,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     vedtak: {
+        vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '972674818',
         fom: '2021-02-04',
         tom: '2021-02-21',

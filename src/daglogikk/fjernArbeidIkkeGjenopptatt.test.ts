@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { describe, test, expect } from 'vitest'
 
-import { RSDag, RSDagTypeKomplett } from '../types/rs-types/rs-vedtak'
+import { RSDag, RSDagTypeKomplett } from '../types/rs-types/rs-vedtak-felles'
 import { jsonDeepCopy } from '../utils/json-deep-copy'
 import { vedtakMedDetMeste } from '../data/testdata/data/vedtak/medDetMeste'
 
