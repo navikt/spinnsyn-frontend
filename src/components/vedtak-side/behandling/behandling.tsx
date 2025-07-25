@@ -3,62 +3,47 @@ import dayjs from 'dayjs'
 import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
-import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
+import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 
 export const Behandling = ({ vedtak }: VedtakProps) => {
-    const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
-    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+    const erAutomatiskBehandlet = vedtak.vedtak.utbetaling.automatiskBehandling
     const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
-    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
+    const aordningDataErBrukt = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
-    const tittelNokkel = () => {
-        if (annullertEllerRevurdert) {
-            if (automatisk) {
-                return 'behandling.automatisk.tittel.preteritum'
-            }
-            return 'behandling.manuell.tittel.preteritum'
+    const hentTittel = () => {
+        if (erAutomatiskBehandlet) {
+            return 'Søknaden ble behandlet automatisk'
         } else {
-            if (automatisk) {
-                return 'behandling.automatisk.tittel.presens'
-            }
-            return 'behandling.manuell.tittel.presens'
+            return 'Søknaden ble behandlet av en saksbehandler'
         }
     }
 
-    const behandlingOpplysningstekst = () => {
-        if (inntektFraAOrdningLagtTilGrunn) {
-            return annullertEllerRevurdert
-                ? 'behandling.opplysningene.aordning.preteritum'
-                : 'behandling.opplysningene.aordning.presens'
-        } else {
-            return annullertEllerRevurdert ? 'behandling.opplysningene.preteritum' : 'behandling.opplysningene.presens'
+    const getOpplysningText = () => {
+        switch (vedtak.vedtak.vedtakstype) {
+            case 'NARINGSDRIVENDE':
+                return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+            case 'ARBEIDSTAKER':
+                if (aordningDataErBrukt) {
+                    return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+                } else {
+                    return 'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. '
+                }
         }
     }
 
-    const behandlingInfoTekst = () => {
-        return (
-            <>
-                {vedtaksDato && (
-                    <>
-                        {getLedetekst(tekst('behandling.dato-fattet'), {
-                            '%DATO%': tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()),
-                        })}
-                    </>
-                )}
-
-                {tekst(behandlingOpplysningstekst())}
-            </>
-        )
-    }
+    const formattedDate = vedtaksDato ? tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()) : null
 
     return (
         <>
             <Heading data-testid="behandling-header" size="small" level="2" className="mt-4">
-                {tekst(tittelNokkel())}
+                {hentTittel()}
             </Heading>
             <BodyLong data-testid="behandling-body" spacing>
-                {behandlingInfoTekst()}
+                {formattedDate && `Vi fattet vedtaket ${formattedDate}. `}
+                {getOpplysningText()}{' '}
+                <LenkeMedAmplitude url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" tekst="Kontakt oss" /> om
+                du ønsker å se opplysningene.
             </BodyLong>
         </>
     )

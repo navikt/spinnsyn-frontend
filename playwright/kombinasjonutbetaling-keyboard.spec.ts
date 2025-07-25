@@ -74,7 +74,7 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
         await tabTilForsteSoknadIListen(page, browserName)
         await test.step('Tabb gjennom bunnlenker', async () => {
             await tabUntilFocusedContainsText(browserName, page, /endre svarene i søknaden/)
-            await tabUntilFocusedContainsText(browserName, page, /Ta kontakt med Nav/)
+            await tabUntilFocusedContainsText(browserName, page, /kontakte Nav/)
             await tabUntilFocusedContainsText(browserName, page, /retten til å klage/)
             await tabUntilFocusedContainsText(browserName, page, /klageveilederen/)
         })

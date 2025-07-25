@@ -5,6 +5,7 @@ export const standardNaringsdrivende: RSVedtakWrapper = {
     id: 'standard-vedtak-naringsdrivende',
     orgnavn: 'Wooley Socks ENK',
     vedtak: {
+        vedtakFattetTidspunkt: '2023-09-05',
         vedtakstype: 'NARINGSDRIVENDE',
         inntekter: [
             {
