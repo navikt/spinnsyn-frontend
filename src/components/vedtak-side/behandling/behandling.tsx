@@ -7,12 +7,9 @@ import { VedtakProps } from '../vedtak'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 
 export const Behandling = ({ vedtak }: VedtakProps) => {
-    const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
+    const erAutomatiskBehandlet = vedtak.vedtak.utbetaling.automatiskBehandling
     const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
-    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
-
-    const erAutomatiskBehandlet = automatisk
-    const aordningDataErBrukt = inntektFraAOrdningLagtTilGrunn
+    const aordningDataErBrukt = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
     const hentTittel = () => {
         if (erAutomatiskBehandlet) {
