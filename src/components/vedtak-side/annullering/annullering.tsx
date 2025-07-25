@@ -66,7 +66,7 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                     <Label>{tekst('annullert.info.header4')}</Label>
                     <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
 
-                    <Link href={tekst('behandling.lenke.url')} target="_blank">
+                    <Link href="https://innboks.nav.no/s/skriv-til-oss?category=Helse" target="_blank">
                         <Chat2Icon title="Skriv til oss" className="inline" fontSize="var(--a-font-size-large)" />
                         {tekst('annullert.info.skriv-til-oss')}
                     </Link>
