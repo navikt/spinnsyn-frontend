@@ -48,16 +48,14 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                 Spørsmål eller feil
             </Heading>
             <BodyLong spacing>
-                Har du funnet en feil i vedtaket som skyldes feil i søknaden kan du endre dette selv ved å <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />
-                . Da vil saken din bli vurdert på nytt.
+                Har du funnet en feil i vedtaket som skyldes feil i søknaden kan du endre dette selv ved å{' '}
+                <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />. Da vil saken din bli vurdert
+                på nytt.
             </BodyLong>
             {vedtak.vedtak.vedtakstype === 'ARBEIDSTAKER' && renderInntektsopplysninger(inntektFraAOrdningLagtTilGrunn)}
             <BodyLong spacing>
-                Har du andre spørsmål, kan du <LenkeMedAmplitude
-                    url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
-                    tekst="kontakte Nav"
-                />
-                .
+                Har du andre spørsmål, kan du{' '}
+                <LenkeMedAmplitude url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" tekst="kontakte Nav" />.
             </BodyLong>
         </>
     )
