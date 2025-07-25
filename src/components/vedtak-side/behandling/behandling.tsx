@@ -4,6 +4,7 @@ import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { VedtakProps } from '../vedtak'
+import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 
 
 export const Behandling = ({ vedtak }: VedtakProps) => {
@@ -48,7 +49,10 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
       </Heading>
       <BodyLong data-testid="behandling-body" spacing>
         {formattedDate && `Vi fattet vedtaket ${formattedDate}. `}
-        {getOpplysningText()}
+        {getOpplysningText()} <LenkeMedAmplitude
+                            url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                            tekst="Kontakt oss"
+                        /> om du ønsker å se opplysningene.
       </BodyLong>
     </>
   )
