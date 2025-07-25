@@ -43,12 +43,12 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
         ).toBeVisible()
 
         const behandlingHeader = page.getByTestId('behandling-header')
-        await expect(behandlingHeader).toHaveText('Søknaden er behandlet automatisk')
+        await expect(behandlingHeader).toHaveText('Søknaden ble behandlet automatisk')
         await expect(behandlingHeader).toBeVisible()
 
         const behandlingBody = page.getByTestId('behandling-body')
         await expect(behandlingBody).toContainText(
-            'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din og offentlige registre.',
+            'Vi fattet vedtaket 23. oktober 2021. Opplysningene ble hentet fra søknaden din og offentlige registre.',
         )
         expect(
             page

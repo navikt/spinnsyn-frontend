@@ -6,60 +6,53 @@ import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 
+
 export const Behandling = ({ vedtak }: VedtakProps) => {
-    const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
-    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
-    const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
+  const automatisk = vedtak.vedtak.utbetaling.automatiskBehandling
+  const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
+  const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
+  const inntektFraAOrdningLagtTilGrunn =
+    vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
-    const tittelNokkel = () => {
-        if (annullertEllerRevurdert) {
-            if (automatisk) {
-                return 'behandling.automatisk.tittel.preteritum'
-            }
-            return 'behandling.manuell.tittel.preteritum'
-        } else {
-            if (automatisk) {
-                return 'behandling.automatisk.tittel.presens'
-            }
-            return 'behandling.manuell.tittel.presens'
-        }
+  const erFortid = annullertEllerRevurdert
+  const erAutomatiskBehandlet = automatisk
+  const aordningDataErBrukt = inntektFraAOrdningLagtTilGrunn
+
+  const hentTittel = () => {
+      if (erAutomatiskBehandlet) {
+        return 'Søknaden ble behandlet automatisk'
+      } else {
+        return 'Søknaden ble behandlet av en saksbehandler'
+      }
+  }
+
+  const getOpplysningText = () => {
+    if (aordningDataErBrukt) {
+        return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+    } else {
+        return 'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. '
+      }
     }
+  
 
-    const behandlingOpplysningstekst = () => {
-        if (inntektFraAOrdningLagtTilGrunn) {
-            return annullertEllerRevurdert
-                ? 'behandling.opplysningene.aordning.preteritum'
-                : 'behandling.opplysningene.aordning.presens'
-        } else {
-            return annullertEllerRevurdert ? 'behandling.opplysningene.preteritum' : 'behandling.opplysningene.presens'
-        }
-    }
+  const formattedDate = vedtaksDato
+    ? tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate())
+    : null
 
-    const behandlingInfoTekst = () => {
-        return (
-            <>
-                {vedtaksDato && (
-                    <>
-                        {getLedetekst(tekst('behandling.dato-fattet'), {
-                            '%DATO%': tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()),
-                        })}
-                    </>
-                )}
-
-                {tekst(behandlingOpplysningstekst())}
-            </>
-        )
-    }
-
-    return (
-        <>
-            <Heading data-testid="behandling-header" size="small" level="2" className="mt-4">
-                {tekst(tittelNokkel())}
-            </Heading>
-            <BodyLong data-testid="behandling-body" spacing>
-                {behandlingInfoTekst()}
-            </BodyLong>
-        </>
-    )
+  return (
+    <>
+      <Heading
+        data-testid="behandling-header"
+        size="small"
+        level="2"
+        className="mt-4"
+      >
+        {hentTittel()}
+      </Heading>
+      <BodyLong data-testid="behandling-body" spacing>
+        {formattedDate && `Vi fattet vedtaket ${formattedDate}. `}
+        {getOpplysningText()}
+      </BodyLong>
+    </>
+  )
 }

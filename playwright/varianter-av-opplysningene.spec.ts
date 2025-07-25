@@ -10,9 +10,9 @@ import { test, expect } from './fixtures'
 test.describe('Tester logikk i behandling.tsx', () => {
     test('Automatisk behandlet', async ({ page }) => {
         await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakMedDetMeste.id}`)
-        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden er behandlet automatisk')
+        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet automatisk')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Vi fattet vedtaket 23. oktober 2021. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+            'Vi fattet vedtaket 23. oktober 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
         await expect(page.getByTestId('ugyldig')).toHaveCount(0)
     })
@@ -21,9 +21,9 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await page.goto(
             `http://localhost:3000/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=${vedtakMedFlereArbeidsgivere.id}`,
         )
-        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden er behandlet av en saksbehandler')
+        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet av en saksbehandler')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Vi fattet vedtaket 21. mars 2022. Opplysningene er hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+            'Vi fattet vedtaket 21. mars 2022. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
         await expect(page.getByTestId('ugyldig')).toHaveCount(0)
     })
