@@ -23,10 +23,15 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     }
 
     const getOpplysningText = () => {
-        if (aordningDataErBrukt) {
-            return 'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. '
-        } else {
-            return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+        switch (vedtak.vedtak.vedtakstype) {
+            case 'NARINGSDRIVENDE':
+                return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+            case 'ARBEIDSTAKER':
+                if (aordningDataErBrukt) {
+                    return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+                } else {
+                    return 'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. '
+                }
         }
     }
 
