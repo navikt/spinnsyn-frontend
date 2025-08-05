@@ -94,7 +94,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                 >
                     <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
                         <BodyShort weight="semibold" className="w-full mb-2">
-                            {storeTilStoreOgSmå(vedtak.orgnavn)}
+                            Selvstendig næringsdrivende
                         </BodyShort>
                         {arsInntekter(vedtak.vedtak.inntekter)}
 

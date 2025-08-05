@@ -24,8 +24,8 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
 
     return (
         <VedtakExpansionCard
-            ariaLabel="Gjenstående sykedager"
-            tittel="Gjenstående sykedager"
+            ariaLabel="Gjenstående sykepengedager"
+            tittel="Gjenstående sykepengedager"
             undertittel={`per ${sluttPaAktuelleVedtaksPeriode}`}
             vedtak={vedtak}
             apne={visBeregning}
