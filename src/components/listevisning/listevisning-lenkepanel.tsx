@@ -15,12 +15,6 @@ import { isProd } from '../../utils/environment'
 
 dayjs.extend(localizedFormat)
 
-// const getArbeidsgivernavnEllerTypeInntekt = (vedtak: RSVedtakWrapper) => {
-//     if (vedtak.vedtak.vedtakstype === 'NARINGSDRIVENDE') {
-//         return 'Selvstendig næringsdrivende'
-//     }
-//     return storeTilStoreOgSmå(vedtak.orgnavn)
-// }
 
 const sykmeldtFraTekstGenerator = (vedtak: RSVedtakWrapper) => {
     switch (vedtak.vedtak.vedtakstype) {
@@ -47,9 +41,6 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
         : tekst('spinnsyn.teaser.tittel')
     const vedtakPeriode =
         dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
-    // const arbeidsgiverTekst = getLedetekst(tekst('spinnsyn.teaser.sykmeldt-fra'), {
-    //     '%ARBEIDSGIVER%': getArbeidsgivernavnEllerTypeInntekt(vedtak)
-    // })
     return (
         <Link href={{ query }} passHref legacyBehavior>
             <LinkPanel
