@@ -1,6 +1,3 @@
-import { RSVedtakNaringsdrivende } from './rs-vedtak-naringsdrivende'
-import { RSVedtakArbeidstaker } from './rs-vedtak-arbeidstaker'
-
 export type RSVedtakUnion = RSVedtakArbeidstaker | RSVedtakNaringsdrivende
 
 export interface RSVedtakWrapper {
@@ -37,6 +34,33 @@ export interface RSVedtakFelles {
     begrunnelser?: Begrunnelse[]
     tags?: string[]
 }
+
+
+
+export interface RSVedtakNaringsdrivende extends Omit<RSVedtakFelles, 'vedtakstype'> {
+    vedtakstype: 'NARINGSDRIVENDE'
+    inntekter: Arsinntekt[]
+    justertGjennomsnittligInntekt: number
+    sykepengegrunnlag: number
+}
+
+export interface Arsinntekt {
+    inntektsaar: number
+    inntekt: number
+}
+
+
+export interface RSVedtakArbeidstaker extends Omit<RSVedtakFelles, 'vedtakstype'> {
+    vedtakstype: 'ARBEIDSTAKER'
+    organisasjonsnummer?: string
+    inntekt?: number
+    grunnlagForSykepengegrunnlagPerArbeidsgiver?: GrunnlagForSykepengegrunnlagPerArbeidsgiver
+}
+
+interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
+    [orgnummer: string]: number
+}
+
 
 export interface RSDag {
     dato: string
