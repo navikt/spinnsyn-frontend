@@ -35,8 +35,6 @@ export interface RSVedtakFelles {
     tags?: string[]
 }
 
-
-
 export interface RSVedtakNaringsdrivende extends Omit<RSVedtakFelles, 'vedtakstype'> {
     vedtakstype: 'NARINGSDRIVENDE'
     inntekter: Arsinntekt[]
@@ -49,7 +47,6 @@ export interface Arsinntekt {
     inntekt: number
 }
 
-
 export interface RSVedtakArbeidstaker extends Omit<RSVedtakFelles, 'vedtakstype'> {
     vedtakstype: 'ARBEIDSTAKER'
     organisasjonsnummer?: string
@@ -60,7 +57,6 @@ export interface RSVedtakArbeidstaker extends Omit<RSVedtakFelles, 'vedtakstype'
 interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
     [orgnummer: string]: number
 }
-
 
 export interface RSDag {
     dato: string
