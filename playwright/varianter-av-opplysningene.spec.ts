@@ -41,7 +41,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await expect(page.getByTestId('behandling-body')).toContainText(
             'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
-        await expect(page.getByRole('region', { name: 'Gjenstående sykedager' }).first()).toHaveCSS(
+        await expect(page.getByRole('region', { name: 'Gjenstående sykepengedager' }).first()).toHaveCSS(
             'background-color',
             'rgb(236, 238, 240)',
         )
@@ -59,7 +59,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await expect(page.getByTestId('behandling-body')).toContainText(
             'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
-        await expect(page.getByRole('region', { name: 'Gjenstående sykedager' }).first()).toHaveCSS(
+        await expect(page.getByRole('region', { name: 'Gjenstående sykepengedager' }).first()).toHaveCSS(
             'background-color',
             'rgb(236, 238, 240)',
         )

@@ -64,7 +64,7 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
         await test.step('Tabb og sjekk sykepengedager', async () => {
             const sykepengedager = page.getByRole('heading', { level: 3, name: /248 sykepengedager/ })
             await expect(sykepengedager).not.toBeVisible()
-            await tabUntilFocusedContainsText(browserName, page, /Gjenstående sykedager/, { checkParent: true })
+            await tabUntilFocusedContainsText(browserName, page, /Gjenstående sykepengedager/, { checkParent: true })
             await page.keyboard.press('Enter')
             await expect(sykepengedager).toBeVisible()
         })
