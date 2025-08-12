@@ -1,7 +1,6 @@
 import { Accordion, BodyShort } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
-import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { tekst } from '../../../utils/tekster'
 import { formaterValuta } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
@@ -12,7 +11,7 @@ import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
-import { Arsinntekt } from '../../../types/rs-types/rs-vedtak-naringsdrivende'
+import { Arsinntekt } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { InfoSection } from './info-seksjon'
 import { EkstrainfoOmVedtaket } from './ekstrainfo-om-vedtaket'
@@ -94,7 +93,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                 >
                     <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
                         <BodyShort weight="semibold" className="w-full mb-2">
-                            {storeTilStoreOgSmå(vedtak.orgnavn)}
+                            Selvstendig næringsdrivende
                         </BodyShort>
                         {arsInntekter(vedtak.vedtak.inntekter)}
 

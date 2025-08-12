@@ -46,7 +46,7 @@ test.describe('Les uleste vedtak', () => {
         })
 
         await test.step('Sjekk blå boks', async () => {
-            const region = page.getByRole('region', { name: 'Gjenstående sykedager' })
+            const region = page.getByRole('region', { name: 'Gjenstående sykepengedager' })
             await expect(region).toContainText('per 5. mars 2021')
             await region.click()
             await expect(page.getByText('2. feb. 2022')).toBeVisible()
@@ -85,7 +85,7 @@ test.describe('Les uleste vedtak', () => {
             await expect(info).toContainText('Må jeg gjøre noe nå?')
         })
         await test.step('Sjekk beregnet sluttdato', async () => {
-            const region = page.getByRole('region', { name: 'Gjenstående sykedager' }).nth(0)
+            const region = page.getByRole('region', { name: 'Gjenstående sykepengedager' }).nth(0)
             await expect(region.getByText('per 3. mai 2021')).toBeVisible()
             await expect(region).toHaveCSS('background-color', 'rgb(236, 238, 240)')
             await region.click()

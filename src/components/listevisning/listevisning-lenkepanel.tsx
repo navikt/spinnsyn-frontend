@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 
-import { getLedetekst, tekst } from '../../utils/tekster'
+import { tekst } from '../../utils/tekster'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../amplitude/amplitude'
@@ -13,6 +13,15 @@ import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
 
 dayjs.extend(localizedFormat)
+
+const sykmeldtFraTekstGenerator = (vedtak: RSVedtakWrapper) => {
+    switch (vedtak.vedtak.vedtakstype) {
+        case 'ARBEIDSTAKER':
+            return `Sykmeldt fra ${storeTilStoreOgSmå(vedtak.orgnavn)}`
+        case 'NARINGSDRIVENDE':
+            return 'Sykmeldt som selvstendig næringsdrivende'
+    }
+}
 
 const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
@@ -29,9 +38,6 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
         : tekst('spinnsyn.teaser.tittel')
     const vedtakPeriode =
         dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
-    const arbeidsgiverTekst = getLedetekst(tekst('spinnsyn.teaser.sykmeldt-fra'), {
-        '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
-    })
     return (
         <Link href={{ query }} passHref legacyBehavior>
             <LinkPanel
@@ -57,7 +63,7 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
                             </BodyShort>
                             {vedtakTittel}
                         </LinkPanel.Title>
-                        <LinkPanel.Description>{arbeidsgiverTekst}</LinkPanel.Description>
+                        <LinkPanel.Description>{sykmeldtFraTekstGenerator(vedtak)}</LinkPanel.Description>
                         {!isProd() && (
                             <Detail className="italic">
                                 Mottatt: {dayjs(vedtak.opprettetTimestamp).format('L LT')}

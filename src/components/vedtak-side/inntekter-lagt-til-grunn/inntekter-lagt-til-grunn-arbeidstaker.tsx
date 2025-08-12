@@ -14,7 +14,7 @@ import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { useWindowSize } from '../../../utils/useWindowSize'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
-import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-arbeidstaker'
+import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-felles'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
