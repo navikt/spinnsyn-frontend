@@ -36,7 +36,7 @@
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.10.2",
-        "@navikt/eslint-config-teamsykmelding": "^7.1.0",
+        "@navikt/eslint-config-teamsykmelding": "^8.1.0",
         "@playwright/test": "^1.54.2",
         "@types/classnames": "^2.3.4",
         "@types/cookie": "^0.6.0",
