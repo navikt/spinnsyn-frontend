@@ -40,7 +40,7 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.årsinntekt': 'Årsinntekt',
     'utbetaling.inntekt.samlet.årsinntekt': 'Samlet årsinntekt',
     'utbetaling.inntekt.info.dagsats': 'Sykepenger per dag',
-    'utbetaling.sykepengegrunnlag': 'Sykepengegrunnlag',
+    'utbetaling.sykepengegrunnlag': 'Sykepengegrunnlaget',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',
@@ -85,6 +85,8 @@ const UtbetalingTekster = {
         'Du kan bare få sykepenger opptil tre måneder før den måneden du sendte søknaden, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a>, tredje avsnitt.',
     'utbetaling.tabell.label.DekkesIkkeAvNav':
         'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller fra du gir beskjed til Nav om at du er syk og ikke kan jobbe.',
+    'utbetaling.tabell.label.UtenforVenteperioden':
+        'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav om at du er syk og ikke kan jobbe.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.Over70':

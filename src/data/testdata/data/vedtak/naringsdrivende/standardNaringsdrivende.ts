@@ -46,8 +46,8 @@ export const standardNaringsdrivende: RSVedtakWrapper = {
                 ],
             },
             utbetalingsdager: [
-                { dato: '2023-08-01', type: 'DekkesIkkeAvNav', begrunnelser: [] },
-                { dato: '2023-08-02', type: 'DekkesIkkeAvNav', begrunnelser: [] },
+                { dato: '2023-08-01', type: 'UtenforVenteperioden', begrunnelser: [] },
+                { dato: '2023-08-02', type: 'UtenforVenteperioden', begrunnelser: [] },
                 { dato: '2023-08-03', type: 'DekkesIkkeAvNav', begrunnelser: [] },
                 { dato: '2023-08-04', type: 'DekkesIkkeAvNav', begrunnelser: [] },
                 { dato: '2023-08-05', type: 'NavHelgDag', begrunnelser: [] },

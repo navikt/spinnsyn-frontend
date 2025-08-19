@@ -37,6 +37,7 @@ export const EkstrainfoOmVedtaket = ({ vedtak }: { vedtak: RSVedtakFelles }) => 
                     />
                 </>
             )}
+            {/* todo maybe make the text slightly larger here? */}
             {vedtak.sykepengegrunnlag && (
                 <InfoSection
                     bold
@@ -47,7 +48,7 @@ export const EkstrainfoOmVedtaket = ({ vedtak }: { vedtak: RSVedtakFelles }) => 
             )}
             {vedtak.begrensning === 'ER_6G_BEGRENSET' && vedtak.sykepengegrunnlag && (
                 <>
-                    <BodyShort size="small" className="mt-4 border-t border-gray-400 pt-4" spacing>
+                    <BodyShort size="small" className="mt-4 pt-4" spacing>
                         {`Sykepengegrunnlaget  er begrenset til 6G: ${formaterValuta(vedtak.sykepengegrunnlag)}`}
                     </BodyShort>
                     <BodyShort size="small">

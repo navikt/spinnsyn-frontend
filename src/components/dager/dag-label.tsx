@@ -100,6 +100,13 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                     </Tag>
                 )
 
+            case 'UtenforVenteperioden':
+                return (
+                    <Tag size="small" variant="warning">
+                        Sykmeldt i for kort tid
+                    </Tag>
+                )
+
             case 'UkjentDag':
 
             default:

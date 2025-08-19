@@ -1,4 +1,4 @@
-import { Accordion, BodyShort } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
@@ -23,6 +23,9 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
+
+
+    const hvaer6g = vedtak.vedtak.syke
 
     useEffect(() => {
         if (apneElementMedId === 'begrunnelse_vedtak') {
@@ -75,7 +78,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
             return (
                 <InfoSection
                     key={idx}
-                    label={`Årsinntekt ${arsInntekt.inntektsaar}`}
+                    label={`${arsInntekt.inntektsaar}`}
                     value={formaterValuta(arsInntekt.inntekt)}
                 />
             )
@@ -92,22 +95,27 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                     tittel={tekst('utbetaling.inntekt.info.tittel')}
                 >
                     <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
-                        <BodyShort weight="semibold" className="w-full mb-2">
-                            Selvstendig næringsdrivende
+                        <Heading level="2" size="medium">
+                            Inntekten din
+                        </Heading>
+                        <BodyShort size="small" className="mt-3 mb-4">
+                            (hentet fra Skatteetaten)
                         </BodyShort>
+
                         {arsInntekter(vedtak.vedtak.inntekter)}
 
-                        <InfoSection
-                            className="mt-4"
-                            label="Justert gjennomsnittlig årsinntekt"
-                            value={formaterValuta(vedtak.vedtak.justertGjennomsnittligInntekt)}
-                        />
+        
 
                         <EkstrainfoOmVedtaket vedtak={vedtak.vedtak} />
                         <BodyShort size="small" className="mt-4 mb-4">
                             Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av
                             sykepengegrunnlaget.
                         </BodyShort>
+
+                    <BodyShort size="small" className="mt-4 mb-4">
+                        Les mer om hvordan Nav beregner sykepengegrunnlaget under fanen "Mer om beregningen".
+                    </BodyShort>
+                        
 
                         <Accordion className="mt-8" indent={false}>
                             {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
