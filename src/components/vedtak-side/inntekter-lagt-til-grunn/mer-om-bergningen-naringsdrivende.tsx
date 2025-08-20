@@ -42,7 +42,6 @@ export const MerOmBergningenNargingsdrivende = () => {
                     ble syk for å beregne sykepengegrunnlaget. Inntekten blir justert etter årlige endringer i
                     grunnbeløpet i folketrygden.
                 </BodyLong>
-                {/* todo du må ha inn 6g her */}
                 <BodyLong spacing>
                     Sykepengegrunnlaget ditt er begrenset til seks ganger{' '}
                     <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden</Link> (6G). Tjener du mer
