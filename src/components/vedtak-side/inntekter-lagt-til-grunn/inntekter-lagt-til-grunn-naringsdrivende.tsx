@@ -24,9 +24,6 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
 
-
-    const hvaer6g = vedtak.vedtak.syke
-
     useEffect(() => {
         if (apneElementMedId === 'begrunnelse_vedtak') {
             setVisBegrunnelse(true)
@@ -76,11 +73,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
     const arsInntekter = (inntekter: Arsinntekt[]) => {
         return inntekter.map((arsInntekt, idx) => {
             return (
-                <InfoSection
-                    key={idx}
-                    label={`${arsInntekt.inntektsaar}`}
-                    value={formaterValuta(arsInntekt.inntekt)}
-                />
+                <InfoSection key={idx} label={`${arsInntekt.inntektsaar}`} value={formaterValuta(arsInntekt.inntekt)} />
             )
         })
     }
@@ -104,18 +97,16 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
 
                         {arsInntekter(vedtak.vedtak.inntekter)}
 
-        
-
                         <EkstrainfoOmVedtaket vedtak={vedtak.vedtak} />
                         <BodyShort size="small" className="mt-4 mb-4">
                             Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av
                             sykepengegrunnlaget.
                         </BodyShort>
 
-                    <BodyShort size="small" className="mt-4 mb-4">
-                        Les mer om hvordan Nav beregner sykepengegrunnlaget under fanen "Mer om beregningen".
-                    </BodyShort>
-                        
+                        <BodyShort size="small" className="mt-4 mb-4">
+                            Les mer om hvordan Nav beregner sykepengegrunnlaget under fanen &quot;Mer om
+                            beregningen&quot;.
+                        </BodyShort>
 
                         <Accordion className="mt-8" indent={false}>
                             {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (

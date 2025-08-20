@@ -14,10 +14,10 @@ export const DAGTYPE_FORKLARINGER = {
 
     UtenforVenteperioden: {
         label: 'Sykmeldt i for kort tid',
-        description: 'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav om at du er syk og ikke kan jobbe. Hvis'
+        description:
+            'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav om at du er syk og ikke kan jobbe. Hvis',
     },
 
-    
     NavHelgDag: {
         label: 'Helg',
         description:

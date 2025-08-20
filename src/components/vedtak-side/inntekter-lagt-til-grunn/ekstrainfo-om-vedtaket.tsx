@@ -49,7 +49,9 @@ export const EkstrainfoOmVedtaket = ({ vedtak }: { vedtak: RSVedtakFelles }) => 
             {vedtak.begrensning === 'ER_6G_BEGRENSET' && vedtak.sykepengegrunnlag && (
                 <>
                     <BodyShort size="small" className="mt-4 pt-4" spacing>
-                        Sykepengegrunnlaget ditt er begrenset til seks ganger <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden (6G)</Link>: {formaterValuta(vedtak.sykepengegrunnlag)}
+                        Sykepengegrunnlaget ditt er begrenset til seks ganger{' '}
+                        <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden (6G)</Link>:{' '}
+                        {formaterValuta(vedtak.sykepengegrunnlag)}
                     </BodyShort>
                 </>
             )}
