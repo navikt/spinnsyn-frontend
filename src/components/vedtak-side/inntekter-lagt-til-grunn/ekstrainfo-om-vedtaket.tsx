@@ -37,7 +37,6 @@ export const EkstrainfoOmVedtaket = ({ vedtak }: { vedtak: RSVedtakFelles }) => 
                     />
                 </>
             )}
-            {/* todo maybe make the text slightly larger here? */}
             {vedtak.sykepengegrunnlag && (
                 <InfoSection
                     bold
