@@ -254,13 +254,14 @@ export const alleAvvisteDager: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-03-05',
-                    type: 'UtenforVenteperioden',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-03-06',
                     type: 'AndreYtelser',
                     begrunnelser: ['AndreYtelserSvangerskapspenger'],
+                },
+
+                {
+                    dato: '2021-03-06',
+                    type: 'UtenforVenteperioden',
+                    begrunnelser: [],
                 },
             ],
         },
