@@ -47,7 +47,7 @@ test.describe('Les uleste vedtak', () => {
 
         await test.step('Sjekk blå boks', async () => {
             const region = page.getByRole('region', { name: 'Gjenstående sykepengedager' })
-            await expect(region).toContainText('per 5. mars 2021')
+            await expect(region).toContainText('per 6. mars 2021')
             await region.click()
             await expect(page.getByText('2. feb. 2022')).toBeVisible()
             await expect(page.getByText('Beregnet maksdato')).toBeVisible()

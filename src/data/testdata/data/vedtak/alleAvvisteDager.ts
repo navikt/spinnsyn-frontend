@@ -11,7 +11,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
         vedtakstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999998',
         fom: '2021-01-25',
-        tom: '2021-03-05',
+        tom: '2021-03-06',
         dokumenter: [
             {
                 dokumentId: 'b2d44a54-b320-4a70-a2c3-a6ce35fd2f00',
@@ -254,9 +254,15 @@ export const alleAvvisteDager: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-03-05',
+                    type: 'UtenforVenteperioden',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2021-03-06',
                     type: 'AndreYtelser',
                     begrunnelser: ['AndreYtelserSvangerskapspenger'],
                 },
+                
             ],
         },
     },
