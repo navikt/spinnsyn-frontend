@@ -262,7 +262,6 @@ export const alleAvvisteDager: RSVedtakWrapper = {
                     type: 'AndreYtelser',
                     begrunnelser: ['AndreYtelserSvangerskapspenger'],
                 },
-                
             ],
         },
     },
