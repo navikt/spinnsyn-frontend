@@ -48,6 +48,6 @@ test.describe('Redusert til 6G', () => {
             formaterValuta(638_394),
         )
 
-        await expect(beregningRegion).toContainText('Sykepengegrunnlaget er begrenset til 6G')
+        await expect(page.getByText('Sykepengegrunnlaget ditt er begrenset til seks ganger')).toBeVisible()
     })
 })

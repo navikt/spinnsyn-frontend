@@ -86,6 +86,7 @@ test.describe('Utbetalingsoversikt', () => {
                 ['21.feb.', 'Etter dødsfall', '-'],
                 ['22.feb.', 'Ukjent', '-'],
                 ['23.feb.', 'Over 70 år', '-'],
+                ['06.mar.', 'Sykmeldt i for kort tid', '-'],
             ])
         })
 

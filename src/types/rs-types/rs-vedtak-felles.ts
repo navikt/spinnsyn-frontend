@@ -135,8 +135,9 @@ export type RSDagType =
     | 'ForeldetDag'
     | 'ArbeidIkkeGjenopptattDag'
     | 'AndreYtelser'
+    | 'UtenforVenteperioden'
     | 'UkjentDag'
-    | 'DekkesIkkeAvNav'
+    | 'UtenforVenteperioden'
 export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk' | 'NavDagDelvisSykUnder20'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 

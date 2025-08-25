@@ -39,12 +39,14 @@ export const MerOmBergningenNargingsdrivende = () => {
                 </BodyLong>
                 <BodyLong spacing>
                     Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste 3 årene før du
-                    ble syk for å beregne sykepengegrunnlaget.
+                    ble syk for å beregne sykepengegrunnlaget. Inntekten blir justert etter årlige endringer i
+                    grunnbeløpet i folketrygden.
                 </BodyLong>
                 <BodyLong spacing>
-                    Sykepengegrunnlaget ditt er begrenset til 6 ganger grunnbeløpet (G). Tjener du mer enn 6G i et
-                    enkelt år i perioden vi bruker i beregningen, regner Nav med 1/3 av inntekten din mellom 6G og 12G.
-                    Inntekt over 12G tas ikke med.
+                    Sykepengegrunnlaget ditt er begrenset til seks ganger{' '}
+                    <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden</Link> (6G). Tjener du mer
+                    enn 6G i et enkelt år i perioden vi bruker i beregningen, regner Nav med 1/3 av inntekten din mellom
+                    6G og 12G. Inntekt over 12G tas ikke med.
                 </BodyLong>
                 <BodyLong spacing>
                     Er sykepengegrunnlaget ditt lavere enn 1/2 G, vil du ikke ha rett til sykepenger.{' '}
