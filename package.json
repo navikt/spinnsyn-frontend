@@ -20,7 +20,7 @@
         "@unleash/nextjs": "^1.6.2",
         "classnames": "^2.5.1",
         "cookie": "^1.0.2",
-        "dayjs": "^1.11.13",
+        "dayjs": "^1.11.18",
         "html-react-parser": "^5.2.6",
         "jose": "^5.9.6",
         "next-logger": "^5.0.1",
