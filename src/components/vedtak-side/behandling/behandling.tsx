@@ -20,8 +20,8 @@ export const Behandling = ({ vedtak }: VedtakProps) => {
     }
 
     const getOpplysningText = () => {
-        switch (vedtak.vedtak.vedtakstype) {
-            case 'NARINGSDRIVENDE':
+        switch (vedtak.vedtak.yrkesaktivitetstype) {
+            case 'SELVSTENDIG':
                 return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
             case 'ARBEIDSTAKER':
                 if (aordningDataErBrukt) {

@@ -2,7 +2,7 @@ import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 import { JaNeiVetIkke } from '../types/types'
 
 export const harFlereArbeidsgivere = (vedtakWrapper: RSVedtakWrapper): JaNeiVetIkke => {
-    if (vedtakWrapper.vedtak.vedtakstype == 'NARINGSDRIVENDE') {
+    if (vedtakWrapper.vedtak.yrkesaktivitetstype == 'SELVSTENDIG') {
         return 'nei'
     }
     const grunnlag = vedtakWrapper.vedtak.grunnlagForSykepengegrunnlagPerArbeidsgiver

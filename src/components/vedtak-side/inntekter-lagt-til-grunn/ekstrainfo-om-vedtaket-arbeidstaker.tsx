@@ -3,13 +3,13 @@ import React from 'react'
 
 import { formaterValuta, formatOneDecimal } from '../../../utils/valuta-utils'
 import { tekst } from '../../../utils/tekster'
-import { RSVedtakFelles } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { Under2G } from './under-2G'
 import { InfoSection } from './info-seksjon'
 import { inntektInfoTekster } from './inntekt-info-tekster'
 
-export const EkstrainfoOmVedtaket = ({ vedtak }: { vedtak: RSVedtakFelles }) => {
+export const EkstrainfoOmVedtaketArbeidstaker = ({ vedtak }: { vedtak: RSVedtakArbeidstaker }) => {
     const over25prosentAvvik =
         vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && vedtak.sykepengegrunnlagsfakta?.avviksprosent > 25
 

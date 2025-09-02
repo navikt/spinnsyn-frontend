@@ -52,7 +52,8 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                 <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />. Da vil saken din bli vurdert
                 på nytt.
             </BodyLong>
-            {vedtak.vedtak.vedtakstype === 'ARBEIDSTAKER' && renderInntektsopplysninger(inntektFraAOrdningLagtTilGrunn)}
+            {vedtak.vedtak.yrkesaktivitetstype === 'ARBEIDSTAKER' &&
+                renderInntektsopplysninger(inntektFraAOrdningLagtTilGrunn)}
             <BodyLong spacing>
                 Har du andre spørsmål, kan du{' '}
                 <LenkeMedAmplitude url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" tekst="kontakte Nav" />.

@@ -6,7 +6,7 @@ export const vedtakDerDetSluttesMedDelvisRefusjon: RSVedtakWrapper = {
     organisasjoner: {},
     lestDato: null,
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '967170232',
         fom: '2023-02-01',
         tom: '2023-02-28',

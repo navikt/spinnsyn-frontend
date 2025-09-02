@@ -1,31 +1,23 @@
 import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
 
-export const standardNaringsdrivende: RSVedtakWrapper = {
-    // TODO vurder å gjøre til uuid som de andre vedtakene
+export const standardSelvstendig: RSVedtakWrapper = {
     id: 'standard-vedtak-naringsdrivende',
     orgnavn: 'Wooley Socks ENK',
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
-        vedtakstype: 'NARINGSDRIVENDE',
-        inntekter: [
-            {
-                inntektsaar: 2022,
-                inntekt: 500_000,
-            },
-            {
-                inntektsaar: 2023,
-                inntekt: 600_000,
-            },
-            {
-                inntektsaar: 2024,
-                inntekt: 700_000,
-            },
-        ],
-        justertGjennomsnittligInntekt: 666_666,
+        yrkesaktivitetstype: 'SELVSTENDIG',
         sykepengegrunnlag: 780_960,
         begrensning: 'ER_6G_BEGRENSET',
         fom: '2023-08-01',
         tom: '2023-08-31',
+        sykepengegrunnlagsfakta: {
+            fastsatt: 'EtterHovedregel',
+            '6G': 780_960,
+            tags: ['6GBegrenset'],
+            selvstendig: {
+                beregningsgrunnlag: 1_000_000,
+            },
+        },
         utbetaling: {
             organisasjonsnummer: '123456789',
             utbetalingId: 'utbetaling1',

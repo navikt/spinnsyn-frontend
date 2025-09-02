@@ -1,8 +1,8 @@
 import { Persona } from '../../testperson'
-import { standardNaringsdrivende } from '../vedtak/naringsdrivende/standardNaringsdrivende'
+import { standardSelvstendig } from '../vedtak/naringsdrivende/standardSelvstendig'
 
-export const standardNaringsdrivendePersona: Persona = {
-    vedtak: [standardNaringsdrivende],
+export const standardSelvstendigPersona: Persona = {
+    vedtak: [standardSelvstendig],
     kontonummer: '10011110011',
     beskrivelse: 'Personas for næringsdrivende, som ikke er implementert ennå.',
 }

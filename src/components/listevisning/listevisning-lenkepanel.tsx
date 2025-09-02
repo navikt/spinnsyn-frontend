@@ -15,10 +15,10 @@ import { isProd } from '../../utils/environment'
 dayjs.extend(localizedFormat)
 
 const sykmeldtFraTekstGenerator = (vedtak: RSVedtakWrapper) => {
-    switch (vedtak.vedtak.vedtakstype) {
+    switch (vedtak.vedtak.yrkesaktivitetstype) {
         case 'ARBEIDSTAKER':
             return `Sykmeldt fra ${storeTilStoreOgSmå(vedtak.orgnavn)}`
-        case 'NARINGSDRIVENDE':
+        case 'SELVSTENDIG':
             return 'Sykmeldt som selvstendig næringsdrivende'
     }
 }

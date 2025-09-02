@@ -19,7 +19,7 @@ import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-felles'
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
 import { MerOmBergningenArbeidstaker } from './mer-om-bergningen-arbeidstaker'
-import { EkstrainfoOmVedtaket } from './ekstrainfo-om-vedtaket'
+import { EkstrainfoOmVedtaketArbeidstaker } from './ekstrainfo-om-vedtaket-arbeidstaker'
 
 export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)
@@ -47,7 +47,7 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
         }
     }, [elementRef?.current?.id, registrerElement])
 
-    if (vedtak.vedtak.vedtakstype !== 'ARBEIDSTAKER') {
+    if (vedtak.vedtak.yrkesaktivitetstype !== 'ARBEIDSTAKER') {
         return null
     }
 
@@ -155,7 +155,7 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
                         />
                     </>
                 )}
-                <EkstrainfoOmVedtaket vedtak={vedtak.vedtak} />
+                <EkstrainfoOmVedtaketArbeidstaker vedtak={vedtak.vedtak} />
                 <Accordion className="mt-8" indent={false}>
                     {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
                         <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="skjonn" />

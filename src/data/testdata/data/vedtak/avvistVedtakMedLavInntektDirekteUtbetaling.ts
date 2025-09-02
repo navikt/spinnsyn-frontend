@@ -8,7 +8,7 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     orgnavn: 'POSTEN NORGE AS, BÆRUM (direkte utbetaling)',
     andreArbeidsgivere: {},
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
         fom: '2021-08-18',
         tom: '2021-08-21',

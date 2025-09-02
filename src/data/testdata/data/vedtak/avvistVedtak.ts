@@ -8,7 +8,7 @@ export const avvistVedtak: RSVedtakWrapper = {
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
         fom: '2021-08-01',
         tom: '2021-08-20',
