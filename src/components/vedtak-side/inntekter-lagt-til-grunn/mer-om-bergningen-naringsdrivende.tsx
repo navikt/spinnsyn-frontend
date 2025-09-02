@@ -43,7 +43,7 @@ export const MerOmBergningenNargingsdrivende = () => {
                     grunnbeløpet i folketrygden.
                 </BodyLong>
                 <BodyLong spacing>
-                    Sykepengegrunnlaget ditt er begrenset til seks ganger{' '}
+                    Sykepengegrunnlaget er begrenset til seks ganger{' '}
                     <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden</Link> (6G). Tjener du mer
                     enn 6G i et enkelt år i perioden vi bruker i beregningen, regner Nav med 1/3 av inntekten din mellom
                     6G og 12G. Inntekt over 12G tas ikke med.
