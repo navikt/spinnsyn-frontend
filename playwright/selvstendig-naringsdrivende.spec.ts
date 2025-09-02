@@ -1,5 +1,5 @@
 import { expect, test } from './fixtures'
-import { visBeregningRegion } from './utils/hjelpefunksjoner'
+import { verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Selvstendig næringsdrivende', () => {
     test('Burde åpne riktig vedtak', async ({ page }) => {
@@ -19,6 +19,10 @@ test.describe('Selvstendig næringsdrivende', () => {
                 'Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av sykepengegrunnlaget.',
             ),
         ).toBeVisible()
+
+        await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
+        const dagTabell = page.getByTestId('dag-tabell-body').first()
+        await verifyDagTabellRows(dagTabell, [['01.aug.', 'Sykmeldt i for kort tid', '-']])
 
         await beregningRegion.getByRole('button', { name: 'Mer om beregningen' }).click()
         await expect(

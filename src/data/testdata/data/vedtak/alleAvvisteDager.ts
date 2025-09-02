@@ -260,7 +260,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
 
                 {
                     dato: '2021-03-06',
-                    type: 'UtenforVenteperioden',
+                    type: 'Ventetidsdag',
                     begrunnelser: [],
                 },
             ],
