@@ -1,0 +1,179 @@
+Directory structure:
+└── .github/
+    ├── dependabot.yml
+    └── workflows/
+        ├── label-dependabot-pr.yml
+        ├── merge-dependabot-pr.yml
+        ├── unleash-token.yml
+        ├── workflow-on-branch-delete.yml
+        └── workflow.yml
+
+================================================
+FILE: dependabot.yml
+================================================
+version: 2
+
+registries:
+  npm-github:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{ secrets.READER_TOKEN }}
+
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: daily
+      time: '03:00'
+    open-pull-requests-limit: 10
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: daily
+      time: '03:00'
+    open-pull-requests-limit: 20
+    registries: '*'
+    groups:
+      aksel-dependencies:
+        patterns:
+          - '@navikt/aksel*'
+          - '@navikt/ds*'
+      react-dependencies:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
+    ignore:
+      - dependency-name: '@types/node'
+      - dependency-name: 'eslint'
+        versions: ['9.x']
+
+
+
+================================================
+FILE: workflows/label-dependabot-pr.yml
+================================================
+name: label-dependabot-pr
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  label-dependabot-pr:
+    uses: navikt/flex-github-actions-workflows/.github/workflows/label-dependabot-pr.yml@main
+    permissions:
+      pull-requests: write
+
+
+
+================================================
+FILE: workflows/merge-dependabot-pr.yml
+================================================
+name: merge-dependabot-pr
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0,10,20,30,40,50 7,8 * * 1,2,3,4,5'
+
+jobs:
+  merge-dependabot-pr:
+    uses: navikt/flex-github-actions-workflows/.github/workflows/merge-dependabot-pr.yml@main
+    permissions:
+      actions: write
+      checks: read
+      contents: write
+      pull-requests: write
+      statuses: read
+
+
+
+================================================
+FILE: workflows/unleash-token.yml
+================================================
+name: 'Deploy unleash-token'
+on:
+  push:
+    paths:
+      - nais/unleash-token/**
+      - .github/workflows/unleash-token.yml
+
+jobs:
+  deploy-unleash-token:
+    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@main
+    permissions:
+      id-token: write
+    with:
+      app: ${{ github.event.repository.name }}-unleash
+      nais-template: nais/unleash-token/unleash-token.yaml
+    secrets: inherit
+
+
+
+================================================
+FILE: workflows/workflow-on-branch-delete.yml
+================================================
+name: Demo delete
+on: delete
+
+jobs:
+  branch-delete:
+    uses: navikt/flex-github-actions-workflows/.github/workflows/demo-delete.yml@newurl
+    permissions:
+      id-token: write
+    with:
+      base-path: syk/sykepenger
+
+
+
+================================================
+FILE: workflows/workflow.yml
+================================================
+name: workflow
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  felles-workflow:
+    uses: navikt/flex-github-actions-workflows/.github/workflows/next-js.yml@main
+    permissions:
+      packages: write
+      contents: read
+      actions: read
+      id-token: write
+      security-events: write
+    secrets: inherit
+    with:
+      base-path: syk/sykepenger
+      port: 3000
+
+  arkivering-deploy:
+    needs: felles-workflow
+    if: always() && needs.felles-workflow.outputs.image
+    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@main
+    permissions:
+      id-token: write
+    with:
+      image: ${{ needs.felles-workflow.outputs.image }}
+      app: spinnsyn-arkivering
+      nais-template: nais/arkivering/nais.yaml
+      prod-vars: nais/arkivering/prod.yaml
+      dev-vars: nais/arkivering/dev.yaml
+    secrets: inherit
+
+  interne-deploy:
+    needs: felles-workflow
+    if: always() && needs.felles-workflow.outputs.image
+    uses: navikt/flex-github-actions-workflows/.github/workflows/nais-deploy-dev-og-prod.yml@main
+    permissions:
+      id-token: write
+    with:
+      image: ${{ needs.felles-workflow.outputs.image }}
+      app: spinnsyn-interne
+      nais-template: nais/interne/nais.yaml
+      prod-vars: nais/interne/prod.yaml
+      dev-vars: nais/interne/dev.yaml
+    secrets: inherit
+
+
