@@ -5,7 +5,7 @@ export const inntektHentetFraAordningen: RSVedtakWrapper = {
     lest: false,
     organisasjoner: {},
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '123456789',
         fom: '2021-10-04',
         tom: '2021-10-23',

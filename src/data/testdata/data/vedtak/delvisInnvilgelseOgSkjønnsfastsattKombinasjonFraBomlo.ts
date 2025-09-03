@@ -4,7 +4,7 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59219',
     lest: false,
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '810007842',
         fom: '2024-02-01',
         tom: '2024-02-23',
@@ -225,7 +225,7 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59224',
     lest: false,
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '810007842',
         fom: '2024-02-01',
         tom: '2024-02-19',

@@ -5,7 +5,7 @@ export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
     lest: true,
     lestDato: '2024-04-24T14:00:25.052723+02:00',
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '998877445',
         fom: '2024-03-01',
         tom: '2024-03-20',

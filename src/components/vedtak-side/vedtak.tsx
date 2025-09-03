@@ -133,10 +133,10 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
             {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
             {(() => {
-                switch (vedtak.vedtak.vedtakstype) {
+                switch (vedtak.vedtak.yrkesaktivitetstype) {
                     case 'ARBEIDSTAKER':
                         return <InntekterLagtTilGrunnArbeidstaker vedtak={vedtak} />
-                    case 'NARINGSDRIVENDE':
+                    case 'SELVSTENDIG':
                         return <InntekterLagtTilGrunnNaringsdrivende vedtak={vedtak} />
                 }
             })()}

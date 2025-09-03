@@ -6,7 +6,7 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
     organisasjoner: {},
     lestDato: null,
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '998844551',
         fom: '2021-12-29',
         tom: '2022-01-16',

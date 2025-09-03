@@ -9,7 +9,7 @@ import { VedtakProps } from '../vedtak'
 import { InfoSection } from './info-seksjon'
 
 const BeregningÅrsinntektFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
-    if (vedtak.vedtak.vedtakstype !== 'ARBEIDSTAKER') {
+    if (vedtak.vedtak.yrkesaktivitetstype !== 'ARBEIDSTAKER') {
         return null
     }
     const arbeidstakerVedtak = vedtak.vedtak

@@ -8,7 +8,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
     orgnavn: 'INTEGRASJON AS',
     andreArbeidsgivere: {},
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999998',
         fom: '2021-01-25',
         tom: '2021-03-06',
@@ -260,7 +260,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
 
                 {
                     dato: '2021-03-06',
-                    type: 'UtenforVenteperioden',
+                    type: 'Ventetidsdag',
                     begrunnelser: [],
                 },
             ],
@@ -279,7 +279,7 @@ export const alleAvvisteDagerFraBomlo: RSVedtakWrapper = {
     orgnavn: 'INTEGRASJON AS (BØMLO)',
     andreArbeidsgivere: {},
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999998',
         fom: '2021-01-30',
         tom: '2021-02-22',

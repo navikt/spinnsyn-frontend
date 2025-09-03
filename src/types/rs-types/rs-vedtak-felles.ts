@@ -1,4 +1,4 @@
-export type RSVedtakUnion = RSVedtakArbeidstaker | RSVedtakNaringsdrivende
+export type RSVedtakUnion = RSVedtakArbeidstaker | RSVedtakSelvstendig
 
 export interface RSVedtakWrapper {
     id: string
@@ -21,12 +21,11 @@ export interface RSVedtakWrapperUtvidet extends RSVedtakWrapper {
 }
 
 export interface RSVedtakFelles {
-    vedtakstype: 'ARBEIDSTAKER' | 'NARINGSDRIVENDE'
+    yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG'
     fom: string
     tom: string
     dokumenter: Dokument[]
     utbetaling: RSUtbetalingUtbetalt
-    sykepengegrunnlagsfakta?: Sykepengegrunnlagsfakta | null
     sykepengegrunnlag?: number
     grunnlagForSykepengegrunnlag?: number
     begrensning?: Begrensning
@@ -35,23 +34,17 @@ export interface RSVedtakFelles {
     tags?: string[]
 }
 
-export interface RSVedtakNaringsdrivende extends Omit<RSVedtakFelles, 'vedtakstype'> {
-    vedtakstype: 'NARINGSDRIVENDE'
-    inntekter: Arsinntekt[]
-    justertGjennomsnittligInntekt: number
-    sykepengegrunnlag: number
+export interface RSVedtakSelvstendig extends Omit<RSVedtakFelles, 'yrkesaktivitetstype'> {
+    yrkesaktivitetstype: 'SELVSTENDIG'
+    sykepengegrunnlagsfakta?: SykepengegrunnlagsfaktaSelvstendig | null
 }
 
-export interface Arsinntekt {
-    inntektsaar: number
-    inntekt: number
-}
-
-export interface RSVedtakArbeidstaker extends Omit<RSVedtakFelles, 'vedtakstype'> {
-    vedtakstype: 'ARBEIDSTAKER'
+export interface RSVedtakArbeidstaker extends Omit<RSVedtakFelles, 'yrkesaktivitetstype'> {
+    yrkesaktivitetstype: 'ARBEIDSTAKER'
     organisasjonsnummer?: string
     inntekt?: number
     grunnlagForSykepengegrunnlagPerArbeidsgiver?: GrunnlagForSykepengegrunnlagPerArbeidsgiver
+    sykepengegrunnlagsfakta?: SykepengegrunnlagsfaktaArbeidstaker | null
 }
 
 interface GrunnlagForSykepengegrunnlagPerArbeidsgiver {
@@ -135,9 +128,9 @@ export type RSDagType =
     | 'ForeldetDag'
     | 'ArbeidIkkeGjenopptattDag'
     | 'AndreYtelser'
-    | 'UtenforVenteperioden'
+    | 'Ventetidsdag'
     | 'UkjentDag'
-    | 'UtenforVenteperioden'
+
 export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk' | 'NavDagDelvisSykUnder20'
 export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
@@ -145,7 +138,16 @@ export interface Dokument {
     dokumentId: string
     type: 'Sykmelding' | 'Søknad' | 'Inntektsmelding'
 }
-export type Sykepengegrunnlagsfakta =
+export type SykepengegrunnlagsfaktaSelvstendig = {
+    fastsatt: 'EtterHovedregel'
+    '6G': number
+    tags: string[]
+    selvstendig: {
+        beregningsgrunnlag: number
+    }
+}
+
+export type SykepengegrunnlagsfaktaArbeidstaker =
     | {
           fastsatt: 'IInfotrygd'
           omregnetÅrsinntekt: number

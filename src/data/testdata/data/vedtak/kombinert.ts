@@ -7,7 +7,7 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     vedtak: {
-        vedtakstype: 'ARBEIDSTAKER',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '972674818',
         fom: '2021-02-04',
         tom: '2021-02-21',

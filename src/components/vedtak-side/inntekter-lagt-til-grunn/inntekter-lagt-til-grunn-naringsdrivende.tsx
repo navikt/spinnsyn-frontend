@@ -2,7 +2,6 @@ import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { tekst } from '../../../utils/tekster'
-import { formaterValuta } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
@@ -11,11 +10,9 @@ import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
-import { Arsinntekt } from '../../../types/rs-types/rs-vedtak-felles'
 
-import { InfoSection } from './info-seksjon'
-import { EkstrainfoOmVedtaket } from './ekstrainfo-om-vedtaket'
 import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
+import { EkstrainfoOmVedtaketSelvstendig } from './ekstrainfo-om-vedtaket-selvstendig'
 
 export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)
@@ -70,17 +67,12 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
         return null
     }
 
-    const arsInntekter = (inntekter: Arsinntekt[]) => {
-        return inntekter.map((arsInntekt, idx) => {
-            return (
-                <InfoSection key={idx} label={`${arsInntekt.inntektsaar}`} value={formaterValuta(arsInntekt.inntekt)} />
-            )
-        })
-    }
+    //Settes når vi får årsinntekter fra speilvendt
+    const viseAarsinntekter = false
 
     return (
         <>
-            {vedtak.vedtak.vedtakstype == 'NARINGSDRIVENDE' && (
+            {vedtak.vedtak.yrkesaktivitetstype == 'SELVSTENDIG' && (
                 <VedtakExpansionCard
                     apne={visBeregning}
                     setApne={setVisBeregning}
@@ -88,16 +80,18 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                     tittel={tekst('utbetaling.inntekt.info.tittel')}
                 >
                     <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
-                        <Heading level="2" size="medium">
-                            Inntekten din
-                        </Heading>
-                        <BodyShort size="small" className="mt-3 mb-4">
-                            (hentet fra Skatteetaten)
-                        </BodyShort>
+                        {viseAarsinntekter && (
+                            <>
+                                <Heading level="2" size="medium">
+                                    Inntekten din
+                                </Heading>
+                                <BodyShort size="small" className="mt-3 mb-4">
+                                    (hentet fra Skatteetaten)
+                                </BodyShort>
+                            </>
+                        )}
 
-                        {arsInntekter(vedtak.vedtak.inntekter)}
-
-                        <EkstrainfoOmVedtaket vedtak={vedtak.vedtak} />
+                        <EkstrainfoOmVedtaketSelvstendig vedtak={vedtak.vedtak} />
                         <BodyShort size="small" className="mt-4 mb-4">
                             Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av
                             sykepengegrunnlaget.
