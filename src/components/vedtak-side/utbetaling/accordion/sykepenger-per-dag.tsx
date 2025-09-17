@@ -56,7 +56,6 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
 
     if (dager.length == 0) return null
 
-    
     return (
         <Accordion.Item
             defaultOpen={isServer}
