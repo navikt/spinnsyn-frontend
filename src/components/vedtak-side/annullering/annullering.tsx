@@ -1,10 +1,11 @@
 import { Alert, BodyLong, BodyShort, Heading, Label, Link, ReadMore } from '@navikt/ds-react'
-import React from 'react'
+import React, { useState } from 'react'
 import { Chat2Icon } from '@navikt/aksel-icons'
 
 import { tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
+import { logEvent } from '../../amplitude/amplitude'
 
 const RevurdertAlert = () => {
     return (
@@ -28,6 +29,8 @@ const AnnullertAlert = () => {
 }
 
 const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
+    // Track toggle state only for logging whether we opened or closed
+    const [expanded, setExpanded] = useState<boolean>(false)
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBrukerutbetaling = vedtak.sykepengebelopPerson > 0
 
@@ -48,7 +51,18 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
 
             {vedtak.annullert && <AnnullertAlert />}
 
-            <ReadMore className="my-10" header={tekst('annullert.info.header')}>
+            <ReadMore
+                className="my-10"
+                header={tekst('annullert.info.header')}
+                open={expanded}
+                onClick={() => {
+                    logEvent(expanded ? 'readmore lukket' : 'readmore åpnet', {
+                        tittel: tekst('annullert.info.header'),
+                        component: 'AnnulleringsInfo',
+                    })
+                    setExpanded((prev) => !prev)
+                }}
+            >
                 <div className="pt-4" data-testid="annullering-info">
                     {revurdertOgIkkeAnnullert && (
                         <>
