@@ -29,7 +29,6 @@ const AnnullertAlert = () => {
 }
 
 const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
-    // Track toggle state only for logging whether we opened or closed
     const [expanded, setExpanded] = useState<boolean>(false)
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBrukerutbetaling = vedtak.sykepengebelopPerson > 0
