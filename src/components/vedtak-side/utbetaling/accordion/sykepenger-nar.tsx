@@ -10,7 +10,7 @@ import { logEvent } from '../../../amplitude/amplitude'
 export const SykepengerNar = () => {
     const isServer = useContext(ArkiveringContext)
 
-    const [expanded, setExpanded] = useState<boolean>(false)
+    const [expanded, setExpanded] = useState<boolean>(isServer)
 
     return (
         <ReadMore
