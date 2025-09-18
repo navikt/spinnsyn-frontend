@@ -2,6 +2,7 @@ import { BodyShort, ExpansionCard, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
+import { logEvent } from '../amplitude/amplitude'
 
 export interface VedtakExpansionCard {
     vedtak: RSVedtakWrapper
@@ -11,6 +12,7 @@ export interface VedtakExpansionCard {
     children: React.ReactNode | React.ReactNode[]
     apne?: boolean
     setApne?: (apne: boolean) => void
+    componentName?: string
 }
 
 export const VedtakExpansionCard = ({
@@ -21,13 +23,23 @@ export const VedtakExpansionCard = ({
     ariaLabel,
     apne,
     setApne,
+    componentName,
 }: VedtakExpansionCard) => {
     const ugyldig = vedtak.annullert || vedtak.revurdert
+    const handleToggle = () => {
+        const newOpen = !apne
+        logEvent(newOpen ? 'accordion åpnet' : 'accordion lukket', {
+            tittel,
+            undertittel: undertittel || '',
+            component: componentName || 'VedtakExpansionCard',
+        })
+        if (setApne) setApne(newOpen)
+    }
     return (
         <ExpansionCard
             aria-label={ariaLabel ?? tittel}
             open={apne}
-            onToggle={() => (setApne ? setApne(!apne) : null)}
+            onToggle={handleToggle}
             className="mt-4"
             style={
                 {

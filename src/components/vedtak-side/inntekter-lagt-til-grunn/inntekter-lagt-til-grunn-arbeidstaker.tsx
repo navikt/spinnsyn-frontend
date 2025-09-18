@@ -15,6 +15,7 @@ import { ArkiveringContext } from '../../../context/arkivering-context'
 import { useWindowSize } from '../../../utils/useWindowSize'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
 import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-felles'
+import { logEvent } from '../../amplitude/amplitude'
 
 import BeregningÅrsinntektFlereArbeidsgivere from './beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from './info-seksjon'
@@ -109,10 +110,32 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
     )
         return null
 
+    const loggBegrunnelseToggle = (open: boolean, type: 'Avslag' | 'DelvisInnvilgelse' | 'Innvilgelse') => {
+        let tittel = 'Begrunnelse for innvilget søknad'
+        switch (type) {
+            case 'Avslag':
+                tittel = 'Begrunnelse for avslått søknad'
+                break
+            case 'DelvisInnvilgelse':
+                tittel = 'Begrunnelse for delvis innvilget søknad'
+                break
+        }
+        logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+            tittel,
+            component: 'InntekterLagtTilGrunnArbeidstaker',
+        })
+    }
+
     return (
         <VedtakExpansionCard
             apne={visBeregning}
-            setApne={setVisBeregning}
+            setApne={(open) => {
+                logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+                    tittel: tekst('utbetaling.inntekt.info.tittel'),
+                    component: 'InntekterLagtTilGrunnArbeidstaker',
+                })
+                setVisBeregning(open)
+            }}
             vedtak={vedtak}
             tittel={tekst('utbetaling.inntekt.info.tittel')}
         >
@@ -166,7 +189,10 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
                             vedtak={vedtak}
                             begrunnelse="Avslag"
                             apne={visBegrunnelse}
-                            setApne={setVisBegrunnelse}
+                            setApne={(open) => {
+                                loggBegrunnelseToggle(open, 'Avslag')
+                                setVisBegrunnelse(open)
+                            }}
                         />
                     )}
                     {delvisInnvilgelse && (
@@ -175,7 +201,10 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
                             vedtak={vedtak}
                             begrunnelse="DelvisInnvilgelse"
                             apne={visBegrunnelse}
-                            setApne={setVisBegrunnelse}
+                            setApne={(open) => {
+                                loggBegrunnelseToggle(open, 'DelvisInnvilgelse')
+                                setVisBegrunnelse(open)
+                            }}
                         />
                     )}
                     {innvilgelse && (
@@ -184,7 +213,10 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
                             vedtak={vedtak}
                             begrunnelse="Innvilgelse"
                             apne={visBegrunnelse}
-                            setApne={setVisBegrunnelse}
+                            setApne={(open) => {
+                                loggBegrunnelseToggle(open, 'Innvilgelse')
+                                setVisBegrunnelse(open)
+                            }}
                         />
                     )}
                     <AlleSykepengerPerDag vedtak={vedtak} />

@@ -8,6 +8,7 @@ import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { useScroll } from '../../../context/scroll-context'
+import { logEvent } from '../../amplitude/amplitude'
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
@@ -43,7 +44,13 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
             undertittel={tekst('avviste.dager.dekkes.ikke')}
             vedtak={vedtak}
             apne={visBeregning}
-            setApne={setVisBeregning}
+            setApne={(open) => {
+                logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+                    tittel: 'Avviste sykepengedager',
+                    component: 'AvvisteDager',
+                })
+                setVisBeregning(open)
+            }}
         >
             <BodyLong spacing>{tekst('avviste.dager.intro')}</BodyLong>
 
@@ -51,7 +58,13 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
                 <Accordion.Item
                     ref={elementRef}
                     open={visBegrunnelse}
-                    onOpenChange={() => setVisBegrunnelse(!visBegrunnelse)}
+                    onOpenChange={(open) => {
+                        logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+                            tittel: 'Dager Nav ikke utbetaler',
+                            component: 'AvvisteDager',
+                        })
+                        setVisBegrunnelse(open)
+                    }}
                     data-testid="avvistedageroversikt"
                 >
                     <Accordion.Header>
