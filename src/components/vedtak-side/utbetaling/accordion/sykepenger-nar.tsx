@@ -33,6 +33,6 @@ export const SykepengerNar = () => {
                     tekst={tekst('utbetaling.person.når.lenke.tekst')}
                 />
             </BodyLong>
-            </ReadMore>
+        </ReadMore>
     )
 }
