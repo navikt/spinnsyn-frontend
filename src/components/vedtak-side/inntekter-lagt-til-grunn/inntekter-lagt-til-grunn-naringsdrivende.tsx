@@ -93,7 +93,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                 <VedtakExpansionCard
                     apne={visBeregning}
                     setApne={(open) => {
-                        logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+                        logEvent(open ? 'expansioncard åpnet' : 'expansioncard lukket', {
                             tittel: tekst('utbetaling.inntekt.info.tittel'),
                             component: 'InntekterLagtTilGrunnNaringsdrivende',
                         })

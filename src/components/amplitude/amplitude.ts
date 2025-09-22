@@ -10,6 +10,8 @@ export type validEventNames =
     | 'skjema åpnet'
     | 'knapp klikket'
     | 'alert vist'
+    | 'expansioncard åpnet'
+    | 'expansioncard lukket'
     | 'readmore lukket'
     | 'readmore åpnet' //Bruk kun navn fra taksonomien
 

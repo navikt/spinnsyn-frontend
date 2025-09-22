@@ -31,7 +31,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             vedtak={vedtak}
             apne={visBeregning}
             setApne={(open) => {
-                logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+                logEvent(open ? 'expansioncard åpnet' : 'expansioncard lukket', {
                     tittel: 'Gjenstående sykepengedager',
                     component: 'Sykepengedager',
                 })

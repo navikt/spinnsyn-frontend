@@ -28,7 +28,7 @@ export const VedtakExpansionCard = ({
     const ugyldig = vedtak.annullert || vedtak.revurdert
     const handleToggle = () => {
         const newOpen = !apne
-        logEvent(newOpen ? 'accordion åpnet' : 'accordion lukket', {
+        logEvent(newOpen ? 'expansioncard åpnet' : 'expansioncard lukket', {
             tittel,
             undertittel: undertittel || '',
             component: componentName || 'VedtakExpansionCard',

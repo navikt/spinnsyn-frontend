@@ -45,7 +45,7 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
             vedtak={vedtak}
             apne={visBeregning}
             setApne={(open) => {
-                logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+                logEvent(open ? 'expansioncard åpnet' : 'expansioncard lukket', {
                     tittel: 'Avviste sykepengedager',
                     component: 'AvvisteDager',
                 })
