@@ -10,6 +10,7 @@ import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { useScroll } from '../../../context/scroll-context'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
+import { logEvent } from '../../amplitude/amplitude'
 
 import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
 import { EkstrainfoOmVedtaketSelvstendig } from './ekstrainfo-om-vedtaket-selvstendig'
@@ -70,12 +71,34 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
     //Settes når vi får årsinntekter fra speilvendt
     const viseAarsinntekter = false
 
+    const loggBegrunnelseToggle = (open: boolean, type: 'Avslag' | 'DelvisInnvilgelse' | 'Innvilgelse') => {
+        let tittel = 'Begrunnelse for innvilget søknad'
+        switch (type) {
+            case 'Avslag':
+                tittel = 'Begrunnelse for avslått søknad'
+                break
+            case 'DelvisInnvilgelse':
+                tittel = 'Begrunnelse for delvis innvilget søknad'
+                break
+        }
+        logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+            tittel,
+            component: 'InntekterLagtTilGrunnNaringsdrivende',
+        })
+    }
+
     return (
         <>
             {vedtak.vedtak.yrkesaktivitetstype == 'SELVSTENDIG' && (
                 <VedtakExpansionCard
                     apne={visBeregning}
-                    setApne={setVisBeregning}
+                    setApne={(open) => {
+                        logEvent(open ? 'expansioncard åpnet' : 'expansioncard lukket', {
+                            tittel: tekst('utbetaling.inntekt.info.tittel'),
+                            component: 'InntekterLagtTilGrunnNaringsdrivende',
+                        })
+                        setVisBeregning(open)
+                    }}
                     vedtak={vedtak}
                     tittel={tekst('utbetaling.inntekt.info.tittel')}
                 >
@@ -112,7 +135,10 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                                     vedtak={vedtak}
                                     begrunnelse="Avslag"
                                     apne={visBegrunnelse}
-                                    setApne={setVisBegrunnelse}
+                                    setApne={(open) => {
+                                        loggBegrunnelseToggle(open, 'Avslag')
+                                        setVisBegrunnelse(open)
+                                    }}
                                 />
                             )}
                             {delvisInnvilgelse && (
@@ -121,7 +147,10 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                                     vedtak={vedtak}
                                     begrunnelse="DelvisInnvilgelse"
                                     apne={visBegrunnelse}
-                                    setApne={setVisBegrunnelse}
+                                    setApne={(open) => {
+                                        loggBegrunnelseToggle(open, 'DelvisInnvilgelse')
+                                        setVisBegrunnelse(open)
+                                    }}
                                 />
                             )}
                             {innvilgelse && (
@@ -130,7 +159,10 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                                     vedtak={vedtak}
                                     begrunnelse="Innvilgelse"
                                     apne={visBegrunnelse}
-                                    setApne={setVisBegrunnelse}
+                                    setApne={(open) => {
+                                        loggBegrunnelseToggle(open, 'Innvilgelse')
+                                        setVisBegrunnelse(open)
+                                    }}
                                 />
                             )}
                             <AlleSykepengerPerDag vedtak={vedtak} />

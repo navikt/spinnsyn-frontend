@@ -9,7 +9,11 @@ export type validEventNames =
     | 'accordion åpnet'
     | 'skjema åpnet'
     | 'knapp klikket'
-    | 'alert vist' //Bruk kun navn fra taksonomien
+    | 'alert vist'
+    | 'expansioncard åpnet'
+    | 'expansioncard lukket'
+    | 'readmore lukket'
+    | 'readmore åpnet' //Bruk kun navn fra taksonomien
 
 export const logEvent = (eventName: validEventNames, eventData: Record<string, string | boolean>) => {
     if (window) {

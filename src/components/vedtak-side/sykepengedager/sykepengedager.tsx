@@ -7,6 +7,7 @@ import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { ArkiveringContext } from '../../../context/arkivering-context'
+import { logEvent } from '../../amplitude/amplitude'
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)
@@ -29,7 +30,13 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             undertittel={`per ${sluttPaAktuelleVedtaksPeriode}`}
             vedtak={vedtak}
             apne={visBeregning}
-            setApne={setVisBeregning}
+            setApne={(open) => {
+                logEvent(open ? 'expansioncard åpnet' : 'expansioncard lukket', {
+                    tittel: 'Gjenstående sykepengedager',
+                    component: 'Sykepengedager',
+                })
+                setVisBeregning(open)
+            }}
         >
             <Heading spacing size="medium" level="3">
                 Du har {vedtak.vedtak.utbetaling.gjenståendeSykedager} sykepengedager igjen

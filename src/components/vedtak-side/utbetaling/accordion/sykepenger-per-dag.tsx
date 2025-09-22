@@ -7,6 +7,7 @@ import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
 import { VedtakProps } from '../../vedtak'
 import { erWeekendPeriode } from '../../../../utils/dato-utils'
+import { logEvent } from '../../../amplitude/amplitude'
 
 interface SykepengerPerDagProps {
     dager: RSDag[]
@@ -51,11 +52,20 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
 
 export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
     const isServer = useContext(ArkiveringContext)
+    const headerTitle = tittel || 'Dine sykepenger per dag'
 
     if (dager.length == 0) return null
 
     return (
-        <Accordion.Item defaultOpen={isServer}>
+        <Accordion.Item
+            defaultOpen={isServer}
+            onOpenChange={(open) =>
+                logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
+                    tittel: tittel || headerTitle,
+                    component: 'SykepengerPerDag',
+                })
+            }
+        >
             <Accordion.Header>
                 <Heading size="small" level="3">
                     {tittel || 'Dine sykepenger per dag'}
