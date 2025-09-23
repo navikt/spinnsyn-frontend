@@ -15,6 +15,16 @@ export interface VedtakExpansionCard {
     componentName?: string
 }
 
+const sykepengedagerRegex = /^\d+ sykepengedag(er)?$/
+
+// Denne tittelen kan inneholde tall som er unike per bruker, noe som gir en rekke dupliserte entries i amplitude. Derfor fjerner vi tallene.
+const cleanLogEventTittel = (tittel: string): string => {
+    if (sykepengedagerRegex.test(tittel)) {
+        return 'X sykepengedag(er)'
+    }
+    return tittel
+}
+
 export const VedtakExpansionCard = ({
     vedtak,
     tittel,
@@ -27,9 +37,10 @@ export const VedtakExpansionCard = ({
 }: VedtakExpansionCard) => {
     const ugyldig = vedtak.annullert || vedtak.revurdert
     const handleToggle = () => {
+        const ryddetTittel = cleanLogEventTittel(tittel)
         const newOpen = !apne
         logEvent(newOpen ? 'expansioncard åpnet' : 'expansioncard lukket', {
-            tittel,
+            tittel: ryddetTittel,
             undertittel: undertittel || '',
             component: componentName || 'VedtakExpansionCard',
         })
