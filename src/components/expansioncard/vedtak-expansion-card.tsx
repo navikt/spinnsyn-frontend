@@ -40,7 +40,7 @@ export const VedtakExpansionCard = ({
         const ryddetTittel = cleanLogEventTittel(tittel)
         const newOpen = !apne
         logEvent(newOpen ? 'expansioncard åpnet' : 'expansioncard lukket', {
-            tittel : ryddetTittel,
+            tittel: ryddetTittel,
             undertittel: undertittel || '',
             component: componentName || 'VedtakExpansionCard',
         })
