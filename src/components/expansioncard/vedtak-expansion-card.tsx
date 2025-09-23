@@ -14,16 +14,16 @@ export interface VedtakExpansionCard {
     setApne?: (apne: boolean) => void
     componentName?: string
 }
- 
-const sykepengedagerRegex = /^\d+ sykepengedag(er)?$/;
+
+const sykepengedagerRegex = /^\d+ sykepengedag(er)?$/
 
 // Denne tittelen kan inneholde tall som er unike per bruker, noe som gir en rekke dupliserte entries i amplitude. Derfor fjerner vi tallene.
 const cleanLogEventTittel = (tittel: string): string => {
     if (sykepengedagerRegex.test(tittel)) {
-        return 'X sykepengedag(er)';
+        return 'X sykepengedag(er)'
     }
-    return tittel;
-};
+    return tittel
+}
 
 export const VedtakExpansionCard = ({
     vedtak,
@@ -37,7 +37,7 @@ export const VedtakExpansionCard = ({
 }: VedtakExpansionCard) => {
     const ugyldig = vedtak.annullert || vedtak.revurdert
     const handleToggle = () => {
-        const ryddetTittel = cleanLogEventTittel(tittel);
+        const ryddetTittel = cleanLogEventTittel(tittel)
         const newOpen = !apne
         logEvent(newOpen ? 'expansioncard åpnet' : 'expansioncard lukket', {
             ryddetTittel,
