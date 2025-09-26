@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { useScroll } from '../../../context/scroll-context'
+import { logEvent } from '../../amplitude/amplitude'
 
 export const MerOmBergningenNargingsdrivende = () => {
     const arkivering = useContext(ArkiveringContext)
@@ -27,7 +28,13 @@ export const MerOmBergningenNargingsdrivende = () => {
             data-testid="mer-om-beregningen"
             defaultOpen={arkivering}
             open={visBeregning}
-            onOpenChange={(isOpen) => setVisBeregning?.(isOpen)}
+            onOpenChange={(isOpen) => {
+                logEvent(isOpen ? 'accordion åpnet' : 'accordion lukket', {
+                    tittel: 'Mer om beregningen (næringsdrivende)',
+                    component: 'InntekterLagtTilGrunnNaringsdrivende',
+                })
+                setVisBeregning(isOpen)
+            }}
         >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">

@@ -7,6 +7,7 @@ import { harFlereArbeidsgivere } from '../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../utils/tekster'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 import { useScroll } from '../../../context/scroll-context'
+import { logEvent } from '../../amplitude/amplitude'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
@@ -65,7 +66,13 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
             data-testid="mer-om-beregningen"
             defaultOpen={arkivering}
             open={visBeregning}
-            onOpenChange={(isOpen) => setVisBeregning?.(isOpen)}
+            onOpenChange={(isOpen) => {
+                logEvent(isOpen ? 'accordion åpnet' : 'accordion lukket', {
+                    tittel: 'Mer om beregningen (arbeidstaker)',
+                    component: 'InntekterLagtTilGrunnArbeidstaker',
+                })
+                setVisBeregning(isOpen)
+            }}
         >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
