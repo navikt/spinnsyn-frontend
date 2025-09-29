@@ -89,7 +89,7 @@ export const MerOmBergningenNargingsdrivende = () => {
                     Dine sykepenger per dag
                 </Heading>
                 <BodyLong spacing>
-                    For å beregne hvor mye sykepenger du skal ha per dag, deler vi sykepengegrunnlaget ditt på 248, som
+                    For å beregne hvor mye sykepenger du skal ha per dag, deler vi sykepengegrunnlaget ditt på 260, som
                     er alle dager i året minus lørdager og søndager. Dette kaller vi ‘dagsatsen’.
                 </BodyLong>
                 <BodyLong spacing>
