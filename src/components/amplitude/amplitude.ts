@@ -10,9 +10,11 @@ export type validEventNames =
     | 'skjema åpnet'
     | 'knapp klikket'
     | 'alert vist'
+    | 'ekspanderbart element tilgjengelig'
     | 'expansioncard åpnet'
     | 'expansioncard lukket'
     | 'readmore lukket'
+    | 'vedtak av type åpnet'
     | 'readmore åpnet' //Bruk kun navn fra taksonomien
 
 export const logEvent = (eventName: validEventNames, eventData: Record<string, string | boolean>) => {

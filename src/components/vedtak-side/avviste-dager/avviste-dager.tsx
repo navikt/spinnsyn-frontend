@@ -35,6 +35,20 @@ const AvvisteDager = ({ avvisteDager, vedtak }: AvvisteDagerProps) => {
         }
     }, [elementRef?.current?.id, registrerElement])
 
+    useEffect(() => {
+        logEvent('ekspanderbart element tilgjengelig', {
+            tittel: 'Avviste sykepengedager',
+            component: 'AvvisteDager',
+        })
+    }, [])
+
+    useEffect(() => {
+        logEvent('ekspanderbart element tilgjengelig', {
+            tittel: 'Dager Nav ikke utbetaler',
+            component: 'AvvisteDager',
+        })
+    }, [])
+
     const avvisteDagerTekst = avvisteDager.length === 1 ? ' sykepengedag' : ' sykepengedager'
 
     return (

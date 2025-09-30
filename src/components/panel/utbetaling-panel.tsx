@@ -1,5 +1,7 @@
 import { BodyShort, Panel } from '@navikt/ds-react'
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { logEvent } from '../amplitude/amplitude'
 
 interface UtbetalingPanelProps {
     tittel: React.ReactNode
@@ -11,7 +13,27 @@ interface UtbetalingPanelProps {
     delvisInnvilgelse?: boolean
 }
 
+const getTittelType = (props: UtbetalingPanelProps) => {
+    switch (true) {
+        case props.avslag:
+            return 'Avslått søknad'
+        case props.delvisInnvilgelse:
+            return 'Delvis innvilget søknad'
+        default:
+            return 'Utbetaling (innvilget søknad)'
+    }
+}
+
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
+    useEffect(() => {
+        logEvent('vedtak av type åpnet', {
+            tittel: getTittelType(props),
+            component: 'UtbetalingPanel',
+        })
+        // dette hindrer en unødvendig warning fra linteren, vi ønsker kun å logge ved mount, ikke hver gang props endrer seg
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section aria-label={props.sectionLabel}>
             <Panel
