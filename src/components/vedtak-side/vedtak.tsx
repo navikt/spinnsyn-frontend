@@ -14,6 +14,7 @@ import { useToggle } from '../../toggles/context'
 import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetrikk'
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 import { erWeekendPeriode } from '../../utils/dato-utils'
+import { hentBegrunnelse } from '../../utils/vedtak-utils'
 
 import AnnulleringsInfo from './annullering/annullering'
 import AvvisteDager from './avviste-dager/avviste-dager'
@@ -45,11 +46,11 @@ export interface VedtakProps {
 const Vedtak = ({ vedtak }: VedtakProps) => {
     const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
-    const studyKey = 'study-hpyhgdokuq'
+    const studyKey = 'panel-venlmwxjdo'
     const { data: studyActive } = useStudyStatus(studyKey)
     const query: NodeJS.Dict<string | string[]> = {}
 
-    // unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
+    // Unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
     const avvisteDagerArbeidsgiver = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const avvisteDagerPerson = vedtak.dagerPerson.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const avvisteDager = avvisteDagerPerson
@@ -67,7 +68,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
     const harAvvisteDager = avvisteDager.length > 0
-
+    const erDelvisInnvilget = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
 
@@ -126,7 +127,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 </Alert>
             )}
 
-            {/* her begynner refusjonstypene */}
             {skalViseRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <RefusjonMedInntekt vedtak={vedtak} />
             )}
@@ -142,9 +142,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             })()}
             {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
-            {!erArkivering && erDirekteutbetaling && studyActive && (
-                <UxSignalsWidget study={studyKey} demo={!isProd()} />
-            )}
+
+            {!erArkivering && erDelvisInnvilget && studyActive && <UxSignalsWidget study={studyKey} demo={!isProd()} />}
+
             <Behandling vedtak={vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}

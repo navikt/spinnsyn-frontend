@@ -23,8 +23,10 @@ export const fallbackEstimertSluttdato = (vedtakWrapper: RSVedtakWrapper): Dayjs
     return slutt
 }
 
-export const hentBegrunnelse = (vedtak: RSVedtakWrapper, begrunnelse: BegrunnelseType): Begrunnelse | undefined => {
-    return vedtak.vedtak.begrunnelser?.find((b) => b.type === begrunnelse && b.begrunnelse)
+export const hentBegrunnelse = (vedtak: RSVedtakWrapper, begrunnelseType: BegrunnelseType): Begrunnelse | undefined => {
+    return vedtak.vedtak.begrunnelser?.find(
+        (begrunnelse) => begrunnelse.type === begrunnelseType && begrunnelse.begrunnelse,
+    )
 }
 
 export const oppsumertAvslagBegrunnelser = (

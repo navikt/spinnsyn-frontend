@@ -20,7 +20,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
-    const oppsumertAvslagObject: OppsumertAvslagListeProps = {
+    const oppsummertAvslagProps: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'dagerPerson'),
         harBegrunnelseFraBomlo,
         vedtak,
@@ -28,7 +28,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     return (
         <UtbetalingPanel
             sectionLabel="Utbetaling til deg"
-            delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
+            delvisInnvilgelse={oppsummertAvslagProps.oppsumertAvslag.size > 0}
             tittel={
                 <div>
                     <BodyShort className="mb-4">Du får utbetalt:</BodyShort>
@@ -48,7 +48,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             dataTestId="personutbetaling"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
-            <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
+            <OppsumertAvslagListe {...oppsummertAvslagProps}></OppsumertAvslagListe>
 
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />
