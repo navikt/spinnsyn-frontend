@@ -30,8 +30,8 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
             tittel: getTittelType(props),
             component: 'UtbetalingPanel',
         })
-    // dette hindrer en unødvendig warning fra linteren, vi ønsker kun å logge ved mount, ikke hver gang props endrer seg
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // dette hindrer en unødvendig warning fra linteren, vi ønsker kun å logge ved mount, ikke hver gang props endrer seg
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
