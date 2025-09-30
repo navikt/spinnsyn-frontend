@@ -5,10 +5,10 @@ const appDirectives = {
     'connect-src': ["'self'", '*.uxsignals.com'],
     'font-src': ['https://fonts.gstatic.com'],
     'object-src': ['none'],
-    'script-src': ['uxsignals-frontend.uxsignals.app.iterate.no', 'navtest.boost.ai'],
-    'script-src-elem': ["'self'", 'navtest.boost.ai', 'uxsignals-frontend.uxsignals.app.iterate.no'],
+    'script-src': ['widget.uxsignals.com', 'navtest.boost.ai'],
+    'script-src-elem': ["'self'", 'navtest.boost.ai', 'widget.uxsignals.com'],
+    'img-src': ["'self'", 'widget.uxsignals.com'],
     'style-src-elem': ["'self'"],
-    'img-src': ["'self'"],
 }
 
 /**
