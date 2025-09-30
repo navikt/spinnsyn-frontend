@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 import nb from 'dayjs/locale/nb'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { getFaro, initInstrumentation, pinoLevelToFaroLevel } from '../faro/faro'
@@ -31,6 +31,15 @@ configureLogger({
 
 function MyApp({ Component, pageProps }: AppProps<ServerSidePropsResult>): ReactElement {
     useHandleDecoratorClicks()
+
+    useEffect(() => {
+        // @ts-expect-error - skyra er satt opp i dekoratøren
+        window?.skyra?.redactSearchParam('id')
+        // @ts-expect-error - skyra er satt opp i dekoratøren
+        window?.skyra?.redactPathname('/syk/sykepenger/vedtak/:redacted')
+        // @ts-expect-error - skyra er satt opp i dekoratøren
+        window?.skyra?.redactPathname('/syk/sykepenger/vedtak/arkivering/:redacted')
+    }, [])
 
     const [queryClient] = useState(
         () =>
