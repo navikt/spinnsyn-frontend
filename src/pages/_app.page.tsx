@@ -29,16 +29,26 @@ configureLogger({
         }),
 })
 
+type Skyra = {
+    redactPathname: (path: string) => void
+    redactSearchParam: (param: string) => void
+}
+
+function konfigurerSkyra(skyra: Skyra) {
+    skyra.redactPathname('/syk/sykepenger/vedtak/:redacted')
+    skyra.redactPathname('/syk/sykepenger/vedtak/arkivering/:redacted')
+    skyra.redactSearchParam('id')
+}
+
 function MyApp({ Component, pageProps }: AppProps<ServerSidePropsResult>): ReactElement {
     useHandleDecoratorClicks()
 
     useEffect(() => {
         // @ts-expect-error - skyra er satt opp i dekoratøren
-        window?.skyra?.redactSearchParam('id')
-        // @ts-expect-error - skyra er satt opp i dekoratøren
-        window?.skyra?.redactPathname('/syk/sykepenger/vedtak/:redacted')
-        // @ts-expect-error - skyra er satt opp i dekoratøren
-        window?.skyra?.redactPathname('/syk/sykepenger/vedtak/arkivering/:redacted')
+        const skyra = window?.skyra
+        if (skyra) {
+            konfigurerSkyra(skyra)
+        }
     }, [])
 
     const [queryClient] = useState(
