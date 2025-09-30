@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 import nb from 'dayjs/locale/nb'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { getFaro, initInstrumentation, pinoLevelToFaroLevel } from '../faro/faro'
@@ -29,8 +29,27 @@ configureLogger({
         }),
 })
 
+type Skyra = {
+    redactPathname: (path: string) => void
+    redactSearchParam: (param: string) => void
+}
+
+function konfigurerSkyra(skyra: Skyra) {
+    skyra.redactPathname('/syk/sykepenger/vedtak/:redacted')
+    skyra.redactPathname('/syk/sykepenger/vedtak/arkivering/:redacted')
+    skyra.redactSearchParam('id')
+}
+
 function MyApp({ Component, pageProps }: AppProps<ServerSidePropsResult>): ReactElement {
     useHandleDecoratorClicks()
+
+    useEffect(() => {
+        // @ts-expect-error - skyra er satt opp i dekoratøren
+        const skyra = window?.skyra
+        if (skyra) {
+            konfigurerSkyra(skyra)
+        }
+    }, [])
 
     const [queryClient] = useState(
         () =>
