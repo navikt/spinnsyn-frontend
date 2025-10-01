@@ -6,16 +6,21 @@ export const standardSelvstendig: RSVedtakWrapper = {
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
         yrkesaktivitetstype: 'SELVSTENDIG',
-        sykepengegrunnlag: 780_960,
-        begrensning: 'ER_6G_BEGRENSET',
+        sykepengegrunnlag: 620_000,
+        begrensning: 'ER_IKKE_6G_BEGRENSET',
         fom: '2023-08-01',
         tom: '2023-08-31',
         sykepengegrunnlagsfakta: {
             fastsatt: 'EtterHovedregel',
             '6G': 780_960,
-            tags: ['6GBegrenset'],
+            tags: [],
             selvstendig: {
-                beregningsgrunnlag: 1_000_000,
+                beregningsgrunnlag: 620_000,
+                pensjonsgivendeInntekter: [
+                    { årstall: 2022, beløp: 720_000 },
+                    { årstall: 2021, beløp: 620_000 },
+                    { årstall: 2020, beløp: 520_000 },
+                ],
             },
         },
         utbetaling: {
