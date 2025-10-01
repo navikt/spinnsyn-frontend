@@ -1,7 +1,7 @@
 import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
 
 export const seksGBegrensningSelvstendig: RSVedtakWrapper = {
-    id: 'standard-vedtak-naringsdrivende',
+    id: 'tilfeldig-uuid-6-g',
     orgnavn: 'Wooley Socks ENK',
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
