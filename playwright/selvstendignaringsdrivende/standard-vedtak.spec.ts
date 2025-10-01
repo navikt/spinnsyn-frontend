@@ -10,7 +10,7 @@ test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
     })
 
     test('Viser info om selvstendig næringsdrivende', async ({ page }) => {
-        await page.goto('/syk/sykepenger?testperson=standard-selvstendig&id=standard-vedtak-naringsdrivende')
+        await page.goto('/syk/sykepenger?testperson=standard-selvstendig&id=tilfeldig-uuid-standard-vedtak')
 
         await expect(page.getByText('Gjelder sykefravær som')).toBeVisible()
         const beregningRegion = await visBeregningRegion(page)
