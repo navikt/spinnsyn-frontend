@@ -1,9 +1,9 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
-import { ArkiveringContext } from '../../../context/arkivering-context'
-import { useScroll } from '../../../context/scroll-context'
-import { logEvent } from '../../amplitude/amplitude'
+import { ArkiveringContext } from '../../../../context/arkivering-context'
+import { useScroll } from '../../../../context/scroll-context'
+import { logEvent } from '../../../amplitude/amplitude'
 
 export const MerOmBergningenNargingsdrivende = () => {
     const arkivering = useContext(ArkiveringContext)
