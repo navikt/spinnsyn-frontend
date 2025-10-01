@@ -1,7 +1,9 @@
 import { Page } from '@playwright/test'
+import { a } from 'vitest/dist/chunks/suite.d.FvehnV49'
 
 import { test, expect } from './fixtures'
 import { tabUntilFocusedContainsText } from './utils/tastaturSnarvei'
+import { harSynligTittel } from './utils/hjelpefunksjoner'
 
 const baseURL = 'http://localhost:3000/syk/sykepenger?testperson=kombinasjon'
 
@@ -11,7 +13,7 @@ async function tabTilForsteSoknadIListen(page: Page, browserName: string) {
     await test.step('Åpne første søknad i listen', async () => {
         await tabUntilFocusedContainsText(browserName, page, /Svar på søknad om sykepenger/)
         await page.keyboard.press('Enter')
-        await expect(page.getByRole('heading', { level: 1, name: 'Svar på søknad om sykepenger' })).toBeVisible()
+        await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
     })
 }
 
@@ -28,10 +30,10 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
     test('Finner vedtaket i listevisningen', async ({ page }) => {
         await test.step('Sjekk at riktig side og elementer vises', async () => {
             await expect(page).toHaveURL(baseURL)
-            await expect(page.getByRole('heading', { level: 1, name: 'Svar på søknader' })).toBeVisible()
+            await harSynligTittel(page, 'Svar på søknader', 1)
             await page.locator('#maincontent').focus()
-            await expect(page.getByRole('heading', { level: 2, name: 'Nye svar på søknader' })).toBeVisible()
-            await expect(page.getByRole('heading', { level: 2, name: 'Tidligere svar på søknader' })).toBeVisible()
+            await harSynligTittel(page, 'Nye svar på søknader', 2)
+            await harSynligTittel(page, 'Tidligere svar på søknader', 2)
         })
     })
 

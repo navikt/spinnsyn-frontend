@@ -3,7 +3,7 @@ import { alleAvvisteDager } from '../src/data/testdata/data/vedtak/alleAvvisteDa
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { expect, test } from './fixtures'
-import { trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
+import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 import { DAGTYPE_FORKLARINGER } from './utils/dagtype-forklaringer'
 
 const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 11
@@ -40,7 +40,7 @@ test.describe('Utbetalingsoversikt', () => {
         await visBeregningRegion(page)
         await page.getByRole('button', { name: 'Mer om beregningen' }).click()
         await expect(page.getByRole('region', { name: 'Sykepengegrunnlag' })).toContainText(formaterValuta(582_161))
-        await expect(page.getByRole('heading', { name: 'Flere arbeidsforhold' })).not.toBeVisible()
+        await expect(page.getByRole('heading', { name: 'Flere arbeidsforhold' })).toBeHidden()
         await expect(
             page.getByText(/Har du flere arbeidsforhold, og du til sammen tjener mer enn 6 G/),
         ).not.toBeVisible()
@@ -55,7 +55,7 @@ test.describe('Utbetalingsoversikt', () => {
         const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
         await expect(forklaring.locator('.navds-tag').nth(0)).toHaveText('Delvis syk')
         await expect(forklaring.locator('.navds-tag').nth(1)).toHaveText('Helg')
-        await expect(forklaring.getByRole('heading', { name: 'Forklaring' })).toBeVisible()
+        await harSynligTittel(page, 'Forklaring', 4)
 
         await expect(forklaring).toContainText(FORKLARING_DELVIS_SYK_TEXT)
         await expect(forklaring).toContainText(FORKLARING_HELG_TEXT)

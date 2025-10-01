@@ -1,14 +1,14 @@
 import { under2gInntekt } from '../src/data/testdata/data/personas/personas'
 
 import { test, expect } from './fixtures'
-import { visBeregningRegion } from './utils/hjelpefunksjoner'
+import { harSynligTittel, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Melding ved under 2g', () => {
     const vedtak = under2gInntekt.vedtak[0]
 
     test.beforeEach(async ({ page }) => {
         await page.goto(`http://localhost:3000/syk/sykepenger?testperson=under-2g-beskjed&id=${vedtak.id}`)
-        await expect(page.getByRole('heading', { name: /Svar på søknad om sykepenger/i })).toBeVisible()
+        await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
     })
 
     test('Utbetalingsoversikt og melding', async ({ page }) => {

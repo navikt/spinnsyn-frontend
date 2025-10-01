@@ -10,6 +10,7 @@ import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../src/data/testdata
 
 import { test, expect } from './fixtures'
 import {
+    harSynligTittel,
     trykkPaVedtakMedId,
     verifyBeregningPanel,
     verifyDagTabellRows,
@@ -88,7 +89,7 @@ test.describe('Avviste dager', () => {
             ['25.feb.', 'Maks antall dager'],
         ])
 
-        await expect(avvisteDagerRegion.getByRole('heading', { name: 'Forklaring' })).toBeVisible()
+        await harSynligTittel(page, 'Forklaring', 4)
         await expect(
             avvisteDagerRegion.getByText('Du får ikke sykepenger for dager du har ferie eller permisjon.'),
         ).toBeVisible()

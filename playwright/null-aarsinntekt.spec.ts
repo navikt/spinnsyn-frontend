@@ -2,14 +2,19 @@ import { nullOmregnetAarsinntekt } from '../src/data/testdata/data/vedtak/nullOm
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
+import {
+    beregnetManedsinntektRegion,
+    harSynligTittel,
+    trykkPaVedtakMedId,
+    visBeregningRegion,
+} from './utils/hjelpefunksjoner'
 
 test.describe('Har null i årsinntekt', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger?testperson=null-omregnet-aarsinntekt')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
         await trykkPaVedtakMedId(page, nullOmregnetAarsinntekt.id)
-        await expect(page.getByRole('heading', { level: 1, name: 'Svar på søknad om sykepenger' })).toBeVisible()
+        await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
     })
 
     test('Åpner beregning av sykepengene', async ({ page }) => {

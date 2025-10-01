@@ -1,7 +1,7 @@
 import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
 
 import { test, expect } from './fixtures'
-import { trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
+import { harSynligTittel, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Kun personutbetaling', () => {
     test.beforeEach(async ({ page }) => {
@@ -18,13 +18,13 @@ test.describe('Kun personutbetaling', () => {
         ).not.toBeVisible()
         await expect(page.getByText('Utbetales til Matbutikken AS')).not.toBeVisible()
 
-        const header = page.getByRole('heading', { level: 2, name: '24 550 kr' })
+        const header = await harSynligTittel(page, '24 550 kr', 2)
         await expect(header).toBeVisible()
 
         const panel = page.getByTestId('utbetaling-panel-personutbetaling')
         await expect(panel).toHaveCSS('background-color', 'rgb(216, 249, 255)')
 
-        await expect(panel.getByRole('heading', { name: /Kontonummer for utbetaling:/ })).toBeVisible()
+        await harSynligTittel(page, 'Kontonummer for utbetaling', 3)
         await expect(panel.getByText('1001 11 10011')).toBeVisible()
         await panel.getByText('Når får du sykepengene?').click()
         await expect(panel).toContainText('Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden')

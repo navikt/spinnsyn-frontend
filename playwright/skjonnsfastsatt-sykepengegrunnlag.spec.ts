@@ -5,7 +5,7 @@ import {
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { visBeregningRegion } from './utils/hjelpefunksjoner'
+import { harSynligTittel, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
     test.describe('Direkteutbetaling skjønnsfastsatt over 6G', () => {
@@ -13,7 +13,7 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             await page.goto(
                 `/syk/sykepenger?testperson=skjonnsfastsatt-brukerutbetaling&id=${skjønnsfastsattBrukerutbetaling.id}`,
             )
-            await expect(page.getByRole('heading', { level: 1 })).toContainText('Svar på søknad om sykepenger')
+            await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
         })
         test('Åpner beregningRegion av sykepengene', async ({ page }) => {
             const beregningRegion = await visBeregningRegion(page)
@@ -52,7 +52,7 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
             await page.goto(
                 `/syk/sykepenger?testperson=skjonnsfastsatt-flere-arbeidsgivere&id=${skjønnsfastsattFlereArbeidsgivere.id}`,
             )
-            await expect(page.getByRole('heading', { level: 1 })).toContainText('Svar på søknad om sykepenger')
+            await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
         })
 
         test('Åpner beregningRegion av sykepengene', async ({ page }) => {

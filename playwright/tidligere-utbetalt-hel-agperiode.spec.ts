@@ -1,14 +1,14 @@
 import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
 
 import { test, expect } from './fixtures'
-import { trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
+import { harSynligTittel, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Tidligere utbetalt hel arbeidsgiverperiode', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger?testperson=kun-direkte')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
         await trykkPaVedtakMedId(page, kunDirekte.id)
-        await expect(page.getByRole('heading', { level: 1, name: 'Svar på søknad om sykepenger' })).toBeVisible()
+        await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
     })
 
     test('Åpner beregning av sykepengene', async ({ page }) => {

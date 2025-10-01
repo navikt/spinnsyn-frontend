@@ -2,7 +2,12 @@ import { inntektHentetFraAordningen } from '../src/data/testdata/data/vedtak/inn
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { expect, test } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
+import {
+    beregnetManedsinntektRegion,
+    harSynligTittel,
+    trykkPaVedtakMedId,
+    visBeregningRegion,
+} from './utils/hjelpefunksjoner'
 
 test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
     test('Sjekker informasjon relatert til inntekt fra a-ordningen', async ({ page }) => {
@@ -12,8 +17,7 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
         await page.emulateMedia({ reducedMotion: 'reduce' })
         await trykkPaVedtakMedId(page, vedtak.id)
 
-        const header = page.getByRole('main').getByRole('heading', { level: 1 }).first()
-        await expect(header).toBeVisible()
+        await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
 
         const beregningRegion = await visBeregningRegion(page)
 

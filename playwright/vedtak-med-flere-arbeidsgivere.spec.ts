@@ -2,7 +2,12 @@ import { vedtakMedFlereArbeidsgivere } from '../src/data/testdata/data/vedtak/ve
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
+import {
+    beregnetManedsinntektRegion,
+    harSynligTittel,
+    trykkPaVedtakMedId,
+    visBeregningRegion,
+} from './utils/hjelpefunksjoner'
 
 test.describe('Vedtak med flere arbeidsgivere', () => {
     test.beforeEach(async ({ page }) => {
@@ -10,7 +15,7 @@ test.describe('Vedtak med flere arbeidsgivere', () => {
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
         await expect(page).toHaveURL(/syk\/sykepenger\?testperson=et-vedtak-flere-arbeidsgivere/)
         await trykkPaVedtakMedId(page, vedtakMedFlereArbeidsgivere.id)
-        await expect(page.getByRole('heading', { name: 'Svar på søknad om sykepenger' })).toBeVisible()
+        await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
     })
 
     test('Inntekter', async ({ page }) => {

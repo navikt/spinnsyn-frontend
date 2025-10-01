@@ -1,7 +1,7 @@
 import { kombinertDirekteOgRefusjon } from '../src/data/testdata/data/vedtak/kombinert'
 
 import { test, expect } from './fixtures'
-import { trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { harSynligTittel, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
 const vedtak = kombinertDirekteOgRefusjon
 const baseURL = 'http://localhost:3000/syk/sykepenger'
@@ -49,7 +49,7 @@ test.describe('Kombinasjonutbetaling', () => {
         })
 
         await test.step('Sjekk headerbeløp', async () => {
-            await expect(page.getByRole('heading', { level: 2, name: '24 550 kr' })).toBeVisible()
+            await harSynligTittel(page, '24 550 kr', 2)
         })
     })
 
