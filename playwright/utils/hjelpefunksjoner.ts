@@ -59,3 +59,15 @@ export const visBeregningRegion = async (page: Page) => {
     await expect(grunnlagLabel).toBeVisible()
     return beregningRegion
 }
+
+export async function harSynligTittel(page: Page, tittelTekst: string, level: number, exact: boolean = false) {
+    const locator = page.getByRole('heading', { level, name: tittelTekst, exact: exact })
+    await expect(locator).toBeVisible()
+    return locator
+}
+
+export async function harSynligTekst(page: Page, tekst: string | RegExp) {
+    const locator = page.getByText(tekst)
+    await expect(locator).toBeVisible()
+    return locator
+}
