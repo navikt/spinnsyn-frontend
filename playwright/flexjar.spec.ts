@@ -22,7 +22,7 @@ test.describe('Flexjar', () => {
         await expect(region.getByRole('button', { name: 'Ja' })).toHaveCSS('background-color', 'rgb(35, 38, 42)')
         await region.getByRole('textbox').fill('Dette er en test')
         await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
-        await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible()
+        await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
     })
 
     test('Kan gi nei feedback', async ({ page }) => {
@@ -33,7 +33,7 @@ test.describe('Flexjar', () => {
         await expect(region.getByRole('button', { name: 'Nei' })).toHaveCSS('background-color', 'rgb(35, 38, 42)')
         await region.getByRole('textbox').fill('Dette er en test')
         await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
-        await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible()
+        await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
     })
 
     test('Har flexjar når det er riktige toggles', async ({ page }) => {
@@ -48,6 +48,6 @@ test.describe('Flexjar', () => {
         await expect(braBtn).toHaveCSS('background-color', 'rgb(236, 238, 240)')
         await region.getByRole('textbox').fill('Dette er en test')
         await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
-        await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible()
+        await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
     })
 })
