@@ -8,6 +8,6 @@ test.describe('Selvstendig næringsdrivende - begrenset 6G', () => {
 
         const beregningRegion = await visBeregningRegion(page)
 
-        await expect(beregningRegion.getByText('Inntekten din')).toBeHidden()
+        await expect(beregningRegion.getByRole('heading', { name: 'Inntekten din' })).not.toBeVisible()
     })
 })

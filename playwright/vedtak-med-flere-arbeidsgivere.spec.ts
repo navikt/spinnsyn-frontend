@@ -10,15 +10,15 @@ import {
 } from './utils/hjelpefunksjoner'
 
 test.describe('Vedtak med flere arbeidsgivere', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto('/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
-        await expect(page).toHaveURL(/syk\/sykepenger\?testperson=et-vedtak-flere-arbeidsgivere/)
-        await trykkPaVedtakMedId(page, vedtakMedFlereArbeidsgivere.id)
-        await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
-    })
+    test('Viser inntekter', async ({ page }) => {
+        await test.step('Åpner vedtak', async () => {
+            await page.goto('/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere')
+            await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
+            await expect(page).toHaveURL(/syk\/sykepenger\?testperson=et-vedtak-flere-arbeidsgivere/)
+            await trykkPaVedtakMedId(page, vedtakMedFlereArbeidsgivere.id)
+            await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
+        })
 
-    test('Inntekter', async ({ page }) => {
         await expect(page.getByText('1 359 kroner')).toBeVisible()
         await expect(page.getByText('Utbetales til Industrifabrikken AS')).toBeVisible()
 

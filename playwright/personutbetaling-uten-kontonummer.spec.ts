@@ -4,13 +4,13 @@ import { harSynligTittel, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 import { test, expect } from './fixtures'
 
 test.describe('Personutbetaling uten kontonummer', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
-        await trykkPaVedtakMedId(page, kunDirekte.id)
-    })
-
     test('Viser info om at kontonummer mangler', async ({ page }) => {
+        await test.step('Åpner vedtak', async () => {
+            await page.goto('http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer')
+            await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
+            await trykkPaVedtakMedId(page, kunDirekte.id)
+        })
+
         await harSynligTittel(page, '24 550', 2)
         const personutbetaling = page.getByTestId(/personutbetaling/)
         await expect(personutbetaling.getByText('Du får utbetalt')).toBeVisible()
