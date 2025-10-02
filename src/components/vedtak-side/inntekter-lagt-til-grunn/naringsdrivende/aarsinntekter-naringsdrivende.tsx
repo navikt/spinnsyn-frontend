@@ -8,7 +8,7 @@ import { InfoSection } from '../info-seksjon'
 export const AarsinntekterNaringsdrivende = ({ vedtak }: { vedtak: RSVedtakUnion }) => {
     if (
         vedtak.yrkesaktivitetstype == 'SELVSTENDIG' &&
-        vedtak.sykepengegrunnlagsfakta?.selvstendig.pensjonsgivendeInntekter != undefined
+        vedtak.sykepengegrunnlagsfakta?.selvstendig.pensjonsgivendeInntekter
     ) {
         return (
             <>
