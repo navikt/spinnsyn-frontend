@@ -13,7 +13,7 @@ export const DAGTYPE_FORKLARINGER = {
     },
 
     Ventetidsdag: {
-        label: 'Sykmeldt i for kort tid',
+        label: 'Dekkes ikke av Nav',
         description:
             'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav om at du er syk og ikke kan jobbe.',
     },

@@ -96,7 +96,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'Ventetidsdag':
                 return (
                     <Tag size="small" variant="warning">
-                        Sykmeldt i for kort tid
+                        Dekkes ikke av Nav
                     </Tag>
                 )
 
