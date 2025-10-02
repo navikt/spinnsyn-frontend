@@ -1,6 +1,6 @@
 import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
 
-import { trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
+import { harSynligTittel, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 import { test, expect } from './fixtures'
 
 test.describe('Personutbetaling uten kontonummer', () => {
@@ -11,7 +11,7 @@ test.describe('Personutbetaling uten kontonummer', () => {
     })
 
     test('Viser info om at kontonummer mangler', async ({ page }) => {
-        await expect(page.getByRole('heading', { level: 2, name: '24 550 kr' })).toBeVisible()
+        await harSynligTittel(page, '24 550', 2)
         const personutbetaling = page.getByTestId(/personutbetaling/)
         await expect(personutbetaling.getByText('Du får utbetalt')).toBeVisible()
         await expect(personutbetaling).toContainText('Kontonummer for utbetaling')

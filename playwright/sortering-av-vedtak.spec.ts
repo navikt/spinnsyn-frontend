@@ -2,6 +2,7 @@ import { diverseData } from '../src/data/testdata/data/personas/personas'
 import { RSVedtakWrapper } from '../src/types/rs-types/rs-vedtak-felles'
 
 import { test, expect } from './fixtures'
+import { harSynligTittel } from './utils/hjelpefunksjoner'
 
 const lenkeTilVedtak = (hrefs: string[] | (string | null)[]) => {
     const vedtakene: RSVedtakWrapper[] = []
@@ -17,7 +18,7 @@ const lenkeTilVedtak = (hrefs: string[] | (string | null)[]) => {
 test.describe('Sortering av vedtak', () => {
     test.beforeEach('Laster startside', async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger')
-        await expect(page.getByRole('heading', { level: 1 })).toContainText('Svar på søknader')
+        await harSynligTittel(page, 'Svar på søknader', 1)
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
     })
 

@@ -1,7 +1,12 @@
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { verifyBeregningPanel, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
+import {
+    harSynligTittel,
+    verifyBeregningPanel,
+    verifyDagTabellRows,
+    visBeregningRegion,
+} from './utils/hjelpefunksjoner'
 
 const baseUrl = 'http://localhost:3000/syk/sykepenger/vedtak/arkivering/utvikling-arkivering'
 
@@ -70,7 +75,7 @@ test.describe('Vedtak for arkivering', () => {
             await expect(
                 beregningRegion.getByRole('button', { name: /Begrunnelse for skjønnsfastsetting/ }),
             ).toBeVisible()
-            await expect(beregningRegion.getByRole('heading', { name: 'Konklusjon' })).toBeVisible()
+            await harSynligTittel(page, 'Konklusjon', 3)
             await expect(beregningRegion).toContainText(
                 'Dette er konklusjonen fra speil. 200 000kr er et skjønnsfastsatt beløp.',
             )
