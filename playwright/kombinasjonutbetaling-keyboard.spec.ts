@@ -1,5 +1,4 @@
 import { Page } from '@playwright/test'
-import { a } from 'vitest/dist/chunks/suite.d.FvehnV49'
 
 import { test, expect } from './fixtures'
 import { tabUntilFocusedContainsText } from './utils/tastaturSnarvei'
