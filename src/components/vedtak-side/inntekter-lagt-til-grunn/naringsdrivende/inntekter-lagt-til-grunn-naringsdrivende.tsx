@@ -1,19 +1,20 @@
-import { Accordion, BodyShort, Heading } from '@navikt/ds-react'
+import { Accordion, BodyShort } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
-import { tekst } from '../../../utils/tekster'
-import { VedtakProps } from '../vedtak'
-import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
-import { AlleSykepengerPerDag } from '../utbetaling/accordion/sykepenger-per-dag'
-import { BegrunnelseEkspanderbar } from '../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
-import { hentBegrunnelse } from '../../../utils/vedtak-utils'
-import { useScroll } from '../../../context/scroll-context'
-import { ArkiveringContext } from '../../../context/arkivering-context'
-import { erWeekendPeriode } from '../../../utils/dato-utils'
-import { logEvent } from '../../amplitude/amplitude'
+import { tekst } from '../../../../utils/tekster'
+import { VedtakProps } from '../../vedtak'
+import { VedtakExpansionCard } from '../../../expansioncard/vedtak-expansion-card'
+import { AlleSykepengerPerDag } from '../../utbetaling/accordion/sykepenger-per-dag'
+import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
+import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
+import { useScroll } from '../../../../context/scroll-context'
+import { ArkiveringContext } from '../../../../context/arkivering-context'
+import { erWeekendPeriode } from '../../../../utils/dato-utils'
+import { logEvent } from '../../../amplitude/amplitude'
 
 import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
-import { EkstrainfoOmVedtaketSelvstendig } from './ekstrainfo-om-vedtaket-selvstendig'
+import { EkstrainfoOmVedtaketNaringsdrivende } from './ekstrainfo-om-vedtaket-naringsdrivende'
+import { AarsinntekterNaringsdrivende } from './aarsinntekter-naringsdrivende'
 
 export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)
@@ -68,9 +69,6 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
         return null
     }
 
-    //Settes når vi får årsinntekter fra speilvendt
-    const viseAarsinntekter = false
-
     const loggBegrunnelseToggle = (open: boolean, type: 'Avslag' | 'DelvisInnvilgelse' | 'Innvilgelse') => {
         let tittel = 'Begrunnelse for innvilget søknad'
         switch (type) {
@@ -103,18 +101,8 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                     tittel={tekst('utbetaling.inntekt.info.tittel')}
                 >
                     <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
-                        {viseAarsinntekter && (
-                            <>
-                                <Heading level="2" size="medium">
-                                    Inntekten din
-                                </Heading>
-                                <BodyShort size="small" className="mt-3 mb-4">
-                                    (hentet fra Skatteetaten)
-                                </BodyShort>
-                            </>
-                        )}
-
-                        <EkstrainfoOmVedtaketSelvstendig vedtak={vedtak.vedtak} />
+                        <AarsinntekterNaringsdrivende vedtak={vedtak.vedtak} />
+                        <EkstrainfoOmVedtaketNaringsdrivende vedtak={vedtak.vedtak} />
                         <BodyShort size="small" className="mt-4 mb-4">
                             Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av
                             sykepengegrunnlaget.

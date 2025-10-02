@@ -1,14 +1,13 @@
 import { BodyShort, Link } from '@navikt/ds-react'
 import React from 'react'
 
-import { formaterValuta } from '../../../utils/valuta-utils'
-import { tekst } from '../../../utils/tekster'
-import { RSVedtakSelvstendig } from '../../../types/rs-types/rs-vedtak-felles'
+import { formaterValuta } from '../../../../utils/valuta-utils'
+import { tekst } from '../../../../utils/tekster'
+import { RSVedtakSelvstendig } from '../../../../types/rs-types/rs-vedtak-felles'
+import { Under2G } from '../under-2G'
+import { InfoSection } from '../info-seksjon'
 
-import { Under2G } from './under-2G'
-import { InfoSection } from './info-seksjon'
-
-export const EkstrainfoOmVedtaketSelvstendig = ({ vedtak }: { vedtak: RSVedtakSelvstendig }) => {
+export const EkstrainfoOmVedtaketNaringsdrivende = ({ vedtak }: { vedtak: RSVedtakSelvstendig }) => {
     return (
         <>
             {vedtak.sykepengegrunnlag && (

@@ -23,12 +23,12 @@ import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
 import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-inntekt'
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
-import { InntekterLagtTilGrunnArbeidstaker } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn-arbeidstaker'
+import { InntekterLagtTilGrunnArbeidstaker } from './inntekter-lagt-til-grunn/arbeidstaker/inntekter-lagt-til-grunn-arbeidstaker'
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
-import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/inntekter-lagt-til-grunn-naringsdrivende'
+import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/naringsdrivende/inntekter-lagt-til-grunn-naringsdrivende'
 
 const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',

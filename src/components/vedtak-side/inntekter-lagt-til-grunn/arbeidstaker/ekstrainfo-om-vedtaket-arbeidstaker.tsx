@@ -1,13 +1,12 @@
 import { Alert, BodyShort, Link } from '@navikt/ds-react'
 import React from 'react'
 
-import { formaterValuta, formatOneDecimal } from '../../../utils/valuta-utils'
-import { tekst } from '../../../utils/tekster'
-import { RSVedtakArbeidstaker } from '../../../types/rs-types/rs-vedtak-felles'
-
-import { Under2G } from './under-2G'
-import { InfoSection } from './info-seksjon'
-import { inntektInfoTekster } from './inntekt-info-tekster'
+import { formaterValuta, formatOneDecimal } from '../../../../utils/valuta-utils'
+import { tekst } from '../../../../utils/tekster'
+import { RSVedtakArbeidstaker } from '../../../../types/rs-types/rs-vedtak-felles'
+import { Under2G } from '../under-2G'
+import { InfoSection } from '../info-seksjon'
+import { inntektInfoTekster } from '../inntekt-info-tekster'
 
 export const EkstrainfoOmVedtaketArbeidstaker = ({ vedtak }: { vedtak: RSVedtakArbeidstaker }) => {
     const over25prosentAvvik =

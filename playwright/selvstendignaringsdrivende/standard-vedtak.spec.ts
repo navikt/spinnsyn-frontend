@@ -1,7 +1,7 @@
-import { expect, test } from './fixtures'
-import { verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
+import { expect, test } from '../fixtures'
+import { verifyDagTabellRows, visBeregningRegion } from '../utils/hjelpefunksjoner'
 
-test.describe('Selvstendig næringsdrivende', () => {
+test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
     test('Burde åpne riktig vedtak', async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=standard-selvstendig')
 
@@ -10,10 +10,13 @@ test.describe('Selvstendig næringsdrivende', () => {
     })
 
     test('Viser info om selvstendig næringsdrivende', async ({ page }) => {
-        await page.goto('/syk/sykepenger?testperson=standard-selvstendig&id=standard-vedtak-naringsdrivende')
+        await page.goto('/syk/sykepenger?testperson=standard-selvstendig&id=tilfeldig-uuid-standard-vedtak')
 
         await expect(page.getByText('Gjelder sykefravær som')).toBeVisible()
         const beregningRegion = await visBeregningRegion(page)
+        await expect(beregningRegion.getByText('2022')).toBeVisible()
+        await expect(beregningRegion.getByText('720 000')).toBeVisible()
+
         await expect(
             beregningRegion.getByText(
                 'Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av sykepengegrunnlaget.',

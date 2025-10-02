@@ -1,7 +1,7 @@
 import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
 
-export const standardSelvstendig: RSVedtakWrapper = {
-    id: 'tilfeldig-uuid-standard-vedtak',
+export const utenAarsinntektSelvstendig: RSVedtakWrapper = {
+    id: 'tilfeldig-uuid-uten-aarsinntekt',
     orgnavn: 'Wooley Socks ENK',
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
@@ -16,11 +16,6 @@ export const standardSelvstendig: RSVedtakWrapper = {
             tags: [],
             selvstendig: {
                 beregningsgrunnlag: 620_000,
-                pensjonsgivendeInntekter: [
-                    { årstall: 2022, beløp: 720_000 },
-                    { årstall: 2021, beløp: 620_000 },
-                    { årstall: 2020, beløp: 520_000 },
-                ],
             },
         },
         utbetaling: {

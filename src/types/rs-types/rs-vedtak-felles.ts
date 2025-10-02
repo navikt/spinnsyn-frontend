@@ -144,7 +144,13 @@ export type SykepengegrunnlagsfaktaSelvstendig = {
     tags: string[]
     selvstendig: {
         beregningsgrunnlag: number
+        pensjonsgivendeInntekter?: PensjonsgivendeInntekter[] | null
     }
+}
+
+type PensjonsgivendeInntekter = {
+    årstall: number
+    beløp: number
 }
 
 export type SykepengegrunnlagsfaktaArbeidstaker =

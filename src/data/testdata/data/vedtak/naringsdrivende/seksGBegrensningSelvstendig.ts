@@ -1,25 +1,34 @@
 import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
 
-export const standardSelvstendig: RSVedtakWrapper = {
-    id: 'tilfeldig-uuid-standard-vedtak',
+export const seksGBegrensningSelvstendig: RSVedtakWrapper = {
+    id: 'tilfeldig-uuid-6-g',
     orgnavn: 'Wooley Socks ENK',
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
         yrkesaktivitetstype: 'SELVSTENDIG',
-        sykepengegrunnlag: 620_000,
-        begrensning: 'ER_IKKE_6G_BEGRENSET',
+        sykepengegrunnlag: 780_960,
+        begrensning: 'ER_6G_BEGRENSET',
         fom: '2023-08-01',
         tom: '2023-08-31',
         sykepengegrunnlagsfakta: {
             fastsatt: 'EtterHovedregel',
             '6G': 780_960,
-            tags: [],
+            tags: ['6GBegrenset'],
             selvstendig: {
-                beregningsgrunnlag: 620_000,
+                beregningsgrunnlag: 812511.0,
                 pensjonsgivendeInntekter: [
-                    { årstall: 2022, beløp: 720_000 },
-                    { årstall: 2021, beløp: 620_000 },
-                    { årstall: 2020, beløp: 520_000 },
+                    {
+                        årstall: 2024,
+                        beløp: 798000.0,
+                    },
+                    {
+                        årstall: 2023,
+                        beløp: 777000.0,
+                    },
+                    {
+                        årstall: 2022,
+                        beløp: 765000.0,
+                    },
                 ],
             },
         },
