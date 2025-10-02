@@ -7,11 +7,13 @@ export const trykkPaVedtakMedId = async (page: Page, vedtakId: string) => {
 }
 
 export const beregnetManedsinntektRegion = async (page: Page, hentetFra?: string): Promise<Locator> => {
-    const beregnetManedsinntekt = page.getByRole('region', {
-        name: `Beregnet månedsinntekt (hentet fra ${hentetFra ? hentetFra : 'inntektsmeldingen'})`,
-    })
+    const beregnetManedsinntekt = page
+        .getByText('Beregnet månedsinntekt')
+        .filter({
+            has: page.getByText(`(hentet fra ${hentetFra ? hentetFra : 'inntektsmeldingen'})`),
+        })
+        .locator('..')
     await expect(beregnetManedsinntekt).toBeVisible()
-    await expect(beregnetManedsinntekt).toContainText('Beregnet månedsinntekt')
     return beregnetManedsinntekt
 }
 
