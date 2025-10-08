@@ -49,7 +49,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             <BodyLong spacing>
                 Les mer om sykepengedager i{' '}
                 <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">
-                    folketrygdloven §8-12.
+                    folketrygdloven § 8-12.
                 </Link>
             </BodyLong>
 
@@ -61,7 +61,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
             <BodyLong spacing>
                 Les mer om sykepengedager i{' '}
                 <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">
-                    folketrygdloven §8-51
+                    folketrygdloven § 8-51
                 </Link>
                 .
             </BodyLong>

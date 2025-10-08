@@ -143,7 +143,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening':
         ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>, første avsnitt.',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven §2-1</a>.',
+        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven § 2-1</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
         ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis.',
