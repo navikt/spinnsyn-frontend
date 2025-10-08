@@ -82,14 +82,14 @@ export const MerOmBergningenNargingsdrivende = () => {
                 </BodyLong>
                 <BodyLong spacing>
                     Les mer om sykepengedekningen i{' '}
-                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-34">folketrygdloven §§ 8-34.</Link>
+                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-34">folketrygdloven § 8-34.</Link>
                 </BodyLong>
                 <BodyLong spacing>
                     Les mer om <Link href="https://www.nav.no/forsikring-sykepenger"> forsikring fra Nav.</Link>
                 </BodyLong>
                 <BodyLong spacing>
                     Les mer om minste sykmeldingsgrad i{' '}
-                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13">folketrygdloven §8-13.</Link>
+                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13">folketrygdloven § 8-13.</Link>
                 </BodyLong>
 
                 <Heading size="xsmall" level="3">
@@ -109,7 +109,7 @@ export const MerOmBergningenNargingsdrivende = () => {
                 </BodyLong>
                 <BodyLong spacing>
                     Les mer om sykepengedager i{' '}
-                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12">folketrygdloven §§ 8-12.</Link>
+                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12">folketrygdloven § 8-12.</Link>
                 </BodyLong>
 
                 <Heading size="xsmall" level="3">
