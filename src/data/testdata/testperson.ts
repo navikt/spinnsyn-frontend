@@ -14,6 +14,7 @@ import {
     forLavInntektPerson67,
     innvilgelseMedBegrunnelsePerson,
     innvilgelseMedTomBegrunnelsePerson,
+    innvilgelsePerson,
     julesoknadPerson,
     kombinasjonPerson,
     kombinertRevurdertPersona,
@@ -69,6 +70,7 @@ export type PersonaKey =
     | 'for-lav-inntekt-67'
     | 'kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo'
     | 'innvilgelse'
+    | 'innvilgelse-med-begrunnelse'
     | 'innvilgelse-tom-begrunnelse'
     | 'standard-selvstendig'
     | 'seks-g-begrensning'
@@ -98,7 +100,8 @@ export const testpersonerGruppert: PersonaGroup = {
     ['avvist-delvis-innvilgelse-bømlo']: {
         ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
         ['for-lav-inntekt-67']: jsonDeepCopy(forLavInntektPerson67),
-        ['innvilgelse']: jsonDeepCopy(innvilgelseMedBegrunnelsePerson),
+        ['innvilgelse']: jsonDeepCopy(innvilgelsePerson),
+        ['innvilgelse-med-begrunnelse']: jsonDeepCopy(innvilgelseMedBegrunnelsePerson),
         ['innvilgelse-tom-begrunnelse']: jsonDeepCopy(innvilgelseMedTomBegrunnelsePerson),
         ['kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo']: jsonDeepCopy(
             delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
