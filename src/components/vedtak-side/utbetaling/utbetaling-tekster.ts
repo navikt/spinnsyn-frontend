@@ -14,7 +14,7 @@ const UtbetalingTekster = {
     'utbetaling.sykepengegrunnlag.under6g.innhold':
         'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din. Derfor vil sykepengegrunnlaget og den samlede årsinntekten ofte være det samme.',
     'utbetaling.sykepengegrunnlag.over6g.innhold':
-        'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra Nav for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Hvis årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt til Skatteetaten de siste tolv månedene før du ble sykmeldt, skal sykepengegrunnlaget fastsettes ved skjønn. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-10" target="_blank">folketrygdloven §§ 8-10 og 8-30</a>.',
+        'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra Nav for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Hvis årsinntekten avviker med mer enn 25 % fra rapportert inntekt til Skatteetaten de siste tolv månedene før du ble sykmeldt, skal sykepengegrunnlaget fastsettes ved skjønn. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-10" target="_blank">folketrygdloven §§ 8-10 og 8-30</a>.',
     'utbetaling.dagligbelop.tittel': 'Sykepenger per dag',
     'utbetaling.dagligbelop.innhold':
         'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',
@@ -73,7 +73,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.NavDagDelvisSyk':
         'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
     'utbetaling.tabell.label.NavDagDelvisSykUnder20':
-        'For å kunne få sykepenger må du være borte fra jobben minst 20 prosent av tiden på grunn av sykdom eller skade. Selv om inntektstapet ditt er mindre enn 20 prosent, har vi vurdert at arbeidstiden er redusert med minst 20 prosent. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>.',
+        'For å kunne få sykepenger må du være borte fra jobben minst 20 % av tiden på grunn av sykdom eller skade. Selv om inntektstapet ditt er mindre enn 20 %, har vi vurdert at arbeidstiden er redusert med minst 20 %. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>.',
     'utbetaling.tabell.label.NavHelgDag':
         'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten du har på helgedagene, fordeles på ukedagene. Hvis du derimot kun er sykmeldt en lørdag eller søndag, utbetales det ikke sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-11" target="_blank">folketrygdloven § 8-11</a>.',
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
@@ -104,7 +104,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
         'Du kan ikke bruke egenmelding de dagene Nav betaler sykepenger. For de dagene må du ha sykmelding, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
-        'For å ha rett til sykepenger må du være borte fra jobb minst 20 prosent på grunn av sykdom eller skade. Sykepengenes størrelse skal beregnes på grunnlag av reduksjon i arbeidstiden og/eller inntektstap. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
+        'For å ha rett til sykepenger må du være borte fra jobb minst 20 % på grunn av sykdom eller skade. Sykepengenes størrelse skal beregnes på grunnlag av reduksjon i arbeidstiden og/eller inntektstap. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
         'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt',
     'utbetaling.tabell.avvist.ManglerMedlemskap':

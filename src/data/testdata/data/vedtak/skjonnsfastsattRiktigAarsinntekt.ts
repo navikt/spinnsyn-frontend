@@ -380,7 +380,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
                 {
                     type: 'SkjønnsfastsattSykepengegrunnlagMal',
                     begrunnelse:
-                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 41 000,00 utgjør kr 492 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 prosent fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
+                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 41 000,00 utgjør kr 492 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 % fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 % fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
                     perioder: [
                         {
                             fom: '2023-09-01',
@@ -803,7 +803,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
                 {
                     type: 'SkjønnsfastsattSykepengegrunnlagMal',
                     begrunnelse:
-                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 41 000,00 utgjør kr 492 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 prosent fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
+                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 41 000,00 utgjør kr 492 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 % fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 % fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
                     perioder: [
                         {
                             fom: '2023-09-01',
@@ -1226,7 +1226,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
                 {
                     type: 'SkjønnsfastsattSykepengegrunnlagMal',
                     begrunnelse:
-                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 36 000,00 utgjør kr 432 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 prosent fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
+                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 36 000,00 utgjør kr 432 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 % fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 % fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
                     perioder: [
                         {
                             fom: '2023-09-01',
@@ -1649,7 +1649,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
                 {
                     type: 'SkjønnsfastsattSykepengegrunnlagMal',
                     begrunnelse:
-                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 36 000,00 utgjør kr 432 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 prosent fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 prosent fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
+                        'Månedsinntekten som er oppgitt av dine arbeidsgivere på kr 36 000,00 utgjør kr 432 000,00 i årsinntekt. Denne årsinntekten avviker med mer enn 25 % fra inntekten som er rapportert til Skatteetaten på kr 216 000,00 de siste tolv månedene før du ble syk.\n\nNår årsinntekten avviker med mer enn 25 % fra rapportert inntekt, skal Nav fastsette sykepengegrunnlaget ved skjønn ut fra den årsinntekten som kan godtgjøres på det tidspunktet du ble syk. Det fremgår av folketrygdloven § 8-30 andre ledd.',
                     perioder: [
                         {
                             fom: '2023-09-01',

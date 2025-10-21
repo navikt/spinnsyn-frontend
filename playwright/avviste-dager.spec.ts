@@ -248,12 +248,12 @@ test.describe('Avviste dager', () => {
         const begrunnelseDiv = page
             .locator('div')
             .filter({
-                hasText: 'For å ha rett til sykepenger må arbeidsevnen din ha blitt redusert med minst 20 prosent.',
+                hasText: 'For å ha rett til sykepenger må arbeidsevnen din ha blitt redusert med minst 20 %.',
             })
             .first()
 
         const texts = [
-            'For å ha rett til sykepenger må arbeidsevnen din ha blitt redusert med minst 20 prosent.',
+            'For å ha rett til sykepenger må arbeidsevnen din ha blitt redusert med minst 20 %.',
             'På sykmeldingstidspunktet hadde du følgende inntektskilder:',
             'Unibuss as: 14,35 timer per uke = 2,87 timer per dag.',
             'Oslo Taxibuss: 37,5 timer per uke = 7,5 timer per dag.',
@@ -263,7 +263,7 @@ test.describe('Avviste dager', () => {
             '15 x 10,37 = 155,55 timer.',
             'Arbeidstid hos Unibuss er 43,05 timer',
             '15 x 2,87 = 43,05',
-            'I perioden 09.04.24 - 29.04.24 er du bare 50 prosent sykmeldt fra Unibuss. Dette utgjør 21,53 timer.',
+            'I perioden 09.04.24 - 29.04.24 er du bare 50 % sykmeldt fra Unibuss. Dette utgjør 21,53 timer.',
             '50 % / 100 x 43,05 = 21,53 timer sykmeldt.',
             'Du er 13,84 % sykmeldt av den totale arbeidstiden din.',
             '21,53 / 155,55 x 100 = 13,84 %.',
