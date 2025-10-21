@@ -31,6 +31,7 @@ import { avslattMinimumInntektOver67 } from '../vedtak/avslattMinimumInntektOver
 import { inntektHentetFraAordningen } from '../vedtak/inntektHentetFraAordningen'
 import { innvilgelseMedBegrunnelseVedtak, innvilgelseMedTomBegrunnelseVedtak } from '../vedtak/innvilgelseBegrunnelse'
 import { ingenUtbetalingFordiAlleDagerHelg } from '../vedtak/ingenUtbetalingFordiAlleDagerHelg'
+import { innvilgelseVedtak } from '../vedtak/delvisInnvilgelse'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -78,6 +79,12 @@ export const kunDirektePerson: Persona = {
     vedtak: [kunDirekte],
     kontonummer: '10011110011',
     beskrivelse: 'Utbetaling til sykmeldt',
+}
+
+export const innvilgelsePerson: Persona = {
+    vedtak: [innvilgelseVedtak],
+    kontonummer: '10011110011',
+    beskrivelse: 'Delvis innvilgelse',
 }
 
 export const innvilgelseMedBegrunnelsePerson: Persona = {

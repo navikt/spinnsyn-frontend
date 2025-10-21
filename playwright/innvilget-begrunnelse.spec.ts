@@ -4,7 +4,7 @@ import { harSynligTittel } from './utils/hjelpefunksjoner'
 test.describe('Begrunnelse', () => {
     test('Vedtak med innvilget begrunnelse fra Bømlo', async ({ page }) => {
         await page.goto(
-            'http://localhost:3000/syk/sykepenger?testperson=innvilgelse&id=bcd7b2ec-fcc1-4a8b-816c-42256138d0c4',
+            'http://localhost:3000/syk/sykepenger?testperson=innvilgelse-med-begrunnelse&id=bcd7b2ec-fcc1-4a8b-816c-42256138d0c4',
         )
 
         await harSynligTittel(page, '10 449 kroner Utbetales til Sauefabrikk', 2)
