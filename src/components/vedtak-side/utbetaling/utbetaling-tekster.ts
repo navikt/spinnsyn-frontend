@@ -28,7 +28,7 @@ const UtbetalingTekster = {
         'Når Nav utbetaler sykepenger, betales det alltid for dagene mandag til fredag. Dette gjør vi selv om det er helligdager i løpet av disse dagene, og uavhengig av om du eventuelt jobber lørdag og søndag. Penger du tjener på lørdager og søndager, blir regnet med i beløpet du får utbetalt.',
     'utbetaling.beregning.tittel': 'Mer om beregningen',
     'utbetaling.beregning.les.mer': 'Du kan lese mer om hvordan sykepengene beregnes i ',
-    'utbetaling.beregning.lenke.tekst': 'folketrygdloven § 8-28 til 30.',
+    'utbetaling.beregning.lenke.tekst': ' folketrygdloven §§ 8-28 til 30.',
     'utbetaling.beregning.lenke.url': 'https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-28',
     'utbetaling.info.tittel': 'Utbetaling',
     'utbetaling.info.innhold':

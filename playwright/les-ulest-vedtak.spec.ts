@@ -28,12 +28,12 @@ test.describe('Les uleste vedtak', () => {
             await expect(page.getByText('Vi fattet vedtaket 22.')).toBeVisible()
         })
 
-        await test.step('Sjekk grønn boks', async () => {
+        await test.step('Sjekk mer om beregningen', async () => {
             await expect(page.getByText('6 200 kroner')).toBeVisible()
             await expect(page.getByText('Utbetales til Integrasjon AS')).toBeVisible()
             const beregningRegion = await visBeregningRegion(page)
             await beregningRegion.getByText('Mer om beregningen').click()
-            await expect(page.getByRole('link', { name: /folketrygdloven § 8-28/ })).toHaveAttribute(
+            await expect(page.getByRole('link', { name: /folketrygdloven §§ 8-28 til 30/ })).toHaveAttribute(
                 'href',
                 'https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-28',
             )
@@ -45,7 +45,7 @@ test.describe('Les uleste vedtak', () => {
             await expect(page.getByRole('region', { name: /Sykepengegrunnlag/ })).toContainText(formaterValuta(370_000))
         })
 
-        await test.step('Sjekk blå boks', async () => {
+        await test.step('Sjekk gjenstående sykepengedager', async () => {
             const region = page.getByRole('region', { name: 'Gjenstående sykepengedager' })
             await expect(region).toContainText('per 6. mars 2021')
             await region.click()
