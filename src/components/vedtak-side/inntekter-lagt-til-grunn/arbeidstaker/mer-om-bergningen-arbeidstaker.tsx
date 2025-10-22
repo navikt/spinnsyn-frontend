@@ -127,7 +127,7 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
                             søndag, får du ikke sykepenger for disse dagene.
                         </BodyLong>
                         <BodyLong spacing>
-                            Du kan lese mer om hvordan sykepengene beregnes i
+                            Du kan lese mer om hvordan sykepengene beregnes i{' '}
                             <Link href={tekst('utbetaling.beregning.lenke.url')} target="_blank">
                                 {tekst('utbetaling.beregning.lenke.tekst')}
                             </Link>
