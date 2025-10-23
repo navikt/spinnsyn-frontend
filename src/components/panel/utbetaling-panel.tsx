@@ -13,24 +13,19 @@ interface UtbetalingPanelProps {
     delvisInnvilgelse?: boolean
 }
 
-const getTittelType = (props: UtbetalingPanelProps) => {
-    switch (true) {
-        case props.avslag:
-            return 'Avslått søknad'
-        case props.delvisInnvilgelse:
-            return 'Delvis innvilget søknad'
-        default:
-            return 'Utbetaling (innvilget søknad)'
-    }
-}
-
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
+    const innvilgetMerke = props.avslag
+        ? 'Søknaden er avslått'
+        : props.delvisInnvilgelse
+          ? 'Søknaden er delvis innvilget'
+          : 'Søknaden er innvilget'
+
     useEffect(() => {
         logEvent('vedtak av type åpnet', {
-            tittel: getTittelType(props),
+            tittel: innvilgetMerke,
             component: 'UtbetalingPanel',
         })
-    }, [props])
+    }, [innvilgetMerke, props])
 
     return (
         <section aria-label={props.sectionLabel}>
@@ -46,11 +41,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
             >
                 <div className="mb-4">
                     <BodyShort size="small" weight="semibold">
-                        {props.avslag
-                            ? 'Avslått søknad'
-                            : props.delvisInnvilgelse
-                              ? 'Delvis innvilget søknad'
-                              : 'Søknaden er innvilget'}
+                        {innvilgetMerke}
                     </BodyShort>
                     {props.tittel}
                 </div>

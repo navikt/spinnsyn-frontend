@@ -32,7 +32,7 @@ test.describe('Avviste dager', () => {
         await trykkPaVedtakMedId(page, alleAvvisteDager.id)
 
         const refusjonsPanel = page.getByTestId('utbetaling-panel-refusjon')
-        await expect(refusjonsPanel.getByText('Delvis innvilget søknad')).toBeVisible()
+        await expect(refusjonsPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
         await expect(refusjonsPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
 
         const reasons = [
@@ -175,7 +175,7 @@ test.describe('Avviste dager', () => {
         await expect(page.getByText('Ingen utbetaling')).toBeVisible()
 
         const refusjonsPanel = page.getByTestId('utbetaling-panel-refusjon')
-        await expect(refusjonsPanel.getByText('Avslått søknad')).toBeVisible()
+        await expect(refusjonsPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
         await expect(refusjonsPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
         await expect(refusjonsPanel.getByRole('listitem').getByText('For lav inntekt')).toBeVisible()
         await expect(refusjonsPanel.getByRole('listitem').getByText('Etter dødsfall')).toBeVisible()
@@ -211,12 +211,12 @@ test.describe('Avviste dager', () => {
         await trykkPaVedtakMedId(page, delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo.id)
 
         const personutbetalingPanel = page.getByTestId('utbetaling-panel-personutbetaling')
-        await expect(personutbetalingPanel.getByText('Delvis innvilget søknad')).not.toBeVisible()
+        await expect(personutbetalingPanel.getByText('Søknaden er delvis innvilget')).not.toBeVisible()
         await expect(personutbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).not.toBeVisible()
         await expect(personutbetalingPanel.getByText('For mye arbeid og/eller inntekt')).not.toBeVisible()
 
         const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
-        await expect(refusjonPanel.getByText('Delvis innvilget søknad')).toBeVisible()
+        await expect(refusjonPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
         await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
         await expect(refusjonPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt')).toBeVisible()
         await refusjonPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
@@ -238,7 +238,7 @@ test.describe('Avviste dager', () => {
         await trykkPaVedtakMedId(page, avslåttFraBømlo.id)
 
         const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
-        await expect(refusjonPanel.getByText('Avslått søknad')).toBeVisible()
+        await expect(refusjonPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
         await expect(refusjonPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
         await expect(refusjonPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt')).toBeVisible()
         await refusjonPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
