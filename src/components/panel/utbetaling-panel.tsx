@@ -45,16 +45,13 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
                 }
             >
                 <div className="mb-4">
-                    {props.avslag && (
-                        <BodyShort size="small" weight="semibold">
-                            Avslått søknad
-                        </BodyShort>
-                    )}
-                    {props.delvisInnvilgelse && (
-                        <BodyShort size="small" weight="semibold">
-                            Delvis innvilget søknad
-                        </BodyShort>
-                    )}
+                    <BodyShort size="small" weight="semibold">
+                        {props.avslag
+                            ? 'Avslått søknad'
+                            : props.delvisInnvilgelse
+                              ? 'Delvis innvilget søknad'
+                              : 'Søknaden er innvilget'}
+                    </BodyShort>
                     {props.tittel}
                 </div>
                 {props.children}
