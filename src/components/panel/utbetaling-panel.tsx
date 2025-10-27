@@ -1,4 +1,4 @@
-import { BodyShort, Panel } from '@navikt/ds-react'
+import { BodyShort, Box } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
 import { logEvent } from '../amplitude/amplitude'
@@ -29,15 +29,13 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
 
     return (
         <section aria-label={props.sectionLabel}>
-            <Panel
+            <Box
+                padding="4"
+                borderWidth="1"
+                borderRadius="small"
                 className="mt-4 rounded-md"
-                border
                 data-testid={`utbetaling-panel-${props.dataTestId}${props.erUgyldig ? '-ugyldig' : ''}`}
-                style={
-                    {
-                        '--ac-panel-bg': props.erUgyldig ? 'var(--a-gray-100)' : 'var(--a-lightblue-100)',
-                    } as React.CSSProperties
-                }
+                background={props.erUgyldig ? 'surface-subtle' : 'surface-info-subtle'}
             >
                 <div className="mb-4">
                     <BodyShort size="small" weight="semibold">
@@ -46,7 +44,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
                     {props.tittel}
                 </div>
                 {props.children}
-            </Panel>
+            </Box>
         </section>
     )
 }
