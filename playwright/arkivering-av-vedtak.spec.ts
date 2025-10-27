@@ -24,7 +24,7 @@ test.describe('Vedtak for arkivering', () => {
 
         await test.step('Verifiser utbetaling panel', async () => {
             const utbetalingPanel = page.getByTestId('utbetaling-panel-refusjon')
-            await expect(utbetalingPanel.getByText('Delvis innvilget søknad')).toBeVisible()
+            await expect(utbetalingPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(utbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
             await expect(
                 utbetalingPanel.getByRole('listitem').getByText(/For mye arbeid og\/eller inntekt/),
@@ -115,7 +115,7 @@ test.describe('Vedtak for arkivering', () => {
 
         await test.step('Verifiser refusjon panel', async () => {
             const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
-            await expect(refusjonPanel.getByText('Delvis innvilget søknad')).toBeVisible()
+            await expect(refusjonPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
             await expect(
                 refusjonPanel.getByRole('listitem').getByText(/For mye arbeid og\/eller inntekt/),

@@ -1,4 +1,4 @@
-import { BodyShort, Panel } from '@navikt/ds-react'
+import { BodyShort, Box } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
 import { logEvent } from '../amplitude/amplitude'
@@ -13,52 +13,38 @@ interface UtbetalingPanelProps {
     delvisInnvilgelse?: boolean
 }
 
-const getTittelType = (props: UtbetalingPanelProps) => {
-    switch (true) {
-        case props.avslag:
-            return 'Avslått søknad'
-        case props.delvisInnvilgelse:
-            return 'Delvis innvilget søknad'
-        default:
-            return 'Utbetaling (innvilget søknad)'
-    }
-}
-
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
+    const innvilgetMerke = props.avslag
+        ? 'Søknaden er avslått'
+        : props.delvisInnvilgelse
+          ? 'Søknaden er delvis innvilget'
+          : 'Søknaden er innvilget'
+
     useEffect(() => {
         logEvent('vedtak av type åpnet', {
-            tittel: getTittelType(props),
+            tittel: innvilgetMerke,
             component: 'UtbetalingPanel',
         })
-    }, [props])
+    }, [innvilgetMerke])
 
     return (
         <section aria-label={props.sectionLabel}>
-            <Panel
+            <Box
+                padding="4"
+                borderWidth="1"
+                borderRadius="small"
                 className="mt-4 rounded-md"
-                border
                 data-testid={`utbetaling-panel-${props.dataTestId}${props.erUgyldig ? '-ugyldig' : ''}`}
-                style={
-                    {
-                        '--ac-panel-bg': props.erUgyldig ? 'var(--a-gray-100)' : 'var(--a-lightblue-100)',
-                    } as React.CSSProperties
-                }
+                background={props.erUgyldig ? 'surface-subtle' : 'surface-info-subtle'}
             >
                 <div className="mb-4">
-                    {props.avslag && (
-                        <BodyShort size="small" weight="semibold">
-                            Avslått søknad
-                        </BodyShort>
-                    )}
-                    {props.delvisInnvilgelse && (
-                        <BodyShort size="small" weight="semibold">
-                            Delvis innvilget søknad
-                        </BodyShort>
-                    )}
+                    <BodyShort size="small" weight="semibold">
+                        {innvilgetMerke}
+                    </BodyShort>
                     {props.tittel}
                 </div>
                 {props.children}
-            </Panel>
+            </Box>
         </section>
     )
 }
