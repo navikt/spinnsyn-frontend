@@ -25,7 +25,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
             tittel: innvilgetMerke,
             component: 'UtbetalingPanel',
         })
-    }, [innvilgetMerke, props])
+    }, [innvilgetMerke])
 
     return (
         <section aria-label={props.sectionLabel}>
