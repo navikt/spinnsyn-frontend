@@ -10,15 +10,17 @@ export const FlexjarVarSidenNyttig = ({
     erRefusjon,
     harAvvisteDager,
     annullert,
-    revurdert,
+    erRevurdert,
     julesoknad,
+    erRevurdering,
 }: {
     erRefusjon: boolean
     erDirekteutbetaling: boolean
     harAvvisteDager: boolean
     annullert: boolean
-    revurdert: boolean
+    erRevurdert: boolean
     julesoknad: boolean
+    erRevurdering: boolean
 }) => {
     const arkivering = useContext(ArkiveringContext)
 
@@ -53,7 +55,8 @@ export const FlexjarVarSidenNyttig = ({
         harAvvisteDager,
         erDirekteutbetaling,
         annullert,
-        revurdert,
+        revurdert: erRevurdert,
+        erRevurdering,
     }
     if (julesoknad) {
         feedbackProps['julesøknad'] = true
