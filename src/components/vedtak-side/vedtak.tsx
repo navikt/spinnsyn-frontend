@@ -154,7 +154,8 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     erRefusjon={erRefusjon}
                     harAvvisteDager={harAvvisteDager}
                     annullert={vedtak.annullert}
-                    revurdert={vedtak.revurdert}
+                    erRevurdert={vedtak.revurdert}
+                    erRevurdering={nyesteRevudering}
                     julesoknad={julesoknad}
                 />
             )}
