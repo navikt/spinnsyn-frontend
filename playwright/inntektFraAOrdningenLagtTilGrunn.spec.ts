@@ -32,7 +32,7 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
 
         await expect(
             page.getByText(
-                'Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste 3 månedene før du ble syk for å beregne sykepengene dine.',
+                'Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste tre månedene før du ble syk for å beregne sykepengene dine.',
             ),
         ).toBeVisible()
 
