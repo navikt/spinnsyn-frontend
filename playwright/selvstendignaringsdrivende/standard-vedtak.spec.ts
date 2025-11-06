@@ -30,7 +30,7 @@ test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
         await beregningRegion.getByRole('button', { name: 'Mer om beregningen' }).click()
         await expect(
             beregningRegion.getByText(
-                'Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste 3 årene før du ble syk for å beregne sykepengegrunnlaget. Inntekten blir justert etter årlige endringer i grunnbeløpet i folketrygden.',
+                'Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste tre årene før du ble syk for å beregne sykepengegrunnlaget. Inntekten blir justert etter årlige endringer i grunnbeløpet i folketrygden.',
             ),
         ).toBeVisible()
     })
