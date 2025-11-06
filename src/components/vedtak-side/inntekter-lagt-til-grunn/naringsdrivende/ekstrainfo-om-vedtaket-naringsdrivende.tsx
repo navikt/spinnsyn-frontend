@@ -21,7 +21,7 @@ export const EkstrainfoOmVedtaketNaringsdrivende = ({ vedtak }: { vedtak: RSVedt
                 <>
                     <BodyShort size="small" className="mt-4 pt-4" spacing>
                         Sykepengegrunnlaget ditt er begrenset til seks ganger{' '}
-                        <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden (6G)</Link>:{' '}
+                        <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden (6 G)</Link>:{' '}
                         {formaterValuta(vedtak.sykepengegrunnlag)}
                     </BodyShort>
                 </>

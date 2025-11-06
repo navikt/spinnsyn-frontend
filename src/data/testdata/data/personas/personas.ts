@@ -162,7 +162,7 @@ export const revurdertOgAnnullert: Persona = {
 
 export const under2gInntekt: Persona = {
     vedtak: [inntektUnder2g],
-    beskrivelse: 'Vedtak for bruker under 2g i inntekt som dermed får en ekstra beskjed',
+    beskrivelse: 'Vedtak for bruker under 2 G i inntekt som dermed får en ekstra beskjed',
 }
 export const skjonnsfastsattRiktigAarsinntektPersona: Persona = {
     vedtak: skjonnsfastsattRiktigAarsinntekt,

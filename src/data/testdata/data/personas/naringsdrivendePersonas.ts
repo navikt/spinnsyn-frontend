@@ -12,7 +12,7 @@ export const standardSelvstendigPersona: Persona = {
 export const seksGBegrensetSelvstendigPersona: Persona = {
     vedtak: [seksGBegrensningSelvstendig],
     kontonummer: '10011110011',
-    beskrivelse: 'Selvstendig næringsdrivende med 6G begrensning',
+    beskrivelse: 'Selvstendig næringsdrivende med 6 G begrensning',
 }
 
 export const utenAarsinntektSelvstendigPersona: Persona = {
