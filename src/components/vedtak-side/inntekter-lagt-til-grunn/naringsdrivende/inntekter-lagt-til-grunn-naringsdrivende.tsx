@@ -104,7 +104,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
                         <AarsinntekterNaringsdrivende vedtak={vedtak.vedtak} />
                         <EkstrainfoOmVedtaketNaringsdrivende vedtak={vedtak.vedtak} />
                         <BodyShort size="small" className="mt-4 mb-4">
-                            Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av
+                            Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80 % av
                             sykepengegrunnlaget.
                         </BodyShort>
 

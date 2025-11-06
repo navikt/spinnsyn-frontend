@@ -61,35 +61,33 @@ export const MerOmBergningenNargingsdrivende = () => {
                 <BodyLong spacing>
                     Du kan lese mer om hvordan sykepengegrunnlaget beregnes i
                     <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-10">folketrygdloven §§ 8-10</Link>{' '}
-                    og <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-35">8-35.</Link>
+                    og <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-35">8-35</Link>.
                 </BodyLong>
 
                 <Heading size="xsmall" level="3">
                     Rett til sykepenger
                 </Heading>
                 <BodyLong spacing>
-                    Du har rett til sykepenger tilsvarende 80 % av sykepengegrunnlaget fra 17. dag i sykefraværet ditt,
-                    med mindre du har forsikring fra Nav.{' '}
+                    Som selvstendig næringsdrivende har du rett til sykepenger som tilsvarer 80 % av sykepengegrunnlaget
+                    ditt.
                 </BodyLong>
                 <BodyLong spacing>
-                    De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav
-                    om at du er syk og ikke kan jobbe.{' '}
+                    Du kan få sykepenger fra den 17. dagen du er syk, med mindre du har{' '}
+                    <Link href="https://www.nav.no/forsikring-sykepenger">forsikring fra Nav</Link>. De første 16 dagene
+                    teller fra du får en sykmelding, eller gir beskjed til Nav om at du er syk og ikke kan jobbe.
                 </BodyLong>
                 <BodyLong spacing>
-                    Hvor mye sykepenger du kan få beregnes utifra arbeidstiden og/eller inntekten du har tapt i
-                    perioden. Er du sykmeldt mindre enn 100 % av arbeidstiden din, får du sykepenger for den delen du er
-                    sykmeldt. Er du sykmeldt mindre enn 20 %, har du ikke rett til sykepenger.{' '}
+                    Les mer om sykepengedekning i{' '}
+                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-34">folketrygdloven § 8-34</Link>.
                 </BodyLong>
                 <BodyLong spacing>
-                    Les mer om sykepengedekningen i{' '}
-                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-34">folketrygdloven § 8-34.</Link>
+                    Hvor mye sykepenger du får avhenger av hvor mye du jobbet og hvor mye inntekt du mistet mens du var
+                    syk. Hvis du var mindre enn 20 % borte fra jobb da du var syk, får du i utgangspunktet ikke
+                    sykepenger.
                 </BodyLong>
                 <BodyLong spacing>
-                    Les mer om <Link href="https://www.nav.no/forsikring-sykepenger"> forsikring fra Nav.</Link>
-                </BodyLong>
-                <BodyLong spacing>
-                    Les mer om minste sykmeldingsgrad i{' '}
-                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13">folketrygdloven § 8-13.</Link>
+                    Les mer om sykmeldingsgrad i{' '}
+                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13">folketrygdloven § 8-13</Link>.
                 </BodyLong>
 
                 <Heading size="xsmall" level="3">
@@ -97,7 +95,7 @@ export const MerOmBergningenNargingsdrivende = () => {
                 </Heading>
                 <BodyLong spacing>
                     For å beregne hvor mye sykepenger du skal ha per dag, deler vi sykepengegrunnlaget ditt på 260, som
-                    er alle dager i året minus lørdager og søndager. Dette kaller vi ‘dagsatsen’.
+                    er alle dager i året minus lørdager og søndager. Dette kaller vi &quot;dagsatsen&quot;.
                 </BodyLong>
                 <BodyLong spacing>
                     Er du sykmeldt mindre enn 100 %, blir dagsatsen ganget med prosenten du er sykmeldt den dagen.
@@ -109,7 +107,7 @@ export const MerOmBergningenNargingsdrivende = () => {
                 </BodyLong>
                 <BodyLong spacing>
                     Les mer om sykepengedager i{' '}
-                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12">folketrygdloven § 8-12.</Link>
+                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12">folketrygdloven § 8-12</Link>.
                 </BodyLong>
 
                 <Heading size="xsmall" level="3">

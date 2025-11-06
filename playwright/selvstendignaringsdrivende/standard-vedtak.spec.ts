@@ -19,7 +19,7 @@ test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
 
         await expect(
             beregningRegion.getByText(
-                'Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80% av sykepengegrunnlaget.',
+                'Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80 % av sykepengegrunnlaget.',
             ),
         ).toBeVisible()
 
