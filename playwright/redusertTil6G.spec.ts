@@ -4,7 +4,7 @@ import { formaterValuta } from '../src/utils/valuta-utils'
 import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
 import { expect, test } from './fixtures'
 
-test.describe('Redusert til 6G', () => {
+test.describe('Redusert til 6 G', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)

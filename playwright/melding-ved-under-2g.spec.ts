@@ -3,7 +3,7 @@ import { under2gInntekt } from '../src/data/testdata/data/personas/personas'
 import { test, expect } from './fixtures'
 import { harSynligTittel, visBeregningRegion } from './utils/hjelpefunksjoner'
 
-test.describe('Melding ved under 2g', () => {
+test.describe('Melding ved under 2 G', () => {
     const vedtak = under2gInntekt.vedtak[0]
 
     test.beforeEach(async ({ page }) => {

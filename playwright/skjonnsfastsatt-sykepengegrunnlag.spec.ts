@@ -8,7 +8,7 @@ import { test, expect } from './fixtures'
 import { harSynligTittel, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
-    test.describe('Direkteutbetaling skjønnsfastsatt over 6G', () => {
+    test.describe('Direkteutbetaling skjønnsfastsatt over 6 G', () => {
         test.beforeEach('Åpner vedtaket', async ({ page }) => {
             await page.goto(
                 `/syk/sykepenger?testperson=skjonnsfastsatt-brukerutbetaling&id=${skjønnsfastsattBrukerutbetaling.id}`,
