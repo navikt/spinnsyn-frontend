@@ -3,10 +3,14 @@ import dayjs from 'dayjs'
 import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
-import { VedtakProps } from '../vedtak'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
-export const Behandling = ({ vedtak }: VedtakProps) => {
+type BehandlingProps = {
+    vedtak: RSVedtakWrapperUtvidet
+}
+
+export const Behandling = ({ vedtak }: BehandlingProps) => {
     const erAutomatiskBehandlet = vedtak.vedtak.utbetaling.automatiskBehandling
     const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
     const aordningDataErBrukt = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
