@@ -4,16 +4,16 @@ import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakUnion } from '../../../types/rs-types/rs-vedtak-felles'
 
 type BehandlingProps = {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakUnion
 }
 
 export const Behandling = ({ vedtak }: BehandlingProps) => {
-    const erAutomatiskBehandlet = vedtak.vedtak.utbetaling.automatiskBehandling
-    const vedtaksDato = vedtak.vedtak.vedtakFattetTidspunkt
-    const aordningDataErBrukt = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
+    const erAutomatiskBehandlet = vedtak.utbetaling.automatiskBehandling
+    const vedtaksDato = vedtak.vedtakFattetTidspunkt
+    const aordningDataErBrukt = vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
     const hentTittel = () => {
         if (erAutomatiskBehandlet) {
@@ -24,7 +24,7 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
     }
 
     const getOpplysningText = () => {
-        switch (vedtak.vedtak.yrkesaktivitetstype) {
+        switch (vedtak.yrkesaktivitetstype) {
             case 'SELVSTENDIG':
                 return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
             case 'ARBEIDSTAKER':
