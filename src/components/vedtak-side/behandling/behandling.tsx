@@ -4,10 +4,10 @@ import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
-import { RSVedtakUnion } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakFelles } from '../../../types/rs-types/rs-vedtak-felles'
 
 type BehandlingProps = {
-    vedtak: RSVedtakUnion
+    vedtak: Pick<RSVedtakFelles, 'utbetaling' | 'vedtakFattetTidspunkt' | 'yrkesaktivitetstype' | 'tags'>
 }
 
 export const Behandling = ({ vedtak }: BehandlingProps) => {
