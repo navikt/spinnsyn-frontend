@@ -134,7 +134,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
             {!erArkivering && erDelvisInnvilget && studyActive && <UxSignalsWidget study={studyKey} demo={!isProd()} />}
 
-            <Behandling vedtak={vedtak} />
+            <Behandling vedtak={vedtak.vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
             {(flexjarToggle.enabled || julesoknad) && (
