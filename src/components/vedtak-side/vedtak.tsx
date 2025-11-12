@@ -1,5 +1,4 @@
 import { Alert, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
-import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -44,11 +43,9 @@ export interface VedtakProps {
 }
 
 const Vedtak = ({ vedtak }: VedtakProps) => {
-    const router = useRouter()
     const erArkivering = useContext(ArkiveringContext)
     const studyKey = 'panel-venlmwxjdo'
     const { data: studyActive } = useStudyStatus(studyKey)
-    const query: NodeJS.Dict<string | string[]> = {}
 
     // Unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
     const avvisteDagerArbeidsgiver = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
@@ -79,12 +76,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         // er lengre enn det som vises i nettleser.
         window.scrollTo({ top: 0 })
     }, [])
-
-    for (const key in router.query) {
-        if (key != 'id') {
-            query[key] = router.query[key]
-        }
-    }
 
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
