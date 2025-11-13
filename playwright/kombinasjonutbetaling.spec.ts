@@ -56,7 +56,7 @@ test.describe('Kombinasjonutbetaling', () => {
     test('Viser info om utbetaling til arbeidsgiveren', async ({ page }) => {
         await test.step('Sjekk utbetaling til arbeidsgiver', async () => {
             await expect(page.getByText('Pengene utbetales til arbeidsgiveren din')).toBeVisible()
-            await expect(page.getByText('4 910 kroner').locator('..')).toContainText('Utbetales til Matbutikken AS')
+            await harSynligTittel(page, '4 910 kr Utbetales til Matbutikken AS', 2)
         })
 
         const refusjonSection = page.getByTestId('refusjon')

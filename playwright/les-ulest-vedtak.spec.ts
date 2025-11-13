@@ -4,7 +4,12 @@ import { alleAvvisteDager } from '../src/data/testdata/data/vedtak/alleAvvisteDa
 import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { test, expect } from './fixtures'
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
+import {
+    beregnetManedsinntektRegion,
+    harSynligTittel,
+    trykkPaVedtakMedId,
+    visBeregningRegion,
+} from './utils/hjelpefunksjoner'
 
 test.describe('Les uleste vedtak', () => {
     test.beforeEach(async ({ page }) => {
@@ -29,8 +34,7 @@ test.describe('Les uleste vedtak', () => {
         })
 
         await test.step('Sjekk mer om beregningen', async () => {
-            await expect(page.getByText('6 200 kroner')).toBeVisible()
-            await expect(page.getByText('Utbetales til Integrasjon AS')).toBeVisible()
+            await harSynligTittel(page, '6 200 kr Utbetales til Integrasjon AS', 2)
             const beregningRegion = await visBeregningRegion(page)
             await beregningRegion.getByText('Mer om beregningen').click()
             await expect(page.getByRole('link', { name: /folketrygdloven §§ 8-28 til 30/ })).toHaveAttribute(

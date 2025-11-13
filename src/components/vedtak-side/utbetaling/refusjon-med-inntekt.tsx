@@ -29,11 +29,11 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
                 <Heading level="2" size="large">
                     {annullertEllerRevurdert ? (
                         <del>
-                            {belop + ' kroner'}
+                            {belop + ' kr'}
                             <span className="sr-only">(ikke gjeldende)</span>
                         </del>
                     ) : (
-                        <span>{belop + ' kroner'}</span>
+                        <span>{belop + ' kr'}</span>
                     )}
                     {vedtak.sykepengebelopArbeidsgiver > 0 && (
                         <BodyShort as="span" className="block">
