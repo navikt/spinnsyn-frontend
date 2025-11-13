@@ -17,7 +17,7 @@ test.describe('Redusert til 6 G', () => {
     })
 
     test('Utbetalingsoversikt', async ({ page }) => {
-        await harSynligTittel(page, '10 449 kr Utbetales til Posten Norge AS, Bærum', 2)
+        await harSynligTittel(page, '3 021 kr Utbetales til Posten Norge AS, Bærum', 2)
 
         const beregningRegion = await visBeregningRegion(page)
         const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)

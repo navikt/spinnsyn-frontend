@@ -11,9 +11,8 @@ test.describe('Personutbetaling uten kontonummer', () => {
             await trykkPaVedtakMedId(page, kunDirekte.id)
         })
 
-        await harSynligTittel(page, '24 550', 2)
+        await harSynligTittel(page, '24 550 kr Utbetales til deg', 2)
         const personutbetaling = page.getByTestId(/personutbetaling/)
-        await expect(personutbetaling.getByText('Du får utbetalt')).toBeVisible()
         await expect(personutbetaling).toContainText('Kontonummer for utbetaling')
         await expect(personutbetaling).toContainText(
             'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på Min side slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
