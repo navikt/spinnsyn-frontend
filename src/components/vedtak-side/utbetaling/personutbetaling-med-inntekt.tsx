@@ -31,7 +31,6 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             delvisInnvilgelse={oppsummertAvslagProps.oppsumertAvslag.size > 0}
             tittel={
                 <div>
-                    <BodyShort className="mb-4">Du får utbetalt:</BodyShort>
                     <Heading level="2" size="large">
                         {annullertEllerRevurdert ? (
                             <del>
@@ -41,6 +40,9 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
                         ) : (
                             <span>{belop + ' kr'}</span>
                         )}
+                        <BodyShort as="span" className="block">
+                            Utbetales til deg
+                        </BodyShort>
                     </Heading>
                 </div>
             }

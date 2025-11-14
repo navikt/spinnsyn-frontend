@@ -20,7 +20,7 @@ const Sykepengedager = ({ vedtak }: VedtakProps) => {
         return fallbackEstimertSluttdato(vedtak)
     }
 
-    const sluttdato = finnSluttdato().format('D. MMM YYYY')
+    const sluttdato = finnSluttdato().format('D. MMMM YYYY')
     const sluttPaAktuelleVedtaksPeriode = tilLesbarDatoMedArstall(vedtak.vedtak.tom)
 
     return (

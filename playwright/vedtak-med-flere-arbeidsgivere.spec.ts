@@ -19,7 +19,7 @@ test.describe('Vedtak med flere arbeidsgivere', () => {
             await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
         })
 
-        await expect(page.getByText('1 359 kroner')).toBeVisible()
+        await harSynligTittel(page, '1 359 kr Utbetales til Industrifabrikken AS', 2)
         await expect(page.getByText('Utbetales til Industrifabrikken AS')).toBeVisible()
 
         await visBeregningRegion(page)

@@ -29,7 +29,6 @@ test.describe('Kombinasjonutbetaling', () => {
 
         const personutbetalingSection = page.getByTestId(/personutbetaling/)
         await test.step('Sjekk detaljer om utbetaling', async () => {
-            await expect(personutbetalingSection.getByText('Du får utbetalt')).toBeVisible()
             await expect(
                 personutbetalingSection.getByText(
                     'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på Min side slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
@@ -49,14 +48,14 @@ test.describe('Kombinasjonutbetaling', () => {
         })
 
         await test.step('Sjekk headerbeløp', async () => {
-            await harSynligTittel(page, '24 550 kr', 2)
+            await harSynligTittel(page, '24 550 kr Utbetales til deg', 2)
         })
     })
 
     test('Viser info om utbetaling til arbeidsgiveren', async ({ page }) => {
         await test.step('Sjekk utbetaling til arbeidsgiver', async () => {
             await expect(page.getByText('Pengene utbetales til arbeidsgiveren din')).toBeVisible()
-            await expect(page.getByText('4 910 kroner').locator('..')).toContainText('Utbetales til Matbutikken AS')
+            await harSynligTittel(page, '4 910 kr Utbetales til Matbutikken AS', 2)
         })
 
         const refusjonSection = page.getByTestId('refusjon')

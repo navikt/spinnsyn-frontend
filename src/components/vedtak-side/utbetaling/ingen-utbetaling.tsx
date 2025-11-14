@@ -1,7 +1,5 @@
 import { BodyShort, Heading, Link, List } from '@navikt/ds-react'
 
-import { storeTilStoreOgSmå } from '../../../utils/store-små'
-import { getLedetekst, tekst } from '../../../utils/tekster'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
@@ -14,7 +12,6 @@ import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avs
 export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
-    const utbetalingsType = vedtak.sykepengebelopPerson > 0 ? 'personutbetaling' : 'refusjon'
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'Avslag') !== undefined
     const oppsumertAvslagObject: OppsumertAvslagListeProps = {
         ...finnOppsumertAvslag(vedtak, 'alleDager'),
@@ -38,17 +35,10 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
                     ) : (
                         <span>{ingenUtbetalingTittel}</span>
                     )}
-                    {vedtak.sykepengebelopArbeidsgiver > 0 && (
-                        <BodyShort as="span" className="block">
-                            {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
-                                '%ARBEIDSGIVER%': storeTilStoreOgSmå(vedtak.orgnavn),
-                            })}
-                        </BodyShort>
-                    )}
                 </Heading>
             }
             erUgyldig={annullertEllerRevurdert}
-            dataTestId={utbetalingsType}
+            dataTestId="ingen"
         >
             <VedtakPeriode vedtak={vedtak} />
 

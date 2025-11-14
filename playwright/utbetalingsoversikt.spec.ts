@@ -21,9 +21,7 @@ test.describe('Utbetalingsoversikt', () => {
 
     test('Utbetalingsoversikt', async ({ page }) => {
         await trykkPaVedtakMedId(page, vedtakMed40Grad.id)
-
-        await expect(page.getByText('8 960 kroner')).toBeVisible()
-        await expect(page.getByText('Utbetales til Pengeløs Sparebank')).toBeVisible()
+        await harSynligTittel(page, '8 960 kr Utbetales til Pengeløs Sparebank', 2)
 
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()

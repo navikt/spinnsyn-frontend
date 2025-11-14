@@ -174,11 +174,11 @@ test.describe('Avviste dager', () => {
         await trykkPaVedtakMedId(page, avvistVedtakMedLavInntektDirekteUtbetaling.id)
         await expect(page.getByText('Ingen utbetaling')).toBeVisible()
 
-        const refusjonsPanel = page.getByTestId('utbetaling-panel-refusjon')
-        await expect(refusjonsPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
-        await expect(refusjonsPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
-        await expect(refusjonsPanel.getByRole('listitem').getByText('For lav inntekt')).toBeVisible()
-        await expect(refusjonsPanel.getByRole('listitem').getByText('Etter dødsfall')).toBeVisible()
+        const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
+        await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
+        await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
+        await expect(ingenUtbetalingPanel.getByRole('listitem').getByText('For lav inntekt')).toBeVisible()
+        await expect(ingenUtbetalingPanel.getByRole('listitem').getByText('Etter dødsfall')).toBeVisible()
 
         const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
         await expect(avvisteDagerRegion).toContainText('4 sykepengedager')
@@ -237,11 +237,13 @@ test.describe('Avviste dager', () => {
         await page.goto('/syk/sykepenger?testperson=avvist-fra-bomlo')
         await trykkPaVedtakMedId(page, avslåttFraBømlo.id)
 
-        const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
-        await expect(refusjonPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
-        await expect(refusjonPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
-        await expect(refusjonPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt')).toBeVisible()
-        await refusjonPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
+        const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
+        await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
+        await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
+        await expect(
+            ingenUtbetalingPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt'),
+        ).toBeVisible()
+        await ingenUtbetalingPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
 
         const begrunnelseForAvslag = page.getByRole('button', { name: 'Begrunnelse for avslått søknad' })
         await expect(begrunnelseForAvslag).toBeVisible()
