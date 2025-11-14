@@ -66,7 +66,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
-    const ingenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
+    const harIngenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
     const harAvvisteDager = avvisteDager.length > 0
     const erDelvisInnvilget = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
@@ -86,8 +86,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         }
     }
 
-    const vedtakMedBareArbeidsgiverperiodedager = !erDirekteutbetaling && !erRefusjon && !harAvvisteDager
-    const skalViseRefusjon = erRefusjon || vedtakMedBareArbeidsgiverperiodedager
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     const julesoknad = skalViseJulesoknadWarning(vedtak)
@@ -127,11 +125,11 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 </Alert>
             )}
 
-            {skalViseRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
+            {erRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <RefusjonMedInntekt vedtak={vedtak} />
             )}
             {erDirekteutbetaling && <PersonutbetalingMedInntekt vedtak={vedtak} />}
-            {ingenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
+            {harIngenUtbetaling && <IngenUtbetaling vedtak={vedtak} />}
             {(() => {
                 switch (vedtak.vedtak.yrkesaktivitetstype) {
                     case 'ARBEIDSTAKER':
