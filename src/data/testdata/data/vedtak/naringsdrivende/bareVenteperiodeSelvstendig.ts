@@ -1,0 +1,75 @@
+import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
+
+export const bareVenteperiodeSelvstendig: RSVedtakWrapper = {
+    id: 'tilfeldig-uuid-bare-venteperiode-vedtak',
+    orgnavn: 'Wooley Socks ENK',
+    vedtak: {
+        vedtakFattetTidspunkt: '2023-09-05',
+        yrkesaktivitetstype: 'SELVSTENDIG',
+        sykepengegrunnlag: 620_000,
+        begrensning: 'ER_IKKE_6G_BEGRENSET',
+        fom: '2023-08-01',
+        tom: '2023-08-15',
+        sykepengegrunnlagsfakta: {
+            fastsatt: 'EtterHovedregel',
+            '6G': 780_960,
+            tags: [],
+            selvstendig: {
+                beregningsgrunnlag: 620_000,
+                pensjonsgivendeInntekter: [
+                    { årstall: 2022, beløp: 720_000 },
+                    { årstall: 2021, beløp: 620_000 },
+                    { årstall: 2020, beløp: 520_000 },
+                ],
+            },
+        },
+        utbetaling: {
+            organisasjonsnummer: '123456789',
+            utbetalingId: 'utbetaling1',
+            forbrukteSykedager: 23,
+            gjenståendeSykedager: 248,
+            automatiskBehandling: false,
+            foreløpigBeregnetSluttPåSykepenger: '2024-07-31',
+            utbetalingType: 'UTBETALING',
+            personOppdrag: {
+                utbetalingslinjer: [
+                    {
+                        fom: '2023-08-23',
+                        tom: '2023-08-31',
+                        dagsats: 2000,
+                        stønadsdager: 0,
+                        grad: 100,
+                    },
+                ],
+            },
+            utbetalingsdager: [
+                { dato: '2023-08-01', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-02', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-03', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-04', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-05', type: 'NavHelgDag', begrunnelser: [] },
+                { dato: '2023-08-06', type: 'NavHelgDag', begrunnelser: [] },
+                { dato: '2023-08-07', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-08', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-09', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-10', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-11', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-12', type: 'NavHelgDag', begrunnelser: [] },
+                { dato: '2023-08-13', type: 'NavHelgDag', begrunnelser: [] },
+                { dato: '2023-08-14', type: 'Ventetidsdag', begrunnelser: [] },
+                { dato: '2023-08-15', type: 'Ventetidsdag', begrunnelser: [] },
+            ],
+        },
+        dokumenter: [
+            { dokumentId: 'dokument1', type: 'Søknad' },
+            { dokumentId: 'dokument2', type: 'Sykmelding' },
+        ],
+    },
+    lest: false,
+    organisasjoner: {},
+    lestDato: null,
+    opprettetTimestamp: '2024-07-01T12:52:49.722204Z',
+    andreArbeidsgivere: {},
+    annullert: false,
+    revurdert: false,
+}
