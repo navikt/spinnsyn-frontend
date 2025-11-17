@@ -1,7 +1,8 @@
 import { ingenUtbetalingFordiAlleDagerHelg } from '../src/data/testdata/data/vedtak/ingenUtbetalingFordiAlleDagerHelg'
 
-import { test, expect } from './fixtures'
+import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
+import { DAGTYPE_FORKLARINGER } from './utils/dagtype-forklaringer'
 
 const baseUrl = 'http://localhost:3000/syk/sykepenger?testperson=diverse-data'
 
@@ -26,6 +27,6 @@ test.describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som f√
         ])
 
         const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
-        await expect(forklaring.getByText('Sykepenger betales bare for dagene mandag til fredag')).toBeVisible()
+        await expect(forklaring.getByText(DAGTYPE_FORKLARINGER.NavHelgDag.description)).toBeVisible()
     })
 })

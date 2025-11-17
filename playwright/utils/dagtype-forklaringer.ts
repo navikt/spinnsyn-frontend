@@ -20,7 +20,7 @@ export const DAGTYPE_FORKLARINGER = {
     NavHelgDag: {
         label: 'Helg',
         description:
-            'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får.',
+            'Du får bare sykepenger for dagene mandag til fredag. Hvis du jobber i helgen, blir disse dagene likevel tatt med i beregningen, men utbetalingen blir fordelt på ukedagene. Du får ikke sykepenger hvis du bare har vært sykmeldt lørdag og/eller søndag. Se folketrygdloven § 8-11.',
     },
     Fridag: {
         label: 'Fridag',

@@ -8,9 +8,6 @@ import { DAGTYPE_FORKLARINGER } from './utils/dagtype-forklaringer'
 
 const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 11
 
-const FORKLARING_HELG_TEXT =
-    'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten du har på helgedagene, fordeles på ukedagene. Hvis du derimot kun er sykmeldt en lørdag eller søndag, utbetales det ikke sykepenger. Se folketrygdloven § 8-11.'
-
 test.describe('Utbetalingsoversikt', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger')
