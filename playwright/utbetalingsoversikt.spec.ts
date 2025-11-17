@@ -8,8 +8,6 @@ import { DAGTYPE_FORKLARINGER } from './utils/dagtype-forklaringer'
 
 const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 11
 
-const FORKLARING_DELVIS_SYK_TEXT =
-    'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.'
 const FORKLARING_HELG_TEXT =
     'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten du har på helgedagene, fordeles på ukedagene. Hvis du derimot kun er sykmeldt en lørdag eller søndag, utbetales det ikke sykepenger. Se folketrygdloven § 8-11.'
 
@@ -51,12 +49,12 @@ test.describe('Utbetalingsoversikt', () => {
         await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
 
         const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
-        await expect(forklaring.locator('.navds-tag').nth(0)).toHaveText('Delvis syk')
+        await expect(forklaring.locator('.navds-tag').nth(0)).toHaveText('Syk')
         await expect(forklaring.locator('.navds-tag').nth(1)).toHaveText('Helg')
         await harSynligTittel(page, 'Forklaring', 4)
 
-        await expect(forklaring).toContainText(FORKLARING_DELVIS_SYK_TEXT)
-        await expect(forklaring).toContainText(FORKLARING_HELG_TEXT)
+        await expect(forklaring).toContainText(DAGTYPE_FORKLARINGER.NavDagSyk.description)
+        await expect(forklaring).toContainText(DAGTYPE_FORKLARINGER.NavHelgDag.description)
     })
 
     test('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', async ({ page }) => {
@@ -69,7 +67,7 @@ test.describe('Utbetalingsoversikt', () => {
             await verifyDagTabellRows(dagTabell, [
                 ['30.jan.', 'Ikke sykmeldt', '-'],
                 ['31.jan.', 'Helg', '-'],
-                ['01.feb.', 'Syk', formaterValuta(1_000)],
+                ['01.feb.', '100 % syk', formaterValuta(1_000)],
                 ['06.feb.', 'Helg', '-'],
                 ['08.feb.', '40 % syk', formaterValuta(400)],
                 ['11.feb.', 'Fridag', '-'],

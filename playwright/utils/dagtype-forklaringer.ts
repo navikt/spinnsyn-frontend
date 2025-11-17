@@ -9,24 +9,18 @@ export const DAGTYPE_FORKLARINGER = {
     },
     NavDagSyk: {
         label: 'Syk',
-        description: 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
+        description:
+            'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet. Hvor mye du får kommer an på om du har hatt inntekt eller jobbet mens du var syk, eller om du har fått annen pengestøtte fra Nav i tillegg. Se folketrygdloven § 8-13, andre avsnitt.',
     },
-
     Ventetidsdag: {
         label: 'Dekkes ikke av Nav',
         description:
             'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav om at du er syk og ikke kan jobbe.',
     },
-
     NavHelgDag: {
         label: 'Helg',
         description:
             'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får.',
-    },
-    NavDagDelvisSyk: {
-        label: 'Delvis syk',
-        description:
-            'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
     },
     Fridag: {
         label: 'Fridag',

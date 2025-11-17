@@ -69,11 +69,8 @@ const UtbetalingTekster = {
         'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
     'utbetaling.tabell.label.NavDag': '',
-    'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
-    'utbetaling.tabell.label.NavDagDelvisSyk':
-        'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
-    'utbetaling.tabell.label.NavDagDelvisSykUnder20':
-        'For å kunne få sykepenger må du være borte fra jobben minst 20 % av tiden på grunn av sykdom eller skade. Selv om inntektstapet ditt er mindre enn 20 %, har vi vurdert at arbeidstiden er redusert med minst 20 %. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>.',
+    'utbetaling.tabell.label.NavDagSyk':
+        'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet. Hvor mye du får kommer an på om du har hatt inntekt eller jobbet mens du var syk, eller om du har fått annen pengestøtte fra Nav i tillegg. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, andre avsnitt.',
     'utbetaling.tabell.label.NavHelgDag':
         'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten du har på helgedagene, fordeles på ukedagene. Hvis du derimot kun er sykmeldt en lørdag eller søndag, utbetales det ikke sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-11" target="_blank">folketrygdloven § 8-11</a>.',
     'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',

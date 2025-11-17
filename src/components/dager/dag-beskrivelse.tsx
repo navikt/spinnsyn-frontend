@@ -13,14 +13,6 @@ interface DagBeskrivelseProps {
 }
 
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
-    const delvisUnder20Prosent = (dag: RSDag) => {
-        if (dag.dagtype == 'NavDagDelvisSyk' && dag.grad < 20 && dag.grad > 0) {
-            return 'NavDagDelvisSykUnder20'
-        } else {
-            return dag.dagtype
-        }
-    }
-
     const lovhjemmel = (dag: RSDag) => {
         if (dag.begrunnelser.length > 0) {
             return parserWithReplace(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
@@ -57,13 +49,10 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
     }
 
     const unikeDager = (): RSDag[] => {
-        const delvisUnder20Dag = dager.find((dag: RSDag) => delvisUnder20Prosent(dag) === 'NavDagDelvisSykUnder20')
-
-        if (delvisUnder20Dag) {
-            delvisUnder20Dag.dagtype = 'NavDagDelvisSykUnder20'
-        }
-
         const unikeDagtyper = dager.reduce((list: RSDag[], dag) => {
+            if (dag.dagtype === 'NavDagDelvisSyk') {
+                dag.dagtype = 'NavDagSyk'
+            }
             if (!erAvvistEllerAndreYtelser(dag) && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
                 list.push(dag)
             }
