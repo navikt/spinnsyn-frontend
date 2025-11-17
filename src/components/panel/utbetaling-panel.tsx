@@ -1,7 +1,7 @@
 import { BodyShort, Box } from '@navikt/ds-react'
 import React, { useEffect } from 'react'
 
-import { logEvent } from '../amplitude/amplitude'
+import { logEvent } from '../umami/umami'
 
 interface UtbetalingPanelProps {
     tittel: React.ReactNode

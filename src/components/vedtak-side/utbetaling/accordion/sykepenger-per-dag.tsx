@@ -6,7 +6,7 @@ import DagBeskrivelse from '../../../dager/dag-beskrivelse'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
 import { dagErAvvist, VedtakProps } from '../../vedtak'
-import { logEvent } from '../../../amplitude/amplitude'
+import { logEvent } from '../../../umami/umami'
 import { ScrollElementType, useScroll } from '../../../../context/scroll-context'
 
 interface SykepengerPerDagProps {

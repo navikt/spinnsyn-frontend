@@ -5,7 +5,7 @@ env:
   MOCK_BACKEND: false
   ENVIRONMENT: prod
   OPPLAERING: false
-  AMPLITUDE_ENABLED: false
+  UMAMI_ENABLED: false
   DECORATOR_ENV: prod
   UTVIKLING_ARKIVERING: false
   ARKIVERING: false

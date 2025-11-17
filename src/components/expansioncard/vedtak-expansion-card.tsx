@@ -2,7 +2,7 @@ import { BodyShort, ExpansionCard, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
-import { logEvent } from '../amplitude/amplitude'
+import { logEvent } from '../umami/umami'
 
 export interface VedtakExpansionCard {
     vedtak: RSVedtakWrapper
@@ -17,7 +17,7 @@ export interface VedtakExpansionCard {
 
 const sykepengedagerRegex = /^\d+ sykepengedag(er)?$/
 
-// Denne tittelen kan inneholde tall som er unike per bruker, noe som gir en rekke dupliserte entries i amplitude. Derfor fjerner vi tallene.
+// Denne tittelen kan inneholde tall som er unike per bruker, noe som gir en rekke dupliserte entries i umami. Derfor fjerner vi tallene.
 const cleanLogEventTittel = (tittel: string): string => {
     if (sykepengedagerRegex.test(tittel)) {
         return 'X sykepengedag(er)'
