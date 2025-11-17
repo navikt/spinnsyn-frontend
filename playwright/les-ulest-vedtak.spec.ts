@@ -30,7 +30,7 @@ test.describe('Les uleste vedtak', () => {
         await trykkPaVedtakMedId(page, alleAvvisteDager.id)
         await test.step('Sjekk URL og hovedtekst', async () => {
             await expect(page).toHaveURL(new RegExp(`id=${alleAvvisteDager.id}`))
-            await expect(page.getByText('Vi fattet vedtaket 22.')).toBeVisible()
+            await expect(page.getByText('Søknaden ble behandlet 22. februar 2021.')).toBeVisible()
         })
 
         await test.step('Sjekk mer om beregningen', async () => {

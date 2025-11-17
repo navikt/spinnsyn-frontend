@@ -1,34 +1,20 @@
-import { BodyLong, BodyShort, Heading } from '@navikt/ds-react'
+import { BodyLong, Heading } from '@navikt/ds-react'
 import React from 'react'
 
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
-import { VedtakProps } from '../vedtak'
+import { Dokument } from '../../../types/rs-types/rs-vedtak-felles'
 
-const renderInntektsopplysninger = (inntektFraAOrdningLagtTilGrunn: boolean) => {
-    if (inntektFraAOrdningLagtTilGrunn) {
-        return (
-            <>
-                <BodyShort weight="semibold">Spørsmål til opplysninger hentet fra a-ordningen?</BodyShort>
-                <BodyLong spacing>
-                    <LenkeMedAmplitude
-                        url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
-                        tekst="Ta kontakt med Nav"
-                    />
-                    .
-                </BodyLong>
-            </>
-        )
-    } else {
-        return (
-            <>
-                <BodyShort weight="semibold">Spørsmål til opplysninger i inntektsmeldingen?</BodyShort>
-                <BodyLong spacing>Ta kontakt med arbeidsgiveren din</BodyLong>
-            </>
-        )
+type SporsmalEllerFeilProps = {
+    vedtak: {
+        vedtak: {
+            dokumenter: Dokument[]
+            tags?: string[]
+            yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG'
+        }
     }
 }
 
-export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
+export const SporsmalEllerFeil = ({ vedtak }: SporsmalEllerFeilProps) => {
     const soknadsLenke = () => {
         const relatertSoknad = vedtak.vedtak.dokumenter.filter((dokument) => dokument.type === 'Søknad')
         if (relatertSoknad.length === 1) {
@@ -40,6 +26,20 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
         return { url: '/syk/sykepengesoknad' }
     }
 
+    const inntektsmeldingLenke = () => {
+        const relaterteInntektsmeldinger = vedtak.vedtak.dokumenter.filter(
+            (dokument) => dokument.type === 'Inntektsmelding',
+        )
+        if (relaterteInntektsmeldinger.length === 1) {
+            const inntektsmeldingId = relaterteInntektsmeldinger[0].dokumentId
+            return {
+                url: `/syk/sykefravaer/inntektsmeldinger/${inntektsmeldingId}`,
+                cleanUrl: '/syk/sykefravaer/inntektsmeldinger/inntektsmeldingId',
+            }
+        }
+        return { url: '/syk/sykefravaer/inntektsmeldinger' }
+    }
+
     const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
     return (
@@ -48,16 +48,55 @@ export const SporsmalEllerFeil = ({ vedtak }: VedtakProps) => {
                 Spørsmål eller feil
             </Heading>
             <BodyLong spacing>
-                Har du funnet en feil i vedtaket som skyldes feil i søknaden kan du endre dette selv ved å{' '}
-                <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />. Da vil saken din bli vurdert
-                på nytt.
+                Hvis du vil se opplysningene svaret er basert på, har funnet en feil, eller har andre spørsmål,{' '}
+                <LenkeMedAmplitude
+                    tekst="ta kontakt med Nav"
+                    url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                />
             </BodyLong>
-            {vedtak.vedtak.yrkesaktivitetstype === 'ARBEIDSTAKER' &&
-                renderInntektsopplysninger(inntektFraAOrdningLagtTilGrunn)}
             <BodyLong spacing>
-                Har du andre spørsmål, kan du{' '}
-                <LenkeMedAmplitude url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" tekst="kontakte Nav" />.
+                Har du funnet en feil som skyldes feil i søknaden kan du{' '}
+                <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />.
             </BodyLong>
+            {vedtak.vedtak.yrkesaktivitetstype === 'ARBEIDSTAKER' && (
+                <Inntektsopplysninger
+                    inntektFraAOrdningLagtTilGrunn={inntektFraAOrdningLagtTilGrunn}
+                    inntektsmeldingLenke={inntektsmeldingLenke}
+                />
+            )}
         </>
     )
+}
+
+const Inntektsopplysninger = ({
+    inntektFraAOrdningLagtTilGrunn,
+    inntektsmeldingLenke,
+}: {
+    inntektFraAOrdningLagtTilGrunn: boolean
+    inntektsmeldingLenke: () => { url: string; cleanUrl?: string }
+}) => {
+    if (inntektFraAOrdningLagtTilGrunn) {
+        return (
+            <>
+                <BodyLong spacing>
+                    Har du spørsmål om opplysningene som er hentet fra a-ordningen, kan du
+                    <LenkeMedAmplitude
+                        url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                        tekst="ta kontakt med Nav"
+                    />
+                    .
+                </BodyLong>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <BodyLong spacing>
+                    Har du spørsmål til opplysningene i{' '}
+                    <LenkeMedAmplitude {...inntektsmeldingLenke()} tekst="inntektsmeldingen" />, kontakt arbeidsgiveren
+                    din.
+                </BodyLong>
+            </>
+        )
+    }
 }

@@ -52,7 +52,7 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
 
         const behandlingBody = page.getByTestId('behandling-body')
         await expect(behandlingBody).toContainText(
-            'Vi fattet vedtaket 23. oktober 2021. Opplysningene ble hentet fra søknaden din og offentlige registre.',
+            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din og offentlige registre.  Søknaden ble behandlet 23. oktober 2021.',
         )
         expect(
             page
