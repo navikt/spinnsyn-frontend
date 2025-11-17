@@ -163,7 +163,7 @@ test.describe('Vedtak for arkivering', () => {
             const sykepengerTilArbeidsgiver = sykepengerTilArbeidsgiverKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilArbeidsgiver).toBeVisible()
             await verifyDagTabellRows(sykepengerTilArbeidsgiver, [
-                ['08.feb.', 'Arbeidsgiveren betaler', '-'],
+                ['08.feb.', 'Arbeidsgiverperiode', '-'],
                 ['20.feb.', '100 % syk'],
             ])
         })

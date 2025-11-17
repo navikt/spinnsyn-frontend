@@ -1,7 +1,8 @@
 export const DAGTYPE_FORKLARINGER = {
     ArbeidsgiverperiodeDag: {
-        label: 'Arbeidsgiveren betaler',
-        description: 'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
+        label: 'Arbeidsgiverperiode',
+        description:
+            'Arbeidsgiveren din betaler sykepengene de første 16 dagene du er syk. Se folketrygdloven § 8-19, første avsnitt.',
     },
     Arbeidsdag: {
         label: 'Ikke sykmeldt',

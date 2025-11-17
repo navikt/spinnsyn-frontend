@@ -66,7 +66,7 @@ const UtbetalingTekster = {
         'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/nb/#utbetaling">Min side</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag':
-        'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
+        'Arbeidsgiveren din betaler sykepengene de første 16 dagene du er syk. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-19">folketrygdloven § 8-19</a>, første avsnitt.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
     'utbetaling.tabell.label.NavDag': '',
     'utbetaling.tabell.label.NavDagSyk':

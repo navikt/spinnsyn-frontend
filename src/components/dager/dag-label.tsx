@@ -36,7 +36,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'ArbeidsgiverperiodeDag':
                 return (
                     <Tag size="small" variant="info">
-                        Arbeidsgiveren&nbsp;betaler
+                        Arbeidsgiverperiode
                     </Tag>
                 )
 
