@@ -19,7 +19,7 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
         if (erAutomatiskBehandlet) {
             return 'Søknaden ble behandlet automatisk'
         } else {
-            return 'Søknaden ble behandlet av en saksbehandler'
+            return 'Søknaden ble behandlet manuelt'
         }
     }
 

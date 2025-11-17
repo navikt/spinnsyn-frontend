@@ -21,7 +21,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await page.goto(
             `http://localhost:3000/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=${vedtakMedFlereArbeidsgivere.id}`,
         )
-        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet av en saksbehandler')
+        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
             'Vi fattet vedtaket 21. mars 2022. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
@@ -55,7 +55,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await expect(alert).not.toContainText(
             'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
         )
-        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet av en saksbehandler')
+        await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
             'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
         )
