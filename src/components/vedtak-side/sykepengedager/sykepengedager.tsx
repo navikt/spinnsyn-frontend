@@ -7,7 +7,7 @@ import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { ArkiveringContext } from '../../../context/arkivering-context'
-import { logEvent } from '../../amplitude/amplitude'
+import { logEvent } from '../../umami/umami'
 
 const Sykepengedager = ({ vedtak }: VedtakProps) => {
     const arkivering = useContext(ArkiveringContext)

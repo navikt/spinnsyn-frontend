@@ -7,7 +7,7 @@ import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
 import { VedtakProps } from '../../vedtak'
 import { erWeekendPeriode } from '../../../../utils/dato-utils'
-import { logEvent } from '../../../amplitude/amplitude'
+import { logEvent } from '../../../umami/umami'
 
 interface SykepengerPerDagProps {
     dager: RSDag[]

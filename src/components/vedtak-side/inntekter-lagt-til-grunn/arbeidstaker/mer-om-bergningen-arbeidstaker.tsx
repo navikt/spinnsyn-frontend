@@ -7,7 +7,7 @@ import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere
 import { tekst } from '../../../../utils/tekster'
 import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
 import { useScroll } from '../../../../context/scroll-context'
-import { logEvent } from '../../../amplitude/amplitude'
+import { logEvent } from '../../../umami/umami'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet

@@ -5,7 +5,7 @@ import { Chat2Icon } from '@navikt/aksel-icons'
 import { tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
-import { logEvent } from '../../amplitude/amplitude'
+import { logEvent } from '../../umami/umami'
 
 const RevurdertAlert = () => {
     return (

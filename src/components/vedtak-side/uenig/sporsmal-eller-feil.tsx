@@ -1,7 +1,7 @@
 import { BodyLong, Heading } from '@navikt/ds-react'
 import React from 'react'
 
-import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
+import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
 import { Dokument } from '../../../types/rs-types/rs-vedtak-felles'
 
 type SporsmalEllerFeilProps = {
@@ -49,14 +49,11 @@ export const SporsmalEllerFeil = ({ vedtak }: SporsmalEllerFeilProps) => {
             </Heading>
             <BodyLong spacing>
                 Hvis du vil se opplysningene svaret er basert på, har funnet en feil, eller har andre spørsmål,{' '}
-                <LenkeMedAmplitude
-                    tekst="ta kontakt med Nav"
-                    url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
-                />
+                <LenkeMedUmami tekst="ta kontakt med Nav" url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" />
             </BodyLong>
             <BodyLong spacing>
                 Har du funnet en feil som skyldes feil i søknaden kan du{' '}
-                <LenkeMedAmplitude {...soknadsLenke()} tekst="endre svarene i søknaden" />.
+                <LenkeMedUmami {...soknadsLenke()} tekst="endre svarene i søknaden" />.
             </BodyLong>
             {vedtak.vedtak.yrkesaktivitetstype === 'ARBEIDSTAKER' && (
                 <Inntektsopplysninger
@@ -80,7 +77,7 @@ const Inntektsopplysninger = ({
             <>
                 <BodyLong spacing>
                     Har du spørsmål om opplysningene som er hentet fra a-ordningen, kan du
-                    <LenkeMedAmplitude
+                    <LenkeMedUmami
                         url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
                         tekst="ta kontakt med Nav"
                     />
@@ -93,8 +90,7 @@ const Inntektsopplysninger = ({
             <>
                 <BodyLong spacing>
                     Har du spørsmål til opplysningene i{' '}
-                    <LenkeMedAmplitude {...inntektsmeldingLenke()} tekst="inntektsmeldingen" />, kontakt arbeidsgiveren
-                    din.
+                    <LenkeMedUmami {...inntektsmeldingLenke()} tekst="inntektsmeldingen" />, kontakt arbeidsgiveren din.
                 </BodyLong>
             </>
         )

@@ -63,7 +63,7 @@ npm run test
 npm run play
 ```
 
-## Dette logges i Amplitude
+## Dette logges i Umami
 
 | brukers handling/logg                                        | Skjemanavn | Destinasjon | tekst | komponent | Tidligere lest | Revurdert | Annulert | Refusjon | Brukerutbetaling | Flere vedtK |
 |--------------------------------------------------------------|:----------:|:-----------:|:-----:|:---------:|:--------------:|:---------:|:--------:|:--------:|:----------------:|:-----------:|

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import useMerkVedtakSomLest from '../../hooks/useMerkVedtakSomLest'
 import useVedtak from '../../hooks/useVedtak'
 import { spinnsynFrontendInterne } from '../../utils/environment'
-import { logEvent } from '../amplitude/amplitude'
+import { logEvent } from '../umami/umami'
 
 import Vedtak, { VedtakProps } from './vedtak'
 

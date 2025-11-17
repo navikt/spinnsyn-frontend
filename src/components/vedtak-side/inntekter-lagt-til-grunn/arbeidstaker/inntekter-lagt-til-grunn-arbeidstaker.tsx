@@ -15,7 +15,7 @@ import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { useWindowSize } from '../../../../utils/useWindowSize'
 import { erWeekendPeriode } from '../../../../utils/dato-utils'
 import { RSVedtakArbeidstaker } from '../../../../types/rs-types/rs-vedtak-felles'
-import { logEvent } from '../../../amplitude/amplitude'
+import { logEvent } from '../../../umami/umami'
 import BeregningÅrsinntektFlereArbeidsgivere from '../beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from '../info-seksjon'
 

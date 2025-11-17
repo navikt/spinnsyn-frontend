@@ -8,7 +8,7 @@ import DagBeskrivelse from '../../dager/dag-beskrivelse'
 import DagTabell from '../../dager/dag-tabell'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { useScroll } from '../../../context/scroll-context'
-import { logEvent } from '../../amplitude/amplitude'
+import { logEvent } from '../../umami/umami'
 
 interface AvvisteDagerProps {
     avvisteDager: RSDag[]
