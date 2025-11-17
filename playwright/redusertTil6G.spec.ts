@@ -1,7 +1,12 @@
 import { vedtakMedDetMeste } from '../src/data/testdata/data/vedtak/medDetMeste'
 import { formaterValuta } from '../src/utils/valuta-utils'
 
-import { beregnetManedsinntektRegion, trykkPaVedtakMedId, visBeregningRegion } from './utils/hjelpefunksjoner'
+import {
+    beregnetManedsinntektRegion,
+    harSynligTittel,
+    trykkPaVedtakMedId,
+    visBeregningRegion,
+} from './utils/hjelpefunksjoner'
 import { expect, test } from './fixtures'
 
 test.describe('Redusert til 6 G', () => {
@@ -12,7 +17,7 @@ test.describe('Redusert til 6 G', () => {
     })
 
     test('Utbetalingsoversikt', async ({ page }) => {
-        await expect(page.getByText('3 021 kroner').locator('..')).toContainText('til Posten Norge AS, Bærum')
+        await harSynligTittel(page, '3 021 kr Utbetales til Posten Norge AS, Bærum', 2)
 
         const beregningRegion = await visBeregningRegion(page)
         const beregnetManedsinntekt = await beregnetManedsinntektRegion(page)

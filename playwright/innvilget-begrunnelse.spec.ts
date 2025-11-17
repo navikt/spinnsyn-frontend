@@ -7,7 +7,7 @@ test.describe('Begrunnelse', () => {
             'http://localhost:3000/syk/sykepenger?testperson=innvilgelse-med-begrunnelse&id=bcd7b2ec-fcc1-4a8b-816c-42256138d0c4',
         )
 
-        await harSynligTittel(page, '10 449 kroner Utbetales til Sauefabrikk', 2)
+        await harSynligTittel(page, '10 449 kr Utbetales til Sauefabrikk', 2)
         await expect(page.getByText('Noen av dagene er ikke innvilget fordi:')).toHaveCount(0)
 
         await page.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
