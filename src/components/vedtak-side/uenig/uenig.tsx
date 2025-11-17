@@ -10,7 +10,7 @@ import { VedtakProps } from '../vedtak'
 const Uenig = ({ vedtak }: VedtakProps) => {
     return (
         <>
-            <Heading size="small" level="2">
+            <Heading size="small" level="2" spacing>
                 {tekst('uenig.tittel')}
             </Heading>
             <BodyLong spacing>

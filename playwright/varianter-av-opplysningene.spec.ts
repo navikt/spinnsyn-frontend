@@ -12,7 +12,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakMedDetMeste.id}`)
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet automatisk')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Vi fattet vedtaket 23. oktober 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din.  Søknaden ble behandlet 23. oktober 2021.',
         )
         await expect(page.getByTestId('ugyldig')).toHaveCount(0)
     })
@@ -23,7 +23,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         )
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Vi fattet vedtaket 21. mars 2022. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din.  Søknaden ble behandlet 21. mars 2022.',
         )
         await expect(page.getByTestId('ugyldig')).toHaveCount(0)
     })
@@ -39,7 +39,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         await expect(alert).not.toContainText('Du finner det nye vedtaket i listen over svar på søknader')
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet automatisk')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Vi fattet vedtaket 4. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din.  Søknaden ble behandlet 4. mai 2021.',
         )
         await expect(page.getByRole('region', { name: 'Gjenstående sykepengedager' }).first()).toHaveCSS(
             'background-color',
@@ -57,7 +57,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         )
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Vi fattet vedtaket 6. mai 2021. Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din.',
+            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din.  Søknaden ble behandlet 6. mai 2021.',
         )
         await expect(page.getByRole('region', { name: 'Gjenstående sykepengedager' }).first()).toHaveCSS(
             'background-color',

@@ -3,7 +3,6 @@ import dayjs from 'dayjs'
 import React from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
-import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 import { RSVedtakFelles } from '../../../types/rs-types/rs-vedtak-felles'
 
 type BehandlingProps = {
@@ -26,12 +25,12 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
     const getOpplysningText = () => {
         switch (vedtak.yrkesaktivitetstype) {
             case 'SELVSTENDIG':
-                return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+                return 'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din og offentlige registre. '
             case 'ARBEIDSTAKER':
                 if (aordningDataErBrukt) {
-                    return 'Opplysningene ble hentet fra søknaden din og offentlige registre. '
+                    return 'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din og offentlige registre. '
                 } else {
-                    return 'Opplysningene ble hentet fra søknaden din, offentlige registre og inntektsmeldingen fra arbeidsgiveren din. '
+                    return 'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din. '
                 }
         }
     }
@@ -39,16 +38,13 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
     const formattedDate = vedtaksDato ? tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()) : null
 
     return (
-        <>
-            <Heading data-testid="behandling-header" size="small" level="2" className="mt-4">
+        <div className="mt-16">
+            <Heading data-testid="behandling-header" size="small" level="2" spacing>
                 {hentTittel()}
             </Heading>
             <BodyLong data-testid="behandling-body" spacing>
-                {formattedDate && `Vi fattet vedtaket ${formattedDate}. `}
-                {getOpplysningText()}{' '}
-                <LenkeMedAmplitude url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" tekst="Kontakt oss" /> om
-                du ønsker å se opplysningene.
+                {getOpplysningText()} {formattedDate && `Søknaden ble behandlet ${formattedDate}. `}
             </BodyLong>
-        </>
+        </div>
     )
 }
