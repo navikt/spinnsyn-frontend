@@ -108,19 +108,18 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.EtterDødsdato':
         'Nav betaler ikke sykepenger for tiden etter dødsfall. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
     'utbetaling.tabell.avvist.AndreYtelserAap':
-        'Du har mottatt arbeidsavklaringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
-    'utbetaling.tabell.avvist.AndreYtelserDagpenger':
-        'Du har mottatt dagpenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % arbeidsavklaringspenger.',
+    'utbetaling.tabell.avvist.AndreYtelserDagpenger': 'Du kan ikke få sykepenger samtidig som du får 100 % dagpenger.',
     'utbetaling.tabell.avvist.AndreYtelserForeldrepenger':
-        'Du har mottatt foreldrepenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % foreldrepenger.',
     'utbetaling.tabell.avvist.AndreYtelserOmsorgspenger':
-        'Du har mottatt omsorgspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % omsorgspenger.',
     'utbetaling.tabell.avvist.AndreYtelserOpplaringspenger':
-        'Du har mottatt opplæringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % opplæringspenger.',
     'utbetaling.tabell.avvist.AndreYtelserPleiepenger':
-        'Du har mottatt pleiepenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % pleiepenger.',
     'utbetaling.tabell.avvist.AndreYtelserSvangerskapspenger':
-        'Du har mottatt svangerskapspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % svangerskapspenger.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
 
     'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':
@@ -137,14 +136,13 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap': '',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOmsorgspenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOpplaringspenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserPleiepenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserSvangerskapspenger':
-        'Dette følger av lang og sikker rettspraksis.',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': '',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': '',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': '',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOmsorgspenger': '',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOpplaringspenger': '',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserPleiepenger': '',
+    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserSvangerskapspenger': '',
 
     'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
 }
