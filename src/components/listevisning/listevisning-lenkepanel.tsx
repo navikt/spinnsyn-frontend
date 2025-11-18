@@ -33,9 +33,6 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
         query[key] = router.query[key]
     }
     query['id'] = vedtak.id
-    const vedtakTittel = annullertEllerRevurdert
-        ? tekst('spinnsyn.teaser.annullert.tittel')
-        : tekst('spinnsyn.teaser.tittel')
     const vedtakPeriode =
         dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
     return (
@@ -56,12 +53,12 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
                 }
             >
                 <div className="flex gap-3 max-[560px]:flex-col">
-                    <div className="grow">
+                    <div className={cn('grow', { 'line-through text-text-subtle': annullertEllerRevurdert })}>
                         <LinkPanel.Title>
                             <BodyShort size="small" spacing>
                                 {vedtakPeriode}
                             </BodyShort>
-                            {vedtakTittel}
+                            {tekst('spinnsyn.teaser.tittel')}
                         </LinkPanel.Title>
                         <LinkPanel.Description>{sykmeldtFraTekstGenerator(vedtak)}</LinkPanel.Description>
                         {!isProd() && (
