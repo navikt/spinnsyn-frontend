@@ -45,7 +45,7 @@ export const DAGTYPE_FORKLARINGER = {
     ManglerOpptjening: {
         label: 'Jobbet for kort',
         description:
-            'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt, se folketrygdloven § 8-2, første avsnitt.',
+            'Du må ha vært i arbeid i minst fire uker (28 dager) fra og med dagen før du ble sykmeldt. Se folketrygdloven § 8-2, første avsnitt.',
     },
     ManglerMedlemskap: {
         label: 'Ikke medlem',

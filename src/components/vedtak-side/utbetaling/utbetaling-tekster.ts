@@ -102,7 +102,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
         'Du må ha tapt minst 20 % av arbeidstiden og/eller inntekten din mens du var syk for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
-        'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt',
+        'Du må ha vært i arbeid i minst fire uker (28 dager) fra og med dagen før du ble sykmeldt. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerMedlemskap':
         'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge',
     'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet',
@@ -133,8 +133,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67': '',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>, første avsnitt.',
+    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap':
         ', se <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven § 2-1</a>.',
     'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
