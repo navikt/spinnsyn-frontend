@@ -77,7 +77,7 @@ export const finnBegrunnelseTekst = (begrunnelse: RSBegrunnelse): string => {
         case 'EgenmeldingUtenforArbeidsgiverperiode':
             return 'Egenmelding'
         case 'MinimumSykdomsgrad':
-            return 'For mye arbeid og/eller inntekt'
+            return 'Jobbet eller tjent for mye'
         case 'ManglerOpptjening':
             return 'Jobbet for kort'
         case 'ManglerMedlemskap':

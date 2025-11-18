@@ -100,7 +100,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
         'Du kan ikke få sykepenger ved å bruke egenmelding denne dagen. For å få sykepenger, må du ha en sykmelding. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
-        'For å ha rett til sykepenger må du være borte fra jobb minst 20 % på grunn av sykdom eller skade. Sykepengenes størrelse skal beregnes på grunnlag av reduksjon i arbeidstiden og/eller inntektstap. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
+        'Du må ha tapt minst 20 % av arbeidstiden og/eller inntekten din mens du var syk for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
         'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt',
     'utbetaling.tabell.avvist.ManglerMedlemskap':

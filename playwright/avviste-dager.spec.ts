@@ -39,7 +39,7 @@ test.describe('Avviste dager', () => {
             'Maks antall dager',
             'For lav inntekt',
             'Egenmelding',
-            'For mye arbeid og/eller inntekt',
+            'Jobbet eller tjent for mye',
             'Jobbet for kort',
             'Ikke medlem',
             'Etter dødsfall',
@@ -74,7 +74,7 @@ test.describe('Avviste dager', () => {
             ['15.feb.', 'Maks antall dager'],
             ['16.feb.', 'For lav inntekt'],
             ['17.feb.', 'Egenmelding'],
-            ['18.feb.', 'For mye arbeid og/eller inntekt'],
+            ['18.feb.', 'Jobbet eller tjent for mye'],
             ['19.feb.', 'Jobbet for kort'],
             ['20.feb.', 'Ikke medlem'],
             ['21.feb.', 'Etter dødsfall'],
@@ -215,12 +215,12 @@ test.describe('Avviste dager', () => {
         const personutbetalingPanel = page.getByTestId('utbetaling-panel-personutbetaling')
         await expect(personutbetalingPanel.getByText('Søknaden er delvis innvilget')).not.toBeVisible()
         await expect(personutbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).not.toBeVisible()
-        await expect(personutbetalingPanel.getByText('For mye arbeid og/eller inntekt')).not.toBeVisible()
+        await expect(personutbetalingPanel.getByText('Jobbet eller tjent for mye')).not.toBeVisible()
 
         const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
         await expect(refusjonPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
         await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
-        await expect(refusjonPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt')).toBeVisible()
+        await expect(refusjonPanel.getByRole('listitem').getByText('Jobbet eller tjent for mye')).toBeVisible()
         await refusjonPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
 
         const begrunnelseForDelvisInnvilget = page.getByRole('button', {
@@ -242,9 +242,7 @@ test.describe('Avviste dager', () => {
         const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
         await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
         await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått fordi:')).toBeVisible()
-        await expect(
-            ingenUtbetalingPanel.getByRole('listitem').getByText('For mye arbeid og/eller inntekt'),
-        ).toBeVisible()
+        await expect(ingenUtbetalingPanel.getByRole('listitem').getByText('Jobbet eller tjent for mye')).toBeVisible()
         await ingenUtbetalingPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
 
         const begrunnelseForAvslag = page.getByRole('button', { name: 'Begrunnelse for avslått søknad' })

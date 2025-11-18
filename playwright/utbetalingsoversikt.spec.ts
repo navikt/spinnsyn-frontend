@@ -73,7 +73,7 @@ test.describe('Utbetalingsoversikt', () => {
                 ['15.feb.', 'Maks antall dager', '-'],
                 ['16.feb.', 'For lav inntekt', '-'],
                 ['17.feb.', 'Egenmelding', '-'],
-                ['18.feb.', 'For mye arbeid og/eller inntekt', '-'],
+                ['18.feb.', 'Jobbet eller tjent for mye', '-'],
                 ['19.feb.', 'Jobbet for kort', '-'],
                 ['20.feb.', 'Ikke medlem', '-'],
                 ['21.feb.', 'Etter dødsfall', '-'],

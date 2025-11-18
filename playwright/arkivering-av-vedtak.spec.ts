@@ -26,9 +26,7 @@ test.describe('Vedtak for arkivering', () => {
             const utbetalingPanel = page.getByTestId('utbetaling-panel-refusjon')
             await expect(utbetalingPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(utbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
-            await expect(
-                utbetalingPanel.getByRole('listitem').getByText(/For mye arbeid og\/eller inntekt/),
-            ).toBeVisible()
+            await expect(utbetalingPanel.getByRole('listitem').getByText(/Jobbet eller tjent for mye/)).toBeVisible()
             await expect(utbetalingPanel.getByRole('button', { name: /Se nærmere begrunnelse her/ })).toBeVisible()
         })
 
@@ -117,9 +115,7 @@ test.describe('Vedtak for arkivering', () => {
             const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
             await expect(refusjonPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
-            await expect(
-                refusjonPanel.getByRole('listitem').getByText(/For mye arbeid og\/eller inntekt/),
-            ).toBeVisible()
+            await expect(refusjonPanel.getByRole('listitem').getByText(/Jobbet eller tjent for mye/)).toBeVisible()
             await refusjonPanel.getByRole('button', { name: /Se nærmere begrunnelse her/ }).click()
         })
 
