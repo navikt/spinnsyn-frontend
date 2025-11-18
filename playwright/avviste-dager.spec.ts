@@ -96,7 +96,9 @@ test.describe('Avviste dager', () => {
             ),
         ).toBeVisible()
         await expect(
-            avvisteDagerRegion.getByText('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet,'),
+            avvisteDagerRegion.getByText(
+                'Nav betaler ikke sykepenger for tiden etter dødsfall. Se folketrygdloven § 8-3.',
+            ),
         ).toBeVisible()
 
         const avvisteDagerOversikt = avvisteDagerRegion.getByTestId('avvistedageroversikt')

@@ -105,7 +105,8 @@ const UtbetalingTekster = {
         'Du må ha vært i arbeid i minst fire uker (28 dager) fra og med dagen før du ble sykmeldt. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerMedlemskap':
         'Du må være medlem i folketrygden for å få sykepenger. Du er som regel medlem hvis du bor eller jobber i Norge. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A72-1" target="_blank">folketrygdloven § 2-1</a>.',
-    'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet',
+    'utbetaling.tabell.avvist.EtterDødsdato':
+        'Nav betaler ikke sykepenger for tiden etter dødsfall. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
     'utbetaling.tabell.avvist.AndreYtelserAap':
         'Du har mottatt arbeidsavklaringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
     'utbetaling.tabell.avvist.AndreYtelserDagpenger':
@@ -135,8 +136,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap': '',
-    'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
+    'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato': '',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis.',
     'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis.',
