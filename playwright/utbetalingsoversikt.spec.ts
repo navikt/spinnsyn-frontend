@@ -4,7 +4,6 @@ import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
-import { DAGTYPE_FORKLARINGER } from './utils/dagtype-forklaringer'
 
 const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 11
 
@@ -50,8 +49,12 @@ test.describe('Utbetalingsoversikt', () => {
         await expect(forklaring.locator('.navds-tag').nth(1)).toHaveText('Helg')
         await harSynligTittel(page, 'Forklaring', 4)
 
-        await expect(forklaring).toContainText(DAGTYPE_FORKLARINGER.NavDagSyk.description)
-        await expect(forklaring).toContainText(DAGTYPE_FORKLARINGER.NavHelgDag.description)
+        await expect(forklaring).toContainText(
+            'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet. Hvor mye du får kommer an på om du har hatt inntekt eller jobbet mens du var syk, eller om du har fått annen pengestøtte fra Nav i tillegg. Se folketrygdloven § 8-13, andre avsnitt.',
+        )
+        await expect(forklaring).toContainText(
+            'Du får bare sykepenger for dagene mandag til fredag. Hvis du jobber i helgen, blir disse dagene likevel tatt med i beregningen, men utbetalingen blir fordelt på ukedagene. Du får ikke sykepenger hvis du bare har vært sykmeldt lørdag og/eller søndag. Se folketrygdloven § 8-11.',
+        )
     })
 
     test('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', async ({ page }) => {
@@ -86,11 +89,90 @@ test.describe('Utbetalingsoversikt', () => {
         await test.step('Sjekker forklaring', async () => {
             const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
 
-            for (const [key, value] of Object.entries(DAGTYPE_FORKLARINGER)) {
-                await expect(forklaring.locator(`[data-testid="dag-label-${key}"]`)).toHaveText(value.label)
-                await expect(forklaring.locator(`[data-testid="dag-beskrivelse-${key}"]`)).toContainText(
-                    value.description,
-                )
+            const labelForklaringer = [
+                {
+                    key: 'ArbeidsgiverperiodeDag',
+                    tekst: 'Arbeidsgiveren din betaler sykepengene de første 16 dagene du er syk.',
+                },
+                {
+                    key: 'Arbeidsdag',
+                    tekst: 'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
+                },
+                {
+                    key: 'NavDagSyk',
+                    tekst: 'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet.',
+                },
+                {
+                    key: 'NavHelgDag',
+                    tekst: 'Du får bare sykepenger for dagene mandag til fredag.',
+                },
+                {
+                    key: 'Feriedag',
+                    tekst: 'Du får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde ferie.',
+                },
+                {
+                    key: 'Permisjonsdag',
+                    tekst: 'Du får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde permisjon.',
+                },
+                {
+                    key: 'ForeldetDag',
+                    tekst: 'Du må søke om sykepenger senest tre måneder etter den siste måneden du var syk.',
+                },
+                {
+                    key: 'Ventetidsdag',
+                    tekst: 'Du kan få sykepenger fra og med 17. dagen i sykefraværet ditt.',
+                },
+                {
+                    key: 'UkjentDag',
+                    tekst: 'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
+                },
+            ]
+
+            for (const forklaring_item of labelForklaringer) {
+                await expect(
+                    forklaring.locator(`[data-testid="dag-beskrivelse-${forklaring_item.key}"]`),
+                ).toContainText(forklaring_item.tekst)
+            }
+
+            const avvistForklaringer = [
+                {
+                    key: 'Over70',
+                    tekst: 'Etter at du har fylt 70 år, får du ikke sykepenger fra Nav.',
+                },
+                {
+                    key: 'SykepengedagerOppbrukt',
+                    tekst: 'Du kan få sykepenger i opptil 248 ukedager.',
+                },
+                {
+                    key: 'MinimumInntekt',
+                    tekst: 'Du må ha et sykepengegrunnlag på minst 50 % av grunnbeløpet (G) for å få sykepenger.',
+                },
+                {
+                    key: 'EgenmeldingUtenforArbeidsgiverperiode',
+                    tekst: 'Du kan ikke få sykepenger ved å bruke egenmelding denne dagen.',
+                },
+                {
+                    key: 'MinimumSykdomsgrad',
+                    tekst: 'Du må ha tapt minst 20 % av arbeidstiden og/eller inntekten din mens du var syk for å få sykepenger.',
+                },
+                {
+                    key: 'ManglerOpptjening',
+                    tekst: 'Du må ha vært i arbeid i minst fire uker (28 dager) fra og med dagen før du ble sykmeldt.',
+                },
+                {
+                    key: 'ManglerMedlemskap',
+                    tekst: 'Du må være medlem i folketrygden for å få sykepenger.',
+                },
+                {
+                    key: 'EtterDødsdato',
+                    tekst: 'Nav betaler ikke sykepenger for tiden etter dødsfall.',
+                },
+            ]
+
+            for (const forklaring_item of avvistForklaringer) {
+                await expect(
+                    forklaring.locator(`[data-testid="dag-beskrivelse-${forklaring_item.key}"]`),
+                ).toContainText(forklaring_item.tekst)
             }
         })
     })
