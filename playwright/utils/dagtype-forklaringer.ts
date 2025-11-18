@@ -40,7 +40,7 @@ export const DAGTYPE_FORKLARINGER = {
     MinimumInntekt: {
         label: 'For lav inntekt',
         description:
-            'Du har et sykepengegrunnlag på mindre enn et halvt grunnbeløp i året. Det betyr at du ikke kan få sykepenger, se folketrygdloven § 8-3, andre avsnitt.',
+            'Du må ha et sykepengegrunnlag på minst 50 % av grunnbeløpet (G) for å få sykepenger. Se folketrygdloven § 8-3, andre avsnitt.',
     },
     ManglerOpptjening: {
         label: 'Jobbet for kort',

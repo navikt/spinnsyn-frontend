@@ -90,9 +90,9 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67':
         'Du kan få sykepenger i opptil 60 dager etter at du har fylt 67 år. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.MinimumInntekt':
-        'Du har et sykepengegrunnlag på mindre enn et halvt ' +
-        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
-        ' i året. Det betyr at du ikke kan få sykepenger, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, andre avsnitt.',
+        'Du må ha et sykepengegrunnlag på minst 50 % av ' +
+        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløpet</a>' +
+        ' (G) for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, andre avsnitt.',
     'utbetaling.tabell.avvist.MinimumInntektOver67':
         'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to  ' +
         '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
