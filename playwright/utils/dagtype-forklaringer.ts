@@ -30,7 +30,7 @@ export const DAGTYPE_FORKLARINGER = {
     ForeldetDag: {
         label: 'Søkt for sent',
         description:
-            'Du kan bare få sykepenger opptil tre måneder før den måneden du sendte søknaden, se folketrygdloven §§ 22-3, 22-13, tredje avsnitt. Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se folketrygdloven § 22-13, syvende avsnitt.',
+            'Du må søke om sykepenger senest tre måneder etter den siste måneden du var syk. Vi har vurdert at du ikke oppfyller unntaksregelen som gir mulighet til å søke opptil tre år tilbake i tid. Se folketrygdloven § 22-13, tredje og sjuende avsnitt.',
     },
     UkjentDag: {
         label: 'Ukjent',
