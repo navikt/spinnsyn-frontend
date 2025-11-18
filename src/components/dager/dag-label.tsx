@@ -17,26 +17,12 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         switch (dag.dagtype) {
             case 'NavDag':
             case 'NavDagSyk':
-                return (
-                    <Tag variant="success" size="small">
-                        Syk
-                    </Tag>
-                )
-
             case 'NavDagDelvisSykUnder20':
             case 'NavDagDelvisSyk':
-                if (skalViseProsent) {
-                    const grad = dag.grad.toString()
-                    return (
-                        <Tag variant="success" size="small">
-                            {grad} % syk
-                        </Tag>
-                    )
-                }
-                const under20 = dag.dagtype == 'NavDagDelvisSykUnder20' ? ' under 20%' : ''
+                const grad = dag.grad.toString()
                 return (
                     <Tag variant="success" size="small">
-                        Delvis&nbsp;syk{under20}
+                        {skalViseProsent ? grad + ' % syk' : 'Syk'}
                     </Tag>
                 )
 
@@ -50,7 +36,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'ArbeidsgiverperiodeDag':
                 return (
                     <Tag size="small" variant="info">
-                        Arbeidsgiveren&nbsp;betaler
+                        Arbeidsgiverperiode
                     </Tag>
                 )
 
@@ -58,13 +44,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                 return (
                     <Tag size="small" variant="info">
                         Ikke sykmeldt
-                    </Tag>
-                )
-
-            case 'Fridag':
-                return (
-                    <Tag size="small" variant="warning">
-                        Fridag
                     </Tag>
                 )
 

@@ -125,17 +125,17 @@ export const avvistVedtak: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-08-17',
-                    type: 'Fridag',
+                    type: 'Feriedag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-08-18',
-                    type: 'Fridag',
+                    type: 'Feriedag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-08-19',
-                    type: 'Fridag',
+                    type: 'Feriedag',
                     begrunnelser: [],
                 },
                 {

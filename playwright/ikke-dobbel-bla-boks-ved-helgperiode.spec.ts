@@ -1,6 +1,6 @@
 import { ingenUtbetalingFordiAlleDagerHelg } from '../src/data/testdata/data/vedtak/ingenUtbetalingFordiAlleDagerHelg'
 
-import { test, expect } from './fixtures'
+import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 const baseUrl = 'http://localhost:3000/syk/sykepenger?testperson=diverse-data'
@@ -26,6 +26,10 @@ test.describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som f�
         ])
 
         const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
-        await expect(forklaring.getByText('Sykepenger betales bare for dagene mandag til fredag')).toBeVisible()
+        await expect(
+            forklaring.getByText(
+                'Du får bare sykepenger for dagene mandag til fredag. Hvis du jobber i helgen, blir disse dagene likevel tatt med i beregningen, men utbetalingen blir fordelt på ukedagene. Du får ikke sykepenger hvis du bare har vært sykmeldt lørdag og/eller søndag. Se folketrygdloven § 8-11.',
+            ),
+        ).toBeVisible()
     })
 })

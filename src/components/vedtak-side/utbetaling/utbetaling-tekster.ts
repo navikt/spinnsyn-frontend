@@ -66,96 +66,61 @@ const UtbetalingTekster = {
         'Vi har ikke registrert noe kontonummer på deg, og anbefaler at du legger det inn på <a target="_blank" href="https://www.nav.no/person/personopplysninger/nb/#utbetaling">Min side</a> slik at vi får utbetalt sykepengene til deg så raskt som mulig.',
     'utbetaling.tabell.dagtyper': 'Forklaring',
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag':
-        'Arbeidsgiveren din betaler de første 16 kalenderdagene av sykefraværet.',
+        'Arbeidsgiveren din betaler sykepengene de første 16 dagene du er syk. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-19">folketrygdloven § 8-19</a>, første avsnitt.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
     'utbetaling.tabell.label.NavDag': '',
-    'utbetaling.tabell.label.NavDagSyk': 'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
-    'utbetaling.tabell.label.NavDagDelvisSyk':
-        'Du får sykepenger for den delen av arbeidstiden du ikke jobber. Vi bruker opplysningene du ga i søknaden, om hvor mye du jobbet i perioden.',
-    'utbetaling.tabell.label.NavDagDelvisSykUnder20':
-        'For å kunne få sykepenger må du være borte fra jobben minst 20 % av tiden på grunn av sykdom eller skade. Selv om inntektstapet ditt er mindre enn 20 %, har vi vurdert at arbeidstiden er redusert med minst 20 %. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>.',
+    'utbetaling.tabell.label.NavDagSyk':
+        'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet. Hvor mye du får kommer an på om du har hatt inntekt eller jobbet mens du var syk, eller om du har fått annen pengestøtte fra Nav i tillegg. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, andre avsnitt.',
     'utbetaling.tabell.label.NavHelgDag':
-        'Sykepenger betales bare for dagene mandag til fredag. Jobber du lørdager og søndager, blir disse dagene likevel regnet med i sykepengene du får. Inntekten du har på helgedagene, fordeles på ukedagene. Hvis du derimot kun er sykmeldt en lørdag eller søndag, utbetales det ikke sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-11" target="_blank">folketrygdloven § 8-11</a>.',
-    'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
+        'Du får bare sykepenger for dagene mandag til fredag. Hvis du jobber i helgen, blir disse dagene likevel tatt med i beregningen, men utbetalingen blir fordelt på ukedagene. Du får ikke sykepenger hvis du bare har vært sykmeldt lørdag og/eller søndag. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-11" target="_blank">folketrygdloven § 8-11</a>.',
     'utbetaling.tabell.label.Feriedag':
-        'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra Nav for dager du har ferie, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
+        'Du eller arbeidsgiveren din har oppgitt at du hadde ferieDu får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde ferie. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.Permisjonsdag':
-        'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra Nav for dager du har permisjon, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
+        'Du får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.ForeldetDag':
-        'Du kan bare få sykepenger opptil tre måneder før den måneden du sendte søknaden, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-3" target="_blank">folketrygdloven §§ 22-3</a>, <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">22-13</a>, tredje avsnitt.',
+        'Du må søke om sykepenger senest tre måneder etter den siste måneden du var syk. Vi har vurdert at du ikke oppfyller unntaksregelen som gir mulighet til å søke opptil tre år tilbake i tid. Se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, tredje og sjuende avsnitt.',
     'utbetaling.tabell.label.Ventetidsdag':
-        'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav om at du er syk og ikke kan jobbe.',
+        'Du kan få sykepenger fra og med 17. dagen i sykefraværet ditt. De første 16 dagene teller fra du får en sykmelding, eller gir beskjed til Nav om at du er syk og ikke kan jobbe. Se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A78-34" target="_blank">folketrygdloven § 8-34</a>, andre avsnitt.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.Over70':
         'Etter at du har fylt 70 år, får du ikke sykepenger fra Nav. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, første avsnitt.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt':
-        'Du har fått sykepenger fra Nav i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen',
+        'Du kan få sykepenger i opptil 248 ukedager. Den siste dagen du kan få sykepenger, kalles "maksdato". Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven §8-12</a>, første og andre avsnitt.',
     'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67':
-        'Etter at du har fylt 67 år, får du ikke sykepenger fra Nav i mer enn 60 dager',
+        'Du kan få sykepenger i opptil 60 dager etter at du har fylt 67 år. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.MinimumInntekt':
-        'Du har et sykepengegrunnlag på mindre enn et halvt ' +
-        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
-        ' i året. Det betyr at du ikke kan få sykepenger, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, andre avsnitt.',
+        'Du må ha et sykepengegrunnlag på minst 50 % av ' +
+        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløpet</a>' +
+        ' (G) for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, andre avsnitt.',
     'utbetaling.tabell.avvist.MinimumInntektOver67':
-        'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to  ' +
-        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
-        ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet',
+        'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to ganger ' +
+        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløpet</a> ' +
+        ' (2 G) for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
-        'Du kan ikke bruke egenmelding de dagene Nav betaler sykepenger. For de dagene må du ha sykmelding, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
+        'Du kan ikke få sykepenger ved å bruke egenmelding denne dagen. For å få sykepenger, må du ha en sykmelding. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
-        'For å ha rett til sykepenger må du være borte fra jobb minst 20 % på grunn av sykdom eller skade. Sykepengenes størrelse skal beregnes på grunnlag av reduksjon i arbeidstiden og/eller inntektstap. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
+        'Du må ha tapt minst 20 % av arbeidstiden og/eller inntekten din mens du var syk for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerOpptjening':
-        'Du må ha vært i arbeid i minst fire uker rett før sykefraværet, det vil si 28 dager fra og med dagen før du ble sykmeldt',
+        'Du må ha vært i arbeid i minst fire uker (28 dager) fra og med dagen før du ble sykmeldt. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>, første avsnitt.',
     'utbetaling.tabell.avvist.ManglerMedlemskap':
-        'Du må være medlem i folketrygden for å få sykepenger. Du er medlem bare hvis du bor eller jobber i Norge',
-    'utbetaling.tabell.avvist.EtterDødsdato': 'Det blir ikke utbetalt sykepenger etter datoen for dødsfallet',
+        'Du må være medlem i folketrygden for å få sykepenger. Du er som regel medlem hvis du bor eller jobber i Norge. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A72-1" target="_blank">folketrygdloven § 2-1</a>.',
+    'utbetaling.tabell.avvist.EtterDødsdato':
+        'Nav betaler ikke sykepenger for tiden etter dødsfall. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
     'utbetaling.tabell.avvist.AndreYtelserAap':
-        'Du har mottatt arbeidsavklaringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
-    'utbetaling.tabell.avvist.AndreYtelserDagpenger':
-        'Du har mottatt dagpenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % arbeidsavklaringspenger.',
+    'utbetaling.tabell.avvist.AndreYtelserDagpenger': 'Du kan ikke få sykepenger samtidig som du får 100 % dagpenger.',
     'utbetaling.tabell.avvist.AndreYtelserForeldrepenger':
-        'Du har mottatt foreldrepenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % foreldrepenger.',
     'utbetaling.tabell.avvist.AndreYtelserOmsorgspenger':
-        'Du har mottatt omsorgspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % omsorgspenger.',
     'utbetaling.tabell.avvist.AndreYtelserOpplaringspenger':
-        'Du har mottatt opplæringspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % opplæringspenger.',
     'utbetaling.tabell.avvist.AndreYtelserPleiepenger':
-        'Du har mottatt pleiepenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % pleiepenger.',
     'utbetaling.tabell.avvist.AndreYtelserSvangerskapspenger':
-        'Du har mottatt svangerskapspenger denne dagen. Det er ikke mulig å få sykepenger samtidig med at du har en annen full livsoppholdsytelse.',
+        'Du kan ikke få sykepenger samtidig som du får 100 % svangerskapspenger.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
-
-    'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':
-        ' Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
-    'utbetaling.tabell.avvist.lovhjemmel.Over70': '',
-    'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
-    'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
-    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven § 8-12</a>, andre avsnitt.',
-    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
-    'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': '',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-2" target="_blank">folketrygdloven § 8-2</a>, første avsnitt.',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap2/%C2%A72-1" target="_blank">folketrygdloven § 2-1</a>.',
-    'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOmsorgspenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOpplaringspenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserPleiepenger': 'Dette følger av lang og sikker rettspraksis.',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserSvangerskapspenger':
-        'Dette følger av lang og sikker rettspraksis.',
-
-    'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
 }
 
 export default UtbetalingTekster

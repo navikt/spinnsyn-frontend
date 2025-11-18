@@ -1,6 +1,6 @@
 import { formaterValuta } from '../src/utils/valuta-utils'
 
-import { test, expect } from './fixtures'
+import { expect, test } from './fixtures'
 import {
     harSynligTittel,
     verifyBeregningPanel,
@@ -26,9 +26,7 @@ test.describe('Vedtak for arkivering', () => {
             const utbetalingPanel = page.getByTestId('utbetaling-panel-refusjon')
             await expect(utbetalingPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(utbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
-            await expect(
-                utbetalingPanel.getByRole('listitem').getByText(/For mye arbeid og\/eller inntekt/),
-            ).toBeVisible()
+            await expect(utbetalingPanel.getByRole('listitem').getByText(/Jobbet eller tjent for mye/)).toBeVisible()
             await expect(utbetalingPanel.getByRole('button', { name: /Se nærmere begrunnelse her/ })).toBeVisible()
         })
 
@@ -36,7 +34,7 @@ test.describe('Vedtak for arkivering', () => {
             const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.getByTestId('dag-tabell-body')
             await verifyDagTabellRows(dager, [
-                ['01.feb.', 'Syk', formaterValuta(1_000)],
+                ['01.feb.', '100 % syk', formaterValuta(1_000)],
                 ['06.feb.', 'Helg', '-'],
             ])
         })
@@ -85,7 +83,7 @@ test.describe('Vedtak for arkivering', () => {
             const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.getByTestId('dag-tabell-body')
             await verifyDagTabellRows(dager, [
-                ['08.feb.', 'Syk', formaterValuta(2_455)],
+                ['08.feb.', '100 % syk', formaterValuta(2_455)],
                 ['13.feb.', 'Helg', '-'],
             ])
         })
@@ -117,9 +115,7 @@ test.describe('Vedtak for arkivering', () => {
             const refusjonPanel = page.getByTestId('utbetaling-panel-refusjon')
             await expect(refusjonPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
-            await expect(
-                refusjonPanel.getByRole('listitem').getByText(/For mye arbeid og\/eller inntekt/),
-            ).toBeVisible()
+            await expect(refusjonPanel.getByRole('listitem').getByText(/Jobbet eller tjent for mye/)).toBeVisible()
             await refusjonPanel.getByRole('button', { name: /Se nærmere begrunnelse her/ }).click()
         })
 
@@ -163,8 +159,8 @@ test.describe('Vedtak for arkivering', () => {
             const sykepengerTilArbeidsgiver = sykepengerTilArbeidsgiverKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilArbeidsgiver).toBeVisible()
             await verifyDagTabellRows(sykepengerTilArbeidsgiver, [
-                ['08.feb.', 'Arbeidsgiveren betaler', '-'],
-                ['20.feb.', 'Syk'],
+                ['08.feb.', 'Arbeidsgiverperiode', '-'],
+                ['20.feb.', '100 % syk'],
             ])
         })
 
@@ -173,11 +169,14 @@ test.describe('Vedtak for arkivering', () => {
             await expect(sykepengerTilDegKnapp).toBeVisible()
             const sykepengerTilDeg = sykepengerTilDegKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilDeg).toBeVisible()
-            await verifyDagTabellRows(sykepengerTilDeg, [['23.feb.', 'Syk']])
+            await verifyDagTabellRows(sykepengerTilDeg, [['23.feb.', '100 % syk']])
             const beregningRegion = await visBeregningRegion(page)
-            await expect(beregningRegion).toContainText(
-                'Du har vært syk en hel dag, og du får sykepenger for denne dagen.',
-            )
+            await expect(
+                beregningRegion.getByText(
+                    'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet. Hvor mye du får kommer an på om du har hatt inntekt eller jobbet mens du var syk, ' +
+                        'eller om du har fått annen pengestøtte fra Nav i tillegg. Se folketrygdloven § 8-13, andre avsnitt.',
+                ),
+            ).toHaveCount(2)
         })
 
         await test.step('Verifiser mer om beregningen panel', async () => {
