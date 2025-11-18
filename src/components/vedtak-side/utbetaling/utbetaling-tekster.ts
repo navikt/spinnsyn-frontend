@@ -88,7 +88,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt':
         'Du kan få sykepenger i opptil 248 ukedager. Den siste dagen du kan få sykepenger, kalles "maksdato". Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-12" target="_blank">folketrygdloven §8-12</a>, første og andre avsnitt.',
     'utbetaling.tabell.avvist.SykepengedagerOppbruktOver67':
-        'Etter at du har fylt 67 år, får du ikke sykepenger fra Nav i mer enn 60 dager',
+        'Du kan få sykepenger i opptil 60 dager etter at du har fylt 67 år. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.MinimumInntekt':
         'Du har et sykepengegrunnlag på mindre enn et halvt ' +
         '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
@@ -128,8 +128,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
     'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': '',
-    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
+    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67':
         ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
