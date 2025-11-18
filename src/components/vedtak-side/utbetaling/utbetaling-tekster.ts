@@ -94,9 +94,9 @@ const UtbetalingTekster = {
         '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløpet</a>' +
         ' (G) for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, andre avsnitt.',
     'utbetaling.tabell.avvist.MinimumInntektOver67':
-        'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to  ' +
-        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløp</a> ' +
-        ' i året for å kunne få sykepenger. Inntekten din er for lav til å fylle dette kravet',
+        'Når du har fylt 67 år, må du ha et sykepengegrunnlag på minst to ganger ' +
+        '<a href="https://www.nav.no/grunnbelopet" target="_blank">grunnbeløpet</a> ' +
+        ' (2 G) for å få sykepenger. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.EgenmeldingUtenforArbeidsgiverperiode':
         'Du kan ikke få sykepenger ved å bruke egenmelding denne dagen. For å få sykepenger, må du ha en sykmelding. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-7" target="_blank">folketrygdloven § 8-7</a>, første avsnitt.',
     'utbetaling.tabell.avvist.MinimumSykdomsgrad':
@@ -130,8 +130,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': '',
     'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67':
-        ', se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-51" target="_blank">folketrygdloven § 8-51</a>, tredje avsnitt.',
+    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67': '',
     'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': '',
     'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
     'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening':
