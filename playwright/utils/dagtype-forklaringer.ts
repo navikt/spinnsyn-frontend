@@ -35,7 +35,7 @@ export const DAGTYPE_FORKLARINGER = {
     SykepengedagerOppbrukt: {
         label: 'Maks antall dager',
         description:
-            'Du har fått sykepenger fra Nav i 248 dager (mandag-fredag). Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen, se folketrygdloven § 8-12, andre avsnitt.',
+            'Du kan få sykepenger i opptil 248 ukedager. Den siste dagen du kan få sykepenger, kalles "maksdato". Det må gå 26 uker uten at du får sykepenger eller arbeidsavklaringspenger før du kan få sykepenger igjen. Se folketrygdloven §8-12, første og andre avsnitt.',
     },
     MinimumInntekt: {
         label: 'For lav inntekt',
