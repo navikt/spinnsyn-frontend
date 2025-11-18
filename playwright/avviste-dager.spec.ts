@@ -91,7 +91,9 @@ test.describe('Avviste dager', () => {
 
         await harSynligTittel(page, 'Forklaring', 4)
         await expect(
-            avvisteDagerRegion.getByText('Du eller arbeidsgiveren din har oppgitt at du hadde ferie'),
+            avvisteDagerRegion.getByText(
+                'Du får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde ferie',
+            ),
         ).toBeVisible()
         await expect(
             avvisteDagerRegion.getByText('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet,'),
