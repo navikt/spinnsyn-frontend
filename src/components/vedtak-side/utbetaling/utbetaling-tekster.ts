@@ -76,7 +76,7 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.Feriedag':
         'Du eller arbeidsgiveren din har oppgitt at du hadde ferieDu får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde ferie. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.Permisjonsdag':
-        'Du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Du får ikke sykepenger fra Nav for dager du har permisjon, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
+        'Du får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde permisjon. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.ForeldetDag':
         'Du må søke om sykepenger senest tre måneder etter den siste måneden du var syk. Vi har vurdert at du ikke oppfyller unntaksregelen som gir mulighet til å søke opptil tre år tilbake i tid. Se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, tredje og sjuende avsnitt.',
     'utbetaling.tabell.label.Ventetidsdag':
