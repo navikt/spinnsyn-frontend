@@ -144,7 +144,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-02-11',
-                    type: 'Fridag',
+                    type: 'Feriedag',
                     begrunnelser: [],
                 },
                 {

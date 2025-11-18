@@ -47,13 +47,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                     </Tag>
                 )
 
-            case 'Fridag':
-                return (
-                    <Tag size="small" variant="warning">
-                        Fridag
-                    </Tag>
-                )
-
             case 'Feriedag':
                 return (
                     <Tag size="small" variant="warning">

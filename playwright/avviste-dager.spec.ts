@@ -8,7 +8,7 @@ import { avvistVedtak } from '../src/data/testdata/data/vedtak/avvistVedtak'
 import { avvistVedtakMedLavInntekt } from '../src/data/testdata/data/vedtak/avvistMedLavInntekt'
 import { avvistVedtakMedLavInntektDirekteUtbetaling } from '../src/data/testdata/data/vedtak/avvistVedtakMedLavInntektDirekteUtbetaling'
 
-import { test, expect } from './fixtures'
+import { expect, test } from './fixtures'
 import {
     harSynligTittel,
     trykkPaVedtakMedId,
@@ -69,7 +69,7 @@ test.describe('Avviste dager', () => {
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
 
         await verifyDagTabellRows(dagTabellBody, [
-            ['11.feb.', 'Fridag'],
+            ['11.feb.', 'Ferie'],
             ['13.feb.', 'Søkt for sent'],
             ['15.feb.', 'Maks antall dager'],
             ['16.feb.', 'For lav inntekt'],
@@ -91,7 +91,7 @@ test.describe('Avviste dager', () => {
 
         await harSynligTittel(page, 'Forklaring', 4)
         await expect(
-            avvisteDagerRegion.getByText('Du får ikke sykepenger for dager du har ferie eller permisjon.'),
+            avvisteDagerRegion.getByText('Du eller arbeidsgiveren din har oppgitt at du hadde ferie'),
         ).toBeVisible()
         await expect(
             avvisteDagerRegion.getByText('Det blir ikke utbetalt sykepenger etter datoen for dødsfallet,'),
@@ -130,9 +130,9 @@ test.describe('Avviste dager', () => {
 
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
-            ['17.aug.', 'Fridag'],
-            ['18.aug.', 'Fridag'],
-            ['19.aug.', 'Fridag'],
+            ['17.aug.', 'Ferie'],
+            ['18.aug.', 'Ferie'],
+            ['19.aug.', 'Ferie'],
             ['20.aug.', 'Etter dødsfall'],
         ])
         await expect(avvisteDagerRegion.getByText('Mer om beregningen')).not.toBeVisible()
@@ -158,9 +158,9 @@ test.describe('Avviste dager', () => {
 
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
-            ['17.aug.', 'Fridag'],
-            ['18.aug.', 'Fridag'],
-            ['19.aug.', 'Fridag'],
+            ['17.aug.', 'Ferie'],
+            ['18.aug.', 'Ferie'],
+            ['19.aug.', 'Ferie'],
             ['20.aug.', 'For lav inntekt'],
             ['21.aug.', 'Etter dødsfall'],
         ])
@@ -196,8 +196,8 @@ test.describe('Avviste dager', () => {
 
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
-            ['18.aug.', 'Fridag'],
-            ['19.aug.', 'Fridag'],
+            ['18.aug.', 'Ferie'],
+            ['19.aug.', 'Ferie'],
             ['20.aug.', 'For lav inntekt'],
             ['21.aug.', 'Etter dødsfall'],
         ])

@@ -121,7 +121,6 @@ export type RSDagType =
     | 'NavHelgDag'
     | 'ArbeidsgiverperiodeDag'
     | 'Arbeidsdag'
-    | 'Fridag'
     | 'Feriedag'
     | 'Permisjonsdag'
     | 'AvvistDag'

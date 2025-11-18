@@ -67,7 +67,7 @@ test.describe('Utbetalingsoversikt', () => {
                 ['01.feb.', '100 % syk', formaterValuta(1_000)],
                 ['06.feb.', 'Helg', '-'],
                 ['08.feb.', '40 % syk', formaterValuta(400)],
-                ['11.feb.', 'Fridag', '-'],
+                ['11.feb.', 'Ferie', '-'],
                 ['13.feb.', 'Søkt for sent', '-'],
                 ['14.feb.', 'Ukjent', '-'],
                 ['15.feb.', 'Maks antall dager', '-'],

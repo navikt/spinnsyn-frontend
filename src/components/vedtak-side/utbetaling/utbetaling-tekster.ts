@@ -73,7 +73,6 @@ const UtbetalingTekster = {
         'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet. Hvor mye du får kommer an på om du har hatt inntekt eller jobbet mens du var syk, eller om du har fått annen pengestøtte fra Nav i tillegg. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, andre avsnitt.',
     'utbetaling.tabell.label.NavHelgDag':
         'Du får bare sykepenger for dagene mandag til fredag. Hvis du jobber i helgen, blir disse dagene likevel tatt med i beregningen, men utbetalingen blir fordelt på ukedagene. Du får ikke sykepenger hvis du bare har vært sykmeldt lørdag og/eller søndag. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-11" target="_blank">folketrygdloven § 8-11</a>.',
-    'utbetaling.tabell.label.Fridag': 'Du får ikke sykepenger for dager du har ferie eller permisjon.',
     'utbetaling.tabell.label.Feriedag':
         'Du eller arbeidsgiveren din har oppgitt at du hadde ferie. Du får ikke sykepenger fra Nav for dager du har ferie, se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-17" target="_blank">folketrygdloven § 8-17</a>, andre avsnitt.',
     'utbetaling.tabell.label.Permisjonsdag':

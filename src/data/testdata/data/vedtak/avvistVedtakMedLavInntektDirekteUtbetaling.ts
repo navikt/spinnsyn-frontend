@@ -34,12 +34,12 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
             utbetalingsdager: [
                 {
                     dato: '2021-08-18',
-                    type: 'Fridag',
+                    type: 'Feriedag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-08-19',
-                    type: 'Fridag',
+                    type: 'Feriedag',
                     begrunnelser: [],
                 },
                 {
