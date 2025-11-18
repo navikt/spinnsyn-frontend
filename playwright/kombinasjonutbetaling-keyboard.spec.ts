@@ -31,7 +31,7 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
             await expect(page).toHaveURL(baseURL)
             await harSynligTittel(page, 'Svar på søknader', 1)
             await page.locator('#maincontent').focus()
-            await harSynligTittel(page, 'Nye svar på søknader', 2)
+            await harSynligTittel(page, 'Uleste svar', 2)
             await harSynligTittel(page, 'Tidligere svar på søknader', 2)
         })
     })
