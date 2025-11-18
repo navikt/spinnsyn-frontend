@@ -13,36 +13,17 @@ interface DagBeskrivelseProps {
 }
 
 const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
-    const lovhjemmel = (dag: RSDag) => {
-        if (dag.begrunnelser.length > 0) {
-            return parserWithReplace(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.begrunnelser?.[0]}` as any))
-        }
-        if (dag.dagtype == 'ForeldetDag' || dag.dagtype == 'Feriedag' || dag.dagtype == 'Permisjonsdag') {
-            return parserWithReplace(tekst(`utbetaling.tabell.avvist.lovhjemmel.${dag.dagtype}` as any))
-        } else return ''
-    }
-
     const erAvvistEllerAndreYtelser = (dag: RSDag) => {
         return dag.dagtype === 'AvvistDag' || dag.dagtype === 'AndreYtelser'
     }
 
     const lagBeskrivelseForUnikDag = (dag: RSDag) => {
-        const lovhjemmelTekst = lovhjemmel(dag)
-
         return (
             <div className="pt-1" data-testid={dataCyBeskrivelse(dag)}>
                 <BodyShort>
-                    {!erAvvistEllerAndreYtelser(dag) ? (
-                        <>
-                            {parserWithReplace(tekst(`utbetaling.tabell.label.${dag.dagtype}` as any))}
-                            {lovhjemmelTekst && <BodyShort as="span">{lovhjemmelTekst}</BodyShort>}
-                        </>
-                    ) : (
-                        <>
-                            {parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}`))}
-                            {lovhjemmelTekst && <BodyShort as="span">{lovhjemmelTekst}</BodyShort>}
-                        </>
-                    )}
+                    {!erAvvistEllerAndreYtelser(dag)
+                        ? parserWithReplace(tekst(`utbetaling.tabell.label.${dag.dagtype}` as any))
+                        : parserWithReplace(tekst(`utbetaling.tabell.avvist.${dag.begrunnelser?.[0]}`))}
                 </BodyShort>
             </div>
         )

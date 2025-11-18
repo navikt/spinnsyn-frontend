@@ -121,30 +121,6 @@ const UtbetalingTekster = {
     'utbetaling.tabell.avvist.AndreYtelserSvangerskapspenger':
         'Du kan ikke få sykepenger samtidig som du får 100 % svangerskapspenger.',
     'utbetaling.tabell.avvist.UKJENT': 'Beskrivelse kommer...',
-
-    'utbetaling.tabell.avvist.lovhjemmel.ForeldetDag':
-        ' Vi har vurdert at unntaksregelen ikke er oppfylt i saken din, se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, syvende avsnitt.',
-    'utbetaling.tabell.avvist.lovhjemmel.Over70': '',
-    'utbetaling.tabell.avvist.lovhjemmel.Feriedag': '',
-    'utbetaling.tabell.avvist.lovhjemmel.Permisjonsdag': '',
-    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbrukt': '',
-    'utbetaling.tabell.avvist.lovhjemmel.SykepengedagerOppbruktOver67': '',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntekt': '',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumInntektOver67': '',
-    'utbetaling.tabell.avvist.lovhjemmel.EgenmeldingUtenforArbeidsgiverperiode': '',
-    'utbetaling.tabell.avvist.lovhjemmel.MinimumSykdomsgrad': '',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerOpptjening': '',
-    'utbetaling.tabell.avvist.lovhjemmel.ManglerMedlemskap': '',
-    'utbetaling.tabell.avvist.lovhjemmel.EtterDødsdato': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserAap': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserDagpenger': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserForeldrepenger': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOmsorgspenger': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserOpplaringspenger': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserPleiepenger': '',
-    'utbetaling.tabell.avvist.lovhjemmel.AndreYtelserSvangerskapspenger': '',
-
-    'utbetaling.tabell.avvist.lovhjemmel.UKJENT': '',
 }
 
 export default UtbetalingTekster
