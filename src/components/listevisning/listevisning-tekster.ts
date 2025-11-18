@@ -6,7 +6,7 @@ const ListevisningTekster = {
     'spinnsyn.sendt.til.nav': 'Sendt til Nav',
     'spinnsyn.sendt.til.arbeidsgiver': 'Sendt til arbeidsgiver',
     'spinnsyn.teaser.annullert': 'Erstattet med nytt svar',
-    'spinnsyn.teaser.sisterevudering': 'Ny beslutning',
+    'spinnsyn.teaser.sisterevudering': 'Nytt svar',
     'vedtak-liste.sidetittel': 'Svar på søknader',
     'vedtak-liste.ingen-nye-soknader': 'Du har ingen uleste svar',
     'vedtak-liste.ingen-tidligere-soknader': 'Du har ingen tidligere svar på søknader fra Nav.',

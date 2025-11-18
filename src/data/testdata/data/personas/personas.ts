@@ -32,6 +32,7 @@ import { inntektHentetFraAordningen } from '../vedtak/inntektHentetFraAordningen
 import { innvilgelseMedBegrunnelseVedtak, innvilgelseMedTomBegrunnelseVedtak } from '../vedtak/innvilgelseBegrunnelse'
 import { ingenUtbetalingFordiAlleDagerHelg } from '../vedtak/ingenUtbetalingFordiAlleDagerHelg'
 import { innvilgelseVedtak } from '../vedtak/delvisInnvilgelse'
+import { revurderingVedtak } from '../vedtak/revurdering'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -156,8 +157,8 @@ export const alleAvvisteDagerPerson: Persona = {
 }
 
 export const revurdertOgAnnullert: Persona = {
-    vedtak: [revurdertOgAnnullertVedtak],
-    beskrivelse: 'Vedtak som både er revurdert og senere annulert',
+    vedtak: [revurdertOgAnnullertVedtak, revurderingVedtak],
+    beskrivelse: 'Vedtak som både er revurdert og senere annulert, samt en revurdering',
 }
 
 export const under2gInntekt: Persona = {
