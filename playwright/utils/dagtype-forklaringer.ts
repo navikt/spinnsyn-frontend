@@ -49,7 +49,8 @@ export const DAGTYPE_FORKLARINGER = {
     },
     ManglerMedlemskap: {
         label: 'Ikke medlem',
-        description: 'Du må være medlem i folketrygden for å få sykepenger.',
+        description:
+            'Du må være medlem i folketrygden for å få sykepenger. Du er som regel medlem hvis du bor eller jobber i Norge. Se folketrygdloven § 2-1.',
     },
     Over70: {
         label: 'Over 70 år',
