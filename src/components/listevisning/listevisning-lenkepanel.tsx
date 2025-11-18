@@ -80,7 +80,7 @@ const ListevisningLenkepanel = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
 const Etikett = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     if (annullertEllerRevurdert) {
-        return <Tag variant="warning">{tekst('spinnsyn.teaser.annullert')}</Tag>
+        return <Tag variant="neutral">{tekst('spinnsyn.teaser.annullert')}</Tag>
     }
     const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     if (nyesteRevudering) {
