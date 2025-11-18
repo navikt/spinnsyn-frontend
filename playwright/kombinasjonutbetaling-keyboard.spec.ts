@@ -32,7 +32,7 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
             await harSynligTittel(page, 'Svar på søknader', 1)
             await page.locator('#maincontent').focus()
             await harSynligTittel(page, 'Uleste svar', 2)
-            await harSynligTittel(page, 'Tidligere svar på søknader', 2)
+            await harSynligTittel(page, 'Alle svar', 2)
         })
     })
 

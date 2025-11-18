@@ -2,7 +2,7 @@ const ListevisningTekster = {
     'spinnsyn.teaser.tittel': 'Svar på søknad om sykepenger',
     'spinnsyn.teaser.sykmeldt-fra': 'Sykmeldt fra %ARBEIDSGIVER%',
     'spinnsyn.teaser.uleste': 'Uleste svar',
-    'spinnsyn.teaser.leste': 'Tidligere svar på søknader',
+    'spinnsyn.teaser.leste': 'Alle svar',
     'spinnsyn.sendt.til.nav': 'Sendt til Nav',
     'spinnsyn.sendt.til.arbeidsgiver': 'Sendt til arbeidsgiver',
     'spinnsyn.teaser.annullert': 'Behandlet på nytt',
