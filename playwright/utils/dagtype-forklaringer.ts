@@ -16,7 +16,7 @@ export const DAGTYPE_FORKLARINGER = {
     Ventetidsdag: {
         label: 'Dekkes ikke av Nav',
         description:
-            'Du har rett til sykepenger fra Nav fra 17. dag i sykefraværet ditt. De første 16 dagene telles fra du oppsøker lege og får en sykmelding, eller du gir beskjed til Nav om at du er syk og ikke kan jobbe.',
+            'Du kan få sykepenger fra og med 17. dagen i sykefraværet ditt. De første 16 dagene teller fra du får en sykmelding, eller gir beskjed til Nav om at du er syk og ikke kan jobbe. Se folketrygdloven § 8-34, andre avsnitt.',
     },
     NavHelgDag: {
         label: 'Helg',
