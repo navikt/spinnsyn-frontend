@@ -85,7 +85,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                         </LinkPanel.Description>
                         {!isProd() && (
                             <Detail className="italic">
-                                Mottatt: {dayjs(vedtak.opprettetTimestamp).format('L LT')}
+                                Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
                             </Detail>
                         )}
                     </div>
