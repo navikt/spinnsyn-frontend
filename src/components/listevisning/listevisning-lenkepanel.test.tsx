@@ -11,9 +11,9 @@ describe('Listevisning lenkepanel', () => {
             revurdert: false,
             lest: false,
             opprettetTimestamp: '2023-01-01T00:00:00Z',
-            yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
             orgnavn: 'Test AS',
             vedtak: {
+                yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
                 fom: '2023-01-01',
                 tom: '2023-01-31',
                 utbetaling: {
@@ -35,9 +35,9 @@ describe('Listevisning lenkepanel', () => {
             revurdert: true,
             lest: false,
             opprettetTimestamp: '2023-01-01T00:00:00Z',
-            yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
             orgnavn: 'Test AS',
             vedtak: {
+                yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
                 fom: '2023-01-01',
                 tom: '2023-01-31',
                 utbetaling: {
@@ -59,9 +59,9 @@ describe('Listevisning lenkepanel', () => {
             revurdert: false,
             lest: false,
             opprettetTimestamp: '2023-01-01T00:00:00Z',
-            yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
             orgnavn: 'Test AS',
             vedtak: {
+                yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
                 fom: '2023-01-01',
                 tom: '2023-01-31',
                 utbetaling: {

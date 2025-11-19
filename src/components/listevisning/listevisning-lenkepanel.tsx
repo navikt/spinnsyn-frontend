@@ -29,13 +29,13 @@ type ListevisningLenkepanelProps = {
         revurdert: boolean
         lest: boolean
         opprettetTimestamp: string
-        yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG'
         orgnavn: string
         vedtak: {
+            yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG'
             fom: string
             tom: string
             utbetaling: {
-                utbetalingType: string
+                utbetalingType?: string
             }
         }
     }
@@ -81,7 +81,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                             {tekst('spinnsyn.teaser.tittel')}
                         </LinkPanel.Title>
                         <LinkPanel.Description>
-                            {sykmeldtFraTekstGenerator(vedtak.yrkesaktivitetstype, vedtak.orgnavn)}
+                            {sykmeldtFraTekstGenerator(vedtak.vedtak.yrkesaktivitetstype, vedtak.orgnavn)}
                         </LinkPanel.Description>
                         {!isProd() && (
                             <Detail className="italic">
