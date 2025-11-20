@@ -22,8 +22,8 @@ test.describe('Utbetalingsoversikt', () => {
 
         const dagTabell = page.getByTestId('dag-tabell-body').first()
         await verifyDagTabellRows(dagTabell, [
-            ['08.feb.', '40 % syk', formaterValuta(896)],
-            ['21.feb.', 'Helg', '-'],
+            ['08. feb.', '40 % syk', formaterValuta(896)],
+            ['21. feb.', 'Helg', '-'],
         ])
     })
 
@@ -65,24 +65,24 @@ test.describe('Utbetalingsoversikt', () => {
         await test.step('Sjekker dagtabell', async () => {
             const dagTabell = page.getByTestId('dag-tabell-body').first()
             await verifyDagTabellRows(dagTabell, [
-                ['30.jan.', 'Ikke sykmeldt', '-'],
-                ['31.jan.', 'Helg', '-'],
-                ['01.feb.', '100 % syk', formaterValuta(1_000)],
-                ['06.feb.', 'Helg', '-'],
-                ['08.feb.', '40 % syk', formaterValuta(400)],
-                ['11.feb.', 'Ferie', '0 kr'],
-                ['13.feb.', 'Søkt for sent', '0 kr'],
-                ['14.feb.', 'Ukjent', '-'],
-                ['15.feb.', 'Maks antall dager', '0 kr'],
-                ['16.feb.', 'For lav inntekt', '0 kr'],
-                ['17.feb.', 'Egenmelding', '0 kr'],
-                ['18.feb.', 'Jobbet eller tjent for mye', '0 kr'],
-                ['19.feb.', 'Jobbet for kort', '0 kr'],
-                ['20.feb.', 'Ikke medlem', '0 kr'],
-                ['21.feb.', 'Etter dødsfall', '0 kr'],
-                ['22.feb.', 'Ukjent', '0 kr'],
-                ['23.feb.', 'Over 70 år', '0 kr'],
-                ['06.mar.', 'Dekkes ikke av Nav', '-'],
+                ['30. jan.', 'Ikke sykmeldt', '-'],
+                ['31. jan.', 'Helg', '-'],
+                ['01. feb.', '100 % syk', formaterValuta(1_000)],
+                ['06. feb.', 'Helg', '-'],
+                ['08. feb.', '40 % syk', formaterValuta(400)],
+                ['11. feb.', 'Ferie', '0 kr'],
+                ['13. feb.', 'Søkt for sent', '0 kr'],
+                ['14. feb.', 'Ukjent', '-'],
+                ['15. feb.', 'Maks antall dager', '0 kr'],
+                ['16. feb.', 'For lav inntekt', '0 kr'],
+                ['17. feb.', 'Egenmelding', '0 kr'],
+                ['18. feb.', 'Jobbet eller tjent for mye', '0 kr'],
+                ['19. feb.', 'Jobbet for kort', '0 kr'],
+                ['20. feb.', 'Ikke medlem', '0 kr'],
+                ['21. feb.', 'Etter dødsfall', '0 kr'],
+                ['22. feb.', 'Ukjent', '0 kr'],
+                ['23. feb.', 'Over 70 år', '0 kr'],
+                ['06. mar.', 'Dekkes ikke av Nav', '-'],
             ])
         })
 

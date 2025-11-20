@@ -69,24 +69,24 @@ test.describe('Avviste dager', () => {
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
 
         await verifyDagTabellRows(dagTabellBody, [
-            ['11.feb.', 'Ferie'],
-            ['13.feb.', 'Søkt for sent'],
-            ['15.feb.', 'Maks antall dager'],
-            ['16.feb.', 'For lav inntekt'],
-            ['17.feb.', 'Egenmelding'],
-            ['18.feb.', 'Jobbet eller tjent for mye'],
-            ['19.feb.', 'Jobbet for kort'],
-            ['20.feb.', 'Ikke medlem'],
-            ['21.feb.', 'Etter dødsfall'],
-            ['22.feb.', 'Ukjent'],
-            ['27.feb.', 'Arbeidsavklaringspenger'],
-            ['28.feb.', 'Dagpenger'],
-            ['01.mars', 'Foreldrepenger'],
-            ['02.mars', 'Omsorgspenger'],
-            ['03.mars', 'Opplæringspenger'],
-            ['04.mars', 'Pleiepenger'],
-            ['05.mars', 'Svangerskapspenger'],
-            ['25.feb.', 'Maks antall dager'],
+            ['11. feb.', 'Ferie'],
+            ['13. feb.', 'Søkt for sent'],
+            ['15. feb.', 'Maks antall dager'],
+            ['16. feb.', 'For lav inntekt'],
+            ['17. feb.', 'Egenmelding'],
+            ['18. feb.', 'Jobbet eller tjent for mye'],
+            ['19. feb.', 'Jobbet for kort'],
+            ['20. feb.', 'Ikke medlem'],
+            ['21. feb.', 'Etter dødsfall'],
+            ['22. feb.', 'Ukjent'],
+            ['27. feb.', 'Arbeidsavklaringspenger'],
+            ['28. feb.', 'Dagpenger'],
+            ['01. mars', 'Foreldrepenger'],
+            ['02. mars', 'Omsorgspenger'],
+            ['03. mars', 'Opplæringspenger'],
+            ['04. mars', 'Pleiepenger'],
+            ['05. mars', 'Svangerskapspenger'],
+            ['25. feb.', 'Maks antall dager'],
         ])
 
         await harSynligTittel(page, 'Forklaring', 4)
@@ -134,10 +134,10 @@ test.describe('Avviste dager', () => {
 
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
-            ['17.aug.', 'Ferie'],
-            ['18.aug.', 'Ferie'],
-            ['19.aug.', 'Ferie'],
-            ['20.aug.', 'Etter dødsfall'],
+            ['17. aug.', 'Ferie'],
+            ['18. aug.', 'Ferie'],
+            ['19. aug.', 'Ferie'],
+            ['20. aug.', 'Etter dødsfall'],
         ])
         await expect(avvisteDagerRegion.getByText('Mer om beregningen')).not.toBeVisible()
     })
@@ -162,11 +162,11 @@ test.describe('Avviste dager', () => {
 
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
-            ['17.aug.', 'Ferie'],
-            ['18.aug.', 'Ferie'],
-            ['19.aug.', 'Ferie'],
-            ['20.aug.', 'For lav inntekt'],
-            ['21.aug.', 'Etter dødsfall'],
+            ['17. aug.', 'Ferie'],
+            ['18. aug.', 'Ferie'],
+            ['19. aug.', 'Ferie'],
+            ['20. aug.', 'For lav inntekt'],
+            ['21. aug.', 'Etter dødsfall'],
         ])
 
         const merOmBeregningen = beregningRegion.getByTestId('mer-om-beregningen')
@@ -200,10 +200,10 @@ test.describe('Avviste dager', () => {
 
         const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
-            ['18.aug.', 'Ferie'],
-            ['19.aug.', 'Ferie'],
-            ['20.aug.', 'For lav inntekt'],
-            ['21.aug.', 'Etter dødsfall'],
+            ['18. aug.', 'Ferie'],
+            ['19. aug.', 'Ferie'],
+            ['20. aug.', 'For lav inntekt'],
+            ['21. aug.', 'Etter dødsfall'],
         ])
 
         const merOmBeregningen = beregningRegion.getByTestId('mer-om-beregningen')

@@ -49,7 +49,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                         <Table.Row key={idx}>
                             <Table.HeaderCell scope="row">
                                 <BodyShort size="small" as="span">
-                                    {dayjs(dag.dato).format('DD.MMM')}
+                                    {dayjs(dag.dato).format('DD. MMM')}
                                 </BodyShort>
                             </Table.HeaderCell>
                             <Table.DataCell align="right" className="whitespace-nowrap">

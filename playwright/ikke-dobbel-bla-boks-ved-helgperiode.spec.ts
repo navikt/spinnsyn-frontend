@@ -21,8 +21,8 @@ test.describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som f√
 
         const dager = beregningRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dager, [
-            ['26.okt.', 'Helg', '-'],
-            ['27.okt.', 'Helg', '-'],
+            ['26. okt.', 'Helg', '-'],
+            ['27. okt.', 'Helg', '-'],
         ])
 
         const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
