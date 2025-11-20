@@ -3,7 +3,8 @@ import dayjs from 'dayjs'
 import React from 'react'
 
 import { RSDag } from '../../types/rs-types/rs-vedtak-felles'
-import { ValutaFormat } from '../../utils/valuta-utils'
+import { formaterValuta } from '../../utils/valuta-utils'
+import { dagErAvvist, dagErInnvilget } from '../vedtak-side/vedtak'
 
 import DagLabel from './dag-label'
 
@@ -35,11 +36,15 @@ const DagTabell = ({ dager }: DagTabellProps) => {
             </Table.Header>
             <Table.Body data-testid="dag-tabell-body">
                 {dager.map((dag, idx) => {
-                    const dagMedBelop =
-                        dag.dagtype === 'NavDag' ||
-                        dag.dagtype === 'NavDagSyk' ||
-                        dag.dagtype === 'NavDagDelvisSykUnder20' ||
-                        dag.dagtype === 'NavDagDelvisSyk'
+                    const dagSum = (): string => {
+                        if (dagErInnvilget.includes(dag.dagtype)) {
+                            return formaterValuta(dag.belop)
+                        } else if (dagErAvvist.includes(dag.dagtype)) {
+                            return '0 kr'
+                        } else {
+                            return '-'
+                        }
+                    }
                     return (
                         <Table.Row key={idx}>
                             <Table.HeaderCell scope="row">
@@ -49,7 +54,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                             </Table.HeaderCell>
                             <Table.DataCell align="right" className="whitespace-nowrap">
                                 <BodyShort size="small" as="span">
-                                    {dagMedBelop ? ValutaFormat.format(dag.belop) + ' kr' : '-'}
+                                    {dagSum()}
                                 </BodyShort>
                             </Table.DataCell>
                             <Table.DataCell align="right">
