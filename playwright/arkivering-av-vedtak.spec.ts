@@ -34,8 +34,8 @@ test.describe('Vedtak for arkivering', () => {
             const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.getByTestId('dag-tabell-body')
             await verifyDagTabellRows(dager, [
-                ['01.feb.', '100 % syk', formaterValuta(1_000)],
-                ['06.feb.', 'Helg', '-'],
+                ['01. feb.', '100 % syk', formaterValuta(1_000)],
+                ['06. feb.', 'Helg', '-'],
             ])
         })
 
@@ -83,8 +83,8 @@ test.describe('Vedtak for arkivering', () => {
             const beregningRegion = await visBeregningRegion(page)
             const dager = beregningRegion.getByTestId('dag-tabell-body')
             await verifyDagTabellRows(dager, [
-                ['08.feb.', '100 % syk', formaterValuta(2_455)],
-                ['13.feb.', 'Helg', '-'],
+                ['08. feb.', '100 % syk', formaterValuta(2_455)],
+                ['13. feb.', 'Helg', '-'],
             ])
         })
 
@@ -159,8 +159,8 @@ test.describe('Vedtak for arkivering', () => {
             const sykepengerTilArbeidsgiver = sykepengerTilArbeidsgiverKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilArbeidsgiver).toBeVisible()
             await verifyDagTabellRows(sykepengerTilArbeidsgiver, [
-                ['08.feb.', 'Arbeidsgiverperiode', '-'],
-                ['20.feb.', '100 % syk'],
+                ['08. feb.', 'Arbeidsgiverperiode', '-'],
+                ['20. feb.', '100 % syk'],
             ])
         })
 
@@ -169,7 +169,7 @@ test.describe('Vedtak for arkivering', () => {
             await expect(sykepengerTilDegKnapp).toBeVisible()
             const sykepengerTilDeg = sykepengerTilDegKnapp.locator('..').getByRole('table')
             await expect(sykepengerTilDeg).toBeVisible()
-            await verifyDagTabellRows(sykepengerTilDeg, [['23.feb.', '100 % syk']])
+            await verifyDagTabellRows(sykepengerTilDeg, [['23. feb.', '100 % syk']])
             const beregningRegion = await visBeregningRegion(page)
             await expect(
                 beregningRegion.getByText(

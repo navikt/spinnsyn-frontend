@@ -29,7 +29,15 @@ import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
 import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/naringsdrivende/inntekter-lagt-til-grunn-naringsdrivende'
 
-const dagErAvvist: RSDagTypeKomplett[] = ['AvvistDag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag', 'AndreYtelser']
+export const dagErAvvist: RSDagTypeKomplett[] = [
+    'AvvistDag',
+    'Feriedag',
+    'Permisjonsdag',
+    'ForeldetDag',
+    'AndreYtelser',
+]
+
+export const dagErInnvilget: RSDagTypeKomplett[] = ['NavDag', 'NavDagSyk', 'NavDagDelvisSykUnder20', 'NavDagDelvisSyk']
 
 export interface VedtakProps {
     vedtak: RSVedtakWrapperUtvidet

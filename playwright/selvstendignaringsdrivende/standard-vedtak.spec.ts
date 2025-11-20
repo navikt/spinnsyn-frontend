@@ -25,7 +25,7 @@ test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
 
         await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
         const dagTabell = page.getByTestId('dag-tabell-body').first()
-        await verifyDagTabellRows(dagTabell, [['01.aug.', 'Dekkes ikke av Nav', '-']])
+        await verifyDagTabellRows(dagTabell, [['01. aug.', 'Dekkes ikke av Nav', '-']])
 
         await beregningRegion.getByRole('button', { name: 'Mer om beregningen' }).click()
         await expect(
