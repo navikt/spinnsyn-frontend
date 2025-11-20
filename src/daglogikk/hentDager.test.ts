@@ -1,6 +1,8 @@
 import { describe, test, expect } from 'vitest'
 import dayjs from 'dayjs'
 
+import { RSOppdrag, RSUtbetalingdag } from '../types/rs-types/rs-vedtak-felles'
+
 import { hentDager } from './hentDager'
 
 describe('HentDagerTest', () => {
@@ -1002,5 +1004,65 @@ describe('HentDagerTest', () => {
         ]
 
         expect(result).toEqual(expected)
+    })
+
+    test('NavDag med grad under 100 transformeres til NavDagDelvisSyk', () => {
+        const oppdrag: RSOppdrag = {
+            utbetalingslinjer: [
+                {
+                    fom: mandag.format('YYYY-MM-DD'),
+                    tom: mandag.format('YYYY-MM-DD'),
+                    dagsats: 750,
+                    grad: 50.0,
+                    stønadsdager: 1,
+                },
+            ],
+        }
+
+        const utbetalingsdager: RSUtbetalingdag[] = [
+            { dato: mandag.format('YYYY-MM-DD'), type: 'NavDag', begrunnelser: [] },
+        ]
+
+        const result = hentDager(mandag.format('YYYY-MM-DD'), mandag.format('YYYY-MM-DD'), oppdrag, utbetalingsdager)
+
+        expect(result).toEqual([
+            {
+                dato: mandag.format('YYYY-MM-DD'),
+                belop: 750,
+                grad: 50.0,
+                dagtype: 'NavDagDelvisSyk',
+                begrunnelser: [],
+            },
+        ])
+    })
+
+    test('NavDag med grad 100 transformeres til NavDagSyk', () => {
+        const oppdrag: RSOppdrag = {
+            utbetalingslinjer: [
+                {
+                    fom: mandag.format('YYYY-MM-DD'),
+                    tom: mandag.format('YYYY-MM-DD'),
+                    dagsats: 1500,
+                    grad: 100.0,
+                    stønadsdager: 1,
+                },
+            ],
+        }
+
+        const utbetalingsdager: RSUtbetalingdag[] = [
+            { dato: mandag.format('YYYY-MM-DD'), type: 'NavDag', begrunnelser: [] },
+        ]
+
+        const result = hentDager(mandag.format('YYYY-MM-DD'), mandag.format('YYYY-MM-DD'), oppdrag, utbetalingsdager)
+
+        expect(result).toEqual([
+            {
+                dato: mandag.format('YYYY-MM-DD'),
+                belop: 1500,
+                grad: 100.0,
+                dagtype: 'NavDagSyk',
+                begrunnelser: [],
+            },
+        ])
     })
 })
