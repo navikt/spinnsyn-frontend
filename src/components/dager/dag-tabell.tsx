@@ -28,7 +28,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                     </Table.ColumnHeader>
                     <Table.ColumnHeader scope="col" align="right">
                         <Label spacing as="span" size="small">
-                            Dagtype
+                            Begrunnelse
                         </Label>
                     </Table.ColumnHeader>
                 </Table.Row>
