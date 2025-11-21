@@ -2,10 +2,10 @@ import { BodyLong, ReadMore } from '@navikt/ds-react'
 import React, { useContext, useState } from 'react'
 
 import { tekst } from '../../../../utils/tekster'
-import { LenkeMedAmplitude } from '../../../lenke/lenke-med-amplitude'
+import { LenkeMedUmami } from '../../../lenke/lenke-med-umami'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
-import { logEvent } from '../../../amplitude/amplitude'
+import { logEvent } from '../../../umami/umami'
 
 export const SykepengerNar = () => {
     const isServer = useContext(ArkiveringContext)
@@ -28,7 +28,7 @@ export const SykepengerNar = () => {
             <BodyLong>
                 {parserWithReplace(tekst('utbetaling.person.når.innhold'))}
 
-                <LenkeMedAmplitude
+                <LenkeMedUmami
                     url={tekst('utbetaling.person.når.lenke.url')}
                     tekst={tekst('utbetaling.person.når.lenke.tekst')}
                 />

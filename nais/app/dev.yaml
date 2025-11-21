@@ -11,7 +11,7 @@ env:
   MINSIDE_URL: "https://www.intern.dev.nav.no/minside/"
   ARKIVERTE_VEDTAK_URL: "https://www.ansatt.dev.nav.no/dokumentarkiv/tema/SYK"
   OPPLAERING: "false"
-  AMPLITUDE_ENABLED: "true"
+  UMAMI_ENABLED: "true"
   DECORATOR_ENV: "dev"
   UTVIKLING_ARKIVERING: "false"
   ARKIVERING: "false"

@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { useScroll } from '../../../../context/scroll-context'
-import { logEvent } from '../../../amplitude/amplitude'
+import { logEvent } from '../../../umami/umami'
 
 export const MerOmBergningenNargingsdrivende = () => {
     const arkivering = useContext(ArkiveringContext)

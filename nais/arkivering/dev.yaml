@@ -10,7 +10,7 @@ env:
   MINSIDE_URL: https://www.dev.nav.no/minside/
   ARKIVERTE_VEDTAK_URL: https://person.dev.nav.no/mine-saker/tema/SYK
   OPPLAERING: false
-  AMPLITUDE_ENABLED: false
+  UMAMI_ENABLED: false
   DECORATOR_ENV: dev
   NO_DECORATOR: true
   UTVIKLING_ARKIVERING: false

@@ -7,7 +7,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { tekst } from '../../utils/tekster'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
-import { logEvent } from '../amplitude/amplitude'
+import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
 
