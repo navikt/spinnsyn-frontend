@@ -7,23 +7,25 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
-import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
+import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
-    const oppsumertAvslagObject: OppsumertAvslagListeProps = {
-        ...finnOppsumertAvslag(vedtak, 'dagerArbeidsgiver'),
+    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.dagerArbeidsgiver)
+    const oppsumertAvslagObject: OppsummertAvslagListeProps = {
+        title: 'Noen av dagene er ikke innvilget fordi:',
+        oppsummertAvslag: avslagBegrunnelser,
         harBegrunnelseFraBomlo,
         vedtak,
     }
     return (
         <UtbetalingPanel
-            delvisInnvilgelse={oppsumertAvslagObject.oppsumertAvslag.size > 0}
+            delvisInnvilgelse={oppsumertAvslagObject.oppsummertAvslag.size > 0}
             sectionLabel="Refusjon til arbeidsgiver"
             tittel={
                 <Heading level="2" size="large">

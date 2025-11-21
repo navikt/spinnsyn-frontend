@@ -2,20 +2,25 @@ import { BodyShort, Heading, Link, List } from '@navikt/ds-react'
 
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
 import { useScroll } from '../../../context/scroll-context'
+import { dagErInnvilget } from '../vedtak'
 
-import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
+import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
 
 export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
-    const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'Avslag') !== undefined
-    const oppsumertAvslagObject: OppsumertAvslagListeProps = {
-        ...finnOppsumertAvslag(vedtak, 'alleDager'),
-        harBegrunnelseFraBomlo,
+    const harAvslagBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'Avslag') !== undefined
+    const alleDager = [...vedtak.dagerPerson, ...vedtak.dagerArbeidsgiver]
+    const minstEnDagInnvilget: boolean = alleDager.some((dag) => dagErInnvilget.includes(dag.dagtype))
+    const avslagBegrunnelser = unikeAvslagBegrunnelser(alleDager)
+    const oppsumertAvslagObject: OppsummertAvslagListeProps = {
+        title: minstEnDagInnvilget ? 'Noen av dagene er ikke innvilget fordi:' : 'Søknaden er avslått fordi:',
+        oppsummertAvslag: avslagBegrunnelser,
+        harBegrunnelseFraBomlo: harAvslagBegrunnelseFraBomlo,
         vedtak,
     }
 
@@ -24,7 +29,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
     return (
         <UtbetalingPanel
             sectionLabel="Ingen utbetaling"
-            avslag={oppsumertAvslagObject.oppsumertAvslag.size > 0}
+            avslag={!minstEnDagInnvilget}
             tittel={
                 <Heading level="2" size="large">
                     {annullertEllerRevurdert ? (

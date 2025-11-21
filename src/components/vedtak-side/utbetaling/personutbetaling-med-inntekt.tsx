@@ -7,11 +7,11 @@ import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { finnOppsumertAvslag, hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
 
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
-import { OppsumertAvslagListe, OppsumertAvslagListeProps } from './oppsumert-avslag-liste'
+import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
@@ -20,15 +20,18 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
-    const oppsummertAvslagProps: OppsumertAvslagListeProps = {
-        ...finnOppsumertAvslag(vedtak, 'dagerPerson'),
+    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.dagerArbeidsgiver)
+    const oppsumertAvslagObject: OppsummertAvslagListeProps = {
+        title: 'Noen av dagene er ikke innvilget fordi:',
+        oppsummertAvslag: avslagBegrunnelser,
         harBegrunnelseFraBomlo,
         vedtak,
     }
+
     return (
         <UtbetalingPanel
             sectionLabel="Utbetaling til deg"
-            delvisInnvilgelse={oppsummertAvslagProps.oppsumertAvslag.size > 0}
+            delvisInnvilgelse={oppsumertAvslagObject.oppsummertAvslag.size > 0}
             tittel={
                 <div>
                     <Heading level="2" size="large">
@@ -50,7 +53,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             dataTestId="personutbetaling"
         >
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
-            <OppsumertAvslagListe {...oppsummertAvslagProps}></OppsumertAvslagListe>
+            <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
 
             {!erInterne && !erArkivering && <Kontonummer />}
             <SykepengerNar />
