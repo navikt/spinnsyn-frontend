@@ -115,7 +115,9 @@ test.describe('Avviste dager', () => {
 
     test('Vedtak med avviste dager og ingen utbetaling', async ({ page }) => {
         await trykkPaVedtakMedId(page, avvistVedtak.id)
-        await expect(page.getByText('Ingen utbetaling')).toBeVisible()
+        const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
+        await expect(ingenUtbetalingPanel.getByText('Ingen utbetaling')).toBeVisible()
+        await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
 
         const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
         await expect(avvisteDagerRegion).toContainText('4 sykepengedager')
@@ -144,7 +146,9 @@ test.describe('Avviste dager', () => {
 
     test('Vedtak med avviste dager og lav inntekt, refusjon', async ({ page }) => {
         await trykkPaVedtakMedId(page, avvistVedtakMedLavInntekt.id)
-        await expect(page.getByText('Ingen utbetaling')).toBeVisible()
+        const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
+        await expect(ingenUtbetalingPanel.getByText('Ingen utbetaling')).toBeVisible()
+        await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
 
         const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
         await expect(avvisteDagerRegion).toContainText('5 sykepengedager')
