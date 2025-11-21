@@ -5,27 +5,27 @@ import { useScroll } from '../../../context/scroll-context'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
-export interface OppsumertAvslagListeProps {
-    oppsumertAvslag: Set<string>
+export interface OppsummertAvslagListeProps {
+    oppsummertAvslag: Set<string>
     title: string
     harBegrunnelseFraBomlo: boolean
     vedtak: RSVedtakWrapper
 }
 
-export const OppsumertAvslagListe = (oppsumertAvslag: OppsumertAvslagListeProps) => {
+export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps) => {
     const { blaTilElement } = useScroll()
 
     const harInnvilgelseBegrunnelse = hentBegrunnelse(oppsumertAvslag.vedtak, 'Innvilgelse') !== undefined
-    if (oppsumertAvslag.oppsumertAvslag.size === 0 && !harInnvilgelseBegrunnelse) return null
+    if (oppsumertAvslag.oppsummertAvslag.size === 0 && !harInnvilgelseBegrunnelse) return null
 
     const alleAvslag: React.JSX.Element[] = []
-    oppsumertAvslag.oppsumertAvslag?.forEach((begrunnelse) => {
+    oppsumertAvslag.oppsummertAvslag?.forEach((begrunnelse) => {
         alleAvslag.push(<List.Item key={begrunnelse}>{begrunnelse}</List.Item>)
     })
 
     return (
         <section className="mb-8">
-            {oppsumertAvslag.oppsumertAvslag.size > 0 && (
+            {oppsumertAvslag.oppsummertAvslag.size > 0 && (
                 <List as="ul" title={oppsumertAvslag.title}>
                     {alleAvslag}
                 </List>

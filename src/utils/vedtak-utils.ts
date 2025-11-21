@@ -1,12 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 
-import {
-    Begrunnelse,
-    BegrunnelseType,
-    RSBegrunnelse,
-    RSVedtakWrapper,
-    RSVedtakWrapperUtvidet,
-} from '../types/rs-types/rs-vedtak-felles'
+import { Begrunnelse, BegrunnelseType, RSBegrunnelse, RSDag, RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 
 import { erHelg } from './dato-utils'
 
@@ -29,41 +23,8 @@ export const hentBegrunnelse = (vedtak: RSVedtakWrapper, begrunnelseType: Begrun
     )
 }
 
-export const oppsumertAvslagBegrunnelser = (
-    vedtak: RSVedtakWrapperUtvidet,
-    dager: 'dagerArbeidsgiver' | 'dagerPerson',
-): Set<string> => {
-    const selectedDager = dager === 'dagerArbeidsgiver' ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson
-
-    return selectedDager
-        .flatMap((dag) => dag.begrunnelser)
-        .reduce(
-            (alleBegrunnelser, begrunnelse) => alleBegrunnelser.add(finnBegrunnelseTekst(begrunnelse)),
-            new Set<string>(),
-        )
-}
-
-export const finnOppsumertAvslag = (
-    vedtak: RSVedtakWrapperUtvidet,
-    dager: 'dagerArbeidsgiver' | 'dagerPerson' | 'alleDager',
-) => {
-    let title: string
-    let oppsumertAvslag: Set<string>
-    if (dager === 'alleDager') {
-        title = 'Søknaden er avslått fordi:'
-        oppsumertAvslag = new Set<string>([
-            ...oppsumertAvslagBegrunnelser(vedtak, 'dagerArbeidsgiver'),
-            ...oppsumertAvslagBegrunnelser(vedtak, 'dagerPerson'),
-        ])
-    } else {
-        title = 'Noen av dagene er ikke innvilget fordi:'
-        oppsumertAvslag = oppsumertAvslagBegrunnelser(vedtak, dager)
-    }
-
-    return {
-        oppsumertAvslag,
-        title,
-    }
+export const unikeAvslagBegrunnelser = (dager: RSDag[]): Set<string> => {
+    return new Set(dager.flatMap((dag) => dag.begrunnelser).map(finnBegrunnelseTekst))
 }
 
 export const finnBegrunnelseTekst = (begrunnelse: RSBegrunnelse): string => {
