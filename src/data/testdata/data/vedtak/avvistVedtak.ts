@@ -150,3 +150,220 @@ export const avvistVedtak: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
 }
+
+export const avvistVedtakFraDev: RSVedtakWrapper = {
+    id: '8c33d1c8-c2f8-4208-8f34-82b7a638c802',
+    lest: true,
+    lestDato: '2025-11-25T16:47:30.609812+01:00',
+    vedtak: {
+        organisasjonsnummer: '972674818',
+        yrkesaktivitetstype: 'ARBEIDSTAKER',
+        fom: '2025-10-29',
+        tom: '2025-11-24',
+        dokumenter: [
+            {
+                dokumentId: 'e0ac28bd-666d-34e1-a588-de7dd3739093',
+                type: 'Søknad',
+            },
+            {
+                dokumentId: 'd33e3ca2-c117-4594-a5ed-6b47df8f38c2',
+                type: 'Sykmelding',
+            },
+            {
+                dokumentId: '1ad35a56-8585-4968-909e-0dae0c74ec97',
+                type: 'Inntektsmelding',
+            },
+        ],
+        inntekt: 40000,
+        sykepengegrunnlag: 480000,
+        utbetaling: {
+            organisasjonsnummer: '972674818',
+            utbetalingId: '850e27ad-0f1e-4bf7-8b2a-299ee24bc584',
+            forbrukteSykedager: 0,
+            gjenståendeSykedager: 248,
+            automatiskBehandling: false,
+            // arbeidsgiverOppdrag: null,
+            personOppdrag: null,
+            utbetalingsdager: [
+                {
+                    dato: '2025-10-29',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-10-30',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-10-31',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-01',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-02',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-03',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-04',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-05',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-06',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-07',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-08',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-09',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-10',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-11',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-12',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-13',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-14',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-15',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-16',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-17',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-18',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-19',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-20',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-21',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+                {
+                    dato: '2025-11-22',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-23',
+                    type: 'NavHelgDag',
+                    begrunnelser: [],
+                },
+                {
+                    dato: '2025-11-24',
+                    type: 'AvvistDag',
+                    begrunnelser: ['ManglerOpptjening'],
+                },
+            ],
+            foreløpigBeregnetSluttPåSykepenger: '2026-11-05',
+            utbetalingType: 'REVURDERING',
+        },
+        grunnlagForSykepengegrunnlag: 480000,
+        grunnlagForSykepengegrunnlagPerArbeidsgiver: {
+            '972674818': 480000,
+        },
+        begrensning: 'ER_IKKE_6G_BEGRENSET',
+        vedtakFattetTidspunkt: '2025-11-25',
+        sykepengegrunnlagsfakta: {
+            fastsatt: 'EtterHovedregel',
+            omregnetÅrsinntekt: 480000,
+            innrapportertÅrsinntekt: 400000,
+            avviksprosent: 20,
+            '6G': 780960,
+            tags: [],
+            arbeidsgivere: [
+                {
+                    arbeidsgiver: '972674818',
+                    omregnetÅrsinntekt: 480000,
+                },
+            ],
+        },
+        begrunnelser: [
+            {
+                type: 'Avslag',
+                begrunnelse: '',
+                perioder: [
+                    {
+                        fom: '2025-10-29',
+                        tom: '2025-11-24',
+                    },
+                ],
+            },
+        ],
+        tags: [],
+    },
+    opprettetTimestamp: '2025-11-25T11:12:25.196068Z',
+    orgnavn: 'Pengeløs Sparebank',
+    annullert: false,
+    revurdert: false,
+    andreArbeidsgivere: {},
+    organisasjoner: {
+        '972674818': 'Pengeløs Sparebank',
+    },
+}

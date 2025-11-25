@@ -6,54 +6,40 @@ import DagBeskrivelse from '../../../dager/dag-beskrivelse'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
 import { VedtakProps } from '../../vedtak'
-import { erWeekendPeriode } from '../../../../utils/dato-utils'
 import { logEvent } from '../../../amplitude/amplitude'
 
 interface SykepengerPerDagProps {
     dager: RSDag[]
-    tittel?: string
+    tittel: string
     ingenNyArbeidsgiverperiode: boolean
 }
 
 export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
-    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
-    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
-    const erBegge = erDirekteutbetaling && erRefusjon
+    const erDirekteutbetaling = vedtak.dagerPerson.length > 0
+    const erRefusjon = vedtak.dagerArbeidsgiver.length > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
-    if (erBegge) {
-        return (
-            <>
+    return (
+        <>
+            {erDirekteutbetaling && (
+                <SykepengerPerDag
+                    tittel="Dine sykepenger per dag"
+                    dager={vedtak.dagerPerson}
+                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                />
+            )}
+            {erRefusjon && (
                 <SykepengerPerDag
                     tittel="Sykepenger per dag til arbeidsgiver"
                     dager={vedtak.dagerArbeidsgiver}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                 />
-                <SykepengerPerDag
-                    tittel="Sykepenger per dag til deg"
-                    dager={vedtak.dagerPerson}
-                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                />
-            </>
-        )
-    }
-    if (erDirekteutbetaling) {
-        return <SykepengerPerDag dager={vedtak.dagerPerson} ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode} />
-    }
-    if (erRefusjon || erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom)) {
-        return (
-            <SykepengerPerDag
-                dager={vedtak.dagerArbeidsgiver}
-                ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-            />
-        )
-    }
-    return null
+            )}
+        </>
+    )
 }
 
 export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
     const isServer = useContext(ArkiveringContext)
-    const headerTitle = tittel || 'Dine sykepenger per dag'
-
     if (dager.length == 0) return null
 
     return (
@@ -61,14 +47,14 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
             defaultOpen={isServer}
             onOpenChange={(open) =>
                 logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
-                    tittel: tittel || headerTitle,
+                    tittel: tittel,
                     component: 'SykepengerPerDag',
                 })
             }
         >
             <Accordion.Header>
                 <Heading size="small" level="3">
-                    {tittel || 'Dine sykepenger per dag'}
+                    {tittel}
                 </Heading>
             </Accordion.Header>
             <Accordion.Content className="bg-white px-0">
