@@ -21,7 +21,7 @@
         "classnames": "^2.5.1",
         "cookie": "^1.0.2",
         "dayjs": "^1.11.19",
-        "html-react-parser": "^5.2.7",
+        "html-react-parser": "^5.2.10",
         "jose": "^5.9.6",
         "next-logger": "^5.0.2",
         "node-cache": "^5.1.2",
