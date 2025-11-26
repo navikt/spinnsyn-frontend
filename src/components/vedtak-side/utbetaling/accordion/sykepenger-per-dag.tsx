@@ -1,5 +1,5 @@
 import { Accordion, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import DagTabell from '../../../dager/dag-tabell'
 import DagBeskrivelse from '../../../dager/dag-beskrivelse'
@@ -7,14 +7,33 @@ import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
 import { dagErAvvist, VedtakProps } from '../../vedtak'
 import { logEvent } from '../../../amplitude/amplitude'
+import { useScroll } from '../../../../context/scroll-context'
 
 interface SykepengerPerDagProps {
     dager: RSDag[]
     tittel: string
     ingenNyArbeidsgiverperiode: boolean
+    visDagTabell?: boolean
 }
 
 export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
+    const arkivering = useContext(ArkiveringContext)
+    const { apneElementMedId, registrerElement } = useScroll()
+    const [visDagTabell, setVisDagTabell] = useState<boolean>(arkivering)
+    const elementRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (apneElementMedId === 'sykepenger_per_dag') {
+            setVisDagTabell(true)
+        }
+    }, [apneElementMedId])
+
+    useEffect(() => {
+        if (elementRef.current !== null) {
+            registrerElement('sykepenger_per_dag', elementRef)
+        }
+    }, [elementRef?.current?.id, registrerElement])
+
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
@@ -24,11 +43,13 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
             {erRefusjon && erDirekteutbetaling ? (
                 <>
                     <SykepengerPerDag
+                        visDagTabell={visDagTabell}
                         tittel="Sykepenger per dag til arbeidsgiver"
                         dager={vedtak.dagerArbeidsgiver}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     />
                     <SykepengerPerDag
+                        visDagTabell={visDagTabell}
                         tittel="Sykepenger per dag til deg"
                         dager={vedtak.dagerPerson}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
@@ -36,6 +57,7 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
                 </>
             ) : (
                 <SykepengerPerDag
+                    visDagTabell={visDagTabell}
                     tittel="Dine sykepenger per dag"
                     dager={erRefusjon ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
@@ -45,7 +67,12 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
     )
 }
 
-export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
+export const SykepengerPerDag = ({
+    tittel,
+    dager,
+    ingenNyArbeidsgiverperiode,
+    visDagTabell,
+}: SykepengerPerDagProps) => {
     const isServer = useContext(ArkiveringContext)
     if (dager.length == 0) return null
     const harAvvisteDager = dager.some((dag) => dagErAvvist.includes(dag.dagtype))
@@ -53,6 +80,7 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
     return (
         <Accordion.Item
             defaultOpen={isServer}
+            open={visDagTabell}
             onOpenChange={(open) =>
                 logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
                     tittel: tittel,

@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, RefObject, useContext, useEffect, useState } from 'react'
 
-type ScrollElementType = 'begrunnelse_vedtak' | 'dager_ikke_nav' | 'mer_om_beregningen' | ''
+type ScrollElementType = 'begrunnelse_vedtak' | 'sykepenger_per_dag' | 'mer_om_beregningen' | ''
 
 interface ScrollContextType {
     registrerElement: (elementId: ScrollElementType, ref: React.RefObject<HTMLDivElement | null>) => void
