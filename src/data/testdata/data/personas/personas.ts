@@ -20,7 +20,7 @@ import { vedtakMed40Grad } from '../vedtak/gradert40'
 import { vedtakAnnullert } from '../vedtak/annullert'
 import { vedtakRevurdert } from '../vedtak/revurdert'
 import { vedtakRevurdertDirekte } from '../vedtak/revurdertDirekte'
-import { avvistVedtak, avvistVedtakFraDev } from '../vedtak/avvistVedtak'
+import { avvistVedtak, avvistManglerOpptjeningVedtak } from '../vedtak/avvistVedtak'
 import { avvistVedtakMedLavInntekt } from '../vedtak/avvistMedLavInntekt'
 import { vedtakRedusertTil6G } from '../vedtak/redusertTil6g'
 import { kunDirekte } from '../vedtak/kunDirekte'
@@ -53,7 +53,7 @@ export const diverseData: Persona = {
         vedtakRevurdertDirekte,
         alleAvvisteDager,
         avvistVedtak,
-        avvistVedtakFraDev,
+        avvistManglerOpptjeningVedtak,
         avvistVedtakMedLavInntekt,
         vedtakRedusertTil6G,
         inntektHentetFraAordningen,

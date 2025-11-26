@@ -151,7 +151,7 @@ export const avvistVedtak: RSVedtakWrapper = {
     revurdert: false,
 }
 
-export const avvistVedtakFraDev: RSVedtakWrapper = {
+export const avvistManglerOpptjeningVedtak: RSVedtakWrapper = {
     id: '8c33d1c8-c2f8-4208-8f34-82b7a638c802',
     lest: true,
     lestDato: '2025-11-25T16:47:30.609812+01:00',
@@ -182,7 +182,6 @@ export const avvistVedtakFraDev: RSVedtakWrapper = {
             forbrukteSykedager: 0,
             gjenståendeSykedager: 248,
             automatiskBehandling: false,
-            // arbeidsgiverOppdrag: null,
             personOppdrag: null,
             utbetalingsdager: [
                 {
