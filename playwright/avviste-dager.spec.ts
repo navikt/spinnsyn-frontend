@@ -58,11 +58,11 @@ test.describe('Avviste dager', () => {
         }
         await refusjonsPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
 
-        // await expect(
-        //     page.getByText(
-        //         'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
-        //     ),
-        // ).toBeVisible()
+        await expect(
+            page.getByText(
+                'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
+            ),
+        ).toBeVisible()
 
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByText('Dine sykepenger per dag').click()
@@ -99,11 +99,11 @@ test.describe('Avviste dager', () => {
         await expect(ingenUtbetalingPanel.getByText('Ingen utbetaling')).toBeVisible()
         await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
 
-        // await expect(
-        //     page.getByText(
-        //         'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
-        //     ),
-        // ).toBeVisible()
+        await expect(
+            page.getByText(
+                'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
+            ),
+        ).toBeVisible()
 
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByText('Dine sykepenger per dag').click()
@@ -127,11 +127,11 @@ test.describe('Avviste dager', () => {
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByText('Dine sykepenger per dag').click()
 
-        // await expect(
-        //     avvisteDagerRegion.getByText(
-        //         'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
-        //     ),
-        // ).toBeVisible()
+        await expect(
+            beregningRegion.getByText(
+                'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
+            ),
+        ).toBeVisible()
 
         const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
@@ -160,11 +160,11 @@ test.describe('Avviste dager', () => {
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByText('Dine sykepenger per dag').click()
 
-        // await expect(
-        //     avvisteDagerRegion.getByText(
-        //         'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
-        //     ),
-        // ).toBeVisible()
+        await expect(
+            beregningRegion.getByText(
+                'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
+            ),
+        ).toBeVisible()
 
         const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [

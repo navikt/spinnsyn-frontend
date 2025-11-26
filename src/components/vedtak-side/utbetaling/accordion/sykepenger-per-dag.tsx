@@ -1,11 +1,11 @@
-import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
+import { Accordion, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
 import React, { useContext } from 'react'
 
 import DagTabell from '../../../dager/dag-tabell'
 import DagBeskrivelse from '../../../dager/dag-beskrivelse'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
-import { VedtakProps } from '../../vedtak'
+import { dagErAvvist, VedtakProps } from '../../vedtak'
 import { logEvent } from '../../../amplitude/amplitude'
 
 interface SykepengerPerDagProps {
@@ -18,6 +18,7 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
+
     return (
         <>
             {erRefusjon && erDirekteutbetaling ? (
@@ -47,6 +48,7 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
 export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
     const isServer = useContext(ArkiveringContext)
     if (dager.length == 0) return null
+    const harAvvisteDager = dager.some((dag) => dagErAvvist.includes(dag.dagtype))
 
     return (
         <Accordion.Item
@@ -64,6 +66,12 @@ export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: 
                 </Heading>
             </Accordion.Header>
             <Accordion.Content className="bg-white px-0">
+                {harAvvisteDager && (
+                    <BodyShort>
+                        Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne
+                        sykmeldingsperioden. Nedenfor ser du dagene du ikke får utbetaling for, og hvorfor.
+                    </BodyShort>
+                )}
                 {ingenNyArbeidsgiverperiode && (
                     <BodyLong spacing>
                         {
