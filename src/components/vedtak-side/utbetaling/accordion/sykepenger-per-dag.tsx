@@ -18,18 +18,17 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
-    const tittel = !(erDirekteutbetaling && erRefusjon) ? 'Dine sykepenger per dag' : undefined
     return (
         <>
             {erRefusjon && erDirekteutbetaling ? (
                 <>
                     <SykepengerPerDag
-                        tittel={tittel ?? 'Sykepenger per dag til arbeidsgiver'}
+                        tittel="Sykepenger per dag til arbeidsgiver"
                         dager={vedtak.dagerArbeidsgiver}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     />
                     <SykepengerPerDag
-                        tittel={tittel ?? 'Sykepenger per dag til deg'}
+                        tittel="Sykepenger per dag til deg"
                         dager={vedtak.dagerPerson}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     />
