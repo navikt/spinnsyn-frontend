@@ -20,7 +20,7 @@ import {
 test.describe('Avviste dager', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(12)
     })
 
     test('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', async ({ page }) => {

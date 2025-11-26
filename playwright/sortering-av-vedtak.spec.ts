@@ -19,7 +19,7 @@ test.describe('Sortering av vedtak', () => {
     test.beforeEach('Laster startside', async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger')
         await harSynligTittel(page, 'Svar på søknader', 1)
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(12)
     })
 
     test('Tidligere vedtak sorteres etter tidligste tom dato', async ({ page }) => {
