@@ -18,26 +18,26 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
+    const tittel = !(erDirekteutbetaling && erRefusjon) ? 'Dine sykepenger per dag' : undefined
     return (
         <>
-            {erRefusjon && (
+            {erRefusjon && erDirekteutbetaling ? (
+                <>
+                    <SykepengerPerDag
+                        tittel={tittel ?? 'Sykepenger per dag til arbeidsgiver'}
+                        dager={vedtak.dagerArbeidsgiver}
+                        ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                    />
+                    <SykepengerPerDag
+                        tittel={tittel ?? 'Sykepenger per dag til deg'}
+                        dager={vedtak.dagerPerson}
+                        ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                    />
+                </>
+            ) : (
                 <SykepengerPerDag
-                    tittel="Sykepenger per dag til arbeidsgiver"
-                    dager={vedtak.dagerArbeidsgiver}
-                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                />
-            )}
-            {erDirekteutbetaling && (
-                <SykepengerPerDag
-                    tittel="Sykepenger per dag til deg"
-                    dager={vedtak.dagerPerson}
-                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                />
-            )}
-            {!erDirekteutbetaling && !erRefusjon && (
-                <SykepengerPerDag
-                    dager={vedtak.dagerPerson}
-                    tittel="Dager uten utbetaling"
+                    tittel="Dine sykepenger per dag"
+                    dager={erRefusjon ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                 />
             )}
