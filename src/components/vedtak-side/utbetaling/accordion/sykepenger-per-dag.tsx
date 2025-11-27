@@ -38,10 +38,17 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
                         scrollElementType="sykepenger_per_dag"
                     />
                 </>
+            ) : erRefusjon ? (
+                <SykepengerPerDag
+                    tittel="Dine sykepenger per dag"
+                    dager={vedtak.dagerArbeidsgiver}
+                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                    scrollElementType="sykepenger_per_dag_arbeidsgiver"
+                />
             ) : (
                 <SykepengerPerDag
                     tittel="Dine sykepenger per dag"
-                    dager={erRefusjon ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson}
+                    dager={vedtak.dagerPerson}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     scrollElementType="sykepenger_per_dag"
                 />

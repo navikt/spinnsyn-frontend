@@ -40,10 +40,6 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
     useEffect(() => {
         if (apneElementMedId) {
             const element = elementer.get(apneElementMedId)
-            if (apneElementMedId === 'sykepenger_per_dag_arbeidsgiver' && !element) {
-                setApneElementMedId('sykepenger_per_dag')
-                return
-            }
             if (element) {
                 window.setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth' })
