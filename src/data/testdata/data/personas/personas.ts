@@ -33,6 +33,7 @@ import { innvilgelseMedBegrunnelseVedtak, innvilgelseMedTomBegrunnelseVedtak } f
 import { ingenUtbetalingFordiAlleDagerHelg } from '../vedtak/ingenUtbetalingFordiAlleDagerHelg'
 import { innvilgelseVedtak } from '../vedtak/delvisInnvilgelse'
 import { revurderingVedtak } from '../vedtak/revurdering'
+import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -135,6 +136,11 @@ export const direkteUtenKontonummerPerson: Persona = {
 export const kombinasjonPerson: Persona = {
     vedtak: [kombinertDirekteOgRefusjon, slutterMedRefusjon],
     beskrivelse: 'Både refusjon og brukerutbetaling',
+}
+
+export const refusjonOgBrukerutbetalinOgDelvisInnvilget: Persona = {
+    vedtak: [kombinertDirekteOgRefusjonDelvisInnvilget],
+    beskrivelse: 'Refusjon, brukerutbetaling og delvis innvilget',
 }
 
 export const slutterMedDelvisRefusjon: Persona = {

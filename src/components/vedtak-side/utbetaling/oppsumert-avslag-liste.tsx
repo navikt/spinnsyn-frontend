@@ -1,7 +1,7 @@
 import { Link, List } from '@navikt/ds-react'
 import React from 'react'
 
-import { useScroll } from '../../../context/scroll-context'
+import { ScrollElementType, useScroll } from '../../../context/scroll-context'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
@@ -10,6 +10,7 @@ export interface OppsummertAvslagListeProps {
     title: string
     harBegrunnelseFraBomlo: boolean
     vedtak: RSVedtakWrapper
+    dagTabellScrollElement: ScrollElementType
 }
 
 export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps) => {
@@ -41,7 +42,7 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
                     } else if (harInnvilgelseBegrunnelse) {
                         blaTilElement('begrunnelse_vedtak')
                     } else {
-                        blaTilElement('sykepenger_per_dag')
+                        blaTilElement(oppsumertAvslag.dagTabellScrollElement)
                     }
                 }}
             >

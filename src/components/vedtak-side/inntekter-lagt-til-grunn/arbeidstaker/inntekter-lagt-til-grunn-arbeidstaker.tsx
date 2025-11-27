@@ -39,7 +39,7 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
             setVisBegrunnelse(true)
             setVisBeregning(true)
         }
-        if (apneElementMedId === 'sykepenger_per_dag') {
+        if (apneElementMedId === 'sykepenger_per_dag_arbeidsgiver' || apneElementMedId === 'sykepenger_per_dag') {
             setVisBeregning(true)
         }
     }, [apneElementMedId])

@@ -26,6 +26,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
         oppsummertAvslag: avslagBegrunnelser,
         harBegrunnelseFraBomlo,
         vedtak,
+        dagTabellScrollElement: 'sykepenger_per_dag',
     }
 
     return (

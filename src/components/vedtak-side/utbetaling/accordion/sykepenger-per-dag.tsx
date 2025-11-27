@@ -7,12 +7,13 @@ import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
 import { dagErAvvist, VedtakProps } from '../../vedtak'
 import { logEvent } from '../../../amplitude/amplitude'
-import { useScroll } from '../../../../context/scroll-context'
+import { ScrollElementType, useScroll } from '../../../../context/scroll-context'
 
 interface SykepengerPerDagProps {
     dager: RSDag[]
     tittel: string
     ingenNyArbeidsgiverperiode: boolean
+    scrollElementType: ScrollElementType
 }
 
 export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
@@ -28,11 +29,13 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
                         tittel="Sykepenger per dag til arbeidsgiver"
                         dager={vedtak.dagerArbeidsgiver}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                        scrollElementType="sykepenger_per_dag_arbeidsgiver"
                     />
                     <SykepengerPerDag
                         tittel="Sykepenger per dag til deg"
                         dager={vedtak.dagerPerson}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                        scrollElementType="sykepenger_per_dag"
                     />
                 </>
             ) : (
@@ -40,27 +43,33 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
                     tittel="Dine sykepenger per dag"
                     dager={erRefusjon ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                    scrollElementType="sykepenger_per_dag"
                 />
             )}
         </>
     )
 }
 
-export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
+export const SykepengerPerDag = ({
+    tittel,
+    dager,
+    ingenNyArbeidsgiverperiode,
+    scrollElementType,
+}: SykepengerPerDagProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const elementRef = useRef<HTMLDivElement>(null)
     const [visDagTabell, setVisDagTabell] = useState<boolean>(arkivering)
 
     useEffect(() => {
-        if (apneElementMedId === 'sykepenger_per_dag') {
+        if (apneElementMedId === scrollElementType) {
             setVisDagTabell(true)
         }
     }, [apneElementMedId])
 
     useEffect(() => {
         if (elementRef.current !== null) {
-            registrerElement('sykepenger_per_dag', elementRef)
+            registrerElement(scrollElementType, elementRef)
         }
     }, [elementRef?.current?.id, registrerElement])
 

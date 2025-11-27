@@ -17,6 +17,7 @@ import {
     innvilgelsePerson,
     julesoknadPerson,
     kombinasjonPerson,
+    refusjonOgBrukerutbetalinOgDelvisInnvilget,
     kombinertRevurdertPersona,
     kunArbedisgiverPerioder,
     kunDirektePerson,
@@ -54,6 +55,7 @@ export type PersonaKey =
     | 'kun-direkte'
     | 'direkte-uten-kontonummer'
     | 'kombinasjon'
+    | 'kombinasjonDelvis'
     | 'kun-ag-periode'
     | 'slutter-med-delvis-refusjon'
     | 'skjonnsfastsatt-brukerutbetaling'
@@ -93,6 +95,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
         ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
+        ['kombinasjonDelvis']: jsonDeepCopy(refusjonOgBrukerutbetalinOgDelvisInnvilget),
     },
     ['selvstendig-naeringsdrivende']: {
         ['standard-selvstendig']: jsonDeepCopy(standardSelvstendigPersona),

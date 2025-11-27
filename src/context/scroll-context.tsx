@@ -1,6 +1,11 @@
 import React, { createContext, ReactNode, RefObject, useCallback, useContext, useEffect, useState } from 'react'
 
-type ScrollElementType = 'begrunnelse_vedtak' | 'sykepenger_per_dag' | 'mer_om_beregningen' | ''
+export type ScrollElementType =
+    | 'begrunnelse_vedtak'
+    | 'sykepenger_per_dag'
+    | 'sykepenger_per_dag_arbeidsgiver'
+    | 'mer_om_beregningen'
+    | ''
 
 interface ScrollContextType {
     registrerElement: (elementId: ScrollElementType, ref: React.RefObject<HTMLDivElement | null>) => void
@@ -33,8 +38,12 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        if (apneElementMedId && elementer.has(apneElementMedId)) {
+        if (apneElementMedId) {
             const element = elementer.get(apneElementMedId)
+            if (apneElementMedId === 'sykepenger_per_dag_arbeidsgiver' && !element) {
+                setApneElementMedId('sykepenger_per_dag')
+                return
+            }
             if (element) {
                 window.setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth' })
