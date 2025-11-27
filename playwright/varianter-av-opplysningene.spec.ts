@@ -50,10 +50,11 @@ test.describe('Tester logikk i behandling.tsx', () => {
     test('Manuelt behandlet revurdert vedtak', async ({ page }) => {
         await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakRevurdert.id}`)
         const alert = page.locator('.navds-alert')
-        await expect(alert).toContainText('Denne beslutningen er behandlet på nytt.')
-        await expect(alert).toContainText('Nytt svar for denne perioden finner du her')
-        await expect(alert).not.toContainText(
-            'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',
+        await expect(alert).toContainText(
+            'Vi har fått nye opplysninger i saken din og søknaden er vurdert på nytt. Dette svaret er erstattet av et annet og gjelder derfor ikke lenger.',
+        )
+        await expect(alert).toContainText(
+            'Du finner nytt svar i oversikten på Ditt sykefravær. Du trenger ikke å gjøre noe. ',
         )
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
