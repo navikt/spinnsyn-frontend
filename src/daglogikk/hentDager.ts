@@ -10,7 +10,6 @@ dayjs.extend(isSameOrAfter)
 const DAGTYPER_MED_UTBETALING = ['NavDag', 'NavDagDelvisSyk', 'NavDagSyk'] as const
 const SONDAG = 0
 
-//todo: Dette gjøres på backend, bør fjernes herfra
 export function hentDager(
     fom: string,
     tom: string,
