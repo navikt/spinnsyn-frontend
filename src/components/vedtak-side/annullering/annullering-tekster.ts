@@ -2,9 +2,8 @@ const AnnulleringTekster = {
     'revurdert.alert.header': 'Du har fått et nytt vedtak som erstatter dette vedtaket',
     'revurdert.alert.revurdert.nybeslutningtekst': 'Dette er en ny beslutning som erstatter et tidligere svar.',
     'revurdert.alert.revurdert.nybeslutninglenketekst': 'Tidligere svar finner du her.',
-    'revurdert.alert.tekst': 'Denne beslutningen er behandlet på nytt.',
-    'revurdert.alert.link.tekst': 'Nytt svar for denne perioden finner du her.',
     'revurdert.alert.link.url': '/syk/sykepenger',
+
     'annullert.alert.header': 'Til din informasjon',
     'annulert.alert.tekst': 'Av tekniske årsaker er saken din flyttet til et annet saksbehandlingssystem.',
     'annulert.alert.undertekst': 'Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.',

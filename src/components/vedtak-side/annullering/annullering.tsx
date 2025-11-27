@@ -5,13 +5,20 @@ import { Chat2Icon } from '@navikt/aksel-icons'
 import { tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
-import { logEvent } from '../../umami/umami'
+import { logEvent } from '../../amplitude/amplitude'
+import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 
 const RevurdertAlert = () => {
     return (
-        <Alert variant="warning">
-            <BodyShort>{`${tekst('revurdert.alert.tekst')}`}</BodyShort>
-            <Link href={tekst('revurdert.alert.link.url')}>{tekst('revurdert.alert.link.tekst')}</Link>
+        <Alert variant="info">
+            <BodyShort spacing>
+                Vi har fått nye opplysninger i saken din og søknaden er vurdert på nytt. Dette svaret er erstattet av et
+                annet og gjelder derfor ikke lenger.
+            </BodyShort>
+            <BodyShort spacing className="mt-8">
+                Du finner nytt svar i <LenkeMedAmplitude tekst="oversikten på Ditt sykefravær" url="/syk/sykepenger" />.
+                Du trenger ikke å gjøre noe.
+            </BodyShort>
         </Alert>
     )
 }
