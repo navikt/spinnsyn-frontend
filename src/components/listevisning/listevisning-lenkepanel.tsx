@@ -107,16 +107,25 @@ type EtikettProps = {
     annullert: boolean
     revurdert: boolean
     revurdering: boolean
+    size?: 'medium' | 'small' | 'xsmall'
 }
 
-const Etikett = ({ annullert, revurdert, revurdering }: EtikettProps) => {
+export const Etikett = ({ annullert, revurdert, revurdering, size }: EtikettProps) => {
     const annullertEllerRevurdert = annullert || revurdert
     if (annullertEllerRevurdert) {
-        return <Tag variant="neutral">{tekst('spinnsyn.teaser.annullert')}</Tag>
+        return (
+            <Tag size={size} variant="neutral">
+                {tekst('spinnsyn.teaser.annullert')}
+            </Tag>
+        )
     }
     const nyesteRevudering = !revurdert && revurdering
     if (nyesteRevudering) {
-        return <Tag variant="info">{tekst('spinnsyn.teaser.sisterevudering')}</Tag>
+        return (
+            <Tag size={size} variant="info">
+                {tekst('spinnsyn.teaser.sisterevudering')}
+            </Tag>
+        )
     }
     return null
 }

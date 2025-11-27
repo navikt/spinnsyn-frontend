@@ -1,5 +1,6 @@
-import { Alert, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
+import { Alert, BodyLong, BodyShort, Detail, Heading, Link, Tag } from '@navikt/ds-react'
 import React, { useContext, useEffect } from 'react'
+import dayjs from 'dayjs'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
@@ -14,6 +15,7 @@ import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetr
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 import { erWeekendPeriode } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
+import { Etikett } from '../listevisning/listevisning-lenkepanel'
 
 import AnnulleringsInfo from './annullering/annullering'
 import { Behandling } from './behandling/behandling'
@@ -101,6 +103,15 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {julesoknad && <JulesoknadWarning />}
             {annullertEllerRevurdert && (
                 <>
+                    <Etikett
+                        size="small"
+                        annullert={vedtak.annullert}
+                        revurdert={vedtak.revurdert}
+                        revurdering={nyesteRevudering}
+                    />
+                    <Detail textColor="subtle" className="italic mb-8 mt-4">
+                        Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
+                    </Detail>
                     <AnnulleringsInfo vedtak={vedtak} />
                     <Heading spacing size="large" level="2" className="tidligere__beslutning">
                         {tekst('annullert.se-tidligere-beslutning')}
