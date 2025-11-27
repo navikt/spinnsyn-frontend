@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, RefObject, useContext, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, RefObject, useCallback, useContext, useEffect, useState } from 'react'
 
 type ScrollElementType = 'begrunnelse_vedtak' | 'sykepenger_per_dag' | 'mer_om_beregningen' | ''
 
@@ -18,19 +18,19 @@ export const ScrollProvider: React.FC<ScrollProviderProps> = ({ children }) => {
     const [elementer, setElementer] = useState<Map<ScrollElementType, HTMLElement>>(new Map())
     const [apneElementMedId, setApneElementMedId] = useState<ScrollElementType>('')
 
-    const registrerElement = (elementId: ScrollElementType, ref: RefObject<HTMLElement | null>) => {
-        if (ref.current !== null && !elementer.has(elementId)) {
+    const registrerElement = useCallback((elementId: ScrollElementType, ref: RefObject<HTMLElement | null>) => {
+        if (ref.current !== null) {
             setElementer((prevElements) => {
                 const newElements = new Map(prevElements)
                 newElements.set(elementId, ref.current!)
                 return newElements
             })
         }
-    }
+    }, [])
 
-    const blaTilElement = (id: ScrollElementType) => {
+    const blaTilElement = useCallback((id: ScrollElementType) => {
         setApneElementMedId(id)
-    }
+    }, [])
 
     useEffect(() => {
         if (apneElementMedId && elementer.has(apneElementMedId)) {
