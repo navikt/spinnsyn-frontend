@@ -20,7 +20,7 @@ import {
 test.describe('Avviste dager', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(12)
     })
 
     test('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', async ({ page }) => {
@@ -63,10 +63,9 @@ test.describe('Avviste dager', () => {
                 'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
             ),
         ).toBeVisible()
-        await expect(page.getByTestId('avvistedageroversikt')).toContainText('Dager Nav ikke utbetaler')
 
-        const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
-        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
+        const beregningRegion = await visBeregningRegion(page)
+        const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
 
         await verifyDagTabellRows(dagTabellBody, [
             ['11. feb.', 'Ferie'],
@@ -90,27 +89,18 @@ test.describe('Avviste dager', () => {
         ])
 
         await harSynligTittel(page, 'Forklaring', 4)
+        await expect(beregningRegion.getByText('Mer om beregningen')).toBeVisible()
+
         await expect(
-            avvisteDagerRegion.getByText(
+            beregningRegion.getByText(
                 'Du får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde ferie',
             ),
         ).toBeVisible()
         await expect(
-            avvisteDagerRegion.getByText(
+            beregningRegion.getByText(
                 'Nav betaler ikke sykepenger for tiden etter dødsfall. Se folketrygdloven § 8-3.',
             ),
         ).toBeVisible()
-
-        const avvisteDagerOversikt = avvisteDagerRegion.getByTestId('avvistedageroversikt')
-        await expect(avvisteDagerOversikt).toContainText('Dager Nav ikke utbetaler')
-        await expect(avvisteDagerOversikt).toContainText('Forklaring')
-
-        await avvisteDagerOversikt.locator('.navds-accordion__header').click()
-        await expect(avvisteDagerRegion).toContainText('22 sykepengedager')
-        await expect(avvisteDagerRegion).toContainText('Utbetales ikke av Nav')
-
-        await avvisteDagerRegion.click()
-        await expect(avvisteDagerRegion.getByText('Mer om beregningen')).not.toBeVisible()
     })
 
     test('Vedtak med avviste dager og ingen utbetaling', async ({ page }) => {
@@ -118,30 +108,24 @@ test.describe('Avviste dager', () => {
         const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
         await expect(ingenUtbetalingPanel.getByText('Ingen utbetaling')).toBeVisible()
         await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
-
-        const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
-        await expect(avvisteDagerRegion).toContainText('4 sykepengedager')
-        await expect(avvisteDagerRegion).toContainText('Utbetales ikke av Nav')
-        await avvisteDagerRegion.click()
+        await ingenUtbetalingPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
 
         await expect(
             page.getByText(
                 'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
             ),
         ).toBeVisible()
-        await expect(page.getByRole('region', { name: 'Beregning av sykepengene' })).not.toBeVisible()
 
-        const avvisteDagerOversikt = avvisteDagerRegion.getByTestId('avvistedageroversikt')
-        await avvisteDagerOversikt.click()
+        const beregningRegion = await visBeregningRegion(page)
 
-        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
+        const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
             ['17. aug.', 'Ferie'],
             ['18. aug.', 'Ferie'],
             ['19. aug.', 'Ferie'],
             ['20. aug.', 'Etter dødsfall'],
         ])
-        await expect(avvisteDagerRegion.getByText('Mer om beregningen')).not.toBeVisible()
+        await expect(beregningRegion.getByText('Mer om beregningen')).toBeVisible()
     })
 
     test('Vedtak med avviste dager og lav inntekt, refusjon', async ({ page }) => {
@@ -150,21 +134,16 @@ test.describe('Avviste dager', () => {
         await expect(ingenUtbetalingPanel.getByText('Ingen utbetaling')).toBeVisible()
         await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
 
-        const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
-        await expect(avvisteDagerRegion).toContainText('5 sykepengedager')
-        await expect(avvisteDagerRegion).toContainText('Utbetales ikke av Nav')
-        await avvisteDagerRegion.click()
+        const beregningRegion = await visBeregningRegion(page)
+        await beregningRegion.getByText('Dine sykepenger per dag').click()
 
         await expect(
-            avvisteDagerRegion.getByText(
+            beregningRegion.getByText(
                 'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
             ),
         ).toBeVisible()
 
-        const beregningRegion = await visBeregningRegion(page)
-        await avvisteDagerRegion.getByTestId('avvistedageroversikt').click()
-
-        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
+        const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
             ['17. aug.', 'Ferie'],
             ['18. aug.', 'Ferie'],
@@ -188,21 +167,16 @@ test.describe('Avviste dager', () => {
         await expect(ingenUtbetalingPanel.getByRole('listitem').getByText('For lav inntekt')).toBeVisible()
         await expect(ingenUtbetalingPanel.getByRole('listitem').getByText('Etter dødsfall')).toBeVisible()
 
-        const avvisteDagerRegion = page.getByRole('region', { name: 'Avviste sykepengedager' })
-        await expect(avvisteDagerRegion).toContainText('4 sykepengedager')
-        await expect(avvisteDagerRegion).toContainText('Utbetales ikke av Nav')
-        await avvisteDagerRegion.click()
+        const beregningRegion = await visBeregningRegion(page)
+        await beregningRegion.getByText('Dine sykepenger per dag').click()
 
         await expect(
-            avvisteDagerRegion.getByText(
+            beregningRegion.getByText(
                 'Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne sykmeldingsperioden.',
             ),
         ).toBeVisible()
 
-        const beregningRegion = await visBeregningRegion(page)
-        await avvisteDagerRegion.getByTestId('avvistedageroversikt').click()
-
-        const dagTabellBody = avvisteDagerRegion.getByTestId('dag-tabell-body')
+        const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
             ['18. aug.', 'Ferie'],
             ['19. aug.', 'Ferie'],

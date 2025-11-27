@@ -2,7 +2,6 @@ import BannerTekster from '../components/banner/banner-tekster'
 import ListevisningTekster from '../components/listevisning/listevisning-tekster'
 import VedtakArkiveringTekster from '../components/vedtak-arkivering/vedtak-arkivering-tekster'
 import AnnulleringTekster from '../components/vedtak-side/annullering/annullering-tekster'
-import AvvisteDagerTekster from '../components/vedtak-side/avviste-dager/avviste-dager-tekster'
 import SykepengedagerTekster from '../components/vedtak-side/sykepengedager/sykepengedager-tekster'
 import UenigTekster from '../components/vedtak-side/uenig/uenig-tekster'
 import UtbetalingTekster from '../components/vedtak-side/utbetaling/utbetaling-tekster'
@@ -15,7 +14,6 @@ const tekster = {
     ...VedtakArkiveringTekster,
     ...UtbetalingTekster,
     ...UenigTekster,
-    ...AvvisteDagerTekster,
     ...SykepengedagerTekster,
     ...AnnulleringTekster,
 }
@@ -27,7 +25,6 @@ type TekstKeys =
     | keyof typeof VedtakArkiveringTekster
     | keyof typeof UtbetalingTekster
     | keyof typeof UenigTekster
-    | keyof typeof AvvisteDagerTekster
     | keyof typeof SykepengedagerTekster
     | keyof typeof AnnulleringTekster
 

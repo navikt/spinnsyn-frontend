@@ -9,7 +9,6 @@ import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunne
 import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
 import { useScroll } from '../../../../context/scroll-context'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { erWeekendPeriode } from '../../../../utils/dato-utils'
 import { logEvent } from '../../../amplitude/amplitude'
 
 import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
@@ -32,6 +31,9 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
             setVisBegrunnelse(true)
             setVisBeregning(true)
         }
+        if (apneElementMedId === 'sykepenger_per_dag_arbeidsgiver' || apneElementMedId === 'sykepenger_per_dag') {
+            setVisBeregning(true)
+        }
     }, [apneElementMedId])
 
     useEffect(() => {
@@ -46,28 +48,9 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
         hentBegrunnelse(vedtak, 'SkjønnsfastsattSykepengegrunnlagKonklusjon') &&
         hentBegrunnelse(vedtak, 'SkjønnsfastsattSykepengegrunnlagMal')
 
-    const harIngenUtbetaling = vedtak.sykepengebelopPerson === 0
-    const harMinstEnForLavInntektDag =
-        vedtak.dagerPerson
-            .concat(vedtak.dagerArbeidsgiver)
-            .filter(
-                (dag) =>
-                    dag.begrunnelser.includes('MinimumInntekt') || dag.begrunnelser.includes('MinimumInntektOver67'),
-            ).length > 0
-
     const avslag = hentBegrunnelse(vedtak, 'Avslag')
     const delvisInnvilgelse = hentBegrunnelse(vedtak, 'DelvisInnvilgelse')
     const innvilgelse = hentBegrunnelse(vedtak, 'Innvilgelse')
-    const harIkkeEnForLavInntektDAg = !harMinstEnForLavInntektDag
-    const harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse = !(avslag || delvisInnvilgelse)
-    if (
-        harIngenUtbetaling &&
-        !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) &&
-        harIkkeEnForLavInntektDAg &&
-        harIkkeBegrunnelseForAvslagEllerDelvisInnvilgelse
-    ) {
-        return null
-    }
 
     const loggBegrunnelseToggle = (open: boolean, type: 'Avslag' | 'DelvisInnvilgelse' | 'Innvilgelse') => {
         let tittel = 'Begrunnelse for innvilget søknad'

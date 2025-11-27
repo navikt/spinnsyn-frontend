@@ -22,6 +22,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
         oppsummertAvslag: avslagBegrunnelser,
         harBegrunnelseFraBomlo,
         vedtak,
+        dagTabellScrollElement: 'sykepenger_per_dag_arbeidsgiver',
     }
     return (
         <UtbetalingPanel

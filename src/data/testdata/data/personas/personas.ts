@@ -20,7 +20,7 @@ import { vedtakMed40Grad } from '../vedtak/gradert40'
 import { vedtakAnnullert } from '../vedtak/annullert'
 import { vedtakRevurdert } from '../vedtak/revurdert'
 import { vedtakRevurdertDirekte } from '../vedtak/revurdertDirekte'
-import { avvistVedtak } from '../vedtak/avvistVedtak'
+import { avvistVedtak, avvistManglerOpptjeningVedtak } from '../vedtak/avvistVedtak'
 import { avvistVedtakMedLavInntekt } from '../vedtak/avvistMedLavInntekt'
 import { vedtakRedusertTil6G } from '../vedtak/redusertTil6g'
 import { kunDirekte } from '../vedtak/kunDirekte'
@@ -33,6 +33,7 @@ import { innvilgelseMedBegrunnelseVedtak, innvilgelseMedTomBegrunnelseVedtak } f
 import { ingenUtbetalingFordiAlleDagerHelg } from '../vedtak/ingenUtbetalingFordiAlleDagerHelg'
 import { innvilgelseVedtak } from '../vedtak/delvisInnvilgelse'
 import { revurderingVedtak } from '../vedtak/revurdering'
+import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -53,6 +54,7 @@ export const diverseData: Persona = {
         vedtakRevurdertDirekte,
         alleAvvisteDager,
         avvistVedtak,
+        avvistManglerOpptjeningVedtak,
         avvistVedtakMedLavInntekt,
         vedtakRedusertTil6G,
         inntektHentetFraAordningen,
@@ -134,6 +136,11 @@ export const direkteUtenKontonummerPerson: Persona = {
 export const kombinasjonPerson: Persona = {
     vedtak: [kombinertDirekteOgRefusjon, slutterMedRefusjon],
     beskrivelse: 'Både refusjon og brukerutbetaling',
+}
+
+export const refusjonOgBrukerutbetalinOgDelvisInnvilget: Persona = {
+    vedtak: [kombinertDirekteOgRefusjonDelvisInnvilget],
+    beskrivelse: 'Refusjon, brukerutbetaling og delvis innvilget',
 }
 
 export const slutterMedDelvisRefusjon: Persona = {

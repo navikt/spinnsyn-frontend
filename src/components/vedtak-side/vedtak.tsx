@@ -16,7 +16,6 @@ import { erWeekendPeriode } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
 
 import AnnulleringsInfo from './annullering/annullering'
-import AvvisteDager from './avviste-dager/avviste-dager'
 import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
@@ -130,7 +129,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                         return <InntekterLagtTilGrunnNaringsdrivende vedtak={vedtak} />
                 }
             })()}
-            {harAvvisteDager && <AvvisteDager avvisteDager={avvisteDager} vedtak={vedtak} />}
             <Sykepengedager vedtak={vedtak} />
 
             {!erArkivering && erDelvisInnvilget && studyActive && <UxSignalsWidget study={studyKey} demo={!isProd()} />}
