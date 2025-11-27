@@ -13,14 +13,44 @@ interface SykepengerPerDagProps {
     dager: RSDag[]
     tittel: string
     ingenNyArbeidsgiverperiode: boolean
-    visDagTabell?: boolean
 }
 
 export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
+    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
+    const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
+
+    return (
+        <>
+            {erRefusjon && erDirekteutbetaling ? (
+                <>
+                    <SykepengerPerDag
+                        tittel="Sykepenger per dag til arbeidsgiver"
+                        dager={vedtak.dagerArbeidsgiver}
+                        ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                    />
+                    <SykepengerPerDag
+                        tittel="Sykepenger per dag til deg"
+                        dager={vedtak.dagerPerson}
+                        ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                    />
+                </>
+            ) : (
+                <SykepengerPerDag
+                    tittel="Dine sykepenger per dag"
+                    dager={erRefusjon ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson}
+                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
+                />
+            )}
+        </>
+    )
+}
+
+export const SykepengerPerDag = ({ tittel, dager, ingenNyArbeidsgiverperiode }: SykepengerPerDagProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
-    const [visDagTabell, setVisDagTabell] = useState<boolean>(arkivering)
     const elementRef = useRef<HTMLDivElement>(null)
+    const [visDagTabell, setVisDagTabell] = useState<boolean>(arkivering)
 
     useEffect(() => {
         if (apneElementMedId === 'sykepenger_per_dag') {
@@ -34,59 +64,21 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
         }
     }, [elementRef?.current?.id, registrerElement])
 
-    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
-    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
-    const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
-
-    return (
-        <>
-            {erRefusjon && erDirekteutbetaling ? (
-                <>
-                    <SykepengerPerDag
-                        visDagTabell={visDagTabell}
-                        tittel="Sykepenger per dag til arbeidsgiver"
-                        dager={vedtak.dagerArbeidsgiver}
-                        ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                    />
-                    <SykepengerPerDag
-                        visDagTabell={visDagTabell}
-                        tittel="Sykepenger per dag til deg"
-                        dager={vedtak.dagerPerson}
-                        ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                    />
-                </>
-            ) : (
-                <SykepengerPerDag
-                    visDagTabell={visDagTabell}
-                    tittel="Dine sykepenger per dag"
-                    dager={erRefusjon ? vedtak.dagerArbeidsgiver : vedtak.dagerPerson}
-                    ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                />
-            )}
-        </>
-    )
-}
-
-export const SykepengerPerDag = ({
-    tittel,
-    dager,
-    ingenNyArbeidsgiverperiode,
-    visDagTabell,
-}: SykepengerPerDagProps) => {
-    const isServer = useContext(ArkiveringContext)
     if (dager.length == 0) return null
     const harAvvisteDager = dager.some((dag) => dagErAvvist.includes(dag.dagtype))
 
     return (
         <Accordion.Item
-            defaultOpen={isServer}
+            ref={elementRef}
+            defaultOpen={arkivering}
             open={visDagTabell}
-            onOpenChange={(open) =>
+            onOpenChange={(open) => {
                 logEvent(open ? 'accordion åpnet' : 'accordion lukket', {
                     tittel: tittel,
                     component: 'SykepengerPerDag',
                 })
-            }
+                setVisDagTabell(open)
+            }}
         >
             <Accordion.Header>
                 <Heading size="small" level="3">

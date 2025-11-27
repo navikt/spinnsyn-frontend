@@ -41,7 +41,7 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
                     } else if (harInnvilgelseBegrunnelse) {
                         blaTilElement('begrunnelse_vedtak')
                     } else {
-                        blaTilElement('dager_ikke_nav')
+                        blaTilElement('sykepenger_per_dag')
                     }
                 }}
             >

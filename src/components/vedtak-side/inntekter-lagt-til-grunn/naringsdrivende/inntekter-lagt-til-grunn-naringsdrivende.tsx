@@ -31,6 +31,9 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) =>
             setVisBegrunnelse(true)
             setVisBeregning(true)
         }
+        if (apneElementMedId === 'sykepenger_per_dag') {
+            setVisBeregning(true)
+        }
     }, [apneElementMedId])
 
     useEffect(() => {
