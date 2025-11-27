@@ -14,6 +14,7 @@ import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetr
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 import { erWeekendPeriode, fullDatoKlokkeslett } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
+import { Etikett } from '../listevisning/listevisning-lenkepanel'
 
 import AnnulleringsInfo from './annullering/annullering'
 import { Behandling } from './behandling/behandling'
@@ -90,6 +91,13 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     {kanVelgePerson && <Person />}
                 </div>
             )}
+            <Etikett
+                size="small"
+                annullert={vedtak.annullert}
+                revurdert={vedtak.revurdert}
+                revurdering={nyesteRevudering}
+                className="mb-4"
+            />
             <Detail textColor="subtle" className="italic mb-8">
                 Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
             </Detail>
@@ -118,7 +126,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     </Link>
                 </Alert>
             )}
-
             {erRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <RefusjonMedInntekt vedtak={vedtak} />
             )}
@@ -133,9 +140,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 }
             })()}
             <Sykepengedager vedtak={vedtak} />
-
             {!erArkivering && erDelvisInnvilget && studyActive && <UxSignalsWidget study={studyKey} demo={!isProd()} />}
-
             <Behandling vedtak={vedtak.vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
