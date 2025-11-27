@@ -6,12 +6,19 @@ import { tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
 import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 import { logEvent } from '../../amplitude/amplitude'
+import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 
 const RevurdertAlert = () => {
     return (
-        <Alert variant="warning">
-            <BodyShort>{`${tekst('revurdert.alert.tekst')}`}</BodyShort>
-            <Link href={tekst('revurdert.alert.link.url')}>{tekst('revurdert.alert.link.tekst')}</Link>
+        <Alert variant="info">
+            <BodyShort spacing>
+                Vi har fått nye opplysninger i saken din og søknaden er vurdert på nytt. Dette svaret er erstattet av et
+                annet og gjelder derfor ikke lenger.
+            </BodyShort>
+            <BodyShort spacing className="mt-8">
+                Du finner nytt svar i <LenkeMedAmplitude tekst="oversikten på Ditt sykefravær" url="/syk/sykepenger" />.
+                Du trenger ikke å gjøre noe.
+            </BodyShort>
         </Alert>
     )
 }
@@ -33,16 +40,6 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBrukerutbetaling = vedtak.sykepengebelopPerson > 0
 
-    const bodyFraUtbetalingstype = () => {
-        if (erRefusjon && erBrukerutbetaling) {
-            return tekst('annullert.info.body2.delvis-refusjon')
-        } else if (erRefusjon) {
-            return tekst('annullert.info.body2.refusjon')
-        } else {
-            return tekst('annullert.info.body2.brukerutbetaling')
-        }
-    }
-
     const revurdertOgIkkeAnnullert = vedtak.revurdert && !vedtak.annullert
     return (
         <>
@@ -52,11 +49,11 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
 
             <ReadMore
                 className="my-10"
-                header={tekst('annullert.info.header')}
+                header="Hvorfor søknaden blir vurdert på nytt"
                 open={expanded}
                 onClick={() => {
                     logEvent(expanded ? 'readmore lukket' : 'readmore åpnet', {
-                        tittel: tekst('annullert.info.header'),
+                        tittel: 'Hvorfor søknaden blir vurdert på nytt',
                         component: 'AnnulleringsInfo',
                     })
                     setExpanded((prev) => !prev)
@@ -65,24 +62,29 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                 <div className="pt-4" data-testid="annullering-info">
                     {revurdertOgIkkeAnnullert && (
                         <>
-                            <Label>{tekst('annullert.info.header1')}</Label>
-                            <BodyLong spacing>{tekst('annullert.info.body1')}</BodyLong>
-
-                            <Label>{tekst('annullert.info.header2')}</Label>
-                            <BodyLong spacing>{bodyFraUtbetalingstype()}</BodyLong>
-
-                            <Label>{tekst('annullert.info.header3')}</Label>
-                            <BodyLong spacing>{tekst('annullert.info.body3')}</BodyLong>
+                            <BodyLong spacing>
+                                Når vi får nye opplysninger om saken din, kan det påvirke sykepengene dine. Nye
+                                opplysninger kan enten komme fra deg, den som har sykmeldt deg, eller fra arbeidsgiveren
+                                din.
+                            </BodyLong>
+                            <BodyLong spacing>
+                                Når det skjer, må vi vurdere søknaden på nytt for å være sikre på at du får riktig
+                                utbetaling.
+                            </BodyLong>
+                            <BodyLong spacing>
+                                Etter at vi har vurdert søknaden, får du et nytt svar. Dette svaret erstatter tidligere
+                                svar fra oss, også hvis det ikke har skjedd noen endringer.
+                            </BodyLong>
+                            <BodyLong spacing>
+                                Har du spørsmål til de nye opplysningene eller er usikker på hva dette betyr for deg,{' '}
+                                <LenkeMedAmplitude
+                                    tekst="ta kontakt med Nav"
+                                    url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                                />
+                                , så hjelper vi deg videre.
+                            </BodyLong>
                         </>
                     )}
-
-                    <Label>{tekst('annullert.info.header4')}</Label>
-                    <BodyLong spacing>{tekst('annullert.info.body4')}</BodyLong>
-
-                    <Link href="https://innboks.nav.no/s/skriv-til-oss?category=Helse" target="_blank">
-                        <Chat2Icon title="Skriv til oss" className="inline" fontSize="var(--a-font-size-large)" />
-                        {tekst('annullert.info.skriv-til-oss')}
-                    </Link>
                 </div>
             </ReadMore>
         </>
