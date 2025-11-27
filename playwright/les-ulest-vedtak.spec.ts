@@ -70,23 +70,23 @@ test.describe('Les uleste vedtak', () => {
         await trykkPaVedtakMedId(page, vedtakAnnullert.id)
         await test.step('Åpne info og sjekk innhold', async () => {
             await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
-            const info = page.getByTestId('annullering-info')
-            await expect(info).toContainText('Må jeg gjøre noe nå?')
-            await expect(info).not.toContainText('Vil dette ha noe å si for pengene jeg får?')
-            await expect(info).not.toContainText('Hvem har sendt opplysningene?')
-            await expect(info).not.toContainText('Hvorfor behandles vedtaket på nytt?')
+            await expect(
+                page.getByText(
+                    'Du trenger ikke gjøre noe. Hvis vi trenger flere opplysninger, tar en av våre saksbehandlere kontakt med deg.',
+                ),
+            ).toBeVisible()
         })
     })
 
     test('Åpner et revurdert vedtak og sjekker info og sluttdato', async ({ page }) => {
         await trykkPaVedtakMedId(page, vedtakRevurdert.id)
         await test.step('Åpne info og sjekk innhold', async () => {
-            await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
-            const info = page.getByTestId('annullering-info')
-            await expect(info).toContainText('Vil dette ha noe å si for pengene jeg får?')
-            await expect(info).toContainText('Hvem har sendt opplysningene?')
-            await expect(info).toContainText('Hvorfor behandles vedtaket på nytt?')
-            await expect(info).toContainText('Må jeg gjøre noe nå?')
+            await page.getByText('Hvorfor søknaden blir vurdert på nytt').click()
+            await expect(
+                page.getByText(
+                    'Når vi får nye opplysninger om saken din, kan det påvirke sykepengene dine. Nye opplysninger kan enten komme fra deg, den som har sykmeldt deg, eller fra arbeidsgiveren din.',
+                ),
+            ).toBeVisible()
         })
         await test.step('Sjekk beregnet sluttdato', async () => {
             const region = page.getByRole('region', { name: 'Gjenstående sykepengedager' }).nth(0)

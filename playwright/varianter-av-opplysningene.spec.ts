@@ -66,24 +66,6 @@ test.describe('Tester logikk i behandling.tsx', () => {
         )
     })
 
-    test('Revurdert vedtak med direkte utbetaling', async ({ page }) => {
-        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakRevurdertDirekte.id}`)
-        await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
-        await expect(page.locator('.navds-body-long.navds-body-long.navds-typo--spacing').nth(1)).toContainText(
-            'Du får sykepenger direkte fra Nav. Den nye behandlingen kan påvirke hva Nav utbetaler til deg.',
-        )
-    })
-
-    test('Revurdert vedtak med kombinasjonsutbetaling', async ({ page }) => {
-        await page.goto(
-            `http://localhost:3000/syk/sykepenger?testperson=kombinert-revurdert&id=${kombinertDirekteOgRefusjon.id}`,
-        )
-        await page.getByText('Dette lurer mange på når vedtaket behandles på nytt').click()
-        await expect(page.locator('.navds-body-long.navds-body-long.navds-typo--spacing').nth(1)).toContainText(
-            'Du får sykepenger både fra arbeidsgiveren din og direkte fra Nav. Den nye behandlingen kan påvirke hva Nav betaler både til deg og til arbeidsgiveren din.',
-        )
-    })
-
     test('Revurdert vedtak får infoboks', async ({ page }) => {
         await page.goto('http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
         await page.getByText('Nytt svar').click()
