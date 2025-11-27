@@ -65,7 +65,6 @@ test.describe('Avviste dager', () => {
         ).toBeVisible()
 
         const beregningRegion = await visBeregningRegion(page)
-        await beregningRegion.getByText('Dine sykepenger per dag').click()
         const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
 
         await verifyDagTabellRows(dagTabellBody, [
@@ -91,6 +90,17 @@ test.describe('Avviste dager', () => {
 
         await harSynligTittel(page, 'Forklaring', 4)
         await expect(beregningRegion.getByText('Mer om beregningen')).toBeVisible()
+
+        await expect(
+            beregningRegion.getByText(
+                'Du får ikke sykepenger for dager der du eller arbeidsgiveren din har oppgitt at du hadde ferie',
+            ),
+        ).toBeVisible()
+        await expect(
+            beregningRegion.getByText(
+                'Nav betaler ikke sykepenger for tiden etter dødsfall. Se folketrygdloven § 8-3.',
+            ),
+        ).toBeVisible()
     })
 
     test('Vedtak med avviste dager og ingen utbetaling', async ({ page }) => {
@@ -98,6 +108,7 @@ test.describe('Avviste dager', () => {
         const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
         await expect(ingenUtbetalingPanel.getByText('Ingen utbetaling')).toBeVisible()
         await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()
+        await ingenUtbetalingPanel.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
 
         await expect(
             page.getByText(
@@ -106,7 +117,6 @@ test.describe('Avviste dager', () => {
         ).toBeVisible()
 
         const beregningRegion = await visBeregningRegion(page)
-        await beregningRegion.getByText('Dine sykepenger per dag').click()
 
         const dagTabellBody = beregningRegion.getByTestId('dag-tabell-body')
         await verifyDagTabellRows(dagTabellBody, [
