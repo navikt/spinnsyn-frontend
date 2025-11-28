@@ -8,7 +8,7 @@ expect.extend(matchers)
 vi.mock('next/config', () => ({
     default: () => ({
         publicRuntimeConfig: {
-            amplitudeEnabled: 'false',
+            umamiEnabled: 'false',
         },
     }),
 }))

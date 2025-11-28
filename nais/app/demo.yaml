@@ -39,7 +39,7 @@ spec:
       value: "true"
     - name: MOCK_BACKEND
       value: "true"
-    - name: AMPLITUDE_ENABLED
+    - name: UMAMI_ENABLED
       value: "false"
     - name: DECORATOR_ENV
       value: "prod"

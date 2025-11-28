@@ -9,7 +9,7 @@ import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunne
 import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
 import { useScroll } from '../../../../context/scroll-context'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { logEvent } from '../../../amplitude/amplitude'
+import { logEvent } from '../../../umami/umami'
 
 import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
 import { EkstrainfoOmVedtaketNaringsdrivende } from './ekstrainfo-om-vedtaket-naringsdrivende'

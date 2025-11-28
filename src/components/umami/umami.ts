@@ -1,7 +1,7 @@
-import { logAmplitudeEvent } from '@navikt/nav-dekoratoren-moduler'
+import { logAnalyticsEvent } from '@navikt/nav-dekoratoren-moduler'
 import { logger } from '@navikt/next-logger'
 
-import { amplitudeEnabled } from '../../utils/environment'
+import { isProd, umamiEnabled } from '../../utils/environment'
 
 export type validEventNames =
     | 'navigere'
@@ -19,13 +19,13 @@ export type validEventNames =
 
 export const logEvent = (eventName: validEventNames, eventData: Record<string, string | boolean>) => {
     if (window) {
-        if (amplitudeEnabled()) {
-            logAmplitudeEvent({
+        if (umamiEnabled()) {
+            logAnalyticsEvent({
                 origin: 'spinnsyn-frontend',
                 eventName,
                 eventData,
-            }).catch((e) => logger.warn(`Feil ved amplitude logging`, e))
-        } else {
+            }).catch((e) => logger.warn(`Feil ved umami logging`, e))
+        } else if (!isProd()) {
             // eslint-disable-next-line no-console
             console.log(`Logger ${eventName} - Event properties: ${JSON.stringify(eventData)}!`)
         }
