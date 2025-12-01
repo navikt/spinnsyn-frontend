@@ -1,5 +1,6 @@
-import { Alert, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
+import { Alert, BodyLong, BodyShort, Detail, Heading, Link } from '@navikt/ds-react'
 import React, { useContext, useEffect } from 'react'
+import dayjs from 'dayjs'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
@@ -90,6 +91,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     {kanVelgePerson && <Person />}
                 </div>
             )}
+            <Detail textColor="subtle" className="italic mb-8">
+                Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
+            </Detail>
             {!annullertEllerRevurdert && (
                 <>
                     <BodyLong size="medium">
