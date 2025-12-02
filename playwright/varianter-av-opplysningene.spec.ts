@@ -1,7 +1,5 @@
 import { vedtakAnnullert } from '../src/data/testdata/data/vedtak/annullert'
 import { vedtakRevurdert } from '../src/data/testdata/data/vedtak/revurdert'
-import { vedtakRevurdertDirekte } from '../src/data/testdata/data/vedtak/revurdertDirekte'
-import { kombinertDirekteOgRefusjon } from '../src/data/testdata/data/vedtak/kombinert'
 import { vedtakMedFlereArbeidsgivere } from '../src/data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
 import { vedtakMedDetMeste } from '../src/data/testdata/data/vedtak/medDetMeste'
 
