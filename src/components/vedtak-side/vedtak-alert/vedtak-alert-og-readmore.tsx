@@ -4,8 +4,8 @@ import React from 'react'
 import { JulesoknadWarning } from '../julesoknad/julesoknad-warning'
 import { tekst } from '../../../utils/tekster'
 
-import AnnullertInfo from './annullering-og-revurdering/annullert-info'
-import { RevurdertInfo } from './annullering-og-revurdering/revurdert-info'
+import AnnullertInfo from './annullert-info'
+import { RevurdertInfo } from './revurdert-info'
 
 type VedtakAlertProps = {
     julesoknad: boolean
