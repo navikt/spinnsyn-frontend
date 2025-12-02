@@ -29,18 +29,11 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
 
     return (
         <UtbetalingPanel
-            sectionLabel="Ingen utbetaling"
+            sectionLabel={ingenUtbetalingTittel}
             avslag={!minstEnDagInnvilget}
             tittel={
                 <Heading level="2" size="large">
-                    {annullertEllerRevurdert ? (
-                        <del>
-                            {ingenUtbetalingTittel}
-                            <span className="sr-only">(ikke gjeldende)</span>
-                        </del>
-                    ) : (
-                        <span>{ingenUtbetalingTittel}</span>
-                    )}
+                    {ingenUtbetalingTittel}
                 </Heading>
             }
             erUgyldig={annullertEllerRevurdert}

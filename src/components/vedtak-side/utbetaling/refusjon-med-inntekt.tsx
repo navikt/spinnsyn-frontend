@@ -14,7 +14,6 @@ import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-av
 
 const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
-    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.dagerArbeidsgiver)
     const oppsumertAvslagObject: OppsummertAvslagListeProps = {
@@ -30,14 +29,7 @@ const RefusjonMedInntekt = ({ vedtak }: VedtakProps) => {
             sectionLabel="Refusjon til arbeidsgiver"
             tittel={
                 <Heading level="2" size="large">
-                    {annullertEllerRevurdert ? (
-                        <del>
-                            {belop + ' kr'}
-                            <span className="sr-only">(ikke gjeldende)</span>
-                        </del>
-                    ) : (
-                        <span>{belop + ' kr'}</span>
-                    )}
+                    {belop + ' kr'}
                     {vedtak.sykepengebelopArbeidsgiver > 0 && (
                         <BodyShort as="span" className="block">
                             {getLedetekst(tekst('utbetaling.arbeidsgiver.systemtittel'), {
