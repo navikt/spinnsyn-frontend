@@ -7,9 +7,10 @@ interface LenkeMedUmamiProps {
     tekst: string
     url: string
     cleanUrl?: string
+    icon?: React.ReactNode
 }
 
-export const LenkeMedUmami = ({ tekst, url, cleanUrl }: LenkeMedUmamiProps) => (
+export const LenkeMedUmami = ({ tekst, url, cleanUrl, icon }: LenkeMedUmamiProps) => (
     <Link
         href={url}
         rel="noopener noreferrer"
@@ -22,6 +23,7 @@ export const LenkeMedUmami = ({ tekst, url, cleanUrl }: LenkeMedUmamiProps) => (
             })
         }
     >
+        {icon}
         {tekst}
     </Link>
 )
