@@ -1,10 +1,13 @@
 import { Alert, BodyLong, BodyShort, Heading, ReadMore } from '@navikt/ds-react'
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 
 import { logEvent } from '../../umami/umami'
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
-import { VedtakProps } from '../vedtak'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { harVedtakEndringer } from '../../../utils/vedtak-utils'
+import useVedtak from '../../../hooks/useVedtak'
+import { sorterEtterNyesteFom } from '../../../utils/sorter-vedtak'
 
 const IngenEndringerAlert = () => {
     return (
@@ -42,14 +45,33 @@ const EndringerAlert = () => {
     )
 }
 
-const finnEndringer = (vedtak: RSVedtakWrapperUtvidet) => {
-    //TODO: legg inn logikk
-    return false
+const finnRevurdertVedtak = (
+    soknadId: string,
+    alleVedtak: RSVedtakWrapperUtvidet[],
+): RSVedtakWrapperUtvidet | undefined => {
+    const revurderteVedtak = alleVedtak.filter((v) => v.revurdert)
+    const revurderteMedSoknadId = revurderteVedtak.filter((v) =>
+        v.vedtak.dokumenter.some((dokument) => dokument.type === 'Søknad' && dokument.dokumentId === soknadId),
+    )
+    return revurderteMedSoknadId.sort(sorterEtterNyesteFom)[0]
 }
 
-export const RevurderingInfo = ({ vedtak }: VedtakProps) => {
+export const RevurderingInfo = () => {
     const [expanded, setExpanded] = useState<boolean>(false)
-    const harEndringer = finnEndringer(vedtak)
+    const { data } = useVedtak()
+    const router = useRouter()
+    const alleVedtak: RSVedtakWrapperUtvidet[] = data?.vedtak || []
+    const nyttVedtak = alleVedtak.find((v) => v.id === router.query.id)
+    if (!nyttVedtak) {
+        return null
+    }
+
+    const soknadId = nyttVedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
+    const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtak)
+    if (!revurdertVedtak) {
+        return null
+    }
+    const harEndringer = harVedtakEndringer(nyttVedtak, revurdertVedtak)
 
     return (
         <>
