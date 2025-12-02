@@ -1,4 +1,4 @@
-import { Alert, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
+import { Alert, BodyLong, BodyShort, Detail, Heading, Link } from '@navikt/ds-react'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -12,7 +12,7 @@ import { useStudyStatus } from '../../hooks/useStudyStatus'
 import { useToggle } from '../../toggles/context'
 import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetrikk'
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
-import { erWeekendPeriode } from '../../utils/dato-utils'
+import { erWeekendPeriode, fullDatoKlokkeslett } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
 
 import AnnulleringsInfo from './annullering/annullering'
@@ -90,6 +90,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     {kanVelgePerson && <Person />}
                 </div>
             )}
+            <Detail textColor="subtle" className="italic mb-8">
+                Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
+            </Detail>
             {!annullertEllerRevurdert && (
                 <>
                     <BodyLong size="medium">

@@ -1,5 +1,6 @@
+import './init-dayjs'
 import dayjs from 'dayjs'
-
+import 'dayjs/locale/nb'
 const maaneder = [
     'januar',
     'februar',
@@ -61,6 +62,10 @@ export function erWeekendPeriode(fom: string, tom: string): boolean {
 
     return dates.every((date) => {
         const dayOfWeek = date.day()
-        return dayOfWeek === 0 || dayOfWeek === 6 // 0 is Sunday, 6 is Saturday
+        return dayOfWeek === 0 || dayOfWeek === 6
     })
+}
+
+export function fullDatoKlokkeslett(timestamp: string): string {
+    return dayjs(timestamp).format('D. MMMM YYYY [kl.] HH.mm')
 }

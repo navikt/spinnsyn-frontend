@@ -1,8 +1,7 @@
 import '../style/global.css'
+import '../utils/init-dayjs'
 
 import { configureLogger } from '@navikt/next-logger'
-import dayjs from 'dayjs'
-import nb from 'dayjs/locale/nb'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React, { ReactElement, useEffect, useState } from 'react'
@@ -14,11 +13,6 @@ import { LabsWarning } from '../components/labs-warning/LabsWarning'
 import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
 import { FlagProvider } from '../toggles/context'
 import { ServerSidePropsResult } from '../auth/beskyttetSide'
-
-dayjs.locale({
-    ...nb,
-    weekStart: 1,
-})
 
 initInstrumentation()
 configureLogger({
