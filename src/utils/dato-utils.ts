@@ -1,5 +1,6 @@
+import './init-dayjs'
 import dayjs from 'dayjs'
-
+import 'dayjs/locale/nb'
 const maaneder = [
     'januar',
     'februar',
