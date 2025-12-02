@@ -91,7 +91,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 </div>
             )}
             <Detail textColor="subtle" className="italic mb-8">
-                Sendt fra Nav: {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
+                Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
             </Detail>
             {!annullertEllerRevurdert && (
                 <>
