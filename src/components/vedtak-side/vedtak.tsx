@@ -16,7 +16,7 @@ import { erWeekendPeriode, fullDatoKlokkeslett } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
 import { Etikett } from '../listevisning/listevisning-lenkepanel'
 
-import AnnulleringsInfo from './annullering/annullering'
+import RevurderingAnnuleringInfo from './annullering/annullering'
 import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
@@ -112,9 +112,9 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
             {julesoknad && <JulesoknadWarning />}
             {annullertEllerRevurdert && (
                 <>
-                    <AnnulleringsInfo vedtak={vedtak} />
+                    <RevurderingAnnuleringInfo vedtak={vedtak} />
                     <Heading spacing size="large" level="2" className="tidligere__beslutning">
-                        {tekst('annullert.se-tidligere-beslutning')}
+                        Se hva som først ble besluttet
                     </Heading>
                 </>
             )}

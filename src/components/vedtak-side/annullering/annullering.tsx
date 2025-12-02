@@ -1,10 +1,8 @@
-import { Alert, BodyLong, BodyShort, Heading, Label, Link, ReadMore } from '@navikt/ds-react'
+import { Alert, BodyLong, BodyShort, Heading, ReadMore } from '@navikt/ds-react'
 import React, { useState } from 'react'
 import { Chat2Icon } from '@navikt/aksel-icons'
 
-import { tekst } from '../../../utils/tekster'
 import { VedtakProps } from '../vedtak'
-import { parserWithReplace } from '../../../utils/html-react-parser-utils'
 import { logEvent } from '../../amplitude/amplitude'
 import { LenkeMedAmplitude } from '../../lenke/lenke-med-amplitude'
 
@@ -27,40 +25,36 @@ const AnnullertAlert = () => {
     return (
         <Alert variant="warning">
             <Heading spacing level="2" size="small">
-                {parserWithReplace(tekst('annullert.alert.header'))}
+                Til din informasjon
             </Heading>
-            <BodyShort spacing>{parserWithReplace(tekst('annulert.alert.tekst'))}</BodyShort>
-            <BodyShort spacing>{parserWithReplace(tekst('annulert.alert.undertekst'))}</BodyShort>
+            <BodyShort spacing>Av tekniske årsaker er saken din flyttet til et annet saksbehandlingssystem.</BodyShort>
+            <BodyShort spacing>Dersom det er endringer i tidligere vedtak, får du et eget vedtak om dette.</BodyShort>
         </Alert>
     )
 }
 
-const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
+const RevurderingAnnuleringInfo = ({ vedtak }: VedtakProps) => {
     const [expanded, setExpanded] = useState<boolean>(false)
-    const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
-    const erBrukerutbetaling = vedtak.sykepengebelopPerson > 0
 
     const revurdertOgIkkeAnnullert = vedtak.revurdert && !vedtak.annullert
-    return (
-        <>
-            {revurdertOgIkkeAnnullert && <RevurdertAlert />}
 
-            {vedtak.annullert && <AnnullertAlert />}
-
-            <ReadMore
-                className="my-10"
-                header="Hvorfor søknaden blir vurdert på nytt"
-                open={expanded}
-                onClick={() => {
-                    logEvent(expanded ? 'readmore lukket' : 'readmore åpnet', {
-                        tittel: 'Hvorfor søknaden blir vurdert på nytt',
-                        component: 'AnnulleringsInfo',
-                    })
-                    setExpanded((prev) => !prev)
-                }}
-            >
-                <div className="pt-4" data-testid="annullering-info">
-                    {revurdertOgIkkeAnnullert && (
+    if (revurdertOgIkkeAnnullert) {
+        return (
+            <>
+                <RevurdertAlert />
+                <ReadMore
+                    className="my-10"
+                    header="Hvorfor søknaden blir vurdert på nytt"
+                    open={expanded}
+                    onClick={() => {
+                        logEvent(expanded ? 'readmore lukket' : 'readmore åpnet', {
+                            tittel: 'Hvorfor søknaden blir vurdert på nytt',
+                            component: 'RevurderingInfo',
+                        })
+                        setExpanded((prev) => !prev)
+                    }}
+                >
+                    <div className="pt-4">
                         <>
                             <BodyLong spacing>
                                 Når vi får nye opplysninger om saken din, kan det påvirke sykepengene dine. Nye
@@ -84,11 +78,53 @@ const AnnulleringsInfo = ({ vedtak }: VedtakProps) => {
                                 , så hjelper vi deg videre.
                             </BodyLong>
                         </>
-                    )}
-                </div>
-            </ReadMore>
-        </>
-    )
+                    </div>
+                </ReadMore>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <AnnullertAlert />
+                <ReadMore
+                    className="my-10"
+                    header="Dette lurer mange på når vedtaket behandles på nytt"
+                    open={expanded}
+                    onClick={() => {
+                        logEvent(expanded ? 'readmore lukket' : 'readmore åpnet', {
+                            tittel: 'Dette lurer mange på når vedtaket behandles på nytt',
+                            component: 'AnnulleringsInfo',
+                        })
+                        setExpanded((prev) => !prev)
+                    }}
+                >
+                    <div className="pt-4" data-testid="annullering-info">
+                        <>
+                            <Heading spacing level="2" size="small">
+                                Må jeg gjøre noe nå?
+                            </Heading>
+                            <BodyLong spacing>
+                                Du trenger ikke gjøre noe. Hvis vi trenger flere opplysninger, tar en av våre
+                                saksbehandlere kontakt med deg.
+                            </BodyLong>
+                            <BodyLong spacing>
+                                <LenkeMedAmplitude
+                                    tekst="Skriv til oss om du har flere spørsmål"
+                                    url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                                    icon={
+                                        <Chat2Icon
+                                            title="Skriv til oss"
+                                            className="inline text-surface-action"
+                                        ></Chat2Icon>
+                                    }
+                                />
+                            </BodyLong>
+                        </>
+                    </div>
+                </ReadMore>
+            </>
+        )
+    }
 }
 
-export default AnnulleringsInfo
+export default RevurderingAnnuleringInfo
