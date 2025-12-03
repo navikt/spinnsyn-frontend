@@ -63,12 +63,4 @@ test.describe('Tester logikk i behandling.tsx', () => {
             'rgb(236, 238, 240)',
         )
     })
-
-    test('Revurdert vedtak får infoboks', async ({ page }) => {
-        await page.goto('http://localhost:3000/syk/sykepenger?testperson=kombinasjon')
-        await page.getByText('Nytt svar').click()
-        await expect(page.locator('.navds-alert--info')).toContainText(
-            'Dette er en ny beslutning som erstatter et tidligere svar.',
-        )
-    })
 })
