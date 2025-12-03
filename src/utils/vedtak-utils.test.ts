@@ -2,7 +2,9 @@ import { describe, it, expect } from 'vitest'
 import dayjs from 'dayjs'
 
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
+import { vedtakMedFlereArbeidsgivere } from '../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
 
+import { harVedtakEndringer } from './vedtak-utils'
 import { jsonDeepCopy } from './json-deep-copy'
 import { hentBegrunnelse } from './vedtak-utils'
 
@@ -19,5 +21,87 @@ describe('Tester estimering av sluttdato', () => {
         const begrunnelse = hentBegrunnelse(delvisInnvilglseVedtak, 'DelvisInnvilgelse')
         expect(begrunnelse?.type).toEqual('DelvisInnvilgelse')
         expect(begrunnelse?.begrunnelse).toEqual('Delvis innvilgelse.\n\nNy linje.')
+    })
+})
+
+describe('Tester harVedtakEndringer', () => {
+    it('Returnerer false når vedtakene er identiske', () => {
+        const nyttVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 0,
+            sykepengebelopArbeidsgiver: 1000,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+        }
+        const gammeltVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 0,
+            sykepengebelopArbeidsgiver: 1000,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+        }
+        expect(harVedtakEndringer(nyttVedtak, gammeltVedtak)).toBe(false)
+    })
+
+    it('Returnerer true ved forskjellig beløp', () => {
+        const nyttVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 0,
+            sykepengebelopArbeidsgiver: 2000,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+        }
+        const gammeltVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 0,
+            sykepengebelopArbeidsgiver: 1000,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+        }
+        expect(harVedtakEndringer(nyttVedtak, gammeltVedtak)).toBe(true)
+    })
+
+    it('Returnerer true ved forskjellig vedtakstype', () => {
+        const nyttVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 1000,
+            sykepengebelopArbeidsgiver: 0,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+        }
+        const gammeltVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 0,
+            sykepengebelopArbeidsgiver: 1000,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+        }
+        expect(harVedtakEndringer(nyttVedtak, gammeltVedtak)).toBe(true)
+    })
+
+    it('Returnerer true ved forskjellig antall sykepengedager igjen', () => {
+        const nyttVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 0,
+            sykepengebelopArbeidsgiver: 1000,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+            vedtak: {
+                ...vedtakMedFlereArbeidsgivere.vedtak,
+                utbetaling: { ...vedtakMedFlereArbeidsgivere.vedtak.utbetaling, gjenståendeSykedager: 100 },
+            },
+        }
+        const gammeltVedtak = {
+            ...vedtakMedFlereArbeidsgivere,
+            sykepengebelopPerson: 0,
+            sykepengebelopArbeidsgiver: 1000,
+            dagerArbeidsgiver: [],
+            dagerPerson: [],
+            vedtak: {
+                ...vedtakMedFlereArbeidsgivere.vedtak,
+                utbetaling: { ...vedtakMedFlereArbeidsgivere.vedtak.utbetaling, gjenståendeSykedager: 200 },
+            },
+        }
+        expect(harVedtakEndringer(nyttVedtak, gammeltVedtak)).toBe(true)
     })
 })

@@ -1,11 +1,10 @@
-import { Alert, BodyShort, Link } from '@navikt/ds-react'
 import React from 'react'
 
 import { JulesoknadWarning } from '../julesoknad/julesoknad-warning'
-import { tekst } from '../../../utils/tekster'
 
-import AnnullertInfo from './annullering-og-revurdering/annullert-info'
-import { RevurdertInfo } from './annullering-og-revurdering/revurdert-info'
+import AnnullertInfo from './annullert-info'
+import { RevurdertInfo } from './revurdert-info'
+import { RevurderingInfo } from './revurdering-info'
 
 type VedtakAlertProps = {
     julesoknad: boolean
@@ -19,14 +18,7 @@ export const VedtakAlertOgReadmore = ({ julesoknad, nyesteRevurdering, revurdert
         <div className="my-4">
             {julesoknad && <JulesoknadWarning />}
             {annullert ? <AnnullertInfo /> : revurdert ? <RevurdertInfo /> : null}
-            {nyesteRevurdering && (
-                <Alert variant="info" className="mt-4">
-                    <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
-                    <Link href={tekst('revurdert.alert.link.url')}>
-                        {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
-                    </Link>
-                </Alert>
-            )}
+            {nyesteRevurdering && <RevurderingInfo />}
         </div>
     )
 }
