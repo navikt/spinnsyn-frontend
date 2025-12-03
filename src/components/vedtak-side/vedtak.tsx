@@ -1,4 +1,4 @@
-import { Alert, BodyLong, BodyShort, Detail, Heading, Link } from '@navikt/ds-react'
+import { BodyLong, Detail, Heading } from '@navikt/ds-react'
 import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
@@ -14,8 +14,8 @@ import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetr
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 import { erWeekendPeriode, fullDatoKlokkeslett } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
+import { Etikett } from '../listevisning/listevisning-lenkepanel'
 
-import AnnulleringsInfo from './annullering/annullering'
 import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
 import Uenig from './uenig/uenig'
@@ -23,10 +23,10 @@ import { PersonutbetalingMedInntekt } from './utbetaling/personutbetaling-med-in
 import RefusjonMedInntekt from './utbetaling/refusjon-med-inntekt'
 import { InntekterLagtTilGrunnArbeidstaker } from './inntekter-lagt-til-grunn/arbeidstaker/inntekter-lagt-til-grunn-arbeidstaker'
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
-import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
-import { JulesoknadWarning } from './julesoknad/julesoknad-warning'
 import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
 import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/naringsdrivende/inntekter-lagt-til-grunn-naringsdrivende'
+import { VedtakAlertOgReadmore } from './vedtak-alert/vedtak-alert-og-readmore'
+import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 
 export const dagErAvvist: RSDagTypeKomplett[] = [
     'AvvistDag',
@@ -60,7 +60,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
         .sort((a, b) => (a.dato < b.dato ? -1 : 1))
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const nyesteRevudering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+    const nyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const harIngenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
@@ -68,6 +68,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const erDelvisInnvilget = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
+    const julesoknad = skalViseJulesoknadWarning(vedtak)
 
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
 
@@ -79,7 +80,6 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
 
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
-    const julesoknad = skalViseJulesoknadWarning(vedtak)
     return (
         <>
             {!erArkivering && (
@@ -90,33 +90,34 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     {kanVelgePerson && <Person />}
                 </div>
             )}
+            <Etikett
+                size="small"
+                annullert={vedtak.annullert}
+                revurdert={vedtak.revurdert}
+                revurdering={nyesteRevurdering}
+                className="mb-4"
+            />
             <Detail textColor="subtle" className="italic mb-8">
                 Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
             </Detail>
-            {!annullertEllerRevurdert && (
+
+            <VedtakAlertOgReadmore
+                julesoknad={julesoknad}
+                nyesteRevurdering={nyesteRevurdering}
+                revurdert={vedtak.revurdert}
+                annullert={vedtak.annullert}
+            />
+            {!annullertEllerRevurdert ? (
                 <>
                     <BodyLong size="medium">
                         {tekst('vedtak.velkommen.tekst1')}
                         {erDirekteutbetaling && erRefusjon && tekst('vedtak.velkommen.tekst2')}
                     </BodyLong>
                 </>
-            )}
-            {julesoknad && <JulesoknadWarning />}
-            {annullertEllerRevurdert && (
-                <>
-                    <AnnulleringsInfo vedtak={vedtak} />
-                    <Heading spacing size="large" level="2" className="tidligere__beslutning">
-                        {tekst('annullert.se-tidligere-beslutning')}
-                    </Heading>
-                </>
-            )}
-            {nyesteRevudering && (
-                <Alert variant="info" className="mt-4">
-                    <BodyShort>{tekst('revurdert.alert.revurdert.nybeslutningtekst')}</BodyShort>
-                    <Link href={tekst('revurdert.alert.link.url')}>
-                        {tekst('revurdert.alert.revurdert.nybeslutninglenketekst')}
-                    </Link>
-                </Alert>
+            ) : (
+                <Heading spacing size="large" level="2">
+                    Se hva som først ble besluttet
+                </Heading>
             )}
 
             {erRefusjon && !erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
@@ -133,9 +134,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 }
             })()}
             <Sykepengedager vedtak={vedtak} />
-
             {!erArkivering && erDelvisInnvilget && studyActive && <UxSignalsWidget study={studyKey} demo={!isProd()} />}
-
             <Behandling vedtak={vedtak.vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
@@ -146,7 +145,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     harAvvisteDager={harAvvisteDager}
                     annullert={vedtak.annullert}
                     erRevurdert={vedtak.revurdert}
-                    erRevurdering={nyesteRevudering}
+                    erRevurdering={nyesteRevurdering}
                     julesoknad={julesoknad}
                 />
             )}

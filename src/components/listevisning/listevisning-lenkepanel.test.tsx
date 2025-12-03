@@ -52,7 +52,7 @@ describe('Listevisning lenkepanel', () => {
         expect(etikett).toBeInTheDocument()
     })
 
-    it('Viser etikett for et annullert vedtak', async () => {
+    it('Viser ikke etikett for et annullert vedtak', async () => {
         const vedtak = {
             id: 'id-1',
             annullert: true,
@@ -72,7 +72,7 @@ describe('Listevisning lenkepanel', () => {
 
         render(<ListevisningLenkepanel vedtak={vedtak} />)
 
-        const etikett = await screen.findByText('Erstattet med nytt svar')
-        expect(etikett).toBeInTheDocument()
+        const etikett = screen.queryByText('Erstattet med nytt svar')
+        expect(etikett).not.toBeInTheDocument()
     })
 })

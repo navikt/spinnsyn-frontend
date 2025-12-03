@@ -16,7 +16,6 @@ import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-av
 export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
     const erInterne = spinnsynFrontendInterne()
-    const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
@@ -36,14 +35,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
             tittel={
                 <div>
                     <Heading level="2" size="large">
-                        {annullertEllerRevurdert ? (
-                            <del>
-                                {belop + ' kr'}
-                                <span className="sr-only">(ikke gjeldende)</span>
-                            </del>
-                        ) : (
-                            <span>{belop + ' kr'}</span>
-                        )}
+                        {belop + ' kr'}
                         <BodyShort as="span" className="block">
                             Utbetales til deg
                         </BodyShort>
