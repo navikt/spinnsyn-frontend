@@ -114,15 +114,13 @@ type EtikettProps = {
 export const Etikett = ({ annullert, revurdert, revurdering, size, className }: EtikettProps) => {
     if (annullert) {
         return null
-    }
-    if (revurdert) {
+    } else if (revurdert) {
         return (
             <Tag size={size} variant="neutral" className={className}>
                 {tekst('spinnsyn.teaser.annullert')}
             </Tag>
         )
-    }
-    if (!revurdert && revurdering) {
+    } else if (revurdering) {
         return (
             <Tag size={size} variant="info" className={className}>
                 {tekst('spinnsyn.teaser.sisterevudering')}
