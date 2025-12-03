@@ -63,13 +63,13 @@ export const RevurderingInfo = () => {
     const alleVedtak: RSVedtakWrapperUtvidet[] = data?.vedtak || []
     const nyttVedtak = alleVedtak.find((v) => v.id === router.query.id)
     if (!nyttVedtak) {
-        return null
+        throw new Error('Vedtak ikke funnet')
     }
 
     const soknadId = nyttVedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
     const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtak)
     if (!revurdertVedtak) {
-        return null
+        throw new Error('Revurdert vedtak ikke funnet')
     }
     const harEndringer = harVedtakEndringer(nyttVedtak, revurdertVedtak)
 
