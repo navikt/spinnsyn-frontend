@@ -39,7 +39,8 @@ const EndringerAlert = () => {
             </BodyShort>
             <BodyShort spacing className="mt-8">
                 Har du spørsmål eller er usikker på hva dette betyr for deg,{' '}
-                <LenkeMedUmami tekst="ta kontakt med Nav" url="/syk/sykepenger" />, så hjelper vi deg videre.
+                <LenkeMedUmami tekst="ta kontakt med Nav" url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" />
+                , så hjelper vi deg videre.
             </BodyShort>
         </Alert>
     )
