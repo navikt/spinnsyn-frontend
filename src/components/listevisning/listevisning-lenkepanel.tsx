@@ -133,13 +133,13 @@ export const Etikett = ({ etikettVariant, size, className }: EtikettProps) => {
         case EtikketVariant.REVURDERT:
             return (
                 <Tag size={size} variant="neutral" className={className}>
-                    {tekst('spinnsyn.teaser.annullert')}
+                    Erstattet med nytt svar
                 </Tag>
             )
         case EtikketVariant.NYESTE_REVURDERING:
             return (
                 <Tag size={size} variant="info" className={className}>
-                    {tekst('spinnsyn.teaser.sisterevudering')}
+                    Nytt svar
                 </Tag>
             )
     }
