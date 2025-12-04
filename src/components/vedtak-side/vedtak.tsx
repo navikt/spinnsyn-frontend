@@ -25,7 +25,7 @@ import { InntekterLagtTilGrunnArbeidstaker } from './inntekter-lagt-til-grunn/ar
 import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
 import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/naringsdrivende/inntekter-lagt-til-grunn-naringsdrivende'
-import { VedtakAlertOgReadmore } from './vedtak-alert/vedtak-alert-og-readmore'
+import { getVedtakAlertTyper, VedtakAlertOgReadmore } from './vedtak-alert/vedtak-alert-og-readmore'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 
 export const dagErAvvist: RSDagTypeKomplett[] = [
@@ -69,6 +69,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
     const julesoknad = skalViseJulesoknadWarning(vedtak)
+    const vedtakAlertTyper = getVedtakAlertTyper(julesoknad, vedtak.revurdert, vedtak.annullert, nyesteRevurdering)
 
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
 
@@ -101,12 +102,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
             </Detail>
 
-            <VedtakAlertOgReadmore
-                julesoknad={julesoknad}
-                nyesteRevurdering={nyesteRevurdering}
-                revurdert={vedtak.revurdert}
-                annullert={vedtak.annullert}
-            />
+            {vedtakAlertTyper && <VedtakAlertOgReadmore vedtakAlertTyper={vedtakAlertTyper} />}
             {!annullertEllerRevurdert ? (
                 <>
                     <BodyLong size="medium">
