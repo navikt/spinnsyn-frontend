@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { JulesoknadWarning } from '../julesoknad/julesoknad-warning'
+import { ArkiveringContext } from '../../../context/arkivering-context'
 
 import AnnullertInfo from './annullert-info'
 import { RevurdertInfo } from './revurdert-info'
@@ -40,12 +41,14 @@ type VedtakAlertOgReadmoreProps = {
 }
 
 export const VedtakAlertOgReadmore = ({ vedtakAlertTyper }: VedtakAlertOgReadmoreProps) => {
+    const arkivering = useContext(ArkiveringContext)
+
     return (
         <>
             {vedtakAlertTyper.includes(VedtakAlertType.JULESOKNAD) && <JulesoknadWarning />}
             {vedtakAlertTyper.includes(VedtakAlertType.ANNULLERT) && <AnnullertInfo />}
             {vedtakAlertTyper.includes(VedtakAlertType.REVURDERT) && <RevurdertInfo />}
-            {vedtakAlertTyper.includes(VedtakAlertType.NYESTE_REVURDERING) && <RevurderingInfo />}
+            {vedtakAlertTyper.includes(VedtakAlertType.NYESTE_REVURDERING) && !arkivering && <RevurderingInfo />}
         </>
     )
 }
