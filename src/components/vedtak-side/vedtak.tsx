@@ -14,7 +14,7 @@ import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetr
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 import { erWeekendPeriode, fullDatoKlokkeslett } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
-import { Etikett, getEtikettVariant } from '../listevisning/listevisning-lenkepanel'
+import { Etikett, getEtikettVariant } from '../etikett/etikett'
 
 import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'

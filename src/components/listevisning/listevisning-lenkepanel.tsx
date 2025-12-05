@@ -1,4 +1,4 @@
-import { BodyShort, Detail, LinkPanel, Tag } from '@navikt/ds-react'
+import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
+import { Etikett, getEtikettVariant } from '../etikett/etikett'
 
 dayjs.extend(localizedFormat)
 
@@ -97,52 +98,6 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
             </LinkPanel>
         </Link>
     )
-}
-
-type EtikettProps = {
-    etikettVariant?: EtikketVariant
-    size?: 'medium' | 'small' | 'xsmall'
-    className?: string
-}
-
-export enum EtikketVariant {
-    ANNULLERT = 'ANNULLERT',
-    NYESTE_REVURDERING = 'NYESTE_REVURDERING',
-    REVURDERT = 'REVURDERT',
-}
-
-export function getEtikettVariant(
-    annullert: boolean,
-    revurdert: boolean,
-    nyesteRevurdering: boolean,
-): EtikketVariant | null {
-    if (annullert) {
-        return EtikketVariant.ANNULLERT
-    } else if (revurdert) {
-        return EtikketVariant.REVURDERT
-    } else if (nyesteRevurdering) {
-        return EtikketVariant.NYESTE_REVURDERING
-    }
-    return null
-}
-
-export const Etikett = ({ etikettVariant, size, className }: EtikettProps) => {
-    switch (etikettVariant) {
-        case EtikketVariant.ANNULLERT:
-            return null
-        case EtikketVariant.REVURDERT:
-            return (
-                <Tag size={size} variant="neutral" className={className}>
-                    Erstattet med nytt svar
-                </Tag>
-            )
-        case EtikketVariant.NYESTE_REVURDERING:
-            return (
-                <Tag size={size} variant="info" className={className}>
-                    Nytt svar
-                </Tag>
-            )
-    }
 }
 
 export default ListevisningLenkepanel
