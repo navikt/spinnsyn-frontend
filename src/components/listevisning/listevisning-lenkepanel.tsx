@@ -1,4 +1,4 @@
-import { BodyShort, Detail, LinkPanel, Tag } from '@navikt/ds-react'
+import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
+import { Etikett, getEtikettVariant } from '../etikett/etikett'
 
 dayjs.extend(localizedFormat)
 
@@ -54,7 +55,9 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
     const vedtakPeriode =
         dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
 
-    const erRevurdering = vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+    const nyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
+    const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)
+
     return (
         <Link href={{ query }} passHref legacyBehavior>
             <LinkPanel
@@ -90,44 +93,11 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                         )}
                     </div>
 
-                    <div className="flex shrink-0 items-center">
-                        <Etikett
-                            annullert={vedtak.annullert}
-                            revurdert={vedtak.revurdert}
-                            revurdering={erRevurdering}
-                        />
-                    </div>
+                    <div className="flex shrink-0 items-center">{etikett && <Etikett etikettVariant={etikett} />}</div>
                 </div>
             </LinkPanel>
         </Link>
     )
-}
-
-type EtikettProps = {
-    annullert: boolean
-    revurdert: boolean
-    revurdering: boolean
-    size?: 'medium' | 'small' | 'xsmall'
-    className?: string
-}
-
-export const Etikett = ({ annullert, revurdert, revurdering, size, className }: EtikettProps) => {
-    if (annullert) {
-        return null
-    } else if (revurdert) {
-        return (
-            <Tag size={size} variant="neutral" className={className}>
-                {tekst('spinnsyn.teaser.annullert')}
-            </Tag>
-        )
-    } else if (revurdering) {
-        return (
-            <Tag size={size} variant="info" className={className}>
-                {tekst('spinnsyn.teaser.sisterevudering')}
-            </Tag>
-        )
-    }
-    return null
 }
 
 export default ListevisningLenkepanel

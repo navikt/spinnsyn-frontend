@@ -14,7 +14,7 @@ import { FlexjarPohelseHelsemetrikk } from '../flexjar/flexjar-pohelse-helsemetr
 import { FlexjarVarSidenNyttig } from '../flexjar/flexjar-var-siden-nyttig'
 import { erWeekendPeriode, fullDatoKlokkeslett } from '../../utils/dato-utils'
 import { hentBegrunnelse } from '../../utils/vedtak-utils'
-import { Etikett } from '../listevisning/listevisning-lenkepanel'
+import { Etikett, getEtikettVariant } from '../etikett/etikett'
 
 import { Behandling } from './behandling/behandling'
 import Sykepengedager from './sykepengedager/sykepengedager'
@@ -69,6 +69,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
     const julesoknad = skalViseJulesoknadWarning(vedtak)
+    const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)
     const vedtakAlertTyper = getVedtakAlertTyper(julesoknad, vedtak.revurdert, vedtak.annullert, nyesteRevurdering)
 
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
@@ -91,13 +92,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                     {kanVelgePerson && <Person />}
                 </div>
             )}
-            <Etikett
-                size="small"
-                annullert={vedtak.annullert}
-                revurdert={vedtak.revurdert}
-                revurdering={nyesteRevurdering}
-                className="mb-4"
-            />
+            {etikett && <Etikett etikettVariant={etikett} size="small" className="mb-4" />}
             <Detail textColor="subtle" className="italic mb-8">
                 Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
             </Detail>
