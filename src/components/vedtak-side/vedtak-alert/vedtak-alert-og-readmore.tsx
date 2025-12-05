@@ -6,19 +6,46 @@ import AnnullertInfo from './annullert-info'
 import { RevurdertInfo } from './revurdert-info'
 import { RevurderingInfo } from './revurdering-info'
 
-type VedtakAlertProps = {
-    julesoknad: boolean
-    revurdert: boolean
-    annullert: boolean
-    nyesteRevurdering: boolean
+enum VedtakAlertType {
+    ANNULLERT = 'ANNULLERT',
+    REVURDERT = 'REVURDERT',
+    NYESTE_REVURDERING = 'NYESTE_REVURDERING',
+    JULESOKNAD = 'JULESOKNAD',
 }
 
-export const VedtakAlertOgReadmore = ({ julesoknad, nyesteRevurdering, revurdert, annullert }: VedtakAlertProps) => {
+export function getVedtakAlertTyper(
+    julesoknad: boolean,
+    revurdert: boolean,
+    annullert: boolean,
+    nyesteRevurdering: boolean,
+): VedtakAlertType[] | null {
+    const vedtakAlertTyper: VedtakAlertType[] = []
+
+    if (julesoknad) {
+        vedtakAlertTyper.push(VedtakAlertType.JULESOKNAD)
+    }
+    if (annullert) {
+        vedtakAlertTyper.push(VedtakAlertType.ANNULLERT)
+    } else if (revurdert) {
+        vedtakAlertTyper.push(VedtakAlertType.REVURDERT)
+    } else if (nyesteRevurdering) {
+        vedtakAlertTyper.push(VedtakAlertType.NYESTE_REVURDERING)
+    }
+
+    return vedtakAlertTyper.length > 0 ? vedtakAlertTyper : null
+}
+
+type VedtakAlertOgReadmoreProps = {
+    vedtakAlertTyper: VedtakAlertType[]
+}
+
+export const VedtakAlertOgReadmore = ({ vedtakAlertTyper }: VedtakAlertOgReadmoreProps) => {
     return (
-        <div className="my-4">
-            {julesoknad && <JulesoknadWarning />}
-            {annullert ? <AnnullertInfo /> : revurdert ? <RevurdertInfo /> : null}
-            {nyesteRevurdering && <RevurderingInfo />}
-        </div>
+        <>
+            {vedtakAlertTyper.includes(VedtakAlertType.JULESOKNAD) && <JulesoknadWarning />}
+            {vedtakAlertTyper.includes(VedtakAlertType.ANNULLERT) && <AnnullertInfo />}
+            {vedtakAlertTyper.includes(VedtakAlertType.REVURDERT) && <RevurdertInfo />}
+            {vedtakAlertTyper.includes(VedtakAlertType.NYESTE_REVURDERING) && <RevurderingInfo />}
+        </>
     )
 }
