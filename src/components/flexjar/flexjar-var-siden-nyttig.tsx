@@ -3,7 +3,7 @@ import { useContext, useState } from 'react'
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { spinnsynFrontendInterne } from '../../utils/environment'
 
-import { FeedbackButton, FlexjarFelles } from './flexjar-felles'
+import { FeedbackRadio, FlexjarFelles } from './flexjar-felles'
 
 export const FlexjarVarSidenNyttig = ({
     erDirekteutbetaling,
@@ -32,19 +32,20 @@ export const FlexjarVarSidenNyttig = ({
     const feedbackId = 'spinnsyn-vedtak'
 
     const getPlaceholder = (): string => {
-        switch (activeState) {
-            case 'JA':
-                return 'Er det noe du vil trekke frem? (valgfritt)'
-            case 'NEI':
-                return 'Hva er det du ikke liker? (valgfritt)'
-            case 'FORBEDRING':
-                return 'Hva kan forbedres?'
+        const hovedvalg = typeof activeState === 'string' ? JSON.parse(activeState)?.hovedvalg : ''
+        switch (hovedvalg) {
+            case 'Veldig enkelt':
+            case 'Ganske enkelt':
+                return 'Hva synes du var bra?'
+            case 'Litt vanskelig':
+            case 'Veldig vanskelig':
+                return 'Har du forslag til hvordan vi kan gjøre det bedre?'
             default:
                 throw Error('Ugyldig tilbakemeldingstype')
         }
     }
 
-    const feedbackButtonProps = {
+    const feedbackRadioProps = {
         activeState,
         setThanksFeedback,
         setActiveState,
@@ -70,19 +71,10 @@ export const FlexjarVarSidenNyttig = ({
             setThanksFeedback={setThanksFeedback}
             getPlaceholder={getPlaceholder}
             feedbackProps={feedbackProps}
-            textRequired={activeState === 'FORBEDRING'}
-            flexjartittel="Hjelp oss med å gjøre denne siden bedre"
-            flexjarsporsmal="Var denne siden nyttig?"
+            flexjartittel="Vil du hjelpe oss å gjøre denne siden bedre?"
         >
-            <div className="flex w-full gap-2">
-                <FeedbackButton feedbackId={feedbackId} tekst="Ja" svar="JA" {...feedbackButtonProps} />
-                <FeedbackButton feedbackId={feedbackId} tekst="Nei" svar="NEI" {...feedbackButtonProps} />
-                <FeedbackButton
-                    feedbackId={feedbackId}
-                    tekst="Foreslå forbedring"
-                    svar="FORBEDRING"
-                    {...feedbackButtonProps}
-                />
+            <div className="flex-row w-full gap-2">
+                <FeedbackRadio feedbackId={feedbackId} {...feedbackRadioProps}></FeedbackRadio>
             </div>
         </FlexjarFelles>
     )

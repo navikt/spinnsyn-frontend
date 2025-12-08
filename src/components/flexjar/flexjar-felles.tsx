@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Alert, BodyShort, Button, Label, Textarea } from '@navikt/ds-react'
+import { Alert, BodyShort, Button, Label, Radio, RadioGroup, Textarea } from '@navikt/ds-react'
 import { MagnifyingGlassIcon } from '@navikt/aksel-icons'
 
-import { cn } from '../../utils/tw-utils'
 import { logEvent } from '../umami/umami'
 
 import { UseOpprettFlexjarFeedback } from './queryhooks/useOpprettFlexjarFeedback'
@@ -18,7 +17,7 @@ interface FlexjarFellesProps {
     setThanksFeedback: (b: boolean) => void
     getPlaceholder: () => string
     textRequired?: boolean
-    flexjarsporsmal: string
+    flexjarsporsmal?: string
     flexjartittel: string
     feedbackProps: Record<string, string | undefined | boolean | number>
     feedbackPropsFunction?: () => Record<string, string | undefined | number | boolean>
@@ -48,11 +47,11 @@ export function FlexjarFelles({
             if (activeState === null) {
                 return false
             }
-
+            const svar = JSON.stringify(activeState)
             const body = {
                 feedback: textValue,
                 feedbackId: feedbackId,
-                svar: activeState,
+                svar,
                 ...feedbackProps,
             }
             if (feedbackPropsFunction) {
@@ -131,7 +130,7 @@ export function FlexjarFelles({
                                 <Label as="h2" className="mb-2">
                                     {flexjartittel}
                                 </Label>
-                                <BodyShort>Svarene dine er anonyme</BodyShort>
+                                <BodyShort>Det er valgfritt å svare. Svarene dine er anonyme</BodyShort>
                             </div>
                         </div>
                         <div className="px-6 py-8">
@@ -204,42 +203,63 @@ export function FlexjarFelles({
     )
 }
 
-interface FeedbackButtonProps {
-    tekst: string
-    svar: string
-    activeState: string | number | null
+type FeedbackRadioProps = {
     setThanksFeedback: (b: boolean) => void
-    setActiveState: (s: string | null | number) => void
     feedbackId: string
+    activeState: string | number | null
+    setActiveState: (s: string | number | null) => void
 }
 
-export function FeedbackButton(props: FeedbackButtonProps) {
+export const FeedbackRadio = (props: FeedbackRadioProps) => {
+    const [hovedvalg, setHovedvalg] = useState<string | null>(null)
+    const [visVanskelig, setVisVanskelig] = useState(false)
+
+    const ENKELT = 'Veldig enkelt'
+    const GANSKE_ENKELT = 'Ganske enkelt'
+    const LITT_VANSKELIG = 'Litt vanskelig'
+    const VELDIG_VANSKELIG = 'Veldig vanskelig'
+
     return (
-        <Button
-            variant="secondary-neutral"
-            size="medium"
-            className={cn({
-                'bg-surface-neutral-active text-text-on-inverted hover:bg-surface-neutral-active':
-                    props.activeState === props.svar,
-            })}
-            aria-pressed={props.activeState === props.svar}
-            onClick={(e) => {
-                e.preventDefault()
-                logEvent('knapp klikket', {
-                    komponent: 'flexjar',
-                    feedbackId: props.feedbackId,
-                    tekst: props.tekst,
-                    svar: props.svar,
-                })
-                props.setThanksFeedback(false)
-                if (props.activeState === props.svar) {
-                    props.setActiveState(null)
-                } else {
-                    props.setActiveState(props.svar)
-                }
-            }}
-        >
-            {props.tekst}
-        </Button>
+        <>
+            <RadioGroup
+                className="mb-8"
+                legend="Hvordan synes du det var å forstå svaret på søknaden?"
+                onChange={(val) => {
+                    setHovedvalg(val)
+                    if (val === ENKELT || val === GANSKE_ENKELT) {
+                        setVisVanskelig(false)
+                        props.setActiveState(JSON.stringify({ hovedvalg: val, undervalg: '' }))
+                    } else if (val === LITT_VANSKELIG || val === VELDIG_VANSKELIG) {
+                        setVisVanskelig(true)
+                        props.setActiveState(JSON.stringify({ hovedvalg: val, undervalg: '' }))
+                    }
+                    props.setThanksFeedback(false)
+                }}
+            >
+                <Radio value={ENKELT}>Veldig enkelt</Radio>
+                <Radio value={GANSKE_ENKELT}>Ganske enkelt</Radio>
+                <Radio value={LITT_VANSKELIG}>Litt vanskelig</Radio>
+                <Radio value={VELDIG_VANSKELIG}>Veldig vanskelig</Radio>
+            </RadioGroup>
+            {visVanskelig && hovedvalg && (
+                <RadioGroup
+                    className="mb-8"
+                    legend="Hva synes du var vanskelig?"
+                    description="Velg alternativet som passer best"
+                    onChange={(val) => {
+                        props.setThanksFeedback(false)
+                        props.setActiveState(JSON.stringify({ hovedvalg, undervalg: val }))
+                    }}
+                >
+                    <Radio value="Skjønte ikke hvorfor svaret ble som det ble">
+                        Skjønte ikke hvorfor svaret ble som det ble
+                    </Radio>
+                    <Radio value="Svaret var vanskelig å finne frem i">Svaret var vanskelig å finne frem i</Radio>
+                    <Radio value="Språket var komplisert">Språket var komplisert</Radio>
+                    <Radio value="Svaret manglet viktig informasjon">Svaret manglet viktig informasjon</Radio>
+                    <Radio value="Annet">Annet</Radio>
+                </RadioGroup>
+            )}
+        </>
     )
 }
