@@ -3,7 +3,8 @@ import { useContext, useState } from 'react'
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { spinnsynFrontendInterne } from '../../utils/environment'
 
-import { FeedbackRadio, FlexjarFelles } from './flexjar-felles'
+import { FeedbackRadio, VANSKELIGHETSGRAD } from './feedback-radio'
+import { FlexjarFelles } from './flexjar-felles'
 
 export const FlexjarVarSidenNyttig = ({
     erDirekteutbetaling,
@@ -34,11 +35,11 @@ export const FlexjarVarSidenNyttig = ({
     const getPlaceholder = (): string => {
         const hovedvalg = typeof activeState === 'string' ? JSON.parse(activeState)?.hovedvalg : ''
         switch (hovedvalg) {
-            case 'Veldig enkelt':
-            case 'Ganske enkelt':
+            case VANSKELIGHETSGRAD.ENKELT:
+            case VANSKELIGHETSGRAD.GANSKE_ENKELT:
                 return 'Hva synes du var bra?'
-            case 'Litt vanskelig':
-            case 'Veldig vanskelig':
+            case VANSKELIGHETSGRAD.LITT_VANSKELIG:
+            case VANSKELIGHETSGRAD.VELDIG_VANSKELIG:
                 return 'Har du forslag til hvordan vi kan gjøre det bedre?'
             default:
                 throw Error('Ugyldig tilbakemeldingstype')

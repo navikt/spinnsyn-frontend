@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Alert, BodyShort, Button, Label, Radio, RadioGroup, Textarea } from '@navikt/ds-react'
+import { Alert, BodyShort, Button, Label, Textarea } from '@navikt/ds-react'
 import { MagnifyingGlassIcon } from '@navikt/aksel-icons'
 
 import { logEvent } from '../umami/umami'
@@ -200,66 +200,5 @@ export function FlexjarFelles({
                 </div>
             </div>
         </div>
-    )
-}
-
-type FeedbackRadioProps = {
-    setThanksFeedback: (b: boolean) => void
-    feedbackId: string
-    activeState: string | number | null
-    setActiveState: (s: string | number | null) => void
-}
-
-export const FeedbackRadio = (props: FeedbackRadioProps) => {
-    const [hovedvalg, setHovedvalg] = useState<string | null>(null)
-    const [visVanskelig, setVisVanskelig] = useState(false)
-
-    const ENKELT = 'Veldig enkelt'
-    const GANSKE_ENKELT = 'Ganske enkelt'
-    const LITT_VANSKELIG = 'Litt vanskelig'
-    const VELDIG_VANSKELIG = 'Veldig vanskelig'
-
-    return (
-        <>
-            <RadioGroup
-                className="mb-8"
-                legend="Hvordan synes du det var å forstå svaret på søknaden?"
-                onChange={(val) => {
-                    setHovedvalg(val)
-                    if (val === ENKELT || val === GANSKE_ENKELT) {
-                        setVisVanskelig(false)
-                        props.setActiveState(JSON.stringify({ hovedvalg: val, undervalg: '' }))
-                    } else if (val === LITT_VANSKELIG || val === VELDIG_VANSKELIG) {
-                        setVisVanskelig(true)
-                        props.setActiveState(JSON.stringify({ hovedvalg: val, undervalg: '' }))
-                    }
-                    props.setThanksFeedback(false)
-                }}
-            >
-                <Radio value={ENKELT}>Veldig enkelt</Radio>
-                <Radio value={GANSKE_ENKELT}>Ganske enkelt</Radio>
-                <Radio value={LITT_VANSKELIG}>Litt vanskelig</Radio>
-                <Radio value={VELDIG_VANSKELIG}>Veldig vanskelig</Radio>
-            </RadioGroup>
-            {visVanskelig && hovedvalg && (
-                <RadioGroup
-                    className="mb-8"
-                    legend="Hva synes du var vanskelig?"
-                    description="Velg alternativet som passer best"
-                    onChange={(val) => {
-                        props.setThanksFeedback(false)
-                        props.setActiveState(JSON.stringify({ hovedvalg, undervalg: val }))
-                    }}
-                >
-                    <Radio value="Skjønte ikke hvorfor svaret ble som det ble">
-                        Skjønte ikke hvorfor svaret ble som det ble
-                    </Radio>
-                    <Radio value="Svaret var vanskelig å finne frem i">Svaret var vanskelig å finne frem i</Radio>
-                    <Radio value="Språket var komplisert">Språket var komplisert</Radio>
-                    <Radio value="Svaret manglet viktig informasjon">Svaret manglet viktig informasjon</Radio>
-                    <Radio value="Annet">Annet</Radio>
-                </RadioGroup>
-            )}
-        </>
     )
 }
