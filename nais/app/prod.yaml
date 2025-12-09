@@ -11,7 +11,7 @@ env:
   MINSIDE_URL: "https://www.nav.no/minside/"
   ARKIVERTE_VEDTAK_URL: "https://www.nav.no/dokumentarkiv/tema/SYK"
   OPPLAERING: "false"
-  UMAMI_ENABLED: "false"
+  UMAMI_ENABLED: "true"
   DECORATOR_ENV: "prod"
   UTVIKLING_ARKIVERING: "false"
   ARKIVERING: "false"
