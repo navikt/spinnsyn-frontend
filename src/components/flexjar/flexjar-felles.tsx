@@ -47,11 +47,19 @@ export function FlexjarFelles({
             if (activeState === null) {
                 return false
             }
-            const svar = JSON.stringify(activeState)
+            let hovedvalg = activeState
+            let undervalg = null
+            if (typeof activeState === 'string') {
+                try {
+                    hovedvalg = JSON.parse(activeState).hovedvalg
+                    undervalg = JSON.parse(activeState).undervalg
+                } catch (e) {}
+            }
+            const feedback = undervalg ? undervalg + '. ' + textValue : textValue
             const body = {
-                feedback: textValue,
+                feedback: feedback,
                 feedbackId: feedbackId,
-                svar,
+                svar: hovedvalg,
                 ...feedbackProps,
             }
             if (feedbackPropsFunction) {
