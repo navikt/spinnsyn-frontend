@@ -20,7 +20,6 @@ test.describe('Flexjar', () => {
         const region = page.getByRole('region').filter({ has: flexjarHeading })
         await region.getByRole('radio', { name: 'Veldig enkelt' }).check()
         await expect(region.getByRole('radio', { name: 'Veldig enkelt' })).toBeChecked()
-        await region.getByRole('textbox').fill('Dette er en test')
         await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
         await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
     })
