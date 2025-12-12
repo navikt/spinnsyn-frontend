@@ -237,23 +237,23 @@ interface FeedbackRadioGroupProps {
     feedbackId: string
     sporsmal: string
     undertekst?: string
-    svarAlternativer: string[]
-    setSvar: (s: string) => void
+    svarAlternativer: { key: string; value: string }[]
+    setSvar: (key: string) => void
     svar: string
 }
 
 export function FeedbackRadioGroup(props: FeedbackRadioGroupProps) {
     const [feilmelding, setFeilmelding] = useState<string | null>(null)
 
-    const handterSvarEndring = (value: string) => {
+    const handterSvarEndring = (vanskeligKey: string) => {
         logEvent('knapp klikket', {
             komponent: 'flexjar',
             feedbackId: props.feedbackId,
             tekst: props.sporsmal,
-            svar: value,
+            svar: vanskeligKey,
         })
         setFeilmelding(null)
-        props.setSvar(value)
+        props.setSvar(vanskeligKey)
     }
 
     return (
@@ -264,8 +264,8 @@ export function FeedbackRadioGroup(props: FeedbackRadioGroupProps) {
             error={feilmelding}
             value={props.svar}
         >
-            {props.svarAlternativer.map((value) => (
-                <Radio value={value} key={value}>
+            {props.svarAlternativer.map(({ key, value }) => (
+                <Radio value={key} key={key}>
                     {value}
                 </Radio>
             ))}

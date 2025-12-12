@@ -6,24 +6,35 @@ import { spinnsynFrontendInterne } from '../../utils/environment'
 
 import { FeedbackRadioGroup, FlexjarFelles } from './flexjar-felles'
 
-export const VANSKELIGHETSGRAD = {
-    VELDIG_ENKELT: 'Veldig enkelt',
-    GANSKE_ENKELT: 'Ganske enkelt',
-    LITT_VANSKELIG: 'Litt vanskelig',
-    VELDIG_VANSKELIG: 'Veldig vanskelig',
-} as const
+const VELDIG_ENKELT = 'VELDIG_ENKELT'
+const GANSKE_ENKELT = 'GANSKE_ENKELT'
+const LITT_VANSKELIG = 'LITT_VANSKELIG'
+const VELDIG_VANSKELIG = 'VELDIG_VANSKELIG'
 
-export const VANSKELIGE_AARSAKER = {
-    SKJONTE_IKKE_HVORFOR: 'Skjønte ikke hvorfor svaret ble som det ble',
-    VANSKELIG_A_FINNE: 'Svaret var vanskelig å finne frem i',
-    KOMPLISERT_SPRAK: 'Språket var komplisert',
-    MANGLET_INFO: 'Svaret manglet viktig informasjon',
-    ANNET: 'Annet',
-} as const
+const SKJONTE_IKKE_HVORFOR = 'SKJONTE_IKKE_HVORFOR'
+const VANSKELIG_A_FINNE = 'VANSKELIG_A_FINNE'
+const KOMPLISERT_SPRAK = 'KOMPLISERT_SPRAK'
+const MANGLER_INFO = 'MANGLER_INFO'
+const ANNET = 'ANNET'
+
+const VANSKELIGHETSGRAD_ALTERNATIVER = [
+    { key: VELDIG_ENKELT, value: 'Veldig enkelt' },
+    { key: GANSKE_ENKELT, value: 'Ganske enkelt' },
+    { key: LITT_VANSKELIG, value: 'Litt vanskelig' },
+    { key: VELDIG_VANSKELIG, value: 'Veldig vanskelig' },
+]
+
+const VANSKELIGE_AARSAKER_ALTERNATIVER = [
+    { key: SKJONTE_IKKE_HVORFOR, value: 'Skjønte ikke hvorfor svaret ble som det ble' },
+    { key: VANSKELIG_A_FINNE, value: 'Svaret var vanskelig å finne frem i' },
+    { key: KOMPLISERT_SPRAK, value: 'Språket var komplisert' },
+    { key: MANGLER_INFO, value: 'Svaret manglet viktig informasjon' },
+    { key: ANNET, value: 'Annet' },
+]
 
 const ALLE_VANSKELIGE_AARSAKER_BLANDET = [
-    ...shuffle(Object.values(VANSKELIGE_AARSAKER).slice(0, -1)),
-    VANSKELIGE_AARSAKER.ANNET,
+    ...shuffle(VANSKELIGE_AARSAKER_ALTERNATIVER.slice(0, -1)),
+    VANSKELIGE_AARSAKER_ALTERNATIVER[VANSKELIGE_AARSAKER_ALTERNATIVER.length - 1],
 ]
 
 export const FlexjarVarSidenNyttig = ({
@@ -56,11 +67,11 @@ export const FlexjarVarSidenNyttig = ({
     const feedbackId = 'spinnsyn-vedtak'
     const getPlaceholder = (): string => {
         switch (activeState) {
-            case VANSKELIGHETSGRAD.VELDIG_ENKELT:
-            case VANSKELIGHETSGRAD.GANSKE_ENKELT:
+            case VELDIG_ENKELT:
+            case GANSKE_ENKELT:
                 return 'Hva synes du var bra?'
-            case VANSKELIGHETSGRAD.LITT_VANSKELIG:
-            case VANSKELIGHETSGRAD.VELDIG_VANSKELIG:
+            case LITT_VANSKELIG:
+            case VELDIG_VANSKELIG:
                 return 'Har du forslag til hvordan vi kan gjøre det bedre?'
             default:
                 throw Error('Ugyldig tilbakemeldingstype')
@@ -84,9 +95,9 @@ export const FlexjarVarSidenNyttig = ({
         feedbackProps['julesøknad'] = true
     }
 
-    const handterEndretVanskelighet = (value: string) => {
-        setActiveState(value)
-        if (VANSKELIGHETSGRAD.VELDIG_ENKELT === value || VANSKELIGHETSGRAD.GANSKE_ENKELT === value) {
+    const handterEndretVanskelighet = (vanskeligKey: string) => {
+        setActiveState(vanskeligKey)
+        if (vanskeligKey === LITT_VANSKELIG || vanskeligKey === VELDIG_VANSKELIG) {
             setAarsak(null)
             setVisTextTilbakemelding(false)
         }
@@ -98,8 +109,7 @@ export const FlexjarVarSidenNyttig = ({
         setAarsak(value?.toString() ?? null)
     }
 
-    const visAarsak =
-        VANSKELIGHETSGRAD.LITT_VANSKELIG === activeState || VANSKELIGHETSGRAD.VELDIG_VANSKELIG === activeState
+    const visAarsak = activeState === LITT_VANSKELIG || activeState === VELDIG_VANSKELIG
 
     return (
         <FlexjarFelles
@@ -120,7 +130,7 @@ export const FlexjarVarSidenNyttig = ({
                 <FeedbackRadioGroup
                     feedbackId={feedbackId}
                     sporsmal="Hvordan synes du det var å forstå svaret på søknaden?"
-                    svarAlternativer={Object.values(VANSKELIGHETSGRAD)}
+                    svarAlternativer={VANSKELIGHETSGRAD_ALTERNATIVER}
                     setSvar={handterEndretVanskelighet}
                     svar={activeState?.toString() ?? ''}
                 />
