@@ -29,13 +29,13 @@ function Innhold() {
     const { id } = router.query
     const { data, isError } = useVedtak()
 
-    const enkeltVedtak = data?.vedtak?.find((v) => v.id == id)
+    const enkeltVedtak = data?.alleVedtak?.find((v) => v.id == id)
     const vedtakIkkeFunnetMedId = id && !enkeltVedtak && data
 
     if (vedtakIkkeFunnetMedId) {
         return <RedirectTilForsiden />
-    } else if (enkeltVedtak) {
-        return <VedtakSide vedtak={enkeltVedtak} />
+    } else if (enkeltVedtak && data) {
+        return <VedtakSide vedtak={enkeltVedtak} alleVedtak={data.alleVedtak} />
     } else if (isError) {
         return (
             <Alert variant="error">
@@ -43,7 +43,7 @@ function Innhold() {
             </Alert>
         )
     } else {
-        return <Listevisning vedtak={data?.vedtak} />
+        return <Listevisning alleVedtak={data?.alleVedtak} />
     }
 }
 

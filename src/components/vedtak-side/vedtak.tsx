@@ -38,11 +38,12 @@ export const dagErAvvist: RSDagTypeKomplett[] = [
 
 export const dagErInnvilget: RSDagTypeKomplett[] = ['NavDag', 'NavDagSyk', 'NavDagDelvisSykUnder20', 'NavDagDelvisSyk']
 
-export interface VedtakProps {
+type VedtakProps = {
     vedtak: RSVedtakWrapperUtvidet
+    alleVedtak: RSVedtakWrapperUtvidet[]
 }
 
-const Vedtak = ({ vedtak }: VedtakProps) => {
+const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
     const erArkivering = useContext(ArkiveringContext)
     const studyKey = 'panel-venlmwxjdo'
     const { data: studyActive } = useStudyStatus(studyKey)
@@ -97,7 +98,7 @@ const Vedtak = ({ vedtak }: VedtakProps) => {
                 Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
             </Detail>
 
-            {vedtakAlertTyper && <VedtakAlertOgReadmore vedtakAlertTyper={vedtakAlertTyper} />}
+            {vedtakAlertTyper && <VedtakAlertOgReadmore vedtakAlertTyper={vedtakAlertTyper} alleVedtak={alleVedtak} />}
             {!annullertEllerRevurdert ? (
                 <>
                     <BodyLong size="medium">

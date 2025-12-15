@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../hooks/useMerkVedtakSomLest'
-import useVedtak from '../../hooks/useVedtak'
 import { spinnsynFrontendInterne } from '../../utils/environment'
 import { logEvent } from '../umami/umami'
+import { RSVedtakWrapperUtvidet } from '../../types/rs-types/rs-vedtak-felles'
 
-import Vedtak, { VedtakProps } from './vedtak'
+import Vedtak from './vedtak'
 
-const VedtakSide = ({ vedtak }: VedtakProps) => {
+type VedtakSideProps = {
+    vedtak: RSVedtakWrapperUtvidet
+    alleVedtak: RSVedtakWrapperUtvidet[]
+}
+
+const VedtakSide = ({ vedtak, alleVedtak }: VedtakSideProps) => {
     const { mutate: merkLest } = useMerkVedtakSomLest()
-    const { data: vedtakene } = useVedtak()
     const brukerutbetaling = vedtak.sykepengebelopPerson > 0
     const refusjon = vedtak.sykepengebelopArbeidsgiver > 0
 
@@ -18,7 +22,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
             skjemanavn: 'vedtak',
             brukerutbetaling: brukerutbetaling,
             refusjon: refusjon,
-            flereVedtak: vedtakene?.vedtak?.length !== 1,
+            flereVedtak: alleVedtak?.length !== 1,
             sykepengegrunnlagFastsatt: vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt || 'ukjent',
         })
         // eslint-disable-next-line
@@ -30,7 +34,7 @@ const VedtakSide = ({ vedtak }: VedtakProps) => {
         }
     }, [vedtak, merkLest])
 
-    return <Vedtak vedtak={vedtak} />
+    return <Vedtak vedtak={vedtak} alleVedtak={alleVedtak} />
 }
 
 export default VedtakSide

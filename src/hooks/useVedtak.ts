@@ -25,21 +25,21 @@ export default function UseVedtak() {
                 )
                 const utvidedeVedtak = vedtak.vedtak.map((v) => hentDagerPaaVedtak(v))
                 return {
-                    vedtak: utvidedeVedtak,
+                    alleVedtak: utvidedeVedtak,
                     sykmeldtFnr: vedtak.sykmeldtFnr,
                 }
             }
-            const vedtak: RSVedtakWrapper[] = await fetchJsonMedRequestId(
+            const alleVedtak: RSVedtakWrapper[] = await fetchJsonMedRequestId(
                 '/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query(),
             )
 
-            return { vedtak: vedtak.map((v) => hentDagerPaaVedtak(v)), sykmeldtFnr: null }
+            return { alleVedtak: alleVedtak.map((v) => hentDagerPaaVedtak(v)), sykmeldtFnr: null }
         },
     })
 }
 
 interface VedtakOgFnr {
-    vedtak: RSVedtakWrapperUtvidet[]
+    alleVedtak: RSVedtakWrapperUtvidet[]
     sykmeldtFnr: string | null
 }
 

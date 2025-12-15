@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import { JulesoknadWarning } from '../julesoknad/julesoknad-warning'
-import { ArkiveringContext } from '../../../context/arkivering-context'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
 import AnnullertInfo from './annullert-info'
 import { RevurdertInfo } from './revurdert-info'
@@ -38,17 +38,18 @@ export function getVedtakAlertTyper(
 
 type VedtakAlertOgReadmoreProps = {
     vedtakAlertTyper: VedtakAlertType[]
+    alleVedtak: RSVedtakWrapperUtvidet[]
 }
 
-export const VedtakAlertOgReadmore = ({ vedtakAlertTyper }: VedtakAlertOgReadmoreProps) => {
-    const arkivering = useContext(ArkiveringContext)
-
+export const VedtakAlertOgReadmore = ({ vedtakAlertTyper, alleVedtak }: VedtakAlertOgReadmoreProps) => {
     return (
         <>
             {vedtakAlertTyper.includes(VedtakAlertType.JULESOKNAD) && <JulesoknadWarning />}
             {vedtakAlertTyper.includes(VedtakAlertType.ANNULLERT) && <AnnullertInfo />}
             {vedtakAlertTyper.includes(VedtakAlertType.REVURDERT) && <RevurdertInfo />}
-            {vedtakAlertTyper.includes(VedtakAlertType.NYESTE_REVURDERING) && !arkivering && <RevurderingInfo />}
+            {vedtakAlertTyper.includes(VedtakAlertType.NYESTE_REVURDERING) && alleVedtak && (
+                <RevurderingInfo alleVedtak={alleVedtak} />
+            )}
         </>
     )
 }

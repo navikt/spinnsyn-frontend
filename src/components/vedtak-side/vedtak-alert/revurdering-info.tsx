@@ -6,7 +6,6 @@ import { logEvent } from '../../umami/umami'
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 import { harVedtakEndringer } from '../../../utils/vedtak-utils'
-import useVedtak from '../../../hooks/useVedtak'
 import { sorterEtterNyesteFom } from '../../../utils/sorter-vedtak'
 
 const IngenEndringerAlert = () => {
@@ -57,18 +56,24 @@ const finnRevurdertVedtak = (
     return revurderteMedSoknadId.sort(sorterEtterNyesteFom)[0]
 }
 
-export const RevurderingInfo = () => {
+interface RevurderingInfoProps {
+    alleVedtak: RSVedtakWrapperUtvidet[]
+}
+
+export const RevurderingInfo = ({ alleVedtak }: RevurderingInfoProps) => {
     const [expanded, setExpanded] = useState<boolean>(false)
-    const { data } = useVedtak()
     const router = useRouter()
-    const alleVedtak: RSVedtakWrapperUtvidet[] = data?.vedtak || []
-    const nyttVedtak = alleVedtak.find((v) => v.id === router.query.id)
+    const alleVedtakForBruker: RSVedtakWrapperUtvidet[] = alleVedtak
+    if (!alleVedtakForBruker || alleVedtakForBruker.length === 0) {
+        throw new Error('Mangler vedtak')
+    }
+    const nyttVedtak = alleVedtakForBruker.find((v) => v.id === router.query.id)
     if (!nyttVedtak) {
         throw new Error('Vedtak ikke funnet')
     }
 
     const soknadId = nyttVedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
-    const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtak)
+    const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtakForBruker)
     if (!revurdertVedtak) {
         throw new Error('Revurdert vedtak ikke funnet')
     }
