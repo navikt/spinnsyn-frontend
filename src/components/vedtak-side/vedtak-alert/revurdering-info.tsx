@@ -1,6 +1,5 @@
 import { Alert, BodyLong, BodyShort, Heading, ReadMore } from '@navikt/ds-react'
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
 
 import { logEvent } from '../../umami/umami'
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
@@ -58,16 +57,16 @@ const finnRevurdertVedtak = (
 
 interface RevurderingInfoProps {
     alleVedtak: RSVedtakWrapperUtvidet[]
+    vedtak: RSVedtakWrapperUtvidet
 }
 
-export const RevurderingInfo = ({ alleVedtak }: RevurderingInfoProps) => {
+export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) => {
     const [expanded, setExpanded] = useState<boolean>(false)
-    const router = useRouter()
     const alleVedtakForBruker: RSVedtakWrapperUtvidet[] = alleVedtak
     if (!alleVedtakForBruker || alleVedtakForBruker.length === 0) {
         throw new Error('Mangler vedtak')
     }
-    const nyttVedtak = alleVedtakForBruker.find((v) => v.id === router.query.id)
+    const nyttVedtak = alleVedtakForBruker.find((v) => v.id === vedtak.id)
     if (!nyttVedtak) {
         throw new Error('Vedtak ikke funnet')
     }

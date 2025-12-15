@@ -98,7 +98,9 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
                 Sendt fra Nav den {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
             </Detail>
 
-            {vedtakAlertTyper && <VedtakAlertOgReadmore vedtakAlertTyper={vedtakAlertTyper} alleVedtak={alleVedtak} />}
+            {vedtakAlertTyper && (
+                <VedtakAlertOgReadmore vedtak={vedtak} vedtakAlertTyper={vedtakAlertTyper} alleVedtak={alleVedtak} />
+            )}
             {!annullertEllerRevurdert ? (
                 <>
                     <BodyLong size="medium">

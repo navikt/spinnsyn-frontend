@@ -39,16 +39,17 @@ export function getVedtakAlertTyper(
 type VedtakAlertOgReadmoreProps = {
     vedtakAlertTyper: VedtakAlertType[]
     alleVedtak: RSVedtakWrapperUtvidet[]
+    vedtak: RSVedtakWrapperUtvidet
 }
 
-export const VedtakAlertOgReadmore = ({ vedtakAlertTyper, alleVedtak }: VedtakAlertOgReadmoreProps) => {
+export const VedtakAlertOgReadmore = ({ vedtakAlertTyper, alleVedtak, vedtak }: VedtakAlertOgReadmoreProps) => {
     return (
         <>
             {vedtakAlertTyper.includes(VedtakAlertType.JULESOKNAD) && <JulesoknadWarning />}
             {vedtakAlertTyper.includes(VedtakAlertType.ANNULLERT) && <AnnullertInfo />}
             {vedtakAlertTyper.includes(VedtakAlertType.REVURDERT) && <RevurdertInfo />}
-            {vedtakAlertTyper.includes(VedtakAlertType.NYESTE_REVURDERING) && alleVedtak && (
-                <RevurderingInfo alleVedtak={alleVedtak} />
+            {vedtakAlertTyper.includes(VedtakAlertType.NYESTE_REVURDERING) && (
+                <RevurderingInfo vedtak={vedtak} alleVedtak={alleVedtak} />
             )}
         </>
     )
