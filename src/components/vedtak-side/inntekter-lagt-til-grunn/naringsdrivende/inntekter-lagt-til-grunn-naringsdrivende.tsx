@@ -2,7 +2,6 @@ import { Accordion, BodyShort } from '@navikt/ds-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import { tekst } from '../../../../utils/tekster'
-import { VedtakProps } from '../../vedtak'
 import { VedtakExpansionCard } from '../../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../../utbetaling/accordion/sykepenger-per-dag'
 import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
@@ -10,12 +9,15 @@ import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
 import { useScroll } from '../../../../context/scroll-context'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { logEvent } from '../../../umami/umami'
+import { RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
 
 import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
 import { EkstrainfoOmVedtaketNaringsdrivende } from './ekstrainfo-om-vedtaket-naringsdrivende'
 import { AarsinntekterNaringsdrivende } from './aarsinntekter-naringsdrivende'
 
-export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: VedtakProps) => {
+type InntekterLagtTilGrunnNaringsdrivendeProps = { vedtak: RSVedtakWrapperUtvidet }
+
+export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTilGrunnNaringsdrivendeProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)

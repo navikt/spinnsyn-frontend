@@ -3,17 +3,21 @@ import React, { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { ValutaFormat } from '../../../utils/valuta-utils'
-import { VedtakProps } from '../vedtak'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
 import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
 
-export const PersonutbetalingMedInntekt = ({ vedtak }: VedtakProps) => {
+type PersonutbetalingMedInntektProps = {
+    vedtak: RSVedtakWrapperUtvidet
+}
+
+export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntektProps) => {
     const erArkivering = useContext(ArkiveringContext)
     const erInterne = spinnsynFrontendInterne()
 

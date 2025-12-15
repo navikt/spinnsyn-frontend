@@ -4,11 +4,13 @@ import React from 'react'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { tekst } from '../../../utils/tekster'
 import { formaterValuta } from '../../../utils/valuta-utils'
-import { VedtakProps } from '../vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { InfoSection } from './info-seksjon'
 
-const BeregningÅrsinntektFlereArbeidsgivere = ({ vedtak }: VedtakProps) => {
+type BeregningÅrsinntektFlereArbeidsgivereProps = { vedtak: RSVedtakWrapperUtvidet }
+
+const BeregningÅrsinntektFlereArbeidsgivere = ({ vedtak }: BeregningÅrsinntektFlereArbeidsgivereProps) => {
     if (vedtak.vedtak.yrkesaktivitetstype !== 'ARBEIDSTAKER') {
         return null
     }

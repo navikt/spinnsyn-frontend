@@ -4,19 +4,14 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import DagTabell from '../../../dager/dag-tabell'
 import DagBeskrivelse from '../../../dager/dag-beskrivelse'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { RSDag } from '../../../../types/rs-types/rs-vedtak-felles'
-import { dagErAvvist, VedtakProps } from '../../vedtak'
+import { RSDag, RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
+import { dagErAvvist } from '../../vedtak'
 import { logEvent } from '../../../umami/umami'
 import { ScrollElementType, useScroll } from '../../../../context/scroll-context'
 
-interface SykepengerPerDagProps {
-    dager: RSDag[]
-    tittel: string
-    ingenNyArbeidsgiverperiode: boolean
-    scrollElementType: ScrollElementType
-}
+type AlleSykepengerPerDagProps = { vedtak: RSVedtakWrapperUtvidet }
 
-export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
+export const AlleSykepengerPerDag = ({ vedtak }: AlleSykepengerPerDagProps) => {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
@@ -55,6 +50,13 @@ export const AlleSykepengerPerDag = ({ vedtak }: VedtakProps) => {
             )}
         </>
     )
+}
+
+type SykepengerPerDagProps = {
+    dager: RSDag[]
+    tittel: string
+    ingenNyArbeidsgiverperiode: boolean
+    scrollElementType: ScrollElementType
 }
 
 export const SykepengerPerDag = ({
