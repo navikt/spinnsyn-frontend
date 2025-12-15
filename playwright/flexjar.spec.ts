@@ -15,22 +15,23 @@ test.describe('Flexjar', () => {
         await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
     })
 
-    test('Kan gi ja feedback', async ({ page }) => {
-        const flexjarHeading = await harSynligTittel(page, 'Hjelp oss med å gjøre denne siden bedre', 2)
+    test('Kan gi positiv feedback', async ({ page }) => {
+        const flexjarHeading = await harSynligTittel(page, 'Vil du hjelpe oss å gjøre denne siden bedre?', 2)
         const region = page.getByRole('region').filter({ has: flexjarHeading })
-        await region.getByRole('button', { name: 'Ja' }).click()
-        await expect(region.getByRole('button', { name: 'Ja' })).toHaveCSS('background-color', 'rgb(35, 38, 42)')
-        await region.getByRole('textbox').fill('Dette er en test')
+        await region.getByRole('radio', { name: 'Veldig enkelt' }).check()
+        await expect(region.getByRole('radio', { name: 'Veldig enkelt' })).toBeChecked()
         await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
         await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
     })
 
-    test('Kan gi nei feedback', async ({ page }) => {
+    test('Kan gi negativ feedback', async ({ page }) => {
         await page.reload()
-        const flexjarHeading = await harSynligTittel(page, 'Hjelp oss med å gjøre denne siden bedre', 2)
+        const flexjarHeading = await harSynligTittel(page, 'Vil du hjelpe oss å gjøre denne siden bedre?', 2)
         const region = page.getByRole('region').filter({ has: flexjarHeading })
-        await region.getByRole('button', { name: 'Nei' }).click()
-        await expect(region.getByRole('button', { name: 'Nei' })).toHaveCSS('background-color', 'rgb(35, 38, 42)')
+        await region.getByRole('radio', { name: 'Veldig vanskelig' }).check()
+        await expect(region.getByRole('radio', { name: 'Veldig vanskelig' })).toBeChecked()
+        await region.getByRole('radio', { name: 'Skjønte ikke hvorfor svaret ble som det ble' }).check()
+        await expect(region.getByRole('radio', { name: 'Skjønte ikke hvorfor svaret ble som det ble' })).toBeChecked()
         await region.getByRole('textbox').fill('Dette er en test')
         await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
         await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
@@ -39,13 +40,13 @@ test.describe('Flexjar', () => {
     test('Har flexjar når det er riktige toggles', async ({ page }) => {
         await page.goto(poHelseUrl)
         await expect(page.getByText('Hvordan opplevde du å søke og å få svar på søknaden om sykepenger?')).toBeVisible()
-        const flexjarHeading = await harSynligTittel(page, 'Hva synes du', 2)
+        const flexjarHeading = await harSynligTittel(page, 'Hva synes du?', 2)
         const region = page.getByRole('region').filter({ has: flexjarHeading })
 
         const braBtn = region.getByRole('button', { name: 'Bra', exact: true })
-        await expect(braBtn).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
+        await expect(braBtn).toHaveAttribute('aria-pressed', 'false')
         await braBtn.click()
-        await expect(braBtn).toHaveCSS('background-color', 'rgb(236, 238, 240)')
+        await expect(braBtn).toHaveAttribute('aria-pressed', 'true')
         await region.getByRole('textbox').fill('Dette er en test')
         await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
         await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
