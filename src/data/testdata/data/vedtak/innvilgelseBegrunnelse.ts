@@ -322,6 +322,14 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
             },
         ],
         tags: [],
+        saksbehandler: {
+            navn: 'Smart, Petter',
+            ident: 'L123456',
+        },
+        beslutter: {
+            navn: 'Duck, Donald',
+            ident: 'L654321',
+        },
     },
     opprettetTimestamp: '2024-12-02T11:56:57.472998Z',
     orgnavn: 'Sauefabrikk',

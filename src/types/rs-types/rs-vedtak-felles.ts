@@ -32,6 +32,8 @@ export interface RSVedtakFelles {
     vedtakFattetTidspunkt?: string
     begrunnelser?: Begrunnelse[]
     tags?: string[]
+    saksbehandler?: Saksbehandler
+    beslutter?: Saksbehandler
 }
 
 export interface RSVedtakSelvstendig extends Omit<RSVedtakFelles, 'yrkesaktivitetstype'> {
@@ -206,4 +208,9 @@ export type Begrunnelse = {
 type Periode = {
     fom: string
     tom: string
+}
+
+type Saksbehandler = {
+    navn: string
+    ident: string
 }
