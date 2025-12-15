@@ -8,6 +8,8 @@ import { skjønnsfastsattBrukerutbetaling } from '../../../data/testdata/data/ve
 import { alleAvvisteDager } from '../../../data/testdata/data/vedtak/alleAvvisteDager'
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../../../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 import { vedtakMedFlereArbeidsgivere } from '../../../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
+import { revurderingVedtak } from '../../../data/testdata/data/vedtak/revurdering'
+import { revurdertOgAnnullert } from '../../../data/testdata/data/personas/personas'
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -37,6 +39,9 @@ export const getServerSideProps: GetServerSideProps<UtviklingArkiveringPageProps
                 vedtak: delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
                 alleVedtak: [delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo],
             }
+        }
+        if (ctx.query.testperson === 'revurdert-og-annullert') {
+            return { vedtak: revurderingVedtak, alleVedtak: revurdertOgAnnullert.vedtak }
         }
         return { vedtak: alleAvvisteDager, alleVedtak: [alleAvvisteDager] }
     }
