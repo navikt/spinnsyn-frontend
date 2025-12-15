@@ -84,6 +84,15 @@ export const vedtakRevurdert: RSVedtakWrapper = {
                 },
             ],
         },
+        tags: [],
+        saksbehandler: {
+            navn: 'Smart, Petter',
+            ident: 'L123456',
+        },
+        beslutter: {
+            navn: 'Duck, Donald',
+            ident: 'L654321',
+        },
     },
     opprettetTimestamp: '2021-05-03T12:42:42.000Z',
     annullert: false,
