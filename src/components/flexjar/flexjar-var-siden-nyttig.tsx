@@ -64,7 +64,7 @@ export const FlexjarVarSidenNyttig = ({
 
     if (arkivering || spinnsynFrontendInterne()) return null
 
-    const feedbackId = 'spinnsyn-vedtak'
+    const feedbackId = 'spinnsyn-vedtak-v2'
     const getPlaceholder = (): string => {
         switch (activeState) {
             case VELDIG_ENKELT:
