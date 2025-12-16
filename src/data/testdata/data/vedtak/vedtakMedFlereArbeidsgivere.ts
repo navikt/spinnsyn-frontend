@@ -155,11 +155,11 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
         vedtakFattetTidspunkt: '2022-03-21',
         tags: [],
         saksbehandler: {
-            navn: 'Smart, Petter',
+            navn: 'Petter Smart',
             ident: 'L123456',
         },
         beslutter: {
-            navn: 'Duck, Donald',
+            navn: 'Donald Duck',
             ident: 'L654321',
         },
     },
