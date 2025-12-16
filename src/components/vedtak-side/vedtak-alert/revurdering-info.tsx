@@ -1,12 +1,10 @@
 import { Alert, BodyLong, BodyShort, Heading, ReadMore } from '@navikt/ds-react'
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
 
 import { logEvent } from '../../umami/umami'
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 import { harVedtakEndringer } from '../../../utils/vedtak-utils'
-import useVedtak from '../../../hooks/useVedtak'
 import { sorterEtterNyesteFom } from '../../../utils/sorter-vedtak'
 
 const IngenEndringerAlert = () => {
@@ -57,22 +55,20 @@ const finnRevurdertVedtak = (
     return revurderteMedSoknadId.sort(sorterEtterNyesteFom)[0]
 }
 
-export const RevurderingInfo = () => {
-    const [expanded, setExpanded] = useState<boolean>(false)
-    const { data } = useVedtak()
-    const router = useRouter()
-    const alleVedtak: RSVedtakWrapperUtvidet[] = data?.vedtak || []
-    const nyttVedtak = alleVedtak.find((v) => v.id === router.query.id)
-    if (!nyttVedtak) {
-        throw new Error('Vedtak ikke funnet')
-    }
+interface RevurderingInfoProps {
+    alleVedtak: RSVedtakWrapperUtvidet[]
+    vedtak: RSVedtakWrapperUtvidet
+}
 
-    const soknadId = nyttVedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
+export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) => {
+    const [expanded, setExpanded] = useState<boolean>(false)
+
+    const soknadId = vedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
     const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtak)
     if (!revurdertVedtak) {
         throw new Error('Revurdert vedtak ikke funnet')
     }
-    const harEndringer = harVedtakEndringer(nyttVedtak, revurdertVedtak)
+    const harEndringer = harVedtakEndringer(vedtak, revurdertVedtak)
 
     return (
         <>

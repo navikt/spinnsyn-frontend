@@ -5,7 +5,6 @@ import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere
 import { storeTilStoreOgSmå } from '../../../../utils/store-små'
 import { tekst } from '../../../../utils/tekster'
 import { formaterValuta } from '../../../../utils/valuta-utils'
-import { VedtakProps } from '../../vedtak'
 import { VedtakExpansionCard } from '../../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../../utbetaling/accordion/sykepenger-per-dag'
 import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
@@ -13,7 +12,7 @@ import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
 import { useScroll } from '../../../../context/scroll-context'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { useWindowSize } from '../../../../utils/useWindowSize'
-import { RSVedtakArbeidstaker } from '../../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakArbeidstaker, RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
 import { logEvent } from '../../../umami/umami'
 import BeregningÅrsinntektFlereArbeidsgivere from '../beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from '../info-seksjon'
@@ -21,7 +20,11 @@ import { InfoSection } from '../info-seksjon'
 import { MerOmBergningenArbeidstaker } from './mer-om-bergningen-arbeidstaker'
 import { EkstrainfoOmVedtaketArbeidstaker } from './ekstrainfo-om-vedtaket-arbeidstaker'
 
-export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: VedtakProps) => {
+type InntekterLagtTilGrunnArbeidstakerProps = {
+    vedtak: RSVedtakWrapperUtvidet
+}
+
+export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: InntekterLagtTilGrunnArbeidstakerProps) => {
     const arkivering = useContext(ArkiveringContext)
     const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)

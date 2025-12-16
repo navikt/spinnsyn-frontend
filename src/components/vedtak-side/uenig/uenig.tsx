@@ -5,9 +5,11 @@ import React from 'react'
 import { klagefrist } from '../../../utils/klagefrist'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
-import { VedtakProps } from '../vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
-const Uenig = ({ vedtak }: VedtakProps) => {
+type UenigProps = { vedtak: RSVedtakWrapperUtvidet }
+
+const Uenig = ({ vedtak }: UenigProps) => {
     return (
         <>
             <Heading size="small" level="2" spacing>

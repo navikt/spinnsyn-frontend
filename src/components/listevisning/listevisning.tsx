@@ -10,11 +10,11 @@ import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 
 import LenkepanelGruppering from './lenkepanel-gruppering'
 
-const Listevisning = ({ vedtak }: { vedtak?: RSVedtakWrapper[] }) => {
+const Listevisning = ({ alleVedtak }: { alleVedtak?: RSVedtakWrapper[] }) => {
     useUpdateBreadcrumbs(() => [], [])
 
-    const uleste = vedtak?.filter((v) => !v.lest).sort(sorterEtterNyesteFom)
-    const leste = vedtak?.filter((v) => v.lest).sort(sorterEtterNyesteFom)
+    const uleste = alleVedtak?.filter((v) => !v.lest).sort(sorterEtterNyesteFom)
+    const leste = alleVedtak?.filter((v) => v.lest).sort(sorterEtterNyesteFom)
     const kanVelgePerson = isMockBackend() || isOpplaering()
 
     return (
@@ -41,7 +41,7 @@ const Listevisning = ({ vedtak }: { vedtak?: RSVedtakWrapper[] }) => {
             />
 
             {!spinnsynFrontendInterne() && (
-                <Link as={vedtak ? 'a' : Skeleton} href={arkiverteVedtakUrl()}>
+                <Link as={alleVedtak ? 'a' : Skeleton} href={arkiverteVedtakUrl()}>
                     {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
                 </Link>
             )}

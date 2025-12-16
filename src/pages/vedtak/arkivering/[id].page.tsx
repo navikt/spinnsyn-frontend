@@ -16,14 +16,15 @@ interface VedtakArkiveringProps {
     status?: number
     fnr?: string
     utbetalingId?: string
+    alleVedtak?: RSVedtakWrapper[]
 }
 
-const ServerVedtak = ({ vedtak, status, fnr, utbetalingId }: VedtakArkiveringProps) => {
-    if (!vedtak || !fnr || !utbetalingId) {
+const ServerVedtak = ({ vedtak, status, fnr, utbetalingId, alleVedtak }: VedtakArkiveringProps) => {
+    if (!vedtak || !fnr || !utbetalingId || !alleVedtak || alleVedtak.length === 0) {
         return <span>{status}</span>
     }
 
-    return <VedtakArkivering vedtak={vedtak} />
+    return <VedtakArkivering vedtak={vedtak} alleVedtak={alleVedtak} />
 }
 
 export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = async (ctx) => {
@@ -48,8 +49,8 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             throw new ErrorMedStatus('Kunne ikke hente token: ' + token.error, 500)
         }
 
-        const vedtak = await hentVedtakForArkivering(fnr, token.token)
-        const vedtaket = vedtak.find((i) => i.id == utbetalingId)
+        const alleVedtak = await hentVedtakForArkivering(fnr, token.token)
+        const vedtaket = alleVedtak.find((i) => i.id == utbetalingId)
         if (!vedtaket) {
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
@@ -64,6 +65,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
                 vedtak: vedtaket,
                 fnr: fnr,
                 utbetalingId: utbetalingId,
+                alleVedtak: alleVedtak,
             },
         }
     } catch (e: any) {

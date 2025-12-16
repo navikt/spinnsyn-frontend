@@ -3,9 +3,13 @@ import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
-import { VedtakProps } from '../vedtak'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
-export const ArbeidsgiverInfo = ({ vedtak }: VedtakProps) => {
+type ArbeidsgiverInfoProps = {
+    vedtak: RSVedtakWrapperUtvidet
+}
+
+export const ArbeidsgiverInfo = ({ vedtak }: ArbeidsgiverInfoProps) => {
     return (
         <>
             <Heading spacing size="xsmall" level="3">

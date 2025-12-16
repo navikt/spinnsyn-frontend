@@ -4,12 +4,14 @@ import React, { useContext, useState } from 'react'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
-import { VedtakProps } from '../vedtak'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { logEvent } from '../../umami/umami'
+import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 
-const Sykepengedager = ({ vedtak }: VedtakProps) => {
+type SykepengedagerProps = { vedtak: RSVedtakWrapperUtvidet }
+
+const Sykepengedager = ({ vedtak }: SykepengedagerProps) => {
     const arkivering = useContext(ArkiveringContext)
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
 

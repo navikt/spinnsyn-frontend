@@ -194,4 +194,14 @@ test.describe('Vedtak for arkivering', () => {
             ).toBeVisible()
         })
     })
+
+    test('Revurdering viser alert med sammeligning av vedtak', async ({ page }) => {
+        await page.goto(`${baseUrl}?testperson=revurdert-og-annullert`)
+
+        await expect(page.getByText('Endringer i svar på søknaden')).toBeVisible()
+        await page.getByRole('button', { name: 'Hvorfor søknaden blir vurdert' }).click()
+        await expect(
+            page.getByText('Når vi får nye opplysninger om saken din, kan det påvirke sykepengene dine.'),
+        ).toBeVisible()
+    })
 })
