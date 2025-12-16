@@ -16,10 +16,7 @@ export const VedtakArkivering = ({
     return (
         <ArkiveringContext.Provider value={true}>
             <ScrollProvider>
-                <Vedtak
-                    vedtak={hentDagerPaaVedtak(vedtak)}
-                    alleVedtak={alleVedtak?.map((v) => hentDagerPaaVedtak(v))}
-                />
+                <Vedtak vedtak={hentDagerPaaVedtak(vedtak)} alleVedtak={alleVedtak.map((v) => hentDagerPaaVedtak(v))} />
             </ScrollProvider>
         </ArkiveringContext.Provider>
     )

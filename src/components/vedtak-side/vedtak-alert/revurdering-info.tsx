@@ -62,21 +62,13 @@ interface RevurderingInfoProps {
 
 export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) => {
     const [expanded, setExpanded] = useState<boolean>(false)
-    const alleVedtakForBruker: RSVedtakWrapperUtvidet[] = alleVedtak
-    if (!alleVedtakForBruker || alleVedtakForBruker.length === 0) {
-        throw new Error('Mangler vedtak')
-    }
-    const nyttVedtak = alleVedtakForBruker.find((v) => v.id === vedtak.id)
-    if (!nyttVedtak) {
-        throw new Error('Vedtak ikke funnet')
-    }
 
-    const soknadId = nyttVedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
-    const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtakForBruker)
+    const soknadId = vedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
+    const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtak)
     if (!revurdertVedtak) {
         throw new Error('Revurdert vedtak ikke funnet')
     }
-    const harEndringer = harVedtakEndringer(nyttVedtak, revurdertVedtak)
+    const harEndringer = harVedtakEndringer(vedtak, revurdertVedtak)
 
     return (
         <>

@@ -20,7 +20,7 @@ interface VedtakArkiveringProps {
 }
 
 const ServerVedtak = ({ vedtak, status, fnr, utbetalingId, alleVedtak }: VedtakArkiveringProps) => {
-    if (!vedtak || !fnr || !utbetalingId || !alleVedtak) {
+    if (!vedtak || !fnr || !utbetalingId || !alleVedtak || alleVedtak.length === 0) {
         return <span>{status}</span>
     }
 
