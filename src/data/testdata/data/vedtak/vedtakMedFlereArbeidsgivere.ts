@@ -153,6 +153,15 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
         },
         begrensning: 'ER_6G_BEGRENSET',
         vedtakFattetTidspunkt: '2022-03-21',
+        tags: [],
+        saksbehandler: {
+            navn: 'Petter Smart',
+            ident: 'L123456',
+        },
+        beslutter: {
+            navn: 'Donald Duck',
+            ident: 'L654321',
+        },
     },
     opprettetTimestamp: '2022-03-21T12:42:42.393305Z',
     orgnavn: 'INDUSTRIFABRIKKEN AS',

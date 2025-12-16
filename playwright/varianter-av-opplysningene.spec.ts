@@ -21,7 +21,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         )
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din. Søknaden ble behandlet 21. mars 2022.',
+            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din. Søknaden ble behandlet 21. mars 2022 av Petter Smart og Donald Duck.',
         )
         await expect(page.getByTestId('ugyldig')).toHaveCount(0)
     })
@@ -56,7 +56,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
         )
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
-            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din. Søknaden ble behandlet 6. mai 2021.',
+            'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din. Søknaden ble behandlet 6. mai 2021 av Petter Smart og Donald Duck.',
         )
         await expect(page.getByRole('region', { name: 'Gjenstående sykepengedager' }).first()).toHaveCSS(
             'background-color',
