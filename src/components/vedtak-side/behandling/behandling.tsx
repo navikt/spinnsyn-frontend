@@ -60,7 +60,7 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
             </Heading>
             <BodyLong data-testid="behandling-body" spacing>
                 {getOpplysningText()} {formattedDate && `Søknaden ble behandlet ${formattedDate}`}
-                {behandlereTekst()} (Nav Arbeid og ytelser – Sykepenger).
+                {behandlereTekst()} (Nav arbeid og ytelser – Sykepenger).
             </BodyLong>
         </div>
     )
