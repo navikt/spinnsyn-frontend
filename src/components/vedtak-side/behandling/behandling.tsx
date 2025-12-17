@@ -45,9 +45,9 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
         if (erAutomatiskBehandlet) {
             return '.'
         } else if (vedtak.beslutter && vedtak.saksbehandler) {
-            return ` av ${vedtak.saksbehandler.navn} og ${vedtak.beslutter.navn}.`
+            return ` av ${vedtak.saksbehandler.navn} og ${vedtak.beslutter.navn}`
         } else if (vedtak.saksbehandler) {
-            return ` av ${vedtak.saksbehandler.navn}.`
+            return ` av ${vedtak.saksbehandler.navn}`
         } else {
             logger.warn('Manuelt behandlet vedtak mangler saksbehandler/beslutter informasjon')
         }
@@ -60,7 +60,7 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
             </Heading>
             <BodyLong data-testid="behandling-body" spacing>
                 {getOpplysningText()} {formattedDate && `Søknaden ble behandlet ${formattedDate}`}
-                {behandlereTekst()}
+                {behandlereTekst()} (Nav Arbeid og ytelser – Sykepenger).
             </BodyLong>
         </div>
     )

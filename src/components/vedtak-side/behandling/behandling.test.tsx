@@ -83,7 +83,7 @@ describe('Behandling', () => {
 
     it('viser kun saksbehandler hvis beslutter mangler', () => {
         render(<Behandling vedtak={{ ...baseVedtak, beslutter: undefined }} />)
-        expect(screen.getByText(/av Ola Nordmann\./)).toBeInTheDocument()
+        expect(screen.getByText(/av Ola Nordmann/)).toBeInTheDocument()
         expect(screen.queryByText(/Kari Nordmann/)).not.toBeInTheDocument()
     })
 })
