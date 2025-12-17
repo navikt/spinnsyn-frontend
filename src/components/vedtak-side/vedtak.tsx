@@ -141,6 +141,7 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
                     erRevurdert={vedtak.revurdert}
                     erRevurdering={nyesteRevurdering}
                     julesoknad={julesoknad}
+                    arbeidssituasjon={vedtak.vedtak.yrkesaktivitetstype}
                 />
             )}
             {!flexjarToggle.enabled && flexjarPohelseHelsemetrikkToggle.enabled && !julesoknad && (
