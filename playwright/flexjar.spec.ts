@@ -20,7 +20,16 @@ test.describe('Flexjar', () => {
         const region = page.getByRole('region').filter({ has: flexjarHeading })
         await region.getByRole('radio', { name: 'Veldig enkelt' }).check()
         await expect(region.getByRole('radio', { name: 'Veldig enkelt' })).toBeChecked()
-        await region.getByRole('button', { name: 'Send tilbakemelding' }).click()
+
+        await test.step('Payload inneholder arbeidssituasjon', async () => {
+            const [request] = await Promise.all([
+                page.waitForRequest((request) => request.url().includes('/flexjar-backend/api/v2/feedback')),
+                region.getByRole('button', { name: 'Send tilbakemelding' }).click(),
+            ])
+            const postData = JSON.parse(request.postData() || '{}')
+            expect(postData).toHaveProperty('arbeidssituasjon', 'ARBEIDSTAKER')
+        })
+
         await expect(page.getByText('Takk for tilbakemeldingen!')).toBeVisible({ timeout: 10 })
     })
 

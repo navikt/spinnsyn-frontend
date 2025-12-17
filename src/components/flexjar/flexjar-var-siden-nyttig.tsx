@@ -45,6 +45,7 @@ export const FlexjarVarSidenNyttig = ({
     erRevurdert,
     julesoknad,
     erRevurdering,
+    arbeidssituasjon,
 }: {
     erRefusjon: boolean
     erDirekteutbetaling: boolean
@@ -53,6 +54,7 @@ export const FlexjarVarSidenNyttig = ({
     erRevurdert: boolean
     julesoknad: boolean
     erRevurdering: boolean
+    arbeidssituasjon?: 'SELVSTENDIG' | 'ARBEIDSTAKER'
 }) => {
     const arkivering = useContext(ArkiveringContext)
 
@@ -89,6 +91,7 @@ export const FlexjarVarSidenNyttig = ({
         annullert,
         revurdert: erRevurdert,
         erRevurdering,
+        arbeidssituasjon,
     }
 
     if (julesoknad) {
