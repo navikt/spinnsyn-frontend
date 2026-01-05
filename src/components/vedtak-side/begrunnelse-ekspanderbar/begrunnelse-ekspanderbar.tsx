@@ -4,6 +4,7 @@ import React, { RefObject, useContext } from 'react'
 import { BegrunnelseType, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { useAccordionHashNavigasjon } from '../../../hooks/useAccordionHashNavigasjon'
 
 export const BegrunnelseEkspanderbar = ({
     vedtak,
@@ -11,14 +12,19 @@ export const BegrunnelseEkspanderbar = ({
     apne,
     setApne,
     elementRef,
+    setParentApne,
 }: {
     vedtak: RSVedtakWrapper
     begrunnelse: BegrunnelseType | 'skjonn'
     apne?: boolean
     setApne?: (apne: boolean) => void
     elementRef?: RefObject<HTMLDivElement | null>
+    setParentApne?: (apne: boolean) => void
 }) => {
     const arkivering = useContext(ArkiveringContext)
+
+    // Håndter hash-navigasjon for begrunnelse-vedtak
+    useAccordionHashNavigasjon('begrunnelse-vedtak', apne, setApne, setParentApne)
 
     const hentBegrunnelseTittel = () => {
         switch (begrunnelse) {
@@ -39,13 +45,14 @@ export const BegrunnelseEkspanderbar = ({
 
     return (
         <Accordion.Item
+            id="begrunnelse-vedtak"
             defaultOpen={arkivering}
             open={apne}
             onOpenChange={() => (setApne ? setApne(!apne) : false)}
             ref={elementRef}
         >
             <Accordion.Header>
-                <Heading size="small" level="3">
+                <Heading size="small" level="3" tabIndex={-1}>
                     {hentBegrunnelseTittel()}
                 </Heading>
             </Accordion.Header>

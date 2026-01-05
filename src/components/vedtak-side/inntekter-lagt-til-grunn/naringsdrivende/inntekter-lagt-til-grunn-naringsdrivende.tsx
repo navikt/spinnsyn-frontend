@@ -1,12 +1,11 @@
 import { Accordion, BodyShort } from '@navikt/ds-react'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { tekst } from '../../../../utils/tekster'
 import { VedtakExpansionCard } from '../../../expansioncard/vedtak-expansion-card'
 import { AlleSykepengerPerDag } from '../../utbetaling/accordion/sykepenger-per-dag'
 import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunnelse-ekspanderbar'
 import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
-import { useScroll } from '../../../../context/scroll-context'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { logEvent } from '../../../umami/umami'
 import { RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
@@ -19,30 +18,8 @@ type InntekterLagtTilGrunnNaringsdrivendeProps = { vedtak: RSVedtakWrapperUtvide
 
 export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTilGrunnNaringsdrivendeProps) => {
     const arkivering = useContext(ArkiveringContext)
-    const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
     const [visBegrunnelse, setVisBegrunnelse] = useState<boolean>(arkivering)
-    const elementRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        if (apneElementMedId === 'begrunnelse_vedtak') {
-            setVisBegrunnelse(true)
-            setVisBeregning(true)
-        }
-        if (apneElementMedId === 'mer_om_beregningen') {
-            setVisBegrunnelse(true)
-            setVisBeregning(true)
-        }
-        if (apneElementMedId === 'sykepenger_per_dag_arbeidsgiver' || apneElementMedId === 'sykepenger_per_dag') {
-            setVisBeregning(true)
-        }
-    }, [apneElementMedId])
-
-    useEffect(() => {
-        if (elementRef.current !== null) {
-            registrerElement('begrunnelse_vedtak', elementRef)
-        }
-    }, [elementRef?.current?.id, registrerElement])
 
     const erSkjonnsfastsatt = vedtak.vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn'
     const harBegrunnelseForSkjonn =
@@ -100,11 +77,14 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
 
                         <Accordion className="mt-8" indent={false}>
                             {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
-                                <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="skjonn" />
+                                <BegrunnelseEkspanderbar
+                                    vedtak={vedtak}
+                                    begrunnelse="skjonn"
+                                    setParentApne={setVisBeregning}
+                                />
                             )}
                             {avslag && (
                                 <BegrunnelseEkspanderbar
-                                    elementRef={elementRef}
                                     vedtak={vedtak}
                                     begrunnelse="Avslag"
                                     apne={visBegrunnelse}
@@ -112,11 +92,11 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                                         loggBegrunnelseToggle(open, 'Avslag')
                                         setVisBegrunnelse(open)
                                     }}
+                                    setParentApne={setVisBeregning}
                                 />
                             )}
                             {delvisInnvilgelse && (
                                 <BegrunnelseEkspanderbar
-                                    elementRef={elementRef}
                                     vedtak={vedtak}
                                     begrunnelse="DelvisInnvilgelse"
                                     apne={visBegrunnelse}
@@ -124,11 +104,11 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                                         loggBegrunnelseToggle(open, 'DelvisInnvilgelse')
                                         setVisBegrunnelse(open)
                                     }}
+                                    setParentApne={setVisBeregning}
                                 />
                             )}
                             {innvilgelse && (
                                 <BegrunnelseEkspanderbar
-                                    elementRef={elementRef}
                                     vedtak={vedtak}
                                     begrunnelse="Innvilgelse"
                                     apne={visBegrunnelse}
@@ -136,10 +116,11 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                                         loggBegrunnelseToggle(open, 'Innvilgelse')
                                         setVisBegrunnelse(open)
                                     }}
+                                    setParentApne={setVisBeregning}
                                 />
                             )}
-                            <AlleSykepengerPerDag vedtak={vedtak} />
-                            <MerOmBergningenNargingsdrivende />
+                            <AlleSykepengerPerDag vedtak={vedtak} setParentApne={setVisBeregning} />
+                            <MerOmBergningenNargingsdrivende setParentApne={setVisBeregning} />
                         </Accordion>
                     </article>
                 </VedtakExpansionCard>

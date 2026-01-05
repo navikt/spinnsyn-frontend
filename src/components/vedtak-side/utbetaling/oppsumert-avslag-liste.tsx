@@ -1,7 +1,6 @@
 import { Link, List } from '@navikt/ds-react'
 import React from 'react'
 
-import { ScrollElementType, useScroll } from '../../../context/scroll-context'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
 
@@ -10,12 +9,10 @@ export interface OppsummertAvslagListeProps {
     title: string
     harBegrunnelseFraBomlo: boolean
     vedtak: RSVedtakWrapper
-    dagTabellScrollElement: ScrollElementType
+    dagTabellScrollElement: string
 }
 
 export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps) => {
-    const { blaTilElement } = useScroll()
-
     const harInnvilgelseBegrunnelse = hentBegrunnelse(oppsumertAvslag.vedtak, 'Innvilgelse') !== undefined
     if (oppsumertAvslag.oppsummertAvslag.size === 0 && !harInnvilgelseBegrunnelse) return null
 
@@ -23,6 +20,13 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
     oppsumertAvslag.oppsummertAvslag?.forEach((begrunnelse) => {
         alleAvslag.push(<List.Item key={begrunnelse}>{begrunnelse}</List.Item>)
     })
+
+    const hentMalId = () => {
+        if (oppsumertAvslag.harBegrunnelseFraBomlo || harInnvilgelseBegrunnelse) {
+            return 'begrunnelse-vedtak'
+        }
+        return oppsumertAvslag.dagTabellScrollElement
+    }
 
     return (
         <section className="mb-8">
@@ -32,22 +36,7 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
                 </List>
             )}
 
-            <Link
-                as="button"
-                type="button"
-                className="cursor-pointer"
-                onClick={() => {
-                    if (oppsumertAvslag.harBegrunnelseFraBomlo) {
-                        blaTilElement('begrunnelse_vedtak')
-                    } else if (harInnvilgelseBegrunnelse) {
-                        blaTilElement('begrunnelse_vedtak')
-                    } else {
-                        blaTilElement(oppsumertAvslag.dagTabellScrollElement)
-                    }
-                }}
-            >
-                Se nærmere begrunnelse her
-            </Link>
+            <Link href={`#${hentMalId()}`}>Se nærmere begrunnelse her</Link>
         </section>
     )
 }

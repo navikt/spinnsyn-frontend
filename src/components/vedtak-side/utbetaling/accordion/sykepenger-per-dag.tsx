@@ -1,5 +1,5 @@
 import { Accordion, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import DagTabell from '../../../dager/dag-tabell'
 import DagBeskrivelse from '../../../dager/dag-beskrivelse'
@@ -7,11 +7,14 @@ import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSDag, RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
 import { dagErAvvist } from '../../vedtak'
 import { logEvent } from '../../../umami/umami'
-import { ScrollElementType, useScroll } from '../../../../context/scroll-context'
+import { useAccordionHashNavigasjon } from '../../../../hooks/useAccordionHashNavigasjon'
 
-type AlleSykepengerPerDagProps = { vedtak: RSVedtakWrapperUtvidet }
+type AlleSykepengerPerDagProps = {
+    vedtak: RSVedtakWrapperUtvidet
+    setParentApne?: (apne: boolean) => void
+}
 
-export const AlleSykepengerPerDag = ({ vedtak }: AlleSykepengerPerDagProps) => {
+export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPerDagProps) => {
     const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
@@ -24,13 +27,15 @@ export const AlleSykepengerPerDag = ({ vedtak }: AlleSykepengerPerDagProps) => {
                         tittel="Sykepenger per dag til arbeidsgiver"
                         dager={vedtak.dagerArbeidsgiver}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                        scrollElementType="sykepenger_per_dag_arbeidsgiver"
+                        accordionId="sykepenger-per-dag-arbeidsgiver"
+                        setParentApne={setParentApne}
                     />
                     <SykepengerPerDag
                         tittel="Sykepenger per dag til deg"
                         dager={vedtak.dagerPerson}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                        scrollElementType="sykepenger_per_dag"
+                        accordionId="sykepenger-per-dag"
+                        setParentApne={setParentApne}
                     />
                 </>
             ) : erRefusjon ? (
@@ -38,14 +43,16 @@ export const AlleSykepengerPerDag = ({ vedtak }: AlleSykepengerPerDagProps) => {
                     tittel="Dine sykepenger per dag"
                     dager={vedtak.dagerArbeidsgiver}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                    scrollElementType="sykepenger_per_dag_arbeidsgiver"
+                    accordionId="sykepenger-per-dag-arbeidsgiver"
+                    setParentApne={setParentApne}
                 />
             ) : (
                 <SykepengerPerDag
                     tittel="Dine sykepenger per dag"
                     dager={vedtak.dagerPerson}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
-                    scrollElementType="sykepenger_per_dag"
+                    accordionId="sykepenger-per-dag"
+                    setParentApne={setParentApne}
                 />
             )}
         </>
@@ -56,38 +63,29 @@ type SykepengerPerDagProps = {
     dager: RSDag[]
     tittel: string
     ingenNyArbeidsgiverperiode: boolean
-    scrollElementType: ScrollElementType
+    accordionId: string
+    setParentApne?: (apne: boolean) => void
 }
 
 export const SykepengerPerDag = ({
     tittel,
     dager,
     ingenNyArbeidsgiverperiode,
-    scrollElementType,
+    accordionId,
+    setParentApne,
 }: SykepengerPerDagProps) => {
     const arkivering = useContext(ArkiveringContext)
-    const { apneElementMedId, registrerElement } = useScroll()
-    const elementRef = useRef<HTMLDivElement>(null)
     const [visDagTabell, setVisDagTabell] = useState<boolean>(arkivering)
 
-    useEffect(() => {
-        if (apneElementMedId === scrollElementType) {
-            setVisDagTabell(true)
-        }
-    }, [apneElementMedId])
-
-    useEffect(() => {
-        if (elementRef.current !== null) {
-            registrerElement(scrollElementType, elementRef)
-        }
-    }, [elementRef?.current?.id, registrerElement])
+    // Håndter hash-navigasjon
+    useAccordionHashNavigasjon(accordionId, visDagTabell, setVisDagTabell, setParentApne)
 
     if (dager.length == 0) return null
     const harAvvisteDager = dager.some((dag) => dagErAvvist.includes(dag.dagtype))
 
     return (
         <Accordion.Item
-            ref={elementRef}
+            id={accordionId}
             defaultOpen={arkivering}
             open={visDagTabell}
             onOpenChange={(open) => {
@@ -99,7 +97,7 @@ export const SykepengerPerDag = ({
             }}
         >
             <Accordion.Header>
-                <Heading size="small" level="3">
+                <Heading size="small" level="3" tabIndex={-1}>
                     {tittel}
                 </Heading>
             </Accordion.Header>
