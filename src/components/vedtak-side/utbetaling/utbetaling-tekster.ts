@@ -2,19 +2,25 @@ const UtbetalingTekster = {
     'utbetaling.mndlonn.tittel': 'Månedsinntekt',
     'utbetaling.person.mndlonn.innhold':
         'Først beregner arbeidsgiveren din gjennomsnittet av inntekten din de siste tre kalendermånedene før du ble syk. Er du usikker på om månedsinntekten er riktig, kontakt arbeidsgiveren din.',
-    'utbetaling.mndlonn.innhold':
-        'Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste tre månedene før du ble syk for å beregne sykepengene dine. <a href="https://www.nav.no/arbeidsgiver/inntektsmelding#manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med i beregningen.</a> <br><br> Hvis du har flere arbeidsforhold, men ikke er sykmeldt fra alle, vil Nav beregne månedsinntekten din for de arbeidsforholdene du ikke er sykmeldt fra. Det er fordi all pensjonsgivende inntekt skal være med i beregningen, selv om du ikke er sykmeldt fra alle arbeidsforholdene. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-28" target="_blank">folketrygdloven §§ 8-28 og 8-29</a>.',
+    'utbetaling.mndlonn.innhold.del1':
+        'Nav bruker vanligvis gjennomsnittet av inntekten din fra de siste tre månedene før du ble syk for å beregne sykepengene dine. <a href="https://www.nav.no/arbeidsgiver/inntektsmelding#manedsinntekten" target="_blank">Her kan du lese mer om hvilke inntekter som tas med i beregningen</a>.',
+    'utbetaling.mndlonn.innhold.del2':
+        'Hvis du har flere arbeidsforhold, men ikke er sykmeldt fra alle, vil Nav beregne månedsinntekten din for de arbeidsforholdene du ikke er sykmeldt fra. Det er fordi all pensjonsgivende inntekt skal være med i beregningen, selv om du ikke er sykmeldt fra alle arbeidsforholdene.',
+    'utbetaling.mndlonn.innhold.del3':
+        'Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-28" target="_blank">folketrygdloven §§ 8-28 og 8-29</a>.',
     'utbetaling.arslonn.tittel': 'Årsinntekt',
     'utbetaling.arslonn.innhold.del1': 'Så blir månedsinntekten regnet om til årsinntekt ved å gange den med 12. ',
     'utbetaling.arslonn.innhold.del2':
         'Siden du har flere arbeidsgivere, legger vi sammen inntekten fra alle arbeidsgiverne når vi skal finne ut hva sykepengegrunnlaget ditt er. ',
     'utbetaling.arslonn.innhold.del3':
-        '<br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-30" target="_blank">folketrygdloven § 8-30 første avsnitt</a>.',
+        'Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-30" target="_blank">folketrygdloven § 8-30 første avsnitt</a>.',
     'utbetaling.sykepengegrunnlag.tittel': 'Sykepengegrunnlag',
     'utbetaling.sykepengegrunnlag.under6g.innhold':
         'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din. Derfor vil sykepengegrunnlaget og den samlede årsinntekten ofte være det samme.',
-    'utbetaling.sykepengegrunnlag.over6g.innhold':
-        'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra Nav for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Hvis årsinntekten avviker med mer enn 25 % fra rapportert inntekt til Skatteetaten de siste tolv månedene før du ble sykmeldt, skal sykepengegrunnlaget fastsettes ved skjønn. <br><br> Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-10" target="_blank">folketrygdloven §§ 8-10 og 8-30</a>.',
+    'utbetaling.sykepengegrunnlag.over6g.innhold.del1':
+        'Deretter fastsetter Nav sykepengegrunnlaget, som brukes til å regne ut hvor mye sykepenger du skal få. Sykepengegrunnlaget tar utgangspunkt i den samlede årsinntekten din, men sykepengegrunnlaget kan aldri være høyere enn <a href="https://www.nav.no/grunnbelopet" target="_blank">6 ganger folketrygdens grunnbeløp (G)</a>. Hvis du tjener mer enn dette, får du ikke sykepenger fra Nav for den delen av inntekten som er mer enn seks ganger grunnbeløpet. Hvis årsinntekten avviker med mer enn 25 % fra rapportert inntekt til Skatteetaten de siste tolv månedene før du ble sykmeldt, skal sykepengegrunnlaget fastsettes ved skjønn.',
+    'utbetaling.sykepengegrunnlag.over6g.innhold.del2':
+        'Du kan lese mer i <a href="https://lovdata.no/nav/folketrygdloven/kap8/§8-10" target="_blank">folketrygdloven §§ 8-10 og 8-30</a>.',
     'utbetaling.dagligbelop.tittel': 'Sykepenger per dag',
     'utbetaling.dagligbelop.innhold':
         'Deretter deler vi beløpet på 260, som er alle dager i året minus lørdager og søndager. Da får vi dagsatsen, som er det beløpet du får per dag. Er du sykmeldt i mindre enn 100 %, vil dagsatsen bli ganget med den prosenten du er sykmeldt. Endrer prosenten seg underveis, beregner vi de ulike dagene med riktig prosent.',

@@ -39,12 +39,7 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBegge = erDirekteutbetaling && erRefusjon
     const heltAvvist = !erDirekteutbetaling && !erRefusjon
-    const sykepengegrunnlagInnholdKey = () => {
-        if (vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET') {
-            return 'utbetaling.sykepengegrunnlag.under6g.innhold'
-        }
-        return 'utbetaling.sykepengegrunnlag.over6g.innhold'
-    }
+    const erIkke6GBegrenset = vedtak.vedtak.begrensning === 'ER_IKKE_6G_BEGRENSET'
 
     const totalbelopInnhold = () => {
         const tilSluttTekst = 'Til slutt summerer vi alle dagene.'
@@ -79,7 +74,9 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
                 <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
-                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold'))}</BodyLong>
+                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold.del1'))}</BodyLong>
+                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold.del2'))}</BodyLong>
+                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold.del3'))}</BodyLong>
 
                 <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.arslonn.tittel')}
@@ -89,13 +86,26 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
                     {harFlereArbeidsgivere(vedtak) == 'ja' && (
                         <>{parserWithReplace(tekst('utbetaling.arslonn.innhold.del2'))}</>
                     )}
-                    {parserWithReplace(tekst('utbetaling.arslonn.innhold.del3'))}
                 </BodyLong>
+                <BodyLong spacing>{parserWithReplace(tekst('utbetaling.arslonn.innhold.del3'))}</BodyLong>
 
                 <Heading spacing size="xsmall" level="3">
                     {tekst('utbetaling.sykepengegrunnlag.tittel')}
                 </Heading>
-                <BodyLong spacing>{parserWithReplace(tekst(sykepengegrunnlagInnholdKey()))}</BodyLong>
+                {erIkke6GBegrenset ? (
+                    <BodyLong spacing>
+                        {parserWithReplace(tekst('utbetaling.sykepengegrunnlag.under6g.innhold'))}
+                    </BodyLong>
+                ) : (
+                    <>
+                        <BodyLong spacing>
+                            {parserWithReplace(tekst('utbetaling.sykepengegrunnlag.over6g.innhold.del1'))}
+                        </BodyLong>
+                        <BodyLong spacing>
+                            {parserWithReplace(tekst('utbetaling.sykepengegrunnlag.over6g.innhold.del2'))}
+                        </BodyLong>
+                    </>
+                )}
 
                 {(!heltAvvist || !(harMinstEnForLavInntektDagerArbeidsgiver || harMinstEnForLavInntektDagerPerson)) && (
                     <>

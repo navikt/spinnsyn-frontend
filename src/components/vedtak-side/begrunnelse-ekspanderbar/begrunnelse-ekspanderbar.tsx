@@ -84,11 +84,10 @@ const BegrunnelseMedHeading = ({
 
     const fullstendigBegrunnelse = paragrafer.map((paragraf, index) => (
         <BodyLong spacing key={index}>
-            {paragraf.split('\n').map((linje, linjeIndex, { length: paragrafListeLengde }) => (
-                <React.Fragment key={linjeIndex}>
+            {paragraf.split('\n').map((linje, linjeIndex) => (
+                <span key={linjeIndex} style={{ display: 'block' }}>
                     {linje}
-                    {linjeIndex < paragrafListeLengde - 1 && <br />}
-                </React.Fragment>
+                </span>
             ))}
         </BodyLong>
     ))
