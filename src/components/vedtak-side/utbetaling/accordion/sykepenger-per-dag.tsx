@@ -76,8 +76,6 @@ export const SykepengerPerDag = ({
 }: SykepengerPerDagProps) => {
     const arkivering = useContext(ArkiveringContext)
     const [visDagTabell, setVisDagTabell] = useState<boolean>(arkivering)
-
-    // Håndter hash-navigasjon
     useAccordionHashNavigasjon(accordionId, visDagTabell, setVisDagTabell, setParentApne)
 
     if (dager.length == 0) return null

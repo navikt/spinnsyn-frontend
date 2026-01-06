@@ -21,7 +21,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
         oppsummertAvslag: avslagBegrunnelser,
         harBegrunnelseFraBomlo: harAvslagBegrunnelseFraBomlo,
         vedtak,
-        dagTabellScrollElement: 'sykepenger-per-dag',
+        dagTabellScrollElementId: 'sykepenger-per-dag',
     }
 
     return (

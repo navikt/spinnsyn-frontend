@@ -8,8 +8,6 @@ import { useAccordionHashNavigasjon } from '../../../../hooks/useAccordionHashNa
 export const MerOmBergningenNargingsdrivende = ({ setParentApne }: { setParentApne?: (apne: boolean) => void }) => {
     const arkivering = useContext(ArkiveringContext)
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
-
-    // Håndter hash-navigasjon
     useAccordionHashNavigasjon('mer-om-beregningen', visBeregning, setVisBeregning, setParentApne)
 
     return (

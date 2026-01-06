@@ -17,8 +17,6 @@ export interface BeregningInfoProps {
 export const MerOmBergningenArbeidstaker = ({ vedtak, setParentApne }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
-
-    // Håndter hash-navigasjon
     useAccordionHashNavigasjon('mer-om-beregningen', visBeregning, setVisBeregning, setParentApne)
 
     const harMinstEnForLavInntektDagerArbeidsgiver =

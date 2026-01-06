@@ -9,7 +9,7 @@ export interface OppsummertAvslagListeProps {
     title: string
     harBegrunnelseFraBomlo: boolean
     vedtak: RSVedtakWrapper
-    dagTabellScrollElement: string
+    dagTabellScrollElementId: string
 }
 
 export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps) => {
@@ -21,11 +21,11 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
         alleAvslag.push(<List.Item key={begrunnelse}>{begrunnelse}</List.Item>)
     })
 
-    const hentMalId = () => {
+    const hentScrollElementId = () => {
         if (oppsumertAvslag.harBegrunnelseFraBomlo || harInnvilgelseBegrunnelse) {
             return 'begrunnelse-vedtak'
         }
-        return oppsumertAvslag.dagTabellScrollElement
+        return oppsumertAvslag.dagTabellScrollElementId
     }
 
     return (
@@ -36,7 +36,7 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
                 </List>
             )}
 
-            <Link href={`#${hentMalId()}`}>Se nærmere begrunnelse her</Link>
+            <Link href={`#${hentScrollElementId()}`}>Se nærmere begrunnelse her</Link>
         </section>
     )
 }

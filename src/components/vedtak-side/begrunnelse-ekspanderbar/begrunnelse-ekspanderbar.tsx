@@ -22,8 +22,6 @@ export const BegrunnelseEkspanderbar = ({
     setParentApne?: (apne: boolean) => void
 }) => {
     const arkivering = useContext(ArkiveringContext)
-
-    // Håndter hash-navigasjon for begrunnelse-vedtak
     useAccordionHashNavigasjon('begrunnelse-vedtak', apne, setApne, setParentApne)
 
     const hentBegrunnelseTittel = () => {
