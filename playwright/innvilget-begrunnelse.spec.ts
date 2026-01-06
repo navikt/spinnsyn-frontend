@@ -10,7 +10,7 @@ test.describe('Begrunnelse', () => {
         await harSynligTittel(page, '10 449 kr Utbetales til Sauefabrikk', 2)
         await expect(page.getByText('Noen av dagene er ikke innvilget fordi:')).toHaveCount(0)
 
-        await page.getByRole('button', { name: 'Se nærmere begrunnelse her' }).click()
+        await page.getByRole('link', { name: 'Se nærmere begrunnelse her' }).click()
 
         const button = page.getByRole('button', { name: 'Begrunnelse for innvilget søknad' })
         await expect(button).toContainText('Begrunnelse for innvilget søknad')
@@ -26,6 +26,6 @@ test.describe('Begrunnelse', () => {
         await expect(page.getByText('Utbetales til Sauefabrikk')).toBeVisible()
         await expect(page.getByText('Noen av dagene er ikke innvilget fordi:')).toHaveCount(0)
 
-        await expect(page.getByRole('button', { name: 'Se nærmere begrunnelse her' })).toHaveCount(0)
+        await expect(page.getByRole('link', { name: 'Se nærmere begrunnelse her' })).toHaveCount(0)
     })
 })

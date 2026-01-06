@@ -27,7 +27,7 @@ test.describe('Vedtak for arkivering', () => {
             await expect(utbetalingPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(utbetalingPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
             await expect(utbetalingPanel.getByRole('listitem').getByText(/Jobbet eller tjent for mye/)).toBeVisible()
-            await expect(utbetalingPanel.getByRole('button', { name: /Se nærmere begrunnelse her/ })).toBeVisible()
+            await expect(utbetalingPanel.getByRole('link', { name: /Se nærmere begrunnelse her/ })).toBeVisible()
         })
 
         await test.step('Verifiser beregning region og dagtabell', async () => {
@@ -116,7 +116,7 @@ test.describe('Vedtak for arkivering', () => {
             await expect(refusjonPanel.getByText('Søknaden er delvis innvilget')).toBeVisible()
             await expect(refusjonPanel.getByText('Noen av dagene er ikke innvilget fordi:')).toBeVisible()
             await expect(refusjonPanel.getByRole('listitem').getByText(/Jobbet eller tjent for mye/)).toBeVisible()
-            await refusjonPanel.getByRole('button', { name: /Se nærmere begrunnelse her/ }).click()
+            await refusjonPanel.getByRole('link', { name: /Se nærmere begrunnelse her/ }).click()
         })
 
         await test.step('Verifiser personutbetaling panel', async () => {
