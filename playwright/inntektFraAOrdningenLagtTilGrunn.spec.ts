@@ -36,7 +36,7 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
             ),
         ).toBeVisible()
 
-        const link = page.getByText('Her kan du lese mer om hvilke inntekter som tas med i beregningen.')
+        const link = page.getByText('Her kan du lese mer om hvilke inntekter som tas med i beregningen')
         await expect(link).toBeVisible()
         await expect(link).toHaveAttribute('href', 'https://www.nav.no/arbeidsgiver/inntektsmelding#manedsinntekten')
 
