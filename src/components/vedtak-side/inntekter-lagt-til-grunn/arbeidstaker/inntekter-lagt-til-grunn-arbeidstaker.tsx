@@ -115,13 +115,13 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: InntekterLagtTilGr
                                 <BodyShort size="small">
                                     {inntektFraAOrdningLagtTilGrunn
                                         ? '(hentet fra a-ordningen)'
-                                        : '(hentet fra inntektsmeldingen)'}
+                                        : '(innsendt av arbeidsgiver)'}
                                 </BodyShort>
                             </>
                         ) : inntektFraAOrdningLagtTilGrunn ? (
                             tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra a-ordningen)'
                         ) : (
-                            tekst('utbetaling.inntekt.info.beregnet') + ' (hentet fra inntektsmeldingen)'
+                            tekst('utbetaling.inntekt.info.beregnet') + ' (innsendt av arbeidsgiver)'
                         )
                     }
                     value={inntektMnd}
