@@ -145,46 +145,50 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: InntekterLagtTilGr
                 <EkstrainfoOmVedtaketArbeidstaker vedtak={vedtak.vedtak} />
                 <Accordion className="mt-8" indent={false}>
                     {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
-                        <BegrunnelseEkspanderbar vedtak={vedtak} begrunnelse="skjonn" setParentApne={setVisBeregning} />
+                        <BegrunnelseEkspanderbar
+                            vedtak={vedtak}
+                            begrunnelse="skjonn"
+                            setForelderElementApen={setVisBeregning}
+                        />
                     )}
                     {avslag && (
                         <BegrunnelseEkspanderbar
                             vedtak={vedtak}
                             begrunnelse="Avslag"
-                            apne={visBegrunnelse}
-                            setApne={(open) => {
+                            apen={visBegrunnelse}
+                            setApen={(open) => {
                                 loggBegrunnelseToggle(open, 'Avslag')
                                 setVisBegrunnelse(open)
                             }}
-                            setParentApne={setVisBeregning}
+                            setForelderElementApen={setVisBeregning}
                         />
                     )}
                     {delvisInnvilgelse && (
                         <BegrunnelseEkspanderbar
                             vedtak={vedtak}
                             begrunnelse="DelvisInnvilgelse"
-                            apne={visBegrunnelse}
-                            setApne={(open) => {
+                            apen={visBegrunnelse}
+                            setApen={(open) => {
                                 loggBegrunnelseToggle(open, 'DelvisInnvilgelse')
                                 setVisBegrunnelse(open)
                             }}
-                            setParentApne={setVisBeregning}
+                            setForelderElementApen={setVisBeregning}
                         />
                     )}
                     {innvilgelse && (
                         <BegrunnelseEkspanderbar
                             vedtak={vedtak}
                             begrunnelse="Innvilgelse"
-                            apne={visBegrunnelse}
-                            setApne={(open) => {
+                            apen={visBegrunnelse}
+                            setApen={(open) => {
                                 loggBegrunnelseToggle(open, 'Innvilgelse')
                                 setVisBegrunnelse(open)
                             }}
-                            setParentApne={setVisBeregning}
+                            setForelderElementApen={setVisBeregning}
                         />
                     )}
                     <AlleSykepengerPerDag vedtak={vedtak} setParentApne={setVisBeregning} />
-                    <MerOmBergningenArbeidstaker vedtak={vedtak} setParentApne={setVisBeregning} />
+                    <MerOmBergningenArbeidstaker vedtak={vedtak} setForelderElementApen={setVisBeregning} />
                 </Accordion>
             </article>
         </VedtakExpansionCard>

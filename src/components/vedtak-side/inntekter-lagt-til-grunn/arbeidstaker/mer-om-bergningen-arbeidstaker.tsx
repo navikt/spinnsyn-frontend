@@ -7,17 +7,17 @@ import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere
 import { tekst } from '../../../../utils/tekster'
 import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
 import { logEvent } from '../../../umami/umami'
-import { useAccordionHashNavigasjon } from '../../../../hooks/useAccordionHashNavigasjon'
+import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
-    setParentApne?: (apne: boolean) => void
+    setForelderElementApen?: (apne: boolean) => void
 }
 
-export const MerOmBergningenArbeidstaker = ({ vedtak, setParentApne }: BeregningInfoProps) => {
+export const MerOmBergningenArbeidstaker = ({ vedtak, setForelderElementApen }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
-    useAccordionHashNavigasjon('mer-om-beregningen', visBeregning, setVisBeregning, setParentApne)
+    useScrollTilElement('mer-om-beregningen', visBeregning, setVisBeregning, setForelderElementApen)
 
     const harMinstEnForLavInntektDagerArbeidsgiver =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering

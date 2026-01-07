@@ -3,12 +3,16 @@ import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { logEvent } from '../../../umami/umami'
-import { useAccordionHashNavigasjon } from '../../../../hooks/useAccordionHashNavigasjon'
+import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
 
-export const MerOmBergningenNargingsdrivende = ({ setParentApne }: { setParentApne?: (apne: boolean) => void }) => {
+export const MerOmBergningenNargingsdrivende = ({
+    setForelderElementApen,
+}: {
+    setForelderElementApen?: (apne: boolean) => void
+}) => {
     const arkivering = useContext(ArkiveringContext)
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
-    useAccordionHashNavigasjon('mer-om-beregningen', visBeregning, setVisBeregning, setParentApne)
+    useScrollTilElement('mer-om-beregningen', visBeregning, setVisBeregning, setForelderElementApen)
 
     return (
         <Accordion.Item

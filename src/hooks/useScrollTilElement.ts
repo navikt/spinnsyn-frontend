@@ -1,18 +1,18 @@
 import { useEffect, useRef } from 'react'
 
-export const useAccordionHashNavigasjon = (
-    accordionId: string,
+export const useScrollTilElement = (
+    elementId: string,
     apne: boolean | undefined,
-    setApne: ((apne: boolean) => void) | undefined,
-    setForelderApne?: ((apne: boolean) => void) | undefined,
+    setApen: ((apne: boolean) => void) | undefined,
+    setForelderElementApen?: ((apne: boolean) => void) | undefined,
 ) => {
     const initialHashHandtertRef = useRef(false)
 
     useEffect(() => {
         const utforJevnScroll = () => {
-            if (window.location.hash.slice(1) !== accordionId) return false
+            if (window.location.hash.slice(1) !== elementId) return false
 
-            const element = document.getElementById(accordionId)
+            const element = document.getElementById(elementId)
             const mal = element?.querySelector('[tabindex="-1"]') as HTMLElement
 
             if (mal?.offsetParent) {
@@ -23,11 +23,11 @@ export const useAccordionHashNavigasjon = (
             return false
         }
 
-        const apneAccordionOgScroll = () => {
-            if (!setApne) return
+        const apneElementOgScroll = () => {
+            if (!setApen) return
 
-            if (setForelderApne) setForelderApne(true)
-            setApne(true)
+            if (setForelderElementApen) setForelderElementApen(true)
+            setApen(true)
 
             const forsokScroll = () => {
                 if (!utforJevnScroll()) {
@@ -39,21 +39,21 @@ export const useAccordionHashNavigasjon = (
         }
 
         const handterHashEndring = () => {
-            if (window.location.hash.slice(1) === accordionId) {
-                apneAccordionOgScroll()
+            if (window.location.hash.slice(1) === elementId) {
+                apneElementOgScroll()
             }
         }
 
         const handterKlikk = (e: MouseEvent) => {
             const lenke = (e.target as HTMLElement).closest('a')
-            if (lenke?.hash !== `#${accordionId}`) return
+            if (lenke?.hash !== `#${elementId}`) return
 
             e.preventDefault()
 
-            const hashAlleredeSatt = window.location.hash === `#${accordionId}`
+            const hashAlleredeSatt = window.location.hash === `#${elementId}`
 
             if (!hashAlleredeSatt) {
-                window.location.hash = accordionId
+                window.location.hash = elementId
             } else {
                 setTimeout(() => utforJevnScroll(), 100)
             }
@@ -61,8 +61,8 @@ export const useAccordionHashNavigasjon = (
 
         if (!initialHashHandtertRef.current) {
             initialHashHandtertRef.current = true
-            if (window.location.hash.slice(1) === accordionId) {
-                apneAccordionOgScroll()
+            if (window.location.hash.slice(1) === elementId) {
+                apneElementOgScroll()
             }
         }
 
@@ -73,15 +73,15 @@ export const useAccordionHashNavigasjon = (
             window.removeEventListener('hashchange', handterHashEndring)
             document.removeEventListener('click', handterKlikk)
         }
-    }, [accordionId, setApne, setForelderApne])
+    }, [elementId, setApen, setForelderElementApen])
 
     useEffect(() => {
         const hash = window.location.hash.slice(1)
 
-        if (apne && hash !== accordionId) {
-            history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${accordionId}`)
-        } else if (!apne && hash === accordionId) {
+        if (apne && hash !== elementId) {
+            history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${elementId}`)
+        } else if (!apne && hash === elementId) {
             history.replaceState(null, '', window.location.pathname + window.location.search)
         }
-    }, [accordionId, apne])
+    }, [elementId, apne])
 }
