@@ -1,30 +1,22 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { useScroll } from '../../../../context/scroll-context'
 import { logEvent } from '../../../umami/umami'
+import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
 
-export const MerOmBergningenNargingsdrivende = () => {
+export const MerOmBergningenNargingsdrivende = ({
+    setForelderElementApen,
+}: {
+    setForelderElementApen?: (apne: boolean) => void
+}) => {
     const arkivering = useContext(ArkiveringContext)
-    const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
-    const elementRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        if (apneElementMedId === 'mer_om_beregningen') {
-            setVisBeregning(true)
-        }
-    }, [apneElementMedId])
-
-    useEffect(() => {
-        if (elementRef.current !== null) {
-            registrerElement('mer_om_beregningen', elementRef)
-        }
-    }, [elementRef?.current?.id, registrerElement])
+    useScrollTilElement('mer-om-beregningen', visBeregning, setVisBeregning, setForelderElementApen)
 
     return (
         <Accordion.Item
+            id="mer-om-beregningen"
             data-testid="mer-om-beregningen"
             defaultOpen={arkivering}
             open={visBeregning}
@@ -38,7 +30,7 @@ export const MerOmBergningenNargingsdrivende = () => {
         >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
-                <Heading spacing size="xsmall" level="3">
+                <Heading spacing size="xsmall" level="3" tabIndex={-1}>
                     Sykepengegrunnlaget ditt
                 </Heading>
                 <BodyLong spacing>

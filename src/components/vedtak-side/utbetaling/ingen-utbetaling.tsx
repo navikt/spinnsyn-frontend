@@ -5,7 +5,6 @@ import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
-import { useScroll } from '../../../context/scroll-context'
 import { dagErInnvilget } from '../vedtak'
 
 import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
@@ -22,10 +21,8 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
         oppsummertAvslag: avslagBegrunnelser,
         harBegrunnelseFraBomlo: harAvslagBegrunnelseFraBomlo,
         vedtak,
-        dagTabellScrollElement: 'sykepenger_per_dag',
+        dagTabellScrollElementId: 'sykepenger-per-dag',
     }
-
-    const { blaTilElement } = useScroll()
 
     return (
         <UtbetalingPanel
@@ -46,16 +43,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) 
                     <List as="ul" title="Hvorfor får jeg ingen utbetaling">
                         <List.Item>Helg</List.Item>
                     </List>
-                    <Link
-                        as="button"
-                        type="button"
-                        className="cursor-pointer"
-                        onClick={() => {
-                            blaTilElement('mer_om_beregningen')
-                        }}
-                    >
-                        Se nærmere begrunnelse her
-                    </Link>
+                    <Link href="#mer-om-beregningen">Se nærmere begrunnelse her</Link>
                 </BodyShort>
             )}
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>

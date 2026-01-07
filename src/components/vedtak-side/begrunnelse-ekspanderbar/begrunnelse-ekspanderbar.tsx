@@ -1,24 +1,26 @@
 import { Accordion, BodyLong, Heading } from '@navikt/ds-react'
-import React, { RefObject, useContext } from 'react'
+import React, { useContext } from 'react'
 
 import { BegrunnelseType, RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { useScrollTilElement } from '../../../hooks/useScrollTilElement'
 
 export const BegrunnelseEkspanderbar = ({
     vedtak,
     begrunnelse,
-    apne,
-    setApne,
-    elementRef,
+    apen,
+    setApen,
+    setForelderElementApen,
 }: {
     vedtak: RSVedtakWrapper
     begrunnelse: BegrunnelseType | 'skjonn'
-    apne?: boolean
-    setApne?: (apne: boolean) => void
-    elementRef?: RefObject<HTMLDivElement | null>
+    apen?: boolean
+    setApen?: (apne: boolean) => void
+    setForelderElementApen?: (apne: boolean) => void
 }) => {
     const arkivering = useContext(ArkiveringContext)
+    useScrollTilElement('begrunnelse-vedtak', apen, setApen, setForelderElementApen)
 
     const hentBegrunnelseTittel = () => {
         switch (begrunnelse) {
@@ -39,13 +41,13 @@ export const BegrunnelseEkspanderbar = ({
 
     return (
         <Accordion.Item
+            id="begrunnelse-vedtak"
             defaultOpen={arkivering}
-            open={apne}
-            onOpenChange={() => (setApne ? setApne(!apne) : false)}
-            ref={elementRef}
+            open={apen}
+            onOpenChange={() => (setApen ? setApen(!apen) : false)}
         >
             <Accordion.Header>
-                <Heading size="small" level="3">
+                <Heading size="small" level="3" tabIndex={-1}>
                     {hentBegrunnelseTittel()}
                 </Heading>
             </Accordion.Header>

@@ -1,35 +1,23 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../../utils/tekster'
 import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
-import { useScroll } from '../../../../context/scroll-context'
 import { logEvent } from '../../../umami/umami'
+import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
 
 export interface BeregningInfoProps {
     vedtak: RSVedtakWrapperUtvidet
+    setForelderElementApen?: (apne: boolean) => void
 }
 
-export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
+export const MerOmBergningenArbeidstaker = ({ vedtak, setForelderElementApen }: BeregningInfoProps) => {
     const arkivering = useContext(ArkiveringContext)
-    const { apneElementMedId, registrerElement } = useScroll()
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
-    const elementRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        if (apneElementMedId === 'mer_om_beregningen') {
-            setVisBeregning(true)
-        }
-    }, [apneElementMedId])
-
-    useEffect(() => {
-        if (elementRef.current !== null) {
-            registrerElement('mer_om_beregningen', elementRef)
-        }
-    }, [elementRef?.current?.id, registrerElement])
+    useScrollTilElement('mer-om-beregningen', visBeregning, setVisBeregning, setForelderElementApen)
 
     const harMinstEnForLavInntektDagerArbeidsgiver =
         vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
@@ -58,6 +46,7 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
 
     return (
         <Accordion.Item
+            id="mer-om-beregningen"
             data-testid="mer-om-beregningen"
             defaultOpen={arkivering}
             open={visBeregning}
@@ -71,7 +60,7 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
         >
             <Accordion.Header>Mer om beregningen</Accordion.Header>
             <Accordion.Content className="mt-4">
-                <Heading spacing size="xsmall" level="3">
+                <Heading spacing size="xsmall" level="3" tabIndex={-1}>
                     {tekst('utbetaling.mndlonn.tittel')}
                 </Heading>
                 <BodyLong spacing>{parserWithReplace(tekst('utbetaling.mndlonn.innhold.del1'))}</BodyLong>
@@ -127,7 +116,7 @@ export const MerOmBergningenArbeidstaker = ({ vedtak }: BeregningInfoProps) => {
                             </>
                         )}
 
-                        <Heading id="utbetalingsdager" spacing size="xsmall" level="3" ref={elementRef}>
+                        <Heading id="utbetalingsdager" spacing size="xsmall" level="3" tabIndex={-1}>
                             Utbetalingsdager
                         </Heading>
                         <BodyLong spacing>
