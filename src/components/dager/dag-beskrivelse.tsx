@@ -68,7 +68,9 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
             {unikeDager().map((dag, idx) => (
                 <div key={idx} className="pb-4">
-                    <DagLabel dag={dag} />
+                    <h5>
+                        <DagLabel dag={dag} />
+                    </h5>
                     {lagBeskrivelseForUnikDag(dag)}
                 </div>
             ))}
