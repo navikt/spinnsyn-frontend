@@ -26,19 +26,7 @@ export const SporsmalEllerFeil = ({ vedtak }: SporsmalEllerFeilProps) => {
         return { url: '/syk/sykepengesoknad' }
     }
 
-    const inntektsmeldingLenke = () => {
-        const relaterteInntektsmeldinger = vedtak.vedtak.dokumenter.filter(
-            (dokument) => dokument.type === 'Inntektsmelding',
-        )
-        if (relaterteInntektsmeldinger.length === 1) {
-            const inntektsmeldingId = relaterteInntektsmeldinger[0].dokumentId
-            return {
-                url: `/syk/sykefravaer/inntektsmeldinger/${inntektsmeldingId}`,
-                cleanUrl: '/syk/sykefravaer/inntektsmeldinger/inntektsmeldingId',
-            }
-        }
-        return { url: '/syk/sykefravaer/inntektsmeldinger' }
-    }
+    const inntektsmeldingLenke = () => ({ url: '/syk/sykefravaer/inntektsmeldinger' })
 
     const inntektFraAOrdningLagtTilGrunn = vedtak.vedtak.tags?.includes('InntektFraAOrdningenLagtTilGrunn') || false
 
@@ -48,24 +36,23 @@ export const SporsmalEllerFeil = ({ vedtak }: SporsmalEllerFeilProps) => {
                 Spørsmål eller feil
             </Heading>
             <BodyLong spacing>
-                Hvis du vil se opplysningene svaret er basert på, har funnet en feil, eller har andre spørsmål,{' '}
-                <LenkeMedUmami tekst="ta kontakt med Nav" url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" />
-            </BodyLong>
-            <BodyLong spacing>
                 Har du funnet en feil som skyldes feil i søknaden kan du{' '}
                 <LenkeMedUmami {...soknadsLenke()} tekst="endre svarene i søknaden" />.
             </BodyLong>
+
             {vedtak.vedtak.yrkesaktivitetstype === 'ARBEIDSTAKER' && (
-                <Inntektsopplysninger
+                <InntektsopplysningerArbeidstaker
                     inntektFraAOrdningLagtTilGrunn={inntektFraAOrdningLagtTilGrunn}
                     inntektsmeldingLenke={inntektsmeldingLenke}
                 />
             )}
+
+            {vedtak.vedtak.yrkesaktivitetstype === 'SELVSTENDIG' && <InntektsopplysningerSelvstendigNaringsdrivende />}
         </>
     )
 }
 
-const Inntektsopplysninger = ({
+const InntektsopplysningerArbeidstaker = ({
     inntektFraAOrdningLagtTilGrunn,
     inntektsmeldingLenke,
 }: {
@@ -76,12 +63,12 @@ const Inntektsopplysninger = ({
         return (
             <>
                 <BodyLong spacing>
-                    Har du spørsmål om opplysningene som er hentet fra a-ordningen, kan du
+                    Hvis du vil se opplysningene svaret er basert på, eller har andre spørsmål,{' '}
                     <LenkeMedUmami
                         url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
                         tekst="ta kontakt med Nav"
                     />
-                    .
+                    , så hjelper vi deg videre.
                 </BodyLong>
             </>
         )
@@ -89,10 +76,31 @@ const Inntektsopplysninger = ({
         return (
             <>
                 <BodyLong spacing>
-                    Har du spørsmål til opplysningene i{' '}
-                    <LenkeMedUmami {...inntektsmeldingLenke()} tekst="inntektsmeldingen" />, kontakt arbeidsgiveren din.
+                    Hvis du vil se inntektsopplysningene arbeidsgiveren din har sendt inn, kan du gå til oversikten over{' '}
+                    <LenkeMedUmami {...inntektsmeldingLenke()} tekst="inntektsmeldinger" />. Har du spørsmål til
+                    inntektsopplysningene, ta kontakt med arbeidsgiveren din.
+                </BodyLong>
+                <BodyLong spacing>
+                    Har du andre spørsmål,{' '}
+                    <LenkeMedUmami
+                        tekst="ta kontakt med Nav"
+                        url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
+                    />
+                    , så hjelper vi deg videre.
                 </BodyLong>
             </>
         )
     }
+}
+
+const InntektsopplysningerSelvstendigNaringsdrivende = () => {
+    return (
+        <>
+            <BodyLong spacing>
+                Hvis du vil se opplysningene svaret er basert på, eller har andre spørsmål,{' '}
+                <LenkeMedUmami url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" tekst="ta kontakt med Nav" />
+                , så hjelper vi deg videre.
+            </BodyLong>
+        </>
+    )
 }
