@@ -59,7 +59,7 @@ function leggTilBelopOgGrad(dager: RSDag[], oppdrag?: RSOppdrag | null): RSDag[]
             return {
                 ...akkumulator,
                 belop: harUtbetaling ? linje.dagsats : 0,
-                grad: harUtbetaling ? linje.grad : 0.0,
+                grad: linje.grad,
             }
         }, dag)
     })

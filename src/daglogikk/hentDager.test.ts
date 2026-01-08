@@ -1065,4 +1065,57 @@ describe('HentDagerTest', () => {
             },
         ])
     })
+
+    test('Grad skal bevares selv når utbetalingslinje har 0 stønadsdager', () => {
+        const oppdrag: RSOppdrag = {
+            utbetalingslinjer: [
+                {
+                    fom: mandag.format('YYYY-MM-DD'),
+                    tom: mandag.add(2, 'day').format('YYYY-MM-DD'),
+                    dagsats: 0,
+                    grad: 80.0,
+                    stønadsdager: 0,
+                },
+            ],
+        }
+
+        const utbetalingsdager: RSUtbetalingdag[] = [
+            { dato: mandag.format('YYYY-MM-DD'), type: 'NavDag', begrunnelser: [] },
+            { dato: mandag.add(1, 'day').format('YYYY-MM-DD'), type: 'NavDag', begrunnelser: [] },
+            { dato: mandag.add(2, 'day').format('YYYY-MM-DD'), type: 'NavDag', begrunnelser: [] },
+        ]
+
+        const result = hentDager(
+            mandag.format('YYYY-MM-DD'),
+            mandag.add(2, 'day').format('YYYY-MM-DD'),
+            oppdrag,
+            utbetalingsdager,
+        )
+
+        // Dette er forventet funksjonalitet etter bugfix:
+        // Grad skal bevares fra oppdragslinjen uavhengig av om det er utbetaling
+        expect(result).toEqual([
+            {
+                dato: mandag.format('YYYY-MM-DD'),
+                belop: 0,
+                grad: 80.0, // Korrekt grad bevares
+                dagtype: 'NavDagDelvisSyk',
+                begrunnelser: [],
+            },
+            {
+                dato: mandag.add(1, 'day').format('YYYY-MM-DD'),
+                belop: 0,
+                grad: 80.0, // Korrekt grad bevares
+                dagtype: 'NavDagDelvisSyk',
+                begrunnelser: [],
+            },
+            {
+                dato: mandag.add(2, 'day').format('YYYY-MM-DD'),
+                belop: 0,
+                grad: 80.0, // Korrekt grad bevares
+                dagtype: 'NavDagDelvisSyk',
+                begrunnelser: [],
+            },
+        ])
+    })
 })
