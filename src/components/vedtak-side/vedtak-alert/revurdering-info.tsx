@@ -1,5 +1,6 @@
 import { Alert, BodyLong, BodyShort, Heading, ReadMore } from '@navikt/ds-react'
 import React, { useState } from 'react'
+import { logger } from '@navikt/next-logger'
 
 import { logEvent } from '../../umami/umami'
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
@@ -45,12 +46,12 @@ const EndringerAlert = () => {
 }
 
 const finnRevurdertVedtak = (
-    soknadId: string,
+    soknadIder: string[],
     alleVedtak: RSVedtakWrapperUtvidet[],
 ): RSVedtakWrapperUtvidet | undefined => {
     const revurderteVedtak = alleVedtak.filter((v) => v.revurdert)
     const revurderteMedSoknadId = revurderteVedtak.filter((v) =>
-        v.vedtak.dokumenter.some((dokument) => dokument.type === 'Søknad' && dokument.dokumentId === soknadId),
+        v.vedtak.dokumenter.some((dokument) => dokument.type === 'Søknad' && soknadIder.includes(dokument.dokumentId)),
     )
     return revurderteMedSoknadId.sort(sorterEtterNyesteFom)[0]
 }
@@ -63,9 +64,16 @@ interface RevurderingInfoProps {
 export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) => {
     const [expanded, setExpanded] = useState<boolean>(false)
 
-    const soknadId = vedtak.vedtak.dokumenter.find((dokument) => dokument.type === 'Søknad')?.dokumentId || ''
-    const revurdertVedtak = finnRevurdertVedtak(soknadId, alleVedtak)
+    const soknadIder = vedtak.vedtak.dokumenter
+        .filter((dokument) => dokument.type === 'Søknad')
+        ?.map((dokument) => dokument.dokumentId)
+    const revurdertVedtak = finnRevurdertVedtak(soknadIder, alleVedtak)
     if (!revurdertVedtak) {
+        logger.warn(
+            'Kunne ikke finne revurdert vedtak for revurdering-info. VedtakId: ' + vedtak.id,
+            ', soknadIder:',
+            soknadIder,
+        )
         throw new Error('Revurdert vedtak ikke funnet')
     }
     const harEndringer = harVedtakEndringer(vedtak, revurdertVedtak)

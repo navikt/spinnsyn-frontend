@@ -24,6 +24,9 @@ export const sorterEtterNyesteFom = (vedtak1: RSVedtakWrapper, vedtak2: RSVedtak
 
     const diff = fom2 - fom1
     if (diff == 0) {
+        if (vedtak1.revurdert && vedtak2.revurdert) {
+            return dayjs(vedtak2.opprettetTimestamp).unix() - dayjs(vedtak1.opprettetTimestamp).unix()
+        }
         if (vedtak1.revurdert || vedtak1.annullert) {
             return 1
         }
