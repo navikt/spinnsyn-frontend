@@ -63,3 +63,25 @@ it('Sorterer gjeldende vedtak før annullerte i lista', () => {
     expect(sorterteVedtakMotsattStart[0]).toEqual(gjeldende)
     expect(sorterteVedtakMotsattStart[1]).toEqual(annullert)
 })
+
+it('Sorterer to revurderte på opprettetTimestamp når fom er lik', () => {
+    const revurdertEldre: RSVedtakWrapper = {
+        id: '1',
+        vedtak: { fom: '2020-06-13' },
+        revurdert: true,
+        opprettetTimestamp: '2022-01-01T12:00:00.000Z',
+    } as any
+    const revurdertNyere = jsonDeepCopy(revurdertEldre)
+    revurdertNyere.id = '2'
+    revurdertNyere.opprettetTimestamp = '2022-02-01T12:00:00.000Z'
+
+    const sorterteVedtak = [revurdertNyere, revurdertEldre].sort(sorterEtterNyesteFom)
+
+    expect(sorterteVedtak[0]).toEqual(revurdertNyere)
+    expect(sorterteVedtak[1]).toEqual(revurdertEldre)
+
+    const sorterteVedtakMotsattStart = [revurdertEldre, revurdertNyere].sort(sorterEtterNyesteFom)
+
+    expect(sorterteVedtakMotsattStart[0]).toEqual(revurdertNyere)
+    expect(sorterteVedtakMotsattStart[1]).toEqual(revurdertEldre)
+})
