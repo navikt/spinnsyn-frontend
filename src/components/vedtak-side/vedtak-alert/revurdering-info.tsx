@@ -45,6 +45,25 @@ const EndringerAlert = () => {
     )
 }
 
+const MuligEndringAlert = () => {
+    return (
+        <Alert variant="warning">
+            <Heading spacing level="2" size="small">
+                Mulige endringer i svar på søknaden
+            </Heading>
+            <BodyShort spacing>
+                Vi har vurdert søknaden din på nytt. Vurderingen kan ha ført til endringer i beløpet, hvem vi utbetaler
+                til eller hvor mange sykepengedager du har igjen. I svaret under ser du hva vi har besluttet og hvorfor.
+            </BodyShort>
+            <BodyShort spacing className="mt-8">
+                Har du spørsmål eller er usikker på hva dette betyr for deg,{' '}
+                <LenkeMedUmami tekst="ta kontakt med Nav" url="https://innboks.nav.no/s/skriv-til-oss?category=Helse" />
+                , så hjelper vi deg videre.
+            </BodyShort>
+        </Alert>
+    )
+}
+
 const finnRevurdertVedtak = (
     soknadIder: string[],
     alleVedtak: RSVedtakWrapperUtvidet[],
@@ -68,19 +87,19 @@ export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) =>
         .filter((dokument) => dokument.type === 'Søknad')
         ?.map((dokument) => dokument.dokumentId)
     const revurdertVedtak = finnRevurdertVedtak(soknadIder, alleVedtak)
+
+    const harEndringer = revurdertVedtak === undefined ? false : harVedtakEndringer(vedtak, revurdertVedtak)
     if (!revurdertVedtak) {
         logger.warn(
             'Kunne ikke finne revurdert vedtak for revurdering-info. VedtakId: ' + vedtak.id,
             ', soknadIder:',
             soknadIder,
         )
-        throw new Error('Revurdert vedtak ikke funnet')
     }
-    const harEndringer = harVedtakEndringer(vedtak, revurdertVedtak)
 
     return (
         <>
-            {harEndringer ? <EndringerAlert /> : <IngenEndringerAlert />}
+            {revurdertVedtak ? harEndringer ? <EndringerAlert /> : <IngenEndringerAlert /> : <MuligEndringAlert />}
             <ReadMore
                 className="my-10"
                 header="Hvorfor søknaden blir vurdert på nytt"
@@ -89,7 +108,7 @@ export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) =>
                     logEvent(expanded ? 'readmore lukket' : 'readmore åpnet', {
                         tittel: 'Hvorfor søknaden blir vurdert på nytt',
                         component: 'RevurderingInfo',
-                        endringIRevurdering: harEndringer,
+                        endringIRevurdering: harEndringer ?? 'ukjent',
                     })
                     setExpanded((prev) => !prev)
                 }}
