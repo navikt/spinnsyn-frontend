@@ -129,9 +129,7 @@ test.describe('Utbetalingsoversikt', () => {
             ]
 
             for (const forklaring_item of labelForklaringer) {
-                await expect(
-                    forklaring.locator(`[data-testid="dag-beskrivelse-${forklaring_item.key}"]`),
-                ).toContainText(forklaring_item.tekst)
+                await expect(forklaring.getByText(forklaring_item.tekst)).toBeVisible()
             }
 
             const avvistForklaringer = [
@@ -170,9 +168,7 @@ test.describe('Utbetalingsoversikt', () => {
             ]
 
             for (const forklaring_item of avvistForklaringer) {
-                await expect(
-                    forklaring.locator(`[data-testid="dag-beskrivelse-${forklaring_item.key}"]`),
-                ).toContainText(forklaring_item.tekst)
+                await expect(forklaring.getByText(forklaring_item.tekst)).toBeVisible()
             }
         })
     })

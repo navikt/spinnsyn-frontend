@@ -6,7 +6,6 @@ import { tekst } from '../../utils/tekster'
 import { parserWithReplace } from '../../utils/html-react-parser-utils'
 
 import DagLabel from './dag-label'
-import { dataCyBeskrivelse } from './dag-data-cy-util'
 
 interface DagBeskrivelseProps {
     dager: RSDag[]
@@ -19,7 +18,7 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     const lagBeskrivelseForUnikDag = (dag: RSDag) => {
         return (
-            <div className="pt-1" data-testid={dataCyBeskrivelse(dag)}>
+            <div className="pt-1">
                 <BodyShort>
                     {!erAvvistEllerAndreYtelser(dag)
                         ? parserWithReplace(tekst(`utbetaling.tabell.label.${dag.dagtype}` as any))

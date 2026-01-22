@@ -5,8 +5,6 @@ import React from 'react'
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { finnBegrunnelseTekst } from '../../utils/vedtak-utils'
 
-import { dataCyLabel } from './dag-data-cy-util'
-
 interface DagLabelProps {
     dag: RSDag
     skalViseProsent?: boolean
@@ -109,6 +107,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         )
     }
 
-    return <div data-testid={dataCyLabel(dag)}>{lagDagLabel(dag)}</div>
+    return <div>{lagDagLabel(dag)}</div>
 }
 export default DagLabel
