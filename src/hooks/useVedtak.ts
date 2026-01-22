@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
+import { logger } from '@navikt/next-logger'
 
 import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak-felles'
 import { fetchJsonMedRequestId } from '../utils/fetch'
 import { spinnsynFrontendInterne } from '../utils/environment'
-import { hentDagerPaaVedtak } from '../daglogikk/hentDagerPaaVedtak'
+import { hentDagerPaaVedtak, validerNyUtbetalingsdagListe } from '../daglogikk/hentDagerPaaVedtak'
 
 export default function UseVedtak() {
     const router = useRouter()
@@ -33,7 +34,26 @@ export default function UseVedtak() {
                 '/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query(),
             )
 
-            return { alleVedtak: alleVedtak.map((v) => hentDagerPaaVedtak(v)), sykmeldtFnr: null }
+            return {
+                alleVedtak: alleVedtak.map((v) => {
+                    const nyttVedtak = hentDagerPaaVedtak(v)
+                    if (nyttVedtak.vedtak.utbetaling.utbetalingsdager) {
+                        const likeDagerArbeidsgiver = validerNyUtbetalingsdagListe(
+                            nyttVedtak.vedtak.utbetaling.utbetalingsdager,
+                            nyttVedtak.dagerArbeidsgiver,
+                        )
+                        const likeDagerPerson = validerNyUtbetalingsdagListe(
+                            nyttVedtak.vedtak.utbetaling.utbetalingsdager,
+                            nyttVedtak.dagerPerson,
+                        )
+                        if (!likeDagerArbeidsgiver || !likeDagerPerson) {
+                            logger.warn('ny utbetalingsdager er ikke beregnet riktig på vedtak ' + nyttVedtak.id)
+                        }
+                    }
+                    return nyttVedtak
+                }),
+                sykmeldtFnr: null,
+            }
         },
     })
 }

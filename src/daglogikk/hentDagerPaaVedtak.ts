@@ -1,4 +1,6 @@
-import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak-felles'
+import { logger } from '@navikt/next-logger'
+
+import { RSDag, RSUtbetalingdag, RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak-felles'
 
 import { hentDager } from './hentDager'
 import { fjernArbeidIkkeGjenopptattDager } from './fjernArbeidIkkeGjenopptatt'
@@ -32,4 +34,37 @@ export function hentDagerPaaVedtak(v: RSVedtakWrapper): RSVedtakWrapperUtvidet {
     nyttVedtak.vedtak.yrkesaktivitetstype = v.vedtak.yrkesaktivitetstype || 'ARBEIDSTAKER'
 
     return nyttVedtak
+}
+
+export function validerNyUtbetalingsdagListe(utbetalingsdager: RSUtbetalingdag[], dager: RSDag[]): boolean {
+    for (const utbetalingsdag of utbetalingsdager) {
+        const dagFinnes = dager.find((dag) => dag.dato === utbetalingsdag.dato)
+        if (!dagFinnes) {
+            logger.error('Dag finnes ikke i ny liste: ' + utbetalingsdag.dato)
+            return false
+        }
+        const liktBelop =
+            dagFinnes.belop === utbetalingsdag.beløpTilArbeidsgiver ||
+            dagFinnes.belop === utbetalingsdag.beløpTilSykmeldt
+        if (!liktBelop) {
+            logger.error('Beløp er ikke likt for dag: ' + utbetalingsdag.dato + ' Nytt beløp: ' + dagFinnes.belop)
+            return false
+        }
+        const likGrad = dagFinnes.grad === utbetalingsdag.sykdomsgrad
+        if (!likGrad) {
+            if (dagFinnes.dagtype == 'ArbeidsgiverperiodeDag') {
+                return dagFinnes.grad == 0 && utbetalingsdag.sykdomsgrad == 100
+            }
+            logger.error(
+                'Grad er ikke lik for dag: ' +
+                    utbetalingsdag.dato +
+                    ' Ny grad: ' +
+                    utbetalingsdag.sykdomsgrad +
+                    ', gammel grad: ' +
+                    dagFinnes.grad,
+            )
+            return false
+        }
+    }
+    return true
 }
