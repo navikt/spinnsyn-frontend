@@ -8,7 +8,11 @@ import { RSUtbetalingdag, RSVedtakWrapperUtvidet } from '../../../../types/rs-ty
 import { dagErAvvist } from '../../vedtak'
 import { logEvent } from '../../../umami/umami'
 import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
-import { rsDagerTilRSUtbetalingdagerMapper } from '../../../../utils/vedtak-utils'
+import {
+    delUtbetalingsdager,
+    rsDagerTilRSUtbetalingdagerMapper,
+    sorterOgFlettDager,
+} from '../../../../utils/vedtak-utils'
 import { validerNyUtbetalingsdagListe } from '../../../../daglogikk/hentDagerPaaVedtak'
 
 type AlleSykepengerPerDagProps = {
@@ -22,23 +26,12 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
 
     const dager = vedtak.vedtak.utbetaling.utbetalingsdager
-    const dagerArbeidsgiver: RSUtbetalingdag[] = []
-    const dagerPerson: RSUtbetalingdag[] = []
-    const dagerNav: RSUtbetalingdag[] = []
+    const { dagerArbeidsgiver, dagerPerson, dagerNav } = dager
+        ? delUtbetalingsdager(dager)
+        : { dagerArbeidsgiver: [], dagerPerson: [], dagerNav: [] }
 
-    dager?.forEach((dag) => {
-        if (dag.beløpTilArbeidsgiver && dag.beløpTilArbeidsgiver > 0) {
-            dagerArbeidsgiver.push(dag)
-        } else if (dag.beløpTilSykmeldt && dag.beløpTilSykmeldt > 0) {
-            dagerPerson.push(dag)
-        } else {
-            dagerNav.push(dag)
-        }
-    })
-
-    const sorterDagerEtterDato = (a: RSUtbetalingdag, b: RSUtbetalingdag) => a.dato.localeCompare(b.dato)
-    const dagerArbeidsgiverSortert = [...dagerNav, ...dagerArbeidsgiver].sort(sorterDagerEtterDato)
-    const dagerPersonSortert = [...dagerNav, ...dagerPerson].sort(sorterDagerEtterDato)
+    const dagerArbeidsgiverSortert = sorterOgFlettDager(dagerNav, dagerArbeidsgiver)
+    const dagerPersonSortert = sorterOgFlettDager(dagerNav, dagerPerson)
 
     const hentDagerArbeidsgiver = () => {
         if (!dager) return rsDagerTilRSUtbetalingdagerMapper(vedtak.dagerArbeidsgiver, true)

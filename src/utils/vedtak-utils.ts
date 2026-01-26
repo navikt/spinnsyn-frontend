@@ -134,3 +134,35 @@ const rsDagTilRSUtbetalingdagMapper = (dag: RSDag, refusjon: boolean): RSUtbetal
 export const rsDagerTilRSUtbetalingdagerMapper = (dager: RSDag[], refusjon: boolean): RSUtbetalingdag[] => {
     return dager.map((dag) => rsDagTilRSUtbetalingdagMapper(dag, refusjon))
 }
+
+export interface DelteUtbetalingsdager {
+    dagerArbeidsgiver: RSUtbetalingdag[]
+    dagerPerson: RSUtbetalingdag[]
+    dagerNav: RSUtbetalingdag[]
+}
+
+export const delUtbetalingsdager = (dager: RSUtbetalingdag[]): DelteUtbetalingsdager => {
+    const dagerArbeidsgiver: RSUtbetalingdag[] = []
+    const dagerPerson: RSUtbetalingdag[] = []
+    const dagerNav: RSUtbetalingdag[] = []
+
+    dager.forEach((dag) => {
+        if (dag.beløpTilArbeidsgiver && dag.beløpTilArbeidsgiver > 0) {
+            dagerArbeidsgiver.push(dag)
+        } else if (dag.beløpTilSykmeldt && dag.beløpTilSykmeldt > 0) {
+            dagerPerson.push(dag)
+        } else {
+            dagerNav.push(dag)
+        }
+    })
+
+    return { dagerArbeidsgiver, dagerPerson, dagerNav }
+}
+
+export const sorterOgFlettDager = (
+    dagerNav: RSUtbetalingdag[],
+    dagerMedBelop: RSUtbetalingdag[],
+): RSUtbetalingdag[] => {
+    const sorterDagerEtterDato = (a: RSUtbetalingdag, b: RSUtbetalingdag) => a.dato.localeCompare(b.dato)
+    return [...dagerNav, ...dagerMedBelop].sort(sorterDagerEtterDato)
+}
