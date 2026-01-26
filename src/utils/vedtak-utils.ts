@@ -5,6 +5,7 @@ import {
     BegrunnelseType,
     RSBegrunnelse,
     RSDag,
+    RSUtbetalingdag,
     RSVedtakWrapper,
     RSVedtakWrapperUtvidet,
 } from '../types/rs-types/rs-vedtak-felles'
@@ -117,4 +118,19 @@ const erForskjelligSykepengedagerIgjen = (
     gammeltVedtak: RSVedtakWrapperUtvidet,
 ): boolean => {
     return nyttVedtak.vedtak.utbetaling.gjenståendeSykedager !== gammeltVedtak.vedtak.utbetaling.gjenståendeSykedager
+}
+
+const rsDagTilRSUtbetalingdagMapper = (dag: RSDag, refusjon: boolean): RSUtbetalingdag => {
+    return {
+        dato: dag.dato,
+        type: dag.dagtype,
+        begrunnelser: dag.begrunnelser,
+        beløpTilSykmeldt: refusjon ? 0 : dag.belop,
+        beløpTilArbeidsgiver: refusjon ? dag.belop : 0,
+        sykdomsgrad: dag.grad,
+    }
+}
+
+export const rsDagerTilRSUtbetalingdagerMapper = (dager: RSDag[], refusjon: boolean): RSUtbetalingdag[] => {
+    return dager.map((dag) => rsDagTilRSUtbetalingdagMapper(dag, refusjon))
 }

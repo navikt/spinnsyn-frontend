@@ -2,22 +2,22 @@ import { Tag } from '@navikt/ds-react'
 import { logger } from '@navikt/next-logger'
 import React from 'react'
 
-import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak-felles'
+import { RSBegrunnelse, RSUtbetalingdag } from '../../types/rs-types/rs-vedtak-felles'
 import { finnBegrunnelseTekst } from '../../utils/vedtak-utils'
 
 interface DagLabelProps {
-    dag: RSDag
+    dag: RSUtbetalingdag
     skalViseProsent?: boolean
 }
 
 const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
-    const lagDagLabel = (dag: RSDag) => {
-        switch (dag.dagtype) {
+    const lagDagLabel = (dag: RSUtbetalingdag) => {
+        switch (dag.type) {
             case 'NavDag':
             case 'NavDagSyk':
             case 'NavDagDelvisSykUnder20':
             case 'NavDagDelvisSyk':
-                const grad = dag.grad.toString()
+                const grad = dag.sykdomsgrad.toString()
                 return (
                     <Tag variant="success" size="small">
                         {skalViseProsent ? grad + ' % syk' : 'Syk'}

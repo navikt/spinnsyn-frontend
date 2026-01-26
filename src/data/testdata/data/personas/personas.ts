@@ -34,6 +34,7 @@ import { ingenUtbetalingFordiAlleDagerHelg } from '../vedtak/ingenUtbetalingFord
 import { innvilgelseVedtak } from '../vedtak/delvisInnvilgelse'
 import { revurderingVedtak } from '../vedtak/revurdering'
 import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
+import { refusjon } from '../vedtak/utbetalingsdager-med-grad/refusjon'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -82,6 +83,12 @@ export const kunDirektePerson: Persona = {
     vedtak: [kunDirekte],
     kontonummer: '10011110011',
     beskrivelse: 'Utbetaling til sykmeldt',
+}
+
+export const kunRefusjonPerson: Persona = {
+    vedtak: [refusjon],
+    kontonummer: '10011110011',
+    beskrivelse: 'Kun refusjon til arbeidsgiver',
 }
 
 export const innvilgelsePerson: Persona = {

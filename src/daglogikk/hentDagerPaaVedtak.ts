@@ -43,6 +43,18 @@ export function validerNyUtbetalingsdagListe(utbetalingsdager: RSUtbetalingdag[]
             logger.error('Dag finnes ikke i ny liste: ' + utbetalingsdag.dato)
             return false
         }
+        const likType = dagFinnes.dagtype === utbetalingsdag.type
+        if (!likType) {
+            logger.error(
+                'Dagtype er ikke lik for dag: ' +
+                    utbetalingsdag.dato +
+                    ' Ny type: ' +
+                    utbetalingsdag.type +
+                    ', gammel type: ' +
+                    dagFinnes.dagtype,
+            )
+            return false
+        }
         const liktBelop =
             dagFinnes.belop === utbetalingsdag.beløpTilArbeidsgiver ||
             dagFinnes.belop === utbetalingsdag.beløpTilSykmeldt
@@ -52,11 +64,15 @@ export function validerNyUtbetalingsdagListe(utbetalingsdager: RSUtbetalingdag[]
         }
         const likGrad = dagFinnes.grad === utbetalingsdag.sykdomsgrad
         if (!likGrad) {
-            if (dagFinnes.dagtype == 'ArbeidsgiverperiodeDag') {
-                return dagFinnes.grad == 0 && utbetalingsdag.sykdomsgrad == 100
+            if (dagFinnes.dagtype == 'ArbeidsgiverperiodeDag' || dagFinnes.dagtype == 'NavHelgDag') {
+                if (dagFinnes.grad == 0 && utbetalingsdag.sykdomsgrad == 100) {
+                    continue
+                }
             }
             logger.error(
-                'Grad er ikke lik for dag: ' +
+                'Grad er ikke lik for dag med type ' +
+                    dagFinnes.dagtype +
+                    ': ' +
                     utbetalingsdag.dato +
                     ' Ny grad: ' +
                     utbetalingsdag.sykdomsgrad +
