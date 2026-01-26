@@ -39,7 +39,7 @@ const DagTabell = ({ dager, refusjon }: DagTabellProps) => {
                 {dager.map((dag, idx) => {
                     const dagSum = (): string => {
                         if (dagErInnvilget.includes(dag.type)) {
-                            return formaterValuta(refusjon ? dag.beløpTilArbeidsgiver : dag.beløpTilSykmeldt)
+                            return formaterValuta(refusjon ? dag.beløpTilArbeidsgiver! : dag.beløpTilSykmeldt!)
                         } else if (dagErAvvist.includes(dag.type)) {
                             return '0 kr'
                         } else {
