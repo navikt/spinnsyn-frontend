@@ -88,7 +88,7 @@ function leggTilUtbetalingsdagInfo(dager: RSDag[], utbetalingsdager?: RSUtbetali
             if (utbetalingsdag.type === 'ArbeidsgiverperiodeDag') {
                 if (dag.belop === 0) return 'ArbeidsgiverperiodeDag'
                 if (erHelg) return 'NavHelgDag'
-                return dag.grad < 100 ? 'NavDagDelvisSyk' : 'NavDagSyk'
+                return 'NavDag'
             }
             return utbetalingsdag.type
         })()
