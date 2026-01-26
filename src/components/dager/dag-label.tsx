@@ -17,10 +17,10 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'NavDagSyk':
             case 'NavDagDelvisSykUnder20':
             case 'NavDagDelvisSyk':
-                const grad = dag.sykdomsgrad.toString()
+                const grad = dag.sykdomsgrad?.toString()
                 return (
                     <Tag variant="success" size="small">
-                        {skalViseProsent ? grad + ' % syk' : 'Syk'}
+                        {skalViseProsent && grad ? grad + ' % syk' : 'Syk'}
                     </Tag>
                 )
 

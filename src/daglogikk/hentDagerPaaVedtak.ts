@@ -38,6 +38,21 @@ export function hentDagerPaaVedtak(v: RSVedtakWrapper): RSVedtakWrapperUtvidet {
 
 export function validerNyUtbetalingsdagListe(utbetalingsdager: RSUtbetalingdag[], dager: RSDag[]): boolean {
     for (const utbetalingsdag of utbetalingsdager) {
+        if (utbetalingsdag.beløpTilArbeidsgiver === undefined && utbetalingsdag.beløpTilSykmeldt === undefined) {
+            logger.warn(
+                'Beløp er ikke satt for dag: ' + utbetalingsdag.dato + ', bruker data fra oppdrag (gammelt format)',
+            )
+            return false
+        }
+        if (utbetalingsdag.sykdomsgrad === undefined) {
+            logger.warn(
+                'Sykdomsgrad er ikke satt for dag: ' +
+                    utbetalingsdag.dato +
+                    ', bruker data fra oppdrag (gammelt format)',
+            )
+            return false
+        }
+
         const dagFinnes = dager.find((dag) => dag.dato === utbetalingsdag.dato)
         if (!dagFinnes) {
             logger.error('Dag finnes ikke i ny liste: ' + utbetalingsdag.dato)
@@ -59,7 +74,15 @@ export function validerNyUtbetalingsdagListe(utbetalingsdager: RSUtbetalingdag[]
             dagFinnes.belop === utbetalingsdag.beløpTilArbeidsgiver ||
             dagFinnes.belop === utbetalingsdag.beløpTilSykmeldt
         if (!liktBelop) {
-            logger.error('Beløp er ikke likt for dag: ' + utbetalingsdag.dato + ' Nytt beløp: ' + dagFinnes.belop)
+            const gammeltBeløp = utbetalingsdag.beløpTilArbeidsgiver ?? utbetalingsdag.beløpTilSykmeldt
+            logger.error(
+                'Beløp er ikke likt for dag: ' +
+                    utbetalingsdag.dato +
+                    ' Nytt beløp: ' +
+                    dagFinnes.belop +
+                    ', gammelt beløp: ' +
+                    gammeltBeløp,
+            )
             return false
         }
         const likGrad = dagFinnes.grad === utbetalingsdag.sykdomsgrad
