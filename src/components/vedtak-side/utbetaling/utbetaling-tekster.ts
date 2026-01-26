@@ -74,8 +74,8 @@ const UtbetalingTekster = {
     'utbetaling.tabell.label.ArbeidsgiverperiodeDag':
         'Arbeidsgiveren din betaler sykepengene de første 16 dagene du er syk. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-19">folketrygdloven § 8-19</a>, første avsnitt.',
     'utbetaling.tabell.label.Arbeidsdag': 'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
-    'utbetaling.tabell.label.NavDag': '',
-    'utbetaling.tabell.label.NavDagSyk':
+    'utbetaling.tabell.label.NavDagSyk': '',
+    'utbetaling.tabell.label.NavDag':
         'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet. Hvor mye du får kommer an på om du har hatt inntekt eller jobbet mens du var syk, eller om du har fått annen pengestøtte fra Nav i tillegg. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-13" target="_blank">folketrygdloven § 8-13</a>, andre avsnitt.',
     'utbetaling.tabell.label.NavHelgDag':
         'Du får bare sykepenger for dagene mandag til fredag. Hvis du jobber i helgen, blir disse dagene likevel tatt med i beregningen, men utbetalingen blir fordelt på ukedagene. Du får ikke sykepenger hvis du bare har vært sykmeldt lørdag og/eller søndag. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-11" target="_blank">folketrygdloven § 8-11</a>.',
