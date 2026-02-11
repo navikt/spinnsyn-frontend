@@ -8,12 +8,7 @@ import { RSUtbetalingdag, RSVedtakWrapperUtvidet } from '../../../../types/rs-ty
 import { dagErAvvist } from '../../vedtak'
 import { logEvent } from '../../../umami/umami'
 import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
-import {
-    delUtbetalingsdager,
-    rsDagerTilRSUtbetalingdagerMapper,
-    sorterOgFlettDager,
-} from '../../../../utils/vedtak-utils'
-import { validerNyUtbetalingsdagListe } from '../../../../daglogikk/hentDagerPaaVedtak'
+import { delUtbetalingsdager, sorterOgFlettDager } from '../../../../utils/vedtak-utils'
 
 type AlleSykepengerPerDagProps = {
     vedtak: RSVedtakWrapperUtvidet
@@ -33,27 +28,13 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
     const dagerArbeidsgiverSortert = sorterOgFlettDager(dagerNav, dagerArbeidsgiver)
     const dagerPersonSortert = sorterOgFlettDager(dagerNav, dagerPerson)
 
-    const hentDagerArbeidsgiver = () => {
-        if (!dager) return rsDagerTilRSUtbetalingdagerMapper(vedtak.dagerArbeidsgiver, true)
-
-        const erGyldig = validerNyUtbetalingsdagListe(dagerArbeidsgiverSortert, vedtak.dagerArbeidsgiver)
-        return erGyldig ? dagerArbeidsgiverSortert : rsDagerTilRSUtbetalingdagerMapper(vedtak.dagerArbeidsgiver, true)
-    }
-
-    const hentDagerPerson = () => {
-        if (!dager) return rsDagerTilRSUtbetalingdagerMapper(vedtak.dagerPerson, false)
-
-        const erGyldig = validerNyUtbetalingsdagListe(dagerPersonSortert, vedtak.dagerPerson)
-        return erGyldig ? dagerPersonSortert : rsDagerTilRSUtbetalingdagerMapper(vedtak.dagerPerson, false)
-    }
-
     return (
         <>
             {erRefusjon && erDirekteutbetaling ? (
                 <>
                     <SykepengerPerDag
                         tittel="Sykepenger per dag til arbeidsgiver"
-                        dager={hentDagerArbeidsgiver()}
+                        dager={dagerArbeidsgiverSortert}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                         scrollElementId="sykepenger-per-dag-arbeidsgiver"
                         setForelderElementApen={setParentApne}
@@ -61,7 +42,7 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
                     />
                     <SykepengerPerDag
                         tittel="Sykepenger per dag til deg"
-                        dager={hentDagerPerson()}
+                        dager={dagerPersonSortert}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                         scrollElementId="sykepenger-per-dag"
                         setForelderElementApen={setParentApne}
@@ -70,7 +51,7 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
             ) : erRefusjon ? (
                 <SykepengerPerDag
                     tittel="Dine sykepenger per dag"
-                    dager={hentDagerArbeidsgiver()}
+                    dager={dagerArbeidsgiverSortert}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     scrollElementId="sykepenger-per-dag-arbeidsgiver"
                     setForelderElementApen={setParentApne}
@@ -79,7 +60,7 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
             ) : (
                 <SykepengerPerDag
                     tittel="Dine sykepenger per dag"
-                    dager={hentDagerPerson()}
+                    dager={dagerPersonSortert}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     scrollElementId="sykepenger-per-dag"
                     setForelderElementApen={setParentApne}
