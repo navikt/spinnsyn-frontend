@@ -119,12 +119,12 @@ export const inntektUnder2g: RSVedtakWrapper = {
                 },
                 {
                     dato: '2023-08-17',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-18',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -139,27 +139,27 @@ export const inntektUnder2g: RSVedtakWrapper = {
                 },
                 {
                     dato: '2023-08-21',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-22',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-23',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-24',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-25',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -174,22 +174,22 @@ export const inntektUnder2g: RSVedtakWrapper = {
                 },
                 {
                     dato: '2023-08-28',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-29',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-30',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2023-08-31',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
             ],

@@ -143,22 +143,22 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
                 },
                 {
                     dato: '2024-02-20',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2024-02-21',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2024-02-22',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2024-02-23',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
             ],

@@ -64,17 +64,17 @@ export const kombinertDirekteOgRefusjonDelvisInnvilget: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-02-05',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-02-08',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-02-09',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -84,7 +84,7 @@ export const kombinertDirekteOgRefusjonDelvisInnvilget: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-02-11',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -104,27 +104,27 @@ export const kombinertDirekteOgRefusjonDelvisInnvilget: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-02-15',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-02-16',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-02-17',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-02-18',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-02-19',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
