@@ -2,17 +2,18 @@ import { BodyShort, Label, Table } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 
-import { RSDag } from '../../types/rs-types/rs-vedtak-felles'
+import { RSUtbetalingdag } from '../../types/rs-types/rs-vedtak-felles'
 import { formaterValuta } from '../../utils/valuta-utils'
 import { dagErAvvist, dagErInnvilget } from '../vedtak-side/vedtak'
 
 import DagLabel from './dag-label'
 
 interface DagTabellProps {
-    dager: RSDag[]
+    dager: RSUtbetalingdag[]
+    refusjon?: undefined | boolean
 }
 
-const DagTabell = ({ dager }: DagTabellProps) => {
+const DagTabell = ({ dager, refusjon }: DagTabellProps) => {
     return (
         <Table zebraStripes={true} className="bg-white" size="medium">
             <Table.Header>
@@ -37,9 +38,9 @@ const DagTabell = ({ dager }: DagTabellProps) => {
             <Table.Body data-testid="dag-tabell-body">
                 {dager.map((dag, idx) => {
                     const dagSum = (): string => {
-                        if (dagErInnvilget.includes(dag.dagtype)) {
-                            return formaterValuta(dag.belop)
-                        } else if (dagErAvvist.includes(dag.dagtype)) {
+                        if (dagErInnvilget.includes(dag.type)) {
+                            return formaterValuta(refusjon ? dag.beløpTilArbeidsgiver! : dag.beløpTilSykmeldt!)
+                        } else if (dagErAvvist.includes(dag.type)) {
                             return '0 kr'
                         } else {
                             return '-'

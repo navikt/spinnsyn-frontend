@@ -44,22 +44,22 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             utbetalingsdager: [
                 {
                     dato: '2021-04-27',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-04-28',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-04-29',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-04-30',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -74,12 +74,12 @@ export const vedtakAnnullert: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-05-03',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-05-04',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
             ],

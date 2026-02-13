@@ -131,7 +131,7 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-01-14',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {

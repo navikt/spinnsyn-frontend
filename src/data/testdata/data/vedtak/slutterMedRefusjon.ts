@@ -151,17 +151,17 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-09-28',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-09-29',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-09-30',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -186,27 +186,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-10-03',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-04',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-05',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-06',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-07',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -231,27 +231,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-10-10',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-11',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-12',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-13',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-14',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -276,27 +276,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-10-17',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-18',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-19',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-20',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-21',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -321,27 +321,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-10-24',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-25',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-26',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-27',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-10-28',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -366,27 +366,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-10-31',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-01',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-02',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-03',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-04',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -411,27 +411,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-11-07',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-08',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-09',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-10',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-11',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -456,27 +456,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-11-14',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-15',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-16',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-17',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-18',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -501,27 +501,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-11-21',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-22',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-23',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-24',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-25',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -546,27 +546,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-11-28',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-29',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-11-30',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-01',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-02',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -591,27 +591,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-12-05',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-06',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-07',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-08',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-09',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
@@ -636,27 +636,27 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
                 },
                 {
                     dato: '2022-12-12',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-13',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-14',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-15',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
                 {
                     dato: '2022-12-16',
-                    type: 'NavDagSyk',
+                    type: 'NavDag',
                     begrunnelser: [],
                 },
             ],

@@ -30,6 +30,7 @@ import {
     utenData,
     vedtakMed0UtbetalingPerson,
     vedtakMedNullOmregnetAarsinngtekt,
+    kunRefusjonPerson,
 } from './data/personas/personas'
 import {
     bareVenteperiodeSelvstendigPersona,
@@ -53,6 +54,7 @@ export type PersonaKey =
     | 'annulert-og-overført-infotrygd'
     | 'delvis-og-helt-avviste-vedtak'
     | 'kun-direkte'
+    | 'kun-refusjon'
     | 'direkte-uten-kontonummer'
     | 'kombinasjon'
     | 'kombinasjonDelvis'
@@ -93,6 +95,7 @@ type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 export const testpersonerGruppert: PersonaGroup = {
     ['mottaker']: {
         ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
+        ['kun-refusjon']: jsonDeepCopy(kunRefusjonPerson),
         ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
         ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
         ['kombinasjonDelvis']: jsonDeepCopy(refusjonOgBrukerutbetalinOgDelvisInnvilget),
