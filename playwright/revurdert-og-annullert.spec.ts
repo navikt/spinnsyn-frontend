@@ -2,9 +2,7 @@ import { test, expect } from './fixtures'
 
 test.describe('Revurdert og annullert', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto(
-            'http://localhost:3000/syk/sykepenger?testperson=revurdert-og-annullert&id=9ae82dd2-dcf1-4c16-9e12-35cb6d634326',
-        )
+        await page.goto('/syk/sykepenger?testperson=revurdert-og-annullert&id=9ae82dd2-dcf1-4c16-9e12-35cb6d634326')
     })
 
     test('Har annullert tekst, men ikke revurdert tekst', async ({ page }) => {
@@ -15,9 +13,7 @@ test.describe('Revurdert og annullert', () => {
     })
 
     test('Revurdering har alert og readmore', async ({ page }) => {
-        await page.goto(
-            'http://localhost:3000/syk/sykepenger?testperson=revurdert-og-annullert&id=348a5462-456a-4bfc-9b54-11cd77a9937g',
-        )
+        await page.goto('/syk/sykepenger?testperson=revurdert-og-annullert&id=348a5462-456a-4bfc-9b54-11cd77a9937g')
         await expect(page.getByText('Endringer i svar på søknaden')).toBeVisible()
         await page.getByRole('button', { name: 'Hvorfor søknaden blir vurdert' }).click()
         await expect(

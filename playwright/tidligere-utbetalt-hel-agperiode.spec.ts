@@ -5,7 +5,7 @@ import { harSynligTittel, trykkPaVedtakMedId, visBeregningRegion } from './utils
 
 test.describe('Tidligere utbetalt hel arbeidsgiverperiode', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:3000/syk/sykepenger?testperson=kun-direkte')
+        await page.goto('/syk/sykepenger?testperson=kun-direkte')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
         await trykkPaVedtakMedId(page, kunDirekte.id)
         await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)

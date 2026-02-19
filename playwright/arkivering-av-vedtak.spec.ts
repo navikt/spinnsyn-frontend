@@ -8,7 +8,7 @@ import {
     visBeregningRegion,
 } from './utils/hjelpefunksjoner'
 
-const baseUrl = 'http://localhost:3000/syk/sykepenger/vedtak/arkivering/utvikling-arkivering'
+const baseUrl = '/syk/sykepenger/vedtak/arkivering/utvikling-arkivering'
 
 test.describe('Vedtak for arkivering', () => {
     test.afterEach(({ uuOptions }) => {
