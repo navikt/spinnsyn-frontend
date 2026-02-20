@@ -17,7 +17,7 @@ const lenkeTilVedtak = (hrefs: string[] | (string | null)[]) => {
 
 test.describe('Sortering av vedtak', () => {
     test.beforeEach('Laster startside', async ({ page }) => {
-        await page.goto('http://localhost:3000/syk/sykepenger')
+        await page.goto('/syk/sykepenger')
         await harSynligTittel(page, 'Svar på søknader', 1)
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(12)
     })

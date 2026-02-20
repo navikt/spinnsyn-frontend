@@ -9,7 +9,7 @@ const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 12
 
 test.describe('Utbetalingsoversikt', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:3000/syk/sykepenger')
+        await page.goto('/syk/sykepenger')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(EXPECTED_NUMBER_OF_SYKMELDT_LINKS)
     })
 

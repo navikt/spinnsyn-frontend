@@ -5,7 +5,7 @@ test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
     test('Burde åpne riktig vedtak', async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=standard-selvstendig')
 
-        await page.getByRole('link', { name: /Sykmeldt som selvstendig næringsdrivende /i }).click()
+        await page.getByRole('link', { name: /Sykmeldt som selvstendig næringsdrivende/i }).click()
         await expect(page.getByText('Gjelder sykefravær som')).toBeVisible()
     })
 

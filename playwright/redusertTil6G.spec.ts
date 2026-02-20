@@ -11,7 +11,7 @@ import { expect, test } from './fixtures'
 
 test.describe('Redusert til 6 G', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:3000/syk/sykepenger')
+        await page.goto('/syk/sykepenger')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(12)
         await trykkPaVedtakMedId(page, vedtakMedDetMeste.id)
     })

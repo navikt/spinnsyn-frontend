@@ -7,7 +7,7 @@ test.describe('Melding ved under 2 G', () => {
     const vedtak = under2gInntekt.vedtak[0]
 
     test.beforeEach(async ({ page }) => {
-        await page.goto(`http://localhost:3000/syk/sykepenger?testperson=under-2g-beskjed&id=${vedtak.id}`)
+        await page.goto(`/syk/sykepenger?testperson=under-2g-beskjed&id=${vedtak.id}`)
         await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
     })
 

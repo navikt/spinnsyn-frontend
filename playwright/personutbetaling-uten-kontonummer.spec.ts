@@ -6,7 +6,7 @@ import { test, expect } from './fixtures'
 test.describe('Personutbetaling uten kontonummer', () => {
     test('Viser info om at kontonummer mangler', async ({ page }) => {
         await test.step('Åpner vedtak', async () => {
-            await page.goto('http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer')
+            await page.goto('/syk/sykepenger?testperson=direkte-uten-kontonummer')
             await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
             await trykkPaVedtakMedId(page, kunDirekte.id)
         })

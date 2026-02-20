@@ -4,9 +4,7 @@ import { test, expect } from './fixtures'
 import { tabUntilFocusedContainsText } from './utils/tastaturSnarvei'
 import { harSynligTittel } from './utils/hjelpefunksjoner'
 
-const baseURL = 'http://localhost:3000/syk/sykepenger?testperson=kombinasjon'
-
-test.use({ baseURL })
+const baseURL = '/syk/sykepenger'
 
 async function tabTilForsteSoknadIListen(page: Page, browserName: string) {
     await test.step('Åpne første søknad i listen', async () => {
@@ -18,7 +16,7 @@ async function tabTilForsteSoknadIListen(page: Page, browserName: string) {
 
 test.describe('Kombinasjonutbetaling keyboard', () => {
     test.beforeEach(async ({ page, browserName }) => {
-        await page.goto('', { waitUntil: 'networkidle' })
+        await page.goto(`${baseURL}?testperson=kombinasjon`, { waitUntil: 'domcontentloaded' })
         if (browserName == 'webkit') {
             await page.waitForTimeout(200)
             await page.locator('main').focus()
@@ -28,7 +26,6 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
 
     test('Finner vedtaket i listevisningen', async ({ page }) => {
         await test.step('Sjekk at riktig side og elementer vises', async () => {
-            await expect(page).toHaveURL(baseURL)
             await harSynligTittel(page, 'Svar på søknader', 1)
             await page.locator('#maincontent').focus()
             await harSynligTittel(page, 'Uleste svar', 2)

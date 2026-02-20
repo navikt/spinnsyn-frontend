@@ -7,7 +7,7 @@ import { test, expect } from './fixtures'
 
 test.describe('Tester logikk i behandling.tsx', () => {
     test('Automatisk behandlet', async ({ page }) => {
-        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakMedDetMeste.id}`)
+        await page.goto(`/syk/sykepenger?id=${vedtakMedDetMeste.id}`)
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet automatisk')
         await expect(page.getByTestId('behandling-body')).toContainText(
             'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, offentlige registre og arbeidsgiveren din. Søknaden ble behandlet 23. oktober 2021.',
@@ -16,9 +16,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
     })
 
     test('Varianter av opplysningene', async ({ page }) => {
-        await page.goto(
-            `http://localhost:3000/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=${vedtakMedFlereArbeidsgivere.id}`,
-        )
+        await page.goto(`/syk/sykepenger?testperson=et-vedtak-flere-arbeidsgivere&id=${vedtakMedFlereArbeidsgivere.id}`)
         await expect(page.getByTestId('behandling-header')).toHaveText('Søknaden ble behandlet manuelt')
         await expect(page.getByTestId('behandling-body')).toContainText(
             'Svaret på søknaden er basert på opplysninger fra den som sykmeldte deg, søknaden din, ' +
@@ -29,7 +27,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
     })
 
     test('Automatisk behandlet annullert vedtak', async ({ page }) => {
-        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakAnnullert.id}`)
+        await page.goto(`/syk/sykepenger?id=${vedtakAnnullert.id}`)
         const alert = page.locator('.navds-alert')
         await expect(alert).toContainText('Til din informasjon')
         await expect(alert).toContainText(
@@ -48,7 +46,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
     })
 
     test('Manuelt behandlet revurdert vedtak', async ({ page }) => {
-        await page.goto(`http://localhost:3000/syk/sykepenger?id=${vedtakRevurdert.id}`)
+        await page.goto(`/syk/sykepenger?id=${vedtakRevurdert.id}`)
         const alert = page.locator('.navds-alert')
         await expect(alert).toContainText(
             'Vi har fått nye opplysninger i saken din og søknaden er vurdert på nytt. Dette svaret er erstattet av et annet og gjelder derfor ikke lenger.',
