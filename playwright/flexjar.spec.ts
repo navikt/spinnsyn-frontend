@@ -3,9 +3,9 @@ import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
 import { test, expect } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
-const baseUrl = 'http://localhost:3000/syk/sykepenger?testperson=direkte-uten-kontonummer'
+const baseUrl = '/syk/sykepenger?testperson=direkte-uten-kontonummer'
 const poHelseUrl =
-    'http://localhost:3000/syk/sykepenger?testperson=flexjar-pohelse&flexjar-spinnsyn-pohelse-helsemetrikk=true&flexjar-spinnsyn-frontend=false&id=348a5462-456a-4bfc-9b54-11cd77a9937f'
+    '/syk/sykepenger?testperson=flexjar-pohelse&flexjar-spinnsyn-pohelse-helsemetrikk=true&flexjar-spinnsyn-frontend=false&id=348a5462-456a-4bfc-9b54-11cd77a9937f'
 
 test.describe('Flexjar', () => {
     test.beforeEach(async ({ page }) => {
