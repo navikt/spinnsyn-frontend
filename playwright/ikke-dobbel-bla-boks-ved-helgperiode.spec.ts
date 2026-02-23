@@ -3,7 +3,7 @@ import { ingenUtbetalingFordiAlleDagerHelg } from '../src/data/testdata/data/ved
 import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 
-const baseUrl = 'http://localhost:3000/syk/sykepenger?testperson=diverse-data'
+const baseUrl = '/syk/sykepenger?testperson=diverse-data'
 
 test.describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som får null kroner', () => {
     test.beforeEach(async ({ page }) => {

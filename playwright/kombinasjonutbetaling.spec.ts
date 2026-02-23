@@ -4,14 +4,12 @@ import { test, expect } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 
 const vedtak = kombinertDirekteOgRefusjon
-const baseURL = 'http://localhost:3000/syk/sykepenger'
-
-test.use({ baseURL })
+const baseURL = '/syk/sykepenger'
 
 test.describe('Kombinasjonutbetaling', () => {
     test.beforeEach(async ({ page }) => {
         await test.step('Gå til testpersonens side og åpne vedtak', async () => {
-            await page.goto(`?testperson=kombinasjon`, { waitUntil: 'domcontentloaded' })
+            await page.goto(`${baseURL}?testperson=kombinasjon`, { waitUntil: 'domcontentloaded' })
             await expect(page.locator('role=link[name=/Sykmeldt fra /i]')).toHaveCount(2)
             await expect(page).toHaveURL(`${baseURL}?testperson=kombinasjon`)
             await trykkPaVedtakMedId(page, vedtak.id)

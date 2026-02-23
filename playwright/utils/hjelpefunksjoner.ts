@@ -3,7 +3,9 @@ import { Locator, Page } from '@playwright/test'
 import { expect } from '../fixtures'
 
 export const trykkPaVedtakMedId = async (page: Page, vedtakId: string) => {
-    await page.locator(`a[href*="${vedtakId}"]`).click()
+    const vedtakLink = page.locator(`a[href*="${vedtakId}"]`).first()
+    await expect(vedtakLink).toBeVisible()
+    await vedtakLink.click()
 }
 
 export const beregnetManedsinntektRegion = async (page: Page, hentetFra?: string): Promise<Locator> => {

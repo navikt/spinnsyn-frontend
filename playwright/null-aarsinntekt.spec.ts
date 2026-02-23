@@ -11,7 +11,7 @@ import {
 
 test.describe('Har null i årsinntekt', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:3000/syk/sykepenger?testperson=null-omregnet-aarsinntekt')
+        await page.goto('/syk/sykepenger?testperson=null-omregnet-aarsinntekt')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
         await trykkPaVedtakMedId(page, nullOmregnetAarsinntekt.id)
         await harSynligTittel(page, 'Svar på søknad om sykepenger', 1)
