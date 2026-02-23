@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 
-import { RSDag, RSOppdrag, RSUtbetalingdag } from '../types/rs-types/rs-vedtak-felles'
+import { RSDag, RSDagTypeKomplett, RSOppdrag, RSUtbetalingdag } from '../types/rs-types/rs-vedtak-felles'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -77,14 +77,18 @@ function leggTilUtbetalingsdagInfo(dager: RSDag[], utbetalingsdager?: RSUtbetali
         const dagDato = dayjs(dag.dato)
         const erHelg = dagDato.day() === 0 || dagDato.day() === 6
 
-        const dagtype = (() => {
-            if (utbetalingsdag.type === 'NavDag') {
-                return dag.grad < 100 ? 'NavDagDelvisSyk' : 'NavDagSyk'
+        const dagtype: RSDagTypeKomplett = (() => {
+            if (
+                utbetalingsdag.type === 'NavDag' ||
+                utbetalingsdag.type === 'NavDagSyk' ||
+                utbetalingsdag.type === 'NavDagDelvisSyk'
+            ) {
+                return 'NavDag'
             }
             if (utbetalingsdag.type === 'ArbeidsgiverperiodeDag') {
                 if (dag.belop === 0) return 'ArbeidsgiverperiodeDag'
                 if (erHelg) return 'NavHelgDag'
-                return dag.grad < 100 ? 'NavDagDelvisSyk' : 'NavDagSyk'
+                return 'NavDag'
             }
             return utbetalingsdag.type
         })()

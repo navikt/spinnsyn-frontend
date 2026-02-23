@@ -33,7 +33,12 @@ export default function UseVedtak() {
                 '/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query(),
             )
 
-            return { alleVedtak: alleVedtak.map((v) => hentDagerPaaVedtak(v)), sykmeldtFnr: null }
+            return {
+                alleVedtak: alleVedtak.map((v) => {
+                    return hentDagerPaaVedtak(v)
+                }),
+                sykmeldtFnr: null,
+            }
         },
     })
 }

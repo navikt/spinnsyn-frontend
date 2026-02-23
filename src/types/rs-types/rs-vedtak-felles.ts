@@ -87,6 +87,9 @@ export interface RSUtbetalingdag {
     dato: string
     type: RSDagTypeKomplett
     begrunnelser: RSBegrunnelse[]
+    beløpTilArbeidsgiver?: number
+    beløpTilSykmeldt?: number
+    sykdomsgrad?: number
 }
 
 export interface RSUtbetalingslinje {
