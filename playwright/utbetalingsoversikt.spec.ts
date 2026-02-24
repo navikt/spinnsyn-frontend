@@ -18,7 +18,7 @@ test.describe('Utbetalingsoversikt', () => {
         await harSynligTittel(page, '8 960 kr Utbetales til Pengeløs Sparebank', 2)
 
         const beregningRegion = await visBeregningRegion(page)
-        await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
+        await beregningRegion.getByRole('button', { name: 'Sykepenger per dag til arbeidsgiver' }).click()
 
         const dagTabell = page.getByTestId('dag-tabell-body').first()
         await verifyDagTabellRows(dagTabell, [
@@ -42,7 +42,7 @@ test.describe('Utbetalingsoversikt', () => {
         await trykkPaVedtakMedId(page, vedtakMed40Grad.id)
 
         const beregningRegion = await visBeregningRegion(page)
-        await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
+        await beregningRegion.getByRole('button', { name: 'Sykepenger per dag til arbeidsgiver' }).click()
 
         const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
         await expect(forklaring.locator('.navds-tag').nth(0)).toHaveText('Syk')
@@ -60,7 +60,7 @@ test.describe('Utbetalingsoversikt', () => {
     test('Sjekker utbetalingsoversikt på vedtak med alle dagtyper', async ({ page }) => {
         await trykkPaVedtakMedId(page, alleAvvisteDager.id)
         const beregningRegion = await visBeregningRegion(page)
-        await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
+        await beregningRegion.getByRole('button', { name: 'Sykepenger per dag til arbeidsgiver' }).click()
 
         await test.step('Sjekker dagtabell', async () => {
             const dagTabell = page.getByTestId('dag-tabell-body').first()

@@ -40,7 +40,7 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
                 </>
             ) : erRefusjon ? (
                 <SykepengerPerDag
-                    tittel="Dine sykepenger per dag"
+                    tittel="Sykepenger per dag til arbeidsgiver"
                     dager={vedtak.dagerArbeidsgiver}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     scrollElementId="sykepenger-per-dag-arbeidsgiver"
