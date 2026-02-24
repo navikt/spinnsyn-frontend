@@ -6,6 +6,8 @@ export const julesoknadVedtak: RSVedtakWrapper = {
     organisasjoner: {},
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '972674818',

@@ -7,6 +7,8 @@ export const alleAvvisteDager: RSVedtakWrapper = {
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'INTEGRASJON AS',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999998',
@@ -278,6 +280,8 @@ export const alleAvvisteDagerFraBomlo: RSVedtakWrapper = {
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'INTEGRASJON AS (BØMLO)',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999998',

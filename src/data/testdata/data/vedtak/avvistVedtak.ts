@@ -7,6 +7,8 @@ export const avvistVedtak: RSVedtakWrapper = {
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -155,6 +157,8 @@ export const avvistManglerOpptjeningVedtak: RSVedtakWrapper = {
     id: '8c33d1c8-c2f8-4208-8f34-82b7a638c802',
     lest: true,
     lestDato: '2025-11-25T16:47:30.609812+01:00',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         organisasjonsnummer: '972674818',
         yrkesaktivitetstype: 'ARBEIDSTAKER',

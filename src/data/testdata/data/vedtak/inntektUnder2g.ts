@@ -5,6 +5,8 @@ export const inntektUnder2g: RSVedtakWrapper = {
     lest: true,
     organisasjoner: {},
     lestDato: '2023-11-03T14:59:04.026618+01:00',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '896929119',

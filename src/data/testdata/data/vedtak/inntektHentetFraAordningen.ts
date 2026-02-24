@@ -4,6 +4,8 @@ export const inntektHentetFraAordningen: RSVedtakWrapper = {
     id: 'a147e9a9-0aa2-4f5f-a8e3-c160901e4071',
     lest: false,
     organisasjoner: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '123456789',

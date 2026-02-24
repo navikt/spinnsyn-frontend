@@ -5,6 +5,8 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     lest: true,
     organisasjoner: {},
     lestDato: '2020-11-02T10:17:38.197496+01:00',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '12345725',

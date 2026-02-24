@@ -7,6 +7,8 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',

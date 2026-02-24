@@ -7,6 +7,8 @@ export const vedtakMed40Grad: RSVedtakWrapper = {
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'PENGELØS SPAREBANK',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '972674818',

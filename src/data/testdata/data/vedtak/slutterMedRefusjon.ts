@@ -5,6 +5,8 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
     lest: true,
     organisasjoner: {},
     lestDato: '2023-01-17T09:31:55.962938+01:00',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '112233445',

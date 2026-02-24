@@ -3,6 +3,8 @@ import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
 export const utenAarsinntektSelvstendig: RSVedtakWrapper = {
     id: 'tilfeldig-uuid-uten-aarsinntekt',
     orgnavn: 'Wooley Socks ENK',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
         yrkesaktivitetstype: 'SELVSTENDIG',

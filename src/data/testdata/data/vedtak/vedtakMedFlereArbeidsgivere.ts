@@ -5,6 +5,8 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
     lest: false,
     organisasjoner: {},
     lestDato: null,
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '998844551',

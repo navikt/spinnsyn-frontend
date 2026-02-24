@@ -4,6 +4,8 @@ export const avslattMinimumInntektOver67: RSVedtakWrapper = {
     id: '3ef1f882-4dbf-478d-bc98-5b878e7376ca',
     lest: false,
     lestDato: null,
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '333888777',

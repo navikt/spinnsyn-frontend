@@ -4,6 +4,8 @@ export const innvilgelseVedtak: RSVedtakWrapper = {
     id: '59e30908-a580-4f3e-a8d1-d3360dd790a3',
     lest: true,
     lestDato: '2024-12-02T12:58:53.342144+01:00',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '896929119',

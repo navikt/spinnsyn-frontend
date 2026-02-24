@@ -3,6 +3,8 @@ import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59219',
     lest: false,
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '810007842',
@@ -224,6 +226,8 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
 export const avslåttFraBømlo: RSVedtakWrapper = {
     id: '3de11b09-51b3-4d44-8dcc-d35fe3c59224',
     lest: false,
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '810007842',

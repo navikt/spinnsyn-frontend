@@ -5,6 +5,8 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         id: '656748e8-10ac-4f95-8f75-d17fe5581a84',
         lest: true,
         lestDato: '2023-12-20T14:54:08.256248+01:00',
+        daglisteArbeidsgiver: [],
+        daglisteSykmeldt: [],
         vedtak: {
             yrkesaktivitetstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '896929119',
@@ -428,6 +430,8 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         id: '51d739d0-7b1b-402f-a1e5-f3f56d5874dd',
         lest: true,
         lestDato: '2023-12-20T15:03:00.985874+01:00',
+        daglisteArbeidsgiver: [],
+        daglisteSykmeldt: [],
         vedtak: {
             yrkesaktivitetstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '947064649',
@@ -851,6 +855,8 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         id: '29ece7ee-e1de-443c-8011-431998b1ffab',
         lest: true,
         lestDato: '2023-12-21T09:42:18.475392+01:00',
+        daglisteArbeidsgiver: [],
+        daglisteSykmeldt: [],
         vedtak: {
             yrkesaktivitetstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '896929119',
@@ -1274,6 +1280,8 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
         id: 'f8018350-05e1-4c03-9219-21b50229fc04',
         lest: true,
         lestDato: '2023-12-21T09:27:46.355818+01:00',
+        daglisteArbeidsgiver: [],
+        daglisteSykmeldt: [],
         vedtak: {
             yrkesaktivitetstype: 'ARBEIDSTAKER',
             organisasjonsnummer: '947064649',

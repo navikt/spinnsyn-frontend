@@ -7,6 +7,8 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
     lestDato: '2021-05-03T11:50:56.812287Z',
     orgnavn: 'FLYBUTIKKEN, OSLO',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',

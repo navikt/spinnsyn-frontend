@@ -4,6 +4,8 @@ export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
     id: 'e04b0ea9-ce61-4b69-92de-9f035ffb1616',
     lest: true,
     lestDato: '2024-04-24T14:00:25.052723+02:00',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '998877445',
