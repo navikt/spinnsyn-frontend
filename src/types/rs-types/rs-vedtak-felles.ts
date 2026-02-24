@@ -11,6 +11,8 @@ export interface RSVedtakWrapper {
     annullert: boolean
     revurdert: boolean
     organisasjoner: Record<string, string>
+    daglisteSykmeldt: RSDag[]
+    daglisteArbeidsgiver: RSDag[]
 }
 
 export interface RSVedtakWrapperUtvidet extends RSVedtakWrapper {
