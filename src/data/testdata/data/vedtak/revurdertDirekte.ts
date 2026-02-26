@@ -8,7 +8,16 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
     orgnavn: 'FLYBUTIKKEN, OSLO',
     andreArbeidsgivere: {},
     daglisteArbeidsgiver: [],
-    daglisteSykmeldt: [],
+    daglisteSykmeldt: [
+        { dato: '2021-04-26', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-27', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-28', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-29', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-30', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-05-01', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-05-02', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-05-03', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -91,5 +100,5 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
     annullert: false,
     revurdert: true,
     sykepengebelopArbeidsgiver: 0,
-    sykepengebelopSykmeldt: 0,
+    sykepengebelopSykmeldt: 8424,
 }

@@ -7,7 +7,16 @@ export const vedtakRevurdert: RSVedtakWrapper = {
     lestDato: '2021-05-03T11:50:56.812287Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
-    daglisteArbeidsgiver: [],
+    daglisteArbeidsgiver: [
+        { dato: '2021-04-26', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-27', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-28', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-29', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-30', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-05-01', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-05-02', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-05-03', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+    ],
     daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
@@ -99,6 +108,6 @@ export const vedtakRevurdert: RSVedtakWrapper = {
     opprettetTimestamp: '2021-05-03T12:42:42.000Z',
     annullert: false,
     revurdert: true,
-    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopArbeidsgiver: 8424,
     sykepengebelopSykmeldt: 0,
 }

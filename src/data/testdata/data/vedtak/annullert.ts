@@ -10,7 +10,7 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     daglisteArbeidsgiver: [
         {
             dato: '2021-04-27',
-            dagtype: 'ArbeidsgiverperiodeDag',
+            dagtype: 'NavDagSyk',
             begrunnelser: [],
             belop: 1404,
             grad: 100,
@@ -41,14 +41,14 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             dagtype: 'NavHelgDag',
             begrunnelser: [],
             belop: 0,
-            grad: 0,
+            grad: 100,
         },
         {
             dato: '2021-05-02',
             dagtype: 'NavHelgDag',
             begrunnelser: [],
             belop: 0,
-            grad: 0,
+            grad: 100,
         },
         {
             dato: '2021-05-03',
@@ -66,6 +66,8 @@ export const vedtakAnnullert: RSVedtakWrapper = {
         },
     ],
     daglisteSykmeldt: [],
+    sykepengebelopArbeidsgiver: 8424,
+    sykepengebelopSykmeldt: 0,
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -147,6 +149,4 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     opprettetTimestamp: '2021-05-05T12:42:42.000Z',
     annullert: true,
     revurdert: false,
-    sykepengebelopArbeidsgiver: 0,
-    sykepengebelopSykmeldt: 0,
 }

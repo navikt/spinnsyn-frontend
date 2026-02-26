@@ -10,7 +10,7 @@ test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () 
     test.describe('Vedtak for sjokkerende elektriker', () => {
         test.beforeEach(async ({ page }) => {
             await page.goto(
-                `/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=${skjonnsfastsattRiktigAarsinntektVedtak.id}`,
+                `/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=${skjonnsfastsattRiktigAarsinntektVedtak!.id}`,
             )
         })
 
@@ -42,7 +42,7 @@ test.describe('Tester riktig omregner årsinntekt ved skjønnsfastsettelse', () 
 
         test.beforeEach(async ({ page }) => {
             await page.goto(
-                `/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=${skjonnsfastsattRiktigAarsinntektVedtak.id}`,
+                `/syk/sykepenger?testperson=skjonnsfastsatt-riktig-aarsinntekt&id=${skjonnsfastsattRiktigAarsinntektVedtak!.id}`,
             )
         })
 

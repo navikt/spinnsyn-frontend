@@ -5,7 +5,15 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     lest: true,
     organisasjoner: {},
     lestDato: '2020-11-02T10:17:38.197496+01:00',
-    daglisteArbeidsgiver: [],
+    daglisteArbeidsgiver: [
+        { dato: '2021-10-18', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-19', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-20', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-21', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-22', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-23', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 80 },
+        { dato: '2021-10-24', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 80 },
+    ],
     daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
@@ -95,6 +103,6 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,
-    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopArbeidsgiver: 9820,
     sykepengebelopSykmeldt: 0,
 }

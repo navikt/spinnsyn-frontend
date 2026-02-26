@@ -223,6 +223,8 @@ export const standardSelvstendig: RSVedtakWrapper = {
             grad: 100,
         },
     ],
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 14000,
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
         yrkesaktivitetstype: 'SELVSTENDIG',
@@ -308,6 +310,4 @@ export const standardSelvstendig: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,
-    sykepengebelopArbeidsgiver: 0,
-    sykepengebelopSykmeldt: 0,
 }

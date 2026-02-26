@@ -37,6 +37,8 @@ export const utenAarsinntektSelvstendig: RSVedtakWrapper = {
         { dato: '2023-08-30', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2000, grad: 100 },
         { dato: '2023-08-31', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2000, grad: 100 },
     ],
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 14000,
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
         yrkesaktivitetstype: 'SELVSTENDIG',
@@ -84,6 +86,4 @@ export const utenAarsinntektSelvstendig: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,
-    sykepengebelopArbeidsgiver: 0,
-    sykepengebelopSykmeldt: 0,
 }

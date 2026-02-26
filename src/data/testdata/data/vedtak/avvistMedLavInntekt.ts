@@ -31,6 +31,8 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
         { dato: '2021-08-21', dagtype: 'AvvistDag', begrunnelser: ['EtterDødsdato'], belop: 0, grad: 0 },
     ],
     daglisteSykmeldt: [],
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -178,6 +180,4 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
-    sykepengebelopArbeidsgiver: 0,
-    sykepengebelopSykmeldt: 0,
 }

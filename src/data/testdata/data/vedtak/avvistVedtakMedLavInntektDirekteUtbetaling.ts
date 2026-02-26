@@ -8,7 +8,36 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     orgnavn: 'POSTEN NORGE AS, BÆRUM (direkte utbetaling)',
     andreArbeidsgivere: {},
     daglisteArbeidsgiver: [],
-    daglisteSykmeldt: [],
+    daglisteSykmeldt: [
+        {
+            dato: '2021-08-18',
+            dagtype: 'Feriedag',
+            begrunnelser: [],
+            belop: 0,
+            grad: 0,
+        },
+        {
+            dato: '2021-08-19',
+            dagtype: 'Feriedag',
+            begrunnelser: [],
+            belop: 0,
+            grad: 0,
+        },
+        {
+            dato: '2021-08-20',
+            dagtype: 'AvvistDag',
+            begrunnelser: ['MinimumInntekt'],
+            belop: 0,
+            grad: 0,
+        },
+        {
+            dato: '2021-08-21',
+            dagtype: 'AvvistDag',
+            begrunnelser: ['EtterDødsdato'],
+            belop: 0,
+            grad: 0,
+        },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
