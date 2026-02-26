@@ -43,54 +43,6 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-10-18',
-                        tom: '2021-10-24',
-                        grad: 80,
-                        dagsats: 1964,
-                        stønadsdager: 6,
-                    },
-                ],
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-10-18',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-19',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-20',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-21',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-22',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-23',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-24',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-            ],
         },
         grunnlagForSykepengegrunnlag: 804396,
         grunnlagForSykepengegrunnlagPerArbeidsgiver: {

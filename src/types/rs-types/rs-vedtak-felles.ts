@@ -71,28 +71,6 @@ export interface RSUtbetalingUtbetalt {
     gjenståendeSykedager: number
     automatiskBehandling: boolean
     utbetalingType?: string
-    arbeidsgiverOppdrag?: RSOppdrag
-    personOppdrag?: RSOppdrag | null
-    utbetalingsdager?: RSUtbetalingdag[]
-}
-
-export interface RSOppdrag {
-    utbetalingslinjer: RSUtbetalingslinje[]
-}
-
-export interface RSUtbetalingdag {
-    dato: string
-    type: RSDagTypeKomplett
-    begrunnelser: RSBegrunnelse[]
-}
-
-export interface RSUtbetalingslinje {
-    fom: string
-    tom: string
-    dagsats: number
-    totalbeløp?: number
-    grad: number
-    stønadsdager: number
 }
 
 export type RSBegrunnelse =

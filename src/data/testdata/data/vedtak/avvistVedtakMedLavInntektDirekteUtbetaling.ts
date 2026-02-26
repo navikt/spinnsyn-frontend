@@ -62,28 +62,6 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
             forbrukteSykedager: 0,
             gjenståendeSykedager: 248,
             automatiskBehandling: false,
-            utbetalingsdager: [
-                {
-                    dato: '2021-08-18',
-                    type: 'Feriedag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-08-19',
-                    type: 'Feriedag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-08-20',
-                    type: 'AvvistDag',
-                    begrunnelser: ['MinimumInntekt'],
-                },
-                {
-                    dato: '2021-08-21',
-                    type: 'AvvistDag',
-                    begrunnelser: ['EtterDødsdato'],
-                },
-            ],
         },
     },
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',

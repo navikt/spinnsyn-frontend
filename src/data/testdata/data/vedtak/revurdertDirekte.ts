@@ -41,59 +41,6 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
             gjenståendeSykedager: 186,
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
-            personOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-04-26',
-                        tom: '2021-05-03',
-                        dagsats: 1404,
-                        grad: 100,
-                        stønadsdager: 9,
-                    },
-                ],
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-04-26',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-27',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-28',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-29',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-30',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-01',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-02',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-03',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-            ],
         },
     },
     opprettetTimestamp: '2021-05-03T12:42:42.000Z',

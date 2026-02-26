@@ -49,17 +49,6 @@ export const bareVenteperiodeSelvstendig: RSVedtakWrapper = {
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '2024-07-31',
             utbetalingType: 'UTBETALING',
-            personOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2023-08-23',
-                        tom: '2023-08-31',
-                        dagsats: 2000,
-                        stønadsdager: 0,
-                        grad: 100,
-                    },
-                ],
-            },
         },
         dokumenter: [
             { dokumentId: 'dokument1', type: 'Søknad' },

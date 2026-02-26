@@ -91,59 +91,6 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             forbrukteSykedager: 9,
             gjenståendeSykedager: 186,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-04-27',
-                        tom: '2021-05-05',
-                        dagsats: 1404,
-                        grad: 100,
-                        stønadsdager: 6,
-                    },
-                ],
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-04-27',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-28',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-29',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-30',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-01',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-02',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-03',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-04',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-            ],
         },
     },
     opprettetTimestamp: '2021-05-05T12:42:42.000Z',
