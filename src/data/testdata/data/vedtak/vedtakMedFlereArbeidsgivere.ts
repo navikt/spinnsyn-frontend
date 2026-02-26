@@ -29,6 +29,7 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
         { dato: '2021-12-29', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2021-12-30', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2021-12-31', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-01-01', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2022-01-02', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2022-01-03', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2022-01-04', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },

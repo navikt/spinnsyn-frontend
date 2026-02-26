@@ -40,7 +40,7 @@ export const inntektHentetFraAordningen: RSVedtakWrapper = {
         { dato: '2021-10-20', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1007, grad: 50 },
         { dato: '2021-10-21', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1007, grad: 50 },
         { dato: '2021-10-22', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1007, grad: 50 },
-        { dato: '2021-10-23', dagtype: 'AvvistDag', begrunnelser: ['Over70'], belop: 1007, grad: 50 },
+        { dato: '2021-10-23', dagtype: 'AvvistDag', begrunnelser: ['Over70'], belop: 0, grad: 50 },
     ],
     daglisteSykmeldt: [],
     vedtak: {
@@ -75,6 +75,6 @@ export const inntektHentetFraAordningen: RSVedtakWrapper = {
     },
     annullert: false,
     revurdert: false,
-    sykepengebelopArbeidsgiver: 4028,
+    sykepengebelopArbeidsgiver: 3021,
     sykepengebelopSykmeldt: 0,
 }

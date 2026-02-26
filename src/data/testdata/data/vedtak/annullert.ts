@@ -7,8 +7,8 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     lestDato: '2021-05-05T11:50:56.812287Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
-    daglisteArbeidsgiver: [],
-    daglisteSykmeldt: [
+    daglisteSykmeldt: [],
+    daglisteArbeidsgiver: [
         {
             dato: '2021-04-27',
             dagtype: 'NavDagSyk',

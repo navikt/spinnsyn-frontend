@@ -68,5 +68,5 @@ export const julesoknadVedtak: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     sykepengebelopArbeidsgiver: 0,
-    sykepengebelopSykmeldt: 36825,
+    sykepengebelopSykmeldt: 39280,
 }

@@ -187,7 +187,8 @@ export const avvistManglerOpptjeningVedtak: RSVedtakWrapper = {
     id: '8c33d1c8-c2f8-4208-8f34-82b7a638c802',
     lest: true,
     lestDato: '2025-11-25T16:47:30.609812+01:00',
-    daglisteArbeidsgiver: [
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
         {
             dato: '2025-10-29',
             dagtype: 'AvvistDag',
@@ -378,7 +379,6 @@ export const avvistManglerOpptjeningVedtak: RSVedtakWrapper = {
             grad: 0,
         },
     ],
-    daglisteSykmeldt: [],
     vedtak: {
         organisasjonsnummer: '972674818',
         yrkesaktivitetstype: 'ARBEIDSTAKER',
