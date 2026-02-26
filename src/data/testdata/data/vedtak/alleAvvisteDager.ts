@@ -7,7 +7,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'INTEGRASJON AS',
     andreArbeidsgivere: {},
-    sykepengebelopArbeidsgiver: 8200,
+    sykepengebelopArbeidsgiver: 6200,
     sykepengebelopSykmeldt: 0,
     daglisteArbeidsgiver: [
         { dato: '2021-01-25', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
@@ -15,7 +15,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
         { dato: '2021-01-27', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2021-01-28', dagtype: 'Arbeidsdag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2021-01-29', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
-        { dato: '2021-01-30', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-01-30', dagtype: 'Arbeidsdag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2021-01-31', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2021-02-01', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1000, grad: 100 },
         { dato: '2021-02-02', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1000, grad: 100 },
@@ -142,7 +142,7 @@ export const alleAvvisteDager: RSVedtakWrapper = {
                 },
                 {
                     dato: '2021-01-30',
-                    type: 'NavHelgDag',
+                    type: 'Arbeidsdag',
                     begrunnelser: [],
                 },
                 {

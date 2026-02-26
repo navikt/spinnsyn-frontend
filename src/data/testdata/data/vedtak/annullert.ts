@@ -7,7 +7,8 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     lestDato: '2021-05-05T11:50:56.812287Z',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
-    daglisteArbeidsgiver: [
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
         {
             dato: '2021-04-27',
             dagtype: 'NavDagSyk',
@@ -65,7 +66,6 @@ export const vedtakAnnullert: RSVedtakWrapper = {
             grad: 100,
         },
     ],
-    daglisteSykmeldt: [],
     sykepengebelopArbeidsgiver: 8424,
     sykepengebelopSykmeldt: 0,
     vedtak: {

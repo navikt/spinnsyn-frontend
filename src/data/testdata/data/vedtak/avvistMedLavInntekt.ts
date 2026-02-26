@@ -7,7 +7,8 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
-    daglisteArbeidsgiver: [
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
         { dato: '2021-08-01', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2021-08-02', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2021-08-03', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
@@ -30,7 +31,6 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
         { dato: '2021-08-20', dagtype: 'AvvistDag', begrunnelser: ['MinimumInntekt'], belop: 0, grad: 0 },
         { dato: '2021-08-21', dagtype: 'AvvistDag', begrunnelser: ['EtterDødsdato'], belop: 0, grad: 0 },
     ],
-    daglisteSykmeldt: [],
     sykepengebelopArbeidsgiver: 0,
     sykepengebelopSykmeldt: 0,
     vedtak: {

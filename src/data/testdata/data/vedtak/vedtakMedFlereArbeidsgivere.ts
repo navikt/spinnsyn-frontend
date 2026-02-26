@@ -207,7 +207,7 @@ export const vedtakMedFlereArbeidsgivere: RSVedtakWrapper = {
     orgnavn: 'INDUSTRIFABRIKKEN AS',
     annullert: false,
     revurdert: false,
-    andreArbeidsgivere: {},
+    andreArbeidsgivere: { 'Den andre sjappa': 406252.44 },
     sykepengebelopArbeidsgiver: 1359,
     sykepengebelopSykmeldt: 0,
 }

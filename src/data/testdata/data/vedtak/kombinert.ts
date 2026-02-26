@@ -7,26 +7,10 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     daglisteArbeidsgiver: [
-        { dato: '2021-02-04', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2021-02-05', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2021-02-08', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-09', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-10', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-11', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-12', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-13', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2021-02-14', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2021-02-15', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-16', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-17', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-18', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-19', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
-        { dato: '2021-02-20', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2021-02-21', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-02-04', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-05', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
     ],
     daglisteSykmeldt: [
-        { dato: '2021-02-04', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2021-02-05', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2021-02-08', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
         { dato: '2021-02-09', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
         { dato: '2021-02-10', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
@@ -42,6 +26,8 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
         { dato: '2021-02-20', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2021-02-21', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
     ],
+    sykepengebelopArbeidsgiver: 4910,
+    sykepengebelopSykmeldt: 24550,
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '972674818',
@@ -95,12 +81,12 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
             utbetalingsdager: [
                 {
                     dato: '2021-02-04',
-                    type: 'NavHelgDag',
+                    type: 'NavDagSyk',
                     begrunnelser: [],
                 },
                 {
                     dato: '2021-02-05',
-                    type: 'NavHelgDag',
+                    type: 'NavDagSyk',
                     begrunnelser: [],
                 },
                 {
@@ -179,6 +165,4 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
-    sykepengebelopArbeidsgiver: 24550,
-    sykepengebelopSykmeldt: 24550,
 }
