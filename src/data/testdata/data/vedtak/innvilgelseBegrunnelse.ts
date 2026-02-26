@@ -24,7 +24,6 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
         { dato: '2024-10-31', dagtype: 'NavDag', begrunnelser: [], belop: 732, grad: 100.0 },
     ],
     daglisteSykmeldt: [],
-    organisasjoner: {},
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '896929119',
@@ -98,6 +97,9 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     andreArbeidsgivere: {},
+    organisasjoner: {
+        '896929119': 'Sauefabrikk',
+    },
     sykepengebelopArbeidsgiver: 10449,
     sykepengebelopSykmeldt: 0,
 }
