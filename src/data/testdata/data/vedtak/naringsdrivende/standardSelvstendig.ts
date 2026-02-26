@@ -184,14 +184,14 @@ export const standardSelvstendig: RSVedtakWrapper = {
             dato: '2023-08-26',
             dagtype: 'NavHelgDag',
             begrunnelser: [],
-            belop: 2000,
+            belop: 0,
             grad: 100,
         },
         {
             dato: '2023-08-27',
             dagtype: 'NavHelgDag',
             begrunnelser: [],
-            belop: 2000,
+            belop: 0,
             grad: 100,
         },
         {
