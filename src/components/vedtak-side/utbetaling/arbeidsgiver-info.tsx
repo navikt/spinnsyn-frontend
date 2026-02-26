@@ -3,10 +3,10 @@ import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
 type ArbeidsgiverInfoProps = {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakWrapper
 }
 
 export const ArbeidsgiverInfo = ({ vedtak }: ArbeidsgiverInfoProps) => {

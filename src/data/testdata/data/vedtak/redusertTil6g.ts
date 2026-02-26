@@ -95,4 +95,6 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

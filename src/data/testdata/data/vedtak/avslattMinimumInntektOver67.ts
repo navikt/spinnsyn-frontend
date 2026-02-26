@@ -396,4 +396,6 @@ export const avslattMinimumInntektOver67: RSVedtakWrapper = {
     organisasjoner: {
         '333888777': 'Butikken AS',
     },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

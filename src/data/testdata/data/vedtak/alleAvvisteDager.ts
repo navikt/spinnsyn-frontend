@@ -7,6 +7,8 @@ export const alleAvvisteDager: RSVedtakWrapper = {
     lestDato: '1970-01-01T01:00:00+01:00',
     orgnavn: 'INTEGRASJON AS',
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
     daglisteArbeidsgiver: [],
     daglisteSykmeldt: [],
     vedtak: {
@@ -318,4 +320,6 @@ export const alleAvvisteDagerFraBomlo: RSVedtakWrapper = {
     opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

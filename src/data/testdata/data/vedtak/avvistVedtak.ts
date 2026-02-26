@@ -7,6 +7,8 @@ export const avvistVedtak: RSVedtakWrapper = {
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM',
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
     daglisteArbeidsgiver: [],
     daglisteSykmeldt: [],
     vedtak: {
@@ -369,4 +371,6 @@ export const avvistManglerOpptjeningVedtak: RSVedtakWrapper = {
     organisasjoner: {
         '972674818': 'Pengeløs Sparebank',
     },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

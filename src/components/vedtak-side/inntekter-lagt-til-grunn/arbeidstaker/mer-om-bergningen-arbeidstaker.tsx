@@ -2,7 +2,7 @@ import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
 import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { tekst } from '../../../../utils/tekster'
 import { parserWithReplace } from '../../../../utils/html-react-parser-utils'
@@ -10,7 +10,7 @@ import { logEvent } from '../../../umami/umami'
 import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
 
 export interface BeregningInfoProps {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakWrapper
     setForelderElementApen?: (apne: boolean) => void
 }
 
@@ -20,10 +20,11 @@ export const MerOmBergningenArbeidstaker = ({ vedtak, setForelderElementApen }: 
     useScrollTilElement('mer-om-beregningen', visBeregning, setVisBeregning, setForelderElementApen)
 
     const harMinstEnForLavInntektDagerArbeidsgiver =
-        vedtak.dagerArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
+        vedtak.daglisteArbeidsgiver.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 &&
+        !arkivering
     const harMinstEnForLavInntektDagerPerson =
-        vedtak.dagerPerson.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
-    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+        vedtak.daglisteSykmeldt.filter((dag) => dag.begrunnelser.includes('MinimumInntekt')).length > 0 && !arkivering
+    const erDirekteutbetaling = vedtak.sykepengebelopSykmeldt > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const erBegge = erDirekteutbetaling && erRefusjon
     const heltAvvist = !erDirekteutbetaling && !erRefusjon

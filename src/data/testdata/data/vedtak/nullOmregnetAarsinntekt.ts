@@ -201,4 +201,6 @@ export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
     organisasjoner: {
         '998877445': 'Null Omregnet Årsinntekt AS',
     },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

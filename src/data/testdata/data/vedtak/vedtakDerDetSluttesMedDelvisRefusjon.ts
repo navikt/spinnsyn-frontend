@@ -260,4 +260,6 @@ export const vedtakDerDetSluttesMedDelvisRefusjon: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

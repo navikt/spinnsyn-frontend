@@ -90,4 +90,6 @@ export const vedtakAnnullert: RSVedtakWrapper = {
     opprettetTimestamp: '2021-05-05T12:42:42.000Z',
     annullert: true,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

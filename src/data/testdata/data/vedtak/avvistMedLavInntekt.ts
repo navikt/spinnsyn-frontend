@@ -156,4 +156,6 @@ export const avvistVedtakMedLavInntekt: RSVedtakWrapper = {
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

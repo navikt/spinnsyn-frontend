@@ -90,4 +90,6 @@ export const standardSelvstendig: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

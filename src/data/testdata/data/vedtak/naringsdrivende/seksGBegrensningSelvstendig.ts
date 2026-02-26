@@ -5,6 +5,8 @@ export const seksGBegrensningSelvstendig: RSVedtakWrapper = {
     orgnavn: 'Wooley Socks ENK',
     daglisteArbeidsgiver: [],
     daglisteSykmeldt: [],
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
         yrkesaktivitetstype: 'SELVSTENDIG',

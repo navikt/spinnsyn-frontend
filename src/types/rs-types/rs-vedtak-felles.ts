@@ -13,13 +13,8 @@ export interface RSVedtakWrapper {
     organisasjoner: Record<string, string>
     daglisteSykmeldt: RSDag[]
     daglisteArbeidsgiver: RSDag[]
-}
-
-export interface RSVedtakWrapperUtvidet extends RSVedtakWrapper {
-    dagerArbeidsgiver: RSDag[]
-    dagerPerson: RSDag[]
     sykepengebelopArbeidsgiver: number
-    sykepengebelopPerson: number
+    sykepengebelopSykmeldt: number
 }
 
 export interface RSVedtakFelles {

@@ -217,4 +217,6 @@ export const inntektUnder2g: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

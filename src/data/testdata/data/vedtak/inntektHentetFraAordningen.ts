@@ -231,4 +231,6 @@ export const inntektHentetFraAordningen: RSVedtakWrapper = {
     },
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

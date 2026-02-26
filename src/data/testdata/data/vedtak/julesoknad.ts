@@ -175,4 +175,6 @@ export const julesoknadVedtak: RSVedtakWrapper = {
     opprettetTimestamp: '2023-12-10T12:00:00.000000',
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

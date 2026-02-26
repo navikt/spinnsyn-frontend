@@ -220,6 +220,8 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
     organisasjoner: {
         '810007842': 'Realistisk Kontorbygg',
     },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }
 
 //NB manuelt redigert
@@ -384,4 +386,6 @@ export const avslåttFraBømlo: RSVedtakWrapper = {
     organisasjoner: {
         '810007842': 'Realistisk Kontorbygg',
     },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

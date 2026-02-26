@@ -145,4 +145,6 @@ export const kombinertDirekteOgRefusjonDelvisInnvilget: RSVedtakWrapper = {
     opprettetTimestamp: '2021-05-06T12:42:42.000Z',
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

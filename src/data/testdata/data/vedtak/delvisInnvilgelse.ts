@@ -314,4 +314,6 @@ export const innvilgelseVedtak: RSVedtakWrapper = {
     organisasjoner: {
         '896929119': 'Sauefabrikk',
     },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

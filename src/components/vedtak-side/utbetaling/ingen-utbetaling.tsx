@@ -3,17 +3,17 @@ import { BodyShort, Heading, Link, List } from '@navikt/ds-react'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
 import { dagErInnvilget } from '../vedtak'
 
 import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
 
-export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapperUtvidet }) => {
+export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const ingenUtbetalingTittel = 'Ingen utbetaling'
     const harAvslagBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'Avslag') !== undefined
-    const alleDager = [...vedtak.dagerPerson, ...vedtak.dagerArbeidsgiver]
+    const alleDager = [...vedtak.daglisteSykmeldt, ...vedtak.daglisteArbeidsgiver]
     const minstEnDagInnvilget: boolean = alleDager.some((dag) => dagErInnvilget.includes(dag.dagtype))
     const avslagBegrunnelser = unikeAvslagBegrunnelser(alleDager)
     const oppsumertAvslagObject: OppsummertAvslagListeProps = {

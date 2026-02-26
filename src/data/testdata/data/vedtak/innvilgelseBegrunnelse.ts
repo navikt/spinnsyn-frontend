@@ -7,6 +7,7 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
     lestDato: '2024-12-02T12:58:53.342144+01:00',
     daglisteArbeidsgiver: [],
     daglisteSykmeldt: [],
+    organisasjoner: {},
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '896929119',
@@ -338,9 +339,8 @@ export const innvilgelseMedBegrunnelseVedtak: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     andreArbeidsgivere: {},
-    organisasjoner: {
-        '896929119': 'Sauefabrikk',
-    },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }
 
 export const innvilgelseMedTomBegrunnelseVedtak = jsonDeepCopy(innvilgelseMedBegrunnelseVedtak)

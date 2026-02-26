@@ -61,4 +61,6 @@ export const vedtakMed0Utbetaling: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

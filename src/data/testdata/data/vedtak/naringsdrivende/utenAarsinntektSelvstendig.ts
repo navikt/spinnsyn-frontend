@@ -85,4 +85,6 @@ export const utenAarsinntektSelvstendig: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

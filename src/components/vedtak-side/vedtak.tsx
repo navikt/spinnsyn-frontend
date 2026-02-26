@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
-import { RSDag, RSDagTypeKomplett, RSVedtakWrapperUtvidet } from '../../types/rs-types/rs-vedtak-felles'
+import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -39,8 +39,8 @@ export const dagErAvvist: RSDagTypeKomplett[] = [
 export const dagErInnvilget: RSDagTypeKomplett[] = ['NavDag', 'NavDagSyk', 'NavDagDelvisSykUnder20', 'NavDagDelvisSyk']
 
 type VedtakProps = {
-    vedtak: RSVedtakWrapperUtvidet
-    alleVedtak: RSVedtakWrapperUtvidet[]
+    vedtak: RSVedtakWrapper
+    alleVedtak: RSVedtakWrapper[]
 }
 
 const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
@@ -48,9 +48,8 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
     const studyKey = 'panel-venlmwxjdo'
     const { data: studyActive } = useStudyStatus(studyKey)
 
-    // Unike avviste dager i fra dagerArbeidsgiver og dagerPerson, sortert på dato
-    const avvisteDagerArbeidsgiver = vedtak.dagerArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
-    const avvisteDagerPerson = vedtak.dagerPerson.filter((dag) => dagErAvvist.includes(dag.dagtype))
+    const avvisteDagerArbeidsgiver = vedtak.daglisteArbeidsgiver.filter((dag) => dagErAvvist.includes(dag.dagtype))
+    const avvisteDagerPerson = vedtak.daglisteSykmeldt.filter((dag) => dagErAvvist.includes(dag.dagtype))
     const avvisteDager = avvisteDagerPerson
         .reduce((list: RSDag[], dag: RSDag) => {
             if (list.find((d) => d.dato === dag.dato) === undefined) {
@@ -62,9 +61,9 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
 
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const nyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
-    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+    const erDirekteutbetaling = vedtak.sykepengebelopSykmeldt > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
-    const harIngenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopPerson === 0
+    const harIngenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopSykmeldt === 0
     const harAvvisteDager = avvisteDager.length > 0
     const erDelvisInnvilget = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')

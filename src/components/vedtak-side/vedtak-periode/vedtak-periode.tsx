@@ -5,10 +5,10 @@ import cn from 'classnames'
 import { erWeekendPeriode, tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
 type VedtakPeriodeProps = {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakWrapper
     skalViseRefusjonsMottaker?: boolean
 }
 

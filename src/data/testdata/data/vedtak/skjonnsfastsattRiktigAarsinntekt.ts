@@ -425,6 +425,8 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
             '947064649': 'Sjokkerende Elektriker',
             '896929119': 'Sauefabrikk',
         },
+        sykepengebelopArbeidsgiver: 0,
+        sykepengebelopSykmeldt: 0,
     },
     {
         id: '51d739d0-7b1b-402f-a1e5-f3f56d5874dd',
@@ -850,6 +852,8 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
             '947064649': 'Sjokkerende Elektriker',
             '896929119': 'Sauefabrikk',
         },
+        sykepengebelopArbeidsgiver: 0,
+        sykepengebelopSykmeldt: 0,
     },
     {
         id: '29ece7ee-e1de-443c-8011-431998b1ffab',
@@ -1275,6 +1279,8 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
             '947064649': 'Sjokkerende Elektriker',
             '896929119': 'Sauefabrikk',
         },
+        sykepengebelopArbeidsgiver: 0,
+        sykepengebelopSykmeldt: 0,
     },
     {
         id: 'f8018350-05e1-4c03-9219-21b50229fc04',
@@ -1700,5 +1706,7 @@ export const skjonnsfastsattRiktigAarsinntekt: RSVedtakWrapper[] = [
             '947064649': 'Sjokkerende Elektriker',
             '896929119': 'Sauefabrikk',
         },
+        sykepengebelopArbeidsgiver: 0,
+        sykepengebelopSykmeldt: 0,
     },
 ]

@@ -6,6 +6,8 @@ export const kunDirekte: RSVedtakWrapper = {
     organisasjoner: {},
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
     daglisteArbeidsgiver: [],
     daglisteSykmeldt: [],
     vedtak: {

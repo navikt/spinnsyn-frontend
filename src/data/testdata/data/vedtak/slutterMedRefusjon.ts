@@ -675,4 +675,6 @@ export const slutterMedRefusjon: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }
