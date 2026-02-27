@@ -7,23 +7,23 @@ import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { Kontonummer } from './kontonummer'
 import { SykepengerNar } from './accordion/sykepenger-nar'
 import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
 
 type PersonutbetalingMedInntektProps = {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakWrapper
 }
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntektProps) => {
     const erArkivering = useContext(ArkiveringContext)
     const erInterne = spinnsynFrontendInterne()
 
-    const belop = ValutaFormat.format(vedtak.sykepengebelopPerson)
+    const belop = ValutaFormat.format(vedtak.sykepengebelopSykmeldt)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
-    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.dagerArbeidsgiver)
+    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.daglisteArbeidsgiver)
     const oppsumertAvslagObject: OppsummertAvslagListeProps = {
         title: 'Noen av dagene er ikke innvilget fordi:',
         oppsummertAvslag: avslagBegrunnelser,

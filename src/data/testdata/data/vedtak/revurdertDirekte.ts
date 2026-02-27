@@ -7,6 +7,17 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
     lestDato: '2021-05-03T11:50:56.812287Z',
     orgnavn: 'FLYBUTIKKEN, OSLO',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
+        { dato: '2021-04-26', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-27', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-28', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-29', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-04-30', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+        { dato: '2021-05-01', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-05-02', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-05-03', dagtype: 'NavDag', begrunnelser: [], belop: 1404, grad: 100 },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -30,62 +41,11 @@ export const vedtakRevurdertDirekte: RSVedtakWrapper = {
             gjenståendeSykedager: 186,
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '1918-11-11',
-            personOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-04-26',
-                        tom: '2021-05-03',
-                        dagsats: 1404,
-                        grad: 100,
-                        stønadsdager: 9,
-                    },
-                ],
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-04-26',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-27',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-28',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-29',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-04-30',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-01',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-02',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-05-03',
-                    type: 'NavDag',
-                    begrunnelser: [],
-                },
-            ],
         },
     },
     opprettetTimestamp: '2021-05-03T12:42:42.000Z',
     annullert: false,
     revurdert: true,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 8424,
 }

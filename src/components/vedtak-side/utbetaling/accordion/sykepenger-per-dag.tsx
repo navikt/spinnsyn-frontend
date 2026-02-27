@@ -4,18 +4,18 @@ import React, { useContext, useState } from 'react'
 import DagTabell from '../../../dager/dag-tabell'
 import DagBeskrivelse from '../../../dager/dag-beskrivelse'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
-import { RSDag, RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
+import { RSDag, RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 import { dagErAvvist } from '../../vedtak'
 import { logEvent } from '../../../umami/umami'
 import { useScrollTilElement } from '../../../../hooks/useScrollTilElement'
 
 type AlleSykepengerPerDagProps = {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakWrapper
     setParentApne?: (apne: boolean) => void
 }
 
 export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPerDagProps) => {
-    const erDirekteutbetaling = vedtak.sykepengebelopPerson > 0
+    const erDirekteutbetaling = vedtak.sykepengebelopSykmeldt > 0
     const erRefusjon = vedtak.sykepengebelopArbeidsgiver > 0
     const ingenNyArbeidsgiverperiode = vedtak.vedtak.tags?.includes('IngenNyArbeidsgiverperiode') || false
 
@@ -25,14 +25,14 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
                 <>
                     <SykepengerPerDag
                         tittel="Sykepenger per dag til arbeidsgiver"
-                        dager={vedtak.dagerArbeidsgiver}
+                        dager={vedtak.daglisteArbeidsgiver}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                         scrollElementId="sykepenger-per-dag-arbeidsgiver"
                         setForelderElementApen={setParentApne}
                     />
                     <SykepengerPerDag
                         tittel="Sykepenger per dag til deg"
-                        dager={vedtak.dagerPerson}
+                        dager={vedtak.daglisteSykmeldt}
                         ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                         scrollElementId="sykepenger-per-dag"
                         setForelderElementApen={setParentApne}
@@ -41,7 +41,7 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
             ) : erRefusjon ? (
                 <SykepengerPerDag
                     tittel="Sykepenger per dag til arbeidsgiver"
-                    dager={vedtak.dagerArbeidsgiver}
+                    dager={vedtak.daglisteArbeidsgiver}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     scrollElementId="sykepenger-per-dag-arbeidsgiver"
                     setForelderElementApen={setParentApne}
@@ -49,7 +49,7 @@ export const AlleSykepengerPerDag = ({ vedtak, setParentApne }: AlleSykepengerPe
             ) : (
                 <SykepengerPerDag
                     tittel="Dine sykepenger per dag"
-                    dager={vedtak.dagerPerson}
+                    dager={vedtak.daglisteSykmeldt}
                     ingenNyArbeidsgiverperiode={ingenNyArbeidsgiverperiode}
                     scrollElementId="sykepenger-per-dag"
                     setForelderElementApen={setParentApne}

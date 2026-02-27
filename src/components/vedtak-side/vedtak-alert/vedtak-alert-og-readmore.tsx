@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { JulesoknadWarning } from '../julesoknad/julesoknad-warning'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
 import AnnullertInfo from './annullert-info'
 import { RevurdertInfo } from './revurdert-info'
@@ -38,8 +38,8 @@ export function getVedtakAlertTyper(
 
 type VedtakAlertOgReadmoreProps = {
     vedtakAlertTyper: VedtakAlertType[]
-    alleVedtak: RSVedtakWrapperUtvidet[]
-    vedtak: RSVedtakWrapperUtvidet
+    alleVedtak: RSVedtakWrapper[]
+    vedtak: RSVedtakWrapper
 }
 
 export const VedtakAlertOgReadmore = ({ vedtakAlertTyper, alleVedtak, vedtak }: VedtakAlertOgReadmoreProps) => {

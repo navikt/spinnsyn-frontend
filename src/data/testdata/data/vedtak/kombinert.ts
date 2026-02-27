@@ -6,6 +6,30 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
     organisasjoner: {},
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [
+        { dato: '2021-02-04', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-05', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-06', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-02-07', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+    ],
+    daglisteSykmeldt: [
+        { dato: '2021-02-08', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-09', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-10', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-11', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-12', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-13', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-02-14', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-02-15', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-16', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-17', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-18', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-19', dagtype: 'NavDagSyk', begrunnelser: [], belop: 2455, grad: 100 },
+        { dato: '2021-02-20', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2021-02-21', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+    ],
+    sykepengebelopArbeidsgiver: 4910,
+    sykepengebelopSykmeldt: 24550,
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '972674818',
@@ -34,110 +58,6 @@ export const kombinertDirekteOgRefusjon: RSVedtakWrapper = {
             forbrukteSykedager: 12,
             gjenståendeSykedager: 248,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-02-04',
-                        tom: '2021-02-05',
-                        dagsats: 2455,
-                        grad: 100,
-                        stønadsdager: 12,
-                    },
-                ],
-            },
-            personOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-02-08',
-                        tom: '2021-02-21',
-                        dagsats: 2455,
-                        grad: 100,
-                        stønadsdager: 12,
-                    },
-                ],
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-02-04',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-05',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-08',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-09',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-10',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-11',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-12',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-13',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-14',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-15',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-16',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-17',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-18',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-19',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-20',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-02-21',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-            ],
         },
     },
     opprettetTimestamp: '2021-05-06T12:42:42.000Z',

@@ -11,7 +11,7 @@ import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunne
 import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { useWindowSize } from '../../../../utils/useWindowSize'
-import { RSVedtakArbeidstaker, RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakArbeidstaker, RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 import { logEvent } from '../../../umami/umami'
 import BeregningÅrsinntektFlereArbeidsgivere from '../beregning-årsinntekt-flere-arbeidsgivere'
 import { InfoSection } from '../info-seksjon'
@@ -20,7 +20,7 @@ import { MerOmBergningenArbeidstaker } from './mer-om-bergningen-arbeidstaker'
 import { EkstrainfoOmVedtaketArbeidstaker } from './ekstrainfo-om-vedtaket-arbeidstaker'
 
 type InntekterLagtTilGrunnArbeidstakerProps = {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakWrapper
 }
 
 export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: InntekterLagtTilGrunnArbeidstakerProps) => {

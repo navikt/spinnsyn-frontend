@@ -4,7 +4,7 @@ import { logger } from '@navikt/next-logger'
 
 import { logEvent } from '../../umami/umami'
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { harVedtakEndringer } from '../../../utils/vedtak-utils'
 import { sorterEtterNyesteFom } from '../../../utils/sorter-vedtak'
 
@@ -64,10 +64,7 @@ const MuligEndringAlert = () => {
     )
 }
 
-const finnRevurdertVedtak = (
-    soknadIder: string[],
-    alleVedtak: RSVedtakWrapperUtvidet[],
-): RSVedtakWrapperUtvidet | undefined => {
+const finnRevurdertVedtak = (soknadIder: string[], alleVedtak: RSVedtakWrapper[]): RSVedtakWrapper | undefined => {
     const revurderteVedtak = alleVedtak.filter((v) => v.revurdert)
     const revurderteMedSoknadId = revurderteVedtak.filter((v) =>
         v.vedtak.dokumenter.some((dokument) => dokument.type === 'Søknad' && soknadIder.includes(dokument.dokumentId)),
@@ -76,8 +73,8 @@ const finnRevurdertVedtak = (
 }
 
 interface RevurderingInfoProps {
-    alleVedtak: RSVedtakWrapperUtvidet[]
-    vedtak: RSVedtakWrapperUtvidet
+    alleVedtak: RSVedtakWrapper[]
+    vedtak: RSVedtakWrapper
 }
 
 export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) => {

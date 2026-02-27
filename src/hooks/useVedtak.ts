@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 
-import { RSVedtakWrapper, RSVedtakWrapperUtvidet } from '../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 import { fetchJsonMedRequestId } from '../utils/fetch'
 import { spinnsynFrontendInterne } from '../utils/environment'
-import { hentDagerPaaVedtak } from '../daglogikk/hentDagerPaaVedtak'
+import { korrigerYrkesaktivitetstype } from '../utils/korrigerYrkesaktivitetstype'
 
 export default function UseVedtak() {
     const router = useRouter()
@@ -23,7 +23,7 @@ export default function UseVedtak() {
                 const vedtak: VedtakOgFnrInterneResponse = await fetchJsonMedRequestId(
                     '/syk/sykepenger/api/spinnsyn-backend-veileder/vedtak' + query(),
                 )
-                const utvidedeVedtak = vedtak.vedtak.map((v) => hentDagerPaaVedtak(v))
+                const utvidedeVedtak = vedtak.vedtak.map((v) => korrigerYrkesaktivitetstype(v))
                 return {
                     alleVedtak: utvidedeVedtak,
                     sykmeldtFnr: vedtak.sykmeldtFnr,
@@ -33,13 +33,13 @@ export default function UseVedtak() {
                 '/syk/sykepenger/api/spinnsyn-backend/api/v3/vedtak' + query(),
             )
 
-            return { alleVedtak: alleVedtak.map((v) => hentDagerPaaVedtak(v)), sykmeldtFnr: null }
+            return { alleVedtak: alleVedtak.map((v) => korrigerYrkesaktivitetstype(v)), sykmeldtFnr: null }
         },
     })
 }
 
 interface VedtakOgFnr {
-    alleVedtak: RSVedtakWrapperUtvidet[]
+    alleVedtak: RSVedtakWrapper[]
     sykmeldtFnr: string | null
 }
 

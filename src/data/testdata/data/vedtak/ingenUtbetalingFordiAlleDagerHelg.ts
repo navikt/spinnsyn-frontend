@@ -7,6 +7,23 @@ export const ingenUtbetalingFordiAlleDagerHelg: RSVedtakWrapper = {
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM (direkte utbetaling)',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
+        {
+            dato: '2024-10-26',
+            dagtype: 'NavHelgDag',
+            begrunnelser: [],
+            belop: 0,
+            grad: 0,
+        },
+        {
+            dato: '2024-10-27',
+            dagtype: 'NavHelgDag',
+            begrunnelser: [],
+            belop: 0,
+            grad: 0,
+        },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -33,4 +50,6 @@ export const ingenUtbetalingFordiAlleDagerHelg: RSVedtakWrapper = {
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

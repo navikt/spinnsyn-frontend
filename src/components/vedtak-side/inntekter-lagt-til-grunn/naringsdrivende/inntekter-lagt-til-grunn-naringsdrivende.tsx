@@ -8,13 +8,13 @@ import { BegrunnelseEkspanderbar } from '../../begrunnelse-ekspanderbar/begrunne
 import { hentBegrunnelse } from '../../../../utils/vedtak-utils'
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { logEvent } from '../../../umami/umami'
-import { RSVedtakWrapperUtvidet } from '../../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
 import { MerOmBergningenNargingsdrivende } from './mer-om-bergningen-naringsdrivende'
 import { EkstrainfoOmVedtaketNaringsdrivende } from './ekstrainfo-om-vedtaket-naringsdrivende'
 import { AarsinntekterNaringsdrivende } from './aarsinntekter-naringsdrivende'
 
-type InntekterLagtTilGrunnNaringsdrivendeProps = { vedtak: RSVedtakWrapperUtvidet }
+type InntekterLagtTilGrunnNaringsdrivendeProps = { vedtak: RSVedtakWrapper }
 
 export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTilGrunnNaringsdrivendeProps) => {
     const arkivering = useContext(ArkiveringContext)

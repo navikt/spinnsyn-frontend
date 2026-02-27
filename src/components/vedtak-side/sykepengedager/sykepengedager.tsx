@@ -7,9 +7,9 @@ import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { logEvent } from '../../umami/umami'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
-type SykepengedagerProps = { vedtak: RSVedtakWrapperUtvidet }
+type SykepengedagerProps = { vedtak: RSVedtakWrapper }
 
 const Sykepengedager = ({ vedtak }: SykepengedagerProps) => {
     const arkivering = useContext(ArkiveringContext)

@@ -3,18 +3,18 @@ import React, { useEffect } from 'react'
 import useMerkVedtakSomLest from '../../hooks/useMerkVedtakSomLest'
 import { spinnsynFrontendInterne } from '../../utils/environment'
 import { logEvent } from '../umami/umami'
-import { RSVedtakWrapperUtvidet } from '../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 
 import Vedtak from './vedtak'
 
 type VedtakSideProps = {
-    vedtak: RSVedtakWrapperUtvidet
-    alleVedtak: RSVedtakWrapperUtvidet[]
+    vedtak: RSVedtakWrapper
+    alleVedtak: RSVedtakWrapper[]
 }
 
 const VedtakSide = ({ vedtak, alleVedtak }: VedtakSideProps) => {
     const { mutate: merkLest } = useMerkVedtakSomLest()
-    const brukerutbetaling = vedtak.sykepengebelopPerson > 0
+    const brukerutbetaling = vedtak.sykepengebelopSykmeldt > 0
     const refusjon = vedtak.sykepengebelopArbeidsgiver > 0
 
     useEffect(() => {

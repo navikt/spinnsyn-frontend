@@ -7,6 +7,37 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
     lestDato: '2021-08-30T13:05:17.337442+02:00',
     orgnavn: 'POSTEN NORGE AS, BÆRUM (direkte utbetaling)',
     andreArbeidsgivere: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
+        {
+            dato: '2021-08-18',
+            dagtype: 'Feriedag',
+            begrunnelser: [],
+            belop: 0,
+            grad: 0,
+        },
+        {
+            dato: '2021-08-19',
+            dagtype: 'Feriedag',
+            begrunnelser: [],
+            belop: 0,
+            grad: 0,
+        },
+        {
+            dato: '2021-08-20',
+            dagtype: 'AvvistDag',
+            begrunnelser: ['MinimumInntekt'],
+            belop: 0,
+            grad: 0,
+        },
+        {
+            dato: '2021-08-21',
+            dagtype: 'AvvistDag',
+            begrunnelser: ['EtterDødsdato'],
+            belop: 0,
+            grad: 0,
+        },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -31,31 +62,11 @@ export const avvistVedtakMedLavInntektDirekteUtbetaling: RSVedtakWrapper = {
             forbrukteSykedager: 0,
             gjenståendeSykedager: 248,
             automatiskBehandling: false,
-            utbetalingsdager: [
-                {
-                    dato: '2021-08-18',
-                    type: 'Feriedag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-08-19',
-                    type: 'Feriedag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-08-20',
-                    type: 'AvvistDag',
-                    begrunnelser: ['MinimumInntekt'],
-                },
-                {
-                    dato: '2021-08-21',
-                    type: 'AvvistDag',
-                    begrunnelser: ['EtterDødsdato'],
-                },
-            ],
         },
     },
     opprettetTimestamp: '2021-08-30T12:42:42.000Z',
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

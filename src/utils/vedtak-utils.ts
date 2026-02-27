@@ -1,13 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 
-import {
-    Begrunnelse,
-    BegrunnelseType,
-    RSBegrunnelse,
-    RSDag,
-    RSVedtakWrapper,
-    RSVedtakWrapperUtvidet,
-} from '../types/rs-types/rs-vedtak-felles'
+import { Begrunnelse, BegrunnelseType, RSBegrunnelse, RSDag, RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 
 import { erHelg } from './dato-utils'
 
@@ -74,10 +67,7 @@ export const finnBegrunnelseTekst = (begrunnelse: RSBegrunnelse): string => {
     }
 }
 
-export const harVedtakEndringer = (
-    nyttVedtak: RSVedtakWrapperUtvidet,
-    gammeltVedtak: RSVedtakWrapperUtvidet,
-): boolean => {
+export const harVedtakEndringer = (nyttVedtak: RSVedtakWrapper, gammeltVedtak: RSVedtakWrapper): boolean => {
     return (
         erForskjelligBeløp(nyttVedtak, gammeltVedtak) ||
         erForskjelligVedtakType(nyttVedtak, gammeltVedtak) ||
@@ -85,25 +75,22 @@ export const harVedtakEndringer = (
     )
 }
 
-const erForskjelligBeløp = (nyttVedtak: RSVedtakWrapperUtvidet, gammeltVedtak: RSVedtakWrapperUtvidet): boolean => {
+const erForskjelligBeløp = (nyttVedtak: RSVedtakWrapper, gammeltVedtak: RSVedtakWrapper): boolean => {
     return (
-        nyttVedtak.sykepengebelopPerson !== gammeltVedtak.sykepengebelopPerson ||
+        nyttVedtak.sykepengebelopSykmeldt !== gammeltVedtak.sykepengebelopSykmeldt ||
         nyttVedtak.sykepengebelopArbeidsgiver !== gammeltVedtak.sykepengebelopArbeidsgiver
     )
 }
 
-const erForskjelligVedtakType = (
-    nyttVedtak: RSVedtakWrapperUtvidet,
-    gammeltVedtak: RSVedtakWrapperUtvidet,
-): boolean => {
-    const nyttDirekteutbetaling = nyttVedtak.sykepengebelopPerson > 0
+const erForskjelligVedtakType = (nyttVedtak: RSVedtakWrapper, gammeltVedtak: RSVedtakWrapper): boolean => {
+    const nyttDirekteutbetaling = nyttVedtak.sykepengebelopSykmeldt > 0
     const nyttRefusjon = nyttVedtak.sykepengebelopArbeidsgiver > 0
-    const nyttIngenUtbetaling = nyttVedtak.sykepengebelopArbeidsgiver === 0 && nyttVedtak.sykepengebelopPerson === 0
+    const nyttIngenUtbetaling = nyttVedtak.sykepengebelopArbeidsgiver === 0 && nyttVedtak.sykepengebelopSykmeldt === 0
 
-    const gammelDirekteutbetaling = gammeltVedtak.sykepengebelopPerson > 0
+    const gammelDirekteutbetaling = gammeltVedtak.sykepengebelopSykmeldt > 0
     const gammelRefusjon = gammeltVedtak.sykepengebelopArbeidsgiver > 0
     const gammelIngenUtbetaling =
-        gammeltVedtak.sykepengebelopArbeidsgiver === 0 && gammeltVedtak.sykepengebelopPerson === 0
+        gammeltVedtak.sykepengebelopArbeidsgiver === 0 && gammeltVedtak.sykepengebelopSykmeldt === 0
 
     return (
         nyttDirekteutbetaling !== gammelDirekteutbetaling ||
@@ -112,9 +99,6 @@ const erForskjelligVedtakType = (
     )
 }
 
-const erForskjelligSykepengedagerIgjen = (
-    nyttVedtak: RSVedtakWrapperUtvidet,
-    gammeltVedtak: RSVedtakWrapperUtvidet,
-): boolean => {
+const erForskjelligSykepengedagerIgjen = (nyttVedtak: RSVedtakWrapper, gammeltVedtak: RSVedtakWrapper): boolean => {
     return nyttVedtak.vedtak.utbetaling.gjenståendeSykedager !== gammeltVedtak.vedtak.utbetaling.gjenståendeSykedager
 }

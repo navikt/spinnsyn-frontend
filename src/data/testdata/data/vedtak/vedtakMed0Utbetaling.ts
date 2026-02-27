@@ -5,6 +5,11 @@ export const vedtakMed0Utbetaling: RSVedtakWrapper = {
     lest: true,
     lestDato: '2023-11-19T20:32:04.858958+01:00',
     organisasjoner: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
+        { dato: '2023-11-11', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2023-11-12', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 0 },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '999999999',
@@ -59,4 +64,6 @@ export const vedtakMed0Utbetaling: RSVedtakWrapper = {
     annullert: false,
     revurdert: false,
     andreArbeidsgivere: {},
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

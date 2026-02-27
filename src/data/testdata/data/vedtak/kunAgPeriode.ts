@@ -4,6 +4,26 @@ export const kunAgPeriode: RSVedtakWrapper = {
     id: '4e044d03-2dfe-45e9-a904-77777723',
     lest: false,
     organisasjoner: {},
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
+        { dato: '2021-10-04', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-05', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-06', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-07', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-08', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-09', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-10', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-11', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-12', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-13', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-14', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-15', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-15', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-16', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-17', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-18', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2021-10-19', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '123456789',
@@ -20,93 +40,6 @@ export const kunAgPeriode: RSVedtakWrapper = {
             gjenståendeSykedager: 244,
             automatiskBehandling: true,
             foreløpigBeregnetSluttPåSykepenger: '2022-09-30',
-            utbetalingsdager: [
-                {
-                    dato: '2021-10-04',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-05',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-06',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-07',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-08',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-09',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-10',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-11',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-12',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-13',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-14',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-15',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-15',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-16',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-17',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-18',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-19',
-                    type: 'ArbeidsgiverperiodeDag',
-                    begrunnelser: [],
-                },
-            ],
         },
         grunnlagForSykepengegrunnlag: 1091881.6,
         grunnlagForSykepengegrunnlagPerArbeidsgiver: {
@@ -122,4 +55,6 @@ export const kunAgPeriode: RSVedtakWrapper = {
     },
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 0,
 }

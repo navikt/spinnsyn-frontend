@@ -7,19 +7,19 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
-import { RSVedtakWrapperUtvidet } from '../../../types/rs-types/rs-vedtak-felles'
+import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
 import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-avslag-liste'
 
 type RefusjonMedInntektProps = {
-    vedtak: RSVedtakWrapperUtvidet
+    vedtak: RSVedtakWrapper
 }
 
 const RefusjonMedInntekt = ({ vedtak }: RefusjonMedInntektProps) => {
     const belop = ValutaFormat.format(vedtak.sykepengebelopArbeidsgiver)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
-    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.dagerArbeidsgiver)
+    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.daglisteArbeidsgiver)
     const oppsumertAvslagObject: OppsummertAvslagListeProps = {
         title: 'Noen av dagene er ikke innvilget fordi:',
         oppsummertAvslag: avslagBegrunnelser,

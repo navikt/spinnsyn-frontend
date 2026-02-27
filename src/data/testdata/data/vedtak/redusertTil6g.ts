@@ -5,6 +5,16 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     lest: true,
     organisasjoner: {},
     lestDato: '2020-11-02T10:17:38.197496+01:00',
+    daglisteArbeidsgiver: [
+        { dato: '2021-10-18', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-19', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-20', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-21', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-22', dagtype: 'NavDagDelvisSyk', begrunnelser: [], belop: 1964, grad: 80 },
+        { dato: '2021-10-23', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 80 },
+        { dato: '2021-10-24', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 80 },
+    ],
+    daglisteSykmeldt: [],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '12345725',
@@ -33,54 +43,6 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
             forbrukteSykedager: 10,
             gjenståendeSykedager: 238,
             automatiskBehandling: true,
-            arbeidsgiverOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2021-10-18',
-                        tom: '2021-10-24',
-                        grad: 80,
-                        dagsats: 1964,
-                        stønadsdager: 6,
-                    },
-                ],
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2021-10-18',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-19',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-20',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-21',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-22',
-                    type: 'NavDagDelvisSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-23',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2021-10-24',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-            ],
         },
         grunnlagForSykepengegrunnlag: 804396,
         grunnlagForSykepengegrunnlagPerArbeidsgiver: {
@@ -93,4 +55,6 @@ export const vedtakRedusertTil6G: RSVedtakWrapper = {
     andreArbeidsgivere: {},
     annullert: false,
     revurdert: false,
+    sykepengebelopArbeidsgiver: 9820,
+    sykepengebelopSykmeldt: 0,
 }

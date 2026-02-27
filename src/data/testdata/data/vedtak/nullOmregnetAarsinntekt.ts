@@ -4,6 +4,29 @@ export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
     id: 'e04b0ea9-ce61-4b69-92de-9f035ffb1616',
     lest: true,
     lestDato: '2024-04-24T14:00:25.052723+02:00',
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
+        { dato: '2024-03-01', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-02', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-03-03', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-03-04', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-05', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-06', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-07', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-08', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-09', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-03-10', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-03-11', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-12', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-13', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-14', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-15', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-16', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-03-17', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-03-18', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-19', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+        { dato: '2024-03-20', dagtype: 'NavDagSyk', begrunnelser: [], belop: 1615, grad: 100 },
+    ],
     vedtak: {
         yrkesaktivitetstype: 'ARBEIDSTAKER',
         organisasjonsnummer: '998877445',
@@ -20,119 +43,6 @@ export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
             automatiskBehandling: false,
             foreløpigBeregnetSluttPåSykepenger: '2025-02-26',
             utbetalingType: 'UTBETALING',
-            personOppdrag: {
-                utbetalingslinjer: [
-                    {
-                        fom: '2024-03-01',
-                        tom: '2024-03-20',
-                        dagsats: 1615,
-                        grad: 100,
-                        stønadsdager: 20,
-                    },
-                ],
-            },
-            utbetalingsdager: [
-                {
-                    dato: '2024-03-01',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-02',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-03',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-04',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-05',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-06',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-07',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-08',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-09',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-10',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-11',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-12',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-13',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-14',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-15',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-16',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-17',
-                    type: 'NavHelgDag',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-18',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-19',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-                {
-                    dato: '2024-03-20',
-                    type: 'NavDagSyk',
-                    begrunnelser: [],
-                },
-            ],
         },
         grunnlagForSykepengegrunnlag: 419900,
         grunnlagForSykepengegrunnlagPerArbeidsgiver: {
@@ -199,4 +109,6 @@ export const nullOmregnetAarsinntekt: RSVedtakWrapper = {
     organisasjoner: {
         '998877445': 'Null Omregnet Årsinntekt AS',
     },
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 22610,
 }

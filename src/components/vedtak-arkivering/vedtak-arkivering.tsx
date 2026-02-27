@@ -3,7 +3,7 @@ import React from 'react'
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import Vedtak from '../vedtak-side/vedtak'
-import { hentDagerPaaVedtak } from '../../daglogikk/hentDagerPaaVedtak'
+import { korrigerYrkesaktivitetstype } from '../../utils/korrigerYrkesaktivitetstype'
 
 export const VedtakArkivering = ({
     vedtak,
@@ -14,7 +14,10 @@ export const VedtakArkivering = ({
 }) => {
     return (
         <ArkiveringContext.Provider value={true}>
-            <Vedtak vedtak={hentDagerPaaVedtak(vedtak)} alleVedtak={alleVedtak.map((v) => hentDagerPaaVedtak(v))} />
+            <Vedtak
+                vedtak={korrigerYrkesaktivitetstype(vedtak)}
+                alleVedtak={alleVedtak.map((v) => korrigerYrkesaktivitetstype(v))}
+            />
         </ArkiveringContext.Provider>
     )
 }
