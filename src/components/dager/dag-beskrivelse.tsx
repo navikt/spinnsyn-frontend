@@ -31,9 +31,6 @@ const DagBeskrivelse = ({ dager }: DagBeskrivelseProps) => {
 
     const unikeDager = (): RSDag[] => {
         const unikeDagtyper = dager.reduce((list: RSDag[], dag) => {
-            if (dag.dagtype === 'NavDagDelvisSyk') {
-                dag.dagtype = 'NavDagSyk'
-            }
             if (!erAvvistEllerAndreYtelser(dag) && !list.find((d: RSDag) => d.dagtype === dag.dagtype)) {
                 list.push(dag)
             }

@@ -99,7 +99,7 @@ test.describe('Utbetalingsoversikt', () => {
                     tekst: 'Du får ikke sykepenger for dager du ikke har brukt sykmeldingen.',
                 },
                 {
-                    key: 'NavDagSyk',
+                    key: 'NavDag',
                     tekst: 'Du har vært sykmeldt denne dagen og kan få sykepenger for den tiden du ikke har jobbet.',
                 },
                 {

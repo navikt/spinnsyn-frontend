@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'
-import { RSDag, RSDagTypeKomplett, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
+import { RSDag, RSDagType, RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { UxSignalsWidget } from '../ux-signals/UxSignalsWidget'
@@ -28,15 +28,9 @@ import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn
 import { getVedtakAlertTyper, VedtakAlertOgReadmore } from './vedtak-alert/vedtak-alert-og-readmore'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 
-export const dagErAvvist: RSDagTypeKomplett[] = [
-    'AvvistDag',
-    'Feriedag',
-    'Permisjonsdag',
-    'ForeldetDag',
-    'AndreYtelser',
-]
+export const dagErAvvist: RSDagType[] = ['AvvistDag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag', 'AndreYtelser']
 
-export const dagErInnvilget: RSDagTypeKomplett[] = ['NavDag', 'NavDagSyk', 'NavDagDelvisSykUnder20', 'NavDagDelvisSyk']
+export const dagErInnvilget: RSDagType[] = ['NavDag']
 
 type VedtakProps = {
     vedtak: RSVedtakWrapper
