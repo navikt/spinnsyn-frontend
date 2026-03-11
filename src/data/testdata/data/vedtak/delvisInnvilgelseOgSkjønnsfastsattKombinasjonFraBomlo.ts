@@ -139,21 +139,21 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
         },
         {
             dato: '2024-02-20',
-            dagtype: 'NavDagSyk',
+            dagtype: 'NavDag',
             begrunnelser: [],
             belop: 1939,
             grad: 100.0,
         },
         {
             dato: '2024-02-21',
-            dagtype: 'NavDagSyk',
+            dagtype: 'NavDag',
             begrunnelser: [],
             belop: 1939,
             grad: 100.0,
         },
         {
             dato: '2024-02-22',
-            dagtype: 'NavDagSyk',
+            dagtype: 'NavDag',
             begrunnelser: [],
             belop: 1939,
             grad: 100.0,
@@ -162,7 +162,7 @@ export const delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo: RSVedtakWra
     daglisteSykmeldt: [
         {
             dato: '2024-02-23',
-            dagtype: 'NavDagSyk',
+            dagtype: 'NavDag',
             begrunnelser: [],
             belop: 1939,
             grad: 100.0,

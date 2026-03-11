@@ -16,9 +16,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
     const lagDagLabel = (dag: RSDag) => {
         switch (dag.dagtype) {
             case 'NavDag':
-            case 'NavDagSyk':
-            case 'NavDagDelvisSykUnder20':
-            case 'NavDagDelvisSyk':
                 const grad = dag.grad.toString()
                 return (
                     <Tag variant="success" size="small">

@@ -54,7 +54,7 @@ export interface RSDag {
     dato: string
     belop: number
     grad: number
-    dagtype: RSDagTypeKomplett
+    dagtype: RSDagType
     begrunnelser: RSBegrunnelse[]
 }
 
@@ -106,9 +106,6 @@ export type RSDagType =
     | 'AndreYtelser'
     | 'Ventetidsdag'
     | 'UkjentDag'
-
-export type RSDagTypeExtra = 'NavDagSyk' | 'NavDagDelvisSyk' | 'NavDagDelvisSykUnder20'
-export type RSDagTypeKomplett = RSDagType | RSDagTypeExtra
 
 export interface Dokument {
     dokumentId: string
