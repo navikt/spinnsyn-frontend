@@ -31,3 +31,7 @@ yarn-error.log*
 /playwright-report/
 
 .nvmrc
+
+.claude/
+CLAUDE.md
+AGENTS.md
