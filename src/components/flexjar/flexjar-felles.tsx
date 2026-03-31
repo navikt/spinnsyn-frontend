@@ -60,7 +60,7 @@ export function FlexjarFelles({
                 try {
                     hovedvalg = JSON.parse(activeState).hovedvalg
                     undervalg = JSON.parse(activeState).undervalg
-                } catch (e) {}
+                } catch {}
             }
             const feedback = undervalg ? undervalg + '. ' + textValue : textValue
             const body = {
