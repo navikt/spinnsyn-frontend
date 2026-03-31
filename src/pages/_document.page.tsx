@@ -1,13 +1,10 @@
 import { DecoratorComponentsReact, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr'
-import getConfig from 'next/config'
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
-import { spinnsynFrontendInterne } from '../utils/environment'
-
-const { serverRuntimeConfig } = getConfig()
+import { getPublicEnv, spinnsynFrontendInterne } from '../utils/environment'
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
@@ -35,10 +32,10 @@ class MyDocument extends Document<Props> {
             ctx,
         }
 
-        const showDecorator = serverRuntimeConfig.noDecorator != 'true'
+        const showDecorator = process.env.NO_DECORATOR != 'true'
         if (showDecorator) {
             props.Decorator = await fetchDecoratorReact({
-                env: serverRuntimeConfig.decoratorEnv,
+                env: process.env.DECORATOR_ENV === 'dev' ? 'dev' : 'prod',
                 params: {
                     chatbot: false,
                     feedback: false,
@@ -72,6 +69,11 @@ class MyDocument extends Document<Props> {
             <Html lang={language || 'no'}>
                 <Head>{visDekorator && <Decorator.HeadAssets />}</Head>
                 <body>
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `window.__publicEnv = ${JSON.stringify(getPublicEnv())}`,
+                        }}
+                    />
                     {header()}
                     <Main />
                     {visDekorator && (
