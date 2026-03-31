@@ -18,6 +18,12 @@ export interface PublicEnv {
     NAIS_APP_NAME?: string
 }
 
+// JSON.stringify() does not escape </script> sequences. If any env var value contained </script>, it would break out
+// of the script tag and woudl be a latent XSS vector.
+export function safeJsonStringify(data: unknown): string {
+    return JSON.stringify(data).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/\//g, '\\u002f')
+}
+
 export function getPublicEnv(): PublicEnv {
     return {
         ENVIRONMENT: process.env.ENVIRONMENT,

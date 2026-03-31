@@ -4,7 +4,7 @@ import React from 'react'
 import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
-import { getPublicEnv, spinnsynFrontendInterne } from '../utils/environment'
+import { getPublicEnv, safeJsonStringify, spinnsynFrontendInterne } from '../utils/environment'
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
@@ -71,7 +71,7 @@ class MyDocument extends Document<Props> {
                 <body>
                     <script
                         dangerouslySetInnerHTML={{
-                            __html: `window.__publicEnv = ${JSON.stringify(getPublicEnv())}`,
+                            __html: `window.__publicEnv = ${safeJsonStringify(getPublicEnv())}`,
                         }}
                     />
                     {header()}
