@@ -18,52 +18,46 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'NavDag':
                 const grad = dag.grad.toString()
                 return (
-                    <Tag variant="success" size="small">
+                    <Tag data-color="success" variant="outline" size="small">
                         {skalViseProsent ? grad + ' % syk' : 'Syk'}
                     </Tag>
-                )
+                );
 
             case 'NavHelgDag':
                 return (
-                    <Tag size="small" variant="info">
-                        Helg
-                    </Tag>
-                )
+                    <Tag data-color="info" size="small" variant="outline">Helg
+                                            </Tag>
+                );
 
             case 'ArbeidsgiverperiodeDag':
                 return (
-                    <Tag size="small" variant="info">
-                        Arbeidsgiverperiode
-                    </Tag>
-                )
+                    <Tag data-color="info" size="small" variant="outline">Arbeidsgiverperiode
+                                            </Tag>
+                );
 
             case 'Arbeidsdag':
                 return (
-                    <Tag size="small" variant="info">
-                        Ikke sykmeldt
-                    </Tag>
-                )
+                    <Tag data-color="info" size="small" variant="outline">Ikke sykmeldt
+                                            </Tag>
+                );
 
             case 'Feriedag':
                 return (
-                    <Tag size="small" variant="warning">
-                        Ferie
-                    </Tag>
-                )
+                    <Tag data-color="warning" size="small" variant="outline">Ferie
+                                            </Tag>
+                );
 
             case 'Permisjonsdag':
                 return (
-                    <Tag size="small" variant="warning">
-                        Permisjon
-                    </Tag>
-                )
+                    <Tag data-color="warning" size="small" variant="outline">Permisjon
+                                            </Tag>
+                );
 
             case 'ForeldetDag':
                 return (
-                    <Tag size="small" variant="warning">
-                        Søkt&nbsp;for&nbsp;sent
-                    </Tag>
-                )
+                    <Tag data-color="warning" size="small" variant="outline">Søkt for sent
+                                            </Tag>
+                );
 
             case 'AvvistDag':
             case 'AndreYtelser':
@@ -71,19 +65,17 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
 
             case 'Ventetidsdag':
                 return (
-                    <Tag size="small" variant="info">
-                        Dekkes ikke av Nav
-                    </Tag>
-                )
+                    <Tag data-color="info" size="small" variant="outline">Dekkes ikke av Nav
+                                            </Tag>
+                );
 
             case 'UkjentDag':
 
             default:
                 return (
-                    <Tag size="small" variant="info">
-                        Ukjent
-                    </Tag>
-                )
+                    <Tag data-color="info" size="small" variant="outline">Ukjent
+                                            </Tag>
+                );
         }
     }
 
@@ -92,18 +84,17 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         if (tagText === 'Ukjent') {
             logger.warn(`Har ingen begrunnelse for: ${begrunnelse}.`)
             return (
-                <Tag size="small" variant="warning" key={idx}>
-                    Ukjent
-                </Tag>
-            )
+                <Tag data-color="warning" size="small" variant="outline" key={idx}>Ukjent
+                                    </Tag>
+            );
         }
         return (
-            <Tag size="small" variant="warning" key={idx}>
+            <Tag data-color="warning" size="small" variant="outline" key={idx}>
                 {tagText.split(' ').map((word, index) => (
                     <React.Fragment key={index}>{word}&nbsp;</React.Fragment>
                 ))}
             </Tag>
-        )
+        );
     }
 
     return <div data-testid={dataCyLabel(dag)}>{lagDagLabel(dag)}</div>

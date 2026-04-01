@@ -31,11 +31,11 @@ export default function Person() {
             <div hidden={openState}>
                 <Tooltip content="Verktøy for testing">
                     <Button
+                        data-color="neutral"
                         ref={buttonRef}
                         onClick={() => setOpenState((b) => !b)}
                         icon={<SandboxIcon title="Åpne testdataverktøy" />}
-                        variant="tertiary-neutral"
-                    />
+                        variant="tertiary" />
                 </Tooltip>
                 <div
                     style={
@@ -53,7 +53,12 @@ export default function Person() {
                             <div className="w-[220px]">
                                 Her finner du verktøy for å endre mellom forskjellige brukere
                             </div>
-                            <Button onClick={dismissHint} className="mt-2" variant="secondary-neutral" size="small">
+                            <Button
+                                data-color="neutral"
+                                onClick={dismissHint}
+                                className="mt-2"
+                                variant="secondary"
+                                size="small">
                                 OK!
                             </Button>
                         </Popover.Content>
@@ -76,7 +81,7 @@ export default function Person() {
                 </Modal.Body>
             </Modal>
         </>
-    )
+    );
 }
 
 function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; personer: PersonaData }) {

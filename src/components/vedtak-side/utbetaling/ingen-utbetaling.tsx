@@ -1,4 +1,4 @@
-import { BodyShort, Heading, Link, List } from '@navikt/ds-react'
+import { BodyShort, Heading, Link, List, Box } from '@navikt/ds-react';
 
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
@@ -37,16 +37,15 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
             dataTestId="ingen"
         >
             <VedtakPeriode vedtak={vedtak} />
-
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
-                    <List as="ul" title="Hvorfor får jeg ingen utbetaling">
-                        <List.Item>Helg</List.Item>
-                    </List>
+                    <div><Heading as="h3" size="small">Hvorfor får jeg ingen utbetaling</Heading><Box marginBlock="space-16" asChild><List data-aksel-migrated-v8 as="ul">
+                                <List.Item>Helg</List.Item>
+                            </List></Box></div>
                     <Link href="#mer-om-beregningen">Se nærmere begrunnelse her</Link>
                 </BodyShort>
             )}
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
         </UtbetalingPanel>
-    )
+    );
 }

@@ -204,9 +204,10 @@ export function FlexjarFelles({
                                     )}
                                     {showSendFeedback && (
                                         <Button
+                                            data-color="neutral"
                                             className="mr-auto mt-6"
                                             size="medium"
-                                            variant="secondary-neutral"
+                                            variant="secondary"
                                             disabled={lagrer}
                                             icon={<PaperplaneIcon title="a11y-title" fontSize="1.5rem" />}
                                             iconPosition="right"
@@ -214,8 +215,7 @@ export function FlexjarFelles({
                                                 e.preventDefault()
                                                 if (lagrer) return
                                                 await handleSend(() => reset())
-                                            }}
-                                        >
+                                            }}>
                                             {sendTilbakemeldingTekst}
                                         </Button>
                                     )}
@@ -241,7 +241,7 @@ export function FlexjarFelles({
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 interface FeedbackRadioGroupProps {
