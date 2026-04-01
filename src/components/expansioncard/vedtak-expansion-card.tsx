@@ -54,8 +54,8 @@ export const VedtakExpansionCard = ({
             className="mt-4"
             style={
                 {
-                    '--ac-expansioncard-bg': ugyldig ? 'var(--a-gray-100)' : 'var(--a-surface-default)',
-                    '--ac-expansioncard-border-color': ugyldig ? 'var(--a-gray-100)' : 'var(--a-border-default)',
+                    '--ac-expansioncard-bg': ugyldig ? 'var(--ax-neutral-200)' : 'var(--ax-bg-default)',
+                    '--ac-expansioncard-border-color': ugyldig ? 'var(--ax-neutral-200)' : 'var(--ax-border-neutral)',
                 } as React.CSSProperties
             }
         >
