@@ -1,9 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const baseConfig = require('@navikt/tsm-prettier')
+import baseConfig from '@navikt/tsm-prettier'
 
-module.exports = {
+const config = {
     ...baseConfig,
-    plugins: ['prettier-plugin-tailwindcss'],
-    tailwindStylesheet: './src/styles/global.css',
+    plugins: [...(baseConfig.plugins || []), 'prettier-plugin-tailwindcss'],
+    tailwindStylesheet: './src/style/global.css',
     tailwindFunctions: ['clsx', 'cn'],
 }
+
+export default config

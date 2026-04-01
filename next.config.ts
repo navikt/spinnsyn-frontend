@@ -1,4 +1,4 @@
-const { buildCspHeader } = require('@navikt/nav-dekoratoren-moduler/ssr')
+import { buildCspHeader } from '@navikt/nav-dekoratoren-moduler/ssr'
 
 const appDirectives = {
     'connect-src': ["'self'", '*.uxsignals.com'],
@@ -10,12 +10,10 @@ const appDirectives = {
     'style-src-elem': ["'self'"],
 }
 
-/**
- * @type {import("next").NextConfig}
- */
 const nextConfig = {
     async headers() {
-        const csp = await buildCspHeader(appDirectives, { env: process.env.ENVIRONMENT })
+        const environment = process.env.ENVIRONMENT === 'prod' ? 'prod' : 'dev'
+        const csp = await buildCspHeader(appDirectives, { env: environment })
 
         return [
             {
@@ -47,4 +45,4 @@ const nextConfig = {
     assetPrefix: process.env.ASSET_PREFIX || undefined,
 }
 
-module.exports = nextConfig
+export default nextConfig

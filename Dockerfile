@@ -2,7 +2,7 @@ FROM gcr.io/distroless/nodejs24-debian12@sha256:aad62f814208ec57ff3a67a9ca8764b0
 
 ENV NODE_ENV=production
 
-COPY /next.config.js ./
+COPY /next.config.ts ./
 COPY /next-logger.config.js ./
 COPY /.next ./.next
 COPY /.env ./

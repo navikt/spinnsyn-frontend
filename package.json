@@ -2,6 +2,7 @@
     "name": "spinnsyn-frontend",
     "version": "0.1.1",
     "private": true,
+    "type": "module",
     "engines": {
         "node": "24"
     },
@@ -84,8 +85,8 @@
         "play-headless-build": "export BUILD=true; npm run build && npx playwright test",
         "prettier:write": "prettier --write .",
         "prettier:check": "prettier --check .",
-        "lint": "eslint --ext=ts,tsx src playwright",
-        "lint:fix": "eslint --ext=ts,tsx src playwright --fix",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
         "format": "npm run prettier:write && npm run lint:fix"
     },
     "prettier": "@navikt/tsm-prettier"
