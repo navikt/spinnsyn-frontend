@@ -17,7 +17,7 @@ export const EkstrainfoOmVedtaketArbeidstaker = ({ vedtak }: { vedtak: RSVedtakA
             {vedtak.sykepengegrunnlagsfakta?.fastsatt === 'EtterSkjønn' && (
                 <>
                     <InfoSection
-                        className="mt-4 border-t border-gray-400 pt-4"
+                        className="mt-4 border-t border-ax-neutral-500 pt-4"
                         label="Årsinntekt rapportert til skatteetaten"
                         value={formaterValuta(vedtak.sykepengegrunnlagsfakta.innrapportertÅrsinntekt)}
                     />
@@ -39,7 +39,7 @@ export const EkstrainfoOmVedtaketArbeidstaker = ({ vedtak }: { vedtak: RSVedtakA
             {vedtak.sykepengegrunnlag && (
                 <InfoSection
                     bold
-                    className="mt-4 border-t border-gray-400 pt-4"
+                    className="mt-4 border-t border-ax-neutral-500 pt-4"
                     label={tekst('utbetaling.sykepengegrunnlag')}
                     value={formaterValuta(vedtak.sykepengegrunnlag)}
                 />

@@ -1,4 +1,4 @@
-import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
+import { BodyShort, Detail, LinkCard } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 import { useRouter } from 'next/router'
@@ -10,6 +10,7 @@ import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
 import { Etikett, getEtikettVariant } from '../etikett/etikett'
+import Link from 'next/link'
 
 dayjs.extend(localizedFormat)
 
@@ -65,40 +66,39 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
             searchParams.set(key, value)
         }
     }
-    const href = `${router.asPath.split('?')[0]}?${searchParams.toString()}`
 
     return (
-        <LinkPanel
-            className={cn('mb-4 p-6 [&>div]:w-full', {
-                'border-orange-300 bg-orange-50 hover:border-orange-500': !vedtak.lest,
+        <LinkCard
+            className={cn('mb-4 p-6', {
+                'border-ax-warning-400 bg-ax-warning-100 hover:border-ax-warning-600': !vedtak.lest,
             })}
-            href={href}
-            border
-            onClick={(e) => {
-                logEvent('navigere', {
-                    destinasjon: 'vedtak',
-                    skjemanavn: 'vedtak-listevisning',
-                    tidligereLest: vedtak.lest,
-                    revurdert: vedtak.revurdert,
-                    annullert: vedtak.annullert,
-                })
-                if (!e.ctrlKey && !e.metaKey && !e.shiftKey && e.button !== 1) {
-                    e.preventDefault()
-                    router.push({ query })
-                }
-            }}
         >
-            <div className="flex gap-3 max-[560px]:flex-col">
-                <div className={cn('grow', { 'line-through text-text-subtle': annullertEllerRevurdert })}>
-                    <LinkPanel.Title>
-                        <BodyShort size="small" spacing>
-                            {vedtakPeriode}
-                        </BodyShort>
-                        {tekst('spinnsyn.teaser.tittel')}
-                    </LinkPanel.Title>
-                    <LinkPanel.Description>
+            <div className="flex w-full gap-3 max-[560px]:flex-col">
+                <div className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}>
+                    <LinkCard.Title>
+                        <LinkCard.Anchor asChild>
+                            <Link
+                                href={{ query }}
+                                onClick={() =>
+                                    logEvent('navigere', {
+                                        destinasjon: 'vedtak',
+                                        skjemanavn: 'vedtak-listevisning',
+                                        tidligereLest: vedtak.lest,
+                                        revurdert: vedtak.revurdert,
+                                        annullert: vedtak.annullert,
+                                    })
+                                }
+                            >
+                                <BodyShort size="small" spacing>
+                                    {vedtakPeriode}
+                                </BodyShort>
+                                {tekst('spinnsyn.teaser.tittel')}
+                            </Link>
+                        </LinkCard.Anchor>
+                    </LinkCard.Title>
+                    <LinkCard.Description>
                         {sykmeldtFraTekstGenerator(vedtak.vedtak.yrkesaktivitetstype, vedtak.orgnavn)}
-                    </LinkPanel.Description>
+                    </LinkCard.Description>
                     {!isProd() && (
                         <Detail className="italic">
                             Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
@@ -108,7 +108,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
 
                 <div className="flex shrink-0 items-center">{etikett && <Etikett etikettVariant={etikett} />}</div>
             </div>
-        </LinkPanel>
+        </LinkCard>
     )
 }
 

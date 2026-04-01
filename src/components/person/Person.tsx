@@ -1,4 +1,4 @@
-import { BodyShort, Button, Heading, LinkPanel, Modal, Popover, Tooltip } from '@navikt/ds-react'
+import { BodyShort, Button, Heading, LinkCard, Modal, Popover, Tooltip } from '@navikt/ds-react'
 import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
 import { SandboxIcon } from '@navikt/aksel-icons'
 
@@ -31,17 +31,18 @@ export default function Person() {
             <div hidden={openState}>
                 <Tooltip content="Verktøy for testing">
                     <Button
+                        data-color="neutral"
                         ref={buttonRef}
                         onClick={() => setOpenState((b) => !b)}
                         icon={<SandboxIcon title="Åpne testdataverktøy" />}
-                        variant="tertiary-neutral"
+                        variant="tertiary"
                     />
                 </Tooltip>
                 <div
                     style={
                         {
-                            '--ac-popover-bg': 'var(--a-surface-info-subtle)',
-                            '--ac-popover-border': 'var(--a-border-info)',
+                            '--ac-popover-bg': 'var(--ax-bg-info-soft)',
+                            '--ac-popover-border': 'var(--ax-border-info)',
                         } as CSSProperties
                     }
                 >
@@ -53,7 +54,13 @@ export default function Person() {
                             <div className="w-[220px]">
                                 Her finner du verktøy for å endre mellom forskjellige brukere
                             </div>
-                            <Button onClick={dismissHint} className="mt-2" variant="secondary-neutral" size="small">
+                            <Button
+                                data-color="neutral"
+                                onClick={dismissHint}
+                                className="mt-2"
+                                variant="secondary"
+                                size="small"
+                            >
                                 OK!
                             </Button>
                         </Popover.Content>
@@ -119,9 +126,13 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
                     })
 
                     return (
-                        <LinkPanel key={key} className="w-full text-start" href={href}>
-                            <BodyShort>{person.beskrivelse}</BodyShort>
-                        </LinkPanel>
+                        <LinkCard key={key} className="w-full text-start">
+                            <LinkCard.Title>
+                                <LinkCard.Anchor href={href}>
+                                    <BodyShort>{person.beskrivelse}</BodyShort>
+                                </LinkCard.Anchor>
+                            </LinkCard.Title>
+                        </LinkCard>
                     )
                 })}
             </ul>
