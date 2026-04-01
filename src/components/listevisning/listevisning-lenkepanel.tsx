@@ -62,7 +62,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
         <Link href={{ query }} passHref legacyBehavior>
             <LinkPanel
                 className={cn('mb-4 p-6 [&>div]:w-full', {
-                    'border-orange-300 bg-orange-50 hover:border-orange-500': !vedtak.lest,
+                    'border-ax-warning-400 bg-ax-warning-100 hover:border-ax-warning-600': !vedtak.lest,
                 })}
                 border
                 onClick={() =>
@@ -76,7 +76,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                 }
             >
                 <div className="flex gap-3 max-[560px]:flex-col">
-                    <div className={cn('grow', { 'line-through text-text-subtle': annullertEllerRevurdert })}>
+                    <div className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}>
                         <LinkPanel.Title>
                             <BodyShort size="small" spacing>
                                 {vedtakPeriode}

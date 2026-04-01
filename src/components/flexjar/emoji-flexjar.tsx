@@ -53,7 +53,7 @@ export const EmojiFlexjar = ({
                         Emoji={sinna}
                         text="Veldig dårlig"
                         color="var(--ax-danger-200)"
-                        hoverColor="hover:text-red-500"
+                        hoverColor="hover:text-ax-danger-600"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -62,7 +62,7 @@ export const EmojiFlexjar = ({
                         Emoji={lei}
                         text="Dårlig"
                         color="var(--ax-warning-200)"
-                        hoverColor="hover:text-orange-500"
+                        hoverColor="hover:text-ax-warning-600"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -71,7 +71,7 @@ export const EmojiFlexjar = ({
                         Emoji={noytral}
                         text="Nøytral"
                         color="var(--ax-accent-200)"
-                        hoverColor="hover:text-blue-500"
+                        hoverColor="hover:text-ax-accent-600"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -80,7 +80,7 @@ export const EmojiFlexjar = ({
                         Emoji={glad}
                         text="Bra"
                         color="var(--ax-success-200)"
-                        hoverColor="hover:text-green-400"
+                        hoverColor="hover:text-ax-success-500"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -89,7 +89,7 @@ export const EmojiFlexjar = ({
                         Emoji={veldigGlad}
                         text="Veldig bra"
                         color="var(--ax-success-300)"
-                        hoverColor="hover:text-green-700"
+                        hoverColor="hover:text-ax-success-800"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                 </div>

@@ -20,7 +20,7 @@ const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker }: VedtakPeriodeProps
             className={cn(
                 {
                     'mb-2': !skalViseRefusjonsMottaker,
-                    'mb-8 border-b border-gray-400':
+                    'mb-8 border-b border-ax-neutral-500':
                         skalViseRefusjonsMottaker || !erWeekendPeriode(vedtak.vedtak.tom, vedtak.vedtak.fom),
                 },
                 'pb-2',
