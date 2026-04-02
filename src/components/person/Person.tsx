@@ -1,4 +1,4 @@
-import { BodyShort, Button, Heading, LinkPanel, Modal, Popover, Tooltip } from '@navikt/ds-react'
+import { BodyShort, Button, Heading, LinkCard, Modal, Popover, Tooltip } from '@navikt/ds-react'
 import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
 import { SandboxIcon } from '@navikt/aksel-icons'
 
@@ -126,9 +126,13 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
                     })
 
                     return (
-                        <LinkPanel key={key} className="w-full text-start" href={href}>
-                            <BodyShort>{person.beskrivelse}</BodyShort>
-                        </LinkPanel>
+                        <LinkCard key={key} className="w-full text-start">
+                            <LinkCard.Title>
+                                <LinkCard.Anchor href={href}>
+                                    <BodyShort>{person.beskrivelse}</BodyShort>
+                                </LinkCard.Anchor>
+                            </LinkCard.Title>
+                        </LinkCard>
                     )
                 })}
             </ul>

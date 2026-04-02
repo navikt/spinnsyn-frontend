@@ -1,4 +1,4 @@
-import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
+import { BodyShort, Detail, LinkCard } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
 import Link from 'next/link'
@@ -59,46 +59,47 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
     const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)
 
     return (
-        <Link href={{ query }} passHref legacyBehavior>
-            <LinkPanel
-                className={cn('mb-4 p-6 [&>div]:w-full', {
-                    'border-ax-warning-400 bg-ax-warning-100 hover:border-ax-warning-600': !vedtak.lest,
-                })}
-                border
-                onClick={() =>
-                    logEvent('navigere', {
-                        destinasjon: 'vedtak',
-                        skjemanavn: 'vedtak-listevisning',
-                        tidligereLest: vedtak.lest,
-                        revurdert: vedtak.revurdert,
-                        annullert: vedtak.annullert,
-                    })
-                }
-            >
-                <div className="flex gap-3 max-[560px]:flex-col">
-                    <div
-                        className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}
-                    >
-                        <LinkPanel.Title>
-                            <BodyShort size="small" spacing>
-                                {vedtakPeriode}
-                            </BodyShort>
-                            {tekst('spinnsyn.teaser.tittel')}
-                        </LinkPanel.Title>
-                        <LinkPanel.Description>
-                            {sykmeldtFraTekstGenerator(vedtak.vedtak.yrkesaktivitetstype, vedtak.orgnavn)}
-                        </LinkPanel.Description>
-                        {!isProd() && (
-                            <Detail className="italic">
-                                Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
-                            </Detail>
-                        )}
-                    </div>
-
-                    <div className="flex shrink-0 items-center">{etikett && <Etikett etikettVariant={etikett} />}</div>
+        <LinkCard
+            className={cn('mb-4 p-6', {
+                'border-ax-warning-400 bg-ax-warning-100 hover:border-ax-warning-600': !vedtak.lest,
+            })}
+        >
+            <div className="flex w-full gap-3 max-[560px]:flex-col">
+                <div className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}>
+                    <LinkCard.Title>
+                        <LinkCard.Anchor asChild>
+                            <Link
+                                href={{ query }}
+                                onClick={() =>
+                                    logEvent('navigere', {
+                                        destinasjon: 'vedtak',
+                                        skjemanavn: 'vedtak-listevisning',
+                                        tidligereLest: vedtak.lest,
+                                        revurdert: vedtak.revurdert,
+                                        annullert: vedtak.annullert,
+                                    })
+                                }
+                            >
+                                <BodyShort size="small" spacing>
+                                    {vedtakPeriode}
+                                </BodyShort>
+                                {tekst('spinnsyn.teaser.tittel')}
+                            </Link>
+                        </LinkCard.Anchor>
+                    </LinkCard.Title>
+                    <LinkCard.Description>
+                        {sykmeldtFraTekstGenerator(vedtak.vedtak.yrkesaktivitetstype, vedtak.orgnavn)}
+                    </LinkCard.Description>
+                    {!isProd() && (
+                        <Detail className="italic">
+                            Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
+                        </Detail>
+                    )}
                 </div>
-            </LinkPanel>
-        </Link>
+
+                <div className="flex shrink-0 items-center">{etikett && <Etikett etikettVariant={etikett} />}</div>
+            </div>
+        </LinkCard>
     )
 }
 
