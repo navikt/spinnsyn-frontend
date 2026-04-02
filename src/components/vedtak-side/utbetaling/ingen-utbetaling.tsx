@@ -38,7 +38,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
         >
             <VedtakPeriode vedtak={vedtak} />
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
-                <BodyShort>
+                <BodyShort as="div">
                     <div>
                         <Heading as="h3" size="small">
                             Hvorfor får jeg ingen utbetaling
