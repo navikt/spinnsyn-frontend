@@ -35,7 +35,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
                 borderRadius="2"
                 className="mt-4 rounded-md"
                 data-testid={`utbetaling-panel-${props.dataTestId}${props.erUgyldig ? '-ugyldig' : ''}`}
-                background={props.erUgyldig ? 'surface-subtle' : 'surface-info-subtle'}
+                background={props.erUgyldig ? 'neutral-soft' : 'info-soft'}
             >
                 <div className="mb-4">
                     <BodyShort size="small" weight="semibold">
