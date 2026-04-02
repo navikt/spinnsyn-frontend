@@ -35,7 +35,8 @@ export default function Person() {
                         ref={buttonRef}
                         onClick={() => setOpenState((b) => !b)}
                         icon={<SandboxIcon title="Åpne testdataverktøy" />}
-                        variant="tertiary" />
+                        variant="tertiary"
+                    />
                 </Tooltip>
                 <div
                     style={
@@ -58,7 +59,8 @@ export default function Person() {
                                 onClick={dismissHint}
                                 className="mt-2"
                                 variant="secondary"
-                                size="small">
+                                size="small"
+                            >
                                 OK!
                             </Button>
                         </Popover.Content>
@@ -81,7 +83,7 @@ export default function Person() {
                 </Modal.Body>
             </Modal>
         </>
-    );
+    )
 }
 
 function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; personer: PersonaData }) {

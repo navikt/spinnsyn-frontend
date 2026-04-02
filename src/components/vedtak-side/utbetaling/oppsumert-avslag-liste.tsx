@@ -1,4 +1,4 @@
-import { Link, List, Heading, Box } from '@navikt/ds-react';
+import { Link, List, Heading, Box } from '@navikt/ds-react'
 import React from 'react'
 
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
@@ -31,11 +31,18 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
     return (
         <section className="mb-8">
             {oppsumertAvslag.oppsummertAvslag.size > 0 && (
-                <div><Heading as="h3" size="small">{oppsumertAvslag.title}</Heading><Box marginBlock="space-16" asChild><List data-aksel-migrated-v8 as="ul">
+                <div>
+                    <Heading as="h3" size="small">
+                        {oppsumertAvslag.title}
+                    </Heading>
+                    <Box marginBlock="space-16" asChild>
+                        <List data-aksel-migrated-v8 as="ul">
                             {alleAvslag}
-                        </List></Box></div>
+                        </List>
+                    </Box>
+                </div>
             )}
             <Link href={`#${hentScrollElementId()}`}>Se nærmere begrunnelse her</Link>
         </section>
-    );
+    )
 }

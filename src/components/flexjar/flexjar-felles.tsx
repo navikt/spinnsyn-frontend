@@ -215,7 +215,8 @@ export function FlexjarFelles({
                                                 e.preventDefault()
                                                 if (lagrer) return
                                                 await handleSend(() => reset())
-                                            }}>
+                                            }}
+                                        >
                                             {sendTilbakemeldingTekst}
                                         </Button>
                                     )}
@@ -241,7 +242,7 @@ export function FlexjarFelles({
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 interface FeedbackRadioGroupProps {

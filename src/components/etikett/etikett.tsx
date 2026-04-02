@@ -34,13 +34,15 @@ export const Etikett = ({ etikettVariant, size, className }: EtikettProps) => {
             return null
         case EtikketVariant.REVURDERT:
             return (
-                <Tag data-color="neutral" size={size} variant="outline" className={className}>Erstattet med nytt svar
-                                    </Tag>
-            );
+                <Tag data-color="neutral" size={size} variant="outline" className={className}>
+                    Erstattet med nytt svar
+                </Tag>
+            )
         case EtikketVariant.NYESTE_REVURDERING:
             return (
-                <Tag data-color="info" size={size} variant="outline" className={className}>Nytt svar
-                                    </Tag>
-            );
+                <Tag data-color="info" size={size} variant="outline" className={className}>
+                    Nytt svar
+                </Tag>
+            )
     }
 }

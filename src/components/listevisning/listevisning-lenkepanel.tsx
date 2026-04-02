@@ -76,7 +76,9 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                 }
             >
                 <div className="flex gap-3 max-[560px]:flex-col">
-                    <div className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}>
+                    <div
+                        className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}
+                    >
                         <LinkPanel.Title>
                             <BodyShort size="small" spacing>
                                 {vedtakPeriode}

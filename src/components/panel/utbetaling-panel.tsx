@@ -46,7 +46,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
                 {props.children}
             </Box>
         </section>
-    );
+    )
 }
 
 export default UtbetalingPanel
