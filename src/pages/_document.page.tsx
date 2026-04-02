@@ -35,11 +35,12 @@ class MyDocument extends Document<Props> {
         const showDecorator = process.env.NO_DECORATOR != 'true'
         if (showDecorator) {
             props.Decorator = await fetchDecoratorReact({
-                env: process.env.DECORATOR_ENV === 'dev' ? 'dev' : 'prod',
+                env: (process.env.DECORATOR_ENV as 'dev' | 'prod') || 'dev',
                 params: {
                     chatbot: false,
                     feedback: false,
                     breadcrumbs: createInitialServerSideBreadcrumbs(ctx.pathname),
+                    logoutWarning: process.env.MOCK_BACKEND !== 'true',
                 },
             })
         }
