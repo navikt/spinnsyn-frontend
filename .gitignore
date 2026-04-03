@@ -4,6 +4,7 @@
 .idea
 *.iml
 .next
+.next-test-*
 next-env.d.ts
 
 # dependencies

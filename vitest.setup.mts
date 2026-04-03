@@ -9,6 +9,7 @@ vi.mock('next/router', () => ({
     useRouter: () => ({
         query: {},
         pathname: '/',
+        asPath: '/',
         push: vi.fn(),
         replace: vi.fn(),
         reload: vi.fn(),

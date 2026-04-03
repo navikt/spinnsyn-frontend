@@ -26,6 +26,7 @@ const createOptions = (medDekorator = false, port = 3000): OptionsType => {
     const serverEnv = {
         ...process.env,
         MOCK_BACKEND: 'true',
+        NEXT_DIST_DIR: `.next-test-${port}`,
         ...(medDekorator ? {} : { NO_DECORATOR: 'true' }),
     }
 
@@ -69,6 +70,7 @@ const ciBrowserConfigs = velgBrowserConfigs(
 
 export default defineConfig({
     testDir: './playwright',
+    globalTeardown: './playwright/global-teardown',
     timeout: 30000,
     fullyParallel: true,
     forbidOnly: !!process.env.CI,
