@@ -69,47 +69,47 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
 
     return (
         <LinkPanel
-                className={cn('mb-4 p-6 [&>div]:w-full', {
-                    'border-orange-300 bg-orange-50 hover:border-orange-500': !vedtak.lest,
-                })}
-                href={href}
-                border
-                onClick={(e) => {
-                    logEvent('navigere', {
-                        destinasjon: 'vedtak',
-                        skjemanavn: 'vedtak-listevisning',
-                        tidligereLest: vedtak.lest,
-                        revurdert: vedtak.revurdert,
-                        annullert: vedtak.annullert,
-                    })
-                    if (!e.ctrlKey && !e.metaKey && !e.shiftKey && e.button !== 1) {
-                        e.preventDefault()
-                        router.push({ query })
-                    }
-                }}
-            >
-                <div className="flex gap-3 max-[560px]:flex-col">
-                    <div className={cn('grow', { 'line-through text-text-subtle': annullertEllerRevurdert })}>
-                        <LinkPanel.Title>
-                            <BodyShort size="small" spacing>
-                                {vedtakPeriode}
-                            </BodyShort>
-                            {tekst('spinnsyn.teaser.tittel')}
-                        </LinkPanel.Title>
-                        <LinkPanel.Description>
-                            {sykmeldtFraTekstGenerator(vedtak.vedtak.yrkesaktivitetstype, vedtak.orgnavn)}
-                        </LinkPanel.Description>
-                        {!isProd() && (
-                            <Detail className="italic">
-                                Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
-                            </Detail>
-                        )}
-                    </div>
-
-                    <div className="flex shrink-0 items-center">{etikett && <Etikett etikettVariant={etikett} />}</div>
+            className={cn('mb-4 p-6 [&>div]:w-full', {
+                'border-orange-300 bg-orange-50 hover:border-orange-500': !vedtak.lest,
+            })}
+            href={href}
+            border
+            onClick={(e) => {
+                logEvent('navigere', {
+                    destinasjon: 'vedtak',
+                    skjemanavn: 'vedtak-listevisning',
+                    tidligereLest: vedtak.lest,
+                    revurdert: vedtak.revurdert,
+                    annullert: vedtak.annullert,
+                })
+                if (!e.ctrlKey && !e.metaKey && !e.shiftKey && e.button !== 1) {
+                    e.preventDefault()
+                    router.push({ query })
+                }
+            }}
+        >
+            <div className="flex gap-3 max-[560px]:flex-col">
+                <div className={cn('grow', { 'line-through text-text-subtle': annullertEllerRevurdert })}>
+                    <LinkPanel.Title>
+                        <BodyShort size="small" spacing>
+                            {vedtakPeriode}
+                        </BodyShort>
+                        {tekst('spinnsyn.teaser.tittel')}
+                    </LinkPanel.Title>
+                    <LinkPanel.Description>
+                        {sykmeldtFraTekstGenerator(vedtak.vedtak.yrkesaktivitetstype, vedtak.orgnavn)}
+                    </LinkPanel.Description>
+                    {!isProd() && (
+                        <Detail className="italic">
+                            Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
+                        </Detail>
+                    )}
                 </div>
-            </LinkPanel>
-    );
+
+                <div className="flex shrink-0 items-center">{etikett && <Etikett etikettVariant={etikett} />}</div>
+            </div>
+        </LinkPanel>
+    )
 }
 
 export default ListevisningLenkepanel

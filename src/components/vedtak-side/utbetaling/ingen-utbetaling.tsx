@@ -39,7 +39,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
             <VedtakPeriode vedtak={vedtak} />
 
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
-                <BodyShort>
+                <BodyShort as="div">
                     <List as="ul" title="Hvorfor får jeg ingen utbetaling">
                         <List.Item>Helg</List.Item>
                     </List>
