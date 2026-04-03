@@ -1,7 +1,6 @@
 import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
 import dayjs from 'dayjs'
 import React from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 
@@ -58,14 +57,24 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
     const nyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)
 
+    const searchParams = new URLSearchParams()
+    for (const [key, value] of Object.entries(query)) {
+        if (Array.isArray(value)) {
+            value.forEach((v) => searchParams.append(key, v))
+        } else if (value !== undefined) {
+            searchParams.set(key, value)
+        }
+    }
+    const href = `${router.asPath.split('?')[0]}?${searchParams.toString()}`
+
     return (
-        <Link href={{ query }} passHref legacyBehavior>
-            <LinkPanel
+        <LinkPanel
                 className={cn('mb-4 p-6 [&>div]:w-full', {
                     'border-orange-300 bg-orange-50 hover:border-orange-500': !vedtak.lest,
                 })}
+                href={href}
                 border
-                onClick={() =>
+                onClick={(e) => {
                     logEvent('navigere', {
                         destinasjon: 'vedtak',
                         skjemanavn: 'vedtak-listevisning',
@@ -73,7 +82,11 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                         revurdert: vedtak.revurdert,
                         annullert: vedtak.annullert,
                     })
-                }
+                    if (!e.ctrlKey && !e.metaKey && !e.shiftKey && e.button !== 1) {
+                        e.preventDefault()
+                        router.push({ query })
+                    }
+                }}
             >
                 <div className="flex gap-3 max-[560px]:flex-col">
                     <div className={cn('grow', { 'line-through text-text-subtle': annullertEllerRevurdert })}>
@@ -96,8 +109,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                     <div className="flex shrink-0 items-center">{etikett && <Etikett etikettVariant={etikett} />}</div>
                 </div>
             </LinkPanel>
-        </Link>
-    )
+    );
 }
 
 export default ListevisningLenkepanel
