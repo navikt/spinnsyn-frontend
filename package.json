@@ -49,7 +49,7 @@
         "@types/uuid": "^10.0.0",
         "@vitejs/plugin-react": "^6.0.1",
         "autoprefixer": "^10.4.27",
-        "axe-core": "^4.11.1",
+        "axe-core": "^4.11.2",
         "eslint": "^8.57.0",
         "eslint-config-next": "^15.5.4",
         "next": "^15.5.9",
