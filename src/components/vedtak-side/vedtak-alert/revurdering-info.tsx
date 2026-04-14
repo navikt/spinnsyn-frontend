@@ -88,9 +88,7 @@ export const RevurderingInfo = ({ alleVedtak, vedtak }: RevurderingInfoProps) =>
     const harEndringer = revurdertVedtak === undefined ? false : harVedtakEndringer(vedtak, revurdertVedtak)
     if (!revurdertVedtak) {
         logger.warn(
-            'Kunne ikke finne revurdert vedtak for revurdering-info. VedtakId: ' + vedtak.id,
-            ', soknadIder:',
-            soknadIder,
+            `Kunne ikke finne revurdert vedtak for revurdering-info: vedtakId ${vedtak.id}, søknader: ${soknadIder}`,
         )
     }
 

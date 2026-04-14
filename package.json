@@ -5,6 +5,9 @@
     "engines": {
         "node": "24"
     },
+    "overrides": {
+        "jiti": "^2.6.1"
+    },
     "dependencies": {
         "@grafana/faro-web-sdk": "^2.3.1",
         "@navikt/aksel-icons": "^7.40.0",
@@ -12,9 +15,9 @@
         "@navikt/ds-react": "^7.40.0",
         "@navikt/ds-tailwind": "^7.40.0",
         "@navikt/ds-tokens": "^7.40.0",
-        "@navikt/nav-dekoratoren-moduler": "^3.6.3",
+        "@navikt/nav-dekoratoren-moduler": "3.7.1",
         "@navikt/next-api-proxy": "^4.1.5",
-        "@navikt/next-logger": "^1.35.0",
+        "@navikt/next-logger": "^4.4.4",
         "@navikt/oasis": "^3.8.0",
         "@tanstack/react-query": "^5.90.21",
         "@unleash/nextjs": "^1.6.4",
@@ -36,7 +39,8 @@
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.11.2",
-        "@navikt/eslint-config-teamsykmelding": "^7.1.0",
+        "@navikt/tsm-eslint-react": "^1.0.0",
+        "@navikt/tsm-prettier": "^2.0.0",
         "@playwright/test": "^1.59.1",
         "@testing-library/dom": "^10.4.1",
         "@testing-library/jest-dom": "^6.9.1",
@@ -50,9 +54,12 @@
         "@vitejs/plugin-react": "^6.0.1",
         "autoprefixer": "^10.5.0",
         "axe-core": "^4.11.3",
-        "eslint": "^8.57.0",
-        "eslint-config-next": "^15.5.4",
-        "next": "^15.5.9",
+        "eslint": "^9.39.4",
+        "eslint-config-next": "^16.2.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.5",
+        "jsdom": "^29.0.1",
+        "next": "^16.2.1",
         "postcss": "^8.5.10",
         "prettier": "^3.8.3",
         "prettier-plugin-tailwindcss": "^0.7.2",
@@ -62,13 +69,13 @@
         "vitest": "^4.1.5"
     },
     "scripts": {
-        "dev": "MOCK_BACKEND=true next dev -p 3000 | pino-pretty",
+        "dev": "MOCK_BACKEND=true next dev --webpack -p 3000 | pino-pretty",
         "dev-ingen-dekorator": "MOCK_BACKEND=true NO_DECORATOR=true npm run dev | pino-pretty",
         "interne": "SPINNSYN_FRONTEND_INTERNE=true NO_DECORATOR=true npm run dev | pino-pretty",
         "start": "next start -p 3000",
         "start-ingen-dekorator": "NO_DECORATOR=true npm start",
         "arkiv": "npm run build && npm run start-ingen-dekorator",
-        "build": "next build",
+        "build": "next build --webpack",
         "test": "vitest",
         "test:ci": "vitest --run",
         "play": "PLAYWRIGHT_ALL=true npx playwright test --ui",
@@ -81,26 +88,5 @@
         "lint:fix": "eslint --ext=ts,tsx src playwright --fix",
         "format": "npm run prettier:write && npm run lint:fix"
     },
-    "eslintConfig": {
-        "extends": [
-            "@navikt/eslint-config-teamsykmelding",
-            "next/core-web-vitals"
-        ],
-        "rules": {
-            "@typescript-eslint/explicit-function-return-type": "off",
-            "@typescript-eslint/no-explicit-any": "off",
-            "@typescript-eslint/no-non-null-assertion": "off"
-        },
-        "overrides": [
-            {
-                "files": [
-                    "**/playwright/**/*.{js,ts}"
-                ],
-                "rules": {
-                    "testing-library/prefer-screen-queries": "off"
-                }
-            }
-        ]
-    },
-    "prettier": "@navikt/eslint-config-teamsykmelding/prettier"
+    "prettier": "@navikt/tsm-prettier"
 }

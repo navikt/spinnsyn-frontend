@@ -8,6 +8,8 @@ import { korrigerYrkesaktivitetstype } from '../utils/korrigerYrkesaktivitetstyp
 
 export default function UseVedtak() {
     const router = useRouter()
+    // eslint-disable-next-line no-console
+    console.log('[useVedtak] hook called, router.isReady=', router.isReady, 'asPath=', router.asPath)
     const testpersonQuery = router.query['testperson']
 
     const query = () => {
@@ -16,9 +18,11 @@ export default function UseVedtak() {
         }
         return ''
     }
-    return useQuery<VedtakOgFnr, Error>({
+    const result = useQuery<VedtakOgFnr, Error>({
         queryKey: ['vedtak'],
         queryFn: async () => {
+            // eslint-disable-next-line no-console
+            console.log('[useVedtak] queryFn FIRED, interne=', spinnsynFrontendInterne())
             if (spinnsynFrontendInterne()) {
                 const vedtak: VedtakOgFnrInterneResponse = await fetchJsonMedRequestId(
                     '/syk/sykepenger/api/spinnsyn-backend-veileder/vedtak' + query(),
@@ -36,6 +40,18 @@ export default function UseVedtak() {
             return { alleVedtak: alleVedtak.map((v) => korrigerYrkesaktivitetstype(v)), sykmeldtFnr: null }
         },
     })
+    // eslint-disable-next-line no-console
+    console.log(
+        '[useVedtak] state status=',
+        result.status,
+        'fetchStatus=',
+        result.fetchStatus,
+        'hasData=',
+        !!result.data,
+        'error=',
+        result.error?.message,
+    )
+    return result
 }
 
 interface VedtakOgFnr {
