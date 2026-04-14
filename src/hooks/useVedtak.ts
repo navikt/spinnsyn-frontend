@@ -16,6 +16,7 @@ export default function UseVedtak() {
         }
         return ''
     }
+
     return useQuery<VedtakOgFnr, Error>({
         queryKey: ['vedtak'],
         queryFn: async () => {

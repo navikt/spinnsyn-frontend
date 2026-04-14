@@ -1,13 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import getConfig from 'next/config'
 import { getToken, validateAzureToken } from '@navikt/oasis'
 import { requestAzureOboToken } from '@navikt/oasis/dist/obo'
 
 import { hentModiaContext } from '../../../data/hentModiaContext'
 import { hentVedtakFraSpinnsynBackendForInterne } from '../../../data/hentVedtakForInterne'
 import { isMockBackend } from '../../../utils/environment'
-
-const { serverRuntimeConfig } = getConfig()
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (isMockBackend()) {
@@ -807,7 +804,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(401).json({ message: 'Feil i autorisasjonstoken.' })
     }
 
-    const spinnsynObo = await requestAzureOboToken(accessToken, serverRuntimeConfig.spinnsynBackendClientId)
+    const spinnsynObo = await requestAzureOboToken(accessToken, process.env.SPINNSYN_BACKEND_CLIENT_ID as string)
     if (!spinnsynObo.ok) {
         return res.status(401).json({ message: 'Kunne ikke hente spinnsyn obo token' })
     }

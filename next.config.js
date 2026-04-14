@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { buildCspHeader } = require('@navikt/nav-dekoratoren-moduler/ssr')
+const { BASE_PATH } = require('./constants')
 
 const appDirectives = {
     'connect-src': ["'self'", '*.uxsignals.com'],
@@ -43,42 +43,10 @@ const nextConfig = {
             },
         ]
     },
-    eslint: {
-        ignoreDuringBuilds: true, // vi linter i bygg stegene i github actions
-    },
-    basePath: '/syk/sykepenger',
+    distDir: process.env.NEXT_DIST_DIR || '.next',
+    basePath: BASE_PATH,
     pageExtensions: ['page.tsx', 'api.ts'],
     assetPrefix: process.env.ASSET_PREFIX || undefined,
-    serverRuntimeConfig: {
-        // Will only be available on the server side
-        decoratorEnv: process.env.DECORATOR_ENV,
-        noDecorator: process.env.NO_DECORATOR,
-        utviklingArkivering: process.env.UTVIKLING_ARKIVERING,
-        arkivering: process.env.ARKIVERING,
-        spinnsynBackendUrl: process.env.SPINNSYN_BACKEND_URL,
-        spinnsynBackendTokenxClientId: process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
-        sokosKontoregisterPersonTokenxClientId: process.env.SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID,
-        spinnsynBackendClientId: process.env.SPINNSYN_BACKEND_CLIENT_ID,
-        naisAppImage: process.env.NAIS_APP_IMAGE,
-        flexjarBackendTokenxClientId: process.env.FLEXJAR_BACKEND_TOKENX_CLIENT_ID,
-    },
-    publicRuntimeConfig: {
-        // Will be available on both server and client
-        basePath: '/syk/sykepenger',
-        flexGatewayRoot: process.env.FLEX_GATEWAY_ROOT,
-        mockBackend: process.env.MOCK_BACKEND,
-        opplaering: process.env.OPPLAERING,
-        sykefravaerUrl: process.env.SYKEFRAVAER_URL,
-        minSideUrl: process.env.MINSIDE_URL,
-        umamiEnabled: process.env.UMAMI_ENABLED,
-        environment: process.env.ENVIRONMENT,
-        spinnsynFrontendInterne: process.env.SPINNSYN_FRONTEND_INTERNE,
-        spinnsynFrontendArkivering: process.env.ARKIVERING,
-        arkiverteVedtakUrl: process.env.ARKIVERTE_VEDTAK_URL,
-        telemetryCollectorURL: process.env.NAIS_FRONTEND_TELEMETRY_COLLECTOR_URL,
-        naisAppImage: process.env.NAIS_APP_IMAGE,
-        naisAppName: process.env.NAIS_APP_NAME,
-    },
 }
 
 module.exports = nextConfig

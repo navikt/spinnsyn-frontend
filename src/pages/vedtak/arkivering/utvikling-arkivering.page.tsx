@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next'
-import getConfig from 'next/config'
 import React from 'react'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
@@ -10,8 +9,6 @@ import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../../..
 import { vedtakMedFlereArbeidsgivere } from '../../../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
 import { revurderingVedtak } from '../../../data/testdata/data/vedtak/revurdering'
 import { revurdertOgAnnullert } from '../../../data/testdata/data/personas/personas'
-
-const { serverRuntimeConfig } = getConfig()
 
 type UtviklingArkiveringPageProps = {
     vedtak: RSVedtakWrapper
@@ -53,7 +50,7 @@ export const getServerSideProps: GetServerSideProps<UtviklingArkiveringPageProps
     ctx.res.setHeader('x-vedtak-tom', vedtak.vedtak.tom)
     return {
         props: {
-            enabled: serverRuntimeConfig.utviklingArkivering === 'true',
+            enabled: process.env.UTVIKLING_ARKIVERING === 'true',
             vedtak,
             alleVedtak: alleVedtak,
         },

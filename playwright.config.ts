@@ -28,10 +28,11 @@ const createOptions = (medDekorator = false, port = 3000): OptionsType => {
     const serverEnv = {
         ...process.env,
         MOCK_BACKEND: 'true',
+        NEXT_DIST_DIR: `.next/test-${port}`,
         ...(medDekorator ? {} : { NO_DECORATOR: 'true' }),
     }
 
-    const serverCommand = process.env.BUILD ? 'next start' : 'next dev'
+    const serverCommand = process.env.BUILD ? 'next start' : 'next dev --webpack'
 
     return {
         baseURL,
