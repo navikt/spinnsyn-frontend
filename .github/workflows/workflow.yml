@@ -1,4 +1,4 @@
-name: felles-workflow
+name: workflow / felles-workflow
 on:
   workflow_dispatch:
   push:
