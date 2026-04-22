@@ -42,6 +42,7 @@ const nextConfig = {
             },
         ]
     },
+    distDir: process.env.NEXT_DIST_DIR || '.next',
     basePath: '/syk/sykepenger',
     pageExtensions: ['page.tsx', 'api.ts'],
     assetPrefix: process.env.ASSET_PREFIX || undefined,
