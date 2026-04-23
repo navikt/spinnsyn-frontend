@@ -5,7 +5,7 @@
 *.iml
 .next
 next-env.d.ts
-
+*.tsbuildinfo
 # dependencies
 /server/node_modules
 /node_modules

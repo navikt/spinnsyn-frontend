@@ -1,4 +1,5 @@
 const { buildCspHeader } = require('@navikt/nav-dekoratoren-moduler/ssr')
+const { BASE_PATH } = require('./constants')
 
 const appDirectives = {
     'connect-src': ["'self'", '*.uxsignals.com'],
@@ -43,7 +44,7 @@ const nextConfig = {
         ]
     },
     distDir: process.env.NEXT_DIST_DIR || '.next',
-    basePath: '/syk/sykepenger',
+    basePath: BASE_PATH,
     pageExtensions: ['page.tsx', 'api.ts'],
     assetPrefix: process.env.ASSET_PREFIX || undefined,
 }

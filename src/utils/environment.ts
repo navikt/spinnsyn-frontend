@@ -18,10 +18,9 @@ export interface PublicEnv {
     NAIS_APP_NAME?: string
 }
 
-// JSON.stringify() does not escape </script> sequences. If any env var value contained </script>, it would break out
-// of the script tag and woudl be a latent XSS vector.
+// Escape `<` so a value containing `</script>` cannot break out of the inline script tag.
 export function safeJsonStringify(data: unknown): string {
-    return JSON.stringify(data).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/\//g, '\\u002f')
+    return JSON.stringify(data).replace(/</g, '\\u003c')
 }
 
 export function getPublicEnv(): PublicEnv {
@@ -102,6 +101,8 @@ export function naisAppName() {
     return getEnvVar('NAIS_APP_NAME')
 }
 
+import { BASE_PATH } from '../../constants'
+
 export function basePath() {
-    return '/syk/sykepenger'
+    return BASE_PATH
 }
