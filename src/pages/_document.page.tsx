@@ -68,13 +68,16 @@ class MyDocument extends Document<Props> {
 
         return (
             <Html lang={language || 'no'}>
-                <Head>{visDekorator && <Decorator.HeadAssets />}</Head>
-                <body>
+                <Head>
                     <script
+                        id="__public_env__"
                         dangerouslySetInnerHTML={{
-                            __html: `window.__publicEnv = ${safeJsonStringify(getPublicEnv())}`,
+                            __html: `window.__publicEnv = ${safeJsonStringify(getPublicEnv())};window.__publicEnvLoaded = true;`,
                         }}
                     />
+                    {visDekorator && <Decorator.HeadAssets />}
+                </Head>
+                <body>
                     {header()}
                     <Main />
                     {visDekorator && (
