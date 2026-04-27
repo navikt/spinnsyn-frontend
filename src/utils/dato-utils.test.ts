@@ -7,6 +7,7 @@ import {
     erHelg,
     erWeekendPeriode,
     fullDatoKlokkeslett,
+    antallDager,
 } from './dato-utils'
 
 describe('tilLesbarDatoUtenAarstall', () => {
@@ -65,5 +66,19 @@ describe('erWeekendPeriode', () => {
 describe('fullDatoKlokkeslett', () => {
     it('returnerer riktig format', () => {
         expect(fullDatoKlokkeslett('2025-12-02T14:30:00')).toBe('2. desember 2025 kl. 14.30')
+    })
+})
+
+describe('antallDager', () => {
+    it('returnerer 1 for samme dag', () => {
+        expect(antallDager('2025-12-02', '2025-12-02')).toBe(1)
+    })
+
+    it('teller antall dager inklusivt over flere dager', () => {
+        expect(antallDager('2025-12-02', '2025-12-05')).toBe(4)
+    })
+
+    it('teller riktig over månedsskifte', () => {
+        expect(antallDager('2025-01-30', '2025-02-02')).toBe(4)
     })
 })

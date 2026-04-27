@@ -2,7 +2,7 @@ import { BodyShort } from '@navikt/ds-react'
 import React from 'react'
 import cn from 'classnames'
 
-import { erWeekendPeriode, tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
+import { antallDager, erWeekendPeriode, tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
@@ -14,6 +14,7 @@ type VedtakPeriodeProps = {
 
 const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker }: VedtakPeriodeProps) => {
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
+    const dager = antallDager(vedtak.vedtak.fom, vedtak.vedtak.tom)
 
     return (
         <div
@@ -35,7 +36,9 @@ const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker }: VedtakPeriodeProps
                 {vedtak.vedtak.yrkesaktivitetstype === 'SELVSTENDIG' &&
                     'Gjelder sykefravær som selvstendig næringsdrivende.'}
             </BodyShort>
-            <BodyShort>Periode: {periode}</BodyShort>
+            <BodyShort>
+                Periode: {periode} ({dager} dager)
+            </BodyShort>
         </div>
     )
 }
