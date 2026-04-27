@@ -46,7 +46,4 @@ function Innhold() {
     }
 }
 
-// export const getServerSideProps = beskyttetSideUtenProps
-export async function getServerSideProps() {
-    return { props: { toggles: [] } }
-}
+export const getServerSideProps = beskyttetSideUtenProps
