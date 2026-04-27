@@ -11,5 +11,9 @@ test.describe('Vedtak som kun er innenfor arbeidsgiverperioden', () => {
 
         await harSynligTekst(page, 'Søknaden er behandlet')
         await harSynligTittel(page, 'Utbetaling fra arbeidsgiver', 2)
+        await harSynligTekst(
+            page,
+            'Arbeidsgiverperioden er de første 16 dagene av et sykefravær. I denne perioden er det Posten Norge AS, Bærum som betaler sykepengene dine.',
+        )
     })
 })

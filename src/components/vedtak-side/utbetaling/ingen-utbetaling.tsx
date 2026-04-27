@@ -38,7 +38,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
             erUgyldig={annullertEllerRevurdert}
             dataTestId="ingen"
         >
-            <VedtakPeriode vedtak={vedtak} />
+            <VedtakPeriode vedtak={vedtak} erKunArbeidsgiverPeriode={erKunArbeidsgiverPeriode} />
 
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
