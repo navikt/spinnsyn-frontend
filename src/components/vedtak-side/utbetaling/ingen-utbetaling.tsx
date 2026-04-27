@@ -2,7 +2,7 @@ import { BodyShort, Heading, Link, List } from '@navikt/ds-react'
 
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { unikeAvslagBegrunnelser, hentBegrunnelse, finnInnvilgetMerke } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
 import { dagErInnvilget } from '../vedtak'
@@ -11,7 +11,6 @@ import { OppsumertAvslagListe, OppsummertAvslagListeProps } from './oppsumert-av
 
 export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
-    const ingenUtbetalingTittel = 'Ingen utbetaling'
     const harAvslagBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'Avslag') !== undefined
     const alleDager = [...vedtak.daglisteSykmeldt, ...vedtak.daglisteArbeidsgiver]
     const minstEnDagInnvilget: boolean = alleDager.some((dag) => dagErInnvilget.includes(dag.dagtype))
@@ -24,10 +23,13 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
         dagTabellScrollElementId: 'sykepenger-per-dag',
     }
 
+    const erKunArbeidsgiverPeriode = alleDager.every((dag) => dag.dagtype === 'ArbeidsgiverperiodeDag')
+    const ingenUtbetalingTittel = erKunArbeidsgiverPeriode ? 'Utbetaling fra arbeidsgiver' : 'Ingen utbetaling'
+
     return (
         <UtbetalingPanel
             sectionLabel={ingenUtbetalingTittel}
-            avslag={!minstEnDagInnvilget}
+            innvilgetMerke={finnInnvilgetMerke(!minstEnDagInnvilget, erKunArbeidsgiverPeriode, minstEnDagInnvilget)}
             tittel={
                 <Heading level="2" size="large">
                     {ingenUtbetalingTittel}
