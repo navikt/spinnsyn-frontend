@@ -102,3 +102,14 @@ const erForskjelligVedtakType = (nyttVedtak: RSVedtakWrapper, gammeltVedtak: RSV
 const erForskjelligSykepengedagerIgjen = (nyttVedtak: RSVedtakWrapper, gammeltVedtak: RSVedtakWrapper): boolean => {
     return nyttVedtak.vedtak.utbetaling.gjenståendeSykedager !== gammeltVedtak.vedtak.utbetaling.gjenståendeSykedager
 }
+
+export const finnInnvilgetMerke = (
+    erAvslag: boolean,
+    erKunArbeidsgiverperiode: boolean,
+    erDelvisInvilgelse: boolean,
+): string => {
+    if (erKunArbeidsgiverperiode) return 'Søknaden er behandlet'
+    if (erAvslag) return 'Søknaden er avslått'
+    if (erDelvisInvilgelse) return 'Søknaden er delvis innvilget'
+    return 'Søknaden er innvilget'
+}

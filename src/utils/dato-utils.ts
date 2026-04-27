@@ -69,3 +69,9 @@ export function erWeekendPeriode(fom: string, tom: string): boolean {
 export function fullDatoKlokkeslett(timestamp: string): string {
     return dayjs(timestamp).format('D. MMMM YYYY [kl.] HH.mm')
 }
+
+export function antallDager(fom: string, tom: string): number {
+    const startDate = dayjs(fom)
+    const endDate = dayjs(tom)
+    return endDate.diff(startDate, 'day') + 1
+}

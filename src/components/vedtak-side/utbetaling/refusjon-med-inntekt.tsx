@@ -6,7 +6,7 @@ import { getLedetekst, tekst } from '../../../utils/tekster'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { unikeAvslagBegrunnelser, hentBegrunnelse, finnInnvilgetMerke } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { ArbeidsgiverInfo } from './arbeidsgiver-info'
@@ -27,9 +27,11 @@ const RefusjonMedInntekt = ({ vedtak }: RefusjonMedInntektProps) => {
         vedtak,
         dagTabellScrollElementId: 'sykepenger-per-dag-arbeidsgiver',
     }
+    const delvisInnvilgelse = oppsumertAvslagObject.oppsummertAvslag.size > 0
+
     return (
         <UtbetalingPanel
-            delvisInnvilgelse={oppsumertAvslagObject.oppsummertAvslag.size > 0}
+            innvilgetMerke={finnInnvilgetMerke(false, false, delvisInnvilgelse)}
             sectionLabel="Refusjon til arbeidsgiver"
             tittel={
                 <Heading level="2" size="large">
