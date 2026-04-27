@@ -46,8 +46,8 @@ const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker, erKunArbeidsgiverPer
                         Sykefraværet er innenfor arbeidsgiverperioden
                     </Heading>
                     <BodyShort className="mt-2">
-                        Arbeidsgiverperioden er de første 16 dagene av et sykefravær. I denne perioden er det Posten
-                        Norge AS, Bærum som betaler sykepengene dine.
+                        Arbeidsgiverperioden er de første 16 dagene av et sykefravær. I denne perioden er det{' '}
+                        {storeTilStoreOgSmå(vedtak.orgnavn)} som betaler sykepengene dine.
                     </BodyShort>
                 </>
             )}
