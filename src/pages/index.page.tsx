@@ -24,6 +24,8 @@ export default function Index() {
 function Innhold() {
     const router = useRouter()
     const { id } = router.query
+    // eslint-disable-next-line no-console
+    console.log('[Innhold] mount/render, id=', id, 'asPath=', router.asPath)
     const { data, isError } = useVedtak()
 
     const enkeltVedtak = data?.alleVedtak?.find((v) => v.id == id)

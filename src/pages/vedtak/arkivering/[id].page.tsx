@@ -1,6 +1,5 @@
 import { logger } from '@navikt/next-logger'
 import { GetServerSideProps } from 'next'
-import getConfig from 'next/config'
 import React from 'react'
 import { getToken, requestAzureClientCredentialsToken, validateAzureToken } from '@navikt/oasis'
 
@@ -8,8 +7,6 @@ import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-a
 import { hentVedtakForArkivering } from '../../../data/hentVedtakForArkivering'
 import { ErrorMedStatus } from '../../../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
-
-const { serverRuntimeConfig } = getConfig()
 
 interface VedtakArkiveringProps {
     vedtak?: RSVedtakWrapper
@@ -29,7 +26,7 @@ const ServerVedtak = ({ vedtak, status, fnr, utbetalingId, alleVedtak }: VedtakA
 
 export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = async (ctx) => {
     try {
-        if (serverRuntimeConfig.arkivering !== 'true') {
+        if (process.env.UTVIKLING_ARKIVERING !== 'true') {
             throw new ErrorMedStatus('Arkivering ikke enablet', 400)
         }
 
@@ -44,7 +41,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
         const utbetalingId: string = ctx.params!.id as any
         const fnr: string = ctx.req.headers.fnr as any
 
-        const token = await requestAzureClientCredentialsToken(serverRuntimeConfig.spinnsynBackendClientId)
+        const token = await requestAzureClientCredentialsToken(process.env.SPINNSYN_BACKEND_CLIENT_ID as string)
         if (!token.ok) {
             throw new ErrorMedStatus('Kunne ikke hente token: ' + token.error, 500)
         }
@@ -55,7 +52,7 @@ export const getServerSideProps: GetServerSideProps<VedtakArkiveringProps> = asy
             throw new ErrorMedStatus('Fant ikke vedtaket', 404)
         }
 
-        ctx.res.setHeader('x-nais-app-image', serverRuntimeConfig.naisAppImage)
+        ctx.res.setHeader('x-nais-app-image', process.env.NAIS_APP_IMAGE as string)
         ctx.res.setHeader('x-vedtak-fom', vedtaket.vedtak.fom)
         ctx.res.setHeader('x-vedtak-tom', vedtaket.vedtak.tom)
         logger.info(`Rendrer vedtak ${utbetalingId} for arkivering`)

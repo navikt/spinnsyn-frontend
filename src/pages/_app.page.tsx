@@ -58,6 +58,13 @@ function MyApp({ Component, pageProps }: AppProps<ServerSidePropsResult>): React
                 },
             }),
     )
+    // eslint-disable-next-line no-console
+    console.log(
+        '[MyApp] render, queryClient id=',
+        (queryClient as unknown as { _id?: number })._id ?? 'n/a',
+        'instance=',
+        queryClient,
+    )
 
     return (
         <>

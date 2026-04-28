@@ -1,13 +1,10 @@
 import { DecoratorComponentsReact, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr'
-import getConfig from 'next/config'
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
-import { spinnsynFrontendInterne } from '../utils/environment'
-
-const { serverRuntimeConfig } = getConfig()
+import { getPublicEnv, safeJsonStringify, spinnsynFrontendInterne } from '../utils/environment'
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
@@ -35,14 +32,15 @@ class MyDocument extends Document<Props> {
             ctx,
         }
 
-        const showDecorator = serverRuntimeConfig.noDecorator != 'true'
+        const showDecorator = process.env.NO_DECORATOR != 'true'
         if (showDecorator) {
             props.Decorator = await fetchDecoratorReact({
-                env: serverRuntimeConfig.decoratorEnv,
+                env: (process.env.DECORATOR_ENV as 'dev' | 'prod') || 'dev',
                 params: {
                     chatbot: false,
                     feedback: false,
                     breadcrumbs: createInitialServerSideBreadcrumbs(ctx.pathname),
+                    logoutWarning: process.env.MOCK_BACKEND !== 'true',
                 },
             })
         }
@@ -70,7 +68,15 @@ class MyDocument extends Document<Props> {
 
         return (
             <Html lang={language || 'no'}>
-                <Head>{visDekorator && <Decorator.HeadAssets />}</Head>
+                <Head>
+                    <script
+                        id="__public_env__"
+                        dangerouslySetInnerHTML={{
+                            __html: `window.__publicEnv = ${safeJsonStringify(getPublicEnv())};window.__publicEnvLoaded = true;`,
+                        }}
+                    />
+                    {visDekorator && <Decorator.HeadAssets />}
+                </Head>
                 <body>
                     {header()}
                     <Main />
