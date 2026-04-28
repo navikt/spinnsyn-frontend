@@ -9,23 +9,16 @@ interface UtbetalingPanelProps {
     children: React.ReactNode
     sectionLabel: string
     dataTestId?: string
-    avslag?: boolean
-    delvisInnvilgelse?: boolean
+    innvilgetMerke: string
 }
 
 const UtbetalingPanel = (props: UtbetalingPanelProps) => {
-    const innvilgetMerke = props.avslag
-        ? 'Søknaden er avslått'
-        : props.delvisInnvilgelse
-          ? 'Søknaden er delvis innvilget'
-          : 'Søknaden er innvilget'
-
     useEffect(() => {
         logEvent('vedtak av type åpnet', {
-            tittel: innvilgetMerke,
+            tittel: props.innvilgetMerke,
             component: 'UtbetalingPanel',
         })
-    }, [innvilgetMerke])
+    }, [props.innvilgetMerke])
 
     return (
         <section aria-label={props.sectionLabel}>
@@ -39,7 +32,7 @@ const UtbetalingPanel = (props: UtbetalingPanelProps) => {
             >
                 <div className="mb-4">
                     <BodyShort size="small" weight="semibold">
-                        {innvilgetMerke}
+                        {props.innvilgetMerke}
                     </BodyShort>
                     {props.tittel}
                 </div>

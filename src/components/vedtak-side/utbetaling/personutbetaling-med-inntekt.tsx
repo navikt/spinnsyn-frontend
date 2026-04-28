@@ -6,7 +6,7 @@ import { ValutaFormat } from '../../../utils/valuta-utils'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import { spinnsynFrontendInterne } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { unikeAvslagBegrunnelser, hentBegrunnelse } from '../../../utils/vedtak-utils'
+import { unikeAvslagBegrunnelser, hentBegrunnelse, finnInnvilgetMerke } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 
 import { Kontonummer } from './kontonummer'
@@ -31,11 +31,11 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntek
         vedtak,
         dagTabellScrollElementId: 'sykepenger-per-dag',
     }
-
+    const delvisInnvilgelse = oppsumertAvslagObject.oppsummertAvslag.size > 0
     return (
         <UtbetalingPanel
             sectionLabel="Utbetaling til deg"
-            delvisInnvilgelse={oppsumertAvslagObject.oppsummertAvslag.size > 0}
+            innvilgetMerke={finnInnvilgetMerke(false, false, delvisInnvilgelse)}
             tittel={
                 <div>
                     <Heading level="2" size="large">
