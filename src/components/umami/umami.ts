@@ -1,7 +1,7 @@
 import { logAnalyticsEvent } from '@navikt/nav-dekoratoren-moduler'
 import { logger } from '@navikt/next-logger'
 
-import { isOpplaering, isProd, umamiEnabled } from '../../utils/environment'
+import { umamiEnabled } from '../../utils/environment'
 
 export type validEventNames =
     | 'navigere'

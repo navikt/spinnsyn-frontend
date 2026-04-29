@@ -4,7 +4,7 @@ import nextVitals from 'eslint-config-next/core-web-vitals'
 import tsmEslintReact from '@navikt/tsm-eslint-react'
 import prettierRecommended from 'eslint-plugin-prettier/recommended'
 
-module.exports = defineConfig([
+export default defineConfig([
     ...nextVitals,
     ...nextTs,
     ...tsmEslintReact,
