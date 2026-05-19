@@ -32,6 +32,7 @@ yarn-error.log*
 
 .nvmrc
 
+.junie
 .claude/
 CLAUDE.md
 AGENTS.md

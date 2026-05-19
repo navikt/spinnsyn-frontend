@@ -8,22 +8,17 @@ type UUOptions = {
     ignoreRules?: IgnoreRule[]
 }
 
-// Utvid base-test med UU-options.
-export const test = base.extend<{ uuOptions: UUOptions; _setup: void }>({
+export const test = base.extend<{ uuOptions: UUOptions }>({
     uuOptions: [{ skipUU: false, disableRules: [] }, { option: true }],
-    // Auto-fixture: kjører for ALLE tester som bruker denne test-instansen.
-    _setup: [
-        async ({ context, page }, use) => {
-            // Forhindrer devtools-hint popover fra å blokkere klikk.
-            await page.addInitScript(() => {
-                window.localStorage.setItem('devtools-hint', 'false')
-            })
-            // Resetter leste vedtak før hver test.
-            await context.clearCookies()
-            await use()
-        },
-        { auto: true },
-    ],
+})
+
+test.beforeEach(async ({ context, page }) => {
+    await context.clearCookies()
+
+    // Skjul dev-tools hint så de ikke er i veien for visuelle tester.
+    await page.addInitScript(() => {
+        window.localStorage.setItem('devtools-hint', 'false')
+    })
 })
 
 // Automatisk UU-validering for ALLE tester.
@@ -32,5 +27,4 @@ test.afterEach(async ({ page, uuOptions, browserName }, testInfo) => {
         await validerAxe(browserName, page, testInfo, uuOptions.disableRules, uuOptions.ignoreRules)
     }
 })
-
 export { expect }
