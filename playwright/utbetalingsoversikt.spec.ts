@@ -116,7 +116,7 @@ test.describe('Utbetalingsoversikt', () => {
                 },
                 {
                     key: 'ForeldetDag',
-                    tekst: 'Du må søke om sykepenger senest tre måneder etter den siste måneden du var syk.',
+                    tekst: 'Søknaden kom inn etter fristen. Nav kan gi sykepenger for opptil tre måneder før den måneden du sendte søknaden.',
                 },
                 {
                     key: 'Ventetidsdag',
