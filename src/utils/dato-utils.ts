@@ -17,9 +17,20 @@ const maaneder = [
 ]
 const SKILLETEGN_PERIODE = '–'
 
+// new Date('YYYY-MM-DD') parses as UTC midnight, which shifts the date back by one day
+// for users in timezones west of UTC. Parse date-only strings as local midnight instead.
+function parseLocalDate(datoArg: Date | string): Date {
+    if (datoArg instanceof Date) return datoArg
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(datoArg))
+    if (match) {
+        return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]))
+    }
+    return new Date(String(datoArg))
+}
+
 export const tilLesbarDatoUtenAarstall = (datoArg: any): string => {
     if (datoArg) {
-        const dato = new Date(datoArg)
+        const dato = parseLocalDate(datoArg)
         const dag = dato.getDate()
         const manedIndex = dato.getMonth()
         const maned = maaneder[manedIndex]
@@ -29,12 +40,14 @@ export const tilLesbarDatoUtenAarstall = (datoArg: any): string => {
 }
 
 export const tilLesbarDatoMedArstall = (datoArg: any) => {
-    return datoArg ? `${tilLesbarDatoUtenAarstall(new Date(datoArg))} ${new Date(datoArg).getFullYear()}` : undefined
+    if (!datoArg) return undefined
+    const dato = parseLocalDate(datoArg)
+    return `${tilLesbarDatoUtenAarstall(dato)} ${dato.getFullYear()}`
 }
 
 export const tilLesbarPeriodeMedArstall = (fomArg: any, tomArg: any) => {
-    const fom = new Date(fomArg)
-    const tom = new Date(tomArg)
+    const fom = parseLocalDate(fomArg)
+    const tom = parseLocalDate(tomArg)
     const erSammeAar = fom.getFullYear() === tom.getFullYear()
     const erSammeMaaned = fom.getMonth() === tom.getMonth()
     return erSammeAar && erSammeMaaned
