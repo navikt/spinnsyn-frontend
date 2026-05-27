@@ -44,13 +44,13 @@ describe('tilLesbarPeriodeMedArstall', () => {
 
 describe('erHelg', () => {
     it('returnerer true for lørdag', () => {
-        expect(erHelg(new Date('2025-12-06'))).toBe(true)
+        expect(erHelg(new Date(2025, 11, 6))).toBe(true)
     })
     it('returnerer true for søndag', () => {
-        expect(erHelg(new Date('2025-12-07'))).toBe(true)
+        expect(erHelg(new Date(2025, 11, 7))).toBe(true)
     })
     it('returnerer false for hverdag', () => {
-        expect(erHelg(new Date('2025-12-02'))).toBe(false)
+        expect(erHelg(new Date(2025, 11, 2))).toBe(false)
     })
 })
 
