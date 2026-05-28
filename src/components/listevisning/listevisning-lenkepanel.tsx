@@ -49,10 +49,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
         query[key] = router.query[key]
     }
     query['id'] = vedtak.id
-    const vedtakPeriode =
-        formatDatoKort(vedtak.vedtak.fom) +
-        ' - ' +
-        formatDatoKortMedAr(vedtak.vedtak.tom)
+    const vedtakPeriode = formatDatoKort(vedtak.vedtak.fom) + ' - ' + formatDatoKortMedAr(vedtak.vedtak.tom)
 
     const nyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)

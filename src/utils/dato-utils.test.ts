@@ -89,8 +89,12 @@ describe('erWeekendPeriode', () => {
 })
 
 describe('fullDatoKlokkeslett', () => {
-    it('returnerer riktig format', () => {
-        expect(fullDatoKlokkeslett('2025-12-02T14:30:00')).toBe('2. desember 2025 kl. 14.30')
+    it('returnerer riktig format med UTC-timestamp', () => {
+        expect(fullDatoKlokkeslett('2025-12-02T13:30:00Z')).toBe('2. desember 2025 kl. 14.30')
+    })
+
+    it('returnerer riktig format med Oslo-offset', () => {
+        expect(fullDatoKlokkeslett('2025-06-15T14:30:00+02:00')).toBe('15. juni 2025 kl. 14.30')
     })
 })
 
