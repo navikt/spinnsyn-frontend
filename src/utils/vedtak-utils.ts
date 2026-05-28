@@ -1,16 +1,16 @@
-import dayjs, { Dayjs } from 'dayjs'
+import { addDays } from 'date-fns'
 
-import { Begrunnelse, BegrunnelseType, RSBegrunnelse, RSDag, RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
+import { Begrunnelse, BegrunnelseType, RSDag, RSBegrunnelse, RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 
-import { erHelg } from './dato-utils'
+import { erHelg, toDate } from './dato-utils'
 
-export const fallbackEstimertSluttdato = (vedtakWrapper: RSVedtakWrapper): Dayjs => {
-    let slutt = dayjs(vedtakWrapper.vedtak.tom)
+export const fallbackEstimertSluttdato = (vedtakWrapper: RSVedtakWrapper): Date => {
+    let slutt = toDate(vedtakWrapper.vedtak.tom)
     let x = 0
     while (x < vedtakWrapper.vedtak.utbetaling.gjenståendeSykedager) {
-        slutt = slutt.add(1, 'day')
-        while (erHelg(slutt.toDate())) {
-            slutt = slutt.add(1, 'day')
+        slutt = addDays(slutt, 1)
+        while (erHelg(slutt)) {
+            slutt = addDays(slutt, 1)
         }
         x++
     }
