@@ -1,77 +1,77 @@
-import './init-dayjs'
-import dayjs from 'dayjs'
-import 'dayjs/locale/nb'
-const maaneder = [
-    'januar',
-    'februar',
-    'mars',
-    'april',
-    'mai',
-    'juni',
-    'juli',
-    'august',
-    'september',
-    'oktober',
-    'november',
-    'desember',
-]
+import { addDays, differenceInDays, format, getDate, getDay, isSameMonth, isSameYear, parseISO } from 'date-fns'
+import { nb } from 'date-fns/locale/nb'
+import { TZDate } from '@date-fns/tz'
+
 const SKILLETEGN_PERIODE = '–'
 
-export const tilLesbarDatoUtenAarstall = (datoArg: any): string => {
-    if (datoArg) {
-        const dato = new Date(datoArg)
-        const dag = dato.getDate()
-        const manedIndex = dato.getMonth()
-        const maned = maaneder[manedIndex]
-        return `${dag}. ${maned}`
+// Parser dato-streng til Date med riktig tidssone.
+// Strenger uten tidssone-info tolkes som Europe/Oslo for å unngå
+// at UTC-midnatt forskyver datoen for brukere vest for UTC.
+export function toDate(date: string, defaultTimezone = 'Europe/Oslo'): Date {
+    if (isoTimestampHasTimeZone(date)) {
+        return parseISO(date)
     }
-    return ''
+    return new TZDate(date, defaultTimezone)
 }
 
-export const tilLesbarDatoMedArstall = (datoArg: any) => {
-    return datoArg ? `${tilLesbarDatoUtenAarstall(new Date(datoArg))} ${new Date(datoArg).getFullYear()}` : undefined
+function toOsloDate(date: string | Date): Date {
+    const datoObj = typeof date === 'string' ? toDate(date) : date
+    return new TZDate(datoObj, 'Europe/Oslo')
 }
 
-export const tilLesbarPeriodeMedArstall = (fomArg: any, tomArg: any) => {
-    const fom = new Date(fomArg)
-    const tom = new Date(tomArg)
-    const erSammeAar = fom.getFullYear() === tom.getFullYear()
-    const erSammeMaaned = fom.getMonth() === tom.getMonth()
-    return erSammeAar && erSammeMaaned
-        ? `${fom.getDate()}. ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
-        : erSammeAar
-          ? `${tilLesbarDatoUtenAarstall(fom)} ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
-          : `${tilLesbarDatoMedArstall(fom)} ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
+function isoTimestampHasTimeZone(iso: string): boolean {
+    return /([Zz]|[+-]\d{2}:\d{2})$/.test(iso)
 }
 
-export const erHelg = (dato: Date) => {
-    return dato.getDay() === 6 || dato.getDay() === 0
+export const tilLesbarDatoUtenAarstall = (datoArg: Date | string | undefined | null): string => {
+    if (!datoArg) return ''
+    return format(toOsloDate(datoArg), 'd. MMMM', { locale: nb })
+}
+
+export const tilLesbarDatoMedArstall = (datoArg: Date | string | undefined | null): string | undefined => {
+    if (!datoArg) return undefined
+    return format(toOsloDate(datoArg), 'd. MMMM yyyy', { locale: nb })
+}
+
+export const tilLesbarPeriodeMedArstall = (fomArg: Date | string, tomArg: Date | string): string => {
+    const fom = toOsloDate(fomArg)
+    const tom = toOsloDate(tomArg)
+    if (isSameMonth(fom, tom)) {
+        return `${getDate(fom)}. ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
+    } else if (isSameYear(fom, tom)) {
+        return `${tilLesbarDatoUtenAarstall(fom)} ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
+    }
+    return `${tilLesbarDatoMedArstall(fom)} ${SKILLETEGN_PERIODE} ${tilLesbarDatoMedArstall(tom)}`
+}
+
+export const erHelg = (dato: Date): boolean => {
+    const day = getDay(dato)
+    return day === 6 || day === 0
 }
 
 export function erWeekendPeriode(fom: string, tom: string): boolean {
-    const startDate = dayjs(fom)
-    const endDate = dayjs(tom)
+    const startDate = toDate(fom)
+    const endDate = toDate(tom)
+    const days = differenceInDays(endDate, startDate) + 1
 
-    const dates = []
-    let currentDate = startDate
-
-    while (currentDate.isSameOrBefore(endDate)) {
-        dates.push(currentDate)
-        currentDate = currentDate.add(1, 'day')
+    for (let i = 0; i < days; i++) {
+        if (!erHelg(addDays(startDate, i))) return false
     }
-
-    return dates.every((date) => {
-        const dayOfWeek = date.day()
-        return dayOfWeek === 0 || dayOfWeek === 6
-    })
+    return true
 }
 
 export function fullDatoKlokkeslett(timestamp: string): string {
-    return dayjs(timestamp).format('D. MMMM YYYY [kl.] HH.mm')
+    return format(toOsloDate(timestamp), "d. MMMM yyyy 'kl.' HH.mm", { locale: nb })
 }
 
 export function antallDager(fom: string, tom: string): number {
-    const startDate = dayjs(fom)
-    const endDate = dayjs(tom)
-    return endDate.diff(startDate, 'day') + 1
+    return differenceInDays(toDate(tom), toDate(fom)) + 1
+}
+
+export function formatDatoKort(dato: string): string {
+    return format(toOsloDate(dato), 'dd. MMM', { locale: nb })
+}
+
+export function formatDatoKortMedAr(dato: string): string {
+    return format(toOsloDate(dato), 'dd. MMM yyyy', { locale: nb })
 }

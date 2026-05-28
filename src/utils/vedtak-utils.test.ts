@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import dayjs from 'dayjs'
+import { getDay } from 'date-fns'
 
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 import { vedtakMedFlereArbeidsgivere } from '../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
@@ -7,13 +7,14 @@ import { vedtakMedFlereArbeidsgivere } from '../data/testdata/data/vedtak/vedtak
 import { harVedtakEndringer } from './vedtak-utils'
 import { jsonDeepCopy } from './json-deep-copy'
 import { hentBegrunnelse } from './vedtak-utils'
+import { toDate } from './dato-utils'
 
 describe('Tester estimering av sluttdato', () => {
     it('Numrene på ukedager er de samme', () => {
-        expect(dayjs('2020-06-08').day()).toEqual(1) // mandag
-        expect(dayjs('2020-06-12').day()).toEqual(5) // fredag
-        expect(dayjs('2020-06-13').day()).toEqual(6) // lørdag
-        expect(dayjs('2020-06-14').day()).toEqual(0) // søndag
+        expect(getDay(toDate('2020-06-08'))).toEqual(1) // mandag
+        expect(getDay(toDate('2020-06-12'))).toEqual(5) // fredag
+        expect(getDay(toDate('2020-06-13'))).toEqual(6) // lørdag
+        expect(getDay(toDate('2020-06-14'))).toEqual(0) // søndag
     })
 
     it('Tester at vi finner begrunnelse i vedtak', () => {

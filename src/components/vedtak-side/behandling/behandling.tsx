@@ -1,5 +1,4 @@
 import { BodyLong, Heading } from '@navikt/ds-react'
-import dayjs from 'dayjs'
 import React from 'react'
 import { logger } from '@navikt/next-logger'
 
@@ -39,7 +38,7 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
         }
     }
 
-    const formattedDate = vedtaksDato ? tilLesbarDatoMedArstall(dayjs(vedtaksDato).toDate()) : null
+    const formattedDate = vedtaksDato ? tilLesbarDatoMedArstall(vedtaksDato) : null
 
     const behandlereTekst = () => {
         if (erAutomatiskBehandlet) {

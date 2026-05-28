@@ -1,10 +1,10 @@
 import { BodyShort, Label, Table } from '@navikt/ds-react'
-import dayjs from 'dayjs'
 import React from 'react'
 
 import { RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { formaterValuta } from '../../utils/valuta-utils'
 import { dagErAvvist, dagErInnvilget } from '../vedtak-side/vedtak'
+import { formatDatoKort } from '../../utils/dato-utils'
 
 import DagLabel from './dag-label'
 
@@ -49,7 +49,7 @@ const DagTabell = ({ dager }: DagTabellProps) => {
                         <Table.Row key={idx}>
                             <Table.HeaderCell scope="row">
                                 <BodyShort size="small" as="span">
-                                    {dayjs(dag.dato).format('DD. MMM')}
+                                    {formatDatoKort(dag.dato)}
                                 </BodyShort>
                             </Table.HeaderCell>
                             <Table.DataCell align="right" className="whitespace-nowrap">

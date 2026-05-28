@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { TZDate } from '@date-fns/tz'
 
 import {
     tilLesbarDatoUtenAarstall,
@@ -8,7 +9,31 @@ import {
     erWeekendPeriode,
     fullDatoKlokkeslett,
     antallDager,
+    toDate,
 } from './dato-utils'
+
+describe('toDate', () => {
+    it('gir TZDate for dato-streng uten tidssone', () => {
+        expect(toDate('2020-01-01')).toBeInstanceOf(TZDate)
+    })
+    it('gir TZDate for timestamp uten tidssone', () => {
+        expect(toDate('2020-01-01T00:00:00')).toBeInstanceOf(TZDate)
+    })
+    it('gir ikke TZDate for timestamp med Z', () => {
+        expect(toDate('2020-01-01T00:00:00Z')).not.toBeInstanceOf(TZDate)
+    })
+    it('gir ikke TZDate for timestamp med +HH:MM', () => {
+        expect(toDate('2020-01-01T00:00:00+01:00')).not.toBeInstanceOf(TZDate)
+    })
+    it('bruker Europe/Oslo som standard tidssone', () => {
+        const date = toDate('2020-01-01') as TZDate
+        expect(date.timeZone).toBe('Europe/Oslo')
+    })
+    it('bruker spesifisert tidssone', () => {
+        const date = toDate('2020-01-01', 'America/New_York') as TZDate
+        expect(date.timeZone).toBe('America/New_York')
+    })
+})
 
 describe('tilLesbarDatoUtenAarstall', () => {
     it('returnerer riktig format for gyldig dato', () => {
@@ -44,13 +69,13 @@ describe('tilLesbarPeriodeMedArstall', () => {
 
 describe('erHelg', () => {
     it('returnerer true for lørdag', () => {
-        expect(erHelg(new Date('2025-12-06'))).toBe(true)
+        expect(erHelg(new Date(2025, 11, 6))).toBe(true)
     })
     it('returnerer true for søndag', () => {
-        expect(erHelg(new Date('2025-12-07'))).toBe(true)
+        expect(erHelg(new Date(2025, 11, 7))).toBe(true)
     })
     it('returnerer false for hverdag', () => {
-        expect(erHelg(new Date('2025-12-02'))).toBe(false)
+        expect(erHelg(new Date(2025, 11, 2))).toBe(false)
     })
 })
 
@@ -64,8 +89,12 @@ describe('erWeekendPeriode', () => {
 })
 
 describe('fullDatoKlokkeslett', () => {
-    it('returnerer riktig format', () => {
-        expect(fullDatoKlokkeslett('2025-12-02T14:30:00')).toBe('2. desember 2025 kl. 14.30')
+    it('returnerer riktig format med UTC-timestamp', () => {
+        expect(fullDatoKlokkeslett('2025-12-02T13:30:00Z')).toBe('2. desember 2025 kl. 14.30')
+    })
+
+    it('returnerer riktig format med Oslo-offset', () => {
+        expect(fullDatoKlokkeslett('2025-06-15T14:30:00+02:00')).toBe('15. juni 2025 kl. 14.30')
     })
 })
 
