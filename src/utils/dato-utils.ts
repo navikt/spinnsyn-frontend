@@ -67,3 +67,11 @@ export function fullDatoKlokkeslett(timestamp: string): string {
 export function antallDager(fom: string, tom: string): number {
     return differenceInDays(toDate(tom), toDate(fom)) + 1
 }
+
+export function formatDatoKort(dato: string): string {
+    return format(toOsloDate(dato), 'dd. MMM', { locale: nb })
+}
+
+export function formatDatoKortMedAr(dato: string): string {
+    return format(toOsloDate(dato), 'dd. MMM yyyy', { locale: nb })
+}

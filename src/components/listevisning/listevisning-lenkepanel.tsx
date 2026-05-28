@@ -1,6 +1,4 @@
 import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
-import { format } from 'date-fns'
-import { nb } from 'date-fns/locale/nb'
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,7 +9,7 @@ import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
 import { Etikett, getEtikettVariant } from '../etikett/etikett'
-import { fullDatoKlokkeslett, toDate } from '../../utils/dato-utils'
+import { formatDatoKort, formatDatoKortMedAr, fullDatoKlokkeslett } from '../../utils/dato-utils'
 
 const sykmeldtFraTekstGenerator = (yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG', orgnavn: string) => {
     switch (yrkesaktivitetstype) {
@@ -52,9 +50,9 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
     }
     query['id'] = vedtak.id
     const vedtakPeriode =
-        format(toDate(vedtak.vedtak.fom), 'dd. MMM', { locale: nb }) +
+        formatDatoKort(vedtak.vedtak.fom) +
         ' - ' +
-        format(toDate(vedtak.vedtak.tom), 'dd. MMM yyyy', { locale: nb })
+        formatDatoKortMedAr(vedtak.vedtak.tom)
 
     const nyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)
