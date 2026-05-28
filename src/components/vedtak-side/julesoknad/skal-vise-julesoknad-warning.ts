@@ -1,15 +1,18 @@
-import dayjs from 'dayjs'
+import { isBefore, isAfter, getYear } from 'date-fns'
 
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
+import { toDate } from '../../../utils/dato-utils'
 
 export function skalViseJulesoknadWarning(vedtak: RSVedtakWrapper) {
     const erDirekteutbetaling = vedtak.sykepengebelopSykmeldt > 0
 
-    const vedtakFattetFørTom = dayjs(vedtak.opprettetTimestamp).isBefore(dayjs(vedtak.vedtak.tom))
-    const vedtakAar = dayjs(vedtak.opprettetTimestamp).year()
+    const opprettet = toDate(vedtak.opprettetTimestamp)
+    const tom = toDate(vedtak.vedtak.tom)
+    const vedtakAar = getYear(opprettet)
+
+    const vedtakFattetFørTom = isBefore(opprettet, tom)
     const vedtakFattetMidtenAvDesember =
-        dayjs(vedtak.opprettetTimestamp).isBefore(dayjs(`${vedtakAar}-12-30`)) &&
-        dayjs(vedtak.opprettetTimestamp).isAfter(dayjs(`${vedtakAar}-12-06`))
+        isBefore(opprettet, toDate(`${vedtakAar}-12-30`)) && isAfter(opprettet, toDate(`${vedtakAar}-12-06`))
 
     return erDirekteutbetaling && vedtakFattetFørTom && vedtakFattetMidtenAvDesember
 }

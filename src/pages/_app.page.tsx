@@ -1,5 +1,4 @@
 import '../style/global.css'
-import '../utils/init-dayjs'
 
 import { configureLogger } from '@navikt/next-logger'
 import { AppProps } from 'next/app'

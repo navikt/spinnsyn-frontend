@@ -1,8 +1,7 @@
 import { BodyLong, Heading, Link } from '@navikt/ds-react'
-import dayjs, { Dayjs } from 'dayjs'
 import React, { useContext, useState } from 'react'
 
-import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
+import { tilLesbarDatoMedArstall, toDate } from '../../../utils/dato-utils'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'
 import { VedtakExpansionCard } from '../../expansioncard/vedtak-expansion-card'
 import { ArkiveringContext } from '../../../context/arkivering-context'
@@ -15,14 +14,14 @@ const Sykepengedager = ({ vedtak }: SykepengedagerProps) => {
     const arkivering = useContext(ArkiveringContext)
     const [visBeregning, setVisBeregning] = useState<boolean>(arkivering)
 
-    const finnSluttdato = (): Dayjs => {
+    const finnSluttdato = (): Date => {
         if (vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger) {
-            return dayjs(vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger)
+            return toDate(vedtak.vedtak.utbetaling.foreløpigBeregnetSluttPåSykepenger)
         }
         return fallbackEstimertSluttdato(vedtak)
     }
 
-    const sluttdato = finnSluttdato().format('D. MMMM YYYY')
+    const sluttdato = tilLesbarDatoMedArstall(finnSluttdato())
     const sluttPaAktuelleVedtaksPeriode = tilLesbarDatoMedArstall(vedtak.vedtak.tom)
 
     return (

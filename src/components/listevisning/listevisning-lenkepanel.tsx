@@ -1,9 +1,9 @@
 import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
-import dayjs from 'dayjs'
+import { format } from 'date-fns'
+import { nb } from 'date-fns/locale/nb'
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { tekst } from '../../utils/tekster'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
@@ -11,8 +11,7 @@ import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
 import { Etikett, getEtikettVariant } from '../etikett/etikett'
-
-dayjs.extend(localizedFormat)
+import { fullDatoKlokkeslett, toDate } from '../../utils/dato-utils'
 
 const sykmeldtFraTekstGenerator = (yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG', orgnavn: string) => {
     switch (yrkesaktivitetstype) {
@@ -53,7 +52,9 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
     }
     query['id'] = vedtak.id
     const vedtakPeriode =
-        dayjs(vedtak.vedtak.fom).format('DD. MMM') + ' - ' + dayjs(vedtak.vedtak.tom).format('DD. MMM YYYY')
+        format(toDate(vedtak.vedtak.fom), 'dd. MMM', { locale: nb }) +
+        ' - ' +
+        format(toDate(vedtak.vedtak.tom), 'dd. MMM yyyy', { locale: nb })
 
     const nyesteRevurdering = !vedtak.revurdert && vedtak.vedtak.utbetaling.utbetalingType === 'REVURDERING'
     const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)
@@ -88,7 +89,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                         </LinkPanel.Description>
                         {!isProd() && (
                             <Detail className="italic">
-                                Sendt fra Nav: {dayjs(vedtak.opprettetTimestamp).format('D. MMMM YYYY [kl.] HH.mm')}
+                                Sendt fra Nav: {fullDatoKlokkeslett(vedtak.opprettetTimestamp)}
                             </Detail>
                         )}
                     </div>
