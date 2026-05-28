@@ -1,5 +1,4 @@
 import { BodyLong, Heading } from '@navikt/ds-react'
-import dayjs from 'dayjs'
 import React from 'react'
 
 import { klagefrist } from '../../../utils/klagefrist'
@@ -17,7 +16,7 @@ const Uenig = ({ vedtak }: UenigProps) => {
             </Heading>
             <BodyLong spacing>
                 {getLedetekst(tekst('uenig.tekst1'), {
-                    '%KLAGEFRIST%': klagefrist(dayjs(vedtak.opprettetTimestamp)),
+                    '%KLAGEFRIST%': klagefrist(vedtak.opprettetTimestamp),
                 })}
                 {tekst('uenig.tekst2')}
                 <LenkeMedUmami url={tekst('uenig.lenke1.url')} tekst={tekst('uenig.lenke1')} />

@@ -1,36 +1,27 @@
-import dayjs from 'dayjs'
-import timezone from 'dayjs/plugin/timezone'
-import utc from 'dayjs/plugin/utc'
+import { addDays, getDay, getHours } from 'date-fns'
+import { TZDate } from '@date-fns/tz'
 
-dayjs.extend(utc)
-dayjs.extend(timezone)
+import { tilLesbarDatoMedArstall, toDate } from './dato-utils'
 
-import { tilLesbarDatoMedArstall } from './dato-utils'
+export const klagefrist = (opprettetTimestamp: string): string | undefined => {
+    const opprettetOslo = new TZDate(toDate(opprettetTimestamp), 'Europe/Oslo')
 
-export const klagefrist = (opprettet: dayjs.Dayjs) => {
-    const opprettetOslo = opprettet.tz('Europe/Oslo')
-
-    const skipHelg = (d: dayjs.Dayjs) => {
-        if (d.day() == 6) {
-            //Lørdag
-            return d.add(2, 'days')
-        }
-        if (d.day() == 0) {
-            //Søndag
-            return d.add(1, 'day')
-        }
+    const skipHelg = (d: Date): Date => {
+        const day = getDay(d)
+        if (day === 6) return addDays(d, 2)
+        if (day === 0) return addDays(d, 1)
         return d
     }
 
-    const skipForSentPaDagen = (d: dayjs.Dayjs) => {
+    const skipForSentPaDagen = (d: Date): Date => {
         // Vi sender ikke sms samme dag dersom det er opprettet etter 14
         // En time venting på flere vedtak, og kl 15 er seneste utsending
-        if (d.hour() >= 14) {
-            return d.add(1, 'day')
+        if (getHours(d) >= 14) {
+            return addDays(d, 1)
         }
         return d
     }
-    const klagefristen = skipHelg(skipForSentPaDagen(opprettetOslo.add(42, 'day')))
 
-    return tilLesbarDatoMedArstall(klagefristen.toDate())
+    const klagefristen = skipHelg(skipForSentPaDagen(addDays(opprettetOslo, 42)))
+    return tilLesbarDatoMedArstall(klagefristen)
 }
