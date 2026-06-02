@@ -8,11 +8,12 @@ export const trykkPaVedtakMedId = async (page: Page, vedtakId: string) => {
     await vedtakLink.click()
 }
 
-export const beregnetManedsinntektRegion = async (page: Page, hentetFra?: string): Promise<Locator> => {
+export const beregnetManedsinntektRegion = async (page: Page, hentetFra: string | null = null): Promise<Locator> => {
+    const hentetFraTekst = hentetFra === 'A-ordningen' ? '(hentet fra a-ordningen)' : '(innsendt av arbeidsgiver)'
     const beregnetManedsinntekt = page
         .getByText('Beregnet månedsinntekt')
         .filter({
-            has: page.getByText(`(hentet fra ${hentetFra ? hentetFra : 'inntektsmeldingen'})`),
+            has: page.getByText(hentetFraTekst),
         })
         .locator('..')
     await expect(beregnetManedsinntekt).toBeVisible()

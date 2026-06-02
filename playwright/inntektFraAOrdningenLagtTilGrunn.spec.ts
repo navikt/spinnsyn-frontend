@@ -21,7 +21,7 @@ test.describe('Vedtak med inntekt fra a-ordningen lagt i grunn', () => {
 
         const beregningRegion = await visBeregningRegion(page)
 
-        const beregnetManedsInntekt = await beregnetManedsinntektRegion(page, 'a-ordningen')
+        const beregnetManedsInntekt = await beregnetManedsinntektRegion(page, 'A-ordningen')
         await expect(beregnetManedsInntekt).toContainText(formaterValuta(74_675))
 
         await expect(beregningRegion.getByRole('region', { name: 'Omregnet til årsinntekt' })).toContainText(
