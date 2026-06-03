@@ -15,15 +15,12 @@ export default function Person() {
     }, [])
 
     useEffect(() => {
-        if (localStorage.getItem('devtools-hint') === null) {
-            localStorage.setItem('devtools-hint', 'true')
-        }
+        const value = localStorage.getItem('devtools-hint')
+        // Respekter eksplisitt 'false' (f.eks. satt av tester eller etter at hintet er avvist).
+        if (value === 'false') return
 
-        setTimeout(() => {
-            if (localStorage.getItem('devtools-hint') === 'true') {
-                setShowHint(true)
-            }
-        }, 1000)
+        const timer = setTimeout(() => setShowHint(true), 1000)
+        return () => clearTimeout(timer)
     }, [])
 
     return (

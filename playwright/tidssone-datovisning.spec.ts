@@ -1,15 +1,14 @@
-import { test as base, expect } from '@playwright/test'
-
 import { kunDirekte } from '../src/data/testdata/data/vedtak/kunDirekte'
+
+import { test, expect } from './fixtures'
 
 const timezones = ['Europe/Oslo', 'America/New_York', 'UTC']
 
 for (const timezoneId of timezones) {
-    base.describe(`Datovisning i tidssone ${timezoneId}`, () => {
-        base(`viser korrekte datoer på vedtakssiden`, async ({ browser }) => {
-            const context = await browser.newContext({ timezoneId })
-            const page = await context.newPage()
+    test.describe(`Datovisning i tidssone ${timezoneId}`, () => {
+        test.use({ timezoneId })
 
+        test(`viser korrekte datoer på vedtakssiden`, async ({ page }) => {
             await page.goto(`/syk/sykepenger?testperson=kun-direkte`)
             await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
 
@@ -29,8 +28,6 @@ for (const timezoneId of timezones) {
             // Verifiser behandlingsdato (vedtakFattetTidspunkt: '2021-02-21')
             // Bruker tilLesbarDatoMedArstall via dayjs().toDate()
             await expect(page.getByText('Søknaden ble behandlet 21. februar 2021')).toBeVisible()
-
-            await context.close()
         })
     })
 }
