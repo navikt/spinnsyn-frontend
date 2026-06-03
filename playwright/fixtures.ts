@@ -12,11 +12,11 @@ export const test = base.extend<{ uuOptions: UUOptions }>({
     uuOptions: [{ skipUU: false, disableRules: [] }, { option: true }],
 })
 
-test.beforeEach(async ({ context, page }) => {
+test.beforeEach(async ({ context }) => {
     await context.clearCookies()
 
     // Skjul dev-tools hint så de ikke er i veien for visuelle tester.
-    await page.addInitScript(() => {
+    await context.addInitScript(() => {
         window.localStorage.setItem('devtools-hint', 'false')
     })
 })
