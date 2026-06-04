@@ -35,6 +35,5 @@ yarn-error.log*
 .junie
 .claude/
 CLAUDE.md
-AGENTS.md
 tsconfig.tsbuildinfo
 .github/agents/
