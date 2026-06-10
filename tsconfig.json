@@ -20,6 +20,6 @@
         "incremental": true,
         "downlevelIteration": true
     },
-    "include": ["src", "vitest.d.ts"],
+    "include": ["src", "vitest.d.ts", "playwright"],
     "exclude": ["node_modules"]
 }

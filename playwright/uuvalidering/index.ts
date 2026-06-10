@@ -20,6 +20,10 @@ export async function validerAxe(
         ignoreRules,
     }
 
+    await page.evaluate(() => {
+        return Promise.all(document.getAnimations().map((animation: Animation) => animation.finished))
+    })
+
     const results = await runAxeAnalysis(page, options)
     const violations = filterAxeViolations(results.violations, [...ignoreRules, ...DEFAULT_IGNORE_RULES])
 
