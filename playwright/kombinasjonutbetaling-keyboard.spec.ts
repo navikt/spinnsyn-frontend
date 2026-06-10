@@ -71,9 +71,9 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
     test('Annen info i bunnen av vedtaket', async ({ page, browserName }) => {
         await tabTilForsteSoknadIListen(page, browserName)
         await test.step('Tabb gjennom bunnlenker', async () => {
-            await tabUntilFocusedContainsText(browserName, page, /ta kontakt med Nav/)
             await tabUntilFocusedContainsText(browserName, page, /endre svarene i søknaden/)
-            await tabUntilFocusedContainsText(browserName, page, /inntektsmeldingen/)
+            await tabUntilFocusedContainsText(browserName, page, /inntektsmeldinger/)
+            await tabUntilFocusedContainsText(browserName, page, /ta kontakt med Nav/)
             await tabUntilFocusedContainsText(browserName, page, /retten til å klage/)
             await tabUntilFocusedContainsText(browserName, page, /gå til klageskjema/)
         })
