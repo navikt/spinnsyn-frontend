@@ -106,6 +106,7 @@ export type RSDagType =
     | 'AndreYtelser'
     | 'Ventetidsdag'
     | 'UkjentDag'
+    | 'AvslattMeldingTilNavDag'
 
 export interface Dokument {
     dokumentId: string
