@@ -20,11 +20,27 @@ npm run play-headless # kjør E2E-tester i headless mode (brukes i CI)
 npm run format && npm run test:ci && npm run build
 ```
 
+### Kjøre Playwright via IntelliJ MCP
+
+Bruk `execute_run_configuration` på `play-headless`-scriptet i `package.json`. Starter dev-serveren automatisk via `webServer`-konfig i `playwright.config.ts` (`reuseExistingServer: true`).
+
+For å kjøre én enkelt spec-fil:
+1. `get_run_configurations` på spec-filen for å finne run points
+2. `execute_run_configuration` med `waitForExit: true` og `timeout: 60000`
+   — **NB:** da må dev-serveren allerede kjøre (start `dev`-scriptet med `waitForExit: false` først)
+
 ## 2) Testing
 
 - Enhet/integrasjon: **Vitest** (`.test.ts` / `.test.tsx`) i `src/`
 - E2E: **Playwright** i `playwright/**/*.spec.ts`
 - Prioriter tester for endret domenelogikk
+
+### Playwright-mønstre
+
+- Naviger direkte til vedtak med `?testperson=X&id=Y` i URL — unngår `trykkPaVedtakMedId` og `beforeEach`
+- Én test per `describe` er normen — slå sammen assertions som krever samme interaksjon
+- Selektorer: bruk `getByRole('button', ...)` fremfor `getByText(...)` når det finnes flere treff
+- `playwright/utils/` - hjelpefunksjoner for E2E-testing
 
 ## 3) Prosjektstruktur
 
