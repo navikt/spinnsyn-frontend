@@ -88,6 +88,8 @@ const UtbetalingTekster = {
         'Du kan få sykepenger fra og med 17. dagen i sykefraværet ditt. De første 16 dagene teller fra du får en sykmelding, eller gir beskjed til Nav om at du er syk og ikke kan jobbe. Se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A78-34" target="_blank">folketrygdloven § 8-34</a>, andre avsnitt.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
+    'utbetaling.tabell.label.AvslattMeldingTilNavDag':
+        'Du oppga i søknaden at du ga Nav beskjed om at du var syk denne dagen. Vi finner ikke denne beskjeden i våre systemer, og dagen teller derfor ikke med i beregningen. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-34" target="_blank">folketrygdloven § 8-34</a>, tredje avsnitt.',
     'utbetaling.tabell.avvist.Over70':
         'Etter at du har fylt 70 år, får du ikke sykepenger fra Nav. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-3" target="_blank">folketrygdloven § 8-3</a>, første avsnitt.',
     'utbetaling.tabell.avvist.SykepengedagerOppbrukt':
