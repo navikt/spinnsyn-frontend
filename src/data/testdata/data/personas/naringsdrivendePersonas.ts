@@ -2,7 +2,7 @@ import { Persona } from '../../testperson'
 import { standardSelvstendig } from '../vedtak/naringsdrivende/standardSelvstendig'
 import { seksGBegrensningSelvstendig } from '../vedtak/naringsdrivende/seksGBegrensningSelvstendig'
 import { utenAarsinntektSelvstendig } from '../vedtak/naringsdrivende/utenAarsinntektSelvstendig'
-import { bareVenteperiodeSelvstendig } from '../vedtak/naringsdrivende/bareVenteperiodeSelvstendig'
+import { ingenUtbetalingSelvstendig } from '../vedtak/naringsdrivende/ingenUtbetalingSelvstendig'
 import { avslattMeldingTilNavDagSelvstendig } from '../vedtak/naringsdrivende/avslattMeldingTilNavDag'
 
 export const standardSelvstendigPersona: Persona = {
@@ -23,10 +23,10 @@ export const utenAarsinntektSelvstendigPersona: Persona = {
     beskrivelse: 'Selvstendig næringsdrivende uten årsinntekt',
 }
 
-export const bareVenteperiodeSelvstendigPersona: Persona = {
-    vedtak: [bareVenteperiodeSelvstendig],
+export const ingenUtbetalingSelvstendigPersona: Persona = {
+    vedtak: [ingenUtbetalingSelvstendig],
     kontonummer: '10011110011',
-    beskrivelse: 'Selvstendig næringsdrivende med bare venteperiode',
+    beskrivelse: 'Selvstendig næringsdrivende med ingen utbetaling',
 }
 
 export const avslattMeldingTilNavDagPersona: Persona = {

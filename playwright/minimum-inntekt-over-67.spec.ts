@@ -1,5 +1,5 @@
 import { test, expect } from './fixtures'
-import { visBeregningRegion } from './utils/hjelpefunksjoner'
+import { harSynligTittel, visBeregningRegion } from './utils/hjelpefunksjoner'
 
 test.describe('Minimum inntekt over 67', () => {
     test.beforeEach(async ({ page }) => {
@@ -7,7 +7,7 @@ test.describe('Minimum inntekt over 67', () => {
     })
 
     test('Vedtak med avviste dager og ingen utbetaling grunnet minimum inntekt over 67', async ({ page }) => {
-        await expect(page.getByText('Ingen utbetaling')).toBeVisible()
+        await harSynligTittel(page, 'Ingen utbetaling', 2)
         await visBeregningRegion(page)
         const begrunnelseAccordion = page.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
         await expect(begrunnelseAccordion).toBeVisible()

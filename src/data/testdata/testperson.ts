@@ -32,7 +32,7 @@ import {
     vedtakMedNullOmregnetAarsinngtekt,
 } from './data/personas/personas'
 import {
-    bareVenteperiodeSelvstendigPersona,
+    ingenUtbetalingSelvstendigPersona,
     seksGBegrensetSelvstendigPersona,
     standardSelvstendigPersona,
     utenAarsinntektSelvstendigPersona,
@@ -79,7 +79,7 @@ export type PersonaKey =
     | 'standard-selvstendig'
     | 'seks-g-begrensning'
     | 'uten-aarsintekt'
-    | 'bare-venteperiode'
+    | 'ingen-utbetaling-selvstendig'
     | 'avslaatt-melding-til-nav'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
@@ -103,7 +103,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['standard-selvstendig']: jsonDeepCopy(standardSelvstendigPersona),
         ['seks-g-begrensning']: jsonDeepCopy(seksGBegrensetSelvstendigPersona),
         ['uten-aarsintekt']: jsonDeepCopy(utenAarsinntektSelvstendigPersona),
-        ['bare-venteperiode']: jsonDeepCopy(bareVenteperiodeSelvstendigPersona),
+        ['ingen-utbetaling-selvstendig']: jsonDeepCopy(ingenUtbetalingSelvstendigPersona),
         ['avslaatt-melding-til-nav']: jsonDeepCopy(avslattMeldingTilNavDagPersona),
     },
     ['avvist-delvis-innvilgelse-bømlo']: {
