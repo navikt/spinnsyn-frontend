@@ -120,7 +120,7 @@ test.describe('Utbetalingsoversikt', () => {
                 },
                 {
                     key: 'Ventetidsdag',
-                    tekst: 'Du kan få sykepenger fra og med 17. dagen i sykefraværet ditt.',
+                    tekst: 'Du kan først få sykepenger fra og med 17. dagen i sykefraværet ditt.',
                 },
                 {
                     key: 'UkjentDag',
