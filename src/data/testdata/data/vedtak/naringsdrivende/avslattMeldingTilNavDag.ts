@@ -6,13 +6,6 @@ export const avslattMeldingTilNavDagSelvstendig: RSVedtakWrapper = {
     lestDato: null,
     daglisteArbeidsgiver: [],
     daglisteSykmeldt: [
-        { dato: '2024-09-02', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2024-09-03', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2024-09-04', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2024-09-05', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2024-09-06', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2024-09-07', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
-        { dato: '2024-09-08', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2024-09-09', dagtype: 'AvslattMeldingTilNavDag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2024-09-10', dagtype: 'AvslattMeldingTilNavDag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2024-09-11', dagtype: 'AvslattMeldingTilNavDag', begrunnelser: [], belop: 0, grad: 100 },
