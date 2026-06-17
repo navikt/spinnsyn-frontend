@@ -61,6 +61,8 @@ export const finnBegrunnelseTekst = (begrunnelse: RSBegrunnelse): string => {
             return 'Pleiepenger'
         case 'AndreYtelserSvangerskapspenger':
             return 'Svangerskapspenger'
+        case 'AvslattMeldingTilNavDag':
+            return 'Beskjed til Nav ikke registrert'
         case 'UKJENT':
         default:
             return 'Ukjent'

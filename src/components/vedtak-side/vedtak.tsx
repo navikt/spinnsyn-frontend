@@ -28,14 +28,7 @@ import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn
 import { getVedtakAlertTyper, VedtakAlertOgReadmore } from './vedtak-alert/vedtak-alert-og-readmore'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 
-export const dagErAvvist: RSDagType[] = [
-    'AvvistDag',
-    'Feriedag',
-    'Permisjonsdag',
-    'ForeldetDag',
-    'AndreYtelser',
-    'AvslattMeldingTilNavDag',
-]
+export const dagErAvvist: RSDagType[] = ['AvvistDag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag', 'AndreYtelser']
 
 export const dagErInnvilget: RSDagType[] = ['NavDag']
 

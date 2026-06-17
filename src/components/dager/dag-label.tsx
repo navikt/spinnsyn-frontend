@@ -64,14 +64,6 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
                         Søkt&nbsp;for&nbsp;sent
                     </Tag>
                 )
-
-            case 'AvslattMeldingTilNavDag':
-                return (
-                    <Tag size="small" variant="warning">
-                        Beskjed til Nav ikke registrert
-                    </Tag>
-                )
-
             case 'AvvistDag':
             case 'AndreYtelser':
                 return dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))
