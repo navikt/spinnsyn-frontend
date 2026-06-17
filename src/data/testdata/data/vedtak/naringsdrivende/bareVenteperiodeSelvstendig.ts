@@ -20,6 +20,8 @@ export const bareVenteperiodeSelvstendig: RSVedtakWrapper = {
         { dato: '2023-08-13', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2023-08-14', dagtype: 'Ventetidsdag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2023-08-15', dagtype: 'Ventetidsdag', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2023-08-16', dagtype: 'MeldingTilNavDagUtenforVentetid', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2023-08-17', dagtype: 'MeldingTilNavDagUtenforVentetid', begrunnelser: [], belop: 0, grad: 0 },
     ],
     vedtak: {
         vedtakFattetTidspunkt: '2023-09-05',
@@ -27,7 +29,7 @@ export const bareVenteperiodeSelvstendig: RSVedtakWrapper = {
         sykepengegrunnlag: 620_000,
         begrensning: 'ER_IKKE_6G_BEGRENSET',
         fom: '2023-08-01',
-        tom: '2023-08-15',
+        tom: '2023-08-17',
         sykepengegrunnlagsfakta: {
             fastsatt: 'EtterHovedregel',
             '6G': 780_960,
