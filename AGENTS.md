@@ -3,29 +3,24 @@ Repoet `spinnsyn-frontend` er en React-app for visning av vedtak om sykepenger i
 
 ## 1) Kommandoer
 
-```sh
-npm run dev # kjør lokalt
-npm run test # kjør tester i watch-mode
-npm run test:ci # kjør tester i CI-mode (uten watch)
-npm run build # bygg for produksjon (verifiserer også at build ikke feiler)
-npm run format # formater kode med Prettier
-npm run play-headless # kjør E2E-tester i headless mode (brukes i CI)
-```
+Bruk IntelliJ MCP (`execute_run_configuration`) for alle scripts — se **`AGENTS-intellij.md`**. Scripts for referanse:
 
-- `npm run dev` bruker mock-backend lokalt (`MOCK_BACKEND=true`)
+```sh
+npm run dev           # kjør lokalt (mock-backend)
+npm run test:ci       # enhetstester uten watch
+npm run build         # bygg for produksjon
+npm run format        # formater med Prettier + ESLint
+npm run play-headless # E2E-tester headless
+```
 
 ### Før commit (obligatorisk)
 
-Bruk `execute_run_configuration` via IntelliJ MCP — se **`AGENTS-intellij.md`** for detaljer. Rekkefølge:
+Kjør i rekkefølge via `execute_run_configuration`:
 
 1. `format`
 2. `test:ci`
 3. `play-headless`
 4. `build`
-
-### Kjøre tester via IntelliJ MCP (foretrukket)
-
-Bruk `execute_run_configuration` fremfor bash når IntelliJ MCP er tilgjengelig — se **`AGENTS-intellij.md`** for detaljer og instruksjoner for å opprette nye run-konfigurasjoner.
 
 ## 2) Testing
 
@@ -72,11 +67,12 @@ Standard flyt:
 
 ```sh
 git checkout -b kort-beskrivende-navn
-# format, kjør enhetstester og E2E-tester, bygg (se «Før commit» i seksjon 1)
+# kjør format, tester og bygg via IntelliJ MCP (se «Før commit» i seksjon 1)
 git commit -m "Kort beskrivelse"
 git push origin <branch>
-gh pr create --fill
 ```
+
+Opprett PR via GitHub MCP (`create_pull_request`) eller `gh pr create --fill`.
 
 ## 6) Grenser (aldri gjør dette)
 
