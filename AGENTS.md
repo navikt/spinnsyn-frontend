@@ -17,22 +17,18 @@ npm run play-headless # kjør E2E-tester i headless mode (brukes i CI)
 ### Før commit (obligatorisk)
 
 ```sh
-npm run format && npm run test:ci && npm run build
+npm run format && npm run test:ci && npm run play-headless && npm run build
 ```
 
-### Kjøre Playwright via IntelliJ MCP
+### Kjøre tester via IntelliJ MCP (foretrukket)
 
-Bruk `execute_run_configuration` på `play-headless`-scriptet i `package.json`. Starter dev-serveren automatisk via `webServer`-konfig i `playwright.config.ts` (`reuseExistingServer: true`).
-
-For å kjøre én enkelt spec-fil:
-1. `get_run_configurations` på spec-filen for å finne run points
-2. `execute_run_configuration` med `waitForExit: true` og `timeout: 60000`
-   — **NB:** da må dev-serveren allerede kjøre (start `dev`-scriptet med `waitForExit: false` først)
+Bruk `execute_run_configuration` fremfor bash når IntelliJ MCP er tilgjengelig — se **`AGENTS-intellij.md`** for detaljer og instruksjoner for å opprette nye run-konfigurasjoner.
 
 ## 2) Testing
 
 - Enhet/integrasjon: **Vitest** (`.test.ts` / `.test.tsx`) i `src/`
 - E2E: **Playwright** i `playwright/**/*.spec.ts`
+- «Kjør tester» betyr alltid begge — `npm run test:ci` **og** `npm run play-headless`. Spesifiser eksplisitt hvis bare én type ønskes.
 - Prioriter tester for endret domenelogikk
 
 ### Playwright-mønstre
@@ -73,7 +69,7 @@ Standard flyt:
 
 ```sh
 git checkout -b kort-beskrivende-navn
-npm run format && npm run test:ci && npm run build
+# format, kjør enhetstester og E2E-tester, bygg (se «Før commit» i seksjon 1)
 git commit -m "Kort beskrivelse"
 git push origin <branch>
 gh pr create --fill
@@ -103,5 +99,5 @@ gh pr create --fill
 
 - [ ] Endringen følger eksisterende mønster i berørte filer
 - [ ] Tester er oppdatert der domenelogikk er endret
-- [ ] `npm run format && npm run test:ci && npm run build` er grønn
+- [ ] Format, enhetstester, E2E-tester og bygg er grønn (se «Før commit» i seksjon 1)
 
