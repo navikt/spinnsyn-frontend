@@ -16,9 +16,12 @@ npm run play-headless # kjør E2E-tester i headless mode (brukes i CI)
 
 ### Før commit (obligatorisk)
 
-```sh
-npm run format && npm run test:ci && npm run play-headless && npm run build
-```
+Bruk `execute_run_configuration` via IntelliJ MCP — se **`AGENTS-intellij.md`** for detaljer. Rekkefølge:
+
+1. `format`
+2. `test:ci`
+3. `play-headless`
+4. `build`
 
 ### Kjøre tester via IntelliJ MCP (foretrukket)
 
@@ -28,7 +31,7 @@ Bruk `execute_run_configuration` fremfor bash når IntelliJ MCP er tilgjengelig 
 
 - Enhet/integrasjon: **Vitest** (`.test.ts` / `.test.tsx`) i `src/`
 - E2E: **Playwright** i `playwright/**/*.spec.ts`
-- «Kjør tester» betyr alltid begge — `npm run test:ci` **og** `npm run play-headless`. Spesifiser eksplisitt hvis bare én type ønskes.
+- «Kjør tester» betyr alltid begge — `test:ci` **og** `play-headless` via IntelliJ MCP. Spesifiser eksplisitt hvis bare én type ønskes.
 - Prioriter tester for endret domenelogikk
 
 ### Playwright-mønstre
