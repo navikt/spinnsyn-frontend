@@ -36,6 +36,7 @@ import {
     seksGBegrensetSelvstendigPersona,
     standardSelvstendigPersona,
     utenAarsinntektSelvstendigPersona,
+    avslattMeldingTilNavDagPersona,
 } from './data/personas/naringsdrivendePersonas'
 
 export interface Persona {
@@ -79,6 +80,7 @@ export type PersonaKey =
     | 'seks-g-begrensning'
     | 'uten-aarsintekt'
     | 'bare-venteperiode'
+    | 'avslaatt-melding-til-nav'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -102,6 +104,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['seks-g-begrensning']: jsonDeepCopy(seksGBegrensetSelvstendigPersona),
         ['uten-aarsintekt']: jsonDeepCopy(utenAarsinntektSelvstendigPersona),
         ['bare-venteperiode']: jsonDeepCopy(bareVenteperiodeSelvstendigPersona),
+        ['avslaatt-melding-til-nav']: jsonDeepCopy(avslattMeldingTilNavDagPersona),
     },
     ['avvist-delvis-innvilgelse-bømlo']: {
         ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),

@@ -92,6 +92,7 @@ export type RSBegrunnelse =
     | 'AndreYtelserPleiepenger'
     | 'AndreYtelserSvangerskapspenger'
     | 'UKJENT'
+    | 'AvslattMeldingTilNavDag'
 
 export type RSDagType =
     | 'NavDag'

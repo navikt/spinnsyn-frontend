@@ -1,0 +1,47 @@
+import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
+
+export const avslattMeldingTilNavDagSelvstendig: RSVedtakWrapper = {
+    id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    lest: false,
+    lestDato: null,
+    daglisteArbeidsgiver: [],
+    daglisteSykmeldt: [
+        { dato: '2024-09-09', dagtype: 'AvvistDag', begrunnelser: ['AvslattMeldingTilNavDag'], belop: 0, grad: 100 },
+        { dato: '2024-09-10', dagtype: 'AvvistDag', begrunnelser: ['AvslattMeldingTilNavDag'], belop: 0, grad: 100 },
+        { dato: '2024-09-11', dagtype: 'AvvistDag', begrunnelser: ['AvslattMeldingTilNavDag'], belop: 0, grad: 100 },
+        { dato: '2024-09-12', dagtype: 'NavDag', begrunnelser: [], belop: 1200, grad: 100 },
+        { dato: '2024-09-13', dagtype: 'NavDag', begrunnelser: [], belop: 1200, grad: 100 },
+        { dato: '2024-09-14', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-09-15', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
+        { dato: '2024-09-16', dagtype: 'NavDag', begrunnelser: [], belop: 1200, grad: 100 },
+        { dato: '2024-09-17', dagtype: 'NavDag', begrunnelser: [], belop: 1200, grad: 100 },
+        { dato: '2024-09-18', dagtype: 'NavDag', begrunnelser: [], belop: 1200, grad: 100 },
+    ],
+    sykepengebelopArbeidsgiver: 0,
+    sykepengebelopSykmeldt: 6000,
+    vedtak: {
+        yrkesaktivitetstype: 'SELVSTENDIG',
+        fom: '2024-09-02',
+        tom: '2024-09-18',
+        dokumenter: [
+            { dokumentId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', type: 'Sykmelding' },
+            { dokumentId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567891', type: 'Søknad' },
+        ],
+        sykepengegrunnlag: 360000,
+        vedtakFattetTidspunkt: '2024-09-20',
+        utbetaling: {
+            utbetalingId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567892',
+            forbrukteSykedager: 5,
+            gjenståendeSykedager: 243,
+            automatiskBehandling: true,
+            utbetalingType: 'UTBETALING',
+        },
+        begrensning: 'ER_IKKE_6G_BEGRENSET',
+    },
+    opprettetTimestamp: '2024-09-20T10:00:00.000Z',
+    orgnavn: 'Testbedriften ENK',
+    annullert: false,
+    revurdert: false,
+    andreArbeidsgivere: {},
+    organisasjoner: {},
+}
