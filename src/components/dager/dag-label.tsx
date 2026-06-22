@@ -68,6 +68,13 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
             case 'AndreYtelser':
                 return dag.begrunnelser?.map((begrunnelse, idx) => lagBegrunnelseLabel(begrunnelse, idx))
 
+            case 'MeldingTilNavDagUtenforVentetid':
+                return (
+                    <Tag size="small" variant="info">
+                        Dekkes ikke
+                    </Tag>
+                )
+
             case 'Ventetidsdag':
                 return (
                     <Tag size="small" variant="info">

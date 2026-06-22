@@ -106,6 +106,7 @@ export type RSDagType =
     | 'ArbeidIkkeGjenopptattDag'
     | 'AndreYtelser'
     | 'Ventetidsdag'
+    | 'MeldingTilNavDagUtenforVentetid'
     | 'UkjentDag'
 
 export interface Dokument {

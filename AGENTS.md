@@ -28,6 +28,7 @@ Kjør i rekkefølge via `execute_run_configuration`:
 - E2E: **Playwright** i `playwright/**/*.spec.ts`
 - «Kjør tester» betyr alltid begge — `test:ci` **og** `play-headless` via IntelliJ MCP. Spesifiser eksplisitt hvis bare én type ønskes.
 - Prioriter tester for endret domenelogikk
+- `playwright/utils/` - hjelpefunksjoner for E2E-testing
 
 ### Playwright-mønstre
 

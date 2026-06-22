@@ -86,6 +86,8 @@ const UtbetalingTekster = {
         'Søknaden kom inn etter fristen. Nav kan gi sykepenger for opptil tre måneder før den måneden du sendte søknaden. I særlige tilfeller kan det gjøres unntak, slik at sykepenger kan gis opptil tre år tilbake i tid. Vi finner ikke grunnlag for unntak i denne saken. Du får derfor ikke sykepenger for denne dagen (<a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A722-13" target="_blank">folketrygdloven § 22-13</a>, tredje og sjuende avsnitt).',
     'utbetaling.tabell.label.Ventetidsdag':
         'Du kan først få sykepenger fra og med den 17. dagen i sykefraværet ditt. De første 16 dagene telles fra du får en sykmelding, eller gir beskjed til Nav om at du er syk og ikke kan jobbe. Se <a href="https://lovdata.no/nav/folketrygdloven/kap22/%C2%A78-34" target="_blank">folketrygdloven § 8-34</a>, andre og tredje avsnitt.',
+    'utbetaling.tabell.label.MeldingTilNavDagUtenforVentetid':
+        'Denne dagen teller ikke med i de 16 dagene du selv dekker, og gir derfor ikke rett til sykepenger fra Nav. Det kan skyldes at du har meldt fra om flere dager enn de 16 du selv dekker, eller at du jobbet en eller flere dager i denne perioden, slik at de påfølgende dagene ikke lenger regnes som en sammenhengende periode. Se <a href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-34" target="_blank">folketrygdloven § 8-34</a>.',
     'utbetaling.tabell.label.UkjentDag':
         'Vi har ikke mottatt informasjon om denne dagen, så den regnes som arbeidsdag.',
     'utbetaling.tabell.avvist.AvslattMeldingTilNavDag':

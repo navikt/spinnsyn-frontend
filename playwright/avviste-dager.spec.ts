@@ -163,7 +163,7 @@ test.describe('Avviste dager', () => {
     test('Vedtak med avviste dager og lav inntekt, direkte utbetaling', async ({ page }) => {
         await page.goto('/syk/sykepenger?testperson=delvis-og-helt-avviste-vedtak')
         await trykkPaVedtakMedId(page, avvistVedtakMedLavInntektDirekteUtbetaling.id)
-        await expect(page.getByText('Ingen utbetaling')).toBeVisible()
+        await harSynligTittel(page, 'Ingen utbetaling', 2)
 
         const ingenUtbetalingPanel = page.getByTestId('utbetaling-panel-ingen')
         await expect(ingenUtbetalingPanel.getByText('Søknaden er avslått', { exact: true })).toBeVisible()

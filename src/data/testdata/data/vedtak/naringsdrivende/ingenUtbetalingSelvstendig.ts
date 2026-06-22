@@ -1,10 +1,12 @@
 import { RSVedtakWrapper } from '../../../../../types/rs-types/rs-vedtak-felles'
 
-export const bareVenteperiodeSelvstendig: RSVedtakWrapper = {
-    id: 'tilfeldig-uuid-bare-venteperiode-vedtak',
+export const ingenUtbetalingSelvstendig: RSVedtakWrapper = {
+    id: 'tilfeldig-uuid-ingen-utbetaling-selvstendig-vedtak',
     orgnavn: 'Wooley Socks ENK',
     daglisteArbeidsgiver: [],
     daglisteSykmeldt: [
+        { dato: '2023-07-27', dagtype: 'MeldingTilNavDagUtenforVentetid', begrunnelser: [], belop: 0, grad: 0 },
+        { dato: '2023-07-28', dagtype: 'MeldingTilNavDagUtenforVentetid', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2023-08-01', dagtype: 'Ventetidsdag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2023-08-02', dagtype: 'Ventetidsdag', begrunnelser: [], belop: 0, grad: 0 },
         { dato: '2023-08-03', dagtype: 'Ventetidsdag', begrunnelser: [], belop: 0, grad: 0 },
@@ -26,7 +28,7 @@ export const bareVenteperiodeSelvstendig: RSVedtakWrapper = {
         yrkesaktivitetstype: 'SELVSTENDIG',
         sykepengegrunnlag: 620_000,
         begrensning: 'ER_IKKE_6G_BEGRENSET',
-        fom: '2023-08-01',
+        fom: '2023-07-27',
         tom: '2023-08-15',
         sykepengegrunnlagsfakta: {
             fastsatt: 'EtterHovedregel',
