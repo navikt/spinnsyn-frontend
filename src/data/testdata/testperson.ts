@@ -30,6 +30,7 @@ import {
     utenData,
     vedtakMed0UtbetalingPerson,
     vedtakMedNullOmregnetAarsinngtekt,
+    vedtakArbeidsgiverperiodeOgHelg,
 } from './data/personas/personas'
 import {
     ingenUtbetalingSelvstendigPersona,
@@ -81,6 +82,7 @@ export type PersonaKey =
     | 'uten-aarsintekt'
     | 'ingen-utbetaling-selvstendig'
     | 'avslaatt-melding-til-nav'
+    | 'vedtak-arbeidsgiverperiode-og-helg'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -137,6 +139,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['skjonnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePersona),
         ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
         ['kombinert-revurdert']: jsonDeepCopy(kombinertRevurdertPersona),
+        ['vedtak-arbeidsgiverperiode-og-helg']: jsonDeepCopy(vedtakArbeidsgiverperiodeOgHelg),
     },
 }
 
