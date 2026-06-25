@@ -34,6 +34,7 @@ import { ingenUtbetalingFordiAlleDagerHelg } from '../vedtak/ingenUtbetalingFord
 import { innvilgelseVedtak } from '../vedtak/delvisInnvilgelse'
 import { revurderingVedtak } from '../vedtak/revurdering'
 import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
+import { arbeidsgiverperiodeOgHelg } from '../vedtak/arbeidsgiverperiodeOgHelg'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -192,4 +193,8 @@ export const vedtakMedNullOmregnetAarsinngtekt: Persona = {
 export const kombinertRevurdertPersona: Persona = {
     vedtak: [kombinertRevurdert],
     beskrivelse: 'Kombinert som er revurdert. Har en egen spesiell tekst',
+}
+export const vedtakArbeidsgiverperiodeOgHelg: Persona = {
+    vedtak: [arbeidsgiverperiodeOgHelg],
+    beskrivelse: 'Vedtak med kun arbeidsgiverperiode og helg',
 }
