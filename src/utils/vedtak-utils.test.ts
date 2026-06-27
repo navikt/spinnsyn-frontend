@@ -3,8 +3,9 @@ import { getDay } from 'date-fns'
 
 import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../data/testdata/data/vedtak/delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo'
 import { vedtakMedFlereArbeidsgivere } from '../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
+import { RSDag } from '../types/rs-types/rs-vedtak-felles'
 
-import { harVedtakEndringer } from './vedtak-utils'
+import { harVedtakEndringer, erKunArbeidsgiverPeriode } from './vedtak-utils'
 import { jsonDeepCopy } from './json-deep-copy'
 import { hentBegrunnelse } from './vedtak-utils'
 import { toDate } from './dato-utils'
@@ -104,5 +105,46 @@ describe('Tester harVedtakEndringer', () => {
             },
         }
         expect(harVedtakEndringer(nyttVedtak, gammeltVedtak)).toBe(true)
+    })
+})
+
+describe('Tester erKunArbeidsgiverPeriode', () => {
+    it('Returnerer true når alle dager er ArbeidsgiverperiodeDag', () => {
+        const dager: RSDag[] = [
+            { dato: '2024-01-01', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-02', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        ]
+        expect(erKunArbeidsgiverPeriode(dager)).toBe(true)
+    })
+
+    it('Returnerer true når arbeidsgiverperiode slutter med en helg', () => {
+        const dager: RSDag[] = [
+            { dato: '2024-01-01', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-02', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-03', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 0 },
+        ]
+        expect(erKunArbeidsgiverPeriode(dager)).toBe(true)
+    })
+
+    it('Returnerer true når arbeidsgiverperiode har helg inni', () => {
+        const dager: RSDag[] = [
+            { dato: '2024-01-01', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-03', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-02', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+        ]
+        expect(erKunArbeidsgiverPeriode(dager)).toBe(false)
+    })
+
+    it('Returnerer false når minst én dag ikke er ArbeidsgiverperiodeDag', () => {
+        const dager: RSDag[] = [
+            { dato: '2024-01-01', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-02', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-03', dagtype: 'NavDag', begrunnelser: [], belop: 500, grad: 100 },
+        ]
+        expect(erKunArbeidsgiverPeriode(dager)).toBe(false)
+    })
+
+    it('Returnerer true for tom liste', () => {
+        expect(erKunArbeidsgiverPeriode([])).toBe(true)
     })
 })

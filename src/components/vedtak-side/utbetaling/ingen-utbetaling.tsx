@@ -2,7 +2,12 @@ import { BodyShort, Heading, Link, List } from '@navikt/ds-react'
 
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
-import { unikeAvslagBegrunnelser, hentBegrunnelse, finnInnvilgetMerke } from '../../../utils/vedtak-utils'
+import {
+    unikeAvslagBegrunnelser,
+    hentBegrunnelse,
+    finnInnvilgetMerke,
+    erKunArbeidsgiverPeriode,
+} from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
 import { dagErInnvilget } from '../vedtak'
@@ -23,13 +28,13 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
         dagTabellScrollElementId: 'sykepenger-per-dag',
     }
 
-    const erKunArbeidsgiverPeriode = alleDager.every((dag) => dag.dagtype === 'ArbeidsgiverperiodeDag')
-    const ingenUtbetalingTittel = erKunArbeidsgiverPeriode ? 'Utbetaling fra arbeidsgiver' : 'Ingen utbetaling'
+    const kunArbeidsgiverPeriode = erKunArbeidsgiverPeriode(alleDager)
+    const ingenUtbetalingTittel = kunArbeidsgiverPeriode ? 'Utbetaling fra arbeidsgiver' : 'Ingen utbetaling'
 
     return (
         <UtbetalingPanel
             sectionLabel={ingenUtbetalingTittel}
-            innvilgetMerke={finnInnvilgetMerke(!minstEnDagInnvilget, erKunArbeidsgiverPeriode, minstEnDagInnvilget)}
+            innvilgetMerke={finnInnvilgetMerke(!minstEnDagInnvilget, kunArbeidsgiverPeriode, minstEnDagInnvilget)}
             tittel={
                 <Heading level="2" size="large">
                     {ingenUtbetalingTittel}
@@ -38,7 +43,7 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
             erUgyldig={annullertEllerRevurdert}
             dataTestId="ingen"
         >
-            <VedtakPeriode vedtak={vedtak} erKunArbeidsgiverPeriode={erKunArbeidsgiverPeriode} />
+            <VedtakPeriode vedtak={vedtak} erKunArbeidsgiverPeriode={kunArbeidsgiverPeriode} />
 
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
