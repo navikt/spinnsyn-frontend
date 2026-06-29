@@ -1,14 +1,14 @@
-import { ingenUtbetalingFordiAlleDagerHelg } from '../src/data/testdata/data/vedtak/ingenUtbetalingFordiAlleDagerHelg'
+import { kunHelg } from '../src/data/testdata/data/vedtak/kunHelg'
 
 import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 
-const baseUrl = '/syk/sykepenger?testperson=vedtak-arbeidsgiverperiode-og-helg'
+const baseUrl = '/syk/sykepenger?testperson=ingen-utbetaling-kun-helg'
 
 test.describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som får null kroner', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto(baseUrl)
-        await trykkPaVedtakMedId(page, ingenUtbetalingFordiAlleDagerHelg.id)
+        await trykkPaVedtakMedId(page, kunHelg.id)
     })
 
     test('Inntekter', async ({ page }) => {

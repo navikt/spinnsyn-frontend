@@ -14,7 +14,7 @@ import { nullOmregnetAarsinntekt } from '../vedtak/nullOmregnetAarsinntekt'
 import { slutterMedRefusjon } from '../vedtak/slutterMedRefusjon'
 import { inntektUnder2g } from '../vedtak/inntektUnder2g'
 import { vedtakMed0Utbetaling } from '../vedtak/vedtakMed0Utbetaling'
-import { kunAgPeriode } from '../vedtak/kunAgPeriode'
+import { kunArbeidsgiverperiode } from '../vedtak/kunArbeidsgiverperiode'
 import { vedtakMedDetMeste } from '../vedtak/medDetMeste'
 import { vedtakMed40Grad } from '../vedtak/gradert40'
 import { vedtakAnnullert } from '../vedtak/annullert'
@@ -30,7 +30,7 @@ import { kombinertRevurdert } from '../vedtak/kombinertRevurdert'
 import { avslattMinimumInntektOver67 } from '../vedtak/avslattMinimumInntektOver67'
 import { inntektHentetFraAordningen } from '../vedtak/inntektHentetFraAordningen'
 import { innvilgelseMedBegrunnelseVedtak, innvilgelseMedTomBegrunnelseVedtak } from '../vedtak/innvilgelseBegrunnelse'
-import { ingenUtbetalingFordiAlleDagerHelg } from '../vedtak/ingenUtbetalingFordiAlleDagerHelg'
+import { kunHelg } from '../vedtak/kunHelg'
 import { innvilgelseVedtak } from '../vedtak/delvisInnvilgelse'
 import { revurderingVedtak } from '../vedtak/revurdering'
 import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
@@ -148,11 +148,6 @@ export const slutterMedDelvisRefusjon: Persona = {
     beskrivelse: 'Arbeidsgiver slutter med refusjon midt i perioden',
 }
 
-export const kunArbedisgiverPerioder: Persona = {
-    vedtak: [kunAgPeriode],
-    beskrivelse: 'Vedtak som bare gjelder innenfor arbeidsgiverperioden',
-}
-
 export const skjønnsfastsattBrukerutbetalingPerson: Persona = {
     vedtak: [skjønnsfastsattBrukerutbetaling],
     beskrivelse: 'Skjønnsfastsatt inntekt med brukerutbetaling',
@@ -193,7 +188,15 @@ export const kombinertRevurdertPersona: Persona = {
     vedtak: [kombinertRevurdert],
     beskrivelse: 'Kombinert som er revurdert. Har en egen spesiell tekst',
 }
-export const vedtakArbeidsgiverperiodeOgHelg: Persona = {
-    vedtak: [arbeidsgiverperiodeOgHelg, ingenUtbetalingFordiAlleDagerHelg],
-    beskrivelse: 'Vedtak med kun arbeidsgiverperiode og helg',
+export const ingenUtbetalingKunHelg: Persona = {
+    vedtak: [kunHelg],
+    beskrivelse: 'Vedtak med kun helg',
+}
+export const ingenUtbetalingKunArbeidsgiverperiode: Persona = {
+    vedtak: [kunArbeidsgiverperiode],
+    beskrivelse: 'Vedtak med kun arbeidsgiverperiode',
+}
+export const ingenUtbetalingArbeidsgiverperiodeOgHelg: Persona = {
+    vedtak: [arbeidsgiverperiodeOgHelg],
+    beskrivelse: 'Vedtak med helg etter arbeidsgiverperiode',
 }

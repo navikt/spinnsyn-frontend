@@ -1,13 +1,13 @@
-import { kunAgPeriode } from '../src/data/testdata/data/vedtak/kunAgPeriode'
+import { kunArbeidsgiverperiode } from '../src/data/testdata/data/vedtak/kunArbeidsgiverperiode'
 
 import { harSynligTekst, harSynligTittel, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 import { test, expect } from './fixtures'
 
 test.describe('Vedtak som kun er innenfor arbeidsgiverperioden', () => {
     test('Viser vedtak', async ({ page }) => {
-        await page.goto('/syk/sykepenger?testperson=kun-ag-periode')
+        await page.goto('/syk/sykepenger?testperson=ingen-utbetaling-kun-arbeidsgiverperiode')
         await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(1)
-        await trykkPaVedtakMedId(page, kunAgPeriode.id)
+        await trykkPaVedtakMedId(page, kunArbeidsgiverperiode.id)
 
         await harSynligTekst(page, 'Søknaden er behandlet')
         await harSynligTittel(page, 'Utbetaling fra arbeidsgiver', 2)
