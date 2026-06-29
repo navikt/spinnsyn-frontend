@@ -135,6 +135,14 @@ describe('Tester erKunArbeidsgiverPeriode', () => {
         expect(erKunArbeidsgiverPeriode(dager)).toBe(false)
     })
 
+    it('Returnerer false når perioden er kun helg', () => {
+        const dager: RSDag[] = [
+            { dato: '2024-01-01', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 0 },
+            { dato: '2024-01-02', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 0 },
+        ]
+        expect(erKunArbeidsgiverPeriode(dager)).toBe(false)
+    })
+
     it('Returnerer false når minst én dag ikke er ArbeidsgiverperiodeDag', () => {
         const dager: RSDag[] = [
             { dato: '2024-01-01', dagtype: 'ArbeidsgiverperiodeDag', begrunnelser: [], belop: 0, grad: 0 },

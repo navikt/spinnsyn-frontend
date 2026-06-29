@@ -108,9 +108,12 @@ const erForskjelligSykepengedagerIgjen = (nyttVedtak: RSVedtakWrapper, gammeltVe
 export const erKunArbeidsgiverPeriode = (dager: RSDag[]): boolean => {
     if (!dager.every((dag) => dag.dagtype === 'ArbeidsgiverperiodeDag' || dag.dagtype === 'NavHelgDag')) return false
 
-    // NavHelgDag kan kun avslutte arbeidsgiverperioden.
+    // NavHelgDag kan kun avslutte arbeidsgiverperioden og det må finnes en ArbeidsgiverperiodeDag først.
     const forsteNavHelgDag = dager.findIndex((dag) => dag.dagtype === 'NavHelgDag')
-    return forsteNavHelgDag === -1 || dager.slice(forsteNavHelgDag).every((dag) => dag.dagtype === 'NavHelgDag')
+    return (
+        forsteNavHelgDag === -1 ||
+        (forsteNavHelgDag > 0 && dager.slice(forsteNavHelgDag).every((dag) => dag.dagtype === 'NavHelgDag'))
+    )
 }
 
 export const finnInnvilgetMerke = (

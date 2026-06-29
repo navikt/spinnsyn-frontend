@@ -59,7 +59,6 @@ export const diverseData: Persona = {
         avvistVedtakMedLavInntekt,
         vedtakRedusertTil6G,
         inntektHentetFraAordningen,
-        ingenUtbetalingFordiAlleDagerHelg,
     ],
     beskrivelse: 'Diverse vedtak brukt til testing',
 }
@@ -195,6 +194,6 @@ export const kombinertRevurdertPersona: Persona = {
     beskrivelse: 'Kombinert som er revurdert. Har en egen spesiell tekst',
 }
 export const vedtakArbeidsgiverperiodeOgHelg: Persona = {
-    vedtak: [arbeidsgiverperiodeOgHelg],
+    vedtak: [arbeidsgiverperiodeOgHelg, ingenUtbetalingFordiAlleDagerHelg],
     beskrivelse: 'Vedtak med kun arbeidsgiverperiode og helg',
 }
