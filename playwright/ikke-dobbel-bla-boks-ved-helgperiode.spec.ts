@@ -1,4 +1,4 @@
-import { kunHelg } from '../src/data/testdata/data/vedtak/kunHelg'
+import { arbeidstakerKunHelg } from '../src/data/testdata/data/vedtak/arbeidstakerKunHelg'
 
 import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
@@ -8,7 +8,7 @@ const baseUrl = '/syk/sykepenger?testperson=ingen-utbetaling-kun-helg'
 test.describe('Ved et vedtak med null utbetaling vises ikke tekst om hvem som får null kroner', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto(baseUrl)
-        await trykkPaVedtakMedId(page, kunHelg.id)
+        await trykkPaVedtakMedId(page, arbeidstakerKunHelg.id)
     })
 
     test('Inntekter', async ({ page }) => {

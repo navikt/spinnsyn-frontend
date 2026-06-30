@@ -6,7 +6,8 @@ import {
     unikeAvslagBegrunnelser,
     hentBegrunnelse,
     finnInnvilgetMerke,
-    erKunArbeidsgiverPeriode,
+    erKunArbeidsgiverperiode,
+    erArbeidsgiverperiodeEtterfulgtAvHelg,
 } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { erWeekendPeriode } from '../../../utils/dato-utils'
@@ -28,13 +29,19 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
         dagTabellScrollElementId: 'sykepenger-per-dag',
     }
 
-    const kunArbeidsgiverPeriode = erKunArbeidsgiverPeriode(alleDager)
-    const ingenUtbetalingTittel = kunArbeidsgiverPeriode ? 'Utbetaling fra arbeidsgiver' : 'Ingen utbetaling'
+    const kunArbeidsgiverperiode = erKunArbeidsgiverperiode(alleDager)
+    const arbeidsgiverperiodeAvsluttetMedHelg = erArbeidsgiverperiodeEtterfulgtAvHelg(alleDager)
+    const ingenUtbetalingTittel = 'Ingen utbetaling fra Nav'
 
     return (
         <UtbetalingPanel
             sectionLabel={ingenUtbetalingTittel}
-            innvilgetMerke={finnInnvilgetMerke(!minstEnDagInnvilget, kunArbeidsgiverPeriode, minstEnDagInnvilget)}
+            innvilgetMerke={finnInnvilgetMerke(
+                !minstEnDagInnvilget,
+                kunArbeidsgiverperiode,
+                arbeidsgiverperiodeAvsluttetMedHelg,
+                minstEnDagInnvilget,
+            )}
             tittel={
                 <Heading level="2" size="large">
                     {ingenUtbetalingTittel}
@@ -43,7 +50,11 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
             erUgyldig={annullertEllerRevurdert}
             dataTestId="ingen"
         >
-            <VedtakPeriode vedtak={vedtak} erKunArbeidsgiverPeriode={kunArbeidsgiverPeriode} />
+            <VedtakPeriode
+                vedtak={vedtak}
+                erKunArbeidsgiverPeriode={kunArbeidsgiverperiode}
+                arbeidsgiverperiodeAvsluttetMedHelg={arbeidsgiverperiodeAvsluttetMedHelg}
+            />
 
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
@@ -53,7 +64,11 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
                     </List>
                 </BodyShort>
             )}
-            <Link href="#mer-om-beregningen">Les mer om begrunnelsen</Link>
+
+            {(arbeidsgiverperiodeAvsluttetMedHelg || erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom)) && (
+                <Link href="#mer-om-beregningen">Les mer om begrunnelsen</Link>
+            )}
+
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
         </UtbetalingPanel>
     )

@@ -1,6 +1,6 @@
 import { RSVedtakWrapper } from '../../../../types/rs-types/rs-vedtak-felles'
 
-export const arbeidsgiverperiodeOgHelg: RSVedtakWrapper = {
+export const arbeidstakerArbeidsgiverperiodeOgHelg: RSVedtakWrapper = {
     id: 'd9732ef6-2652-4f4e-b31f-d711e4b672f6',
     lest: false,
     lestDato: null,
