@@ -47,12 +47,13 @@ export const IngenUtbetaling = ({ vedtak }: { vedtak: RSVedtakWrapper }) => {
 
             {erWeekendPeriode(vedtak.vedtak.fom, vedtak.vedtak.tom) && (
                 <BodyShort>
-                    <List as="ul" title="Hvorfor får jeg ingen utbetaling">
+                    <Heading size="small">Hvorfor får jeg ingen utbetaling</Heading>
+                    <List as="ul">
                         <List.Item>Helg</List.Item>
                     </List>
-                    <Link href="#mer-om-beregningen">Se nærmere begrunnelse her</Link>
                 </BodyShort>
             )}
+            <Link href="#mer-om-beregningen">Les mer om begrunnelsen</Link>
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
         </UtbetalingPanel>
     )
