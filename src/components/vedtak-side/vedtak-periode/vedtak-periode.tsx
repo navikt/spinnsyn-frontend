@@ -49,7 +49,9 @@ const VedtakPeriode = ({
             {(erKunArbeidsgiverPeriode || arbeidsgiverperiodeAvsluttetMedHelg) && (
                 <>
                     <Heading size="small" className="border-t border-gray-400 pt-8">
-                        Sykefraværet er innenfor arbeidsgiverperioden
+                        {arbeidsgiverperiodeAvsluttetMedHelg
+                            ? 'Derfor utbetaler ikke Nav sykepenger for denne perioden'
+                            : 'Sykefraværet er innenfor arbeidsgiverperioden'}
                     </Heading>
                     <BodyShort className="mt-2">
                         Arbeidsgiverperioden er de første 16 dagene av et sykefravær. I denne perioden er det{' '}
