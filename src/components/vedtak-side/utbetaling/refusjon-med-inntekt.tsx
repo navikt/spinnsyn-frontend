@@ -31,7 +31,7 @@ const RefusjonMedInntekt = ({ vedtak }: RefusjonMedInntektProps) => {
 
     return (
         <UtbetalingPanel
-            innvilgetMerke={finnInnvilgetMerke(false, false, delvisInnvilgelse)}
+            innvilgetMerke={finnInnvilgetMerke(false, false, false, delvisInnvilgelse)}
             sectionLabel="Refusjon til arbeidsgiver"
             tittel={
                 <Heading level="2" size="large">

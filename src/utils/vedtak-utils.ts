@@ -105,12 +105,25 @@ const erForskjelligSykepengedagerIgjen = (nyttVedtak: RSVedtakWrapper, gammeltVe
     return nyttVedtak.vedtak.utbetaling.gjenståendeSykedager !== gammeltVedtak.vedtak.utbetaling.gjenståendeSykedager
 }
 
+export const erKunArbeidsgiverperiode = (dager: RSDag[]): boolean => {
+    return dager.every((dag) => dag.dagtype === 'ArbeidsgiverperiodeDag')
+}
+
+export const erArbeidsgiverperiodeEtterfulgtAvHelg = (dager: RSDag[]): boolean => {
+    if (!dager.every((dag) => dag.dagtype === 'ArbeidsgiverperiodeDag' || dag.dagtype === 'NavHelgDag')) return false
+
+    // NavHelgDag kan kun avslutte en periode med ArbeidsgiverperiodeDag.
+    const forsteNavHelgDag = dager.findIndex((dag) => dag.dagtype === 'NavHelgDag')
+    return forsteNavHelgDag > 0 && dager.slice(forsteNavHelgDag).every((dag) => dag.dagtype === 'NavHelgDag')
+}
+
 export const finnInnvilgetMerke = (
     erAvslag: boolean,
     erKunArbeidsgiverperiode: boolean,
+    erArbeidsgiverPeriodeMedHelg: boolean,
     erDelvisInvilgelse: boolean,
 ): string => {
-    if (erKunArbeidsgiverperiode) return 'Søknaden er behandlet'
+    if (erKunArbeidsgiverperiode || erArbeidsgiverPeriodeMedHelg) return 'Søknaden er behandlet'
     if (erAvslag) return 'Søknaden er avslått'
     if (erDelvisInvilgelse) return 'Søknaden er delvis innvilget'
     return 'Søknaden er innvilget'

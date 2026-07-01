@@ -94,6 +94,9 @@ function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; pe
             case 'testing': {
                 return 'Vedtak brukt til testing'
             }
+            case 'ingen-utbetaling': {
+                return 'Vedtak uten utbetaling'
+            }
             default: {
                 throw Error(`mangler testperson gruppe heading for ${gruppe}`)
             }

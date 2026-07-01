@@ -35,7 +35,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntek
     return (
         <UtbetalingPanel
             sectionLabel="Utbetaling til deg"
-            innvilgetMerke={finnInnvilgetMerke(false, false, delvisInnvilgelse)}
+            innvilgetMerke={finnInnvilgetMerke(false, false, false, delvisInnvilgelse)}
             tittel={
                 <div>
                     <Heading level="2" size="large">

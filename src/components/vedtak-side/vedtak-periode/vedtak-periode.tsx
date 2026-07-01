@@ -11,9 +11,15 @@ type VedtakPeriodeProps = {
     vedtak: RSVedtakWrapper
     skalViseRefusjonsMottaker?: boolean
     erKunArbeidsgiverPeriode?: boolean
+    arbeidsgiverperiodeAvsluttetMedHelg?: boolean
 }
 
-const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker, erKunArbeidsgiverPeriode }: VedtakPeriodeProps) => {
+const VedtakPeriode = ({
+    vedtak,
+    skalViseRefusjonsMottaker,
+    erKunArbeidsgiverPeriode,
+    arbeidsgiverperiodeAvsluttetMedHelg,
+}: VedtakPeriodeProps) => {
     const periode = tilLesbarPeriodeMedArstall(vedtak?.vedtak.fom, vedtak?.vedtak.tom)
     const dager = antallDager(vedtak.vedtak.fom, vedtak.vedtak.tom)
 
@@ -40,14 +46,18 @@ const VedtakPeriode = ({ vedtak, skalViseRefusjonsMottaker, erKunArbeidsgiverPer
             <BodyShort spacing>
                 Periode: {periode} ({dager} dager)
             </BodyShort>
-            {erKunArbeidsgiverPeriode && (
+            {(erKunArbeidsgiverPeriode || arbeidsgiverperiodeAvsluttetMedHelg) && (
                 <>
                     <Heading size="small" className="border-t border-gray-400 pt-8">
-                        Sykefraværet er innenfor arbeidsgiverperioden
+                        {arbeidsgiverperiodeAvsluttetMedHelg
+                            ? 'Derfor utbetaler ikke Nav sykepenger for denne perioden'
+                            : 'Sykefraværet er innenfor arbeidsgiverperioden'}
                     </Heading>
                     <BodyShort className="mt-2">
                         Arbeidsgiverperioden er de første 16 dagene av et sykefravær. I denne perioden er det{' '}
-                        {storeTilStoreOgSmå(vedtak.orgnavn)} som betaler sykepengene dine.
+                        {storeTilStoreOgSmå(vedtak.orgnavn)} som er ansvarlig for å utbetale sykepengene dine.
+                        {arbeidsgiverperiodeAvsluttetMedHelg &&
+                            ' Søknaden din inneholder også dager i helgen. Nav utbetaler ikke sykepenger for lørdager og søndager.'}
                     </BodyShort>
                 </>
             )}

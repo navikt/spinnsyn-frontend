@@ -19,7 +19,6 @@ import {
     kombinasjonPerson,
     refusjonOgBrukerutbetalinOgDelvisInnvilget,
     kombinertRevurdertPersona,
-    kunArbedisgiverPerioder,
     kunDirektePerson,
     revurdertOgAnnullert,
     skjonnsfastsattRiktigAarsinntektPersona,
@@ -30,7 +29,9 @@ import {
     utenData,
     vedtakMed0UtbetalingPerson,
     vedtakMedNullOmregnetAarsinngtekt,
-    vedtakArbeidsgiverperiodeOgHelg,
+    ingenUtbetalingKunHelg,
+    ingenUtbetalingKunArbeidsgiverperiode,
+    ingenUtbetalingArbeidsgiverperiodeOgHelg,
 } from './data/personas/personas'
 import {
     ingenUtbetalingSelvstendigPersona,
@@ -82,7 +83,9 @@ export type PersonaKey =
     | 'uten-aarsintekt'
     | 'ingen-utbetaling-selvstendig'
     | 'avslaatt-melding-til-nav'
-    | 'vedtak-arbeidsgiverperiode-og-helg'
+    | 'ingen-utbetaling-kun-helg'
+    | 'ingen-utbetaling-kun-arbeidsgiverperiode'
+    | 'ingen-utbetaling-arbeidsgiverperiode-og-helg'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
@@ -92,6 +95,7 @@ export type PersonaGroupKey =
     | 'avvist-delvis-innvilgelse-bømlo'
     | 'vedtak-innhold'
     | 'testing'
+    | 'ingen-utbetaling'
 type PersonaGroup = Record<PersonaGroupKey, PersonaData>
 
 export const testpersonerGruppert: PersonaGroup = {
@@ -124,7 +128,6 @@ export const testpersonerGruppert: PersonaGroup = {
         ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
         ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
         ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
-        ['kun-ag-periode']: jsonDeepCopy(kunArbedisgiverPerioder),
         ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
         ['julesoknad']: jsonDeepCopy(julesoknadPerson),
         ['vedtak-med-0-utbetaling']: jsonDeepCopy(vedtakMed0UtbetalingPerson),
@@ -139,7 +142,11 @@ export const testpersonerGruppert: PersonaGroup = {
         ['skjonnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePersona),
         ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
         ['kombinert-revurdert']: jsonDeepCopy(kombinertRevurdertPersona),
-        ['vedtak-arbeidsgiverperiode-og-helg']: jsonDeepCopy(vedtakArbeidsgiverperiodeOgHelg),
+    },
+    ['ingen-utbetaling']: {
+        ['ingen-utbetaling-kun-helg']: jsonDeepCopy(ingenUtbetalingKunHelg),
+        ['ingen-utbetaling-kun-arbeidsgiverperiode']: jsonDeepCopy(ingenUtbetalingKunArbeidsgiverperiode),
+        ['ingen-utbetaling-arbeidsgiverperiode-og-helg']: jsonDeepCopy(ingenUtbetalingArbeidsgiverperiodeOgHelg),
     },
 }
 
