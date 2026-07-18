@@ -31,10 +31,11 @@ test.describe('Har null i årsinntekt', () => {
     test('Åpner begrunnelse for skjønnsfastsetting', async ({ page }) => {
         const beregningRegion = await visBeregningRegion(page)
         await beregningRegion.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+        await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'))
         const begrunnelse = page
             .getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
             .locator('..')
-            .locator('div')
+            .locator('.aksel-accordion__content-inner')
         await expect(begrunnelse).toBeVisible()
         await expect(begrunnelse.locator('..')).toContainText(
             'Du er sykmeldt ved overgang fra foreldrepenger bla bla mer greier',

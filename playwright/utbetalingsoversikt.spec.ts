@@ -45,8 +45,8 @@ test.describe('Utbetalingsoversikt', () => {
         await beregningRegion.getByRole('button', { name: 'Sykepenger per dag til arbeidsgiver' }).click()
 
         const forklaring = beregningRegion.getByTestId('dagtabell-forklaring')
-        await expect(forklaring.locator('.navds-tag').nth(0)).toHaveText('Syk')
-        await expect(forklaring.locator('.navds-tag').nth(1)).toHaveText('Helg')
+        await expect(forklaring.locator('.aksel-tag').nth(0)).toHaveText('Syk')
+        await expect(forklaring.locator('.aksel-tag').nth(1)).toHaveText('Helg')
         await harSynligTittel(page, 'Forklaring', 4)
 
         await expect(forklaring).toContainText(

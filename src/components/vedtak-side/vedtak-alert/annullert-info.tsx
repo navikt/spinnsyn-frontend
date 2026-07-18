@@ -48,7 +48,10 @@ export const AnnullertInfo = () => {
                                 tekst="Skriv til oss om du har flere spørsmål"
                                 url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
                                 icon={
-                                    <Chat2Icon title="Skriv til oss" className="inline text-surface-action"></Chat2Icon>
+                                    <Chat2Icon
+                                        title="Skriv til oss"
+                                        className="inline text-ax-bg-accent-strong"
+                                    ></Chat2Icon>
                                 }
                             />
                         </BodyLong>

@@ -36,13 +36,15 @@ test.describe('Kombinasjonutbetaling', () => {
 
         await test.step('Sjekk "Når får du sykepengene?" utvidelse', async () => {
             await personutbetalingSection.getByRole('button', { name: 'Når får du sykepengene?' }).click()
+            await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'))
             await expect(
                 personutbetalingSection
-                    .locator('.navds-read-more--open')
+                    .locator('.aksel-read-more[data-state="open"]')
                     .getByText(
                         'Du får vanligvis utbetalt sykepengene enten innen den 25. i måneden, eller innen fem dager etter at vi har sendt deg svar på søknaden din. Hvis søknaden din gjelder dager i to ulike kalendermåneder, kan utbetalingen bli delt i to.',
                     ),
             ).toBeVisible()
+            await page.mouse.move(0, 0)
         })
 
         await test.step('Sjekk headerbeløp', async () => {

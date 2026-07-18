@@ -22,7 +22,7 @@ test.describe('Kun personutbetaling', () => {
         await expect(header).toBeVisible()
 
         const panel = page.getByTestId('utbetaling-panel-personutbetaling')
-        await expect(panel).toHaveCSS('background-color', 'rgb(216, 249, 255)')
+        await expect(panel).toHaveCSS('background-color', 'rgb(227, 239, 247)')
 
         await harSynligTittel(page, 'Kontonummer for utbetaling', 3)
         await expect(panel.getByText('1001 11 10011')).toBeVisible()

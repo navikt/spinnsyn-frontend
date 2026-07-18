@@ -33,12 +33,12 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
 
         test('Åpner begrunnelse for skjønnsfastsetting', async ({ page }) => {
             const beregningRegion = await visBeregningRegion(page)
-            await beregningRegion.click()
             await beregningRegion.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+            await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'))
             const begrunnelse = page
                 .getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .locator('..')
-                .locator('div')
+                .locator('.aksel-accordion__content-inner')
             await expect(begrunnelse).toContainText(
                 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.',
             )
@@ -57,7 +57,6 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
 
         test('Åpner beregningRegion av sykepengene', async ({ page }) => {
             const beregningRegion = await visBeregningRegion(page)
-            await beregningRegion.click()
             await expect(
                 beregningRegion.getByRole('region', { name: /Årsinntekt rapportert til skatteetaten/ }),
             ).toContainText(formaterValuta(350_000))
@@ -74,12 +73,12 @@ test.describe('Skjønnsfastsatt sykepengegrunnlag', () => {
 
         test('Åpner begrunnelse for skjønnsfastsetting', async ({ page }) => {
             const beregningRegion = await visBeregningRegion(page)
-            await beregningRegion.click()
             await beregningRegion.getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' }).click()
+            await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'))
             const begrunnelse = page
                 .getByRole('button', { name: 'Begrunnelse for skjønnsfastsetting' })
                 .locator('..')
-                .locator('div')
+                .locator('.aksel-accordion__content-inner')
             await expect(begrunnelse).toContainText(
                 'Dette er en mal begrunnelse som kommer fra speil. Vi takler nye linjer.',
             )

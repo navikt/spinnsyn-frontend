@@ -1,5 +1,5 @@
 import { BodyShort, Button, Heading, LinkPanel, Modal, Popover, Tooltip } from '@navikt/ds-react'
-import React, { CSSProperties, useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { SandboxIcon } from '@navikt/aksel-icons'
 
 import { PersonaData, PersonaGroupKey, testpersonerGruppert } from '../../data/testdata/testperson'
@@ -28,34 +28,36 @@ export default function Person() {
             <div hidden={openState}>
                 <Tooltip content="Verktøy for testing">
                     <Button
+                        data-color="neutral"
                         ref={buttonRef}
                         onClick={() => setOpenState((b) => !b)}
                         icon={<SandboxIcon title="Åpne testdataverktøy" />}
-                        variant="tertiary-neutral"
+                        variant="tertiary"
                     />
                 </Tooltip>
-                <div
-                    style={
-                        {
-                            '--ac-popover-bg': 'var(--a-surface-info-subtle)',
-                            '--ac-popover-border': 'var(--a-border-info)',
-                        } as CSSProperties
-                    }
+                <Popover
+                    open={showHint}
+                    onClose={() => void 0}
+                    placement="bottom-end"
+                    anchorEl={buttonRef.current}
+                    className="bg-[var(--ax-bg-info-soft)] border-[var(--ax-border-info)]"
                 >
-                    <Popover open={showHint} onClose={() => void 0} placement="bottom-end" anchorEl={buttonRef.current}>
-                        <Popover.Content>
-                            <Heading size="small" level="2" className="motion-safe:animate-bounce">
-                                Tips!
-                            </Heading>
-                            <div className="w-[220px]">
-                                Her finner du verktøy for å endre mellom forskjellige brukere
-                            </div>
-                            <Button onClick={dismissHint} className="mt-2" variant="secondary-neutral" size="small">
-                                OK!
-                            </Button>
-                        </Popover.Content>
-                    </Popover>
-                </div>
+                    <Popover.Content>
+                        <Heading size="small" level="2" className="motion-safe:animate-bounce">
+                            Tips!
+                        </Heading>
+                        <div className="w-[220px]">Her finner du verktøy for å endre mellom forskjellige brukere</div>
+                        <Button
+                            data-color="neutral"
+                            onClick={dismissHint}
+                            className="mt-2"
+                            variant="secondary"
+                            size="small"
+                        >
+                            OK!
+                        </Button>
+                    </Popover.Content>
+                </Popover>
             </div>
             <Modal
                 open={openState}

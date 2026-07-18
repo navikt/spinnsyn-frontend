@@ -7,11 +7,11 @@ export const Under2G = ({ tags }: { tags?: string[] }) => {
     }
     return (
         <>
-            <Detail className="mt-4 border-t border-gray-700 pt-4 text-sm text-gray-900">
+            <Detail className="mt-4 border-t border-ax-neutral-700 pt-4 text-sm text-ax-text-neutral">
                 Sykepengegrunnlaget ditt er mindre enn to ganger grunnbeløpet. Hvis du også oppfyller kravene for
                 arbeidsavklaringspenger, kan du velge å få det isteden.
             </Detail>
-            <Detail className="text-sm text-gray-900">
+            <Detail className="text-sm text-ax-text-neutral">
                 Sykepenger og arbeidsavklaringspenger beregnes på forskjellige måter. Derfor kan grunnlaget du kan få
                 for arbeidsavklaringspenger være høyere enn det du kan få for sykepenger. For mer informasjon{' '}
                 <Link href="https://innboks.nav.no/s/skriv-til-oss?category=Helse" target="_blank">

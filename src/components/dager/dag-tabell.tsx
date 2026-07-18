@@ -14,7 +14,7 @@ interface DagTabellProps {
 
 const DagTabell = ({ dager }: DagTabellProps) => {
     return (
-        <Table zebraStripes={true} className="bg-white" size="medium">
+        <Table zebraStripes={true} className="bg-[white]" size="medium">
             <Table.Header>
                 <Table.Row>
                     <Table.ColumnHeader scope="col">

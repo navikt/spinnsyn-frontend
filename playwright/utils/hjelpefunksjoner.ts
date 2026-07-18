@@ -58,6 +58,7 @@ export const visBeregningRegion = async (page: Page) => {
     const grunnlagLabel = page.getByLabel('Sykepengegrunnlag')
     if (!(await grunnlagLabel.isVisible())) {
         await beregningRegion.click()
+        await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'))
     }
     await expect(grunnlagLabel).toBeVisible()
     return beregningRegion

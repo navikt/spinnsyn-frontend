@@ -94,12 +94,12 @@ export const SykepengerPerDag = ({
                 setVisDagTabell(open)
             }}
         >
-            <Accordion.Header>
+            <Accordion.Header className="text-ax-text-neutral">
                 <Heading size="small" level="3" tabIndex={-1}>
                     {tittel}
                 </Heading>
             </Accordion.Header>
-            <Accordion.Content className="bg-white px-0">
+            <Accordion.Content className="bg-[white] px-0">
                 {harAvvisteDager && (
                     <BodyShort>
                         Vi ser at du ikke har rett til sykepenger for én eller flere av dagene i denne
