@@ -47,12 +47,7 @@ export const AnnullertInfo = () => {
                             <LenkeMedUmami
                                 tekst="Skriv til oss om du har flere spørsmål"
                                 url="https://innboks.nav.no/s/skriv-til-oss?category=Helse"
-                                icon={
-                                    <Chat2Icon
-                                        title="Skriv til oss"
-                                        className="inline text-ax-bg-accent-strong"
-                                    ></Chat2Icon>
-                                }
+                                icon={<Chat2Icon title="Skriv til oss" className="inline"></Chat2Icon>}
                             />
                         </BodyLong>
                     </>
