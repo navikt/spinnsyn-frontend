@@ -17,10 +17,10 @@ export const InfoSection: React.FC<InfoSectionProps> = ({ ariaLabel, label, valu
             aria-label={ariaLabel || (typeof label === 'string' ? label : undefined)}
             className={cn('arkivering-flex-fix flex justify-between', className)}
         >
-            <BodyShort as="div" size="small" spacing className={cn({ 'font-bold': bold })}>
+            <BodyShort as="div" size="small" spacing className={cn({ 'font-ax-bold': bold })}>
                 {label}
             </BodyShort>
-            <BodyShort as="div" size="small" className={cn({ 'font-bold': bold })}>
+            <BodyShort as="div" size="small" className={cn({ 'font-ax-bold': bold })}>
                 {value}
             </BodyShort>
         </section>

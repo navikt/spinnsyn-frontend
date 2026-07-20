@@ -46,12 +46,12 @@ export const BegrunnelseEkspanderbar = ({
             open={apen}
             onOpenChange={() => (setApen ? setApen(!apen) : false)}
         >
-            <Accordion.Header>
+            <Accordion.Header className="text-ax-text-neutral">
                 <Heading size="small" level="3" tabIndex={-1}>
                     {hentBegrunnelseTittel()}
                 </Heading>
             </Accordion.Header>
-            <Accordion.Content className="mt-4 bg-white">
+            <Accordion.Content className="mt-4 bg-[white]">
                 {begrunnelse === 'skjonn' && (
                     <>
                         <BegrunnelseMedHeading vedtak={vedtak} begrunnelseType="SkjønnsfastsattSykepengegrunnlagMal" />

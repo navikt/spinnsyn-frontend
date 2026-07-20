@@ -51,13 +51,7 @@ export const VedtakExpansionCard = ({
             aria-label={ariaLabel ?? tittel}
             open={apne}
             onToggle={handleToggle}
-            className="mt-4"
-            style={
-                {
-                    '--ac-expansioncard-bg': ugyldig ? 'var(--a-gray-100)' : 'var(--a-surface-default)',
-                    '--ac-expansioncard-border-color': ugyldig ? 'var(--a-gray-100)' : 'var(--a-border-default)',
-                } as React.CSSProperties
-            }
+            className={`mt-4${ugyldig ? ' bg-ax-bg-neutral-soft' : ''}`}
         >
             <ExpansionCard.Header className="flex-arkivering-ignore flex items-center">
                 <Heading level="2" size="medium">

@@ -51,6 +51,7 @@ test.describe('Kombinasjonutbetaling keyboard', () => {
         await test.step('Tabb og sjekk beregningsseksjon', async () => {
             await tabUntilFocusedContainsText(browserName, page, /Beregning av sykepengene/, { checkParent: true })
             await page.keyboard.press('Enter')
+            await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'))
             await tabUntilFocusedContainsText(browserName, page, /Sykepenger per dag til arbeidsgiver/)
             await tabUntilFocusedContainsText(browserName, page, /Sykepenger per dag til deg/)
             await tabUntilFocusedContainsText(browserName, page, /Mer om beregningen/)

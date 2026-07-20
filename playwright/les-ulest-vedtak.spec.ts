@@ -91,8 +91,9 @@ test.describe('Les uleste vedtak', () => {
         await test.step('Sjekk beregnet sluttdato', async () => {
             const region = page.getByRole('region', { name: 'Gjenstående sykepengedager' }).nth(0)
             await expect(region.getByText('per 3. mai 2021')).toBeVisible()
-            await expect(region).toHaveCSS('background-color', 'rgb(236, 238, 240)')
+            await expect(region).toHaveCSS('background-color', 'rgb(245, 246, 247)')
             await region.click()
+            await page.waitForFunction(() => document.getAnimations().every((a) => a.playState !== 'running'))
             await expect(page.getByText('11. november 1918')).toBeVisible()
             await expect(page.getByText('Beregnet maksdato')).toBeVisible()
         })

@@ -28,7 +28,7 @@ const VedtakPeriode = ({
             className={cn(
                 {
                     'mb-2': !skalViseRefusjonsMottaker,
-                    'mb-8 border-b border-gray-400':
+                    'mb-8 border-b border-ax-neutral-400':
                         skalViseRefusjonsMottaker || !erWeekendPeriode(vedtak.vedtak.tom, vedtak.vedtak.fom),
                 },
                 'pb-2',
@@ -48,7 +48,7 @@ const VedtakPeriode = ({
             </BodyShort>
             {(erKunArbeidsgiverPeriode || arbeidsgiverperiodeAvsluttetMedHelg) && (
                 <>
-                    <Heading size="small" className="border-t border-gray-400 pt-8">
+                    <Heading size="small" className="border-t border-ax-neutral-400 pt-8">
                         {arbeidsgiverperiodeAvsluttetMedHelg
                             ? 'Derfor utbetaler ikke Nav sykepenger for denne perioden'
                             : 'Sykefraværet er innenfor arbeidsgiverperioden'}

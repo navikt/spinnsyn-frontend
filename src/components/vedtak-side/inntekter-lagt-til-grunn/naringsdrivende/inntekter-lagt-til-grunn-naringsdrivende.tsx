@@ -75,7 +75,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                             beregningen&quot;.
                         </BodyShort>
 
-                        <Accordion className="mt-8" indent={false}>
+                        <Accordion className="mt-8" indent={false} data-color="neutral">
                             {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
                                 <BegrunnelseEkspanderbar
                                     vedtak={vedtak}

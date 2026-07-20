@@ -59,7 +59,11 @@ export const MerOmBergningenArbeidstaker = ({ vedtak, setForelderElementApen }: 
                 setVisBeregning(isOpen)
             }}
         >
-            <Accordion.Header>Mer om beregningen</Accordion.Header>
+            <Accordion.Header className="text-ax-text-neutral">
+                <Heading size="small" level="3" tabIndex={-1}>
+                    Mer om beregningen
+                </Heading>
+            </Accordion.Header>
             <Accordion.Content className="mt-4">
                 <Heading spacing size="xsmall" level="3" tabIndex={-1}>
                     {tekst('utbetaling.mndlonn.tittel')}

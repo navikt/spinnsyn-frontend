@@ -52,8 +52,8 @@ export const EmojiFlexjar = ({
                         feedback={1}
                         Emoji={sinna}
                         text="Veldig dårlig"
-                        color="var(--a-red-100)"
-                        hoverColor="hover:text-red-500"
+                        color="var(--ax-bg-danger-soft)"
+                        hoverColor="hover:text-ax-danger-500"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -61,8 +61,8 @@ export const EmojiFlexjar = ({
                         feedback={2}
                         Emoji={lei}
                         text="Dårlig"
-                        color="var(--a-orange-100)"
-                        hoverColor="hover:text-orange-500"
+                        color="var(--ax-bg-warning-soft)"
+                        hoverColor="hover:text-ax-warning-500"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -70,8 +70,8 @@ export const EmojiFlexjar = ({
                         feedback={3}
                         Emoji={noytral}
                         text="Nøytral"
-                        color="var(--a-blue-100)"
-                        hoverColor="hover:text-blue-500"
+                        color="var(--ax-bg-info-soft)"
+                        hoverColor="hover:text-ax-info-500"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -79,8 +79,8 @@ export const EmojiFlexjar = ({
                         feedback={4}
                         Emoji={glad}
                         text="Bra"
-                        color="var(--a-green-100)"
-                        hoverColor="hover:text-green-400"
+                        color="var(--ax-bg-success-soft)"
+                        hoverColor="hover:text-ax-success-400"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                     <EmojiButton
@@ -88,8 +88,8 @@ export const EmojiFlexjar = ({
                         feedback={5}
                         Emoji={veldigGlad}
                         text="Veldig bra"
-                        color="var(--a-green-200)"
-                        hoverColor="hover:text-green-700"
+                        color="var(--ax-bg-success-moderate)"
+                        hoverColor="hover:text-ax-success-700"
                         {...feedbackButtonProps}
                     ></EmojiButton>
                 </div>

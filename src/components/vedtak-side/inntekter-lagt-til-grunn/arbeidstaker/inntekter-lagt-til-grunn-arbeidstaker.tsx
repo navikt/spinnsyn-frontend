@@ -132,7 +132,7 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: InntekterLagtTilGr
                     <>
                         <BeregningÅrsinntektFlereArbeidsgivere vedtak={vedtak} />
                         <InfoSection
-                            className="mt-4 border-t border-gray-400 pt-4"
+                            className="mt-4 border-t border-ax-neutral-400 pt-4"
                             bold
                             label={tekst('utbetaling.inntekt.samlet.årsinntekt')}
                             value={formaterValuta(
@@ -143,7 +143,7 @@ export const InntekterLagtTilGrunnArbeidstaker = ({ vedtak }: InntekterLagtTilGr
                     </>
                 )}
                 <EkstrainfoOmVedtaketArbeidstaker vedtak={vedtak.vedtak} />
-                <Accordion className="mt-8" indent={false}>
+                <Accordion className="mt-8" indent={false} data-color="neutral">
                     {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (
                         <BegrunnelseEkspanderbar
                             vedtak={vedtak}
