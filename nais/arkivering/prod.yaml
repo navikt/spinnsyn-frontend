@@ -3,18 +3,8 @@ memory: 512Mi
 min: 3
 max: 4
 env:
-  FLEX_GATEWAY_ROOT: https://flex-gateway.nav.no
-  MOCK_BACKEND: false
-  ENVIRONMENT: prod
-  SYKEFRAVAER_URL: https://www.nav.no/syk/sykefravaer
-  MINSIDE_URL: https://www.nav.no/minside/
-  ARKIVERTE_VEDTAK_URL: https://www.nav.no/dokumentarkiv/tema/SYK
-  OPPLAERING: false
-  UMAMI_ENABLED: false
   DECORATOR_ENV: prod
-  NO_DECORATOR: true
-  UTVIKLING_ARKIVERING: false
-  ARKIVERING: true
+  NO_DECORATOR: "true"
+  UTVIKLING_ARKIVERING: "false"
   SPINNSYN_BACKEND_CLIENT_ID: api://prod-gcp.flex.spinnsyn-backend/.default
   SPINNSYN_BACKEND_URL: http://spinnsyn-backend
-  ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend

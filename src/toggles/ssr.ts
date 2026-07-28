@@ -7,6 +7,7 @@ import * as R from 'remeda'
 import NodeCache from 'node-cache'
 
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { getServerEnv } from '../utils/env'
 
 import { disabledToggles, getUnleashEnvironment, localDevelopmentToggles } from './utils'
 import { EXPECTED_TOGGLES } from './toggles'
@@ -60,9 +61,10 @@ async function getAndValidateDefinitions(): Promise<ReturnType<typeof getDefinit
             return cachedToggles
         }
     }
+    const { UNLEASH_SERVER_API_URL, UNLEASH_SERVER_API_TOKEN } = getServerEnv()
     const definitions = await getDefinitions({
-        url: process.env.UNLEASH_SERVER_API_URL + '/api/client/features',
-        token: process.env.UNLEASH_SERVER_API_TOKEN,
+        url: UNLEASH_SERVER_API_URL! + '/api/client/features',
+        token: UNLEASH_SERVER_API_TOKEN,
         appName: 'spinnsyn-frontend',
     })
 

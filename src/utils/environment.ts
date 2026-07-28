@@ -1,55 +1,55 @@
-import getConfig from 'next/config'
+import { bundledEnv } from './env'
 
-const { publicRuntimeConfig } = getConfig()
+const BASE_PATH = '/syk/sykepenger'
 
 export function isProd() {
-    return publicRuntimeConfig.environment === 'prod'
+    return bundledEnv.NEXT_PUBLIC_ENVIRONMENT === 'prod'
 }
 
 export function isMockBackend() {
-    return publicRuntimeConfig.mockBackend === 'true'
+    return bundledEnv.NEXT_PUBLIC_MOCK_BACKEND
 }
 
 export function isOpplaering() {
-    return publicRuntimeConfig.opplaering === 'true'
+    return bundledEnv.NEXT_PUBLIC_OPPLAERING
 }
 
 export function sykefravaerUrl() {
-    return publicRuntimeConfig.sykefravaerUrl
+    return bundledEnv.NEXT_PUBLIC_SYKEFRAVAER_URL
 }
 
 export function minSideUrl() {
-    return publicRuntimeConfig.minSideUrl
+    return bundledEnv.NEXT_PUBLIC_MINSIDE_URL
 }
 
 export function umamiEnabled() {
-    return publicRuntimeConfig.umamiEnabled === 'true'
+    return bundledEnv.NEXT_PUBLIC_UMAMI_ENABLED
 }
 
 export function spinnsynFrontendInterne() {
-    return publicRuntimeConfig.spinnsynFrontendInterne === 'true'
+    return bundledEnv.NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE
 }
 
 export function spinnsynFrontendArkivering() {
-    return publicRuntimeConfig.spinnsynFrontendArkivering === 'true'
+    return bundledEnv.NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING
 }
 
 export function arkiverteVedtakUrl() {
-    return publicRuntimeConfig.arkiverteVedtakUrl
+    return bundledEnv.NEXT_PUBLIC_ARKIVERTE_VEDTAK_URL
 }
 
-export function telemetryCollectorURL() {
-    return publicRuntimeConfig.telemetryCollectorURL
+export function telemetryCollectorURL(): string | undefined {
+    return bundledEnv.NEXT_PUBLIC_TELEMETRY_URL ?? undefined
 }
 
 export function naisAppImage() {
-    return publicRuntimeConfig.naisAppImage
+    return bundledEnv.NEXT_PUBLIC_VERSION ?? undefined
 }
 
 export function naisAppName() {
-    return publicRuntimeConfig.naisAppName
+    return bundledEnv.NEXT_PUBLIC_APP_NAME
 }
 
 export function basePath() {
-    return publicRuntimeConfig.basePath
+    return BASE_PATH
 }

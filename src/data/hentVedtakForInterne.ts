@@ -1,12 +1,9 @@
-import getConfig from 'next/config'
-
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 import { isMockBackend } from '../utils/environment'
+import { getServerEnv } from '../utils/env'
 
 import { diverseData } from './testdata/data/personas/personas'
-
-const { serverRuntimeConfig } = getConfig()
 
 export const hentVedtakFraSpinnsynBackendForInterne = async (
     token: string,
@@ -16,7 +13,7 @@ export const hentVedtakFraSpinnsynBackendForInterne = async (
         return diverseData.vedtak
     }
 
-    const response = await fetch(`${serverRuntimeConfig.spinnsynBackendUrl}/api/v4/veileder/vedtak`, {
+    const response = await fetch(`${getServerEnv().SPINNSYN_BACKEND_URL}/api/v4/veileder/vedtak`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,

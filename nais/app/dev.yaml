@@ -5,18 +5,9 @@ external-host:
   - flex-unleash-api.nav.cloud.nais.io
 env:
   FLEX_GATEWAY_ROOT: "https://flex-gateway.dev.nav.no"
-  MOCK_BACKEND: "false"
-  ENVIRONMENT: "q1"
-  SYKEFRAVAER_URL: "https://www.ekstern.dev.nav.no/syk/sykefravaer"
-  MINSIDE_URL: "https://www.intern.dev.nav.no/minside/"
-  ARKIVERTE_VEDTAK_URL: "https://www.ansatt.dev.nav.no/dokumentarkiv/tema/SYK"
-  OPPLAERING: "false"
-  UMAMI_ENABLED: "true"
   DECORATOR_ENV: "dev"
   UTVIKLING_ARKIVERING: "false"
-  ARKIVERING: "false"
   SPINNSYN_BACKEND_URL: "http://spinnsyn-backend"
   SPINNSYN_BACKEND_TOKENX_CLIENT_ID: "dev-gcp:flex:spinnsyn-backend"
-  ASSET_PREFIX: https://cdn.nav.no/flex/spinnsyn-frontend
   SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID: "dev-gcp:okonomi:sokos-kontoregister-person"
   FLEXJAR_BACKEND_TOKENX_CLIENT_ID: "dev-gcp:flex:flexjar-backend"

@@ -33,7 +33,8 @@
         "remeda": "^2.39.0",
         "tailwind-merge": "^3.6.0",
         "typescript": "^5.9.3",
-        "uuid": "^14.0.1"
+        "uuid": "^14.0.1",
+        "zod": "^4.4.3"
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.12.1",
@@ -64,9 +65,9 @@
         "vitest": "^4.1.10"
     },
     "scripts": {
-        "dev": "MOCK_BACKEND=true next dev -p 3000 | pino-pretty",
-        "dev-ingen-dekorator": "MOCK_BACKEND=true NO_DECORATOR=true npm run dev | pino-pretty",
-        "interne": "SPINNSYN_FRONTEND_INTERNE=true NO_DECORATOR=true npm run dev | pino-pretty",
+        "dev": "NEXT_PUBLIC_MOCK_BACKEND=true next dev -p 3000 | pino-pretty",
+        "dev-ingen-dekorator": "NEXT_PUBLIC_MOCK_BACKEND=true NO_DECORATOR=true npm run dev | pino-pretty",
+        "interne": "NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE=true NO_DECORATOR=true npm run dev | pino-pretty",
         "start": "next start -p 3000",
         "start-ingen-dekorator": "NO_DECORATOR=true npm start",
         "arkiv": "npm run build && npm run start-ingen-dekorator",

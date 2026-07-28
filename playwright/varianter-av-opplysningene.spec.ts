@@ -28,7 +28,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
 
     test('Automatisk behandlet annullert vedtak', async ({ page }) => {
         await page.goto(`/syk/sykepenger?id=${vedtakAnnullert.id}`)
-        const alert = page.locator('.aksel-alert')
+        const alert = page.locator('.aksel-alert').filter({ hasText: 'Til din informasjon' })
         await expect(alert).toContainText('Til din informasjon')
         await expect(alert).toContainText(
             'Av tekniske årsaker er saken din flyttet til et annet saksbehandlingssystem.',
@@ -47,7 +47,7 @@ test.describe('Tester logikk i behandling.tsx', () => {
 
     test('Manuelt behandlet revurdert vedtak', async ({ page }) => {
         await page.goto(`/syk/sykepenger?id=${vedtakRevurdert.id}`)
-        const alert = page.locator('.aksel-alert')
+        const alert = page.locator('.aksel-alert').filter({ hasText: 'Vi har fått nye opplysninger' })
         await expect(alert).toContainText(
             'Vi har fått nye opplysninger i saken din og søknaden er vurdert på nytt. Dette svaret er erstattet av et annet og gjelder derfor ikke lenger.',
         )

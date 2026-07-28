@@ -1,12 +1,9 @@
-import getConfig from 'next/config'
-
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
-
-const { serverRuntimeConfig } = getConfig()
+import { getServerEnv } from '../utils/env'
 
 export const hentVedtakForArkivering = async (fnr: string, token: string): Promise<RSVedtakWrapper[]> => {
-    const response = await fetch(`${serverRuntimeConfig.spinnsynBackendUrl}/api/v1/arkivering/vedtak`, {
+    const response = await fetch(`${getServerEnv().SPINNSYN_BACKEND_URL}/api/v1/arkivering/vedtak`, {
         method: 'GET',
         headers: { fnr: fnr, Authorization: `Bearer ${token}` },
     })
