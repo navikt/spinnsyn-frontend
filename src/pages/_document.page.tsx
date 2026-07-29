@@ -1,13 +1,11 @@
 import { DecoratorComponentsReact, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr'
-import getConfig from 'next/config'
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import React from 'react'
 import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
 import { spinnsynFrontendInterne } from '../utils/environment'
-
-const { serverRuntimeConfig } = getConfig()
+import { getServerEnv } from '../utils/env'
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
@@ -35,10 +33,10 @@ class MyDocument extends Document<Props> {
             ctx,
         }
 
-        const showDecorator = serverRuntimeConfig.noDecorator != 'true'
+        const showDecorator = getServerEnv().NO_DECORATOR != 'true'
         if (showDecorator) {
             props.Decorator = await fetchDecoratorReact({
-                env: serverRuntimeConfig.decoratorEnv,
+                env: getServerEnv().DECORATOR_ENV as any,
                 params: {
                     chatbot: false,
                     feedback: false,

@@ -1,0 +1,144 @@
+name: Bygg og deploy
+on:
+  workflow_call:
+    inputs:
+      env-fil-dev:
+        required: true
+        type: string
+        description: 'Sti til dev-miljøfil, f.eks. nais/arkivering/.env.dev'
+      env-fil-prod:
+        required: true
+        type: string
+        description: 'Sti til prod-miljøfil'
+      image-suffix:
+        required: true
+        type: string
+        description: 'Suffiks for Docker-image, f.eks. arkivering eller interne'
+      nais-template:
+        required: true
+        type: string
+      dev-vars:
+        required: true
+        type: string
+      prod-vars:
+        required: true
+        type: string
+
+jobs:
+  bygg-og-deploy-dev:
+    if: github.ref_name == 'main' || startsWith(github.ref_name, 'dev-')
+    permissions:
+      packages: read
+      contents: read
+      id-token: write
+    name: Bygg og deploy dev
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    concurrency: deploy-${{ inputs.image-suffix }}-til-dev
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+      - name: Installer npm-avhengigheter
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm ci
+      - name: Next.js cache (dev)
+        uses: actions/cache@v6
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ inputs.image-suffix }}-dev-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ inputs.image-suffix }}-dev-${{ hashFiles('**/package-lock.json') }}-
+      - name: Kopier dev-miljøfil
+        run: cp ${{ inputs.env-fil-dev }} .env.production
+      - name: Bygg applikasjon
+        run: npm run build
+        env:
+          NEXT_PUBLIC_VERSION: ${{ github.sha }}
+      - name: Last opp statiske filer til NAV CDN
+        uses: nais/deploy/actions/cdn-upload/v2@master
+        with:
+          team: flex
+          source: ./.next/static
+          destination: /${{ github.event.repository.name }}/_next
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+      - name: Fjern dev-avhengigheter
+        run: npm prune --production
+      - name: docker-build-push
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: flex
+          image_suffix: ${{ inputs.image-suffix }}-dev
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+      - name: Deploy til dev-gcp
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: ${{ inputs.nais-template }}
+          VAR: image=${{ steps.docker-build-push.outputs.image }}
+          VARS: ${{ inputs.dev-vars }}
+
+  bygg-og-deploy-prod:
+    if: github.ref_name == 'main'
+    permissions:
+      packages: read
+      contents: read
+      id-token: write
+    name: Bygg og deploy prod
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    concurrency: deploy-${{ inputs.image-suffix }}-til-prod
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+      - name: Installer npm-avhengigheter
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm ci
+      - name: Next.js cache (prod)
+        uses: actions/cache@v6
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ inputs.image-suffix }}-prod-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ inputs.image-suffix }}-prod-${{ hashFiles('**/package-lock.json') }}-
+      - name: Kopier prod-miljøfil
+        run: cp ${{ inputs.env-fil-prod }} .env.production
+      - name: Bygg applikasjon
+        run: npm run build
+        env:
+          NEXT_PUBLIC_VERSION: ${{ github.sha }}
+      - name: Last opp statiske filer til NAV CDN
+        uses: nais/deploy/actions/cdn-upload/v2@master
+        with:
+          team: flex
+          source: ./.next/static
+          destination: /${{ github.event.repository.name }}/_next
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+      - name: Fjern dev-avhengigheter
+        run: npm prune --production
+      - name: docker-build-push
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: flex
+          image_suffix: ${{ inputs.image-suffix }}-prod
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+      - name: Deploy til prod-gcp
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: prod-gcp
+          RESOURCE: ${{ inputs.nais-template }}
+          VAR: image=${{ steps.docker-build-push.outputs.image }}
+          VARS: ${{ inputs.prod-vars }}

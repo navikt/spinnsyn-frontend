@@ -9,8 +9,10 @@ export const LabsWarning = () => {
     }
 
     return (
-        <Alert variant="warning" className="mb-8">
-            Dette er en demoside og inneholder ikke dine personlige data.
-        </Alert>
+        <header>
+            <Alert variant="warning" className="mb-8">
+                Dette er en demoside og inneholder ikke dine personlige data.
+            </Alert>
+        </header>
     )
 }

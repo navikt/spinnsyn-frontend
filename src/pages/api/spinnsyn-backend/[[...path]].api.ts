@@ -1,12 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import getConfig from 'next/config'
 
 import { beskyttetApi } from '../../../auth/beskyttetApi'
 import { mockSpinnsynBackend } from '../../../data/testdata/mockSpinnsynBackend'
 import { isMockBackend } from '../../../utils/environment'
 import { proxyKallTilBackend } from '../../../proxy/backendproxy'
-
-const { serverRuntimeConfig } = getConfig()
+import { getServerEnv } from '../../../utils/env'
 
 const tillatteApier = ['GET /api/v3/vedtak', 'POST /api/v3/vedtak/[uuid]/les']
 
@@ -20,7 +18,7 @@ const handler = beskyttetApi(async (req: NextApiRequest, res: NextApiResponse) =
         tillatteApier,
         backend: 'spinnsyn-backend',
         hostname: 'spinnsyn-backend',
-        backendClientId: serverRuntimeConfig.spinnsynBackendTokenxClientId,
+        backendClientId: getServerEnv().SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
         https: false,
     })
 })
