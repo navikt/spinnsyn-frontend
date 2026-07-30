@@ -13,14 +13,29 @@ import { useHandleDecoratorClicks } from '../hooks/useBreadcrumbs'
 import { FlagProvider } from '../toggles/context'
 import { ServerSidePropsResult } from '../auth/beskyttetSide'
 
+if (typeof window !== 'undefined') {
+    window.addEventListener('error', (e) => {
+        console.error('[global error]', e.message, e.filename, e.error)
+    })
+    window.addEventListener('unhandledrejection', (e) => {
+        console.error('[unhandledrejection]', e.reason)
+    })
+}
+
 initInstrumentation()
-configureLogger({
-    basePath: basePath(),
-    onLog: (log) =>
-        getFaro()?.api.pushLog(log.messages, {
-            level: pinoLevelToFaroLevel(log.level.label),
-        }),
-})
+try {
+    configureLogger({
+        basePath: basePath(),
+        onLog: (log) =>
+            getFaro()?.api.pushLog(log.messages, {
+                level: pinoLevelToFaroLevel(log.level.label),
+            }),
+    })
+
+    console.log('[_app] configureLogger OK, basePath:', basePath())
+} catch (e) {
+    console.error('[_app] configureLogger feilet:', e)
+}
 
 type Skyra = {
     redactPathname: (path: string) => void
@@ -36,6 +51,8 @@ function konfigurerSkyra(skyra: Skyra) {
 function MyApp({ Component, pageProps }: AppProps<ServerSidePropsResult>): ReactElement {
     useHandleDecoratorClicks()
 
+    console.log('[_app] MyApp render, toggles:', pageProps?.toggles?.length ?? 'ingen')
+
     useEffect(() => {
         // @ts-expect-error - skyra er satt opp i dekoratøren
         const skyra = window?.skyra
@@ -49,9 +66,8 @@ function MyApp({ Component, pageProps }: AppProps<ServerSidePropsResult>): React
             new QueryClient({
                 defaultOptions: {
                     queries: {
-                        /* Setting this to true causes the request to be immediately executed after initial
-                           mount Even if the query had data hydrated from the server side render */
-                        refetchOnMount: false,
+                        staleTime: 5 * 60 * 1000,
+                        networkMode: 'always',
                         refetchOnWindowFocus: false,
                     },
                 },

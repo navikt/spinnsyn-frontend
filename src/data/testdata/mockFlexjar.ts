@@ -3,9 +3,17 @@ import { Readable } from 'stream'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { v4 as uuidv4 } from 'uuid'
 import { logger } from '@navikt/next-logger'
-import { stream2buffer } from '@navikt/next-api-proxy/dist/proxyUtils'
 
 import { cleanPathForMetric } from '../../metrics/metrics'
+
+async function stream2buffer(stream: Readable): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+        const chunks: Buffer[] = []
+        stream.on('data', (chunk: Buffer) => chunks.push(chunk))
+        stream.on('end', () => resolve(Buffer.concat(chunks)))
+        stream.on('error', reject)
+    })
+}
 
 export async function mockFlexjar(req: NextApiRequest, res: NextApiResponse) {
     const api = `${req.method} ${cleanPathForMetric(req.url!.replace('/api/flexjar-backend', ''))}`
