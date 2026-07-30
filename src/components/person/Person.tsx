@@ -39,7 +39,7 @@ export default function Person() {
                     open={showHint}
                     onClose={() => void 0}
                     placement="bottom-end"
-                    anchorEl={buttonRef.current}
+                    anchorEl={buttonRef.current} // eslint-disable-line react-hooks/refs
                     className="bg-[var(--ax-bg-info-soft)] border-[var(--ax-border-info)]"
                 >
                     <Popover.Content>
