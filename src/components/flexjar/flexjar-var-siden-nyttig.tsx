@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { shuffle } from 'remeda'
 
 import { ArkiveringContext } from '../../context/arkivering-context'

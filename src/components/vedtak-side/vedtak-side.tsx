@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../hooks/useMerkVedtakSomLest'
 import { spinnsynFrontendInterne } from '../../utils/environment'

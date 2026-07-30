@@ -1,5 +1,4 @@
 import { Detail, Link } from '@navikt/ds-react'
-import React from 'react'
 
 export const Under2G = ({ tags }: { tags?: string[] }) => {
     if (!tags || !tags.includes('SykepengegrunnlagUnder2G')) {

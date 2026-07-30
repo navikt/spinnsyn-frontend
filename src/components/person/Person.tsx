@@ -1,5 +1,5 @@
 import { BodyShort, Button, Heading, LinkPanel, Modal, Popover, Tooltip } from '@navikt/ds-react'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { SandboxIcon } from '@navikt/aksel-icons'
 
 import { PersonaData, PersonaGroupKey, testpersonerGruppert } from '../../data/testdata/testperson'

@@ -1,5 +1,4 @@
 import { BodyLong, Heading } from '@navikt/ds-react'
-import React from 'react'
 
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
 import { Dokument } from '../../../types/rs-types/rs-vedtak-felles'

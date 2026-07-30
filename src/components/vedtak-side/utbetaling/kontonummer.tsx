@@ -1,5 +1,4 @@
 import { BodyLong, Heading, Skeleton } from '@navikt/ds-react'
-import React from 'react'
 
 import { tekst } from '../../../utils/tekster'
 import { UseKontonummer } from '../../../hooks/useKontonummer'

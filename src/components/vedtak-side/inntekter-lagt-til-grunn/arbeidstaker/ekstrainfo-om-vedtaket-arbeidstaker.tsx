@@ -1,5 +1,4 @@
 import { Alert, BodyShort, Link } from '@navikt/ds-react'
-import React from 'react'
 
 import { formaterValuta, formatOneDecimal } from '../../../../utils/valuta-utils'
 import { tekst } from '../../../../utils/tekster'

@@ -1,5 +1,5 @@
 import { Accordion, BodyShort } from '@navikt/ds-react'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 
 import { harFlereArbeidsgivere } from '../../../../utils/har-flere-arbeidsgivere'
 import { storeTilStoreOgSmå } from '../../../../utils/store-små'

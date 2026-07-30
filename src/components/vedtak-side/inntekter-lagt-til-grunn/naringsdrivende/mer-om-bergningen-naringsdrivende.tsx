@@ -1,5 +1,5 @@
 import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
 import { logEvent } from '../../../umami/umami'

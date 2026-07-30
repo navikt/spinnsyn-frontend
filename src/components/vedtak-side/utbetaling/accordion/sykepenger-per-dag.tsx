@@ -1,5 +1,5 @@
 import { Accordion, BodyLong, BodyShort, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 
 import DagTabell from '../../../dager/dag-tabell'
 import DagBeskrivelse from '../../../dager/dag-beskrivelse'

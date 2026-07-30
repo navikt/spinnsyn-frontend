@@ -1,5 +1,5 @@
 import { BodyLong, Heading, Link } from '@navikt/ds-react'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 
 import { tilLesbarDatoMedArstall, toDate } from '../../../utils/dato-utils'
 import { fallbackEstimertSluttdato } from '../../../utils/vedtak-utils'

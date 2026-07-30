@@ -1,5 +1,5 @@
 import { BodyShort, Box } from '@navikt/ds-react'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { logEvent } from '../umami/umami'
 

@@ -3,7 +3,7 @@ import '../style/global.css'
 import { configureLogger } from '@navikt/next-logger'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import React, { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { getFaro, initInstrumentation, pinoLevelToFaroLevel } from '../faro/faro'

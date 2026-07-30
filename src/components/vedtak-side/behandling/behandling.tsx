@@ -1,5 +1,4 @@
 import { BodyLong, Heading } from '@navikt/ds-react'
-import React from 'react'
 import { logger } from '@navikt/next-logger'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'

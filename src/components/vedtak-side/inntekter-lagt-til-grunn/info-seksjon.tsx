@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { BodyShort } from '@navikt/ds-react'
 
 import { cn } from '../../../utils/tw-utils'

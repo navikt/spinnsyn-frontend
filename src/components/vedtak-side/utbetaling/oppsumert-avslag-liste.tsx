@@ -1,5 +1,6 @@
+import { type JSX } from 'react'
+
 import { Link, List, Heading, Box } from '@navikt/ds-react'
-import React from 'react'
 
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 import { hentBegrunnelse } from '../../../utils/vedtak-utils'
@@ -16,7 +17,7 @@ export const OppsumertAvslagListe = (oppsumertAvslag: OppsummertAvslagListeProps
     const harInnvilgelseBegrunnelse = hentBegrunnelse(oppsumertAvslag.vedtak, 'Innvilgelse') !== undefined
     if (oppsumertAvslag.oppsummertAvslag.size === 0 && !harInnvilgelseBegrunnelse) return null
 
-    const alleAvslag: React.JSX.Element[] = []
+    const alleAvslag: JSX.Element[] = []
     oppsumertAvslag.oppsummertAvslag?.forEach((begrunnelse) => {
         alleAvslag.push(<List.Item key={begrunnelse}>{begrunnelse}</List.Item>)
     })

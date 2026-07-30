@@ -1,5 +1,5 @@
 import { Alert, BodyLong, BodyShort, Heading, ReadMore } from '@navikt/ds-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Chat2Icon } from '@navikt/aksel-icons'
 
 import { logEvent } from '../../umami/umami'

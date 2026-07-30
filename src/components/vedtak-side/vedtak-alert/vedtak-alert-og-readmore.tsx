@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { JulesoknadWarning } from '../julesoknad/julesoknad-warning'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
 

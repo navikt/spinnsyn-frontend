@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next'
-import React from 'react'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'

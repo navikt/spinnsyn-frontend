@@ -1,5 +1,4 @@
 import { Tag } from '@navikt/ds-react'
-import React from 'react'
 
 type EtikettProps = {
     etikettVariant?: EtikketVariant

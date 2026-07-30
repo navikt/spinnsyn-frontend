@@ -1,5 +1,5 @@
 import { BodyShort, Heading } from '@navikt/ds-react'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { ValutaFormat } from '../../../utils/valuta-utils'

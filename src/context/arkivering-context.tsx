@@ -1,3 +1,3 @@
-import React from 'react'
+import { createContext } from 'react'
 
-export const ArkiveringContext = React.createContext(false)
+export const ArkiveringContext = createContext(false)

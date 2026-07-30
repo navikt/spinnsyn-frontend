@@ -43,9 +43,6 @@ const nextConfig = {
             },
         ]
     },
-    eslint: {
-        ignoreDuringBuilds: true, // vi linter i bygg stegene i github actions
-    },
     basePath: '/syk/sykepenger',
     pageExtensions: ['page.tsx', 'api.ts'],
     assetPrefix: process.env.ASSET_PREFIX || undefined,

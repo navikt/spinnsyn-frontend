@@ -1,5 +1,4 @@
 import { Heading, Link, Skeleton } from '@navikt/ds-react'
-import React from 'react'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import { arkiverteVedtakUrl, isMockBackend, isOpplaering, spinnsynFrontendInterne } from '../../utils/environment'

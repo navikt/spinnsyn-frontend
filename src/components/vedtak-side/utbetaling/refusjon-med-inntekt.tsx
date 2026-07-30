@@ -1,5 +1,4 @@
 import { BodyShort, Heading } from '@navikt/ds-react'
-import React from 'react'
 
 import { storeTilStoreOgSmå } from '../../../utils/store-små'
 import { getLedetekst, tekst } from '../../../utils/tekster'

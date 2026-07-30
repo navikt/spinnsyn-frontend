@@ -1,5 +1,5 @@
 import { Accordion, BodyShort } from '@navikt/ds-react'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 
 import { tekst } from '../../../../utils/tekster'
 import { VedtakExpansionCard } from '../../../expansioncard/vedtak-expansion-card'

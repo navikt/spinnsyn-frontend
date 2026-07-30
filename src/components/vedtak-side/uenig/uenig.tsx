@@ -1,5 +1,4 @@
 import { BodyLong, Heading } from '@navikt/ds-react'
-import React from 'react'
 
 import { klagefrist } from '../../../utils/klagefrist'
 import { getLedetekst, tekst } from '../../../utils/tekster'

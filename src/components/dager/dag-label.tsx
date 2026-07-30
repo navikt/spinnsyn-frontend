@@ -1,6 +1,6 @@
+import { Fragment } from 'react'
 import { Tag } from '@navikt/ds-react'
 import { logger } from '@navikt/next-logger'
-import React from 'react'
 
 import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { finnBegrunnelseTekst } from '../../utils/vedtak-utils'
@@ -106,7 +106,7 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
         return (
             <Tag data-color="warning" size="small" variant="outline" key={idx}>
                 {tagText.split(' ').map((word, index) => (
-                    <React.Fragment key={index}>{word}&nbsp;</React.Fragment>
+                    <Fragment key={index}>{word}&nbsp;</Fragment>
                 ))}
             </Tag>
         )

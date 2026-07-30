@@ -15,7 +15,7 @@
         "@navikt/ds-tokens": "8.15.0",
         "@navikt/nav-dekoratoren-moduler": "^3.6.3",
         "@navikt/next-api-proxy": "^4.1.5",
-        "@navikt/next-logger": "^1.35.0",
+        "@navikt/next-logger": "^5.0.0",
         "@navikt/oasis": "^3.8.0",
         "@tanstack/react-query": "^5.101.4",
         "@unleash/nextjs": "^1.6.7",
@@ -32,14 +32,15 @@
         "react-dom": "^19.2.8",
         "remeda": "^2.39.0",
         "tailwind-merge": "^3.6.0",
-        "typescript": "^5.9.3",
+        "typescript": "6.0.3",
         "uuid": "^14.0.1",
         "zod": "^4.4.3"
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.12.1",
-        "@navikt/eslint-config-teamsykmelding": "^7.1.0",
+        "@navikt/tsm-prettier": "^2.0.1",
         "@playwright/test": "^1.61.1",
+        "@tailwindcss/postcss": "4.3.3",
         "@testing-library/dom": "^10.4.1",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
@@ -52,14 +53,14 @@
         "@vitejs/plugin-react": "^6.0.3",
         "autoprefixer": "^10.5.4",
         "axe-core": "^4.12.1",
-        "eslint": "^8.57.0",
-        "eslint-config-next": "^15.5.4",
-        "next": "^15.5.18",
+        "eslint": "9.39.5",
+        "eslint-config-next": "^16.2.10",
+        "eslint-config-prettier": "^10.1.5",
+        "eslint-plugin-prettier": "^5.4.0",
+        "next": "^16.2.10",
         "postcss": "^8.5.15",
         "prettier": "^3.8.4",
         "prettier-plugin-tailwindcss": "^0.8.1",
-        "start-server-and-test": "^3.0.11",
-        "@tailwindcss/postcss": "4.3.3",
         "tailwindcss": "4.3.2",
         "ts-loader": "^9.6.2",
         "vitest": "^4.1.10"
@@ -80,30 +81,9 @@
         "play-headless-build": "PLAYWRIGHT_HTML_OPEN=never export BUILD=true; npm run build && npx playwright test",
         "prettier:write": "prettier --write .",
         "prettier:check": "prettier --check .",
-        "lint": "eslint --ext=ts,tsx src playwright",
-        "lint:fix": "eslint --ext=ts,tsx src playwright --fix",
+        "lint": "eslint src playwright",
+        "lint:fix": "eslint src playwright --fix",
         "format": "npm run prettier:write && npm run lint:fix"
     },
-    "eslintConfig": {
-        "extends": [
-            "@navikt/eslint-config-teamsykmelding",
-            "next/core-web-vitals"
-        ],
-        "rules": {
-            "@typescript-eslint/explicit-function-return-type": "off",
-            "@typescript-eslint/no-explicit-any": "off",
-            "@typescript-eslint/no-non-null-assertion": "off"
-        },
-        "overrides": [
-            {
-                "files": [
-                    "**/playwright/**/*.{js,ts}"
-                ],
-                "rules": {
-                    "testing-library/prefer-screen-queries": "off"
-                }
-            }
-        ]
-    },
-    "prettier": "@navikt/eslint-config-teamsykmelding/prettier"
+    "prettier": "@navikt/tsm-prettier"
 }

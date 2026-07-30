@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { glad, lei, noytral, sinna, veldigGlad } from './emojies'
 import { FlexjarFelles } from './flexjar-felles'
 import { EmojiButton } from './emoji-button'

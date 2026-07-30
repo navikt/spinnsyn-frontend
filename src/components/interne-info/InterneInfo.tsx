@@ -1,10 +1,11 @@
+import { type JSX } from 'react'
+
 import { Alert, Loader } from '@navikt/ds-react'
-import React from 'react'
 
 import useVedtak from '../../hooks/useVedtak'
 import { spinnsynFrontendInterne } from '../../utils/environment'
 
-export function InterneInfo(): React.JSX.Element | null {
+export function InterneInfo(): JSX.Element | null {
     const { data, isLoading } = useVedtak()
 
     if (!spinnsynFrontendInterne()) {

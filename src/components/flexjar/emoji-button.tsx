@@ -1,4 +1,5 @@
-import React from 'react'
+import { type JSX } from 'react'
+
 import { BodyShort } from '@navikt/ds-react'
 
 import { logEvent } from '../umami/umami'
@@ -8,7 +9,7 @@ import { FillProps } from './emojies'
 
 export interface EmojiButtonProps {
     feedback: number
-    Emoji: (fp: FillProps) => React.JSX.Element
+    Emoji: (fp: FillProps) => JSX.Element
     text: string
     color: string
     hoverColor: string

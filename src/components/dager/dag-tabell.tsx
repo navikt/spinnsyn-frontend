@@ -1,5 +1,4 @@
 import { BodyShort, Label, Table } from '@navikt/ds-react'
-import React from 'react'
 
 import { RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { formaterValuta } from '../../utils/valuta-utils'

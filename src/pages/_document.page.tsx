@@ -1,6 +1,5 @@
 import { DecoratorComponentsReact, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr'
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
-import React from 'react'
 import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'

@@ -1,6 +1,5 @@
 import { logger } from '@navikt/next-logger'
 import { GetServerSideProps } from 'next'
-import React from 'react'
 import { getToken, requestAzureClientCredentialsToken, validateAzureToken } from '@navikt/oasis'
 
 import { VedtakArkivering } from '../../../components/vedtak-arkivering/vedtak-arkivering'

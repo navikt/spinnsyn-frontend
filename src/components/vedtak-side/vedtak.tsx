@@ -1,5 +1,5 @@
 import { BodyLong, Detail, Heading } from '@navikt/ds-react'
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { useUpdateBreadcrumbs, vedtakBreadcrumb } from '../../hooks/useBreadcrumbs'

@@ -1,5 +1,5 @@
 import { Alert, BodyLong, BodyShort, Heading, ReadMore } from '@navikt/ds-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { logger } from '@navikt/next-logger'
 
 import { logEvent } from '../../umami/umami'

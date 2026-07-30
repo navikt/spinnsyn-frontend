@@ -1,5 +1,4 @@
 import { BodyShort, Heading } from '@navikt/ds-react'
-import React from 'react'
 import cn from 'classnames'
 
 import { antallDager, erWeekendPeriode, tilLesbarPeriodeMedArstall } from '../../../utils/dato-utils'

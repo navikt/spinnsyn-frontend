@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ArkiveringContext } from '../../context/arkivering-context'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import Vedtak from '../vedtak-side/vedtak'

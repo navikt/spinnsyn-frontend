@@ -1,5 +1,4 @@
 import { BodyShort, Heading } from '@navikt/ds-react'
-import React from 'react'
 
 import { formaterValuta } from '../../../../utils/valuta-utils'
 import { RSVedtakUnion } from '../../../../types/rs-types/rs-vedtak-felles'

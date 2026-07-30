@@ -1,5 +1,5 @@
 import { Alert, BodyLong, BodyShort, ReadMore } from '@navikt/ds-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { LenkeMedUmami } from '../../lenke/lenke-med-umami'
 import { logEvent } from '../../umami/umami'

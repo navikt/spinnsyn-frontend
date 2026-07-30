@@ -1,5 +1,5 @@
 import { Page } from '@navikt/ds-react'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { useUpdateBreadcrumbs } from '../hooks/useBreadcrumbs'
 
