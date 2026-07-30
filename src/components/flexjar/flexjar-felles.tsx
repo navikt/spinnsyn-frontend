@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Alert, BodyShort, Button, Label, Radio, RadioGroup, Textarea } from '@navikt/ds-react'
 import { MagnifyingGlassIcon, PaperplaneIcon } from '@navikt/aksel-icons'
@@ -60,7 +61,7 @@ export function FlexjarFelles({
                 try {
                     hovedvalg = JSON.parse(activeState).hovedvalg
                     undervalg = JSON.parse(activeState).undervalg
-                } catch (e) {}
+                } catch {}
             }
             const feedback = undervalg ? undervalg + '. ' + textValue : textValue
             const body = {
