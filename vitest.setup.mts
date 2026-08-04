@@ -13,6 +13,7 @@ vi.stubEnv('NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING', 'false')
 vi.stubEnv('NEXT_PUBLIC_SYKEFRAVAER_URL', 'https://www.ekstern.dev.nav.no/syk/sykefravaer')
 vi.stubEnv('NEXT_PUBLIC_MINSIDE_URL', 'https://www.intern.dev.nav.no/minside/')
 vi.stubEnv('NEXT_PUBLIC_ARKIVERTE_VEDTAK_URL', 'https://www.ansatt.dev.nav.no/dokumentarkiv/tema/SYK')
+vi.stubEnv('NEXT_PUBLIC_DECORATOR_ENV', 'prod')
 
 vi.mock('next/router', () => ({
     useRouter: () => ({

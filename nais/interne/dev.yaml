@@ -4,9 +4,7 @@ memory: 256Mi
 external-host:
   - modiacontextholder-q1.dev-fss-pub.nais.io
 env:
-  DECORATOR_ENV: dev
   NO_DECORATOR: "true"
-  UTVIKLING_ARKIVERING: "false"
   SPINNSYN_BACKEND_URL: http://spinnsyn-backend
   SPINNSYN_BACKEND_CLIENT_ID: api://dev-gcp.flex.spinnsyn-backend/.default
   MODIACONTEXTHOLDER_SCOPE: api://dev-gcp.personoversikt.modiacontextholder/.default

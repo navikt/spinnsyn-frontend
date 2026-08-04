@@ -9,7 +9,6 @@ import { delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo } from '../../..
 import { vedtakMedFlereArbeidsgivere } from '../../../data/testdata/data/vedtak/vedtakMedFlereArbeidsgivere'
 import { revurderingVedtak } from '../../../data/testdata/data/vedtak/revurdering'
 import { revurdertOgAnnullert } from '../../../data/testdata/data/personas/personas'
-import { getServerEnv } from '../../../utils/env'
 
 type UtviklingArkiveringPageProps = {
     vedtak: RSVedtakWrapper
@@ -51,7 +50,7 @@ export const getServerSideProps: GetServerSideProps<UtviklingArkiveringPageProps
     ctx.res.setHeader('x-vedtak-tom', vedtak.vedtak.tom)
     return {
         props: {
-            enabled: getServerEnv().UTVIKLING_ARKIVERING === 'true',
+            enabled: process.env.NEXT_PUBLIC_UTVIKLING_ARKIVERING === 'true',
             vedtak,
             alleVedtak: alleVedtak,
         },

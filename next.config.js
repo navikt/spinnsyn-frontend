@@ -16,7 +16,7 @@ const appDirectives = {
  */
 const nextConfig = {
     async headers() {
-        const csp = await buildCspHeader(appDirectives, { env: process.env.DECORATOR_ENV })
+        const csp = await buildCspHeader(appDirectives, { env: process.env.NEXT_PUBLIC_DECORATOR_ENV })
 
         return [
             {
@@ -43,12 +43,9 @@ const nextConfig = {
             },
         ]
     },
-    eslint: {
-        ignoreDuringBuilds: true, // vi linter i bygg stegene i github actions
-    },
     basePath: '/syk/sykepenger',
     pageExtensions: ['page.tsx', 'api.ts'],
-    assetPrefix: process.env.ASSET_PREFIX || undefined,
+    assetPrefix: process.env.NEXT_PUBLIC_ASSET_PREFIX || undefined,
 }
 
 module.exports = nextConfig

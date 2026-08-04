@@ -5,8 +5,6 @@ external-host:
   - flex-unleash-api.nav.cloud.nais.io
 env:
   FLEX_GATEWAY_ROOT: "https://flex-gateway.dev.nav.no"
-  DECORATOR_ENV: "dev"
-  UTVIKLING_ARKIVERING: "false"
   SPINNSYN_BACKEND_URL: "http://spinnsyn-backend"
   SPINNSYN_BACKEND_TOKENX_CLIENT_ID: "dev-gcp:flex:spinnsyn-backend"
   SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID: "dev-gcp:okonomi:sokos-kontoregister-person"
