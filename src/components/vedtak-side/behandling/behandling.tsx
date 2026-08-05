@@ -1,6 +1,5 @@
 import { BodyLong, Heading } from '@navikt/ds-react'
 import React from 'react'
-import { logger } from '@navikt/next-logger'
 
 import { tilLesbarDatoMedArstall } from '../../../utils/dato-utils'
 import { RSVedtakFelles } from '../../../types/rs-types/rs-vedtak-felles'
@@ -42,13 +41,11 @@ export const Behandling = ({ vedtak }: BehandlingProps) => {
 
     const behandlereTekst = () => {
         if (erAutomatiskBehandlet) {
-            return '.'
+            return
         } else if (vedtak.beslutter && vedtak.saksbehandler) {
             return ` av ${vedtak.saksbehandler.navn} og ${vedtak.beslutter.navn}`
         } else if (vedtak.saksbehandler) {
             return ` av ${vedtak.saksbehandler.navn}`
-        } else {
-            logger.warn('Manuelt behandlet vedtak mangler saksbehandler/beslutter informasjon')
         }
     }
 
