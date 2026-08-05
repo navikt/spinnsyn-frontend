@@ -1,4 +1,4 @@
-import { serialize } from 'cookie'
+import { stringifySetCookie } from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { cleanPathForMetric } from '../../metrics/metrics'
@@ -9,7 +9,9 @@ function lesVedtak(req: NextApiRequest, res: NextApiResponse) {
     const id = req.query!.path![3] as string
     res.setHeader(
         'Set-Cookie',
-        serialize(`lest-vedtak-${id}`, id, {
+        stringifySetCookie({
+            name: `lest-vedtak-${id}`,
+            value: id,
             path: '/syk/sykepenger/api',
             httpOnly: true,
             maxAge: 10,
