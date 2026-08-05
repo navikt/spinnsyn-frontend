@@ -28,6 +28,9 @@ const BundledEnvSchema = z.object({
     NEXT_PUBLIC_TELEMETRY_URL: z.string().nullish(),
     NEXT_PUBLIC_APP_NAME: z.string().default('spinnsyn-frontend'),
     NEXT_PUBLIC_VERSION: z.string().nullish(),
+    NEXT_PUBLIC_ASSET_PREFIX: z.string().nullish(),
+    NEXT_PUBLIC_DECORATOR_ENV: z.string().min(1),
+    NEXT_PUBLIC_UTVIKLING_ARKIVERING: BoolString,
 })
 
 export type BundledEnv = z.infer<typeof BundledEnvSchema>
@@ -45,6 +48,9 @@ export const bundledEnv: BundledEnv = BundledEnvSchema.parse({
     NEXT_PUBLIC_TELEMETRY_URL: process.env.NEXT_PUBLIC_TELEMETRY_URL,
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
     NEXT_PUBLIC_VERSION: process.env.NEXT_PUBLIC_VERSION,
+    NEXT_PUBLIC_ASSET_PREFIX: process.env.NEXT_PUBLIC_ASSET_PREFIX,
+    NEXT_PUBLIC_DECORATOR_ENV: process.env.NEXT_PUBLIC_DECORATOR_ENV,
+    NEXT_PUBLIC_UTVIKLING_ARKIVERING: process.env.NEXT_PUBLIC_UTVIKLING_ARKIVERING,
 } satisfies Record<keyof BundledEnv, unknown>)
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -57,7 +63,6 @@ export const bundledEnv: BundledEnv = BundledEnvSchema.parse({
 const ServerEnvSchema = z.object({
     // Felles for alle varianter
     SPINNSYN_BACKEND_URL: z.string().min(1),
-    DECORATOR_ENV: z.string().min(1),
     // Variant-spesifikke (optional i superset-schema, valideres per variant i isReady)
     SPINNSYN_BACKEND_TOKENX_CLIENT_ID: z.string().optional(),
     SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID: z.string().optional(),
@@ -69,7 +74,6 @@ const ServerEnvSchema = z.object({
     MODIACONTEXTHOLDER_SCOPE: z.string().optional(),
     MODIACONTEXTHOLDER_URL: z.string().optional(),
     // Valgfritt / plattform-injisert
-    UTVIKLING_ARKIVERING: z.string().optional(),
     NAIS_APP_IMAGE: z.string().optional(),
 })
 
@@ -95,9 +99,7 @@ export type ServerEnv = z.infer<typeof ServerEnvSchema>
 
 function serverEnvInput() {
     return {
-        DECORATOR_ENV: process.env.DECORATOR_ENV,
         NO_DECORATOR: process.env.NO_DECORATOR,
-        UTVIKLING_ARKIVERING: process.env.UTVIKLING_ARKIVERING,
         SPINNSYN_BACKEND_URL: process.env.SPINNSYN_BACKEND_URL,
         SPINNSYN_BACKEND_TOKENX_CLIENT_ID: process.env.SPINNSYN_BACKEND_TOKENX_CLIENT_ID,
         SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID: process.env.SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID,

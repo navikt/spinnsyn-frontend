@@ -3,8 +3,6 @@ memory: 512Mi
 min: 3
 max: 4
 env:
-  DECORATOR_ENV: prod
   NO_DECORATOR: "true"
-  UTVIKLING_ARKIVERING: "false"
   SPINNSYN_BACKEND_CLIENT_ID: api://prod-gcp.flex.spinnsyn-backend/.default
   SPINNSYN_BACKEND_URL: http://spinnsyn-backend

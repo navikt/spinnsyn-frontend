@@ -54,6 +54,7 @@ jobs:
             ${{ runner.os }}-nextjs-${{ inputs.image-suffix }}-dev-${{ hashFiles('**/package-lock.json') }}-
       - name: Kopier dev-miljøfil
         run: cp ${{ inputs.env-fil-dev }} .env.production
+      - run: rm .env
       - name: Bygg applikasjon
         run: npm run build
         env:
@@ -113,6 +114,7 @@ jobs:
             ${{ runner.os }}-nextjs-${{ inputs.image-suffix }}-prod-${{ hashFiles('**/package-lock.json') }}-
       - name: Kopier prod-miljøfil
         run: cp ${{ inputs.env-fil-prod }} .env.production
+      - run: rm .env
       - name: Bygg applikasjon
         run: npm run build
         env:

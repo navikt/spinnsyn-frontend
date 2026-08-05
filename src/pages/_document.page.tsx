@@ -5,7 +5,6 @@ import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
 import { spinnsynFrontendInterne } from '../utils/environment'
-import { getServerEnv } from '../utils/env'
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
@@ -33,10 +32,10 @@ class MyDocument extends Document<Props> {
             ctx,
         }
 
-        const showDecorator = getServerEnv().NO_DECORATOR != 'true'
+        const showDecorator = process.env.NO_DECORATOR != 'true'
         if (showDecorator) {
             props.Decorator = await fetchDecoratorReact({
-                env: getServerEnv().DECORATOR_ENV as any,
+                env: process.env.NEXT_PUBLIC_DECORATOR_ENV as any,
                 params: {
                     chatbot: false,
                     feedback: false,

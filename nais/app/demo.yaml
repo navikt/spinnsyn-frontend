@@ -26,9 +26,3 @@ spec:
   {{#if TTL_HOURS}}
   ttl: {{ TTL_HOURS }}
   {{/if}}
-  env:
-    - name: DECORATOR_ENV
-      value: "prod"
-    - name: UTVIKLING_ARKIVERING
-      value: "true"
-
