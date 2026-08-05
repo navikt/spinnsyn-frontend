@@ -58,7 +58,7 @@
         "eslint-plugin-prettier": "^5.4.0",
         "next": "^16.2.12",
         "postcss": "^8.5.15",
-        "prettier": "^3.8.4",
+        "prettier": "^3.9.6",
         "prettier-plugin-tailwindcss": "^0.8.1",
         "start-server-and-test": "^3.0.11",
         "@tailwindcss/postcss": "4.3.3",
