@@ -21,13 +21,11 @@ const baseCrumb: CompleteCrumb[] = [
 ]
 
 function createCompleteCrumbs(breadcrumbs: [...Breadcrumb[], LastCrumb] | []): CompleteCrumb[] {
-    const prefixedCrumbs: CompleteCrumb[] = breadcrumbs.map(
-        (it): CompleteCrumb => ({
-            ...it,
-            url: 'url' in it ? `${basePath()}${it.url}` : '/',
-            handleInApp: true,
-        }),
-    )
+    const prefixedCrumbs: CompleteCrumb[] = breadcrumbs.map((it): CompleteCrumb => ({
+        ...it,
+        url: 'url' in it ? `${basePath()}${it.url}` : '/',
+        handleInApp: true,
+    }))
 
     return [...baseCrumb, ...prefixedCrumbs]
 }
