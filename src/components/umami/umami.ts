@@ -1,4 +1,4 @@
-import { logAnalyticsEvent } from '@navikt/nav-dekoratoren-moduler'
+import { logAnalyticsCustomEvent } from '@navikt/nav-dekoratoren-moduler'
 import { logger } from '@navikt/next-logger'
 
 import { isOpplaering, isProd, umamiEnabled } from '../../utils/environment'
@@ -20,7 +20,7 @@ export type validEventNames =
 export const logEvent = (eventName: validEventNames, eventData: Record<string, string | boolean>) => {
     if (window) {
         if (umamiEnabled()) {
-            logAnalyticsEvent({
+            logAnalyticsCustomEvent({
                 origin: 'spinnsyn-frontend',
                 eventName,
                 eventData,
