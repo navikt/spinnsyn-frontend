@@ -7,7 +7,15 @@ import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
  */
 export type Scenariokategori = 'utbetaling' | 'ingen-utbetaling' | 'avslag' | 'inntekt' | 'revurdering'
 
-const kategoritekst: Record<Scenariokategori, string> = {
+export const scenariokategorier: Scenariokategori[] = [
+    'utbetaling',
+    'ingen-utbetaling',
+    'avslag',
+    'inntekt',
+    'revurdering',
+]
+
+export const kategoritekst: Record<Scenariokategori, string> = {
     utbetaling: 'Utbetaling',
     'ingen-utbetaling': 'Ingen utbetaling',
     avslag: 'Avslag',
@@ -22,4 +30,8 @@ export function tilDemovedtak(scenarioer: Scenario[]): RSVedtakWrapper[] {
         ...jsonDeepCopy(vedtak),
         demoinfo: `${kategoritekst[kategori]}: ${beskrivelse}`,
     }))
+}
+
+export function iKategori(scenarioer: Scenario[], kategori: Scenariokategori): Scenario[] {
+    return scenarioer.filter(([scenariokategori]) => scenariokategori === kategori)
 }

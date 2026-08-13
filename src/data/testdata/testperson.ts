@@ -32,6 +32,7 @@ import {
     ingenUtbetalingKunArbeidsgiverperiode,
     ingenUtbetalingArbeidsgiverperiodeOgHelg,
     arbeidstakerPerson,
+    arbeidstakerIKategori,
 } from './data/personas/personas'
 import {
     ingenUtbetalingSelvstendigPersona,
@@ -42,7 +43,9 @@ import {
     selvstendigMedLavInntektPersona,
     selvstendigMedManglerOpptjeningPersona,
     selvstendigNaeringsdrivendePerson,
+    selvstendigIKategori,
 } from './data/personas/naringsdrivendePersonas'
+import { kategoritekst, scenariokategorier, Scenariokategori } from './data/personas/scenario'
 
 export interface Persona {
     vedtak: RSVedtakWrapper[]
@@ -55,6 +58,8 @@ export interface Persona {
 export type PersonaKey =
     | 'arbeidstaker'
     | 'selvstendig-naeringsdrivende'
+    | `arbeidstaker-${Scenariokategori}`
+    | `selvstendig-${Scenariokategori}`
     | 'uten-data'
     | 'diverse-data'
     | 'et-vedtak-flere-arbeidsgivere'
@@ -98,11 +103,54 @@ export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
 export const STANDARD_TESTPERSON: PersonaKey = 'arbeidstaker'
 
+export interface Testpersongruppe {
+    tittel: string
+    personer: { nøkkel: PersonaKey; beskrivelse: string; persona: Persona }[]
+}
+
+/**
+ * Gruppene følger yrkesaktivitetstypene vedtakssiden forgrener på, mens personaene
+ * innenfor hver gruppe følger scenariokategoriene vedtakene skiller seg på.
+ */
+export function testpersonerGruppert(): Testpersongruppe[] {
+    const iGruppe = (
+        prefiks: 'arbeidstaker' | 'selvstendig',
+        alle: Persona,
+        iKategori: (kategori: Scenariokategori) => Persona,
+    ): Testpersongruppe['personer'] => [
+        {
+            nøkkel: prefiks === 'arbeidstaker' ? 'arbeidstaker' : 'selvstendig-naeringsdrivende',
+            beskrivelse: 'Alle scenarioer',
+            persona: alle,
+        },
+        ...scenariokategorier
+            .map((kategori) => ({
+                nøkkel: `${prefiks}-${kategori}` as PersonaKey,
+                beskrivelse: kategoritekst[kategori],
+                persona: iKategori(kategori),
+            }))
+            .filter(({ persona }) => persona.vedtak.length > 0),
+    ]
+
+    return [
+        {
+            tittel: 'Arbeidstaker',
+            personer: iGruppe('arbeidstaker', arbeidstakerPerson, arbeidstakerIKategori),
+        },
+        {
+            tittel: 'Selvstendig næringsdrivende',
+            personer: iGruppe('selvstendig', selvstendigNaeringsdrivendePerson, selvstendigIKategori),
+        },
+    ]
+}
+
 export function synligeTestpersoner(): PersonaData {
-    return {
-        ['arbeidstaker']: jsonDeepCopy(arbeidstakerPerson),
-        ['selvstendig-naeringsdrivende']: jsonDeepCopy(selvstendigNaeringsdrivendePerson),
-    }
+    return testpersonerGruppert().reduce<PersonaData>((personer, gruppe) => {
+        gruppe.personer.forEach(({ nøkkel, persona }) => {
+            personer[nøkkel] = jsonDeepCopy(persona)
+        })
+        return personer
+    }, {})
 }
 
 function skjultePersoner(): PersonaData {
