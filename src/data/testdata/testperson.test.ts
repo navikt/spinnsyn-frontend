@@ -7,7 +7,7 @@ describe('testpersoner', () => {
         const personer = testpersoner()
         const standardperson = personer[STANDARD_TESTPERSON]
 
-        expect(standardperson?.beskrivelse).toBe('Arbeidstaker')
+        expect(standardperson?.beskrivelse).toBe('Arbeidstaker – alle scenarioer')
         expect(standardperson?.vedtak[0]?.demoinfo).toBe('Utbetaling: Det meste')
     })
 
@@ -21,6 +21,7 @@ describe('testpersoner', () => {
             'arbeidstaker-ingen-utbetaling',
             'arbeidstaker-avslag',
             'arbeidstaker-inntekt',
+            'arbeidstaker-begrunnelse',
             'arbeidstaker-revurdering',
         ])
         expect(grupper[1]?.personer.map((person) => person.nøkkel)).toEqual([
@@ -44,7 +45,7 @@ describe('testpersoner', () => {
     it('samler alle selvstendig-vedtakene i én persona med demoinfo', () => {
         const selvstendig = synligeTestpersoner()['selvstendig-naeringsdrivende']
 
-        expect(selvstendig?.beskrivelse).toBe('Selvstendig næringsdrivende')
+        expect(selvstendig?.beskrivelse).toBe('Selvstendig næringsdrivende – alle scenarioer')
         expect(selvstendig?.vedtak.map((vedtak) => vedtak.demoinfo)).toEqual([
             'Utbetaling: Standard vedtak',
             'Ingen utbetaling: Ingen utbetaling',

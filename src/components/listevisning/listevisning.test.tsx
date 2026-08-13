@@ -33,6 +33,6 @@ describe('Listevisning', () => {
     it('viser demoinfo om valgt testperson', () => {
         render(<Listevisning />)
 
-        expect(screen.getByText('Demoinfo: Arbeidstaker')).toBeInTheDocument()
+        expect(screen.getByText('Demoinfo: Arbeidstaker – alle scenarioer')).toBeInTheDocument()
     })
 })

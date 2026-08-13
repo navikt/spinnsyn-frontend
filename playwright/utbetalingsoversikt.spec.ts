@@ -5,7 +5,7 @@ import { formaterValuta } from '../src/utils/valuta-utils'
 import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
 
-const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 23
+const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 41
 
 test.describe('Utbetalingsoversikt', () => {
     test.beforeEach(async ({ page }) => {
