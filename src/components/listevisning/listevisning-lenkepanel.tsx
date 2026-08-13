@@ -1,4 +1,5 @@
-import { BodyShort, Detail, LinkPanel } from '@navikt/ds-react'
+import { BodyShort, Detail, LinkPanel, Tag } from '@navikt/ds-react'
+import { InformationIcon } from '@navikt/aksel-icons'
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -10,6 +11,8 @@ import { cn } from '../../utils/tw-utils'
 import { isProd } from '../../utils/environment'
 import { Etikett, getEtikettVariant } from '../etikett/etikett'
 import { formatDatoKort, formatDatoKortMedAr, fullDatoKlokkeslett } from '../../utils/dato-utils'
+import { isMockBackend, isOpplaering } from '../../utils/environment'
+import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 
 const sykmeldtFraTekstGenerator = (yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG', orgnavn: string) => {
     switch (yrkesaktivitetstype) {
@@ -21,13 +24,10 @@ const sykmeldtFraTekstGenerator = (yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVST
 }
 
 type ListevisningLenkepanelProps = {
-    vedtak: {
-        id: string
-        annullert: boolean
-        revurdert: boolean
-        lest: boolean
-        opprettetTimestamp: string
-        orgnavn: string
+    vedtak: Pick<
+        RSVedtakWrapper,
+        'id' | 'annullert' | 'revurdert' | 'lest' | 'opprettetTimestamp' | 'orgnavn' | 'demoinfo'
+    > & {
         vedtak: {
             yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG'
             fom: string
@@ -42,6 +42,7 @@ type ListevisningLenkepanelProps = {
 const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const router = useRouter()
+    const erDemo = isMockBackend() || isOpplaering()
 
     const query: NodeJS.Dict<string | string[]> = {}
 
@@ -76,6 +77,18 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                     <div
                         className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}
                     >
+                        {erDemo && vedtak.demoinfo && (
+                            <Tag
+                                className="mb-2"
+                                data-color="meta-lime"
+                                variant="moderate"
+                                size="small"
+                                icon={<InformationIcon aria-hidden />}
+                            >
+                                <span className="sr-only">, </span>
+                                {`Demoinfo: ${vedtak.demoinfo}`}
+                            </Tag>
+                        )}
                         <LinkPanel.Title>
                             <BodyShort size="small" spacing>
                                 {vedtakPeriode}
