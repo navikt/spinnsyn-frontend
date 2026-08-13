@@ -7,7 +7,6 @@ import {
     avslåttFraBømloPerson,
     delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
     direkteUtenKontonummerPerson,
-    diverseData,
     etVedtakFlereArbeidsgivere,
     flexjarPoHelseHelsemetrikk,
     forLavInntektPerson,
@@ -32,6 +31,7 @@ import {
     ingenUtbetalingKunHelg,
     ingenUtbetalingKunArbeidsgiverperiode,
     ingenUtbetalingArbeidsgiverperiodeOgHelg,
+    arbeidstakerPerson,
 } from './data/personas/personas'
 import {
     ingenUtbetalingSelvstendigPersona,
@@ -39,6 +39,9 @@ import {
     standardSelvstendigPersona,
     utenAarsinntektSelvstendigPersona,
     avslattMeldingTilNavDagPersona,
+    selvstendigMedLavInntektPersona,
+    selvstendigMedManglerOpptjeningPersona,
+    selvstendigNaeringsdrivendePerson,
 } from './data/personas/naringsdrivendePersonas'
 
 export interface Persona {
@@ -50,6 +53,8 @@ export interface Persona {
 }
 
 export type PersonaKey =
+    | 'arbeidstaker'
+    | 'selvstendig-naeringsdrivende'
     | 'uten-data'
     | 'diverse-data'
     | 'et-vedtak-flere-arbeidsgivere'
@@ -83,73 +88,82 @@ export type PersonaKey =
     | 'uten-aarsintekt'
     | 'ingen-utbetaling-selvstendig'
     | 'avslaatt-melding-til-nav'
+    | 'selvstendig-med-lav-inntekt'
+    | 'selvstendig-med-mangler-opptjening'
     | 'ingen-utbetaling-kun-helg'
     | 'ingen-utbetaling-kun-arbeidsgiverperiode'
     | 'ingen-utbetaling-arbeidsgiverperiode-og-helg'
 
 export type PersonaData = Partial<Record<PersonaKey, Persona>>
 
-export type PersonaGroupKey =
-    | 'mottaker'
-    | 'selvstendig-naeringsdrivende'
-    | 'avvist-delvis-innvilgelse-bømlo'
-    | 'vedtak-innhold'
-    | 'testing'
-    | 'ingen-utbetaling'
-type PersonaGroup = Record<PersonaGroupKey, PersonaData>
+export const STANDARD_TESTPERSON: PersonaKey = 'arbeidstaker'
 
-export const testpersonerGruppert: PersonaGroup = {
-    ['mottaker']: {
-        ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
+export function synligeTestpersoner(): PersonaData {
+    return {
+        ['arbeidstaker']: jsonDeepCopy(arbeidstakerPerson),
+        ['selvstendig-naeringsdrivende']: jsonDeepCopy(selvstendigNaeringsdrivendePerson),
+    }
+}
+
+function skjultePersoner(): PersonaData {
+    return {
+        ['diverse-data']: jsonDeepCopy(arbeidstakerPerson),
+        ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
+        ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
+        ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
+        ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
         ['et-vedtak-flere-arbeidsgivere']: jsonDeepCopy(etVedtakFlereArbeidsgivere),
-        ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
-        ['kombinasjonDelvis']: jsonDeepCopy(refusjonOgBrukerutbetalinOgDelvisInnvilget),
-    },
-    ['selvstendig-naeringsdrivende']: {
-        ['standard-selvstendig']: jsonDeepCopy(standardSelvstendigPersona),
+        ['for-lav-inntekt-67']: jsonDeepCopy(forLavInntektPerson67),
+        ['ingen-utbetaling-kun-arbeidsgiverperiode']: jsonDeepCopy(ingenUtbetalingKunArbeidsgiverperiode),
+        ['ingen-utbetaling-kun-helg']: jsonDeepCopy(ingenUtbetalingKunHelg),
+        ['ingen-utbetaling-arbeidsgiverperiode-og-helg']: jsonDeepCopy(ingenUtbetalingArbeidsgiverperiodeOgHelg),
         ['seks-g-begrensning']: jsonDeepCopy(seksGBegrensetSelvstendigPersona),
         ['uten-aarsintekt']: jsonDeepCopy(utenAarsinntektSelvstendigPersona),
         ['ingen-utbetaling-selvstendig']: jsonDeepCopy(ingenUtbetalingSelvstendigPersona),
         ['avslaatt-melding-til-nav']: jsonDeepCopy(avslattMeldingTilNavDagPersona),
-    },
-    ['avvist-delvis-innvilgelse-bømlo']: {
-        ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
-        ['for-lav-inntekt-67']: jsonDeepCopy(forLavInntektPerson67),
+        ['standard-selvstendig']: jsonDeepCopy(standardSelvstendigPersona),
+        ['selvstendig-med-lav-inntekt']: jsonDeepCopy(selvstendigMedLavInntektPersona),
+        ['selvstendig-med-mangler-opptjening']: jsonDeepCopy(selvstendigMedManglerOpptjeningPersona),
+        ['julesoknad']: jsonDeepCopy(julesoknadPerson),
+        ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
+        ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
+        ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
+        ['skjonnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePersona),
+        ['flexjar-pohelse']: jsonDeepCopy(flexjarPoHelseHelsemetrikk),
+        ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
+        ['vedtak-med-0-utbetaling']: jsonDeepCopy(vedtakMed0UtbetalingPerson),
+        ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
         ['innvilgelse']: jsonDeepCopy(innvilgelsePerson),
         ['innvilgelse-med-begrunnelse']: jsonDeepCopy(innvilgelseMedBegrunnelsePerson),
         ['innvilgelse-tom-begrunnelse']: jsonDeepCopy(innvilgelseMedTomBegrunnelsePerson),
+        ['kombinasjon']: jsonDeepCopy(kombinasjonPerson),
+        ['kombinasjonDelvis']: jsonDeepCopy(refusjonOgBrukerutbetalinOgDelvisInnvilget),
+        ['kombinert-revurdert']: jsonDeepCopy(kombinertRevurdertPersona),
+        ['kun-direkte']: jsonDeepCopy(kunDirektePerson),
+        ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
+        ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
         ['kombinasjon-delvisInnvilgelse-og-skjønnsfastsatt-fra-bomlo']: jsonDeepCopy(
             delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomloPerson,
         ),
-    },
-    ['vedtak-innhold']: {
-        ['alle-avviste-dager']: jsonDeepCopy(alleAvvisteDagerPerson),
-        ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
-        ['delvis-og-helt-avviste-vedtak']: jsonDeepCopy(forLavInntektPerson),
-        ['slutter-med-delvis-refusjon']: jsonDeepCopy(slutterMedDelvisRefusjon),
-        ['annulert-og-overført-infotrygd']: jsonDeepCopy(annullert),
-        ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
-        ['julesoknad']: jsonDeepCopy(julesoknadPerson),
-        ['vedtak-med-0-utbetaling']: jsonDeepCopy(vedtakMed0UtbetalingPerson),
-        ['flexjar-pohelse']: jsonDeepCopy(flexjarPoHelseHelsemetrikk),
-    },
-    ['testing']: {
         ['uten-data']: jsonDeepCopy(utenData),
-        ['diverse-data']: jsonDeepCopy(diverseData),
-        ['direkte-uten-kontonummer']: jsonDeepCopy(direkteUtenKontonummerPerson),
-        ['revurdert-og-annullert']: jsonDeepCopy(revurdertOgAnnullert),
-        ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
-        ['skjonnsfastsatt-flere-arbeidsgivere']: jsonDeepCopy(skjønnsfastsattFlereArbeidsgiverePersona),
-        ['null-omregnet-aarsinntekt']: jsonDeepCopy(vedtakMedNullOmregnetAarsinngtekt),
-        ['kombinert-revurdert']: jsonDeepCopy(kombinertRevurdertPersona),
-    },
-    ['ingen-utbetaling']: {
-        ['ingen-utbetaling-kun-helg']: jsonDeepCopy(ingenUtbetalingKunHelg),
-        ['ingen-utbetaling-kun-arbeidsgiverperiode']: jsonDeepCopy(ingenUtbetalingKunArbeidsgiverperiode),
-        ['ingen-utbetaling-arbeidsgiverperiode-og-helg']: jsonDeepCopy(ingenUtbetalingArbeidsgiverperiodeOgHelg),
-    },
+    }
 }
 
-export const testpersoner: PersonaData = Object.values(testpersonerGruppert).reduce((alle, gruppe) => {
-    return { ...alle, ...gruppe }
-})
+export function testpersoner(): PersonaData {
+    const alle: PersonaData = { ...synligeTestpersoner(), ...skjultePersoner() }
+
+    const medDemoinfo = Object.fromEntries(
+        Object.entries(alle).map(([nøkkel, person]) => [
+            nøkkel,
+            {
+                ...person,
+                vedtak: person.vedtak.map((vedtak) => ({
+                    ...vedtak,
+                    demoinfo: vedtak.demoinfo ?? person.beskrivelse,
+                })),
+            },
+        ]),
+    ) as PersonaData
+
+    return medDemoinfo
+}
