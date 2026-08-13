@@ -36,6 +36,8 @@ import { revurderingVedtak } from '../vedtak/revurdering'
 import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
 import { arbeidstakerArbeidsgiverperiodeOgHelg } from '../vedtak/arbeidstakerArbeidsgiverperiodeOgHelg'
 
+import { Scenario, tilDemovedtak } from './scenario'
+
 export const utenData: Persona = {
     vedtak: [],
     beskrivelse: 'Ingen vedtak fattet',
@@ -46,21 +48,39 @@ export const etVedtakFlereArbeidsgivere: Persona = {
     beskrivelse: 'Refusjon til arbeidsgiver og ansatt 2 steder',
 }
 
-export const diverseData: Persona = {
-    vedtak: [
-        vedtakMedDetMeste,
-        vedtakMed40Grad,
-        vedtakAnnullert,
-        vedtakRevurdert,
-        vedtakRevurdertDirekte,
-        alleAvvisteDager,
-        avvistVedtak,
-        avvistManglerOpptjeningVedtak,
-        avvistVedtakMedLavInntekt,
-        vedtakRedusertTil6G,
-        inntektHentetFraAordningen,
-    ],
-    beskrivelse: 'Diverse vedtak brukt til testing',
+const arbeidstakerScenarioer: Scenario[] = [
+    ['utbetaling', 'Det meste', vedtakMedDetMeste],
+    ['utbetaling', 'Gradert 40 %', vedtakMed40Grad],
+    ['utbetaling', 'Kun utbetaling til sykmeldt', kunDirekte],
+    ['utbetaling', 'Både refusjon og brukerutbetaling', kombinertDirekteOgRefusjon],
+    ['utbetaling', 'Refusjon til arbeidsgiver og ansatt to steder', vedtakMedFlereArbeidsgivere],
+    ['utbetaling', 'Arbeidsgiver slutter med refusjon midt i perioden', slutterMedRefusjon],
+    ['utbetaling', 'Arbeidsgiver slutter med delvis refusjon', vedtakDerDetSluttesMedDelvisRefusjon],
+    ['utbetaling', 'Refusjon, brukerutbetaling og delvis innvilget', kombinertDirekteOgRefusjonDelvisInnvilget],
+
+    ['ingen-utbetaling', 'Kun helg', arbeidstakerKunHelg],
+    ['ingen-utbetaling', 'Kun arbeidsgiverperiode', arbeidstakerKunArbeidsgiverperiode],
+    ['ingen-utbetaling', 'Helg etter arbeidsgiverperiode', arbeidstakerArbeidsgiverperiodeOgHelg],
+
+    ['avslag', 'Avvist vedtak', avvistVedtak],
+    ['avslag', 'Alle avviste dager', alleAvvisteDager],
+    ['avslag', 'Mangler opptjening', avvistManglerOpptjeningVedtak],
+    ['avslag', 'Lav inntekt', avvistVedtakMedLavInntekt],
+
+    ['inntekt', 'Redusert til 6 G', vedtakRedusertTil6G],
+    ['inntekt', 'Inntekt hentet fra A-ordningen', inntektHentetFraAordningen],
+
+    ['revurdering', 'Revurdert vedtak', vedtakRevurdert],
+    ['revurdering', 'Revurdert direkte', vedtakRevurdertDirekte],
+    ['revurdering', 'Revurdering', revurderingVedtak],
+    ['revurdering', 'Kombinert som er revurdert', kombinertRevurdert],
+    ['revurdering', 'Annullert vedtak', vedtakAnnullert],
+    ['revurdering', 'Revurdert og senere annullert', revurdertOgAnnullertVedtak],
+]
+
+export const arbeidstakerPerson: Persona = {
+    vedtak: tilDemovedtak(arbeidstakerScenarioer),
+    beskrivelse: 'Arbeidstaker',
 }
 
 export const annullert: Persona = {

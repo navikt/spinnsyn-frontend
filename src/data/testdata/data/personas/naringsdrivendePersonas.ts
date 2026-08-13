@@ -4,6 +4,10 @@ import { seksGBegrensningSelvstendig } from '../vedtak/naringsdrivende/seksGBegr
 import { utenAarsinntektSelvstendig } from '../vedtak/naringsdrivende/utenAarsinntektSelvstendig'
 import { ingenUtbetalingSelvstendig } from '../vedtak/naringsdrivende/ingenUtbetalingSelvstendig'
 import { avslattMeldingTilNavDagSelvstendig } from '../vedtak/naringsdrivende/avslattMeldingTilNavDag'
+import { selvstendigMedLavInntekt } from '../vedtak/naringsdrivende/selvstendigMedLavInntekt'
+import { selvstendigMedManglerOpptjening } from '../vedtak/naringsdrivende/selvstendigMedManglerOpptjening'
+
+import { Scenario, tilDemovedtak } from './scenario'
 import { medForsikring } from '../vedtak/naringsdrivende/medForsikring'
 
 export const standardSelvstendigPersona: Persona = {
@@ -35,8 +39,36 @@ export const avslattMeldingTilNavDagPersona: Persona = {
     beskrivelse: 'Selvstendig næringsdrivende — beskjed til Nav ikke registrert',
 }
 
+export const selvstendigMedLavInntektPersona: Persona = {
+    vedtak: [selvstendigMedLavInntekt],
+    beskrivelse: 'Selvstendig næringsdrivende med lav inntekt',
+}
+
+export const selvstendigMedManglerOpptjeningPersona: Persona = {
+    vedtak: [selvstendigMedManglerOpptjening],
+    beskrivelse: 'Selvstendig næringsdrivende med manglende opptjening',
+}
 export const medForsikringPersona: Persona = {
     vedtak: [medForsikring],
     kontonummer: '10011110011',
     beskrivelse: 'Selvstendig næringsdrivende med forsikring',
+}
+
+const selvstendigScenarioer: Scenario[] = [
+    ['utbetaling', 'Standard vedtak', standardSelvstendig],
+
+    ['ingen-utbetaling', 'Ingen utbetaling', ingenUtbetalingSelvstendig],
+
+    ['avslag', 'Beskjed til Nav ikke registrert', avslattMeldingTilNavDagSelvstendig],
+    ['avslag', 'Lav inntekt', selvstendigMedLavInntekt],
+    ['avslag', 'Mangler opptjening', selvstendigMedManglerOpptjening],
+
+    ['inntekt', 'Redusert til 6 G', seksGBegrensningSelvstendig],
+    ['inntekt', 'Uten årsinntekt', utenAarsinntektSelvstendig],
+]
+
+export const selvstendigNaeringsdrivendePerson: Persona = {
+    vedtak: tilDemovedtak(selvstendigScenarioer),
+    kontonummer: '10011110011',
+    beskrivelse: 'Selvstendig næringsdrivende',
 }
