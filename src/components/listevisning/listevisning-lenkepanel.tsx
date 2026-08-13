@@ -86,7 +86,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                                 icon={<InformationIcon aria-hidden />}
                             >
                                 <span className="sr-only">, </span>
-                                {`Demoinfo: ${vedtak.demoinfo}`}
+                                {`${vedtak.demoinfo}`}
                             </Tag>
                         )}
                         <LinkPanel.Title>
