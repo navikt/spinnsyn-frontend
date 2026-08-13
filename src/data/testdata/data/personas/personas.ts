@@ -56,7 +56,6 @@ const arbeidstakerScenarioer: Scenario[] = [
     ['utbetaling', 'Refusjon til arbeidsgiver og ansatt to steder', vedtakMedFlereArbeidsgivere],
     ['utbetaling', 'Arbeidsgiver slutter med refusjon midt i perioden', slutterMedRefusjon],
     ['utbetaling', 'Arbeidsgiver slutter med delvis refusjon', vedtakDerDetSluttesMedDelvisRefusjon],
-    ['utbetaling', 'Refusjon, brukerutbetaling og delvis innvilget', kombinertDirekteOgRefusjonDelvisInnvilget],
     ['utbetaling', 'Julesøknad med advarsel', julesoknadVedtak],
 
     ['ingen-utbetaling', 'Kun helg', arbeidstakerKunHelg],
@@ -85,14 +84,16 @@ const arbeidstakerScenarioer: Scenario[] = [
         vedtak,
     ]),
 
-    ['begrunnelse', 'Delvis innvilgelse', innvilgelseVedtak],
-    ['begrunnelse', 'Innvilgelse med begrunnelse', innvilgelseMedBegrunnelseVedtak],
-    ['begrunnelse', 'Innvilgelse med tom begrunnelse', innvilgelseMedTomBegrunnelseVedtak],
+    ['delvis-innvilgelse', 'Delvis innvilgelse', innvilgelseVedtak],
+    ['delvis-innvilgelse', 'Refusjon, brukerutbetaling og delvis innvilget', kombinertDirekteOgRefusjonDelvisInnvilget],
     [
-        'begrunnelse',
+        'delvis-innvilgelse',
         'Delvis innvilget og skjønnsfastsatt fra Bømlo',
         delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
     ],
+
+    ['begrunnelse', 'Innvilgelse med begrunnelse', innvilgelseMedBegrunnelseVedtak],
+    ['begrunnelse', 'Innvilgelse med tom begrunnelse', innvilgelseMedTomBegrunnelseVedtak],
 
     ['revurdering', 'Revurdert vedtak', vedtakRevurdert],
     ['revurdering', 'Revurdert direkte', vedtakRevurdertDirekte],

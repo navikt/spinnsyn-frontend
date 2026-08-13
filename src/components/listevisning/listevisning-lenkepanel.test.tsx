@@ -56,7 +56,7 @@ describe('Listevisning lenkepanel', () => {
 
         render(<ListevisningLenkepanel vedtak={vedtak} />)
 
-        expect(await screen.findByText('Demoinfo: 100 % sykmeldt')).toBeInTheDocument()
+        expect(await screen.findByText('100 % sykmeldt')).toBeInTheDocument()
     })
 
     it('Viser etikett for et revurdert vedtak', async () => {
