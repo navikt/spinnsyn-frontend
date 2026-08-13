@@ -36,7 +36,7 @@ import { revurderingVedtak } from '../vedtak/revurdering'
 import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
 import { arbeidstakerArbeidsgiverperiodeOgHelg } from '../vedtak/arbeidstakerArbeidsgiverperiodeOgHelg'
 
-import { Scenario, tilDemovedtak } from './scenario'
+import { iKategori, Scenario, Scenariokategori, tilDemovedtak } from './scenario'
 
 export const utenData: Persona = {
     vedtak: [],
@@ -81,6 +81,13 @@ const arbeidstakerScenarioer: Scenario[] = [
 export const arbeidstakerPerson: Persona = {
     vedtak: tilDemovedtak(arbeidstakerScenarioer),
     beskrivelse: 'Arbeidstaker',
+}
+
+export function arbeidstakerIKategori(kategori: Scenariokategori): Persona {
+    return {
+        vedtak: tilDemovedtak(iKategori(arbeidstakerScenarioer, kategori)),
+        beskrivelse: 'Arbeidstaker',
+    }
 }
 
 export const annullert: Persona = {

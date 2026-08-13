@@ -7,8 +7,8 @@ import { avslattMeldingTilNavDagSelvstendig } from '../vedtak/naringsdrivende/av
 import { selvstendigMedLavInntekt } from '../vedtak/naringsdrivende/selvstendigMedLavInntekt'
 import { selvstendigMedManglerOpptjening } from '../vedtak/naringsdrivende/selvstendigMedManglerOpptjening'
 
-import { Scenario, tilDemovedtak } from './scenario'
 import { medForsikring } from '../vedtak/naringsdrivende/medForsikring'
+import { iKategori, Scenario, Scenariokategori, tilDemovedtak } from './scenario'
 
 export const standardSelvstendigPersona: Persona = {
     vedtak: [standardSelvstendig],
@@ -71,4 +71,12 @@ export const selvstendigNaeringsdrivendePerson: Persona = {
     vedtak: tilDemovedtak(selvstendigScenarioer),
     kontonummer: '10011110011',
     beskrivelse: 'Selvstendig næringsdrivende',
+}
+
+export function selvstendigIKategori(kategori: Scenariokategori): Persona {
+    return {
+        vedtak: tilDemovedtak(iKategori(selvstendigScenarioer, kategori)),
+        kontonummer: '10011110011',
+        beskrivelse: 'Selvstendig næringsdrivende',
+    }
 }

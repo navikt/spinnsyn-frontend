@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { STANDARD_TESTPERSON, synligeTestpersoner, testpersoner } from './testperson'
+import { STANDARD_TESTPERSON, synligeTestpersoner, testpersoner, testpersonerGruppert } from './testperson'
 
 describe('testpersoner', () => {
     it('har standardperson og demoinfo på vedtakene', () => {
@@ -11,8 +11,34 @@ describe('testpersoner', () => {
         expect(standardperson?.vedtak[0]?.demoinfo).toBe('Utbetaling: Det meste')
     })
 
-    it('har én synlig testperson per yrkesaktivitetstype', () => {
-        expect(Object.keys(synligeTestpersoner())).toEqual(['arbeidstaker', 'selvstendig-naeringsdrivende'])
+    it('grupperer testpersonene på yrkesaktivitetstype med én persona per scenariokategori', () => {
+        const grupper = testpersonerGruppert()
+
+        expect(grupper.map((gruppe) => gruppe.tittel)).toEqual(['Arbeidstaker', 'Selvstendig næringsdrivende'])
+        expect(grupper[0]?.personer.map((person) => person.nøkkel)).toEqual([
+            'arbeidstaker',
+            'arbeidstaker-utbetaling',
+            'arbeidstaker-ingen-utbetaling',
+            'arbeidstaker-avslag',
+            'arbeidstaker-inntekt',
+            'arbeidstaker-revurdering',
+        ])
+        expect(grupper[1]?.personer.map((person) => person.nøkkel)).toEqual([
+            'selvstendig-naeringsdrivende',
+            'selvstendig-utbetaling',
+            'selvstendig-ingen-utbetaling',
+            'selvstendig-avslag',
+            'selvstendig-inntekt',
+        ])
+    })
+
+    it('lar scenariopersonaene til sammen dekke alle vedtakene i gruppens samlepersona', () => {
+        testpersonerGruppert().forEach((gruppe) => {
+            const [samlet, ...scenarioer] = gruppe.personer
+            const antallIScenarioer = scenarioer.reduce((sum, person) => sum + person.persona.vedtak.length, 0)
+
+            expect(antallIScenarioer).toBe(samlet!.persona.vedtak.length)
+        })
     })
 
     it('samler alle selvstendig-vedtakene i én persona med demoinfo', () => {
