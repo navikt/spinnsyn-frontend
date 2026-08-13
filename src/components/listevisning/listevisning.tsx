@@ -1,4 +1,4 @@
-import { BodyShort, Heading, HStack, Link, Skeleton } from '@navikt/ds-react'
+import { BodyShort, Box, Heading, HStack, Link, Skeleton } from '@navikt/ds-react'
 import { InformationIcon } from '@navikt/aksel-icons'
 import React from 'react'
 import { useRouter } from 'next/router'
@@ -39,14 +39,19 @@ const Listevisning = ({ alleVedtak }: { alleVedtak?: RSVedtakWrapper[] }) => {
                 {kanVelgePerson && <Person />}
             </div>
 
-            {kanVelgePerson && personaBeskrivelse && (
-                <div className="mb-4 rounded-md border border-[var(--ax-border-info-subtle)] bg-[var(--ax-bg-info-soft)] p-3">
-                    <HStack gap="space-8" wrap={false} align="center">
-                        <InformationIcon aria-hidden fontSize="1.5rem" />
-                        <BodyShort size="small">Demoinfo: {personaBeskrivelse}</BodyShort>
-                    </HStack>
-                </div>
-            )}
+            <Box
+                background="meta-lime-moderate"
+                borderColor="meta-lime-subtle"
+                borderWidth="1"
+                borderRadius="4"
+                padding="space-12"
+                marginBlock="space-0 space-16"
+            >
+                <HStack gap="space-8" wrap={false} align="center">
+                    <InformationIcon aria-hidden fontSize="1.5rem" />
+                    <BodyShort size="small">Demoinfo: {personaBeskrivelse}</BodyShort>
+                </HStack>
+            </Box>
 
             <LenkepanelGruppering
                 dataCy="uleste-vedtak"
