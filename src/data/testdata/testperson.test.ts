@@ -21,6 +21,7 @@ describe('testpersoner', () => {
             'arbeidstaker-ingen-utbetaling',
             'arbeidstaker-avslag',
             'arbeidstaker-inntekt',
+            'arbeidstaker-delvis-innvilgelse',
             'arbeidstaker-begrunnelse',
             'arbeidstaker-revurdering',
         ])

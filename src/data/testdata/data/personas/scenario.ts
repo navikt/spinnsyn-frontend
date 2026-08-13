@@ -5,13 +5,15 @@ import { jsonDeepCopy } from '../../../../utils/json-deep-copy'
  * Kategoriene speiler komponentene som faktisk varierer på vedtakssiden, slik at
  * det er enkelt å finne et demovedtak for scenarioet man jobber med.
  */
-export type Scenariokategori = 'utbetaling' | 'ingen-utbetaling' | 'avslag' | 'inntekt' | 'begrunnelse' | 'revurdering'
+export type Scenariokategori =
+    'utbetaling' | 'ingen-utbetaling' | 'avslag' | 'inntekt' | 'delvis-innvilgelse' | 'begrunnelse' | 'revurdering'
 
 export const scenariokategorier: Scenariokategori[] = [
     'utbetaling',
     'ingen-utbetaling',
     'avslag',
     'inntekt',
+    'delvis-innvilgelse',
     'begrunnelse',
     'revurdering',
 ]
@@ -21,6 +23,7 @@ export const kategoritekst: Record<Scenariokategori, string> = {
     'ingen-utbetaling': 'Ingen utbetaling',
     avslag: 'Avslag',
     inntekt: 'Inntekt',
+    'delvis-innvilgelse': 'Delvis innvilgelse',
     begrunnelse: 'Begrunnelse',
     revurdering: 'Revurdering',
 }
