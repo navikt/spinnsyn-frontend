@@ -10,6 +10,7 @@ Bruk `execute_run_configuration` med `configurationName` lik script-navnet fra `
 |-------------------|--------------------|
 | Enhetstester      | `test:ci`          |
 | E2E-tester        | `play-headless`    |
+| E2E + bygg        | `play-headless-build` |
 | Dev-server        | `dev`              |
 | Format            | `format`           |
 
@@ -24,6 +25,8 @@ execute_run_configuration(
 ```
 
 E2E-tester starter dev-serveren automatisk via `webServer`-konfig i `playwright.config.ts` (`reuseExistingServer: true`).
+
+For verifisering av endringer skal `play-headless-build` foretrekkes når du trenger både Playwright og bygg.
 
 ### Kjøre én enkelt Playwright spec-fil
 

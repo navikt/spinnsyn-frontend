@@ -19,8 +19,9 @@ Kjør i rekkefølge via `execute_run_configuration`:
 
 1. `format`
 2. `test:ci`
-3. `play-headless`
-4. `build`
+3. `play-headless-build`
+
+Når du bare trenger rask validering av endringer, prioriter `play-headless-build` fremfor å kjøre `play-headless` og `build` separat.
 
 ## 2) Testing
 
@@ -100,4 +101,3 @@ Opprett PR via GitHub MCP (`create_pull_request`) eller `gh pr create --fill`.
 - [ ] Endringen følger eksisterende mønster i berørte filer
 - [ ] Tester er oppdatert der domenelogikk er endret
 - [ ] Format, enhetstester, E2E-tester og bygg er grønn (se «Før commit» i seksjon 1)
-
