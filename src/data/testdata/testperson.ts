@@ -116,6 +116,7 @@ export interface Testpersongruppe {
  */
 export function testpersonerGruppert(): Testpersongruppe[] {
     const iGruppe = (
+        tittel: string,
         prefiks: 'arbeidstaker' | 'selvstendig',
         alle: Persona,
         iKategori: (kategori: Scenariokategori) => Persona,
@@ -123,13 +124,13 @@ export function testpersonerGruppert(): Testpersongruppe[] {
         {
             nøkkel: prefiks === 'arbeidstaker' ? 'arbeidstaker' : 'selvstendig-naeringsdrivende',
             beskrivelse: 'Alle scenarioer',
-            persona: alle,
+            persona: { ...alle, beskrivelse: `${tittel} – alle scenarioer` },
         },
         ...scenariokategorier
             .map((kategori) => ({
                 nøkkel: `${prefiks}-${kategori}` as PersonaKey,
                 beskrivelse: kategoritekst[kategori],
-                persona: iKategori(kategori),
+                persona: { ...iKategori(kategori), beskrivelse: `${tittel} – ${kategoritekst[kategori]}` },
             }))
             .filter(({ persona }) => persona.vedtak.length > 0),
     ]
@@ -137,11 +138,16 @@ export function testpersonerGruppert(): Testpersongruppe[] {
     return [
         {
             tittel: 'Arbeidstaker',
-            personer: iGruppe('arbeidstaker', arbeidstakerPerson, arbeidstakerIKategori),
+            personer: iGruppe('Arbeidstaker', 'arbeidstaker', arbeidstakerPerson, arbeidstakerIKategori),
         },
         {
             tittel: 'Selvstendig næringsdrivende',
-            personer: iGruppe('selvstendig', selvstendigNaeringsdrivendePerson, selvstendigIKategori),
+            personer: iGruppe(
+                'Selvstendig næringsdrivende',
+                'selvstendig',
+                selvstendigNaeringsdrivendePerson,
+                selvstendigIKategori,
+            ),
         },
     ]
 }

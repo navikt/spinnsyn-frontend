@@ -14,16 +14,16 @@ import {
 test.describe('Les uleste vedtak', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(23)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(41)
     })
 
     test('Laster startside', async ({ page }) => {
         await expect(page).toHaveURL(/syk\/sykepenger$/)
     })
 
-    test('Det er 4 uleste vedtak og 7 leste', async ({ page }) => {
-        await expect(page.getByTestId('uleste-vedtak').getByRole('link')).toHaveCount(14)
-        await expect(page.getByTestId('leste-vedtak').getByRole('link')).toHaveCount(9)
+    test('Det er 22 uleste vedtak og 19 leste', async ({ page }) => {
+        await expect(page.getByTestId('uleste-vedtak').getByRole('link')).toHaveCount(22)
+        await expect(page.getByTestId('leste-vedtak').getByRole('link')).toHaveCount(19)
     })
 
     test('Åpner et ulest vedtak og sjekker innhold', async ({ page }) => {
@@ -61,9 +61,9 @@ test.describe('Les uleste vedtak', () => {
 
     test('Vi går tilbake til oversikten og sjekker antall vedtak', async ({ page }) => {
         await page.goto('/syk/sykepenger')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(23)
-        await expect(page.getByTestId('uleste-vedtak').getByRole('link')).toHaveCount(14)
-        await expect(page.getByTestId('leste-vedtak').getByRole('link')).toHaveCount(9)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(41)
+        await expect(page.getByTestId('uleste-vedtak').getByRole('link')).toHaveCount(22)
+        await expect(page.getByTestId('leste-vedtak').getByRole('link')).toHaveCount(19)
     })
 
     test('Åpner et annullert vedtak og sjekker info', async ({ page }) => {

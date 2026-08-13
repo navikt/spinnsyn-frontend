@@ -57,18 +57,42 @@ const arbeidstakerScenarioer: Scenario[] = [
     ['utbetaling', 'Arbeidsgiver slutter med refusjon midt i perioden', slutterMedRefusjon],
     ['utbetaling', 'Arbeidsgiver slutter med delvis refusjon', vedtakDerDetSluttesMedDelvisRefusjon],
     ['utbetaling', 'Refusjon, brukerutbetaling og delvis innvilget', kombinertDirekteOgRefusjonDelvisInnvilget],
+    ['utbetaling', 'Julesøknad med advarsel', julesoknadVedtak],
 
     ['ingen-utbetaling', 'Kun helg', arbeidstakerKunHelg],
     ['ingen-utbetaling', 'Kun arbeidsgiverperiode', arbeidstakerKunArbeidsgiverperiode],
     ['ingen-utbetaling', 'Helg etter arbeidsgiverperiode', arbeidstakerArbeidsgiverperiodeOgHelg],
+    ['ingen-utbetaling', 'Null i utbetaling', vedtakMed0Utbetaling],
 
     ['avslag', 'Avvist vedtak', avvistVedtak],
     ['avslag', 'Alle avviste dager', alleAvvisteDager],
+    ['avslag', 'Alle avviste dager fra Bømlo', alleAvvisteDagerFraBomlo],
     ['avslag', 'Mangler opptjening', avvistManglerOpptjeningVedtak],
     ['avslag', 'Lav inntekt', avvistVedtakMedLavInntekt],
+    ['avslag', 'Lav inntekt med direkteutbetaling', avvistVedtakMedLavInntektDirekteUtbetaling],
+    ['avslag', 'For lav inntekt over 67 år', avslattMinimumInntektOver67],
+    ['avslag', 'Avslag uten utbetaling fra Bømlo', avslåttFraBømlo],
 
     ['inntekt', 'Redusert til 6 G', vedtakRedusertTil6G],
     ['inntekt', 'Inntekt hentet fra A-ordningen', inntektHentetFraAordningen],
+    ['inntekt', 'Inntekt under 2 G', inntektUnder2g],
+    ['inntekt', 'Null omregnet årsinntekt', nullOmregnetAarsinntekt],
+    ['inntekt', 'Skjønnsfastsatt med brukerutbetaling', skjønnsfastsattBrukerutbetaling],
+    ['inntekt', 'Skjønnsfastsatt med flere arbeidsgivere', skjønnsfastsattFlereArbeidsgivere],
+    ...skjonnsfastsattRiktigAarsinntekt.map((vedtak, index): Scenario => [
+        'inntekt',
+        `Skjønnsfastsatt med riktig årsinntekt ${index + 1}`,
+        vedtak,
+    ]),
+
+    ['begrunnelse', 'Delvis innvilgelse', innvilgelseVedtak],
+    ['begrunnelse', 'Innvilgelse med begrunnelse', innvilgelseMedBegrunnelseVedtak],
+    ['begrunnelse', 'Innvilgelse med tom begrunnelse', innvilgelseMedTomBegrunnelseVedtak],
+    [
+        'begrunnelse',
+        'Delvis innvilget og skjønnsfastsatt fra Bømlo',
+        delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
+    ],
 
     ['revurdering', 'Revurdert vedtak', vedtakRevurdert],
     ['revurdering', 'Revurdert direkte', vedtakRevurdertDirekte],
