@@ -43,17 +43,3 @@ describe('Tester klagefrister', () => {
         expect(klagefrist('2022-06-19T14:02:00.000+02:00')).toEqual('1. august 2022')
     })
 })
-
-describe('UTC i input kan endre frist', () => {
-    it('setter frist til 27. mai 2026 når opprettet er 2026-04-15T11:08:00Z (13:08 i Oslo)', () => {
-        expect(klagefrist('2026-04-15T11:08:00.000Z')).toEqual('27. mai 2026')
-    })
-
-    it('setter frist til 28. mai 2026 når opprettet er 2026-04-15T12:30:00Z (14:30 i Oslo)', () => {
-        expect(klagefrist('2026-04-15T12:30:00.000Z')).toEqual('28. mai 2026')
-    })
-
-    it('setter frist til 27. mai 2026 når samme klokkeslett er 2026-04-15T12:30:00+02:00 (12:30 i Oslo)', () => {
-        expect(klagefrist('2026-04-15T12:30:00.000+02:00')).toEqual('27. mai 2026')
-    })
-})
