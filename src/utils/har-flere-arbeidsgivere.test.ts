@@ -1,12 +1,13 @@
 import { describe, it, expect } from 'vitest'
 
 import { vedtakMed40Grad } from '../data/testdata/data/vedtak/gradert40'
+import type { RSVedtakArbeidstaker, RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 
 import { harFlereArbeidsgivere } from './har-flere-arbeidsgivere'
 import { jsonDeepCopy } from './json-deep-copy'
 
 describe('Tester har flere arbeidsgivere', () => {
-    const testVedtak = vedtakMed40Grad
+    const testVedtak = vedtakMed40Grad as RSVedtakWrapper & { vedtak: RSVedtakArbeidstaker }
 
     it('Har en arbeidsgiver', () => {
         expect(harFlereArbeidsgivere(testVedtak)).toEqual('nei')
