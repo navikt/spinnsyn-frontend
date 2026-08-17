@@ -39,19 +39,21 @@ const Listevisning = ({ alleVedtak }: { alleVedtak?: RSVedtakWrapper[] }) => {
                 {kanVelgePerson && <Person />}
             </div>
 
-            <Box
-                background="meta-lime-moderate"
-                borderColor="meta-lime-subtle"
-                borderWidth="1"
-                borderRadius="4"
-                padding="space-12"
-                marginBlock="space-0 space-16"
-            >
-                <HStack gap="space-8" wrap={false} align="center">
-                    <InformationIcon aria-hidden fontSize="1.5rem" />
-                    <BodyShort size="small">Demoinfo: {personaBeskrivelse}</BodyShort>
-                </HStack>
-            </Box>
+            {isMockBackend() && (
+                <Box
+                    background="meta-lime-moderate"
+                    borderColor="meta-lime-subtle"
+                    borderWidth="1"
+                    borderRadius="4"
+                    padding="space-12"
+                    marginBlock="space-0 space-16"
+                >
+                    <HStack gap="space-8" wrap={false} align="center">
+                        <InformationIcon aria-hidden fontSize="1.5rem" />
+                        <BodyShort size="small">Demoinfo: {personaBeskrivelse}</BodyShort>
+                    </HStack>
+                </Box>
+            )}
 
             <LenkepanelGruppering
                 dataCy="uleste-vedtak"
