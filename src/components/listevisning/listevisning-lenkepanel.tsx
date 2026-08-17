@@ -8,10 +8,9 @@ import { tekst } from '../../utils/tekster'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
-import { isProd } from '../../utils/environment'
+import { isMockBackend, isProd } from '../../utils/environment'
 import { Etikett, getEtikettVariant } from '../etikett/etikett'
 import { formatDatoKort, formatDatoKortMedAr, fullDatoKlokkeslett } from '../../utils/dato-utils'
-import { isMockBackend, isOpplaering } from '../../utils/environment'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 
 const sykmeldtFraTekstGenerator = (yrkesaktivitetstype: 'ARBEIDSTAKER' | 'SELVSTENDIG', orgnavn: string) => {
@@ -42,7 +41,6 @@ type ListevisningLenkepanelProps = {
 const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
     const annullertEllerRevurdert = vedtak.annullert || vedtak.revurdert
     const router = useRouter()
-    const erDemo = isMockBackend() || isOpplaering()
 
     const query: NodeJS.Dict<string | string[]> = {}
 
@@ -77,7 +75,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                     <div
                         className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}
                     >
-                        {erDemo && vedtak.demoinfo && (
+                        {isMockBackend() && vedtak.demoinfo && (
                             <Tag
                                 className="mb-2"
                                 data-color="meta-lime"
