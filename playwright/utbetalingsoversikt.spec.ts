@@ -4,13 +4,12 @@ import { formaterValuta } from '../src/utils/valuta-utils'
 
 import { expect, test } from './fixtures'
 import { harSynligTittel, trykkPaVedtakMedId, verifyDagTabellRows, visBeregningRegion } from './utils/hjelpefunksjoner'
-
-const EXPECTED_NUMBER_OF_SYKMELDT_LINKS = 41
+import { FORVENTET_ANTALL_SYKMELDT_LENKER } from './utils/forventede-antall'
 
 test.describe('Utbetalingsoversikt', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(EXPECTED_NUMBER_OF_SYKMELDT_LINKS)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(FORVENTET_ANTALL_SYKMELDT_LENKER)
     })
 
     test('Utbetalingsoversikt', async ({ page }) => {

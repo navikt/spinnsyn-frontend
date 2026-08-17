@@ -16,11 +16,12 @@ import {
     verifyDagTabellRows,
     visBeregningRegion,
 } from './utils/hjelpefunksjoner'
+import { FORVENTET_ANTALL_SYKMELDT_LENKER } from './utils/forventede-antall'
 
 test.describe('Avviste dager', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(41)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(FORVENTET_ANTALL_SYKMELDT_LENKER)
     })
 
     test('Vedtak med bare godkjente utbetalingsdager viser ikke avviste dager panel', async ({ page }) => {

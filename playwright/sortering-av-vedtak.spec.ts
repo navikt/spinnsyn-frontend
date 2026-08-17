@@ -3,6 +3,7 @@ import { RSVedtakWrapper } from '../src/types/rs-types/rs-vedtak-felles'
 
 import { test, expect } from './fixtures'
 import { harSynligTittel } from './utils/hjelpefunksjoner'
+import { FORVENTET_ANTALL_SYKMELDT_LENKER } from './utils/forventede-antall'
 
 const lenkeTilVedtak = (hrefs: string[] | (string | null)[]) => {
     const vedtakene: RSVedtakWrapper[] = []
@@ -19,7 +20,7 @@ test.describe('Sortering av vedtak', () => {
     test.beforeEach('Laster startside', async ({ page }) => {
         await page.goto('/syk/sykepenger')
         await harSynligTittel(page, 'Svar på søknader', 1)
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(41)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(FORVENTET_ANTALL_SYKMELDT_LENKER)
     })
 
     test('Tidligere vedtak sorteres etter tidligste tom dato', async ({ page }) => {
