@@ -8,7 +8,7 @@ import { tekst } from '../../utils/tekster'
 import { storeTilStoreOgSmå } from '../../utils/store-små'
 import { logEvent } from '../umami/umami'
 import { cn } from '../../utils/tw-utils'
-import { isMockBackend, isProd } from '../../utils/environment'
+import { isOpplaering, isProd } from '../../utils/environment'
 import { Etikett, getEtikettVariant } from '../etikett/etikett'
 import { formatDatoKort, formatDatoKortMedAr, fullDatoKlokkeslett } from '../../utils/dato-utils'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
@@ -75,7 +75,7 @@ const ListevisningLenkepanel = ({ vedtak }: ListevisningLenkepanelProps) => {
                     <div
                         className={cn('grow', { 'line-through text-ax-text-neutral-subtle': annullertEllerRevurdert })}
                     >
-                        {isMockBackend() && vedtak.demoinfo && (
+                        {isOpplaering() && vedtak.demoinfo && (
                             <Tag
                                 className="mb-2"
                                 data-color="meta-lime"

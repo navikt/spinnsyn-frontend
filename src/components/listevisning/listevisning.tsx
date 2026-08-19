@@ -39,7 +39,7 @@ const Listevisning = ({ alleVedtak }: { alleVedtak?: RSVedtakWrapper[] }) => {
                 {kanVelgePerson && <Person />}
             </div>
 
-            {isMockBackend() && (
+            {isOpplaering() && (
                 <Box
                     background="meta-lime-moderate"
                     borderColor="meta-lime-subtle"
