@@ -14,6 +14,10 @@ export function isOpplaering() {
     return bundledEnv.NEXT_PUBLIC_OPPLAERING
 }
 
+export function isIntegrationtest() {
+    return isMockBackend() && !isOpplaering()
+}
+
 export function sykefravaerUrl() {
     return bundledEnv.NEXT_PUBLIC_SYKEFRAVAER_URL
 }

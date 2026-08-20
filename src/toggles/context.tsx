@@ -2,7 +2,7 @@ import { IToggle } from '@unleash/nextjs'
 import { createContext, PropsWithChildren, ReactElement, useContext, useEffect } from 'react'
 import { logger } from '@navikt/next-logger'
 
-import { spinnsynFrontendArkivering, spinnsynFrontendInterne } from '../utils/environment'
+import { isIntegrationtest, spinnsynFrontendArkivering, spinnsynFrontendInterne } from '../utils/environment'
 
 import { ExpectedToggles } from './toggles'
 
@@ -18,7 +18,9 @@ export function FlagProvider({ toggles, children }: PropsWithChildren<{ toggles:
                 return
             }
             if (window.location.pathname !== '/') {
-                logger.error("Toggles are not SSR'd, falling back to default toggles.")
+                if (!isIntegrationtest()) {
+                    logger.error("Toggles are not SSR'd, falling back to default toggles.")
+                }
             }
         }
     }, [toggles])
