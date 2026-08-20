@@ -36,6 +36,8 @@ import { revurderingVedtak } from '../vedtak/revurdering'
 import { kombinertDirekteOgRefusjonDelvisInnvilget } from '../vedtak/kombinertDelvis'
 import { arbeidstakerArbeidsgiverperiodeOgHelg } from '../vedtak/arbeidstakerArbeidsgiverperiodeOgHelg'
 
+import { iKategori, Scenario, Scenariokategori, tilDemovedtak } from './scenario'
+
 export const utenData: Persona = {
     vedtak: [],
     beskrivelse: 'Ingen vedtak fattet',
@@ -46,21 +48,71 @@ export const etVedtakFlereArbeidsgivere: Persona = {
     beskrivelse: 'Refusjon til arbeidsgiver og ansatt 2 steder',
 }
 
-export const diverseData: Persona = {
-    vedtak: [
-        vedtakMedDetMeste,
-        vedtakMed40Grad,
-        vedtakAnnullert,
-        vedtakRevurdert,
-        vedtakRevurdertDirekte,
-        alleAvvisteDager,
-        avvistVedtak,
-        avvistManglerOpptjeningVedtak,
-        avvistVedtakMedLavInntekt,
-        vedtakRedusertTil6G,
-        inntektHentetFraAordningen,
+const arbeidstakerScenarioer: Scenario[] = [
+    ['utbetaling', 'Det meste', vedtakMedDetMeste],
+    ['utbetaling', 'Gradert 40 %', vedtakMed40Grad],
+    ['utbetaling', 'Kun utbetaling til sykmeldt', kunDirekte],
+    ['utbetaling', 'Både refusjon og brukerutbetaling', kombinertDirekteOgRefusjon],
+    ['utbetaling', 'Refusjon til arbeidsgiver og ansatt to steder', vedtakMedFlereArbeidsgivere],
+    ['utbetaling', 'Arbeidsgiver slutter med refusjon midt i perioden', slutterMedRefusjon],
+    ['utbetaling', 'Arbeidsgiver slutter med delvis refusjon', vedtakDerDetSluttesMedDelvisRefusjon],
+    ['utbetaling', 'Julesøknad med advarsel', julesoknadVedtak],
+
+    ['ingen-utbetaling', 'Kun helg', arbeidstakerKunHelg],
+    ['ingen-utbetaling', 'Kun arbeidsgiverperiode', arbeidstakerKunArbeidsgiverperiode],
+    ['ingen-utbetaling', 'Helg etter arbeidsgiverperiode', arbeidstakerArbeidsgiverperiodeOgHelg],
+    ['ingen-utbetaling', 'Null i utbetaling', vedtakMed0Utbetaling],
+
+    ['avslag', 'Avvist vedtak', avvistVedtak],
+    ['avslag', 'Alle avviste dager', alleAvvisteDager],
+    ['avslag', 'Alle avviste dager fra Bømlo', alleAvvisteDagerFraBomlo],
+    ['avslag', 'Mangler opptjening', avvistManglerOpptjeningVedtak],
+    ['avslag', 'Lav inntekt', avvistVedtakMedLavInntekt],
+    ['avslag', 'Lav inntekt med direkteutbetaling', avvistVedtakMedLavInntektDirekteUtbetaling],
+    ['avslag', 'For lav inntekt over 67 år', avslattMinimumInntektOver67],
+    ['avslag', 'Avslag uten utbetaling fra Bømlo', avslåttFraBømlo],
+
+    ['inntekt', 'Redusert til 6 G', vedtakRedusertTil6G],
+    ['inntekt', 'Inntekt hentet fra A-ordningen', inntektHentetFraAordningen],
+    ['inntekt', 'Inntekt under 2 G', inntektUnder2g],
+    ['inntekt', 'Null omregnet årsinntekt', nullOmregnetAarsinntekt],
+    ['inntekt', 'Skjønnsfastsatt med brukerutbetaling', skjønnsfastsattBrukerutbetaling],
+    ['inntekt', 'Skjønnsfastsatt med flere arbeidsgivere', skjønnsfastsattFlereArbeidsgivere],
+    ...skjonnsfastsattRiktigAarsinntekt.map((vedtak, index): Scenario => [
+        'inntekt',
+        `Skjønnsfastsatt med riktig årsinntekt ${index + 1}`,
+        vedtak,
+    ]),
+
+    ['delvis-innvilgelse', 'Delvis innvilgelse', innvilgelseVedtak],
+    ['delvis-innvilgelse', 'Refusjon, brukerutbetaling og delvis innvilget', kombinertDirekteOgRefusjonDelvisInnvilget],
+    [
+        'delvis-innvilgelse',
+        'Delvis innvilget og skjønnsfastsatt fra Bømlo',
+        delvisInnvilgelseOgSkjønnsfastsattKombinasjonFraBomlo,
     ],
-    beskrivelse: 'Diverse vedtak brukt til testing',
+
+    ['begrunnelse', 'Innvilgelse med begrunnelse', innvilgelseMedBegrunnelseVedtak],
+    ['begrunnelse', 'Innvilgelse med tom begrunnelse', innvilgelseMedTomBegrunnelseVedtak],
+
+    ['revurdering', 'Revurdert vedtak', vedtakRevurdert],
+    ['revurdering', 'Revurdert direkte', vedtakRevurdertDirekte],
+    ['revurdering', 'Revurdering', revurderingVedtak],
+    ['revurdering', 'Kombinert som er revurdert', kombinertRevurdert],
+    ['revurdering', 'Annullert vedtak', vedtakAnnullert],
+    ['revurdering', 'Revurdert og senere annullert', revurdertOgAnnullertVedtak],
+]
+
+export const arbeidstakerPerson: Persona = {
+    vedtak: tilDemovedtak(arbeidstakerScenarioer),
+    beskrivelse: 'Arbeidstaker',
+}
+
+export function arbeidstakerIKategori(kategori: Scenariokategori): Persona {
+    return {
+        vedtak: tilDemovedtak(iKategori(arbeidstakerScenarioer, kategori)),
+        beskrivelse: 'Arbeidstaker',
+    }
 }
 
 export const annullert: Persona = {

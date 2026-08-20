@@ -7,6 +7,7 @@ import { PersonaKey, testpersoner } from '../../../data/testdata/testperson'
 import { getServerEnv } from '../../../utils/env'
 
 const tillatteApier = ['GET /api/borger/v1/hent-aktiv-konto']
+const alleTestpersoner = testpersoner()
 
 const handler = beskyttetApi(async (req: NextApiRequest, res: NextApiResponse) => {
     if (isMockBackend()) {
@@ -14,8 +15,8 @@ const handler = beskyttetApi(async (req: NextApiRequest, res: NextApiResponse) =
             const parsetUrl = new URL(`https://test${req.url}`)
 
             const testperson = parsetUrl.searchParams.get('testperson')
-            if (testperson && testpersoner[testperson as PersonaKey]?.kontonummer) {
-                res.json({ kontonummer: testpersoner[testperson as PersonaKey]!.kontonummer })
+            if (testperson && alleTestpersoner[testperson as PersonaKey]?.kontonummer) {
+                res.json({ kontonummer: alleTestpersoner[testperson as PersonaKey]!.kontonummer })
                 res.end()
                 return
             }

@@ -1,5 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
+
+vi.mock('../../utils/environment', () => ({
+    isMockBackend: () => true,
+    isOpplaering: () => false,
+    isProd: () => false,
+}))
 
 import ListevisningLenkepanel from './listevisning-lenkepanel'
 
@@ -12,6 +18,7 @@ describe('Listevisning lenkepanel', () => {
             lest: false,
             opprettetTimestamp: '2023-01-01T00:00:00Z',
             orgnavn: 'Test AS',
+            demoinfo: '100 % sykmeldt',
             vedtak: {
                 yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
                 fom: '2023-01-01',
@@ -26,6 +33,30 @@ describe('Listevisning lenkepanel', () => {
 
         const etikett = await screen.findByText('Nytt svar')
         expect(etikett).toBeInTheDocument()
+    })
+
+    it('Viser demoinfo når den finnes', async () => {
+        const vedtak = {
+            id: 'id-1',
+            annullert: false,
+            revurdert: false,
+            lest: false,
+            opprettetTimestamp: '2023-01-01T00:00:00Z',
+            orgnavn: 'Test AS',
+            demoinfo: '100 % sykmeldt',
+            vedtak: {
+                yrkesaktivitetstype: 'ARBEIDSTAKER' as const,
+                fom: '2023-01-01',
+                tom: '2023-01-31',
+                utbetaling: {
+                    utbetalingType: 'UTBETALING',
+                },
+            },
+        }
+
+        render(<ListevisningLenkepanel vedtak={vedtak} />)
+
+        expect(await screen.findByText('100 % sykmeldt')).toBeInTheDocument()
     })
 
     it('Viser etikett for et revurdert vedtak', async () => {

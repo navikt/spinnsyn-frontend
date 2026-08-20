@@ -7,12 +7,13 @@ import {
     trykkPaVedtakMedId,
     visBeregningRegion,
 } from './utils/hjelpefunksjoner'
+import { FORVENTET_ANTALL_SYKMELDT_LENKER } from './utils/forventede-antall'
 import { expect, test } from './fixtures'
 
 test.describe('Redusert til 6 G', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/syk/sykepenger')
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(FORVENTET_ANTALL_SYKMELDT_LENKER)
         await trykkPaVedtakMedId(page, vedtakMedDetMeste.id)
     })
 

@@ -1,5 +1,7 @@
-import { Heading, Link, Skeleton } from '@navikt/ds-react'
+import { BodyShort, Box, Heading, HStack, Link, Skeleton } from '@navikt/ds-react'
+import { InformationIcon } from '@navikt/aksel-icons'
 import React from 'react'
+import { useRouter } from 'next/router'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
 import { arkiverteVedtakUrl, isMockBackend, isOpplaering, spinnsynFrontendInterne } from '../../utils/environment'
@@ -7,15 +9,26 @@ import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { sorterEtterNyesteFom } from '../../utils/sorter-vedtak'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
+import { STANDARD_TESTPERSON, testpersoner } from '../../data/testdata/testperson'
+import { testpersonFraUrl } from '../../utils/testperson-fra-url'
 
 import LenkepanelGruppering from './lenkepanel-gruppering'
+
+const alleTestpersoner = testpersoner()
+
+function hentPersonaBeskrivelse(testperson: string | undefined): string | undefined {
+    const nøkkel = testperson ?? STANDARD_TESTPERSON
+    return alleTestpersoner[nøkkel as keyof typeof alleTestpersoner]?.beskrivelse
+}
 
 const Listevisning = ({ alleVedtak }: { alleVedtak?: RSVedtakWrapper[] }) => {
     useUpdateBreadcrumbs(() => [], [])
 
+    const router = useRouter()
     const uleste = alleVedtak?.filter((v) => !v.lest).sort(sorterEtterNyesteFom)
     const leste = alleVedtak?.filter((v) => v.lest).sort(sorterEtterNyesteFom)
     const kanVelgePerson = isMockBackend() || isOpplaering()
+    const personaBeskrivelse = hentPersonaBeskrivelse(testpersonFraUrl(router.asPath))
 
     return (
         <>
@@ -25,6 +38,22 @@ const Listevisning = ({ alleVedtak }: { alleVedtak?: RSVedtakWrapper[] }) => {
                 </Heading>
                 {kanVelgePerson && <Person />}
             </div>
+
+            {isMockBackend() && (
+                <Box
+                    background="meta-lime-moderate"
+                    borderColor="meta-lime-subtle"
+                    borderWidth="1"
+                    borderRadius="4"
+                    padding="space-12"
+                    marginBlock="space-0 space-16"
+                >
+                    <HStack gap="space-8" wrap={false} align="center">
+                        <InformationIcon aria-hidden fontSize="1.5rem" />
+                        <BodyShort size="small">Demoinfo: {personaBeskrivelse}</BodyShort>
+                    </HStack>
+                </Box>
+            )}
 
             <LenkepanelGruppering
                 dataCy="uleste-vedtak"

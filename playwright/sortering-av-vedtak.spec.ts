@@ -1,15 +1,16 @@
-import { diverseData } from '../src/data/testdata/data/personas/personas'
+import { arbeidstakerPerson } from '../src/data/testdata/data/personas/personas'
 import { RSVedtakWrapper } from '../src/types/rs-types/rs-vedtak-felles'
 
 import { test, expect } from './fixtures'
 import { harSynligTittel } from './utils/hjelpefunksjoner'
+import { FORVENTET_ANTALL_SYKMELDT_LENKER } from './utils/forventede-antall'
 
 const lenkeTilVedtak = (hrefs: string[] | (string | null)[]) => {
     const vedtakene: RSVedtakWrapper[] = []
     hrefs.forEach((href) => {
         if (!href) return
         const id = href.split('?')[1]
-        const rsVedtak = diverseData.vedtak.find((v) => v.id === id)
+        const rsVedtak = arbeidstakerPerson.vedtak.find((v) => v.id === id)
         if (rsVedtak) vedtakene.push(rsVedtak)
     })
     return vedtakene
@@ -19,7 +20,7 @@ test.describe('Sortering av vedtak', () => {
     test.beforeEach('Laster startside', async ({ page }) => {
         await page.goto('/syk/sykepenger')
         await harSynligTittel(page, 'Svar på søknader', 1)
-        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(11)
+        await expect(page.getByRole('link', { name: /Sykmeldt fra /i })).toHaveCount(FORVENTET_ANTALL_SYKMELDT_LENKER)
     })
 
     test('Tidligere vedtak sorteres etter tidligste tom dato', async ({ page }) => {

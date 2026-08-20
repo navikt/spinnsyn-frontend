@@ -2,7 +2,9 @@ import { BodyShort, Button, Heading, LinkPanel, Modal, Popover, Tooltip } from '
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { SandboxIcon } from '@navikt/aksel-icons'
 
-import { PersonaData, PersonaGroupKey, testpersonerGruppert } from '../../data/testdata/testperson'
+import { testpersonerGruppert } from '../../data/testdata/testperson'
+
+const grupper = testpersonerGruppert()
 
 export default function Person() {
     const [showHint, setShowHint] = useState(false)
@@ -69,64 +71,34 @@ export default function Person() {
                 header={{ heading: 'Testdataverktøy' }}
             >
                 <Modal.Body>
-                    {Object.entries(testpersonerGruppert).map(([gruppe, personer]) => (
-                        <PersonGruppeVisning gruppe={gruppe as PersonaGroupKey} personer={personer} key={gruppe} />
+                    {grupper.map((gruppe) => (
+                        <section key={gruppe.tittel} className="mb-6 last:mb-0">
+                            <Heading size="xsmall" level="2" spacing>
+                                {gruppe.tittel}
+                            </Heading>
+                            <ul className="flex flex-col gap-2">
+                                {gruppe.personer.map(({ nøkkel, beskrivelse, persona }) => {
+                                    let href = `/syk/sykepenger?testperson=${nøkkel}`
+                                    persona.togglesOn?.forEach((toggle) => {
+                                        href += `&${toggle}=true`
+                                    })
+                                    persona.togglesOff?.forEach((toggle) => {
+                                        href += `&${toggle}=false`
+                                    })
+
+                                    return (
+                                        <LinkPanel key={nøkkel} className="w-full text-start" href={href}>
+                                            <BodyShort>
+                                                {beskrivelse} ({persona.vedtak.length})
+                                            </BodyShort>
+                                        </LinkPanel>
+                                    )
+                                })}
+                            </ul>
+                        </section>
                     ))}
                 </Modal.Body>
             </Modal>
-        </>
-    )
-}
-
-function PersonGruppeVisning({ gruppe, personer }: { gruppe: PersonaGroupKey; personer: PersonaData }) {
-    function heading() {
-        switch (gruppe) {
-            case 'mottaker': {
-                return 'Brukerutbetaling og refusjon'
-            }
-            case 'selvstendig-naeringsdrivende': {
-                return 'Selvstendig næringsdrivende'
-            }
-            case 'avvist-delvis-innvilgelse-bømlo': {
-                return 'Avvist eller delvis innvilget søknad'
-            }
-            case 'vedtak-innhold': {
-                return 'Vedtak med forskjellig innhold'
-            }
-            case 'testing': {
-                return 'Vedtak brukt til testing'
-            }
-            case 'ingen-utbetaling': {
-                return 'Vedtak uten utbetaling'
-            }
-            default: {
-                throw Error(`mangler testperson gruppe heading for ${gruppe}`)
-            }
-        }
-    }
-
-    return (
-        <>
-            <Heading size="small" level="4" className="mt-2">
-                {heading()}
-            </Heading>
-            <ul className="mt-2 flex flex-col gap-2">
-                {Object.entries(personer).map(([key, person]) => {
-                    let href = `/syk/sykepenger?testperson=${key}`
-                    person?.togglesOn?.forEach((toggle) => {
-                        href += `&${toggle}=true`
-                    })
-                    person?.togglesOff?.forEach((toggle) => {
-                        href += `&${toggle}=false`
-                    })
-
-                    return (
-                        <LinkPanel key={key} className="w-full text-start" href={href}>
-                            <BodyShort>{person.beskrivelse}</BodyShort>
-                        </LinkPanel>
-                    )
-                })}
-            </ul>
         </>
     )
 }

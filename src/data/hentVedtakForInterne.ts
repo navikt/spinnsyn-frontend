@@ -3,14 +3,14 @@ import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 import { isMockBackend } from '../utils/environment'
 import { getServerEnv } from '../utils/env'
 
-import { diverseData } from './testdata/data/personas/personas'
+import { arbeidstakerPerson } from './testdata/data/personas/personas'
 
 export const hentVedtakFraSpinnsynBackendForInterne = async (
     token: string,
     fnr: string,
 ): Promise<RSVedtakWrapper[]> => {
     if (isMockBackend()) {
-        return diverseData.vedtak
+        return arbeidstakerPerson.vedtak
     }
 
     const response = await fetch(`${getServerEnv().SPINNSYN_BACKEND_URL}/api/v4/veileder/vedtak`, {
