@@ -6,7 +6,7 @@ import { GetServerSidePropsContext } from 'next/types'
 import * as R from 'remeda'
 import NodeCache from 'node-cache'
 
-import { isIntegrationtest, isMockBackend, isOpplaering, spinnsynFrontendInterne } from '../utils/environment'
+import { isIntegrationtest, isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
 import { getServerEnv } from '../utils/env'
 
 import { disabledToggles, getUnleashEnvironment, localDevelopmentToggles } from './utils'
@@ -16,7 +16,7 @@ export async function getFlagsServerSide(
     req: GetServerSidePropsContext['req'],
     res: GetServerSidePropsContext['res'],
 ): Promise<{ toggles: IToggle[] }> {
-    if (isMockBackend() && !isOpplaering()) {
+    if (isMockBackend()) {
         if (!isIntegrationtest()) {
             logger.warn('Running in local or demo mode, falling back to development toggles.')
         }
