@@ -6,6 +6,7 @@ import { RSBegrunnelse, RSDag } from '../../types/rs-types/rs-vedtak-felles'
 import { finnBegrunnelseTekst } from '../../utils/vedtak-utils'
 
 import { dataCyLabel } from './dag-data-cy-util'
+import { isIntegrationtest } from '../../utils/environment'
 
 interface DagLabelProps {
     dag: RSDag
@@ -96,7 +97,9 @@ const DagLabel = ({ dag, skalViseProsent = false }: DagLabelProps) => {
     const lagBegrunnelseLabel = (begrunnelse: RSBegrunnelse, idx: number) => {
         const tagText = finnBegrunnelseTekst(begrunnelse)
         if (tagText === 'Ukjent') {
-            logger.warn(`Har ingen begrunnelse for: ${begrunnelse}.`)
+            if (!isIntegrationtest()) {
+                logger.warn(`Har ingen begrunnelse for: ${begrunnelse}.`)
+            }
             return (
                 <Tag data-color="warning" size="small" variant="outline" key={idx}>
                     Ukjent

@@ -5,11 +5,14 @@ import { v4 as uuidv4 } from 'uuid'
 import { logger } from '@navikt/next-logger'
 
 import { cleanPathForMetric } from '../../metrics/metrics'
+import { isIntegrationtest } from '../../utils/environment'
 
 export async function mockFlexjar(req: NextApiRequest, res: NextApiResponse) {
     const api = `${req.method} ${cleanPathForMetric(req.url!.replace('/api/flexjar-backend', ''))}`
     const reqBody = await parseRequest<object>(req)
-    logger.info(`Mocker kall til ${api} med body: ${JSON.stringify(reqBody)}`)
+    if (!isIntegrationtest()) {
+        logger.info(`Mocker kall til ${api} med body: ${JSON.stringify(reqBody)}`)
+    }
 
     if (api.startsWith('POST /api/v2/feedback')) {
         return res.status(201).json({ id: uuidv4() })
