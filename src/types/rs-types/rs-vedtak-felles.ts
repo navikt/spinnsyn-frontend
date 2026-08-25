@@ -31,6 +31,7 @@ export interface RSVedtakFelles {
     tags?: string[]
     saksbehandler?: Saksbehandler
     beslutter?: Saksbehandler
+    forsikringsvurdering?: Forsikringsvurdering
 }
 
 export interface RSVedtakSelvstendig extends Omit<RSVedtakFelles, 'yrkesaktivitetstype'> {
@@ -187,4 +188,16 @@ type Periode = {
 type Saksbehandler = {
     navn: string
     ident: string
+}
+
+type Forsikringsvurdering = {
+    forsikringsvurderingId: string
+    individuellForsikringNavn?: string | null
+    kollektivForsikringNavn?: string | null
+    dekning?: Dekning | null
+}
+
+type Dekning = {
+    grad: 80 | 100
+    fraDag: 1 | 17
 }

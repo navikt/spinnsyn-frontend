@@ -4,6 +4,7 @@ import { seksGBegrensningSelvstendig } from '../vedtak/naringsdrivende/seksGBegr
 import { utenAarsinntektSelvstendig } from '../vedtak/naringsdrivende/utenAarsinntektSelvstendig'
 import { ingenUtbetalingSelvstendig } from '../vedtak/naringsdrivende/ingenUtbetalingSelvstendig'
 import { avslattMeldingTilNavDagSelvstendig } from '../vedtak/naringsdrivende/avslattMeldingTilNavDag'
+import { medForsikring } from '../vedtak/naringsdrivende/medForsikring'
 
 export const standardSelvstendigPersona: Persona = {
     vedtak: [standardSelvstendig],
@@ -32,4 +33,10 @@ export const ingenUtbetalingSelvstendigPersona: Persona = {
 export const avslattMeldingTilNavDagPersona: Persona = {
     vedtak: [avslattMeldingTilNavDagSelvstendig],
     beskrivelse: 'Selvstendig næringsdrivende — beskjed til Nav ikke registrert',
+}
+
+export const medForsikringPersona: Persona = {
+    vedtak: [medForsikring],
+    kontonummer: '10011110011',
+    beskrivelse: 'Selvstendig næringsdrivende med forsikring',
 }
