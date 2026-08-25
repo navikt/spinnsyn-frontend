@@ -39,6 +39,7 @@ import {
     standardSelvstendigPersona,
     utenAarsinntektSelvstendigPersona,
     avslattMeldingTilNavDagPersona,
+    medForsikringPersona,
 } from './data/personas/naringsdrivendePersonas'
 
 export interface Persona {
@@ -79,6 +80,7 @@ export type PersonaKey =
     | 'innvilgelse-med-begrunnelse'
     | 'innvilgelse-tom-begrunnelse'
     | 'standard-selvstendig'
+    | 'med-forsikring'
     | 'seks-g-begrensning'
     | 'uten-aarsintekt'
     | 'ingen-utbetaling-selvstendig'
@@ -111,6 +113,7 @@ export const testpersonerGruppert: PersonaGroup = {
         ['uten-aarsintekt']: jsonDeepCopy(utenAarsinntektSelvstendigPersona),
         ['ingen-utbetaling-selvstendig']: jsonDeepCopy(ingenUtbetalingSelvstendigPersona),
         ['avslaatt-melding-til-nav']: jsonDeepCopy(avslattMeldingTilNavDagPersona),
+        ['med-forsikring']: jsonDeepCopy(medForsikringPersona),
     },
     ['avvist-delvis-innvilgelse-bømlo']: {
         ['avvist-fra-bomlo']: jsonDeepCopy(avslåttFraBømloPerson),
