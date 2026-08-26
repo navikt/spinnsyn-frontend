@@ -4,6 +4,7 @@
 .idea
 *.iml
 .next
+/.omo/
 
 # dependencies
 /server/node_modules
