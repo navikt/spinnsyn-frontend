@@ -1,4 +1,4 @@
-import { Accordion, BodyShort } from '@navikt/ds-react'
+import { Accordion, BodyShort, Heading, Link } from '@navikt/ds-react'
 import React, { useContext, useState } from 'react'
 
 import { tekst } from '../../../../utils/tekster'
@@ -47,6 +47,9 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
         })
     }
 
+    const forsikringsGrad = vedtak.vedtak.forsikringsvurdering?.dekning?.grad
+    const forsikringsDag = vedtak.vedtak.forsikringsvurdering?.dekning?.fraDag
+
     return (
         <>
             {vedtak.vedtak.yrkesaktivitetstype == 'SELVSTENDIG' && (
@@ -74,6 +77,25 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                             Les mer om hvordan Nav beregner sykepengegrunnlaget under fanen &quot;Mer om
                             beregningen&quot;.
                         </BodyShort>
+
+                        {forsikringsGrad && forsikringsDag && (
+                            <>
+                                <Heading level="2" size="medium" className="border-t border-ax-neutral-400 pt-4">
+                                    Forsikring
+                                </Heading>
+                                <BodyShort size="small" className="mt-3 mb-4">
+                                    (Via Nav)
+                                </BodyShort>
+                                <BodyShort size="small" className="mt-4 mb-4">
+                                    Sykepengene dine er beregnet med forsikringen din for selvstendig næringsdrivende,
+                                    som gir deg {forsikringsGrad} % fra dag {forsikringsDag} av sykepengegrunnlaget (
+                                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-35" target="_blank">
+                                        folketrygdloven §8-35
+                                    </Link>
+                                    ).
+                                </BodyShort>
+                            </>
+                        )}
 
                         <Accordion className="mt-8" indent={false} data-color="neutral">
                             {erSkjonnsfastsatt && harBegrunnelseForSkjonn && (

@@ -69,8 +69,9 @@ export const MerOmBergningenNargingsdrivende = ({
                 </BodyLong>
                 <BodyLong spacing>
                     Du kan få sykepenger fra den 17. dagen du er syk, med mindre du har{' '}
-                    <Link href="https://www.nav.no/forsikring-sykepenger">forsikring fra Nav</Link>. De første 16 dagene
-                    teller fra du får en sykmelding, eller gir beskjed til Nav om at du er syk og ikke kan jobbe.
+                    <Link href="https://www.nav.no/forsikring-sykepenger">forsikring fra Nav</Link>. Da utbetales
+                    sykepengene dine utifra hvilken type forsikring du har. De første 16 dagene teller fra du får en
+                    sykmelding, eller gir beskjed til Nav om at du er syk og ikke kan jobbe.
                 </BodyLong>
                 <BodyLong spacing>
                     Les mer om sykepengedekning i{' '}
