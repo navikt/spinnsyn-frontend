@@ -38,7 +38,7 @@ import Listevisning from './listevisning'
 describe('Listevisning', () => {
     beforeEach(() => {
         miljø.mockBackend = true
-        miljø.opplaering = false
+        miljø.opplaering = true
         miljø.frontendInterne = false
     })
 
@@ -50,6 +50,7 @@ describe('Listevisning', () => {
 
     it('viser ikke demoinfo om valgt testperson når ikke demo miljø', () => {
         miljø.mockBackend = false
+        miljø.opplaering = false
         render(<Listevisning />)
 
         expect(screen.queryByText('Demoinfo: Arbeidstaker – alle scenarioer')).not.toBeInTheDocument()

@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 
 vi.mock('../../utils/environment', () => ({
     isMockBackend: () => true,
-    isOpplaering: () => false,
+    isOpplaering: () => true,
     isProd: () => false,
 }))
 
