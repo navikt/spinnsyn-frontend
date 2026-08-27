@@ -20,6 +20,10 @@ vi.mock('./lenkepanel-gruppering', () => ({
     default: () => null,
 }))
 
+vi.mock('./listevisning-demoinfo', () => ({
+    default: ({ testperson }: { testperson: string | undefined }) => <div>Demoinfo: {testperson}</div>,
+}))
+
 const miljø = vi.hoisted(() => ({
     mockBackend: true,
     opplaering: false,
@@ -45,7 +49,7 @@ describe('Listevisning', () => {
     it('viser demoinfo om valgt testperson', () => {
         render(<Listevisning />)
 
-        expect(screen.getByText('Demoinfo: Arbeidstaker – alle scenarioer')).toBeInTheDocument()
+        expect(screen.getByText('Demoinfo: arbeidstaker')).toBeInTheDocument()
     })
 
     it('viser ikke demoinfo om valgt testperson når ikke demo miljø', () => {
@@ -53,6 +57,6 @@ describe('Listevisning', () => {
         miljø.opplaering = false
         render(<Listevisning />)
 
-        expect(screen.queryByText('Demoinfo: Arbeidstaker – alle scenarioer')).not.toBeInTheDocument()
+        expect(screen.queryByText('Demoinfo: arbeidstaker')).not.toBeInTheDocument()
     })
 })
