@@ -8,6 +8,8 @@ import { selvstendigMedLavInntekt } from '../vedtak/naringsdrivende/selvstendigM
 import { selvstendigMedManglerOpptjening } from '../vedtak/naringsdrivende/selvstendigMedManglerOpptjening'
 
 import { medForsikring } from '../vedtak/naringsdrivende/medForsikring'
+import { medForsikring80FraDag1 } from '../vedtak/naringsdrivende/medForsikring80FraDag1'
+import { medForsikring100FraDag17 } from '../vedtak/naringsdrivende/medForsikring100FraDag17'
 import { iKategori, Scenario, Scenariokategori, tilDemovedtak } from './scenario'
 
 export const standardSelvstendigPersona: Persona = {
@@ -56,6 +58,9 @@ export const medForsikringPersona: Persona = {
 
 const selvstendigScenarioer: Scenario[] = [
     ['utbetaling', 'Standard vedtak', standardSelvstendig],
+    ['utbetaling', 'Med forsikring - 100 % fra dag 1', medForsikring],
+    ['utbetaling', 'Med forsikring - 80 % fra dag 1', medForsikring80FraDag1],
+    ['utbetaling', 'Med forsikring - 100 % fra dag 17', medForsikring100FraDag17],
 
     ['ingen-utbetaling', 'Ingen utbetaling', ingenUtbetalingSelvstendig],
 

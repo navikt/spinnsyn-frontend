@@ -49,6 +49,9 @@ describe('testpersoner', () => {
         expect(selvstendig?.beskrivelse).toBe('Selvstendig næringsdrivende – alle scenarioer')
         expect(selvstendig?.vedtak.map((vedtak) => vedtak.demoinfo)).toEqual([
             'Utbetaling: Standard vedtak',
+            'Utbetaling: Med forsikring - 100 % fra dag 1',
+            'Utbetaling: Med forsikring - 80 % fra dag 1',
+            'Utbetaling: Med forsikring - 100 % fra dag 17',
             'Ingen utbetaling: Ingen utbetaling',
             'Avslag: Beskjed til Nav ikke registrert',
             'Avslag: Lav inntekt',
