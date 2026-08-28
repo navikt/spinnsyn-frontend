@@ -15,6 +15,7 @@ export interface RSVedtakWrapper {
     daglisteArbeidsgiver: RSDag[]
     sykepengebelopArbeidsgiver: number
     sykepengebelopSykmeldt: number
+    demoinfo?: string // kun info for demo, settes i frontend
 }
 
 export interface RSVedtakFelles {

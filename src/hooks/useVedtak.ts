@@ -5,10 +5,11 @@ import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 import { fetchJsonMedRequestId } from '../utils/fetch'
 import { spinnsynFrontendInterne } from '../utils/environment'
 import { korrigerYrkesaktivitetstype } from '../utils/korrigerYrkesaktivitetstype'
+import { testpersonFraUrl } from '../utils/testperson-fra-url'
 
 export default function UseVedtak() {
     const router = useRouter()
-    const testpersonQuery = router.query['testperson']
+    const testpersonQuery = testpersonFraUrl(router.asPath)
 
     const query = () => {
         if (testpersonQuery) {
@@ -17,7 +18,7 @@ export default function UseVedtak() {
         return ''
     }
     return useQuery<VedtakOgFnr, Error>({
-        queryKey: ['vedtak'],
+        queryKey: ['vedtak', testpersonQuery],
         queryFn: async () => {
             if (spinnsynFrontendInterne()) {
                 const vedtak: VedtakOgFnrInterneResponse = await fetchJsonMedRequestId(

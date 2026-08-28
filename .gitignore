@@ -4,6 +4,7 @@
 .idea
 *.iml
 .next
+/.omo/
 
 # dependencies
 /server/node_modules
@@ -31,6 +32,7 @@ yarn-error.log*
 /playwright-report/
 
 .nvmrc
+.next-env.d.ts
 
 .junie
 .claude/

@@ -3,16 +3,18 @@ import { IncomingMessage } from 'http'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 import { jsonDeepCopy } from '../../utils/json-deep-copy'
 
-import { PersonaKey, testpersoner } from './testperson'
+import { PersonaKey, STANDARD_TESTPERSON, testpersoner } from './testperson'
+
+const alleTestpersoner = testpersoner()
 
 export function hentTestdata(url?: string) {
     const parsetUrl = new URL(`https://test${url}`)
 
     const testperson = parsetUrl.searchParams.get('testperson')
-    if (testperson && Object.prototype.hasOwnProperty.call(testpersoner, testperson)) {
-        return jsonDeepCopy(testpersoner[testperson as PersonaKey]!.vedtak)
+    if (testperson && Object.prototype.hasOwnProperty.call(alleTestpersoner, testperson)) {
+        return jsonDeepCopy(alleTestpersoner[testperson as PersonaKey]!.vedtak)
     } else {
-        return jsonDeepCopy(testpersoner['diverse-data']!.vedtak)
+        return jsonDeepCopy(alleTestpersoner[STANDARD_TESTPERSON]!.vedtak)
     }
 }
 
