@@ -89,8 +89,8 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                                 <BodyShort size="small" className="mt-4 mb-4">
                                     Sykepengene dine er beregnet med forsikringen din for selvstendig næringsdrivende,
                                     som gir deg {forsikringsGrad} % fra dag {forsikringsDag} av sykepengegrunnlaget (
-                                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-35" target="_blank">
-                                        folketrygdloven §8-35
+                                    <Link href="https://lovdata.no/nav/folketrygdloven/kap8/%C2%A78-36" target="_blank">
+                                        folketrygdloven §8-36
                                     </Link>
                                     ).
                                 </BodyShort>
