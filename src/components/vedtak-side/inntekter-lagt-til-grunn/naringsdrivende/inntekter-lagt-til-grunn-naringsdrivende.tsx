@@ -49,6 +49,7 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
 
     const forsikringsGrad = vedtak.vedtak.forsikringsvurdering?.dekning?.grad
     const forsikringsDag = vedtak.vedtak.forsikringsvurdering?.dekning?.fraDag
+    const harForsikring = forsikringsGrad && forsikringsDag
 
     return (
         <>
@@ -68,17 +69,18 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                     <article aria-label={tekst('utbetaling.inntekt.info.tittel')}>
                         <AarsinntekterNaringsdrivende vedtak={vedtak.vedtak} />
                         <EkstrainfoOmVedtaketNaringsdrivende vedtak={vedtak.vedtak} />
-                        <BodyShort size="small" className="mt-4 mb-4">
-                            Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80 % av
-                            sykepengegrunnlaget.
-                        </BodyShort>
-
+                        {!harForsikring && (
+                            <BodyShort size="small" className="mt-4 mb-4">
+                                Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80 % av
+                                sykepengegrunnlaget.
+                            </BodyShort>
+                        )}
                         <BodyShort size="small" className="mt-4 mb-4">
                             Les mer om hvordan Nav beregner sykepengegrunnlaget under fanen &quot;Mer om
                             beregningen&quot;.
                         </BodyShort>
 
-                        {forsikringsGrad && forsikringsDag && (
+                        {harForsikring && (
                             <>
                                 <Heading level="2" size="medium" className="border-t border-ax-neutral-400 pt-4">
                                     Forsikring
