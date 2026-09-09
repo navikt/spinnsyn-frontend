@@ -34,7 +34,7 @@
         "tailwind-merge": "^3.6.0",
         "typescript": "6.0.3",
         "uuid": "^14.0.2",
-        "zod": "^4.4.3"
+        "zod": "^4.5.4"
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.13.0",
