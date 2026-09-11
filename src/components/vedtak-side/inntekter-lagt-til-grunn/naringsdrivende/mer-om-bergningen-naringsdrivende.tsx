@@ -64,10 +64,6 @@ export const MerOmBergningenNargingsdrivende = ({
                     Rett til sykepenger
                 </Heading>
                 <BodyLong spacing>
-                    Som selvstendig næringsdrivende har du rett til sykepenger som tilsvarer 80 % av sykepengegrunnlaget
-                    ditt.
-                </BodyLong>
-                <BodyLong spacing>
                     Du kan få sykepenger fra den 17. dagen du er syk, med mindre du har{' '}
                     <Link href="https://www.nav.no/forsikring-sykepenger">forsikring fra Nav</Link>. Da utbetales
                     sykepengene dine utifra hvilken type forsikring du har. De første 16 dagene teller fra du får en
