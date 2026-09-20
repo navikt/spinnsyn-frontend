@@ -1,7 +1,6 @@
 import { logger } from '@navikt/next-logger'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getToken, validateIdportenToken } from '@navikt/oasis'
-import { validateAzureToken } from '@navikt/oasis/dist/validate'
+import { getToken, validateAzureToken, validateIdportenToken } from '@navikt/oasis'
 
 import metrics, { cleanPathForMetric } from '../metrics/metrics'
 import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'

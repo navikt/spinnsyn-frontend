@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getToken, validateAzureToken } from '@navikt/oasis'
-import { requestAzureOboToken } from '@navikt/oasis/dist/obo'
+import { getToken, requestAzureOboToken, validateAzureToken } from '@navikt/oasis'
 
 import { hentModiaContext } from '../../../data/hentModiaContext'
 import { hentVedtakFraSpinnsynBackendForInterne } from '../../../data/hentVedtakForInterne'

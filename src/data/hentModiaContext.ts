@@ -1,8 +1,7 @@
 import { IncomingMessage } from 'http'
 
 import { logger } from '@navikt/next-logger'
-import { getToken } from '@navikt/oasis'
-import { requestAzureOboToken } from '@navikt/oasis/dist/obo'
+import { getToken, requestAzureOboToken } from '@navikt/oasis'
 
 import { ErrorMedStatus } from '../server-utils/ErrorMedStatus'
 import { isMockBackend } from '../utils/environment'
