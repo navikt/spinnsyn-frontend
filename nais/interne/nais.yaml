@@ -53,10 +53,12 @@ spec:
         - application: spinnsyn-backend
         - application: modiacontextholder
           namespace: personoversikt
+  {{#if external-host}}
       external:
   {{#each external-host}}
         - host: {{this}}
   {{/each}}
+  {{/if}}
   env:
   {{#each env}}
      - name: {{@key}}
