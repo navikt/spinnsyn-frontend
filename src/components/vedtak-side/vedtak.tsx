@@ -60,6 +60,7 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
     const harIngenUtbetaling = vedtak.sykepengebelopArbeidsgiver === 0 && vedtak.sykepengebelopSykmeldt === 0
     const harAvvisteDager = avvisteDager.length > 0
     const erDelvisInnvilget = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
+    const flexjarAktivert = useToggle('flexjar-spinsyn-frontend-enabled')
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
     const julesoknad = skalViseJulesoknadWarning(vedtak)
@@ -125,7 +126,7 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
             <Behandling vedtak={vedtak.vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
-            {(flexjarToggle.enabled || julesoknad) && (
+            {flexjarAktivert.enabled && (flexjarToggle.enabled || julesoknad) && (
                 <FlexjarVarSidenNyttig
                     erDirekteutbetaling={erDirekteutbetaling}
                     erRefusjon={erRefusjon}
@@ -137,15 +138,18 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
                     arbeidssituasjon={vedtak.vedtak.yrkesaktivitetstype}
                 />
             )}
-            {!flexjarToggle.enabled && flexjarPohelseHelsemetrikkToggle.enabled && !julesoknad && (
-                <FlexjarPohelseHelsemetrikk
-                    erDirekteutbetaling={erDirekteutbetaling}
-                    erRefusjon={erRefusjon}
-                    harAvvisteDager={harAvvisteDager}
-                    annullert={vedtak.annullert}
-                    revurdert={vedtak.revurdert}
-                />
-            )}
+            {flexjarAktivert.enabled &&
+                !flexjarToggle.enabled &&
+                flexjarPohelseHelsemetrikkToggle.enabled &&
+                !julesoknad && (
+                    <FlexjarPohelseHelsemetrikk
+                        erDirekteutbetaling={erDirekteutbetaling}
+                        erRefusjon={erRefusjon}
+                        harAvvisteDager={harAvvisteDager}
+                        annullert={vedtak.annullert}
+                        revurdert={vedtak.revurdert}
+                    />
+                )}
         </>
     )
 }
