@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { getToken, validateAzureToken, validateIdportenToken } from '@navikt/oasis'
 
 import metrics, { cleanPathForMetric } from '../metrics/metrics'
-import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { isMockBackend, erInternFlate } from '../utils/environment'
 
 type ApiHandler = (req: NextApiRequest, res: NextApiResponse) => void | Promise<void>
 
@@ -23,7 +23,7 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
         if (!token) {
             return send401()
         }
-        if (spinnsynFrontendInterne()) {
+        if (erInternFlate()) {
             return beskyttetApiInterne(req, res, token)
         }
 

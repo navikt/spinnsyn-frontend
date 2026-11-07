@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { ArkiveringContext } from '../../../context/arkivering-context'
 import { ValutaFormat } from '../../../utils/valuta-utils'
 import VedtakPeriode from '../vedtak-periode/vedtak-periode'
-import { spinnsynFrontendInterne } from '../../../utils/environment'
+import { erInternFlate } from '../../../utils/environment'
 import UtbetalingPanel from '../../panel/utbetaling-panel'
 import { unikeAvslagBegrunnelser, hentBegrunnelse, finnInnvilgetMerke } from '../../../utils/vedtak-utils'
 import { RSVedtakWrapper } from '../../../types/rs-types/rs-vedtak-felles'
@@ -19,7 +19,7 @@ type PersonutbetalingMedInntektProps = {
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntektProps) => {
     const erArkivering = useContext(ArkiveringContext)
-    const erInterne = spinnsynFrontendInterne()
+    const erInterne = erInternFlate()
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopSykmeldt)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined

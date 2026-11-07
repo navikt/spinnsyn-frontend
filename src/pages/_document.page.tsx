@@ -4,7 +4,7 @@ import React from 'react'
 import { InternalHeader } from '@navikt/ds-react'
 
 import { createInitialServerSideBreadcrumbs } from '../hooks/useBreadcrumbs'
-import { spinnsynFrontendInterne } from '../utils/environment'
+import { erInternFlate } from '../utils/environment'
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
@@ -23,7 +23,7 @@ class MyDocument extends Document<Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
         const language = getDocumentParameter(initialProps, 'lang')
-        const internheader = spinnsynFrontendInterne()
+        const internheader = erInternFlate()
 
         const props: DocumentInitialProps & Props = {
             ...initialProps,

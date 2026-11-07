@@ -21,6 +21,7 @@ const BundledEnvSchema = z.object({
     NEXT_PUBLIC_OPPLAERING: BoolString,
     NEXT_PUBLIC_UMAMI_ENABLED: BoolString,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE: BoolString,
+    NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER: BoolString,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING: BoolString,
     NEXT_PUBLIC_SYKEFRAVAER_URL: z.string().min(1),
     NEXT_PUBLIC_MINSIDE_URL: z.string().min(1),
@@ -41,6 +42,7 @@ export const bundledEnv: BundledEnv = BundledEnvSchema.parse({
     NEXT_PUBLIC_OPPLAERING: process.env.NEXT_PUBLIC_OPPLAERING,
     NEXT_PUBLIC_UMAMI_ENABLED: process.env.NEXT_PUBLIC_UMAMI_ENABLED,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE: process.env.NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE,
+    NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER: process.env.NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING: process.env.NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING,
     NEXT_PUBLIC_SYKEFRAVAER_URL: process.env.NEXT_PUBLIC_SYKEFRAVAER_URL,
     NEXT_PUBLIC_MINSIDE_URL: process.env.NEXT_PUBLIC_MINSIDE_URL,
@@ -95,6 +97,10 @@ const InterneServerEnvSchema = ServerEnvSchema.extend({
     MODIACONTEXTHOLDER_URL: z.string().min(1),
 })
 
+const SaksbehandlerServerEnvSchema = ServerEnvSchema.extend({
+    SPINNSYN_BACKEND_CLIENT_ID: z.string().min(1),
+})
+
 export type ServerEnv = z.infer<typeof ServerEnvSchema>
 
 function serverEnvInput() {
@@ -127,4 +133,8 @@ export function validerArkiveringEnv(): void {
 
 export function validerInterneEnv(): void {
     InterneServerEnvSchema.parse(serverEnvInput())
+}
+
+export function validerSaksbehandlerEnv(): void {
+    SaksbehandlerServerEnvSchema.parse(serverEnvInput())
 }

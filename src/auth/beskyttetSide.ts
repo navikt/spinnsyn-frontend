@@ -4,7 +4,7 @@ import { GetServerSidePropsResult } from 'next'
 import { IToggle } from '@unleash/nextjs'
 import { getToken, validateAzureToken, validateIdportenToken } from '@navikt/oasis'
 
-import { isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { isMockBackend, erInternFlate } from '../utils/environment'
 import { getFlagsServerSide } from '../toggles/ssr'
 
 type PageHandler = (context: GetServerSidePropsContext) => Promise<GetServerSidePropsResult<ServerSidePropsResult>>
@@ -20,7 +20,7 @@ export function beskyttetSide(handler: PageHandler) {
         if (isMockBackend()) {
             return handler(context)
         }
-        if (spinnsynFrontendInterne()) {
+        if (erInternFlate()) {
             return beskyttetSideInterne(context)
         }
 

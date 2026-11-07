@@ -1,8 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { checkJwks } from '../../../utils/checkIdportenJwks'
-import { spinnsynFrontendArkivering, spinnsynFrontendInterne } from '../../../utils/environment'
-import { bundledEnv, validerArkiveringEnv, validerHovedappEnv, validerInterneEnv } from '../../../utils/env'
+import {
+    erInternFlate,
+    spinnsynFrontendArkivering,
+    spinnsynFrontendInterne,
+    spinnsynFrontendSaksbehandler,
+} from '../../../utils/environment'
+import {
+    bundledEnv,
+    validerArkiveringEnv,
+    validerHovedappEnv,
+    validerInterneEnv,
+    validerSaksbehandlerEnv,
+} from '../../../utils/env'
 
 type Data = {
     message: string
@@ -13,6 +24,8 @@ const isReady = async (req: NextApiRequest, res: NextApiResponse<Data>): Promise
         try {
             if (spinnsynFrontendInterne()) {
                 validerInterneEnv()
+            } else if (spinnsynFrontendSaksbehandler()) {
+                validerSaksbehandlerEnv()
             } else if (spinnsynFrontendArkivering()) {
                 validerArkiveringEnv()
             } else {
@@ -24,8 +37,8 @@ const isReady = async (req: NextApiRequest, res: NextApiResponse<Data>): Promise
         }
     }
 
-    // Arkivering og interne bruker ikke IDPorten/JWKS
-    if (spinnsynFrontendInterne() || spinnsynFrontendArkivering()) {
+    // Arkivering og interne flater bruker ikke IDPorten/JWKS
+    if (erInternFlate() || spinnsynFrontendArkivering()) {
         res.status(200).json({ message: "I'm ready!" })
         return
     }

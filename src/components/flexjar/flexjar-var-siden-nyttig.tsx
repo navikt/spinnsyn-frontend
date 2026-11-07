@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { shuffle } from 'remeda'
 
 import { ArkiveringContext } from '../../context/arkivering-context'
-import { spinnsynFrontendInterne } from '../../utils/environment'
+import { erInternFlate } from '../../utils/environment'
 
 import { FeedbackRadioGroup, FlexjarFelles } from './flexjar-felles'
 
@@ -64,7 +64,7 @@ export const FlexjarVarSidenNyttig = ({
     const [visSendeKnapp, setVisSendeKnapp] = useState<boolean>(false)
     const [visTextTilbakemelding, setVisTextTilbakemelding] = useState<boolean>(false)
 
-    if (arkivering || spinnsynFrontendInterne()) return null
+    if (arkivering || erInternFlate()) return null
 
     const feedbackId = 'spinnsyn-vedtak-v2'
     const getPlaceholder = (): string => {

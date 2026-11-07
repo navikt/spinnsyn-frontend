@@ -2,7 +2,7 @@ import { IToggle } from '@unleash/nextjs'
 import { createContext, PropsWithChildren, ReactElement, useContext, useEffect } from 'react'
 import { logger } from '@navikt/next-logger'
 
-import { isIntegrationtest, spinnsynFrontendArkivering, spinnsynFrontendInterne } from '../utils/environment'
+import { isIntegrationtest, spinnsynFrontendArkivering, erInternFlate } from '../utils/environment'
 
 import { ExpectedToggles } from './toggles'
 
@@ -11,7 +11,7 @@ const FlagContext = createContext<{ toggles: IToggle[] }>({ toggles: [] })
 export function FlagProvider({ toggles, children }: PropsWithChildren<{ toggles: IToggle[] }>): ReactElement {
     useEffect(() => {
         if (toggles == null) {
-            if (spinnsynFrontendInterne()) {
+            if (erInternFlate()) {
                 return
             }
             if (spinnsynFrontendArkivering()) {
