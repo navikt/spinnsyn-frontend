@@ -6,7 +6,7 @@ import { GetServerSidePropsContext } from 'next/types'
 import * as R from 'remeda'
 import NodeCache from 'node-cache'
 
-import { isIntegrationtest, isMockBackend, spinnsynFrontendInterne } from '../utils/environment'
+import { isIntegrationtest, isMockBackend, erInternFlate } from '../utils/environment'
 import { getServerEnv } from '../utils/env'
 
 import { disabledToggles, getUnleashEnvironment, localDevelopmentToggles } from './utils'
@@ -22,7 +22,7 @@ export async function getFlagsServerSide(
         }
         return { toggles: localDevelopmentToggles(req.url) }
     }
-    if (spinnsynFrontendInterne()) {
+    if (erInternFlate()) {
         return { toggles: disabledToggles() }
     }
     try {

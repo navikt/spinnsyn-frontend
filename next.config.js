@@ -11,12 +11,19 @@ const appDirectives = {
     'style-src-elem': ["'self'"],
 }
 
+const saksbehandlerDirectives = {
+    ...appDirectives,
+    'frame-ancestors': ["'none'"],
+}
+
 /**
  * @type {import("next").NextConfig}
  */
 const nextConfig = {
     async headers() {
-        const csp = await buildCspHeader(appDirectives, { env: process.env.NEXT_PUBLIC_DECORATOR_ENV })
+        const directives =
+            process.env.NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER === 'true' ? saksbehandlerDirectives : appDirectives
+        const csp = await buildCspHeader(directives, { env: process.env.NEXT_PUBLIC_DECORATOR_ENV })
 
         return [
             {

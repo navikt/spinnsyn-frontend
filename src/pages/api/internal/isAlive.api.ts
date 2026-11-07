@@ -1,14 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { checkJwks } from '../../../utils/checkIdportenJwks'
-import { spinnsynFrontendArkivering, spinnsynFrontendInterne } from '../../../utils/environment'
+import { spinnsynFrontendArkivering, erInternFlate } from '../../../utils/environment'
 
 type Data = {
     message: string
 }
 
 const isAlive = async (req: NextApiRequest, res: NextApiResponse<Data>): Promise<void> => {
-    if (spinnsynFrontendInterne() || spinnsynFrontendArkivering()) {
+    if (erInternFlate() || spinnsynFrontendArkivering()) {
         res.status(200).json({ message: "I'm ready!" })
         return
     }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import useMerkVedtakSomLest from '../../hooks/useMerkVedtakSomLest'
-import { spinnsynFrontendInterne } from '../../utils/environment'
+import { erInternFlate } from '../../utils/environment'
 import { logEvent } from '../umami/umami'
 import { RSVedtakWrapper } from '../../types/rs-types/rs-vedtak-felles'
 
@@ -29,7 +29,7 @@ const VedtakSide = ({ vedtak, alleVedtak }: VedtakSideProps) => {
     }, [])
 
     useEffect(() => {
-        if (!vedtak.lest && !spinnsynFrontendInterne()) {
+        if (!vedtak.lest && !erInternFlate()) {
             merkLest(vedtak.id)
         }
     }, [vedtak, merkLest])

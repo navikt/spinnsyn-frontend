@@ -3,7 +3,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 import { useUpdateBreadcrumbs } from '../../hooks/useBreadcrumbs'
-import { arkiverteVedtakUrl, isMockBackend, isOpplaering, spinnsynFrontendInterne } from '../../utils/environment'
+import { arkiverteVedtakUrl, isMockBackend, isOpplaering, erInternFlate } from '../../utils/environment'
 import { tekst } from '../../utils/tekster'
 import Person from '../person/Person'
 import { sorterEtterNyesteFom } from '../../utils/sorter-vedtak'
@@ -46,7 +46,7 @@ const Listevisning = ({ alleVedtak }: { alleVedtak?: RSVedtakWrapper[] }) => {
                 tomListeTekst={tekst('vedtak-liste.ingen-tidligere-soknader')}
             />
 
-            {!spinnsynFrontendInterne() && (
+            {!erInternFlate() && (
                 <Link as={alleVedtak ? 'a' : Skeleton} href={arkiverteVedtakUrl()}>
                     {tekst('vedtak-liste.lenke-arkiverte-vedtak')}
                 </Link>

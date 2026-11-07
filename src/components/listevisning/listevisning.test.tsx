@@ -34,7 +34,7 @@ vi.mock('../../utils/environment', () => ({
     arkiverteVedtakUrl: () => '#',
     isMockBackend: () => miljø.mockBackend,
     isOpplaering: () => miljø.opplaering,
-    spinnsynFrontendInterne: () => miljø.frontendInterne,
+    erInternFlate: () => miljø.frontendInterne,
 }))
 
 import Listevisning from './listevisning'
