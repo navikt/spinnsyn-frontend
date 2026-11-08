@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { getToken, requestAzureOboToken, validateAzureToken } from '@navikt/oasis'
 import { logger } from '@navikt/next-logger'
 
-import { arbeidstakerPerson } from '../../../data/testdata/data/personas/personas'
+import { hentVedtakForSaksbehandler } from '../../../data/hentVedtakForSaksbehandler'
 import { isMockBackend, spinnsynFrontendSaksbehandler } from '../../../utils/environment'
 import { getServerEnv } from '../../../utils/env'
 
@@ -23,7 +23,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     if (isMockBackend()) {
-        return res.status(200).json({ vedtak: arbeidstakerPerson.vedtak.map((v, i) => (i === 0 ? { ...v, id } : v)) })
+        const resultat = await hentVedtakForSaksbehandler('', id)
+        return resultat.ok ? res.status(200).json({ vedtak: resultat.vedtak }) : res.status(resultat.status).end()
     }
 
     const accessToken = getToken(req)
@@ -42,23 +43,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(500).json({ message: 'Kunne ikke hente token.' })
     }
 
-    const response = await fetch(
-        `${getServerEnv().SPINNSYN_BACKEND_URL}/api/v1/saksbehandler/vedtak/${encodeURIComponent(id)}`,
-        {
-            method: 'GET',
-            headers: { Authorization: `Bearer ${spinnsynObo.token}` },
-        },
-    )
-
-    if (response.status === 403 || response.status === 404) {
-        return res.status(response.status).end()
+    const resultat = await hentVedtakForSaksbehandler(spinnsynObo.token, id)
+    if (!resultat.ok) {
+        return res.status(resultat.status).end()
     }
-    if (!response.ok) {
-        logger.error(`Uventet svar fra spinnsyn-backend for saksbehandlervedtak: ${response.status}`)
-        return res.status(502).end()
-    }
-
-    return res.status(200).json(await response.json())
+    return res.status(200).json({ vedtak: resultat.vedtak })
 }
 
 export default handler
