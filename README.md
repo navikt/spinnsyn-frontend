@@ -79,12 +79,12 @@ npm run play
 | Ekspandere "Beregning av sykepengene"                        |            |             |       |     x     |                |           |          |          |                  |             |
 | Ekspandere "Sykepenger per dag"                              |            |             |       |     x     |                |           |          |          |                  |             |
 | Ekspandere "Mer om beregningen"                              |            |             |       |     x     |                |           |          |          |                  |             |
-| Ekspandere "Dager NAV ikke utbetaler"                        |            |             |       |     x     |                |           |          |          |                  |             |
+| Ekspandere "Dager Nav ikke utbetaler"                        |            |             |       |     x     |                |           |          |          |                  |             |
 
 # Henvendelser
 
 Spørsmål knyttet til koden eller prosjektet kan stilles til flex@nav.no
 
-## For NAV-ansatte
+## For Nav-ansatte
 
 Interne henvendelser kan sendes via Slack i kanalen #flex.

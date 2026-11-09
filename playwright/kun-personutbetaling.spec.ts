@@ -13,7 +13,7 @@ test.describe('Kun personutbetaling', () => {
         const personutbetalingSection = page.getByTestId(/personutbetaling/)
         await expect(
             personutbetalingSection.getByText(
-                'Du får noen av sykepengene dine fra Nav og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra NAV senere.',
+                'Du får noen av sykepengene dine fra Nav og resten fra arbeidsgiveren din. Arbeidsgiveren din får igjen pengene fra Nav senere.',
             ),
         ).not.toBeVisible()
         await expect(page.getByText('Utbetales til Matbutikken AS')).not.toBeVisible()
