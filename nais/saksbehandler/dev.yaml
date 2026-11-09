@@ -2,6 +2,7 @@ ingress: https://spinnsyn-frontend-saksbehandler.intern.dev.nav.no/syk/sykepenge
 cpu: 50m
 memory: 256Mi
 speil_brukere_group_id: "cda797bb-ac3b-4440-b661-2cd5eb3edba0" # speil-brukere
+speil_lesetilgang_group_id: "216b7219-3906-43c5-8e22-03fb74133b42" # 0000-CA-Speil_Lesetilgang
 env:
   NO_DECORATOR: "true"
   SPINNSYN_BACKEND_URL: http://spinnsyn-backend
