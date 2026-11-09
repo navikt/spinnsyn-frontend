@@ -1,0 +1,8 @@
+ingress: https://spinnsyn-frontend-saksbehandler.intern.dev.nav.no/syk/sykepenger
+cpu: 50m
+memory: 256Mi
+speil_brukere_group_id: "cda797bb-ac3b-4440-b661-2cd5eb3edba0" # speil-brukere
+env:
+  NO_DECORATOR: "true"
+  SPINNSYN_BACKEND_URL: http://spinnsyn-backend
+  SPINNSYN_BACKEND_CLIENT_ID: api://dev-gcp.flex.spinnsyn-backend/.default

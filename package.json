@@ -68,6 +68,7 @@
         "dev": "NEXT_PUBLIC_MOCK_BACKEND=true next dev -p 3000 | pino-pretty",
         "dev-ingen-dekorator": "NEXT_PUBLIC_MOCK_BACKEND=true NO_DECORATOR=true npm run dev | pino-pretty",
         "interne": "NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE=true NO_DECORATOR=true npm run dev | pino-pretty",
+        "saksbehandler": "NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER=true NO_DECORATOR=true npm run dev | pino-pretty",
         "start": "next start -p 3000",
         "start-ingen-dekorator": "NO_DECORATOR=true npm start",
         "arkiv": "npm run build && npm run start-ingen-dekorator",

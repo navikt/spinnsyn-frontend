@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { RSVedtakWrapper } from '../types/rs-types/rs-vedtak-felles'
 import { fetchJsonMedRequestId } from '../utils/fetch'
-import { spinnsynFrontendInterne } from '../utils/environment'
+import { spinnsynFrontendInterne, spinnsynFrontendSaksbehandler } from '../utils/environment'
 import { korrigerYrkesaktivitetstype } from '../utils/korrigerYrkesaktivitetstype'
 import { testpersonFraUrl } from '../utils/testperson-fra-url'
 
@@ -17,9 +17,23 @@ export default function UseVedtak() {
         }
         return ''
     }
+    const saksbehandlerVedtakId =
+        spinnsynFrontendSaksbehandler() && typeof router.query.id === 'string' ? router.query.id : null
+
     return useQuery<VedtakOgFnr, Error>({
-        queryKey: ['vedtak', testpersonQuery],
+        queryKey: ['vedtak', testpersonQuery, saksbehandlerVedtakId],
+        retry: spinnsynFrontendSaksbehandler() ? false : undefined,
         queryFn: async () => {
+            if (spinnsynFrontendSaksbehandler()) {
+                if (!saksbehandlerVedtakId) {
+                    return { alleVedtak: [], sykmeldtFnr: null }
+                }
+                const respons: VedtakSaksbehandlerResponse = await fetchJsonMedRequestId(
+                    '/syk/sykepenger/api/spinnsyn-backend-saksbehandler/vedtak?id=' +
+                        encodeURIComponent(saksbehandlerVedtakId),
+                )
+                return { alleVedtak: respons.vedtak.map((v) => korrigerYrkesaktivitetstype(v)), sykmeldtFnr: null }
+            }
             if (spinnsynFrontendInterne()) {
                 const vedtak: VedtakOgFnrInterneResponse = await fetchJsonMedRequestId(
                     '/syk/sykepenger/api/spinnsyn-backend-veileder/vedtak' + query(),
@@ -42,6 +56,10 @@ export default function UseVedtak() {
 interface VedtakOgFnr {
     alleVedtak: RSVedtakWrapper[]
     sykmeldtFnr: string | null
+}
+
+interface VedtakSaksbehandlerResponse {
+    vedtak: RSVedtakWrapper[]
 }
 
 interface VedtakOgFnrInterneResponse {

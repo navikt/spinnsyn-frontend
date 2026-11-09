@@ -49,3 +49,20 @@ jobs:
       nais-template: nais/interne/nais.yaml
       dev-vars: nais/interne/dev.yaml
       prod-vars: nais/interne/prod.yaml
+
+  saksbehandler:
+    needs: felles-workflow
+    if: always() && needs.felles-workflow.result == 'success' && (github.ref_name == 'main' || startsWith(github.ref_name, 'dev-'))
+    uses: ./.github/workflows/bygg-og-deploy.yml
+    permissions:
+      packages: write
+      contents: read
+      id-token: write
+    secrets: inherit
+    with:
+      env-fil-dev: nais/saksbehandler/.env.dev
+      env-fil-prod: nais/saksbehandler/.env.prod
+      image-suffix: saksbehandler
+      nais-template: nais/saksbehandler/nais.yaml
+      dev-vars: nais/saksbehandler/dev.yaml
+      prod-vars: nais/saksbehandler/prod.yaml
