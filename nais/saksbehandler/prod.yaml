@@ -3,6 +3,7 @@ cpu: 50m
 memory: 256Mi
 speil_brukere_group_id: "611669fa-de5c-4dc2-a0e8-6041a019992a" # speil-brukere
 speil_lesetilgang_group_id: "c5f26254-c6fa-4942-b81b-5cdff847d3df" # 0000-CA-Speil_Lesetilgang
+tbd_group_id: "f787f900-6697-440d-a086-d5bb56e26a9c" # tbd
 env:
   NO_DECORATOR: "true"
   SPINNSYN_BACKEND_URL: http://spinnsyn-backend

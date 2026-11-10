@@ -26,6 +26,9 @@ spec:
         groups:
           - id: "{{speil_brukere_group_id}}"
           - id: "{{speil_lesetilgang_group_id}}"
+          {{#if tbd_group_id}}
+          - id: "{{tbd_group_id}}"
+          {{/if}}
     sidecar:
       enabled: true
   replicas:
