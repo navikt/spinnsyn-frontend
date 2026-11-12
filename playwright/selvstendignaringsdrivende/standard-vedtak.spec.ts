@@ -1,3 +1,4 @@
+import { formaterValuta } from '../../src/utils/valuta-utils'
 import { expect, test } from '../fixtures'
 import { verifyDagTabellRows, visBeregningRegion } from '../utils/hjelpefunksjoner'
 
@@ -16,11 +17,12 @@ test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
         const beregningRegion = await visBeregningRegion(page)
         await expect(beregningRegion.getByText('2022')).toBeVisible()
         await expect(beregningRegion.getByText('720 000')).toBeVisible()
+        await expect(beregningRegion.getByRole('region', { name: 'Justert gjennomsnittlig årsinntekt' })).toContainText(
+            formaterValuta(620_000),
+        )
 
         await expect(
-            beregningRegion.getByText(
-                'Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80 % av sykepengegrunnlaget.',
-            ),
+            beregningRegion.getByText('Som selvstendig næringsdrivende får du 80 % av sykepengegrunnlaget.'),
         ).toBeVisible()
 
         await beregningRegion.getByRole('button', { name: 'Dine sykepenger per dag' }).click()
@@ -30,8 +32,9 @@ test.describe('Selvstendig næringsdrivende - standard vedtak', () => {
         await beregningRegion.getByRole('button', { name: 'Mer om beregningen' }).click()
         await expect(
             beregningRegion.getByText(
-                'Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste tre årene før du ble syk for å beregne sykepengegrunnlaget. Inntekten blir justert etter årlige endringer i grunnbeløpet i folketrygden.',
+                'Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste tre årene før du ble syk for å beregne sykepengegrunnlaget.',
             ),
         ).toBeVisible()
+        await expect(beregningRegion.getByText('1. Vi gjør inntektene sammenlignbare')).toBeVisible()
     })
 })

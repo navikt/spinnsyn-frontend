@@ -47,6 +47,7 @@ const UtbetalingTekster = {
     'utbetaling.inntekt.samlet.årsinntekt': 'Samlet årsinntekt',
     'utbetaling.inntekt.info.dagsats': 'Sykepenger per dag',
     'utbetaling.sykepengegrunnlag': 'Sykepengegrunnlaget',
+    'utbetaling.justertinntekt': 'Justert gjennomsnittlig årsinntekt',
     'utbetaling.refusjon.periode': 'Periode',
     'utbetaling.refusjon.refunderes': 'Refunderes til',
     'utbetaling.refusjon.orgnr': 'Organisasjonsnummer',

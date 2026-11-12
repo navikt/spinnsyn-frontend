@@ -71,13 +71,11 @@ export const InntekterLagtTilGrunnNaringsdrivende = ({ vedtak }: InntekterLagtTi
                         <EkstrainfoOmVedtaketNaringsdrivende vedtak={vedtak.vedtak} />
                         {!harForsikring && (
                             <BodyShort size="small" className="mt-4 mb-4">
-                                Som selvstendig næringsdrivende har du rett til sykepenger tilsvarende 80 % av
-                                sykepengegrunnlaget.
+                                Som selvstendig næringsdrivende får du 80 % av sykepengegrunnlaget.
                             </BodyShort>
                         )}
                         <BodyShort size="small" className="mt-4 mb-4">
-                            Les mer om hvordan Nav beregner sykepengegrunnlaget under fanen &quot;Mer om
-                            beregningen&quot;.
+                            Du kan lese mer om hvordan Nav beregner sykepengegrunnlaget under «Mer om beregningen».
                         </BodyShort>
 
                         {harForsikring && (

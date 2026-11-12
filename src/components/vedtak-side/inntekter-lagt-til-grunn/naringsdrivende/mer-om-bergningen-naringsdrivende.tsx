@@ -1,4 +1,4 @@
-import { Accordion, BodyLong, Heading, Link } from '@navikt/ds-react'
+import { Accordion, BodyLong, Heading, Link, List } from '@navikt/ds-react'
 import React, { useContext, useState } from 'react'
 
 import { ArkiveringContext } from '../../../../context/arkivering-context'
@@ -42,17 +42,30 @@ export const MerOmBergningenNargingsdrivende = ({
                 </BodyLong>
                 <BodyLong spacing>
                     Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste tre årene før
-                    du ble syk for å beregne sykepengegrunnlaget. Inntekten blir justert etter årlige endringer i
-                    grunnbeløpet i folketrygden.
+                    du ble syk for å beregne sykepengegrunnlaget.
                 </BodyLong>
                 <BodyLong spacing>
-                    Sykepengegrunnlaget er begrenset til seks ganger{' '}
-                    <Link href="https://www.nav.no/grunnbelopet">grunnbeløpet i folketrygden</Link> (6 G). Tjener du mer
-                    enn 6 G i et enkelt år i perioden vi bruker i beregningen, regner Nav med 1/3 av inntekten din
-                    mellom 6 G og 12 G. Inntekt over 12 G tas ikke med.
+                    Inntekten blir justert etter årlige endringer i grunnbeløpet i folketrygden:
+                </BodyLong>
+                <BodyLong className="underline">1. Vi gjør inntektene sammenlignbare</BodyLong>
+                <BodyLong spacing>
+                    <Link href="https://www.nav.no/grunnbelopet">Grunnbeløpet i folketrygden</Link> (G) endrer seg hvert
+                    år. Derfor justerer vi inntekten for hvert år etter grunnbeløpet da du ble sykmeldt.
+                </BodyLong>
+                <BodyLong className="underline">2. Vi tar ikke med hele inntekten</BodyLong>
+                <BodyLong>Hvor mye av inntekten som teller med, avhenger av grunnbeløpet (G):</BodyLong>
+                <List as="ul" className="mb-4">
+                    <List.Item>Inntekt opptil 6 G teller fullt.</List.Item>
+                    <List.Item>Av inntekt mellom 6 og 12 G teller en tredel med.</List.Item>
+                    <List.Item>Inntekt over 12 G teller ikke med.</List.Item>
+                </List>
+                <BodyLong className="underline">3. Vi regner ut gjennomsnittet</BodyLong>
+                <BodyLong spacing>
+                    Til slutt regner vi ut gjennomsnittet av inntektene etter disse justeringene.
                 </BodyLong>
                 <BodyLong spacing>
-                    Er sykepengegrunnlaget ditt lavere enn 1/2 G, vil du ikke ha rett til sykepenger.{' '}
+                    Er sykepengegrunnlaget ditt lavere enn en halv G, vil du ikke ha rett til sykepenger. Er du mellom
+                    67 og 70 år, er grensen 2 G.
                 </BodyLong>
                 <BodyLong spacing>
                     Du kan lese mer om hvordan sykepengegrunnlaget beregnes i

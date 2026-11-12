@@ -1,3 +1,4 @@
+import { formaterValuta } from '../../src/utils/valuta-utils'
 import { expect, test } from '../fixtures'
 import { visBeregningRegion } from '../utils/hjelpefunksjoner'
 
@@ -8,6 +9,9 @@ test.describe('Selvstendig næringsdrivende - begrenset 6 G', () => {
 
         const beregningRegion = await visBeregningRegion(page)
 
+        await expect(beregningRegion.getByRole('region', { name: 'Justert gjennomsnittlig årsinntekt' })).toContainText(
+            formaterValuta(812_511),
+        )
         await expect(beregningRegion.getByText('Sykepengegrunnlaget ditt er begrenset til seks ganger')).toBeVisible()
     })
 })

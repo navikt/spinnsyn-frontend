@@ -13,6 +13,8 @@ export const EkstrainfoOmVedtaketNaringsdrivende = ({ vedtak }: { vedtak: RSVedt
             {vedtak.sykepengegrunnlag && (
                 <InfoSection
                     bold
+                    size="large"
+                    className="mt-4 border-t border-ax-neutral-400 pt-4"
                     label={tekst('utbetaling.sykepengegrunnlag')}
                     value={formaterValuta(vedtak.sykepengegrunnlag)}
                 />

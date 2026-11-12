@@ -1,3 +1,4 @@
+import { formaterValuta } from '../../src/utils/valuta-utils'
 import { expect, test } from '../fixtures'
 import { verifyDagTabellRows, visBeregningRegion } from '../utils/hjelpefunksjoner'
 
@@ -16,6 +17,9 @@ test.describe('Selvstendig næringsdrivende - med forsikring', () => {
         const beregningRegion = await visBeregningRegion(page)
         await expect(beregningRegion.getByText('2022')).toBeVisible()
         await expect(beregningRegion.getByText('720 000')).toBeVisible()
+        await expect(beregningRegion.getByRole('region', { name: 'Justert gjennomsnittlig årsinntekt' })).toContainText(
+            formaterValuta(620_000),
+        )
 
         await expect(
             beregningRegion.getByText(
@@ -30,8 +34,9 @@ test.describe('Selvstendig næringsdrivende - med forsikring', () => {
         await beregningRegion.getByRole('button', { name: 'Mer om beregningen' }).click()
         await expect(
             beregningRegion.getByText(
-                'Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste tre årene før du ble syk for å beregne sykepengegrunnlaget. Inntekten blir justert etter årlige endringer i grunnbeløpet i folketrygden.',
+                'Vi bruker vanligvis gjennomsnittet av den pensjonsgivende inntekten din for de siste tre årene før du ble syk for å beregne sykepengegrunnlaget.',
             ),
         ).toBeVisible()
+        await expect(beregningRegion.getByText('1. Vi gjør inntektene sammenlignbare')).toBeVisible()
     })
 })
