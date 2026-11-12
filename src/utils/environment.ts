@@ -30,16 +30,12 @@ export function umamiEnabled() {
     return bundledEnv.NEXT_PUBLIC_UMAMI_ENABLED
 }
 
-export function spinnsynFrontendInterne() {
-    return bundledEnv.NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE
-}
-
 export function spinnsynFrontendSaksbehandler() {
     return bundledEnv.NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER
 }
 
 export function erInternFlate() {
-    return spinnsynFrontendInterne() || spinnsynFrontendSaksbehandler()
+    return spinnsynFrontendSaksbehandler()
 }
 
 export function spinnsynFrontendArkivering() {
