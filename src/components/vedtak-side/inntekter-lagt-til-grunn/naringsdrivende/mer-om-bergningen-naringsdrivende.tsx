@@ -49,7 +49,7 @@ export const MerOmBergningenNargingsdrivende = ({
                 </BodyLong>
                 <BodyLong className="underline">1. Vi gjør inntektene sammenlignbare</BodyLong>
                 <BodyLong spacing>
-                    <Link href="https://www.nav.no/grunnbelopet">Grunnbeløpet i folketrygden (G)</Link> endrer seg hvert
+                    <Link href="https://www.nav.no/grunnbelopet">Grunnbeløpet i folketrygden</Link> (G) endrer seg hvert
                     år. Derfor justerer vi inntekten for hvert år etter grunnbeløpet da du ble sykmeldt.
                 </BodyLong>
                 <BodyLong className="underline">2. Vi tar ikke med hele inntekten</BodyLong>
