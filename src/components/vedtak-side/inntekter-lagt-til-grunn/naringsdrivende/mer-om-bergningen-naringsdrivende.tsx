@@ -49,8 +49,8 @@ export const MerOmBergningenNargingsdrivende = ({
                 </BodyLong>
                 <BodyLong className="underline">1. Vi gjør inntektene sammenlignbare</BodyLong>
                 <BodyLong spacing>
-                    Grunnbeløpet i folketrygden (G) endrer seg hvert år. Derfor justerer vi inntekten for hvert år etter
-                    grunnbeløpet da du ble sykmeldt.
+                    <Link href="https://www.nav.no/grunnbelopet">Grunnbeløpet i folketrygden (G)</Link> endrer seg hvert
+                    år. Derfor justerer vi inntekten for hvert år etter grunnbeløpet da du ble sykmeldt.
                 </BodyLong>
                 <BodyLong className="underline">2. Vi tar ikke med hele inntekten</BodyLong>
                 <BodyLong>Hvor mye av inntekten som teller med, avhenger av grunnbeløpet (G):</BodyLong>
