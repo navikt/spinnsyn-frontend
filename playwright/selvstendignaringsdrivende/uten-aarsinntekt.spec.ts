@@ -9,5 +9,8 @@ test.describe('Selvstendig næringsdrivende - begrenset 6 G', () => {
         const beregningRegion = await visBeregningRegion(page)
 
         await expect(beregningRegion.getByRole('heading', { name: 'Inntekten din' })).not.toBeVisible()
+        await expect(
+            beregningRegion.getByRole('region', { name: 'Justert gjennomsnittlig årsinntekt' }),
+        ).not.toBeVisible()
     })
 })
