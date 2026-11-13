@@ -19,7 +19,7 @@ type PersonutbetalingMedInntektProps = {
 
 export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntektProps) => {
     const erArkivering = useContext(ArkiveringContext)
-    const erInterne = erInternFlate()
+    const internFlate = erInternFlate()
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopSykmeldt)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
@@ -52,7 +52,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntek
             <VedtakPeriode vedtak={vedtak} skalViseRefusjonsMottaker={true} />
             <OppsumertAvslagListe {...oppsumertAvslagObject}></OppsumertAvslagListe>
 
-            {!erInterne && !erArkivering && <Kontonummer />}
+            {!internFlate && !erArkivering && <Kontonummer />}
             <SykepengerNar />
         </UtbetalingPanel>
     )

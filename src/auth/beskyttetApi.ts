@@ -24,10 +24,10 @@ export function beskyttetApi(handler: ApiHandler): ApiHandler {
             return send401()
         }
         if (erInternFlate()) {
-            return beskyttetApiInterne(req, res, token)
+            return beskyttetApiInternFlate(req, res, token)
         }
 
-        async function beskyttetApiInterne(req: NextApiRequest, res: NextApiResponse, token: string) {
+        async function beskyttetApiInternFlate(req: NextApiRequest, res: NextApiResponse, token: string) {
             const verified = await validateAzureToken(token)
             if (!verified.ok) {
                 logger.warn('kunne ikke validere azuretoken i beskyttetApi')

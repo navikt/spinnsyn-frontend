@@ -7,7 +7,6 @@ import Listevisning from '../components/listevisning/listevisning'
 import VedtakSide from '../components/vedtak-side/vedtak-side'
 import { ArkiveringContext } from '../context/arkivering-context'
 import useVedtak from '../hooks/useVedtak'
-import { InterneInfo } from '../components/interne-info/InterneInfo'
 import { beskyttetSideUtenProps } from '../auth/beskyttetSide'
 import { SaksbehandlerInnhold } from '../components/saksbehandler-info/SaksbehandlerInnhold'
 import { spinnsynFrontendSaksbehandler } from '../utils/environment'
@@ -16,7 +15,6 @@ export default function Index() {
     return (
         <ArkiveringContext.Provider value={false}>
             <main id="maincontent" className="maincontent" role="main" tabIndex={-1}>
-                <InterneInfo />
                 {spinnsynFrontendSaksbehandler() ? <SaksbehandlerInnhold /> : <Innhold />}
             </main>
         </ArkiveringContext.Provider>

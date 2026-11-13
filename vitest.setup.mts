@@ -5,7 +5,6 @@ import { cleanup } from '@testing-library/react'
 vi.stubEnv('NEXT_PUBLIC_ENVIRONMENT', 'labs')
 vi.stubEnv('NEXT_PUBLIC_MOCK_BACKEND', 'true')
 vi.stubEnv('NEXT_PUBLIC_UMAMI_ENABLED', 'false')
-vi.stubEnv('NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE', 'false')
 vi.stubEnv('NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER', 'false')
 vi.stubEnv('NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING', 'false')
 vi.stubEnv('NEXT_PUBLIC_SYKEFRAVAER_URL', 'https://www.ekstern.dev.nav.no/syk/sykefravaer')
