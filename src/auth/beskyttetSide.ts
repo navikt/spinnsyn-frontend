@@ -21,7 +21,7 @@ export function beskyttetSide(handler: PageHandler) {
             return handler(context)
         }
         if (erInternFlate()) {
-            return beskyttetSideInterne(context)
+            return beskyttetSideInternFlate(context)
         }
 
         const request = context.req
@@ -57,7 +57,7 @@ export function beskyttetSide(handler: PageHandler) {
         return handler(context)
     }
 
-    async function beskyttetSideInterne(context: GetServerSidePropsContext): Promise<ReturnType<typeof handler>> {
+    async function beskyttetSideInternFlate(context: GetServerSidePropsContext): Promise<ReturnType<typeof handler>> {
         const request = context.req
         if (request == null) {
             throw new Error('Context is missing request. This should not happen')

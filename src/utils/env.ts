@@ -20,7 +20,6 @@ const BundledEnvSchema = z.object({
     NEXT_PUBLIC_MOCK_BACKEND: BoolString,
     NEXT_PUBLIC_OPPLAERING: BoolString,
     NEXT_PUBLIC_UMAMI_ENABLED: BoolString,
-    NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE: BoolString,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER: BoolString,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING: BoolString,
     NEXT_PUBLIC_SYKEFRAVAER_URL: z.string().min(1),
@@ -41,7 +40,6 @@ export const bundledEnv: BundledEnv = BundledEnvSchema.parse({
     NEXT_PUBLIC_MOCK_BACKEND: process.env.NEXT_PUBLIC_MOCK_BACKEND,
     NEXT_PUBLIC_OPPLAERING: process.env.NEXT_PUBLIC_OPPLAERING,
     NEXT_PUBLIC_UMAMI_ENABLED: process.env.NEXT_PUBLIC_UMAMI_ENABLED,
-    NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE: process.env.NEXT_PUBLIC_SPINNSYN_FRONTEND_INTERNE,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER: process.env.NEXT_PUBLIC_SPINNSYN_FRONTEND_SAKSBEHANDLER,
     NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING: process.env.NEXT_PUBLIC_SPINNSYN_FRONTEND_ARKIVERING,
     NEXT_PUBLIC_SYKEFRAVAER_URL: process.env.NEXT_PUBLIC_SYKEFRAVAER_URL,
@@ -73,8 +71,6 @@ const ServerEnvSchema = z.object({
     UNLEASH_SERVER_API_TOKEN: z.string().optional(),
     SPINNSYN_BACKEND_CLIENT_ID: z.string().optional(),
     NO_DECORATOR: z.string().optional(),
-    MODIACONTEXTHOLDER_SCOPE: z.string().optional(),
-    MODIACONTEXTHOLDER_URL: z.string().optional(),
     // Valgfritt / plattform-injisert
     NAIS_APP_IMAGE: z.string().optional(),
 })
@@ -91,12 +87,6 @@ const ArkiveringServerEnvSchema = ServerEnvSchema.extend({
     SPINNSYN_BACKEND_CLIENT_ID: z.string().min(1),
 })
 
-const InterneServerEnvSchema = ServerEnvSchema.extend({
-    SPINNSYN_BACKEND_CLIENT_ID: z.string().min(1),
-    MODIACONTEXTHOLDER_SCOPE: z.string().min(1),
-    MODIACONTEXTHOLDER_URL: z.string().min(1),
-})
-
 const SaksbehandlerServerEnvSchema = ServerEnvSchema.extend({
     SPINNSYN_BACKEND_CLIENT_ID: z.string().min(1),
 })
@@ -111,8 +101,6 @@ function serverEnvInput() {
         SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID: process.env.SOKOS_KONTOREGISTER_PERSON_TOKENX_CLIENT_ID,
         SPINNSYN_BACKEND_CLIENT_ID: process.env.SPINNSYN_BACKEND_CLIENT_ID,
         FLEXJAR_BACKEND_TOKENX_CLIENT_ID: process.env.FLEXJAR_BACKEND_TOKENX_CLIENT_ID,
-        MODIACONTEXTHOLDER_SCOPE: process.env.MODIACONTEXTHOLDER_SCOPE,
-        MODIACONTEXTHOLDER_URL: process.env.MODIACONTEXTHOLDER_URL,
         NAIS_APP_IMAGE: process.env.NAIS_APP_IMAGE,
         UNLEASH_SERVER_API_URL: process.env.UNLEASH_SERVER_API_URL,
         UNLEASH_SERVER_API_TOKEN: process.env.UNLEASH_SERVER_API_TOKEN,
@@ -129,10 +117,6 @@ export function validerHovedappEnv(): void {
 
 export function validerArkiveringEnv(): void {
     ArkiveringServerEnvSchema.parse(serverEnvInput())
-}
-
-export function validerInterneEnv(): void {
-    InterneServerEnvSchema.parse(serverEnvInput())
 }
 
 export function validerSaksbehandlerEnv(): void {

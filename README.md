@@ -16,24 +16,26 @@ Testes ved å se på dokumentet som havner i gosys eller ved å bruke denne hjel
 
 https://spinnsyn-arkivering.dev.nav.no/api/test/pdf/:fnr/:vedtakid
 
-# spinnsyn-frontend-interne
+# spinnsyn-frontend-saksbehandler
 
-Variant av spinnsyn-frontend som lenkes til fra Modia. Her henter vi opp personen som den innlogga brukeren ser på i
-modia og viser det slik den brukeren ser.
-Benytter seg av azure AD og wonderwall for å logge inn interne brukere.
+Variant av spinnsyn-frontend som saksbehandlere åpner fra Speil. Viser ett vedtak slik den sykmeldte ser det, basert
+på `id` (utbetalingId) i URL-en. Vedtaket hentes fra `spinnsyn-backend` med OBO-token.
+
+Saksbehandlere logger inn med Azure AD og Wonderwall. Bare medlemmer av gruppene `speil-brukere` og
+`0000-CA-Speil_Lesetilgang` har tilgang (i prod også `tbd`).
 
 Lever under:
 
-- prod-gcp: https://spinnsyn-frontend-interne.intern.nav.no/syk/sykepenger
-- dev-gcp: https://spinnsyn-frontend-interne.intern.dev.nav.no/syk/sykepenger
+- prod-gcp: https://spinnsyn-frontend-saksbehandler.intern.nav.no/syk/sykepenger?id=:utbetalingId
+- dev-gcp: https://spinnsyn-frontend-saksbehandler.intern.dev.nav.no/syk/sykepenger?id=:utbetalingId
 
-For å teste lokalt
+For å teste lokalt med mock-data:
 
 ```sh
-npm run interne
+npm run saksbehandler
 ```
 
-Og gå til http://localhost:3000/syk/sykepenger
+Og gå til http://localhost:3000/syk/sykepenger?id=00000000-0000-0000-0000-000000000000 (alle gyldige UUID-er fungerer).
 
 ## Tilgang til Github Package Registry
 

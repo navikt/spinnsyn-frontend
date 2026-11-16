@@ -27,14 +27,14 @@ vi.mock('./listevisning-demoinfo', () => ({
 const miljø = vi.hoisted(() => ({
     mockBackend: true,
     opplaering: false,
-    frontendInterne: false,
+    internFlate: false,
 }))
 
 vi.mock('../../utils/environment', () => ({
     arkiverteVedtakUrl: () => '#',
     isMockBackend: () => miljø.mockBackend,
     isOpplaering: () => miljø.opplaering,
-    erInternFlate: () => miljø.frontendInterne,
+    erInternFlate: () => miljø.internFlate,
 }))
 
 import Listevisning from './listevisning'
@@ -43,7 +43,7 @@ describe('Listevisning', () => {
     beforeEach(() => {
         miljø.mockBackend = true
         miljø.opplaering = true
-        miljø.frontendInterne = false
+        miljø.internFlate = false
     })
 
     it('viser demoinfo om valgt testperson', () => {

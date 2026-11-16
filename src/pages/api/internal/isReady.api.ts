@@ -1,19 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { checkJwks } from '../../../utils/checkIdportenJwks'
-import {
-    erInternFlate,
-    spinnsynFrontendArkivering,
-    spinnsynFrontendInterne,
-    spinnsynFrontendSaksbehandler,
-} from '../../../utils/environment'
-import {
-    bundledEnv,
-    validerArkiveringEnv,
-    validerHovedappEnv,
-    validerInterneEnv,
-    validerSaksbehandlerEnv,
-} from '../../../utils/env'
+import { erInternFlate, spinnsynFrontendArkivering, spinnsynFrontendSaksbehandler } from '../../../utils/environment'
+import { bundledEnv, validerArkiveringEnv, validerHovedappEnv, validerSaksbehandlerEnv } from '../../../utils/env'
 
 type Data = {
     message: string
@@ -22,9 +11,7 @@ type Data = {
 const isReady = async (req: NextApiRequest, res: NextApiResponse<Data>): Promise<void> => {
     if (!bundledEnv.NEXT_PUBLIC_MOCK_BACKEND) {
         try {
-            if (spinnsynFrontendInterne()) {
-                validerInterneEnv()
-            } else if (spinnsynFrontendSaksbehandler()) {
+            if (spinnsynFrontendSaksbehandler()) {
                 validerSaksbehandlerEnv()
             } else if (spinnsynFrontendArkivering()) {
                 validerArkiveringEnv()

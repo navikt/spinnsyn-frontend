@@ -33,23 +33,6 @@ jobs:
       dev-vars: nais/arkivering/dev.yaml
       prod-vars: nais/arkivering/prod.yaml
 
-  interne:
-    needs: felles-workflow
-    if: always() && needs.felles-workflow.result == 'success' && (github.ref_name == 'main' || startsWith(github.ref_name, 'dev-'))
-    uses: ./.github/workflows/bygg-og-deploy.yml
-    permissions:
-      packages: write
-      contents: read
-      id-token: write
-    secrets: inherit
-    with:
-      env-fil-dev: nais/interne/.env.dev
-      env-fil-prod: nais/interne/.env.prod
-      image-suffix: interne
-      nais-template: nais/interne/nais.yaml
-      dev-vars: nais/interne/dev.yaml
-      prod-vars: nais/interne/prod.yaml
-
   saksbehandler:
     needs: felles-workflow
     if: always() && needs.felles-workflow.result == 'success' && (github.ref_name == 'main' || startsWith(github.ref_name, 'dev-'))

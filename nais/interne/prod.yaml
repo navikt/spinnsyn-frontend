@@ -1,9 +1,0 @@
-ingress: https://spinnsyn-frontend-interne.intern.nav.no/syk/sykepenger
-cpu: 50m
-memory: 256Mi
-env:
-  NO_DECORATOR: "true"
-  SPINNSYN_BACKEND_URL: http://spinnsyn-backend
-  SPINNSYN_BACKEND_CLIENT_ID: api://prod-gcp.flex.spinnsyn-backend/.default
-  MODIACONTEXTHOLDER_SCOPE: api://prod-gcp.personoversikt.modiacontextholder/.default
-  MODIACONTEXTHOLDER_URL: http://modiacontextholder.personoversikt
