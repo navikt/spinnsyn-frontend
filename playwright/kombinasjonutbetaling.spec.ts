@@ -7,6 +7,20 @@ import { harSynligTittel, trykkPaVedtakMedId } from './utils/hjelpefunksjoner'
 const vedtak = kombinertDirekteOgRefusjon
 const baseURL = '/syk/sykepenger'
 
+test.describe('Forskjellige avslag for kombinasjonsutbetaling', () => {
+    test('viser avslag fra riktig dagliste i hver utbetalingsboks', async ({ page }) => {
+        await page.goto(`${baseURL}?testperson=kombinasjonDelvis&id=${kombinertDirekteOgRefusjonDelvisInnvilget.id}`, {
+            waitUntil: 'domcontentloaded',
+        })
+
+        const personutbetaling = page.getByTestId('utbetaling-panel-personutbetaling')
+        await expect(personutbetaling.getByText('Jobbet for kort')).toBeVisible()
+
+        const refusjon = page.getByTestId('utbetaling-panel-refusjon')
+        await expect(refusjon.getByText('Jobbet eller tjent for mye')).toBeVisible()
+    })
+})
+
 test.describe('Kombinasjonutbetaling', () => {
     test.beforeEach(async ({ page }) => {
         await test.step('Gå til testpersonens side og åpne vedtak', async () => {
@@ -14,21 +28,6 @@ test.describe('Kombinasjonutbetaling', () => {
             await expect(page.locator('role=link[name=/Sykmeldt fra /i]')).toHaveCount(2)
             await expect(page).toHaveURL(`${baseURL}?testperson=kombinasjon`)
             await trykkPaVedtakMedId(page, vedtak.id)
-        })
-    })
-
-    test.describe('Forskjellige avslag for kombinasjonsutbetaling', () => {
-        test('viser avslag fra riktig dagliste i hver utbetalingsboks', async ({ page }) => {
-            await page.goto(
-                `${baseURL}?testperson=kombinasjonDelvis&id=${kombinertDirekteOgRefusjonDelvisInnvilget.id}`,
-                { waitUntil: 'domcontentloaded' },
-            )
-
-            const personutbetaling = page.getByTestId('utbetaling-panel-personutbetaling')
-            await expect(personutbetaling.getByText('Jobbet for kort')).toBeVisible()
-
-            const refusjon = page.getByTestId('utbetaling-panel-refusjon')
-            await expect(refusjon.getByText('Jobbet eller tjent for mye')).toBeVisible()
         })
     })
 
