@@ -23,7 +23,7 @@ export const PersonutbetalingMedInntekt = ({ vedtak }: PersonutbetalingMedInntek
 
     const belop = ValutaFormat.format(vedtak.sykepengebelopSykmeldt)
     const harBegrunnelseFraBomlo = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
-    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.daglisteArbeidsgiver)
+    const avslagBegrunnelser = unikeAvslagBegrunnelser(vedtak.daglisteSykmeldt) //TODO er dette en bug?
     const oppsumertAvslagObject: OppsummertAvslagListeProps = {
         title: 'Noen av dagene er ikke innvilget fordi:',
         oppsummertAvslag: avslagBegrunnelser,

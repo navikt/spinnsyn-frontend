@@ -7,7 +7,7 @@ export const kombinertDirekteOgRefusjonDelvisInnvilget: RSVedtakWrapper = {
     orgnavn: 'MATBUTIKKEN AS',
     andreArbeidsgivere: {},
     daglisteArbeidsgiver: [
-        { dato: '2021-02-04', dagtype: 'AvvistDag', begrunnelser: ['ManglerOpptjening'], belop: 2455, grad: 100 },
+        { dato: '2021-02-04', dagtype: 'AvvistDag', begrunnelser: ['MinimumSykdomsgrad'], belop: 2455, grad: 100 },
         { dato: '2021-02-05', dagtype: 'NavDag', begrunnelser: [], belop: 2455, grad: 100 },
         { dato: '2021-02-06', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
         { dato: '2021-02-07', dagtype: 'NavHelgDag', begrunnelser: [], belop: 0, grad: 100 },
