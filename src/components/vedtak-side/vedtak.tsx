@@ -27,6 +27,7 @@ import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
 import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/naringsdrivende/inntekter-lagt-til-grunn-naringsdrivende'
 import { getVedtakAlertTyper, VedtakAlertOgReadmore } from './vedtak-alert/vedtak-alert-og-readmore'
 import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
+import { Innsyn } from './innsyn'
 
 export const dagErAvvist: RSDagType[] = ['AvvistDag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag', 'AndreYtelser']
 
@@ -125,6 +126,7 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
             <Behandling vedtak={vedtak.vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
+            <Innsyn />
             {(flexjarToggle.enabled || julesoknad) && (
                 <FlexjarVarSidenNyttig
                     erDirekteutbetaling={erDirekteutbetaling}
