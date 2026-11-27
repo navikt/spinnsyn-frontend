@@ -43,7 +43,6 @@ export const FlexjarVarSidenNyttig = ({
     harAvvisteDager,
     annullert,
     erRevurdert,
-    julesoknad,
     erRevurdering,
     arbeidssituasjon,
 }: {
@@ -52,7 +51,6 @@ export const FlexjarVarSidenNyttig = ({
     harAvvisteDager: boolean
     annullert: boolean
     erRevurdert: boolean
-    julesoknad: boolean
     erRevurdering: boolean
     arbeidssituasjon?: 'SELVSTENDIG' | 'ARBEIDSTAKER'
 }) => {
@@ -92,10 +90,6 @@ export const FlexjarVarSidenNyttig = ({
         revurdert: erRevurdert,
         erRevurdering,
         arbeidssituasjon,
-    }
-
-    if (julesoknad) {
-        feedbackProps['julesøknad'] = true
     }
 
     const handterEndretVanskelighet = (vanskeligKey: string) => {

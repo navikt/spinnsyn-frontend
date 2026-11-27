@@ -8,7 +8,6 @@ import { vedtakDerDetSluttesMedDelvisRefusjon } from '../vedtak/vedtakDerDetSlut
 import { alleAvvisteDager, alleAvvisteDagerFraBomlo } from '../vedtak/alleAvvisteDager'
 import { skjønnsfastsattBrukerutbetaling, skjønnsfastsattFlereArbeidsgivere } from '../vedtak/skjønnsfastsatt'
 import { revurdertOgAnnullertVedtak } from '../vedtak/revurdertOgAnnullert'
-import { julesoknadVedtak } from '../vedtak/julesoknad'
 import { skjonnsfastsattRiktigAarsinntekt } from '../vedtak/skjonnsfastsattRiktigAarsinntekt'
 import { nullOmregnetAarsinntekt } from '../vedtak/nullOmregnetAarsinntekt'
 import { slutterMedRefusjon } from '../vedtak/slutterMedRefusjon'
@@ -56,7 +55,6 @@ const arbeidstakerScenarioer: Scenario[] = [
     ['utbetaling', 'Refusjon til arbeidsgiver og ansatt to steder', vedtakMedFlereArbeidsgivere],
     ['utbetaling', 'Arbeidsgiver slutter med refusjon midt i perioden', slutterMedRefusjon],
     ['utbetaling', 'Arbeidsgiver slutter med delvis refusjon', vedtakDerDetSluttesMedDelvisRefusjon],
-    ['utbetaling', 'Julesøknad med advarsel', julesoknadVedtak],
 
     ['ingen-utbetaling', 'Kun helg', arbeidstakerKunHelg],
     ['ingen-utbetaling', 'Kun arbeidsgiverperiode', arbeidstakerKunArbeidsgiverperiode],
@@ -172,12 +170,6 @@ export const flexjarPoHelseHelsemetrikk: Persona = {
     beskrivelse: 'Viser flexjaren PO Helse helsemetrikk',
     togglesOn: ['flexjar-spinnsyn-pohelse-helsemetrikk'],
     togglesOff: ['flexjar-spinnsyn-frontend'],
-}
-
-export const julesoknadPerson: Persona = {
-    vedtak: [julesoknadVedtak],
-    kontonummer: '10011110011',
-    beskrivelse: 'Julesøknad med advarsel',
 }
 
 export const direkteUtenKontonummerPerson: Persona = {
