@@ -26,7 +26,6 @@ import { SporsmalEllerFeil } from './uenig/sporsmal-eller-feil'
 import { IngenUtbetaling } from './utbetaling/ingen-utbetaling'
 import { InntekterLagtTilGrunnNaringsdrivende } from './inntekter-lagt-til-grunn/naringsdrivende/inntekter-lagt-til-grunn-naringsdrivende'
 import { getVedtakAlertTyper, VedtakAlertOgReadmore } from './vedtak-alert/vedtak-alert-og-readmore'
-import { skalViseJulesoknadWarning } from './julesoknad/skal-vise-julesoknad-warning'
 
 export const dagErAvvist: RSDagType[] = ['AvvistDag', 'Feriedag', 'Permisjonsdag', 'ForeldetDag', 'AndreYtelser']
 
@@ -62,9 +61,8 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
     const erDelvisInnvilget = hentBegrunnelse(vedtak, 'DelvisInnvilgelse') !== undefined
     const flexjarToggle = useToggle('flexjar-spinnsyn-frontend')
     const flexjarPohelseHelsemetrikkToggle = useToggle('flexjar-spinnsyn-pohelse-helsemetrikk')
-    const julesoknad = skalViseJulesoknadWarning(vedtak)
     const etikett = getEtikettVariant(vedtak.annullert, vedtak.revurdert, nyesteRevurdering)
-    const vedtakAlertTyper = getVedtakAlertTyper(julesoknad, vedtak.revurdert, vedtak.annullert, nyesteRevurdering)
+    const vedtakAlertTyper = getVedtakAlertTyper(vedtak.revurdert, vedtak.annullert, nyesteRevurdering)
 
     useUpdateBreadcrumbs(() => [{ ...vedtakBreadcrumb, handleInApp: true }], [])
 
@@ -125,7 +123,7 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
             <Behandling vedtak={vedtak.vedtak} />
             {!annullertEllerRevurdert && <SporsmalEllerFeil vedtak={vedtak} />}
             {!annullertEllerRevurdert && <Uenig vedtak={vedtak} />}
-            {(flexjarToggle.enabled || julesoknad) && (
+            {flexjarToggle.enabled && (
                 <FlexjarVarSidenNyttig
                     erDirekteutbetaling={erDirekteutbetaling}
                     erRefusjon={erRefusjon}
@@ -133,11 +131,10 @@ const Vedtak = ({ vedtak, alleVedtak }: VedtakProps) => {
                     annullert={vedtak.annullert}
                     erRevurdert={vedtak.revurdert}
                     erRevurdering={nyesteRevurdering}
-                    julesoknad={julesoknad}
                     arbeidssituasjon={vedtak.vedtak.yrkesaktivitetstype}
                 />
             )}
-            {!flexjarToggle.enabled && flexjarPohelseHelsemetrikkToggle.enabled && !julesoknad && (
+            {!flexjarToggle.enabled && flexjarPohelseHelsemetrikkToggle.enabled && (
                 <FlexjarPohelseHelsemetrikk
                     erDirekteutbetaling={erDirekteutbetaling}
                     erRefusjon={erRefusjon}

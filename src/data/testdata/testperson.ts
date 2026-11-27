@@ -14,7 +14,6 @@ import {
     innvilgelseMedBegrunnelsePerson,
     innvilgelseMedTomBegrunnelsePerson,
     innvilgelsePerson,
-    julesoknadPerson,
     kombinasjonPerson,
     refusjonOgBrukerutbetalinOgDelvisInnvilget,
     kombinertRevurdertPersona,
@@ -76,7 +75,6 @@ export type PersonaKey =
     | 'alle-avviste-dager'
     | 'revurdert-og-annullert'
     | 'under-2g-beskjed'
-    | 'julesoknad'
     | 'skjonnsfastsatt-riktig-aarsinntekt'
     | 'skjonnsfastsatt-flere-arbeidsgivere'
     | 'vedtak-med-0-utbetaling'
@@ -181,7 +179,6 @@ function skjultePersoner(): PersonaData {
         ['med-forsikring']: jsonDeepCopy(medForsikringPersona),
         ['selvstendig-med-lav-inntekt']: jsonDeepCopy(selvstendigMedLavInntektPersona),
         ['selvstendig-med-mangler-opptjening']: jsonDeepCopy(selvstendigMedManglerOpptjeningPersona),
-        ['julesoknad']: jsonDeepCopy(julesoknadPerson),
         ['under-2g-beskjed']: jsonDeepCopy(under2gInntekt),
         ['skjonnsfastsatt-brukerutbetaling']: jsonDeepCopy(skjønnsfastsattBrukerutbetalingPerson),
         ['skjonnsfastsatt-riktig-aarsinntekt']: jsonDeepCopy(skjonnsfastsattRiktigAarsinntektPersona),
